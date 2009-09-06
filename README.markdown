@@ -11,13 +11,11 @@ twilio.php in the your current php file. As shown in example-rest.php, you will 
 addition, you will need to choose a 'Caller' and 'Called' before making
 outgoing calls. See http://www.twilio.com/docs for more information.
 
-### GEM
-
 ### FILES
-twilio.php -- include this library in your code
-example-rest.php -- example usage of REST
-example-twiml.php -- example usage of the TwiML generator
-example-utils.php -- example usage of utilities
+  * **twilio.php**: include this library in your code
+  * **example-rest.php**: example usage of REST
+  * **example-twiml.php**: example usage of the TwiML generator
+  * **example-utils.php**: example usage of utilities
 
 ### LICENSE
 The Twilio PHP Helper Library is distributed under the MIT License
