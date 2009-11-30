@@ -221,7 +221,7 @@
         /*
          * addAttributes
          *     $attr  : A key/value array of attributes to be added
-         *    $valid : A key/value array containging the accepted attributes
+         *     $valid : A key/value array containging the accepted attributes
          *     for this verb
          *     Throws an exception if an invlaid attribute is found
          */
@@ -255,8 +255,7 @@
         /*
          * set
          *     $attr  : An attribute to be added
-         *    $valid : The attrbute value
-         *     for this verb
+         *    $valid : The attrbute value for this verb
          *     No error checking here
          */
         function set($key, $value){
@@ -299,12 +298,16 @@
         function addPause($attr = array()){
             return self::append(new Pause($attr));    
         }
+        
+        function addConference($body=NULL, $attr = array()){
+            return self::append(new Conference($body, $attr));    
+        }
 
         
         /*
          * write
          * Output the XML for this verb and all it's children
-         *     $parent: This verb's parent verb
+         *    $parent: This verb's parent verb
          *    $writeself : If FALSE, Verb will not output itself,
          *    only its children
          */
@@ -389,7 +392,7 @@
         protected $valid = array('action','method','timeout','hangupOnStar',
             'timeLimit','callerId');
     
-        protected $nesting = array('Number');
+        protected $nesting = array('Number','Conference');
     
     }
     
@@ -435,6 +438,13 @@
     class Number extends Verb {
     
         protected $valid = array('url','sendDigits');
+            
+    }
+    
+    class Conference extends Verb {
+    
+        protected $valid = array('muted','beep','startConferenceOnEnter',
+            'endConferenceOnExit','waitUrl','waitMethod');
             
     }
     

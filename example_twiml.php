@@ -7,18 +7,6 @@
     USAGE:
     To create TwiML, you will make new TwiML verbs and nest them inside another
     TwiML verb. Convenience methods are provided to simplify TwiML creation.
-    
-    SUPPORTED VERBS:
-        Response
-        Say
-        Play
-        Dial
-        Gather
-        Hangup
-        Redirect
-        Record
-        Pause
-        Number
     */
     
     include ('twilio.php');
@@ -30,13 +18,13 @@
         "language" => "fr", "loop" => "10")));
     $r->append(new Dial("4155551212", array("timeLimit" => "45")));
     $r->append(new Play("http://www.mp3.com"));
-    //$r-> Respond();
+    $r->Respond();
     
     /* outputs:
     <Response>
-    	<Say voice="man" language="fr" loop="10">Hello World</Say>
-    	<Play>http://www.mp3.com</Play>
-    	<Dial timeLimit="45">4155551212</Dial>
+        <Say voice="man" language="fr" loop="10">Hello World</Say>
+        <Play>http://www.mp3.com</Play>
+        <Dial timeLimit="45">4155551212</Dial>
     </Response>
     */
     
@@ -46,7 +34,7 @@
         "loop" => "10"));
     $r->addDial("4155551212", array("timeLimit" => "45"));
     $r->addPlay("http://www.mp3.com");
-    //$r-> Respond();
+    //$r->Respond();
     
     // ========================================================================
     // Gather, Redirect
@@ -54,7 +42,7 @@
     $g = $r->append(new Gather(array("numDigits" => "1")));
     $g->append(new Say("Press 1"));
     $r->append(new Redirect());
-    //$r-> Respond();
+    //$r->Respond();
     
     
     /* outputs:
@@ -72,7 +60,7 @@
     $say = new Say("Press 1");
     $r->append($say);
     $r->append($say);
-    //$r-> Respond();
+    //$r->Respond();
     
     
     /*
@@ -82,6 +70,26 @@
     </Response>
     */
     
+    // ========================================================================
+    // Creating a Conference Call
+    // See the conferencing docs for more information
+    // http://www.twilio.com/docs/api/twiml/conference
+    $r = new Response();
+    $dial = new Dial();
+    $conf = new Conference('MyRoom',array('startConferenceOnEnter'=>"true"));
+    $dial->append($conf);
+    $r->append($dial);
+    $r->Respond();
+    
+    /*
+    <Response>
+        <Dial>
+            <Conference startConferenceOnEnter="True">
+                MyRoom
+            </Conference>
+        </Dial>
+    </Response>
+    */
     
     // ========================================================================
     // Set any attribute / value pair
@@ -92,7 +100,7 @@
     $redirect = new Redirect();
     $redirect->set("crazy","delicious");
     $r->append($redirect);
-    $r-> Respond();
+    //$r-> Respond();
     
     /*
     <Response>
