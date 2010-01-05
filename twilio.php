@@ -118,6 +118,8 @@
             foreach($vars AS $key=>$value)
                 $encoded .= "$key=".urlencode($value)."&";
             $encoded = substr($encoded, 0, -1);
+            $tmpfile = "";
+            $fp = null;
             
             // construct full url
             $url = "{$this->Endpoint}/$path";
@@ -154,7 +156,7 @@
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
                     break;
                 default:
-                    throw(new TestException("Unknown method $method"));
+                    throw(new TwilioException("Unknown method $method"));
                     break;
             }
             
