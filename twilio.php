@@ -243,9 +243,9 @@
             if(is_null($this->nesting))
                 throw new TwilioException($this->tag ." doesn't support nesting");
             else if(!is_object($verb))
-                throw new TwilioException($verb . " is not an object");
+                throw new TwilioException($verb->tag . " is not an object");
             else if(!in_array(get_class($verb), $this->nesting))
-                throw new TwilioException($verb . " is not an allowed verb here");
+                throw new TwilioException($verb->tag . " is not an allowed verb here");
             else {
                 $this->children[] = $verb;
                 return $verb;    
@@ -302,7 +302,10 @@
         function addConference($body=NULL, $attr = array()){
             return self::append(new Conference($body, $attr));    
         }
-
+        
+        function addSms($body=NULL, $attr = array()){
+            return self::append(new Sms($body, $attr));    
+        }
         
         /*
          * write
@@ -333,7 +336,7 @@
         private $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response></Response>";
         
         protected $nesting = array('Say', 'Play', 'Gather', 'Record', 
-            'Dial', 'Redirect', 'Pause', 'Hangup');
+            'Dial', 'Redirect', 'Pause', 'Hangup', 'Sms');
         
         function __construct(){
             parent::__construct(NULL);
@@ -446,6 +449,10 @@
         protected $valid = array('muted','beep','startConferenceOnEnter',
             'endConferenceOnExit','waitUrl','waitMethod');
             
+    }
+    
+    class Sms extends Verb {
+        protected $valid = array('to', 'from', 'action', 'method', 'statusCallback');
     }
     
     // Twilio Utility function and Request Validation
