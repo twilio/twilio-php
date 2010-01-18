@@ -114,6 +114,7 @@
          */
         public function request($path, $method = "GET", $vars = array()) {
             $fp = null;
+            $tmpfile = "";
             $encoded = "";
             foreach($vars AS $key=>$value)
                 $encoded .= "$key=".urlencode($value)."&";
