@@ -113,7 +113,7 @@
          * send, for GET will be appended to the URL as query params
          */
         public function request($path, $method = "GET", $vars = array()) {
-
+            $fp = null;
             $encoded = "";
             foreach($vars AS $key=>$value)
                 $encoded .= "$key=".urlencode($value)."&";
@@ -154,7 +154,7 @@
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
                     break;
                 default:
-                    throw(new TestException("Unknown method $method"));
+                    throw(new TwilioException("Unknown method $method"));
                     break;
             }
             
