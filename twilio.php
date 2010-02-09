@@ -24,7 +24,7 @@
     OTHER DEALINGS IN THE SOFTWARE.
     */    
     
-    // VERSION: 2.0.1
+    // VERSION: 2.0.2
     
     // Twilio REST Helpers
     // ========================================================================
