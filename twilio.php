@@ -210,15 +210,10 @@
                 $body = NULL;
             }
             $this->tag = get_class($this);
-            $this->body = self::encode($body);
+            $this->body = $body;
             $this->attr = array();
             $this->children = array();
             self::addAttributes($attr);
-        }
-        
-        private function encode($t)
-        {
-            return htmlspecialchars($t);
         }
         
         /*
@@ -231,7 +226,7 @@
         private function addAttributes($attr) {
             foreach ($attr as $key => $value) {
                 if(in_array($key, $this->valid))
-                    $this->attr[$key] = self::encode($value);
+                    $this->attr[$key] = $value;
                 else
                     throw new TwilioException($key . ', ' . $value . 
                        " is not a supported attribute pair");
@@ -262,7 +257,7 @@
          *     No error checking here
          */
         function set($key, $value){
-            $this->attr[$key] = self::encode($value);
+            $this->attr[$key] = $value;
         }
     
         /* Convenience Methods */

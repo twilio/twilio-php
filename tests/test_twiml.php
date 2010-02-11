@@ -321,6 +321,13 @@
             $this->assertXmlStringEqualsXmlString($expected, $r->asUrl(False));
         }
         
+        public function testGatherActionWithParams(){
+            $r = new Response(); 
+            $r->append(new Gather(array("action" => "record.php?action=recordPageNow&id=4&page=3"))); 
+            $expected = '<Response><Gather action="record.php?action=recordPageNow&amp;id=4&amp;page=3"></Gather></Response>';
+            $this->assertXmlStringEqualsXmlString($expected, $r->asUrl(False));
+        }
+        
         public function testGatherNestedVerbs(){
             $r = new Response();
             $g = $r->append(new Gather(array("action"=>"example.com", "method"=>"GET")));
