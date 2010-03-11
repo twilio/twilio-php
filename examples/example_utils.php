@@ -26,9 +26,9 @@
     // QUERY_STRING correctly.
 	
 	if($_SERVER['HTTPS'])
-        $http = "http://";
-    else
         $http = "https://";
+    else
+        $http = "http://";
 	
 	$url = $http.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     
