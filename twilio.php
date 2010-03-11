@@ -119,8 +119,6 @@
             foreach($vars AS $key=>$value)
                 $encoded .= "$key=".urlencode($value)."&";
             $encoded = substr($encoded, 0, -1);
-            $tmpfile = "";
-            $fp = null;
             
             // construct full url
             $url = "{$this->Endpoint}/$path";
