@@ -3,7 +3,7 @@
     require "twilio.php";
     
     // Twilio REST API version 
-    $ApiVersion = "2008-08-01";
+    $ApiVersion = "2010-04-01";
     
     // Set our AccountSid and AuthToken 
     $AccountSid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";

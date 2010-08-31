@@ -3,7 +3,7 @@
     require "twilio.php";
     
     // Twilio REST API version 
-    $ApiVersion = "2008-08-01";
+    $ApiVersion = "2010-04-01";
     
     // Set our AccountSid and AuthToken 
     $AccountSid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -19,8 +19,8 @@
     // 1. Initiate a new outbound call to 415-555-1212
     //    uses a HTTP POST
     $data = array(
-    	"Caller" => $CallerID, 	      // Outgoing Caller ID
-    	"Called" => "415-555-1212",	  // The phone number you wish to dial
+    	"From" => $CallerID, 	      // Outgoing Caller ID
+    	"To" => "415-555-1212",	  // The phone number you wish to dial
     	"Url" => "http://demo.twilio.com/welcome"
     );
     
@@ -43,7 +43,7 @@
     	echo "Error fetching recent calls: {$response->ErrorMessage}";
     else {
     	foreach($response->ResponseXml->Calls->Call AS $call)
-    		echo "Call from {$call->Caller} to {$call->Called}";
+    		echo "Call from {$call->From} to {$call->To}";
     		echo " at {$call->StartTime} of length: {$call->Duration}\n";
     }
     

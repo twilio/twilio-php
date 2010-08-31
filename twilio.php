@@ -1,6 +1,6 @@
 <?php
     /*
-    Copyright (c) 2009 Twilio, Inc.
+    Copyright (c) 2009-2010 Twilio, Inc.
 
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation
@@ -24,7 +24,7 @@
     OTHER DEALINGS IN THE SOFTWARE.
     */    
     
-    // VERSION: 2.0.5
+    // VERSION: 2.0.7
     
     // Twilio REST Helpers
     // ========================================================================
@@ -369,7 +369,12 @@
         protected $valid = array('voice','language','loop');
     
     }
-    
+
+	class Reject extends Verb {
+		
+		protected $valid = array('reason');
+			
+	}
     
     class Play extends Verb {
         
@@ -381,7 +386,7 @@
     class Record extends Verb {
     
         protected $valid = array('action','method','timeout','finishOnKey',
-            'maxLength','transcribe','transcribeCallback');
+								 'maxLength','transcribe','transcribeCallback', 'playBeep');
     
     }
     
