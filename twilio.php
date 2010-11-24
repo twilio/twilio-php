@@ -312,7 +312,7 @@
          */
         protected function write($parent, $writeself=TRUE){
             if($writeself) {
-                $elem = $parent->addChild($this->tag, $this->body);
+                $elem = $parent->addChild($this->tag, htmlspecialchars($this->body));
                 foreach($this->attr as $key => $value)
                     $elem->addAttribute($key, $value);
                 foreach($this->children as $child)
