@@ -62,10 +62,14 @@
             if($this->HttpStatus != 204)
                 $this->ResponseXml = @simplexml_load_string($text);
             
-            if($this->IsError = ($status >= 400))
-                $this->ErrorMessage =
-                    (string)$this->ResponseXml->RestException->Message;
-            
+            if($this->IsError = ($status >= 400)) { 
+              if($status == 401) { 
+                $this->ErrorMessage = "Authentication required"; 
+              } else { 
+                $this->ErrorMessage = 
+                    (string)$this->ResponseXml->RestException->Message; 
+              } 
+            }
         }
         
     }
