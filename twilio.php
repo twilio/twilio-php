@@ -335,7 +335,7 @@
         private $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response></Response>";
         
         protected $nesting = array('Say', 'Play', 'Gather', 'Record', 
-            'Dial', 'Redirect', 'Pause', 'Hangup', 'Sms');
+            'Dial', 'Redirect', 'Pause', 'Hangup', 'Sms', 'Reject');
         
         function __construct(){
             parent::__construct(NULL);
