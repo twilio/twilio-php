@@ -1,0 +1,5 @@
+<phpunit bootstrap="./tests/Bootstrap.php">
+  <testsuite name="Services_Twilio Test Suite">
+    <directory>./tests</directory>
+  </testsuite>
+</phpunit>
