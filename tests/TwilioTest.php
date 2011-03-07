@@ -2,7 +2,7 @@
 
 use \Mockery as m;
 
-require_once 'Services/Twilio.php';
+require_once 'Twilio.php';
 
 class TwilioTest extends PHPUnit_Framework_TestCase {
   function tearDown() {

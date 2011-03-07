@@ -1,5 +1,7 @@
-<phpunit bootstrap="./tests/Bootstrap.php">
-  <testsuite name="Services_Twilio Test Suite">
-    <directory>./tests</directory>
-  </testsuite>
+<phpunit bootstrap="./Bootstrap.php">
+  <testsuites>
+    <testsuite name="Services Twilio Test Suite">
+      <directory>./</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
