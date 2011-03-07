@@ -24,6 +24,7 @@ class SmsMessages extends Services_Twilio_ListResource {
     return array(
       'class' => 'SmsMessages',
       'basename' => 'SMS/Messages',
+      'instance' => 'SmsMessage',
       'list' => 'sms_messages',
     );
   }

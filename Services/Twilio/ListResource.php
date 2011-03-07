@@ -4,32 +4,33 @@ abstract class Services_Twilio_ListResource
   extends Services_Twilio_Resource
 {
   public function get($sid) {
-    $type = $this->getInstanceName();
+    $schema = $this->getSchema();
+    $type = $schema['instance']; 
     return new $type($sid, $this);
   }
 
-  public function _create(array $params) {
-    $obj = $this->proxy->send($this->name, $params);
+  protected function _create(array $params) {
+    $obj = $this->proxy->createData($this->name, $params);
     $inst = $this->get($obj->sid);
     $inst->setObject($obj);
     return $inst;
   }
 
-  public function receive($sid, array $params = array()) {
+  public function retrieveData($sid, array $params = array()) {
     $schema = $this->getSchema();
     $basename = $schema['basename'];
-    return $this->proxy->receive("$basename/$sid", $params);
+    return $this->proxy->retrieveData("$basename/$sid", $params);
   }
 
-  public function send($sid, array $params = array()) {
+  public function createData($sid, array $params = array()) {
     $schema = $this->getSchema();
     $basename = $schema['basename'];
-    return $this->proxy->send("$basename/$sid", $params);
+    return $this->proxy->createData("$basename/$sid", $params);
   }
 
   public function getPage($page = 0, $size = 10, array $filters = array()) {
     $schema = $this->getSchema();
-    $page = $this->proxy->receive($schema['basename'], array(
+    $page = $this->proxy->retrieveData($schema['basename'], array(
       'Page' => $page,
       'PageSize' => $size,
     ) + $filters);
@@ -38,10 +39,6 @@ abstract class Services_Twilio_ListResource
       $page->{$schema['list']}
     );
     return new Page($page, $schema['list']);
-  }
-
-  public function getInstanceName() {
-    return substr($this->name, 0, -1);
   }
 
   public function getSchema() {

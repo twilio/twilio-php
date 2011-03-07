@@ -14,31 +14,27 @@ abstract class Services_Twilio_InstanceResource
     if (!is_array($params)) {
       $params = array($params => $value);
     }
-    $this->proxy->send("$this->sid", $params);
+    $this->proxy->createData($this->sid, $params);
   }
   public function setObject($object) {
-    $this->load($object);
+    $this->_load($object);
   }
   public function __get($key) {
     if (!isset($this->object->$key)) {
-      $this->load();
+      $this->_load();
     }
     return isset($this->$key)
       ? $this->$key
-      : (
-        isset($this->object->$key)
-        ? $this->object->$key
-        : NULL
-      );
+      : (isset($this->object->$key) ? $this->object->$key : NULL);
   }
-  public function receive($path, array $params = array()) {
-    return $this->proxy->receive("$this->sid/$path", $params);
+  public function retrieveData($path, array $params = array()) {
+    return $this->proxy->retrieveData("$this->sid/$path", $params);
   }
-  public function send($path, array $params = array()) {
-    return $this->proxy->send("$this->sid/$path", $params);
+  public function createData($path, array $params = array()) {
+    return $this->proxy->createData("$this->sid/$path", $params);
   }
-  private function load($object = NULL) {
-    $this->object = $object ? $object : $this->proxy->receive($this->sid);
+  private function _load($object = NULL) {
+    $this->object = $object ? $object : $this->proxy->retrieveData($this->sid);
     if (empty($this->object->subresource_uris)) return;
     foreach ($this->object->subresource_uris as $res => $uri) {
       $type = self::camelize($res);

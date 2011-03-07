@@ -1,7 +1,7 @@
 <?php
 /**
  * Twiml response generator from https://gist.github.com/855985.
- * BSD License.
+ * Copyright 2011, Neuman Vong. BSD License.
  */
 
 class Services_Twilio_TwimlException extends Exception {}

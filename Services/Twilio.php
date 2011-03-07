@@ -25,29 +25,24 @@ class Services_Twilio extends Services_Twilio_Resource {
     $this->accounts = new Accounts($this);
     $this->account = $this->accounts->get($sid);
   }
-  public function receive($path, array $params = array()) {
-    list($status, $headers, $body) = empty($params)
-      ? $this->http->get("/$this->version/$path.json")
-      : $this->http->get("/$this->version/$path.json?"
-        . http_build_query($params, '', '&'));
-    if (200 <= $status && $status < 300) {
-      if ($headers['Content-Type'] == 'application/json') {
-        $object = json_decode($body);
-        return $object;
-      } else throw new ErrorException('not json');
-    } else throw new ErrorException("$status: $body");
+  public function retrieveData($path, array $params = array()) {
+    $path = "/$this->version/$path.json";
+    return empty($params)
+      ? $this->_processResponse($this->http->get($path))
+      : $this->_processResponse($this->http->get("$path?"
+      . http_build_query($params, '', '&')));
   }
-  public function send($path, array $params = array()) {
-    $path = "$path.json";
-    list($status, $headers, $body) = empty($params)
-      ? $this->http->post(
-        "/$this->version/$path",
-        array('Content-Type' => 'application/x-www-form-urlencoded')
-      ) : $this->http->post(
-        "/$this->version/$path",
-        array('Content-Type' => 'application/x-www-form-urlencoded'),
-        http_build_query($params, '', '&')
-      );
+  public function createData($path, array $params = array()) {
+    $path = "/$this->version/$path.json";
+    $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+    return empty($params)
+      ? $this->_processResponse($this->http->post($path, $headers))
+      : $this->_processResponse($this->http->post($path, $headers,
+        http_build_query($params, '', '&')));
+  }
+
+  private function _processResponse($response) {
+    list($status, $headers, $body) = $response;
     if (200 <= $status && $status < 300) {
       if ($headers['Content-Type'] == 'application/json') {
         $object = json_decode($body);

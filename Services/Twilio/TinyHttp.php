@@ -1,7 +1,7 @@
 <?php
 /**
  * TinyHttp from https://gist.github.com/618157.
- * BSD License.
+ * Copyright 2011, Neuman Vong. BSD License.
  */
 
 class Services_Twilio_TinyHttpException extends ErrorException {}
