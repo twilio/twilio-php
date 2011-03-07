@@ -1,0 +1,6 @@
+* Implement more methods in Resources.php to complete API.
+* Refactor tests:
+  - create a test class for each .php file instead of one huge one for
+    everything
+  - maybe too much code duplication in the test, but is it better that way to
+    keep the tests loosely coupled?
