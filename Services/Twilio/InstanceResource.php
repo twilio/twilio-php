@@ -14,7 +14,9 @@ abstract class Services_Twilio_InstanceResource
     if (!is_array($params)) {
       $params = array($params => $value);
     }
-    $this->proxy->createData($this->sid, $params);
+    $object = $this->proxy->createData($this->sid, $params);
+    $this->_load($object);
+    return $this;
   }
   public function setObject($object) {
     $this->_load($object);

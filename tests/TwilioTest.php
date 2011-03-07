@@ -255,6 +255,24 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
   }
 
+  function testResourcePropertiesReflectUpdates() {
+    $http = m::mock();
+    $http->shouldReceive('get')->once()
+      ->with('/2010-04-01/Accounts/AC123.json')
+      ->andReturn(array(200, array('Content-Type' => 'application/json'),
+        json_encode(array('friendly_name' => 'foo'))
+      ));
+    $http->shouldReceive('post')->once()
+      ->with('/2010-04-01/Accounts/AC123.json', m::any(), m::any())
+      ->andReturn(array(200, array('Content-Type' => 'application/json'),
+        json_encode(array('friendly_name' => 'bar'))
+      ));
+    $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+    $this->assertEquals('foo', $client->account->friendly_name);
+    $client->account->update('FriendlyName', 'bar');
+    $this->assertEquals('bar', $client->account->friendly_name);
+  }
+
   //function testAccessingNonExistentPropertiesErrorsOut
 }
 
