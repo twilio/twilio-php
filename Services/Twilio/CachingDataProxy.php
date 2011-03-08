@@ -149,7 +149,7 @@ class Services_Twilio_CachingDataProxy
     }
 
     foreach ($this->cache->subresource_uris as $res => $uri) {
-      $type = Services_Twilio_Resource::camelize($res);
+      $type = 'Services_Twilio_' . Services_Twilio_Resource::camelize($res);
       $this->cache->$res = new $type($this);
     }
   }

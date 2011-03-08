@@ -38,7 +38,9 @@ abstract class Services_Twilio_ListResource
    */
   protected function _create(array $params)
   {
-    return $this->get($this->proxy->createData($this->name, $params));
+    $schema = $this->getSchema();
+    $basename = $schema['basename'];
+    return $this->get($this->proxy->createData($basename, $params));
   }
 
   /**
@@ -104,11 +106,13 @@ abstract class Services_Twilio_ListResource
   public function getSchema()
   {
     $name = get_class($this);
+    $parts = explode('_', $name);
+    $basename = end($parts);
     return array(
       'name' => $name,
-      'basename' => $name,
+      'basename' => $basename,
       'instance' => substr($name, 0, -1),
-      'list' => self::decamelize($name),
+      'list' => self::decamelize($basename),
     );
   }
 }

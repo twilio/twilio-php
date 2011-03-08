@@ -1,9 +1,9 @@
 <?php
 
-class Accounts extends Services_Twilio_ListResource { }
-class Account extends Services_Twilio_InstanceResource { }
+class Services_Twilio_Accounts extends Services_Twilio_ListResource { }
+class Services_Twilio_Account extends Services_Twilio_InstanceResource { }
 
-class Calls extends Services_Twilio_ListResource
+class Services_Twilio_Calls extends Services_Twilio_ListResource
 {
   public function create($from, $to, $url, array $params = array())
   {
@@ -15,7 +15,7 @@ class Calls extends Services_Twilio_ListResource
   }
 }
 
-class Call extends Services_Twilio_InstanceResource
+class Services_Twilio_Call extends Services_Twilio_InstanceResource
 {
   public function hangup()
   {
@@ -23,22 +23,22 @@ class Call extends Services_Twilio_InstanceResource
   }
 }
 
-class SmsMessages extends Services_Twilio_ListResource
+class Services_Twilio_SmsMessages extends Services_Twilio_ListResource
 {
   public function getSchema()
   {
     return array(
-      'class' => 'SmsMessages',
+      'class' => 'Services_Twilio_SmsMessages',
       'basename' => 'SMS/Messages',
-      'instance' => 'SmsMessage',
+      'instance' => 'Services_Twilio_SmsMessage',
       'list' => 'sms_messages',
     );
   }
 }
 
-class SmsMessage extends Services_Twilio_InstanceResource { }
+class Services_Twilio_SmsMessage extends Services_Twilio_InstanceResource { }
 
-class AvailablePhoneNumbers extends Services_Twilio_ListResource
+class Services_Twilio_AvailablePhoneNumbers extends Services_Twilio_ListResource
 {
   public function getLocal($country)
   {
@@ -66,23 +66,23 @@ class AvailablePhoneNumbers extends Services_Twilio_ListResource
   }
 }
 
-class AvailablePhoneNumber extends Services_Twilio_InstanceResource { }
+class Services_Twilio_AvailablePhoneNumber extends Services_Twilio_InstanceResource { }
 
-class OutgoingCallerIds extends Services_Twilio_ListResource { }
-class IncomingPhoneNumbers extends Services_Twilio_ListResource { }
-class Conferences extends Services_Twilio_ListResource { }
-class Conference extends Services_Twilio_InstanceResource { }
-class Participants extends Services_Twilio_ListResource { }
-class Participant extends Services_Twilio_InstanceResource {
+class Services_Twilio_OutgoingCallerIds extends Services_Twilio_ListResource { }
+class Services_Twilio_IncomingPhoneNumbers extends Services_Twilio_ListResource { }
+class Services_Twilio_Conferences extends Services_Twilio_ListResource { }
+class Services_Twilio_Conference extends Services_Twilio_InstanceResource { }
+class Services_Twilio_Participants extends Services_Twilio_ListResource { }
+class Services_Twilio_Participant extends Services_Twilio_InstanceResource {
   public function mute()
   {
     $this->update('Muted', 'true');
   }
 }
-class Recordings extends Services_Twilio_ListResource { }
-class Transcriptions extends Services_Twilio_ListResource { }
-class Notifications extends Services_Twilio_ListResource { }
-class Notification extends Services_Twilio_InstanceResource { }
-class Sandbox extends Services_Twilio_InstanceResource { }
+class Services_Twilio_Recordings extends Services_Twilio_ListResource { }
+class Services_Twilio_Transcriptions extends Services_Twilio_ListResource { }
+class Services_Twilio_Notifications extends Services_Twilio_ListResource { }
+class Services_Twilio_Notification extends Services_Twilio_InstanceResource { }
+class Services_Twilio_Sandbox extends Services_Twilio_InstanceResource { }
 
 // vim: ai ts=2 sw=2 noet sta
