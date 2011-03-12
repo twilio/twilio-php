@@ -9,6 +9,7 @@ require_once dirname(__FILE__) . '/' . 'Twilio/Resource.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/ListResource.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/InstanceResource.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/Resources.php';
+require_once dirname(__FILE__) . '/' . 'Twilio/PartialApplicationHelper.php';
 
 class Services_Twilio extends Services_Twilio_Resource {
   protected $http;
