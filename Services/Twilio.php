@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/' . 'Twilio/TinyHttp.php';
+require_once dirname(__FILE__) . '/' . 'Twilio/Http.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/Page.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/DataProxy.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/CachingDataProxy.php';
@@ -22,8 +22,7 @@ class Services_Twilio extends Services_Twilio_Resource {
   ) {
     $this->version = $version;
     $this->http = (NULL === $_http)
-      ? new Services_Twilio_TinyHttp(
-        "https://$sid:$token@api.twilio.com", array('debug' => TRUE))
+      ? new Services_Twilio_Http("https://$sid:$token@api.twilio.com")
       : $_http;
     $this->accounts = new Accounts($this);
     $this->account = $this->accounts->get($sid);
@@ -47,7 +46,7 @@ class Services_Twilio extends Services_Twilio_Resource {
   private function _processResponse($response) {
     list($status, $headers, $body) = $response;
     if (200 <= $status && $status < 300) {
-      if ($headers['Content-Type'] == 'application/json') {
+      if ($headers['content-type'] == 'application/json') {
         $object = json_decode($body);
         return $object;
       } else throw new ErrorException('not json');
