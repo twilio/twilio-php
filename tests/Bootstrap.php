@@ -14,5 +14,7 @@ require_once 'Mockery/Loader.php';
 $loader = new \Mockery\Loader;
 $loader->register();
 
+require_once 'Twilio.php';
+
 unset($root, $library, $tests, $path);
 

@@ -3,6 +3,8 @@
 require_once dirname(__FILE__) . '/' . 'Twilio/TinyHttp.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/Page.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/DataProxy.php';
+require_once dirname(__FILE__) . '/' . 'Twilio/CachingDataProxy.php';
+require_once dirname(__FILE__) . '/' . 'Twilio/ArrayDataProxy.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/Resource.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/ListResource.php';
 require_once dirname(__FILE__) . '/' . 'Twilio/InstanceResource.php';

@@ -35,6 +35,10 @@ class SmsMessage extends Services_Twilio_InstanceResource {
 
 class AvailablePhoneNumbers extends Services_Twilio_ListResource {
 }
+
+class AvailablePhoneNumber extends Services_Twilio_InstanceResource {
+}
+
 class OutgoingCallerIds extends Services_Twilio_ListResource {
 }
 class IncomingPhoneNumbers extends Services_Twilio_ListResource {

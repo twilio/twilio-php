@@ -9,6 +9,12 @@ abstract class Services_Twilio_Resource
     $this->proxy = $proxy;
     $this->name = get_class($this);
   }
+  public function retrieveData($path, array $params = array()) {
+    return $this->proxy->retrieveData($path, $params);
+  }
+  public function createData($path, array $params = array()) {
+    return $this->proxy->createData($path, $params);
+  }
   public static function decamelize($word) {
     return preg_replace(
       '/(^|[a-z])([A-Z])/e',

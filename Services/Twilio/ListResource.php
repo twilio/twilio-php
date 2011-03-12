@@ -6,14 +6,14 @@ abstract class Services_Twilio_ListResource
   public function get($sid) {
     $schema = $this->getSchema();
     $type = $schema['instance']; 
-    return new $type($sid, $this);
+    return new $type(is_object($sid)
+      ? new Services_Twilio_CachingDataProxy(
+        isset($sid->sid) ? $sid->sid : NULL, $this, $sid
+      ) : new Services_Twilio_CachingDataProxy($sid, $this));
   }
 
   protected function _create(array $params) {
-    $obj = $this->proxy->createData($this->name, $params);
-    $inst = $this->get($obj->sid);
-    $inst->setObject($obj);
-    return $inst;
+    return $this->get($this->proxy->createData($this->name, $params));
   }
 
   public function retrieveData($sid, array $params = array()) {
