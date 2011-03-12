@@ -83,5 +83,7 @@ class Notifications extends Services_Twilio_ListResource {
 }
 class Notification extends Services_Twilio_InstanceResource {
 }
+class Sandbox extends Services_Twilio_InstanceResource {
+}
 
 // vim: ai ts=2 sw=2 noet sta
