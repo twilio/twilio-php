@@ -14,9 +14,9 @@ class Services_Twilio_Twiml {
    * Constructs a Twiml response.
    *
    * @param arg:
-   *   - SimpleXmlElement The element to wrap
-   *   - array An array of attributes to add to the element
-   *   - null Initialize an empty element named 'Response'
+   *	 - SimpleXmlElement The element to wrap
+   *	 - array An array of attributes to add to the element
+   *	 - null Initialize an empty element named 'Response'
    */
   public function __construct($arg = null) {
     switch (true) {
@@ -42,24 +42,24 @@ class Services_Twilio_Twiml {
    *
    * An basic example:
    *
-   *     php> print $this->say('hello');
-   *     <Say>hello</Say>
+   *		 php> print $this->say('hello');
+   *		 <Say>hello</Say>
    *
    * An example with attributes:
    *
-   *     php> print $this->say('hello', array('voice' => 'woman'));
-   *     <Say voice="woman">hello</Say>
+   *		 php> print $this->say('hello', array('voice' => 'woman'));
+   *		 <Say voice="woman">hello</Say>
    *
    * You could even just pass in an attributes array, omitting the noun:
    *
-   *     php> print $this->gather(array('timeout' => '20'));
-   *     <Gather timeout="20"/>
+   *		 php> print $this->gather(array('timeout' => '20'));
+   *		 <Gather timeout="20"/>
    *
    * @param verb string The Twiml verb.
    * @param args array:
-   *   - (noun string)
-   *   - (noun string, attributes array)
-   *   - (attributes array)
+   *	 - (noun string)
+   *	 - (noun string, attributes array)
+   *	 - (attributes array)
    */
   public function __call($verb, array $args) {
     list($noun, $attrs) = $args + array('', array());

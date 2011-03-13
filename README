@@ -1,1 +1,23 @@
 Twilio Client in PHP
+
+Indenting
+---------
+
+PEAR standards require an indent of 4-spaces
+(http://pear.php.net/manual/en/standards.indenting.php). To meet these
+requirements and avoid a whitespace-only commit, we can use Git attributes with
+clean and smudge filters.
+
+1. Create a .gitattributes file in the project root.
+
+    $ echo "*.php filter=tabspace" >> .gitattributes
+
+2. Set up smudge and clean filters. On check-out (i.e. smudge), the filter should
+convert a 2-space indent to 4-space indent.
+
+    $ git config filter.tabspace.clean 'unexpand -t2 | expand -i -t4'
+
+On check-in (i.e. clean), the filter should convert a 4-space indent back to
+2-space.
+
+    $ git config filter.tabspace.smudge 'unexpand -t4 | expand -i -t2'
