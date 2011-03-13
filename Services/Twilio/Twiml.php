@@ -1,24 +1,34 @@
 <?php
-/**
- * Twiml response generator from https://gist.github.com/855985.
- * Copyright 2011, Neuman Vong. BSD License.
- */
 
+/**
+ * Excepttion class for Services_Twilio_Twiml.
+ */
 class Services_Twilio_TwimlException extends Exception {}
 
-class Services_Twilio_Twiml {
+/**
+ * Twiml response generator.
+ *
+ * @category Services
+ * @package  Services_Twilio
+ * @author	 Neuman Vong <neuman at ashmoremusic dot com>
+ * @license  http://creativecommons.org/licenses/MIT/ MIT
+ * @link	 https://gist.github.com/855985
+ */
+class Services_Twilio_Twiml
+{
 
   protected $element;
 
   /**
    * Constructs a Twiml response.
    *
-   * @param arg:
-   *	 - SimpleXmlElement The element to wrap
-   *	 - array An array of attributes to add to the element
-   *	 - null Initialize an empty element named 'Response'
+   * @param SimpleXmlElement|array $arg:
+   *	 - the element to wrap
+   *	 - attributes to add to the element
+   *	 - if null, initialize an empty element named 'Response'
    */
-  public function __construct($arg = null) {
+  public function __construct($arg = null)
+  {
     switch (true) {
     case $arg instanceof SimpleXmlElement:
       $this->element = $arg;
@@ -40,28 +50,31 @@ class Services_Twilio_Twiml {
   /**
    * Converts method calls into Twiml verbs.
    *
-   * An basic example:
+   * A basic example:
    *
-   *		 php> print $this->say('hello');
-   *		 <Say>hello</Say>
+   *	   php> print $this->say('hello');
+   *	   <Say>hello</Say>
    *
    * An example with attributes:
    *
-   *		 php> print $this->say('hello', array('voice' => 'woman'));
-   *		 <Say voice="woman">hello</Say>
+   *	   php> print $this->say('hello', array('voice' => 'woman'));
+   *	   <Say voice="woman">hello</Say>
    *
    * You could even just pass in an attributes array, omitting the noun:
    *
-   *		 php> print $this->gather(array('timeout' => '20'));
-   *		 <Gather timeout="20"/>
+   *	   php> print $this->gather(array('timeout' => '20'));
+   *	   <Gather timeout="20"/>
    *
-   * @param verb string The Twiml verb.
-   * @param args array:
+   * @param string $verb The Twiml verb.
+   * @param array  $args:
    *	 - (noun string)
    *	 - (noun string, attributes array)
    *	 - (attributes array)
+   *
+   * @return SimpleXmlElement A SimpleXmlElement
    */
-  public function __call($verb, array $args) {
+  public function __call($verb, array $args)
+  {
     list($noun, $attrs) = $args + array('', array());
     if (is_array($noun)) {
       list($attrs, $noun) = array($noun, '');
@@ -77,8 +90,11 @@ class Services_Twilio_Twiml {
 
   /**
    * Returns the object as XML.
+   *
+   * @return string The response as an XML string
    */
-  public function __toString() {
+  public function __toString()
+  {
     return $this->element->asXml();
   }
 }

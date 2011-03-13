@@ -1,10 +1,4 @@
 <?php
-/**
- * Very thin wrapper around HTTP_Request2. Used to maintain compatibility with
- * tests written for previous HTTP request class.
- *
- * @author Neuman Vong <neuman@twilio.com>
- */
 
 require_once 'HTTP/Request2.php';
 
@@ -16,8 +10,15 @@ class Services_Twilio_HttpException extends Exception {}
 /**
  * Thin wrapper around HTTP_Request2 that's compatible with the TinyHttp class
  * the tests were written for.
- */
-class Services_Twilio_Http {
+ *
+ * @category Services
+ * @package  Services_Twilio
+ * @author	 Neuman Vong <neuman@twilio.com>
+ * @license  http://creativecommons.org/licenses/MIT/ MIT
+ * @link	 http://pear.php.net/package/Services_Twilio
+ */ 
+class Services_Twilio_Http
+{
 
   /**
    * A part of a URL containing user, password, host and port.
@@ -35,7 +36,8 @@ class Services_Twilio_Http {
    * @param string The netloc
    * @param HTTP_Request2 An instance of HTTP_Request2
    */
-  public function __construct($netloc, $_request = NULL) {
+  public function __construct($netloc, $_request = NULL)
+  {
     $this->netloc = $netloc;
     $this->request = $_request instanceof HTTP_Request2
       ? $_request
@@ -49,7 +51,8 @@ class Services_Twilio_Http {
    * @param array A 3-tuple comprising path, headers list, and body
    * @return array A 3-tuple comprising status, headers list, and body
    */
-  public function __call($method, $args) {
+  public function __call($method, $args)
+  {
     list($path, $headers, $body) = $args + array('/', array(), '');
     $resp = $this->request
       ->setMethod(strtoupper($method))
