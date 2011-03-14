@@ -5,9 +5,9 @@
  *
  * @category Services
  * @package  Services_Twilio
- * @author	 Neuman Vong <neuman@twilio.com>
+ * @author   Neuman Vong <neuman@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link	 http://pear.php.net/package/Services_Twilio
+ * @link     http://pear.php.net/package/Services_Twilio
  */
 class Services_Twilio_ArrayDataProxy
   implements Services_Twilio_DataProxy
@@ -27,7 +27,7 @@ class Services_Twilio_ArrayDataProxy
   /**
    * Implementation of retrieveData.
    *
-   * @param string $key	 The index
+   * @param string $key    The index
    * @param array  $params Optional parameters
    *
    * @return object Object representation
@@ -40,7 +40,7 @@ class Services_Twilio_ArrayDataProxy
   /**
    * Implementation of createData.
    *
-   * @param string $key	 The index
+   * @param string $key    The index
    * @param array  $params Optional parameters
    *
    * @return object Object representation

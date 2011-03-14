@@ -5,9 +5,9 @@
  *
  * @category Services
  * @package  Services_Twilio
- * @author	 Neuman Vong <neuman@twilio.com>
+ * @author   Neuman Vong <neuman@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link	 http://pear.php.net/package/Services_Twilio
+ * @link     http://pear.php.net/package/Services_Twilio
  */ 
 class Services_Twilio_CachingDataProxy
   implements Services_Twilio_DataProxy
@@ -36,9 +36,9 @@ class Services_Twilio_CachingDataProxy
   /**
    * Constructor.
    *
-   * @param array						$principal Usually the SID
-   * @param Services_Twilio_DataProxy $proxy	   The proxy
-   * @param object|null				$cache	   The cache
+   * @param array                     $principal Usually the SID
+   * @param Services_Twilio_DataProxy $proxy     The proxy
+   * @param object|null               $cache     The cache
    */
   public function __construct($principal, Services_Twilio_DataProxy $proxy,
     $cache = null
@@ -86,7 +86,7 @@ class Services_Twilio_CachingDataProxy
   /**
    * Implementation of retrieveData.
    *
-   * @param string $path	 The path
+   * @param string $path   The path
    * @param array  $params Optional parameters
    *
    * @return object Object representation
@@ -102,7 +102,7 @@ class Services_Twilio_CachingDataProxy
   /**
    * Implementation of createData.
    *
-   * @param string $path	 The path
+   * @param string $path   The path
    * @param array  $params Optional parameters
    *
    * @return object Object representation

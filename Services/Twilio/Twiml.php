@@ -10,9 +10,9 @@ class Services_Twilio_TwimlException extends Exception {}
  *
  * @category Services
  * @package  Services_Twilio
- * @author	 Neuman Vong <neuman at ashmoremusic dot com>
+ * @author   Neuman Vong <neuman at ashmoremusic dot com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link	 https://gist.github.com/855985
+ * @link     https://gist.github.com/855985
  */
 class Services_Twilio_Twiml
 {
@@ -23,9 +23,9 @@ class Services_Twilio_Twiml
    * Constructs a Twiml response.
    *
    * @param SimpleXmlElement|array $arg:
-   *	 - the element to wrap
-   *	 - attributes to add to the element
-   *	 - if null, initialize an empty element named 'Response'
+   *   - the element to wrap
+   *   - attributes to add to the element
+   *   - if null, initialize an empty element named 'Response'
    */
   public function __construct($arg = null)
   {
@@ -52,24 +52,24 @@ class Services_Twilio_Twiml
    *
    * A basic example:
    *
-   *	   php> print $this->say('hello');
-   *	   <Say>hello</Say>
+   *     php> print $this->say('hello');
+   *     <Say>hello</Say>
    *
    * An example with attributes:
    *
-   *	   php> print $this->say('hello', array('voice' => 'woman'));
-   *	   <Say voice="woman">hello</Say>
+   *     php> print $this->say('hello', array('voice' => 'woman'));
+   *     <Say voice="woman">hello</Say>
    *
    * You could even just pass in an attributes array, omitting the noun:
    *
-   *	   php> print $this->gather(array('timeout' => '20'));
-   *	   <Gather timeout="20"/>
+   *     php> print $this->gather(array('timeout' => '20'));
+   *     <Gather timeout="20"/>
    *
    * @param string $verb The Twiml verb.
    * @param array  $args:
-   *	 - (noun string)
-   *	 - (noun string, attributes array)
-   *	 - (attributes array)
+   *   - (noun string)
+   *   - (noun string, attributes array)
+   *   - (attributes array)
    *
    * @return SimpleXmlElement A SimpleXmlElement
    */

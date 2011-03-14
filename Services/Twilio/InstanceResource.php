@@ -5,16 +5,16 @@
  *
  * @category Services
  * @package  Services_Twilio
- * @author	 Neuman Vong <neuman@twilio.com>
+ * @author   Neuman Vong <neuman@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link	 http://pear.php.net/package/Services_Twilio
+ * @link     http://pear.php.net/package/Services_Twilio
  */ 
 abstract class Services_Twilio_InstanceResource
   extends Services_Twilio_Resource
 {
   /**
    * @param mixed $params An array of updates, or a property name
-   * @param mixed $value	A value with which to update the resource
+   * @param mixed $value  A value with which to update the resource
    *
    * @return null
    */
