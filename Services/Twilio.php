@@ -1,15 +1,15 @@
 <?php
 
-require_once dirname(__FILE__) . '/' . 'Twilio/Http.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/Page.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/DataProxy.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/CachingDataProxy.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/ArrayDataProxy.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/Resource.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/ListResource.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/InstanceResource.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/Resources.php';
-require_once dirname(__FILE__) . '/' . 'Twilio/PartialApplicationHelper.php';
+require_once 'Services/Twilio/Http.php';
+require_once 'Services/Twilio/Page.php';
+require_once 'Services/Twilio/DataProxy.php';
+require_once 'Services/Twilio/CachingDataProxy.php';
+require_once 'Services/Twilio/ArrayDataProxy.php';
+require_once 'Services/Twilio/Resource.php';
+require_once 'Services/Twilio/ListResource.php';
+require_once 'Services/Twilio/InstanceResource.php';
+require_once 'Services/Twilio/Resources.php';
+require_once 'Services/Twilio/PartialApplicationHelper.php';
 
 /**
  * Twilio API client interface.
