@@ -1,15 +1,15 @@
 <?php
 
-require_once 'Services/Twilio/Http.php';
-require_once 'Services/Twilio/Page.php';
-require_once 'Services/Twilio/DataProxy.php';
-require_once 'Services/Twilio/CachingDataProxy.php';
-require_once 'Services/Twilio/ArrayDataProxy.php';
-require_once 'Services/Twilio/Resource.php';
-require_once 'Services/Twilio/ListResource.php';
-require_once 'Services/Twilio/InstanceResource.php';
-require_once 'Services/Twilio/Resources.php';
-require_once 'Services/Twilio/PartialApplicationHelper.php';
+function Services_Twilio_autoload($className) {
+    if (substr($className, 0, 15) != 'Services_Twilio') {
+        return false;
+    }
+    $file = str_replace('_', '/', $className);
+    $file = str_replace('Services/', '', $file);
+    return include dirname(__FILE__) . "/$file.php";
+}
+
+spl_autoload_register('Services_Twilio_autoload');
 
 /**
  * Twilio API client interface.
@@ -43,7 +43,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->http = (null === $_http)
             ? new Services_Twilio_Http("https://$sid:$token@api.twilio.com")
             : $_http;
-        $this->accounts = new Services_Twilio_Accounts($this);
+        $this->accounts = new Services_Twilio_Rest_Accounts($this);
         $this->account = $this->accounts->get($sid);
     }
 
