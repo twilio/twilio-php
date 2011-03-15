@@ -34,10 +34,10 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '0.0.1';
+$api_version     = '0.0.2';
 $api_state       = 'alpha';
 
-$release_version = '0.0.1';
+$release_version = '0.0.2';
 $release_state   = 'alpha';
 $release_notes   = "No release notes.";
 
@@ -90,6 +90,9 @@ $package->addMaintainer(
 );
 
 $package->setPhpDep('5.2.1');
+
+$package->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net');
+$package->addPackageDepWithChannel('optional', 'Mockery', 'pear.survivethedeepend.com');
 
 $package->setPearInstallerDep('1.7.0');
 $package->generateContents();

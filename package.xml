@@ -14,11 +14,11 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>neuman+pear@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2011-03-14</date>
- <time>00:31:08</time>
+ <date>2011-03-15</date>
+ <time>11:06:14</time>
  <version>
-  <release>0.0.1</release>
-  <api>0.0.1</api>
+  <release>0.0.2</release>
+  <api>0.0.2</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -32,6 +32,31 @@ No release notes.
   <dir baseinstalldir="/" name="/">
    <dir name="Services">
     <dir name="Twilio">
+     <dir name="Rest">
+      <file name="Account.php" role="php" />
+      <file name="Accounts.php" role="php" />
+      <file name="AvailablePhoneNumber.php" role="php" />
+      <file name="AvailablePhoneNumbers.php" role="php" />
+      <file name="Call.php" role="php" />
+      <file name="Calls.php" role="php" />
+      <file name="Conference.php" role="php" />
+      <file name="Conferences.php" role="php" />
+      <file name="IncomingPhoneNumber.php" role="php" />
+      <file name="IncomingPhoneNumbers.php" role="php" />
+      <file name="Notification.php" role="php" />
+      <file name="Notifications.php" role="php" />
+      <file name="OutgoingCallerId.php" role="php" />
+      <file name="OutgoingCallerIds.php" role="php" />
+      <file name="Participant.php" role="php" />
+      <file name="Participants.php" role="php" />
+      <file name="Recording.php" role="php" />
+      <file name="Recordings.php" role="php" />
+      <file name="Sandbox.php" role="php" />
+      <file name="SmsMessage.php" role="php" />
+      <file name="SmsMessages.php" role="php" />
+      <file name="Transcription.php" role="php" />
+      <file name="Transcriptions.php" role="php" />
+     </dir> <!-- /Services/Twilio/Rest -->
      <file name="ArrayDataProxy.php" role="php" />
      <file name="CachingDataProxy.php" role="php" />
      <file name="DataProxy.php" role="php" />
@@ -41,7 +66,6 @@ No release notes.
      <file name="Page.php" role="php" />
      <file name="PartialApplicationHelper.php" role="php" />
      <file name="Resource.php" role="php" />
-     <file name="Resources.php" role="php" />
      <file name="Twiml.php" role="php" />
     </dir> <!-- /Services/Twilio -->
     <file name="Twilio.php" role="php" />
@@ -67,20 +91,30 @@ No release notes.
    <pearinstaller>
     <min>1.7.0</min>
    </pearinstaller>
+   <package>
+    <name>HTTP_Request2</name>
+    <channel>pear.php.net</channel>
+   </package>
   </required>
+  <optional>
+   <package>
+    <name>Mockery</name>
+    <channel>pear.survivethedeepend.com</channel>
+   </package>
+  </optional>
  </dependencies>
  <phprelease />
  <changelog>
   <release>
    <version>
-    <release>0.0.1</release>
-    <api>0.0.1</api>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
    </version>
    <stability>
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-03-14</date>
+   <date>2011-03-15</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
 No release notes.
