@@ -85,7 +85,7 @@ abstract class Services_Twilio_ListResource
      *
      * @return Services_Twilio_Page A page
      */
-    public function getPage($page = 0, $size = 10, array $filters = array())
+    public function getPage($page = 0, $size = 50, array $filters = array())
     {
         $schema = $this->getSchema();
         $page = $this->proxy->retrieveData($schema['basename'], array(
@@ -124,7 +124,7 @@ abstract class Services_Twilio_ListResource
         return new Services_Twilio_AutoPagingIterator(
             array($this, 'getPageGenerator'),
             create_function('$page, $size', 'return array($page + 1, $size);'),
-            array(0, 10)
+            array(0, 50)
         );
     }
 

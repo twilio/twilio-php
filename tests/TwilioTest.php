@@ -144,7 +144,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 )))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $sms = current($client->account->sms_messages->getPage()->getItems());
+        $sms = current($client->account->sms_messages->getPage(0, 10)->getItems());
         $this->assertEquals('sent', $sms->status);
     }
 
@@ -247,7 +247,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $conf = $client->account->conferences->get('CF123');
-        $page = $conf->participants->getPage();
+        $page = $conf->participants->getPage(0, 10);
         foreach ($page->getItems() as $participant) {
             $participant->mute();
         }
@@ -284,14 +284,14 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('content-type' => 'application/json'),
                 json_encode(array(
                     'calls' => array(array('sid' => 'CA123'))
                 ))
             ));
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=1&PageSize=10')
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=1&PageSize=50')
             ->andReturn(array(400, array('content-type' => 'application/json'),
                 '{"status":400,"message":"foo"}'
             ));
