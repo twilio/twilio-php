@@ -9,7 +9,9 @@
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */ 
-class Services_Twilio_Page {
+class Services_Twilio_Page
+    implements IteratorAggregate
+{
 
     /**
      * The page object.
@@ -57,6 +59,16 @@ class Services_Twilio_Page {
     public function __get($prop)
     {
         return $this->page->$prop;
+    }
+
+    /**
+     * Implementation of IteratorAggregate::getIterator().
+     *
+     * @return Traversable
+     */
+    public function getIterator()
+    {
+        return $this->getItems();
     }
 }
 

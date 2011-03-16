@@ -11,7 +11,10 @@
  */ 
 abstract class Services_Twilio_ListResource
     extends Services_Twilio_Resource
+    implements IteratorAggregate
 {
+    private $_page;
+
     /**
      * Gets a resource from this list.
      *
@@ -114,5 +117,18 @@ abstract class Services_Twilio_ListResource
             'instance' => substr($name, 0, -1),
             'list' => self::decamelize($basename),
         );
+    }
+
+    public function getIterator()
+    {
+        return new Services_Twilio_AutoPagingIterator(
+            array($this, 'getPageGenerator'),
+            create_function('$page, $size', 'return array($page + 1, $size);'),
+            array(0, 10)
+        );
+    }
+
+    public function getPageGenerator($page, $size) {
+        return $this->getPage($page, $size)->getItems();
     }
 }

@@ -272,4 +272,31 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     //function testAccessingNonExistentPropertiesErrorsOut
+
+    function testArrayAccessForListResources() {
+        $http = m::mock();
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123.json')
+            ->andReturn(array(200, array('content-type' => 'application/json'),
+                json_encode(array(
+                    'subresource_uris' =>
+                    array('calls' => '/2010-04-01/Accounts/AC123/Calls.json')
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->andReturn(array(200, array('content-type' => 'application/json'),
+                json_encode(array(
+                    'calls' => array(array('sid' => 'CA123'))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=1&PageSize=10')
+            ->andReturn(array(400, array('content-type' => 'application/json'), ''));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        foreach ($client->account->calls as $call) {
+            $this->assertEquals('CA123', $call->sid);
+        }
+        $this->assertInstanceOf('Traversable', $client->account->calls);
+    }
 }
