@@ -36,7 +36,9 @@ class Services_Twilio_AutoPagingIterator
             $this->loadIfNecessary();
             return next($this->items);
         }
-        catch (ErrorException $e) { }
+        catch (Services_Twilio_RestException $e) {
+            // Swallow the out-of-range error
+        }
     }
 
     public function rewind()
@@ -56,7 +58,9 @@ class Services_Twilio_AutoPagingIterator
             $this->loadIfNecessary();
             return key($this->items) !== null;
         }
-        catch (ErrorException $e) { }
+        catch (Services_Twilio_RestException $e) {
+            // Swallow the out-of-range error
+        }
         return false;
     }
 

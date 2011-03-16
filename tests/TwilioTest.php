@@ -292,7 +292,9 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             ));
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=1&PageSize=10')
-            ->andReturn(array(400, array('content-type' => 'application/json'), ''));
+            ->andReturn(array(400, array('content-type' => 'application/json'),
+                '{"status":400,"message":"foo"}'
+            ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->calls as $call) {
             $this->assertEquals('CA123', $call->sid);

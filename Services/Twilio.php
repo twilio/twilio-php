@@ -98,13 +98,40 @@ class Services_Twilio extends Services_Twilio_Resource
     private function _processResponse($response)
     {
         list($status, $headers, $body) = $response;
-        if (200 <= $status && $status < 300) {
-            if ($headers['content-type'] == 'application/json') {
-                $object = json_decode($body);
-                return $object;
-            }
-            throw new ErrorException('not json');
+        if (empty($headers['content-type'])) {
+            throw new DomainException('Response header is missing Content-Type');
         }
-        throw new ErrorException("$status: $body");
+        switch ($headers['content-type']) {
+        case 'application/json':
+            return $this->_processJsonResponse($status, $headers, $body);
+            break;
+        case 'text/xml':
+            return $this->_processXmlResponse($status, $headers, $body);
+            break;
+        }
+        throw new DomainException('Response was neither JSON nor XML');
+    }
+
+    private function _processJsonResponse($status, $headers, $body) {
+        $decoded = json_decode($body);
+        if (200 <= $status && $status < 300) {
+            return $decoded;
+        }
+        throw new Services_Twilio_RestException(
+            (int)$decoded->status,
+            $decoded->message,
+            isset($decoded->code) ? $decoded->code : null,
+            isset($decoded->more_info) ? $decoded->more_info : null
+        );
+    }
+
+    private function _processXmlResponse($status, $headers, $body) {
+        $decoded = simplexml_load_string($body);
+        throw new Services_Twilio_RestException(
+            (int)$decoded->Status,
+            (string)$decoded->Message,
+            (string)$decoded->Code,
+            (string)$decoded->MoreInfo
+        );
     }
 }
