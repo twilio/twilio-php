@@ -119,12 +119,12 @@ abstract class Services_Twilio_ListResource
         );
     }
 
-    public function getIterator()
+    public function getIterator($page = 0, $size = 50, array $filters = array())
     {
         return new Services_Twilio_AutoPagingIterator(
             array($this, 'getPageGenerator'),
             create_function('$page, $size', 'return array($page + 1, $size);'),
-            array(0, 50)
+            array($page, $size, $filters)
         );
     }
 
