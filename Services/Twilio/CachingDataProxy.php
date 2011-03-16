@@ -143,15 +143,5 @@ class Services_Twilio_CachingDataProxy
         $this->cache = $object !== null
             ? $object
             : $this->proxy->retrieveData($this->principal['sid']);
-
-        if (empty($this->cache->subresource_uris)) {
-            return;
-        }
-
-        foreach ($this->cache->subresource_uris as $res => $uri) {
-            $type = 'Services_Twilio_Rest_'
-                . Services_Twilio_Resource::camelize($res);
-            $this->cache->$res = new $type($this);
-        }
     }
 }

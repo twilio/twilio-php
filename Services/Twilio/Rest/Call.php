@@ -7,4 +7,12 @@ class Services_Twilio_Rest_Call
     {
         $this->update('Status', 'completed');
     }
+
+    protected function init()
+    {
+        $this->setupSubresources(
+            'notifications',
+            'recordings'
+        );
+    }
 }

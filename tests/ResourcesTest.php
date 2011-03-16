@@ -6,15 +6,6 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
     function testPartialApplication() {
         $http = m::mock();
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123.json')
-            ->andReturn(array(200, array('content-type' => 'application/json'),
-                json_encode(array(
-                    'subresource_uris' =>
-                    array('available_phone_numbers'
-                    => '/2010-04-01/Accounts/AC123/AvailablePhoneNumbers.json')
-                ))
-            ));
-        $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/AvailablePhoneNumbers/US/Local.json?AreaCode=510')
             ->andReturn(array(200, array('content-type' => 'application/json'),
                 json_encode(array('available_phone_numbers' => array(

@@ -47,6 +47,9 @@ abstract class Services_Twilio_InstanceResource
      */
     public function __get($key)
     {
+        if ($subresource = $this->getSubresources($key)) {
+            return $subresource;
+        }
         return $this->proxy->$key;
     }
 }
