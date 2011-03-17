@@ -4,7 +4,5 @@
     everything
   - maybe too much code duplication in the test, but is it better that way to
     keep the tests loosely coupled?
-* Even lazier loading of lists: avoid loading an instance just to figure out if
-  a subresource exists.
 * PEAR coding standards compliance
 * Look into using URLs instead of piecing together a path from sid/basename/etc
