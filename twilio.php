@@ -1,6 +1,6 @@
 <?php
     /*
-    Copyright (c) 2009-2010 Twilio, Inc.
+    Copyright (c) 2009-2011 Twilio, Inc.
 
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation
@@ -232,6 +232,7 @@
          * @param array $attr A key/value array of attributes to be added
          */
         private function addAttributes($attr) {
+        	if(is_array($attr))
             foreach ($attr as $key => $value) {
                 if(in_array($key, $this->valid))
                     $this->attr[$key] = $value;
