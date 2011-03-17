@@ -13,9 +13,12 @@ class Services_Twilio_Rest_Account
             'notifications',
             'outgoing_callerids',
             'recordings',
-            'sandbox',
             'sms_messages',
             'transcriptions'
+        );
+
+        $this->sandbox = new Services_Twilio_Rest_Sandbox(
+            new Services_Twilio_CachingDataProxy('Sandbox', $this)
         );
     }
 }

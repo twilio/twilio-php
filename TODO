@@ -7,3 +7,4 @@
 * Even lazier loading of lists: avoid loading an instance just to figure out if
   a subresource exists.
 * PEAR coding standards compliance
+* Look into using URLs instead of piecing together a path from sid/basename/etc
