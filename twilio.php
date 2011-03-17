@@ -53,6 +53,12 @@
         public $IsError;
         public $ErrorMessage;
         
+        /**
+         * 
+         * @param string $url
+         * @param string $text
+         * @param integer $status
+         */
         public function __construct($url, $text, $status) {
             preg_match('/([^?]+)\??(.*)/', $url, $matches);
             $this->Url = $matches[1];
@@ -81,7 +87,7 @@
     class TwilioException extends Exception {}
     
     /*
-     * TwilioRestBaseClient: the core Rest client, talks to the Twilio REST             
+     * TwilioRestClient: the core Rest client, talks to the Twilio REST             
      * API. Returns a TwilioRestResponse object for all responses if Twilio's 
      * API was reachable Throws a TwilioException if Twilio's REST API was
      * unreachable
@@ -93,12 +99,12 @@
         protected $AccountSid;
         protected $AuthToken;
         
-        /*
-         * __construct 
-         *   $username : Your AccountSid
-         *   $password : Your account's AuthToken
-         *   $endpoint : The Twilio REST Service URL, currently defaults to
-         * the proper URL
+        /**
+         * Constructor
+         * 
+         * @param string $accountSid Your account's AccountSid
+         * @param string $authToken Your account's AuthToken
+         * @param string $endpoint The Twilio REST Service URL, currently defaults to the proper URL
          */
         public function __construct($accountSid, $authToken,
             $endpoint = "https://api.twilio.com") {
@@ -108,14 +114,15 @@
             $this->Endpoint = $endpoint;
         }
         
-        /*
-         * sendRequst
-         *   Sends a REST Request to the Twilio REST API
-         *   $path : the URL (relative to the endpoint URL, after the /v1)
-         *   $method : the HTTP method to use, defaults to GET
-         *   $vars : for POST or PUT, a key/value associative array of data to
-         * send, for GET will be appended to the URL as query params
-         */
+       	/**
+       	 * Sends a REST Request to the Twilio REST API
+       	 * 
+       	 * @param string $path the URL (relative to the endpoint URL, after the /v1)
+       	 * @param string $method the HTTP method to use, defaults to GET
+       	 * @param array $vars for POST or PUT, a key/value associative array of data to 
+       	 * 	send, for GET will be appended to the URL as query params
+       	 * @return TwilioRestResponse
+       	 */
         public function request($path, $method = "GET", $vars = array()) {
             $fp = null;
             $tmpfile = "";
@@ -201,11 +208,12 @@
         private $attr;
         private $children;
             
-        /*
-         * __construct 
-         *   $body : Verb contents 
-         *   $body : Verb attributes
-         */
+       	/**
+       	 * Constructor
+       	 * 
+       	 * @param string $body Verb contents
+       	 * @param array $attr Verb attributes
+       	 */
         function __construct($body=NULL, $attr = array()) {
             if (is_array($body)) {
                 $attr = $body;
@@ -218,12 +226,10 @@
             self::addAttributes($attr);
         }
         
-        /*
-         * addAttributes
-         *     $attr  : A key/value array of attributes to be added
-         *     $valid : A key/value array containging the accepted attributes
-         *     for this verb
-         *     Throws an exception if an invlaid attribute is found
+        /**
+         * Throws an exception if an invalid attribute is found
+         * 
+         * @param array $attr A key/value array of attributes to be added
          */
         private function addAttributes($attr) {
             foreach ($attr as $key => $value) {
@@ -235,9 +241,10 @@
             }
         }
 
-        /*
-         * append
-         *     Nests other verbs inside self.
+        /**
+         * Nests other verbs inside self.
+         * 
+         * @param string $verb
          */
         function append($verb) {
             if(is_null($this->nesting))
@@ -252,11 +259,10 @@
             }
         }
         
-        /*
-         * set
-         *     $attr  : An attribute to be added
-         *    $valid : The attrbute value for this verb
-         *     No error checking here
+        /**
+         * 
+         * @param string $key
+         * @param string $value
          */
         function set($key, $value){
             $this->attr[$key] = $value;
@@ -307,12 +313,12 @@
             return self::append(new Sms($body, $attr));    
         }
         
-        /*
-         * write
-         * Output the XML for this verb and all it's children
-         *    $parent: This verb's parent verb
-         *    $writeself : If FALSE, Verb will not output itself,
-         *    only its children
+        /**
+         * Output the XML for this verb and all its children
+         * 
+         * @param Verb|null $parent This verb's parent verb
+         * @param bool $writeself If FALSE, Verb will not output itself,
+         * 	only its children
          */
         protected function write($parent, $writeself=TRUE){
             if($writeself) {
@@ -341,6 +347,10 @@
             parent::__construct(NULL);
         }
         
+        /**
+         * 
+         * @param bool $sendHeader
+         */
         function Respond($sendHeader = true) {    
             // try to force the xml data type
             // this is generally unneeded by Twilio, but nice to have
@@ -356,6 +366,10 @@
             print $simplexml->asXML();
         }
         
+        /**
+         * 
+         * @param bool $encode
+         */
         function asURL($encode = TRUE){
             $simplexml = new SimpleXMLElement($this->xml);
             $this->write($simplexml, FALSE);
