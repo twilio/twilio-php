@@ -1,5 +1,12 @@
 Twilio API helper library
 
+Installing
+----------
+
+Via PEAR:
+
+    $ pear install http://github.com/luciferous/services_twilio/tarball/v0.0.2
+
 Indenting
 ---------
 
