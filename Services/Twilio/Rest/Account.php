@@ -6,7 +6,9 @@ class Services_Twilio_Rest_Account
     protected function init()
     {
         $this->setupSubresources(
+            'applications',
             'available_phone_numbers',
+            'outgoing_caller_ids',
             'calls',
             'conferences',
             'incoming_phone_numbers',

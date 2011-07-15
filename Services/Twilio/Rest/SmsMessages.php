@@ -12,4 +12,9 @@ class Services_Twilio_Rest_SmsMessages
             'list' => 'sms_messages',
         );
     }
+
+    function create(array $params = array())
+    {
+        return parent::_create($params);
+    }
 }
