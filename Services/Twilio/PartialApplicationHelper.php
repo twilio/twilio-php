@@ -10,16 +10,25 @@
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */ 
-class Services_Twilio_PartialApplicationHelper {
+class Services_Twilio_PartialApplicationHelper
+{
     private $callbacks;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->callbacks = array();
     }
-    public function set($method, $callback, array $args) {
-        if (!is_callable($callback)) return FALSE;
+
+    public function set($method, $callback, array $args)
+    {
+        if (!is_callable($callback)) {
+            return FALSE;
+        }
         $this->callbacks[$method] = array($callback, $args);
     }
-    public function __call($method, $args) {
+
+    public function __call($method, $args)
+    {
         if (!isset($this->callbacks[$method])) {
             throw new Exception("Method not found: $method");
         }
