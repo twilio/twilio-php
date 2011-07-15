@@ -13,8 +13,12 @@ class Services_Twilio_Rest_SmsMessages
         );
     }
 
-    function create(array $params = array())
+    function create($from, $to, $body, array $params = array())
     {
-        return parent::_create($params);
+        return parent::_create(array(
+            'From' => $from,
+            'To' => $to,
+            'Body' => $body
+        ) + $params);
     }
 }
