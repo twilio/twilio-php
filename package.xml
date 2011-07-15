@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Services_Twilio</name>
+ <channel>pear.php.net</channel>
+ <summary>PHP helper library for Twilio</summary>
+ <description>A SDK (or helper library, as we&apos;re calling them) for PHP developers to write 
+applications against Twilio&apos;s REST API and generate TwiML responses.</description>
+ <lead>
+  <name>Neuman Vong</name>
+  <user>luciferous</user>
+  <email>neuman+pear@twilio.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-03-15</date>
+ <time>11:06:14</time>
+ <version>
+  <release>0.0.2</release>
+  <api>0.0.2</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
+ <notes>
+No release notes.
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <dir name="Services">
+    <dir name="Twilio">
+     <dir name="Rest">
+      <file name="Account.php" role="php" />
+      <file name="Accounts.php" role="php" />
+      <file name="AvailablePhoneNumber.php" role="php" />
+      <file name="AvailablePhoneNumbers.php" role="php" />
+      <file name="Call.php" role="php" />
+      <file name="Calls.php" role="php" />
+      <file name="Conference.php" role="php" />
+      <file name="Conferences.php" role="php" />
+      <file name="IncomingPhoneNumber.php" role="php" />
+      <file name="IncomingPhoneNumbers.php" role="php" />
+      <file name="Notification.php" role="php" />
+      <file name="Notifications.php" role="php" />
+      <file name="OutgoingCallerId.php" role="php" />
+      <file name="OutgoingCallerIds.php" role="php" />
+      <file name="Participant.php" role="php" />
+      <file name="Participants.php" role="php" />
+      <file name="Recording.php" role="php" />
+      <file name="Recordings.php" role="php" />
+      <file name="Sandbox.php" role="php" />
+      <file name="SmsMessage.php" role="php" />
+      <file name="SmsMessages.php" role="php" />
+      <file name="Transcription.php" role="php" />
+      <file name="Transcriptions.php" role="php" />
+     </dir> <!-- /Services/Twilio/Rest -->
+     <file name="ArrayDataProxy.php" role="php" />
+     <file name="CachingDataProxy.php" role="php" />
+     <file name="DataProxy.php" role="php" />
+     <file name="Http.php" role="php" />
+     <file name="InstanceResource.php" role="php" />
+     <file name="ListResource.php" role="php" />
+     <file name="Page.php" role="php" />
+     <file name="PartialApplicationHelper.php" role="php" />
+     <file name="Resource.php" role="php" />
+     <file name="Twiml.php" role="php" />
+    </dir> <!-- /Services/Twilio -->
+    <file name="Twilio.php" role="php" />
+   </dir> <!-- /Services -->
+   <dir name="tests">
+    <file name="Bootstrap.php" role="test" />
+    <file name="phpunit.xml" role="test" />
+    <file name="ResourcesTest.php" role="test" />
+    <file name="TwilioTest.php" role="test" />
+    <file name="TwimlTest.php" role="test" />
+   </dir> <!-- /tests -->
+   <file name="LICENSE" role="data" />
+   <file name="Makefile" role="data" />
+   <file name="README" role="data" />
+   <file name="TODO" role="data" />
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.1</min>
+   </php>
+   <pearinstaller>
+    <min>1.7.0</min>
+   </pearinstaller>
+   <package>
+    <name>HTTP_Request2</name>
+    <channel>pear.php.net</channel>
+   </package>
+  </required>
+  <optional>
+   <package>
+    <name>Mockery</name>
+    <channel>pear.survivethedeepend.com</channel>
+   </package>
+  </optional>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-03-15</date>
+   <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
+   <notes>
+No release notes.
+   </notes>
+  </release>
+ </changelog>
+</package>
