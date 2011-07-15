@@ -72,3 +72,27 @@ class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase
         m::close();
     }
 }
+
+class ApplicationsTest extends PHPUnit_Framework_TestCase
+{
+    function testPost()
+    {
+        $http = m::mock();
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/Applications.json',
+                m::any(), 'FriendlyName=foo&VoiceUrl=bar')
+            ->andReturn(array(200, array('content-type' => 'application/json'),
+                json_encode(array('sid' => 'AP123'))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $app = $client->account->applications->create('foo', array(
+            'VoiceUrl' => 'bar',
+        ));
+        $this->assertEquals('AP123', $app->sid);
+    }
+
+    function tearDown()
+    {
+        m::close();
+    }
+}
