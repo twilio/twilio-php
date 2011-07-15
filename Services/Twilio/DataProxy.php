@@ -30,5 +30,15 @@ interface Services_Twilio_DataProxy
      * @return object The object
      */
     function createData($key, array $params = array());
+
+    /**
+     * Delete the object specified by key.
+     *
+     * @param string $key    The index
+     * @param array  $params Optional parameters
+     *
+     * @return null
+     */
+    function deleteData($key, array $params = array());
 }
 

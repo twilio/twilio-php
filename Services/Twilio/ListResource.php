@@ -32,6 +32,19 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
+     * Deletes a resource from this list.
+     *
+     * @param string $sid The resource SID
+     * @return null
+     */
+    public function delete($sid, array $params = array())
+    {
+        $schema = $this->getSchema();
+        $basename = $schema['basename'];
+        $this->proxy->deleteData("$basename/$sid", $params);
+    }
+
+    /**
      * Create a resource on the list and then return its representation as an 
      * InstanceResource.
      *

@@ -66,6 +66,24 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
+     * DELETE the resource at the specified path.
+     *
+     * @param string $path   Path to the resource
+     * @param array  $params Query string parameters
+     *
+     * @return object The object representation of the resource
+     */
+    public function deleteData($path, array $params = array())
+    {
+        $path = "/$this->version/$path.json";
+        return empty($params)
+            ? $this->_processResponse($this->http->delete($path))
+            : $this->_processResponse(
+                $this->http->delete("$path?" . http_build_query($params, '', '&'))
+            );
+    }
+
+    /**
      * POST to the resource at the specified path.
      *
      * @param string $path   Path to the resource
@@ -98,6 +116,9 @@ class Services_Twilio extends Services_Twilio_Resource
     private function _processResponse($response)
     {
         list($status, $headers, $body) = $response;
+        if ($status == 204) {
+            return TRUE;
+        }
         if (empty($headers['content-type'])) {
             throw new DomainException('Response header is missing Content-Type');
         }

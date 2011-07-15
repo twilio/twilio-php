@@ -34,6 +34,11 @@ abstract class Services_Twilio_Resource
         return $this->proxy->retrieveData($path, $params);
     }
 
+    public function deleteData($path, array $params = array())
+    {
+        return $this->proxy->deleteData($path, $params);
+    }
+
     public function createData($path, array $params = array())
     {
         return $this->proxy->createData($path, $params);

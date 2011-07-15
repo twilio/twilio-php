@@ -132,6 +132,22 @@ class Services_Twilio_CachingDataProxy
     }
 
     /**
+     * Implementation of deleteData.
+     *
+     * @param string $path   The path
+     * @param array  $params Optional parameters
+     *
+     * @return null
+     */
+    public function deleteData($path, array $params = array())
+    {
+        $this->proxy->delete(
+            $this->principal['sid'] . "/$path",
+            $params
+        );
+    }
+
+    /**
      * Retrieves object from proxy into cache, then initializes subresources.
      *
      * @param object|null $object The object
