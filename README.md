@@ -4,9 +4,8 @@ Twilio API helper library
 
 Via PEAR:
 
-    pear install channel://pear.php.net/Net_URL2-0.3.1
-    pear install channel://pear.php.net/HTTP_Request2-2.0.0RC1
-    pear install channel://twilio.github.com/pear/Services_Twilio-0.0.3
+    pear channel-discover twilio.github.com/pear
+    pear install twilio/Services_Twilio
 
 ## Indenting
 
