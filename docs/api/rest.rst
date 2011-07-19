@@ -93,6 +93,10 @@ Accounts
 Call
 >>>>>>
 
+.. php:class:: Services_Twilio_Rest_Call
+
+  For more information, see the `Account Instance Resource <http://www.twilio.com/docs/api/rest/account#instance>`_ documentation.
+
    .. php:attr:: Sid
 
       A 34 character string that uniquely identifies this resource.
@@ -105,35 +109,35 @@ Call
 
       The date that this resource was created, given as GMT in RFC 2822 format.
 
-   .. php:attr:: date_updated
+   .. php:attr:: DateUpdated
 
       The date that this resource was last updated, given as GMT in RFC 2822 format.
 
-   .. php:attr:: account_sid
+   .. php:attr:: AccountSid
 
       The unique id of the Account responsible for creating this call.
 
-   .. php:attr:: to
+   .. php:attr:: To
 
       The phone number that received this call. e.g., +16175551212 (E.164 format)
 
-   .. php:attr:: from_
+   .. php:attr:: From
 
       The phone number that made this call. e.g., +16175551212 (E.164 format)
 
-   .. php:attr:: phone_number_sid
+   .. php:attr:: PhoneNumberSid
 
       If the call was inbound, this is the Sid of the IncomingPhoneNumber that received the call. If the call was outbound, it is the Sid of the OutgoingCallerId from which the call was placed.
 
-   .. php:attr:: status
+   .. php:attr:: Status
 
       A string representing the status of the call. May be :data:`QUEUED`, :data:`RINGING`, :data:`IN-PROGRESS`, :data:`COMPLETED`, :data:`FAILED`, :data:`BUSY` or :data:`NO_ANSWER`.
 
-   .. php:attr:: start_time
+   .. php:attr:: StatTime
 
       The start time of the call, given as GMT in RFC 2822 format. Empty if the call has not yet been dialed.
 
-   .. php:attr:: end_time
+   .. php:attr:: EndTime
 
       The end time of the call, given as GMT in RFC 2822 format. Empty if the call did not complete successfully.
 
