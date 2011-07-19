@@ -90,15 +90,15 @@ No release notes.
    <pearinstaller>
     <min>1.7.0</min>
    </pearinstaller>
-   <package>
-    <name>HTTP_Request2</name>
-    <channel>pear.php.net</channel>
-   </package>
   </required>
   <optional>
    <package>
     <name>Mockery</name>
     <channel>pear.survivethedeepend.com</channel>
+   </package>
+   <package>
+    <name>PHPUnit</name>
+    <channel>pear.phpunit.de</channel>
    </package>
   </optional>
  </dependencies>
