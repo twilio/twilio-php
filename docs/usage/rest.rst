@@ -3,7 +3,7 @@
 REST API Usage
 >>>>>>>>>>>>>>>
 
-Accounts 
+Accounts
 ==================
 
 Updating Account Information
@@ -26,8 +26,6 @@ Creating a Sub Account
     $subaccount = $client->accounts->create(array(
       'name' => 'My Awesome SubAccount'
     ));
-
-Can I make calls with this sub account? I have no idea
 
 Phone Calls
 ==============
@@ -102,7 +100,7 @@ Ending all live calls is also possible:
       $call->hangup();
     }
 
-Note that :meth:`hangup` will also cancel calls currently queued. 
+Note that :meth:`hangup` will also cancel calls currently queued.
 
 
 Caller Ids
@@ -157,7 +155,7 @@ Mute all participants
       $p->mute();
     }
 
-Notifications 
+Notifications
 =================
 
 Filter Notifications by Log Level
