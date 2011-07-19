@@ -41,7 +41,7 @@ class Services_Twilio extends Services_Twilio_Resource
     ) {
         $this->version = $version;
         $this->http = (null === $_http)
-            ? new Services_Twilio_Http("https://$sid:$token@api.twilio.com")
+            ? new Services_Twilio_TinyHttp("https://$sid:$token@api.twilio.com")
             : $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this);
         $this->account = $this->accounts->get($sid);
