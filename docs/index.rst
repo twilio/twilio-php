@@ -3,15 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-===============
+=================
 Services_Twilio
-===============
+=================
 
 Status
 =======
 
 This documentation is for version 3.0 of `twilio-php <https://www.github.com/twilio/twilio-php>`_.
-
 
 Installation
 ================
@@ -71,7 +70,7 @@ If you’ve got questions that aren’t answered by this documentation, ask the 
 Running the Tests
 >>>>>>>>>>>>>>>>>>>>>>>>>
 
-The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and `PHPUnit <https://github.com/sebastianbergmann/phpunit>`_. First, install all the necessary pear channels (which is ridiculous)
+The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and `PHPUnit <https://github.com/sebastianbergmann/phpunit>`_. First, 'discover' all the necessary pear channels (which is ridiculous)
 
 .. code-block:: bash
 
