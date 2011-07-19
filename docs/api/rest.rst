@@ -18,7 +18,7 @@ Accounts
      :param array $params: A 34 character string that uniquely identifies this account.
      :returns: A :php:class:`Services_Twilio_Rest_Account` instance
 
-  .. php:method:: create($params)
+  .. php:method:: create($params = array())
 
      Create a new Subaccount.
 
@@ -65,8 +65,48 @@ Accounts
 
       The authorization token for this account. This token should be kept a secret, so no sharing.
 
-Call
+Calls
 =======
+
+.. php:class:: Services_Twilio_Rest_Calls
+
+   For more information, see the `Call Instance Resource <http://www.twilio.com/docs/api/rest/call#list>`_ documentation.
+
+   .. php:method:: create($from, $to, $url, array $parms = array())
+
+      Make an outgoing call
+
+      :param string $from: The phone number to use as the caller id.
+      :param string $to: The number to call formatted with a '+' and country code
+      :param string $url: The fully qualified URL that should be consulted when
+                          the call connects. This value can also be an ApplicationSid.
+      :param array $params: An array of optional parameters for this call
+
+      The **$params** array can contain the following keys:
+
+      *method*
+        The HTTP method Twilio should use when making its request to the above Url parameter's value. Defaults to POST. If an ApplicationSid parameter is present, this parameter is ignored.
+
+      *fallback_url*
+        A URL that Twilio will request if an error occurs requesting or executing the TwiML at Url. If an ApplicationSid parameter is present, this parameter is ignored.
+
+      *fallback_method*
+        The HTTP method that Twilio should use to request the FallbackUrl. Must be either GET or POST. Defaults to POST. If an ApplicationSid parameter is present, this parameter is ignored.
+
+      *status_callback*
+        A URL that Twilio will request when the call ends to notify your app. If an ApplicationSid parameter is present, this parameter is ignored.
+
+      *status_callback_method*
+        The HTTP method Twilio should use when requesting the above URL. Defaults to POST. If an ApplicationSid parameter is present, this parameter is ignored.
+
+      *send_digits*
+        A string of keys to dial after connecting to the number. Valid digits in the string include: any digit (0-9), '#' and '*'. For example, if you connected to a company phone number, and wanted to dial extension 1234 and then the pound key, use SendDigits=1234#. Remember to URL-encode this string, since the '#' character has special meaning in a URL.
+
+      *if_machine*
+        Tell Twilio to try and determine if a machine (like voicemail) or a human has answered the call. Possible values are Continue and Hangup. See the answering machines section below for more info.
+
+      *timeout*
+        The integer number of seconds that Twilio should allow the phone to ring before assuming there is no answer. Default is 60 seconds, the maximum is 999 seconds. Note, you could set this to a low value, such as 15, to hangup before reaching an answering machine or voicemail.
 
 .. php:class:: Services_Twilio_Rest_Call
 
@@ -104,119 +144,123 @@ Call
 
       If the call was inbound, this is the Sid of the IncomingPhoneNumber that received the call. If the call was outbound, it is the Sid of the OutgoingCallerId from which the call was placed.
 
-   .. php:attr:: Status
+   .. php:attr:: status
 
       A string representing the status of the call. May be :data:`QUEUED`, :data:`RINGING`, :data:`IN-PROGRESS`, :data:`COMPLETED`, :data:`FAILED`, :data:`BUSY` or :data:`NO_ANSWER`.
 
-   .. php:attr:: StatTime
+   .. php:attr:: stat_time
 
       The start time of the call, given as GMT in RFC 2822 format. Empty if the call has not yet been dialed.
 
-   .. php:attr:: EndTime
+   .. php:attr:: end_time
 
       The end time of the call, given as GMT in RFC 2822 format. Empty if the call did not complete successfully.
 
-   .. php:attr:: Duration
+   .. php:attr:: duration
 
       The length of the call in seconds. This value is empty for busy, failed, unanswered or ongoing calls.
 
-   .. php:attr:: Price
+   .. php:attr:: price
 
       The charge for this call in USD. Populated after the call is completed. May not be immediately available.
 
-   .. php:attr:: Direction
+   .. php:attr:: direction
 
       A string describing the direction of the call. inbound for inbound calls, outbound-api for calls initiated via the REST API or outbound-dial for calls initiated by a <Dial> verb.
 
-   .. php:attr:: AnsweredBy
+   .. php:attr:: answered_by
 
       If this call was initiated with answering machine detection, either human or machine. Empty otherwise.
 
-   .. php:attr:: ForwardedFrom
+   .. php:attr:: forwarded_from
 
       If this call was an incoming call forwarded from another number, the forwarding phone number (depends on carrier supporting forwarding). Empty otherwise.
 
-   .. php:attr:: CallerName
+   .. php:attr:: caller_name
 
       If this call was an incoming call from a phone number with Caller ID Lookup enabled, the caller's name. Empty otherwise.
 
 CallerId
->>>>>>>>>>>
+============
 
 .. php:class:: Services_Twilio_Rest_OutgoingCallerId
 
    For more information, see the `OutgoingCallerId Instance Resource <http://www.twilio.com/docs/api/rest/outgoing-caller-ids#instance>`_ documentation.
 
-   .. php:attr:: Sid
+   .. php:attr:: sid
 
       A 34 character string that uniquely identifies this resource.
 
-   .. php:attr:: DateCreated
+   .. php:attr:: date_created
 
       The date that this resource was created, given in RFC 2822 format.
 
-   .. php:attr:: DateUpdated
+   .. php:attr:: date_updated
 
       The date that this resource was last updated, given in RFC 2822 format.
 
-   .. php:attr:: FriendlyName
+   .. php:attr:: friendly_name
 
       A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
 
-   .. php:attr:: AccountSid
+   .. php:attr:: account_sid
 
       The unique id of the Account responsible for this Caller Id.
 
-   .. php:attr:: PhoneNumber
+   .. php:attr:: phone_number
 
       The incoming phone number. Formatted with a '+' and country code e.g., +16175551212 (E.164 format).
 
-   .. php:attr:: Uri
+   .. php:attr:: uri
 
       The URI for this resource, relative to https://api.twilio.com.
 
 Conference
->>>>>>>>>>>>
+=============
 
 .. php:class:: Services_Twilio_Rest_Conference
 
-   For more information, see the `OutgoingCallerId Instance Resource <http://www.twilio.com/docs/api/rest/conferences#instance>`_ documentation.
+   For more information, see the `Conference Instance Resource <http://www.twilio.com/docs/api/rest/conference#instance>`_ documentation.
 
-   .. php:attr:: Sid
+   .. php:attr:: sid
 
       A 34 character string that uniquely identifies this conference.
 
-   .. php:attr:: FriendlyName
+   .. php:attr:: friendly_name
 
       A user provided string that identifies this conference room.
 
-   .. php:attr:: Status
+   .. php:attr:: status
 
       A string representing the status of the conference. May be init, in-progress, or completed.
 
-   .. php:attr:: DateCreated
+   .. php:attr:: date_created
 
       The date that this conference was created, given as GMT in RFC 2822 format.
 
-   .. php:attr:: DateUpdated
+   .. php:attr:: date_updated
 
       The date that this conference was last updated, given as GMT in RFC 2822 format.
 
-   .. php:attr:: AccountSid
+   .. php:attr:: account_sid
 
       The unique id of the Account responsible for creating this conference.
 
-   .. php:attr:: Uri
+   .. php:attr:: uri
 
       The URI for this resource, relative to https://api.twilio.com.
 
-   .. php:attr:: Participants
+   .. php:attr:: participants
 
       The :php:class:`Services_Twilio_Rest_Participants` instance, listing people currenlty in this conference
 
 
 Notification
->>>>>>>>>>>>>>
+=============
+
+.. php:class:: Services_Twilio_Rest_Notification
+
+   For more information, see the `Notification Instance Resource <http://www.twilio.com/docs/api/rest/notification#instance>`_ documentation.
 
    .. php:attr:: sid
 
@@ -287,7 +331,11 @@ Notification
       The URI for this resource, relative to https://api.twilio.com
 
 Participant
->>>>>>>>>>>>>>
+=============
+
+.. php:class:: Services_Twilio_Rest_Participant
+
+   For more information, see the `Participant Instance Resource <http://www.twilio.com/docs/api/rest/participant#instance>`_ documentation.
 
    .. php:attr:: call_sid
 
@@ -327,7 +375,11 @@ Participant
 
 
 PhoneNumber
->>>>>>>>>>>>>>
+=================
+
+.. php:class:: Services_Twilio_Rest_IncomingPhoneNumber
+
+   For more information, see the `IncomingPhoneNumber Instance Resource <http://www.twilio.com/docs/api/rest/incoming-phone-number#instance>`_ documentation.
 
    .. php:attr:: sid
 
@@ -406,6 +458,11 @@ PhoneNumber
       The URI for this resource, relative to https://api.twilio.com.
 
 AvailablePhoneNumber
+========================
+
+.. php:class:: Services_Twilio_Rest_AvailablePhoneNumber
+
+   For more information, see the `AvailablePhoneNumber Instance Resource <http://www.twilio.com/docs/api/rest/available-phone-numbers#instance>`_ documentation.
 
    .. php:attr:: friendly_name
 
@@ -443,7 +500,11 @@ AvailablePhoneNumber
 
 
 Recording
->>>>>>>>>>>
+=============
+
+.. php:class:: Services_Twilio_Rest_Recording
+
+   For more information, see the `Recording Instance Resource <http://www.twilio.com/docs/api/rest/recording#instance>`_ documentation.
 
    .. php:attr:: sid
 
@@ -493,7 +554,11 @@ Recording
           )
 
 SmsMessage
->>>>>>>>>>>>
+===========
+
+.. php:class:: Services_Twilio_Rest_SmsMessage
+
+   For more information, see the `SMS Message Instance Resource <http://www.twilio.com/docs/api/rest/sms#instance>`_ documentation.
 
    .. php:attr:: sid
 
@@ -549,7 +614,11 @@ SmsMessage
 
 
 Transcription
->>>>>>>>>>>>>>>
+==================
+
+.. php:class:: Services_Twilio_Rest_Transcription
+
+   For more information, see the `Transcription Instance Resource <http://www.twilio.com/docs/api/rest/transcription#instance>`_ documentation.
 
    .. php:attr:: sid
 

@@ -39,8 +39,8 @@ The :class:`Calls` resource allows you to make outgoing calls:
 
     $client = new Services_Twilio('AC123', '123');
     $call = $client->account->calls->create(
-      '9991231234',
-      '9991231234',
+      '9991231234', // From this number
+      '8881231234', // Call this number
       'http://foo.com/call.xml'
     );
     print $call->length;
@@ -181,10 +181,12 @@ The :class:`SmsMessages` resource allows you to send outgoing text messages
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '123');
-    $t = '9991231234';
-    $f ='9991231234';
-    $text = "Hello monkey!"
-    $message = $client->account->sms_messages->create($t, $f, $text);
+    $message = $client->account->sms_messages->create(
+      '9991231234', // From this number
+      '8881231234', // Text this number
+      "Hello monkey!"
+    );
+
     print $message->sid;
 
 Transcriptions
@@ -197,5 +199,5 @@ Show all Transcribed Messagse
 
     $client = new Services_Twilio('AC123', '123');
     foreach ($client->account->transcriptions as $t) {
-      print $t.transcription_text;
+      print $t->transcription_text;
     }
