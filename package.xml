@@ -4,9 +4,9 @@
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>Services_Twilio</name>
- <channel>pear.php.net</channel>
+ <channel>twilio.github.com/pear</channel>
  <summary>PHP helper library for Twilio</summary>
- <description>A SDK (or helper library, as we&apos;re calling them) for PHP developers to write 
+ <description>A SDK (or helper library, as we&apos;re calling them) for PHP developers to write
 applications against Twilio&apos;s REST API and generate TwiML responses.</description>
  <lead>
   <name>Neuman Vong</name>
@@ -14,15 +14,15 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>neuman+pear@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2011-03-15</date>
+ <date>2011-07-18</date>
  <time>11:06:14</time>
  <version>
-  <release>0.0.2</release>
-  <api>0.0.2</api>
+  <release>0.0.3</release>
+  <api>0.0.3</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
  <notes>
@@ -80,7 +80,6 @@ No release notes.
    <file name="LICENSE" role="data" />
    <file name="Makefile" role="data" />
    <file name="README" role="data" />
-   <file name="TODO" role="data" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -107,14 +106,14 @@ No release notes.
  <changelog>
   <release>
    <version>
-    <release>0.0.2</release>
-    <api>0.0.2</api>
+    <release>0.0.3</release>
+    <api>0.0.3</api>
    </version>
    <stability>
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-03-15</date>
+   <date>2011-07-18</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
 No release notes.
