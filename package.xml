@@ -79,7 +79,7 @@ No release notes.
    </dir> <!-- /tests -->
    <file name="LICENSE" role="data" />
    <file name="Makefile" role="data" />
-   <file name="README" role="data" />
+   <file name="README.md" role="data" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
