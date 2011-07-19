@@ -1,36 +1,11 @@
 .. _api-rest:
 
 ===============================
-Rest Client Documentation
+Services_Twilio_Rest
 ===============================
 
-Services_Twilio
-==================
-
-.. php:class:: Services_Twilio
-
-  Datetime class
-
-  .. php:method:: __construct($sid, $token)
-
-     Create a new Services_Twilio REST client
-
-     :param string $sid: Twilio Account SID
-     :param string $token: Twilio Account auth token
-
-  .. php:attr:: account
-
-     A :php:class:`Services_Twilio_Rest_Account` instance for the given account SID
-
-  .. php:attr:: accounts
-
-     A :php:class:`Services_Twilio_Rest_Accounts` instance
-
-Resources
-===========
-
 Accounts
->>>>>>>>>>
+===========
 
 .. php:class:: Services_Twilio_Rest_Accounts
 
@@ -52,7 +27,7 @@ Accounts
 
      The **$params** array can contain the following keys:
 
-     *FriendlyName*
+     *name*
        A description of this account, up to 64 characters long
 
 
@@ -66,66 +41,66 @@ Accounts
 
      The **$params** array is the same as in :php:meth:`Services_Twilio_Rest_Accounts::create`
 
-   .. php:attr:: Sid
+   .. php:attr:: sid
 
       A 34 character string that uniquely identifies this account.
 
-   .. php:attr:: DateCreated
+   .. php:attr:: date_created
 
       The date that this account was created, in GMT in RFC 2822 format
 
-   .. php:attr:: DateUpdated
+   .. php:attr:: date_updated
 
       The date that this account was last updated, in GMT in RFC 2822 format.
 
-   .. php:attr:: FriendlyName
+   .. php:attr:: friendly_name
 
       A human readable description of this account, up to 64 characters long. By default the FriendlyName is your email address.
 
-   .. php:attr:: Status
+   .. php:attr:: status
 
       The status of this account. Usually active, but can be suspended if you've been bad, or closed if you've been horrible.
 
-   .. php:attr:: AuthToken
+   .. php:attr:: auth_token
 
       The authorization token for this account. This token should be kept a secret, so no sharing.
 
 Call
->>>>>>
+=======
 
 .. php:class:: Services_Twilio_Rest_Call
 
-  For more information, see the `Account Instance Resource <http://www.twilio.com/docs/api/rest/account#instance>`_ documentation.
+   For more information, see the `Call Instance Resource <http://www.twilio.com/docs/api/rest/call#instance>`_ documentation.
 
-   .. php:attr:: Sid
+   .. php:attr:: sid
 
       A 34 character string that uniquely identifies this resource.
 
-   .. php:attr:: ParentCallSid
+   .. php:attr:: parent_call_sid
 
       A 34 character string that uniquely identifies the call that created this leg.
 
-   .. php:attr:: DateCreated
+   .. php:attr:: date_created
 
       The date that this resource was created, given as GMT in RFC 2822 format.
 
-   .. php:attr:: DateUpdated
+   .. php:attr:: date_updated
 
       The date that this resource was last updated, given as GMT in RFC 2822 format.
 
-   .. php:attr:: AccountSid
+   .. php:attr:: account_sid
 
       The unique id of the Account responsible for creating this call.
 
-   .. php:attr:: To
+   .. php:attr:: to
 
       The phone number that received this call. e.g., +16175551212 (E.164 format)
 
-   .. php:attr:: From
+   .. php:attr:: from
 
       The phone number that made this call. e.g., +16175551212 (E.164 format)
 
-   .. php:attr:: PhoneNumberSid
+   .. php:attr:: phone_number_sid
 
       If the call was inbound, this is the Sid of the IncomingPhoneNumber that received the call. If the call was outbound, it is the Sid of the OutgoingCallerId from which the call was placed.
 
@@ -141,95 +116,103 @@ Call
 
       The end time of the call, given as GMT in RFC 2822 format. Empty if the call did not complete successfully.
 
-   .. php:attr:: duration
+   .. php:attr:: Duration
 
       The length of the call in seconds. This value is empty for busy, failed, unanswered or ongoing calls.
 
-   .. php:attr:: price
+   .. php:attr:: Price
 
       The charge for this call in USD. Populated after the call is completed. May not be immediately available.
 
-   .. php:attr:: direction
+   .. php:attr:: Direction
 
       A string describing the direction of the call. inbound for inbound calls, outbound-api for calls initiated via the REST API or outbound-dial for calls initiated by a <Dial> verb.
 
-   .. php:attr:: answered_by
+   .. php:attr:: AnsweredBy
 
       If this call was initiated with answering machine detection, either human or machine. Empty otherwise.
 
-   .. php:attr:: forwarded_from
+   .. php:attr:: ForwardedFrom
 
       If this call was an incoming call forwarded from another number, the forwarding phone number (depends on carrier supporting forwarding). Empty otherwise.
 
-   .. php:attr:: caller_name
+   .. php:attr:: CallerName
 
       If this call was an incoming call from a phone number with Caller ID Lookup enabled, the caller's name. Empty otherwise.
 
 CallerId
 >>>>>>>>>>>
 
-   .. php:attr:: sid
+.. php:class:: Services_Twilio_Rest_OutgoingCallerId
+
+   For more information, see the `OutgoingCallerId Instance Resource <http://www.twilio.com/docs/api/rest/outgoing-caller-ids#instance>`_ documentation.
+
+   .. php:attr:: Sid
 
       A 34 character string that uniquely identifies this resource.
 
-   .. php:attr:: date_created
+   .. php:attr:: DateCreated
 
       The date that this resource was created, given in RFC 2822 format.
 
-   .. php:attr:: date_updated
+   .. php:attr:: DateUpdated
 
       The date that this resource was last updated, given in RFC 2822 format.
 
-   .. php:attr:: friendly_name
+   .. php:attr:: FriendlyName
 
       A human readable descriptive text for this resource, up to 64 characters long. By default, the FriendlyName is a nicely formatted version of the phone number.
 
-   .. php:attr:: account_sid
+   .. php:attr:: AccountSid
 
       The unique id of the Account responsible for this Caller Id.
 
-   .. php:attr:: phone_number
+   .. php:attr:: PhoneNumber
 
       The incoming phone number. Formatted with a '+' and country code e.g., +16175551212 (E.164 format).
 
-   .. php:attr:: uri
+   .. php:attr:: Uri
 
       The URI for this resource, relative to https://api.twilio.com.
 
 Conference
 >>>>>>>>>>>>
 
-   .. php:attr:: sid
+.. php:class:: Services_Twilio_Rest_Conference
+
+   For more information, see the `OutgoingCallerId Instance Resource <http://www.twilio.com/docs/api/rest/conferences#instance>`_ documentation.
+
+   .. php:attr:: Sid
 
       A 34 character string that uniquely identifies this conference.
 
-   .. php:attr:: friendly_name
+   .. php:attr:: FriendlyName
 
       A user provided string that identifies this conference room.
 
-   .. php:attr:: status
+   .. php:attr:: Status
 
       A string representing the status of the conference. May be init, in-progress, or completed.
 
-   .. php:attr:: date_created
+   .. php:attr:: DateCreated
 
       The date that this conference was created, given as GMT in RFC 2822 format.
 
-   .. php:attr:: date_updated
+   .. php:attr:: DateUpdated
 
       The date that this conference was last updated, given as GMT in RFC 2822 format.
 
-   .. php:attr:: account_sid
+   .. php:attr:: AccountSid
 
       The unique id of the Account responsible for creating this conference.
 
-   .. php:attr:: uri
+   .. php:attr:: Uri
 
       The URI for this resource, relative to https://api.twilio.com.
 
-   .. php:attr:: participants
+   .. php:attr:: Participants
 
-      The :class:`Participants` resource, listing people currenlty in this conference
+      The :php:class:`Services_Twilio_Rest_Participants` instance, listing people currenlty in this conference
 
 
 Notification

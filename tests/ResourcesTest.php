@@ -7,7 +7,7 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
         $http = m::mock();
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/AvailablePhoneNumbers/US/Local.json?AreaCode=510')
-            ->andReturn(array(200, array('content-type' => 'application/json'),
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('available_phone_numbers' => array(
                     'friendly_name' => '(510) 564-7903'
                 )))
@@ -31,7 +31,7 @@ class SandboxTest extends PHPUnit_Framework_TestCase
         $http = m::mock();
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Sandbox.json', m::any(), 'VoiceUrl=foo')
-            ->andReturn(array(200, array('content-type' => 'application/json'),
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('voice_url' => 'foo'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
@@ -52,7 +52,7 @@ class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/OutgoingCallerIds.json',
                 m::any(), 'PhoneNumber=%2B14158675309&FriendlyName=My+Home+Phone+Number')
-            ->andReturn(array(200, array('content-type' => 'application/json'),
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'account_sid' => 'AC123',
                     'phone_number' => '+14158675309',
@@ -81,7 +81,7 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Applications.json',
                 m::any(), 'FriendlyName=foo&VoiceUrl=bar')
-            ->andReturn(array(200, array('content-type' => 'application/json'),
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'AP123'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
