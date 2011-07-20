@@ -7,7 +7,7 @@ Via PEAR:
     pear channel-discover twilio.github.com/pear
     pear install twilio/Services_Twilio
 
-If you aren't using PEAR, you can just download the [source](https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-3.0.0.tar?raw=true>)
+If you aren't using PEAR, you can just download the [source](https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-3.0.1.tar?raw=true>)
 
 ## Quickstart
 
@@ -16,6 +16,8 @@ Getting started with the Twilio API couldn't be easier. Create a Twilio REST cli
 ### Making a Call
 
 ```php
+require "Services/Twilio.php";
+
 $sid = "ACXXXXXX"; // Your Twilio account sid
 $token = "YYYYYY"; // Your Twilio auth token
 
