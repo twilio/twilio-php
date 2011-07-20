@@ -14,15 +14,15 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>neuman+pear@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2011-07-18</date>
+ <date>2011-07-19</date>
  <time>11:06:14</time>
  <version>
-  <release>0.0.3</release>
-  <api>0.0.3</api>
+  <release>3.0.0</release>
+  <api>3.0.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
  <notes>
@@ -60,7 +60,7 @@ No release notes.
      <file name="ArrayDataProxy.php" role="php" />
      <file name="CachingDataProxy.php" role="php" />
      <file name="DataProxy.php" role="php" />
-     <file name="Http.php" role="php" />
+     <file name="TinyHttp.php" role="php" />
      <file name="InstanceResource.php" role="php" />
      <file name="ListResource.php" role="php" />
      <file name="Page.php" role="php" />
@@ -106,14 +106,14 @@ No release notes.
  <changelog>
   <release>
    <version>
-    <release>0.0.3</release>
-    <api>0.0.3</api>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
    </version>
    <stability>
-    <release>alpha</release>
-    <api>alpha</api>
+    <release>stable</release>
+    <api>stable</api>
    </stability>
-   <date>2011-07-18</date>
+   <date>2011-07-19</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
 No release notes.
