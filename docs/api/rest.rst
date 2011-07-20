@@ -70,7 +70,7 @@ Application
 
 .. php:class:: Services_Twilio_Rest_Application
 
-   For more information, see the `Application Instance Resource <http://www.twilio.com/docs/api/rest/application#instance>`_ documentation.
+   For more information, see the `Application Instance Resource <http://www.twilio.com/docs/api/rest/applications#instance>`_ documentation.
 
    .. php:attr:: sid
 
@@ -91,10 +91,6 @@ Application
    .. php:attr:: account_sid
 
       The unique id of the Account responsible for this phone number.
-
-   .. php:attr:: phone_number
-
-      The incoming phone number. e.g., +16175551212 (E.164 format)
 
    .. php:attr:: api_version
 
