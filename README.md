@@ -7,7 +7,7 @@ Via PEAR:
     pear channel-discover twilio.github.com/pear
     pear install twilio/Services_Twilio
 
-If you aren't using PEAR, you can just download the [source](https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-3.0.0.tar?raw=true>)
+If you aren't using PEAR, you can just download the [source](https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-3.0.1.tar?raw=true>)
 
 ## Quickstart
 
