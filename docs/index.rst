@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 =================
-Services_Twilio
+**twilio-php**
 =================
 
 Status
@@ -25,14 +25,38 @@ If you aren't using PEAR, you can just download the `source <https://github.com/
 Quickstart
 ============
 
-Get up and running with :data:`twilio-php` in no time.
+Getting started with the Twilio API couldn't be easier. Create a Twilio REST client to get started. For example, the following code makes a call using the Twilio REST API.
 
-.. toctree::
-    :maxdepth: 2
-    :glob:
+Making a Call
+>>>>>>>>>>>>>>>
 
-    quickstart
+.. code-block:: php
 
+    $sid = "ACXXXXXX"; // Your Twilio account sid
+    $token = "YYYYYY"; // Your Twilio auth token
+
+    $client = new Services_Twilio($sid, $token);
+    $call = $client->account->calls->create(
+      '9991231234', // From this number
+      '8881231234', // Call this number
+      'http://foo.com/call.xml'
+    );
+
+Generating TwiML
+>>>>>>>>>>>>>>>>>>>>
+
+To control phone calls, your application need to output TwiML. Use :class:`Services_Twilio_Twiml` to easily create such responses.
+
+.. code-block:: php
+
+    $response = new Services_Twilio_Twiml();
+    $response->say('Hello');
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <Response><Play loop="5">monkey.mp3</Play><Response>
 
 User Guide
 ==================
