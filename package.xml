@@ -54,6 +54,8 @@ No release notes.
       <file name="Recording.php" role="php" />
       <file name="Recordings.php" role="php" />
       <file name="Sandbox.php" role="php" />
+      <file name="ShortCode.php" role="php" />
+      <file name="ShortCodess.php" role="php" />
       <file name="SmsMessage.php" role="php" />
       <file name="SmsMessages.php" role="php" />
       <file name="Transcription.php" role="php" />
