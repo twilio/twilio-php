@@ -124,7 +124,7 @@ class CallsTest extends PHPUnit_Framework_TestCase
 	{
 		$result = Services_Twilio_Rest_Calls::isApplicationSid($sid);
 		$this->assertEquals($expected, $result);
-    }
+	}
 
     function sidProvider()
 	{
