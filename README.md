@@ -16,15 +16,15 @@ Getting started with the Twilio API couldn't be easier. Create a Twilio REST cli
 ### Making a Call
 
 ```php
-    $sid = "ACXXXXXX"; // Your Twilio account sid
-    $token = "YYYYYY"; // Your Twilio auth token
+$sid = "ACXXXXXX"; // Your Twilio account sid
+$token = "YYYYYY"; // Your Twilio auth token
 
-    $client = new Services_Twilio($sid, $token);
-    $call = $client->account->calls->create(
-      '9991231234', // From this number
-      '8881231234', // Call this number
-      'http://foo.com/call.xml'
-    );
+$client = new Services_Twilio($sid, $token);
+$call = $client->account->calls->create(
+    '9991231234', // From this number
+    '8881231234', // Call this number
+    'http://foo.com/call.xml'
+);
 ```
 
 ### Generating TwiML
