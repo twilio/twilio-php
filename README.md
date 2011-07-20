@@ -4,26 +4,44 @@ Twilio API helper library
 
 Via PEAR:
 
-    pear install channel://pear.php.net/Net_URL2-0.3.1
-    pear install channel://pear.php.net/HTTP_Request2-2.0.0RC1
-    pear install channel://twilio.github.com/pear/Services_Twilio-0.0.3
+    pear channel-discover twilio.github.com/pear
+    pear install twilio/Services_Twilio
 
-## Indenting
+If you aren't using PEAR, you can just download the [source](https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-3.0.0.tar?raw=true>)
 
-To comply with PEAR standards, this project keeps an indent of 4-spaces
-(http://pear.php.net/manual/en/standards.indenting.php). Git attributes with
-smudge and clean filters can be used to configure an alternative indent.
+## Quickstart
 
-1. Create a .gitattributes file in the project root.
+Getting started with the Twilio API couldn't be easier. Create a Twilio REST client to get started. For example, the following code makes a call using the Twilio REST API.
 
-    $ echo "*.php filter=tabspace" >> .gitattributes
+### Making a Call
 
-2. Set up smudge and clean filters. On check-out (i.e. smudge), the filter should
-convert a 2-space indent to 4-space indent. To indent using tabs, for example:
+```php
+$sid = "ACXXXXXX"; // Your Twilio account sid
+$token = "YYYYYY"; // Your Twilio auth token
 
-    $ git config filter.tabspace.smudge 'unexpand -t4'
+$client = new Services_Twilio($sid, $token);
+$call = $client->account->calls->create(
+    '9991231234', // From this number
+    '8881231234', // Call this number
+    'http://foo.com/call.xml'
+);
+```
 
-And a corresponding filter should be set up code that's checked-in (i.e.
-clean):
+### Generating TwiML
 
-    $ git config filter.tabspace.clean 'expand -t4'
+To control phone calls, your application need to output TwiML. Use `Services_Twilio_Twiml` to easily create such responses.
+
+```php
+$response = new Services_Twilio_Twiml();
+$response->say('Hello');
+print $response;
+```
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Response><Play loop="5">monkey.mp3</Play><Response>
+```
+
+### Full Documentation
+
+http://readthedocs.org/docs/twilio-php/en/latest/

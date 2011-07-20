@@ -41,7 +41,7 @@ class Services_Twilio extends Services_Twilio_Resource
     ) {
         $this->version = $version;
         $this->http = (null === $_http)
-            ? new Services_Twilio_Http("https://$sid:$token@api.twilio.com")
+            ? new Services_Twilio_TinyHttp("https://$sid:$token@api.twilio.com")
             : $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this);
         $this->account = $this->accounts->get($sid);
@@ -119,10 +119,10 @@ class Services_Twilio extends Services_Twilio_Resource
         if ($status == 204) {
             return TRUE;
         }
-        if (empty($headers['content-type'])) {
+        if (empty($headers['Content-Type'])) {
             throw new DomainException('Response header is missing Content-Type');
         }
-        switch ($headers['content-type']) {
+        switch ($headers['Content-Type']) {
         case 'application/json':
             return $this->_processJsonResponse($status, $headers, $body);
             break;

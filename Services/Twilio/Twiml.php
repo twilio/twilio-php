@@ -95,6 +95,9 @@ class Services_Twilio_Twiml
      */
     public function __toString()
     {
-        return $this->element->asXml();
+        $xml = $this->element->asXml();
+        return str_replace(
+            '<?xml version="1.0"?>', 
+            '<?xml version="1.0" encoding="UTF-8"?>', $xml);
     }
 }
