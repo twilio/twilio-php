@@ -16,6 +16,8 @@ Getting started with the Twilio API couldn't be easier. Create a Twilio REST cli
 ### Making a Call
 
 ```php
+require "Services/Twilio.php";
+
 $sid = "ACXXXXXX"; // Your Twilio account sid
 $token = "YYYYYY"; // Your Twilio auth token
 
