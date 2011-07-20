@@ -41,3 +41,7 @@ print $response;
 <?xml version="1.0" encoding="utf-8"?>
 <Response><Play loop="5">monkey.mp3</Play><Response>
 ```
+
+### Full Documentation
+
+http://readthedocs.org/docs/twilio-php/en/latest/
