@@ -20,6 +20,9 @@ class Services_Twilio_TinyHttp {
   public function __call($name, $args) {
     list($res, $req_headers, $req_body) = $args + array(0, array(), '');
 
+	// Add the Twilio User-Agent String
+	$req_headers["User-Agent"] = "twilio-php/3.0.0";
+
     $opts = array(
       CURLOPT_URL => "$this->scheme://$this->host$res",
       CURLOPT_HEADER => TRUE,
