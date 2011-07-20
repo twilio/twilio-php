@@ -32,13 +32,12 @@ Getting started with the Twilio API couldn't be easier. Create a Twilio REST cli
 To control phone calls, your application need to output TwiML. Use `Services_Twilio_Twiml` to easily create such responses.
 
 ```php
-
-    $response = new Services_Twilio_Twiml();
-    $response->say('Hello');
-    print $response;
+$response = new Services_Twilio_Twiml();
+$response->say('Hello');
+print $response;
 ```
 
 ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <Response><Play loop="5">monkey.mp3</Play><Response>
+<?xml version="1.0" encoding="utf-8"?>
+<Response><Play loop="5">monkey.mp3</Play><Response>
 ```
