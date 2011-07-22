@@ -63,6 +63,7 @@ No release notes.
      </dir> <!-- /Services/Twilio/Rest -->
      <file name="ArrayDataProxy.php" role="php" />
      <file name="CachingDataProxy.php" role="php" />
+     <file name="Capability.php" role="php" />
      <file name="DataProxy.php" role="php" />
      <file name="TinyHttp.php" role="php" />
      <file name="InstanceResource.php" role="php" />
