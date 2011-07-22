@@ -65,7 +65,10 @@ User Guide
     :maxdepth: 1
     :glob:
 
-    usage/*
+    usage/rest
+    usage/twiml
+    usage/validation
+    usage/token-generation
 
 API Documentation
 ==================
