@@ -77,7 +77,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         $this->assertContains($event_uri, $scope);
     }
     
-    /*
+
     function testDecodeWithAuthToken() {
         try {
             $token = new Services_Twilio_Capability('AC123', 'foo');
@@ -87,75 +87,10 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         }
     }
     
-    function testPayloadContainsAccountSid() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
-        $payload = JWT::decode($token->generateToken(), 'foo');
-        $this->assertEquals('AC123', $payload->iss);
-    }
-    
-    function testAllowEventsNoFilters() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
-        $token->allowEventStream();
-        $payload = JWT::decode($token->generateToken(), 'foo');
-        $url = 'https://' . $token->streamHost . '/2010-04-01/Events';
-        $this->assertContains('GET:' . $url, $payload->scope);
-        $this->assertEquals($url, $payload->stream);
-    }
-    
-    function testAllowEventsWithFilters() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
-        $token->allowEventStream(array('abc' => '123'));
-        $payload = JWT::decode($token->generateToken(), 'foo');
-        $this->assertContains(
-            ':https://' . $token->streamHost . '/2010-04-01/Events?abc=123',
-            $payload->scope
-        );
-    }
-    
-    function testAllowInbound() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
-        $token->allowClientIncoming('twilio');
-        $payload = JWT::decode($token->generateToken(), 'foo');
-        $url = 'http://' . $token->matrixHost . '/2010-04-01/AC123/twilio';
-        $this->assertContains('*:' . $url, $payload->scope);
-        $this->assertEquals($url, $payload->register);
-    }
-    
-    function testAllowOutboundNoParams() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
-        $token->allowClientOutgoing('twilio');
-        $payload = JWT::decode($token->generateToken(), 'foo');
-        $this->assertContains(
-            'appSid=twilio',
-            $payload->scope
-        );
-    }
-    
-    function testAllowOutboundWithParams() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
-        $token->allowClientOutgoing('twilio', array('abc' => '123'));
-        $payload = JWT::decode($token->generateToken(), 'foo');
-        $this->assertContains(
-            'appSid=twilio&appParams=abc%3D123',
-            $payload->scope
-        );
-    }
-    
-    function testCustomizableHosts() {
-        $token = new Services_Twilio_Capability('AC123', 'foo', array(
-            'matrix' => 'foo',
-            'stream' => 'bar',
-            'chunder' => 'baz',
-        ));
-        $this->assertEquals('foo', $token->matrixHost);
-        $this->assertEquals('bar', $token->streamHost);
-        $this->assertEquals('baz', $token->chunderHost);
-    }
-    
     function testClientNameValidation() {
         $this->setExpectedException('InvalidArgumentException');
         $token = new Services_Twilio_Capability('AC123', 'foo');
         $token->allowClientIncoming('@');
     }
-    */
+    
 }
