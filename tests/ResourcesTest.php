@@ -4,7 +4,7 @@ use \Mockery as m;
 
 class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
     function testPartialApplication() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/AvailablePhoneNumbers/US/Local.json?AreaCode=510')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -28,7 +28,7 @@ class SandboxTest extends PHPUnit_Framework_TestCase
 {
     function testUpdateVoiceUrl()
     {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Sandbox.json', m::any(), 'VoiceUrl=foo')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -48,7 +48,7 @@ class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase
 {
     function testPost()
     {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/OutgoingCallerIds.json',
                 m::any(), 'PhoneNumber=%2B14158675309&FriendlyName=My+Home+Phone+Number')
@@ -77,7 +77,7 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
 {
     function testPost()
     {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Applications.json',
                 m::any(), 'FriendlyName=foo&VoiceUrl=bar')
@@ -100,7 +100,7 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
 class NotificationTest extends PHPUnit_Framework_TestCase
 {
     function testDelete() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('delete')->once()
             ->with('/2010-04-01/Accounts/AC123/Notifications/NO123.json')
             ->andReturn(array(204, array(), ''));

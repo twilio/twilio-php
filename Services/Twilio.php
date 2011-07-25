@@ -37,7 +37,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $sid,
         $token,
         $version = '2010-04-01',
-        $_http = null
+        Services_Twilio_TinyHttp $_http = null
     ) {
         $this->version = $version;
         $this->http = (null === $_http)
