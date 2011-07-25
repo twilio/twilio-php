@@ -28,16 +28,16 @@ class Services_Twilio extends Services_Twilio_Resource
     /**
      * Constructor.
      *
-     * @param string               $sid      Account SID
-     * @param string               $token    Account auth token
-     * @param string               $version  API version
-     * @param Services_Twilio_Http $_http    A HTTP client
+     * @param string                   $sid      Account SID
+     * @param string                   $token    Account auth token
+     * @param string                   $version  API version
+     * @param Services_Twilio_TinyHttp $_http    A HTTP client
      */
     public function __construct(
         $sid,
         $token,
         $version = '2010-04-01',
-        $_http = null
+        Services_Twilio_TinyHttp $_http = null
     ) {
         $this->version = $version;
         $this->http = (null === $_http)
