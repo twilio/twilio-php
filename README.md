@@ -1,5 +1,10 @@
 Twilio API helper library
 
+## Prerequisites
+
+* PHP (at least version 5.2)
+* The PHP JSON extension
+
 ## Installing
 
 Via PEAR:
