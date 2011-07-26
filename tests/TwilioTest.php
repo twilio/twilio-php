@@ -7,7 +7,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
     function testNeedsRefining() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -22,14 +22,14 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testAccessSidAvoidsNetworkCall() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->never();
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $client->account->sid;
     }
 
     function testObjectLoadsOnlyOnce() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -46,7 +46,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testSubresourceLoad() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -61,7 +61,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testSubresourceSubresource() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls/CA123/Notifications/NO123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -74,7 +74,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testListResource() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -91,7 +91,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testAsymmetricallyNamedResources() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/SMS/Messages.json?Page=0&PageSize=10')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -105,7 +105,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testParams() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $qs = 'Page=0&PageSize=10&FriendlyName=foo&Status=active';
         $http->shouldReceive('get')
             ->with('/2010-04-01/Accounts.json?' . $qs)
@@ -122,7 +122,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testUpdate() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls.json', m::any(), m::any())
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -133,7 +133,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testModifyLiveCall() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls.json', m::any(), m::any())
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -151,7 +151,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testUnmute() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with(
                 '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants.json?Page=0&PageSize=10')
@@ -177,7 +177,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testResourcePropertiesReflectUpdates() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -197,7 +197,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     //function testAccessingNonExistentPropertiesErrorsOut
 
     function testArrayAccessForListResources() {
-        $http = m::mock();
+        $http = m::mock('Services_Twilio_TinyHttp');
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
