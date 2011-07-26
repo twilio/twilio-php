@@ -3,7 +3,7 @@
 require_once 'Twilio/Capability.php';
 
 class CapabilityTest extends PHPUnit_Framework_TestCase {
-    
+
     public function testNoPermissions() {
         $token = new Services_Twilio_Capability('AC123', 'foo');
         $payload = JWT::decode($token->generateToken(), 'foo');
@@ -65,7 +65,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         $token->allowEventStream();
 
         $outgoing_uri = "scope:client:outgoing?appSid="
-            . "AP123&appParams=foobar%3D3";
+            . "AP123&appParams=foobar%3D3&clientName=andy";
         $incoming_uri = "scope:client:incoming?clientName=andy";
         $event_uri = "scope:stream:subscribe?path=%2F2010-04-01%2FEvents";
 
@@ -76,7 +76,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         $this->assertContains($incoming_uri, $scope);
         $this->assertContains($event_uri, $scope);
     }
-    
+
 
     function testDecodeWithAuthToken() {
         try {
@@ -86,11 +86,11 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
             $this->assertTrue(false, "Could not decode with 'foo'");
         }
     }
-    
+
     function testClientNameValidation() {
         $this->setExpectedException('InvalidArgumentException');
         $token = new Services_Twilio_Capability('AC123', 'foo');
         $token->allowClientIncoming('@');
     }
-    
+
 }

@@ -8,7 +8,7 @@
  * @author Jeff Lindsay <jeff.lindsay@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Twilio_Capability 
+class Services_Twilio_Capability
 {
     public $accountSid;
     public $authToken;
@@ -28,6 +28,7 @@ class Services_Twilio_Capability
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->scopes = array();
+		$this->clientName = false;
     }
 
     /**
@@ -39,19 +40,20 @@ class Services_Twilio_Capability
      */
     public function allowClientIncoming($clientName)
     {
-        
+
         // clientName must be a non-zero length alphanumeric string
         if (preg_match('/\W/', $clientName)) {
             throw new InvalidArgumentException(
                 'Only alphanumeric characters allowed in client name.');
         }
-        
+
         if (strlen($clientName) == 0) {
             throw new InvalidArgumentException(
                 'Client name must not be a zero length string.');
         }
-        
-        $this->allow('client', 'incoming', 
+
+		$this->clientName = $clientName;
+        $this->allow('client', 'incoming',
             array('clientName' => $clientName));
     }
 
@@ -61,28 +63,12 @@ class Services_Twilio_Capability
      * @param $appSid the application to which this token grants access
      * @param $appParams signed parameters that the user of this token cannot
      *        overwrite.
-     * @param $clientName Optional client name for caller ID
      */
-    public function allowClientOutgoing($appSid, array $appParams=array(), 
-        $clientName=null)
+    public function allowClientOutgoing($appSid, array $appParams=array())
     {
-        // If clientName is specified, it must be a non-zero length 
-        // alphanumeric string
-        if (isset($clientName)) {
-            if (preg_match('/\W/', $clientName)) {
-                throw new InvalidArgumentException(
-                    'Only alphanumeric characters allowed in client name.');
-            }
-            if (strlen($clientName) == 0) {
-                throw new InvalidArgumentException(
-                    'Client name must not be a zero length string.');
-            }
-        }
-        
         $this->allow('client', 'outgoing', array(
-            'appSid' => $appSid, 
-            'appParams' => http_build_query($appParams),
-            'clientName' => $clientName));
+            'appSid' => $appSid,
+            'appParams' => http_build_query($appParams)));
     }
 
     /**
@@ -114,8 +100,10 @@ class Services_Twilio_Capability
             'exp' => time() + $ttl,
         );
         $scopeStrings = array();
-        
+
         foreach ($this->scopes as $scope) {
+			if ($scope->privilege == "outgoing" && $this->clientName)
+				$scope->params["clientName"] = $this->clientName;
             $scopeStrings[] = $scope->toString();
         }
 
@@ -131,11 +119,11 @@ class Services_Twilio_Capability
 /**
  * Scope URI implementation
  *
- * Simple way to represent configurable privileges in an OAuth 
+ * Simple way to represent configurable privileges in an OAuth
  * friendly way. For our case, they look like this:
- * 
+ *
  * scope:<service>:<privilege>?<params>
- * 
+ *
  * For example:
  * scope:client:incoming?name=jonas
  *
@@ -182,9 +170,9 @@ class ScopeURI
         if (count($parts) > 1) {
             parse_str($parts[1], $params);
         }
-        
+
         $parts = explode(':', $parts[0], 2);
-        
+
         if (count($parts) != 3) {
             throw new UnexpectedValueException(
                 'Not enough parts for scope URI');
