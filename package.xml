@@ -14,11 +14,11 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>neuman+pear@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2011-07-20</date>
+ <date>2011-07-26</date>
  <time>11:06:14</time>
  <version>
-  <release>3.0.1</release>
-  <api>3.0.1</api>
+  <release>3.2.0</release>
+  <api>3.2.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -116,14 +116,14 @@ No release notes.
  <changelog>
   <release>
    <version>
-    <release>3.0.1</release>
-    <api>3.0.1</api>
+    <release>3.2.0</release>
+    <api>3.2.0</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2011-07-20</date>
+   <date>2011-07-26</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
 No release notes.
