@@ -70,6 +70,7 @@ No release notes.
      <file name="ListResource.php" role="php" />
      <file name="Page.php" role="php" />
      <file name="PartialApplicationHelper.php" role="php" />
+     <file name="RestException.php" role="php" />
      <file name="Resource.php" role="php" />
      <file name="Twiml.php" role="php" />
     </dir> <!-- /Services/Twilio -->
