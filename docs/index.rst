@@ -10,17 +10,23 @@
 Status
 =======
 
-This documentation is for version 3.0 of `twilio-php <https://www.github.com/twilio/twilio-php>`_.
+This documentation is for version 3.2 of `twilio-php <https://www.github.com/twilio/twilio-php>`_.
 
 Installation
 ================
+
+Via PEAR
+>>>>>>>>>>>>>
 
 .. code-block:: bash
 
     pear channel-discover twilio.github.com/pear
     pear install twilio/Services_Twilio
 
-If you aren't using PEAR, you can just download the `source <https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-0.0.3.tar?raw=true>`_
+From Source
+>>>>>>>>>>>>>
+
+If you aren't using PEAR, download the `source <https://github.com/twilio/twilio-php/zipball/master>` which includes all the dependencies.
 
 Quickstart
 ============

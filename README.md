@@ -1,4 +1,6 @@
-Twilio API helper library
+## A Brief Introduction
+
+With version 3.0 we've simplified interaction with the Twilio REST API. No more manually creating URLS or parsing XML/JSON. You now interact with resources directly. Follow the [Quickstart Guide](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart) to get up and running right now. The [User Guide](http://readthedocs.org/docs/twilio-php/en/latest/#user-guide) shows you how to get the most out of **twilio-php**.
 
 ## Prerequisites
 
@@ -7,20 +9,28 @@ Twilio API helper library
 
 ## Installing
 
-Via PEAR:
+### Via PEAR (>= 1.9.3):
 
     pear channel-discover twilio.github.com/pear
     pear install twilio/Services_Twilio
 
-If you aren't using PEAR, you can just download the [source](https://github.com/twilio/pear/blob/gh-pages/get/Services_Twilio-3.0.1.tar?raw=true>)
+### From Source
+
+Not using PEAR? Not a problem. Download the [source](https://github.com/twilio/twilio-php/zipball/master) which includes all dependencies.
+
+## Quickstart
+
+Want to get up running with **twilio-php** in minutes? Read through the quickstart [here](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart). Highly suggested reading.
 
 ## Full Documentation
 
 http://readthedocs.org/docs/twilio-php/en/latest/
 
-## Quickstart
+## Reporting Issues
 
-Getting started with the Twilio API couldn't be easier. Create a Twilio REST client to get started. For example, the following code makes a call using the Twilio REST API.
+Report issues using the [Github Issue Tracker](https://github.com/twilio/twilio-php/issues) or email [help@twilio.com][mailto:help@twilio.com].
+
+## Samlpe Code
 
 ### Making a Call
 
@@ -56,4 +66,5 @@ print $response;
   <Play loop="5">monkey.mp3</Play>
 </Response>
 ```
+
 

@@ -98,7 +98,7 @@ No release notes.
     <min>5.2.1</min>
    </php>
    <pearinstaller>
-    <min>1.7.0</min>
+    <min>1.9.3</min>
    </pearinstaller>
   </required>
   <optional>
