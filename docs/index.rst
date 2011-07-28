@@ -26,52 +26,32 @@ Via PEAR
 From Source
 >>>>>>>>>>>>>
 
-If you aren't using PEAR, download the `source <https://github.com/twilio/twilio-php/zipball/master>` which includes all the dependencies.
+If you aren't using PEAR, download the `source <https://github.com/twilio/twilio-php/zipball/master>`_ which includes all the dependencies.
 
 Quickstart
 ============
 
-Getting started with the Twilio API couldn't be easier. Create a Twilio REST client to get started. For example, the following code makes a call using the Twilio REST API.
-
-Making a Call
->>>>>>>>>>>>>>>
-
-.. code-block:: php
-
-    $sid = "ACXXXXXX"; // Your Twilio account sid
-    $token = "YYYYYY"; // Your Twilio auth token
-
-    $client = new Services_Twilio($sid, $token);
-    $call = $client->account->calls->create(
-      '9991231234', // From this number
-      '8881231234', // Call this number
-      'http://foo.com/call.xml'
-    );
-
-Generating TwiML
->>>>>>>>>>>>>>>>>>>>
-
-To control phone calls, your application need to output TwiML. Use :class:`Services_Twilio_Twiml` to easily create such responses.
-
-.. code-block:: php
-
-    $response = new Services_Twilio_Twiml();
-    $response->say('Hello');
-    print $response;
-
-.. code-block:: xml
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <Response><Play loop="5">monkey.mp3</Play><Response>
+Want to get up running with **twilio-php** in minutes? Read through the quickstart :doc:`quickstart`
 
 User Guide
 ==================
 
+REST API
+>>>>>>>>>>
+
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :glob:
 
     usage/rest
+    usage/rest/*
+
+TwiML and other utilities
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. toctree::
+    :maxdepth: 1
+
     usage/twiml
     usage/validation
     usage/token-generation
