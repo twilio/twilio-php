@@ -13,6 +13,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         );
         return $curried;
     }
+
     public function getTollFree($country)
     {
         $curried = new Services_Twilio_PartialApplicationHelper();
@@ -23,6 +24,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         );
         return $curried;
     }
+
     public function getList($country, $type, array $params = array())
     {
         return $this->retrieveData("$country/$type", $params);

@@ -2,6 +2,8 @@
 Quickstart
 =============
 
+.. note:: The quickstart is a work in progress. We'll be adding more information soon.
+
 Making a Call
 ==============
 
