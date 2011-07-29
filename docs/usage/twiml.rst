@@ -17,7 +17,42 @@ TwiML creation begins with the :class:`Services_Twilio_Twiml` verb. Each succesi
     <?xml version="1.0" encoding="UTF-8"?>
     <Response><Say>Hello</Say><Response>
 
-The verb methods (outlined in the complete reference) take the body (only text) of the verb as the first argument. All attributes are keyword arguements.
+Primary Verbs
+=============
+
+These are the
+
+Response
+--------
+
+All TwiML starts with the `<Response>` verb. The following code creates an empty response.
+
+.. code-block:: php
+
+    $response = new Services_Twilio_Twiml();
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response></Response>
+
+Say
+---
+
+.. code-block:: php
+
+    $response = new Services_Twilio_Twiml();
+    $response->say("Hello World");
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response><Say>Hello World</Say></Response>
+
+Play
+----
 
 .. code-block:: php
 
@@ -28,22 +63,70 @@ The verb methods (outlined in the complete reference) take the body (only text) 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <Response><Play loop="3">monkey.mp3</Play><Response>
+    <Response><Play loop="5">monkey.mp3</Play><Response>
+
+Gather
+------
 
 .. code-block:: php
 
     $response = new Services_Twilio_Twiml();
-    $response->say('hello');
-    $response
-      ->gather(array('end_on_key' => '4'))
-      ->say('World');
+    $gather = $response->gather(array('numDigits' => 5));
+    $gather->say("Hello Caller");
     print $response;
 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <Response>
-      <Say>Hello</Say>
-      <Gather endOnKey="4"><Say>World</Say></Gather>
-    </Response>
+      <Gather numDigits="5">
+        <Say>Hellow Caller</Say>
+      </Gather>
+    <Response>
 
+Record
+------
+
+Sms
+---
+
+Dial
+----
+
+Number
+~~~~~~
+
+Client
+~~~~~~
+
+Conference
+~~~~~~~~~~
+
+Secondary Verbs
+===============
+
+Hangup
+------
+
+Redirect
+--------
+
+Reject
+------
+
+Pause
+-----
+
+.. code-block:: php
+
+    $response = new Services_Twilio_Twiml();
+    $response->pause("");
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response></Response>
+
+
+The verb methods (outlined in the complete reference) take the body (only text) of the verb as the first argument. All attributes are keyword arguements.
