@@ -46,6 +46,8 @@ All the available attributes are documented in the :doc:`/api/rest` documentatio
 Filtering Resources
 >>>>>>>>>>>>>>>>>>>>
 
+
+
 Getting a Specific Resource
 =============================
 
