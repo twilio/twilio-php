@@ -34,11 +34,11 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '0.0.2';
-$api_state       = 'alpha';
+$api_version     = '3.2.1';
+$api_state       = 'stable';
 
-$release_version = '0.0.2';
-$release_state   = 'alpha';
+$release_version = '3.2.1';
+$release_state   = 'stable';
 $release_notes   = "No release notes.";
 
 $description = <<<DESC
@@ -89,16 +89,23 @@ $package->addMaintainer(
     'neuman+pear@twilio.com'
 );
 
+$package->addMaintainer(
+    'lead',
+    'derferman',
+    'Kyle Conroy',
+    'kyle+pear@twilio.com'
+);
+
+
 $package->setPhpDep('5.2.1');
 
-$package->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net');
 $package->addPackageDepWithChannel('optional', 'Mockery', 'pear.survivethedeepend.com');
 
-$package->setPearInstallerDep('1.7.0');
+$package->setPearInstallerDep('1.9.3');
 $package->generateContents();
 $package->addRelease();
 
-if (   isset($_GET['make'])
+if (isset($_GET['make'])
     || (isset($_SERVER['argv']) && @$_SERVER['argv'][1] == 'make')
 ) {
     $package->writePackageFile();
