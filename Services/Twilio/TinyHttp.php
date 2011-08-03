@@ -7,17 +7,18 @@
 class Services_Twilio_TinyHttpException extends ErrorException {}
 
 class Services_Twilio_TinyHttp {
-  var $user, $pass, $scheme, $host, $port, $debug;
+  var $user, $pass, $scheme, $host, $port, $debug, $curlopts;
 
   public function __construct($uri = '', $kwargs = array()) {
     foreach (parse_url($uri) as $name => $value) $this->$name = $value;
     $this->debug = isset($kwargs['debug']) ? !!$kwargs['debug'] : NULL;
+    $this->curlopts = isset($kwargs['curlopts']) ? $kwargs['curlopts'] : array();
   }
 
   public function __call($name, $args) {
     list($res, $req_headers, $req_body) = $args + array(0, array(), '');
 
-    $opts = array(
+    $opts = $this->curlopts + array(
       CURLOPT_URL => "$this->scheme://$this->host$res",
       CURLOPT_HEADER => TRUE,
       CURLOPT_RETURNTRANSFER => TRUE,
