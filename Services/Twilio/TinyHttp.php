@@ -1,6 +1,6 @@
 <?php
 /**
- * TinyHttp from https://gist.github.com/618157.
+ * Based on TinyHttp from https://gist.github.com/618157.
  * Copyright 2011, Neuman Vong. BSD License.
  */
 
@@ -9,11 +9,8 @@ class Services_Twilio_TinyHttpException extends ErrorException {}
 class Services_Twilio_TinyHttp {
   var $user, $pass, $scheme, $host, $port, $debug;
 
-  public function __construct($url, $kwargs = array()) {
-    $parts = parse_url($url);
-    foreach (get_object_vars($this) as $name => $_) {
-      $this->$name = isset($parts[$name]) ? $parts[$name]: NULL;
-    }
+  public function __construct($uri = '', $kwargs = array()) {
+    foreach (parse_url($uri) as $name => $value) $this->$name = $value;
     $this->debug = isset($kwargs['debug']) ? !!$kwargs['debug'] : NULL;
   }
 
@@ -91,5 +88,10 @@ class Services_Twilio_TinyHttp {
       if (isset($buf) && is_resource($buf)) fclose($buf);
       throw $e;
     }
+  }
+
+  public function authenticate($user, $pass) {
+    $this->user = $user;
+    $this->pass = $pass;
   }
 }
