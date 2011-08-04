@@ -3,28 +3,21 @@
 class Services_Twilio_AutoPagingIterator
     implements Iterator
 {
-    protected $resource;
-    protected $page;
-    protected $size;
-    protected $filters;
+    protected $generator;
+    protected $promoter;
+    protected $args;
     protected $items;
 
     private $_args;
 
-    public function __construct(
-        Services_Twilio_ListResource $resource,
-        array $filters = array(),
-        $page = 0, 
-        $size = 50)
-    {
-        $this->resource = $resource;
-        $this->page = $page;
-        $this->size = $size;
-        $this->filters = $filters;
+    public function __construct($generator, $promoter, array $args) {
+        $this->generator = $generator;
+        $this->promoter = $promoter;
+        $this->args = $args;
         $this->items = array();
 
         // Save a backup for rewind()
-        $this->_args = array($page, $size);
+        $this->_args = $args;
     }
 
     public function current()
@@ -50,9 +43,7 @@ class Services_Twilio_AutoPagingIterator
 
     public function rewind()
     {
-        list($page, $size) = $this->_args;
-        $this->page = $page;
-        $this->size = $size;
+        $this->args = $this->_args;
         $this->items = array();
     }
 
@@ -80,12 +71,8 @@ class Services_Twilio_AutoPagingIterator
             // null key when the items list is iterated over completely
             || key($this->items) === null
         ) {
-            $this->page = $this->page + 1;
-            $this->items = $this->resource->getList(
-                $this->filters,
-                $this->page,
-                $this->size
-            );
+            $this->items = call_user_func_array($this->generator, $this->args);
+            $this->args = call_user_func_array($this->promoter, $this->args);
         }
     }
 }

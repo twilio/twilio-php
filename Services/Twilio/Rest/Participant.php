@@ -7,10 +7,4 @@ class Services_Twilio_Rest_Participant
     {
         $this->update('Muted', 'true');
     }
-
-    public function unmute()
-    {
-        // TOODO
-    }
-
 }

@@ -12,6 +12,10 @@ Status
 
 This documentation is for version 3.2 of `twilio-php <https://www.github.com/twilio/twilio-php>`_.
 
+Quickstart
+============
+
+Want to get up running with **twilio-php** in minutes? Read through the quickstart :doc:`quickstart`
 
 Installation
 ================
@@ -28,11 +32,6 @@ From Source
 >>>>>>>>>>>>>
 
 If you aren't using PEAR, download the `source <https://github.com/twilio/twilio-php/zipball/master>`_ which includes all the dependencies.
-
-Quickstart
-============
-
-Want to get up running with **twilio-php** in minutes? Read through the quickstart :doc:`quickstart`
 
 
 User Guide

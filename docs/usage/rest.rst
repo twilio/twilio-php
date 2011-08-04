@@ -25,49 +25,28 @@ You access the Twilio API resources through this :attr:`$client`, specifically t
 Listing Resources
 ====================
 
-Each list resource supports iterating over the first page of results using :php:meth:`getList`. The followig code will print out the price and duration of your 50 latest calls
+Each list resource supports iterating over the first page of results without a method call. The followig code will print out the price and duration of your 50 latest calls
 
 .. code-block:: php
 
-    foreach($client->account->calls->getList() as $call) {
-        print $call->sid . "\n";
-    }
-
-The :attr:`$call` object is a :php:class:`Services_Twilio_Rest_Call`, which means you can easily access fields through it's properties. The attribute names are lowercase and use underscores for sepearators. All the available attributes are documented in the :doc:`/api/rest` documentation.
-
-Iterating over the :attr:`calls` attribute (without calling :php:meth:`getList`) will iterate over all of your call records, handling paging for you. Only use this when you need to get all your records.
-
-.. code-block:: php
-
-    // This could take a while
     foreach($client->account->calls as $call) {
-        print $call->sid . "\n";
+        print $call->price . '\n';
+	print $call->duration . '\n';
     }
+
+The :attr:`$call` object is a :php:class:`Services_Twilio_Rest_Call`, which means you can easily access fields through it's properties. The attribute names are lowercase and use underscores for sepearators. For example, a `Call resource <http://www.twilio.com/docs/api/rest/call>`_ has a `DateCreated` and a `DateUpdated` fields (amoung others). To print those two values out, use:
+
+.. code-block:: php
+
+    print $call->date_updated . '\n';
+    print $call->date_created . '\n';
+
+All the available attributes are documented in the :doc:`/api/rest` documentation.
 
 Filtering Resources
--------------------
+>>>>>>>>>>>>>>>>>>>>
 
-Many Twilio list resources allow for filtering via :php:meth:`getList` which takes an optionatl array of filter parameters. These parameters correspond directlty to the listed query string parameters in the REST API documentation.
 
-.. code-block:: php
-
-    $filtered_calls = $client->account->calls->getList(
-        array("Started" => "2011-05-07"));
-    foreach($filtered_calls as $call) {
-        print $call->price . "\n";
-	print $call->duration . "\n";
-    }
-
-You can also create a filtered iterator.
-
-.. code-block:: php
-
-    $filtered_calls = $client->account->calls->getIterator(0, 50,
-        array("Started" => "2011-05-07"));
-    foreach($filtered_calls as $call) {
-        print $call->price . "\n";
-	print $call->duration . "\n";
-    }
 
 Getting a Specific Resource
 =============================
@@ -89,22 +68,11 @@ If you know the unique identifier for a resource, you can get that resource usin
 Updating an Individual Resource
 ================================
 
-.. code-block:: php
-
-    $call = $client->account->calls->get("CA123")->update(array(
-        "Status" => "completed",
-    ));
-
-This will hangup and cancel that call.
-
 Deleting an Individual Resource
 ================================
 
-.. code-block:: php
+Available Resources
+====================
 
-    if ($client->account->calls->delete("CA123"))
-        print "Success"
-    else
-        print "Failure"
+The rest of the User Guide covers the specific list resources available from the REST client.
 
-The follwing will print "Failure" as call records can't be deleted.
