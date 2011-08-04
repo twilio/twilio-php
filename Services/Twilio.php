@@ -45,7 +45,7 @@ class Services_Twilio extends Services_Twilio_Resource
         if (null === $_http) {
             $_http = new Services_Twilio_TinyHttp(
                 "https://api.twilio.com",
-                array(CURLOPT_USERAGENT => self::USER_AGENT)
+                array("curlopts" => array(CURLOPT_USERAGENT => self::USER_AGENT))
             );
         }
         $_http->authenticate($sid, $token);
