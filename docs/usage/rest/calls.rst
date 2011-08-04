@@ -57,7 +57,7 @@ redirect them as necessary:
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '123');
-    $calls = $client->account->calls->getList(array('status' => 'in-progress'));
+    $calls = $client->account->calls->getIterator(0, 50, array('Status' => 'in-progress'));
     foreach ($calls as $call) {
       $call->route('http://foo.com/new.xml', array('method' => 'POST'));
     }
@@ -67,7 +67,7 @@ Ending all live calls is also possible:
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '123');
-    $calls = $client->account->calls->getList(array('status' => 'in-progress'));
+    $calls = $client->account->calls->getIterator(0, 50, array('Status' => 'in-progress'));
     foreach ($calls as $call) {
       $call->hangup();
     }
