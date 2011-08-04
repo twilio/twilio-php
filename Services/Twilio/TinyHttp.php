@@ -30,7 +30,6 @@ class Services_Twilio_TinyHttp {
       CURLOPT_INFILESIZE => -1,
       CURLOPT_POSTFIELDS => NULL,
       CURLOPT_TIMEOUT => 60,
-	  CURLOPT_SSL_VERIFYPEER => false,
     );
 
     foreach ($req_headers as $k => $v) $opts[CURLOPT_HTTPHEADER][] = "$k: $v";
