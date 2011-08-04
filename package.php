@@ -61,7 +61,8 @@ $package->setOptions(
         ),
         'ignore'                  => array(
             'package.php',
-            '*.tgz'
+            '*.tgz',
+			'docs/*',
         )
     )
 );
@@ -69,7 +70,7 @@ $package->setOptions(
 $package->setPackage('Services_Twilio');
 $package->setSummary('PHP helper library for Twilio');
 $package->setDescription($description);
-$package->setChannel('pear.php.net');
+$package->setChannel('twilio.github.com/pear');
 $package->setPackageType('php');
 $package->setLicense(
     'MIT License',

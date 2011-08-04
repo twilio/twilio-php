@@ -4,7 +4,7 @@
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>Services_Twilio</name>
- <channel>pear.php.net</channel>
+ <channel>twilio.github.com/pear</channel>
  <summary>PHP helper library for Twilio</summary>
  <description>A SDK (or helper library, as we&apos;re calling them) for PHP developers to write
 applications against Twilio&apos;s REST API and generate TwiML responses.</description>
@@ -21,7 +21,7 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <active>yes</active>
  </lead>
  <date>2011-08-04</date>
- <time>16:13:51</time>
+ <time>16:31:49</time>
  <version>
   <release>3.2.2</release>
   <api>3.2.2</api>
@@ -36,178 +36,6 @@ No release notes.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <dir name="docs">
-    <dir name="api">
-     <file name="rest.rst" role="data" />
-     <file name="services.rst" role="data" />
-    </dir> <!-- /docs/api -->
-    <dir name="usage">
-     <dir name="rest">
-      <file name="accounts.rst" role="data" />
-      <file name="callerids.rst" role="data" />
-      <file name="calls.rst" role="data" />
-      <file name="conferences.rst" role="data" />
-      <file name="notifications.rst" role="data" />
-      <file name="sms-messages.rst" role="data" />
-      <file name="transcriptions.rst" role="data" />
-     </dir> <!-- /docs/usage/rest -->
-     <file name="rest.rst" role="data" />
-     <file name="token-generation.rst" role="data" />
-     <file name="twiml.rst" role="data" />
-     <file name="validation.rst" role="data" />
-    </dir> <!-- /docs/usage -->
-    <dir name="_build">
-     <dir name="doctrees">
-      <dir name="api">
-       <file name="rest.doctree" role="data" />
-       <file name="services.doctree" role="data" />
-       <file name="twiml.doctree" role="data" />
-      </dir> <!-- /docs/_build/doctrees/api -->
-      <dir name="usage">
-       <dir name="rest">
-        <file name="accounts.doctree" role="data" />
-        <file name="callerids.doctree" role="data" />
-        <file name="calls.doctree" role="data" />
-        <file name="conferences.doctree" role="data" />
-        <file name="general.doctree" role="data" />
-        <file name="index.doctree" role="data" />
-        <file name="notifications.doctree" role="data" />
-        <file name="sms-messages.doctree" role="data" />
-        <file name="transcriptions.doctree" role="data" />
-       </dir> <!-- /docs/_build/doctrees/usage/rest -->
-       <file name="rest.doctree" role="data" />
-       <file name="token-generation.doctree" role="data" />
-       <file name="twiml.doctree" role="data" />
-       <file name="validation.doctree" role="data" />
-      </dir> <!-- /docs/_build/doctrees/usage -->
-      <dir name="_themes">
-       <file name="README.doctree" role="data" />
-      </dir> <!-- /docs/_build/doctrees/_themes -->
-      <file name="environment.pickle" role="data" />
-      <file name="index.doctree" role="data" />
-      <file name="quickstart.doctree" role="data" />
-     </dir> <!-- /docs/_build/doctrees -->
-     <dir name="html">
-      <dir name="api">
-       <file name="rest.html" role="doc" />
-       <file name="services.html" role="doc" />
-       <file name="twiml.html" role="doc" />
-      </dir> <!-- /docs/_build/html/api -->
-      <dir name="usage">
-       <dir name="rest">
-        <file name="accounts.html" role="doc" />
-        <file name="callerids.html" role="doc" />
-        <file name="calls.html" role="doc" />
-        <file name="conferences.html" role="doc" />
-        <file name="general.html" role="doc" />
-        <file name="index.html" role="doc" />
-        <file name="notifications.html" role="doc" />
-        <file name="sms-messages.html" role="doc" />
-        <file name="transcriptions.html" role="doc" />
-       </dir> <!-- /docs/_build/html/usage/rest -->
-       <file name="rest.html" role="doc" />
-       <file name="token-generation.html" role="doc" />
-       <file name="twiml.html" role="doc" />
-       <file name="validation.html" role="doc" />
-      </dir> <!-- /docs/_build/html/usage -->
-      <dir name="_sources">
-       <dir name="api">
-        <file name="rest.txt" role="data" />
-        <file name="services.txt" role="data" />
-        <file name="twiml.txt" role="data" />
-       </dir> <!-- /docs/_build/html/_sources/api -->
-       <dir name="usage">
-        <dir name="rest">
-         <file name="accounts.txt" role="data" />
-         <file name="callerids.txt" role="data" />
-         <file name="calls.txt" role="data" />
-         <file name="conferences.txt" role="data" />
-         <file name="general.txt" role="data" />
-         <file name="index.txt" role="data" />
-         <file name="notifications.txt" role="data" />
-         <file name="sms-messages.txt" role="data" />
-         <file name="transcriptions.txt" role="data" />
-        </dir> <!-- /docs/_build/html/_sources/usage/rest -->
-        <file name="rest.txt" role="data" />
-        <file name="token-generation.txt" role="data" />
-        <file name="twiml.txt" role="data" />
-        <file name="validation.txt" role="data" />
-       </dir> <!-- /docs/_build/html/_sources/usage -->
-       <dir name="_themes">
-        <file name="README.txt" role="data" />
-       </dir> <!-- /docs/_build/html/_sources/_themes -->
-       <file name="index.txt" role="data" />
-       <file name="quickstart.txt" role="data" />
-      </dir> <!-- /docs/_build/html/_sources -->
-      <dir name="_static">
-       <file name="basic.css" role="data" />
-       <file name="doctools.js" role="data" />
-       <file name="file.png" role="data" />
-       <file name="flasky.css" role="data" />
-       <file name="jquery.js" role="data" />
-       <file name="minus.png" role="data" />
-       <file name="plus.png" role="data" />
-       <file name="pygments.css" role="data" />
-       <file name="searchtools.js" role="data" />
-       <file name="small_flask.css" role="data" />
-       <file name="underscore.js" role="data" />
-      </dir> <!-- /docs/_build/html/_static -->
-      <dir name="_themes">
-       <file name="README.html" role="doc" />
-      </dir> <!-- /docs/_build/html/_themes -->
-      <file name="genindex.html" role="doc" />
-      <file name="index.html" role="doc" />
-      <file name="objects.inv" role="data" />
-      <file name="quickstart.html" role="doc" />
-      <file name="search.html" role="doc" />
-      <file name="searchindex.js" role="data" />
-     </dir> <!-- /docs/_build/html -->
-     <dir name="latex">
-      <file name="fncychap.sty" role="data" />
-      <file name="Makefile" role="data" />
-      <file name="python.ist" role="data" />
-      <file name="Services_Twilio.aux" role="data" />
-      <file name="Services_Twilio.idx" role="data" />
-      <file name="Services_Twilio.ilg" role="data" />
-      <file name="Services_Twilio.ind" role="data" />
-      <file name="Services_Twilio.log" role="data" />
-      <file name="Services_Twilio.out" role="data" />
-      <file name="Services_Twilio.pdf" role="data" />
-      <file name="Services_Twilio.tex" role="data" />
-      <file name="Services_Twilio.toc" role="data" />
-      <file name="sphinx.sty" role="data" />
-      <file name="sphinxhowto.cls" role="data" />
-      <file name="sphinxmanual.cls" role="data" />
-      <file name="tabulary.sty" role="data" />
-     </dir> <!-- /docs/_build/latex -->
-    </dir> <!-- /docs/_build -->
-    <dir name="_themes">
-     <dir name="kr">
-      <dir name="static">
-       <file name="flasky.css_t" role="data" />
-       <file name="small_flask.css" role="data" />
-      </dir> <!-- /docs/_themes/kr/static -->
-      <file name="layout.html" role="doc" />
-      <file name="relations.html" role="doc" />
-      <file name="theme.conf" role="data" />
-     </dir> <!-- /docs/_themes/kr -->
-     <dir name="kr_small">
-      <dir name="static">
-       <file name="flasky.css_t" role="data" />
-      </dir> <!-- /docs/_themes/kr_small/static -->
-      <file name="layout.html" role="doc" />
-      <file name="theme.conf" role="data" />
-     </dir> <!-- /docs/_themes/kr_small -->
-     <file name="flask_theme_support.py" role="data" />
-     <file name="LICENSE" role="data" />
-     <file name="README.rst" role="data" />
-    </dir> <!-- /docs/_themes -->
-    <file name="conf.py" role="data" />
-    <file name="index.rst" role="data" />
-    <file name="Makefile" role="data" />
-    <file name="quickstart.rst" role="data" />
-    <file name="requirements.txt" role="data" />
-   </dir> <!-- /docs -->
    <dir name="Services">
     <dir name="Twilio">
      <dir name="Rest">
