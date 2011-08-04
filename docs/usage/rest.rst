@@ -22,6 +22,20 @@ The :attr:`account` attibute
 
 You access the Twilio API resources through this :attr:`$client`, specifically the :attr:`$account` attribute, which is an instance of :php:class:`Services_Twilio_Rest_Account`. We'll use the `Calls resource <http://www.twilio.com/docs/api/rest/call>`_ as an example.
 
+SSL Validation Exceptions
+-------------------------
+
+If you are using an out-dated verison of `libcurl`, you may encounter SSL validation exceptions. If you can't upgrade `libcurl`, you can disable SSL peer validation. Only use this as a last resort, as it leaves you vunerable to `Man-in-the-middle attacks <http://en.wikipedia.org/wiki/Man-in-the-middle_attack>`_.
+
+.. code-block:: php
+
+    $http = new Services_Twilio_TinyHttp(
+        'https://api.twilio.com',
+        array('curlopts' => array(CURLOPT_SSL_VERIFYPEER => false))
+    );
+
+    $client = new Services_Twilio('AC123', 'token', '2010-04-01', $http);
+
 Listing Resources
 ====================
 
@@ -43,9 +57,15 @@ Filtering Resources
 Many Twilio list resources allow for filtering via :php:meth:`getIterator` which takes an optional array of filter parameters. These parameters correspond directlty to the listed query string parameters in the REST API documentation.
 
 You can create a filtered iterator.
->>>>>>> 2473626... Update docs to revert the getList usage instructions
 
+.. code-block:: php
 
+    $filteredCalls = $client->account->calls->getIterator(
+        0, 50, array("Status" => "in-progress"));
+    foreach($filteredCalls as $call) {
+        print $call->price . '\n';
+	print $call->duration . '\n';
+    }
 
 Getting a Specific Resource
 =============================
@@ -62,16 +82,3 @@ If you know the unique identifier for a resource, you can get that resource usin
 
     $participant = $client->account->conferences
         ->get("CO123")->participants->get("PF123");
-
-
-Updating an Individual Resource
-================================
-
-Deleting an Individual Resource
-================================
-
-Available Resources
-====================
-
-The rest of the User Guide covers the specific list resources available from the REST client.
-
