@@ -141,7 +141,7 @@ abstract class Services_Twilio_ListResource
         );
     }
 
-    public function getPageGenerator($page, $size) {
-        return $this->getPage($page, $size)->getItems();
+    public function getPageGenerator($page, $size, array $filters = array()) {
+        return $this->getPage($page, $size, $filters)->getItems();
     }
 }
