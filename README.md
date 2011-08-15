@@ -30,7 +30,7 @@ http://readthedocs.org/docs/twilio-php/en/latest/
 
 Report issues using the [Github Issue Tracker](https://github.com/twilio/twilio-php/issues) or email [help@twilio.com][mailto:help@twilio.com].
 
-## Samlpe Code
+## Sample Code
 
 ### Making a Call
 
