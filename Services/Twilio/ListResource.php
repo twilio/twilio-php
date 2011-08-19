@@ -8,7 +8,7 @@
  * @author   Neuman Vong <neuman@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
- */ 
+ */
 abstract class Services_Twilio_ListResource
     extends Services_Twilio_Resource
     implements IteratorAggregate
@@ -24,7 +24,7 @@ abstract class Services_Twilio_ListResource
     public function get($sid)
     {
         $schema = $this->getSchema();
-        $type = $schema['instance']; 
+        $type = $schema['instance'];
         return new $type(is_object($sid)
             ? new Services_Twilio_CachingDataProxy(
                 isset($sid->sid) ? $sid->sid : NULL, $this, $sid
@@ -45,7 +45,7 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Create a resource on the list and then return its representation as an 
+     * Create a resource on the list and then return its representation as an
      * InstanceResource.
      *
      * @param array $params The parameters with which to create the resource
@@ -60,7 +60,7 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Create a resource on the list and then return its representation as an 
+     * Create a resource on the list and then return its representation as an
      * InstanceResource.
      *
      * @param array $params The parameters with which to create the resource
@@ -75,7 +75,7 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Create a resource on the list and then return its representation as an 
+     * Create a resource on the list and then return its representation as an
      * InstanceResource.
      *
      * @param array $params The parameters with which to create the resource
@@ -136,7 +136,8 @@ abstract class Services_Twilio_ListResource
     {
         return new Services_Twilio_AutoPagingIterator(
             array($this, 'getPageGenerator'),
-            create_function('$page, $size', 'return array($page + 1, $size);'),
+            create_function('$page, $size, $filters',
+                'return array($page + 1, $size, $filters);'),
             array($page, $size, $filters)
         );
     }
