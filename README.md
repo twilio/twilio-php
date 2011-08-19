@@ -28,7 +28,7 @@ http://readthedocs.org/docs/twilio-php/en/latest/
 
 ## Reporting Issues
 
-Report issues using the [Github Issue Tracker](https://github.com/twilio/twilio-php/issues) or email [help@twilio.com][mailto:help@twilio.com].
+Report issues using the [Github Issue Tracker](https://github.com/twilio/twilio-php/issues) or email [help@twilio.com](mailto:help@twilio.com).
 
 ## Samlpe Code
 
