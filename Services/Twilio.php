@@ -137,7 +137,8 @@ class Services_Twilio extends Services_Twilio_Resource
             return $this->_processXmlResponse($status, $headers, $body);
             break;
         }
-        throw new DomainException('Response was neither JSON nor XML');
+        throw new DomainException(
+            'Unexpected content type: ' . $headers['Content-Type']);
     }
 
     private function _processJsonResponse($status, $headers, $body) {
