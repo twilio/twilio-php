@@ -93,24 +93,6 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    function testGetIteratorUsesFiltersMoreThanOnce() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $qs = '?Page=0&PageSize=1&StartTime%3E=2009-07-06';
-        $http->shouldReceive('get')->twice()
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array(
-                    'total' => 2,
-                    'calls' => array(array('status' => 'Completed', 'sid' => 'CA123'))
-                ))
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $iterator = $client->account->calls->getIterator(
-            0, 1, array('StartTime>' => '2009-07-06'));
-        foreach ($iterator as $call) {
-            $this->assertEquals('Completed', $call->status);
-        }
-    }
-
     function testListResource() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
