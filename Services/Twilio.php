@@ -22,7 +22,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 class Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.2.0';
+    const USER_AGENT = 'twilio-php/3.2.2';
 
     protected $http;
     protected $version;
@@ -45,7 +45,7 @@ class Services_Twilio extends Services_Twilio_Resource
         if (null === $_http) {
             $_http = new Services_Twilio_TinyHttp(
                 "https://api.twilio.com",
-                array(CURLOPT_USERAGENT => self::USER_AGENT)
+                array("curlopts" => array(CURLOPT_USERAGENT => self::USER_AGENT))
             );
         }
         $_http->authenticate($sid, $token);

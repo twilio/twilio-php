@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -14,11 +14,17 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>neuman+pear@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2011-07-29</date>
- <time>11:06:14</time>
+ <lead>
+  <name>Kyle Conroy</name>
+  <user>derferman</user>
+  <email>kyle+pear@twilio.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-08-04</date>
+ <time>16:31:49</time>
  <version>
-  <release>3.2.1</release>
-  <api>3.2.1</api>
+  <release>3.2.2</release>
+  <api>3.2.2</api>
  </version>
  <stability>
   <release>stable</release>
@@ -71,8 +77,8 @@ No release notes.
      <file name="Page.php" role="php" />
      <file name="PartialApplicationHelper.php" role="php" />
      <file name="RequestValidator.php" role="php" />
-     <file name="RestException.php" role="php" />
      <file name="Resource.php" role="php" />
+     <file name="RestException.php" role="php" />
      <file name="TinyHttp.php" role="php" />
      <file name="Twiml.php" role="php" />
     </dir> <!-- /Services/Twilio -->
@@ -80,16 +86,18 @@ No release notes.
    </dir> <!-- /Services -->
    <dir name="tests">
     <file name="Bootstrap.php" role="test" />
-    <file name="phpunit.xml" role="test" />
     <file name="CapabilityTest.php" role="test" />
+    <file name="phpunit.xml" role="test" />
     <file name="RequestValidatorTest.php" role="test" />
     <file name="ResourcesTest.php" role="test" />
     <file name="TwilioTest.php" role="test" />
     <file name="TwimlTest.php" role="test" />
    </dir> <!-- /tests -->
+   <file name="AUTHORS" role="data" />
    <file name="LICENSE" role="data" />
    <file name="Makefile" role="data" />
    <file name="README.md" role="data" />
+   <file name="test.php" role="php" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -106,24 +114,20 @@ No release notes.
     <name>Mockery</name>
     <channel>pear.survivethedeepend.com</channel>
    </package>
-   <package>
-    <name>PHPUnit</name>
-    <channel>pear.phpunit.de</channel>
-   </package>
   </optional>
  </dependencies>
  <phprelease />
  <changelog>
   <release>
    <version>
-    <release>3.2.1</release>
-    <api>3.2.1</api>
+    <release>3.2.2</release>
+    <api>3.2.2</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2011-07-29</date>
+   <date>2011-08-04</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
 No release notes.
