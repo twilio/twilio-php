@@ -34,10 +34,10 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.2.2';
+$api_version     = '3.2.3';
 $api_state       = 'stable';
 
-$release_version = '3.2.2';
+$release_version = '3.2.3';
 $release_state   = 'stable';
 $release_notes   = "No release notes.";
 
