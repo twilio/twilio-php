@@ -38,6 +38,15 @@ To make an outgoing connection from a `Twilio Client <http://www.twilio.com/api/
     $applicationSid = "AP123123"; // Twilio Application Sid
     $capability->allowClientOutgoing($applicationSid);
 
+:php:meth:`allowClientOutgoing` accepts an optional array of parameters. These parameters will be passed along when Twilio requests TwiML from the application.
+
+.. code-block:: php
+
+    $applicationSid = "AP123123";    // Twilio Application Sid
+    $params = array("Foo" => "Bar"); // Parameters to be passed
+    $capability->allowClientOutgoing($applicationSid, $params);
+
+
 Generate a Token
 ==================
 

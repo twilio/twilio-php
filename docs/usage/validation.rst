@@ -25,7 +25,7 @@ The below example will print out a confirmation message if the request is actual
 
     $token = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY';
 
-    $validator = new Twilio_Services_RequestValidator($token);
+    $validator = new Services_Twilio_RequestValidator($token);
 
     $url = "http://www.example.com/request/url";
     $postVars = array();
