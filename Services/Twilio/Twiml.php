@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Excepttion class for Services_Twilio_Twiml.
+ * Exception class for Services_Twilio_Twiml.
  */
 class Services_Twilio_TwimlException extends Exception {}
 
