@@ -9,20 +9,20 @@ With version 3.0 we've simplified interaction with the Twilio REST API. No more 
 
 ## Installing
 
-Once you download the library, stick the folder in your project directory, include the library file: 
+Download the [source](https://github.com/twilio/twilio-php/zipball/master) which includes all dependencies. 
 
-require Services/Twilio.php
+Once you download the library, stick the folder in your project directory and then include the library file:
+
+    require 'Services/Twilio.php';
 
 and you're good to go! 
 
 ### Via PEAR (>= 1.9.3):
 
+Or use these PEAR commands to download the helper library:
+
     pear channel-discover twilio.github.com/pear
     pear install twilio/Services_Twilio
-
-### From Source
-
-Not using PEAR? Not a problem. Download the [source](https://github.com/twilio/twilio-php/zipball/master) which includes all dependencies.
 
 ## Quickstart
 
