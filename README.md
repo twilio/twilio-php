@@ -9,6 +9,12 @@ With version 3.0 we've simplified interaction with the Twilio REST API. No more 
 
 ## Installing
 
+Once you download the library, stick the folder in your project directory, include the library file: 
+
+require Services/Twilio.php
+
+and you're good to go! 
+
 ### Via PEAR (>= 1.9.3):
 
     pear channel-discover twilio.github.com/pear
