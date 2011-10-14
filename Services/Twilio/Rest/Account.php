@@ -17,8 +17,8 @@ class Services_Twilio_Rest_Account
             'recordings',
             'sms_messages',
             'transcriptions',
-			'connect_apps',
-			'authorized_connect_apps'
+            'connect_apps',
+            'authorized_connect_apps'
         );
 
         $this->sandbox = new Services_Twilio_Rest_Sandbox(
