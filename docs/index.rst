@@ -15,7 +15,7 @@ This documentation is for version 3.2 of `twilio-php <https://www.github.com/twi
 Quickstart
 ============
 
-Want to get up running with **twilio-php** in minutes? Read through the quickstart :doc:`quickstart`
+Want to get up running with **twilio-php** in minutes? Read through the :doc:`quickstart`.
 
 Installation
 ================
