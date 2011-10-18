@@ -97,6 +97,34 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
     }
 }
 
+class ConnectAppsTest extends PHPUnit_Framework_TestCase
+{
+    function testUpdate()
+    {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/ConnectApps/CN123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('friendly_name' => 'foo'))
+            ));
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/ConnectApps/CN123.json', m::any(), m::any())
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('friendly_name' => 'Foo'))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $cn = $client->account->connect_apps->get('CN123');
+        $this->assertEquals('foo', $cn->friendly_name);
+        $cn->update('Foo', array('friendly_name' => 'Foo'));
+        $this->assertEquals('Foo', $cn->friendly_name);
+    }
+    
+    function tearDown()
+    {
+        m::close();
+    }
+}
+
 class NotificationTest extends PHPUnit_Framework_TestCase
 {
     function testDelete() {
@@ -117,22 +145,22 @@ class NotificationTest extends PHPUnit_Framework_TestCase
 
 class CallsTest extends PHPUnit_Framework_TestCase
 {
-	/**
-	 * @dataProvider sidProvider
-	 */
+    /**
+     * @dataProvider sidProvider
+     */
     function testApplicationSid($sid, $expected)
-	{
-		$result = Services_Twilio_Rest_Calls::isApplicationSid($sid);
-		$this->assertEquals($expected, $result);
-	}
+    {
+        $result = Services_Twilio_Rest_Calls::isApplicationSid($sid);
+        $this->assertEquals($expected, $result);
+    }
 
     function sidProvider()
-	{
-		return array(
-			array("AP2a0747eba6abf96b7e3c3ff0b4530f6e", true),
-			array("CA2a0747eba6abf96b7e3c3ff0b4530f6e", false),
-			array("AP2a0747eba6abf96b7e3c3ff0b4530f", false),
-			array("http://www.google.com/asdfasdfAP", false),
-		);
-	}
+    {
+        return array(
+            array("AP2a0747eba6abf96b7e3c3ff0b4530f6e", true),
+            array("CA2a0747eba6abf96b7e3c3ff0b4530f6e", false),
+            array("AP2a0747eba6abf96b7e3c3ff0b4530f", false),
+            array("http://www.google.com/asdfasdfAP", false),
+        );
+    }
 }
