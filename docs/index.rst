@@ -15,10 +15,64 @@ This documentation is for version 3.2 of `twilio-php <https://www.github.com/twi
 Quickstart
 ============
 
-Want to get up running with **twilio-php** in minutes? Read through the :doc:`quickstart`.
+Send a SMS
+>>>>>>>>>>>
+
+.. code-block:: php
+
+    $client = new Services_Twilio('AC123', '123');
+    $message = $client->account->sms_messages->create(
+      '9991231234', // From this number
+      '8881231234', // Text this number
+      "Hello monkey!"
+    );
+
+    print $message->sid;
+
+Make a Call
+>>>>>>>>>>>>>>
+
+.. code-block:: php
+
+    $sid = "ACXXXXXX"; // Your Twilio account sid
+    $token = "YYYYYY"; // Your Twilio auth token
+
+    $client = new Services_Twilio($sid, $token);
+    $call = $client->account->calls->create(
+      '9991231234', // From this number
+      '8881231234', // Call this number
+
+      // Read TwiML at this URL when a call connects (hold music)
+      'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+    );
+
+Generating TwiML
+>>>>>>>>>>>>>>>>
+
+To control phone calls, your application needs to output `TwiML
+<http://www.twilio.com/docs/api/twiml/>`_. Use :class:`Services_Twilio_Twiml`
+to easily create such responses.
+
+.. code-block:: php
+
+    $response = new Services_Twilio_Twiml();
+    $response->say('Hello');
+    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));    
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <Response>
+        <Say>Hello</Say>
+        <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
+    <Response>
 
 Installation
-================
+============
+
+There are two ways to install **twilio-php**: via the PEAR installer, or by
+downloading the source.
 
 Via PEAR
 >>>>>>>>>>>>>
@@ -26,13 +80,14 @@ Via PEAR
 .. code-block:: bash
 
     pear channel-discover twilio.github.com/pear
-    pear install twilio/Services_Twilio
+    pear install twilio/Services_Twilio    # may need to run sudo pear instead
 
 From Source
 >>>>>>>>>>>>>
 
-If you aren't using PEAR, download the `source <https://github.com/twilio/twilio-php/zipball/master>`_ which includes all the dependencies.
-
+If you aren't using PEAR, download the `source
+<https://github.com/twilio/twilio-php/zipball/master>`_, which includes all the
+dependencies.
 
 User Guide
 ==================
@@ -70,7 +125,7 @@ API Documentation
 Support and Development
 ===========================
 
-All development occurs over on `Github <https://github.com/twilio/twilio-php>`_. To checkout the source,
+All development occurs over on `Github <https://github.com/twilio/twilio-php>`_. To checkout the source, run
 
 .. code-block:: bash
 
@@ -84,7 +139,7 @@ If you’ve got questions that aren’t answered by this documentation, ask the 
 Running the Tests
 >>>>>>>>>>>>>>>>>>>>>>>>>
 
-The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and `PHPUnit <https://github.com/sebastianbergmann/phpunit>`_. First, 'discover' all the necessary pear channels (which is ridiculous)
+The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and `PHPUnit <https://github.com/sebastianbergmann/phpunit>`_. First, 'discover' all the necessary `PEAR` channels:
 
 .. code-block:: bash
 
