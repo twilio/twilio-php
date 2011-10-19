@@ -31,6 +31,8 @@ dist: clean
 	  mv $$php.new $$php; \
 	done
 
+# if these fail, you may need to install the helper libraries - see "Running
+# Tests" at http://readthedocs.org/projects/twilio-php/.
 test:
 	@echo running tests
 	@phpunit --configuration tests/phpunit.xml
