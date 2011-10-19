@@ -22,7 +22,7 @@ Accounts
 
      Create a new Subaccount.
 
-     :param array $params: An array of parameterss describing the new subaccount
+     :param array $params: An array of parameters describing the new subaccount
      :returns: A new :php:class:`Services_Twilio_Rest_Account` instance
 
      The **$params** array can contain the following keys:
