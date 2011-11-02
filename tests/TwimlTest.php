@@ -117,7 +117,16 @@ class TwimlTest extends PHPUnit_Framework_TestCase {
         $expected = '<Response><Redirect></Redirect></Response>';
         $this->assertXmlStringEqualsXmlString($expected, $r);
     }
-    
+
+    public function testAmpersandEscaping() {
+        $r = new Services_Twilio_Twiml();
+        $test_amp = "test&two&amp;three";
+        $r->redirect($test_amp);
+        $expected = '<Response><Redirect>' .
+            'test&amp;two&amp;three</Redirect></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+
     public function testRedirectConvience() {
         $r = new Services_Twilio_Twiml();
         $r->redirect();

@@ -218,14 +218,14 @@ Redirect
 .. code-block:: php
 
     $response = new Services_Twilio_Twiml;
-    $response->redirect('http://foo.com/path/to/resource');
+    $response->redirect('http://twimlets.com/voicemail?Email=somebody@somedomain.com');
     print $response;
     
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
     <Response>
-      <Redirect>http://foo.com/path/to/resource</Redirect>
+      <Redirect>http://twimlets.com/voicemail?Email=somebody@somedomain.com</Redirect>
     </Response>
 
 
