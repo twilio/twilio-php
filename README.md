@@ -1,6 +1,12 @@
 ## A Brief Introduction
 
-With version 3.0 we've simplified interaction with the Twilio REST API. No more manually creating URLS or parsing XML/JSON. You now interact with resources directly. Follow the [Quickstart Guide](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart) to get up and running right now. The [User Guide](http://readthedocs.org/docs/twilio-php/en/latest/#user-guide) shows you how to get the most out of **twilio-php**.
+With version 3.0 we've simplified interaction with the Twilio
+REST API. No more manually creating URLS or parsing XML/JSON.
+You now interact with resources directly. Follow the [Quickstart
+Guide](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart)
+to get up and running right now. The [User
+Guide](http://readthedocs.org/docs/twilio-php/en/latest/#user-guide) shows you
+how to get the most out of **twilio-php**.
 
 ## Prerequisites
 
@@ -10,6 +16,8 @@ With version 3.0 we've simplified interaction with the Twilio REST API. No more 
 ## Quickstart
 
 ### Send a SMS
+
+    require('Services/Twilio.php');
 
     $client = new Services_Twilio('AC123', '123');
     $message = $client->account->sms_messages->create(
@@ -22,8 +30,10 @@ With version 3.0 we've simplified interaction with the Twilio REST API. No more 
 
 ### Make a Call
 
-    $sid = "ACXXXXXX"; // Your Twilio account sid
-    $token = "YYYYYY"; // Your Twilio auth token
+    require('Services/Twilio.php');
+
+    $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
+    $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
     $client = new Services_Twilio($sid, $token);
     $call = $client->account->calls->create(
@@ -37,12 +47,14 @@ With version 3.0 we've simplified interaction with the Twilio REST API. No more 
 ### Generating TwiML
 
 To control phone calls, your application needs to output
-[TwiML](http://www.twilio.com/docs/api/twiml/). Use `Services_Twilio_Twiml` to
-easily create such responses.
+[TwiML](http://www.twilio.com/docs/api/twiml/ "Twilio Markup Language"). Use
+`Services_Twilio_Twiml` to easily create such responses.
+
+    require('Services/Twilio.php');
 
     $response = new Services_Twilio_Twiml();
     $response->say('Hello');
-    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));    
+    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
     print $response;
 
 That will output XML that looks like this:
@@ -55,7 +67,7 @@ That will output XML that looks like this:
 
 ## Installation
 
-You can either install **twilio-php** via PEAR or by downloading the source.
+You can install **twilio-php** via PEAR or by downloading the source.
 
 Download the [source](https://github.com/twilio/twilio-php/zipball/master)
 which includes all dependencies.
@@ -71,14 +83,15 @@ and you're good to go!
 
 Or use these PEAR commands to download the helper library:
 
-    pear channel-discover twilio.github.com/pear
-    pear install twilio/Services_Twilio
+    $ pear channel-discover twilio.github.com/pear
+    $ pear install twilio/Services_Twilio
 
 ## Full Documentation
 
-The documentation for **twilio-php** is hosted at
-Read the Docs. [Click here to read through our full
-documentation.](http://readthedocs.org/docs/twilio-php/en/latest/)
+The documentation for **twilio-php** is hosted
+at Read the Docs. [Click here to read our full
+documentation.](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP
+Library Documentation")
 
 ## Reporting Issues
 
