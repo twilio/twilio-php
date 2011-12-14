@@ -44,40 +44,40 @@ how to get the most out of **twilio-php**.
 ### Send an SMS
 
 ```php
-    // Install the library via PEAR or download the .zip file to your project folder.
-    // This line loads the library
-    require('Services/Twilio.php');
+// Install the library via PEAR or download the .zip file to your project folder.
+// This line loads the library
+require('Services/Twilio.php');
 
-    require('Services/Twilio.php');
+require('Services/Twilio.php');
 
-    $client = new Services_Twilio('AC123', '123');
-    $message = $client->account->sms_messages->create(
-      '9991231234', // From a valid Twilio number
-      '8881231234', // Text this number
-      "Hello monkey!"
-    );
+$client = new Services_Twilio('AC123', '123');
+$message = $client->account->sms_messages->create(
+  '9991231234', // From a valid Twilio number
+  '8881231234', // Text this number
+  "Hello monkey!"
+);
 
-    print $message->sid;
+print $message->sid;
 ```
 
 ### Make a Call
 
 ```php
-    // Install the library via PEAR or download the .zip file to your project folder.
-    // This line loads the library
-    require('Services/Twilio.php');
+// Install the library via PEAR or download the .zip file to your project folder.
+// This line loads the library
+require('Services/Twilio.php');
 
-    $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
-    $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
+$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
+$token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
-    $client = new Services_Twilio($sid, $token);
-    $call = $client->account->calls->create(
-      '9991231234', // From a valid Twilio number
-      '8881231234', // Call this number
+$client = new Services_Twilio($sid, $token);
+$call = $client->account->calls->create(
+  '9991231234', // From a valid Twilio number
+  '8881231234', // Call this number
 
-      // Read TwiML at this URL when a call connects (hold music)
-      'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
-    );
+  // Read TwiML at this URL when a call connects (hold music)
+  'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+);
 ```
 
 ### Generating TwiML
@@ -87,23 +87,23 @@ To control phone calls, your application needs to output
 `Services_Twilio_Twiml` to easily create such responses.
 
 ```php
-    require('Services/Twilio.php');
+require('Services/Twilio.php');
 
-    $response = new Services_Twilio_Twiml();
-    $response->say('Hello');
-    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
-    print $response;
+$response = new Services_Twilio_Twiml();
+$response->say('Hello');
+$response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
+print $response;
 ```
 
 That will output XML that looks like this:
 
-```xml
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Response>
         <Say>Hello</Say>
         <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
     <Response>
-```
+    ```
 
 ## [Full Documentation](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP Library Documentation")
 
