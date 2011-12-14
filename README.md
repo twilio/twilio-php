@@ -44,6 +44,7 @@ how to get the most out of **twilio-php**.
 ### Send an SMS
 
 ```php
+<?php
 // Install the library via PEAR or download the .zip file to your project folder.
 // This line loads the library
 require('Services/Twilio.php');
@@ -63,6 +64,7 @@ print $message->sid;
 ### Make a Call
 
 ```php
+<?php
 // Install the library via PEAR or download the .zip file to your project folder.
 // This line loads the library
 require('Services/Twilio.php');
@@ -87,6 +89,7 @@ To control phone calls, your application needs to output
 `Services_Twilio_Twiml` to easily create such responses.
 
 ```php
+<?php
 require('Services/Twilio.php');
 
 $response = new Services_Twilio_Twiml();
@@ -97,13 +100,13 @@ print $response;
 
 That will output XML that looks like this:
 
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <Response>
-        <Say>Hello</Say>
-        <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
-    <Response>
-    ```
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Response>
+    <Say>Hello</Say>
+    <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
+<Response>
+```
 
 ## [Full Documentation](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP Library Documentation")
 
