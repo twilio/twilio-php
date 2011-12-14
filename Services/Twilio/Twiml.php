@@ -99,7 +99,7 @@ class Services_Twilio_Twiml
          *
          * The following line accomplishes the desired behavior.
          */
-        $normalized = htmlentities(html_entity_decode($noun));
+        $normalized = htmlentities($noun, null, null, false);
         //then escape it again
         $child = empty($noun)
             ? $this->element->addChild(ucfirst($verb))
