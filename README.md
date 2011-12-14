@@ -47,6 +47,8 @@ how to get the most out of **twilio-php**.
     // This line loads the library
     require('Services/Twilio.php');
 
+    require('Services/Twilio.php');
+
     $client = new Services_Twilio('AC123', '123');
     $message = $client->account->sms_messages->create(
       '9991231234', // From a valid Twilio number
