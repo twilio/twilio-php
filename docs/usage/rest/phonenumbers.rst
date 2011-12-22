@@ -34,7 +34,7 @@ code, or which contain a certain pattern.
 
     // Full parameter documentation at http://www.twilio.com/docs/api/rest/available-phone-numbers#local
     $params = array('AreaCode' => '925', 'Contains' => 'hi');
-    $numbers = $client->account->available_phone_numbers->getList('US', 'TollFree', $params);
+    $numbers = $client->account->available_phone_numbers->getList('US', 'Local', $params);
     foreach($numbers->available_phone_numbers as $number) {
         echo 'Number: ' + $number->phone_number + "\n";
     }
@@ -53,7 +53,7 @@ Once you have a phone number, purchase it by creating a new
 
     $client = new Services_Twilio($accountSid, $authToken);
 
-    $phoneNumber = '+1XXXYYYZZZZ';
+    $phoneNumber = '+44XXXYYYZZZZ';
     $purchasedNumber = $client->account->incoming_phone_numbers->create(array('PhoneNumber' => $phoneNumber));
 
     echo $purchasedNumber->sid;
@@ -68,9 +68,9 @@ Tying the two together, you can search for a number, and then purchase it.
     $client = new Services_Twilio($accountSid, $authToken);
 
     // Full parameter documentation at http://www.twilio.com/docs/api/rest/available-phone-numbers#local
-    $params = array('AreaCode' => '925', 'Contains' => 'hi');
+    $params = array('AreaCode' => '800', 'Contains' => 'hi');
 
-    $numbers = $client->account->available_phone_numbers->getList('US', 'TollFree', $params);
+    $numbers = $client->account->available_phone_numbers->getList('CA', 'TollFree', $params);
     $firstNumber = $numbers->available_phone_numbers[0]->phone_number;
     $purchasedNumber = $client->account->incoming_phone_numbers->create(array('PhoneNumber' => $firstNumber));
 
