@@ -76,7 +76,7 @@ Tying the two together, you can search for a number, and then purchase it.
 
     echo $purchasedNumber->sid;
 
-You can also purchase a random number with a given area code:
+You can also purchase a random number with a given area code (US/Canada only):
 
 .. code-block:: php
 
@@ -87,4 +87,42 @@ You can also purchase a random number with a given area code:
     $purchasedNumber = $client->account->incoming_phone_numbers->create(array('AreaCode' => '925'));
 
     echo $purchasedNumber->sid;
+
+Updating a Number
+-----------------
+
+You can easily update any of the properties of your
+phone number. A full list of parameters is available
+in the `Incoming Phone Number REST API Documentation.
+<http://www.twilio.com/docs/api/rest/incoming-phone-numbers#instance-post>`_
+
+.. code-block:: php
+
+    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
+    $authToken = 'b7c3f506c974791449ba57e5c2';
+
+    $client = new Services_Twilio($accountSid, $authToken);
+    $numbers = $client->account->incoming_phone_numbers;
+    foreach ($numbers as $number) {
+        $number->update(array('VoiceMethod' => 'POST'));
+    }
+
+Deleting a Number
+-----------------
+
+You can delete numbers by specifying the Sid of the phone number you'd like to
+delete, from the incoming phone numbers object.
+
+.. code-block:: php
+
+    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
+    $authToken = 'b7c3f506c974791449ba57e5c2';
+
+    $client = new Services_Twilio($accountSid, $authToken);
+    $number = $client->account->incoming_phone_numbers;
+    foreach($numbers as $number) {
+        // Delete just the first number, then quit.
+        $client->account->incoming_phone_numbers->delete($number->sid);
+        break;
+    }
 
