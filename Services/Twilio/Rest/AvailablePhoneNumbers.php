@@ -23,6 +23,15 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         );
         return $curried;
     }
+    /**
+     * Get a list of available phone numbers. 
+     *
+     * @param string country The 2-digit country code you'd like to search for 
+     *    numbers e.g. ('US', 'CA', 'GB')
+     * @param string type The type of number ('Local' or 'TollFree')
+     * @return object The object representation of the resource
+     */
+
     public function getList($country, $type, array $params = array())
     {
         return $this->retrieveData("$country/$type", $params);

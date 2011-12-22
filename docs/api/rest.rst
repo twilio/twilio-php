@@ -34,7 +34,6 @@ Accounts
 .. php:class:: Services_Twilio_Rest_Account
 
    For more information, see the `Account Instance Resource <http://www.twilio.com/docs/api/rest/account#instance>`_ documentation.
-
    .. php:method:: update($params)
 
      Update the account
@@ -537,6 +536,30 @@ PhoneNumber
 
       The URI for this resource, relative to https://api.twilio.com.
 
+AvailablePhoneNumbers
+========================
+
+.. php:class:: Services_Twilio_Rest_AvailablePhoneNumbers
+
+   For more information, see the `AvailablePhoneNumbers API Resource <http://www.twilio.com/docs/api/rest/available-phone-numbers#local>`_ documentation at twilio.com.
+
+   .. php:method:: getList($country, $type)
+
+    Get a list of available phone numbers.
+
+    :param string country: The 2-digit country code for numbers ('US', 'GB',
+        'CA')
+    :param string type: The type of phone number ('TollFree' or 'Local')
+    :return: An instance of the :php:class:`Services_Twilio_Rest_AvailablePhoneNumbers` resource.
+
+    .. php:attr:: available_phone_numbers
+
+       A list of :php:class:`Services_Twilio_Rest_AvailablePhoneNumber` instances.
+
+    .. php:attr:: uri
+
+       The uri representing this resource, relative to https://api.twilio.com.
+
 AvailablePhoneNumber
 ========================
 
@@ -577,7 +600,6 @@ AvailablePhoneNumber
       The postal (zip) code of this phone number.
 
    .. php:attr:: iso_country
-
 
 Recording
 =============
