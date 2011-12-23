@@ -159,6 +159,9 @@ class Services_Twilio extends Services_Twilio_Resource
 
     private function _processXmlResponse($status, $headers, $body) {
         $decoded = simplexml_load_string($body);
+        if (200 <= $status && $status < 300) {
+            return $decoded;
+        }
         throw new Services_Twilio_RestException(
             (int)$decoded->Status,
             (string)$decoded->Message,
