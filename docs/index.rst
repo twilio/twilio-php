@@ -20,10 +20,16 @@ Send a SMS
 
 .. code-block:: php
 
+    // Download the library and copy into the folder containing this file.
+    require("Services/Twilio.php");
+
+    $account_sid = "ACXXXXXX"; // Your Twilio account sid
+    $auth_token = "YYYYYY"; // Your Twilio auth token
+
     $client = new Services_Twilio('AC123', '123');
     $message = $client->account->sms_messages->create(
-      '9991231234', // From this number
-      '8881231234', // Text this number
+      '+14085551234', // From a Twilio number in your account
+      '+12125551234', // Text any number
       "Hello monkey!"
     );
 
@@ -34,13 +40,16 @@ Make a Call
 
 .. code-block:: php
 
-    $sid = "ACXXXXXX"; // Your Twilio account sid
-    $token = "YYYYYY"; // Your Twilio auth token
+    // Download the library and copy into the folder containing this file.
+    require("Services/Twilio.php");
 
-    $client = new Services_Twilio($sid, $token);
+    $account_sid = "ACXXXXXX"; // Your Twilio account sid
+    $auth_token = "YYYYYY"; // Your Twilio auth token
+
+    $client = new Services_Twilio($account_sid, $auth_token);
     $call = $client->account->calls->create(
-      '9991231234', // From this number
-      '8881231234', // Call this number
+      '+14085551234', // From a Twilio number in your account
+      '+12125551234', // Text any number
 
       // Read TwiML at this URL when a call connects (hold music)
       'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
@@ -85,7 +94,7 @@ Via PEAR
 From Source
 >>>>>>>>>>>>>
 
-If you aren't using PEAR, download the `source
+If you aren't using PEAR, download the `source (.zip)
 <https://github.com/twilio/twilio-php/zipball/master>`_, which includes all the
 dependencies.
 
@@ -125,7 +134,8 @@ API Documentation
 Support and Development
 ===========================
 
-All development occurs over on `Github <https://github.com/twilio/twilio-php>`_. To checkout the source, run
+All development occurs on `Github <https://github.com/twilio/twilio-php>`_. To
+check out the source, run
 
 .. code-block:: bash
 
@@ -134,7 +144,8 @@ All development occurs over on `Github <https://github.com/twilio/twilio-php>`_.
 
 Report bugs using the Github `issue tracker <https://github.com/twilio/twilio-php/issues>`_.
 
-If you’ve got questions that aren’t answered by this documentation, ask the `#twilio IRC channel <irc://irc.freenode.net/#twilio>`_
+If you’ve got questions that aren’t answered by this documentation, ask the
+`#twilio IRC channel <irc://irc.freenode.net/#twilio>`_
 
 Running the Tests
 >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -164,7 +175,8 @@ After installation, run the tests with :data:`make`
 Making the Documentation
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Our documentation is written using `Sphinx <http://sphinx.pocoo.org/>`_. You'll need to install Sphinx and the Sphinx PHP domain before you can build the docs.
+Our documentation is written using `Sphinx <http://sphinx.pocoo.org/>`_. You'll
+need to install Sphinx and the Sphinx PHP domain before you can build the docs.
 
 .. code-block:: bash
 

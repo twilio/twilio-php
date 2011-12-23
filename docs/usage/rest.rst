@@ -4,13 +4,14 @@
 Using the Twilio REST API
 ==========================
 
-Since version 3.0, we've introduced an updated API for interacting with the Twilio REST API. Gone are the days of manual URL creation and XML parsing.
+Since version 3.0, we've introduced an updated API for interacting with the
+Twilio REST API. Gone are the days of manual URL creation and XML parsing.
 
 Creating a REST Client
 =======================
 
 Before querying the API, you'll need to create a :php:class:`Services_Twilio`
-instance. The construcutor takes your Twilio Account Sid and Auth
+instance. The constructor takes your Twilio Account Sid and Auth
 Token (both available through your `Twilio Account Dashboard
 <http:www.twilio.com/user/account>`_).
 
