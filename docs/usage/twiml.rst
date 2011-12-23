@@ -123,7 +123,7 @@ Sms
 
     <?xml version="1.0" encoding="UTF-8"?>
     <Response>
-      <Dial to="+14150001111" from="+14152223333">Hello World</Dial>
+      <Sms to="+14150001111" from="+14152223333">Hello World</Sms>
     </Response>
 
 Dial
@@ -269,4 +269,5 @@ Pause
     </Response>
 
 
-The verb methods (outlined in the complete reference) take the body (only text) of the verb as the first argument. All attributes are keyword arguments.
+The verb methods (outlined in the complete reference) take the body (only text)
+of the verb as the first argument. All attributes are keyword arguments.

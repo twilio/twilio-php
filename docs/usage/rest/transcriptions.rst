@@ -2,7 +2,7 @@
 Transcriptions
 ================
 
-Show all Transcribed Messagse
+Show all Transcribed Messages
 =============================
 
 .. code-block:: php
