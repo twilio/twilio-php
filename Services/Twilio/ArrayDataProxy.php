@@ -72,7 +72,7 @@ class Services_Twilio_ArrayDataProxy
     function __get($prop)
     {
         return is_array($this->array)
-            ? $this->array['prop']
+            ? $this->array[$prop]
             : $this->array->$prop;
     }
 }
