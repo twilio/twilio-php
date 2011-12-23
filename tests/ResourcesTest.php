@@ -19,6 +19,21 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
         }
     }
 
+    function testPagePhoneNumberResource() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/AvailablePhoneNumbers.json?Page=0&PageSize=50')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'total' => 1,
+                    'countries' => array(array('country_code' => 'CA'))
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $page = $client->account->available_phone_numbers->getPage('0');
+        $this->assertEquals('CA', $page->countries[0]->country_code);
+    }
+
     function tearDown() {
         m::close();
     }
