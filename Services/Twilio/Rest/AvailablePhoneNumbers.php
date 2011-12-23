@@ -36,4 +36,10 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
     {
         return $this->retrieveData("$country/$type", $params);
     }
+
+    public function getSchema()
+    {
+        // You can't page through the list of available phone numbers.
+        return array('list' => 'countries') + parent::getSchema();
+    }
 }
