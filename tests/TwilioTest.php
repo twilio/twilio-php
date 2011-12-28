@@ -6,6 +6,20 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function tearDown() {
         m::close();
     }
+
+    function testXMLResponseParsing() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123.xml')
+            ->andReturn(array(200, array('Content-Type' => 'application/xml'),
+                '<TwilioResponse><Account><Sid>AC123</Sid>
+                <FriendlyName>Irving Trube</FriendlyName></Account></TwilioResponse>'
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http, '.xml');
+        $this->assertEquals('AC123', $client->account->sid);
+        $this->assertEquals('Irving Trube', $client->account->friendly_name);
+    }
+
     function testNeedsRefining() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()

@@ -156,8 +156,10 @@ class Services_Twilio_CachingDataProxy
      */
     private function _load($object = null)
     {
-        $this->cache = $object !== null
-            ? $object
-            : $this->proxy->retrieveData($this->principal['sid']);
+        if ($object === null) {
+            $this->cache = $this->proxy->retrieveData($this->principal['sid']);
+        } else {
+            $this->cache = $object;
+        }
     }
 }

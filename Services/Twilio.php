@@ -39,7 +39,8 @@ class Services_Twilio extends Services_Twilio_Resource
         $sid,
         $token,
         $version = '2010-04-01',
-        Services_Twilio_TinyHttp $_http = null
+        Services_Twilio_TinyHttp $_http = null,
+        $suffix = '.json'
     ) {
         $this->version = $version;
         if (null === $_http) {
@@ -52,6 +53,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->http = $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this);
         $this->account = $this->accounts->get($sid);
+        $this->suffix = $suffix;
     }
 
     /**
@@ -64,7 +66,7 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public function retrieveData($path, array $params = array())
     {
-        $path = "/$this->version/$path.json";
+        $path = "/$this->version/$path" . $this->suffix;
         return empty($params)
             ? $this->_processResponse($this->http->get($path))
             : $this->_processResponse(
@@ -134,6 +136,7 @@ class Services_Twilio extends Services_Twilio_Resource
             return $this->_processJsonResponse($status, $headers, $body);
             break;
         case 'text/xml':
+        case 'application/xml':
             return $this->_processXmlResponse($status, $headers, $body);
             break;
         }
@@ -154,8 +157,29 @@ class Services_Twilio extends Services_Twilio_Resource
         );
     }
 
+    private function _convertToUnderscoreKeyNames($xmlObject) {
+        $jsonObject = new StdClass;
+        foreach($xmlObject as $key => $value) {
+            $lowercaseKey = Services_Twilio_Resource::decamelize($key);
+            if ($value->count() > 0) {
+                $new_value = self::_convertToUnderscoreKeyNames($value);
+                $jsonObject->$lowercaseKey = $new_value;
+            } else {
+                $jsonObject->$lowercaseKey = (string)$value;
+            }
+        }
+        return $jsonObject;
+    }
+
     private function _processXmlResponse($status, $headers, $body) {
         $decoded = simplexml_load_string($body);
+        $json_decoded = self::_convertToUnderscoreKeyNames($decoded);
+        if (isset($json_decoded->account)) {
+            $json_decoded = $json_decoded->account;
+        }
+        if (200 <= $status && $status < 300) {
+            return $json_decoded;
+        }
         throw new Services_Twilio_RestException(
             (int)$decoded->Status,
             (string)$decoded->Message,
