@@ -101,8 +101,20 @@ a SSL validation exception: ::
 
 This means that Twilio is trying to offer a certificate to verify that you are
 actually connecting to `https://api.twilio.com <https://api.twilio.com>`_, but
-your curl client cannot verify our certificate. There are three solutions to
-this problem; any one should work.
+your curl client cannot verify our certificate. 
+
+There are four solutions to this problem.
+
+Upgrade your version of the twilio-php library
+----------------------------------------------
+
+Since November 2011, the SSL certificate has been built in to the helper
+library, and it is used to sign requests made to our API. If you are still
+encountering this problem, you can upgrade your helper library to the latest
+version, and you should not encounter this error anymore.
+
+If you are using an older version of the helper library, you can try one of the
+following three methods:
 
 Upgrade your version of libcurl
 -------------------------------
@@ -117,8 +129,8 @@ Manually add Twilio's SSL certificate
 
 The PHP curl library can also manually verify an SSL certificate. In your
 browser, navigate to
-`https://github.com/twilio/twilio-php/master/Services/twilio_ssl_certificate.crt
-<https://github.com/twilio/twilio-php/master/Services/twilio_ssl_certificate.crt>`_ 
+`https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt
+<https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt>`_ 
 and download the file. (**Note**: If your browser presents ANY warnings
 at this time, your Internet connection may be compromised. Do not download the
 file, and do not proceed with this step). Place this file in the same folder as
@@ -140,10 +152,6 @@ with this one:
             CURLOPT_CAINFO => getcwd() . "/twilio_ssl_certificate.crt")));
 
     $client = new Services_Twilio($sid, $token, "2010-04-01", $http);
-
-If you are still experiencing errors, please email us at `help@twilio.com
-<mailto:help@twilio.com>`_ and we would be glad to help you troubleshoot your
-problems.
 
 Disable certificate checking
 ----------------------------
