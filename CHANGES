@@ -1,0 +1,8 @@
+twilio-php Changelog
+====================
+
+Version 3.2.4
+-------------
+
+Add disablePresenceEvents method to the TwilioCapability object to support
+new Twilio Client feature.

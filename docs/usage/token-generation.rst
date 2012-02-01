@@ -21,7 +21,10 @@ Capability tokens are used by `Twilio Client <http://www.twilio.com/api/client>`
 Allow Incoming Connections
 ==============================
 
-Before a device running `Twilio Client <http://www.twilio.com/api/client>`_ can recieve incoming connections, the instance must first register a name (such as "Alice" or "Bob"). The :php:meth:`allowCclientIncoming` method adds the client name to the capability token.
+Before a device running `Twilio Client <http://www.twilio.com/api/client>`_ can
+recieve incoming connections, the instance must first register a name (such as
+"Alice" or "Bob"). The :php:meth:`allowClientIncoming` method adds the client
+name to the capability token.
 
 .. code-block:: php
 
@@ -46,9 +49,23 @@ To make an outgoing connection from a `Twilio Client <http://www.twilio.com/api/
     $params = array("Foo" => "Bar"); // Parameters to be passed
     $capability->allowClientOutgoing($applicationSid, $params);
 
+Disable Presence Events
+=======================
+
+Presence events can use lots of bandwidth if there are many clients
+subscribed to the network. To disable presence events, call
+:meth:`disablePresenceEvents` on your capability object.
+
+.. code-block:: php
+
+    $capability->disablePresenceEvents();
 
 Generate a Token
 ==================
+
+Once you have assigned all of the capabilities you would like the Client token
+to have, generate a capability token that you can use in your frontend Client
+app.
 
 .. code-block:: php
 
