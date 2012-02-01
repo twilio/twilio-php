@@ -28,7 +28,7 @@ class Services_Twilio_Capability
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->scopes = array();
-		$this->clientName = false;
+        $this->clientName = false;
     }
 
     /**
@@ -52,7 +52,7 @@ class Services_Twilio_Capability
                 'Client name must not be a zero length string.');
         }
 
-		$this->clientName = $clientName;
+        $this->clientName = $clientName;
         $this->allow('client', 'incoming',
             array('clientName' => $clientName));
     }
@@ -85,6 +85,13 @@ class Services_Twilio_Capability
     }
 
     /**
+     * Allow the user of this token to turn off presence event subscription.
+     */
+    public function disablePresenceEvents() {
+        $this->allow('client', 'presence', array('enabled' => 'False'));
+    }
+
+    /**
      * Generates a new token based on the credentials and permissions that
      * previously has been granted to this token.
      *
@@ -102,12 +109,14 @@ class Services_Twilio_Capability
         $scopeStrings = array();
 
         foreach ($this->scopes as $scope) {
-			if ($scope->privilege == "outgoing" && $this->clientName)
-				$scope->params["clientName"] = $this->clientName;
+            if ($scope->privilege == "outgoing" && $this->clientName) {
+                $scope->params["clientName"] = $this->clientName;
+            }
             $scopeStrings[] = $scope->toString();
         }
 
         $payload['scope'] = implode(' ', $scopeStrings);
+        print_r($payload);
         return JWT::encode($payload, $this->authToken, 'HS256');
     }
 
