@@ -26,6 +26,7 @@ class Services_Twilio extends Services_Twilio_Resource
 
     protected $http;
     protected $version;
+    protected $versions = array('2008-08-01', '2010-04-01');
 
     /**
      * Constructor.
@@ -38,10 +39,12 @@ class Services_Twilio extends Services_Twilio_Resource
     public function __construct(
         $sid,
         $token,
-        $version = '2010-04-01',
+        $version = null,
         Services_Twilio_TinyHttp $_http = null
     ) {
-        $this->version = $version;
+        $this->version = in_array($version, $this->versions) ?
+                $version : $this->versions[count($this->versions)-1];
+
         if (null === $_http) {
             $_http = new Services_Twilio_TinyHttp(
                 "https://api.twilio.com",
