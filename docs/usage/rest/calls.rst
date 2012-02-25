@@ -29,12 +29,30 @@ resource, they are easy to get.:
 
     $client = new Services_Twilio('AC123', '123');
     foreach ($client->account->calls as $call) {
-      print $call->notifications;
-      print $call->transcriptions;
-      print $call->recordings;
+      $notifications = $call->notifications;
+      if (is_array($notifications)) {
+        foreach ($notifications as $notification) {
+          print $notification->sid;
+        }
+      }
+
+      $transcriptions = $call->transcriptions;
+      if (is_array($transcriptions)) {
+        foreach ($transcriptions as $transcription) {
+          print $transcription->sid;
+        }
+      }
+
+      $recordings = $call->recordings;
+      if (is_array($recordings)) {
+        foreach ($recordings as $recording) {
+          print $recording->sid;
+        }
+      }
     }
 
-Be careful, as the above code makes quite a few HTTP requests.
+Be careful, as the above code makes quite a few HTTP requests and display 
+numerous PHP warnings for unintialized variables.
 
 Retrieve a Call Record
 ======================
