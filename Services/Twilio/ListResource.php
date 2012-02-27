@@ -132,6 +132,24 @@ abstract class Services_Twilio_ListResource
         );
     }
 
+    /**
+     * Returns an iterable list of InstanceResources
+     *
+     * @param int   $page The start page
+     * @param int   $size Number of items per page
+     * @param array $size Optional filters
+     *
+     * The filter array can accept full datetimes when StartTime or DateCreated
+     * are used. Inequalities should be within the key portion of the array and
+     * multiple filter parameters can be combined for more specific searches.
+     *
+     * eg.
+     *   array('DateCreated>' => '2011-07-05 08:00:00', 'DateCreated<' => '2011-08-01')
+     * or
+     *   array('StartTime<' => '2011-07-05 08:00:00')
+     *
+     * @return Services_Twilio_AutoPagingIterator An iterator
+     */
     public function getIterator($page = 0, $size = 50, array $filters = array())
     {
         return new Services_Twilio_AutoPagingIterator(
