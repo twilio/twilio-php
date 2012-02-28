@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/twilio/twilio-php.png?branch=master)](http://travis-ci.org/twilio/twilio-php)
+
 ## Installation
 
 You can install **twilio-php** via PEAR or by downloading the source.
