@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo `which pyrus`
+echo `which pear`
+
 hash pyrus 2>&- && {
     pyrus channel-discover pear.survivethedeepend.com
     pyrus channel-discover twilio.github.com/pear
@@ -11,3 +14,5 @@ hash pear 2>&- && {
     pear channel-discover twilio.github.com/pear
     pear install twilio/Services_Twilio --alldeps
 }
+
+phpenv rehash
