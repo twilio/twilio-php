@@ -61,6 +61,15 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
+     * Get the api version used by the rest client
+     *
+     * @return string the API version in use
+     */
+    public function getVersion() {
+        return $this->version;
+    }
+
+    /**
      * GET the resource at the specified path.
      *
      * @param string $path   Path to the resource
