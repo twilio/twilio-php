@@ -10,6 +10,7 @@ if [ "$TRAVIS_PHP_VERSION" == "5.2" ]; then
 else
     pyrus channel-discover pear.survivethedeepend.com
     pyrus channel-discover twilio.github.com/pear
+    pyrus channel-discover hamcrest.googlecode.com/svn/pear
     pyrus install twilio/Services_Twilio --optionaldeps
 fi
 
