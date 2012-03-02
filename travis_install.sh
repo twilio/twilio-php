@@ -14,3 +14,4 @@ else
 fi
 
 phpenv rehash
+
