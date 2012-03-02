@@ -1,1 +1,5 @@
 .*.swp
+docs/_build/
+test.php
+sms.php
+test-http-client.php
