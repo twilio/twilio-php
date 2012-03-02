@@ -3,4 +3,4 @@ php:
     - 5.3
     - 5.4
 script: "make test"
-before_install: "sh travis_install.sh"
+before_install: "bash travis_install.sh"
