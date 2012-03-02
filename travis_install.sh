@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo `which pyrus`
-echo `which pear`
-
 if [[ "$TRAVIS_PHP_VERSION" == "5.2" ]]; then
     pear channel-discover pear.survivethedeepend.com
     pear channel-discover twilio.github.com/pear
