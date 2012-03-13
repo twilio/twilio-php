@@ -10,7 +10,7 @@ Adding a new phone number to your validated numbers is quick and easy:
 
     $client = new Services_Twilio('AC123', '123');
     $response = $client->account->outgoing_caller_ids->create('+15554441234');
-    print response->validation_code;
+    print $response->validation_code;
 
 Twilio will call the provided number and for the validation code to be entered.
 
