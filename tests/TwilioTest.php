@@ -28,6 +28,17 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $client->account->sid;
     }
 
+    function testNullVersionReturnsNewest() {
+        $client = new Services_Twilio('AC123', '123', null);
+        $this->assertEquals('2010-04-01', $client->getVersion());
+        $client = new Services_Twilio('AC123', '123', 'v1');
+        $this->assertEquals('2010-04-01', $client->getVersion());
+        $client = new Services_Twilio('AC123', '123', '2010-04-01');
+        $this->assertEquals('2010-04-01', $client->getVersion());
+        $client = new Services_Twilio('AC123', '123', '2008-08-01');
+        $this->assertEquals('2008-08-01', $client->getVersion());
+    }
+
     function testObjectLoadsOnlyOnce() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
