@@ -35,6 +35,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('2010-04-01', $client->getVersion());
         $client = new Services_Twilio('AC123', '123', '2010-04-01');
         $this->assertEquals('2010-04-01', $client->getVersion());
+        $client = new Services_Twilio('AC123', '123', '2008-08-01');
+        $this->assertEquals('2008-08-01', $client->getVersion());
     }
 
     function testObjectLoadsOnlyOnce() {
