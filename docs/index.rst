@@ -77,6 +77,8 @@ to easily create such responses.
         <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
     <Response>
 
+View more examples of TwiML generation here: :ref:`usage-twiml`
+
 Installation
 ============
 

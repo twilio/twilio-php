@@ -84,7 +84,7 @@ Gather
     <?xml version="1.0" encoding="UTF-8"?>
     <Response>
       <Gather numDigits="5">
-        <Say>Hellow Caller</Say>
+        <Say>Hello Caller</Say>
       </Gather>
     <Response>
 
@@ -191,6 +191,28 @@ Client
 Conference
 ~~~~~~~~~~
 
+.. code-block:: php
+
+    require("Services/Twilio.php");
+    $response = new Services_Twilio_Twiml;
+    $dial = $response->dial();
+    $dial->conference('Customer Waiting Room', array(
+        "startConferenceOnEnter" => "true",
+        "muted" => "true",
+        "beep" => "false",
+    );
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response>
+        <Dial>
+            <Conference startConferenceOnEnter="true" muted="true" beep="false">
+                Customer Waiting Room
+            </Conference>
+        </Dial>
+    </Response>
 
 
 Secondary Verbs
