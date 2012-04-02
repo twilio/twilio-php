@@ -11,7 +11,7 @@ Updating :class:`Account` information is really easy:
 
     $client = new Services_Twilio('AC123', '123');
     $account = $client->account;
-    $account->update(array('name' => 'My Awesome Account'));
+    $account->update(array('FriendlyName' => 'My Awesome Account'));
 
 Creating a Subaccount
 ==============================
@@ -20,5 +20,5 @@ Creating a Subaccount
 
     $client = new Services_Twilio('AC123', '123');
     $subaccount = $client->accounts->create(array(
-      'name' => 'My Awesome SubAccount'
+      'FriendlyName' => 'My Awesome SubAccount'
     ));
