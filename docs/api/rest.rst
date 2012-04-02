@@ -27,7 +27,7 @@ Accounts
 
      The **$params** array can contain the following keys:
 
-     *name*
+     *FriendlyName*
        A description of this account, up to 64 characters long
 
 
@@ -166,28 +166,28 @@ Calls
 
       The **$params** array can contain the following keys:
 
-      *method*
+      *Method*
         The HTTP method Twilio should use when making its request to the above Url parameter's value. Defaults to POST. If an ApplicationSid parameter is present, this parameter is ignored.
 
-      *fallback_url*
+      *FallbackUrl*
         A URL that Twilio will request if an error occurs requesting or executing the TwiML at Url. If an ApplicationSid parameter is present, this parameter is ignored.
 
-      *fallback_method*
+      *FallbackMethod*
         The HTTP method that Twilio should use to request the FallbackUrl. Must be either GET or POST. Defaults to POST. If an ApplicationSid parameter is present, this parameter is ignored.
 
-      *status_callback*
+      *StatusCallback*
         A URL that Twilio will request when the call ends to notify your app. If an ApplicationSid parameter is present, this parameter is ignored.
 
-      *status_callback_method*
+      *StatusCallbackMethod*
         The HTTP method Twilio should use when requesting the above URL. Defaults to POST. If an ApplicationSid parameter is present, this parameter is ignored.
 
-      *send_digits*
+      *SendDigits*
         A string of keys to dial after connecting to the number. Valid digits in the string include: any digit (0-9), '#' and '*'. For example, if you connected to a company phone number, and wanted to dial extension 1234 and then the pound key, use SendDigits=1234#. Remember to URL-encode this string, since the '#' character has special meaning in a URL.
 
-      *if_machine*
+      *IfMachine*
         Tell Twilio to try and determine if a machine (like voicemail) or a human has answered the call. Possible values are Continue and Hangup. See the answering machines section below for more info.
 
-      *timeout*
+      *Timeout*
         The integer number of seconds that Twilio should allow the phone to ring before assuming there is no answer. Default is 60 seconds, the maximum is 999 seconds. Note, you could set this to a low value, such as 15, to hangup before reaching an answering machine or voicemail.
 
 .. php:class:: Services_Twilio_Rest_Call
