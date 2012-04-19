@@ -25,7 +25,7 @@ move the Services folder from the twilio-php library into the folder containing
 your file. So if you have a file called ``send-sms.php``, your folder structure
 should look like this:
 
-.. code-block:: 
+.. code-block:: bash
 
     .
     ├── send-sms.php
@@ -38,6 +38,23 @@ should look like this:
 If you need to copy all of these files to your web hosting server, the easiest
 way is to compress them into a ZIP file, copy that to your server with FTP, and
 then unzip it back into a folder in your CPanel or similar.
+
+You could also try downloading the library via PEAR, a package manager for PHP, 
+which will add the library to your PHP path, so you can load the Twilio library
+from anywhere. Run this at the command line:
+
+.. code-block:: bash
+
+    $ pear channel-discover twilio.github.com/pear
+    $ pear install twilio/Services_Twilio
+
+If you get the following message:
+
+.. code-block:: bash
+
+    $ -bash: pear: command not found
+
+you can install PEAR from their website.
 
 SSL Validation Exceptions
 -------------------------
