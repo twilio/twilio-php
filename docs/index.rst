@@ -122,6 +122,7 @@ TwiML and other utilities
     usage/twiml
     usage/validation
     usage/token-generation
+    faq/
 
 API Documentation
 ==================
