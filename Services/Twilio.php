@@ -50,7 +50,7 @@ class Services_Twilio extends Services_Twilio_Resource
                 "https://api.twilio.com",
                 array("curlopts" => array(
                     CURLOPT_USERAGENT => self::USER_AGENT,
-                    CURLOPT_HTTP_HEADER => array('Accept-Charset: utf-8'),
+                    CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
                     CURLOPT_CAINFO => dirname(__FILE__) . "/twilio_ssl_certificate.crt",
                 ))
             );
