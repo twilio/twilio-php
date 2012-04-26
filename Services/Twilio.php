@@ -22,7 +22,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 class Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.2.2';
+    const USER_AGENT = 'twilio-php/3.3';
 
     protected $http;
     protected $version;
@@ -50,6 +50,7 @@ class Services_Twilio extends Services_Twilio_Resource
                 "https://api.twilio.com",
                 array("curlopts" => array(
                     CURLOPT_USERAGENT => self::USER_AGENT,
+                    CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
                     CURLOPT_CAINFO => dirname(__FILE__) . "/twilio_ssl_certificate.crt",
                 ))
             );
@@ -144,16 +145,7 @@ class Services_Twilio extends Services_Twilio_Resource
         if (empty($headers['Content-Type'])) {
             throw new DomainException('Response header is missing Content-Type');
         }
-        switch ($headers['Content-Type']) {
-        case 'application/json':
-            return $this->_processJsonResponse($status, $headers, $body);
-            break;
-        case 'text/xml':
-            return $this->_processXmlResponse($status, $headers, $body);
-            break;
-        }
-        throw new DomainException(
-            'Unexpected content type: ' . $headers['Content-Type']);
+        return $this->_processJsonResponse($status, $headers, $body);
     }
 
     private function _processJsonResponse($status, $headers, $body) {
@@ -169,16 +161,4 @@ class Services_Twilio extends Services_Twilio_Resource
         );
     }
 
-    private function _processXmlResponse($status, $headers, $body) {
-        $decoded = simplexml_load_string($body);
-        if (200 <= $status && $status < 300) {
-            return $decoded;
-        }
-        throw new Services_Twilio_RestException(
-            (int)$decoded->Status,
-            (string)$decoded->Message,
-            (string)$decoded->Code,
-            (string)$decoded->MoreInfo
-        );
-    }
 }
