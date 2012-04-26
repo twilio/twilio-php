@@ -8,3 +8,10 @@ Released on March 14, 2012
 
 - If no version is passed to the Services_Twilio constructor, the library will
   default to the most recent API version.
+
+Version 3.3
+-----------
+
+Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded 
+data from the Twilio API. Remove unused XML parsing logic, as the library never 
+requests XML data.

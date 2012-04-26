@@ -145,16 +145,7 @@ class Services_Twilio extends Services_Twilio_Resource
         if (empty($headers['Content-Type'])) {
             throw new DomainException('Response header is missing Content-Type');
         }
-        switch ($headers['Content-Type']) {
-        case 'application/json':
-            return $this->_processJsonResponse($status, $headers, $body);
-            break;
-        case 'text/xml':
-            return $this->_processXmlResponse($status, $headers, $body);
-            break;
-        }
-        throw new DomainException(
-            'Unexpected content type: ' . $headers['Content-Type']);
+        return $this->_processJsonResponse($status, $headers, $body);
     }
 
     private function _processJsonResponse($status, $headers, $body) {
@@ -170,16 +161,4 @@ class Services_Twilio extends Services_Twilio_Resource
         );
     }
 
-    private function _processXmlResponse($status, $headers, $body) {
-        $decoded = simplexml_load_string($body);
-        if (200 <= $status && $status < 300) {
-            return $decoded;
-        }
-        throw new Services_Twilio_RestException(
-            (int)$decoded->Status,
-            (string)$decoded->Message,
-            (string)$decoded->Code,
-            (string)$decoded->MoreInfo
-        );
-    }
 }
