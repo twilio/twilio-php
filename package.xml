@@ -20,11 +20,17 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>kyle+pear@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2011-08-23</date>
- <time>10:38:52</time>
+ <lead>
+  <name>Kevin Burke</name>
+  <user>kevinburke</user>
+  <email>kevin@twilio.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-05-01</date>
+ <time>22:01:05</time>
  <version>
-  <release>3.2.3</release>
-  <api>3.2.3</api>
+  <release>3.3.1</release>
+  <api>3.3.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -43,12 +49,16 @@ No release notes.
       <file name="Accounts.php" role="php" />
       <file name="Application.php" role="php" />
       <file name="Applications.php" role="php" />
+      <file name="AuthorizedConnectApp.php" role="php" />
+      <file name="AuthorizedConnectApps.php" role="php" />
       <file name="AvailablePhoneNumber.php" role="php" />
       <file name="AvailablePhoneNumbers.php" role="php" />
       <file name="Call.php" role="php" />
       <file name="Calls.php" role="php" />
       <file name="Conference.php" role="php" />
       <file name="Conferences.php" role="php" />
+      <file name="ConnectApp.php" role="php" />
+      <file name="ConnectApps.php" role="php" />
       <file name="IncomingPhoneNumber.php" role="php" />
       <file name="IncomingPhoneNumbers.php" role="php" />
       <file name="Notification.php" role="php" />
@@ -82,22 +92,27 @@ No release notes.
      <file name="TinyHttp.php" role="php" />
      <file name="Twiml.php" role="php" />
     </dir> <!-- /Services/Twilio -->
+    <file name="test.php" role="php" />
     <file name="Twilio.php" role="php" />
+    <file name="twilio_ssl_certificate.crt" role="php" />
    </dir> <!-- /Services -->
    <dir name="tests">
     <file name="Bootstrap.php" role="test" />
     <file name="CapabilityTest.php" role="test" />
     <file name="phpunit.xml" role="test" />
+    <file name="README" role="test" />
     <file name="RequestValidatorTest.php" role="test" />
     <file name="ResourcesTest.php" role="test" />
     <file name="TwilioTest.php" role="test" />
     <file name="TwimlTest.php" role="test" />
    </dir> <!-- /tests -->
    <file name="AUTHORS" role="data" />
+   <file name="CHANGES" role="data" />
    <file name="LICENSE" role="data" />
    <file name="Makefile" role="data" />
    <file name="README.md" role="data" />
-   <file name="test.php" role="php" />
+   <file name="sms.php" role="php" />
+   <file name="travis_install.bash" role="data" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -120,29 +135,14 @@ No release notes.
  <changelog>
   <release>
    <version>
-    <release>3.2.2</release>
-    <api>3.2.2</api>
+    <release>3.3.1</release>
+    <api>3.3.1</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2011-08-04</date>
-   <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
-   <notes>
-No release notes.
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>3.2.3</release>
-    <api>3.2.3</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2011-08-23</date>
+   <date>2012-05-01</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
 No release notes.
@@ -150,4 +150,3 @@ No release notes.
   </release>
  </changelog>
 </package>
-

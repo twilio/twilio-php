@@ -9,7 +9,7 @@
  *
  * LICENSE:
  *
- * Copyright 2011 Twilio.
+ * Copyright 2012 Twilio.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,18 +26,19 @@
  * @category  Services
  * @package   Services_Twilio
  * @author    Neuman Vong <neuman@twilio.com>
- * @copyright 2011 Twilio
+ * @copyright 2012 Twilio
  * @license   http://creativecommons.org/licenses/MIT/
  * @link      http://pear.php.net/package/Services_Twilio
  */
 
+error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.2.3';
+$api_version     = '3.3.1';
 $api_state       = 'stable';
 
-$release_version = '3.2.3';
+$release_version = '3.3.1';
 $release_state   = 'stable';
 $release_notes   = "No release notes.";
 
@@ -62,6 +63,7 @@ $package->setOptions(
         'ignore'                  => array(
             'package.php',
             '*.tgz',
+            'scratch/*',
 			'docs/*',
         )
     )
@@ -95,6 +97,13 @@ $package->addMaintainer(
     'derferman',
     'Kyle Conroy',
     'kyle+pear@twilio.com'
+);
+
+$package->addMaintainer(
+    'lead',
+    'kevinburke',
+    'Kevin Burke',
+    'kevin@twilio.com'
 );
 
 
