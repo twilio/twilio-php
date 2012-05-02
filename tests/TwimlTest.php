@@ -10,7 +10,7 @@ class TwimlTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
     
-    function testEmptyRespnose() {
+    function testEmptyResponse() {
         $r = new Services_Twilio_Twiml();
         $expected = '<Response></Response>';
         $this->assertXmlStringEqualsXmlString($expected, $r,
@@ -83,6 +83,14 @@ class TwimlTest extends PHPUnit_Framework_TestCase {
         $r->record(array("action" => "example.com", "method" => "GET"));
         $expected = '<Response><Record action="example.com" '
             . 'method="GET"></Record></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+
+    public function testBooleanBecomesString() {   
+        $r = new Services_Twilio_Twiml();
+        $r->record(array("transcribe" => true));
+        $expected = '<Response><Record transcribe="true" '
+            . '></Record></Response>';
         $this->assertXmlStringEqualsXmlString($expected, $r);
     }
     

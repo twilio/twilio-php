@@ -112,6 +112,9 @@ class Services_Twilio_Twiml
              * & turns into &amp;
              * &amp; turns into &amp;amp;
              */
+            if (is_bool($value)) {
+                $value = ($value === true) ? 'true' : 'false';
+            }
             $child->addAttribute($name, $value);
         }
         return new self($child);
