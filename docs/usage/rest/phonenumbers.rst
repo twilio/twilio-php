@@ -13,8 +13,8 @@ First, we need to search for an available phone number. Use the
 
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
     $numbers = $client->account->available_phone_numbers->getList('US', 'TollFree');
@@ -27,8 +27,8 @@ code, or which contain a certain pattern.
 
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
 
@@ -48,8 +48,8 @@ Once you have a phone number, purchase it by creating a new
     
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
 
@@ -62,8 +62,8 @@ Tying the two together, you can search for a number, and then purchase it.
 
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
 
@@ -80,8 +80,8 @@ You can also purchase a random number with a given area code (US/Canada only):
 
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
     $purchasedNumber = $client->account->incoming_phone_numbers->create(array('AreaCode' => '925'));
@@ -98,8 +98,8 @@ in the `Incoming Phone Number REST API Documentation.
 
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
     $numbers = $client->account->incoming_phone_numbers;
@@ -115,8 +115,8 @@ delete, from the incoming phone numbers object.
 
 .. code-block:: php
 
-    $accountSid = 'AC58f1e8f2b1c6b88012a4be0c279';
-    $authToken = 'b7c3f506c974791449ba57e5c2';
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
     $number = $client->account->incoming_phone_numbers;
