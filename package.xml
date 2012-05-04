@@ -26,11 +26,11 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
   <email>kevin@twilio.com</email>
   <active>yes</active>
  </lead>
- <date>2012-05-01</date>
- <time>22:01:05</time>
+ <date>2012-05-03</date>
+ <time>17:18:30</time>
  <version>
-  <release>3.3.1</release>
-  <api>3.3.1</api>
+  <release>3.3.2</release>
+  <api>3.3.2</api>
  </version>
  <stability>
   <release>stable</release>
@@ -38,7 +38,7 @@ applications against Twilio&apos;s REST API and generate TwiML responses.</descr
  </stability>
  <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
  <notes>
-No release notes.
+Short fix to convert boolean true and false to the strings &quot;true&quot; and &quot;false&quot; in the TwiML generator.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -135,17 +135,17 @@ No release notes.
  <changelog>
   <release>
    <version>
-    <release>3.3.1</release>
-    <api>3.3.1</api>
+    <release>3.3.2</release>
+    <api>3.3.2</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2012-05-01</date>
+   <date>2012-05-03</date>
    <license uri="http://creativecommons.org/licenses/MIT/">MIT License</license>
    <notes>
-No release notes.
+Short fix to convert boolean true and false to the strings &quot;true&quot; and &quot;false&quot; in the TwiML generator.
    </notes>
   </release>
  </changelog>

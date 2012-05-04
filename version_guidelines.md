@@ -15,3 +15,9 @@ update.
 
 * Update the version number in docs/index.rst
 
+* Update the version number in package.php, add a short change note, and then
+  run: 
+    
+        php package.php > package.xml
+
+    You may need to install some dependencies to get this to run properly.
