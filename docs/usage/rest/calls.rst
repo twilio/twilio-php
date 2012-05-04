@@ -18,7 +18,7 @@ The :class:`Calls` resource allows you to make outgoing calls:
     print $call->length;
     print $call->sid;
 
-Accessing Resources from a specific Call
+Accessing Resources from a Specific Call
 ========================================
 
 The :class:`Call` resource has some sub resources you can access, such as
