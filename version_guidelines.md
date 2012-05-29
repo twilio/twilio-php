@@ -20,4 +20,11 @@ update.
     
         php package.php > package.xml
 
+        pear package
+
+    Then copy over the tgz ball to the folder containing
+    github.com/twilio/pear, and run:
+
+        pirum add . Services_Twilio-X.Y.Z.tgz
+
     You may need to install some dependencies to get this to run properly.
