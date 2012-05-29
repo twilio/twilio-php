@@ -65,7 +65,8 @@ $package->setOptions(
             'version_guidelines.md',
             '*.tgz',
             'scratch/*',
-			'docs/*',
+            'docs/*',
+            'travis_install.bash',
         )
     )
 );
