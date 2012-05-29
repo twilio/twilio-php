@@ -3,3 +3,6 @@ docs/_build/
 test.php
 sms.php
 scratch/*
+vendor/*
+composer.lock
+composer.phar
