@@ -18,6 +18,11 @@ If you get the following message:
 
 you can install PEAR from their website, or download the source directly.
 
+### Via Composer:
+
+**twilio-php** is available on Packagist as the 
+[`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
+
 ### Download the source code
 
 [Click here to download the source
