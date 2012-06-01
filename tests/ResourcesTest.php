@@ -112,6 +112,30 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
     }
 }
 
+class AccountsTest extends PHPUnit_Framework_TestCase
+{
+    function testPost()
+    {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts.json',
+                m::any(), 'FriendlyName=foo')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('sid' => 'AC345'))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $account = $client->accounts->create(array(
+            'FriendlyName' => 'foo',
+        ));
+        $this->assertEquals('AC345', $account->sid);
+    }
+
+    function tearDown()
+    {
+        m::close();
+    }
+}
+
 class ConnectAppsTest extends PHPUnit_Framework_TestCase
 {
     function testUpdate()

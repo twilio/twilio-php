@@ -15,11 +15,11 @@ abstract class Services_Twilio_Resource
     protected $proxy;
     protected $subresources;
 
-    public function __construct()
+    public function __construct($resource)
     {
         $this->subresources = array();
-        $this->proxy = $proxy;
         $this->name = get_class($this);
+        $this->client = $resource;
         $this->init();
     }
 

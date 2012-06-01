@@ -23,9 +23,8 @@ abstract class Services_Twilio_ListResource
      */
     public function get($sid)
     {
-        $schema = $this->getSchema();
-        $type = $schema['instance'];
-        return new $type();
+        $instance_name = $this->instance_name;
+        echo $instance_name;
     }
 
     /**
@@ -53,7 +52,7 @@ abstract class Services_Twilio_ListResource
     {
         $schema = $this->getSchema();
         $basename = $schema['basename'];
-        return $this->get($this->proxy->createData($basename, $params));
+        return $this->client->createData($basename, $params);
     }
 
     /**
