@@ -10,13 +10,12 @@
  * @link     http://pear.php.net/package/Services_Twilio
  */ 
 abstract class Services_Twilio_Resource
-    implements Services_Twilio_DataProxy
 {
     protected $name;
     protected $proxy;
     protected $subresources;
 
-    public function __construct(Services_Twilio_DataProxy $proxy)
+    public function __construct()
     {
         $this->subresources = array();
         $this->proxy = $proxy;

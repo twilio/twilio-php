@@ -21,8 +21,6 @@ class Services_Twilio_Rest_Account
             'authorized_connect_apps'
         );
 
-        $this->sandbox = new Services_Twilio_Rest_Sandbox(
-            new Services_Twilio_CachingDataProxy('Sandbox', $this)
-        );
+        $this->sandbox = new Services_Twilio_Rest_Sandbox();
     }
 }

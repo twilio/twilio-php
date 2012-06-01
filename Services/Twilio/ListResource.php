@@ -25,10 +25,7 @@ abstract class Services_Twilio_ListResource
     {
         $schema = $this->getSchema();
         $type = $schema['instance'];
-        return new $type(is_object($sid)
-            ? new Services_Twilio_CachingDataProxy(
-                isset($sid->sid) ? $sid->sid : NULL, $this, $sid
-            ) : new Services_Twilio_CachingDataProxy($sid, $this));
+        return new $type();
     }
 
     /**
