@@ -3,6 +3,11 @@
 class Services_Twilio_Rest_OutgoingCallerIds
     extends Services_Twilio_ListResource
 {
+    public function __construct($resource, $uri) {
+        $this->instance_name = 'OutgoingCallerId';
+        parent::__construct($resource, $uri);
+    }
+
     public function create($phoneNumber, array $params = array())
     {
         return parent::_create(array(

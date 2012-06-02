@@ -51,9 +51,7 @@ abstract class Services_Twilio_ListResource
      */
     protected function _create(array $params)
     {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        return $this->client->createData($basename, $params);
+        return $this->client->createData($this->uri, $params);
     }
 
     /**
