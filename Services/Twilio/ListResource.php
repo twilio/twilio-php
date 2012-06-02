@@ -98,15 +98,10 @@ abstract class Services_Twilio_ListResource
     public function getPage($page = 0, $size = 50, array $filters = array())
     {
         $schema = $this->getSchema();
-        $page = $this->client->retrieveData($schema['basename'], array(
+        $page = $this->client->retrieveData($this->uri, array(
             'Page' => $page,
             'PageSize' => $size,
         ) + $filters);
-
-        $page->{$schema['list']} = array_map(
-            array($this, 'get'),
-            $page->{$schema['list']}
-        );
 
         return new Services_Twilio_Page($page, $schema['list']);
     }
