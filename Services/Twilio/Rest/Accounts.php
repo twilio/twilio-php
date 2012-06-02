@@ -3,9 +3,9 @@
 class Services_Twilio_Rest_Accounts
     extends Services_Twilio_ListResource
 {
-    public function __construct($resource) {
+    public function __construct($resource, $uri) {
         $this->instance_name = 'Account';
-        parent::__construct($resource);
+        parent::__construct($resource, $uri);
     }
 
     public function create(array $params = array())

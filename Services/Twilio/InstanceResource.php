@@ -27,18 +27,6 @@ abstract class Services_Twilio_InstanceResource
     }
 
     /**
-     * Set this resource's proxy.
-     *
-     * @param Services_Twilio_DataProxy $proxy An instance of DataProxy
-     *
-     * @return null
-     */
-    public function setProxy($proxy)
-    {
-        $this->proxy = $proxy;
-    }
-
-    /**
      * Get the value of a property on this resource.
      *
      * @param string $key The property name
@@ -50,6 +38,6 @@ abstract class Services_Twilio_InstanceResource
         if ($subresource = $this->getSubresources($key)) {
             return $subresource;
         }
-        return $this->proxy->$key;
+        return $this->client->$key;
     }
 }

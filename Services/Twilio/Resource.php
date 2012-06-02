@@ -15,11 +15,12 @@ abstract class Services_Twilio_Resource
     protected $proxy;
     protected $subresources;
 
-    public function __construct($resource)
+    public function __construct($resource, $uri)
     {
         $this->subresources = array();
         $this->name = get_class($this);
         $this->client = $resource;
+        $this->uri = $uri;
         $this->init();
     }
 
@@ -30,17 +31,17 @@ abstract class Services_Twilio_Resource
 
     public function retrieveData($path, array $params = array())
     {
-        return $this->proxy->retrieveData($path, $params);
+        return $this->client->retrieveData($path, $params);
     }
 
     public function deleteData($path, array $params = array())
     {
-        return $this->proxy->deleteData($path, $params);
+        return $this->client->deleteData($path, $params);
     }
 
     public function createData($path, array $params = array())
     {
-        return $this->proxy->createData($path, $params);
+        return $this->client->createData($path, $params);
     }
 
     public function getSubresources($name = null)
@@ -63,7 +64,7 @@ abstract class Services_Twilio_Resource
         foreach (func_get_args() as $name) {
             $constantized = ucfirst(Services_Twilio_Resource::camelize($name));
             $type = "Services_Twilio_Rest_" . $constantized;
-            $this->addSubresource($name, new $type($this));
+            $this->addSubresource($name, new $type($this, $this->uri . "/$constantized"));
         }
     }
 

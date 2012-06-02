@@ -25,7 +25,7 @@ abstract class Services_Twilio_ListResource
     {
         $instance_name = $this->instance_name;
         $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
-        return new $instance_class_name($this->client);
+        return new $instance_class_name($this->client, $this->uri . "/$sid");
     }
 
     /**
@@ -38,7 +38,7 @@ abstract class Services_Twilio_ListResource
     {
         $schema = $this->getSchema();
         $basename = $schema['basename'];
-        $this->proxy->deleteData("$basename/$sid", $params);
+        $this->client->deleteData("$basename/$sid", $params);
     }
 
     /**
@@ -68,7 +68,7 @@ abstract class Services_Twilio_ListResource
     {
         $schema = $this->getSchema();
         $basename = $schema['basename'];
-        return $this->proxy->retrieveData("$basename/$sid", $params);
+        return $this->client->retrieveData($this->uri . "/$sid", $params);
     }
 
     /**
@@ -83,7 +83,7 @@ abstract class Services_Twilio_ListResource
     {
         $schema = $this->getSchema();
         $basename = $schema['basename'];
-        return $this->proxy->createData("$basename/$sid", $params);
+        return $this->client->createData("$basename/$sid", $params);
     }
 
     /**
@@ -98,7 +98,7 @@ abstract class Services_Twilio_ListResource
     public function getPage($page = 0, $size = 50, array $filters = array())
     {
         $schema = $this->getSchema();
-        $page = $this->proxy->retrieveData($schema['basename'], array(
+        $page = $this->client->retrieveData($schema['basename'], array(
             'Page' => $page,
             'PageSize' => $size,
         ) + $filters);
