@@ -25,10 +25,10 @@ abstract class Services_Twilio_Resource
         foreach ($params as $name => $param) {
             $this->$name = $param;
         }
-        $this->init();
+        $this->init($resource, $uri);
     }
 
-    protected function init()
+    protected function init($resource, $uri)
     {
         // Left empty for derived classes to implement
     }

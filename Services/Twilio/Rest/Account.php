@@ -3,7 +3,7 @@
 class Services_Twilio_Rest_Account
     extends Services_Twilio_InstanceResource
 {
-    protected function init()
+    protected function init($resource, $uri)
     {
         $this->setupSubresources(
             'applications',
@@ -21,6 +21,6 @@ class Services_Twilio_Rest_Account
             'authorized_connect_apps'
         );
 
-        //$this->sandbox = new Services_Twilio_Rest_Sandbox();
+        $this->sandbox = new Services_Twilio_Rest_Sandbox($resource, $uri . "/Sandbox");
     }
 }

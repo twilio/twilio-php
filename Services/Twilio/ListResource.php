@@ -46,7 +46,7 @@ abstract class Services_Twilio_ListResource
         } else {
             $uri = $this->uri;
         }
-        return new $instance_class_name($this->client, $this->uri, $params);
+        return new $instance_class_name($this->client, $uri, $params);
     }
 
     /**
