@@ -198,7 +198,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 m::any(),
                 'Muted=true'
             )->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode('{}')
+                json_encode(array())
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $conf = $client->account->conferences->get('CF123');

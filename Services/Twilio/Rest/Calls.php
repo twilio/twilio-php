@@ -4,11 +4,6 @@ class Services_Twilio_Rest_Calls
     extends Services_Twilio_ListResource
 {
 
-    public function __construct($resource, $uri) {
-        $this->instance_name = 'Call';
-        parent::__construct($resource, $uri);
-    }
-
     public static function isApplicationSid($value)
     {
         return strlen($value) == 34

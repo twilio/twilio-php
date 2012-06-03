@@ -3,11 +3,6 @@
 class Services_Twilio_Rest_AvailablePhoneNumbers
     extends Services_Twilio_ListResource
 {
-    public function __construct($resource, $uri) {
-        $this->instance_name = 'AvailablePhoneNumber';
-        parent::__construct($resource, $uri);
-    }
-
     public function getLocal($country)
     {
         $curried = new Services_Twilio_PartialApplicationHelper();

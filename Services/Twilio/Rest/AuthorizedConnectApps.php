@@ -5,6 +5,6 @@ class Services_Twilio_Rest_AuthorizedConnectApps
 {
    public function create($name, array $params = array())
     {
-        throw new BadMethodCallException('Not allowed');        
+        throw new BadMethodCallException('Not allowed');
     }
 }

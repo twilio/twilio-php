@@ -15,6 +15,12 @@ abstract class Services_Twilio_ListResource
 {
     private $_page;
 
+    public function __construct($resource, $uri) {
+        $parts = explode('_', get_class($this));
+        $name = $parts[count($parts) - 1];
+        $this->instance_name = rtrim($name, 's');
+        parent::__construct($resource, $uri);
+    }
     /**
      * Gets a resource from this list.
      *
@@ -26,6 +32,13 @@ abstract class Services_Twilio_ListResource
         $instance_name = $this->instance_name;
         $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
         return new $instance_class_name($this->client, $this->uri . "/$sid");
+    }
+
+    public function getObjectFromJson($params)
+    {
+        $instance_name = $this->instance_name;
+        $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
+        return new $instance_class_name($this->client, $this->uri . "/" . $params->sid, $params);
     }
 
     /**
@@ -52,6 +65,7 @@ abstract class Services_Twilio_ListResource
         $instance_name = $this->instance_name;
         $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
         $params = $this->client->createData($this->uri, $params);
+        /* Some methods like verified caller ID don't return sids. */
         if (isset($params->sid)) {
             $resource_uri = $this->uri . '/' . $params->sid;
         } else {
@@ -119,6 +133,11 @@ abstract class Services_Twilio_ListResource
             'Page' => $page,
             'PageSize' => $size,
         ) + $filters);
+
+        $page->{$schema['list']} = array_map(
+            array($this, 'getObjectFromJson'),
+            $page->{$schema['list']}
+        );
 
         return new Services_Twilio_Page($page, $schema['list']);
     }
