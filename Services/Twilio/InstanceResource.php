@@ -23,7 +23,7 @@ abstract class Services_Twilio_InstanceResource
         if (!is_array($params)) {
             $params = array($params => $value);
         }
-        $this->proxy->updateData($params);
+        $this->client->updateData($params);
     }
 
     /**

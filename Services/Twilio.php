@@ -116,6 +116,7 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public function createData($path, array $params = array())
     {
+        echo "creating data";
         $path = "$path.json";
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
         return empty($params)

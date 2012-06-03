@@ -178,7 +178,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $calls = $client->account->calls;
-        $calls->create('123', '123', 'http://example.com')->hangup();
+        $call = $calls->create('123', '123', 'http://example.com');
+        $call->hangup();
     }
 
     function testUnmute() {

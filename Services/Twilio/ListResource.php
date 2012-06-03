@@ -51,7 +51,10 @@ abstract class Services_Twilio_ListResource
      */
     protected function _create(array $params)
     {
-        return $this->client->createData($this->uri, $params);
+        $instance_name = $this->instance_name;
+        $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
+        $params = $this->client->createData($this->uri, $params);
+        return new $instance_class_name($this->client, $this->uri . '/' . $params->sid, $params);
     }
 
     /**
