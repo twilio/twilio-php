@@ -79,6 +79,17 @@ abstract class Services_Twilio_ListResource
         return new $instance_class_name($this->client, $resource_uri, $params);
     }
 
+    /* 
+     * Same as above, but don't create an object.
+     */
+    public function retrieveRawData($sid, array $params = array())
+    {
+        $instance_name = $this->instance_name;
+        $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
+        $resource_uri = $this->uri . '/' . $sid;
+        return $this->client->retrieveData($resource_uri, $params);
+    }
+
     /**
      * Create a resource on the list and then return its representation as an
      * InstanceResource.

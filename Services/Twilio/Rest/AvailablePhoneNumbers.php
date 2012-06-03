@@ -39,7 +39,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
 
     public function getList($country, $type, array $params = array())
     {
-        return $this->retrieveData("$country/$type", $params);
+        return $this->retrieveRawData("$country/$type", $params);
     }
 
     public function getSchema()

@@ -14,7 +14,8 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $nums = $client->account->available_phone_numbers->getLocal('US');
-        foreach ($nums->getList(array('AreaCode' => '510')) as $num) {
+        $numsList = $nums->getList(array('AreaCode' => '510'));
+        foreach ($numsList as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }
     }
