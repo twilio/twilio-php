@@ -25,7 +25,13 @@ abstract class Services_Twilio_ListResource
     {
         $instance_name = $this->instance_name;
         $instance_class_name = "Services_Twilio_Rest_" . $instance_name;
-        return new $instance_class_name($this->client, $this->uri . "/$sid");
+        $params = $this->client->retrieveData($this->uri . "/$sid");
+        if (isset($params->sid)) {
+            $resource_uri = $this->uri . '/' . $params->sid;
+        } else {
+            $resource_uri = $this->uri;
+        }
+        return new $instance_class_name($this->client, $resource_uri, $params);
     }
 
     /**

@@ -153,6 +153,7 @@ class ConnectAppsTest extends PHPUnit_Framework_TestCase
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $cn = $client->account->connect_apps->get('CN123');
+        print_r($cn);
         $this->assertEquals('foo', $cn->friendly_name);
         $cn->update('Foo', array('friendly_name' => 'Foo'));
         $this->assertEquals('Foo', $cn->friendly_name);

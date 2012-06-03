@@ -38,6 +38,6 @@ abstract class Services_Twilio_InstanceResource
         if ($subresource = $this->getSubresources($key)) {
             return $subresource;
         }
-        return $this->client->$key;
+        return $this->$key;
     }
 }
