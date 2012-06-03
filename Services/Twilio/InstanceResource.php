@@ -22,8 +22,15 @@ abstract class Services_Twilio_InstanceResource
     {
         if (!is_array($params)) {
             $params = array($params => $value);
-        } 
-        $this->client->createData($this->uri, $params);
+        }
+        $decamelizedParams = $this->client->createData($this->uri, $params);
+        $this->updateAttributes($decamelizedParams);
+    }
+
+    public function updateAttributes($params) {
+        foreach ($params as $name => $value) {
+            $this->$name = $value;
+        }
     }
 
     /**
@@ -37,6 +44,10 @@ abstract class Services_Twilio_InstanceResource
     {
         if ($subresource = $this->getSubresources($key)) {
             return $subresource;
+        }
+        if (!isset($this->$key)) {
+            $params = $this->client->retrieveData($this->uri);
+            $this->updateAttributes($params);
         }
         return $this->$key;
     }
