@@ -111,21 +111,6 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Create a resource on the list and then return its representation as an
-     * InstanceResource.
-     *
-     * @param array $params The parameters with which to create the resource
-     *
-     * @return Services_Twilio_InstanceResource The created resource
-     */
-    public function createData($sid, array $params = array())
-    {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        return $this->client->createData("$basename/$sid", $params);
-    }
-
-    /**
      * Returns a page of InstanceResources from this list.
      *
      * @param int   $page The start page
@@ -136,18 +121,19 @@ abstract class Services_Twilio_ListResource
      */
     public function getPage($page = 0, $size = 50, array $filters = array())
     {
-        $schema = $this->getSchema();
+        $list_name = self::decamelize($basename);
         $page = $this->client->retrieveData($this->uri, array(
             'Page' => $page,
             'PageSize' => $size,
         ) + $filters);
 
-        $page->{$schema['list']} = array_map(
+        /* create a new PHP object for each json obj in the api response. */
+        $page->$list_name = array_map(
             array($this, 'getObjectFromJson'),
-            $page->{$schema['list']}
+            $page->$list_name
         );
 
-        return new Services_Twilio_Page($page, $schema['list']);
+        return new Services_Twilio_Page($page, $list_name);
     }
 
     /**
