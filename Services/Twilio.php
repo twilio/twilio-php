@@ -46,6 +46,14 @@ class Services_Twilio extends Services_Twilio_Resource
                 $version : end($this->versions);
 
         if (null === $_http) {
+            if (!defined('CURLOPT_USERAGENT')) {
+                trigger_error("It looks like you do not have curl installed.\n". 
+                    "Curl is required to make HTTP requests using the twilio-php\n" .
+                    "library. For install instructions, visit the following page:\n" . 
+                    "http://php.net/manual/en/curl.installation.php",
+                    E_USER_WARNING
+                );
+            }
             $_http = new Services_Twilio_TinyHttp(
                 "https://api.twilio.com",
                 array("curlopts" => array(
