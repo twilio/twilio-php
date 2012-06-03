@@ -123,15 +123,17 @@ class ConnectAppsTest extends PHPUnit_Framework_TestCase
                 json_encode(array('friendly_name' => 'foo'))
             ));
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/ConnectApps/CN123.json', m::any(), m::any())
+            ->with('/2010-04-01/Accounts/AC123/ConnectApps/CN123.json', 
+            array('Content-Type' => 'application/x-www-form-urlencoded'), 
+            'FriendlyName=Bar')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('friendly_name' => 'Foo'))
+                json_encode(array('friendly_name' => 'Boo'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $cn = $client->account->connect_apps->get('CN123');
         $this->assertEquals('foo', $cn->friendly_name);
-        $cn->update('Foo', array('friendly_name' => 'Foo'));
-        $this->assertEquals('Foo', $cn->friendly_name);
+        $cn->update('Bar', array('friendly_name' => 'Bar'));
+        $this->assertEquals('Bar', $cn->friendly_name);
     }
     
     function tearDown()
