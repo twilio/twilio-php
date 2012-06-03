@@ -22,8 +22,8 @@ abstract class Services_Twilio_InstanceResource
     {
         if (!is_array($params)) {
             $params = array($params => $value);
-        }
-        $this->client->updateData($params);
+        } 
+        $this->client->createData($this->uri, $params);
     }
 
     /**
