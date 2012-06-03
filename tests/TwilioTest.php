@@ -28,6 +28,12 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $client->account->sid;
     }
 
+    function testOnlyOneClientCreated() {
+        $client = new Services_Twilio('AC123', '456');
+        $client->account->client->sid = 'CL456';
+        $this->assertSame('CL456', $client->account->sandbox->client->sid);
+    }
+
     function testNullVersionReturnsNewest() {
         $client = new Services_Twilio('AC123', '123', null);
         $this->assertEquals('2010-04-01', $client->getVersion());
