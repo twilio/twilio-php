@@ -121,7 +121,7 @@ abstract class Services_Twilio_ListResource
      */
     public function getPage($page = 0, $size = 50, array $filters = array())
     {
-        $list_name = self::decamelize($basename);
+        $list_name = $this->getResourceName();
         $page = $this->client->retrieveData($this->uri, array(
             'Page' => $page,
             'PageSize' => $size,
@@ -134,24 +134,6 @@ abstract class Services_Twilio_ListResource
         );
 
         return new Services_Twilio_Page($page, $list_name);
-    }
-
-    /**
-     * Returns meta data about this list resource type.
-     *
-     * @return array Meta data
-     */
-    public function getSchema()
-    {
-        $name = get_class($this);
-        $parts = explode('_', $name);
-        $basename = end($parts);
-        return array(
-            'name' => $name,
-            'basename' => $basename,
-            'instance' => substr($name, 0, -1),
-            'list' => self::decamelize($basename),
-        );
     }
 
     /**

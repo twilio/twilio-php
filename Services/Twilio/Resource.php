@@ -72,6 +72,18 @@ abstract class Services_Twilio_Resource
         }
     }
 
+    public function getResourceName($camelized = false) 
+    {
+        $name = get_class($this);
+        $parts = explode('_', $name);
+        $basename = end($parts);
+        if (!$camelized) {
+            return self::decamelize($basename);
+        } else {
+            return $basename;
+        }
+    }
+
     public static function decamelize($word)
     {
         return preg_replace(

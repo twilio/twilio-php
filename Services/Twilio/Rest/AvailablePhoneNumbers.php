@@ -37,9 +37,9 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         return $this->retrieveRawData("$country/$type", $params);
     }
 
-    public function getSchema()
+    public function getResourceName($camelized = false)
     {
         // You can't page through the list of available phone numbers.
-        return array('list' => 'countries') + parent::getSchema();
+        return $camelized ? 'Countries' : 'countries';
     }
 }
