@@ -36,9 +36,7 @@ abstract class Services_Twilio_ListResource
      */
     public function delete($sid, array $params = array())
     {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        $this->client->deleteData("$basename/$sid", $params);
+        $this->client->deleteData($this->uri . '/' . $sid, $params);
     }
 
     /**
