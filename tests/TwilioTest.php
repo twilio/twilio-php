@@ -3,6 +3,10 @@
 use \Mockery as m;
 
 class TwilioTest extends PHPUnit_Framework_TestCase {
+
+    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
+    protected $callParams = array('To' => '123', 'From' => '123', 'Url' => 'http://example.com');
+
     function tearDown() {
         m::close();
     }
@@ -155,7 +159,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testUpdate() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json', m::any(), m::any())
+            ->with('/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+            http_build_query($this->callParams))
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 '{"sid":"CA123"}'
             ));
@@ -166,19 +171,21 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testModifyLiveCall() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json', m::any(), m::any())
+            ->with('/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+            http_build_query($this->callParams))
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 '{"sid":"CA123"}'
             ));
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json', m::any(),
+            ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json', $this->formHeaders,
                 'Status=completed')
                 ->andReturn(array(200, array('Content-Type' => 'application/json'),
                     '{"sid":"CA123"}'
                 ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $calls = $client->account->calls;
-        $calls->create('123', '123', 'http://example.com')->hangup();
+        $call = $calls->create('123', '123', 'http://example.com');
+        $call->hangup();
     }
 
     function testUnmute() {
@@ -194,10 +201,10 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $http->shouldReceive('post')->once()
             ->with(
                 '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants/CA123.json',
-                m::any(),
+                $this->formHeaders,
                 'Muted=true'
             )->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode('{}')
+                json_encode(array())
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $conf = $client->account->conferences->get('CF123');
@@ -215,7 +222,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 json_encode(array('friendly_name' => 'foo'))
             ));
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123.json', m::any(), m::any())
+            ->with('/2010-04-01/Accounts/AC123.json', $this->formHeaders, 'FriendlyName=bar')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'bar'))
             ));
@@ -247,4 +254,5 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         }
         $this->assertInstanceOf('Traversable', $client->account->calls);
     }
+
 }
