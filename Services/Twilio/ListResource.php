@@ -16,9 +16,10 @@ abstract class Services_Twilio_ListResource
     private $_page;
 
     public function __construct($resource, $uri) {
-        $parts = explode('_', get_class($this));
-        $name = $parts[count($parts) - 1];
-        $this->instance_name = "Services_Twilio_Rest_" . rtrim($name, 's');
+        $name = $this->getResourceName(true);
+        if (!isset($this->instance_name)) {
+            $this->instance_name = "Services_Twilio_Rest_" . rtrim($name, 's');
+        }
         parent::__construct($resource, $uri);
     }
     /**

@@ -40,6 +40,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
     public function getResourceName($camelized = false)
     {
         // You can't page through the list of available phone numbers.
+        $this->instance_name = 'Services_Twilio_Rest_AvailablePhoneNumber';
         return $camelized ? 'Countries' : 'countries';
     }
 }
