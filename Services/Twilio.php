@@ -43,7 +43,7 @@ class Services_Twilio extends Services_Twilio_Resource
         Services_Twilio_TinyHttp $_http = null
     ) {
         $this->version = in_array($version, $this->versions) ?
-                $version : $this->versions[count($this->versions)-1];
+                $version : end($this->versions);
 
         if (null === $_http) {
             $_http = new Services_Twilio_TinyHttp(
