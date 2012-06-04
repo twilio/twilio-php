@@ -62,10 +62,10 @@ abstract class Services_Twilio_Resource
         $name = get_class($this);
         $parts = explode('_', $name);
         $basename = end($parts);
-        if (!$camelized) {
-            return self::decamelize($basename);
-        } else {
+        if ($camelized) {
             return $basename;
+        } else {
+            return self::decamelize($basename);
         }
     }
 
