@@ -16,10 +16,11 @@ class Services_Twilio_Rest_Calls
         $params["To"] = $to;
         $params["From"] = $from;
 
-        if (self::isApplicationSid($url))
+        if (self::isApplicationSid($url)) {
             $params["ApplicationSid"] = $url;
-        else
+        } else {
             $params["Url"] = $url;
+        }
 
         return parent::_create($params);
     }
