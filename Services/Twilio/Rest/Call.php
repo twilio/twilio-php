@@ -12,7 +12,7 @@ class Services_Twilio_Rest_Call
         $this->update('Url', $url);
     }
 
-    protected function init()
+    protected function init($resource, $uri)
     {
         $this->setupSubresources(
             'notifications',

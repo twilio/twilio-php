@@ -13,7 +13,13 @@ abstract class Services_Twilio_ListResource
     extends Services_Twilio_Resource
     implements IteratorAggregate
 {
-    private $_page;
+    public function __construct($resource, $uri) {
+        $name = $this->getResourceName(true);
+        if (!isset($this->instance_name)) {
+            $this->instance_name = "Services_Twilio_Rest_" . rtrim($name, 's');
+        }
+        parent::__construct($resource, $uri);
+    }
 
     /**
      * Gets a resource from this list.
@@ -23,12 +29,27 @@ abstract class Services_Twilio_ListResource
      */
     public function get($sid)
     {
-        $schema = $this->getSchema();
-        $type = $schema['instance'];
-        return new $type(is_object($sid)
-            ? new Services_Twilio_CachingDataProxy(
-                isset($sid->sid) ? $sid->sid : NULL, $this, $sid
-            ) : new Services_Twilio_CachingDataProxy($sid, $this));
+        $instance = new $this->instance_name($this->client, $this->uri . "/$sid");
+        // XXX check if this is actually a sid in all cases.
+        $instance->sid = $sid;
+        return $instance;
+    }
+
+    /* 
+     * Construct an InstanceResource with the specified params.
+     *
+     * @param array params usually a JSON HTTP response from the API
+     * @return Services_Twilio_InstanceResource An instance with properties 
+     *      initialized to the values in the params array.
+     */
+    public function getObjectFromJson($params)
+    {
+        if (isset($params->sid)) {
+            $uri = $this->uri . "/" . $params->sid;
+        } else {
+            $uri = $this->uri;
+        }
+        return new $this->instance_name($this->client, $uri, $params);
     }
 
     /**
@@ -39,9 +60,7 @@ abstract class Services_Twilio_ListResource
      */
     public function delete($sid, array $params = array())
     {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        $this->proxy->deleteData("$basename/$sid", $params);
+        $this->client->deleteData($this->uri . '/' . $sid, $params);
     }
 
     /**
@@ -54,83 +73,49 @@ abstract class Services_Twilio_ListResource
      */
     protected function _create(array $params)
     {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        return $this->get($this->proxy->createData($basename, $params));
-    }
-
-    /**
-     * Create a resource on the list and then return its representation as an
-     * InstanceResource.
-     *
-     * @param array $params The parameters with which to create the resource
-     *
-     * @return Services_Twilio_InstanceResource The created resource
-     */
-    public function retrieveData($sid, array $params = array())
-    {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        return $this->proxy->retrieveData("$basename/$sid", $params);
-    }
-
-    /**
-     * Create a resource on the list and then return its representation as an
-     * InstanceResource.
-     *
-     * @param array $params The parameters with which to create the resource
-     *
-     * @return Services_Twilio_InstanceResource The created resource
-     */
-    public function createData($sid, array $params = array())
-    {
-        $schema = $this->getSchema();
-        $basename = $schema['basename'];
-        return $this->proxy->createData("$basename/$sid", $params);
+        $params = $this->client->createData($this->uri, $params);
+        /* Some methods like verified caller ID don't return sids. */
+        if (isset($params->sid)) {
+            $resource_uri = $this->uri . '/' . $params->sid;
+        } else {
+            $resource_uri = $this->uri;
+        }
+        return new $this->instance_name($this->client, $resource_uri, $params);
     }
 
     /**
      * Returns a page of InstanceResources from this list.
      *
-     * @param int   $page The start page
-     * @param int   $size Number of items per page
-     * @param array $size Optional filters
+     * @param int    $page The start page
+     * @param int    $size Number of items per page
+     * @param array  $size Optional filters
+     * @param string $deep_paging_uri if provided, the $page and $size 
+     *      parameters will be ignored and this URI will be requested directly.
      *
      * @return Services_Twilio_Page A page
      */
-    public function getPage($page = 0, $size = 50, array $filters = array())
-    {
-        $schema = $this->getSchema();
-        $page = $this->proxy->retrieveData($schema['basename'], array(
-            'Page' => $page,
-            'PageSize' => $size,
-        ) + $filters);
+    public function getPage(
+        $page = 0, $size = 50, array $filters = array(), $deep_paging_uri = null
+    ) {
+        $list_name = $this->getResourceName();
+        if ($deep_paging_uri !== null) {
+            $page = $this->client->retrieveData($deep_paging_uri, $filters, true);
+        } else {
+            $page = $this->client->retrieveData($this->uri, array(
+                'Page' => $page,
+                'PageSize' => $size,
+            ) + $filters);
+        }
 
-        $page->{$schema['list']} = array_map(
-            array($this, 'get'),
-            $page->{$schema['list']}
+        /* create a new PHP object for each json obj in the api response. */
+        $page->$list_name = array_map(
+            array($this, 'getObjectFromJson'),
+            $page->$list_name
         );
-
-        return new Services_Twilio_Page($page, $schema['list']);
+        $next_page_uri = isset($page->next_page_uri) ? $page->next_page_uri : null;
+        return new Services_Twilio_Page($page, $list_name, $next_page_uri);
     }
 
-    /**
-     * Returns meta data about this list resource type.
-     *
-     * @return array Meta data
-     */
-    public function getSchema()
-    {
-        $name = get_class($this);
-        $parts = explode('_', $name);
-        $basename = end($parts);
-        return array(
-            'name' => $name,
-            'basename' => $basename,
-            'instance' => substr($name, 0, -1),
-            'list' => self::decamelize($basename),
-        );
-    }
 
     /**
      * Returns an iterable list of InstanceResources
@@ -153,14 +138,13 @@ abstract class Services_Twilio_ListResource
     public function getIterator($page = 0, $size = 50, array $filters = array())
     {
         return new Services_Twilio_AutoPagingIterator(
-            array($this, 'getPageGenerator'),
-            create_function('$page, $size, $filters',
-                'return array($page + 1, $size, $filters);'),
-            array($page, $size, $filters)
+            array($this, 'getPageGenerator'), $page, $size, $filters
         );
     }
 
-    public function getPageGenerator($page, $size, array $filters = array()) {
-        return $this->getPage($page, $size, $filters)->getItems();
+    public function getPageGenerator(
+        $page, $size, array $filters = array(), $deep_paging_uri = null
+    ) {
+        return $this->getPage($page, $size, $filters, $deep_paging_uri);
     }
 }
