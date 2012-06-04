@@ -6,3 +6,4 @@ scratch/*
 vendor/*
 composer.lock
 composer.phar
+.idea
