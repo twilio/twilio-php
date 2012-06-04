@@ -14,7 +14,8 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $nums = $client->account->available_phone_numbers->getLocal('US');
-        foreach ($nums->getList(array('AreaCode' => '510')) as $num) {
+        $numsList = $nums->getList(array('AreaCode' => '510'));
+        foreach ($numsList as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }
     }
@@ -41,11 +42,12 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
 
 class SandboxTest extends PHPUnit_Framework_TestCase
 {
+    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
     function testUpdateVoiceUrl()
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Sandbox.json', m::any(), 'VoiceUrl=foo')
+            ->with('/2010-04-01/Accounts/AC123/Sandbox.json', $this->formHeaders, 'VoiceUrl=foo')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('voice_url' => 'foo'))
             ));
@@ -61,12 +63,13 @@ class SandboxTest extends PHPUnit_Framework_TestCase
 
 class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase
 {
+    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
     function testPost()
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/OutgoingCallerIds.json',
-                m::any(), 'PhoneNumber=%2B14158675309&FriendlyName=My+Home+Phone+Number')
+                $this->formHeaders, 'PhoneNumber=%2B14158675309&FriendlyName=My+Home+Phone+Number')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'account_sid' => 'AC123',
@@ -90,12 +93,13 @@ class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase
 
 class ApplicationsTest extends PHPUnit_Framework_TestCase
 {
+    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
     function testPost()
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Applications.json',
-                m::any(), 'FriendlyName=foo&VoiceUrl=bar')
+                $this->formHeaders, 'FriendlyName=foo&VoiceUrl=bar')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'AP123'))
             ));
@@ -104,6 +108,31 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
             'VoiceUrl' => 'bar',
         ));
         $this->assertEquals('AP123', $app->sid);
+    }
+
+    function tearDown()
+    {
+        m::close();
+    }
+}
+
+class AccountsTest extends PHPUnit_Framework_TestCase
+{
+    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
+    function testPost()
+    {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts.json',
+                $this->formHeaders, 'FriendlyName=foo')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('sid' => 'AC345'))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $account = $client->accounts->create(array(
+            'FriendlyName' => 'foo',
+        ));
+        $this->assertEquals('AC345', $account->sid);
     }
 
     function tearDown()
