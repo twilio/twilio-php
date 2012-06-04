@@ -266,6 +266,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $callsBase = '/2010-04-01/Accounts/AC123/Calls.json';
         $firstPageUri = $callsBase . '?Page=0&PageSize=1';
         $afterSidUri = $callsBase . '?Page=1&PageSize=1&AfterSid=CA123';
+        $secondAfterSidUri = $callsBase . '?Page=2&PageSize=1&AfterSid=CA456';
         $http->shouldReceive('get')->once()
             ->with($firstPageUri)
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -281,11 +282,28 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             ->with($afterSidUri)
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
+                    'next_page_uri' => $secondAfterSidUri,
                     'calls' => array(array(
                         'sid' => 'CA456',
                         'price' => '-0.02000',
                     ))
                 ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with($secondAfterSidUri)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'next_page_uri' => null,
+                    'calls' => array(array(
+                        'sid' => 'CA789',
+                        'price' => '-0.02000',
+                    ))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=3&PageSize=1')
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->calls->getIterator(0, 1) as $call) {

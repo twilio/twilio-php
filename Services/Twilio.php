@@ -78,13 +78,16 @@ class Services_Twilio extends Services_Twilio_Resource
      *
      * @return object The object representation of the resource
      */
-    public function retrieveData($path, array $params = array())
+    public function retrieveData($path, array $params = array(), $full_uri = false)
     {
-        $path = "$path.json";
+        if (!$full_uri) {
+            $path = "$path.json";
+        } 
+        $query = $full_uri ? '' : '?';
         return empty($params)
             ? $this->_processResponse($this->http->get($path))
             : $this->_processResponse(
-                $this->http->get("$path?" . http_build_query($params, '', '&'))
+                $this->http->get($path . $query . http_build_query($params, '', '&'))
             );
     }
 

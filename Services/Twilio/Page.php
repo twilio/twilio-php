@@ -33,10 +33,11 @@ class Services_Twilio_Page
      * @param object $page The page object
      * @param string $name The key of the item list
      */
-    public function __construct($page, $name)
+    public function __construct($page, $name, $next_page_uri = null)
     {
         $this->page = $page;
         $this->items = $page->{$name};
+        $this->next_page_uri = $next_page_uri;
     }
 
     /**

@@ -33,21 +33,6 @@ abstract class Services_Twilio_Resource
         // Left empty for derived classes to implement
     }
 
-    public function retrieveData($path, array $params = array())
-    {
-        return $this->client->retrieveData($path, $params);
-    }
-
-    public function deleteData($path, array $params = array())
-    {
-        return $this->client->deleteData($path, $params);
-    }
-
-    public function createData($path, array $params = array())
-    {
-        return $this->client->createData($path, $params);
-    }
-
     public function getSubresources($name = null)
     {
         if (isset($name)) {
@@ -68,7 +53,7 @@ abstract class Services_Twilio_Resource
         foreach (func_get_args() as $name) {
             $constantized = ucfirst(Services_Twilio_Resource::camelize($name));
             $type = "Services_Twilio_Rest_" . $constantized;
-            $this->addSubresource($name, new $type($this, $this->uri . "/$constantized"));
+            $this->addSubresource($name, new $type($this->client, $this->uri . "/$constantized"));
         }
     }
 

@@ -34,7 +34,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
 
     public function getList($country, $type, array $params = array())
     {
-        return $this->retrieveRawData("$country/$type", $params);
+        return $this->client->retrieveData($this->uri . "/$country/$type", $params);
     }
 
     public function getResourceName($camelized = false)

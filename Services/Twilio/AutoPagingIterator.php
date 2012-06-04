@@ -4,20 +4,24 @@ class Services_Twilio_AutoPagingIterator
     implements Iterator
 {
     protected $generator;
-    protected $promoter;
     protected $args;
     protected $items;
 
     private $_args;
 
-    public function __construct($generator, $promoter, array $args) {
+    public function __construct($generator, $page, $size, $filters) {
         $this->generator = $generator;
-        $this->promoter = $promoter;
-        $this->args = $args;
+        $this->page = $page;
+        $this->size = $size;
+        $this->filters = $filters;
         $this->items = array();
 
         // Save a backup for rewind()
-        $this->_args = $args;
+        $this->_args = array(
+            'page' => $page,
+            'size' => $size,
+            'filters' => $filters,
+        );
     }
 
     public function current()
@@ -46,8 +50,11 @@ class Services_Twilio_AutoPagingIterator
 
     public function rewind()
     {
-        $this->args = $this->_args;
+        foreach ($this->_args as $arg => $val) {
+            $this->$arg = $val;
+        }
         $this->items = array();
+        $this->next_page_uri = null;
     }
 
     public function count()
@@ -77,8 +84,15 @@ class Services_Twilio_AutoPagingIterator
             // null key when the items list is iterated over completely
             || key($this->items) === null
         ) {
-            $this->items = call_user_func_array($this->generator, $this->args);
-            $this->args = call_user_func_array($this->promoter, $this->args);
+            $items_and_uri = call_user_func_array($this->generator, array(
+                $this->page,
+                $this->size,
+                $this->filters,
+                $this->next_page_uri,
+            ));
+            $this->next_page_uri = $items_and_uri['next_page_uri'];
+            $this->items = $items_and_uri['items'];
+            $this->page = $this->page + 1;
         }
     }
 }
