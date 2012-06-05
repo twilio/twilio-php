@@ -21,6 +21,17 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('Robert Paulson', $client->account->friendly_name);
     }
 
+    function testNoContentTypeThrowsException() {
+        $this->setExpectedException('DomainException');
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123.json')
+            ->andReturn(array(200, array(), json_encode(array())
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client->account->friendly_name;
+    }
+
     function testAccessSidAvoidsNetworkCall() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->never();
@@ -119,6 +130,23 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $call = current($page->getItems());
         $this->assertEquals('Completed', $call->status);
         $this->assertEquals(1, $page->total);
+    }
+
+    function testIterateOverPage() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'total' => 1,
+                    'calls' => array(array('status' => 'Completed', 'sid' => 'CA123'))
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $page = $client->account->calls->getPage(0, 10);
+        foreach ($page->getIterator() as $pageitems) {
+            $this->assertSame('CA123', $pageitems->sid);
+        }
     }
 
     function testAsymmetricallyNamedResources() {
