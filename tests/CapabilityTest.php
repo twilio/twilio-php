@@ -93,4 +93,11 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         $token->allowClientIncoming('@');
     }
 
+    function zeroLengthNameInvalid() {
+        $this->setExpectedException('InvalidArgumentException');
+        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token->allowClientIncoming("");
+    }
+
+
 }
