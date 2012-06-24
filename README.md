@@ -32,7 +32,7 @@ dependencies.
 Once you download the library, move the twilio-php folder to your project
 directory and then include the library file:
 
-    require 'Services/Twilio.php';
+    require '/path/to/twilio-php/Services/Twilio.php';
 
 and you're good to go!
 
@@ -54,7 +54,7 @@ how to get the most out of **twilio-php**.
 <?php
 // Install the library via PEAR or download the .zip file to your project folder.
 // This line loads the library
-require('Services/Twilio.php');
+require('/path/to/twilio-php/Services/Twilio.php');
 
 $client = new Services_Twilio('AC123', '123');
 $message = $client->account->sms_messages->create(
