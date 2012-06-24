@@ -72,7 +72,7 @@ print $message->sid;
 <?php
 // Install the library via PEAR or download the .zip file to your project folder.
 // This line loads the library
-require('Services/Twilio.php');
+require('/path/to/twilio-php/Services/Twilio.php');
 
 $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
@@ -95,7 +95,7 @@ To control phone calls, your application needs to output
 
 ```php
 <?php
-require('Services/Twilio.php');
+require('/path/to/twilio-php/Services/Twilio.php');
 
 $response = new Services_Twilio_Twiml();
 $response->say('Hello');
