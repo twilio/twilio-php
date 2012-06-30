@@ -13,7 +13,7 @@ abstract class Services_Twilio_ListResource
     extends Services_Twilio_Resource
     implements IteratorAggregate
 {
-    public function __construct($resource, $uri) {
+    public function __construct($client, $uri) {
         $name = $this->getResourceName(true);
         /* 
          * By default trim the 's' from the end of the list name to get the
@@ -23,7 +23,7 @@ abstract class Services_Twilio_ListResource
         if (!isset($this->instance_name)) {
             $this->instance_name = "Services_Twilio_Rest_" . rtrim($name, 's');
         }
-        parent::__construct($resource, $uri);
+        parent::__construct($client, $uri);
     }
 
     /**
@@ -34,7 +34,9 @@ abstract class Services_Twilio_ListResource
      */
     public function get($sid)
     {
-        $instance = new $this->instance_name($this->client, $this->uri . "/$sid");
+        $instance = new $this->instance_name(
+            $this->client, $this->uri . "/$sid"
+        );
         // XXX check if this is actually a sid in all cases.
         $instance->sid = $sid;
         return $instance;
@@ -118,7 +120,11 @@ abstract class Services_Twilio_ListResource
             array($this, 'getObjectFromJson'),
             $page->$list_name
         );
-        $next_page_uri = isset($page->next_page_uri) ? $page->next_page_uri : null;
+        if (isset($page->next_page_uri)) {
+            $next_page_uri = $page->next_page_uri;
+        } else {
+            $next_page_uri = null;
+        }
         return new Services_Twilio_Page($page, $list_name, $next_page_uri);
     }
 
@@ -141,8 +147,9 @@ abstract class Services_Twilio_ListResource
      *
      * @return Services_Twilio_AutoPagingIterator An iterator
      */
-    public function getIterator($page = 0, $size = 50, array $filters = array())
-    {
+    public function getIterator(
+        $page = 0, $size = 50, array $filters = array()
+    ) {
         return new Services_Twilio_AutoPagingIterator(
             array($this, 'getPageGenerator'), $page, $size, $filters
         );

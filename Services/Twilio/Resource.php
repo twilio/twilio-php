@@ -11,23 +11,21 @@
  */ 
 abstract class Services_Twilio_Resource
 {
-    protected $name;
     protected $subresources;
 
-    public function __construct($resource, $uri, $params = array())
+    public function __construct($client, $uri, $params = array())
     {
         $this->subresources = array();
-        $this->name = get_class($this);
-        $this->client = $resource;
+        $this->client = $client;
         $this->uri = $uri;
 
         foreach ($params as $name => $param) {
             $this->$name = $param;
         }
-        $this->init($resource, $uri);
+        $this->init($client, $uri);
     }
 
-    protected function init($resource, $uri)
+    protected function init($client, $uri)
     {
         // Left empty for derived classes to implement
     }
