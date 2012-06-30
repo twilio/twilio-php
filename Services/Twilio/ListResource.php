@@ -93,14 +93,15 @@ abstract class Services_Twilio_ListResource
      *
      * @param int    $page The start page
      * @param int    $size Number of items per page
-     * @param array  $size Optional filters
+     * @param array  $filters Optional filters
      * @param string $deep_paging_uri if provided, the $page and $size 
      *      parameters will be ignored and this URI will be requested directly.
      *
      * @return Services_Twilio_Page A page
      */
     public function getPage(
-        $page = 0, $size = 50, array $filters = array(), $deep_paging_uri = null
+        $page = 0, $size = 50, array $filters = array(), 
+        $deep_paging_uri = null
     ) {
         $list_name = $this->getResourceName();
         if ($deep_paging_uri !== null) {
