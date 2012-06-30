@@ -142,6 +142,9 @@ abstract class Services_Twilio_ListResource
         );
     }
 
+    /* 
+     * Retrieve a new page of API results, and update iterator parameters.
+     */
     public function getPageGenerator(
         $page, $size, array $filters = array(), $deep_paging_uri = null
     ) {

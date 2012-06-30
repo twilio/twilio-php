@@ -85,10 +85,8 @@ class Services_Twilio_AutoPagingIterator
         return false;
     }
 
-    /*
-     * Check if we need to load another page of results from the API.
-     * If so, update the list of items, as well as the next_page_uri.
-     * Throws HTTP exceptions.
+    /* 
+     * Fill $this->items with a new page from the API, if necessary.
      */
     protected function loadIfNecessary()
     {
