@@ -10,7 +10,7 @@ Capability tokens are used by `Twilio Client <http://www.twilio.com/api/client>`
 
 .. code-block:: php
 
-    require "Services/Twilio/Capability.php";
+    require('/path/to/twilio-php/Services/Twilio/Capability.php');
 
     $accountSid = "AC123123";
     $authToken = "secret";

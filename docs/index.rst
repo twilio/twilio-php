@@ -21,7 +21,7 @@ Send a SMS
 .. code-block:: php
 
     // Download the library and copy into the folder containing this file.
-    require("Services/Twilio.php");
+    require('/path/to/twilio-php/Services/Twilio.php');
 
     $account_sid = "ACXXXXXX"; // Your Twilio account sid
     $auth_token = "YYYYYY"; // Your Twilio auth token
@@ -41,7 +41,7 @@ Make a Call
 .. code-block:: php
 
     // Download the library and copy into the folder containing this file.
-    require("Services/Twilio.php");
+    require('/path/to/twilio-php/Services/Twilio.php');
 
     $account_sid = "ACXXXXXX"; // Your Twilio account sid
     $auth_token = "YYYYYY"; // Your Twilio auth token

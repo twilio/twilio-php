@@ -39,6 +39,12 @@ If you need to copy all of these files to your web hosting server, the easiest
 way is to compress them into a ZIP file, copy that to your server with FTP, and
 then unzip it back into a folder in your CPanel or similar.
 
+You can also try changing the ``require`` line like this:
+
+.. code-block:: php
+
+    require('/path/to/twilio-php/Services/Twilio.php');
+
 You could also try downloading the library via PEAR, a package manager for PHP, 
 which will add the library to your PHP path, so you can load the Twilio library
 from anywhere. Run this at the command line:
