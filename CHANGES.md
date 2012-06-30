@@ -1,32 +1,6 @@
 twilio-php Changelog
 ====================
 
-Version 3.2.4
--------------
-
-Released on March 14, 2012
-
-- If no version is passed to the Services_Twilio constructor, the library will
-  default to the most recent API version.
-
-Version 3.3.1
--------------
-
-Released on May 1, 2012
-
-- Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded 
-data from the Twilio API. Remove unused XML parsing logic, as the library never 
-requests XML data.
-
-Version 3.3.2
--------------
-
-Released on May 3, 2012
-
-- If you pass booleans in as TwiML (ex transcribe="true"), convert them to
-  the strings "true" and "false" instead of outputting the incorrect values 
-  1 and "".
-
 Version 3.5.0
 -------------
 
@@ -57,3 +31,30 @@ In addition, the following public methods have been removed:
 - `addSubresource`, in Services/Twilio/Resource.php
 
 Please check your own code for compatibility before upgrading.
+
+Version 3.3.2
+-------------
+
+Released on May 3, 2012
+
+- If you pass booleans in as TwiML (ex transcribe="true"), convert them to
+  the strings "true" and "false" instead of outputting the incorrect values 
+  1 and "".
+
+Version 3.3.1
+-------------
+
+Released on May 1, 2012
+
+- Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded 
+data from the Twilio API. Remove unused XML parsing logic, as the library never 
+requests XML data.
+
+Version 3.2.4
+-------------
+
+Released on March 14, 2012
+
+- If no version is passed to the Services_Twilio constructor, the library will
+  default to the most recent API version.
+
