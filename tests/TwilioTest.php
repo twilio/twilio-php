@@ -164,30 +164,35 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
 
     function testUpdate() {
         $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
-            http_build_query($this->callParams))
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                '{"sid":"CA123"}'
-            ));
+        $http->shouldReceive('post')->once()->with(
+                '/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+                http_build_query($this->callParams)
+            )->andReturn(
+                array(200, array('Content-Type' => 'application/json'),
+                '{"sid":"CA123"}')
+        );
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $client->account->calls->create('123', '123', 'http://example.com');
     }
 
     function testModifyLiveCall() {
         $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
-            http_build_query($this->callParams))
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+        $http->shouldReceive('post')->once()->with(
+            '/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+            http_build_query($this->callParams)
+        )->andReturn(
+            array(200, array('Content-Type' => 'application/json'), 
+            '{"sid":"CA123"}')
+        );
+        $http->shouldReceive('post')->once()->with(
+            '/2010-04-01/Accounts/AC123/Calls/CA123.json', 
+            $this->formHeaders,
+            'Status=completed'
+        )->andReturn(
+            array(200, array('Content-Type' => 'application/json'),
                 '{"sid":"CA123"}'
-            ));
-        $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json', $this->formHeaders,
-                'Status=completed')
-                ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                    '{"sid":"CA123"}'
-                ));
+            )
+        );
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $calls = $client->account->calls;
         $call = $calls->create('123', '123', 'http://example.com');
