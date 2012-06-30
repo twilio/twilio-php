@@ -34,12 +34,13 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
 
     public function getList($country, $type, array $params = array())
     {
-        return $this->retrieveData("$country/$type", $params);
+        return $this->client->retrieveData($this->uri . "/$country/$type", $params);
     }
 
-    public function getSchema()
+    public function getResourceName($camelized = false)
     {
         // You can't page through the list of available phone numbers.
-        return array('list' => 'countries') + parent::getSchema();
+        $this->instance_name = 'Services_Twilio_Rest_AvailablePhoneNumber';
+        return $camelized ? 'Countries' : 'countries';
     }
 }

@@ -65,7 +65,7 @@ class Services_Twilio extends Services_Twilio_Resource
         }
         $_http->authenticate($sid, $token);
         $this->http = $_http;
-        $this->accounts = new Services_Twilio_Rest_Accounts($this);
+        $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
         $this->account = $this->accounts->get($sid);
     }
 
@@ -86,13 +86,16 @@ class Services_Twilio extends Services_Twilio_Resource
      *
      * @return object The object representation of the resource
      */
-    public function retrieveData($path, array $params = array())
+    public function retrieveData($path, array $params = array(), $full_uri = false)
     {
-        $path = "/$this->version/$path.json";
+        if (!$full_uri) {
+            $path = "$path.json";
+        } 
+        $query = $full_uri ? '' : '?';
         return empty($params)
             ? $this->_processResponse($this->http->get($path))
             : $this->_processResponse(
-                $this->http->get("$path?" . http_build_query($params, '', '&'))
+                $this->http->get($path . $query . http_build_query($params, '', '&'))
             );
     }
 
@@ -106,7 +109,7 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public function deleteData($path, array $params = array())
     {
-        $path = "/$this->version/$path.json";
+        $path = "$path.json";
         return empty($params)
             ? $this->_processResponse($this->http->delete($path))
             : $this->_processResponse(
@@ -124,7 +127,7 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public function createData($path, array $params = array())
     {
-        $path = "/$this->version/$path.json";
+        $path = "$path.json";
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
         return empty($params)
             ? $this->_processResponse($this->http->post($path, $headers))

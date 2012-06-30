@@ -3,14 +3,9 @@
 class Services_Twilio_Rest_SmsMessages
     extends Services_Twilio_ListResource
 {
-    public function getSchema()
-    {
-        return array(
-            'class' => 'Services_Twilio_Rest_SmsMessages',
-            'basename' => 'SMS/Messages',
-            'instance' => 'Services_Twilio_Rest_SmsMessage',
-            'list' => 'sms_messages',
-        );
+    public function __construct($client, $uri) {
+        $uri = preg_replace("#SmsMessages#", "SMS/Messages", $uri);
+        parent::__construct($client, $uri);
     }
 
     function create($from, $to, $body, array $params = array())
