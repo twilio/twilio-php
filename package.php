@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.3.2';
+$api_version     = '3.5.0';
 $api_state       = 'stable';
 
-$release_version = '3.3.2';
+$release_version = '3.5.0';
 $release_state   = 'stable';
-$release_notes   = 'Short fix to convert boolean true and false to the strings "true" and "false" in the TwiML generator.';
+$release_notes   = 'Support paging using the next_page_uri API parameter';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
