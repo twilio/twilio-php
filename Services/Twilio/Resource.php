@@ -43,7 +43,7 @@ abstract class Services_Twilio_Resource
     protected function setupSubresources()
     {
         foreach (func_get_args() as $name) {
-            $constantized = ucfirst(Services_Twilio_Resource::camelize($name));
+            $constantized = ucfirst(self::camelize($name));
             $type = "Services_Twilio_Rest_" . $constantized;
             $this->subresources[$name] = new $type(
                 $this->client, $this->uri . "/$constantized"
@@ -51,6 +51,13 @@ abstract class Services_Twilio_Resource
         }
     }
 
+    /* 
+     * Get the resource name from the classname
+     * 
+     * Ex: Services_Twilio_Rest_Accounts -> Accounts
+     *
+     * @param boolean $camelized Whether to return camel case or not
+     */
     public function getResourceName($camelized = false) 
     {
         $name = get_class($this);
