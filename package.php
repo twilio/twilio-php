@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.5.0';
+$api_version     = '3.5.1';
 $api_state       = 'stable';
 
-$release_version = '3.5.0';
+$release_version = '3.5.1';
 $release_state   = 'stable';
-$release_notes   = 'Support paging using the next_page_uri API parameter';
+$release_notes   = 'Hotfix for an error in the 3.5.0 release';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
