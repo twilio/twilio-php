@@ -5,7 +5,7 @@ Version 3.5.1
 -------------
 
 - Fix an issue introduced in the 3.5.0 release that would cause a second HTTP
-request for an instance resource to request an incorrect URI.
+request for an instance resource to request an incorrect URI. (#71)
 
 Version 3.5.0
 -------------
