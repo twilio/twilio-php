@@ -8,3 +8,5 @@ composer.lock
 composer.phar
 .idea
 coverage
+package.xml
+*.tgz
