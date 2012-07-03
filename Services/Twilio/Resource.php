@@ -17,11 +17,12 @@ abstract class Services_Twilio_Resource
     {
         $this->subresources = array();
         $this->client = $client;
-        $this->uri = $uri;
 
         foreach ($params as $name => $param) {
             $this->$name = $param;
         }
+
+        $this->uri = $uri;
         $this->init($client, $uri);
     }
 

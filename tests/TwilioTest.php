@@ -132,14 +132,48 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'total' => 1,
-                    'calls' => array(array('status' => 'Completed', 'sid' => 'CA123'))
+                    'calls' => array(array('status' => 'completed', 'sid' => 'CA123'))
                 ))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $page = $client->account->calls->getPage(0, 10);
         $call = current($page->getItems());
-        $this->assertEquals('Completed', $call->status);
+        $this->assertEquals('completed', $call->status);
         $this->assertEquals(1, $page->total);
+    }
+
+    function testInstanceResourceUriConstructedProperly() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'total' => 1,
+                    'calls' => array(array(
+                        'status' => 'in-progress',
+                        'sid' => 'CA123',
+                        'uri' => 'junk_uri'
+                    ))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'status' => 'completed'
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $page = $client->account->calls->getPage(0, 10);
+        $call = current($page->getItems());
+
+        /* trigger api fetch by trying to retrieve nonexistent var */
+        try {
+            $call->nonexistent;
+        } catch (Exception $e) {
+            // pass
+        }
+        $this->assertSame($call->status, 'completed');
     }
 
     function testIterateOverPage() {
