@@ -7,36 +7,36 @@ Version 3.5.1
 - Fix an issue introduced in the 3.5.0 release that would cause a second HTTP
 request for an instance resource [to request an incorrect URI][issue-71].
 
-issue-71: https://github.com/twilio/twilio-php/pull/71
+[issue-71]: https://github.com/twilio/twilio-php/pull/71
 
 Version 3.5.0
 -------------
 
 Released on June 30, 2012
 
-- Support paging through resources using the "next_page_uri" parameter instead
-of manually constructing parameters using the "Page" and "PageSize" parameters.
-Specifically, this allows the library to use the "AfterSid" parameter, which
+- Support paging through resources using the `next_page_uri` parameter instead
+of manually constructing parameters using the `Page` and `PageSize` parameters.
+Specifically, this allows the library to use the `AfterSid` parameter, which
 leads to improved performance when paging deep into your resource list.
 
 This involved a major refactor of the library. The documented interface to
 twilio-php will not change. However, some undocumented public methods are no
 longer supported. Specifically, the following classes are no longer available:
 
-- Services/Twilio/ArrayDataProxy.php
-- Services/Twilio/CachingDataProxy.php
-- Services/Twilio/DataProxy.php
+- `Services/Twilio/ArrayDataProxy.php`
+- `Services/Twilio/CachingDataProxy.php`
+- `Services/Twilio/DataProxy.php`
 
 In addition, the following public methods have been removed:
 
-- `setProxy`, in Services/Twilio/InstanceResource.php
-- `getSchema`, in Services/Twilio/ListResource.php,
-    Services/Twilio/Rest/AvailablePhoneNumbers.php,
-    Services/Twilio/Rest/SMSMessages.php
+- `setProxy`, in `Services/Twilio/InstanceResource.php`
+- `getSchema`, in `Services/Twilio/ListResource.php`,
+    `Services/Twilio/Rest/AvailablePhoneNumbers.php`,
+    `Services/Twilio/Rest/SMSMessages.php`
 
-- `retrieveData`, in Services/Twilio/Resource.php
-- `deleteData`, in Services/Twilio/Resource.php
-- `addSubresource`, in Services/Twilio/Resource.php
+- `retrieveData`, in `Services/Twilio/Resource.php`
+- `deleteData`, in `Services/Twilio/Resource.php`
+- `addSubresource`, in `Services/Twilio/Resource.php`
 
 Please check your own code for compatibility before upgrading.
 
