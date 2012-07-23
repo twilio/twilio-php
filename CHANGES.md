@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+Version 3.5.2
+-------------
+
+Released on July 23, 2012
+
+- Fix an issue introduced in the 3.5.0 release where updating or muting
+  a participant would [throw an exception instead of muting the
+  participant][mute-request]. 
+  (Reporter: [Alex Chan](/alexcchan))
+
+- Fix an issue introduced in the 3.5.0 release where [filtering an iterator
+with parameters would not work properly][paging-request] on subsequent HTTP
+requests. (Reporters: [Alex Chan](/alexcchan), Ivor O'Connor)
+
+[mute-request]: /twilio/twilio-php/pull/74
+[paging-request]: /twilio/twilio-php/pull/75
+
 Version 3.5.1
 -------------
 
