@@ -33,8 +33,10 @@ Mute all participants
 
 .. code-block:: php
 
-    $sid = "CO119231312"
+    $sid = "CO119231312";
     $client = new Services_Twilio('AC123', '123');
-    foreach ($client->account->conferences->get($sid)->participants as $p) {
+    $conference = $client->account->conferences->get($sid);
+    $participants = $conference->getPage(0, 50);
+    foreach ($participants as $p) {
       $p->mute();
     }
