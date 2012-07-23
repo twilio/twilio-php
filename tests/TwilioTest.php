@@ -268,7 +268,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants.json?Page=0&PageSize=10')
                 ->andReturn(array(200, array('Content-Type' => 'application/json'),
                     json_encode(array(
-                        'participants' => array(array('sid' => 'CA123'))
+                        'participants' => array(array('call_sid' => 'CA123'))
                     ))
                 ));
         $http->shouldReceive('post')->once()
