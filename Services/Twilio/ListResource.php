@@ -107,7 +107,7 @@ abstract class Services_Twilio_ListResource
     ) {
         $list_name = $this->getResourceName();
         if ($deep_paging_uri !== null) {
-            $page = $this->client->retrieveData($deep_paging_uri, $filters, true);
+            $page = $this->client->retrieveData($deep_paging_uri, array(), true);
         } else {
             $page = $this->client->retrieveData($this->uri, array(
                 'Page' => $page,

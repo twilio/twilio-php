@@ -379,7 +379,42 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testIteratorWithFiltersPagesCorrectly() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $recordingsBase = '/2010-04-01/Accounts/AC123/Recordings.json';
+        $firstPageUri = $recordingsBase . '?Page=0&PageSize=1&DateCreated%3E=2011-01-01';
+        $secondPageUri = $recordingsBase . '?DateCreated%3E=2011-01-01&Page=1&PageSize=1';
+        $thirdPageUri = $recordingsBase . '?DateCreated%3E=2011-01-01&Page=2&PageSize=1';
+        $http->shouldReceive('get')->once()
+            ->with($firstPageUri)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'next_page_uri' => $secondPageUri,
+                    'recordings' => array(array(
+                        'sid' => 'RE123',
+                        'duration' => 7,
+                    ))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with($secondPageUri)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'next_page_uri' => $thirdPageUri,
+                    'recordings' => array(array(
+                        'sid' => 'RE123',
+                        'duration' => 7,
+                    ))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with($thirdPageUri)
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
+            ));
 
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        foreach ($client->account->recordings->getIterator(0, 1, array('DateCreated>' => '2011-01-01')) as $recording) {
+            $this->assertSame($recording->duration, 7);
+        }
     }
-
 }
