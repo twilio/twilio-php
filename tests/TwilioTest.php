@@ -378,4 +378,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         }
     }
 
+    function testIteratorWithFiltersPagesCorrectly() {
+
+    }
+
 }
