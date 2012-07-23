@@ -245,57 +245,6 @@ class SMSMessagesTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class ConferencesTest extends PHPUnit_Framework_TestCase 
-{
-    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
-    function testMuteParticipant() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Conferences.json?Page=0&PageSize=50&Status=in-progress')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('conferences' => array(array(
-                    'sid' => 'CF123'
-                ))
-            ))
-        ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Conferences/CF123/Participants.json?Page=0&PageSize=50')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('participants' => array(array(
-                    'call_sid' => 'CA345'
-                ))
-            ))
-        ));
-        /* Participants has no 'sid' parameter */
-        $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/Conferences/CF123/Participants/CA345.json', 
-                $this->formHeaders, 'Muted=true')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('participants' => array(array(
-                    'call_sid' => 'CA345'
-                ))
-            ))
-        ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Conferences.json?Page=1&PageSize=50&Status=in-progress')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
-            ));
-
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        foreach($client->account->conferences->getIterator(0, 50, array('Status' => 'in-progress')) as $conference) {
-            $participants = $conference->participants->getPage(0, 50)->participants;
-            foreach ($participants as $p) {
-                $p->mute();
-            }
-        }
-    }
-
-    function tearDown() {
-        m::close();
-    }
-}
-
 class CallsTest extends PHPUnit_Framework_TestCase
 {
     /**
