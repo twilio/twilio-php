@@ -31,12 +31,18 @@ Filter Conferences by Status
 Mute all participants
 =====================
 
+At the moment, using an iterator directly will cause this method to infinitely
+loop. Instead, use the getPage function. As conferences are limited to 40
+participants, getPage(0, 50) should return a list of every participant in
+a conference.
+
 .. code-block:: php
 
     $sid = "CO119231312";
     $client = new Services_Twilio('AC123', '123');
     $conference = $client->account->conferences->get($sid);
-    $participants = $conference->getPage(0, 50);
+    $page = $conference->getPage(0, 50);
+    $participants = $page->participants;
     foreach ($participants as $p) {
       $p->mute();
     }
