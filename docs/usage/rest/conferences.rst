@@ -41,7 +41,7 @@ a conference.
     $sid = "CO119231312";
     $client = new Services_Twilio('AC123', '123');
     $conference = $client->account->conferences->get($sid);
-    $page = $conference->getPage(0, 50);
+    $page = $conference->participants->getPage(0, 50);
     $participants = $page->participants;
     foreach ($participants as $p) {
       $p->mute();
