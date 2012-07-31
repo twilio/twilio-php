@@ -36,7 +36,7 @@ Add extra parameters, like a `StatusCallback` when the call ends, like this:
         )
     );
 
-A full list of parameters can be found `here
+A full list of extra parameters can be found `here
 <http://www.twilio.com/docs/api/rest/making-calls#post-parameters-optional>`_.
 
 Listing Calls
@@ -71,7 +71,7 @@ Accessing Resources from a Specific Call
 
 The :class:`Call` resource has some subresources you can access, such as
 notifications and recordings. If you have already have a :class:`Call`
-resource, they are easy to get.:
+resource, they are easy to get:
 
 .. code-block:: php
 
@@ -99,8 +99,8 @@ resource, they are easy to get.:
       }
     }
 
-Be careful, as the above code makes quite a few HTTP requests and display 
-numerous PHP warnings for unintialized variables.
+Be careful, as the above code makes quite a few HTTP requests and may display 
+PHP warnings for unintialized variables.
 
 Retrieve a Call Record
 ======================
