@@ -6,10 +6,35 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
 
     protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
     protected $callParams = array('To' => '123', 'From' => '123', 'Url' => 'http://example.com');
-
     function tearDown() {
         m::close();
     }
+
+    /**
+     * @dataProvider uriTestProvider
+     */
+    function testRequestUriConstructedProperly($path, $params, $full_uri, $end_string) {
+        $this->assertSame($end_string, Services_Twilio::getRequestUri(
+            $path, $params, $full_uri
+        ));
+    }
+
+    function uriTestProvider() {
+        return array(
+            array('/2010-04-01/Accounts', array('FriendlyName' => 'hi'), false, 
+                '/2010-04-01/Accounts.json?FriendlyName=hi'),
+            array('/2010-04-01/Accounts', array(), false, 
+                '/2010-04-01/Accounts.json'),
+            array('/2010-04-01/Accounts.json', array(), true, 
+                '/2010-04-01/Accounts.json'),
+            array('/2010-04-01/Accounts.json', array('FriendlyName' => 'hi'), true, 
+                '/2010-04-01/Accounts.json'),
+            array('/2010-04-01/Accounts', array(
+                'FriendlyName' => 'hi', 'foo' => 'bar'
+            ), false, '/2010-04-01/Accounts.json?FriendlyName=hi&foo=bar'),
+        );
+    }
+
     function testNeedsRefining() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
@@ -417,4 +442,19 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             $this->assertSame($recording->duration, 7);
         }
     }
+
+    function testRetryIf500() {
+        $this->setExpectedException('Services_Twilio_RestException');
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn(array(500, array('Content-Type' => 'text/html'),
+                '<html>Nginx 500 error</html>'
+            )
+        );
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $message = $client->account->sms_messages->get('SM123');
+        $message->price;
+    }
+
 }
