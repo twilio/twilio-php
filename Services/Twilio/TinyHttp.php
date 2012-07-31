@@ -61,7 +61,7 @@ class Services_Twilio_TinyHttp {
     try {
       if ($curl = curl_init()) {
         if (curl_setopt_array($curl, $opts)) {
-          $numAttemps = 0;
+          $numAttempts = 0;
           while (true) {
               if ($response = curl_exec($curl)) {
                 $parts = explode("\r\n\r\n", $response, 3);
