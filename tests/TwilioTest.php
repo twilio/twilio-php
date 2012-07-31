@@ -443,7 +443,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    function testRetryIf500() {
+    function testNonJsonResponse() {
         $this->setExpectedException('Services_Twilio_RestException');
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()

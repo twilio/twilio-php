@@ -62,7 +62,7 @@ class Services_Twilio_TinyHttp {
       if ($curl = curl_init()) {
         if (curl_setopt_array($curl, $opts)) {
           $numAttemps = 0;
-          while ($numAttempts < $this->retryAttempts) {
+          while (true) {
               if ($response = curl_exec($curl)) {
                 $parts = explode("\r\n\r\n", $response, 3);
                 list($head, $body) = ($parts[0] == 'HTTP/1.1 100 Continue')
@@ -75,8 +75,9 @@ class Services_Twilio_TinyHttp {
                     $req_body
                   );
                 }
-                if ($status >= 500) {
+                if ($status >= 500 && $numAttempts < $this->retryAttempts) {
                     // Error on server side - let's retry the request
+                    $numAttempts++;
                     continue;
                 }
                 $header_lines = explode("\r\n", $head);
@@ -93,7 +94,6 @@ class Services_Twilio_TinyHttp {
               } else { 
                   throw new Services_Twilio_TinyHttpException(curl_error($curl));
               }
-              $numAttempts++;
           }
         } else throw new Services_Twilio_TinyHttpException(curl_error($curl));
       } else throw new Services_Twilio_TinyHttpException('unable to initialize cURL');
