@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.5.1';
+$api_version     = '3.5.2';
 $api_state       = 'stable';
 
-$release_version = '3.5.1';
+$release_version = '3.5.2';
 $release_state   = 'stable';
-$release_notes   = 'Hotfix for an error in the 3.5.0 release';
+$release_notes   = 'Hotfix for two errors introduced the 3.5.0 release';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write

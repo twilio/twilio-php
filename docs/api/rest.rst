@@ -152,7 +152,7 @@ Calls
 
 .. php:class:: Services_Twilio_Rest_Calls
 
-   For more information, see the `Call Instance Resource <http://www.twilio.com/docs/api/rest/call#list>`_ documentation.
+   For more information, see the `Call List Resource <http://www.twilio.com/docs/api/rest/call#list>`_ documentation.
 
    .. php:method:: create($from, $to, $url, array $params = array())
 

@@ -49,10 +49,10 @@ abstract class Services_Twilio_ListResource
      * @return Services_Twilio_InstanceResource An instance with properties 
      *      initialized to the values in the params array.
      */
-    public function getObjectFromJson($params)
+    public function getObjectFromJson($params, $idParam = "sid")
     {
-        if (isset($params->sid)) {
-            $uri = $this->uri . "/" . $params->sid;
+        if (isset($params->{$idParam})) {
+            $uri = $this->uri . "/" . $params->{$idParam};
         } else {
             $uri = $this->uri;
         }
@@ -107,7 +107,7 @@ abstract class Services_Twilio_ListResource
     ) {
         $list_name = $this->getResourceName();
         if ($deep_paging_uri !== null) {
-            $page = $this->client->retrieveData($deep_paging_uri, $filters, true);
+            $page = $this->client->retrieveData($deep_paging_uri, array(), true);
         } else {
             $page = $this->client->retrieveData($this->uri, array(
                 'Page' => $page,
