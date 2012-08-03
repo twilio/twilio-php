@@ -35,12 +35,14 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param string               $token    Account auth token
      * @param string               $version  API version
      * @param Services_Twilio_Http $_http    A HTTP client
+     * @param int                  $retryAttempts Number of times to retry failed requests
      */
     public function __construct(
         $sid,
         $token,
         $version = null,
-        Services_Twilio_TinyHttp $_http = null
+        Services_Twilio_TinyHttp $_http = null,
+        $retryAttempts = 1
     ) {
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
@@ -67,6 +69,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->http = $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
         $this->account = $this->accounts->get($sid);
+        $this->retryAttempts = $retryAttempts;
     }
 
     /**
@@ -76,6 +79,15 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public function getVersion() {
         return $this->version;
+    }
+
+    /**
+     * Get the retry attempt limit used by the rest client
+     *
+     * @return int the number of retry attempts
+     */
+    public function getRetryAttempts() {
+        return $this->retryAttempts;
     }
 
     /**
@@ -90,7 +102,7 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param array $params Query parameters to use with the request
      * @param boolean $full_uri Whether the $path contains the full uri
      *
-     * @retun string the URI that should be requested by the library
+     * @return string the URI that should be requested by the library
      */
     public static function getRequestUri($path, $params, $full_uri = false) {
         $json_path = $full_uri ? $path : "$path.json";
@@ -107,6 +119,8 @@ class Services_Twilio extends Services_Twilio_Resource
      *
      * @param string $path   Path to the resource
      * @param array  $params Query string parameters
+     * @param boolean  $full_uri Whether the full URI has been passed as an 
+     *      argument
      *
      * @return object The object representation of the resource
      */
@@ -114,8 +128,25 @@ class Services_Twilio extends Services_Twilio_Resource
         $full_uri = false
     ) {
         $uri = self::getRequestUri($path, $params, $full_uri);
+        return $this->_retrieveData($uri, $this->retryAttempts);
+    }
+
+    /**
+     * Helper method for implementing GET retry logic
+     *
+     * @param string $uri           The URI to request
+     * @param int    $retriesLeft   Number of times to retry
+     *
+     * @return object The object representation of the resource
+     */
+    protected function _retrieveData($uri, $retriesLeft) {
         $response = $this->http->get($uri);
-        return $this->_processResponse($response);
+        list($status, $headers, $body) = $response;
+        if ($status >= 500 && $retriesLeft > 0) {
+            return $this->_retrieveData($uri, $retriesLeft - 1);
+        } else {
+            return $this->_processResponse($response);
+        }
     }
 
     /**
@@ -129,8 +160,25 @@ class Services_Twilio extends Services_Twilio_Resource
     public function deleteData($path, array $params = array())
     {
         $uri = self::getRequestUri($path, $params);
+        return $this->_deleteData($uri, $this->retryAttempts);
+    }
+
+    /**
+     * Helper method for implementing DELETE retry logic
+     *
+     * @param string $uri           The URI to request
+     * @param int    $retriesLeft   Number of times to retry
+     *
+     * @return object The object representation of the resource
+     */
+    public function _deleteData($uri, $retriesLeft) {
         $response = $this->http->delete($uri);
-        return $this->_processResponse($response);
+        list($status, $headers, $body) = $response;
+        if ($status >= 500 && $retriesLeft > 0) {
+            return $this->_deleteData($uri, $retriesLeft - 1);
+        } else {
+            return $this->_processResponse($response);
+        }
     }
 
     /**

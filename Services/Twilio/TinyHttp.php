@@ -61,39 +61,31 @@ class Services_Twilio_TinyHttp {
     try {
       if ($curl = curl_init()) {
         if (curl_setopt_array($curl, $opts)) {
-          $numAttempts = 0;
-          while (true) {
-              if ($response = curl_exec($curl)) {
-                $parts = explode("\r\n\r\n", $response, 3);
-                list($head, $body) = ($parts[0] == 'HTTP/1.1 100 Continue')
-                  ? array($parts[1], $parts[2])
-                  : array($parts[0], $parts[1]);
-                $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-                if ($this->debug) {
-                  error_log(
-                    curl_getinfo($curl, CURLINFO_HEADER_OUT) .
-                    $req_body
-                  );
-                }
-                if ($status >= 500 && $numAttempts < $this->retryAttempts) {
-                    // Error on server side - let's retry the request
-                    $numAttempts++;
-                    continue;
-                }
-                $header_lines = explode("\r\n", $head);
-                array_shift($header_lines);
-                foreach ($header_lines as $line) {
-                  list($key, $value) = explode(":", $line, 2);
-                  $headers[$key] = trim($value);
-                }
-                curl_close($curl);
-                if (isset($buf) && is_resource($buf)) {
-                    fclose($buf);
-                }
-                return array($status, $headers, $body);
-              } else { 
-                  throw new Services_Twilio_TinyHttpException(curl_error($curl));
-              }
+          if ($response = curl_exec($curl)) {
+            $parts = explode("\r\n\r\n", $response, 3);
+            list($head, $body) = ($parts[0] == 'HTTP/1.1 100 Continue')
+              ? array($parts[1], $parts[2])
+              : array($parts[0], $parts[1]);
+            $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            if ($this->debug) {
+              error_log(
+                curl_getinfo($curl, CURLINFO_HEADER_OUT) .
+                $req_body
+              );
+            }
+            $header_lines = explode("\r\n", $head);
+            array_shift($header_lines);
+            foreach ($header_lines as $line) {
+              list($key, $value) = explode(":", $line, 2);
+              $headers[$key] = trim($value);
+            }
+            curl_close($curl);
+            if (isset($buf) && is_resource($buf)) {
+                fclose($buf);
+            }
+            return array($status, $headers, $body);
+          } else { 
+              throw new Services_Twilio_TinyHttpException(curl_error($curl));
           }
         } else throw new Services_Twilio_TinyHttpException(curl_error($curl));
       } else throw new Services_Twilio_TinyHttpException('unable to initialize cURL');

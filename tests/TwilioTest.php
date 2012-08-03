@@ -6,6 +6,9 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
 
     protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
     protected $callParams = array('To' => '123', 'From' => '123', 'Url' => 'http://example.com');
+    protected $nginxError = array(500, array('Content-Type' => 'text/html'),
+                '<html>Nginx 500 error</html>'
+            );
     function tearDown() {
         m::close();
     }
@@ -48,17 +51,6 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $this->assertEquals('AC123', $client->account->sid);
         $this->assertEquals('Robert Paulson', $client->account->friendly_name);
-    }
-
-    function testNoContentTypeThrowsException() {
-        $this->setExpectedException('DomainException');
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123.json')
-            ->andReturn(array(200, array(), json_encode(array())
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $client->account->friendly_name;
     }
 
     function testAccessSidAvoidsNetworkCall() {
@@ -443,18 +435,86 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    function testNonJsonResponse() {
-        $this->setExpectedException('Services_Twilio_RestException');
+    function testRetryOn500() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
-            ->andReturn(array(500, array('Content-Type' => 'text/html'),
-                '<html>Nginx 500 error</html>'
+            ->andReturn($this->nginxError);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('price' => 0.5))
             )
         );
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $message = $client->account->sms_messages->get('SM123');
-        $message->price;
+        $this->assertSame($message->price, 0.5);
+    }
+
+    function testDeleteOn500() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('delete')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn($this->nginxError);
+        $http->shouldReceive('delete')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn(
+                array(204, array('Content-Type' => 'application/json'), '')
+        );
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client->account->sms_messages->delete('SM123');
+    }
+
+    function testSetExplicitRetryLimit() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn($this->nginxError);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn($this->nginxError);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('price' => 0.5))
+            )
+        );
+        // retry twice
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http, 2);
+        $message = $client->account->sms_messages->get('SM123');
+        $this->assertSame($message->price, 0.5);
+    }
+
+    function testRetryLimitIsHonored() {
+        $this->setExpectedException('Services_Twilio_RestException');
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn($this->nginxError);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn($this->nginxError);
+        $http->shouldReceive('get')->never()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('price' => 0.5))
+            )
+        );
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $message = $client->account->sms_messages->get('SM123');
+        $this->assertSame($message->price, 0.5);
+    }
+
+    function testRetryIdempotentFunctionsOnly() {
+        $this->setExpectedException('Services_Twilio_RestException');
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages.json', $this->formHeaders, 
+                'From=%2B14105551234&To=%2B14102221234&Body=bar')
+            ->andReturn($this->nginxError);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $message = $client->account->sms_messages->create('+14105551234', 
+            '+14102221234', 'bar');
     }
 
 }
