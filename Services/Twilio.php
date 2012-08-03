@@ -166,12 +166,6 @@ class Services_Twilio extends Services_Twilio_Resource
         if ($status == 204) {
             return TRUE;
         }
-        if (empty($headers['Content-Type']) && 
-            empty($headers['Content-type']) &&
-            empty($headers['content-type'])
-        ) {
-            throw new DomainException('Response header is missing Content-Type');
-        }
         return $this->_processJsonResponse($status, $headers, $body);
     }
 
