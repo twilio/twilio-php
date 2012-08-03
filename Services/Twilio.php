@@ -205,19 +205,14 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param array $response 3-tuple containing status, headers, and body
      *
      * @return object PHP object decoded from JSON
-     * @throws DomainException (if response lacks Content-Type)
      * @throws Services_Twilio_RestException (Response in 300-500 class)
      */
     private function _processResponse($response)
     {
         list($status, $headers, $body) = $response;
-        if ($status == 204) {
-            return TRUE;
+        if ($status === 204) {
+            return true;
         }
-        return $this->_processJsonResponse($status, $headers, $body);
-    }
-
-    private function _processJsonResponse($status, $headers, $body) {
         $decoded = json_decode($body);
         if ($decoded === null) {
             throw new Services_Twilio_RestException(
@@ -236,5 +231,4 @@ class Services_Twilio extends Services_Twilio_Resource
             isset($decoded->more_info) ? $decoded->more_info : null
         );
     }
-
 }
