@@ -266,3 +266,24 @@ class CallsTest extends PHPUnit_Framework_TestCase
         );
     }
 }
+
+class QueuesTest extends PHPUnit_Framework_TestCase {
+
+    function testFront() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Queues/QQ123/Members/Front.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('call_sid' => 'CA123', 'position' => 0))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $queue = $client->account->queues->get('QQ123');
+        $firstMember = $queue->members->front();
+        $this->assertSame($firstMember->call_sid, 'CA123');
+    }
+
+    function tearDown() {
+        m::close();
+    }
+
+}
