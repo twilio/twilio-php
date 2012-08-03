@@ -13,7 +13,6 @@ class Services_Twilio_TinyHttp {
     foreach (parse_url($uri) as $name => $value) $this->$name = $value;
     $this->debug = isset($kwargs['debug']) ? !!$kwargs['debug'] : NULL;
     $this->curlopts = isset($kwargs['curlopts']) ? $kwargs['curlopts'] : array();
-    $this->retryAttempts = isset($kwargs['retryAttempts']) ? $kwargs['retryAttempts'] : 1;
   }
 
   public function __call($name, $args) {
