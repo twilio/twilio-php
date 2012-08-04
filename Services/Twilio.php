@@ -115,6 +115,25 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
+     * Helper method for implementing request retry logic
+     *
+     * @param array  $callable      The function that makes an HTTP request
+     * @param string $uri           The URI to request
+     * @param int    $retriesLeft   Number of times to retry
+     *
+     * @return object The object representation of the resource
+     */
+    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft) {
+        $response = call_user_func_array($callable, array($uri));
+        list($status, $headers, $body) = $response;
+        if ($status >= 500 && $retriesLeft > 0) {
+            return $this->_makeIdempotentRequest($callable, $uri, $retriesLeft - 1);
+        } else {
+            return $this->_processResponse($response);
+        }
+    }
+
+    /**
      * GET the resource at the specified path.
      *
      * @param string $path   Path to the resource
@@ -128,25 +147,8 @@ class Services_Twilio extends Services_Twilio_Resource
         $full_uri = false
     ) {
         $uri = self::getRequestUri($path, $params, $full_uri);
-        return $this->_retrieveData($uri, $this->retryAttempts);
-    }
-
-    /**
-     * Helper method for implementing GET retry logic
-     *
-     * @param string $uri           The URI to request
-     * @param int    $retriesLeft   Number of times to retry
-     *
-     * @return object The object representation of the resource
-     */
-    protected function _retrieveData($uri, $retriesLeft) {
-        $response = $this->http->get($uri);
-        list($status, $headers, $body) = $response;
-        if ($status >= 500 && $retriesLeft > 0) {
-            return $this->_retrieveData($uri, $retriesLeft - 1);
-        } else {
-            return $this->_processResponse($response);
-        }
+        return $this->_makeIdempotentRequest(array($this->http, 'get'), 
+            $uri, $this->retryAttempts);
     }
 
     /**
@@ -160,25 +162,8 @@ class Services_Twilio extends Services_Twilio_Resource
     public function deleteData($path, array $params = array())
     {
         $uri = self::getRequestUri($path, $params);
-        return $this->_deleteData($uri, $this->retryAttempts);
-    }
-
-    /**
-     * Helper method for implementing DELETE retry logic
-     *
-     * @param string $uri           The URI to request
-     * @param int    $retriesLeft   Number of times to retry
-     *
-     * @return object The object representation of the resource
-     */
-    public function _deleteData($uri, $retriesLeft) {
-        $response = $this->http->delete($uri);
-        list($status, $headers, $body) = $response;
-        if ($status >= 500 && $retriesLeft > 0) {
-            return $this->_deleteData($uri, $retriesLeft - 1);
-        } else {
-            return $this->_processResponse($response);
-        }
+        return $this->_makeIdempotentRequest(array($this->http, 'delete'), 
+            $uri, $this->retryAttempts);
     }
 
     /**
