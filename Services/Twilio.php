@@ -35,12 +35,14 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param string               $token    Account auth token
      * @param string               $version  API version
      * @param Services_Twilio_Http $_http    A HTTP client
+     * @param int                  $retryAttempts Number of times to retry failed requests
      */
     public function __construct(
         $sid,
         $token,
         $version = null,
-        Services_Twilio_TinyHttp $_http = null
+        Services_Twilio_TinyHttp $_http = null,
+        $retryAttempts = 1
     ) {
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
@@ -67,6 +69,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->http = $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
         $this->account = $this->accounts->get($sid);
+        $this->retryAttempts = $retryAttempts;
     }
 
     /**
@@ -79,24 +82,73 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
+     * Get the retry attempt limit used by the rest client
+     *
+     * @return int the number of retry attempts
+     */
+    public function getRetryAttempts() {
+        return $this->retryAttempts;
+    }
+
+    /**
+     * Construct a URI based on initial path, query params, and paging 
+     * information
+     *
+     * We want to use the query params, unless we have a next_page_uri from the 
+     * API.
+     *
+     * @param string $path The request path (may contain query params if it's 
+     *      a next_page_uri)
+     * @param array $params Query parameters to use with the request
+     * @param boolean $full_uri Whether the $path contains the full uri
+     *
+     * @return string the URI that should be requested by the library
+     */
+    public static function getRequestUri($path, $params, $full_uri = false) {
+        $json_path = $full_uri ? $path : "$path.json";
+        if (!$full_uri && !empty($params)) {
+            $query_path = $json_path . '?' . http_build_query($params, '', '&');
+        } else {
+            $query_path = $json_path;
+        }
+        return $query_path;
+    }
+
+    /**
+     * Helper method for implementing request retry logic
+     *
+     * @param array  $callable      The function that makes an HTTP request
+     * @param string $uri           The URI to request
+     * @param int    $retriesLeft   Number of times to retry
+     *
+     * @return object The object representation of the resource
+     */
+    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft) {
+        $response = call_user_func_array($callable, array($uri));
+        list($status, $headers, $body) = $response;
+        if ($status >= 500 && $retriesLeft > 0) {
+            return $this->_makeIdempotentRequest($callable, $uri, $retriesLeft - 1);
+        } else {
+            return $this->_processResponse($response);
+        }
+    }
+
+    /**
      * GET the resource at the specified path.
      *
      * @param string $path   Path to the resource
      * @param array  $params Query string parameters
+     * @param boolean  $full_uri Whether the full URI has been passed as an 
+     *      argument
      *
      * @return object The object representation of the resource
      */
-    public function retrieveData($path, array $params = array(), $full_uri = false)
-    {
-        if (!$full_uri) {
-            $path = "$path.json";
-        } 
-        $query = $full_uri ? '' : '?';
-        return empty($params)
-            ? $this->_processResponse($this->http->get($path))
-            : $this->_processResponse(
-                $this->http->get($path . $query . http_build_query($params, '', '&'))
-            );
+    public function retrieveData($path, array $params = array(), 
+        $full_uri = false
+    ) {
+        $uri = self::getRequestUri($path, $params, $full_uri);
+        return $this->_makeIdempotentRequest(array($this->http, 'get'), 
+            $uri, $this->retryAttempts);
     }
 
     /**
@@ -109,12 +161,9 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public function deleteData($path, array $params = array())
     {
-        $path = "$path.json";
-        return empty($params)
-            ? $this->_processResponse($this->http->delete($path))
-            : $this->_processResponse(
-                $this->http->delete("$path?" . http_build_query($params, '', '&'))
-            );
+        $uri = self::getRequestUri($path, $params);
+        return $this->_makeIdempotentRequest(array($this->http, 'delete'), 
+            $uri, $this->retryAttempts);
     }
 
     /**
@@ -129,15 +178,10 @@ class Services_Twilio extends Services_Twilio_Resource
     {
         $path = "$path.json";
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
-        return empty($params)
-            ? $this->_processResponse($this->http->post($path, $headers))
-            : $this->_processResponse(
-                $this->http->post(
-                    $path,
-                    $headers,
-                    http_build_query($params, '', '&')
-                )
-            );
+        $response = $this->http->post(
+            $path, $headers, http_build_query($params, '', '&')
+        );
+        return $this->_processResponse($response);
     }
 
     /**
@@ -146,21 +190,22 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param array $response 3-tuple containing status, headers, and body
      *
      * @return object PHP object decoded from JSON
+     * @throws Services_Twilio_RestException (Response in 300-500 class)
      */
     private function _processResponse($response)
     {
         list($status, $headers, $body) = $response;
-        if ($status == 204) {
-            return TRUE;
+        if ($status === 204) {
+            return true;
         }
-        if (empty($headers['Content-Type'])) {
-            throw new DomainException('Response header is missing Content-Type');
-        }
-        return $this->_processJsonResponse($status, $headers, $body);
-    }
-
-    private function _processJsonResponse($status, $headers, $body) {
         $decoded = json_decode($body);
+        if ($decoded === null) {
+            throw new Services_Twilio_RestException(
+                $status,
+                'Could not decode response body as JSON. ' . 
+                'This likely indicates a 500 server error'
+            );
+        }
         if (200 <= $status && $status < 300) {
             return $decoded;
         }
@@ -171,5 +216,4 @@ class Services_Twilio extends Services_Twilio_Resource
             isset($decoded->more_info) ? $decoded->more_info : null
         );
     }
-
 }

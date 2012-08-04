@@ -79,9 +79,13 @@ class Services_Twilio_TinyHttp {
               $headers[$key] = trim($value);
             }
             curl_close($curl);
-            if (isset($buf) && is_resource($buf)) fclose($buf);
+            if (isset($buf) && is_resource($buf)) {
+                fclose($buf);
+            }
             return array($status, $headers, $body);
-          } else throw new Services_Twilio_TinyHttpException(curl_error($curl));
+          } else { 
+              throw new Services_Twilio_TinyHttpException(curl_error($curl));
+          }
         } else throw new Services_Twilio_TinyHttpException(curl_error($curl));
       } else throw new Services_Twilio_TinyHttpException('unable to initialize cURL');
     } catch (ErrorException $e) {
