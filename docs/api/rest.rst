@@ -374,11 +374,11 @@ Notification
 
    .. php:attr:: error_code
 
-      A unique error code for the error condition. You can lookup errors, with possible causes and solutions, in our `Error Dictionary <http://www.twilio.com/docs/errors/reference>`.
+      A unique error code for the error condition. You can lookup errors, with possible causes and solutions, in our `Error Dictionary <http://www.twilio.com/docs/errors/reference>`_.
 
    .. php:attr:: more_info
 
-      A URL for more information about the error condition. The URL is a page in our `Error Dictionary <http://www.twilio.com/docs/errors/reference>`.
+      A URL for more information about the error condition. The URL is a page in our `Error Dictionary <http://www.twilio.com/docs/errors/reference>`_.
 
    .. php:attr:: message_text
 
@@ -778,4 +778,54 @@ Transcription
 
       The URI for this resource, relative to https://api.twilio.com
 
+Queues
+===========
+
+.. php:class:: Services_Twilio_Rest_Queues
+
+  For more information, including a list of filter parameters, see the
+  `Queues List Resource <http://www.twilio.com/docs/api/rest/queues#list>`_
+  documentation.
+
+  .. php:method:: create($friendly_name, $params = array())
+
+     Create a new :php:class:`Services_Twilio_Rest_Queue`.
+
+     :param string $friendly_name: The name of the new Queue.
+     :param array $params: An array of optional parameters and their values, 
+        like ``MaxSize``.
+     :returns: A new :php:class:`Services_Twilio_Rest_Queue`
+
+.. php:class:: Services_Twilio_Rest_Queue
+
+  For more information about available properties of a queue, see the `Queue 
+  Instance Resource <http://www.twilio.com/docs/api/rest/queue#instance>`_ 
+  documentation. A Queue has one subresource, a list of 
+  :php:class:`Services_Twilio_Rest_Members`.
+
+
+Members
+===========
+
+.. php:class:: Services_Twilio_Rest_Members
+
+  For more information, including a list of filter parameters, see the `Member List Resource <http://www.twilio.com/docs/api/rest/member#list>`_ documentation.
+
+
+  .. php:method:: front()
+
+      Return the :php:class:`Services_Twilio_Rest_Member` at the front of the
+      queue.
+
+.. php:class:: Services_Twilio_Rest_Member
+
+  For more information about available properties, see the `Member Instance Resource <http://www.twilio.com/docs/api/rest/member#instance>`_ documentation.
+
+  .. php:method:: dequeue($url, $method = 'POST')
+
+    Dequeue this member and immediately play the Twiml at the given ``$url``.
+
+    :param string $url: The Twiml URL to play for this member, after dequeueing them
+    :param string $method: The HTTP method to use when fetching the Twiml URL. Defaults to POST.
+    :returns: :php:class:`Services_Twilio_Rest_Member` The dequeued member
 

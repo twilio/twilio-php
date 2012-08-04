@@ -18,11 +18,12 @@ class Services_Twilio_Rest_Account
             'sms_messages',
             'transcriptions',
             'connect_apps',
-            'authorized_connect_apps'
+            'authorized_connect_apps',
+            'queues'
         );
 
         $this->sandbox = new Services_Twilio_Rest_Sandbox(
-            $client, $uri . "/Sandbox"
+            $client, $uri . '/Sandbox'
         );
     }
 }

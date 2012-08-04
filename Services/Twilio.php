@@ -90,7 +90,7 @@ class Services_Twilio extends Services_Twilio_Resource
     {
         if (!$full_uri) {
             $path = "$path.json";
-        } 
+        }
         $query = $full_uri ? '' : '?';
         return empty($params)
             ? $this->_processResponse($this->http->get($path))
