@@ -1,6 +1,14 @@
 twilio-php Changelog
 ====================
 
+Version 3.6.0
+-------------
+
+Released on August 5, 2012
+
+- Add support for Queues and Members. Includes tests and documentation for the
+  new functionality.
+
 Version 3.5.2
 -------------
 
