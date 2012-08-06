@@ -25,6 +25,7 @@ class Services_Twilio extends Services_Twilio_Resource
     const USER_AGENT = 'twilio-php/3.5.2';
 
     protected $http;
+    protected $retryAttempts;
     protected $version;
     protected $versions = array('2008-08-01', '2010-04-01');
 
