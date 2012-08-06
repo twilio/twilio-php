@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.6.0';
+$api_version     = '3.7.0';
 $api_state       = 'stable';
 
-$release_version = '3.6.0';
+$release_version = '3.7.0';
 $release_state   = 'stable';
-$release_notes   = 'Add support for Queues and Members';
+$release_notes   = 'Add retry support and better JSON body parsing';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write

@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+Version 3.7.0
+-------------
+
+Released on August 6, 2012
+
+- Add retry support for idempotent HTTP requests that result in a 500 server
+  error (default is 1 attempt, however this can be configured).
+- Throw a Services_Twilio_RestException instead of a DomainException if the
+  response content cannot be parsed as JSON (usually indicates a 500 error)
+
 Version 3.6.0
 -------------
 

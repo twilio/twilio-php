@@ -22,7 +22,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 class Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.6.0';
+    const USER_AGENT = 'twilio-php/3.7.0';
 
     protected $http;
     protected $retryAttempts;
