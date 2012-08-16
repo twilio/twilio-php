@@ -159,7 +159,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(1, $page->total);
     }
 
-    function testInstanceResourceUriConstructedProperly() {
+    function testInstanceResourceUriConstructionFromList() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
             ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
@@ -191,6 +191,35 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             // pass
         }
         $this->assertSame($call->status, 'completed');
+    }
+
+    function testInstanceResourceUriConstructionFromGet() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/PN123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'sms_method' => 'POST',
+                    'sid' => 'PN123',
+                    'uri' => 'junk_uri',
+                ))
+            ));
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/PN123.json',
+                $this->formHeaders, 'SmsMethod=GET')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'sms_method' => 'GET',
+                    'sid' => 'PN123',
+                    'uri' => 'junk_uri'
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $number = $client->account->incoming_phone_numbers->get('PN123');
+        $this->assertSame($number->sms_method, 'POST');
+
+        $number->update(array('SmsMethod' => 'GET'));
+        $this->assertSame($number->sms_method, 'GET');
     }
 
     function testIterateOverPage() {
