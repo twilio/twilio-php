@@ -29,9 +29,14 @@ abstract class Services_Twilio_InstanceResource
 
     /* 
      * Add all properties from an associative array (the JSON response body) as 
-     * properties on this instance resource
+     * properties on this instance resource, except the URI
+     *
+     * @param stdClass $params An object containing all of the parameters of 
+     *      this instance
+     * @return null Purely side effecting
      */
     public function updateAttributes($params) {
+        unset($params->uri);
         foreach ($params as $name => $value) {
             $this->$name = $value;
         }
