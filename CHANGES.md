@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+Version 3.7.1
+-------------
+
+Released on August 16, 2012
+
+- Fix a bug in the 3.5.0 release where [updating an instance
+  resource would cause subsequent updates to request an incorrect
+  URI](/twilio/twilio-php/pull/82).
+  (Reporter: [Dan Bowen](/crucialwebstudio))
+
 Version 3.7.0
 -------------
 
