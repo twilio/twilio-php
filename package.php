@@ -62,11 +62,14 @@ $package->setOptions(
         ),
         'ignore'                  => array(
             'package.php',
-            'version_guidelines.md',
             '*.tgz',
             'scratch/*',
+            'vendor/*',
+            'composer.*',
+            'coverage/*',
             'docs/*',
             'travis_install.bash',
+            '.travis.yml',
         )
     )
 );
