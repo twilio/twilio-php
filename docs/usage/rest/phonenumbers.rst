@@ -119,7 +119,7 @@ delete, from the incoming phone numbers object.
     $authToken = 'abcdef1234567890abcdefabcde9';
 
     $client = new Services_Twilio($accountSid, $authToken);
-    $number = $client->account->incoming_phone_numbers;
+    $numbers = $client->account->incoming_phone_numbers;
     foreach($numbers as $number) {
         // Delete just the first number, then quit.
         $client->account->incoming_phone_numbers->delete($number->sid);
