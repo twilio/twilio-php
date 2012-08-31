@@ -41,54 +41,54 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testNeedsRefining() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
-                    'sid' => 'AC123',
+                    'sid' => 'AC11111111111111111111111111111111',
                     'friendly_name' => 'Robert Paulson',
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $this->assertEquals('AC123', $client->account->sid);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $this->assertEquals('AC11111111111111111111111111111111', $client->account->sid);
         $this->assertEquals('Robert Paulson', $client->account->friendly_name);
     }
 
     function testAccessSidAvoidsNetworkCall() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->never();
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $client->account->sid;
     }
 
     function testOnlyOneClientCreated() {
-        $client = new Services_Twilio('AC123', '456');
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '456');
         $client->account->client->sid = 'CL456';
         $this->assertSame('CL456', $client->account->sandbox->client->sid);
     }
 
     function testNullVersionReturnsNewest() {
-        $client = new Services_Twilio('AC123', '123', null);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', null);
         $this->assertEquals('2010-04-01', $client->getVersion());
-        $client = new Services_Twilio('AC123', '123', 'v1');
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', 'v1');
         $this->assertEquals('2010-04-01', $client->getVersion());
-        $client = new Services_Twilio('AC123', '123', '2010-04-01');
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01');
         $this->assertEquals('2010-04-01', $client->getVersion());
-        $client = new Services_Twilio('AC123', '123', '2008-08-01');
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2008-08-01');
         $this->assertEquals('2008-08-01', $client->getVersion());
     }
 
     function testObjectLoadsOnlyOnce() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
-                    'sid' => 'AC123',
+                    'sid' => 'AC11111111111111111111111111111111',
                     'friendly_name' => 'Robert Paulson',
                     'status' => 'active',
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $client->account->friendly_name;
         $client->account->friendly_name;
         $client->account->status;
@@ -97,12 +97,12 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testSubresourceLoad() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls/CA123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('status' => 'Completed'))
             ));
 
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $this->assertEquals(
             'Completed',
             $client->account->calls->get('CA123')->status
@@ -112,12 +112,12 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testSubresourceSubresource() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls/CA123/Notifications/NO123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls/CA123/Notifications/NO123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('message_text' => 'Foo'))
             ));
 
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $notifs = $client->account->calls->get('CA123')->notifications;
         $this->assertEquals('Foo', $notifs->get('NO123')->message_text);
     }
@@ -126,14 +126,14 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $qs = '?Page=0&PageSize=10&StartTime%3E=2009-07-06';
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json' . $qs)
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json' . $qs)
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'total' => 1,
                     'calls' => array(array('status' => 'Completed', 'sid' => 'CA123'))
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $iterator = $client->account->calls->getIterator(
             0, 10, array('StartTime>' => '2009-07-06'));
         foreach ($iterator as $call) {
@@ -145,14 +145,14 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testListResource() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json?Page=0&PageSize=10')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'total' => 1,
                     'calls' => array(array('status' => 'completed', 'sid' => 'CA123'))
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $page = $client->account->calls->getPage(0, 10);
         $call = current($page->getItems());
         $this->assertEquals('completed', $call->status);
@@ -162,7 +162,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testInstanceResourceUriConstructionFromList() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json?Page=0&PageSize=10')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'total' => 1,
@@ -174,13 +174,13 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls/CA123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls/CA123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'status' => 'completed'
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $page = $client->account->calls->getPage(0, 10);
         $call = current($page->getItems());
 
@@ -196,7 +196,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testInstanceResourceUriConstructionFromGet() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/PN123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/IncomingPhoneNumbers/PN123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'sms_method' => 'POST',
@@ -205,7 +205,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/PN123.json',
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/IncomingPhoneNumbers/PN123.json',
                 $this->formHeaders, 'SmsMethod=GET')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
@@ -214,7 +214,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                     'uri' => 'junk_uri'
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $number = $client->account->incoming_phone_numbers->get('PN123');
         $this->assertSame($number->sms_method, 'POST');
 
@@ -225,14 +225,14 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testIterateOverPage() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=10')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json?Page=0&PageSize=10')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'total' => 1,
                     'calls' => array(array('status' => 'Completed', 'sid' => 'CA123'))
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $page = $client->account->calls->getPage(0, 10);
         foreach ($page->getIterator() as $pageitems) {
             $this->assertSame('CA123', $pageitems->sid);
@@ -242,13 +242,13 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testAsymmetricallyNamedResources() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages.json?Page=0&PageSize=10')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages.json?Page=0&PageSize=10')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sms_messages' => array(
                     array('status' => 'sent', 'sid' => 'SM123')
                 )))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $sms = current($client->account->sms_messages->getPage(0, 10)->getItems());
         $this->assertEquals('sent', $sms->status);
     }
@@ -263,7 +263,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 array('Content-Type' => 'application/json'),
                 '{"accounts":[]}'
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $client->accounts->getPage(0, 10, array(
             'FriendlyName' => 'foo',
             'Status' => 'active',
@@ -273,27 +273,27 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testUpdate() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()->with(
-                '/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+                '/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json', $this->formHeaders, 
                 http_build_query($this->callParams)
             )->andReturn(
                 array(200, array('Content-Type' => 'application/json'),
                 '{"sid":"CA123"}')
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $client->account->calls->create('123', '123', 'http://example.com');
     }
 
     function testModifyLiveCall() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()->with(
-            '/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+            '/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json', $this->formHeaders, 
             http_build_query($this->callParams)
         )->andReturn(
             array(200, array('Content-Type' => 'application/json'), 
             '{"sid":"CA123"}')
         );
         $http->shouldReceive('post')->once()->with(
-            '/2010-04-01/Accounts/AC123/Calls/CA123.json', 
+            '/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls/CA123.json', 
             $this->formHeaders,
             'Status=completed'
         )->andReturn(
@@ -301,7 +301,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 '{"sid":"CA123"}'
             )
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $calls = $client->account->calls;
         $call = $calls->create('123', '123', 'http://example.com');
         $call->hangup();
@@ -311,7 +311,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
             ->with(
-                '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants.json?Page=0&PageSize=10')
+                '/2010-04-01/Accounts/AC11111111111111111111111111111111/Conferences/CF123/Participants.json?Page=0&PageSize=10')
                 ->andReturn(array(200, array('Content-Type' => 'application/json'),
                     json_encode(array(
                         'participants' => array(array('call_sid' => 'CA123'))
@@ -319,13 +319,13 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 ));
         $http->shouldReceive('post')->once()
             ->with(
-                '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants/CA123.json',
+                '/2010-04-01/Accounts/AC11111111111111111111111111111111/Conferences/CF123/Participants/CA123.json',
                 $this->formHeaders,
                 'Muted=true'
             )->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array())
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $conf = $client->account->conferences->get('CF123');
         $page = $conf->participants->getPage(0, 10);
         foreach ($page->getItems() as $participant) {
@@ -336,16 +336,16 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testResourcePropertiesReflectUpdates() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'foo'))
             ));
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123.json', $this->formHeaders, 'FriendlyName=bar')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111.json', $this->formHeaders, 'FriendlyName=bar')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'bar'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $this->assertEquals('foo', $client->account->friendly_name);
         $client->account->update('FriendlyName', 'bar');
         $this->assertEquals('bar', $client->account->friendly_name);
@@ -356,18 +356,18 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testArrayAccessForListResources() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=50')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'calls' => array(array('sid' => 'CA123'))
                 ))
             ));
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=1&PageSize=50')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json?Page=1&PageSize=50')
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         foreach ($client->account->calls as $call) {
             $this->assertEquals('CA123', $call->sid);
         }
@@ -376,7 +376,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
 
     function testDeepPagingUsesAfterSid() {
         $http = m::mock(new Services_Twilio_TinyHttp);
-        $callsBase = '/2010-04-01/Accounts/AC123/Calls.json';
+        $callsBase = '/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json';
         $firstPageUri = $callsBase . '?Page=0&PageSize=1';
         $afterSidUri = $callsBase . '?Page=1&PageSize=1&AfterSid=CA123';
         $secondAfterSidUri = $callsBase . '?Page=2&PageSize=1&AfterSid=CA456';
@@ -414,11 +414,11 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=3&PageSize=1')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Calls.json?Page=3&PageSize=1')
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         foreach ($client->account->calls->getIterator(0, 1) as $call) {
             $this->assertSame($call->price, '-0.02000');
         }
@@ -426,7 +426,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
 
     function testIteratorWithFiltersPagesCorrectly() {
         $http = m::mock(new Services_Twilio_TinyHttp);
-        $recordingsBase = '/2010-04-01/Accounts/AC123/Recordings.json';
+        $recordingsBase = '/2010-04-01/Accounts/AC11111111111111111111111111111111/Recordings.json';
         $firstPageUri = $recordingsBase . '?Page=0&PageSize=1&DateCreated%3E=2011-01-01';
         $secondPageUri = $recordingsBase . '?DateCreated%3E=2011-01-01&Page=1&PageSize=1';
         $thirdPageUri = $recordingsBase . '?DateCreated%3E=2011-01-01&Page=2&PageSize=1';
@@ -458,7 +458,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
 
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         foreach ($client->account->recordings->getIterator(0, 1, array('DateCreated>' => '2011-01-01')) as $recording) {
             $this->assertSame($recording->duration, 7);
         }
@@ -467,15 +467,15 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testRetryOn500() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn($this->nginxError);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('price' => 0.5))
             )
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $message = $client->account->sms_messages->get('SM123');
         $this->assertSame($message->price, 0.5);
     }
@@ -483,33 +483,33 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testDeleteOn500() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('delete')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn($this->nginxError);
         $http->shouldReceive('delete')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn(
                 array(204, array('Content-Type' => 'application/json'), '')
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $client->account->sms_messages->delete('SM123');
     }
 
     function testSetExplicitRetryLimit() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn($this->nginxError);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn($this->nginxError);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('price' => 0.5))
             )
         );
         // retry twice
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http, 2);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http, 2);
         $message = $client->account->sms_messages->get('SM123');
         $this->assertSame($message->price, 0.5);
     }
@@ -518,18 +518,18 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->setExpectedException('Services_Twilio_RestException');
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn($this->nginxError);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn($this->nginxError);
         $http->shouldReceive('get')->never()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages/SM123.json')
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages/SM123.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('price' => 0.5))
             )
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $message = $client->account->sms_messages->get('SM123');
         $this->assertSame($message->price, 0.5);
     }
@@ -538,10 +538,10 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->setExpectedException('Services_Twilio_RestException');
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/2010-04-01/Accounts/AC123/SMS/Messages.json', $this->formHeaders, 
+            ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/SMS/Messages.json', $this->formHeaders, 
                 'From=%2B14105551234&To=%2B14102221234&Body=bar')
             ->andReturn($this->nginxError);
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
         $message = $client->account->sms_messages->create('+14105551234', 
             '+14102221234', 'bar');
     }
