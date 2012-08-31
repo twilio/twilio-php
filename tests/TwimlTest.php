@@ -339,14 +339,14 @@ class TwimlTest extends PHPUnit_Framework_TestCase {
 
         $r = new Services_Twilio_Twiml();
         $r->say('hello');
-        $r->dial()->number('123', array('sendDigits' => '456'));
+        $r->dial()->number('11111111111111111111111111111111', array('sendDigits' => '456'));
         $r->gather(array('timeout' => 15));
 
         $doc = simplexml_load_string($r);
         $this->assertEquals('Response', $doc->getName());
         $this->assertEquals('hello', (string) $doc->Say);
         $this->assertEquals('456', (string) $doc->Dial->Number['sendDigits']);
-        $this->assertEquals('123', (string) $doc->Dial->Number);
+        $this->assertEquals('11111111111111111111111111111111', (string) $doc->Dial->Number);
         $this->assertEquals('15', (string) $doc->Gather['timeout']);
     }
 

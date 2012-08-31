@@ -12,7 +12,7 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
                     'friendly_name' => '(510) 564-7903'
                 )))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $nums = $client->account->available_phone_numbers->getLocal('US');
         $numsList = $nums->getList(array('AreaCode' => '510'));
         foreach ($numsList as $num) {
@@ -30,7 +30,7 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
                     'countries' => array(array('country_code' => 'CA'))
                 ))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $page = $client->account->available_phone_numbers->getPage('0');
         $this->assertEquals('CA', $page->countries[0]->country_code);
     }
@@ -51,7 +51,7 @@ class SandboxTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('voice_url' => 'foo'))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $client->account->sandbox->update('VoiceUrl', 'foo');
         $this->assertEquals('foo', $client->account->sandbox->voice_url);
     }
@@ -78,7 +78,7 @@ class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase
                     'validation_code' => 123456,
                 ))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $request = $client->account->outgoing_caller_ids->create('+14158675309', array(
             'FriendlyName' => 'My Home Phone Number',
         ));
@@ -103,7 +103,7 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'AP123'))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $app = $client->account->applications->create('foo', array(
             'VoiceUrl' => 'bar',
         ));
@@ -128,7 +128,7 @@ class AccountsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'AC345'))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $account = $client->accounts->create(array(
             'FriendlyName' => 'foo',
         ));
@@ -158,7 +158,7 @@ class ConnectAppsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'Bar'))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $cn = $client->account->connect_apps->get('CN123');
         $this->assertEquals('foo', $cn->friendly_name);
         $cn->update(array('FriendlyName' => 'Bar'));
@@ -180,7 +180,7 @@ class ConnectAppsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'Bar'))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $cn = $client->account->connect_apps->get('CN123');
         $this->assertEquals('foo', $cn->friendly_name);
         $cn->update('FriendlyName', 'Bar');
@@ -200,7 +200,7 @@ class NotificationTest extends PHPUnit_Framework_TestCase
         $http->shouldReceive('delete')->once()
             ->with('/2010-04-01/Accounts/AC11111111111111111111111111111111/Notifications/NO123.json')
             ->andReturn(array(204, array(), ''));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $client->account->notifications->delete('NO123');
     }
 
@@ -222,7 +222,7 @@ class SMSMessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $sms = $client->account->sms_messages->create('+1222', '+44123', 'Hi there');
         $this->assertSame('SM123', $sms->sid);
     }
@@ -239,7 +239,7 @@ class SMSMessagesTest extends PHPUnit_Framework_TestCase
                     'message' => 'Too long',
                 ))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', null, $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', null, $http);
         $sms = $client->account->sms_messages->create('+1222', '+44123', 
             str_repeat('hi', 81));
     }
@@ -278,7 +278,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('call_sid' => 'CA123', 'position' => 0))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         $firstMember = $queue->members->front();
         $this->assertSame($firstMember->call_sid, 'CA123');
@@ -292,7 +292,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('call_sid' => 'CA123', 'position' => 0))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         $firstMember = $queue->members->front();
         $firstMember->dequeue('http://foo.com');
@@ -306,7 +306,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('call_sid' => 'CA123', 'position' => 0))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         $firstMember = $queue->members->get('CA123');
         $firstMember->dequeue('http://foo.com', 'GET');
@@ -330,7 +330,7 @@ class QueuesTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'QQ123', 'average_wait_time' => 0))
             ));
-        $client = new Services_Twilio('AC11111111111111111111111111111111', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC11111111111111111111111111111111', '11111111111111111111111111111111', '2010-04-01', $http);
         $queue = $client->account->queues->create('foo', 
             array('MaxSize' => 123));
         $this->assertSame($queue->sid, 'QQ123');

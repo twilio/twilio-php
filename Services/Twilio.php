@@ -73,6 +73,13 @@ class Services_Twilio extends Services_Twilio_Resource
                 "characters, like AC16db14d1d7166a09f4dc90f4e466f69f.", 
                 E_USER_WARNING);
         }
+        if (!preg_match('#^[A-Za-z0-9]{32}$#', $token)) {
+            trigger_error("It looks like you provided an invalid Auth Token.\n" .
+                "You can find your Auth Token at twilio.com/user/account.\n" . 
+                "It should have 32 hexadecimal characters, like \n" .
+                "083c2ec9ac11508d30e313a4f408a0d6.", 
+                E_USER_WARNING);
+        }
         $_http->authenticate($sid, $token);
         $this->http = $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
