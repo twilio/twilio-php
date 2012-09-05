@@ -7,4 +7,14 @@ class Services_Twilio_Rest_IncomingPhoneNumbers
     {
         return parent::_create($params);
     }
+
+    /**
+     * Get a list of available phone numbers. 
+     *
+     * @return object A list of AvailableNumbers
+     */
+    public function getList()
+    {
+        return $this->client->retrieveData($this->uri); 
+    }
 }
