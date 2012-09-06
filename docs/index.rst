@@ -26,7 +26,7 @@ Send a SMS
     $account_sid = "ACXXXXXX"; // Your Twilio account sid
     $auth_token = "YYYYYY"; // Your Twilio auth token
 
-    $client = new Services_Twilio('AC123', '123');
+    $client = new Services_Twilio($account_sid, $auth_token);
     $message = $client->account->sms_messages->create(
       '+14085551234', // From a Twilio number in your account
       '+12125551234', // Text any number
@@ -49,7 +49,7 @@ Make a Call
     $client = new Services_Twilio($account_sid, $auth_token);
     $call = $client->account->calls->create(
       '+14085551234', // From a Twilio number in your account
-      '+12125551234', // Text any number
+      '+12125551234', // Call any number
 
       // Read TwiML at this URL when a call connects (hold music)
       'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
