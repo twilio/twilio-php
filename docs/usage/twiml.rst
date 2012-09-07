@@ -200,7 +200,7 @@ Conference
         "startConferenceOnEnter" => "true",
         "muted" => "true",
         "beep" => "false",
-    );
+    ));
     print $response;
 
 .. code-block:: xml
