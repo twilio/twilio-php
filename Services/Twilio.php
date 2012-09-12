@@ -62,7 +62,7 @@ class Services_Twilio extends Services_Twilio_Resource
                 array("curlopts" => array(
                     CURLOPT_USERAGENT => self::USER_AGENT,
                     CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                    CURLOPT_CAINFO => dirname(__FILE__) . "/twilio_ssl_certificate.crt",
+                    CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
                 ))
             );
         }
