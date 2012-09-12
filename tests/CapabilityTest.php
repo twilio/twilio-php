@@ -5,14 +5,14 @@ require_once 'Twilio/Capability.php';
 class CapabilityTest extends PHPUnit_Framework_TestCase {
 
     public function testNoPermissions() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $payload = JWT::decode($token->generateToken(), 'foo');
-        $this->assertEquals($payload->iss, "AC123");
+        $this->assertEquals($payload->iss, "AC11111111111111111111111111111111");
         $this->assertEquals($payload->scope, '');
     }
 
     public function testInboundPermissions() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowClientIncoming("andy");
         $payload = JWT::decode($token->generateToken(), 'foo');
 
@@ -21,7 +21,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testOutboundPermissions() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowClientOutgoing("AP123");
         $payload = JWT::decode($token->generateToken(), 'foo');;
         $eurl = "scope:client:outgoing?appSid=AP123";
@@ -29,7 +29,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testOutboundPermissionsParams() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowClientOutgoing("AP123", array("foobar" => 3));
         $payload = JWT::decode($token->generateToken(), 'foo');
 
@@ -38,7 +38,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testEvents() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowEventStream();
         $payload = JWT::decode($token->generateToken(), 'foo');
 
@@ -48,7 +48,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testEventsWithFilters() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowEventStream(array("foobar" => "hey"));
         $payload = JWT::decode($token->generateToken(), 'foo');
 
@@ -59,7 +59,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
 
 
     public function testDecode() {
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowClientOutgoing("AP123", array("foobar"=> 3));
         $token->allowClientIncoming("andy");
         $token->allowEventStream();
@@ -80,7 +80,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
 
     function testDecodeWithAuthToken() {
         try {
-            $token = new Services_Twilio_Capability('AC123', 'foo');
+            $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
             $payload = JWT::decode($token->generateToken(), 'foo');
         } catch (UnexpectedValueException $e) {
             $this->assertTrue(false, "Could not decode with 'foo'");
@@ -89,13 +89,13 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
 
     function testClientNameValidation() {
         $this->setExpectedException('InvalidArgumentException');
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowClientIncoming('@');
     }
 
     function zeroLengthNameInvalid() {
         $this->setExpectedException('InvalidArgumentException');
-        $token = new Services_Twilio_Capability('AC123', 'foo');
+        $token = new Services_Twilio_Capability('AC11111111111111111111111111111111', 'foo');
         $token->allowClientIncoming("");
     }
 
