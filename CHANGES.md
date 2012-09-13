@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+Version 3.7.2
+-------------
+
+- The library will now [use a standard CA cert whitelist][whitelist] for SSL
+    validation, replacing a file that contained only Twilio's SSL certificate.
+    (Reporter: [Andrew Benton](/andrewmbenton))
+
+ [whitelist]: https://github.com/twilio/twilio-php/issues/88
+
 Version 3.7.1
 -------------
 

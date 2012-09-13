@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.7.1';
+$api_version     = '3.7.2';
 $api_state       = 'stable';
 
-$release_version = '3.7.1';
+$release_version = '3.7.2';
 $release_state   = 'stable';
-$release_notes   = 'Fix a bug with URI creation in the 3.5.0 release';
+$release_notes   = 'Use a standard CA cert whitelist for SSL validation';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
@@ -128,4 +128,3 @@ if (isset($_GET['make'])
     $package->debugPackageFile();
 }
 
-?>
