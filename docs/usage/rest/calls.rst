@@ -61,8 +61,8 @@ a particular number. You can do so by constructing an iterator explicitly:
 
     $client = new Services_Twilio('AC123', '123');
     foreach ($client->account->calls->getIterator(0, 50, array(
-        'From' => '+14105551234',
-    ) as $call) {
+        'From' => '+14105551234'
+    )) as $call) {
         echo "From: {$call->from}\nTo: {$call->to}\nSid: {$call->sid}\n\n";
     }
 
