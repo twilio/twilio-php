@@ -80,8 +80,15 @@ abstract class Services_Twilio_Resource
         );
     }
 
-    public static function camelize($word)
-    {
+    /**
+     * Return camelized version of a word
+     * Examples: sms_messages => SMSMessages, calls => Calls, 
+     * incoming_phone_numbers => IncomingPhoneNumbers
+     *
+     * @param string $word The word to camelize
+     * @return string
+     */
+    public static function camelize($word) {
         return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
     }
 }
