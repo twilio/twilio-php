@@ -19,6 +19,7 @@ class Services_Twilio_Rest_Account
             'transcriptions',
             'connect_apps',
             'authorized_connect_apps',
+            'usage',
             'queues'
         );
 
