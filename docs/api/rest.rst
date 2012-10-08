@@ -811,7 +811,6 @@ Members
 
   For more information, including a list of filter parameters, see the `Member List Resource <http://www.twilio.com/docs/api/rest/member#list>`_ documentation.
 
-
   .. php:method:: front()
 
       Return the :php:class:`Services_Twilio_Rest_Member` at the front of the
@@ -825,7 +824,13 @@ Members
 
     Dequeue this member and immediately play the Twiml at the given ``$url``.
 
-    :param string $url: The Twiml URL to play for this member, after dequeueing them
+    :param string $url: The Twiml URL to play for this member, after dequeuing them
     :param string $method: The HTTP method to use when fetching the Twiml URL. Defaults to POST.
     :returns: :php:class:`Services_Twilio_Rest_Member` The dequeued member
 
+UsageRecords
+==============
+
+.. php:class:: Services_Twilio_Rest_UsageRecords
+
+  For more information, including a list of filter parameters, see the `UsageRecords List Resource <http://www.twilio.com/docs/api/rest/usage-records#list>`_ documentation.
