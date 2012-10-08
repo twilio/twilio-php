@@ -57,8 +57,8 @@ parameters.
 Retrieve Today's SMS Usage
 ==========================
 
-You can use the `today` subresource, and then retrieve the record directly with
-the `getCategory` function.
+You can use the `today` record subresource, and then retrieve the record
+directly with the `getCategory` function.
 
 .. code-block:: php
 
