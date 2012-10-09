@@ -27,7 +27,7 @@ can be accessed as properties on the `record` object.
     }
 
 Retrieve All Time Usage for A Usage Category
-===========================================
+============================================
 
 By default, Twilio will return your all-time usage for a given usage category.
 

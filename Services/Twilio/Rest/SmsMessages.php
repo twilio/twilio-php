@@ -8,8 +8,7 @@ class Services_Twilio_Rest_SmsMessages
         parent::__construct($client, $uri);
     }
 
-    function create($from, $to, $body, array $params = array())
-    {
+    function create($from, $to, $body, array $params = array()) {
         return parent::_create(array(
             'From' => $from,
             'To' => $to,
