@@ -1,10 +1,8 @@
 <?php
 
-class Services_Twilio_Rest_Account
-    extends Services_Twilio_InstanceResource
-{
-    protected function init($client, $uri)
-    {
+class Services_Twilio_Rest_Account extends Services_Twilio_InstanceResource {
+
+    protected function init($client, $uri) {
         $this->setupSubresources(
             'applications',
             'available_phone_numbers',
@@ -19,7 +17,8 @@ class Services_Twilio_Rest_Account
             'transcriptions',
             'connect_apps',
             'authorized_connect_apps',
-            'usage',
+            'usage_records',
+            'usage_triggers',
             'queues'
         );
 

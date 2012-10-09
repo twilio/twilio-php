@@ -8,7 +8,7 @@ Retrieve All Usage Records
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '456bef');
-    foreach ($client->account->usage->records as $record) {
+    foreach ($client->account->usage_records as $record) {
         echo "Record: $record";
     }
 
@@ -22,7 +22,7 @@ can be accessed as properties on the `record` object.
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '456bef');
-    foreach ($client->account->usage->records->last_month as $record) {
+    foreach ($client->account->usage_records->last_month as $record) {
         echo "Record: $record";
     }
 
@@ -34,7 +34,7 @@ By default, Twilio will return your all-time usage for a given usage category.
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '456bef');
-    $callRecord = $client->account->usage->records->getCategory('calls');
+    $callRecord = $client->account->usage_records->getCategory('calls');
     echo $callRecord->usage;
 
 Retrieve All Usage for a Given Time Period
@@ -46,7 +46,7 @@ parameters.
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '456bef');
-    foreach ($client->account->usage->records->getIterator(0, 50, array(
+    foreach ($client->account->usage_records->getIterator(0, 50, array(
         'StartDate' => '2012-08-01',
         'EndDate'   => '2012-08-31',
     )) as $record) {
@@ -64,7 +64,7 @@ directly with the `getCategory` function.
 
     $client = new Services_Twilio('AC123', '456bef');
     // You can substitute 'yesterday', 'all_time' for 'today' below
-    $smsRecord = $client->account->usage->records->today->getCategory('sms');
+    $smsRecord = $client->account->usage_records->today->getCategory('sms');
     echo $smsRecord->usage;
 
 Retrieve Daily Usage Over a One-Month Period
@@ -77,7 +77,7 @@ the `getIterator` array.
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '456bef');
-    foreach ($client->account->usage->records->daily->getIterator(0, 50, array(
+    foreach ($client->account->usage_records->daily->getIterator(0, 50, array(
         'StartDate' => '2012-08-01',
         'EndDate'   => '2012-08-31',
         'Category'  => 'recordings',

@@ -1,6 +1,12 @@
 <?php
 
-class Services_Twilio_Rest_Records extends Services_Twilio_TimeRangeResource {
+class Services_Twilio_Rest_UsageRecords 
+    extends Services_Twilio_TimeRangeResource {
+
+    public function __construct($client, $uri) {
+        $uri = preg_replace("#UsageRecords#", "Usage/Records", $uri);
+        parent::__construct($client, $uri);
+    }
 
     public function init($client, $uri) {
         $this->setupSubresources(

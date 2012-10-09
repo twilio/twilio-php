@@ -370,7 +370,7 @@ class RecordsTest extends PHPUnit_Framework_TestCase {
             ));
 
         $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
-        foreach ($client->account->usage->records as $record) {
+        foreach ($client->account->usage_records as $record) {
             $this->assertSame(5, $record->count);
         }
     }
@@ -401,13 +401,28 @@ class RecordsTest extends PHPUnit_Framework_TestCase {
             ));
 
         $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
-        foreach ($client->account->usage->records->last_month as $record) {
+        foreach ($client->account->usage_records->last_month as $record) {
             $this->assertSame('2012-08-01', $record->end_date);
         }
     }
 
     function testGetCategory() {
         $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?Page=0&PageSize=1&Category=calls')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'calls',
+                        'count' => 4,
+                        'price' => '100.30',
+                        'end_date' => '2012-08-01',
+                    )),
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $callRecord = $client->account->usage_records->getCategory('calls');
+        $this->assertSame('100.30', $callRecord->price);
     }
 
 }

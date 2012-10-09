@@ -21,14 +21,12 @@ class Services_Twilio_TimeRangeResource extends Services_Twilio_ListResource {
         $page = $this->getPage(0, 1, array(
             'Category' => $category,
         ));
-        if (!isset($page->usage_records) || 
-            !is_array($page->usage_records) ||
-            count($page->usage_records) === 0
-        ) {
+        $items = $page->getItems();
+        if (!is_array($items) || count($items) === 0) {
             throw new Services_Twilio_RestException(
                 400, "Usage record data is unformattable.");
         }
-        return $page->usage_records[0];
+        return $items[0];
     }
 
     public function getResourceName($camelized = false) {
