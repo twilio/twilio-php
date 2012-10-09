@@ -23,6 +23,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         );
         return $curried;
     }
+
     /**
      * Get a list of available phone numbers. 
      *
@@ -31,7 +32,6 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
      * @param string type The type of number ('Local' or 'TollFree')
      * @return object The object representation of the resource
      */
-
     public function getList($country, $type, array $params = array())
     {
         return $this->client->retrieveData($this->uri . "/$country/$type", $params);

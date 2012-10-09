@@ -31,8 +31,7 @@ abstract class Services_Twilio_Resource
         // Left empty for derived classes to implement
     }
 
-    public function getSubresources($name = null)
-    {
+    public function getSubresources($name = null) {
         if (isset($name)) {
             return isset($this->subresources[$name])
                 ? $this->subresources[$name]
@@ -80,13 +79,6 @@ abstract class Services_Twilio_Resource
         );
     }
 
-    public function __get($key) {
-        if ($subresource = $this->getSubresources($key)) {
-            return $subresource;
-        }
-        return $this->$key;
-    }
-
     /**
      * Return camelized version of a word
      * Examples: sms_messages => SMSMessages, calls => Calls, 
@@ -97,6 +89,19 @@ abstract class Services_Twilio_Resource
      */
     public static function camelize($word) {
         return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
+    }
+
+    /**
+     * Get the value of a property on this resource.
+     * 
+     * @param string $key The property name
+     * @return mixed Could be anything.
+     */
+    public function __get($key) {
+        if ($subresource = $this->getSubresources($key)) {
+            return $subresource;
+        }
+        return $this->$key;
     }
 }
 

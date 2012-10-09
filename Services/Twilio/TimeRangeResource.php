@@ -1,12 +1,12 @@
 <?php
 
-/** 
- * Parent class for resources that expose a single date, eg 'Today', 'ThisMonth', etc
+/**
+ * Parent class for usage resources that expose a single date, eg 'Today', 'ThisMonth', etc
  * @author Kevin Burke <kevin@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */
-class Services_Twilio_TimeRangeResource extends Services_Twilio_ListResource {
+class Services_Twilio_TimeRangeResource extends Services_Twilio_UsageResource {
 
     /**
      * Return a UsageRecord corresponding to the given category.
@@ -28,10 +28,4 @@ class Services_Twilio_TimeRangeResource extends Services_Twilio_ListResource {
         }
         return $items[0];
     }
-
-    public function getResourceName($camelized = false) {
-        $this->instance_name = 'Services_Twilio_Rest_UsageRecord';
-        return $camelized ? 'UsageRecords' : 'usage_records';
-    }
-
 }
