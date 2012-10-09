@@ -6,7 +6,7 @@
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */
-class TimeRangeResource extends ListResource {
+class Services_Twilio_TimeRangeResource extends Services_Twilio_ListResource {
 
     /**
      * Return a UsageRecord corresponding to the given category.
@@ -30,4 +30,10 @@ class TimeRangeResource extends ListResource {
         }
         return $page->usage_records[0];
     }
+
+    public function getResourceName($camelized = false) {
+        $this->instance_name = 'Services_Twilio_Rest_UsageRecord';
+        return $camelized ? 'UsageRecords' : 'usage_records';
+    }
+
 }

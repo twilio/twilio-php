@@ -80,6 +80,13 @@ abstract class Services_Twilio_Resource
         );
     }
 
+    public function __get($key) {
+        if ($subresource = $this->getSubresources($key)) {
+            return $subresource;
+        }
+        return $this->$key;
+    }
+
     /**
      * Return camelized version of a word
      * Examples: sms_messages => SMSMessages, calls => Calls, 
