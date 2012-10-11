@@ -2,6 +2,10 @@
 Usage Records
 =============
 
+Twilio offers a Usage Record API so you can better measure how much you've been
+using Twilio. Here are some examples of how you can use PHP to access the usage
+API.
+
 Retrieve All Usage Records
 ==========================
 
