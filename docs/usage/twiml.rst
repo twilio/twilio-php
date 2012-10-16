@@ -290,6 +290,23 @@ Pause
       <Say>World</Say>
     </Response>
 
+Enqueue
+-------
+
+.. code-block:: php
+
+    $response = new Services_Twilio_Twiml;
+    $response->say("You're being added to the queue.");
+    $response->enqueue('queue-name');
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response>
+        <Say>You're being added to the queue.</Say>
+        <Enqueue>queue-name</Enqueue>
+    </Response>
 
 The verb methods (outlined in the complete reference) take the body (only text)
 of the verb as the first argument. All attributes are keyword arguments.
