@@ -16,7 +16,7 @@ If you know the Sid of your usage trigger, retrieving it is easy.
     $client = new Services_Twilio('AC123', '456bef');
     $usageSid = 'UT123';
     $usageTrigger = $client->account->usage_triggers->get($usageSid);
-    echo $usageTrigger->category;
+    echo $usageTrigger->usage_category;
 
 Update Properties on a UsageTrigger
 ===================================
@@ -38,7 +38,7 @@ Retrieve All Triggers
 
     $client = new Services_Twilio('AC123', '456bef');
     foreach ($client->account->usage_triggers as $trigger) {
-        echo "Category: {$trigger->category}\nTriggerValue: {$trigger->trigger_value}\n";
+        echo "Category: {$trigger->usage_category}\nTriggerValue: {$trigger->trigger_value}\n";
     }
 
 Filter Trigger List By Category
@@ -51,7 +51,7 @@ Pass filters to the `getIterator` function to create a filtered list.
     $client = new Services_Twilio('AC123', '456bef');
     foreach ($client->account->usage_triggers->getIterator(
         0, 50, array(
-            'Category' => 'sms',
+            'UsageCategory' => 'sms',
         )) as $trigger
     ) {
         echo "Value: " . $trigger->trigger_value . "\n";
