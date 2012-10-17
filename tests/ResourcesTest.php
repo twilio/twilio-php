@@ -341,3 +341,310 @@ class QueuesTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 }
+
+class RecordsTest extends PHPUnit_Framework_TestCase {
+
+    function testGetBaseRecord() {
+
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?Page=0&PageSize=50')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'sms',
+                        'count' => 5,
+                        'end_date' => '2012-08-01',
+                    ),
+                    array(
+                        'category' => 'calleridlookups',
+                        'count' => 5,
+                        'end_date' => '2012-08-01',
+                    ))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?Page=1&PageSize=50')
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
+            ));
+
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        foreach ($client->account->usage_records as $record) {
+            $this->assertSame(5, $record->count);
+        }
+    }
+
+    function testUsageRecordSubresource() {
+
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/LastMonth.json?Page=0&PageSize=50')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'sms',
+                        'count' => 4,
+                        'end_date' => '2012-08-01',
+                    ),
+                    array(
+                        'category' => 'calleridlookups',
+                        'count' => 4,
+                        'end_date' => '2012-08-01',
+                    ))
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/LastMonth.json?Page=1&PageSize=50')
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
+            ));
+
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        foreach ($client->account->usage_records->last_month as $record) {
+            $this->assertSame('2012-08-01', $record->end_date);
+        }
+    }
+
+    function testGetCategory() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?Page=0&PageSize=1&Category=calls')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'calls',
+                        'count' => 4,
+                        'price' => '100.30',
+                        'end_date' => '2012-08-01',
+                    )),
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $callRecord = $client->account->usage_records->getCategory('calls');
+        $this->assertSame('100.30', $callRecord->price);
+    }
+
+    function testFilterUsageRecords() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $params = 'Page=0&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?' . $params)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'sms',
+                        'count' => 4,
+                        'price' => '300.30',
+                    ),
+                    array(
+                        'category' => 'calls',
+                        'count' => 4,
+                        'price' => '100.30',
+                    )),
+                ))
+            ));
+        $params = 'Page=1&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?' . $params)
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        foreach ($client->account->usage_records->getIterator(0, 50, array(
+            'StartDate' => '2012-08-01',
+            'EndDate'   => '2012-08-31',
+        )) as $record) {
+            $this->assertSame(4, $record->count);
+        }
+    }
+
+    function testGetCategoryOnSubresource() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $params = 'Page=0&PageSize=1&Category=sms';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/Today.json?' . $params)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'sms',
+                        'count' => 4,
+                        'price' => '100.30',
+                        'end_date' => '2012-08-30'
+                    )),
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $smsRecord = $client->account->usage_records->today->getCategory('sms');
+        $this->assertSame($smsRecord->end_date, '2012-08-30');
+    }
+
+    function testUsageUsesNextPageUri() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $params = 'Page=0&PageSize=50&StartDate=2012-06-01&EndDate=2012-08-31&Category=sms';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/Daily.json?' . $params)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'usage_records' => array(
+                        array(
+                            'category' => 'sms',
+                            'count' => 4,
+                            'price' => '100.30',
+                            'end_date' => '2012-08-31',
+                            'uri' => '/2010-04-01/Accounts/AC58f1e8f2b1c6b88ca90a012a4be0c279/Usage/Records.json?StartDate=2012-10-09&EndDate=2012-10-09&Category=sms',
+                        )
+                    ),
+                    'next_page_uri' => '/2010-04-01/Accounts/AC58f1e8f2b1c6b88ca90a012a4be0c279/Usage/Records/Daily.json?Category=sms&Page=1&PageSize=50',
+                ))
+            ));
+    }
+
+    function testTimeSeriesFilters() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $params = 'Page=0&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31&Category=recordings';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/Daily.json?' . $params)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_records' => array(
+                    array(
+                        'category' => 'recordings',
+                        'count' => 4,
+                        'price' => '100.30',
+                        'end_date' => '2012-08-31'
+                    ),
+                    array(
+                        'category' => 'recordings',
+                        'count' => 4,
+                        'price' => '100.30',
+                        'end_date' => '2012-08-30'
+                    )),
+                ))
+            ));
+        $params = 'Page=1&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31&Category=recordings';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/Daily.json?' . $params)
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        foreach ($client->account->usage_records->daily->getIterator(0, 50, array(
+            'StartDate' => '2012-08-01',
+            'EndDate'   => '2012-08-31',
+            'Category'  => 'recordings',
+        )) as $record) {
+            $this->assertSame($record->category, 'recordings');
+            $this->assertSame($record->price, '100.30');
+        }
+    }
+}
+
+class UsageTriggersTest extends PHPUnit_Framework_TestCase {
+    function testRetrieveTrigger() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Triggers/UT123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'sid' => 'UT123',
+                    'date_created' => 'Tue, 09 Oct 2012 19:27:24 +0000',
+                    'recurring' => null,
+                    'usage_category' => 'totalprice',
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $usageSid = 'UT123';
+        $usageTrigger = $client->account->usage_triggers->get($usageSid);
+        $this->assertSame('totalprice', $usageTrigger->usage_category);
+    }
+
+    protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
+
+    function testUpdateTrigger() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $usageSid = 'UT123';
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Triggers/UT123.json', 
+                $this->formHeaders, 'FriendlyName=new')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'friendly_name' => 'new', 
+                    'sid' => 'UT123',
+                    'uri' => '/2010-04-01/Accounts/AC123/Usage/Triggers/UT123.json'
+                ))
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Triggers/UT123.json')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'sid' => 'UT123',
+                    'friendly_name' => 'new',
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $usageTrigger = $client->account->usage_triggers->get($usageSid);
+        $usageTrigger->update(array(
+            'FriendlyName' => 'new',
+        ));
+        $usageTrigger2 = $client->account->usage_triggers->get($usageSid);
+        $this->assertSame('new', $usageTrigger2->friendly_name);
+    }
+
+    function filterTriggerList() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $params = 'UsageCategory=sms&Page=0&PageSize=50';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Triggers.json?' . $params)
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('usage_triggers' => array(
+                    array(
+                        'usage_category' => 'sms',
+                        'current_value' => '4',
+                        'trigger_value' => '100.30',
+                    ),
+                    array(
+                        'usage_category' => 'sms',
+                        'current_value' => '4',
+                        'trigger_value' => '400.30',
+                    )),
+                    'next_page_uri' => '/2010-04-01/Accounts/AC123/Usage/Triggers.json?Category=sms&Page=1&PageSize=50',
+                ))
+            ));
+        $params = 'Page=1&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31&Category=recordings';
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Records/Daily.json?' . $params)
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        foreach ($client->account->usage_triggers->getIterator(
+            0, 50, array(
+                'Category' => 'sms',
+            )) as $trigger
+        ) {
+            echo "Value: " . $trigger->trigger_value . "\n";
+        }
+    }
+
+    function testCreateTrigger() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $params = 'UsageCategory=sms&TriggerValue=100&CallbackUrl=foo';
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/Usage/Triggers.json', 
+                $this->formHeaders, $params)
+            ->andReturn(array(201, array('Content-Type' => 'application/json'),
+                json_encode(array(
+                    'usage_category' => 'sms',
+                    'sid' => 'UT123',
+                    'uri' => '/2010-04-01/Accounts/AC123/Usage/Triggers/UT123.json'
+                ))
+            ));
+        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $trigger = $client->account->usage_triggers->create(
+            'sms',
+            '100',
+            'foo'
+        );
+        $this->assertSame('sms', $trigger->usage_category);
+    }
+}

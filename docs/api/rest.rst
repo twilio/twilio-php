@@ -4,6 +4,9 @@
 Services_Twilio_Rest
 ===============================
 
+Below you will find a list of objects created by interacting with the Twilio
+API, and the methods and properties that can be called on them.
+
 Accounts
 ===========
 
@@ -811,7 +814,6 @@ Members
 
   For more information, including a list of filter parameters, see the `Member List Resource <http://www.twilio.com/docs/api/rest/member#list>`_ documentation.
 
-
   .. php:method:: front()
 
       Return the :php:class:`Services_Twilio_Rest_Member` at the front of the
@@ -825,7 +827,40 @@ Members
 
     Dequeue this member and immediately play the Twiml at the given ``$url``.
 
-    :param string $url: The Twiml URL to play for this member, after dequeueing them
+    :param string $url: The Twiml URL to play for this member, after dequeuing them
     :param string $method: The HTTP method to use when fetching the Twiml URL. Defaults to POST.
     :returns: :php:class:`Services_Twilio_Rest_Member` The dequeued member
+
+UsageRecords
+==============
+
+.. php:class:: Services_Twilio_Rest_UsageRecords
+
+  For more information, including a list of filter parameters, see the `UsageRecords List Resource <http://www.twilio.com/docs/api/rest/usage-records#list>`_ documentation.
+
+  .. php:method:: getCategory($category)
+
+    Return the single UsageRecord corresponding to this category of usage.
+    Valid only for the `Records`, `Today`, `Yesterday`, `ThisMonth`,
+    `LastMonth` and `AllTime` resources.
+
+    :param string $category: The category to retrieve a usage record for. For a full list of valid categories, see the full `Usage Category documentation <http://www.twilio.com/docs/api/rest/usage-records#usage-all-categories>`_.
+    :returns: :php:class:`Services_Twilio_Rest_UsageRecord` A single usage record
+
+UsageTriggers
+=============
+
+.. php:class:: Services_Twilio_Rest_UsageTriggers
+
+  For more information, including a list of filter parameters, see the `UsageTriggers List Resource <http://www.twilio.com/docs/api/rest/usage-triggers#list>`_ documentation.
+
+  .. php:method:: create($category, $value, $url, array $params = array())
+
+    Create a new UsageTrigger.
+
+    :param string $category: The category of usage to fire a trigger for. A full list of categories can be found in the `Usage Categories documentation <http://www.twilio.com/docs/api/rest/usage-records#usage-categories>`_.
+    :param string $value: Fire the trigger when usage crosses this value.
+    :param string $url: The URL to request when the trigger fires.
+    :param array $params: Optional parameters for this trigger. A full list of parameters can be found in the `Usage Trigger documentation <http://www.twilio.com/docs/api/rest/usage-triggers#list-post-optional-parameters>`_.
+    :returns: :php:class:`Services_Twilio_Rest_UsageTrigger` The created trigger.
 
