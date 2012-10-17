@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 3.8.0
+-------------
+
+Released on October 17, 2012
+
+- Support the new Usage API, with Usage Records and Usage Triggers.
+
 Version 3.7.2
 -------------
 

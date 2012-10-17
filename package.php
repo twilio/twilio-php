@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.7.2';
+$api_version     = '3.8.0';
 $api_state       = 'stable';
 
-$release_version = '3.7.2';
+$release_version = '3.8.0';
 $release_state   = 'stable';
-$release_notes   = 'Use a standard CA cert whitelist for SSL validation';
+$release_notes   = 'Support Usage Records and Usage Triggers';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
