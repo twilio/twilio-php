@@ -4,7 +4,7 @@
 
 You can install **twilio-php** via PEAR or by downloading the source.
 
-### Via PEAR (>= 1.9.3):
+#### Via PEAR (>= 1.9.3):
 
 PEAR is a package manager for PHP. Open a command line and use these PEAR
 commands to download the helper library:
@@ -18,12 +18,12 @@ If you get the following message:
 
 you can install PEAR from their website, or download the source directly.
 
-### Via Composer:
+#### Via Composer:
 
 **twilio-php** is available on Packagist as the 
 [`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
 
-### Download the source code
+#### Via ZIP file:
 
 [Click here to download the source
 (.zip)](https://github.com/twilio/twilio-php/zipball/master) which includes all
@@ -38,8 +38,8 @@ and you're good to go!
 
 ## A Brief Introduction
 
-With version 3.0 we've simplified interaction with the Twilio
-REST API. No more manually creating URLS or parsing XML/JSON.
+With the twilio-php library, we've simplified interaction with the
+Twilio REST API. No need to manually create URLS or parse XML/JSON.
 You now interact with resources directly. Follow the [Quickstart
 Guide](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart)
 to get up and running right now. The [User
