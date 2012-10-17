@@ -6,7 +6,11 @@ Version 3.8.0
 
 Released on October 17, 2012
 
-- Support the new Usage API, with Usage Records and Usage Triggers.
+- Support the new Usage API, with Usage Records and Usage Triggers. Read the
+  PHP documentation for [usage records][records] or [usage triggers][triggers]
+
+  [records]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-records.html
+  [triggers]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-triggers.html
 
 Version 3.7.2
 -------------
