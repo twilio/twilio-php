@@ -556,7 +556,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                     'calls' => array(),
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123');
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $this->assertSame(count($client->account->calls), 1474);
     }
 
