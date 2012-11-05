@@ -67,6 +67,16 @@ You can create a filtered iterator like this:
         print $call->duration . '\n';
     }
 
+Retrieving the Total Number of Resources
+----------------------------------------
+
+Each of the list resources supports the `Countable` interface, which means you
+can retrieve the total number of list items like so:
+
+.. code-block:: php
+
+    echo count($client->account->calls);
+
 Getting a Specific Resource
 =============================
 
