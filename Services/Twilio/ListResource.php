@@ -141,11 +141,7 @@ abstract class Services_Twilio_ListResource
     public function count() {
         try {
             $page = $this->getPage(0, 1);
-            if ($page) {
-                return (int)$page->total;
-            } else {
-                return 0;
-            }
+            return $page ? (int)$page->total : 0;
         } catch (Exception $e) {
             return 0;
         }
