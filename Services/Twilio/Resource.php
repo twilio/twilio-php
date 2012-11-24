@@ -103,6 +103,13 @@ abstract class Services_Twilio_Resource {
         return $this->$key;
     }
 
+    /**
+     * Print a JSON representation of this object. Strips the HTTP client 
+     * before returning.
+     *
+     * Note that echoing an object before an HTTP request has been made to 
+     * "fill in" its properties may return an empty object
+     */
     public function __toString() {
         $out = array();
         foreach ($this as $key => $value) {
