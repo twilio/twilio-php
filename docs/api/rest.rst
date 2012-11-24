@@ -468,13 +468,30 @@ Participant
 
       The URI for this resource, relative to https://api.twilio.com.
 
+IncomingPhoneNumbers
+========================
 
-PhoneNumber
+.. php:class:: Services_Twilio_Rest_IncomingPhoneNumbers
+
+   For more information, see the `IncomingPhoneNumbers API Resource <http://www.twilio.com/docs/api/rest/incoming-phone-numbers#local>`_ documentation at twilio.com.
+
+   .. php:method:: getNumber($number)
+
+    Return a phone number instance from its E.164 representation. If more
+    than one number matches the search string, returns the first one.
+
+    :param string number: The number in E.164 format, eg "+684105551234"
+    :return: A :php:class:`Services_Twilio_Rest_IncomingPhoneNumber` object, or null
+
+IncomingPhoneNumber
 =================
 
 .. php:class:: Services_Twilio_Rest_IncomingPhoneNumber
 
-   For more information, see the `IncomingPhoneNumber Instance Resource <http://www.twilio.com/docs/api/rest/incoming-phone-numbers#instance>`_ documentation.
+   An object representing a single phone number. For more
+information, see the `IncomingPhoneNumber Instance Resource
+<http://www.twilio.com/docs/api/rest/incoming-phone-numbers#instance>`_
+documentation.
 
    .. php:attr:: sid
 
