@@ -23,6 +23,9 @@ class Services_Twilio_Rest_IncomingPhoneNumbers
             'PhoneNumber' => $number
         ));
         $items = $page->getItems();
-        return (empty($items) ? null : $items[0]);
+        if (is_null($items) || empty($items)) {
+            return null;
+        }
+        return $items[0];
     }
 }
