@@ -130,18 +130,24 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Get the total number of instance members
+     * Get the total number of instance members. Note this will make one small 
+     * HTTP request to retrieve the total, every time this method is called.
      *
-     * If the total is not set, return null
+     * If the total is not set or an Exception was thrown, returns 0
      *
-     * @return integer|null
+     * @return integer
+     *
      */
     public function count() {
-        $page = $this->getPage(0, 1);
-        if ($page) {
-            return (int)$page->total;
-        } else {
-            return null;
+        try {
+            $page = $this->getPage(0, 1);
+            if ($page) {
+                return (int)$page->total;
+            } else {
+                return 0;
+            }
+        } catch (Exception $e) {
+            return 0;
         }
     }
 
