@@ -546,4 +546,19 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             '+14102221234', 'bar');
     }
 
+    function testUnicode() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/SMS/Messages.json', $this->formHeaders, 
+            'From=123&To=123&Body=Hello+%E2%98%BA')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('sid' => 'SM123'))
+            )
+        );
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $message = $client->account->sms_messages->create('123', '123', 
+            'Hello ☺');
+        $this->assertSame($message->sid, 'SM123');
+    }
+
 }
