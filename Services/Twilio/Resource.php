@@ -9,8 +9,7 @@
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */ 
-abstract class Services_Twilio_Resource
-{
+abstract class Services_Twilio_Resource {
     protected $subresources;
 
     public function __construct($client, $uri, $params = array())
@@ -103,5 +102,16 @@ abstract class Services_Twilio_Resource
         }
         return $this->$key;
     }
+
+    public function __toString() {
+        $out = array();
+        foreach ($this as $key => $value) {
+            if ($key !== "client") {
+                $out[$key] = (string)$value;
+            }
+        }
+        return json_encode($out);
+    }
+
 }
 
