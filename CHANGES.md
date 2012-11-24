@@ -1,6 +1,27 @@
 twilio-php Changelog
 ====================
 
+Version 3.8.1
+-------------
+
+Released on November 23, 2012
+
+- [Implements the Countable interface on the ListResource][countable], so you
+  can call count() on any resource.
+- [Adds a convenience method for retrieving a phone number object][get-number],
+  so you can retrieve all of a number's properties by its E.164 representation.
+
+Internally:
+
+- Adds [unit tests for url encoding of Unicode characters][unicode-tests].
+- Updates [Travis CI configuration to use Composer][travis-composer],
+shortening build time from 83 seconds to 21 seconds.
+
+[countable]: https://twilio-php.readthedocs.org/en/latest/usage/rest.html#retrieving-the-total-number-of-resources
+[get-number]: https://twilio-php.readthedocs.org/en/latest/usage/rest/phonenumbers.html#retrieving-all-of-a-number-s-properties
+[unicode-tests]: https://github.com/twilio/twilio-php/commit/6f8aa57885796691858e460c8cea748e241c47e3
+[travis-composer]: https://github.com/twilio/twilio-php/commit/a732358e90e1ae9a5a3348ad77dda8cc8b5ec6bc
+
 Version 3.8.0
 -------------
 

@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.8.0';
+$api_version     = '3.8.1';
 $api_state       = 'stable';
 
-$release_version = '3.8.0';
+$release_version = '3.8.1';
 $release_state   = 'stable';
-$release_notes   = 'Support Usage Records and Usage Triggers';
+$release_notes   = 'Add count() and getNumber() convenience functions';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
@@ -67,8 +67,6 @@ $package->setOptions(
             'vendor/*',
             'composer.*',
             'coverage/*',
-            'docs/*',
-            'travis_install.bash',
             '.travis.yml',
         )
     )
@@ -89,20 +87,6 @@ $package->setReleaseVersion($release_version);
 $package->setReleaseStability($release_state);
 $package->setAPIVersion($api_version);
 $package->setAPIStability($api_state);
-
-$package->addMaintainer(
-    'lead',
-    'luciferous',
-    'Neuman Vong',
-    'neuman+pear@twilio.com'
-);
-
-$package->addMaintainer(
-    'lead',
-    'derferman',
-    'Kyle Conroy',
-    'kyle+pear@twilio.com'
-);
 
 $package->addMaintainer(
     'lead',
