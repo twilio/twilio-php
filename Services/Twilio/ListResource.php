@@ -11,8 +11,9 @@
  */
 abstract class Services_Twilio_ListResource
     extends Services_Twilio_Resource
-    implements IteratorAggregate
+    implements IteratorAggregate, Countable
 {
+
     public function __construct($client, $uri) {
         $name = $this->getResourceName(true);
         /* 
@@ -126,6 +127,24 @@ abstract class Services_Twilio_ListResource
             $next_page_uri = null;
         }
         return new Services_Twilio_Page($page, $list_name, $next_page_uri);
+    }
+
+    /**
+     * Get the total number of instance members. Note this will make one small 
+     * HTTP request to retrieve the total, every time this method is called.
+     *
+     * If the total is not set or an Exception was thrown, returns 0
+     *
+     * @return integer
+     *
+     */
+    public function count() {
+        try {
+            $page = $this->getPage(0, 1);
+            return $page ? (int)$page->total : 0;
+        } catch (Exception $e) {
+            return 0;
+        }
     }
 
 
