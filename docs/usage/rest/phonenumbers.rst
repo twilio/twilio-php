@@ -22,7 +22,7 @@ First, we need to search for an available phone number. Use the
         echo 'Number: ' + $number->phone_number + "\n";
     }
     
-You can also pass in parameters, to search for phone numbers in a certain area
+You can also pass in parameters to search for phone numbers in a certain area
 code, or which contain a certain pattern.
 
 .. code-block:: php
@@ -45,7 +45,6 @@ Buying a Number
 Once you have a phone number, purchase it by creating a new
 :php:class:`Services_Twilio_Rest_IncomingPhoneNumber` instance.
 
-    
 .. code-block:: php
 
     $accountSid = 'AC1234567890abcdef1234567890a';
@@ -87,6 +86,38 @@ You can also purchase a random number with a given area code (US/Canada only):
     $purchasedNumber = $client->account->incoming_phone_numbers->create(array('AreaCode' => '925'));
 
     echo $purchasedNumber->sid;
+
+Retrieving All of a Number's Properties
+---------------------------------------
+
+If you know the number and you want to retrieve all of the properties of that
+number, such as the ``voice_url`` or the ``sms_method``, you can use the
+:php:meth:`Services_Twilio_Rest_IncomingPhoneNumbers::getNumber` convenience
+function.
+
+.. code-block:: php
+
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
+
+    $client = new Services_Twilio($accountSid, $authToken);
+
+    // Number must be in e.164 format.
+    $number = $client->account->incoming_phone_numbers->getNumber('+14105551234');
+    echo $number->voice_url;
+
+If you know the ``sid`` of a phone number, you can retrieve it using the
+``get()`` function.
+
+.. code-block:: php
+
+    $accountSid = 'AC1234567890abcdef1234567890a';
+    $authToken = 'abcdef1234567890abcdefabcde9';
+
+    $client = new Services_Twilio($accountSid, $authToken);
+
+    $number = $client->account->incoming_phone_numbers->get('PN123456');
+    echo $number->voice_url;
 
 Updating a Number
 -----------------
