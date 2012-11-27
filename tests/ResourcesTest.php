@@ -357,6 +357,26 @@ class MembersTest extends PHPUnit_Framework_TestCase {
         $firstMember->dequeue('http://foo.com', 'GET');
     }
 
+    function testMemberIterate() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/Queues/QQ123/Members.json?Page=0&PageSize=50')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(
+                    array(
+                        'queue_members' => array('call_sid' => 'CA123', 'wait_time' => 30),
+                        'end' => 1,
+                    )
+                )
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $queue = $client->account->queues->get('QQ123');
+        foreach($queue->members as $member) {
+            $this->assertSame($member->call_sid, 'CA123');
+            $this->assertSame($member->wait_time, 30);
+        }
+    }
+
     function tearDown() {
         m::close();
     }
