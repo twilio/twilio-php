@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+Version 3.8.2
+-------------
+
+Released on November 26, 2012
+
+- Fixes an issue where you [could not iterate over the members in a
+queue][queue-members]. (Reporter: [Alex Chan](/alexcchan))
+
+[queue-members]: https://github.com/twilio/twilio-php/pull/107
+
 Version 3.8.1
 -------------
 

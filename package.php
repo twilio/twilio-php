@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.8.1';
+$api_version     = '3.8.2';
 $api_state       = 'stable';
 
-$release_version = '3.8.1';
+$release_version = '3.8.2';
 $release_state   = 'stable';
-$release_notes   = 'Add count() and getNumber() convenience functions';
+$release_notes   = 'Fix an issue where you could not iterate over members of a queue';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
