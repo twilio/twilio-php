@@ -18,5 +18,11 @@ class Services_Twilio_Rest_Members
     public function getObjectFromJson($params, $idParam = 'sid') {
         return parent::getObjectFromJson($params, 'call_sid');
     }
+
+    public function getResourceName($camelized = false)
+    {
+        // The JSON property name is atypical.
+        return $camelized ? 'Members' : 'queue_members';
+    }
 }
 
