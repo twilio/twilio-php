@@ -21,8 +21,8 @@ class Services_Twilio_Rest_Members
 
     public function getResourceName($camelized = false)
     {
-      // The JSON property name is atypical.
-      return $camelized ? 'Members' : 'queue_members';
+        // The JSON property name is atypical.
+        return $camelized ? 'Members' : 'queue_members';
     }
 }
 
