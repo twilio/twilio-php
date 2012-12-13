@@ -71,9 +71,9 @@ abstract class Services_Twilio_Resource {
 
     public static function decamelize($word)
     {
-        return preg_replace(
-            '/(^|[a-z])([A-Z])/e',
-            'strtolower(strlen("\\1") ? "\\1_\\2" : "\\2")',
+        return preg_replace_callback(
+            '/(^|[a-z])([A-Z])/',
+            create_function('$in', 'return strtolower(strlen($in[0]) ? $in[0]."_".$in[1] : $in[0]);'),
             $word
         );
     }
@@ -87,7 +87,11 @@ abstract class Services_Twilio_Resource {
      * @return string
      */
     public static function camelize($word) {
-        return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
+        return preg_replace_callback(
+            '/(^|_)([a-z])/',
+            create_function('$in', 'return strtoupper($in[1]);'),
+            $word
+        );
     }
 
     /**
