@@ -73,7 +73,7 @@ abstract class Services_Twilio_Resource {
     {
         return preg_replace_callback(
             '/(^|[a-z])([A-Z])/',
-            create_function('$in', 'return strtolower(strlen($in[0]) ? $in[0]."_".$in[1] : $in[0]);'),
+            create_function('$in', 'return strtolower(strlen($in[0]) ? $in[0]."_".$in[1] : $in[1]);'),
             $word
         );
     }
