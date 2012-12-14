@@ -107,6 +107,9 @@ abstract class Services_Twilio_Resource {
      * Print a JSON representation of this object. Strips the HTTP client 
      * before returning.
      *
+     * Note, this should mainly be used for debugging, and is not guaranteed 
+     * to correspond 1:1 with the JSON API output.
+     *
      * Note that echoing an object before an HTTP request has been made to 
      * "fill in" its properties may return an empty object
      */
