@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+Version 3.8.3
+-------------
+
+Released on December 15, 2012
+
+- [Fixes the ShortCode resource][shortcode] so it is queryable via the PHP library.
+
+ [shortcode]: https://github.com/twilio/twilio-php/pull/108
+
 Version 3.8.2
 -------------
 

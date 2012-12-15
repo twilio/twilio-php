@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.8.2';
+$api_version     = '3.8.3';
 $api_state       = 'stable';
 
-$release_version = '3.8.2';
+$release_version = '3.8.3';
 $release_state   = 'stable';
-$release_notes   = 'Fix an issue where you could not iterate over members of a queue';
+$release_notes   = 'Fix the ShortCode resource';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
