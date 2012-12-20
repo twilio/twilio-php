@@ -13,6 +13,30 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 
+    function testCamelize() {
+        $tests = array(
+            'IncomingPhoneNumbers' => 'IncomingPhoneNumbers',
+            'Applications'         => 'Applications',
+            'incoming_phone_numbers' => 'IncomingPhoneNumbers',
+            'applications'          => 'Applications',
+        );
+        foreach ($tests as $in => $out) {
+            $this->assertSame($out, Services_Twilio_Resource::camelize($in));
+        }
+    }
+
+    function testDecamelize() {
+        $tests = array(
+            'IncomingPhoneNumbers' => 'incoming_phone_numbers',
+            'Applications'         => 'applications',
+            'incoming_phone_numbers' => 'incoming_phone_numbers',
+            'applications'          => 'applications',
+        );
+        foreach ($tests as $in => $out) {
+            $this->assertSame($out, Services_Twilio_Resource::decamelize($in));
+        }
+    }
+
     /**
      * @dataProvider uriTestProvider
      */
