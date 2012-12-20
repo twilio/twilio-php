@@ -125,7 +125,7 @@ Library Documentation")
 
 ## Prerequisites
 
-* PHP >= 5.2.1
+* PHP >= 5.2.3
 * The PHP JSON extension
 
 ## Reporting Issues

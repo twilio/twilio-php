@@ -47,6 +47,30 @@ class TwimlTest extends PHPUnit_Framework_TestCase {
         $this->assertXmlStringEqualsXmlString($expected, $r);
     }
     
+    public function testSayUTF8() {
+        $r = new Services_Twilio_Twiml();
+        $r->say("é tü & må");
+        $expected = '<Response><Say>'
+            . '&#xE9; t&#xFC; &amp; m&#xE5;</Say></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+    
+    public function testSayNamedEntities() {
+        $r = new Services_Twilio_Twiml();
+        $r->say("&eacute; t&uuml; &amp; m&aring;");
+        $expected = '<Response><Say>'
+            . '&#xE9; t&#xFC; &amp; m&#xE5;</Say></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+    
+    public function testSayNumericEntities() {
+        $r = new Services_Twilio_Twiml();
+        $r->say("&#xE9; t&#xFC; &amp; m&#xE5;");
+        $expected = '<Response><Say>'
+            . '&#xE9; t&#xFC; &amp; m&#xE5;</Say></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+    
     public function testPlayBasic() {   
         $r = new Services_Twilio_Twiml();
         $r->play("hello-monkey.mp3");
