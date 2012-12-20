@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+Version 3.9.0
+-------------
+
+Released on December 20, 2012
+
+- [Fixes TwiML generation to handle non-ASCII characters properly][utf-8]. Note
+  that as of version 3.9.0, **the library requires PHP version 5.2.3, at least
+  for TwiML generation**. (Reporter: [Walker Hamilton](/walker))
+
+[utf-8]: https://github.com/twilio/twilio-php/pull/111
+
 Version 3.8.3
 -------------
 

@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.8.3';
+$api_version     = '3.9.0';
 $api_state       = 'stable';
 
-$release_version = '3.8.3';
+$release_version = '3.9.0';
 $release_state   = 'stable';
-$release_notes   = 'Fix the ShortCode resource';
+$release_notes   = 'Fix TwiML generation for non-ASCII characters';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
