@@ -95,7 +95,7 @@ class Services_Twilio_Twiml
          * We also want to use numeric entities, not named entities so that we
          * are fully compatible with XML
          *
-         * The following lines accomplishes the desired behavior.
+         * The following lines accomplish the desired behavior.
          */
         $decoded = html_entity_decode($noun, ENT_COMPAT, 'UTF-8');
         $normalized = htmlspecialchars($decoded, ENT_COMPAT, 'UTF-8', false);
