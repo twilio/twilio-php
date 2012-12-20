@@ -92,15 +92,13 @@ class Services_Twilio_Twiml
          * want to break their existing code by turning their &amp;'s into 
          * &amp;amp;
          *
-         * So we end up with the following matrix:
+         * We also want to use numeric entities, not named entities so that we
+         * are fully compatible with XML
          *
-         * We want & to turn into &amp; before passing to addChild
-         * We want &amp; to stay as &amp; before passing to addChild
-         *
-         * The following line accomplishes the desired behavior.
+         * The following lines accomplishes the desired behavior.
          */
-        $normalized = htmlentities($noun, null, null, false);
-        //then escape it again
+        $decoded = html_entity_decode($noun, ENT_COMPAT, 'UTF-8');
+        $normalized = htmlspecialchars($decoded, ENT_COMPAT, 'UTF-8', false);
         $child = empty($noun)
             ? $this->element->addChild(ucfirst($verb))
             : $this->element->addChild(ucfirst($verb), $normalized);
