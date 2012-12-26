@@ -116,7 +116,7 @@ abstract class Services_Twilio_Resource {
     public function __toString() {
         $out = array();
         foreach ($this as $key => $value) {
-            if ($key !== "client") {
+            if ($key !== "client" && $key !== "subresources") {
                 $out[$key] = (string)$value;
             }
         }
