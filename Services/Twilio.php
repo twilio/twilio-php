@@ -26,7 +26,7 @@ class Services_Twilio extends Services_Twilio_Resource
 
     protected $http;
     protected $retryAttempts;
-    protected $lastResponse;
+    protected $last_response;
     protected $version;
     protected $versions = array('2008-08-01', '2010-04-01');
 
@@ -209,7 +209,7 @@ class Services_Twilio extends Services_Twilio_Resource
             );
         }
         if (200 <= $status && $status < 300) {
-            $this->lastResponse = $decoded;
+            $this->last_response = $decoded;
             return $decoded;
         }
         throw new Services_Twilio_RestException(
