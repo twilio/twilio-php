@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+Version 3.9.1
+-------------
+
+Released on December 30, 2012
+
+- Adds a `$last_response` parameter to the `$client` object that can be
+used to [retrieve the raw API response][last-response]. (Reporter: [David
+Jones](/dxjones)
+
+[last-response]: https://github.com/twilio/twilio-php/pull/112/files
+
 Version 3.9.0
 -------------
 
