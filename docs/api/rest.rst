@@ -484,7 +484,7 @@ IncomingPhoneNumbers
     :return: A :php:class:`Services_Twilio_Rest_IncomingPhoneNumber` object, or null
 
 IncomingPhoneNumber
-=================
+===================
 
 .. php:class:: Services_Twilio_Rest_IncomingPhoneNumber
 
