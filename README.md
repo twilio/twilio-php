@@ -9,18 +9,18 @@ You can install **twilio-php** via PEAR or by downloading the source.
 PEAR is a package manager for PHP. Open a command line and use these PEAR
 commands to download the helper library:
 
-    $ pear channel-discover twilio.github.com/pear
-    $ pear install twilio/Services_Twilio
+		$ pear channel-discover twilio.github.com/pear
+		$ pear install twilio/Services_Twilio
 
 If you get the following message:
 
-    $ -bash: pear: command not found
+		$ -bash: pear: command not found
 
 you can install PEAR from their website, or download the source directly.
 
 #### Via Composer:
 
-**twilio-php** is available on Packagist as the 
+**twilio-php** is available on Packagist as the
 [`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
 
 #### Via ZIP file:
@@ -32,7 +32,7 @@ dependencies.
 Once you download the library, move the twilio-php folder to your project
 directory and then include the library file:
 
-    require '/path/to/twilio-php/Services/Twilio.php';
+		require '/path/to/twilio-php/Services/Twilio.php';
 
 and you're good to go!
 
@@ -61,9 +61,9 @@ $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
 $client = new Services_Twilio($sid, $token);
 $message = $client->account->sms_messages->create(
-  '9991231234', // From a valid Twilio number
-  '8881231234', // Text this number
-  "Hello monkey!"
+	'9991231234', // From a valid Twilio number
+	'8881231234', // Text this number
+	"Hello monkey!"
 );
 
 print $message->sid;
@@ -82,11 +82,11 @@ $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
 $client = new Services_Twilio($sid, $token);
 $call = $client->account->calls->create(
-  '9991231234', // From a valid Twilio number
-  '8881231234', // Call this number
+	'9991231234', // From a valid Twilio number
+	'8881231234', // Call this number
 
-  // Read TwiML at this URL when a call connects (hold music)
-  'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+	// Read TwiML at this URL when a call connects (hold music)
+	'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
 );
 ```
 
@@ -111,8 +111,8 @@ That will output XML that looks like this:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Response>
-    <Say>Hello</Say>
-    <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
+		<Say>Hello</Say>
+		<Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
 <Response>
 ```
 
