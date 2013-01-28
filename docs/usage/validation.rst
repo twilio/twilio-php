@@ -23,19 +23,19 @@ The below example will print out a confirmation message if the request is actual
 
 .. code-block:: php
 
-    $token = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY';
+		$token = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY';
 
-    $validator = new Services_Twilio_RequestValidator($token);
+		$validator = new Services_Twilio_RequestValidator($token);
 
-    $url = "http://www.example.com/request/url";
-    $postVars = array();
-    $signature = "X-Twilio-Signature header value";
+		$url = "http://www.example.com/request/url";
+		$postVars = array();
+		$signature = "X-Twilio-Signature header value";
 
-    if ($validator->validate($signature, $url, $postVars)) {
-        echo "Confirmed to have come from Twilio.";
-    } else {
-        echo "NOT VALID.  It might have been spoofed!";
-    }
+		if ($validator->validate($signature, $url, $postVars)) {
+				echo "Confirmed to have come from Twilio.";
+		} else {
+				echo "NOT VALID.	It might have been spoofed!";
+		}
 
 Trailing Slashes
 ==================

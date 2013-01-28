@@ -9,16 +9,16 @@ The :class:`SmsMessages` resource allows you to send outgoing text messages.
 
 .. code-block:: php
 
-    require('/path/to/twilio-php/Services/Twilio.php');
+		require('/path/to/twilio-php/Services/Twilio.php');
 
-    $client = new Services_Twilio('AC123', '123');
-    $message = $client->account->sms_messages->create(
-      '+14085551234', // From a Twilio number in your account
-      '+12125551234', // Text any number
-      "Hello monkey!"
-    );
+		$client = new Services_Twilio('AC123', '123');
+		$message = $client->account->sms_messages->create(
+			'+14085551234', // From a Twilio number in your account
+			'+12125551234', // Text any number
+			"Hello monkey!"
+		);
 
-    print $message->sid;
+		print $message->sid;
 
 Listing SMS Messages
 ====================
@@ -27,10 +27,10 @@ It's easy to iterate over your SMS messages.
 
 .. code-block:: php
 
-    $client = new Services_Twilio('AC123', '123');
-    foreach ($client->account->sms_messages as $message) {
-        echo "From: {$message->from}\nTo: {$message->to}\nBody: " . $message->body;
-    }
+		$client = new Services_Twilio('AC123', '123');
+		foreach ($client->account->sms_messages as $message) {
+				echo "From: {$message->from}\nTo: {$message->to}\nBody: " . $message->body;
+		}
 
 Filtering SMS Messages
 ======================
@@ -40,9 +40,9 @@ a particular number. You can do so by constructing an iterator explicitly:
 
 .. code-block:: php
 
-    $client = new Services_Twilio('AC123', '123');
-    foreach ($client->account->sms_messages->getIterator(0, 50, array(
-        'From' => '+14105551234',
-    ) as $message) {
-        echo "From: {$message->from}\nTo: {$message->to}\nBody: " . $message->body;
-    }
+		$client = new Services_Twilio('AC123', '123');
+		foreach ($client->account->sms_messages->getIterator(0, 50, array(
+				'From' => '+14105551234',
+		) as $message) {
+				echo "From: {$message->from}\nTo: {$message->to}\nBody: " . $message->body;
+		}

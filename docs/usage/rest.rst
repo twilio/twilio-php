@@ -17,9 +17,9 @@ Token (both available through your `Twilio Account Dashboard
 
 .. code-block:: php
 
-    $ACCOUNT_SID = "AC123";
-    $AUTH_TOKEN = "secret";
-    $client = new Services_Twilio($ACCOUNT_SID, $AUTH_TOKEN);
+		$ACCOUNT_SID = "AC123";
+		$AUTH_TOKEN = "secret";
+		$client = new Services_Twilio($ACCOUNT_SID, $AUTH_TOKEN);
 
 The :attr:`account` attribute
 -----------------------------
@@ -43,11 +43,11 @@ are documented in the :doc:`/api/rest` documentation.
 
 .. code-block:: php
 
-    // If you have many calls, this could take a while
-    foreach($client->account->calls as $call) {
-        print $call->price . '\n';
-        print $call->duration . '\n';
-    }
+		// If you have many calls, this could take a while
+		foreach($client->account->calls as $call) {
+				print $call->price . '\n';
+				print $call->duration . '\n';
+		}
 
 Filtering Resources
 -------------------
@@ -60,12 +60,12 @@ You can create a filtered iterator like this:
 
 .. code-block:: php
 
-    $filteredCalls = $client->account->calls->getIterator(
-        0, 50, array("Status" => "in-progress"));
-    foreach($filteredCalls as $call) {
-        print $call->price . '\n';
-        print $call->duration . '\n';
-    }
+		$filteredCalls = $client->account->calls->getIterator(
+				0, 50, array("Status" => "in-progress"));
+		foreach($filteredCalls as $call) {
+				print $call->price . '\n';
+				print $call->duration . '\n';
+		}
 
 Retrieving the Total Number of Resources
 ----------------------------------------
@@ -75,7 +75,7 @@ can retrieve the total number of list items like so:
 
 .. code-block:: php
 
-    echo count($client->account->calls);
+		echo count($client->account->calls);
 
 Getting a Specific Resource
 =============================
@@ -85,7 +85,7 @@ using the :php:meth:`get` method on the list resource.
 
 .. code-block:: php
 
-    $call = $client->account->calls->get("CA123");
+		$call = $client->account->calls->get("CA123");
 
 :php:meth:`get` fetches objects lazily, so it will only load a resource when it
 is needed. This allows you to get nested objects without making multiple HTTP
@@ -93,6 +93,6 @@ requests.
 
 .. code-block:: php
 
-    $participant = $client->account->conferences
-        ->get("CO123")->participants->get("PF123");
+		$participant = $client->account->conferences
+				->get("CO123")->participants->get("PF123");
 

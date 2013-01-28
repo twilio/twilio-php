@@ -18,8 +18,8 @@ Version 3.9.0
 Released on December 20, 2012
 
 - [Fixes TwiML generation to handle non-ASCII characters properly][utf-8]. Note
-  that as of version 3.9.0, **the library requires PHP version 5.2.3, at least
-  for TwiML generation**. (Reporter: [Walker Hamilton](/walker))
+	that as of version 3.9.0, **the library requires PHP version 5.2.3, at least
+	for TwiML generation**. (Reporter: [Walker Hamilton](/walker))
 
 [utf-8]: https://github.com/twilio/twilio-php/pull/111
 
@@ -48,9 +48,9 @@ Version 3.8.1
 Released on November 23, 2012
 
 - [Implements the Countable interface on the ListResource][countable], so you
-  can call count() on any resource.
+	can call count() on any resource.
 - [Adds a convenience method for retrieving a phone number object][get-number],
-  so you can retrieve all of a number's properties by its E.164 representation.
+	so you can retrieve all of a number's properties by its E.164 representation.
 
 Internally:
 
@@ -69,17 +69,17 @@ Version 3.8.0
 Released on October 17, 2012
 
 - Support the new Usage API, with Usage Records and Usage Triggers. Read the
-  PHP documentation for [usage records][records] or [usage triggers][triggers]
+	PHP documentation for [usage records][records] or [usage triggers][triggers]
 
-  [records]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-records.html
-  [triggers]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-triggers.html
+	[records]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-records.html
+	[triggers]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-triggers.html
 
 Version 3.7.2
 -------------
 
 - The library will now [use a standard CA cert whitelist][whitelist] for SSL
-    validation, replacing a file that contained only Twilio's SSL certificate.
-    (Reporter: [Andrew Benton](/andrewmbenton))
+		validation, replacing a file that contained only Twilio's SSL certificate.
+		(Reporter: [Andrew Benton](/andrewmbenton))
 
  [whitelist]: https://github.com/twilio/twilio-php/issues/88
 
@@ -89,9 +89,9 @@ Version 3.7.1
 Released on August 16, 2012
 
 - Fix a bug in the 3.5.0 release where [updating an instance
-  resource would cause subsequent updates to request an incorrect
-  URI](/twilio/twilio-php/pull/82).
-  (Reporter: [Dan Bowen](/crucialwebstudio))
+	resource would cause subsequent updates to request an incorrect
+	URI](/twilio/twilio-php/pull/82).
+	(Reporter: [Dan Bowen](/crucialwebstudio))
 
 Version 3.7.0
 -------------
@@ -99,9 +99,9 @@ Version 3.7.0
 Released on August 6, 2012
 
 - Add retry support for idempotent HTTP requests that result in a 500 server
-  error (default is 1 attempt, however this can be configured).
+	error (default is 1 attempt, however this can be configured).
 - Throw a Services_Twilio_RestException instead of a DomainException if the
-  response content cannot be parsed as JSON (usually indicates a 500 error)
+	response content cannot be parsed as JSON (usually indicates a 500 error)
 
 Version 3.6.0
 -------------
@@ -109,7 +109,7 @@ Version 3.6.0
 Released on August 5, 2012
 
 - Add support for Queues and Members. Includes tests and documentation for the
-  new functionality.
+	new functionality.
 
 Version 3.5.2
 -------------
@@ -117,9 +117,9 @@ Version 3.5.2
 Released on July 23, 2012
 
 - Fix an issue introduced in the 3.5.0 release where updating or muting
-  a participant would [throw an exception instead of muting the
-  participant][mute-request]. 
-  (Reporter: [Alex Chan](/alexcchan))
+	a participant would [throw an exception instead of muting the
+	participant][mute-request].
+	(Reporter: [Alex Chan](/alexcchan))
 
 - Fix an issue introduced in the 3.5.0 release where [filtering an iterator
 with parameters would not work properly][paging-request] on subsequent HTTP
@@ -160,8 +160,8 @@ In addition, the following public methods have been removed:
 
 - `setProxy`, in `Services/Twilio/InstanceResource.php`
 - `getSchema`, in `Services/Twilio/ListResource.php`,
-    `Services/Twilio/Rest/AvailablePhoneNumbers.php`,
-    `Services/Twilio/Rest/SMSMessages.php`
+		`Services/Twilio/Rest/AvailablePhoneNumbers.php`,
+		`Services/Twilio/Rest/SMSMessages.php`
 
 - `retrieveData`, in `Services/Twilio/Resource.php`
 - `deleteData`, in `Services/Twilio/Resource.php`
@@ -175,16 +175,16 @@ Version 3.3.2
 Released on May 3, 2012
 
 - If you pass booleans in as TwiML (ex transcribe="true"), convert them to
-  the strings "true" and "false" instead of outputting the incorrect values 
-  1 and "".
+	the strings "true" and "false" instead of outputting the incorrect values
+	1 and "".
 
 Version 3.3.1
 -------------
 
 Released on May 1, 2012
 
-- Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded 
-data from the Twilio API. Remove unused XML parsing logic, as the library never 
+- Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded
+data from the Twilio API. Remove unused XML parsing logic, as the library never
 requests XML data.
 
 Version 3.2.4
@@ -193,5 +193,5 @@ Version 3.2.4
 Released on March 14, 2012
 
 - If no version is passed to the Services_Twilio constructor, the library will
-  default to the most recent API version.
+	default to the most recent API version.
 

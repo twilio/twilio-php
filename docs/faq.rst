@@ -13,12 +13,12 @@ looks like this:
 
 .. code-block:: php
 
-    PHP Warning:  require(Services/Twilio.php): failed to open stream: No such 
-    file or directory in /path/to/file
+		PHP Warning:	require(Services/Twilio.php): failed to open stream: No such
+		file or directory in /path/to/file
 
-    Fatal error: require(): Failed opening required 'Services/Twilio.php' 
-    (include_path='.:/usr/lib/php:/usr/local/php-5.3.8/lib/php') in 
-    /Library/Python/2.6/site-packages/phpsh/phpsh.php(578): on line 1
+		Fatal error: require(): Failed opening required 'Services/Twilio.php'
+		(include_path='.:/usr/lib/php:/usr/local/php-5.3.8/lib/php') in
+		/Library/Python/2.6/site-packages/phpsh/phpsh.php(578): on line 1
 
 Your PHP file can't find the Twilio library. The easiest way to do this is to
 move the Services folder from the twilio-php library into the folder containing
@@ -27,13 +27,13 @@ should look like this:
 
 .. code-block:: bash
 
-    .
-    ├── send-sms.php
-    ├── Services
-    │   ├── Twilio.php
-    │   ├── Twilio
-    │   │   ├── ArrayDataProxy.php
-    │   │   ├── (..about 50 other files...)
+		.
+		├── send-sms.php
+		├── Services
+		│   ├── Twilio.php
+		│   ├── Twilio
+		│   │   ├── ArrayDataProxy.php
+		│   │   ├── (..about 50 other files...)
 
 If you need to copy all of these files to your web hosting server, the easiest
 way is to compress them into a ZIP file, copy that to your server with FTP, and
@@ -43,22 +43,22 @@ You can also try changing the ``require`` line like this:
 
 .. code-block:: php
 
-    require('/path/to/twilio-php/Services/Twilio.php');
+		require('/path/to/twilio-php/Services/Twilio.php');
 
-You could also try downloading the library via PEAR, a package manager for PHP, 
+You could also try downloading the library via PEAR, a package manager for PHP,
 which will add the library to your PHP path, so you can load the Twilio library
 from anywhere. Run this at the command line:
 
 .. code-block:: bash
 
-    $ pear channel-discover twilio.github.com/pear
-    $ pear install twilio/Services_Twilio
+		$ pear channel-discover twilio.github.com/pear
+		$ pear install twilio/Services_Twilio
 
 If you get the following message:
 
 .. code-block:: bash
 
-    $ -bash: pear: command not found
+		$ -bash: pear: command not found
 
 you can install PEAR from their website.
 
@@ -69,15 +69,15 @@ If you are using an outdated version of `libcurl`, you may encounter
 SSL validation exceptions. If you see the following error message, you have
 a SSL validation exception: ::
 
-    Fatal error: Uncaught exception 'Services_Twilio_TinyHttpException' 
-    with message 'SSL certificate problem, verify that the CA cert is OK. 
+		Fatal error: Uncaught exception 'Services_Twilio_TinyHttpException'
+		with message 'SSL certificate problem, verify that the CA cert is OK.
 
-    Details: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate 
-    verify failed' in [MY PATH]\Services\Twilio\TinyHttp.php:89
+		Details: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate
+		verify failed' in [MY PATH]\Services\Twilio\TinyHttp.php:89
 
 This means that Twilio is trying to offer a certificate to verify that you are
 actually connecting to `https://api.twilio.com <https://api.twilio.com>`_, but
-your curl client cannot verify our certificate. 
+your curl client cannot verify our certificate.
 
 There are four solutions to this problem:
 
@@ -106,7 +106,7 @@ Manually add Twilio's SSL certificate
 The PHP curl library can also manually verify an SSL certificate. In your
 browser, navigate to
 `https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt
-<https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt>`_ 
+<https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt>`_
 and download the file. (**Note**: If your browser presents ANY warnings
 at this time, your Internet connection may be compromised. Do not download the
 file, and do not proceed with this step). Place this file in the same folder as
@@ -114,20 +114,20 @@ your PHP script. Then, replace this line in your script:
 
 .. code-block:: php
 
-    $client = new Services_Twilio($sid, $token);
+		$client = new Services_Twilio($sid, $token);
 
 with this one:
 
 .. code-block:: php
 
-    $http = new Services_Twilio_TinyHttp(
-        'https://api.twilio.com',
-        array('curlopts' => array(
-            CURLOPT_SSL_VERIFYPEER => true, 
-            CURLOPT_SSL_VERIFYHOST => 2, 
-            CURLOPT_CAINFO => getcwd() . "/twilio_ssl_certificate.crt")));
+		$http = new Services_Twilio_TinyHttp(
+				'https://api.twilio.com',
+				array('curlopts' => array(
+						CURLOPT_SSL_VERIFYPEER => true,
+						CURLOPT_SSL_VERIFYHOST => 2,
+						CURLOPT_CAINFO => getcwd() . "/twilio_ssl_certificate.crt")));
 
-    $client = new Services_Twilio($sid, $token, "2010-04-01", $http);
+		$client = new Services_Twilio($sid, $token, "2010-04-01", $http);
 
 Disable certificate checking
 ============================
@@ -145,12 +145,12 @@ checking:
 
 .. code-block:: php
 
-    $http = new Services_Twilio_TinyHttp(
-        'https://api.twilio.com',
-        array('curlopts' => array(CURLOPT_SSL_VERIFYPEER => false))
-    );
+		$http = new Services_Twilio_TinyHttp(
+				'https://api.twilio.com',
+				array('curlopts' => array(CURLOPT_SSL_VERIFYPEER => false))
+		);
 
-    $client = new Services_Twilio('AC123', 'token', '2010-04-01', $http);
+		$client = new Services_Twilio('AC123', 'token', '2010-04-01', $http);
 
 If this does not work, double check your Account SID, token, and that you do
 not have errors anywhere else in your code. If you need further assistance,

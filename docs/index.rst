@@ -1,7 +1,7 @@
 .. Services_Twilio documentation master file, created by
-   sphinx-quickstart on Tue Mar  8 04:02:01 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+	 sphinx-quickstart on Tue Mar	8 04:02:01 2011.
+	 You can adapt this file completely to your liking, but it should at least
+	 contain the root `toctree` directive.
 
 =================
 **twilio-php**
@@ -20,40 +20,40 @@ Send a SMS
 
 .. code-block:: php
 
-    // Download the library and copy into the folder containing this file.
-    require('/path/to/twilio-php/Services/Twilio.php');
+		// Download the library and copy into the folder containing this file.
+		require('/path/to/twilio-php/Services/Twilio.php');
 
-    $account_sid = "ACXXXXXX"; // Your Twilio account sid
-    $auth_token = "YYYYYY"; // Your Twilio auth token
+		$account_sid = "ACXXXXXX"; // Your Twilio account sid
+		$auth_token = "YYYYYY"; // Your Twilio auth token
 
-    $client = new Services_Twilio($account_sid, $auth_token);
-    $message = $client->account->sms_messages->create(
-      '+14085551234', // From a Twilio number in your account
-      '+12125551234', // Text any number
-      "Hello monkey!"
-    );
+		$client = new Services_Twilio($account_sid, $auth_token);
+		$message = $client->account->sms_messages->create(
+			'+14085551234', // From a Twilio number in your account
+			'+12125551234', // Text any number
+			"Hello monkey!"
+		);
 
-    print $message->sid;
+		print $message->sid;
 
 Make a Call
 >>>>>>>>>>>>>>
 
 .. code-block:: php
 
-    // Download the library and copy into the folder containing this file.
-    require('/path/to/twilio-php/Services/Twilio.php');
+		// Download the library and copy into the folder containing this file.
+		require('/path/to/twilio-php/Services/Twilio.php');
 
-    $account_sid = "ACXXXXXX"; // Your Twilio account sid
-    $auth_token = "YYYYYY"; // Your Twilio auth token
+		$account_sid = "ACXXXXXX"; // Your Twilio account sid
+		$auth_token = "YYYYYY"; // Your Twilio auth token
 
-    $client = new Services_Twilio($account_sid, $auth_token);
-    $call = $client->account->calls->create(
-      '+14085551234', // From a Twilio number in your account
-      '+12125551234', // Call any number
+		$client = new Services_Twilio($account_sid, $auth_token);
+		$call = $client->account->calls->create(
+			'+14085551234', // From a Twilio number in your account
+			'+12125551234', // Call any number
 
-      // Read TwiML at this URL when a call connects (hold music)
-      'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
-    );
+			// Read TwiML at this URL when a call connects (hold music)
+			'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+		);
 
 Generating TwiML
 >>>>>>>>>>>>>>>>
@@ -64,18 +64,18 @@ to easily create such responses.
 
 .. code-block:: php
 
-    $response = new Services_Twilio_Twiml();
-    $response->say('Hello');
-    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));    
-    print $response;
+		$response = new Services_Twilio_Twiml();
+		$response->say('Hello');
+		$response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
+		print $response;
 
 .. code-block:: xml
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <Response>
-        <Say>Hello</Say>
-        <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
-    <Response>
+		<?xml version="1.0" encoding="utf-8"?>
+		<Response>
+				<Say>Hello</Say>
+				<Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
+		<Response>
 
 View more examples of TwiML generation here: :ref:`usage-twiml`
 
@@ -90,8 +90,8 @@ Via PEAR
 
 .. code-block:: bash
 
-    pear channel-discover twilio.github.com/pear
-    pear install twilio/Services_Twilio    # may need to run sudo pear instead
+		pear channel-discover twilio.github.com/pear
+		pear install twilio/Services_Twilio		# may need to run sudo pear instead
 
 From Source
 >>>>>>>>>>>>>
@@ -107,31 +107,31 @@ REST API
 >>>>>>>>>>
 
 .. toctree::
-    :maxdepth: 2
-    :glob:
+		:maxdepth: 2
+		:glob:
 
-    usage/rest
-    usage/rest/*
+		usage/rest
+		usage/rest/*
 
 TwiML and other utilities
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. toctree::
-    :maxdepth: 1
+		:maxdepth: 1
 
-    usage/twiml
-    usage/validation
-    usage/token-generation
-    faq/
+		usage/twiml
+		usage/validation
+		usage/token-generation
+		faq/
 
 API Documentation
 ==================
 
 .. toctree::
-    :maxdepth: 1
-    :glob:
+		:maxdepth: 1
+		:glob:
 
-    api/*
+		api/*
 
 
 Support and Development
@@ -142,7 +142,7 @@ check out the source, run
 
 .. code-block:: bash
 
-    git clone git@github.com:twilio/twilio-php.git
+		git clone git@github.com:twilio/twilio-php.git
 
 
 Report bugs using the Github `issue tracker <https://github.com/twilio/twilio-php/issues>`_.
@@ -157,22 +157,22 @@ The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and `PH
 
 .. code-block:: bash
 
-    pear channel-discover pear.phpunit.de
-    pear channel-discover components.ez.no
-    pear channel-discover pear.symfony-project.com
-    pear channel-discover pear.survivethedeepend.com
-    pear channel-discover hamcrest.googlecode.com/svn/pear
+		pear channel-discover pear.phpunit.de
+		pear channel-discover components.ez.no
+		pear channel-discover pear.symfony-project.com
+		pear channel-discover pear.survivethedeepend.com
+		pear channel-discover hamcrest.googlecode.com/svn/pear
 
 .. code-block:: bash
 
-    pear install --alldeps deepend/Mockery
-    pear install phpunit/PHPUnit
+		pear install --alldeps deepend/Mockery
+		pear install phpunit/PHPUnit
 
 After installation, run the tests with :data:`make`
 
 .. code-block:: bash
 
-    make test
+		make test
 
 
 Making the Documentation
@@ -183,12 +183,12 @@ need to install Sphinx and the Sphinx PHP domain before you can build the docs.
 
 .. code-block:: bash
 
-    pip install Sphinx sphinxcontrib-phpdomain
+		pip install Sphinx sphinxcontrib-phpdomain
 
 Once you have those installed, making the docs is easy.
 
 .. code-block:: bash
 
-    cd docs
-    make html
+		cd docs
+		make html
 

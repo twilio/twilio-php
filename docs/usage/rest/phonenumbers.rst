@@ -2,7 +2,7 @@
  Phone Numbers
 =================
 
-Purchasing phone numbers is a two step process. 
+Purchasing phone numbers is a two step process.
 
 Searching For a Number
 ----------------------
@@ -13,31 +13,31 @@ First, we need to search for an available phone number. Use the
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
-    $numbers = $client->account->available_phone_numbers->getList('US', 'TollFree');
-    foreach($numbers->available_phone_numbers as $number) {
-        echo 'Number: ' + $number->phone_number + "\n";
-    }
-    
+		$client = new Services_Twilio($accountSid, $authToken);
+		$numbers = $client->account->available_phone_numbers->getList('US', 'TollFree');
+		foreach($numbers->available_phone_numbers as $number) {
+				echo 'Number: ' + $number->phone_number + "\n";
+		}
+
 You can also pass in parameters to search for phone numbers in a certain area
 code, or which contain a certain pattern.
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
+		$client = new Services_Twilio($accountSid, $authToken);
 
-    // Full parameter documentation at http://www.twilio.com/docs/api/rest/available-phone-numbers#local
-    $params = array('AreaCode' => '925', 'Contains' => 'hi');
-    $numbers = $client->account->available_phone_numbers->getList('US', 'Local', $params);
-    foreach($numbers->available_phone_numbers as $number) {
-        echo 'Number: ' + $number->phone_number + "\n";
-    }
+		// Full parameter documentation at http://www.twilio.com/docs/api/rest/available-phone-numbers#local
+		$params = array('AreaCode' => '925', 'Contains' => 'hi');
+		$numbers = $client->account->available_phone_numbers->getList('US', 'Local', $params);
+		foreach($numbers->available_phone_numbers as $number) {
+				echo 'Number: ' + $number->phone_number + "\n";
+		}
 
 Buying a Number
 ---------------
@@ -47,45 +47,45 @@ Once you have a phone number, purchase it by creating a new
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
+		$client = new Services_Twilio($accountSid, $authToken);
 
-    $phoneNumber = '+44XXXYYYZZZZ';
-    $purchasedNumber = $client->account->incoming_phone_numbers->create(array('PhoneNumber' => $phoneNumber));
+		$phoneNumber = '+44XXXYYYZZZZ';
+		$purchasedNumber = $client->account->incoming_phone_numbers->create(array('PhoneNumber' => $phoneNumber));
 
-    echo $purchasedNumber->sid;
-    
+		echo $purchasedNumber->sid;
+
 Tying the two together, you can search for a number, and then purchase it.
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
+		$client = new Services_Twilio($accountSid, $authToken);
 
-    // Full parameter documentation at http://www.twilio.com/docs/api/rest/available-phone-numbers#local
-    $params = array('AreaCode' => '800', 'Contains' => 'hi');
+		// Full parameter documentation at http://www.twilio.com/docs/api/rest/available-phone-numbers#local
+		$params = array('AreaCode' => '800', 'Contains' => 'hi');
 
-    $numbers = $client->account->available_phone_numbers->getList('CA', 'TollFree', $params);
-    $firstNumber = $numbers->available_phone_numbers[0]->phone_number;
-    $purchasedNumber = $client->account->incoming_phone_numbers->create(array('PhoneNumber' => $firstNumber));
+		$numbers = $client->account->available_phone_numbers->getList('CA', 'TollFree', $params);
+		$firstNumber = $numbers->available_phone_numbers[0]->phone_number;
+		$purchasedNumber = $client->account->incoming_phone_numbers->create(array('PhoneNumber' => $firstNumber));
 
-    echo $purchasedNumber->sid;
+		echo $purchasedNumber->sid;
 
 You can also purchase a random number with a given area code (US/Canada only):
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
-    $purchasedNumber = $client->account->incoming_phone_numbers->create(array('AreaCode' => '925'));
+		$client = new Services_Twilio($accountSid, $authToken);
+		$purchasedNumber = $client->account->incoming_phone_numbers->create(array('AreaCode' => '925'));
 
-    echo $purchasedNumber->sid;
+		echo $purchasedNumber->sid;
 
 Retrieving All of a Number's Properties
 ---------------------------------------
@@ -97,27 +97,27 @@ function.
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
+		$client = new Services_Twilio($accountSid, $authToken);
 
-    // Number must be in e.164 format.
-    $number = $client->account->incoming_phone_numbers->getNumber('+14105551234');
-    echo $number->voice_url;
+		// Number must be in e.164 format.
+		$number = $client->account->incoming_phone_numbers->getNumber('+14105551234');
+		echo $number->voice_url;
 
 If you know the ``sid`` of a phone number, you can retrieve it using the
 ``get()`` function.
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
+		$client = new Services_Twilio($accountSid, $authToken);
 
-    $number = $client->account->incoming_phone_numbers->get('PN123456');
-    echo $number->voice_url;
+		$number = $client->account->incoming_phone_numbers->get('PN123456');
+		echo $number->voice_url;
 
 Updating a Number
 -----------------
@@ -129,14 +129,14 @@ in the `Incoming Phone Number REST API Documentation.
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
-    $numbers = $client->account->incoming_phone_numbers;
-    foreach ($numbers as $number) {
-        $number->update(array('VoiceMethod' => 'POST'));
-    }
+		$client = new Services_Twilio($accountSid, $authToken);
+		$numbers = $client->account->incoming_phone_numbers;
+		foreach ($numbers as $number) {
+				$number->update(array('VoiceMethod' => 'POST'));
+		}
 
 Deleting a Number
 -----------------
@@ -146,14 +146,14 @@ delete, from the incoming phone numbers object.
 
 .. code-block:: php
 
-    $accountSid = 'AC1234567890abcdef1234567890a';
-    $authToken = 'abcdef1234567890abcdefabcde9';
+		$accountSid = 'AC1234567890abcdef1234567890a';
+		$authToken = 'abcdef1234567890abcdefabcde9';
 
-    $client = new Services_Twilio($accountSid, $authToken);
-    $numbers = $client->account->incoming_phone_numbers;
-    foreach($numbers as $number) {
-        // Delete just the first number, then quit.
-        $client->account->incoming_phone_numbers->delete($number->sid);
-        break;
-    }
+		$client = new Services_Twilio($accountSid, $authToken);
+		$numbers = $client->account->incoming_phone_numbers;
+		foreach($numbers as $number) {
+				// Delete just the first number, then quit.
+				$client->account->incoming_phone_numbers->delete($number->sid);
+				break;
+		}
 

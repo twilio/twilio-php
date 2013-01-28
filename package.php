@@ -15,7 +15,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ *	 http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,24 +23,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @category  Services
- * @package   Services_Twilio
- * @author    Neuman Vong <neuman@twilio.com>
+ * @category	Services
+ * @package	 Services_Twilio
+ * @author		Neuman Vong <neuman@twilio.com>
  * @copyright 2012 Twilio
- * @license   http://creativecommons.org/licenses/MIT/
- * @link      http://pear.php.net/package/Services_Twilio
+ * @license	 http://creativecommons.org/licenses/MIT/
+ * @link			http://pear.php.net/package/Services_Twilio
  */
 
 error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.9.1';
-$api_state       = 'stable';
+$api_version		 = '3.9.1';
+$api_state			 = 'stable';
 
 $release_version = '3.9.1';
-$release_state   = 'stable';
-$release_notes   = 'Add $last_response attribute to the $client';
+$release_state	 = 'stable';
+$release_notes	 = 'Add $last_response attribute to the $client';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
@@ -50,26 +50,26 @@ DESC;
 $package = new PEAR_PackageFileManager2();
 
 $package->setOptions(
-    array(
-        'filelistgenerator'       => 'file',
-        'simpleoutput'            => true,
-        'baseinstalldir'          => '/',
-        'packagedirectory'        => './',
-        'dir_roles'               => array(
-            'Services'            => 'php',
-            'Services/Twilio'     => 'php',
-            'tests'               => 'test'
-        ),
-        'ignore'                  => array(
-            'package.php',
-            '*.tgz',
-            'scratch/*',
-            'vendor/*',
-            'composer.*',
-            'coverage/*',
-            '.travis.yml',
-        )
-    )
+		array(
+				'filelistgenerator'			 => 'file',
+				'simpleoutput'						=> true,
+				'baseinstalldir'					=> '/',
+				'packagedirectory'				=> './',
+				'dir_roles'							 => array(
+						'Services'						=> 'php',
+						'Services/Twilio'		 => 'php',
+						'tests'							 => 'test'
+				),
+				'ignore'									=> array(
+						'package.php',
+						'*.tgz',
+						'scratch/*',
+						'vendor/*',
+						'composer.*',
+						'coverage/*',
+						'.travis.yml',
+				)
+		)
 );
 
 $package->setPackage('Services_Twilio');
@@ -78,8 +78,8 @@ $package->setDescription($description);
 $package->setChannel('twilio.github.com/pear');
 $package->setPackageType('php');
 $package->setLicense(
-    'MIT License',
-    'http://creativecommons.org/licenses/MIT/'
+		'MIT License',
+		'http://creativecommons.org/licenses/MIT/'
 );
 
 $package->setNotes($release_notes);
@@ -89,10 +89,10 @@ $package->setAPIVersion($api_version);
 $package->setAPIStability($api_state);
 
 $package->addMaintainer(
-    'lead',
-    'kevinburke',
-    'Kevin Burke',
-    'kevin@twilio.com'
+		'lead',
+		'kevinburke',
+		'Kevin Burke',
+		'kevin@twilio.com'
 );
 
 
@@ -105,10 +105,10 @@ $package->generateContents();
 $package->addRelease();
 
 if (isset($_GET['make'])
-    || (isset($_SERVER['argv']) && @$_SERVER['argv'][1] == 'make')
+		|| (isset($_SERVER['argv']) && @$_SERVER['argv'][1] == 'make')
 ) {
-    $package->writePackageFile();
+		$package->writePackageFile();
 } else {
-    $package->debugPackageFile();
+		$package->debugPackageFile();
 }
 
