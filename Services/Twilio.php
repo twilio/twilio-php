@@ -213,8 +213,8 @@ class Services_Twilio extends Services_Twilio_Resource
             return $decoded;
         }
         throw new Services_Twilio_RestException(
-            (int)$decoded->status,
-            $decoded->message,
+            isset($decoded->status) ? (int)$decoded->status : $status,
+            isset($decoded->message) ? $decoded->message : null,
             isset($decoded->code) ? $decoded->code : null,
             isset($decoded->more_info) ? $decoded->more_info : null
         );
