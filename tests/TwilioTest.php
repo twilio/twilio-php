@@ -13,6 +13,39 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         m::close();
     }
 
+    function getClient($http) {
+        return new Services_Twilio('AC123', '123', '2010-04-01', $http);
+    }
+
+    function createMockHttp($url, $method, $response, $params = null, 
+        $status = 200
+    ) {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        if ($method === 'post') {
+            $http->shouldReceive('post')->once()->with(
+                "/2010-04-01/Accounts/AC123$url.json", 
+                $this->formHeaders, 
+                http_build_query($params)
+            )->andReturn(array(
+                    $status, 
+                    array('Content-Type' => 'application/json'),
+                    json_encode($response)
+                )
+            );
+        } else {
+            $query = empty($params) ? '' : '?' . http_build_query($params);
+            $http->shouldReceive($method)->once()->with(
+                "/2010-04-01/Accounts/AC123$url.json$query"
+            )->andReturn(array(
+                    $status, 
+                    array('Content-Type' => 'application/json'),
+                    json_encode($response)
+                )
+            );
+        }
+        return $http;
+    }
+
     /**
      * @dataProvider uriTestProvider
      */
@@ -39,16 +72,11 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testNeedsRefining() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123.json')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array(
+        $http = $this->createMockHttp('', 'get', array(
                     'sid' => 'AC123',
                     'friendly_name' => 'Robert Paulson',
-                ))
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+                ));
+        $client = $this->getClient($http);
         $this->assertEquals('AC123', $client->account->sid);
         $this->assertEquals('Robert Paulson', $client->account->friendly_name);
     }
@@ -544,27 +572,6 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $message = $client->account->sms_messages->create('+14105551234', 
             '+14102221234', 'bar');
-    }
-
-    function createMockHttp($url, $method, $response, $params = null, $status = 200) {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        if ($method === 'post') {
-            $http->shouldReceive('post')->once()->with(
-                "/2010-04-01/Accounts/AC123$url.json", 
-                $this->formHeaders, 
-                http_build_query($params)
-            )->andReturn(array(
-                    $status, 
-                    array('Content-Type' => 'application/json'),
-                    json_encode($response)
-                )
-            );
-            return $http;
-        }
-    }
-
-    function getClient($http) {
-        return new Services_Twilio('AC123', '123', '2010-04-01', $http);
     }
 
     function testExceptionUsesHttpStatus() {
