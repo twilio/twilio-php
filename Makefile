@@ -35,6 +35,6 @@ dist: clean
 # Tests" at http://readthedocs.org/projects/twilio-php/.
 test:
 	@echo running tests
-	@phpunit --configuration tests/phpunit.xml
+	@phpunit --strict --colors --configuration tests/phpunit.xml
 
 .PHONY: all clean dist test
