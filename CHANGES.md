@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+Version 3.10.0
+--------------
+
+Released on February 2, 2013
+
+- Uses the [HTTP status code for error reporting][http], instead of the
+`status` attribute of the JSON response. (Reporter: [Ruud Kamphuis](/ruudk))
+
+[http]: https://github.com/twilio/twilio-php/pull/116
+
 Version 3.9.1
 -------------
 
@@ -8,7 +18,7 @@ Released on December 30, 2012
 
 - Adds a `$last_response` parameter to the `$client` object that can be
 used to [retrieve the raw API response][last-response]. (Reporter: [David
-Jones](/dxjones)
+Jones](/dxjones))
 
 [last-response]: https://github.com/twilio/twilio-php/pull/112/files
 
