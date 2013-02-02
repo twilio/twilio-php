@@ -82,6 +82,7 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         try {
             $token = new Services_Twilio_Capability('AC123', 'foo');
             $payload = JWT::decode($token->generateToken(), 'foo');
+            $this->assertSame($payload->iss, 'AC123');
         } catch (UnexpectedValueException $e) {
             $this->assertTrue(false, "Could not decode with 'foo'");
         }
@@ -91,12 +92,14 @@ class CapabilityTest extends PHPUnit_Framework_TestCase {
         $this->setExpectedException('InvalidArgumentException');
         $token = new Services_Twilio_Capability('AC123', 'foo');
         $token->allowClientIncoming('@');
+        $this->fail('exception should have been raised');
     }
 
     function zeroLengthNameInvalid() {
         $this->setExpectedException('InvalidArgumentException');
         $token = new Services_Twilio_Capability('AC123', 'foo');
         $token->allowClientIncoming("");
+        $this->fail('exception should have been raised');
     }
 
 

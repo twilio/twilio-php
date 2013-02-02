@@ -546,6 +546,41 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             '+14102221234', 'bar');
     }
 
+    function createMockHttp($url, $method, $response, $params = null, $status = 200) {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        if ($method === 'post') {
+            $http->shouldReceive('post')->once()->with(
+                "/2010-04-01/Accounts/AC123$url.json", 
+                $this->formHeaders, 
+                http_build_query($params)
+            )->andReturn(array(
+                    $status, 
+                    array('Content-Type' => 'application/json'),
+                    json_encode($response)
+                )
+            );
+            return $http;
+        }
+    }
+
+    function getClient($http) {
+        return new Services_Twilio('AC123', '123', '2010-04-01', $http);
+    }
+
+    function testExceptionUsesHttpStatus() {
+        $http = $this->createMockHttp('/Queues/QU123/Members/Front', 'post', 
+            array(), array('Url' => 'http://google.com'), 400);
+        $client = $this->getClient($http);
+        try {
+            $front = $client->account->queues->get('QU123')->members->front();
+            $front->update(array('Url' => 'http://google.com'));
+            $this->fail('should throw rest exception before reaching this line.');
+        } catch (Services_Twilio_RestException $e) {
+            $this->assertSame($e->getStatus(), 400);
+            $this->assertSame($e->getMessage(), '');
+        }
+    }
+
     function testUnicode() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
