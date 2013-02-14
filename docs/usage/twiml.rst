@@ -226,7 +226,8 @@ To dial out to a Sip number, put the Sip address in the `sip()` method call.
     require("Services/Twilio.php");
     $response = new Services_Twilio_Twiml;
     $dial = $response->dial();
-    $dial->sip('alice@foo.com', array(
+    $sip = $dial->sip();
+    $sip->uri('alice@foo.com', array(
         "username" => "admin",
         "password" => "1234",
     ));
@@ -237,7 +238,9 @@ To dial out to a Sip number, put the Sip address in the `sip()` method call.
 <?xml version="1.0" encoding="UTF‐8"?>
 <Response>
     <Dial>
-        <Sip username='admin' password='1234'>alice@foo.com</Sip>
+        <Sip>
+            <Uri username='admin' password='1234'>alice@foo.com</Uri>
+        </Sip>
     </Dial>
 </Response>
 
