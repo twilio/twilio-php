@@ -147,6 +147,8 @@ Dial
 Number
 ~~~~~~
 
+Dial out to phone numbers easily.
+
 .. code-block:: php
 
     $response = new Services_Twilio_Twiml;
@@ -213,6 +215,31 @@ Conference
             </Conference>
         </Dial>
     </Response>
+
+Sip
+~~~
+
+To dial out to a Sip number, put the Sip address in the `sip()` method call.
+
+.. code-block:: php
+
+    require("Services/Twilio.php");
+    $response = new Services_Twilio_Twiml;
+    $dial = $response->dial();
+    $dial->sip('alice@foo.com', array(
+        "username" => "admin",
+        "password" => "1234",
+    ));
+    print $response;
+
+.. code-block:: xml
+
+<?xml version="1.0" encoding="UTF‐8"?>
+<Response>
+    <Dial>
+        <Sip username='admin' password='1234'>alice@foo.com</Sip>
+    </Dial>
+</Response>
 
 
 Secondary Verbs
