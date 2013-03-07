@@ -227,7 +227,7 @@ To dial out to a Sip number, put the Sip address in the `sip()` method call.
     $response = new Services_Twilio_Twiml;
     $dial = $response->dial();
     $sip = $dial->sip();
-    $sip->uri('alice@foo.com', array(
+    $sip->uri('alice@foo.com?X-Header-1=value1&X-Header-2=value2', array(
         "username" => "admin",
         "password" => "1234",
     ));
@@ -235,14 +235,16 @@ To dial out to a Sip number, put the Sip address in the `sip()` method call.
 
 .. code-block:: xml
 
-<?xml version="1.0" encoding="UTF‐8"?>
-<Response>
-    <Dial>
-        <Sip>
-            <Uri username='admin' password='1234'>alice@foo.com</Uri>
-        </Sip>
-    </Dial>
-</Response>
+    <?xml version="1.0" encoding="UTF‐8"?>
+    <Response>
+        <Dial>
+            <Sip>
+                <Uri username='admin' password='1234'>
+                    alice@foo.com
+                </Uri>
+            </Sip>
+        </Dial>
+    </Response>
 
 
 Secondary Verbs
