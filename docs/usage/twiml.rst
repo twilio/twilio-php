@@ -240,7 +240,7 @@ To dial out to a Sip number, put the Sip address in the `sip()` method call.
         <Dial>
             <Sip>
                 <Uri username='admin' password='1234'>
-                    alice@foo.com
+                    alice@foo.com?X-Header-1=value1&X-Header-2=value2
                 </Uri>
             </Sip>
         </Dial>
