@@ -37,7 +37,7 @@ filters listed in the `recording list documentation <http://www.twilio.com/docs/
     $authToken = 'abcdef1234567890abcdefabcde9';
     $client = new Services_Twilio($accountSid, $authToken);
 
-    foreach($client->account->recordings->getIterator(0, 50, array('DateCreated>=' => '2011-01-01')) as $recording) {
+    foreach($client->account->recordings->getIterator(0, 50, array('DateCreated>' => '2011-01-01')) as $recording) {
         echo $recording->uri . "\n";
     }
 
