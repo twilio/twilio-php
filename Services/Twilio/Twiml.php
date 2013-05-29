@@ -115,7 +115,7 @@ class Services_Twilio_Twiml
             }
             $child->addAttribute($name, $value);
         }
-        return new self($child);
+        return new static($child);
     }
 
     /**
