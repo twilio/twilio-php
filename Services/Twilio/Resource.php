@@ -87,7 +87,10 @@ abstract class Services_Twilio_Resource {
      * @return string
      */
     public static function camelize($word) {
-        return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
+        $callback = function($matches) {
+            return strtoupper($matches[2]);
+        };
+        return preg_replace_callback('/(^|_)([a-z])/', $callback, $word);
     }
 
     /**
