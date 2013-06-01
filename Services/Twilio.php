@@ -50,7 +50,24 @@ class Services_Twilio extends Services_Twilio_Resource
                 $version : end($this->versions);
 
         if (null === $_http) {
-            if (!in_array('curl', get_loaded_extensions())) {
+            if ($this->isGoogleAppEngine()) {
+                $_http = new Services_Twilio_UrlFetchHttp(
+                     "https://api.twilio.com",
+                     ["headers" => [
+                         "User-Agent" => self::USER_AGENT,
+                         "Accept-Charset:" => "utf-8",]]);
+
+            }
+            else if (in_array('curl', get_loaded_extensions())) {
+              $_http = new Services_Twilio_TinyHttp(
+                  "https://api.twilio.com",
+                  array("curlopts" => array(
+                      CURLOPT_USERAGENT => self::USER_AGENT,
+                      CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
+                      CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
+                  ))
+              );
+            } else {
                 trigger_error("It looks like you do not have curl installed.\n". 
                     "Curl is required to make HTTP requests using the twilio-php\n" .
                     "library. For install instructions, visit the following page:\n" . 
@@ -58,14 +75,6 @@ class Services_Twilio extends Services_Twilio_Resource
                     E_USER_WARNING
                 );
             }
-            $_http = new Services_Twilio_TinyHttp(
-                "https://api.twilio.com",
-                array("curlopts" => array(
-                    CURLOPT_USERAGENT => self::USER_AGENT,
-                    CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                    CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
-                ))
-            );
         }
         $_http->authenticate($sid, $token);
         $this->http = $_http;
@@ -218,5 +227,20 @@ class Services_Twilio extends Services_Twilio_Resource
             isset($decoded->code) ? $decoded->code : null,
             isset($decoded->more_info) ? $decoded->more_info : null
         );
+    }
+    
+    /**
+     * Detect if running in a Google App Engine compatible environment, either
+     * the developement server or production.
+     * 
+     * @return boolean
+     */
+    private function isGoogleAppEngine() {
+        if (in_array('urlfetch_stream_wrapper_plugin', 
+                     get_loaded_extensions())) {
+          return true;
+        }
+        return isset($_SERVER['SERVER_SOFTWARE']) && 
+                     strpos($_SERVER['SERVER_SOFTWARE'], 'Development/') === 0;
     }
 }
