@@ -1,4 +1,10 @@
 <?php
+/**
+ * URLFetch bases HTTP client, providing the same interfact as the TinyHttp
+ * class.
+ * 
+ * @author slangley@google.com (Stuart Langley)
+ */
 
 require_once 'google/appengine/api/urlfetch_service_pb.php';
 require_once 'google/appengine/runtime/ApiProxy.php';
@@ -8,13 +14,12 @@ use \google\appengine\runtime\ApiProxy;
 use \google\appengine\runtime\ApplicationError;
 use \google\appengine\URLFetchRequest\RequestMethod;
 
-class Services_Twilio_UrlFetchHttpException extends ErrorException {}
+class Services_Twilio_UrlFetchHttpException extends ErrorException {  
+}
 
 class Services_Twilio_UrlFetchHttp {
 
-  private $user = null;
-  private $pass = null;
-  
+  private $authorization = null;
   private $uri = null;
   private $debug = false;
   private $headers = [];
@@ -44,22 +49,21 @@ class Services_Twilio_UrlFetchHttp {
     $req = new \google\appengine\URLFetchRequest();
     $req->setUrl($this->uri . $res);
     $req->setMethod(self::$request_map[strtoupper($name)]);
-    
+    $req->setFollowredirects(true);
+    $req->setMustvalidateservercertificate(true);
     if (isset($req_body)) {
       $req->setPayload($req_body);
     }    
+
     $headers = array_merge($this->headers, $req_headers);
-    
     foreach($headers as $key => $value) {
       $h = $req->addHeader();
       $h->setKey($key);
       $h->setValue($value);
     }    
-    if ($this->user && $this->pass) {
-      $user_pass = sprintf("%s:%s", $this->user, $this->pass);
-      $h = $req->addHeader();
+    if (isset($this->authorization)) {
       $h->setKey("Authorization");
-      $h->setValue(sprintf("Basic %s", base64_encode($user_pass)));
+      $h->setValue($this->authorization);
     }
 
     $resp = new \google\appengine\URLFetchResponse();
@@ -68,22 +72,31 @@ class Services_Twilio_UrlFetchHttp {
       ApiProxy::makeSyncCall('urlfetch', 'Fetch', $req, $resp);
     } catch (ApplicationError $e) {
       throw new Services_Twilio_UrlFetchHttpException(
-             sprintf("Call to URLFetch failed with application error %d.",
-                     $e->getApplicationError()));
+          sprintf("Call to URLFetch failed with application error %d.",
+                  $e->getApplicationError()));
     }
     
     $response_headers = [];
     foreach($resp->getHeaderList() as $header) {
-      // TODO: Do we need to support multiple headers with the same key?
       $response_headers[trim($header->getKey())] = trim($header->getValue());
     }
     
     return [$resp->getStatusCode(), $response_headers, $resp->getContent()];
   }
   
+  /**
+   * Configure the authentication to use for requests. Currently only basic
+   * authorization is supported.
+   * 
+   * @param string $user The user name.
+   * @param string $pass The users password.
+   */
   public function authenticate($user, $pass) {
-    $this->user = $user;
-    $this->pass = $pass;
-  }
-    
+    if (isset($user) && isset($pass)) {
+      $this->authorization = sprintf("Basic %s", 
+          base64_encode(sprintf("%s:%s", $user, $pass)));
+    } else {
+      $this->authorization = null;
+    }
+  }    
 }
