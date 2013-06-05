@@ -49,16 +49,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
 
-        if (null === $_http) {
-            if ($this->isGoogleAppEngine()) {
-                $_http = new Services_Twilio_UrlFetchHttp(
-                     "https://api.twilio.com",
-                     ["headers" => [
-                         "User-Agent" => self::USER_AGENT,
-                         "Accept-Charset:" => "utf-8",]]);
-
-            }
-            else if (in_array('curl', get_loaded_extensions())) {
+        if (in_array('curl', get_loaded_extensions())) {
               $_http = new Services_Twilio_TinyHttp(
                   "https://api.twilio.com",
                   array("curlopts" => array(
@@ -67,14 +58,23 @@ class Services_Twilio extends Services_Twilio_Resource
                       CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
                   ))
               );
-            } else {
-                trigger_error("It looks like you do not have curl installed.\n". 
-                    "Curl is required to make HTTP requests using the twilio-php\n" .
-                    "library. For install instructions, visit the following page:\n" . 
-                    "http://php.net/manual/en/curl.installation.php",
-                    E_USER_WARNING
-                );
-            }
+        } else {
+            $_http = new Services_Twilio_HttpStream(
+                "https://api.twilio.com",
+                array(
+                    "http_options" => array(
+                        "http" => array(
+                            "user_agent" => self::USER_AGENT,
+                            "header" => "Accept-Charset: utf-8\r\n",
+                        ),
+                        "ssl" => array(
+                            'veryify_peer' => true,
+                            'cafile' => dirname(__FILE__) . '/cacert.pem',
+                            'verify_depth' => 5,
+                        ),
+                    ),
+                )
+            );
         }
         $_http->authenticate($sid, $token);
         $this->http = $_http;
