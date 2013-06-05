@@ -75,7 +75,7 @@ abstract class Services_Twilio_Resource {
             'return strtolower(strlen("$matches[1]") ? "$matches[1]_$matches[2]" : "$matches[2]");');
 
         return preg_replace_callback(
-            '/(^|[a-z])([A-Z])/e',
+            '/(^|[a-z])([A-Z])/',
             $callback,
             $word
         );
