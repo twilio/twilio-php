@@ -49,32 +49,34 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
 
-        if (in_array('curl', get_loaded_extensions())) {
-              $_http = new Services_Twilio_TinyHttp(
-                  "https://api.twilio.com",
-                  array("curlopts" => array(
-                      CURLOPT_USERAGENT => self::USER_AGENT,
-                      CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                      CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
-                  ))
-              );
-        } else {
-            $_http = new Services_Twilio_HttpStream(
-                "https://api.twilio.com",
-                array(
-                    "http_options" => array(
-                        "http" => array(
-                            "user_agent" => self::USER_AGENT,
-                            "header" => "Accept-Charset: utf-8\r\n",
+        if ($_http == null) {
+            if (in_array('curl', get_loaded_extensions())) {
+                  $_http = new Services_Twilio_TinyHttp(
+                      "https://api.twilio.com",
+                      array("curlopts" => array(
+                          CURLOPT_USERAGENT => self::USER_AGENT,
+                          CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
+                          CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
+                      ))
+                  );
+            } else {
+                $_http = new Services_Twilio_HttpStream(
+                    "https://api.twilio.com",
+                    array(
+                        "http_options" => array(
+                            "http" => array(
+                                "user_agent" => self::USER_AGENT,
+                                "header" => "Accept-Charset: utf-8\r\n",
+                            ),
+                            "ssl" => array(
+                                'veryify_peer' => true,
+                                'cafile' => dirname(__FILE__) . '/cacert.pem',
+                                'verify_depth' => 5,
+                            ),
                         ),
-                        "ssl" => array(
-                            'veryify_peer' => true,
-                            'cafile' => dirname(__FILE__) . '/cacert.pem',
-                            'verify_depth' => 5,
-                        ),
-                    ),
-                )
-            );
+                    )
+                );
+            }
         }
         $_http->authenticate($sid, $token);
         $this->http = $_http;
