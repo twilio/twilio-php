@@ -49,7 +49,7 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
 
-        if ($_http == null) {
+        if (null === $_http) {
             if (in_array('curl', get_loaded_extensions())) {
                   $_http = new Services_Twilio_TinyHttp(
                       "https://api.twilio.com",
