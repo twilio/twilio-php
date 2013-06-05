@@ -228,19 +228,4 @@ class Services_Twilio extends Services_Twilio_Resource
             isset($decoded->more_info) ? $decoded->more_info : null
         );
     }
-    
-    /**
-     * Detect if running in a Google App Engine compatible environment, either
-     * the developement server or production.
-     * 
-     * @return boolean
-     */
-    private function isGoogleAppEngine() {
-        if (in_array('urlfetch_stream_wrapper_plugin', 
-                     get_loaded_extensions())) {
-          return true;
-        }
-        return isset($_SERVER['SERVER_SOFTWARE']) && 
-                     strpos($_SERVER['SERVER_SOFTWARE'], 'Development/') === 0;
-    }
 }
