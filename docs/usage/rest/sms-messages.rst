@@ -43,6 +43,6 @@ a particular number. You can do so by constructing an iterator explicitly:
     $client = new Services_Twilio('AC123', '123');
     foreach ($client->account->sms_messages->getIterator(0, 50, array(
         'From' => '+14105551234',
-    ) as $message) {
+    )) as $message) {
         echo "From: {$message->from}\nTo: {$message->to}\nBody: " . $message->body;
     }

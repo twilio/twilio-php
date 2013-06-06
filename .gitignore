@@ -5,3 +5,6 @@ composer.phar
 coverage
 package.xml
 *.tgz
+.DS_Store
+.idea
+nbproject
