@@ -25,7 +25,7 @@ class Services_Twilio_HttpStream {
     public function __construct($uri = '', $kwargs = array()) {
         $this->uri = $uri;
         if (isset($kwargs['debug'])) {
-            $this->debug = false;
+            $this->debug = true;
         }
         if (isset($kwargs['http_options'])) {
             $this->options = $kwargs['http_options'] + self::$default_options;
@@ -54,6 +54,9 @@ class Services_Twilio_HttpStream {
 
         $request_options['http']['method'] = strtoupper($name);
 
+        if ($this->debug) {
+            error_log(var_export($request_options, true));
+        }
         $ctx = stream_context_create($request_options);
         $result = file_get_contents($url, false, $ctx);
 

@@ -69,7 +69,7 @@ class Services_Twilio extends Services_Twilio_Resource
                                 "header" => "Accept-Charset: utf-8\r\n",
                             ),
                             "ssl" => array(
-                                'veryify_peer' => true,
+                                'verify_peer' => true,
                                 'cafile' => dirname(__FILE__) . '/cacert.pem',
                                 'verify_depth' => 5,
                             ),
