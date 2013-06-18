@@ -35,7 +35,7 @@ class Services_Twilio_HttpStream {
     }
 
     public function __call($name, $args) {
-        list($res, $req_headers, $req_body) = $args + [0, [], ''];
+        list($res, $req_headers, $req_body) = $args + array(0, array(), '');
 
         $request_options = $this->options;
         $url = $this->uri . $res;
