@@ -192,9 +192,60 @@ class Services_Twilio extends Services_Twilio_Resource
         $path = "$path.json";
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
         $response = $this->http->post(
-            $path, $headers, http_build_query($params, '', '&')
+            $path, $headers, self::buildQuery($params, '')
         );
         return $this->_processResponse($response);
+    }
+
+    /**
+     * Build the query string
+     * Uses $queryStringStyle to determine how to build the url
+     * - strict: Build a standards compliant query string without braces (can be hacked by using braces in key)
+     * - php: Build a PHP compatible query string with nested array syntax
+     *
+     * @static
+     * @param array $queryData
+     * @param string $numericPrefix
+     * @param string $queryStringStyle
+     * @return string
+     */
+    public static function buildQuery(array $queryData, $numericPrefix = '', $queryStringStyle = 'strict') {
+        switch ($queryStringStyle) {
+            case 'php':
+                $query = http_build_query($queryData, $numericPrefix);
+                break;
+            case 'strict':
+            default:
+                $query = '';
+                // Loop through all of the $query_data
+                foreach ($queryData as $key => $value) {
+                    // If the key is an int, add the numeric_prefix to the beginning
+                    if (is_int($key)) {
+                        $key = $numericPrefix . $key;
+                    }
+
+                    // If the value is an array, we will end up recursing
+                    if (is_array($value)) {
+                        // Loop through the values
+                        foreach ($value as $value2) {
+                            // Add an arg_separator if needed
+                            if ($query !== '') {
+                                $query .= '&';
+                            }
+                            // Recurse
+                            $query .= self::buildQuery(array($key => $value2), $numericPrefix, $queryStringStyle);
+                        }
+                    } else {
+                        // Add an arg_separator if needed
+                        if ($query !== '') {
+                            $query .= '&';
+                        }
+                        // Add the key and the urlencoded value (as a string)
+                        $query .= $key . '=' . urlencode((string)$value);
+                    }
+                }
+        }
+        return $query;
     }
 
     /**
@@ -215,7 +266,7 @@ class Services_Twilio extends Services_Twilio_Resource
         if ($decoded === null) {
             throw new Services_Twilio_RestException(
                 $status,
-                'Could not decode response body as JSON. ' . 
+                'Could not decode response body as JSON. ' .
                 'This likely indicates a 500 server error'
             );
         }
