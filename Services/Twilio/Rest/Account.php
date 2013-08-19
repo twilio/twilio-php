@@ -10,6 +10,8 @@ class Services_Twilio_Rest_Account extends Services_Twilio_InstanceResource {
             'calls',
             'conferences',
             'incoming_phone_numbers',
+            'media',
+            'messages',
             'notifications',
             'outgoing_callerids',
             'recordings',
