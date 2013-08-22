@@ -28,4 +28,35 @@ class Services_Twilio_Rest_IncomingPhoneNumbers
         }
         return $items[0];
     }
+    
+        public function getNumbers($number = null) {
+        $i = 0;
+        $numbers_per_page = 100;
+        $done = false;
+        $numbers = array();
+        while (!$done) {
+           if (!is_null($number)) {
+              $param = array('PhoneNumber' => $number);
+           } else {
+              $param = array();
+           }   
+           $page = $this->getPage($i, $numbers_per_page, $param);
+           $items = $page->getItems();
+
+           if (is_null($items) || empty($items)) {
+              $done = true;
+           } elseif (sizeof($items) < $numbers_per_page) {
+              $done = true;
+              $numbers = array_merge($numbers, $items);
+           } else {
+              $i++;
+              $numbers = array_merge($numbers, $items);
+           }
+        }
+        if (sizeof($numbers) > 0) {
+           return $numbers;
+        } else {
+           return null;
+        }    
+    }
 }
