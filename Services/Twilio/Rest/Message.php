@@ -5,7 +5,7 @@ class Services_Twilio_Rest_Message
 {
     protected function init($client, $uri) {
         $this->setupSubresources(
-            'media_list'
+            'media'
         );
     }
 }
