@@ -104,13 +104,13 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
-     * Construct a URI based on initial path, query params, and paging 
+     * Construct a URI based on initial path, query params, and paging
      * information
      *
-     * We want to use the query params, unless we have a next_page_uri from the 
+     * We want to use the query params, unless we have a next_page_uri from the
      * API.
      *
-     * @param string $path The request path (may contain query params if it's 
+     * @param string $path The request path (may contain query params if it's
      *      a next_page_uri)
      * @param array $params Query parameters to use with the request
      * @param boolean $full_uri Whether the $path contains the full uri
@@ -151,16 +151,16 @@ class Services_Twilio extends Services_Twilio_Resource
      *
      * @param string $path   Path to the resource
      * @param array  $params Query string parameters
-     * @param boolean  $full_uri Whether the full URI has been passed as an 
+     * @param boolean  $full_uri Whether the full URI has been passed as an
      *      argument
      *
      * @return object The object representation of the resource
      */
-    public function retrieveData($path, array $params = array(), 
+    public function retrieveData($path, array $params = array(),
         $full_uri = false
     ) {
         $uri = self::getRequestUri($path, $params, $full_uri);
-        return $this->_makeIdempotentRequest(array($this->http, 'get'), 
+        return $this->_makeIdempotentRequest(array($this->http, 'get'),
             $uri, $this->retryAttempts);
     }
 
@@ -175,7 +175,7 @@ class Services_Twilio extends Services_Twilio_Resource
     public function deleteData($path, array $params = array())
     {
         $uri = self::getRequestUri($path, $params);
-        return $this->_makeIdempotentRequest(array($this->http, 'delete'), 
+        return $this->_makeIdempotentRequest(array($this->http, 'delete'),
             $uri, $this->retryAttempts);
     }
 

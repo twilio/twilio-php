@@ -85,7 +85,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('delete')->once()
             ->with('/2010-04-01/Accounts/AC123/Messages/ME123.json')
-            ->andReturn(array(204, array('Content-Type' => 'application/json')
+            ->andReturn(array(204, array('Content-Type' => 'application/json'), ''
         ));
         $client = new Services_Twilio('AC123', '123', null, $http);
         $client->account->messages->delete('ME123');
