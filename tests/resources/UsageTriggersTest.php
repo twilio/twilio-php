@@ -19,7 +19,6 @@ class UsageTriggersTest extends PHPUnit_Framework_TestCase {
         $usageSid = 'UT123';
         $usageTrigger = $client->account->usage_triggers->get($usageSid);
         $this->assertSame('totalprice', $usageTrigger->usage_category);
-        $this->assertSame(true, false);
     }
 
     protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
