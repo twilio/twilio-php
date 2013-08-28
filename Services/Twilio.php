@@ -209,42 +209,35 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param string $queryStringStyle
      * @return string
      */
-    public static function buildQuery(array $queryData, $numericPrefix = '', $queryStringStyle = 'strict') {
-        switch ($queryStringStyle) {
-            case 'php':
-                $query = http_build_query($queryData, $numericPrefix);
-                break;
-            case 'strict':
-            default:
-                $query = '';
-                // Loop through all of the $query_data
-                foreach ($queryData as $key => $value) {
-                    // If the key is an int, add the numeric_prefix to the beginning
-                    if (is_int($key)) {
-                        $key = $numericPrefix . $key;
-                    }
+    public static function buildQuery(array $queryData, $numericPrefix = '') {
+            $query = '';
+            // Loop through all of the $query_data
+            foreach ($queryData as $key => $value) {
+                // If the key is an int, add the numeric_prefix to the beginning
+                if (is_int($key)) {
+                    $key = $numericPrefix . $key;
+                }
 
-                    // If the value is an array, we will end up recursing
-                    if (is_array($value)) {
-                        // Loop through the values
-                        foreach ($value as $value2) {
-                            // Add an arg_separator if needed
-                            if ($query !== '') {
-                                $query .= '&';
-                            }
-                            // Recurse
-                            $query .= self::buildQuery(array($key => $value2), $numericPrefix, $queryStringStyle);
-                        }
-                    } else {
+                // If the value is an array, we will end up recursing
+                if (is_array($value)) {
+                    // Loop through the values
+                    foreach ($value as $value2) {
                         // Add an arg_separator if needed
                         if ($query !== '') {
                             $query .= '&';
                         }
-                        // Add the key and the urlencoded value (as a string)
-                        $query .= $key . '=' . urlencode((string)$value);
+                        // Recurse
+                        $query .= self::buildQuery(array($key => $value2), $numericPrefix);
                     }
+                } else {
+                    // Add an arg_separator if needed
+                    if ($query !== '') {
+                        $query .= '&';
+                    }
+                    // Add the key and the urlencoded value (as a string)
+                    $query .= $key . '=' . urlencode((string)$value);
                 }
-        }
+            }
         return $query;
     }
 
