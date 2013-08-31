@@ -121,7 +121,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testSubresourceLoad() {
-        $http = $this->createMockHttp('/Calls/CA123', 'get', 
+        $http = $this->createMockHttp('/Calls/CA123', 'get',
             array('status' => 'Completed')
         );
         $client = $this->getClient($http);
@@ -132,7 +132,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testSubresourceSubresource() {
-        $http = $this->createMockHttp('/Calls/CA123/Notifications/NO123', 'get', 
+        $http = $this->createMockHttp('/Calls/CA123/Notifications/NO123', 'get',
             array('message_text' => 'Foo')
         );
 
@@ -286,7 +286,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testUpdate() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()->with(
-                '/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders, 
+                '/2010-04-01/Accounts/AC123/Calls.json', $this->formHeaders,
                 http_build_query($this->callParams)
             )->andReturn(
                 array(200, array('Content-Type' => 'application/json'),
@@ -619,14 +619,14 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
             ->with('/2010-04-01/Accounts/AC123/Messages.json', $this->formHeaders,
-            'From=123&To=123&MediaUrls=http%3A%2F%2Fexample.com%2Fimage1&MediaUrls=http%3A%2F%2Fexample.com%2Fimage2')
+            'From=123&To=123&MediaUrl=http%3A%2F%2Fexample.com%2Fimage1&MediaUrl=http%3A%2F%2Fexample.com%2Fimage2')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             )
         );
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $message = $client->account->messages->create('123', '123', array(
-            'MediaUrls' => array('http://example.com/image1', 'http://example.com/image2')));
+            'MediaUrl' => array('http://example.com/image1', 'http://example.com/image2')));
         $this->assertSame($message->sid, 'SM123');
     }
 }
