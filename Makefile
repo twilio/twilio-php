@@ -32,13 +32,13 @@ dist: clean
 	done
 
 test-install:
-	! pear channel-discover pear.phpunit.de
-	! pear channel-discover components.ez.no
-	! pear channel-discover pear.symfony-project.com
-	! pear channel-discover pear.survivethedeepend.com
-	! pear channel-discover hamcrest.googlecode.com/svn/pear
-	! pear install --alldeps deepend/Mockery
-	! pear install phpunit/PHPUnit
+	-pear channel-discover pear.phpunit.de
+	-pear channel-discover components.ez.no
+	-pear channel-discover pear.symfony-project.com
+	-pear channel-discover pear.survivethedeepend.com
+	-pear channel-discover hamcrest.googlecode.com/svn/pear
+	-pear install --alldeps deepend/Mockery
+	-pear install phpunit/PHPUnit
 
 # if these fail, you may need to install the helper libraries - see "Running
 # Tests" at http://readthedocs.org/projects/twilio-php/.
