@@ -38,7 +38,9 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *      invalid (for example, the from number is not a Twilio number
      *      registered to your account, or is unable to send MMS)
      */
-    function sendMms($from, $to, $mediaUrls, $body=null, array $params = array()) {
+    function sendMms($from, $to, $mediaUrls, $body = null,
+        array $params = array()
+    ) {
         $postParams = array(
             'From' => $from,
             'To' => $to,
