@@ -45,4 +45,13 @@ test-install:
 test:
 	phpunit --strict --colors --configuration tests/phpunit.xml
 
-.PHONY: all clean dist test
+venv:
+	virtualenv venv
+
+docs-install: venv
+	. venv/bin/activate; pip install -r docs/requirements.txt
+
+docs:
+	. venv/bin/activate; cd docs && make html
+
+.PHONY: all clean dist test docs docs-install test-install
