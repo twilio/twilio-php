@@ -40,6 +40,10 @@ test-install:
 	-pear install --alldeps deepend/Mockery
 	-pear install phpunit/PHPUnit
 
+install:
+	pear channel-discover twilio.github.com/pear
+	pear install twilio/Services_Twilio
+
 # if these fail, you may need to install the helper libraries - see "Running
 # Tests" at http://readthedocs.org/projects/twilio-php/.
 test:

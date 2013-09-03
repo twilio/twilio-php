@@ -1,22 +1,26 @@
 <?php
 
 /**
- * Abstraction of a list resource from the Twilio API.
- *
- * @category Services
- * @package  Services_Twilio
- * @author   Neuman Vong <neuman@twilio.com>
+ * @author   Neuman Vong neuman@twilio.com
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */
-abstract class Services_Twilio_ListResource
-    extends Services_Twilio_Resource
+
+/**
+ * Abstraction of a list resource from the Twilio API.
+ *
+ * The list resource implements the `IteratorAggregate
+ * <http://php.net/manual/en/class.iteratoraggregate.php>`_ and the `Countable
+ * <http://php.net/manual/en/class.countable.php>`_ interfaces.
+ *
+ */
+abstract class Services_Twilio_ListResource extends Services_Twilio_Resource
     implements IteratorAggregate, Countable
 {
 
     public function __construct($client, $uri) {
         $name = $this->getResourceName(true);
-        /* 
+        /*
          * By default trim the 's' from the end of the list name to get the
          * instance name (ex Accounts -> Account). This behavior can be
          * overridden by child classes if the rule doesn't work.
@@ -30,11 +34,11 @@ abstract class Services_Twilio_ListResource
     /**
      * Gets a resource from this list.
      *
-     * @param string $sid The resource SID
-     * @return Services_Twilio_InstanceResource The resource
+     * :param string $sid: The resource SID
+     * :return: The resource
+     * :rtype: :php:class:`InstanceResource <Services_Twilio_InstanceResource>`
      */
-    public function get($sid)
-    {
+    public function get($sid) {
         $instance = new $this->instance_name(
             $this->client, $this->uri . "/$sid"
         );
@@ -43,12 +47,14 @@ abstract class Services_Twilio_ListResource
         return $instance;
     }
 
-    /* 
-     * Construct an InstanceResource with the specified params.
+    /*
+     * Construct an :php:class:`InstanceResource
+     * <Services_Twilio_InstanceResource>` with the specified params.
      *
-     * @param array params usually a JSON HTTP response from the API
-     * @return Services_Twilio_InstanceResource An instance with properties 
+     * :param array $params: usually a JSON HTTP response from the API
+     * :return: An instance with properties
      *      initialized to the values in the params array.
+     * :rtype: :php:class:`InstanceResource <Services_Twilio_InstanceResource>`
      */
     public function getObjectFromJson($params, $idParam = "sid")
     {
@@ -63,10 +69,10 @@ abstract class Services_Twilio_ListResource
     /**
      * Deletes a resource from this list.
      *
-     * @param string $sid The resource SID
-     * @return null
+     * :param string $sid: The resource SID
+     * :rtype: null
      */
-    public function delete($sid, array $params = array())
+    public function delete($sid, $params = array())
     {
         $this->client->deleteData($this->uri . '/' . $sid, $params);
     }
@@ -75,11 +81,12 @@ abstract class Services_Twilio_ListResource
      * Create a resource on the list and then return its representation as an
      * InstanceResource.
      *
-     * @param array $params The parameters with which to create the resource
+     * :param array $params: The parameters with which to create the resource
      *
-     * @return Services_Twilio_InstanceResource The created resource
+     * :return: The created resource
+     * :rtype: :php:class:`InstanceResource <Services_Twilio_InstanceResource>`
      */
-    protected function _create(array $params)
+    protected function _create($params)
     {
         $params = $this->client->createData($this->uri, $params);
         /* Some methods like verified caller ID don't return sids. */
@@ -92,19 +99,20 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Returns a page of InstanceResources from this list.
+     * Returns a page of :php:class:`InstanceResources
+     * <Services_Twilio_InstanceResource>` from this list.
      *
-     * @param int    $page The start page
-     * @param int    $size Number of items per page
-     * @param array  $filters Optional filters
-     * @param string $deep_paging_uri if provided, the $page and $size 
+     * :param int    $page: The start page
+     * :param int    $size: Number of items per page
+     * :param array  $filters: Optional filters
+     * :param string $deep_paging_uri: if provided, the $page and $size
      *      parameters will be ignored and this URI will be requested directly.
      *
-     * @return Services_Twilio_Page A page
+     * :return: A page of resources
+     * :rtype: :php:class:`Services_Twilio_Page`
      */
     public function getPage(
-        $page = 0, $size = 50, array $filters = array(), 
-        $deep_paging_uri = null
+        $page = 0, $size = 50, $filters = array(), $deep_paging_uri = null
     ) {
         $list_name = $this->getResourceName();
         if ($deep_paging_uri !== null) {
@@ -130,13 +138,15 @@ abstract class Services_Twilio_ListResource
     }
 
     /**
-     * Get the total number of instance members. Note this will make one small 
-     * HTTP request to retrieve the total, every time this method is called.
+     * Get the total number of instances for this list.
      *
-     * If the total is not set or an Exception was thrown, returns 0
+     * This will make one HTTP request to retrieve the total, every time this
+     * method is called.
      *
-     * @return integer
+     * If the total is not set, or an Exception was thrown, returns 0
      *
+     * :return: The total number of instance members
+     * :rtype: integer
      */
     public function count() {
         try {
@@ -149,37 +159,44 @@ abstract class Services_Twilio_ListResource
 
 
     /**
-     * Returns an iterable list of InstanceResources
+     * Returns an iterable list of
+     * :php:class:`instance resources <Services_Twilio_InstanceResource>`.
      *
-     * @param int   $page The start page
-     * @param int   $size Number of items per page
-     * @param array $size Optional filters
+     * :param int   $page: The start page
+     * :param int   $size: Number of items per page
+     * :param array $filters: Optional filters.
+     *      The filter array can accept full datetimes when StartTime or DateCreated
+     *      are used. Inequalities should be within the key portion of the array and
+     *      multiple filter parameters can be combined for more specific searches.
      *
-     * The filter array can accept full datetimes when StartTime or DateCreated
-     * are used. Inequalities should be within the key portion of the array and
-     * multiple filter parameters can be combined for more specific searches.
+     *      .. code-block:: php
      *
-     * eg.
-     *   array('DateCreated>' => '2011-07-05 08:00:00', 'DateCreated<' => '2011-08-01')
-     * or
-     *   array('StartTime<' => '2011-07-05 08:00:00')
+     *          array('DateCreated>' => '2011-07-05 08:00:00', 'DateCreated<' => '2011-08-01')
      *
-     * @return Services_Twilio_AutoPagingIterator An iterator
+     *      .. code-block:: php
+     *
+     *          array('StartTime<' => '2011-07-05 08:00:00')
+     *
+     * :return: An iterator
+     * :rtype: :php:class:`Services_Twilio_AutoPagingIterator`
      */
     public function getIterator(
-        $page = 0, $size = 50, array $filters = array()
+        $page = 0, $size = 50, $filters = array()
     ) {
         return new Services_Twilio_AutoPagingIterator(
             array($this, 'getPageGenerator'), $page, $size, $filters
         );
     }
 
-    /* 
-     * Retrieve a new page of API results, and update iterator parameters.
+    /*
+     * Retrieve a new page of API results, and update iterator parameters. This
+     * function is called by the paging iterator to retrieve a new page and
+     * shouldn't be called directly.
      */
     public function getPageGenerator(
-        $page, $size, array $filters = array(), $deep_paging_uri = null
+        $page, $size, $filters = array(), $deep_paging_uri = null
     ) {
         return $this->getPage($page, $size, $filters, $deep_paging_uri);
     }
 }
+

@@ -10,7 +10,8 @@
 Status
 =======
 
-This documentation is for version 3.10.0 of `twilio-php <https://www.github.com/twilio/twilio-php>`_.
+This documentation is for version 3.10.0 of `twilio-php
+<https://www.github.com/twilio/twilio-php>`_.
 
 Quickstart
 ============
@@ -27,7 +28,7 @@ Send a SMS
     $auth_token = "YYYYYY"; // Your Twilio auth token
 
     $client = new Services_Twilio($account_sid, $auth_token);
-    $message = $client->account->sms_messages->create(
+    $message = $client->account->messages->sendSms(
       '+14085551234', // From a Twilio number in your account
       '+12125551234', // Text any number
       "Hello monkey!"
@@ -88,10 +89,12 @@ downloading the source.
 Via PEAR
 >>>>>>>>>>>>>
 
+Use the ``Makefile`` in the repo's top
+
 .. code-block:: bash
 
-    pear channel-discover twilio.github.com/pear
-    pear install twilio/Services_Twilio    # may need to run sudo pear instead
+	pear channel-discover twilio.github.com/pear
+	pear install twilio/Services_Twilio
 
 From Source
 >>>>>>>>>>>>>
@@ -128,7 +131,7 @@ API Documentation
 ==================
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 3
     :glob:
 
     api/*
@@ -144,31 +147,23 @@ check out the source, run
 
     git clone git@github.com:twilio/twilio-php.git
 
-
 Report bugs using the Github `issue tracker <https://github.com/twilio/twilio-php/issues>`_.
 
-If you’ve got questions that aren’t answered by this documentation, ask the
-`#twilio IRC channel <irc://irc.freenode.net/#twilio>`_
+If you've got questions that aren't answered by this documentation, ask the
+Twilio support team at help@twilio.com.
 
 Running the Tests
 >>>>>>>>>>>>>>>>>>>>>>>>>
 
-The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and `PHPUnit <https://github.com/sebastianbergmann/phpunit>`_. First, 'discover' all the necessary `PEAR` channels:
+The unit tests depend on `Mockery <https://github.com/padraic/mockery>`_ and
+`PHPUnit <https://github.com/sebastianbergmann/phpunit>`_. First, 'discover' all
+the necessary `PEAR` channels:
 
 .. code-block:: bash
 
-    pear channel-discover pear.phpunit.de
-    pear channel-discover components.ez.no
-    pear channel-discover pear.symfony-project.com
-    pear channel-discover pear.survivethedeepend.com
-    pear channel-discover hamcrest.googlecode.com/svn/pear
+    make test-install
 
-.. code-block:: bash
-
-    pear install --alldeps deepend/Mockery
-    pear install phpunit/PHPUnit
-
-After installation, run the tests with :data:`make`
+After installation, run the tests with :data:`make`.
 
 .. code-block:: bash
 
@@ -183,12 +178,11 @@ need to install Sphinx and the Sphinx PHP domain before you can build the docs.
 
 .. code-block:: bash
 
-    pip install Sphinx sphinxcontrib-phpdomain
+    make docs-install
 
 Once you have those installed, making the docs is easy.
 
 .. code-block:: bash
 
-    cd docs
-    make html
+    make docs
 

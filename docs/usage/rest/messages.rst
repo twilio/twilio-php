@@ -5,22 +5,35 @@ Messages
 Sending a Message
 =====================
 
-The :class:`Messages` resource allows you to send outgoing messages.
+The :class:`Messages` resource allows you to send outgoing SMS or MMS messages.
 
 .. code-block:: php
 
     require('/path/to/twilio-php/Services/Twilio.php');
 
     $client = new Services_Twilio('AC123', '123');
-    $message = $client->account->messages->create(
+    $message = $client->account->messages->sendMms(
       '+14085551234', // From a Twilio number in your account
       '+12125551234', // Text any number
-      array('Body' => 'Hello monkey!', // At least one of these parameters
-                                       // is required
-            'ContentUrls' => array('http://example.com/image.jpg')
+      array('http://example.com/image.jpg'),    // An array of MediaUrls
+      'Hello monkey!',                          // Message body (if any)
     ));
 
-    print $message->sid;
+    echo $message->sid;
+
+If you are not sending any media content with the message, consider using the
+`sendSms` helper function:
+
+.. code-block:: php
+
+    require('/path/to/twilio-php/Services/Twilio.php');
+
+    $client = new Services_Twilio('AC123', '123');
+    $message = $client->account->messages->sendMms(
+      '+14085551234',   // From a Twilio number in your account
+      '+12125551234',   // Text any number
+      'Hello monkey!',  // Message body (if any)
+    ));
 
 Listing Messages
 ====================

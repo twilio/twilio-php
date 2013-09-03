@@ -5,7 +5,9 @@ SMS Messages
 Sending a SMS Message
 =====================
 
-The :class:`SmsMessages` resource allows you to send outgoing text messages.
+
+The :php:class:`Services_Twilio_Rest_SmsMessages` resource allows you to send
+outgoing text messages.
 
 .. code-block:: php
 
