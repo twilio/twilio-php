@@ -22,7 +22,8 @@ class Services_Twilio_Rest_Account extends Services_Twilio_InstanceResource {
             'authorized_connect_apps',
             'usage_records',
             'usage_triggers',
-            'queues'
+            'queues',
+            'sip'
         );
 
         $this->sandbox = new Services_Twilio_Rest_Sandbox(
