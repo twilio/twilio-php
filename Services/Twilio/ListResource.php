@@ -28,6 +28,9 @@ abstract class Services_Twilio_ListResource extends Services_Twilio_Resource
         if (!isset($this->instance_name)) {
             $this->instance_name = "Services_Twilio_Rest_" . rtrim($name, 's');
         }
+
+        // Rename all /Sip/ uris to /SIP/
+        $uri = preg_replace("#/Sip#", "/SIP", $uri);
         parent::__construct($client, $uri);
     }
 

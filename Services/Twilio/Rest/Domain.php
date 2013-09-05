@@ -63,8 +63,8 @@
 class Services_Twilio_Rest_Domain extends Services_Twilio_InstanceResource {
     protected function init($client, $uri) {
         $this->setupSubresources(
-            'ipAccessControlListMappings',
-            'credentialListMappings'
+            'ip_access_control_list_mappings',
+            'credential_list_mappings'
         );
     }
 }
