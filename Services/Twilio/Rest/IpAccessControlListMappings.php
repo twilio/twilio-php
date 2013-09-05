@@ -11,7 +11,7 @@ class Services_Twilio_Rest_IpAccessControlListMappings extends Services_Twilio_L
      *
      *      $client->account->sip->domains->get('SDXXX')->ip_access_control_list_mappings->create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
      *
-     * :param string ip_access_control_list_sid the sid of the IpAccessControList you're adding to this domain.
+     * :param string ip_access_control_list_sid: the sid of the IpAccessControList you're adding to this domain.
      * :param array params: a single array of parameters which is serialized and
      *      sent directly to the Twilio API.
      */
