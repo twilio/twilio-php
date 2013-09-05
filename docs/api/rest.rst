@@ -54,7 +54,7 @@ Calls
 
    For more information, see the `Call List Resource <http://www.twilio.com/docs/api/rest/call#list>`_ documentation.
 
-   .. php:method:: create($from, $to, $url, array $params = array())
+   .. php:method:: create($from, $to, $url, params = array())
 
       Make an outgoing call
 
@@ -204,7 +204,7 @@ Queues
 
      :param string $friendly_name: The name of the new Queue.
      :param array $params: An array of optional parameters and their values, 
-        like ``MaxSize``.
+        like `MaxSize`.
      :returns: A new :php:class:`Services_Twilio_Rest_Queue`
 
 
@@ -231,7 +231,7 @@ UsageTriggers
 
   For more information, including a list of filter parameters, see the `UsageTriggers List Resource <http://www.twilio.com/docs/api/rest/usage-triggers#list>`_ documentation.
 
-  .. php:method:: create($category, $value, $url, array $params = array())
+  .. php:method:: create($category, $value, $url, $params = array())
 
     Create a new UsageTrigger.
 
