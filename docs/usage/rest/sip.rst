@@ -47,7 +47,7 @@ to individual ip addresses. To do this, you'll first need to create an
 
     echo $ip_access_control_list->sid;
 
-Adding a new IpAddress
+Adding an IpAddress to an IpAccessControlList
 =========================
 
 Now it's time to add an :class:`IpAddress` to your new :class:`IpAccessControlList`.
