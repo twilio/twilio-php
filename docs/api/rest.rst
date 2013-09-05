@@ -90,6 +90,35 @@ Calls
       *Timeout*
         The integer number of seconds that Twilio should allow the phone to ring before assuming there is no answer. Default is 60 seconds, the maximum is 999 seconds. Note, you could set this to a low value, such as 15, to hangup before reaching an answering machine or voicemail.
 
+CredentialListMappings
+=========================
+
+.. phpautoclass:: Services_Twilio_Rest_CredentialListMappings
+    :filename: ../Services/Twilio/Rest/CredentialListMappings.php
+    :members:
+
+
+CredentialLists
+=================
+
+.. phpautoclass:: Services_Twilio_Rest_CredentialLists
+    :filename: ../Services/Twilio/Rest/CredentialLists.php
+    :members:
+
+Credentials
+==============
+
+.. phpautoclass:: Services_Twilio_Rest_Credentials
+    :filename: ../Services/Twilio/Rest/Credentials.php
+    :members:
+
+Domains
+==========
+
+.. phpautoclass:: Services_Twilio_Rest_Domains
+    :filename: ../Services/Twilio/Rest/Domains.php
+    :members:
+
 
 IncomingPhoneNumbers
 ========================
@@ -112,6 +141,27 @@ IncomingPhoneNumbers
   Instance Resource <http://www.twilio.com/docs/api/rest/queue#instance>`_ 
   documentation. A Queue has one subresource, a list of 
   :php:class:`Services_Twilio_Rest_Members`.
+
+IpAccessControlListMappings
+==============================
+
+.. phpautoclass:: Services_Twilio_Rest_IpAccessControlListMappings
+    :filename: ../Services/Twilio/Rest/IpAccessControlListMappings.php
+    :members:
+
+IpAccessControlLists
+=======================
+
+.. phpautoclass:: Services_Twilio_Rest_IpAccessControlLists
+    :filename: ../Services/Twilio/Rest/IpAccessControlLists.php
+    :members:
+
+IpAddresses
+=======================
+
+.. phpautoclass:: Services_Twilio_Rest_IpAddresses
+    :filename: ../Services/Twilio/Rest/IpAddresses.php
+    :members:
 
 Media
 ======
@@ -512,6 +562,35 @@ Conference
 
       The :php:class:`Services_Twilio_Rest_Participants` instance, listing people currenlty in this conference
 
+CredentialListMapping
+=========================
+
+.. phpautoclass:: Services_Twilio_Rest_CredentialListMapping
+    :filename: ../Services/Twilio/Rest/CredentialListMapping.php
+    :members:
+
+
+CredentialList
+=================
+
+.. phpautoclass:: Services_Twilio_Rest_CredentialList
+    :filename: ../Services/Twilio/Rest/CredentialList.php
+    :members:
+
+Credential
+==============
+
+.. phpautoclass:: Services_Twilio_Rest_Credential
+    :filename: ../Services/Twilio/Rest/Credential.php
+    :members:
+
+Domain
+==========
+
+.. phpautoclass:: Services_Twilio_Rest_Domain
+    :filename: ../Services/Twilio/Rest/Domain.php
+    :members:
+
 IncomingPhoneNumber
 ===================
 
@@ -597,6 +676,26 @@ IncomingPhoneNumber
    .. php:attr:: uri
 
       The URI for this resource, relative to https://api.twilio.com.
+
+IpAccessControlListMapping
+==============================
+
+.. phpautoclass:: Services_Twilio_Rest_IpAccessControlListMapping
+    :filename: ../Services/Twilio/Rest/IpAccessControlListMapping.php
+    :members:
+
+IpAccessControlList
+=======================
+
+.. phpautoclass:: Services_Twilio_Rest_IpAccessControlList
+    :filename: ../Services/Twilio/Rest/IpAccessControlList.php
+    :members:
+
+IpAddress
+==============
+.. phpautoclass:: Services_Twilio_Rest_IpAddress
+    :filename: ../Services/Twilio/Rest/IpAddress.php
+    :members:
 
 
 Notification
