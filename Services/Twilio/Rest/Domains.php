@@ -1,6 +1,6 @@
 <?php
 
-class Services_Twilio_Rest_Domains extends Services_Twilio_ListResource {
+class Services_Twilio_Rest_Domains extends Services_Twilio_SIPListResource {
 
     /**
      * Creates a new Domain instance
@@ -11,8 +11,8 @@ class Services_Twilio_Rest_Domains extends Services_Twilio_ListResource {
      *
      *      $client->account->sip->domains->create("MyFriendlyName", "MyDomainName", ...));
      *
-     * :param string friendly_name the friendly name of this domain
-     * :param string domain_name the domain name for this domain
+     * :param string friendly_name: the friendly name of this domain
+     * :param string domain_name: the domain name for this domain
      * :param array params: a single array of parameters which is serialized and
      *      sent directly to the Twilio API.
      */

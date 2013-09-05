@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -26,7 +25,7 @@
  *
  * .. php:attr:: subresource_uris
  *
- *    The subresources associated with this mapping (IpAddresses)
+ *    The subresources associated with this mapping (Credentials)
  */
 
 class Services_Twilio_Rest_CredentialListMapping extends Services_Twilio_InstanceResource {

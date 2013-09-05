@@ -1,6 +1,6 @@
 <?php
 
-class Services_Twilio_Rest_IpAccessControlLists extends Services_Twilio_ListResource {
+class Services_Twilio_Rest_IpAccessControlLists extends Services_Twilio_SIPListResource {
 
     /**
      * Creates a new IpAccessControlLists instance
@@ -11,9 +11,12 @@ class Services_Twilio_Rest_IpAccessControlLists extends Services_Twilio_ListReso
      *
      *      $client->account->sip->ip_access_control_lists->create("MyFriendlyName", ...));
      *
-     * :param string friendly_name the friendly name of this ip access control list
+     * :param string friendly_name: the friendly name of this ip access control list
      * :param array params: a single array of parameters which is serialized and
      *      sent directly to the Twilio API.
+     * :return: the created list
+     * :returntype: :class:`IpAccessControlList`
+     *
      */
     public function create($friendly_name, $params = array()) {
         return parent::_create(array(
