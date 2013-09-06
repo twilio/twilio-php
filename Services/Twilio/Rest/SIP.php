@@ -13,4 +13,7 @@ class Services_Twilio_Rest_SIP extends Services_Twilio_InstanceResource {
         return "SIP";
     }
 
+    public static function camelize($name) {
+        return 'SIP';
+    }
 }
