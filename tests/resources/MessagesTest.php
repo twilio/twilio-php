@@ -15,7 +15,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
                 json_encode(array('sid' => 'SM123'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $msg = $client->account->messages->sendSms('+1222', '+44123', 'Hi there');
+        $msg = $client->account->messages->sendMessage('+1222', '+44123', 'Hi there');
         $this->assertSame('SM123', $msg->sid);
     }
 
@@ -28,7 +28,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
                 json_encode(array('sid' => 'SM123'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $msg = $client->account->messages->sendMms('+1222', '+44123',
+        $msg = $client->account->messages->sendMessage('+1222', '+44123', null,
             array('http://example.com/image1'));
         $this->assertSame('SM123', $msg->sid);
     }
@@ -42,9 +42,8 @@ class MessagesTest extends PHPUnit_Framework_TestCase
                 json_encode(array('sid' => 'SM123'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $msg = $client->account->messages->sendMms('+1222', '+44123',
-            array('http://example.com/image1'),
-            'Hi there'
+        $msg = $client->account->messages->sendMessage('+1222', '+44123', 'Hi there',
+            array('http://example.com/image1')
         );
         $this->assertSame('SM123', $msg->sid);
     }
@@ -58,7 +57,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
                 json_encode(array('sid' => 'SM123'))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $msg = $client->account->messages->sendMms('+1222', '+44123',
+        $msg = $client->account->messages->sendMessage('+1222', '+44123', null,
             array('http://example.com/image1', 'http://example.com/image2'));
         $this->assertSame('SM123', $msg->sid);
     }
@@ -76,7 +75,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
                 ))
             ));
         $client = new Services_Twilio('AC123', '123', null, $http);
-        $msg = $client->account->messages->sendSms('+1222', '+44123', str_repeat('hi', 801));
+        $msg = $client->account->messages->sendMessage('+1222', '+44123', str_repeat('hi', 801));
     }
 
     function testRawCreate() {

@@ -625,7 +625,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             )
         );
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $message = $client->account->messages->sendMms('123', '123',
+        $message = $client->account->messages->sendMessage('123', '123', null,
             array('http://example.com/image1', 'http://example.com/image2')
         );
         $this->assertSame($message->sid, 'SM123');
