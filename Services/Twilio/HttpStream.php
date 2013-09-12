@@ -53,6 +53,7 @@ class Services_Twilio_HttpStream {
         }
 
         $request_options['http']['method'] = strtoupper($name);
+        $request_options['http']['ignore_errors'] = true;
 
         if ($this->debug) {
             error_log(var_export($request_options, true));
