@@ -27,4 +27,4 @@
  *
  *    The uri of this Credential object
  */
-class Services_Twilio_Rest_Credential extends Services_Twilio_InstanceResource {}
+class Services_Twilio_Rest_Credential extends Services_Twilio_InstanceResource { }
