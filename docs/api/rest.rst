@@ -560,7 +560,7 @@ Conference
 
    .. php:attr:: participants
 
-      The :php:class:`Services_Twilio_Rest_Participants` instance, listing people currenlty in this conference
+      The :php:class:`Services_Twilio_Rest_Participants` instance, listing people currently in this conference
 
 CredentialListMapping
 =========================
