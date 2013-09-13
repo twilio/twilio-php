@@ -13,28 +13,14 @@ send outgoing SMS or MMS messages.
     require('/path/to/twilio-php/Services/Twilio.php');
 
     $client = new Services_Twilio('AC123', '123');
-    $message = $client->account->messages->sendMms(
+    $message = $client->account->messages->sendMessage(
       '+14085551234', // From a Twilio number in your account
       '+12125551234', // Text any number
-      array('http://example.com/image.jpg'),    // An array of MediaUrls
       'Hello monkey!',                          // Message body (if any)
+      array('http://example.com/image.jpg'),    // An array of MediaUrls
     );
 
     echo $message->sid;
-
-If you are not sending any media content with the message, consider using the
-`sendSms` helper function:
-
-.. code-block:: php
-
-    require('/path/to/twilio-php/Services/Twilio.php');
-
-    $client = new Services_Twilio('AC123', '123');
-    $message = $client->account->messages->sendMms(
-      '+14085551234',   // From a Twilio number in your account
-      '+12125551234',   // Text any number
-      'Hello monkey!',  // Message body (if any)
-    );
 
 Listing Messages
 ====================

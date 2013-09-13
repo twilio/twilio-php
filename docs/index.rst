@@ -28,7 +28,7 @@ Send a SMS
     $auth_token = "YYYYYY"; // Your Twilio auth token
 
     $client = new Services_Twilio($account_sid, $auth_token);
-    $message = $client->account->messages->sendSms(
+    $message = $client->account->messages->sendMessage(
       '+14085551234', // From a Twilio number in your account
       '+12125551234', // Text any number
       "Hello monkey!"
