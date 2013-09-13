@@ -20,7 +20,7 @@ class Services_Twilio_Rest_Media extends Services_Twilio_ListResource {
     }
 
     // We manually set the instance name here so that the parent
-    // constructor doesn't attempt figure out it. It would do it
+    // constructor doesn't attempt to figure out it. It would do it
     // incorrectly because we override getResourceName above.
     public function __construct($client, $uri) {
         $this->instance_name = "Services_Twilio_Rest_MediaInstance";
