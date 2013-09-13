@@ -12,7 +12,7 @@ class Services_Twilio_Rest_IpAddresses extends Services_Twilio_SIPListResource {
      *
      * Example usage:
      *
-     *  .. code-block:: php
+     * .. code-block:: php
      *
      *      $client->account->sip->ip_access_control_lists->get('ALXXX')->ip_addresses->create(
      *          "FriendlyName", "127.0.0.1"

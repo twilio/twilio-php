@@ -7,9 +7,9 @@ class Services_Twilio_Rest_IpAccessControlListMappings extends Services_Twilio_S
      *
      * Example usage:
      *
-     *  .. code-block:: php
+     * .. code-block:: php
      *
-     *      $client->account->sip->domains->get('SDXXX')->ip_access_control_list_mappings->create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
+     *      $client->account->sip->domains->get('SDXXX')->ip_access_control_list_mappings->create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
      *
      * :param string $ip_access_control_list_sid: the sid of the IpAccessControList
      *      you're adding to this domain.
@@ -21,5 +21,5 @@ class Services_Twilio_Rest_IpAccessControlListMappings extends Services_Twilio_S
             'IpAccessControlListSid' => $ip_access_control_list_sid,
         ) + $params);
     }
-
 }
+

@@ -48,7 +48,7 @@ abstract class Services_Twilio_ListResource extends Services_Twilio_Resource
         return $instance;
     }
 
-    /*
+    /**
      * Construct an :php:class:`InstanceResource
      * <Services_Twilio_InstanceResource>` with the specified params.
      *
@@ -189,7 +189,7 @@ abstract class Services_Twilio_ListResource extends Services_Twilio_Resource
         );
     }
 
-    /*
+    /**
      * Retrieve a new page of API results, and update iterator parameters. This
      * function is called by the paging iterator to retrieve a new page and
      * shouldn't be called directly.

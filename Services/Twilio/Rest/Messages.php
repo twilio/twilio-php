@@ -7,7 +7,7 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *
      * Example usage:
      *
-     *  .. code-block:: php
+     * .. code-block:: php
      *
      *      $client->account->messages->create(array(
      *          "Body" => "foo",
@@ -27,7 +27,7 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
     /**
      * Send a message
      *
-     *  .. code-block:: php
+     * .. code-block:: php
      *
      *      $client = new Services_Twilio('AC123', '123');
      *      $message = $client->account->messages->sendMessage(
@@ -35,7 +35,7 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *          '+12125551234', // Text any number
      *          array('http://example.com/image.jpg'),   // An array of MediaUrls
      *          'Come at the king, you best not miss.'   // Message body (if any)
-     *      ));
+     *      );
      *
      * :param string $from: the from number for the message, this must be a
      *      number you purchased from Twilio

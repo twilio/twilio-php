@@ -5,7 +5,8 @@ Messages
 Sending a Message
 =====================
 
-The :class:`Messages` resource allows you to send outgoing SMS or MMS messages.
+The :class:`Messages <Services_Twilio_Rest_Messages>` resource allows you to
+send outgoing SMS or MMS messages.
 
 .. code-block:: php
 
@@ -17,7 +18,7 @@ The :class:`Messages` resource allows you to send outgoing SMS or MMS messages.
       '+12125551234', // Text any number
       array('http://example.com/image.jpg'),    // An array of MediaUrls
       'Hello monkey!',                          // Message body (if any)
-    ));
+    );
 
     echo $message->sid;
 
@@ -33,7 +34,7 @@ If you are not sending any media content with the message, consider using the
       '+14085551234',   // From a Twilio number in your account
       '+12125551234',   // Text any number
       'Hello monkey!',  // Message body (if any)
-    ));
+    );
 
 Listing Messages
 ====================

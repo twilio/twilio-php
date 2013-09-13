@@ -11,7 +11,7 @@ class Services_Twilio_Rest_Credentials extends Services_Twilio_SIPListResource {
      *
      *      $client->account->sip->credential_lists->get('CLXXX')->credentials->create(
      *          "AwesomeUsername", "SuperSecretPassword",
-     *      ));
+     *      );
      *
      * :param string $username: the username for the new Credential object
      * :param string $password: the password for the new Credential object

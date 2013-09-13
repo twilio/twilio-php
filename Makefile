@@ -19,7 +19,7 @@ export LICENSE
 all: test
 
 clean:
-	@rm -rf dist
+	@rm -rf dist venv
 
 PHP_FILES = `find dist -name \*.php`
 dist: clean

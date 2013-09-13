@@ -7,12 +7,12 @@ class Services_Twilio_Rest_CredentialListMappings extends Services_Twilio_SIPLis
      *
      * Example usage:
      *
-     *  .. code-block:: php
+     * .. code-block:: php
      *
-     *      $client->account->sip->domains->get('SDXXX')->credential_list_mappings->create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
+     *      $client->account->sip->domains->get('SDXXX')->credential_list_mappings->create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
      *
-     * :param string ip_access_control_list_sid the sid of the CredentialList you're adding to this domain.
-     * :param array params: a single array of parameters which is serialized and
+     * :param string $credential_list_sid: the sid of the CredentialList you're adding to this domain.
+     * :param array $params: a single array of parameters which is serialized and
      *      sent directly to the Twilio API.
      */
     public function create($credential_list_sid, $params = array()) {
@@ -20,5 +20,5 @@ class Services_Twilio_Rest_CredentialListMappings extends Services_Twilio_SIPLis
             'CredentialListSid' => $credential_list_sid,
         ) + $params);
     }
-
 }
+

@@ -5,7 +5,7 @@ Accounts
 Updating Account Information
 ==============================
 
-Updating :class:`Account` information is really easy:
+Updating :class:`Account <Services_Twilio_Rest_Account>` information is really easy:
 
 .. code-block:: php
 

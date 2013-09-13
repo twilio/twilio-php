@@ -7,7 +7,7 @@ class Services_Twilio_Rest_IpAccessControlLists extends Services_Twilio_SIPListR
      *
      * Example usage:
      *
-     *  .. code-block:: php
+     * .. code-block:: php
      *
      *      $client->account->sip->ip_access_control_lists->create("MyFriendlyName");
      *

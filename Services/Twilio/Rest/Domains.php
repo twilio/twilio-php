@@ -11,7 +11,7 @@ class Services_Twilio_Rest_Domains extends Services_Twilio_SIPListResource {
      *
      *      $client->account->sip->domains->create(
      *          "MyFriendlyName", "MyDomainName"
-     *      ));
+     *      );
      *
      * :param string $friendly_name: the friendly name of this domain
      * :param string $domain_name: the domain name for this domain
