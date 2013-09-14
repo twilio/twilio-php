@@ -7,7 +7,7 @@ class MediaTest extends PHPUnit_Framework_TestCase {
     function testUseSpecialListKey() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Messages/MM123/Media.json')
+            ->with('/2010-04-01/Accounts/AC123/Messages/MM123/Media.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'end' => '0',
