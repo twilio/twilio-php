@@ -38,13 +38,15 @@ class Services_Twilio extends Services_Twilio_Resource
      * @param string               $version  API version
      * @param Services_Twilio_Http $_http    A HTTP client
      * @param int                  $retryAttempts Number of times to retry failed requests
+     * @param string               $baseUrl  The root URL to use for all requests
      */
     public function __construct(
         $sid,
         $token,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
-        $retryAttempts = 1
+        $retryAttempts = 1,
+        $baseUrl = "https://api.twilio.com"
     ) {
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
@@ -55,7 +57,7 @@ class Services_Twilio extends Services_Twilio_Resource
             }
             if (in_array('curl', get_loaded_extensions())) {
                   $_http = new Services_Twilio_TinyHttp(
-                      "https://api.twilio.com",
+                      $baseUrl,
                       array("curlopts" => array(
                           CURLOPT_USERAGENT => self::USER_AGENT,
                           CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
@@ -64,7 +66,7 @@ class Services_Twilio extends Services_Twilio_Resource
                   );
             } else {
                 $_http = new Services_Twilio_HttpStream(
-                    "https://api.twilio.com",
+                    $baseUrl,
                     array(
                         "http_options" => array(
                             "http" => array(
