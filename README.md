@@ -20,7 +20,7 @@ you can install PEAR from their website, or download the source directly.
 
 #### Via Composer:
 
-**twilio-php** is available on Packagist as the 
+**twilio-php** is available on Packagist as the
 [`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
 
 #### Via ZIP file:
@@ -60,7 +60,7 @@ $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
 $client = new Services_Twilio($sid, $token);
-$message = $client->account->sms_messages->create(
+$message = $client->account->messages->sendMessage(
   '9991231234', // From a valid Twilio number
   '8881231234', // Text this number
   "Hello monkey!"
