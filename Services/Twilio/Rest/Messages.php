@@ -17,7 +17,7 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *
      * :param array $params: a single array of parameters which is serialized and
      *      sent directly to the Twilio API. You may find it easier to use the
-     *      sendSms or sendMms helpers instead of this library.
+     *      sendMessage helper instead of this function.
      *
      */
     public function create($params = array()) {
@@ -33,8 +33,8 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *      $message = $client->account->messages->sendMessage(
      *          '+14085551234', // From a Twilio number in your account
      *          '+12125551234', // Text any number
-     *          array('http://example.com/image.jpg'),   // An array of MediaUrls
      *          'Come at the king, you best not miss.'   // Message body (if any)
+     *          array('http://example.com/image.jpg'),   // An array of MediaUrls
      *      );
      *
      * :param string $from: the from number for the message, this must be a
