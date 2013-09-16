@@ -11,6 +11,7 @@ class MediaTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'end' => '0',
+                    'total' => '2',
                     'media_list' => array(
                         array('sid' => 'ME123'),
                         array('sid' => 'ME456')
@@ -20,7 +21,7 @@ class MediaTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $media_list = $client->account->messages->get('MM123')->media->getPage('0');
+        $media_list = $client->account->messages->get('MM123')->media->getPage()->getItems();
         $this->assertEquals(count($media_list), 2);
     }
 
