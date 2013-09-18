@@ -1,6 +1,28 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.0
+--------------
+
+Released on September 18, 2013
+
+- Support MMS
+- Support SIP In
+- $params arrays will now turn lists into multiple HTTP keys with the same name,
+
+        array("Twilio" => array('foo', 'bar'))
+
+    will turn into Twilio=foo&Twilio=bar when sent to the API.
+
+- Update the documentation to use php-autodoc and Sphinx.
+
+Version 3.11.0
+--------------
+
+Released on June 13
+
+- Support Streams when curl is not available for PHP installations
+
 Version 3.10.0
 --------------
 
@@ -128,7 +150,7 @@ Released on July 23, 2012
 
 - Fix an issue introduced in the 3.5.0 release where updating or muting
   a participant would [throw an exception instead of muting the
-  participant][mute-request]. 
+  participant][mute-request].
   (Reporter: [Alex Chan](/alexcchan))
 
 - Fix an issue introduced in the 3.5.0 release where [filtering an iterator
@@ -185,7 +207,7 @@ Version 3.3.2
 Released on May 3, 2012
 
 - If you pass booleans in as TwiML (ex transcribe="true"), convert them to
-  the strings "true" and "false" instead of outputting the incorrect values 
+  the strings "true" and "false" instead of outputting the incorrect values
   1 and "".
 
 Version 3.3.1
@@ -193,8 +215,8 @@ Version 3.3.1
 
 Released on May 1, 2012
 
-- Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded 
-data from the Twilio API. Remove unused XML parsing logic, as the library never 
+- Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded
+data from the Twilio API. Remove unused XML parsing logic, as the library never
 requests XML data.
 
 Version 3.2.4
