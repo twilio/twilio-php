@@ -58,4 +58,8 @@ docs-install: venv
 docs:
 	. venv/bin/activate; cd docs && make html
 
-.PHONY: all clean dist test docs docs-install test-install
+authors:
+	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
+	git log --raw | grep "^Author: " | cut -d ' ' -f2- | cut -d '<' -f1 | sed 's/^/- /' | sort | uniq >> AUTHORS.md
+
+.PHONY: all clean dist test docs docs-install test-install authors
