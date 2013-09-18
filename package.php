@@ -68,6 +68,7 @@ $package->setOptions(
             'composer.*',
             'coverage/*',
             '.travis.yml',
+            'venv/*',
         )
     )
 );
