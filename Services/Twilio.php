@@ -52,6 +52,9 @@ class Services_Twilio extends Services_Twilio_Resource
                 $version : end($this->versions);
 
         if (null === $_http) {
+            if (!in_array('openssl', get_loaded_extensions())) {
+                throw new Services_Twilio_HttpException("The OpenSSL extension is required but not currently enabled. For more information, see http://php.net/manual/en/book.openssl.php");
+            }
             if (in_array('curl', get_loaded_extensions())) {
                   $_http = new Services_Twilio_TinyHttp(
                       "https://api.twilio.com",
