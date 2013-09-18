@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.10.0';
+$api_version     = '3.12.0';
 $api_state       = 'stable';
 
-$release_version = '3.10.0';
+$release_version = '3.12.0';
 $release_state   = 'stable';
-$release_notes   = 'Use HTTP status code for error reporting';
+$release_notes   = 'Add support for MMS and Sip In';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
