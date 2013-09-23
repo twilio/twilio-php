@@ -68,7 +68,7 @@ class Services_Twilio_Capability
     {
         $this->allow('client', 'outgoing', array(
             'appSid' => $appSid,
-            'appParams' => http_build_query($appParams)));
+            'appParams' => http_build_query($appParams, '', '&')));
     }
 
     /**
@@ -80,7 +80,7 @@ class Services_Twilio_Capability
     {
         $this->allow('stream', 'subscribe', array(
             'path' => '/2010-04-01/Events',
-            'params' => http_build_query($filters),
+            'params' => http_build_query($filters, '', '&'),
         ));
     }
 
@@ -146,7 +146,7 @@ class ScopeURI
     {
         $uri = "scope:{$this->service}:{$this->privilege}";
         if (count($this->params)) {
-            $uri .= "?".http_build_query($this->params);
+            $uri .= "?".http_build_query($this->params, '', '&');
         }
         return $uri;
     }
