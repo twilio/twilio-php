@@ -49,7 +49,7 @@ the ip addresses you wish to allow.
     echo $ip_access_control_list->sid;
 
 Adding an IpAddress to an IpAccessControlList
-=========================
+==============================================
 
 Now it's time to add an :class:`IpAddress
 <Services_Twilio_Rest_IpAddress>` to your new :class:`IpAccessControlList

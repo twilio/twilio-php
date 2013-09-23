@@ -1,4 +1,4 @@
-.. _ref-rest
+.. _ref-rest:
 
 ==========================
 Using the Twilio REST API

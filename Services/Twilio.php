@@ -22,14 +22,22 @@ spl_autoload_register('Services_Twilio_autoload');
  *
  *
  * :param string               $sid:      Your Account SID
- * :param string               $token:    Your Auth token from
- *      twilio.com/user/account
+ * :param string               $token:    Your Auth Token from `your dashboard
+ *      <https://www.twilio.com/user/account>`_
  * :param string               $version:  API version to use
  * :param $_http:    A HTTP client for making requests.
- * :type $_http: :php:class:`Services_Twilio_Http`
+ * :type $_http: :php:class:`Services_Twilio_TinyHttp`
  * :param int                  $retryAttempts:
  *      Number of times to retry failed requests. Currently only idempotent
- *      requests (GET's and DELETE's) are retried .
+ *      requests (GET's and DELETE's) are retried.
+ *
+ * Here's an example:
+ *
+ * .. code-block:: php
+ *
+ *      require('Services/Twilio.php');
+ *      $client = new Services_Twilio('AC123', '456bef', null, null, 3);
+ *      // Take some action with the client, etc.
  */
 class Services_Twilio extends Services_Twilio_Resource
 {
