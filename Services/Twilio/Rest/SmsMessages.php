@@ -4,7 +4,7 @@ class Services_Twilio_Rest_SmsMessages
     extends Services_Twilio_ListResource
 {
     public function __construct($client, $uri) {
-        $uri = preg_replace("#SmsMessages#", "SMS/Messages", $uri);
+        $uri = preg_replace("#SmsMessages#", "Messages", $uri);
         parent::__construct($client, $uri);
     }
 
