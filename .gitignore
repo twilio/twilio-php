@@ -1,6 +1,5 @@
 docs/_build/
 vendor/*
-composer.lock
 composer.phar
 coverage
 package.xml
