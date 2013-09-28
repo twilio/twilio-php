@@ -32,22 +32,17 @@ dist: clean
 	done
 
 test-install:
-	-pear channel-discover pear.phpunit.de
-	-pear channel-discover components.ez.no
-	-pear channel-discover pear.symfony-project.com
-	-pear channel-discover pear.survivethedeepend.com
-	-pear channel-discover hamcrest.googlecode.com/svn/pear
-	-pear install --alldeps deepend/Mockery
-	-pear install phpunit/PHPUnit
+	# Composer: http://getcomposer.org/download/
+	composer install
 
 install:
 	pear channel-discover twilio.github.com/pear
 	pear install twilio/Services_Twilio
 
-# if these fail, you may need to install the helper libraries - see "Running
-# Tests" at http://readthedocs.org/projects/twilio-php/.
+# if these fail, you may need to install the helper library - run "make
+# test-install"
 test:
-	phpunit --strict --colors --configuration tests/phpunit.xml
+	@PATH=vendor/bin:$(PATH) phpunit --strict --colors --configuration tests/phpunit.xml;
 
 venv:
 	virtualenv venv
