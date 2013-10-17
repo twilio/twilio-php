@@ -39,6 +39,34 @@ code, or which contain a certain pattern.
         echo 'Number: ' + $number->phone_number + "\n";
     }
 
+You can also use the type subresources to search for a given type.
+
+Available types include:
+- `local`
+- `toll_free`
+- `mobile`
+
+.. code-block:: php
+
+    // Local
+    $numbers = $client->account->available_phone_numbers->local;
+    foreach($numbers as $number) {
+        echo 'Number: ' + $number->phone_number + "\n";
+    }
+
+    // TollFree
+    $numbers = $client->account->available_phone_numbers->toll_free;
+    foreach($numbers as $number) {
+        echo 'Number: ' + $number->phone_number + "\n";
+    }
+
+    // Mobile
+    $numbers = $client->account->available_phone_numbers->mobile;
+    foreach($numbers as $number) {
+        echo 'Number: ' + $number->phone_number + "\n";
+    }
+
+
 Buying a Number
 ---------------
 
