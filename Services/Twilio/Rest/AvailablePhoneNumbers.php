@@ -3,8 +3,7 @@
 class Services_Twilio_Rest_AvailablePhoneNumbers
     extends Services_Twilio_ListResource
 {
-    public function getLocal($country)
-    {
+    public function getLocal($country) {
         $curried = new Services_Twilio_PartialApplicationHelper();
         $curried->set(
             'getList',
@@ -13,8 +12,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         );
         return $curried;
     }
-    public function getTollFree($country)
-    {
+    public function getTollFree($country) {
         $curried = new Services_Twilio_PartialApplicationHelper();
         $curried->set(
             'getList',
@@ -25,7 +23,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
     }
 
     /**
-     * Get a list of available phone numbers. 
+     * Get a list of available phone numbers.
      *
      * @param string $country The 2-digit country code you'd like to search for
      *    numbers e.g. ('US', 'CA', 'GB')
@@ -37,8 +35,7 @@ class Services_Twilio_Rest_AvailablePhoneNumbers
         return $this->client->retrieveData($this->uri . "/$country/$type", $params);
     }
 
-    public function getResourceName($camelized = false)
-    {
+    public function getResourceName($camelized = false) {
         // You can't page through the list of available phone numbers.
         $this->instance_name = 'Services_Twilio_Rest_AvailablePhoneNumber';
         return $camelized ? 'Countries' : 'countries';
