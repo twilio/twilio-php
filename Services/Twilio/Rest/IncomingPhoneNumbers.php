@@ -3,35 +3,12 @@
 class Services_Twilio_Rest_IncomingPhoneNumbers
     extends Services_Twilio_ListResource
 {
-
-    public function getLocal() {
-        $curried = new Services_Twilio_PartialApplicationHelper();
-        $curried->set(
-            'getList',
-            array($this, 'getList'),
-            array('Local')
+    function init($client, $uri) {
+        $this->setupSubresources(
+            'local',
+            'toll_free',
+            'mobile'
         );
-        return $curried;
-    }
-
-    public function getTollFree() {
-        $curried = new Services_Twilio_PartialApplicationHelper();
-        $curried->set(
-            'getList',
-            array($this, 'getList'),
-            array('TollFree')
-        );
-        return $curried;
-    }
-
-    public function getMobile() {
-        $curried = new Services_Twilio_PartialApplicationHelper();
-        $curried->set(
-            'getList',
-            array($this, 'getList'),
-            array('Mobile')
-        );
-        return $curried;
     }
 
     function create(array $params = array()) {
@@ -65,3 +42,9 @@ class Services_Twilio_Rest_IncomingPhoneNumbers
         return $items[0];
     }
 }
+
+class Services_Twilio_Rest_Local extends Services_Twilio_NumberType { }
+
+class Services_Twilio_Rest_Mobile extends Services_Twilio_NumberType { }
+
+class Services_Twilio_Rest_TollFree extends Services_Twilio_NumberType { }

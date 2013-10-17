@@ -5,16 +5,14 @@ use \Mockery as m;
 class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
 
     protected $apiResponse = array(
-        'end' => '0',
         'incoming_phone_numbers' => array(
             array(
                 'sid' => 'PN123',
                 'sms_fallback_method' => 'POST',
                 'voice_method' => 'POST',
+                'friendly_name' => '(510) 564-7903',
             )
         ),
-        'next_page_uri' => 'null',
-        'start' => 0,
     );
 
     function testGetNumberWithResult() {
@@ -50,15 +48,17 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
     function testGetMobile() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Mobile.json')
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Mobile.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('incoming_phone_numbers' => array(
-                    'friendly_name' => '(510) 564-7903'
-                )))
+                json_encode($this->apiResponse)
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Mobile.json?Page=1&PageSize=50')
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $nums = $client->account->incoming_phone_numbers->getMobile()->getList();
-        foreach ($nums as $num) {
+        foreach ($client->account->incoming_phone_numbers->mobile as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }
     }
@@ -66,15 +66,18 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
     function testGetLocal() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Local.json')
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Local.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('incoming_phone_numbers' => array(
-                    'friendly_name' => '(510) 564-7903'
-                )))
+                json_encode($this->apiResponse)
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Local.json?Page=1&PageSize=50')
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $nums = $client->account->incoming_phone_numbers->getLocal()->getList();
-        foreach ($nums as $num) {
+
+        foreach ($client->account->incoming_phone_numbers->local as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }
     }
@@ -82,15 +85,17 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
     function testGetTollFree() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/TollFree.json')
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/TollFree.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array('incoming_phone_numbers' => array(
-                    'friendly_name' => '(510) 564-7903'
-                )))
+                json_encode($this->apiResponse)
+            ));
+        $http->shouldReceive('get')->once()
+            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/TollFree.json?Page=1&PageSize=50')
+            ->andReturn(array(400, array('Content-Type' => 'application/json'),
+                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $nums = $client->account->incoming_phone_numbers->getTollFree()->getList();
-        foreach ($nums as $num) {
+        foreach ($client->account->incoming_phone_numbers->toll_free as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }
     }
