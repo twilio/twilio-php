@@ -123,7 +123,7 @@ Domains
 IncomingPhoneNumbers
 ========================
 
-.. phpautoclass:: Services_Twilio_Rest_IncomingPhoneNumbers
+.. phpautoclass:: Services_Twilio_Rest_IncomingPhoneNumbers,Services_Twilio_Rest_Local,Services_Twilio_Rest_Mobile,Services_Twilio_Rest_TollFree
     :filename: ../Services/Twilio/Rest/IncomingPhoneNumbers.php
     :members:
 
