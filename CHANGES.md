@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.1
+--------------
+
+Released on October 21, 2013
+
+- Add support for filtering by type for IncomingPhoneNumbers.
+- Add support for searching for mobile numbers for both
+IncomingPhoneNumbers and AvailablePhoneNumbers.
+
 Version 3.12.0
 --------------
 
