@@ -104,5 +104,20 @@ class MessagesTest extends PHPUnit_Framework_TestCase
         $client = new Services_Twilio('AC123', '123', null, $http);
         $client->account->messages->delete('ME123');
     }
+
+    function testNewline() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/2010-04-01/Accounts/AC123/Messages.json', $this->formHeaders,
+                'Body=Hello%0A%0AHello')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('sid' => 'SM123'))
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $msg = $client->account->messages->create(array(
+            'Body' => "Hello\n\nHello"
+        ));
+        $this->assertSame('SM123', $msg->sid);
+    }
 }
 
