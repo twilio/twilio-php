@@ -290,9 +290,16 @@ class Services_Twilio extends Services_Twilio_Resource
             $this->last_response = $decoded;
             return $decoded;
         }
+	$message = array();
+	if (isset($decoded->message)) {
+		$message[] = $decoded->message;
+	}
+	if (isset($decoded->detail)) {
+		$message[] = $decoded->detail;
+	}
         throw new Services_Twilio_RestException(
             $status,
-            isset($decoded->message) ? $decoded->message : '',
+            $message ? implode(' - ',$message) : null,
             isset($decoded->code) ? $decoded->code : null,
             isset($decoded->more_info) ? $decoded->more_info : null
         );
