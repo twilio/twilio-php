@@ -16,6 +16,11 @@ define LICENSE
 endef
 export LICENSE
 
+COMPOSER = $(shell which composer)
+ifeq ($(strip $(COMPOSER)),)
+	COMPOSER = php composer.phar
+endif
+
 all: test
 
 clean:
@@ -33,7 +38,7 @@ dist: clean
 
 test-install:
 	# Composer: http://getcomposer.org/download/
-	composer install
+	$(COMPOSER) install
 
 install:
 	pear channel-discover twilio.github.com/pear
