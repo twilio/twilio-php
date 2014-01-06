@@ -35,12 +35,12 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.1';
+$api_version     = '3.12.2';
 $api_state       = 'stable';
 
-$release_version = '3.12.1';
+$release_version = '3.12.2';
 $release_state   = 'stable';
-$release_notes   = 'Support for /Mobile endpoint';
+$release_notes   = 'Fixes issue with string representation of resources';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
