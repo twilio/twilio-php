@@ -41,7 +41,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 class Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.12.1';
+    const USER_AGENT = 'twilio-php/3.12.2';
 
     protected $http;
     protected $retryAttempts;
@@ -66,11 +66,13 @@ class Services_Twilio extends Services_Twilio_Resource
             if (in_array('curl', get_loaded_extensions())) {
                   $_http = new Services_Twilio_TinyHttp(
                       "https://api.twilio.com",
-                      array("curlopts" => array(
-                          CURLOPT_USERAGENT => self::USER_AGENT,
-                          CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                          CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
-                      ))
+                      array(
+                          "curlopts" => array(
+                              CURLOPT_USERAGENT => self::USER_AGENT,
+                              CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
+                              CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
+                          ),
+                      )
                   );
             } else {
                 $_http = new Services_Twilio_HttpStream(

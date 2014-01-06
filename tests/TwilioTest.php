@@ -630,4 +630,36 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         );
         $this->assertSame($message->sid, 'SM123');
     }
+
+    function testToString() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $resp = <<<JSON
+            {
+                "account_sid": "AC123",
+                "api_version": "2010-04-01",
+                "body": "Hello world!",
+                "date_created": "Mon, 06 Jan 2014 04:54:34 +0000",
+                "date_sent": "Mon, 06 Jan 2014 04:54:34 +0000",
+                "date_updated": "Mon, 06 Jan 2014 04:54:34 +0000",
+                "direction": "outbound-api",
+                "from": "+19255556789",
+                "num_media": null,
+                "num_segments": "1",
+                "price": "-0.00750",
+                "price_unit": "USD",
+                "sid": "SM77d5ccc71419444fb730541daaaaaaaa",
+                "status": "sent",
+                "subresource_uris": {
+                    "media": "/2010-04-01/Accounts/AC123/Messages/SM77d5ccc71419444fb730541daaaaaaaa/Media.json"
+                },
+                "to": "+19255551234",
+                "uri": "/2010-04-01/Accounts/AC123/Messages/SM77d5ccc71419444fb730541daaaaaaaa.json"
+            }
+JSON;
+        $sampleMessage = new Services_Twilio_Rest_Message($http, '/foo',
+            json_decode($resp)
+        );
+        $expected = '{"account_sid":"AC123","api_version":"2010-04-01","body":"Hello world!","date_created":"Mon, 06 Jan 2014 04:54:34 +0000","date_sent":"Mon, 06 Jan 2014 04:54:34 +0000","date_updated":"Mon, 06 Jan 2014 04:54:34 +0000","direction":"outbound-api","from":"+19255556789","num_media":null,"num_segments":"1","price":"-0.00750","price_unit":"USD","sid":"SM77d5ccc71419444fb730541daaaaaaaa","status":"sent","subresource_uris":{"media":"\/2010-04-01\/Accounts\/AC123\/Messages\/SM77d5ccc71419444fb730541daaaaaaaa\/Media.json"},"to":"+19255551234","uri":"\/foo"}';
+        $this->assertSame((string)$sampleMessage, $expected);
+    }
 }
