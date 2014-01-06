@@ -124,10 +124,10 @@ abstract class Services_Twilio_Resource {
         $out = array();
         foreach ($this as $key => $value) {
             if ($key !== 'client' && $key !== 'subresources') {
-                $out[$key] = (string)$value;
+                $out[$key] = $value;
             }
         }
-        return json_encode($out);
+        return json_encode($out, true);
     }
 
 }
