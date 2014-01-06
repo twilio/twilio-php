@@ -34,8 +34,8 @@ class Services_Twilio_AutoPagingIterator
         return key($this->items);
     }
 
-    /* 
-     * Return the next item in the list, making another HTTP call to the next 
+    /*
+     * Return the next item in the list, making another HTTP call to the next
      * page of resources if necessary.
      */
     public function next()
@@ -53,7 +53,7 @@ class Services_Twilio_AutoPagingIterator
     }
 
     /*
-     * Restore everything to the way it was before we began paging. This gets 
+     * Restore everything to the way it was before we began paging. This gets
      * called at the beginning of any foreach() loop
      */
     public function rewind()
@@ -85,7 +85,7 @@ class Services_Twilio_AutoPagingIterator
         return false;
     }
 
-    /* 
+    /*
      * Fill $this->items with a new page from the API, if necessary.
      */
     protected function loadIfNecessary()
