@@ -58,6 +58,13 @@ docs-install: venv
 docs:
 	. venv/bin/activate; cd docs && make html
 
+release-install:
+	pear channel-discover twilio.github.com/pear || true
+	pear channel-discover pear.pirum-project.org || true
+	pear install pirum/Pirum || true
+	pear install XML_Serializer-0.20.2 || true
+	pear install PEAR_PackageFileManager2 || true
+
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
 	git log --raw | grep "^Author: " | cut -d ' ' -f2- | cut -d '<' -f1 | sed 's/^/- /' | sort | uniq >> AUTHORS.md
