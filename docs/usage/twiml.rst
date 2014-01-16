@@ -4,7 +4,10 @@
 TwiML Creation
 ==============
 
-TwiML creation begins with the :class:`Services_Twilio_Twiml` verb. Each succesive verb is created by calling various methods on the response, such as :meth:`say` or :meth:`play`. These methods return the verbs they create to ease the creation of nested TwiML.
+TwiML creation begins with the :class:`Services_Twilio_Twiml` verb. Each
+succesive verb is created by calling various methods on the response, such as
+:meth:`say` or :meth:`play`. These methods return the verbs they create to ease
+the creation of nested TwiML.
 
 .. code-block:: php
 
