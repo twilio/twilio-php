@@ -53,46 +53,44 @@ class Services_Twilio extends Services_Twilio_Resource
         $sid,
         $token,
         $version = null,
-        Services_Twilio_TinyHttp $_http = null,
+        $url = "https://api.twilio.com",
         $retryAttempts = 1
     ) {
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
 
-        if (null === $_http) {
-            if (!in_array('openssl', get_loaded_extensions())) {
-                throw new Services_Twilio_HttpException("The OpenSSL extension is required but not currently enabled. For more information, see http://php.net/manual/en/book.openssl.php");
-            }
-            if (in_array('curl', get_loaded_extensions())) {
-                  $_http = new Services_Twilio_TinyHttp(
-                      "https://api.twilio.com",
-                      array(
-                          "curlopts" => array(
-                              CURLOPT_USERAGENT => self::USER_AGENT,
-                              CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                              CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
-                          ),
-                      )
-                  );
-            } else {
-                $_http = new Services_Twilio_HttpStream(
-                    "https://api.twilio.com",
-                    array(
-                        "http_options" => array(
-                            "http" => array(
-                                "user_agent" => self::USER_AGENT,
-                                "header" => "Accept-Charset: utf-8\r\n",
-                            ),
-                            "ssl" => array(
-                                'verify_peer' => true,
-                                'cafile' => dirname(__FILE__) . '/cacert.pem',
-                                'verify_depth' => 5,
-                            ),
-                        ),
-                    )
-                );
-            }
-        }
+		if (!in_array('openssl', get_loaded_extensions())) {
+			throw new Services_Twilio_HttpException("The OpenSSL extension is required but not currently enabled. For more information, see http://php.net/manual/en/book.openssl.php");
+		}
+		if (in_array('curl', get_loaded_extensions())) {
+			  $_http = new Services_Twilio_TinyHttp(
+				  $url,
+				  array(
+					  "curlopts" => array(
+						  CURLOPT_USERAGENT => self::USER_AGENT,
+						  CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
+						  CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
+					  ),
+				  )
+			  );
+		} else {
+			$_http = new Services_Twilio_HttpStream(
+				$url,
+				array(
+					"http_options" => array(
+						"http" => array(
+							"user_agent" => self::USER_AGENT,
+							"header" => "Accept-Charset: utf-8\r\n",
+						),
+						"ssl" => array(
+							'verify_peer' => true,
+							'cafile' => dirname(__FILE__) . '/cacert.pem',
+							'verify_depth' => 5,
+						),
+					),
+				)
+			);
+		}
         $_http->authenticate($sid, $token);
         $this->http = $_http;
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
