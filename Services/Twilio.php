@@ -108,7 +108,7 @@ class Services_Twilio extends Services_Twilio_Resource
      */
     public static function qualifiedUserAgent() {
         $php_version = phpversion();
-        return self::USER_AGENT . ' (php $php_version)';
+        return self::USER_AGENT . " (php $php_version)";
     }
 
     /**
