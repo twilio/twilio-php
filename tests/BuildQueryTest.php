@@ -46,5 +46,11 @@ class BuildQueryTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals(Services_Twilio::buildQuery($data, 'var'), 'var0=bar&var1=baz&var2=bin');
     }
+
+    public function testQualifiedUserAgent() {
+        $expected = Services_Twilio::USER_AGENT . " (php 5.4)";
+        $this->assertEquals(Services_Twilio::qualifiedUserAgent("5.4"), $expected);
+    }
+
 }
 
