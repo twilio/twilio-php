@@ -102,9 +102,9 @@ class Services_Twilio extends Services_Twilio_Resource
 
     /**
      * Fully qualified user agent with the current PHP Version.
-	 *
-	 * :return: the user agent
-	 * :rtype: string
+     *
+     * :return: the user agent
+     * :rtype: string
      */
     public static function qualifiedUserAgent($php_version) {
         return self::USER_AGENT . " (php $php_version)";
