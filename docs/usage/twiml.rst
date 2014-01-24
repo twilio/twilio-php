@@ -110,13 +110,13 @@ Record
       <Record action="http://foo.com/path/to/redirect" maxLength="20"/>
     </Response>
 
-Sms
+Message
 ---
 
 .. code-block:: php
 
     $response = new Services_Twilio_Twiml;
-    $response->sms('Hello World', array(
+    $response->message('Hello World', array(
       'to' => '+14150001111',
       'from' => '+14152223333'
     ));
@@ -126,7 +126,7 @@ Sms
 
     <?xml version="1.0" encoding="UTF-8"?>
     <Response>
-      <Sms to="+14150001111" from="+14152223333">Hello World</Sms>
+      <Message to="+14150001111" from="+14152223333">Hello World</Message>
     </Response>
 
 Dial
