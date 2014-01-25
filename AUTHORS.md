@@ -8,6 +8,7 @@ A huge thanks to all of our contributors:
 - Adam Ballai 
 - Alex Chan 
 - Alex Rowley 
+- Brett Gerry 
 - Bulat Shakirzyanov 
 - Chris Barr 
 - D Keith Casey Jr 
@@ -22,6 +23,7 @@ A huge thanks to all of our contributors:
 - Luke Waite 
 - Neuman 
 - Neuman Vong 
+- Peter Meth 
 - Ryan Brideau 
 - Sam Kimbrel 
 - Shawn Parker 

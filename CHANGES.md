@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.2
+--------------
+
+Released on January 24, 2013
+
+- More descriptive User-Agent.
+- Fix issue with string representation of resources.
+- Fix bug preventing PHP 5.5 support.
+
 Version 3.12.1
 --------------
 
