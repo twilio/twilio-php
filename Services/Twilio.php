@@ -68,7 +68,7 @@ class Services_Twilio extends Services_Twilio_Resource
                       "https://api.twilio.com",
                       array(
                           "curlopts" => array(
-                              CURLOPT_USERAGENT => $this->qualifiedUserAgent(phpversion()),
+                              CURLOPT_USERAGENT => static::qualifiedUserAgent(phpversion()),
                               CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
                               CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
                           ),
@@ -80,7 +80,7 @@ class Services_Twilio extends Services_Twilio_Resource
                     array(
                         "http_options" => array(
                             "http" => array(
-                                "user_agent" => $this->qualifiedUserAgent(phpversion()),
+                                "user_agent" => static::qualifiedUserAgent(phpversion()),
                                 "header" => "Accept-Charset: utf-8\r\n",
                             ),
                             "ssl" => array(
