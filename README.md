@@ -4,26 +4,26 @@
 
 You can install **twilio-php** via PEAR or by downloading the source.
 
-#### Install Via PEAR (>= 1.9.3):
+#### Via PEAR (>= 1.9.3):
 
 PEAR is a package manager for PHP. Open a command line and use these PEAR
 commands to download the helper library:
 
-    pear channel-discover twilio.github.io/pear
-    pear install twilio/Services_Twilio
+    $ pear channel-discover twilio.github.com/pear
+    $ pear install twilio/Services_Twilio
 
 If you get the following message:
 
-    -bash: pear: command not found
+    $ -bash: pear: command not found
 
 you can install PEAR from their website, or download the source directly.
 
-#### Install Via Composer:
+#### Via Composer:
 
 **twilio-php** is available on Packagist as the
 [`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
 
-#### Install Via ZIP file:
+#### Via ZIP file:
 
 [Click here to download the source
 (.zip)](https://github.com/twilio/twilio-php/zipball/master) which includes all
