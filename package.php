@@ -31,7 +31,8 @@
  * @link      http://pear.php.net/package/Services_Twilio
  */
 
-error_reporting(E_ALL & ~E_DEPRECATED);
+ini_set('display_errors', '0');
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
