@@ -16,7 +16,7 @@ This documentation is for version 3.12 of `twilio-php
 Quickstart
 ============
 
-Send a SMS
+Send an SMS
 >>>>>>>>>>>
 
 .. code-block:: php
