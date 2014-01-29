@@ -78,7 +78,7 @@ $package->setOptions(
 $package->setPackage('Services_Twilio');
 $package->setSummary('PHP helper library for Twilio');
 $package->setDescription($description);
-$package->setChannel('twilio.github.com/pear');
+$package->setChannel('twilio.github.io/pear');
 $package->setPackageType('php');
 $package->setLicense(
     'MIT License',
