@@ -662,4 +662,11 @@ JSON;
         $expected = '{"account_sid":"AC123","api_version":"2010-04-01","body":"Hello world!","date_created":"Mon, 06 Jan 2014 04:54:34 +0000","date_sent":"Mon, 06 Jan 2014 04:54:34 +0000","date_updated":"Mon, 06 Jan 2014 04:54:34 +0000","direction":"outbound-api","from":"+19255556789","num_media":null,"num_segments":"1","price":"-0.00750","price_unit":"USD","sid":"SM77d5ccc71419444fb730541daaaaaaaa","status":"sent","subresource_uris":{"media":"\/2010-04-01\/Accounts\/AC123\/Messages\/SM77d5ccc71419444fb730541daaaaaaaa\/Media.json"},"to":"+19255551234","uri":"\/foo"}';
         $this->assertSame((string)$sampleMessage, $expected);
     }
+
+    function testSubresourceUris() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $call = new Services_Twilio_Rest_Call($http, '/foo');
+        $recordings = $call->subresources['recordings'];
+        $this->assertSame($recordings->uri, '/foo/Recordings');
+    }
 }
