@@ -9,7 +9,7 @@
  *
  * LICENSE:
  *
- * Copyright 2012 Twilio.
+ * Copyright 2014 Twilio.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,10 +37,10 @@ require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.3';
+$api_version     = '3.12.4';
 $api_state       = 'stable';
 
-$release_version = '3.12.3';
+$release_version = '3.12.4';
 $release_state   = 'stable';
 $release_notes   = 'Add transcription link to recordings';
 
