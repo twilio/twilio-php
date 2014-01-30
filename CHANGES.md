@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.4
+--------------
+
+Released on January 30, 2014
+
+- Fix incorrect use of static:: which broke compatibility with PHP 5.2.
+
 Version 3.12.3
 --------------
 
