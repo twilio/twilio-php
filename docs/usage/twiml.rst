@@ -111,7 +111,7 @@ Record
     </Response>
 
 Message
----
+-------
 
 .. code-block:: php
 
