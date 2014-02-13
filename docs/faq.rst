@@ -5,6 +5,24 @@ Frequently Asked Questions
 Hopefully you can find an answer here to one of your questions. If not, please
 contact `help@twilio.com <mailto:help@twilio.com>`_.
 
+Debugging Requests
+------------------
+
+Sometimes the library generates unexpected output. The simplest way to debug is
+to examine the HTTP request that twilio-php actually sent over the wire. You
+can turn on debugging with a simple flag:
+
+.. code-block:: php
+
+    require('Services/Twilio.php');
+
+    $client = new Services_Twilio('AC123', '456bef');
+    $client->http->debug = true;
+
+Then make requests as you normally would. The URI, method, headers, and body
+of HTTP requests will be logged via the ``error_log`` function.
+
+
 require: Failed to open stream messages
 -----------------------------------------
 

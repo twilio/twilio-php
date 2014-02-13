@@ -1,14 +1,28 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.4
+--------------
+
+Released on January 30, 2014
+
+- Fix incorrect use of static:: which broke compatibility with PHP 5.2.
+
+Version 3.12.3
+--------------
+
+Released on January 28, 2014
+
+- Add link from recordings to associated transcriptions.
+- Document how to debug requests, improve TwiML generation docs.
+
 Version 3.12.2
 --------------
 
-Released on January 24, 2013
+Released on January 5, 2014
 
-- More descriptive User-Agent.
-- Fix issue with string representation of resources.
-- Fix bug preventing PHP 5.5 support.
+- Fixes string representation of resources
+- Support PHP 5.5
 
 Version 3.12.1
 --------------

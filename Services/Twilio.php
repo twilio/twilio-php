@@ -41,7 +41,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 class Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.12.2';
+    const USER_AGENT = 'twilio-php/3.12.4';
 
     protected $http;
     protected $retryAttempts;
@@ -68,7 +68,7 @@ class Services_Twilio extends Services_Twilio_Resource
                       "https://api.twilio.com",
                       array(
                           "curlopts" => array(
-                              CURLOPT_USERAGENT => self::USER_AGENT,
+                              CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
                               CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
                               CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
                           ),
@@ -80,7 +80,7 @@ class Services_Twilio extends Services_Twilio_Resource
                     array(
                         "http_options" => array(
                             "http" => array(
-                                "user_agent" => self::USER_AGENT,
+                                "user_agent" => self::qualifiedUserAgent(phpversion()),
                                 "header" => "Accept-Charset: utf-8\r\n",
                             ),
                             "ssl" => array(
@@ -98,6 +98,16 @@ class Services_Twilio extends Services_Twilio_Resource
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
         $this->account = $this->accounts->get($sid);
         $this->retryAttempts = $retryAttempts;
+    }
+
+    /**
+     * Fully qualified user agent with the current PHP Version.
+     *
+     * :return: the user agent
+     * :rtype: string
+     */
+    public static function qualifiedUserAgent($php_version) {
+        return self::USER_AGENT . " (php $php_version)";
     }
 
     /**

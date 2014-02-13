@@ -9,7 +9,7 @@
  *
  * LICENSE:
  *
- * Copyright 2012 Twilio.
+ * Copyright 2014 Twilio.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,22 +26,23 @@
  * @category  Services
  * @package   Services_Twilio
  * @author    Neuman Vong <neuman@twilio.com>
- * @copyright 2012 Twilio
+ * @copyright 2014 Twilio
  * @license   http://creativecommons.org/licenses/MIT/
  * @link      http://pear.php.net/package/Services_Twilio
  */
 
-error_reporting(E_ALL & ~E_DEPRECATED);
+ini_set('display_errors', '0');
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.2';
+$api_version     = '3.12.4';
 $api_state       = 'stable';
 
-$release_version = '3.12.2';
+$release_version = '3.12.4';
 $release_state   = 'stable';
-$release_notes   = 'Fixes issue with string representation of resources';
+$release_notes   = 'Add transcription link to recordings';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
