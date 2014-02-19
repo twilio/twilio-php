@@ -41,7 +41,7 @@ test-install:
 	$(COMPOSER) install
 
 install:
-	pear channel-discover twilio.github.com/pear
+	pear channel-discover twilio.github.io/pear
 	pear install twilio/Services_Twilio
 
 # if these fail, you may need to install the helper library - run "make
@@ -59,7 +59,7 @@ docs:
 	. venv/bin/activate; cd docs && make html
 
 release-install:
-	pear channel-discover twilio.github.com/pear || true
+	pear channel-discover twilio.github.io/pear || true
 	pear channel-discover pear.pirum-project.org || true
 	pear install pirum/Pirum || true
 	pear install XML_Serializer-0.20.2 || true
