@@ -54,7 +54,7 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *      number is not a Twilio number registered to your account, or is
      *      unable to send MMS)
      */
-    public function sendMessage($from, $to, $body = null, $mediaUrls = null,
+    public function sendMessages($from, $to, $body = null, $mediaUrls = null,
         $params = array()
     ) {
         $postParams = array(
