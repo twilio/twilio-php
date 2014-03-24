@@ -69,7 +69,7 @@ from anywhere. Run this at the command line:
 
 .. code-block:: bash
 
-    $ pear channel-discover twilio.github.io/pear
+    $ pear channel-discover twilio-pear.herokuapp.com/pear
     $ pear install twilio/Services_Twilio
 
 If you get the following message:
