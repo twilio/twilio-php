@@ -1,6 +1,6 @@
 <?php
 
-class Services_Twilio_Rest_Feedback extends Services_Twilio_ListResource {
+class Services_Twilio_Rest_Feedback extends Services_Twilio_InstanceResource {
 
     public function __construct($client, $uri) {
         $this->instance_name = "Services_Twilio_Rest_FeedbackInstance";
@@ -24,5 +24,3 @@ class Services_Twilio_Rest_Feedback extends Services_Twilio_ListResource {
     }
 
 }
-
-class Services_Twilio_Rest_FeedbackInstance extends Services_Twilio_InstanceResource { }

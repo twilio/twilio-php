@@ -30,4 +30,18 @@ class Services_Twilio_Rest_Calls
 
         return parent::_create($params);
     }
+
+    public function createFeedback($callSid, $qualityScore, array $issue = array())
+    {
+        $params["QualityScore"] = $qualityScore;
+        $params["Issue"] = $issue;
+
+        $feedbackUri = $this->uri . '/' . $callSid . '/Feedback';
+
+        $response = $this->client->createData($feedbackUri, $params);
+        return new Services_Twilio_Rest_Feedback(
+            $this->client, $feedbackUri, $response
+        );
+
+    }
 }
