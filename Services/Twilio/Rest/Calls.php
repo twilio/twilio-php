@@ -4,12 +4,6 @@ class Services_Twilio_Rest_Calls
     extends Services_Twilio_ListResource
 {
 
-    function init($client, $uri) {
-        $this->setupSubresources(
-            'summary'
-        );
-    }
-
     public static function isApplicationSid($value)
     {
         return strlen($value) == 34
