@@ -320,7 +320,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $call->hangup();
     }
 
-    function testUnmute() {
+    function testMute() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
             ->with(
@@ -343,6 +343,32 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $page = $conf->participants->getPage(0, 10);
         foreach ($page->getItems() as $participant) {
             $participant->mute();
+        }
+    }
+
+    function testUnmute() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('get')->once()
+            ->with(
+                '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants.json?Page=0&PageSize=10')
+                ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                    json_encode(array(
+                        'participants' => array(array('call_sid' => 'CA123'))
+                    ))
+                ));
+        $http->shouldReceive('post')->once()
+            ->with(
+                '/2010-04-01/Accounts/AC123/Conferences/CF123/Participants/CA123.json',
+                $this->formHeaders,
+                'Muted=false'
+            )->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array())
+            ));
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $conf = $client->account->conferences->get('CF123');
+        $page = $conf->participants->getPage(0, 10);
+        foreach ($page->getItems() as $participant) {
+            $participant->unMute();
         }
     }
 

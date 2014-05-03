@@ -11,18 +11,16 @@ A huge thanks to all of our contributors:
 - Brett Gerry 
 - Bulat Shakirzyanov 
 - Chris Barr 
-- D Keith Casey Jr 
 - D. Keith Casey, Jr. 
 - Doug Black 
 - John Britton 
 - Jordi Boggiano 
 - Keith Casey 
 - Kevin Burke 
-- Kyle 
 - Kyle Conroy 
 - Luke Waite 
-- Neuman 
 - Neuman Vong 
+- Oscar Sanchez
 - Peter Meth 
 - Ryan Brideau 
 - Sam Kimbrel 
