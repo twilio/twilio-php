@@ -42,7 +42,7 @@ abstract class Services_Twilio_Resource {
     protected function setupSubresources()
     {
         foreach (func_get_args() as $name) {
-            $constantized = ucfirst(self::camelize($name));
+            $constantized = ('sip' === $name) ? 'SIP' : ucfirst(self::camelize($name));
             $type = "Services_Twilio_Rest_" . $constantized;
             $this->subresources[$name] = new $type(
                 $this->client, $this->uri . "/$constantized"
