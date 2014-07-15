@@ -28,6 +28,7 @@ A huge thanks to all of our contributors:
 - Sam Kimbrel 
 - Shawn Parker 
 - Stuart Langley 
+- https://github.com/tacman
 - Taichiro Yoshida 
 - Trenton McManus 
 - aaronfoss 
