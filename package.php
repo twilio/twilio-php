@@ -42,7 +42,7 @@ $api_state       = 'stable';
 
 $release_version = '3.12.5';
 $release_state   = 'stable';
-$release_notes   = 'Make SIP class PSR-0 compliant';
+$release_notes   = 'Add support for new Call Feedback endpoints';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
