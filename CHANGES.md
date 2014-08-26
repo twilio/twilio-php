@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.5
+--------------
+
+Released on July 15, 2014
+
+- Changed the naming of the SIP class to comply with PSR-0
+
 Version 3.12.4
 --------------
 

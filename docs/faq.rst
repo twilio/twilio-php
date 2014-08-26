@@ -123,8 +123,8 @@ Manually add Twilio's SSL certificate
 
 The PHP curl library can also manually verify an SSL certificate. In your
 browser, navigate to
-`https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt
-<https://github.com/twilio/twilio-php/blob/master/Services/twilio_ssl_certificate.crt>`_ 
+`https://github.com/twilio/twilio-php/blob/master/Services/cacert.pem
+<https://github.com/twilio/twilio-php/blob/master/Services/cacert.pem>`_ 
 and download the file. (**Note**: If your browser presents ANY warnings
 at this time, your Internet connection may be compromised. Do not download the
 file, and do not proceed with this step). Place this file in the same folder as
@@ -143,7 +143,7 @@ with this one:
         array('curlopts' => array(
             CURLOPT_SSL_VERIFYPEER => true, 
             CURLOPT_SSL_VERIFYHOST => 2, 
-            CURLOPT_CAINFO => getcwd() . "/twilio_ssl_certificate.crt")));
+            CURLOPT_CAINFO => getcwd() . "/cacert.pem")));
 
     $client = new Services_Twilio($sid, $token, "2010-04-01", $http);
 
