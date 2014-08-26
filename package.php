@@ -37,10 +37,10 @@ require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.5';
+$api_version     = '3.12.6';
 $api_state       = 'stable';
 
-$release_version = '3.12.5';
+$release_version = '3.12.6';
 $release_state   = 'stable';
 $release_notes   = 'Add support for new Call Feedback endpoints';
 
