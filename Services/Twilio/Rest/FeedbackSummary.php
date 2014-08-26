@@ -1,14 +1,14 @@
 <?php
 
-class Services_Twilio_Rest_Feedback extends Services_Twilio_InstanceResource {
+class Services_Twilio_Rest_FeedbackSummary extends Services_Twilio_InstanceResource {
 
     public function __construct($client, $uri, $params = array()) {
-        $this->instance_name = "Services_Twilio_Rest_Feedback";
+        $this->instance_name = "Services_Twilio_Rest_FeedbackSummary";
         return parent::__construct($client, $uri, $params);
     }
 
     /**
-     * Create feedback for the parent call
+     * Create feedback summary for calls
      */
     public function create(array $params = array()) {
         $params = $this->client->createData($this->uri, $params);
@@ -16,19 +16,18 @@ class Services_Twilio_Rest_Feedback extends Services_Twilio_InstanceResource {
     }
 
     /**
-     * Delete feedback for the parent call
+     * Delete a feedback summary
      */
-    public function delete() {
-        $this->client->deleteData($this->uri);
+    public function delete($sid) {
+        $this->client->deleteData($this->uri . '/' . $sid);
     }
 
     /**
-     * Fetch the feedback for the parent call
+     * Get a feedback summary
      */
-    public function get() {
+    public function get($sid) {
         return new $this->instance_name(
-            $this->client, $this->uri
+            $this->client, $this->uri . '/' . $sid
         );
     }
-
 }

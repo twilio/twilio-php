@@ -6,9 +6,10 @@ A huge thanks to all of our contributors:
 
 - =noloh 
 - Adam Ballai 
-- Alex Chan 
-- Alex Rowley 
-- Brett Gerry 
+- Alex Chan
+- Alex Rowley
+- Alexandre Payment
+- Brett Gerry
 - Bulat Shakirzyanov 
 - Chris Barr 
 - D Keith Casey Jr 
