@@ -86,6 +86,11 @@ Installation
 There are two ways to install **twilio-php**: via the PEAR installer, or by
 downloading the source.
 
+Via Composer:
+>>>>>>>>>>>>>
+
+twilio-php is available on Packagist as the twilio/sdk package.
+
 Via PEAR
 >>>>>>>>>>>>>
 
