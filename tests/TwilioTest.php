@@ -9,8 +9,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     protected $nginxError = array(500, array('Content-Type' => 'text/html'),
                 '<html>Nginx 500 error</html>'
             );
-
     protected $pagingParams = array('Page' => '0', 'PageSize' => '10');
+
     function tearDown() {
         m::close();
     }
@@ -294,6 +294,12 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         );
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $client->account->calls->create('123', '123', 'http://example.com');
+    }
+
+    function testWdsClient() {
+        $wdsClient = new Wds_Services_Twilio('AC123', '123', 'v1');
+        $this->assertNotNull($wdsClient);
+        $this->assertEquals(1, $wdsClient->getRetryAttempts());
     }
 
     function testModifyLiveCall() {
