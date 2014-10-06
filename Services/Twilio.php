@@ -7,7 +7,7 @@
  */
 
 function Services_Twilio_autoload($className) {
-    if (substr($className, 0, 15) != 'Services_Twilio') {
+    if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 19) != 'Wds_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -348,6 +348,8 @@ class Services_Twilio extends Base_Services_Twilio
  * :param string               $sid:      Your Account SID
  * :param string               $token:    Your Auth Token from `your dashboard
  *      <https://www.twilio.com/user/account>`_
+ * :param string               $workspaceSid:
+ *      Workspace SID to work with
  * :param string               $version:  API version to use
  * :param $_http:    A HTTP client for making requests.
  * :type $_http: :php:class:`Services_Twilio_TinyHttp`
@@ -370,11 +372,15 @@ class Wds_Services_Twilio extends Base_Services_Twilio
     public function __construct(
         $sid,
         $token,
+        $workspaceSid,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
     ) {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
+        $this->workspaces = new Services_Twilio_Rest_Wds_Workspaces($this, "/v1/Accounts/{$sid}/Workspaces");
+        $this->workspace = $this->workspaces->get($workspaceSid);
     }
 
     protected function _getBaseUri() {

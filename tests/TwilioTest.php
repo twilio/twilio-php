@@ -297,9 +297,11 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     }
 
     function testWdsClient() {
-        $wdsClient = new Wds_Services_Twilio('AC123', '123', 'v1');
+        $wdsClient = new Wds_Services_Twilio('AC123', '123', 'WS123', 'v1');
         $this->assertNotNull($wdsClient);
         $this->assertEquals(1, $wdsClient->getRetryAttempts());
+        $this->assertNotNull($wdsClient->workspaces);
+        $this->assertEquals('WS123', $wdsClient->workspace->sid);
     }
 
     function testModifyLiveCall() {
