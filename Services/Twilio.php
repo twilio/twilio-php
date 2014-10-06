@@ -6,7 +6,8 @@
  * Link:     https://twilio-php.readthedocs.org/en/latest/
  */
 
-function Services_Twilio_autoload($className) {
+function Services_Twilio_autoload($className)
+{
     if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 19) != 'Wds_Services_Twilio') {
         return false;
     }
@@ -36,7 +37,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
-    ) {
+    )
+    {
         $this->version = in_array($version, $this->versions) ? $version : end($this->versions);
 
         if (null === $_http) {
@@ -91,7 +93,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: The encoded query string
      * :rtype: string
      */
-    public static function buildQuery($queryData, $numericPrefix = '') {
+    public static function buildQuery($queryData, $numericPrefix = '')
+    {
         $query = '';
         // Loop through all of the $query_data
         foreach ($queryData as $key => $value) {
@@ -138,7 +141,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the URI that should be requested by the library
      * :returntype: string
      */
-    public static function getRequestUri($path, $params, $full_uri = false) {
+    public static function getRequestUri($path, $params, $full_uri = false)
+    {
         $json_path = $full_uri ? $path : "$path.json";
         if (!$full_uri && !empty($params)) {
             $query_path = $json_path . '?' . http_build_query($params, '', '&');
@@ -154,7 +158,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the user agent
      * :rtype: string
      */
-    public static function qualifiedUserAgent($php_version) {
+    public static function qualifiedUserAgent($php_version)
+    {
         return self::USER_AGENT . " (php $php_version)";
     }
 
@@ -199,7 +204,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the number of retry attempts
      * :rtype: int
      */
-    public function getRetryAttempts() {
+    public function getRetryAttempts()
+    {
         return $this->retryAttempts;
     }
 
@@ -209,7 +215,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the API version in use
      * :returntype: string
      */
-    public function getVersion() {
+    public function getVersion()
+    {
         return $this->version;
     }
 
@@ -226,7 +233,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      */
     public function retrieveData($path, $params = array(),
                                  $full_uri = false
-    ) {
+    )
+    {
         $uri = self::getRequestUri($path, $params, $full_uri);
         return $this->_makeIdempotentRequest(array($this->http, 'get'),
             $uri, $this->retryAttempts);
@@ -238,7 +246,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: base URI
      * :rtype: string
      */
-    protected function _getBaseUri() {
+    protected function _getBaseUri()
+    {
         return 'https://api.twilio.com';
     }
 
@@ -252,7 +261,8 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: The object representation of the resource
      * :rtype: object
      */
-    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft) {
+    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft)
+    {
         $response = call_user_func_array($callable, array($uri));
         list($status, $headers, $body) = $response;
         if ($status >= 500 && $retriesLeft > 0) {
@@ -333,7 +343,8 @@ class Services_Twilio extends Base_Services_Twilio
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
-    ) {
+    )
+    {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
 
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
@@ -367,7 +378,8 @@ class Services_Twilio extends Base_Services_Twilio
  */
 class Wds_Services_Twilio extends Base_Services_Twilio
 {
-    protected  $versions = array('v1');
+    protected $versions = array('v1');
+    private $accountSid;
 
     public function __construct(
         $sid,
@@ -376,14 +388,48 @@ class Wds_Services_Twilio extends Base_Services_Twilio
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
-    ) {
+    )
+    {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
 
         $this->workspaces = new Services_Twilio_Rest_Wds_Workspaces($this, "/v1/Accounts/{$sid}/Workspaces");
         $this->workspace = $this->workspaces->get($workspaceSid);
+        $this->accountSid = $sid;
     }
 
-    protected function _getBaseUri() {
+    public function getTaskQueuesStatistics(array $params = array())
+    {
+        return $this->retrieveData("/v1/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/TaskQueues", $params);
+    }
+
+    public function getTaskQueueStatistics($taskQueueSid, array $params = array())
+    {
+        return $this->retrieveData("/v1/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/TaskQueues/{$taskQueueSid}", $params);
+    }
+
+    public function getWorkersStatistics(array $params = array())
+    {
+        return $this->retrieveData("/v1/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/Workers", $params);
+    }
+
+    public function getWorkerStatistics($workerSid, array $params = array())
+    {
+        return $this->retrieveData("/v1/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/Workers/{$workerSid}", $params);
+    }
+
+    public function getWorkflowStatistics($workflowSid, array $params = array())
+    {
+        return $this->retrieveData("/v1/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/Workflows/{$workflowSid}", $params);
+    }
+
+    public function getWorkspaceStatistics(array $params = array())
+    {
+        return $this->retrieveData("/v1/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics", $params);
+    }
+
+
+    protected function _getBaseUri()
+    {
         return 'https://wds.twilio.com';
     }
 }
