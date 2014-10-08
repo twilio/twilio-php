@@ -1,5 +1,5 @@
 <?php
-
+include_once 'JWT.php';
 /**
  * Twilio API Capability Token generator
  *
