@@ -108,7 +108,7 @@ class Services_Twilio_Capability
         }
 
         $payload['scope'] = implode(' ', $scopeStrings);
-        return JWT::encode($payload, $this->authToken, 'HS256');
+        return Twilio_JWT::encode($payload, $this->authToken, 'HS256');
     }
 
     protected function allow($service, $privilege, $params) {
@@ -192,7 +192,7 @@ class ScopeURI
  *
  * @author Neuman Vong <neuman@twilio.com>
  */
-class JWT
+class Twilio_JWT
 {
     /**
      * @param string      $jwt    The JWT
@@ -208,20 +208,20 @@ class JWT
             throw new UnexpectedValueException('Wrong number of segments');
         }
         list($headb64, $payloadb64, $cryptob64) = $tks;
-        if (null === ($header = JWT::jsonDecode(JWT::urlsafeB64Decode($headb64)))
+        if (null === ($header = Twilio_JWT::jsonDecode(Twilio_JWT::urlsafeB64Decode($headb64)))
         ) {
             throw new UnexpectedValueException('Invalid segment encoding');
         }
-        if (null === $payload = JWT::jsonDecode(JWT::urlsafeB64Decode($payloadb64))
+        if (null === $payload = Twilio_JWT::jsonDecode(Twilio_JWT::urlsafeB64Decode($payloadb64))
         ) {
             throw new UnexpectedValueException('Invalid segment encoding');
         }
-        $sig = JWT::urlsafeB64Decode($cryptob64);
+        $sig = Twilio_JWT::urlsafeB64Decode($cryptob64);
         if ($verify) {
             if (empty($header->alg)) {
                 throw new DomainException('Empty algorithm');
             }
-            if ($sig != JWT::sign("$headb64.$payloadb64", $key, $header->alg)) {
+            if ($sig != Twilio_JWT::sign("$headb64.$payloadb64", $key, $header->alg)) {
                 throw new UnexpectedValueException('Signature verification failed');
             }
         }
@@ -240,12 +240,12 @@ class JWT
         $header = array('typ' => 'JWT', 'alg' => $algo);
 
         $segments = array();
-        $segments[] = JWT::urlsafeB64Encode(JWT::jsonEncode($header));
-        $segments[] = JWT::urlsafeB64Encode(JWT::jsonEncode($payload));
+        $segments[] = Twilio_JWT::urlsafeB64Encode(Twilio_JWT::jsonEncode($header));
+        $segments[] = Twilio_JWT::urlsafeB64Encode(Twilio_JWT::jsonEncode($payload));
         $signing_input = implode('.', $segments);
 
-        $signature = JWT::sign($signing_input, $key, $algo);
-        $segments[] = JWT::urlsafeB64Encode($signature);
+        $signature = Twilio_JWT::sign($signing_input, $key, $algo);
+        $segments[] = Twilio_JWT::urlsafeB64Encode($signature);
 
         return implode('.', $segments);
     }
@@ -279,7 +279,7 @@ class JWT
     {
         $obj = json_decode($input);
         if (function_exists('json_last_error') && $errno = json_last_error()) {
-            JWT::handleJsonError($errno);
+            Twilio_JWT::handleJsonError($errno);
         }
         else if ($obj === null && $input !== 'null') {
             throw new DomainException('Null result with non-null input');
@@ -296,7 +296,7 @@ class JWT
     {
         $json = json_encode($input);
         if (function_exists('json_last_error') && $errno = json_last_error()) {
-            JWT::handleJsonError($errno);
+            Twilio_JWT::handleJsonError($errno);
         }
         else if ($json === 'null' && $input !== null) {
             throw new DomainException('Null result with non-null input');
