@@ -29,7 +29,7 @@ class Services_Twilio_WDS_Worker_Capability
         $this->workspaceSid = $workspaceSid;
         $this->workerSid = $workerSid;
         $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, '2010-04-10', $workerSid);
-        $this->baseUrl = 'http://api.twilio.com/2010-04-01/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
+        $this->baseUrl = 'https://api.twilio.com/2010-04-01/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
     }
