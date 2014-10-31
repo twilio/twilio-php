@@ -70,7 +70,6 @@ class Services_Twilio extends Services_Twilio_Resource
                           "curlopts" => array(
                               CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
                               CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                              CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
                           ),
                       )
                   );
@@ -85,7 +84,6 @@ class Services_Twilio extends Services_Twilio_Resource
                             ),
                             "ssl" => array(
                                 'verify_peer' => true,
-                                'cafile' => dirname(__FILE__) . '/cacert.pem',
                                 'verify_depth' => 5,
                             ),
                         ),
