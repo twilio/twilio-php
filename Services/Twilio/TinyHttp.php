@@ -86,6 +86,10 @@ class Services_Twilio_TinyHttp {
         if (curl_setopt_array($curl, $opts)) {
           if ($response = curl_exec($curl)) {
             $parts = explode("\r\n\r\n", $response, 3);
+            // Remove extra HTTP headers added by proxy hops.
+            while (strpos($parts[1], "HTTP") === 0) {
+              array_shift($parts);
+            }
             list($head, $body) = ($parts[0] == 'HTTP/1.1 100 Continue')
               ? array($parts[1], $parts[2])
               : array($parts[0], $parts[1]);
