@@ -49,5 +49,10 @@ class Services_Twilio_Rest_Message extends Services_Twilio_InstanceResource {
             'media'
         );
     }
+
+    public function redact() {
+        $postParams = array('Body' => '');
+        self::update($postParams);
+    }
 }
 
