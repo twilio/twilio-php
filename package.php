@@ -37,12 +37,12 @@ require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.5';
+$api_version     = '3.12.6';
 $api_state       = 'stable';
 
-$release_version = '3.12.5';
+$release_version = '3.12.6';
 $release_state   = 'stable';
-$release_notes   = 'Make SIP class PSR-0 compliant';
+$release_notes   = 'Add Message redaction support';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write

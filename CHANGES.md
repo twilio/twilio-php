@@ -1,6 +1,14 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.6
+--------------
+
+Released on November 13, 2014
+
+- Add support for redacting Messages and deleting Messages or Calls
+- Remove pinned SSL certificates
+
 Version 3.12.5
 --------------
 
