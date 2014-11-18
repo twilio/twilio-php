@@ -17,6 +17,7 @@ class Services_Twilio_Rest_Account extends Services_Twilio_InstanceResource {
             'recordings',
             'sms_messages',
             'short_codes',
+            'tokens',
             'transcriptions',
             'connect_apps',
             'authorized_connect_apps',
