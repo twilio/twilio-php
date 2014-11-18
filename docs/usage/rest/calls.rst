@@ -116,8 +116,21 @@ that record.:
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '123');
-    $sid = "CA12341234"
+    $sid = "CA12341234";
     $call = $client->account->calls->get($sid)
+
+Delete a Call Record
+====================
+
+To protect your users' privacy and/or comply with legal requirements, Twilio allows you
+to delete call records:
+
+.. code-block:: php
+
+    $client = new Services_Twilio('AC123', '123');
+    $sid = "CA12341234";
+    $call = $client->account->calls->get($sid);
+    $call->delete();
 
 Modifying live calls
 ====================

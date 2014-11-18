@@ -42,7 +42,7 @@ $api_state       = 'stable';
 
 $release_version = '3.12.6';
 $release_state   = 'stable';
-$release_notes   = 'Add support for new Call Feedback endpoints';
+$release_notes   = 'Add Message redaction support';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
