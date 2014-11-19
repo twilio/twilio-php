@@ -46,7 +46,7 @@ class Services_Twilio_RequestValidator
         $res = 0;
         $len = \strlen($a);
         for ($i = 0; $i < $len; ++$i) {
-            $res |= $a[$i] ^ $b[$i];
+            $res |= \ord($a[$i]) ^ \ord($b[$i]);
         }
         return $res === 0;
     }
