@@ -23,7 +23,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 abstract class Base_Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.12.4';
+    const USER_AGENT = 'twilio-php/3.12.6';
 
     protected $http;
     protected $last_response;
@@ -52,7 +52,6 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
                         "curlopts" => array(
                             CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
                             CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                            CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
                         ),
                     )
                 );
@@ -67,7 +66,6 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
                             ),
                             "ssl" => array(
                                 'verify_peer' => true,
-                                'cafile' => dirname(__FILE__) . '/cacert.pem',
                                 'verify_depth' => 5,
                             ),
                         ),

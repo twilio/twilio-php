@@ -48,3 +48,16 @@ a particular number. You can do so by constructing an iterator explicitly:
     )) as $message) {
         echo "From: {$message->from}\nTo: {$message->to}\nBody: " . $message->body;
     }
+
+Redacting or Deleting Messages
+==============================
+
+To protect your users' privacy, you can delete your Message records or redact
+their contents.
+
+.. code-block:: php
+
+    $client = new Services_Twilio('AC123', '123');
+    $message = $client->account->messages->get("MM123");
+    $message->redact(); // Erases 'Body' field contents
+    $message->delete(); // Deletes entire message record
