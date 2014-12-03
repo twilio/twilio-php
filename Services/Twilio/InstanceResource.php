@@ -32,7 +32,17 @@ abstract class Services_Twilio_InstanceResource extends Services_Twilio_Resource
         $this->updateAttributes($decamelizedParams);
     }
 
-    /*
+    /**
+     * Make a request to delete the specified resource.
+     *
+     * :rtype: boolean
+     */
+    public function delete()
+    {
+        return $this->client->deleteData($this->uri);
+    }
+
+    /**
      * Add all properties from an associative array (the JSON response body) as
      * properties on this instance resource, except the URI
      *
