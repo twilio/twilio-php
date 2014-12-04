@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.8
+--------------
+
+Released on December 4, 2014
+
+- Add support for the new Addresses endpoints.
+
 Version 3.12.7
 --------------
 
