@@ -29,7 +29,7 @@ class Services_Twilio_WDS_Worker_Capability
         $this->workspaceSid = $workspaceSid;
         $this->workerSid = $workerSid;
         $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, '2010-04-10', $workerSid);
-        if($overrideBaseUrl != null) {
+        if(isset($overrideBaseUrl)) {
             $this->baseUrl = $overrideBaseUrl;
         }
         $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
@@ -59,6 +59,11 @@ class Services_Twilio_WDS_Worker_Capability
     }
     
     public function generateToken($ttl = 3600) {
-    	return $this->apiCapability->generateToken($ttl);
+        $wdsAttributes = array(
+            'account_sid' => $this->accountSid,
+            'workspace_sid' => $this->workspaceSid,
+            'worker_sid' => $this->workerSid
+        );
+    	return $this->apiCapability->generateToken($ttl, $wdsAttributes);
     }
 }
