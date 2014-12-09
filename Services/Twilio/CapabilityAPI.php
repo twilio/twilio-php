@@ -10,11 +10,11 @@ include_once 'JWT.php';
  */
 class Services_Twilio_API_Capability
 {
-    public $accountSid;
-    public $authToken;
-    public $version;
-    public $friendlyName;
-    public $policies;
+    private $accountSid;
+    private $authToken;
+    private $version;
+    private $friendlyName;
+    private $policies;
     
     public function __construct($accountSid, $authToken, $version, $friendlyName)
     {
@@ -80,11 +80,11 @@ class Services_Twilio_API_Capability
  */
 class Policy
 {
-	public $url;
-	public $method;
-	public $queryFilter;
-	public $postFilter;
-	public $allow;
+	private $url;
+	private $method;
+	private $queryFilter;
+	private $postFilter;
+	private $allow;
 	
 	public function __construct($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true)
     {

@@ -10,26 +10,29 @@ include_once 'CapabilityAPI.php';
  */
 class Services_Twilio_WDS_Worker_Capability
 {
-    public $accountSid;
-    public $authToken;
-    public $workspaceSid;
-    public $workerSid;
-    public $apiCapability;
+    private $accountSid;
+    private $authToken;
+    private $workspaceSid;
+    private $workerSid;
+    private $apiCapability;
     
-    public $baseUrl;
-    public $workerUrl;
-    public $reservationsUrl;
+    private $baseUrl = 'https://api.twilio.com/2010-04-01';
+    private $workerUrl;
+    private $reservationsUrl;
     
     private $required = array("required" => true);
     
-    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid)
+    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null)
     {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->workspaceSid = $workspaceSid;
         $this->workerSid = $workerSid;
         $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, '2010-04-10', $workerSid);
-        $this->baseUrl = 'https://api.twilio.com/2010-04-01/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
+        if($overrideBaseUrl != null) {
+            $this->baseUrl = $overrideBaseUrl;
+        }
+        $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
     }
