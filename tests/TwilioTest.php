@@ -623,6 +623,19 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->assertSame(count($client->account->calls), 0);
     }
 
+    function testCreateWorkspace() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/v1/Accounts/AC123/Workspaces.json',
+                array('Content-Type' => 'application/x-www-form-urlencoded'),
+                'FriendlyName=Test+Workspace')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('sid' => 'WS123'))
+            ));
+        $workspace = Wds_Services_Twilio::createWorkspace('AC123', '123', 'Test Workspace', array(), $http);
+        $this->assertNotNull($workspace);
+    }
+
     function testPostMultivaluedForm() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
