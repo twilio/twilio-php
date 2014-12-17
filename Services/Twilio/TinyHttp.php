@@ -31,11 +31,12 @@ class Services_Twilio_TinyHttpException extends ErrorException {}
  *     );
  */
 class Services_Twilio_TinyHttp {
-  var $user, $pass, $scheme, $host, $port, $debug, $curlopts;
+  var $user, $pass, $scheme, $host, $port, $debug, $curlopts, $logger;
 
   public function __construct($uri = '', $kwargs = array()) {
     foreach (parse_url($uri) as $name => $value) $this->$name = $value;
     $this->debug = isset($kwargs['debug']) ? !!$kwargs['debug'] : NULL;
+    $this->logger = isset($kwargs['logger']) ? $kwargs['logger'] : NULL;
     $this->curlopts = isset($kwargs['curlopts']) ? $kwargs['curlopts'] : array();
   }
 
@@ -90,6 +91,14 @@ class Services_Twilio_TinyHttp {
               ? array($parts[1], $parts[2])
               : array($parts[0], $parts[1]);
             $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            if ($this->logger) {
+              $context = array_merge(curl_getinfo($curl), array(
+                'method' => $name,
+                'request_headers' => $req_headers,
+                'request_body' => $req_body
+              ));
+              call_user_func($this->logger, 'Twilio API Request', $context);
+            }
             if ($this->debug) {
               error_log(
                 curl_getinfo($curl, CURLINFO_HEADER_OUT) .
