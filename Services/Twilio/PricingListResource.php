@@ -8,7 +8,7 @@ abstract class Services_Twilio_PricingListResource extends Services_Twilio_ListR
             $this->instance_name = 'Services_Twilio_Rest_Pricing_'. rtrim($name, 's');
         }
 
-        parent::construct($client, $uri);
+        parent::__construct($client, $uri);
     }
 
 }
