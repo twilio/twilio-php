@@ -10,7 +10,8 @@ function Services_Twilio_autoload($className)
 {
     if (substr($className, 0, 15) != 'Services_Twilio'
         && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
-        && substr($className, 0, 23) != 'Lookups_Services_Twilio') {
+        && substr($className, 0, 23) != 'Lookups_Services_Twilio'
+        && substr($className, 0, 23) != 'Pricing_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -562,7 +563,7 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
  */
 class Pricing_Services_Twilio extends Base_Services_Twilio
 {
-    protected  $versions = array('v1');
+    protected $versions = array('v1');
 
     public function __construct(
         $sid,
@@ -572,9 +573,21 @@ class Pricing_Services_Twilio extends Base_Services_Twilio
         $retryAttempts = 1
     ) {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
+        $this->voiceCountries = new Services_Twilio_Rest_Pricing_VoiceCountries(
+            $this, "/{$this->version}/Voice/Countries"
+        );
+        $this->voiceNumbers = new Services_Twilio_Rest_Pricing_VoiceNumbers(
+            $this, "/{$this->version}/Voice/Numbers"
+        );
+        $this->phoneNumberCountries = new Services_Twilio_Rest_Pricing_PhoneNumberCountries(
+            $this, "/{$this->version}/PhoneNumbers/Countries"
+        );
     }
 
     protected function _getBaseUri() {
         return 'https://pricing.twilio.com';
     }
+
+
 }
