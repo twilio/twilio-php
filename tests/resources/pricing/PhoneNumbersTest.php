@@ -3,7 +3,7 @@
 use \Mockery as m;
 require_once 'Twilio.php';
 
-class VoiceTest extends PHPUnit_Framework_TestCase {
+class PhoneNumberTest extends PHPUnit_Framework_TestCase {
 
     function testGetCountries() {
         $data = array(
@@ -13,13 +13,13 @@ class VoiceTest extends PHPUnit_Framework_TestCase {
         );
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()->with(
-            '/v1/Voice/Countries.json?Page=0&PageSize=50'
+            '/v1/PhoneNumbers/Countries.json?Page=0&PageSize=50'
         )->andReturn(array(200, array('Content-Type' => 'application/json'),
-                                 json_encode($data)));
+                         json_encode($data)));
 
         $pricingClient = new Pricing_Services_Twilio('AC123', '123', 'v1',
                                                      $http, 1);
-        $countries = $pricingClient->voiceCountries->getPage();
+        $countries = $pricingClient->phoneNumberCountries->getPage();
         $this->assertNotNull($countries);
 
         $country = $countries->getItems()[0];
@@ -29,30 +29,14 @@ class VoiceTest extends PHPUnit_Framework_TestCase {
 
     function testGetCountry() {
         $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()->with('/v1/Voice/Countries/EE.json')
+        $http->shouldReceive('get')->once()->with('/v1/PhoneNumbers/Countries/EE.json')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                        json_encode(array('country' => 'Estonia'))));
+                            json_encode(array('country' => 'Estonia'))));
         $pricingClient = new Pricing_Services_Twilio('AC123', '123', 'v1', $http, 1);
 
-        $country = $pricingClient->voiceCountries->get('EE');
+        $country = $pricingClient->phoneNumberCountries->get('EE');
         $this->assertNotNull($country);
         $this->assertEquals($country->iso_country, 'EE');
         $this->assertEquals($country->country, 'Estonia');
     }
-
-    function testGetNumber() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()->with(
-            '/v1/Voice/Numbers/+14155551234.json'
-        )->andReturn(array(200, array('Content-Type' => 'application/json'),
-                             json_encode(array('iso_country' => 'US'))));
-
-        $pricingClient = new Pricing_Services_Twilio('AC123', '123', 'v1', $http, 1);
-
-        $number = $pricingClient->voiceNumbers->get('+14155551234');
-        $this->assertNotNull($number);
-        $this->assertEquals($number->number, '+14155551234');
-        $this->assertEquals($number->iso_country, 'US');
-    }
-
 }
