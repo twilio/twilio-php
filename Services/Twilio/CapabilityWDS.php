@@ -1,5 +1,6 @@
 <?php
 include_once 'CapabilityAPI.php';
+
 /**
  * Twilio WDS Capability assigner
  *
@@ -17,10 +18,13 @@ class Services_Twilio_WDS_Worker_Capability
     private $apiCapability;
     
     private $baseUrl = 'https://api.twilio.com/2010-04-01';
+    private $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
     private $workerUrl;
     private $reservationsUrl;
     
     private $required = array("required" => true);
+    private $optional = array("required" => false);
+    
     
     public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null)
     {
@@ -35,34 +39,40 @@ class Services_Twilio_WDS_Worker_Capability
         $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
+        
+        //add permissions to GET and POST to the worker URI
+        $this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workerSid, "GET", null, null);
+        $this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workerSid, "POST", null, null);
+    
     }
     
     public function allowWorkerActivityUpdates() {
         $method = 'POST';
         $queryFilter = array();
-    	$postFilter = array("ActivitySid" => $this->required);
+        $postFilter = array("ActivitySid" => $this->required);
         $this->apiCapability->generateAndAddPolicy($this->workerUrl, $method, $queryFilter, $postFilter);
     }
     
     public function allowWorkerFetchAttributes() {
         $method = 'GET';
         $queryFilter = array();
-    	$postFilter = array();
+        $postFilter = array();
         $this->apiCapability->generateAndAddPolicy($this->workerUrl, $method, $queryFilter, $postFilter);
     }
     
     public function allowTaskReservationUpdates() {
-    	$method = 'POST';
-    	$queryFilter = array();
-    	$postFilter = array("ReservationStatus" => $this->required);
-    	$this->apiCapability->generateAndAddPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
+        $method = 'POST';
+        $queryFilter = array();
+        $postFilter = array("ReservationStatus" => $this->required);
+        $this->apiCapability->generateAndAddPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
     }
     
     public function generateToken($ttl = 3600) {
         $wdsAttributes = array(
             'account_sid' => $this->accountSid,
+            'channel' => $this->workerSid,
             'workspace_sid' => $this->workspaceSid,
-            'worker_sid' => $this->workerSid
+            'worker_sid' => $this->workerSid,
         );
     	return $this->apiCapability->generateToken($ttl, $wdsAttributes);
     }

@@ -26,18 +26,18 @@ class Services_Twilio_API_Capability
     }
     
     public function addPolicy($policy) {
-    	array_push($this->policies, $policy);
+        array_push($this->policies, $policy);
     }
     
     public function generatePolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) 
     {
-    	$policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
-    	return $policy;
+        $policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
+        return $policy;
     }
     
     public function generateAndAddPolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
-    	$policy = $this->generatePolicy($url, $method, $queryFilter, $postFilter, $allow);
-    	$this->addPolicy($policy);
+        $policy = $this->generatePolicy($url, $method, $queryFilter, $postFilter, $allow);
+        $this->addPolicy($policy);
     }
        
     /**
@@ -67,11 +67,11 @@ class Services_Twilio_API_Capability
         $policyStrings = array();
 
         foreach ($this->policies as $policy) {
-            $policyStrings[] = json_encode($policy->toArray(), JSON_FORCE_OBJECT);
+            $policyStrings[] = $policy->toArray();
         }
 
-		$policyStringsArray = '['.implode(', ', $policyStrings).']';
-        $payload['policies'] = $policyStringsArray;
+		//$policyStringsArray = '['.implode(', ', $policyStrings).']';
+        $payload['policies'] = $policyStrings;
         return JWT::encode($payload, $this->authToken, 'HS256');
     }
 }
@@ -86,13 +86,13 @@ class Services_Twilio_API_Capability
  */
 class Policy
 {
-	private $url;
-	private $method;
-	private $queryFilter;
-	private $postFilter;
-	private $allow;
-	
-	public function __construct($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true)
+    private $url;
+    private $method;
+    private $queryFilter;
+    private $postFilter;
+    private $allow;
+    
+    public function __construct($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true)
     {
         $this->url = $url;
         $this->method = $method;
@@ -103,15 +103,32 @@ class Policy
     
     public function addQueryFilter($queryFilter)
     {
-    	array_push($this->queryFilter, $queryFilter);
+        array_push($this->queryFilter, $queryFilter);
     }
     
     public function addPostFilter($postFilter)
     {
-    	array_push($this->postFilter, $postFilter);
+        array_push($this->postFilter, $postFilter);
     }
     
     public function toArray() {
-    	return array('url' => $this->url, 'method' => $this->method, 'query_filter' => $this->queryFilter, 'post_filter' => $this->postFilter, 'allow' => $this->allow);
+        $policy_array = array('url' => $this->url, 'method' => $this->method, 'allow' => $this->allow);
+        if (!is_null($this->queryFilter)) {
+            if (count($this->queryFilter) > 0 ) {
+                $policy_array['query_filter'] = $this->queryFilter;
+            } else {
+                $policy_array['query_filter'] = new stdClass();
+            }
+        }
+
+        if (!is_null($this->postFilter)) {
+            if (count($this->postFilter) > 0 ) {
+                $policy_array['post_filter'] = $this->postFilter;
+            } else {
+                $policy_array['post_filter'] = new stdClass();
+            }
+        }
+        
+        return $policy_array;
     }
 }
