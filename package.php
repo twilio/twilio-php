@@ -37,12 +37,12 @@ require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.4';
+$api_version     = '3.12.7';
 $api_state       = 'stable';
 
-$release_version = '3.12.4';
+$release_version = '3.12.7';
 $release_state   = 'stable';
-$release_notes   = 'Add transcription link to recordings';
+$release_notes   = 'Add Tokens support';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
@@ -94,9 +94,9 @@ $package->setAPIStability($api_state);
 
 $package->addMaintainer(
     'lead',
-    'kevinburke',
-    'Kevin Burke',
-    'kevin@twilio.com'
+    'ihumanable',
+    'Matt Nowack',
+    'matt@twilio.com'
 );
 
 

@@ -1,6 +1,28 @@
 twilio-php Changelog
 ====================
 
+Version 3.12.7
+--------------
+
+Released on November 21, 2014
+
+- Add support for the new Tokens endpoint
+
+Version 3.12.6
+--------------
+
+Released on November 13, 2014
+
+- Add support for redacting Messages and deleting Messages or Calls
+- Remove pinned SSL certificates
+
+Version 3.12.5
+--------------
+
+Released on July 15, 2014
+
+- Changed the naming of the SIP class to comply with PSR-0
+
 Version 3.12.4
 --------------
 

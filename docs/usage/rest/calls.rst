@@ -1,6 +1,6 @@
-=============
+============
  Phone Calls
-=============
+============
 
 Making a Phone Call
 ===================
@@ -52,7 +52,7 @@ It's easy to iterate over your list of calls.
     }
 
 Filtering Calls
-======================
+===============
 
 Let's say you want to find all of the calls that have been sent from
 a particular number. You can do so by constructing an iterator explicitly:
@@ -70,7 +70,7 @@ Accessing Resources from a Specific Call
 ========================================
 
 The :class:`Call` resource has some subresources you can access, such as
-notifications and recordings. If you have already have a :class:`Call`
+notifications, recordings and feedback. If you have already have a :class:`Call`
 resource, they are easy to get:
 
 .. code-block:: php
@@ -97,10 +97,15 @@ resource, they are easy to get:
           print $recording->sid;
         }
       }
+
+      $feedback = $call->feedback;
+      if ($feedback !== null) {
+        print $feedback->quality_score
+      }
     }
 
 Be careful, as the above code makes quite a few HTTP requests and may display 
-PHP warnings for unintialized variables.
+PHP warnings for uninitialized variables.
 
 Retrieve a Call Record
 ======================
@@ -111,8 +116,21 @@ that record.:
 .. code-block:: php
 
     $client = new Services_Twilio('AC123', '123');
-    $sid = "CA12341234"
+    $sid = "CA12341234";
     $call = $client->account->calls->get($sid)
+
+Delete a Call Record
+====================
+
+To protect your users' privacy and/or comply with legal requirements, Twilio allows you
+to delete call records:
+
+.. code-block:: php
+
+    $client = new Services_Twilio('AC123', '123');
+    $sid = "CA12341234";
+    $call = $client->account->calls->get($sid);
+    $call->delete();
 
 Modifying live calls
 ====================

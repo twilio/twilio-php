@@ -99,7 +99,8 @@ class Services_Twilio_Rest_Call extends Services_Twilio_InstanceResource {
     protected function init($client, $uri) {
         $this->setupSubresources(
             'notifications',
-            'recordings'
+            'recordings',
+            'feedback'
         );
     }
 }
