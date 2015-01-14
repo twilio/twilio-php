@@ -26,15 +26,18 @@ class Services_Twilio_WDS_Worker_Capability
     private $optional = array("required" => false);
     
     
-    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null)
+    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseWDSUrl = null, $overrideBaseWSUrl = null)
     {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->workspaceSid = $workspaceSid;
         $this->workerSid = $workerSid;
         $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, '2010-04-10', $workerSid);
-        if(isset($overrideBaseUrl)) {
-            $this->baseUrl = $overrideBaseUrl;
+        if(isset($overrideBaseWDSUrl)) {
+            $this->baseUrl = $overrideBaseWDSUrl;
+        }
+        if(isset($overrideBaseWSUrl)) {
+            $this->baseWsUrl = $overrideBaseWSUrl;
         }
         $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
