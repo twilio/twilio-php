@@ -49,7 +49,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
             }
             if (in_array('curl', get_loaded_extensions())) {
                 $_http = new Services_Twilio_TinyHttp(
-                    $this->_getbaseuri(),
+                    $this->_getBaseUri(),
                     array(
                         "curlopts" => array(
                             CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
@@ -86,10 +86,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :param array $queryData: An associative array of keys and values. The
      *      values can be a simple type or a list, in which case the list is
      *      converted to multiple query parameters with the same key.
-     * :param string $numericPrefix:
-     * :param string $queryStringStyle: Determine how to build the url
-     *      - strict: Build a standards compliant query string without braces (can be hacked by using braces in key)
-     *      - php: Build a PHP compatible query string with nested array syntax
+     * :param string $numericPrefix: optional prefix to prepend to numeric keys
      * :return: The encoded query string
      * :rtype: string
      */
@@ -329,8 +326,6 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
  */
 class Services_Twilio extends Base_Services_Twilio
 {
-
-    CONST URI = 'https://api.twilio.com';
     protected $versions = array('2008-08-01', '2010-04-01');
 
     public function __construct(
