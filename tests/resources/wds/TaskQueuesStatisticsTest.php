@@ -9,7 +9,7 @@ class TaskQueuesStatisticsTest extends PHPUnit_Framework_TestCase
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/v1/Accounts/AC123/Workspaces/WS123/Statistics/TaskQueues.json?Minutes=60')
+            ->with('/v1/Accounts/AC123/Workspaces/WS123/TaskQueues/Statistics.json?Minutes=60')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('account_sid' => 'AC123'))
             ));

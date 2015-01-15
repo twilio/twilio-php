@@ -403,27 +403,27 @@ class Wds_Services_Twilio extends Base_Services_Twilio
 
     public function getTaskQueuesStatistics(array $params = array())
     {
-        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/TaskQueues", $params);
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/TaskQueues/Statistics", $params);
     }
 
     public function getTaskQueueStatistics($taskQueueSid, array $params = array())
     {
-        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/TaskQueues/{$taskQueueSid}", $params);
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/TaskQueues/{$taskQueueSid}/Statistics", $params);
     }
 
     public function getWorkersStatistics(array $params = array())
     {
-        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/Workers", $params);
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Workers/Statistics", $params);
     }
 
     public function getWorkerStatistics($workerSid, array $params = array())
     {
-        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/Workers/{$workerSid}", $params);
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Workers/{$workerSid}/Statistics", $params);
     }
 
     public function getWorkflowStatistics($workflowSid, array $params = array())
     {
-        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics/Workflows/{$workflowSid}", $params);
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Workflows/{$workflowSid}/Statistics", $params);
     }
 
     public function getWorkspaceStatistics(array $params = array())
