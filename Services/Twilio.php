@@ -6,8 +6,9 @@
  * Link:     https://twilio-php.readthedocs.org/en/latest/
  */
 
-function Services_Twilio_autoload($className) {
-    if (substr($className, 0, 15) != 'Services_Twilio') {
+function Services_Twilio_autoload($className)
+{
+    if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 26) != 'TaskRouter_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -18,36 +19,17 @@ function Services_Twilio_autoload($className) {
 spl_autoload_register('Services_Twilio_autoload');
 
 /**
- * Create a client to talk to the Twilio API.
- *
- *
- * :param string               $sid:      Your Account SID
- * :param string               $token:    Your Auth Token from `your dashboard
- *      <https://www.twilio.com/user/account>`_
- * :param string               $version:  API version to use
- * :param $_http:    A HTTP client for making requests.
- * :type $_http: :php:class:`Services_Twilio_TinyHttp`
- * :param int                  $retryAttempts:
- *      Number of times to retry failed requests. Currently only idempotent
- *      requests (GET's and DELETE's) are retried.
- *
- * Here's an example:
- *
- * .. code-block:: php
- *
- *      require('Services/Twilio.php');
- *      $client = new Services_Twilio('AC123', '456bef', null, null, 3);
- *      // Take some action with the client, etc.
+ * Base client class
  */
-class Services_Twilio extends Services_Twilio_Resource
+abstract class Base_Services_Twilio extends Services_Twilio_Resource
 {
     const USER_AGENT = 'twilio-php/3.12.7';
 
     protected $http;
-    protected $retryAttempts;
     protected $last_response;
+    protected $retryAttempts;
     protected $version;
-    protected $versions = array('2008-08-01', '2010-04-01');
+    protected $versions = array('2010-04-01');
 
     public function __construct(
         $sid,
@@ -55,27 +37,27 @@ class Services_Twilio extends Services_Twilio_Resource
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
-    ) {
-        $this->version = in_array($version, $this->versions) ?
-                $version : end($this->versions);
+    )
+    {
+        $this->version = in_array($version, $this->versions) ? $version : end($this->versions);
 
         if (null === $_http) {
             if (!in_array('openssl', get_loaded_extensions())) {
                 throw new Services_Twilio_HttpException("The OpenSSL extension is required but not currently enabled. For more information, see http://php.net/manual/en/book.openssl.php");
             }
             if (in_array('curl', get_loaded_extensions())) {
-                  $_http = new Services_Twilio_TinyHttp(
-                      "https://api.twilio.com",
-                      array(
-                          "curlopts" => array(
-                              CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
-                              CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
-                          ),
-                      )
-                  );
+                $_http = new Services_Twilio_TinyHttp(
+                    $this->_getBaseUri(),
+                    array(
+                        "curlopts" => array(
+                            CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
+                            CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
+                        ),
+                    )
+                );
             } else {
                 $_http = new Services_Twilio_HttpStream(
-                    "https://api.twilio.com",
+                    $this->_getBaseUri(),
                     array(
                         "http_options" => array(
                             "http" => array(
@@ -93,39 +75,53 @@ class Services_Twilio extends Services_Twilio_Resource
         }
         $_http->authenticate($sid, $token);
         $this->http = $_http;
-        $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
-        $this->account = $this->accounts->get($sid);
         $this->retryAttempts = $retryAttempts;
     }
 
     /**
-     * Fully qualified user agent with the current PHP Version.
+     * Build a query string from query data
      *
-     * :return: the user agent
+     * :param array $queryData: An associative array of keys and values. The
+     *      values can be a simple type or a list, in which case the list is
+     *      converted to multiple query parameters with the same key.
+     * :param string $numericPrefix:
+     * :param string $queryStringStyle: Determine how to build the url
+     *      - strict: Build a standards compliant query string without braces (can be hacked by using braces in key)
+     *      - php: Build a PHP compatible query string with nested array syntax
+     * :return: The encoded query string
      * :rtype: string
      */
-    public static function qualifiedUserAgent($php_version) {
-        return self::USER_AGENT . " (php $php_version)";
-    }
+    public static function buildQuery($queryData, $numericPrefix = '')
+    {
+        $query = '';
+        // Loop through all of the $query_data
+        foreach ($queryData as $key => $value) {
+            // If the key is an int, add the numeric_prefix to the beginning
+            if (is_int($key)) {
+                $key = $numericPrefix . $key;
+            }
 
-    /**
-     * Get the api version used by the rest client
-     *
-     * :return: the API version in use
-     * :returntype: string
-     */
-    public function getVersion() {
-        return $this->version;
-    }
-
-    /**
-     * Get the retry attempt limit used by the rest client
-     *
-     * :return: the number of retry attempts
-     * :rtype: int
-     */
-    public function getRetryAttempts() {
-        return $this->retryAttempts;
+            // If the value is an array, we will end up recursing
+            if (is_array($value)) {
+                // Loop through the values
+                foreach ($value as $value2) {
+                    // Add an arg_separator if needed
+                    if ($query !== '') {
+                        $query .= '&';
+                    }
+                    // Recurse
+                    $query .= self::buildQuery(array($key => $value2), $numericPrefix);
+                }
+            } else {
+                // Add an arg_separator if needed
+                if ($query !== '') {
+                    $query .= '&';
+                }
+                // Add the key and the urlencoded value (as a string)
+                $query .= $key . '=' . urlencode((string)$value);
+            }
+        }
+        return $query;
     }
 
     /**
@@ -143,7 +139,8 @@ class Services_Twilio extends Services_Twilio_Resource
      * :return: the URI that should be requested by the library
      * :returntype: string
      */
-    public static function getRequestUri($path, $params, $full_uri = false) {
+    public static function getRequestUri($path, $params, $full_uri = false)
+    {
         $json_path = $full_uri ? $path : "$path.json";
         if (!$full_uri && !empty($params)) {
             $query_path = $json_path . '?' . http_build_query($params, '', '&');
@@ -154,58 +151,14 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
-     * Helper method for implementing request retry logic
+     * Fully qualified user agent with the current PHP Version.
      *
-     * :param array  $callable:      The function that makes an HTTP request
-     * :param string $uri:           The URI to request
-     * :param int    $retriesLeft:   Number of times to retry
-     *
-     * :return: The object representation of the resource
-     * :rtype: object
+     * :return: the user agent
+     * :rtype: string
      */
-    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft) {
-        $response = call_user_func_array($callable, array($uri));
-        list($status, $headers, $body) = $response;
-        if ($status >= 500 && $retriesLeft > 0) {
-            return $this->_makeIdempotentRequest($callable, $uri, $retriesLeft - 1);
-        } else {
-            return $this->_processResponse($response);
-        }
-    }
-
-    /**
-     * GET the resource at the specified path.
-     *
-     * :param string $path:   Path to the resource
-     * :param array  $params: Query string parameters
-     * :param boolean  $full_uri: Whether the full URI has been passed as an
-     *      argument
-     *
-     * :return: The object representation of the resource
-     * :rtype: object
-     */
-    public function retrieveData($path, $params = array(),
-        $full_uri = false
-    ) {
-        $uri = self::getRequestUri($path, $params, $full_uri);
-        return $this->_makeIdempotentRequest(array($this->http, 'get'),
-            $uri, $this->retryAttempts);
-    }
-
-    /**
-     * DELETE the resource at the specified path.
-     *
-     * :param string $path:   Path to the resource
-     * :param array  $params: Query string parameters
-     *
-     * :return: The object representation of the resource
-     * :rtype: object
-     */
-    public function deleteData($path, $params = array())
+    public static function qualifiedUserAgent($php_version)
     {
-        $uri = self::getRequestUri($path, $params);
-        return $this->_makeIdempotentRequest(array($this->http, 'delete'),
-            $uri, $this->retryAttempts);
+        return self::USER_AGENT . " (php $php_version)";
     }
 
     /**
@@ -228,48 +181,93 @@ class Services_Twilio extends Services_Twilio_Resource
     }
 
     /**
-     * Build a query string from query data
+     * DELETE the resource at the specified path.
      *
-     * :param array $queryData: An associative array of keys and values. The
-     *      values can be a simple type or a list, in which case the list is
-     *      converted to multiple query parameters with the same key.
-     * :param string $numericPrefix:
-     * :param string $queryStringStyle: Determine how to build the url
-     *      - strict: Build a standards compliant query string without braces (can be hacked by using braces in key)
-     *      - php: Build a PHP compatible query string with nested array syntax
-     * :return: The encoded query string
+     * :param string $path:   Path to the resource
+     * :param array  $params: Query string parameters
+     *
+     * :return: The object representation of the resource
+     * :rtype: object
+     */
+    public function deleteData($path, $params = array())
+    {
+        $uri = self::getRequestUri($path, $params);
+        return $this->_makeIdempotentRequest(array($this->http, 'delete'),
+            $uri, $this->retryAttempts);
+    }
+
+    /**
+     * Get the retry attempt limit used by the rest client
+     *
+     * :return: the number of retry attempts
+     * :rtype: int
+     */
+    public function getRetryAttempts()
+    {
+        return $this->retryAttempts;
+    }
+
+    /**
+     * Get the api version used by the rest client
+     *
+     * :return: the API version in use
+     * :returntype: string
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * GET the resource at the specified path.
+     *
+     * :param string $path:   Path to the resource
+     * :param array  $params: Query string parameters
+     * :param boolean  $full_uri: Whether the full URI has been passed as an
+     *      argument
+     *
+     * :return: The object representation of the resource
+     * :rtype: object
+     */
+    public function retrieveData($path, $params = array(),
+                                 $full_uri = false
+    )
+    {
+        $uri = self::getRequestUri($path, $params, $full_uri);
+        return $this->_makeIdempotentRequest(array($this->http, 'get'),
+            $uri, $this->retryAttempts);
+    }
+
+    /**
+     * Get the base URI for this client.
+     *
+     * :return: base URI
      * :rtype: string
      */
-    public static function buildQuery($queryData, $numericPrefix = '') {
-            $query = '';
-            // Loop through all of the $query_data
-            foreach ($queryData as $key => $value) {
-                // If the key is an int, add the numeric_prefix to the beginning
-                if (is_int($key)) {
-                    $key = $numericPrefix . $key;
-                }
+    protected function _getBaseUri()
+    {
+        return 'https://api.twilio.com';
+    }
 
-                // If the value is an array, we will end up recursing
-                if (is_array($value)) {
-                    // Loop through the values
-                    foreach ($value as $value2) {
-                        // Add an arg_separator if needed
-                        if ($query !== '') {
-                            $query .= '&';
-                        }
-                        // Recurse
-                        $query .= self::buildQuery(array($key => $value2), $numericPrefix);
-                    }
-                } else {
-                    // Add an arg_separator if needed
-                    if ($query !== '') {
-                        $query .= '&';
-                    }
-                    // Add the key and the urlencoded value (as a string)
-                    $query .= $key . '=' . urlencode((string)$value);
-                }
-            }
-        return $query;
+    /**
+     * Helper method for implementing request retry logic
+     *
+     * :param array  $callable:      The function that makes an HTTP request
+     * :param string $uri:           The URI to request
+     * :param int    $retriesLeft:   Number of times to retry
+     *
+     * :return: The object representation of the resource
+     * :rtype: object
+     */
+    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft)
+    {
+        $response = call_user_func_array($callable, array($uri));
+        list($status, $headers, $body) = $response;
+        if ($status >= 500 && $retriesLeft > 0) {
+            return $this->_makeIdempotentRequest($callable, $uri, $retriesLeft - 1);
+        } else {
+            return $this->_processResponse($response);
+        }
     }
 
     /**
@@ -306,6 +304,136 @@ class Services_Twilio extends Services_Twilio_Resource
             isset($decoded->code) ? $decoded->code : null,
             isset($decoded->more_info) ? $decoded->more_info : null
         );
+    }
+}
+
+/**
+ * Create a client to talk to the Twilio Rest API.
+ *
+ *
+ * :param string               $sid:      Your Account SID
+ * :param string               $token:    Your Auth Token from `your dashboard
+ *      <https://www.twilio.com/user/account>`_
+ * :param string               $version:  API version to use
+ * :param $_http:    A HTTP client for making requests.
+ * :type $_http: :php:class:`Services_Twilio_TinyHttp`
+ * :param int                  $retryAttempts:
+ *      Number of times to retry failed requests. Currently only idempotent
+ *      requests (GET's and DELETE's) are retried.
+ *
+ * Here's an example:
+ *
+ * .. code-block:: php
+ *
+ *      require('Services/Twilio.php');
+ *      $client = new Services_Twilio('AC123', '456bef', null, null, 3);
+ *      // Take some action with the client, etc.
+ */
+class Services_Twilio extends Base_Services_Twilio
+{
+
+    CONST URI = 'https://api.twilio.com';
+    protected $versions = array('2008-08-01', '2010-04-01');
+
+    public function __construct(
+        $sid,
+        $token,
+        $version = null,
+        Services_Twilio_TinyHttp $_http = null,
+        $retryAttempts = 1
+    )
+    {
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
+        $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
+        $this->account = $this->accounts->get($sid);
+    }
+}
+
+/**
+ * Create a client to talk to the Twilio TaskRouter API.
+ *
+ *
+ * :param string               $sid:      Your Account SID
+ * :param string               $token:    Your Auth Token from `your dashboard
+ *      <https://www.twilio.com/user/account>`_
+ * :param string               $workspaceSid:
+ *      Workspace SID to work with
+ * :param string               $version:  API version to use
+ * :param $_http:    A HTTP client for making requests.
+ * :type $_http: :php:class:`Services_Twilio_TinyHttp`
+ * :param int                  $retryAttempts:
+ *      Number of times to retry failed requests. Currently only idempotent
+ *      requests (GET's and DELETE's) are retried.
+ *
+ * Here's an example:
+ *
+ * .. code-block:: php
+ *
+ *      require('Services/Twilio.php');
+ *      $client = new TaskRouter_Services_Twilio('AC123', '456bef', null, null, 3);
+ *      // Take some action with the client, etc.
+ */
+class TaskRouter_Services_Twilio extends Base_Services_Twilio
+{
+    protected $versions = array('v1');
+    private $accountSid;
+
+    public function __construct(
+        $sid,
+        $token,
+        $workspaceSid,
+        $version = null,
+        Services_Twilio_TinyHttp $_http = null,
+        $retryAttempts = 1
+    )
+    {
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
+        $this->workspaces = new Services_Twilio_Rest_TaskRouter_Workspaces($this, "/{$this->version}/Accounts/{$sid}/Workspaces");
+        $this->workspace = $this->workspaces->get($workspaceSid);
+        $this->accountSid = $sid;
+    }
+
+    public static function createWorkspace($sid, $token, $friendlyName, array $params = array(), Services_Twilio_TinyHttp $_http = null)
+    {
+        $taskrouterClient = new TaskRouter_Services_Twilio($sid, $token, null, null, $_http);
+        return $taskrouterClient->workspaces->create($friendlyName, $params);
+    }
+
+    public function getTaskQueuesStatistics(array $params = array())
+    {
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/TaskQueues/Statistics", $params);
+    }
+
+    public function getTaskQueueStatistics($taskQueueSid, array $params = array())
+    {
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/TaskQueues/{$taskQueueSid}/Statistics", $params);
+    }
+
+    public function getWorkersStatistics(array $params = array())
+    {
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Workers/Statistics", $params);
+    }
+
+    public function getWorkerStatistics($workerSid, array $params = array())
+    {
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Workers/{$workerSid}/Statistics", $params);
+    }
+
+    public function getWorkflowStatistics($workflowSid, array $params = array())
+    {
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Workflows/{$workflowSid}/Statistics", $params);
+    }
+
+    public function getWorkspaceStatistics(array $params = array())
+    {
+        return $this->retrieveData("/{$this->version}/Accounts/{$this->accountSid}/Workspaces/{$this->workspace->sid}/Statistics", $params);
+    }
+
+    protected function _getBaseUri()
+    {
+        return 'https://taskrouter.twilio.com';
     }
 }
 
