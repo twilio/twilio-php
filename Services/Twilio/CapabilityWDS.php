@@ -2,14 +2,14 @@
 include_once 'CapabilityAPI.php';
 
 /**
- * Twilio WDS Capability assigner
+ * Twilio TaskRouter Capability assigner
  *
  * @category Services
  * @package  Services_Twilio
  * @author Justin Witz <justin.witz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Twilio_WDS_Worker_Capability
+class Services_Twilio_TaskRouter_Worker_Capability
 {
     private $accountSid;
     private $authToken;
@@ -71,12 +71,12 @@ class Services_Twilio_WDS_Worker_Capability
     }
     
     public function generateToken($ttl = 3600) {
-        $wdsAttributes = array(
+        $taskRouterAttributes = array(
             'account_sid' => $this->accountSid,
             'channel' => $this->workerSid,
             'workspace_sid' => $this->workspaceSid,
             'worker_sid' => $this->workerSid,
         );
-    	return $this->apiCapability->generateToken($ttl, $wdsAttributes);
+    	return $this->apiCapability->generateToken($ttl, $taskRouterAttributes);
     }
 }
