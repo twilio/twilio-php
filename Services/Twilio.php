@@ -8,7 +8,7 @@
 
 function Services_Twilio_autoload($className)
 {
-    if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 19) != 'Wds_Services_Twilio') {
+    if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 26) != 'TaskRouter_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -351,7 +351,7 @@ class Services_Twilio extends Base_Services_Twilio
 }
 
 /**
- * Create a client to talk to the Twilio Wds API.
+ * Create a client to talk to the Twilio TaskRouter API.
  *
  *
  * :param string               $sid:      Your Account SID
@@ -371,10 +371,10 @@ class Services_Twilio extends Base_Services_Twilio
  * .. code-block:: php
  *
  *      require('Services/Twilio.php');
- *      $client = new Wds_Services_Twilio('AC123', '456bef', null, null, 3);
+ *      $client = new TaskRouter_Services_Twilio('AC123', '456bef', null, null, 3);
  *      // Take some action with the client, etc.
  */
-class Wds_Services_Twilio extends Base_Services_Twilio
+class TaskRouter_Services_Twilio extends Base_Services_Twilio
 {
     protected $versions = array('v1');
     private $accountSid;
@@ -390,15 +390,15 @@ class Wds_Services_Twilio extends Base_Services_Twilio
     {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
 
-        $this->workspaces = new Services_Twilio_Rest_Wds_Workspaces($this, "/{$this->version}/Accounts/{$sid}/Workspaces");
+        $this->workspaces = new Services_Twilio_Rest_TaskRouter_Workspaces($this, "/{$this->version}/Accounts/{$sid}/Workspaces");
         $this->workspace = $this->workspaces->get($workspaceSid);
         $this->accountSid = $sid;
     }
 
     public static function createWorkspace($sid, $token, $friendlyName, array $params = array(), Services_Twilio_TinyHttp $_http = null)
     {
-        $wdsClient = new Wds_Services_Twilio($sid, $token, null, null, $_http);
-        return $wdsClient->workspaces->create($friendlyName, $params);
+        $taskrouterClient = new TaskRouter_Services_Twilio($sid, $token, null, null, $_http);
+        return $taskrouterClient->workspaces->create($friendlyName, $params);
     }
 
     public function getTaskQueuesStatistics(array $params = array())
@@ -433,7 +433,7 @@ class Wds_Services_Twilio extends Base_Services_Twilio
 
     protected function _getBaseUri()
     {
-        return 'https://wds.twilio.com';
+        return 'https://taskrouter.twilio.com';
     }
 }
 
