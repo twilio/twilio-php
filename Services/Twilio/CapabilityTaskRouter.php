@@ -26,20 +26,20 @@ class Services_Twilio_TaskRouter_Worker_Capability
     private $optional = array("required" => false);
     
     
-    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseWDSUrl = null, $overrideBaseWSUrl = null)
+    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
     {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->workspaceSid = $workspaceSid;
         $this->workerSid = $workerSid;
         $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, 'v1', $workerSid);
-        if(isset($overrideBaseWDSUrl)) {
-            $this->baseUrl = $overrideBaseWDSUrl;
+        if(isset($overrideBaseUrl)) {
+            $this->baseUrl = $overrideBaseUrl;
         }
         if(isset($overrideBaseWSUrl)) {
             $this->baseWsUrl = $overrideBaseWSUrl;
         }
-        $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
+        $this->baseUrl = $this->baseUrl.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
         
