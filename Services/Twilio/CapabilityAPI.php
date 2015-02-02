@@ -70,7 +70,6 @@ class Services_Twilio_API_Capability
             $policyStrings[] = $policy->toArray();
         }
 
-		//$policyStringsArray = '['.implode(', ', $policyStrings).']';
         $payload['policies'] = $policyStrings;
         return JWT::encode($payload, $this->authToken, 'HS256');
     }
