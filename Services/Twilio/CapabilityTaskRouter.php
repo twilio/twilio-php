@@ -17,7 +17,7 @@ class Services_Twilio_TaskRouter_Worker_Capability
     private $workerSid;
     private $apiCapability;
     
-    private $baseUrl = 'https://api.twilio.com/2010-04-01';
+    private $baseUrl = 'https://taskrouter.twilio.com/v1';
     private $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
     private $workerUrl;
     private $reservationsUrl;
@@ -32,7 +32,7 @@ class Services_Twilio_TaskRouter_Worker_Capability
         $this->authToken = $authToken;
         $this->workspaceSid = $workspaceSid;
         $this->workerSid = $workerSid;
-        $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, '2010-04-10', $workerSid);
+        $this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, 'v1', $workerSid);
         if(isset($overrideBaseWDSUrl)) {
             $this->baseUrl = $overrideBaseWDSUrl;
         }
