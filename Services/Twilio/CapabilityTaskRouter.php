@@ -39,7 +39,7 @@ class Services_Twilio_TaskRouter_Worker_Capability
         if(isset($overrideBaseWSUrl)) {
             $this->baseWsUrl = $overrideBaseWSUrl;
         }
-        $this->baseUrl = $this->baseUrl.'/Workspaces/'.$workspaceSid;
+        $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
         
