@@ -25,6 +25,7 @@ class EventsTest extends PHPUnit_Framework_TestCase
             ->with('/v1/Accounts/AC123/Workspaces/WS123/Events.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
+                    'meta' => array('key' => 'events'),
                     'events' => array(array('sid' => 'EV123'))
                 ))
             ));
