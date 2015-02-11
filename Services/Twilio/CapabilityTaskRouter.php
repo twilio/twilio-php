@@ -21,6 +21,7 @@ class Services_Twilio_TaskRouter_Worker_Capability
     private $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
     private $workerUrl;
     private $reservationsUrl;
+    private $activityUrl;
     
     private $required = array("required" => true);
     private $optional = array("required" => false);
@@ -42,10 +43,12 @@ class Services_Twilio_TaskRouter_Worker_Capability
         $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
+        $this->activityUrl = $this->baseUrl.'/Activities';
         
         //add permissions to GET and POST to the worker URI
         $this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workerSid, "GET", null, null);
         $this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workerSid, "POST", null, null);
+        $this->apiCapability->generateAndAddPolicy($this->activityUrl, "GET", null, null);
     
     }
     
@@ -68,6 +71,14 @@ class Services_Twilio_TaskRouter_Worker_Capability
         $queryFilter = array();
         $postFilter = array("ReservationStatus" => $this->required);
         $this->apiCapability->generateAndAddPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
+    }
+    
+     public function allowWorkerActivityFetch(){
+        $method = 'GET';
+        $queryFilter = array();
+        $postFilter = array();
+        $this->apiCapability->generateAndAddPolicy($this->activityUrl, $method, $queryFilter, $postFilter);
+
     }
     
     public function generateToken($ttl = 3600) {
