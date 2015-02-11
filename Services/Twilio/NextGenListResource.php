@@ -49,10 +49,4 @@ class Services_Twilio_NextGenListResource extends Services_Twilio_ListResource {
 		throw new BadMethodCallException("Counting is not supported by this resource");
 	}
 
-	public function getIterator($page = 0, $size = 50, $filters = array()) {
-		if ($page !== 0) {
-			throw new InvalidArgumentException("Absolute paging is not supported for this resource. Start from page 0.");
-		}
-		return parent::getIterator($page, $size, $filters);
-	}
 }
