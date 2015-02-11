@@ -9,7 +9,7 @@ class WorkersTest extends PHPUnit_Framework_TestCase
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/v1/Accounts/AC123/Workspaces/WS123/Workers.json',
+            ->with('/v1/Accounts/AC123/Workspaces/WS123/Workers',
                 array('Content-Type' => 'application/x-www-form-urlencoded'),
                 'FriendlyName=Test+Worker')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -23,7 +23,7 @@ class WorkersTest extends PHPUnit_Framework_TestCase
     function testGet() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/v1/Accounts/AC123/Workspaces/WS123/Workers/WK123.json')
+            ->with('/v1/Accounts/AC123/Workspaces/WS123/Workers/WK123')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WQ123', 'friendly_name' => 'Test Worker'))
             ));
