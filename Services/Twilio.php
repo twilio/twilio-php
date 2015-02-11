@@ -170,9 +170,11 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: The object representation of the resource
      * :rtype: object
      */
-    public function createData($path, $params = array())
+    public function createData($path, $params = array(), $full_uri = false)
     {
-        $path = "$path.json";
+		if (!$full_uri) {
+			$path = "$path.json";
+		}
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
         $response = $this->http->post(
             $path, $headers, self::buildQuery($params, '')
@@ -233,7 +235,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
                                  $full_uri = false
     )
     {
-        $uri = self::getRequestUri($path, $params, $full_uri);
+        $uri = static::getRequestUri($path, $params, $full_uri);
         return $this->_makeIdempotentRequest(array($this->http, 'get'),
             $uri, $this->retryAttempts);
     }
@@ -394,6 +396,31 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
         $this->workspace = $this->workspaces->get($workspaceSid);
         $this->accountSid = $sid;
     }
+
+	/**
+	 * Construct a URI based on initial path, query params, and paging
+	 * information
+	 *
+	 * We want to use the query params, unless we have a next_page_uri from the
+	 * API.
+	 *
+	 * :param string $path: The request path (may contain query params if it's
+	 *      a next_page_uri)
+	 * :param array $params: Query parameters to use with the request
+	 * :param boolean $full_uri: Whether the $path contains the full uri
+	 *
+	 * :return: the URI that should be requested by the library
+	 * :returntype: string
+	 */
+	public static function getRequestUri($path, $params, $full_uri = false)
+	{
+		if (!$full_uri && !empty($params)) {
+			$query_path = $path . '?' . http_build_query($params, '', '&');
+		} else {
+			$query_path = $path;
+		}
+		return $query_path;
+	}
 
     public static function createWorkspace($sid, $token, $friendlyName, array $params = array(), Services_Twilio_TinyHttp $_http = null)
     {

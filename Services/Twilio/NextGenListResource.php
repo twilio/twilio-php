@@ -19,11 +19,30 @@ class Services_Twilio_NextGenListResource extends Services_Twilio_ListResource {
 			array($this, 'getObjectFromJson'),
 			$page->$list_name
 		);
-		$page->page = $page->meta->page;
-		$page->page_size = $page->meta->page_size;
 		$page->next_page_uri = $page->meta->next_page_url;
 
 		return new Services_Twilio_Page($page, $list_name, $page->meta->next_page_url);
+	}
+
+	/**
+	 * Create a resource on the list and then return its representation as an
+	 * InstanceResource.
+	 *
+	 * :param array $params: The parameters with which to create the resource
+	 *
+	 * :return: The created resource
+	 * :rtype: :php:class:`InstanceResource <Services_Twilio_InstanceResource>`
+	 */
+	protected function _create($params)
+	{
+		$params = $this->client->createData($this->uri, $params, true);
+		/* Some methods like verified caller ID don't return sids. */
+		if (isset($params->sid)) {
+			$resource_uri = $this->uri . '/' . $params->sid;
+		} else {
+			$resource_uri = $this->uri;
+		}
+		return new $this->instance_name($this->client, $resource_uri, $params);
 	}
 
 	public function count() {
