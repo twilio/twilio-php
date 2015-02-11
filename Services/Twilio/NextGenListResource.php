@@ -1,7 +1,7 @@
 <?php
 
 
-class NextGenListResource extends ListResource {
+class Services_Twilio_NextGenListResource extends Services_Twilio_ListResource {
 
 	public function getPage($page = 0, $size = 50, $filters = array(), $deep_paging_uri = null) {
 		if ($deep_paging_uri !== null) {
