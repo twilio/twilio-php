@@ -37,12 +37,12 @@ require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.12.7';
+$api_version     = '3.12.8';
 $api_state       = 'stable';
 
-$release_version = '3.12.7';
+$release_version = '3.12.8';
 $release_state   = 'stable';
-$release_notes   = 'Add Tokens support';
+$release_notes   = 'Add Addresses support';
 
 $description = <<<DESC
 A SDK (or helper library, as we're calling them) for PHP developers to write
