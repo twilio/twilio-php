@@ -50,10 +50,13 @@ class NextGenListResourceTest extends PHPUnit_Framework_TestCase {
 		))));
 		$iter = $this->client->foos->getIterator();
 		$this->assertNotNull($iter);
-		$foo = $iter->next();
+		$this->assertTrue($iter->valid());
+		$foo = $iter->current();
 		$this->assertNotNull($foo);
 		$this->assertEquals('FO123', $foo->sid);
-		$foo = $iter->next();
+		$iter->next();
+		$iter->valid();
+		$foo = $iter->current();
 		$this->assertNotNull($foo);
 		$this->assertEquals('FO456', $foo->sid);
 	}
