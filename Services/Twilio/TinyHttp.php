@@ -42,8 +42,16 @@ class Services_Twilio_TinyHttp {
   public function __call($name, $args) {
     list($res, $req_headers, $req_body) = $args + array(0, array(), '');
 
+	  if (strpos($res, 'http') === 0) {
+		  // We got handed a complete URL, just use it
+		  $url = $res;
+	  } else {
+		  // Build from path and default scheme/host.
+		  $url = "$this->scheme://$this->host$res";
+	  }
+
     $opts = $this->curlopts + array(
-      CURLOPT_URL => "$this->scheme://$this->host$res",
+      CURLOPT_URL => $url,
       CURLOPT_HEADER => TRUE,
       CURLOPT_RETURNTRANSFER => TRUE,
       CURLOPT_INFILESIZE => -1,
