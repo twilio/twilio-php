@@ -626,7 +626,7 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     function testCreateWorkspace() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/v1/Accounts/AC123/Workspaces',
+            ->with('/v1/Workspaces',
                 array('Content-Type' => 'application/x-www-form-urlencoded'),
                 'FriendlyName=Test+Workspace')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),

@@ -7,7 +7,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
     function testGet() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/v1/Accounts/AC123/Workspaces/WS123/Tasks/WT123/Reservations/WR123')
+            ->with('/v1/Workspaces/WS123/Tasks/WT123/Reservations/WR123')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WR123', 'reservation_status' => 'reserved'))
             ));
@@ -20,7 +20,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 	function testGetPage() {
 		$http = m::mock(new Services_Twilio_TinyHttp);
 		$http->shouldReceive('get')->once()
-			->with('/v1/Accounts/AC123/Workspaces/WS123/Tasks/WT123/Reservations?Page=0&PageSize=50')
+			->with('/v1/Workspaces/WS123/Tasks/WT123/Reservations?Page=0&PageSize=50')
 			->andReturn(array(200, array('Content-Type' => 'application/json'),
 							json_encode(array(
 											'meta' => array('key' => 'reservations', 'next_page_url' => null),

@@ -8,7 +8,7 @@ class TasksTest extends PHPUnit_Framework_TestCase
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/v1/Accounts/AC123/Workspaces/WS123/Tasks',
+            ->with('/v1/Workspaces/WS123/Tasks',
                 array('Content-Type' => 'application/x-www-form-urlencoded'),
                 'Timeout=60&Attributes=attribute&WorkflowSid=WF123')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -24,7 +24,7 @@ class TasksTest extends PHPUnit_Framework_TestCase
     function testGet() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/v1/Accounts/AC123/Workspaces/WS123/Tasks/WT123')
+            ->with('/v1/Workspaces/WS123/Tasks/WT123')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WT123', 'workflow_sid' => 'WF123'))
             ));
@@ -37,7 +37,7 @@ class TasksTest extends PHPUnit_Framework_TestCase
 	function testGetPage() {
 		$http = m::mock(new Services_Twilio_TinyHttp);
 		$http->shouldReceive('get')->once()
-			->with('/v1/Accounts/AC123/Workspaces/WS123/Tasks?Page=0&PageSize=50')
+			->with('/v1/Workspaces/WS123/Tasks?Page=0&PageSize=50')
 			->andReturn(array(200, array('Content-Type' => 'application/json'),
 							json_encode(array(
 											'meta' => array('key' => 'tasks', 'next_page_url' => null),

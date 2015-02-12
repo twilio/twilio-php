@@ -9,7 +9,7 @@ class WorkspacesTest extends PHPUnit_Framework_TestCase
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
-            ->with('/v1/Accounts/AC123/Workspaces',
+            ->with('/v1/Workspaces',
                 array('Content-Type' => 'application/x-www-form-urlencoded'),
                 'FriendlyName=Test+Workspace')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
@@ -24,7 +24,7 @@ class WorkspacesTest extends PHPUnit_Framework_TestCase
     {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()
-            ->with('/v1/Accounts/AC123/Workspaces?Page=0&PageSize=50')
+            ->with('/v1/Workspaces?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
                     'meta' => array('key' => 'workspaces', 'next_page_url' => null),
@@ -32,7 +32,7 @@ class WorkspacesTest extends PHPUnit_Framework_TestCase
                 ))
             ));
         $http->shouldReceive('get')->once()
-            ->with('/v1/Accounts/AC123/Workspaces?Page=1&PageSize=50')
+            ->with('/v1/Workspaces?Page=1&PageSize=50')
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
