@@ -296,12 +296,12 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $client->account->calls->create('123', '123', 'http://example.com');
     }
 
-    function testWdsClient() {
-        $wdsClient = new Wds_Services_Twilio('AC123', '123', 'WS123', 'v1');
-        $this->assertNotNull($wdsClient);
-        $this->assertEquals(1, $wdsClient->getRetryAttempts());
-        $this->assertNotNull($wdsClient->workspaces);
-        $this->assertEquals('WS123', $wdsClient->workspace->sid);
+    function testTaskRouterClient() {
+        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1');
+        $this->assertNotNull($taskrouterClient);
+        $this->assertEquals(1, $taskrouterClient->getRetryAttempts());
+        $this->assertNotNull($taskrouterClient->workspaces);
+        $this->assertEquals('WS123', $taskrouterClient->workspace->sid);
     }
 
     function testModifyLiveCall() {
@@ -621,6 +621,19 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $this->assertSame(count($client->account->calls), 0);
+    }
+
+    function testCreateWorkspace() {
+        $http = m::mock(new Services_Twilio_TinyHttp);
+        $http->shouldReceive('post')->once()
+            ->with('/v1/Workspaces',
+                array('Content-Type' => 'application/x-www-form-urlencoded'),
+                'FriendlyName=Test+Workspace')
+            ->andReturn(array(200, array('Content-Type' => 'application/json'),
+                json_encode(array('sid' => 'WS123'))
+            ));
+        $workspace = TaskRouter_Services_Twilio::createWorkspace('AC123', '123', 'Test Workspace', array(), $http);
+        $this->assertNotNull($workspace);
     }
 
     function testPostMultivaluedForm() {

@@ -14,6 +14,7 @@ class Services_Twilio_AutoPagingIterator
         $this->page = $page;
         $this->size = $size;
         $this->filters = $filters;
+		$this->next_page_uri = null;
         $this->items = array();
 
         // Save a backup for rewind()
