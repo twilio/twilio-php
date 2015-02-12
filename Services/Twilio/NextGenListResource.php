@@ -6,8 +6,10 @@ class Services_Twilio_NextGenListResource extends Services_Twilio_ListResource {
 	public function getPage($page = 0, $size = 50, $filters = array(), $deep_paging_uri = null) {
 		if ($deep_paging_uri !== null) {
 			$page = $this->client->retrieveData($deep_paging_uri, array(), true);
-		} else {
+		} else if ($page == 0) {
 			$page = $this->client->retrieveData($this->uri, array('Page' => $page, 'PageSize' => $size) + $filters);
+		} else {
+			return $this->emptyPage();
 		}
 
 		$list_name = $page->meta->key;
@@ -22,6 +24,12 @@ class Services_Twilio_NextGenListResource extends Services_Twilio_ListResource {
 		$page->next_page_uri = $page->meta->next_page_url;
 
 		return new Services_Twilio_Page($page, $list_name, $page->meta->next_page_url);
+	}
+
+	private function emptyPage() {
+		$page = new stdClass();
+		$page->empty = array();
+		return new Services_Twilio_Page($page, 'empty');
 	}
 
 	/**
