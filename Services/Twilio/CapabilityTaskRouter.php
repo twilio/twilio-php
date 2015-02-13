@@ -40,7 +40,7 @@ class Services_Twilio_TaskRouter_Worker_Capability
         if(isset($overrideBaseWSUrl)) {
             $this->baseWsUrl = $overrideBaseWSUrl;
         }
-        $this->baseUrl = $this->baseUrl.'/Accounts/'.$accountSid.'/Workspaces/'.$workspaceSid;
+        $this->baseUrl = $this->baseUrl.'/Workspaces/'.$workspaceSid;
         $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
         $this->reservationsUrl = $this->baseUrl.'/Tasks/**';
         $this->activityUrl = $this->baseUrl.'/Activities';
@@ -49,7 +49,6 @@ class Services_Twilio_TaskRouter_Worker_Capability
         $this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workerSid, "GET", null, null);
         $this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workerSid, "POST", null, null);
         $this->apiCapability->generateAndAddPolicy($this->activityUrl, "GET", null, null);
-    
     }
     
     public function allowWorkerActivityUpdates() {
