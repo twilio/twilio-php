@@ -72,7 +72,7 @@ class Services_Twilio_TaskRouter_Worker_Capability
         $this->apiCapability->generateAndAddPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
     }
     
-     public function allowWorkerActivityFetch(){
+     public function allowActivityListFetch(){
         $method = 'GET';
         $queryFilter = array();
         $postFilter = array();
