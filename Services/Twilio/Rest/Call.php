@@ -42,7 +42,7 @@
  *      A string representing the status of the call. May be `QUEUED`, `RINGING`,
  *      `IN-PROGRESS`, `COMPLETED`, `FAILED`, `BUSY` or `NO_ANSWER`.
  *
- *   .. php:attr:: stat_time
+ *   .. php:attr:: start_time
  *
  *      The start time of the call, given as GMT in RFC 2822 format. Empty if the call has not yet been dialed.
  *
