@@ -1,6 +1,6 @@
 <?php
 
-abstract class Services_Twilio_TaskRouterInstanceResource extends Services_Twilio_InstanceResource {
+abstract class Services_Twilio_TaskRouterInstanceResource extends Services_Twilio_NextGenInstanceResource {
 
     protected function setupSubresources() {
         foreach (func_get_args() as $name) {
