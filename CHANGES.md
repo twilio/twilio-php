@@ -1,6 +1,14 @@
 twilio-php Changelog
 ====================
 
+Version 3.13.0
+--------------
+
+Released on February 18, 2015
+
+- Add new TaskRouter API client
+- Miscellaneous doc fixes
+
 Version 3.12.8
 --------------
 
