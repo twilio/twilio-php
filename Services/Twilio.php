@@ -54,7 +54,8 @@ class Services_Twilio extends Services_Twilio_Resource
         $token,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
-        $retryAttempts = 1
+        $retryAttempts = 1,
+        $logger = null
     ) {
         $this->version = in_array($version, $this->versions) ?
                 $version : end($this->versions);
@@ -67,6 +68,7 @@ class Services_Twilio extends Services_Twilio_Resource
                   $_http = new Services_Twilio_TinyHttp(
                       "https://api.twilio.com",
                       array(
+                          "logger" => $logger,
                           "curlopts" => array(
                               CURLOPT_USERAGENT => self::qualifiedUserAgent(phpversion()),
                               CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
