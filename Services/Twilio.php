@@ -580,9 +580,33 @@ class Pricing_Services_Twilio extends Base_Services_Twilio
         );
     }
 
+    /**
+     * Construct a URI based on initial path, query params, and paging
+     * information
+     *
+     * We want to use the query params, unless we have a next_page_uri from the
+     * API.
+     *
+     * :param string $path: The request path (may contain query params if it's
+     *      a next_page_uri)
+     * :param array $params: Query parameters to use with the request
+     * :param boolean $full_uri: Whether the $path contains the full uri
+     *
+     * :return: the URI that should be requested by the library
+     * :returntype: string
+     */
+    public static function getRequestUri($path, $params, $full_uri = false)
+    {
+        if (!$full_uri && !empty($params)) {
+            $query_path = $path . '?' . http_build_query($params, '', '&');
+        } else {
+            $query_path = $path;
+        }
+        return $query_path;
+    }
+
     protected function _getBaseUri() {
         return 'https://pricing.twilio.com';
     }
-
 
 }

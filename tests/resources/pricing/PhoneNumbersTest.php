@@ -7,13 +7,17 @@ class PhoneNumberTest extends PHPUnit_Framework_TestCase {
 
     function testGetCountries() {
         $data = array(
+            'meta' => array(
+                'key' => 'countries',
+                'next_page_url' => null
+            ),
             'countries' => array(
                 array('iso_country' => 'US')
             )
         );
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('get')->once()->with(
-            '/v1/PhoneNumbers/Countries.json?Page=0&PageSize=50'
+            '/v1/PhoneNumbers/Countries?Page=0&PageSize=50'
         )->andReturn(array(200, array('Content-Type' => 'application/json'),
                          json_encode($data)));
 
@@ -29,7 +33,7 @@ class PhoneNumberTest extends PHPUnit_Framework_TestCase {
 
     function testGetCountry() {
         $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()->with('/v1/PhoneNumbers/Countries/EE.json')
+        $http->shouldReceive('get')->once()->with('/v1/PhoneNumbers/Countries/EE')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                             json_encode(array('country' => 'Estonia'))));
         $pricingClient = new Pricing_Services_Twilio('AC123', '123', 'v1', $http, 1);

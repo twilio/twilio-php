@@ -1,6 +1,6 @@
 <?php
 
-abstract class Services_Twilio_PricingListResource extends Services_Twilio_ListResource {
+abstract class Services_Twilio_PricingListResource extends Services_Twilio_NextGenListResource {
     public function __construct($client, $uri) {
         $name = $this->getResourceName(true);
 
