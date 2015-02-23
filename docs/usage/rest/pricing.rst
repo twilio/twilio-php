@@ -67,10 +67,10 @@ for each country you are interested in individually:
 
     foreach ($country->outbound_prefix_prices as $price) {
         // Price per minute before discounts
-        echo $price->call_base_price . "\n";
+        echo $price->base_price . "\n";
         // Price per minute after applying any discounts available
         // to your account
-        echo $price->call_current_price . "\n";
+        echo $price->current_price . "\n";
         // Prefixes of phone numbers to which these rates apply
         foreach ($price->prefixes as $prefix) {
             echo $prefix . "\n";
@@ -127,7 +127,7 @@ for each country you are interested in individually:
 
     foreach ($country->phone_number_prices as $p) {
         // "mobile", "toll_free", "local", or "national"
-        echo $p->type . "\n";
+        echo $p->number_type . "\n";
         // Number price per month before discounts
         echo $p->base_price . "\n";
         // Number price per month after available discounts for your
