@@ -45,8 +45,9 @@ class TasksTest extends PHPUnit_Framework_TestCase
 						))));
 		$taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
 		$tasks = $taskrouterClient->workspace->tasks->getPage();
+		$tasksItems = $tasks->getItems();
 		$this->assertNotNull($tasks);
-		$this->assertEquals('WF123', $tasks->getItems()[0]->workflow_sid);
+		$this->assertEquals('WF123', $tasksItems[0]->workflow_sid);
 	}
 
     function tearDown()
