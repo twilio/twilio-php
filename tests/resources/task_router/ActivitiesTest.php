@@ -44,8 +44,9 @@ class ActivitiesTest extends PHPUnit_Framework_TestCase
 			))));
 		$taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
 		$activities = $taskrouterClient->workspace->activities->getPage();
+		$activityItems = $activities->getItems();
 		$this->assertNotNull($activities);
-		$this->assertEquals('Test Activity', $activities->getItems()[0]->friendly_name);
+		$this->assertEquals('Test Activity', $activityItems[0]->friendly_name);
 	}
 
     function tearDown()

@@ -28,9 +28,11 @@ class NextGenListResourceTest extends PHPUnit_Framework_TestCase {
 							'meta' => array('key' => 'foos', 'next_page_url' => null),
 							'foos' => array(array('sid' => 'FO123'))
 		))));
+		
 		$foos = $this->client->foos->getPage();
+		$foosItems = $foos->getItems();
 		$this->assertNotNull($foos);
-		$this->assertEquals('FO123', $foos->getItems()[0]->sid);
+		$this->assertEquals('FO123', $foosItems[0]->sid);
 	}
 
 	public function testIterator() {

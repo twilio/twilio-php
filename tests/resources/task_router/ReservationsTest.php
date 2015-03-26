@@ -28,8 +28,9 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 										))));
 		$taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
 		$reservations = $taskrouterClient->workspace->tasks->get('WT123')->reservations->getPage();
+		$reservationItems = $reservations->getItems();
 		$this->assertNotNull($reservations);
-		$this->assertEquals('reserved', $reservations->getItems()[0]->reservation_status);
+		$this->assertEquals('reserved', $reservationItems[0]->reservation_status);
 	}
 
     function tearDown()
