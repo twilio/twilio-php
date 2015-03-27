@@ -304,6 +304,13 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('WS123', $taskrouterClient->workspace->sid);
     }
 
+    function testLookupsClient() {
+        $lookupsClient = new Lookups_Services_Twilio('AC123', '123', 'v1');
+        $this->assertNotNull($lookupsClient);
+        $this->assertEquals(1, $lookupsClient->getRetryAttempts());
+        $this->assertEquals('v1', $lookupsClient->getVersion());
+    }
+
     function testModifyLiveCall() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()->with(
