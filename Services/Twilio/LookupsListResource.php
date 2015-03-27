@@ -20,12 +20,12 @@ abstract class Services_Twilio_LookupsListResource extends Services_Twilio_NextG
      * Gets a resource from this list. Overridden to add
      * filter parameters.
      *
-     * :param string $sid: The resource SID
+     * :param string $number: The phone number
      * :return: The resource
      * :rtype: :php:class:`InstanceResource <Services_Twilio_InstanceResource>`
      */
-    public function get($sid, $filters = array()) {
-        $full_path = $this->uri . "/$sid";
+    public function get($number, $filters = array()) {
+        $full_path = $this->uri . "/$number";
         if (!empty($filters)) {
             $full_path .= '?' . http_build_query($filters, '', '&');
         }
@@ -33,8 +33,7 @@ abstract class Services_Twilio_LookupsListResource extends Services_Twilio_NextG
         $instance = new $this->instance_name(
             $this->client, $full_path
         );
-        // XXX check if this is actually a sid in all cases.
-        $instance->sid = $sid;
+        $instance->number = $number;
         return $instance;
     }
 }
