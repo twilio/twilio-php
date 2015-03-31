@@ -37,10 +37,10 @@ require_once 'PEAR/PackageFileManager/File.php';
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$api_version     = '3.13.0';
+$api_version     = '3.13.1';
 $api_state       = 'stable';
 
-$release_version = '3.13.0';
+$release_version = '3.13.1';
 $release_state   = 'stable';
 $release_notes   = 'Add TaskRouter support';
 

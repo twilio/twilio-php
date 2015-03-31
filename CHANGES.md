@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 3.13.1
+--------------
+
+Released on March 31, 2015
+
+- Add new Lookups API client
+
 Version 3.13.0
 --------------
 
