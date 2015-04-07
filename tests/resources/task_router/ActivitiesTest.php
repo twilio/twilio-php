@@ -14,7 +14,7 @@ class ActivitiesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WA123'))
             ));
-        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
         $activity = $taskrouterClient->workspace->activities->create('Test Activity', true);
         $this->assertNotNull($activity);
     }
@@ -27,7 +27,7 @@ class ActivitiesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WA123', 'friendly_name' => 'Test Activity'))
             ));
-        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
         $activity = $taskrouterClient->workspace->activities->get('WA123');
         $this->assertNotNull($activity);
         $this->assertEquals('Test Activity', $activity->friendly_name);
@@ -42,7 +42,7 @@ class ActivitiesTest extends PHPUnit_Framework_TestCase
 								'meta' => array('key' => 'activities', 'next_page_url' => null),
 								'activities' => array(array('sid' => 'WA123', 'friendly_name' => 'Test Activity'))
 			))));
-		$taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+		$taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
 		$activities = $taskrouterClient->workspace->activities->getPage();
 		$activityItems = $activities->getItems();
 		$this->assertNotNull($activities);

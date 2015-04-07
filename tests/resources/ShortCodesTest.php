@@ -11,7 +11,7 @@ class ShortCodesTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SC123', 'short_code' => '1234'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $sms = $client->account->short_codes->get('SC123');
         $this->assertSame('1234', $sms->short_code);
     }

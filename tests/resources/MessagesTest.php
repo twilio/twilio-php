@@ -14,7 +14,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $msg = $client->account->messages->sendMessage('+1222', '+44123', 'Hi there');
         $this->assertSame('SM123', $msg->sid);
     }
@@ -27,7 +27,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $msg = $client->account->messages->sendMessage('+1222', '+44123', null,
             array('http://example.com/image1'));
         $this->assertSame('SM123', $msg->sid);
@@ -41,7 +41,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $msg = $client->account->messages->sendMessage('+1222', '+44123', 'Hi there',
             array('http://example.com/image1')
         );
@@ -56,7 +56,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $msg = $client->account->messages->sendMessage('+1222', '+44123', null,
             array('http://example.com/image1', 'http://example.com/image2'));
         $this->assertSame('SM123', $msg->sid);
@@ -74,7 +74,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
                     'message' => 'Too long',
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', null, $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', null, $http);
         $msg = $client->account->messages->sendMessage('+1222', '+44123', str_repeat('hi', 801));
     }
 
@@ -86,7 +86,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $msg = $client->account->messages->create(array(
             'From' => '+1222',
             'To' => '+44123',
@@ -101,7 +101,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->with('/2010-04-01/Accounts/AC123/Messages/ME123.json')
             ->andReturn(array(204, array('Content-Type' => 'application/json'), ''
         ));
-        $client = new Services_Twilio('AC123', '123', null, $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', null, $http);
         $client->account->messages->delete('ME123');
     }
 
@@ -113,7 +113,7 @@ class MessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $msg = $client->account->messages->create(array(
             'Body' => "Hello\n\nHello"
         ));

@@ -17,7 +17,7 @@ class OutgoingCallerIdsTest extends PHPUnit_Framework_TestCase {
                     'validation_code' => 123456,
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $request = $client->account->outgoing_caller_ids->create('+14158675309', array(
             'FriendlyName' => 'My Home Phone Number',
         ));

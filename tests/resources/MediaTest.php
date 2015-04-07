@@ -20,7 +20,7 @@ class MediaTest extends PHPUnit_Framework_TestCase {
                     'start' => 0
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $media_list = $client->account->messages->get('MM123')->media->getPage()->getItems();
         $this->assertEquals(count($media_list), 2);
     }

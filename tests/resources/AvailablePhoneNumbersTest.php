@@ -12,7 +12,7 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
                     'friendly_name' => '(510) 564-7903'
                 )))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $nums = $client->account->available_phone_numbers->getLocal('US');
         $numsList = $nums->getList(array('AreaCode' => '510'));
         foreach ($numsList as $num) {
@@ -30,7 +30,7 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
                     'countries' => array(array('country_code' => 'CA'))
                 ))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $page = $client->account->available_phone_numbers->getPage('0');
         $this->assertEquals('CA', $page->countries[0]->country_code);
     }
@@ -44,7 +44,7 @@ class AvailablePhoneNumbersTest extends PHPUnit_Framework_TestCase {
                     'friendly_name' => '(510) 564-7903'
                 )))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $nums = $client->account->available_phone_numbers->getMobile('GB')->getList();
         foreach ($nums as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);

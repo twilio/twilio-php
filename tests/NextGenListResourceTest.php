@@ -16,7 +16,7 @@ class NextGenListResourceTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 		$this->http = m::mock(new Services_Twilio_TinyHttp);
-		$this->client = new Services_Twilio('AC123', 'foobar', '2010-04-01', $this->http);
+		$this->client = Services_Twilio::createBasicAuthorizationClient('AC123', 'foobar', '2010-04-01', $this->http);
 		$this->client->foos = new Services_Twilio_Rest_Foos($this->client, "/Foos");
 	}
 

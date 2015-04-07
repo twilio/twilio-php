@@ -23,7 +23,7 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
                 json_encode($this->apiResponse)
             )
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $number = $client->account->incoming_phone_numbers->getNumber('+14105551234');
         $this->assertEquals('PN123', $number->sid);
     }
@@ -40,7 +40,7 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
                 ))
             )
         );
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $number = $client->account->incoming_phone_numbers->getNumber('+14105551234');
         $this->assertNull($number);
     }
@@ -57,7 +57,7 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->incoming_phone_numbers->mobile as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }
@@ -75,7 +75,7 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
 
         foreach ($client->account->incoming_phone_numbers->local as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
@@ -94,7 +94,7 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->incoming_phone_numbers->toll_free as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
         }

@@ -15,7 +15,7 @@ class WorkspacesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WS123'))
             ));
-        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
         $workspace = $taskrouterClient->workspaces->create('Test Workspace');
         $this->assertNotNull($workspace);
     }
@@ -31,7 +31,7 @@ class WorkspacesTest extends PHPUnit_Framework_TestCase
                     'workspaces' => array(array('sid' => 'WS123'))
                 ))
             ));
-        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
         $this->assertNotNull($taskrouterClient->workspaces);
         foreach ($taskrouterClient->workspaces->getIterator(0, 50) as $workspace) {
             $this->assertEquals('WS123', $workspace->sid);

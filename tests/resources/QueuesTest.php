@@ -14,7 +14,7 @@ class QueuesTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'QQ123', 'average_wait_time' => 0))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $queue = $client->account->queues->create('foo',
             array('MaxSize' => 123));
         $this->assertSame($queue->sid, 'QQ123');

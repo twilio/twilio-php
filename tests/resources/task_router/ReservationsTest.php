@@ -11,7 +11,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WR123', 'reservation_status' => 'reserved'))
             ));
-        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
         $reservation = $taskrouterClient->workspace->tasks->get('WT123')->reservations->get('WR123');
         $this->assertNotNull($reservation);
         $this->assertEquals('reserved', $reservation->reservation_status);
@@ -26,7 +26,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 											'meta' => array('key' => 'reservations', 'next_page_url' => null),
 											'reservations' => array(array('sid' => 'WR123', 'reservation_status' => 'reserved'))
 										))));
-		$taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+		$taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
 		$reservations = $taskrouterClient->workspace->tasks->get('WT123')->reservations->getPage();
 		$reservationItems = $reservations->getItems();
 		$this->assertNotNull($reservations);

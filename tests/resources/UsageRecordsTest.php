@@ -29,7 +29,7 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
 
-        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records as $record) {
             $this->assertSame(5, $record->count);
         }
@@ -60,7 +60,7 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
 
-        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records->last_month as $record) {
             $this->assertSame('2012-08-01', $record->end_date);
         }
@@ -80,7 +80,7 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                     )),
                 ))
             ));
-        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', '2010-04-01', $http);
         $callRecord = $client->account->usage_records->getCategory('calls');
         $this->assertSame('100.30', $callRecord->price);
     }
@@ -110,7 +110,7 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records->getIterator(0, 50, array(
             'StartDate' => '2012-08-01',
             'EndDate'   => '2012-08-31',
@@ -134,7 +134,7 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                     )),
                 ))
             ));
-        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', '2010-04-01', $http);
         $smsRecord = $client->account->usage_records->today->getCategory('sms');
         $this->assertSame($smsRecord->end_date, '2012-08-30');
     }
@@ -166,7 +166,7 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records->daily->getIterator(0, 50, array(
             'StartDate' => '2012-08-01',
             'EndDate'   => '2012-08-31',

@@ -29,7 +29,7 @@ class Services_Twilio_Rest_Messages extends Services_Twilio_ListResource {
      *
      * .. code-block:: php
      *
-     *      $client = new Services_Twilio('AC123', '123');
+     *      $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123');
      *      $message = $client->account->messages->sendMessage(
      *          '+14105551234', // From a Twilio number in your account
      *          '+14105556789', // Text any number

@@ -18,7 +18,7 @@ class ConnectAppsTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'Bar'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $cn = $client->account->connect_apps->get('CN123');
         $this->assertEquals('foo', $cn->friendly_name);
         $cn->update(array('FriendlyName' => 'Bar'));
@@ -40,7 +40,7 @@ class ConnectAppsTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('friendly_name' => 'Bar'))
             ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
         $cn = $client->account->connect_apps->get('CN123');
         $this->assertEquals('foo', $cn->friendly_name);
         $cn->update('FriendlyName', 'Bar');

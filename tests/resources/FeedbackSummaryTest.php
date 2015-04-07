@@ -33,7 +33,7 @@ class FeedbackSummaryTest extends PHPUnit_Framework_TestCase
                     'date_updated' => 'Thu, 19 Aug 2010 00:25:48 +0000'
                 ))
             ));
-        $client = new Services_Twilio(self::$accountSid, self::$authToken, '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient(self::$accountSid, self::$authToken, '2010-04-01', $http);
         $feedbackSummary = $client->account->calls->feedback_summary->create(array('StartDate' => '2014-01-01',
             'EndDate' => '2014-01-31',
             'IncludeSubaccounts' => true,
@@ -50,7 +50,7 @@ class FeedbackSummaryTest extends PHPUnit_Framework_TestCase
         $http->shouldReceive('delete')->once()
             ->with('/2010-04-01/Accounts/' . self::$accountSid . '/Calls/FeedbackSummary/'. self::$feedbackSummarySid .'.json')
             ->andReturn(array(204, array('Content-Type' => 'application/json'), ''));
-        $client = new Services_Twilio(self::$accountSid, self::$authToken, '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient(self::$accountSid, self::$authToken, '2010-04-01', $http);
         $feedbackSummary = $client->account->calls->feedback_summary->delete(self::$feedbackSummarySid);
         $this->assertNull($feedbackSummary);
     }
@@ -78,7 +78,7 @@ class FeedbackSummaryTest extends PHPUnit_Framework_TestCase
                     'date_updated' => 'Thu, 19 Aug 2010 00:25:48 +0000'
                 ))
             ));
-        $client = new Services_Twilio(self::$accountSid, self::$authToken, '2010-04-01', $http);
+        $client = Services_Twilio::createBasicAuthorizationClient(self::$accountSid, self::$authToken, '2010-04-01', $http);
         $feedbackSummary = $client->account->calls->feedback_summary->get(self::$feedbackSummarySid);
         $this->assertEquals(self::$feedbackSummarySid, $feedbackSummary->sid);
         $this->assertEquals('2014-01-01', $feedbackSummary->start_date);
