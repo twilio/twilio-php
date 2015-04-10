@@ -531,4 +531,15 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
 		return $query_path;
 	}
 
+    /**
+     * Get the base URI for this client.
+     *
+     * :return: base URI
+     * :rtype: string
+     */
+    protected function _getBaseUri()
+    {
+        return 'https://lookups.twilio.com';
+    }
+
 }
