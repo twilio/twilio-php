@@ -139,7 +139,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the URI that should be requested by the library
      * :returntype: string
      */
-    public static function getRequestUri($path, $params, $full_uri = false)
+    public function getRequestUri($path, $params, $full_uri = false)
     {
         $json_path = $full_uri ? $path : "$path.json";
         if (!$full_uri && !empty($params)) {
@@ -193,7 +193,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      */
     public function deleteData($path, $params = array())
     {
-        $uri = self::getRequestUri($path, $params);
+        $uri = $this->getRequestUri($path, $params);
         return $this->_makeIdempotentRequest(array($this->http, 'delete'),
             $uri, $this->retryAttempts);
     }
@@ -235,7 +235,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
                                  $full_uri = false
     )
     {
-        $uri = static::getRequestUri($path, $params, $full_uri);
+        $uri = $this->getRequestUri($path, $params, $full_uri);
         return $this->_makeIdempotentRequest(array($this->http, 'get'),
             $uri, $this->retryAttempts);
     }
@@ -412,7 +412,7 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
 	 * :return: the URI that should be requested by the library
 	 * :returntype: string
 	 */
-	public static function getRequestUri($path, $params, $full_uri = false)
+	public function getRequestUri($path, $params, $full_uri = false)
 	{
 		if (!$full_uri && !empty($params)) {
 			$query_path = $path . '?' . http_build_query($params, '', '&');
@@ -521,7 +521,7 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
 	 * :return: the URI that should be requested by the library
 	 * :returntype: string
 	 */
-	public static function getRequestUri($path, $params, $full_uri = false)
+	public function getRequestUri($path, $params, $full_uri = false)
 	{
 		if (!$full_uri && !empty($params)) {
 			$query_path = $path . '?' . http_build_query($params, '', '&');

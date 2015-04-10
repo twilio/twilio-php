@@ -52,7 +52,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
      * @dataProvider uriTestProvider
      */
     function testRequestUriConstructedProperly($path, $params, $full_uri, $end_string) {
-        $this->assertSame($end_string, Services_Twilio::getRequestUri(
+        $client = new Services_Twilio('sid', 'token');
+        $this->assertSame($end_string, $client->getRequestUri(
             $path, $params, $full_uri
         ));
     }
