@@ -603,33 +603,6 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $this->assertSame($message->sid, 'SM123');
     }
 
-    function testCount() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=1')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array(
-                    'total' => '1474',
-                    'calls' => array(),
-                ))
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $this->assertSame(count($client->account->calls), 1474);
-    }
-
-    function testCountNoTotal() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=1')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array(
-                    'calls' => array(),
-                ))
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $this->assertSame(count($client->account->calls), 0);
-    }
-
     function testCreateWorkspace() {
         $http = m::mock(new Services_Twilio_TinyHttp);
         $http->shouldReceive('post')->once()
