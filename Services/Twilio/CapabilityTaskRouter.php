@@ -90,3 +90,60 @@ class Services_Twilio_TaskRouter_Worker_Capability
     	return $this->apiCapability->generateToken($ttl, $taskRouterAttributes);
     }
 }
+
+/**
+ * Twilio TaskRouter Workspace Capability assigner
+ *
+ * @category Services
+ * @package  Services_Twilio
+ * @author Justin Witz <justin.witz@twilio.com>
+ * @license  http://creativecommons.org/licenses/MIT/ MIT
+ */
+class Services_Twilio_TaskRouter_Workspace_Capability
+{
+	private $accountSid;
+	private $authToken;
+	private $workspaceSid;
+	private $apiCapability;
+
+	private $baseUrl = 'https://taskrouter.twilio.com/v1';
+	private $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
+
+	private $required = array("required" => true);
+	private $optional = array("required" => false);
+
+	public function __construct($accountSid, $authToken, $workspaceSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
+	{
+		$this->accountSid = $accountSid;
+		$this->authToken = $authToken;
+		$this->workspaceSid = $workspaceSid;
+		$this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, 'v1', $workspaceSid);
+		if(isset($overrideBaseUrl)) {
+			$this->baseUrl = $overrideBaseUrl;
+		}
+		if(isset($overrideBaseWSUrl)) {
+			$this->baseWsUrl = $overrideBaseWSUrl;
+		}
+		$this->baseUrl = $this->baseUrl.'/Workspaces/'.$workspaceSid;
+
+		//add permissions to GET and POST to the worker URI
+		$this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workspaceSid, "GET", null, null);
+		$this->apiCapability->generateAndAddPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->workspaceSid, "POST", null, null);
+	}
+
+	public function allowFetchAll() {
+		$method = 'GET';
+		$queryFilter = array();
+		$postFilter = array();
+		$this->apiCapability->generateAndAddPolicy($this->baseUrl.'/**', $method, $queryFilter, $postFilter);
+	}
+
+	public function generateToken($ttl = 3600) {
+		$taskRouterAttributes = array(
+			'account_sid' => $this->accountSid,
+			'channel' => $this->workspaceSid,
+			'workspace_sid' => $this->workspaceSid
+		);
+		return $this->apiCapability->generateToken($ttl, $taskRouterAttributes);
+	}
+}
