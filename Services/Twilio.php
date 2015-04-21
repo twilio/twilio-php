@@ -8,7 +8,9 @@
 
 function Services_Twilio_autoload($className)
 {
-    if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 26) != 'TaskRouter_Services_Twilio') {
+    if (substr($className, 0, 15) != 'Services_Twilio' 
+        && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
+        && substr($className, 0, 23) != 'Lookups_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);

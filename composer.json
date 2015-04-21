@@ -24,7 +24,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Services_Twilio": ""
+            "Services_Twilio": "",
+            "Lookups_Services_Twilio": ""
         }
     }
 }
