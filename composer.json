@@ -26,7 +26,8 @@
         "psr-0": {
             "Services_Twilio": "",
             "Lookups_Services_Twilio": "",
-            "TaskRouter_Services_Twilio": ""
+            "TaskRouter_Services_Twilio": "",
+            "Pricing_Services_Twilio": ""
         }
     }
 }
