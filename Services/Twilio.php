@@ -8,7 +8,9 @@
 
 function Services_Twilio_autoload($className)
 {
-    if (substr($className, 0, 15) != 'Services_Twilio' && substr($className, 0, 26) != 'TaskRouter_Services_Twilio') {
+    if (substr($className, 0, 15) != 'Services_Twilio' 
+        && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
+        && substr($className, 0, 23) != 'Lookups_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -23,7 +25,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 abstract class Base_Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/3.13.1';
+    const USER_AGENT = 'twilio-php/4.0.1';
 
     protected $http;
     protected $last_response;
@@ -139,7 +141,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the URI that should be requested by the library
      * :returntype: string
      */
-    public static function getRequestUri($path, $params, $full_uri = false)
+    public function getRequestUri($path, $params, $full_uri = false)
     {
         $json_path = $full_uri ? $path : "$path.json";
         if (!$full_uri && !empty($params)) {
@@ -193,7 +195,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      */
     public function deleteData($path, $params = array())
     {
-        $uri = self::getRequestUri($path, $params);
+        $uri = $this->getRequestUri($path, $params);
         return $this->_makeIdempotentRequest(array($this->http, 'delete'),
             $uri, $this->retryAttempts);
     }
@@ -235,7 +237,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
                                  $full_uri = false
     )
     {
-        $uri = static::getRequestUri($path, $params, $full_uri);
+        $uri = $this->getRequestUri($path, $params, $full_uri);
         return $this->_makeIdempotentRequest(array($this->http, 'get'),
             $uri, $this->retryAttempts);
     }
@@ -412,7 +414,7 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
 	 * :return: the URI that should be requested by the library
 	 * :returntype: string
 	 */
-	public static function getRequestUri($path, $params, $full_uri = false)
+	public function getRequestUri($path, $params, $full_uri = false)
 	{
 		if (!$full_uri && !empty($params)) {
 			$query_path = $path . '?' . http_build_query($params, '', '&');
@@ -521,7 +523,7 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
 	 * :return: the URI that should be requested by the library
 	 * :returntype: string
 	 */
-	public static function getRequestUri($path, $params, $full_uri = false)
+	public function getRequestUri($path, $params, $full_uri = false)
 	{
 		if (!$full_uri && !empty($params)) {
 			$query_path = $path . '?' . http_build_query($params, '', '&');
@@ -530,5 +532,16 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
 		}
 		return $query_path;
 	}
+
+    /**
+     * Get the base URI for this client.
+     *
+     * :return: base URI
+     * :rtype: string
+     */
+    protected function _getBaseUri()
+    {
+        return 'https://lookups.twilio.com';
+    }
 
 }

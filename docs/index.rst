@@ -10,7 +10,7 @@
 Status
 =======
 
-This documentation is for version 3.13.1 of `twilio-php
+This documentation is for version 4.0.1 of `twilio-php
 <https://www.github.com/twilio/twilio-php>`_.
 
 Quickstart

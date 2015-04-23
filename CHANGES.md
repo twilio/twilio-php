@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+Version 4.0.1
+-------------
+
+Released on April 22, 2015
+
+- Make Lookups_Services_Twilio and TaskRouter_Services_Twilio available through
+  Composer.
+
+Version 4.0.0
+-------------
+
+Released on April 16, 2015
+
+- Removes counts from ListResource
+- Change Services_Twilio::getRequestUri() from a static method to an instance
+  method.
+
 Version 3.13.1
 --------------
 

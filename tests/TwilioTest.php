@@ -51,25 +51,103 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
     /**
      * @dataProvider uriTestProvider
      */
-    function testRequestUriConstructedProperly($path, $params, $full_uri, $end_string) {
-        $this->assertSame($end_string, Services_Twilio::getRequestUri(
-            $path, $params, $full_uri
-        ));
+    function testRequestUriConstructedProperly($path, $params, $full_uri, $expected) {
+        $client = new Services_Twilio('sid', 'token');
+        $actual = $client->getRequestUri($path, $params, $full_uri);
+        $this->assertSame($expected, $actual);
     }
 
     function uriTestProvider() {
         return array(
-            array('/2010-04-01/Accounts', array('FriendlyName' => 'hi'), false,
-                '/2010-04-01/Accounts.json?FriendlyName=hi'),
-            array('/2010-04-01/Accounts', array(), false,
-                '/2010-04-01/Accounts.json'),
-            array('/2010-04-01/Accounts.json', array(), true,
-                '/2010-04-01/Accounts.json'),
-            array('/2010-04-01/Accounts.json', array('FriendlyName' => 'hi'), true,
-                '/2010-04-01/Accounts.json'),
-            array('/2010-04-01/Accounts', array(
-                'FriendlyName' => 'hi', 'foo' => 'bar'
-            ), false, '/2010-04-01/Accounts.json?FriendlyName=hi&foo=bar'),
+            array(
+                '/2010-04-01/Accounts',
+                array('FriendlyName' => 'hi'),
+                false,
+                '/2010-04-01/Accounts.json?FriendlyName=hi',
+            ),
+            array(
+                '/2010-04-01/Accounts',
+                array(),
+                false,
+                '/2010-04-01/Accounts.json',
+            ),
+            array(
+                '/2010-04-01/Accounts.json',
+                array(),
+                true,
+                '/2010-04-01/Accounts.json',
+            ),
+            array(
+                '/2010-04-01/Accounts.json',
+                array('FriendlyName' => 'hi'),
+                true,
+                '/2010-04-01/Accounts.json',
+            ),
+            array(
+                '/2010-04-01/Accounts',
+                array(
+                    'FriendlyName' => 'hi',
+                    'foo' => 'bar',
+                ),
+                false,
+                '/2010-04-01/Accounts.json?FriendlyName=hi&foo=bar',
+            ),
+        );
+    }
+
+    /**
+     * @dataProvider nextGenUriProvider
+     */
+    function testLookupsRequestUriConstructedProperly($path, $params, $full_uri, $expected) {
+        $client = new Lookups_Services_Twilio('sid', 'token');
+        $actual = $client->getRequestUri($path, $params, $full_uri);
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @dataProvider nextGenUriProvider
+     */
+    function testTaskRouterRequestUriConstructedProperly($path, $params, $full_uri, $expected) {
+        $client = new TaskRouter_Services_Twilio('sid', 'token', 'sid');
+        $actual = $client->getRequestUri($path, $params, $full_uri);
+        $this->assertSame($expected, $actual);
+    }
+
+    function nextGenUriProvider() {
+        return array(
+            array(
+                '/v1/Resource',
+                array('FriendlyName' => 'hi'),
+                false,
+                '/v1/Resource?FriendlyName=hi',
+            ),
+            array(
+                '/v1/Resource',
+                array(),
+                false,
+                '/v1/Resource',
+            ),
+            array(
+                '/v1/Resource',
+                array(),
+                true,
+                '/v1/Resource',
+            ),
+            array(
+                '/v1/Resource',
+                array('FriendlyName' => 'hi'),
+                true,
+                '/v1/Resource',
+            ),
+            array(
+                '/v1/Resource',
+                array(
+                    'FriendlyName' => 'hi',
+                    'foo' => 'bar',
+                ),
+                false,
+                '/v1/Resource?FriendlyName=hi&foo=bar',
+            ),
         );
     }
 
@@ -601,33 +679,6 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $message = $client->account->sms_messages->create('123', '123',
             'Hello ☺');
         $this->assertSame($message->sid, 'SM123');
-    }
-
-    function testCount() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=1')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array(
-                    'total' => '1474',
-                    'calls' => array(),
-                ))
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $this->assertSame(count($client->account->calls), 1474);
-    }
-
-    function testCountNoTotal() {
-        $http = m::mock(new Services_Twilio_TinyHttp);
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=1')
-            ->andReturn(array(200, array('Content-Type' => 'application/json'),
-                json_encode(array(
-                    'calls' => array(),
-                ))
-            ));
-        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $this->assertSame(count($client->account->calls), 0);
     }
 
     function testCreateWorkspace() {
