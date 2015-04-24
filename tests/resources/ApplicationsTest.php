@@ -13,7 +13,7 @@ class ApplicationsTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'AP123'))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $app = $client->account->applications->create('foo', array(
             'VoiceUrl' => 'bar',
         ));

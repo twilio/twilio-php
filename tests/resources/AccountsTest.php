@@ -14,7 +14,7 @@ class AccountsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'AC345'))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $account = $client->accounts->create(array(
             'FriendlyName' => 'foo',
         ));

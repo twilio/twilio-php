@@ -14,7 +14,7 @@ class SigningKeysTest extends PHPUnit_Framework_TestCase
             ->with('/2010-04-01/Accounts/AC123/SigningKeys/SK123.json')
             ->andReturn(array(204, array('Content-Type' => 'application/json'), ''
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $client->account->signing_keys->delete('SK123');
     }
 
@@ -26,7 +26,7 @@ class SigningKeysTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SK123', 'friendly_name' => 'foo'))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $signingKey = $client->account->signing_keys->get('SK123');
         $this->assertNotNull($signingKey);
         $this->assertEquals('foo', $signingKey->friendly_name);
@@ -41,7 +41,7 @@ class SigningKeysTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(201, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SK123', 'secret' => 'SomeSecret'))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $signingKey = $client->account->signing_keys->create(array('FriendlyName' => 'foo'));
         $this->assertEquals('SK123', $signingKey->sid);
         $this->assertEquals('SomeSecret', $signingKey->secret);

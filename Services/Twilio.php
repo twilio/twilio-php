@@ -33,7 +33,9 @@ abstract class Base_Services_Twilio
     protected $version;
     protected $versions = array('2010-04-01');
 
-    protected function __construct(
+    public function __construct(
+        $sid,
+        $token,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
@@ -72,6 +74,12 @@ abstract class Base_Services_Twilio
                     )
                 );
             }
+        }
+        try {
+            JWT::decode($token. null, false);
+            $_http->basicAuthentication('Token', $token);
+        } catch (UnexpectedValueException $e) {
+            $_http->basicAuthentication($sid, $token);
         }
         $this->http = $_http;
         $this->retryAttempts = $retryAttempts;
@@ -327,7 +335,7 @@ abstract class Base_Services_Twilio
  * .. code-block:: php
  *
  *      require('Services/Twilio.php');
- *      $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', null, null, 3);
+ *      $client = new Services_Twilio('AC123', '456bef', null, null, 3);
  *      // Take some action with the client, etc.
  */
 class Services_Twilio extends Base_Services_Twilio
@@ -336,80 +344,17 @@ class Services_Twilio extends Base_Services_Twilio
     CONST URI = 'https://api.twilio.com';
     protected $versions = array('2008-08-01', '2010-04-01');
 
-    protected function __construct(
+    public function __construct(
+        $sid,
+        $token,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
     )
     {
-        parent::__construct($version, $_http, $retryAttempts);
-    }
-
-    /**
-     * Create a client that uses Basic authorization (Account SID and Auth Token).
-     *
-     * :param string $sid: Your Account SID
-     * :param string $authToken: Your Auth Token from `your dashboard
-     *      <https://www.twilio.com/user/account>`_
-     * :param string $version: API version to use
-     * :param $_http: A HTTP client for making requests
-     * :type $_http: :php:class:`Services_Twilio_TinyHttp`
-     * :param int $retryAttempts:
-     *      Number of times to retry failed requests. Currently only idempotent
-     *      requests (GET's and DELETE's) are retried.
-     *
-     * Here's an example:
-     *
-     * .. code-block:: php
-     *
-     *      require('Services/Twilio.php');
-     *      $client = Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', null, null, 3);
-     */
-    public static function createBasicAuthorizationClient($sid,
-                                                          $authToken,
-                                                          $version = null,
-                                                          Services_Twilio_TinyHttp $_http = null,
-                                                          $retryAttempts = 1)
-    {
-        $client = new Services_Twilio($version, $_http, $retryAttempts);
-        $client->http->basicAuthentication($sid, $authToken);
-        $client->accounts = new Services_Twilio_Rest_Accounts($client, "/{$client->version}/Accounts");
-        $client->account = $client->accounts->get($sid);
-
-        return $client;
-    }
-
-    /**
-     * Create a client that uses a scoped authentication token.
-     *
-     * :param string $sid: Your Account SID
-     * :param string $scopedAuthToken: A scoped authentication token
-     * :param string $version: API version to use
-     * :param $_http: A HTTP client for making requests
-     * :type $_http: :php:class:`Services_Twilio_TinyHttp`
-     * :param int $retryAttempts:
-     *      Number of times to retry failed requests. Currently only idempotent
-     *      requests (GET's and DELETE's) are retried.
-     *
-     * Here's an example:
-     *
-     * .. code-block:: php
-     *
-     *      require('Services/Twilio.php');
-     *      $client = Services_Twilio::createScopedAuthenticationTokenClient('AC123', 'ScopedAuthorizationToken', null, null, 3);
-     */
-    public static function createScopedAuthenticationTokenClient($sid,
-                                                                $scopedAuthToken,
-                                                                $version = null,
-                                                                Services_Twilio_TinyHttp $_http = null,
-                                                                $retryAttempts = 1)
-    {
-        $client = new Services_Twilio($version, $_http, $retryAttempts);
-        $client->http->tokenAuthentication($scopedAuthToken);
-        $client->accounts = new Services_Twilio_Rest_Accounts($client, "/{$client->version}/Accounts");
-        $client->account = $client->accounts->get($sid);
-
-        return $client;
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+        $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
+        $this->account = $this->accounts->get($sid);
     }
 }
 
@@ -434,7 +379,7 @@ class Services_Twilio extends Base_Services_Twilio
  * .. code-block:: php
  *
  *      require('Services/Twilio.php');
- *      $client = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', 'WS123', null, null, 3);
+ *      $client = new TaskRouter_Services_Twilio('AC123', '456bef', 'WS123', null, null, 3);
  *      // Take some action with the client, etc.
  */
 class TaskRouter_Services_Twilio extends Base_Services_Twilio
@@ -442,87 +387,19 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
     protected $versions = array('v1');
     private $accountSid;
 
-    protected function __construct(
+    public function __construct(
+        $sid,
+        $token,
         $workspaceSid,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
     )
     {
-        parent::__construct($version, $_http, $retryAttempts);
-    }
-
-    /**
-     * Create a client that uses Basic authorization (Account SID and Auth Token).
-     *
-     * :param string $sid: Your Account SID
-     * :param string $authToken: Your Auth Token from `your dashboard
-     *      <https://www.twilio.com/user/account>`_
-     * :param string $workspaceSid: Workspace SID to work with
-     * :param string $version: API version to use
-     * :param $_http: A HTTP client for making requests
-     * :type $_http: :php:class:`Services_Twilio_TinyHttp`
-     * :param int $retryAttempts:
-     *      Number of times to retry failed requests. Currently only idempotent
-     *      requests (GET's and DELETE's) are retried.
-     *
-     * Here's an example:
-     *
-     * .. code-block:: php
-     *
-     *      require('Services/Twilio.php');
-     *      $client = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', 'WS123', null, null, 3);
-     */
-    public static function createBasicAuthorizationClient($sid,
-                                                          $authToken,
-                                                          $workspaceSid,
-                                                          $version = null,
-                                                          Services_Twilio_TinyHttp $_http = null,
-                                                          $retryAttempts = 1)
-    {
-        $client = new TaskRouter_Services_Twilio($workspaceSid, $version, $_http, $retryAttempts);
-        $client->http->basicAuthentication($sid, $authToken);
-        $client->workspaces = new Services_Twilio_Rest_TaskRouter_Workspaces($client, "/{$client->version}/Workspaces");
-        $client->workspace = $client->workspaces->get($workspaceSid);
-        $client->accountSid = $sid;
-
-        return $client;
-    }
-
-    /**
-     * Create a client that uses a scoped authentication token.
-     *
-     * :param string $sid: Your Account SID
-     * :param string $scopedAuthToken: A scoped authentication token
-     * :param string $workspaceSid: Workspace SID to work with
-     * :param string $version: API version to use
-     * :param $_http: A HTTP client for making requests
-     * :type $_http: :php:class:`Services_Twilio_TinyHttp`
-     * :param int $retryAttempts:
-     *      Number of times to retry failed requests. Currently only idempotent
-     *      requests (GET's and DELETE's) are retried.
-     *
-     * Here's an example:
-     *
-     * .. code-block:: php
-     *
-     *      require('Services/Twilio.php');
-     *      $client = TaskRouter_Services_Twilio::createScopedAuthenticationTokenClient('AC123', 'ScopedAuthorizationToken', 'WS123', null, null, 3);
-     */
-    public static function createScopedAuthenticationTokenClient($sid,
-                                                                $scopedAuthToken,
-                                                                $workspaceSid,
-                                                                $version = null,
-                                                                Services_Twilio_TinyHttp $_http = null,
-                                                                $retryAttempts = 1)
-    {
-        $client = new TaskRouter_Services_Twilio($workspaceSid, $version, $_http, $retryAttempts);
-        $client->http->tokenAuthentication($scopedAuthToken);
-        $client->workspaces = new Services_Twilio_Rest_TaskRouter_Workspaces($client, "/{$client->version}/Workspaces");
-        $client->workspace = $client->workspaces->get($workspaceSid);
-        $client->accountSid = $sid;
-
-        return $client;
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+        $this->workspaces = new Services_Twilio_Rest_TaskRouter_Workspaces($this, "/{$this->version}/Workspaces");
+        $this->workspace = $this->workspaces->get($workspaceSid);
+        $this->accountSid = $sid;
     }
 
 	/**
@@ -552,7 +429,7 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
 
     public static function createWorkspace($sid, $token, $friendlyName, array $params = array(), Services_Twilio_TinyHttp $_http = null)
     {
-        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient($sid, $token, null, null, $_http);
+        $taskrouterClient = new TaskRouter_Services_Twilio($sid, $token, null, null, $_http);
         return $taskrouterClient->workspaces->create($friendlyName, $params);
     }
 
@@ -612,7 +489,7 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
  * .. code-block:: php
  *
  *      require('Services/Twilio.php');
- *      $client = Lookups_Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', null, null, 3);
+ *      $client = new Lookups_Services_Twilio('AC123', '456bef', null, null, 3);
  *      // Take some action with the client, etc.
  */
 class Lookups_Services_Twilio extends Base_Services_Twilio
@@ -620,80 +497,17 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
     protected $versions = array('v1');
     private $accountSid;
 
-    protected function __construct(
+    public function __construct(
+        $sid,
+        $token,
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
     )
     {
-        parent::__construct($version, $_http, $retryAttempts);
-    }
-
-    /**
-     * Create a client that uses Basic authorization (Account SID and Auth Token).
-     *
-     * :param string $sid: Your Account SID
-     * :param string $authToken: Your Auth Token from `your dashboard
-     *      <https://www.twilio.com/user/account>`_
-     * :param string $version: API version to use
-     * :param $_http: A HTTP client for making requests
-     * :type $_http: :php:class:`Services_Twilio_TinyHttp`
-     * :param int $retryAttempts:
-     *      Number of times to retry failed requests. Currently only idempotent
-     *      requests (GET's and DELETE's) are retried.
-     *
-     * Here's an example:
-     *
-     * .. code-block:: php
-     *
-     *      require('Services/Twilio.php');
-     *      $client = Lookups_Services_Twilio::createBasicAuthorizationClient('AC123', '456bef', null, null, 3);
-     */
-    public static function createBasicAuthorizationClient($sid,
-                                                          $authToken,
-                                                          $version = null,
-                                                          Services_Twilio_TinyHttp $_http = null,
-                                                          $retryAttempts = 1)
-    {
-        $client = new Lookups_Services_Twilio($version, $_http, $retryAttempts);
-        $client->http->basicAuthentication($sid, $authToken);
-        $client->accountSid = $sid;
-        $client->phone_numbers = new Services_Twilio_Rest_Lookups_PhoneNumbers($client, "/{$client->version}/PhoneNumbers");
-
-        return $client;
-    }
-
-    /**
-     * Create a client that uses a scoped authentication token.
-     *
-     * :param string $sid: Your Account SID
-     * :param string $scopedAuthToken: A scoped authentication token
-     * :param string $version: API version to use
-     * :param $_http: A HTTP client for making requests
-     * :type $_http: :php:class:`Services_Twilio_TinyHttp`
-     * :param int $retryAttempts:
-     *      Number of times to retry failed requests. Currently only idempotent
-     *      requests (GET's and DELETE's) are retried.
-     *
-     * Here's an example:
-     *
-     * .. code-block:: php
-     *
-     *      require('Services/Twilio.php');
-     *      $client = Lookups_Services_Twilio::createScopedAuthenticationTokenClient('AC123', 'ScopedAuthorizationToken', null, null, 3);
-     */
-    public static function createScopedAuthenticationTokenClient($sid,
-                                                                $scopedAuthToken,
-                                                                $version = null,
-                                                                Services_Twilio_TinyHttp $_http = null,
-                                                                $retryAttempts = 1)
-    {
-        $client = new Lookups_Services_Twilio($version, $_http, $retryAttempts);
-        $client->http->tokenAuthentication($scopedAuthToken);
-        $client->accountSid = $sid;
-        $client->phone_numbers = new Services_Twilio_Rest_Lookups_PhoneNumbers($client, "/{$client->version}/PhoneNumbers");
-
-        return $client;
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+        $this->accountSid = $sid;
+        $this->phone_numbers = new Services_Twilio_Rest_Lookups_PhoneNumbers($this, "/{$this->version}/PhoneNumbers");
     }
 
 	/**

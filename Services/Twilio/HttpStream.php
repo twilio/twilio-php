@@ -96,13 +96,4 @@ class Services_Twilio_HttpStream {
             $this->auth_header = null;
         }
     }
-
-    public function tokenAuthentication($token)
-    {
-        if (isset($token)) {
-            $this->auth_header = sprintf("Authorization: Token %s", $token);
-        } else {
-            $this->auth_header = null;
-        }
-    }
 }

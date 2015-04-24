@@ -12,7 +12,7 @@ class EventsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'EV123', 'description' => 'Test Worker'))
             ));
-        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
         $worker = $taskrouterClient->workspace->events->get('EV123');
         $this->assertNotNull($worker);
         $this->assertEquals('Test Worker', $worker->description);
@@ -29,7 +29,7 @@ class EventsTest extends PHPUnit_Framework_TestCase
                     'events' => array(array('sid' => 'EV123'))
                 ))
             ));
-        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
         foreach ($taskrouterClient->workspace->events->getIterator(0, 50) as $event) {
             $this->assertEquals('EV123', $event->sid);
         }

@@ -13,7 +13,7 @@ class SMSMessagesTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'SM123'))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $sms = $client->account->sms_messages->create('+1222', '+44123', 'Hi there');
         $this->assertSame('SM123', $sms->sid);
     }
@@ -30,7 +30,7 @@ class SMSMessagesTest extends PHPUnit_Framework_TestCase {
                     'message' => 'Too long',
                 ))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', null, $http);
+        $client = new Services_Twilio('AC123', '123', null, $http);
         $sms = $client->account->sms_messages->create('+1222', '+44123',
             str_repeat('hi', 81));
     }

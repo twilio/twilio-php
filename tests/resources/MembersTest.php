@@ -13,7 +13,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('call_sid' => 'CA123', 'position' => 0))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         $firstMember = $queue->members->front();
         $this->assertSame($firstMember->call_sid, 'CA123');
@@ -27,7 +27,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('call_sid' => 'CA123', 'position' => 0))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         $firstMember = $queue->members->front();
         $firstMember->dequeue('http://foo.com');
@@ -41,7 +41,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('call_sid' => 'CA123', 'position' => 0))
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         $firstMember = $queue->members->get('CA123');
         $firstMember->dequeue('http://foo.com', 'GET');
@@ -66,7 +66,7 @@ class MembersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(400, array('Content-Type' => 'application/json'),
                 '{"status":400,"message":"foo", "code": "20006"}'
             ));
-        $client = Services_Twilio::createBasicAuthorizationClient('AC123', '123', '2010-04-01', $http);
+        $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         $queue = $client->account->queues->get('QQ123');
         foreach($queue->members as $member) {
             $this->assertSame($member->call_sid, 'CA123');

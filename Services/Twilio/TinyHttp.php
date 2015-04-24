@@ -142,13 +142,4 @@ class Services_Twilio_TinyHttp
             $this->auth_header = null;
         }
     }
-
-    public function tokenAuthentication($token)
-    {
-        if (isset($token)) {
-            $this->auth_header = sprintf("Token %s", $token);
-        } else {
-            $this->auth_header = null;
-        }
-    }
 }

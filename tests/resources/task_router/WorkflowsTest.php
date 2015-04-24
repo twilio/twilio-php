@@ -14,7 +14,7 @@ class WorkflowsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WF123'))
             ));
-        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
         $workflow = $taskrouterClient->workspace->workflows->create('Test Workflow', 'configuration', 'http://www.example.com');
         $this->assertNotNull($workflow);
     }
@@ -27,7 +27,7 @@ class WorkflowsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'WF123', 'friendly_name' => 'Test Workflow'))
             ));
-        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
         $workflow = $taskrouterClient->workspace->workflows->get('WF123');
         $this->assertNotNull($workflow);
         $this->assertEquals('Test Workflow', $workflow->friendly_name);

@@ -13,7 +13,7 @@ class WorkflowStatisticsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('account_sid' => 'AC123'))
             ));
-        $taskrouterClient = TaskRouter_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'WS123', 'v1', $http);
+        $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
         $stats = $taskrouterClient->getWorkflowStatistics('WF123', array('Minutes' => 60));
         $this->assertNotNull($stats);
         $this->assertEquals('AC123', $stats->account_sid);

@@ -23,7 +23,7 @@ class PhoneNumbersTest extends PHPUnit_Framework_TestCase
                     )
                 ))
             ));
-        $client = Lookups_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'v1', $http);
+        $client = new Lookups_Services_Twilio('AC123', '123', 'v1', $http);
         $number = $client->phone_numbers->get('4153902337');
         $this->assertNotNull($number);
         $this->assertEquals('US', $number->country_code);
@@ -47,7 +47,7 @@ class PhoneNumbersTest extends PHPUnit_Framework_TestCase
                     )
                 ))
             ));
-        $client = Lookups_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'v1', $http);
+        $client = new Lookups_Services_Twilio('AC123', '123', 'v1', $http);
         $number = $client->phone_numbers->get('4153902337', array('CountryCode' => 'US'));
         $this->assertNotNull($number);
         $this->assertEquals('US', $number->country_code);
@@ -71,7 +71,7 @@ class PhoneNumbersTest extends PHPUnit_Framework_TestCase
                     )
                 ))
             ));
-        $client = Lookups_Services_Twilio::createBasicAuthorizationClient('AC123', '123', 'v1', $http);
+        $client = new Lookups_Services_Twilio('AC123', '123', 'v1', $http);
         $number = $client->phone_numbers->get('4153902337', array('CountryCode' => 'US', 'Type' => 'carrier'));
         $this->assertNotNull($number);
         $this->assertEquals('US', $number->country_code);
