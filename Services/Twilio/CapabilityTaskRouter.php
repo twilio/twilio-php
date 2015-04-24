@@ -91,7 +91,7 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
     public function allowReservationUpdates() {
         $method = 'POST';
         $queryFilter = array();
-        $postFilter = array("ReservationStatus" => $this->required);
+        $postFilter = array();
         $this->apiCapability->addPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
     }
     
