@@ -34,9 +34,7 @@ class Services_Twilio_TinyHttpException extends ErrorException
  */
 class Services_Twilio_TinyHttp
 {
-    var $scheme, $host, $port, $debug, $curlopts;
-
-    private $auth_header = null;
+    var $user, $pass, $scheme, $host, $port, $debug, $curlopts;
 
     public function __construct($uri = '', $kwargs = array())
     {
@@ -66,10 +64,10 @@ class Services_Twilio_TinyHttp
                 CURLOPT_TIMEOUT => 60,
             );
 
-        if (isset($this->auth_header)) $req_headers['Authorization'] = $this->auth_header;
         foreach ($req_headers as $k => $v) $opts[CURLOPT_HTTPHEADER][] = "$k: $v";
         if ($this->port) $opts[CURLOPT_PORT] = $this->port;
         if ($this->debug) $opts[CURLINFO_HEADER_OUT] = TRUE;
+        if ($this->user && $this->pass) $opts[CURLOPT_USERPWD] = "$this->user:$this->pass";
         switch ($name) {
             case 'get':
                 $opts[CURLOPT_HTTPGET] = TRUE;
@@ -134,12 +132,8 @@ class Services_Twilio_TinyHttp
         }
     }
 
-    public function basicAuthentication($user, $pass)
-    {
-        if (isset($user) && isset($pass)) {
-            $this->auth_header = sprintf("Basic %s", base64_encode(sprintf("%s:%s", $user, $pass)));
-        } else {
-            $this->auth_header = null;
-        }
+    public function authenticate($user, $pass) {
+        $this->user = $user;
+        $this->pass = $pass;
     }
 }

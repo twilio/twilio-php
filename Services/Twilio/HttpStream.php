@@ -88,8 +88,7 @@ class Services_Twilio_HttpStream {
         return array($status_code, $response_headers, $result);
     }
 
-    public function basicAuthentication($user, $pass)
-    {
+    public function authenticate($user, $pass) {
         if (isset($user) && isset($pass)) {
             $this->auth_header = sprintf("Authorization: Basic %s", base64_encode(sprintf("%s:%s", $user, $pass)));
         } else {

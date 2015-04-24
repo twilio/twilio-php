@@ -77,9 +77,9 @@ abstract class Base_Services_Twilio
         }
         try {
             JWT::decode($token. null, false);
-            $_http->basicAuthentication('Token', $token);
+            $_http->authenticate('Token', $token);
         } catch (UnexpectedValueException $e) {
-            $_http->basicAuthentication($sid, $token);
+            $_http->authenticate($sid, $token);
         }
         $this->http = $_http;
         $this->retryAttempts = $retryAttempts;
@@ -353,6 +353,7 @@ class Services_Twilio extends Base_Services_Twilio
     )
     {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
         $this->accounts = new Services_Twilio_Rest_Accounts($this, "/{$this->version}/Accounts");
         $this->account = $this->accounts->get($sid);
     }
@@ -397,6 +398,7 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
     )
     {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
         $this->workspaces = new Services_Twilio_Rest_TaskRouter_Workspaces($this, "/{$this->version}/Workspaces");
         $this->workspace = $this->workspaces->get($workspaceSid);
         $this->accountSid = $sid;
@@ -506,6 +508,7 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
     )
     {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
         $this->accountSid = $sid;
         $this->phone_numbers = new Services_Twilio_Rest_Lookups_PhoneNumbers($this, "/{$this->version}/PhoneNumbers");
     }
