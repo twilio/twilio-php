@@ -25,20 +25,18 @@ class Services_Twilio_API_Capability
         $this->policies = array();
     }
     
-    public function addPolicy($policy) {
-        array_push($this->policies, $policy);
+    public function addPolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
+		$policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
+		array_push($this->policies, $policy);
     }
-    
-    public function generatePolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) 
-    {
-        $policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
-        return $policy;
-    }
-    
-    public function generateAndAddPolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
-        $policy = $this->generatePolicy($url, $method, $queryFilter, $postFilter, $allow);
-        $this->addPolicy($policy);
-    }
+
+	public function allow($url, $method, $queryFilter, $postFilter) {
+		$this->addPolicy($url, $method, $queryFilter, $postFilter, true);
+	}
+
+	public function disallow($url, $method, $queryFilter, $postFilter) {
+		$this->addPolicy($url, $method, $queryFilter, $postFilter, false);
+	}
        
     /**
      * Generates a new token based on the credentials and permissions that
