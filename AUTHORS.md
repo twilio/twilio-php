@@ -9,20 +9,23 @@ A huge thanks to all of our contributors:
 - Alex Chan
 - Alex Rowley
 - Alexandre Payment
+- Andrew Nicols
 - Brett Gerry
 - Bulat Shakirzyanov
 - Chris Barr
 - D. Keith Casey, Jr.
 - Doug Black
+- Elliot Lings
 - John Britton
 - John Wolthuis
 - Jordi Boggiano
 - Justin Witz
+- Keith Casey
 - Kevin Burke
 - Kyle Conroy
 - Luke Waite
 - Matt Nowack
-- Matthew Nowack
+- Maxime Horcholle
 - Neuman Vong
 - Patrick Labbett
 - Peter Meth
@@ -33,6 +36,7 @@ A huge thanks to all of our contributors:
 - Taichiro Yoshida
 - Trenton McManus
 - aaronfoss
+- alexw23
 - gramanathaiah
 - sashalaundy
 - tacman
