@@ -32,7 +32,7 @@ abstract class Services_Twilio_InstanceResource extends Services_Twilio_Resource
         $this->updateAttributes($decamelizedParams);
     }
 
-    /*
+    /**
      * Add all properties from an associative array (the JSON response body) as
      * properties on this instance resource, except the URI
      *
