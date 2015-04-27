@@ -103,4 +103,14 @@ class Services_Twilio_Rest_Call extends Services_Twilio_InstanceResource {
             'feedback'
         );
     }
+
+    /**
+     * Make a request to delete the specified resource.
+     *
+     * :rtype: boolean
+     */
+    public function delete()
+    {
+        return $this->client->deleteData($this->uri);
+    }
 }
