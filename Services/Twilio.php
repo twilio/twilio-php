@@ -76,7 +76,7 @@ abstract class Base_Services_Twilio
             }
         }
         try {
-            JWT::decode($token. null, false);
+            JWT::decode($token, null, false);
             $_http->authenticate('Token', $token);
         } catch (UnexpectedValueException $e) {
             $_http->authenticate($sid, $token);
