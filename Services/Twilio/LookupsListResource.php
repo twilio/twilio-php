@@ -25,6 +25,7 @@ abstract class Services_Twilio_LookupsListResource extends Services_Twilio_NextG
      * :rtype: :php:class:`InstanceResource <Services_Twilio_InstanceResource>`
      */
     public function get($number, $filters = array()) {
+        $number = rawurlencode($number);
         $full_path = $this->uri . "/$number";
         if (!empty($filters)) {
             $full_path .= '?' . http_build_query($filters, '', '&');
@@ -33,7 +34,6 @@ abstract class Services_Twilio_LookupsListResource extends Services_Twilio_NextG
         $instance = new $this->instance_name(
             $this->client, $full_path
         );
-        $instance->number = $number;
         return $instance;
     }
 }
