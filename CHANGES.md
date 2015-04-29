@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 4.0.3
+-------------
+
+Released on April 29, 2015
+
+- Fix to add rawurlencoding to phone number lookups to support spaces
+
 Version 4.0.2
 -------------
 
