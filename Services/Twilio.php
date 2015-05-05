@@ -572,6 +572,7 @@ class Monitor_Services_Twilio extends Base_Services_Twilio
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
 
         $this->events = new Services_Twilio_Rest_Monitor_Events($this, "/{$this->version}/Events");
+        $this->alerts = new Services_Twilio_Rest_Monitor_Alerts($this, "/{$this->version}/Alerts");
     }
 
     /**
