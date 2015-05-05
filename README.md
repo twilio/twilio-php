@@ -114,9 +114,9 @@ Library Documentation")
 * PHP >= 5.2.3
 * The PHP JSON extension
 
-## Reporting Issues
+# Getting help
 
-We would love to hear your feedback. Report issues using the [Github
-Issue Tracker](https://github.com/twilio/twilio-php/issues) or email
-[help@twilio.com](mailto:help@twilio.com).
+If you need help installing or using the library, please contact Twilio Support at help@twilio.com first. Twilio's Support staff are well-versed in all of the Twilio Helper Libraries, and usually reply within 24 hours.
+
+If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 

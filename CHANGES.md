@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+Version 4.0.3
+-------------
+
+Released on April 29, 2015
+
+- Fix to add rawurlencoding to phone number lookups to support spaces
+
+Version 4.0.2
+-------------
+
+Released on April 27, 2015
+
+- Fix the autoloading so that Lookups_Services_Twilio and 
+  TaskRouter_Services_Twilio are available independently of Services_Twilio
+
 Version 4.0.1
 -------------
 
