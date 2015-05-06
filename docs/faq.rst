@@ -63,23 +63,6 @@ You can also try changing the ``require`` line like this:
 
     require('/path/to/twilio-php/Services/Twilio.php');
 
-You could also try downloading the library via PEAR, a package manager for PHP, 
-which will add the library to your PHP path, so you can load the Twilio library
-from anywhere. Run this at the command line:
-
-.. code-block:: bash
-
-    $ pear channel-discover twilio-pear.herokuapp.com/pear
-    $ pear install twilio/Services_Twilio
-
-If you get the following message:
-
-.. code-block:: bash
-
-    $ -bash: pear: command not found
-
-you can install PEAR from their website.
-
 SSL Validation Exceptions
 -------------------------
 
