@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 4.0.4
+-------------
+
+Released May 6, 2015
+
+- Add support for the new Pricing API.
+
 Version 4.0.1
 -------------
 
