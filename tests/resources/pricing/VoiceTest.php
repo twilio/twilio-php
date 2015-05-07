@@ -26,7 +26,8 @@ class VoiceTest extends PHPUnit_Framework_TestCase {
         $countries = $pricingClient->voiceCountries->getPage();
         $this->assertNotNull($countries);
 
-        $country = $countries->getItems()[0];
+        $countryList = $countries->getItems();
+        $country = $countryList[0];
         $this->assertNotNull($country);
         $this->assertEquals($country->iso_country, 'US');
     }
