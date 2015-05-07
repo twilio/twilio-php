@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 4.1.0
+-------------
+
+Released May 7, 2015
+
+- Add support for Twilio Monitor Events and Alerts
+
 Version 4.0.4
 -------------
 
