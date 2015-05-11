@@ -10,33 +10,43 @@ class ScopedAuthenticationToken
     private $ttl;
     private $grants;
 
-    public function __construct($signingKeySid, $accountSid, $tokenId = null, $ttl = 3600, $grants = array())
+    public function __construct($signingKeySid, $accountSid, $ttl = 3600)
     {
         $this->signingKeySid = $signingKeySid;
         $this->accountSid = $accountSid;
-        $this->tokenId = $tokenId;
-        if ($this->tokenId == null) {
-            $this->tokenId = $signingKeySid . '-' . time();
-        }
+        $this->tokenId = $signingKeySid . '-' . time();
         $this->ttl = $ttl;
-        $this->grants = $grants;
+        $this->grants = array();
     }
 
-    public function addGrant(Grant $grant)
+    public function addGrant($resource, $actions = array(Action::ALL))
     {
-        $this->grants[] = $grant;
-        return $this->grants;
+        if (!is_array($actions)) {
+            $actions = array($actions);
+        }
+
+        $this->grants[] = array(
+            'res' => $resource,
+            'act' => $actions,
+        );
+        return $this;
     }
 
-    public function generateToken($secret)
+    public function addEndpointGrant($name, $actions = array(Action::LISTEN, Action::INVITE))
+    {
+        return $this->addGrant('sip:' . $name . '@' . $this->accountSid . '.endpoint.twilio.com', $actions);
+    }
+
+    public function encode($secret)
     {
         $header = array('cty' => 'twilio-sat;v=1');
+        $now = time();
         $payload = array(
             'jti' => $this->tokenId,
             'iss' => $this->signingKeySid,
             'sub' => $this->accountSid,
-            'nbf' => time(),
-            'exp' => time() + $this->ttl,
+            'nbf' => $now,
+            'exp' => $now + $this->ttl,
             'grants' => $this->grants
         );
 
@@ -51,13 +61,7 @@ abstract class Action
     const GET = 'GET';
     const POST = 'POST';
     const PUT = 'PUT';
-}
 
-class Grant
-{
-    public function __construct($resource, $actions = array(Action::ALL))
-    {
-        $this->res = $resource;
-        $this->act = $actions;
-    }
+    const LISTEN = 'listen';
+    const INVITE = 'invite';
 }
