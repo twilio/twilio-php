@@ -2,7 +2,7 @@
 
 include_once 'JWT.php';
 
-class Services_Twilio_ScopedAuthenticationToken
+class Services_Twilio_AccessToken
 {
     private $signingKeySid;
     private $accountSid;

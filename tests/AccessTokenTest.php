@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Twilio/ScopedAuthenticationToken.php';
+require_once 'Twilio/AccessToken.php';
 
-class ScopedAuthenticationTokenTest extends PHPUnit_Framework_TestCase
+class AccessTokenTest extends PHPUnit_Framework_TestCase
 {
     const SIGNING_KEY_SID = 'SK123';
 
@@ -22,7 +22,7 @@ class ScopedAuthenticationTokenTest extends PHPUnit_Framework_TestCase
 
     function testEmptyGrants()
     {
-        $scat = new Services_Twilio_ScopedAuthenticationToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
+        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $token = $scat->asJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
@@ -32,7 +32,7 @@ class ScopedAuthenticationTokenTest extends PHPUnit_Framework_TestCase
 
     function testAddGrant()
     {
-        $scat = new Services_Twilio_ScopedAuthenticationToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
+        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $scat->addGrant('https://api.twilio.com/**');
         $token = $scat->asJWT();
         $this->assertNotNull($token);
@@ -48,7 +48,7 @@ class ScopedAuthenticationTokenTest extends PHPUnit_Framework_TestCase
 
     function testEndpointGrant()
     {
-        $scat = new Services_Twilio_ScopedAuthenticationToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
+        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $scat->addEndpointGrant('bob');
         $token = $scat->asJWT();
         $this->assertNotNull($token);
