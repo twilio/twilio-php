@@ -6,7 +6,6 @@ class ScopedAuthenticationToken
 {
     private $signingKeySid;
     private $accountSid;
-    private $tokenId;
     private $ttl;
     private $grants;
 
@@ -14,7 +13,6 @@ class ScopedAuthenticationToken
     {
         $this->signingKeySid = $signingKeySid;
         $this->accountSid = $accountSid;
-        $this->tokenId = $signingKeySid . '-' . time();
         $this->ttl = $ttl;
         $this->grants = array();
     }
@@ -42,7 +40,7 @@ class ScopedAuthenticationToken
         $header = array('cty' => 'twilio-sat;v=1');
         $now = time();
         $payload = array(
-            'jti' => $this->tokenId,
+            'jti' => $this->signingKeySid . '-' . $now,
             'iss' => $this->signingKeySid,
             'sub' => $this->accountSid,
             'nbf' => $now,
