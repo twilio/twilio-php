@@ -2,17 +2,19 @@
 
 include_once 'JWT.php';
 
-class ScopedAuthenticationToken
+class Services_Twilio_ScopedAuthenticationToken
 {
     private $signingKeySid;
     private $accountSid;
+    private $secret;
     private $ttl;
     private $grants;
 
-    public function __construct($signingKeySid, $accountSid, $ttl = 3600)
+    public function __construct($signingKeySid, $accountSid, $secret, $ttl = 3600)
     {
         $this->signingKeySid = $signingKeySid;
         $this->accountSid = $accountSid;
+        $this->secret = $secret;
         $this->ttl = $ttl;
         $this->grants = array();
     }
@@ -35,7 +37,7 @@ class ScopedAuthenticationToken
         return $this->addGrant('sip:' . $name . '@' . $this->accountSid . '.endpoint.twilio.com', $actions);
     }
 
-    public function encode($secret)
+    public function asJWT()
     {
         $header = array('cty' => 'twilio-sat;v=1');
         $now = time();
@@ -48,7 +50,12 @@ class ScopedAuthenticationToken
             'grants' => $this->grants
         );
 
-        return JWT::encode($payload, $secret, 'HS256', $header);
+        return JWT::encode($payload, $this->secret, 'HS256', $header);
+    }
+
+    public function __toString()
+    {
+        return $this->asJWT();
     }
 }
 
