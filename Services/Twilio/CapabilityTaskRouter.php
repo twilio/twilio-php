@@ -9,12 +9,11 @@ include_once 'CapabilityAPI.php';
  * @author Justin Witz <justin.witz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Twilio_TaskRouter_Capability
+class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capability
 {
 	protected $accountSid;
 	protected $authToken;
 	protected $workspaceSid;
-	protected $apiCapability;
 
 	protected $baseUrl = 'https://taskrouter.twilio.com/v1';
 	protected $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
@@ -36,18 +35,23 @@ class Services_Twilio_TaskRouter_Capability
 			$this->baseWsUrl = $overrideBaseWSUrl;
 		}
 		$this->baseUrl = $this->baseUrl.'/Workspaces/'.$workspaceSid;
-		$this->apiCapability = new Services_Twilio_API_Capability($accountSid, $authToken, 'v1', $channelId);
+
+		parent::__construct($accountSid, $authToken, 'v1', $channelId);
 
 		//add permissions to GET and POST to the event-bridge channel
-		$this->apiCapability->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "GET", null, null);
-		$this->apiCapability->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "POST", null, null);
+		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "GET", null, null);
+		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "POST", null, null);
 	}
 
 	public function allowFetchSubresources() {
 		$method = 'GET';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->apiCapability->addPolicy($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
+		$this->addPolicy($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
+	}
+
+	public function getResourceUrl() {
+		return $this->resourceUrl;
 	}
 }
 
@@ -62,48 +66,48 @@ class Services_Twilio_TaskRouter_Capability
  */
 class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskRouter_Capability
 {
-    private $workerUrl;
-    private $reservationsUrl;
-    private $activityUrl;
-    
-    public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
-    {
+	private $workerUrl;
+	private $reservationsUrl;
+	private $activityUrl;
+
+	public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
+	{
 		parent::__construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl, $overrideBaseWSUrl);
 
-        $this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
-        $this->reservationsUrl = $this->workerUrl.'/Reservations/*';
-        $this->activityUrl = $this->baseUrl.'/Activities';
+		$this->workerUrl = $this->baseUrl.'/Workers/'.$workerSid;
+		$this->reservationsUrl = $this->baseUrl.'/Tasks/**';
+		$this->activityUrl = $this->baseUrl.'/Activities';
 		$this->resourceUrl = $this->workerUrl;
 
 		//add permissions to fetch the worker, activity and worker reservations resource
-		$this->apiCapability->addPolicy($this->activityUrl, "GET", null, null);
-		$this->apiCapability->addPolicy($this->workerUrl, "GET", null, null);
-		$this->apiCapability->addPolicy($this->reservationsUrl, "GET", null, null);
-    }
-    
-    public function allowActivityUpdates() {
-        $method = 'POST';
-        $queryFilter = array();
-        $postFilter = array("ActivitySid" => $this->required);
-        $this->apiCapability->addPolicy($this->workerUrl, $method, $queryFilter, $postFilter);
-    }
-    
-    public function allowReservationUpdates() {
-        $method = 'POST';
-        $queryFilter = array();
-        $postFilter = array();
-        $this->apiCapability->addPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
-    }
-    
-    public function generateToken($ttl = 3600) {
-        $taskRouterAttributes = array(
-            'account_sid' => $this->accountSid,
-            'channel' => $this->channelId,
-            'workspace_sid' => $this->workspaceSid,
-            'worker_sid' => $this->channelId,
-        );
-    	return $this->apiCapability->generateToken($ttl, $taskRouterAttributes);
-    }
+		$this->addPolicy($this->activityUrl, "GET", null, null);
+		$this->addPolicy($this->workerUrl, "GET", null, null);
+		$this->addPolicy($this->reservationsUrl, "GET", null, null);
+	}
+
+	public function allowActivityUpdates() {
+		$method = 'POST';
+		$queryFilter = array();
+		$postFilter = array("ActivitySid" => $this->required);
+		$this->addPolicy($this->workerUrl, $method, $queryFilter, $postFilter);
+	}
+
+	public function allowReservationUpdates() {
+		$method = 'POST';
+		$queryFilter = array();
+		$postFilter = array();
+		$this->addPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
+	}
+
+	public function generateToken($ttl = 3600, $extraAttributes = null) {
+		$taskRouterAttributes = array(
+			'account_sid' => $this->accountSid,
+			'channel' => $this->channelId,
+			'workspace_sid' => $this->workspaceSid,
+			'worker_sid' => $this->channelId,
+		);
+		return parent::generateToken($ttl, $taskRouterAttributes);
+	}
 }
 
 /**
@@ -126,17 +130,17 @@ class Services_Twilio_TaskRouter_TaskQueue_Capability extends Services_Twilio_Ta
 		$this->resourceUrl = $this->$taskQueueUrl;
 
 		//add permissions to fetch the taskqueue resource
-		$this->apiCapability->addPolicy($this->$taskQueueUrl, "GET", null, null);
+		$this->addPolicy($this->$taskQueueUrl, "GET", null, null);
 	}
 
-	public function generateToken($ttl = 3600) {
+	public function generateToken($ttl = 3600, $extraAttributes = null) {
 		$taskRouterAttributes = array(
 			'account_sid' => $this->accountSid,
 			'channel' => $this->channelId,
 			'workspace_sid' => $this->workspaceSid,
 			'taskqueue_sid' => $this->channelId,
 		);
-		return $this->apiCapability->generateToken($ttl, $taskRouterAttributes);
+		return parent::generateToken($ttl, $taskRouterAttributes);
 	}
 }
 
@@ -156,15 +160,15 @@ class Services_Twilio_TaskRouter_Workspace_Capability extends Services_Twilio_Ta
 		$this->resourceUrl = $this->baseUrl;
 
 		//add permissions to fetch the workspace resource
-		$this->apiCapability->addPolicy($this->baseUrl.'/*', "GET", null, null);
+		$this->addPolicy($this->baseUrl.'/*', "GET", null, null);
 	}
 
-	public function generateToken($ttl = 3600) {
+	public function generateToken($ttl = 3600, $extraAttributes = null) {
 		$taskRouterAttributes = array(
 			'account_sid' => $this->accountSid,
 			'channel' => $this->channelId,
 			'workspace_sid' => $this->channelId
 		);
-		return $this->apiCapability->generateToken($ttl, $taskRouterAttributes);
+		return parent::generateToken($ttl, $taskRouterAttributes);
 	}
 }
