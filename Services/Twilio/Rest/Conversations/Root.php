@@ -3,7 +3,7 @@
 class Services_Twilio_Rest_Conversations_Root {
     public function __construct($client, $uri) {
         $this->_conversations = new Services_Twilio_Rest_Conversations_Conversations($client, $uri);
-        $this->in_progress = new Services_Twilio_Rest_Conversations_Conversations($client, "$uri/InProgress");
+        $this->inProgress = new Services_Twilio_Rest_Conversations_Conversations($client, "$uri/InProgress");
         $this->completed = new Services_Twilio_Rest_Conversations_Conversations($client, "$uri/Completed");
     }
 

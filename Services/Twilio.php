@@ -720,7 +720,7 @@ class Conversations_Services_Twilio extends Base_Services_Twilio
     {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
 
-        $this->conversations = new Services_Twilio_Rest_Conversations_Conversations($this, "/{$this->version}/Conversations");
+        $this->conversations = new Services_Twilio_Rest_Conversations_Root($this, "/{$this->version}/Conversations");
     }
 
     /**
