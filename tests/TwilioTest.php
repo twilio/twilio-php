@@ -374,6 +374,12 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
         $client->account->calls->create('123', '123', 'http://example.com');
     }
 
+    function testPricingClient() {
+        $pricingClient = new Pricing_Services_Twilio('AC123', '123', 'v1');
+        $this->assertNotNull($pricingClient);
+        $this->assertEquals(1, $pricingClient->getRetryAttempts());
+    }
+
     function testTaskRouterClient() {
         $taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1');
         $this->assertNotNull($taskrouterClient);

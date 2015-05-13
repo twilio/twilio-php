@@ -8,9 +8,11 @@
 
 function Services_Twilio_autoload($className)
 {
-    if (substr($className, 0, 15) != 'Services_Twilio' 
+    if (substr($className, 0, 15) != 'Services_Twilio'
         && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
-        && substr($className, 0, 23) != 'Lookups_Services_Twilio') {
+        && substr($className, 0, 23) != 'Lookups_Services_Twilio'
+        && substr($className, 0, 23) != 'Monitor_Services_Twilio'
+        && substr($className, 0, 23) != 'Pricing_Services_Twilio') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -25,7 +27,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 abstract class Base_Services_Twilio extends Services_Twilio_Resource
 {
-    const USER_AGENT = 'twilio-php/4.0.3';
+    const USER_AGENT = 'twilio-php/4.1.0';
 
     protected $http;
     protected $last_response;
@@ -39,8 +41,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
         $version = null,
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
-    )
-    {
+    ) {
         $this->version = in_array($version, $this->versions) ? $version : end($this->versions);
 
         if (null === $_http) {
@@ -86,15 +87,11 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :param array $queryData: An associative array of keys and values. The
      *      values can be a simple type or a list, in which case the list is
      *      converted to multiple query parameters with the same key.
-     * :param string $numericPrefix:
-     * :param string $queryStringStyle: Determine how to build the url
-     *      - strict: Build a standards compliant query string without braces (can be hacked by using braces in key)
-     *      - php: Build a PHP compatible query string with nested array syntax
+     * :param string $numericPrefix: optional prefix to prepend to numeric keys
      * :return: The encoded query string
      * :rtype: string
      */
-    public static function buildQuery($queryData, $numericPrefix = '')
-    {
+    public static function buildQuery($queryData, $numericPrefix = '') {
         $query = '';
         // Loop through all of the $query_data
         foreach ($queryData as $key => $value) {
@@ -158,8 +155,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the user agent
      * :rtype: string
      */
-    public static function qualifiedUserAgent($php_version)
-    {
+    public static function qualifiedUserAgent($php_version) {
         return self::USER_AGENT . " (php $php_version)";
     }
 
@@ -206,8 +202,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the number of retry attempts
      * :rtype: int
      */
-    public function getRetryAttempts()
-    {
+    public function getRetryAttempts() {
         return $this->retryAttempts;
     }
 
@@ -217,8 +212,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: the API version in use
      * :returntype: string
      */
-    public function getVersion()
-    {
+    public function getVersion() {
         return $this->version;
     }
 
@@ -248,8 +242,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: base URI
      * :rtype: string
      */
-    protected function _getBaseUri()
-    {
+    protected function _getBaseUri() {
         return 'https://api.twilio.com';
     }
 
@@ -263,8 +256,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      * :return: The object representation of the resource
      * :rtype: object
      */
-    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft)
-    {
+    protected function _makeIdempotentRequest($callable, $uri, $retriesLeft) {
         $response = call_user_func_array($callable, array($uri));
         list($status, $headers, $body) = $response;
         if ($status >= 500 && $retriesLeft > 0) {
@@ -335,8 +327,6 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
  */
 class Services_Twilio extends Base_Services_Twilio
 {
-
-    CONST URI = 'https://api.twilio.com';
     protected $versions = array('2008-08-01', '2010-04-01');
 
     public function __construct(
@@ -466,7 +456,6 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
     }
 }
 
-
 /**
  * Create a client to talk to the Twilio Lookups API.
  *
@@ -542,6 +531,155 @@ class Lookups_Services_Twilio extends Base_Services_Twilio
     protected function _getBaseUri()
     {
         return 'https://lookups.twilio.com';
+    }
+
+}
+
+/**
+ * Create a client to talk to the Twilio Pricing API.
+ *
+ *
+ * :param string               $sid:      Your Account SID
+ * :param string               $token:    Your Auth Token from `your dashboard
+ *      <https://www.twilio.com/user/account>`_
+ * :param string               $version:  API version to use
+ * :param $_http:    A HTTP client for making requests.
+ * :type $_http: :php:class:`Services_Twilio_TinyHttp`
+ * :param int                  $retryAttempts:
+ *      Number of times to retry failed requests. Currently only idempotent
+ *      requests (GET's and DELETE's) are retried.
+ *
+ * Here's an example:
+ *
+ * .. code-block:: php
+ *
+ *      require('Services/Twilio.php');
+ *      $client = new Pricing_Services_Twilio('AC123', '456bef', null, null, 3);
+ *      // Take some action with the client, etc.
+ */
+class Pricing_Services_Twilio extends Base_Services_Twilio
+{
+    protected $versions = array('v1');
+
+    public function __construct(
+        $sid,
+        $token,
+        $version = null,
+        Services_Twilio_TinyHttp $_http = null,
+        $retryAttempts = 1
+    ) {
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
+        $this->voiceCountries = new Services_Twilio_Rest_Pricing_VoiceCountries(
+            $this, "/{$this->version}/Voice/Countries"
+        );
+        $this->voiceNumbers = new Services_Twilio_Rest_Pricing_VoiceNumbers(
+            $this, "/{$this->version}/Voice/Numbers"
+        );
+        $this->phoneNumberCountries = new Services_Twilio_Rest_Pricing_PhoneNumberCountries(
+            $this, "/{$this->version}/PhoneNumbers/Countries"
+        );
+    }
+
+    /**
+     * Construct a URI based on initial path, query params, and paging
+     * information
+     *
+     * We want to use the query params, unless we have a next_page_uri from the
+     * API.
+     *
+     * :param string $path: The request path (may contain query params if it's
+     *      a next_page_uri)
+     * :param array $params: Query parameters to use with the request
+     * :param boolean $full_uri: Whether the $path contains the full uri
+     *
+     * :return: the URI that should be requested by the library
+     * :returntype: string
+     */
+    public function getRequestUri($path, $params, $full_uri = false)
+    {
+        if (!$full_uri && !empty($params)) {
+            $query_path = $path . '?' . http_build_query($params, '', '&');
+        } else {
+            $query_path = $path;
+        }
+        return $query_path;
+    }
+
+    protected function _getBaseUri() {
+        return 'https://pricing.twilio.com';
+    }
+
+}
+
+/**
+ * Create a client to talk to the Twilio Monitor API.
+ *
+ *
+ * :param string               $sid:      Your Account SID
+ * :param string               $token:    Your Auth Token from `your dashboard
+ *      <https://www.twilio.com/user/account>`_
+ * :param string               $version:  API version to use
+ * :param $_http:    A HTTP client for making requests.
+ * :type $_http: :php:class:`Services_Twilio_TinyHttp`
+ * :param int                  $retryAttempts:
+ *      Number of times to retry failed requests. Currently only idempotent
+ *      requests (GET's and DELETE's) are retried.
+ *
+ * Here's an example:
+ *
+ * .. code-block:: php
+ *
+ *      require('Services/Twilio.php');
+ *      $client = new Monitor_Services_Twilio('AC123', '456bef', null, null, 3);
+ *      // Take some action with the client, etc.
+ */
+class Monitor_Services_Twilio extends Base_Services_Twilio
+{
+    protected $versions = array('v1');
+
+    public function __construct(
+        $sid,
+        $token,
+        $version = null,
+        Services_Twilio_TinyHttp $_http = null,
+        $retryAttempts = 1
+    )
+    {
+        parent::__construct($sid, $token, $version, $_http, $retryAttempts);
+
+        $this->events = new Services_Twilio_Rest_Monitor_Events($this, "/{$this->version}/Events");
+        $this->alerts = new Services_Twilio_Rest_Monitor_Alerts($this, "/{$this->version}/Alerts");
+    }
+
+    /**
+     * Construct a URI based on initial path, query params, and paging
+     * information
+     *
+     * We want to use the query params, unless we have a next_page_uri from the
+     * API.
+     *
+     * :param string $path: The request path (may contain query params if it's
+     *      a next_page_uri)
+     * :param array $params: Query parameters to use with the request
+     * :param boolean $full_uri: Whether the $path contains the full uri
+     *
+     * :return: the URI that should be requested by the library
+     * :returntype: string
+     */
+    public function getRequestUri($path, $params, $full_uri = false)
+    {
+        if (!$full_uri && !empty($params)) {
+            $query_path = $path . '?' . http_build_query($params, '', '&');
+        } else {
+            $query_path = $path;
+        }
+        return $query_path;
+    }
+
+    protected function _getBaseUri()
+    {
+        return 'https://monitor.twilio.com';
     }
 
 }

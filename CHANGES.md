@@ -1,6 +1,20 @@
 twilio-php Changelog
 ====================
 
+Version 4.1.0
+-------------
+
+Released May 7, 2015
+
+- Add support for Twilio Monitor Events and Alerts
+
+Version 4.0.4
+-------------
+
+Released May 6, 2015
+
+- Add support for the new Pricing API.
+
 Version 4.0.3
 -------------
 
@@ -13,7 +27,7 @@ Version 4.0.2
 
 Released on April 27, 2015
 
-- Fix the autoloading so that Lookups_Services_Twilio and 
+- Fix the autoloading so that Lookups_Services_Twilio and
   TaskRouter_Services_Twilio are available independently of Services_Twilio
 
 Version 4.0.1
