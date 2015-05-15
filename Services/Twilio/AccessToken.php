@@ -32,9 +32,20 @@ class Services_Twilio_AccessToken
         return $this;
     }
 
-    public function addEndpointGrant($name, $actions = array(Action::LISTEN, Action::INVITE))
+    public function addEndpointGrant($endpoint, $actions = array(Action::LISTEN, Action::INVITE))
     {
-        return $this->addGrant('sip:' . $name . '@' . $this->accountSid . '.endpoint.twilio.com', $actions);
+        return $this->addGrant('sip:' . $endpoint . '@' . $this->accountSid . '.endpoint.twilio.com', $actions);
+    }
+
+    public function addRestGrant($uri, $actions = array(Action::ALL))
+    {
+        $resource = 'https://api.twilio.com/2010-04-01/Accounts/' . $this->accountSid . '/' . ltrim($uri, '/');
+        return $this->addGrant($resource, $actions);
+    }
+
+    public function enableNTS()
+    {
+        return $this->addRestGrant('/Tokens', array(Action::POST));
     }
 
     public function asJWT()
