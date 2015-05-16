@@ -55,6 +55,24 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 
 		//add permissions to fetch the instance resource
 		$this->addPolicy($this->resourceUrl, "GET", null, null);
+
+		$this->validateJWT();
+	}
+
+	private function validateJWT() {
+		if(!isset($this->accountSid) || substr($this->accountSid,0,2) != 'AC') {
+			throw new Exception("Invalid AccountSid provided: ".$this->accountSid);
+		}
+		if(!isset($this->workspaceSid) || substr($this->workspaceSid,0,2) != 'WS') {
+			throw new Exception("Invalid WorkspaceSid provided: ".$this->workspaceSid);
+		}
+		if(!isset($this->channelId)) {
+			throw new Exception("ChannelId not provided");
+		}
+		$prefix = substr($this->channelId,0,2);
+		if($prefix != 'WS' && $prefix != 'WK' && $prefix != 'WQ') {
+			throw new Exception("Invalid ChannelId provided: ".$this->channelId);
+		}
 	}
 
 	public function allowFetchSubresources() {
