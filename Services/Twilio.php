@@ -25,7 +25,7 @@ spl_autoload_register('Services_Twilio_autoload');
 /**
  * Base client class
  */
-abstract class Base_Services_Twilio extends Services_Twilio_Resource
+abstract class Base_Services_Twilio
 {
     const USER_AGENT = 'twilio-php/4.1.0';
 
@@ -170,9 +170,9 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
      */
     public function createData($path, $params = array(), $full_uri = false)
     {
-		if (!$full_uri) {
-			$path = "$path.json";
-		}
+        if (!$full_uri) {
+            $path = "$path.json";
+        }
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
         $response = $this->http->post(
             $path, $headers, self::buildQuery($params, '')
@@ -365,7 +365,7 @@ class Services_Twilio extends Base_Services_Twilio
  * .. code-block:: php
  *
  *      require('Services/Twilio.php');
- *      $client = new TaskRouter_Services_Twilio('AC123', '456bef', null, null, 3);
+ *      $client = new TaskRouter_Services_Twilio('AC123', '456bef', 'WS123', null, null, 3);
  *      // Take some action with the client, etc.
  */
 class TaskRouter_Services_Twilio extends Base_Services_Twilio
