@@ -81,6 +81,10 @@
  *
  *      The HTTP method Twilio will use when requesting the above URL. Either GET or POST.
  *
+ *   .. php:attr:: beta
+ *
+ *      Whether this number is new to Twilio's inventory.
+ *
  *   .. php:attr:: uri
  *
  *    The URI for this resource, relative to https://api.twilio.com.
