@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 4.2.0
+-------------
+
+Released May 19, 2015
+
+- Add support for the beta field in IncomingPhoneNumbers and AvailablePhoneNumbers
+
 Version 4.1.0
 -------------
 
