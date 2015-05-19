@@ -23,7 +23,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     function testEmptyGrants()
     {
         $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
-        $token = $scat->asJWT();
+        $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
@@ -34,7 +34,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $scat->addGrant('https://api.twilio.com/**');
-        $token = $scat->asJWT();
+        $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
@@ -50,7 +50,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $scat->addEndpointGrant('bob');
-        $token = $scat->asJWT();
+        $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
@@ -64,7 +64,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $scat->addRestGrant('/Apps');
-        $token = $scat->asJWT();
+        $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
@@ -78,7 +78,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
         $scat->enableNTS();
-        $token = $scat->asJWT();
+        $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);

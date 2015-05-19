@@ -48,7 +48,7 @@ class Services_Twilio_AccessToken
         return $this->addRestGrant('/Tokens', array(Action::POST));
     }
 
-    public function asJWT()
+    public function toJWT()
     {
         $header = array('cty' => 'twilio-sat;v=1');
         $now = time();
@@ -66,7 +66,7 @@ class Services_Twilio_AccessToken
 
     public function __toString()
     {
-        return $this->asJWT();
+        return $this->toJWT();
     }
 }
 
