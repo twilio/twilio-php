@@ -84,7 +84,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->validateClaims($payload);
         $this->assertEquals(1, count($payload->grants));
         $grant = $payload->grants[0];
-        $this->assertEquals('https://api.twilio.com/2010-04-01/Accounts/AC123/Tokens', $grant->res);
+        $this->assertEquals('https://api.twilio.com/2010-04-01/Accounts/AC123/Tokens.json', $grant->res);
         $this->assertEquals(array('POST'), $grant->act);
     }
 

@@ -45,7 +45,7 @@ class Services_Twilio_AccessToken
 
     public function enableNTS()
     {
-        return $this->addRestGrant('/Tokens', array(Action::POST));
+        return $this->addRestGrant('/Tokens.json', array(Action::POST));
     }
 
     public function toJWT()
