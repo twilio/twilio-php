@@ -4,7 +4,7 @@ Generate Capability Tokens
 
 `Twilio Client <http://www.twilio.com/api/client>`_ allows you to make and recieve connections in the browser. You can place a call to a phone on the PSTN network, all without leaving your browser. See the `Twilio Client Quickstart <http:/www.twilio.com/docs/quickstart/client>`_ to get up and running with Twilio Client.
 
-Capability tokens are used by `Twilio Client <http://www.twilio.com/api/client>`_ to provide connection security and authorization. The `Capability Token documentation <http://www.twilio.con/docs/tokens>`_ explains indepth the purpose and features of these tokens.
+Capability tokens are used by `Twilio Client <http://www.twilio.com/api/client>`_ to provide connection security and authorization. The `Capability Token documentation <http://www.twilio.com/docs/client/capability-tokens>`_ explains indepth the purpose and features of these tokens.
 
 :php:class:`Services_Twilio_Capability` is responsible for the creation of these capability tokens. You'll need your Twilio AccountSid and AuthToken.
 
