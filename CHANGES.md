@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 4.2.1
+-------------
+
+Released June 9, 2015
+
+- Update install documentation
+
 Version 4.2.0
 -------------
 
