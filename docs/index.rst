@@ -83,7 +83,7 @@ View more examples of TwiML generation here: :ref:`usage-twiml`
 Installation
 ============
 
-There are two ways to install **twilio-php**: via the PEAR installer, or by
+There are two ways to install **twilio-php**: via Composer, or by
 downloading the source.
 
 Via Composer
@@ -96,7 +96,7 @@ Via Composer
 From Source
 >>>>>>>>>>>>>
 
-If you aren't using PEAR, download the `source (.zip)
+If you aren't using Composer, download the `source (.zip)
 <https://github.com/twilio/twilio-php/zipball/master>`_, which includes all the
 dependencies.
 
