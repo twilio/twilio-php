@@ -86,15 +86,12 @@ Installation
 There are two ways to install **twilio-php**: via the PEAR installer, or by
 downloading the source.
 
-Via PEAR
+Via Composer
 >>>>>>>>>>>>>
-
-Use the ``Makefile`` in the repo's top
 
 .. code-block:: bash
 
-	pear channel-discover twilio.github.com/pear
-	pear install twilio/Services_Twilio
+	composer require 'twilio/sdk'
 
 From Source
 >>>>>>>>>>>>>
