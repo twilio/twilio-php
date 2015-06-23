@@ -20,7 +20,7 @@ Workspaces
 ====================
 .. php:class:: Services_Twilio_Rest_TaskRouter_Workspaces
 
-   For more information, see the Activities API Resource https://www.twilio.com/docs/taskrouter/workspaces
+   For more information, see the Workspaces API Resource https://www.twilio.com/docs/taskrouter/workspaces
 
    .. php:method:: create($friendlyName, array $params = array())
 
@@ -42,7 +42,7 @@ Workflows
 ====================
 .. php:class:: Services_Twilio_Rest_TaskRouter_Workflows
 
-   For more information, see the Activities API Resource https://www.twilio.com/docs/taskrouter/workflows
+   For more information, see the Workflows API Resource https://www.twilio.com/docs/taskrouter/workflows
 
    .. php:method:: create($friendlyName, $configuration, $assignmentCallbackUrl, array $params = array())
 
@@ -66,7 +66,7 @@ Workers
 ====================
 .. php:class:: Services_Twilio_Rest_TaskRouter_Workers
 
-   For more information, see the Activities API Resource https://www.twilio.com/docs/taskrouter/workers 
+   For more information, see the Workers API Resource https://www.twilio.com/docs/taskrouter/workers 
 
    .. php:method:: create($friendlyName, array $params = array())
 
@@ -84,19 +84,19 @@ Workers
 		JSON object describing this worker
 
 
-Task Queues
+TaskQueues
 ====================
 .. php:class:: Services_Twilio_Rest_TaskRouter_TaskQueues
 
-   For more information, see the Activities API Resource https://www.twilio.com/docs/taskrouter/taskqueues
+   For more information, see the TaskQueues API Resource https://www.twilio.com/docs/taskrouter/taskqueues
 
    .. php:method:: create($friendlyName, $assignmentActivitySid, $reservationActivitySid, array $params = array())
 
       Make a task queue
 
       :param string $friendlyName: String representing a user-friendly name for the Task Queue 
-      :param string $assignmentActivitySid: The activity to assign a worker when they accept a Task from this TaskQueue; defaults to 'Unavailable for Assignment'
-      :param string $reservationActivitySid: The Activity to assign a Worker when they are reserved for a Task from this TaskQueue; defaults to 'Reserved for Task'
+      :param string $assignmentActivitySid: The activity to assign a worker when they accept a Task from this TaskQueue; defaults to 'Busy'
+      :param string $reservationActivitySid: The Activity to assign a Worker when they are reserved for a Task from this TaskQueue; defaults to 'Reserved'
       :param array $params: An array of optional parameters for this call
 
       The **$params** array can contain the following keys:
@@ -112,7 +112,7 @@ Tasks
 ====================
 .. php:class:: Services_Twilio_Rest_TaskRouter_Tasks
 
-   For more information, see the Activities API Resource https://www.twilio.com/docs/taskrouter/tasks
+   For more information, see the Tasks API Resource https://www.twilio.com/docs/taskrouter/tasks
 
    .. php:method:: create($attributes, $workflowSid, array $params = array())
 
@@ -159,7 +159,7 @@ Reservations
 
 .. php:class:: Services_Twilio_Rest_TaskRouter_Reservations
 
-	For more information, see the Task Reservation Instance Subresource section on https://www.twilio.com/docs/taskrouter/events documentation
+	For more information, see the Task Reservation Instance Subresource section on https://www.twilio.com/docs/taskrouter/tasks documentation
 
 
 Workers Statistics
@@ -170,7 +170,7 @@ Workers Statistics
 	For more information, see the Worker Statistics API Resource https://www.twilio.com/docs/taskrouter/worker-statistics documentation
 
 
-TaskQueues Statistics 
+TaskQueue Statistics 
 ======================
 
 .. php:class:: Services_Twilio_Rest_TaskRouter_TaskQueuesStatistics
@@ -388,7 +388,7 @@ Task
 
 	.. php:attr:: task_queue_sid
 
-		The current Queue the Task occupies, controlled by the Workflow's Workflow.
+		The current TaskQueue occupied, controlled by the Workflow's Workflow.
 
 	.. php:attr:: assignment_status
 
