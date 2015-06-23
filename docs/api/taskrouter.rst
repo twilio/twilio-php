@@ -175,7 +175,7 @@ TaskQueue Statistics
 
 .. php:class:: Services_Twilio_Rest_TaskRouter_TaskQueuesStatistics
 
-	For more information, see the Task Queue Statistics API Resource https://www.twilio.com/docs/taskrouter/taskqueue-statistics documentation
+	For more information, see the TaskQueue Statistics API Resource https://www.twilio.com/docs/taskrouter/taskqueue-statistics documentation
 
 ********************
 Instance Resources
