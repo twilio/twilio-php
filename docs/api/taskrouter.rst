@@ -316,7 +316,7 @@ Worker
 		Filter by workers that would match an expression on a TaskQueue. This is helpful for debugging which workers would match a potential queue.
 
 
-Task Queue
+TaskQueue
 ================
 
 .. php:class:: Services_Twilio_Rest_TaskRouter_TaskQueue
