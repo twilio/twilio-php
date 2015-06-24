@@ -11,12 +11,11 @@ include_once 'CapabilityAPI.php';
  */
 class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capability
 {
-	protected $accountSid;
-	protected $authToken;
-	protected $workspaceSid;
-
 	protected $baseUrl = 'https://taskrouter.twilio.com/v1';
 	protected $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
+	protected $version = 'v1';
+
+	protected $workspaceSid;
 	protected $channelId;
 	protected $resourceUrl;
 
@@ -24,8 +23,8 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 	protected $optional = array("required" => false);
 
 	public function __construct($accountSid, $authToken, $workspaceSid, $channelId, $resourceUrl = null, $overrideBaseUrl = null, $overrideBaseWSUrl = null) {
-		$this->accountSid = $accountSid;
-		$this->authToken = $authToken;
+		parent::__construct($accountSid, $authToken, $this->version, $channelId);
+
 		$this->workspaceSid = $workspaceSid;
 		$this->channelId = $channelId;
 		if(isset($overrideBaseUrl)) {
@@ -35,6 +34,8 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 			$this->baseWsUrl = $overrideBaseWSUrl;
 		}
 		$this->baseUrl = $this->baseUrl.'/Workspaces/'.$workspaceSid;
+
+		$this->validateJWT();
 
 		if(!isset($resourceUrl)) {
 			if(substr($channelId,0,2) == 'WS') {
@@ -47,16 +48,12 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		}
 		$this->resourceUrl = $resourceUrl;
 
-		parent::__construct($accountSid, $authToken, 'v1', $channelId);
-
 		//add permissions to GET and POST to the event-bridge channel
 		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "GET", null, null);
 		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "POST", null, null);
 
 		//add permissions to fetch the instance resource
 		$this->addPolicy($this->resourceUrl, "GET", null, null);
-
-		$this->validateJWT();
 	}
 
 	private function validateJWT() {

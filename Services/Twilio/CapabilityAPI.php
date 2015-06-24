@@ -10,8 +10,8 @@ include_once 'JWT.php';
  */
 class Services_Twilio_API_Capability
 {
-	private $accountSid;
-	private $authToken;
+	protected $accountSid;
+	protected $authToken;
 	private $version;
 	private $friendlyName;
 	private $policies;
@@ -34,7 +34,7 @@ class Services_Twilio_API_Capability
 		$this->addPolicy($url, $method, $queryFilter, $postFilter, true);
 	}
 
-	public function disallow($url, $method, $queryFilter = array(), $postFilter = array()) {
+	public function deny($url, $method, $queryFilter = array(), $postFilter = array()) {
 		$this->addPolicy($url, $method, $queryFilter, $postFilter, false);
 	}
 
