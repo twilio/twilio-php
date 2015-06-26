@@ -38,15 +38,8 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		$this->validateJWT();
 
 		if(!isset($resourceUrl)) {
-			if(substr($channelId,0,2) == 'WS') {
-				$resourceUrl = $this->baseUrl;
-			}else if(substr($channelId,0,2) == 'WK') {
-				$resourceUrl = $this->baseUrl.'/Workers/'.$channelId;
-			}else if(substr($channelId,0,2) == 'WQ') {
-				$resourceUrl = $this->baseUrl.'/TaskQueues/'.$channelId;
-			}
+			$this->setupResource();
 		}
-		$this->resourceUrl = $resourceUrl;
 
 		//add permissions to GET and POST to the event-bridge channel
 		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "GET", null, null);
@@ -54,6 +47,20 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 
 		//add permissions to fetch the instance resource
 		$this->addPolicy($this->resourceUrl, "GET", null, null);
+	}
+
+	protected function setupResource() {
+		if(substr($this->channelId,0,2) == 'WS') {
+			$this->resourceUrl = $this->baseUrl;
+		}else if(substr($this->channelId,0,2) == 'WK') {
+			$this->resourceUrl = $this->baseUrl.'/Workers/'.$this->channelId;
+
+			$activityUrl = $this->baseUrl.'/Activities';
+			$this->addPolicy($activityUrl, "GET", null, null);
+
+		}else if(substr($this->channelId,0,2) == 'WQ') {
+			$this->resourceUrl = $this->baseUrl.'/TaskQueues/'.$this->channelId;
+		}
 	}
 
 	private function validateJWT() {
@@ -107,8 +114,35 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		$this->addPolicy($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
 	}
 
-	public function getResourceUrl() {
-		return $this->resourceUrl;
+	/**
+	 * @deprecated Please use {Services_Twilio_TaskRouter_Worker_Capability.allowActivityUpdates} instead
+	 */
+	public function allowWorkerActivityUpdates() {
+		$method = 'POST';
+		$queryFilter = array();
+		$postFilter = array("ActivitySid" => $this->required);
+		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+	}
+
+	/**
+	 * @deprecated Please use {Services_Twilio_TaskRouter_Worker_Capability} instead; added automatically in constructor
+	 */
+	public function allowWorkerFetchAttributes() {
+		$method = 'GET';
+		$queryFilter = array();
+		$postFilter = array();
+		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+	}
+
+	/**
+	 * @deprecated Please use {Services_Twilio_TaskRouter_Worker_Capability.allowReservationUpdates} instead
+	 */
+	public function allowTaskReservationUpdates() {
+		$method = 'POST';
+		$queryFilter = array();
+		$postFilter = array();
+		$reservationsUrl = $this->baseUrl.'/Tasks/**';
+		$this->addPolicy($reservationsUrl, $method, $queryFilter, $postFilter);
 	}
 
 	public function generateToken($ttl = 3600, $extraAttributes = null) {
@@ -154,6 +188,10 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
 		$this->addPolicy($this->reservationsUrl, "GET", null, null);
 	}
 
+	protected function setupResource() {
+		$this->resourceUrl = $this->baseUrl.'/Workers/'.$this->channelId;
+	}
+
 	public function allowActivityUpdates() {
 		$method = 'POST';
 		$queryFilter = array();
@@ -185,6 +223,10 @@ class Services_Twilio_TaskRouter_TaskQueue_Capability extends Services_Twilio_Ta
 	{
 		parent::__construct($accountSid, $authToken, $workspaceSid, $taskQueueSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
 	}
+
+	protected function setupResource() {
+		$this->resourceUrl = $this->baseUrl.'/TaskQueues/'.$this->channelId;
+	}
 }
 
 /**
@@ -200,5 +242,9 @@ class Services_Twilio_TaskRouter_Workspace_Capability extends Services_Twilio_Ta
 	public function __construct($accountSid, $authToken, $workspaceSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
 	{
 		parent::__construct($accountSid, $authToken, $workspaceSid, $workspaceSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
+	}
+
+	protected function setupResource() {
+		$this->resourceUrl = $this->baseUrl;
 	}
 }
