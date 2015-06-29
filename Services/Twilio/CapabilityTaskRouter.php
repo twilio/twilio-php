@@ -55,8 +55,12 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		}else if(substr($this->channelId,0,2) == 'WK') {
 			$this->resourceUrl = $this->baseUrl.'/Workers/'.$this->channelId;
 
+			//add permissions to fetch the list of activities and list of worker reservations
 			$activityUrl = $this->baseUrl.'/Activities';
 			$this->addPolicy($activityUrl, "GET", null, null);
+
+			$reservationsUrl = $this->baseUrl.'/Tasks/**';
+			$this->addPolicy($reservationsUrl, "GET", null, null);
 
 		}else if(substr($this->channelId,0,2) == 'WQ') {
 			$this->resourceUrl = $this->baseUrl.'/TaskQueues/'.$this->channelId;
