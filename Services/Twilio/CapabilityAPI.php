@@ -25,17 +25,41 @@ class Services_Twilio_API_Capability
 		$this->policies = array();
 	}
 
-	public function addPolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
+	public function addPolicyDeconstructed($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
 		$policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
 		array_push($this->policies, $policy);
 	}
 
 	public function allow($url, $method, $queryFilter = array(), $postFilter = array()) {
-		$this->addPolicy($url, $method, $queryFilter, $postFilter, true);
+		$this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, true);
 	}
 
 	public function deny($url, $method, $queryFilter = array(), $postFilter = array()) {
-		$this->addPolicy($url, $method, $queryFilter, $postFilter, false);
+		$this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, false);
+	}
+
+	/**
+	 * @deprecated Please use {Services_Twilio_API_Capability.allow, Services_Twilio_API_Capability.disallow} instead
+	 */
+	public function addPolicy($policy) {
+		array_push($this->policies, $policy);
+	}
+
+	/**
+	 * @deprecated Please use {Services_Twilio_API_Capability.allow, Services_Twilio_API_Capability.disallow} instead
+	 */
+	public function generatePolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true)
+	{
+		$policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
+		return $policy;
+	}
+
+	/**
+	 * @deprecated Please use {Services_Twilio_API_Capability.allow, Services_Twilio_API_Capability.disallow} instead
+	 */
+	public function generateAndAddPolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
+		$policy = $this->generatePolicy($url, $method, $queryFilter, $postFilter, $allow);
+		$this->addPolicy($policy);
 	}
 
 	/**
