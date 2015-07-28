@@ -28,6 +28,7 @@ class Services_Twilio_API_Capability
 	public function addPolicyDeconstructed($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
 		$policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
 		array_push($this->policies, $policy);
+		return $policy;
 	}
 
 	public function allow($url, $method, $queryFilter = array(), $postFilter = array()) {
@@ -50,8 +51,7 @@ class Services_Twilio_API_Capability
 	 */
 	public function generatePolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true)
 	{
-		$policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
-		return $policy;
+		return $this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, $allow);
 	}
 
 	/**
