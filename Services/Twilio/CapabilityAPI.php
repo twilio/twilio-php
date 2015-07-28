@@ -58,8 +58,7 @@ class Services_Twilio_API_Capability
 	 * @deprecated Please use {Services_Twilio_API_Capability.allow, Services_Twilio_API_Capability.disallow} instead
 	 */
 	public function generateAndAddPolicy($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
-		$policy = $this->generatePolicy($url, $method, $queryFilter, $postFilter, $allow);
-		$this->addPolicy($policy);
+		$this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, $allow);
 	}
 
 	/**
