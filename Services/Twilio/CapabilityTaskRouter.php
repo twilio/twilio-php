@@ -42,11 +42,11 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		}
 
 		//add permissions to GET and POST to the event-bridge channel
-		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "GET", null, null);
-		$this->addPolicy($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "POST", null, null);
+		$this->allow($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "GET", null, null);
+		$this->allow($this->baseWsUrl."/".$this->accountSid."/".$this->channelId, "POST", null, null);
 
 		//add permissions to fetch the instance resource
-		$this->addPolicy($this->resourceUrl, "GET", null, null);
+		$this->allow($this->resourceUrl, "GET", null, null);
 	}
 
 	protected function setupResource() {
@@ -57,10 +57,10 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 
 			//add permissions to fetch the list of activities and list of worker reservations
 			$activityUrl = $this->baseUrl.'/Activities';
-			$this->addPolicy($activityUrl, "GET", null, null);
+			$this->allow($activityUrl, "GET", null, null);
 
 			$reservationsUrl = $this->baseUrl.'/Tasks/**';
-			$this->addPolicy($reservationsUrl, "GET", null, null);
+			$this->allow($reservationsUrl, "GET", null, null);
 
 		}else if(substr($this->channelId,0,2) == 'WQ') {
 			$this->resourceUrl = $this->baseUrl.'/TaskQueues/'.$this->channelId;
@@ -87,35 +87,35 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		$method = 'GET';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
 	}
 
 	public function allowUpdates() {
 		$method = 'POST';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
 	}
 
 	public function allowUpdatesSubresources() {
 		$method = 'POST';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
 	}
 
 	public function allowDelete() {
 		$method = 'DELETE';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
 	}
 
 	public function allowDeleteSubresources() {
 		$method = 'DELETE';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl.'/**', $method, $queryFilter, $postFilter);
 	}
 
 	/**
@@ -125,7 +125,7 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		$method = 'POST';
 		$queryFilter = array();
 		$postFilter = array("ActivitySid" => $this->required);
-		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		$method = 'GET';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
 	}
 
 	/**
@@ -146,7 +146,7 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		$queryFilter = array();
 		$postFilter = array();
 		$reservationsUrl = $this->baseUrl.'/Tasks/**';
-		$this->addPolicy($reservationsUrl, $method, $queryFilter, $postFilter);
+		$this->allow($reservationsUrl, $method, $queryFilter, $postFilter);
 	}
 
 	public function generateToken($ttl = 3600, $extraAttributes = null) {
@@ -188,8 +188,8 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
 		$this->activityUrl = $this->baseUrl.'/Activities';
 
 		//add permissions to fetch the list of activities and list of worker reservations
-		$this->addPolicy($this->activityUrl, "GET", null, null);
-		$this->addPolicy($this->reservationsUrl, "GET", null, null);
+		$this->allow($this->activityUrl, "GET", null, null);
+		$this->allow($this->reservationsUrl, "GET", null, null);
 	}
 
 	protected function setupResource() {
@@ -200,14 +200,14 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
 		$method = 'POST';
 		$queryFilter = array();
 		$postFilter = array("ActivitySid" => $this->required);
-		$this->addPolicy($this->resourceUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
 	}
 
 	public function allowReservationUpdates() {
 		$method = 'POST';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->addPolicy($this->reservationsUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->reservationsUrl, $method, $queryFilter, $postFilter);
 	}
 }
 
@@ -221,8 +221,6 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
  */
 class Services_Twilio_TaskRouter_TaskQueue_Capability extends Services_Twilio_TaskRouter_Capability
 {
-	private $taskQueueUrl;
-
 	public function __construct($accountSid, $authToken, $workspaceSid, $taskQueueSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
 	{
 		parent::__construct($accountSid, $authToken, $workspaceSid, $taskQueueSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
