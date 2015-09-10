@@ -579,6 +579,9 @@ class Pricing_Services_Twilio extends Base_Services_Twilio
         $this->phoneNumberCountries = new Services_Twilio_Rest_Pricing_PhoneNumberCountries(
             $this, "/{$this->version}/PhoneNumbers/Countries"
         );
+        $this->messagingCountries = new Services_Twilio_Rest_Pricing_MessagingCountries(
+            $this, "/{$this->version}/Messaging/Countries"
+        );
     }
 
     /**
