@@ -1,16 +1,16 @@
 <?php
 
-class Services_Twilio_Rest_Messaging_Users extends Services_Twilio_MessagingListResource {
+class Services_Twilio_Rest_IPMessaging_Credentials extends Services_Twilio_IPMessagingListResource {
 
     /**
-     * Create a new User instance
+     * Create a new IPMessagingCredential instance
      *
      * Example usage:
      *
      * .. code-block:: php
      *
-     *      $messagingClient->credentials->create(array(
-     *          "FriendlyName" => "TestUser",
+     *      $ipMessagingClient->credentials->create(array(
+     *          "FriendlyName" => "TestCredential",
      *      ));
      *
      * :param array $params: a single array of parameters which is serialized and

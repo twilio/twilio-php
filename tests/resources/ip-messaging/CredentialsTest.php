@@ -2,7 +2,7 @@
 
 use \Mockery as m;
 
-class MessagingCredentialsTest extends PHPUnit_Framework_TestCase
+class IPMessagingCredentialsTest extends PHPUnit_Framework_TestCase
 {
     protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
 
@@ -17,8 +17,8 @@ class MessagingCredentialsTest extends PHPUnit_Framework_TestCase
                     'credentials' => array(array('sid' => 'CR123'))
                 ))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', 'v1', $http);
-        foreach ($messagingClient->credentials->getIterator(0, 50) as $credential) {
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', 'v1', $http);
+        foreach ($ipMessagingClient->credentials->getIterator(0, 50) as $credential) {
             $this->assertEquals('CR123', $credential->sid);
         }
     }
@@ -30,8 +30,8 @@ class MessagingCredentialsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'CR123', 'friendly_name' => 'TestCredential'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', 'v1', $http);
-        $credential = $messagingClient->credentials->get('CR123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', 'v1', $http);
+        $credential = $ipMessagingClient->credentials->get('CR123');
         $this->assertNotNull($credential);
         $this->assertEquals('TestCredential', $credential->friendly_name);
     }
@@ -44,8 +44,8 @@ class MessagingCredentialsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'CR123'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $credential = $messagingClient->credentials->create(array(
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $credential = $ipMessagingClient->credentials->create(array(
             'FriendlyName' => 'TestCredential',
             'DomainName' => 'test.pstn.twilio.com'
         ));
@@ -60,8 +60,8 @@ class MessagingCredentialsTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'CR123'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $credential = $messagingClient->credentials->get('CR123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $credential = $ipMessagingClient->credentials->get('CR123');
         $credential->update(array(
             'FriendlyName' => 'TestCredential'
         ));
@@ -74,8 +74,8 @@ class MessagingCredentialsTest extends PHPUnit_Framework_TestCase
             ->with('/v1/Credentials/CR123')
             ->andReturn(array(204, array('Content-Type' => 'application/json'), ''
         ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', null, $http);
-        $messagingClient->credentials->delete('CR123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', null, $http);
+        $ipMessagingClient->credentials->delete('CR123');
     }
 
     function tearDown()

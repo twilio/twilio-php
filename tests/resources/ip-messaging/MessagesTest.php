@@ -2,7 +2,7 @@
 
 use \Mockery as m;
 
-class MessagingMessagesTest extends PHPUnit_Framework_TestCase
+class IPMessagingMessagesTest extends PHPUnit_Framework_TestCase
 {
     protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
 
@@ -17,8 +17,8 @@ class MessagingMessagesTest extends PHPUnit_Framework_TestCase
                     'messages' => array(array('sid' => 'IM123'))
                 ))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', 'v1', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', 'v1', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $channel = $service->channels->get('CH123');
         foreach ($channel->messages->getIterator(0, 50) as $message) {
             $this->assertEquals('IM123', $message->sid);
@@ -32,8 +32,8 @@ class MessagingMessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'IM123', 'friendly_name' => 'Message'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', 'v1', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', 'v1', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $channel = $service->channels->get('CH123');
         $message = $channel->messages->get('IM123');
         $this->assertNotNull($message);
@@ -48,8 +48,8 @@ class MessagingMessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'IM123'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $channel = $service->channels->get('CH123');
         $message = $channel->messages->create(array(
             'FriendlyName' => 'TestUrl'
@@ -65,8 +65,8 @@ class MessagingMessagesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'IM123'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $channel = $service->channels->get('CH123');
         $message = $channel->messages->get('IM123');
         $message->update(array(
@@ -81,8 +81,8 @@ class MessagingMessagesTest extends PHPUnit_Framework_TestCase
             ->with('/v1/Services/SV123/Channels/CH123/Messages/IM123')
             ->andReturn(array(204, array('Content-Type' => 'application/json'), ''
         ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', null, $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', null, $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $channel = $service->channels->get('CH123');
         $channel->messages->delete('IM123');
     }

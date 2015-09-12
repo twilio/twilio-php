@@ -780,7 +780,7 @@ class Trunking_Services_Twilio extends Base_Services_Twilio
  *      $client = new Messaging_Services_Twilio('AC123', '456bef', null, null, 3);
  *      // Take some action with the client, etc.
  */
-class Messaging_Services_Twilio extends Base_Services_Twilio
+class IPMessaging_Services_Twilio extends Base_Services_Twilio
 {
     protected $versions = array('v1');
 
@@ -794,8 +794,8 @@ class Messaging_Services_Twilio extends Base_Services_Twilio
     {
         parent::__construct($sid, $token, $version, $_http, $retryAttempts);
 
-        $this->services = new Services_Twilio_Rest_Messaging_Services($this, "/{$this->version}/Services");
-        $this->credentials = new Services_Twilio_Rest_Messaging_Credentials($this, "/{$this->version}/Credentials");
+        $this->services = new Services_Twilio_Rest_IPMessaging_Services($this, "/{$this->version}/Services");
+        $this->credentials = new Services_Twilio_Rest_IPMessaging_Credentials($this, "/{$this->version}/Credentials");
     }
 
     /**
@@ -825,7 +825,7 @@ class Messaging_Services_Twilio extends Base_Services_Twilio
 
     protected function _getBaseUri()
     {
-        return 'https://messaging.twilio.com';
+        return 'https://ip-messaging.twilio.com';
     }
 
 }

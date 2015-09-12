@@ -2,7 +2,7 @@
 
 use \Mockery as m;
 
-class MessagingRolesTest extends PHPUnit_Framework_TestCase
+class IPMessagingRolesTest extends PHPUnit_Framework_TestCase
 {
     protected $formHeaders = array('Content-Type' => 'application/x-www-form-urlencoded');
 
@@ -17,8 +17,8 @@ class MessagingRolesTest extends PHPUnit_Framework_TestCase
                     'roles' => array(array('sid' => 'RL123'))
                 ))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', 'v1', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', 'v1', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         foreach ($service->roles->getIterator(0, 50) as $role) {
             $this->assertEquals('RL123', $role->sid);
         }
@@ -31,8 +31,8 @@ class MessagingRolesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'RL123', 'friendly_name' => 'Role'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', 'v1', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', 'v1', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $role = $service->roles->get('RL123');
         $this->assertNotNull($role);
         $this->assertEquals('Role', $role->friendly_name);
@@ -46,8 +46,8 @@ class MessagingRolesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'RL123'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $role = $service->roles->create(array(
             'FriendlyName' => 'TestUrl'
         ));
@@ -62,8 +62,8 @@ class MessagingRolesTest extends PHPUnit_Framework_TestCase
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array('sid' => 'RL123'))
             ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', '2010-04-01', $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $role = $service->roles->get('RL123');
         $role->update(array(
             'FriendlyName' => 'TestUrl'
@@ -77,8 +77,8 @@ class MessagingRolesTest extends PHPUnit_Framework_TestCase
             ->with('/v1/Services/SV123/Roles/RL123')
             ->andReturn(array(204, array('Content-Type' => 'application/json'), ''
         ));
-        $messagingClient = new Messaging_Services_Twilio('AC123', '123', null, $http);
-        $service = $messagingClient->services->get('SV123');
+        $ipMessagingClient = new IPMessaging_Services_Twilio('AC123', '123', null, $http);
+        $service = $ipMessagingClient->services->get('SV123');
         $service->roles->delete('RL123');
     }
 

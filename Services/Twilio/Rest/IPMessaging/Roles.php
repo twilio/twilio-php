@@ -1,6 +1,6 @@
 <?php
 
-class Services_Twilio_Rest_Messaging_Roles extends Services_Twilio_MessagingListResource {
+class Services_Twilio_Rest_IPMessaging_Roles extends Services_Twilio_IPMessagingListResource {
 
     /**
      * Create a new Role instance
@@ -9,7 +9,7 @@ class Services_Twilio_Rest_Messaging_Roles extends Services_Twilio_MessagingList
      *
      * .. code-block:: php
      *
-     *      $messagingClient->services->get('SV123')->roles->create(array(
+     *      $ipMessagingClient->services->get('SV123')->roles->create(array(
      *          "FriendlyName" => "TestRole",
      *      ));
      *

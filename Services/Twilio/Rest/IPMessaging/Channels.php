@@ -1,16 +1,16 @@
 <?php
 
-class Services_Twilio_Rest_Messaging_Services extends Services_Twilio_MessagingListResource {
+class Services_Twilio_Rest_IPMessaging_Channels extends Services_Twilio_IPMessagingListResource {
 
     /**
-     * Create a new MessagingService instance
+     * Create a new Channel instance
      *
      * Example usage:
      *
      * .. code-block:: php
      *
-     *      $messagingClient->services->create(array(
-     *          "Ttl" => 100,
+     *      $ipMessagingClient->services->get('SV123')->channels->create(array(
+     *          "FriendlyName" => "TestChannel",
      *      ));
      *
      * :param array $params: a single array of parameters which is serialized and
