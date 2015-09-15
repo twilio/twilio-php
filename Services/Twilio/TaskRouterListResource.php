@@ -16,10 +16,10 @@ abstract class Services_Twilio_TaskRouterListResource extends Services_Twilio_Ne
         parent::__construct($client, $uri);
     }
 
-	protected function setupSubresource($name, $type, $path) {
-		$type = "Services_Twilio_Rest_TaskRouter_" . $type;
-		$this->subresources[$name] = new $type(
-			$this->client, $this->uri . "/". $path
-		);
-	}
+    protected function setupSubresource($name, $type, $path) {
+        $type = "Services_Twilio_Rest_TaskRouter_" . $type;
+        $this->subresources[$name] = new $type(
+            $this->client, $this->uri . "/". $path
+        );
+    }
 }
