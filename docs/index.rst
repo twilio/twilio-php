@@ -10,7 +10,7 @@
 Status
 =======
 
-This documentation is for version 4.3.0 of `twilio-php
+This documentation is for version 4.4.0 of `twilio-php
 <https://www.github.com/twilio/twilio-php>`_.
 
 Quickstart
@@ -67,7 +67,7 @@ to easily create such responses.
 
     $response = new Services_Twilio_Twiml();
     $response->say('Hello');
-    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));    
+    $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
     print $response;
 
 .. code-block:: xml
