@@ -10,6 +10,6 @@ class Services_Twilio_Rest_TaskRouter_TaskQueues extends Services_Twilio_TaskRou
     }
 
 	protected function init($client, $uri) {
-		$this->setupSubresource('statistics', 'TaskQueuesStatistics');
+		$this->setupSubresource('statistics', 'task_queues_statistics');
 	}
 }

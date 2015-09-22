@@ -8,6 +8,6 @@ class Services_Twilio_Rest_TaskRouter_Workers extends Services_Twilio_TaskRouter
     }
 
 	protected function init($client, $uri) {
-		$this->setupSubresource('statistics', 'WorkersStatistics');
+		$this->setupSubresource('statistics', 'workers_statistics');
 	}
 }

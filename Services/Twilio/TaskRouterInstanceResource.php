@@ -13,10 +13,11 @@ abstract class Services_Twilio_TaskRouterInstanceResource extends Services_Twili
     }
 
     protected function setupSubresource($name, $type) {
-        $type = "Services_Twilio_Rest_TaskRouter_" . $type;
-		$constantized = ucfirst(self::camelize($name));
+		$constantizedType = ucfirst(self::camelize($type));
+		$constantizedName = ucfirst(self::camelize($name));
+        $type = "Services_Twilio_Rest_TaskRouter_" . $constantizedType;
         $this->subresources[$name] = new $type(
-            $this->client, $this->uri . "/". $constantized
+            $this->client, $this->uri . "/". $constantizedName
         );
     }
 }
