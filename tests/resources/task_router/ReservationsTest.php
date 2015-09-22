@@ -33,6 +33,22 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals('reserved', $reservationItems[0]->reservation_status);
 	}
 
+	function testGetWorkerReservations() {
+		$http = m::mock(new Services_Twilio_TinyHttp);
+		$http->shouldReceive('get')->once()
+			->with('/v1/Workspaces/WS123/Workers/WK123/Reservations?Page=0&PageSize=50')
+			->andReturn(array(200, array('Content-Type' => 'application/json'),
+				json_encode(array(
+					'meta' => array('key' => 'reservations', 'next_page_url' => null),
+					'reservations' => array(array('sid' => 'WR123', 'reservation_status' => 'reserved'))
+				))));
+		$taskrouterClient = new TaskRouter_Services_Twilio('AC123', '123', 'WS123', 'v1', $http);
+		$reservations = $taskrouterClient->workspace->workers->get('WK123')->reservations->getPage();
+		$reservationItems = $reservations->getItems();
+		$this->assertNotNull($reservations);
+		$this->assertEquals('reserved', $reservationItems[0]->reservation_status);
+	}
+
     function tearDown()
     {
         m::close();
