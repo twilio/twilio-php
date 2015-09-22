@@ -80,6 +80,43 @@ to easily create such responses.
 
 View more examples of TwiML generation here: :ref:`usage-twiml`
 
+Creating a Task
+===================
+
+You can easily create a task. Tasks can represent whatever type of work is important for your team. Twilio applications can create tasks from phone calls or SMS messages. 
+
+.. code-block:: php
+
+    require 'Services/Twilio.php';
+
+    $accountSid = 'YOUR_ACCOUNT_SID';
+    $authToken = 'YOUR_AUTH_TOKEN';
+    $workspaceSid = 'YOUR_WORKSPACE_SID';
+
+    // instantiate a Twilio TaskRouter Client 
+    $taskrouterClient = new TaskRouter_Services_Twilio($accountSid, $authToken, $workspaceSid);
+    
+    // set task parameters
+    $workflowSid = 'YOUR_WORKFLOW_SID'; 
+    $taskAttributes = '{"selected_language": "fr"}';
+    $priority = 10; 
+    $timeout = 100;  
+
+    // create task
+    $task = $taskrouterClient->workspace->tasks->create(
+        $taskAttributes, 
+        $workflowSid, 
+        array(
+            'Priority' => $priority, 
+            'Timeout' => $timeout
+        )
+    ); 
+    
+    // confirm task created
+    echo "Created Task: ".$task->sid; 
+
+Find more examples and details of TaskRouter here: :ref:`usage-taskrouter`
+
 Installation
 ============
 
@@ -123,6 +160,16 @@ TwiML and other utilities
     usage/validation
     usage/token-generation
     faq/
+
+TaskRouter Reference
+>>>>>>>>>>>>>>>>>>>>>
+
+.. toctree::
+    :maxdepth: 2
+    :glob:
+
+    usage/taskrouter
+    usage/taskrouter/*
 
 API Documentation
 ==================
