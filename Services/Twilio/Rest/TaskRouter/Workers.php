@@ -6,4 +6,8 @@ class Services_Twilio_Rest_TaskRouter_Workers extends Services_Twilio_TaskRouter
         $params['FriendlyName'] = $friendlyName;
         return parent::_create($params);
     }
+
+	protected function init($client, $uri) {
+		$this->setupSubresource('statistics');
+	}
 }
