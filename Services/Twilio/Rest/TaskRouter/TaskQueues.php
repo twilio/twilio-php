@@ -8,4 +8,8 @@ class Services_Twilio_Rest_TaskRouter_TaskQueues extends Services_Twilio_TaskRou
         $params['ReservationActivitySid'] = $reservationActivitySid;
         return parent::_create($params);
     }
+
+	protected function init($client, $uri) {
+		$this->setupSubresource('statistics');
+	}
 }

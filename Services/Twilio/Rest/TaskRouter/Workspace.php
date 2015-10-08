@@ -12,5 +12,6 @@ class Services_Twilio_Rest_TaskRouter_Workspace extends Services_Twilio_TaskRout
             'workers',
             'workflows'
         );
+		$this->setupSubresource('statistics');
     }
 }
