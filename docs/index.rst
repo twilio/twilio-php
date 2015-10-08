@@ -10,7 +10,7 @@
 Status
 =======
 
-This documentation is for version 4.1.0 of `twilio-php
+This documentation is for version 4.3.0 of `twilio-php
 <https://www.github.com/twilio/twilio-php>`_.
 
 Quickstart
@@ -83,23 +83,20 @@ View more examples of TwiML generation here: :ref:`usage-twiml`
 Installation
 ============
 
-There are two ways to install **twilio-php**: via the PEAR installer, or by
+There are two ways to install **twilio-php**: via Composer, or by
 downloading the source.
 
-Via PEAR
+Via Composer
 >>>>>>>>>>>>>
-
-Use the ``Makefile`` in the repo's top
 
 .. code-block:: bash
 
-	pear channel-discover twilio.github.com/pear
-	pear install twilio/Services_Twilio
+	composer require 'twilio/sdk'
 
 From Source
 >>>>>>>>>>>>>
 
-If you aren't using PEAR, download the `source (.zip)
+If you aren't using Composer, download the `source (.zip)
 <https://github.com/twilio/twilio-php/zipball/master>`_, which includes all the
 dependencies.
 

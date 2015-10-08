@@ -111,7 +111,8 @@ With this one:
         array('curlopts' => array(
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_SSL_VERIFYHOST => 2,
-        ));
+        ))
+    );
 
     $client = new Services_Twilio($sid, $token, "2010-04-01", $http);
 
