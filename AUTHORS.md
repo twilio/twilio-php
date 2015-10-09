@@ -32,6 +32,7 @@ A huge thanks to all of our contributors:
 - Peter Meth
 - Ryan Brideau
 - Sam Kimbrel
+- Senthil Ramakrishnan
 - Shawn Parker
 - Stuart Langley
 - Taichiro Yoshida

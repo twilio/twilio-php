@@ -8,6 +8,14 @@ Released September 21, 2015
 - Add support for messaging in Twilio Pricing API
 - Add support for Elastic SIP Trunking API
 
+Version 4.5.0-edge
+-------------
+Released October 7, 2015
+
+- Task router enhancements
+- Add support for Conversations and Ip Messaging APIs
+
+
 Version 4.3.0
 -------------
 
