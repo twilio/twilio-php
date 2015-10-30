@@ -17,6 +17,7 @@ A huge thanks to all of our contributors:
 - D. Keith Casey, Jr.
 - Doug Black
 - Elliot Lings
+- Jingming Niu
 - John Britton
 - John Wolthuis
 - Jordi Boggiano

@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.6.0
+-------------
+Released October 30, 2015
+
+- Add support for Keys
+
 Version 4.4.0
 -------------
 Released September 21, 2015
