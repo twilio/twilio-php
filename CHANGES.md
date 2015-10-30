@@ -1,12 +1,11 @@
 twilio-php Changelog
 ====================
 
-Version 4.4.0
+Version 4.6.0-edge
 -------------
-Released September 21, 2015
+Released October 30, 2015
 
-- Add support for messaging in Twilio Pricing API
-- Add support for Elastic SIP Trunking API
+- Add support for Keys
 
 Version 4.5.0-edge
 -------------
@@ -15,6 +14,12 @@ Released October 7, 2015
 - Task router enhancements
 - Add support for Conversations and Ip Messaging APIs
 
+Version 4.4.0
+-------------
+Released September 21, 2015
+
+- Add support for messaging in Twilio Pricing API
+- Add support for Elastic SIP Trunking API
 
 Version 4.3.0
 -------------
