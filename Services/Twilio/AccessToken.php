@@ -42,7 +42,7 @@ class Services_Twilio_AccessToken
     public function toJWT($algorithm = 'HS256')
     {
         $header = array(
-            'cty' => 'twilio-sat;v=2',
+            'cty' => 'twilio-fpa;v=1',
             'typ' => 'JWT'
         );
 
