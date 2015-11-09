@@ -33,7 +33,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     function testConversationGrant()
     {
         $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $scat->addGrant(new Services_Twilio_Auth_ConversationGrant());
+        $scat->addGrant(new Services_Twilio_Auth_ConversationsGrant());
 
         $token = $scat->toJWT();
         $this->assertNotNull($token);
@@ -63,7 +63,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     function testGrants()
     {
         $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $scat->addGrant(new Services_Twilio_Auth_ConversationGrant());
+        $scat->addGrant(new Services_Twilio_Auth_ConversationsGrant());
         $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
 
         $token = $scat->toJWT();
