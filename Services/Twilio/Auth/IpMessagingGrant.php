@@ -4,8 +4,8 @@ class Services_Twilio_Auth_IpMessagingGrant implements Services_Twilio_Auth_Gran
 {
     private $serviceSid;
     private $endpointId;
-    private $roleSid;
-    private $credentialSid;
+    private $deploymentRoleSid;
+    private $pushCredentialSid;
 
     /**
      * Returns the service sid
@@ -54,48 +54,48 @@ class Services_Twilio_Auth_IpMessagingGrant implements Services_Twilio_Auth_Gran
     }
 
     /**
-     * Returns the role sid of the grant
+     * Returns the deployment role sid of the grant
      *
-     * @return string the role sid
+     * @return string the deployment role sid
      */
-    public function getRoleSid()
+    public function getDeploymentRoleSid()
     {
-        return $this->roleSid;
+        return $this->deploymentRoleSid;
     }
 
     /**
      * Set the role sid of the grant
      *
-     * @param string $roleSid role sid of the grant
+     * @param string $deploymentroleSid role sid of the grant
      *
      * @return Services_Twilio_Auth_IpMessagingGrant updated grant
      */
-    public function setRoleSid($roleSid)
+    public function setDeploymentRoleSid($deploymentRoleSid)
     {
-        $this->roleSid = $roleSid;
+        $this->deploymentRoleSid = $deploymentRoleSid;
         return $this;
     }
 
     /**
-     * Returns the credential sid of the grant
+     * Returns the push credential sid of the grant
      *
-     * @return string the credential sid
+     * @return string the push credential sid
      */
-    public function getCredentialSid()
+    public function getPushCredentialSid()
     {
-        return $this->credentialSid;
+        return $this->pushCredentialSid;
     }
 
     /**
      * Set the credential sid of the grant
      *
-     * @param string $credentialSid credential sid of the grant
+     * @param string $pushCredentialSid push credential sid of the grant
      *
      * @return Services_Twilio_Auth_IpMessagingGrant updated grant
      */
-    public function setCredentialSid($credentialSid)
+    public function setPushCredentialSid($pushCredentialSid)
     {
-        $this->credentialSid = $credentialSid;
+        $this->pushCredentialSid = $pushCredentialSid;
         return $this;
     }
 
@@ -123,11 +123,11 @@ class Services_Twilio_Auth_IpMessagingGrant implements Services_Twilio_Auth_Gran
         if ($this->endpointId) {
             $payload['endpoint_id'] = $this->endpointId;
         }
-        if ($this->roleSid) {
-            $payload['deployment_role_sid'] = $this->roleSid;
+        if ($this->deploymentRoleSid) {
+            $payload['deployment_role_sid'] = $this->deploymentRoleSid;
         }
-        if ($this->credentialSid) {
-            $payload['push_credential_sid'] = $this->credentialSid;
+        if ($this->pushCredentialSid) {
+            $payload['push_credential_sid'] = $this->pushCredentialSid;
         }
 
         return $payload;
