@@ -45,36 +45,4 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey("rtc", $grants);
     }
 
-    function testIpMessagingGrant()
-    {
-        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
-
-        $token = $scat->toJWT();
-        $this->assertNotNull($token);
-        $payload = JWT::decode($token, 'secret');
-        $this->validateClaims($payload);
-
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
-        $this->assertArrayHasKey("ip_messaging", $grants);
-    }
-
-    function testGrants()
-    {
-        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $scat->addGrant(new Services_Twilio_Auth_ConversationsGrant());
-        $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
-
-        $token = $scat->toJWT();
-        $this->assertNotNull($token);
-        $payload = JWT::decode($token, 'secret');
-        $this->validateClaims($payload);
-
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(2, count($grants));
-        $this->assertArrayHasKey("rtc", $grants);
-        $this->assertArrayHasKey("ip_messaging", $grants);
-    }
-
 }
