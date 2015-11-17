@@ -7,22 +7,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Kevin Burke",
-            "email": "kevin@twilio.com"
-        },
-        {
-            "name": "Kyle Conroy",
-            "email": "kyle+pear@twilio.com"
+            "name": "Twilio API Team",
+            "email": "api@twilio.com"
         }
     ],
     "require": {
-        "php": ">=5.2.1"
+        "php": ">=5.3.0"
     },
     "require-dev": {
-        "mockery/mockery": ">=0.7.2",
         "phpunit/phpunit": "4.5.*"
-    },
-    "autoload": {
-        "files": ["Services/Twilio.php"]
     }
 }

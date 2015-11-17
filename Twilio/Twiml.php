@@ -1,17 +1,12 @@
 <?php
 
-/**
- * Exception class for Services_Twilio_Twiml.
- */
-class Services_Twilio_TwimlException extends Exception {}
+namespace Twilio\Twiml;
+use Twilio\Exceptions\TwimlException;
 
 /**
  * Twiml response generator.
- *
- * Author:   Neuman Vong <neuman at ashmoremusic dot com>
- * License:  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Twilio_Twiml {
+class Twiml {
 
     protected $element;
 
@@ -39,7 +34,7 @@ class Services_Twilio_Twiml {
             }
             break;
         default:
-            throw new Services_Twilio_TwimlException('Invalid argument');
+            throw new TwimlException('Invalid argument');
         }
     }
 
