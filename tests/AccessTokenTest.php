@@ -4,32 +4,32 @@ require_once 'Twilio/AccessToken.php';
 
 class AccessTokenTest extends PHPUnit_Framework_TestCase
 {
-//    const SIGNING_KEY_SID = 'SK123';
-//
-//    const ACCOUNT_SID = 'AC123';
-//
-//    protected function validateClaims($payload)
-//    {
-//        $this->assertEquals(self::SIGNING_KEY_SID, $payload->iss);
-//        $this->assertEquals(self::ACCOUNT_SID, $payload->sub);
-//        $this->assertNotNull($payload->nbf);
-//        $this->assertNotNull($payload->exp);
-//        $this->assertEquals($payload->nbf + 3600, $payload->exp);
-//        $this->assertNotNull($payload->jti);
-//        $this->assertEquals($payload->iss . '-' . $payload->nbf, $payload->jti);
-//        $this->assertNotNull($payload->grants);
-//    }
-//
-//    function testEmptyGrants()
-//    {
-//        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-//        $token = $scat->toJWT();
-//        $this->assertNotNull($token);
-//        $payload = JWT::decode($token, 'secret');
-//        $this->validateClaims($payload);
-//        $this->assertEquals(0, count($payload->grants));
-//    }
-//
+    const SIGNING_KEY_SID = 'SK123';
+
+    const ACCOUNT_SID = 'AC123';
+
+    protected function validateClaims($payload)
+    {
+        $this->assertEquals(self::SIGNING_KEY_SID, $payload->iss);
+        $this->assertEquals(self::ACCOUNT_SID, $payload->sub);
+        $this->assertNotNull($payload->nbf);
+        $this->assertNotNull($payload->exp);
+        $this->assertEquals($payload->nbf + 3600, $payload->exp);
+        $this->assertNotNull($payload->jti);
+        $this->assertEquals($payload->iss . '-' . $payload->nbf, $payload->jti);
+        $this->assertNotNull($payload->grants);
+    }
+
+    function testEmptyGrants()
+    {
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+        $this->assertEquals(0, count($payload->grants));
+    }
+
 //    function testConversationGrant()
 //    {
 //        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
