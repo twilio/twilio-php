@@ -66,7 +66,7 @@ class Services_Twilio_Auth_IpMessagingGrant implements Services_Twilio_Auth_Gran
     /**
      * Set the role sid of the grant
      *
-     * @param string $deploymentroleSid role sid of the grant
+     * @param string $deploymentRoleSid role sid of the grant
      *
      * @return Services_Twilio_Auth_IpMessagingGrant updated grant
      */
