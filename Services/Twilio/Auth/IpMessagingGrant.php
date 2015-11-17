@@ -123,12 +123,12 @@ class Services_Twilio_Auth_IpMessagingGrant implements Services_Twilio_Auth_Gran
         if ($this->endpointId) {
             $payload['endpoint_id'] = $this->endpointId;
         }
-        if ($this->deploymentRoleSid) {
-            $payload['deployment_role_sid'] = $this->deploymentRoleSid;
-        }
-        if ($this->pushCredentialSid) {
-            $payload['push_credential_sid'] = $this->pushCredentialSid;
-        }
+//        if ($this->deploymentRoleSid) {
+//            $payload['deployment_role_sid'] = $this->deploymentRoleSid;
+//        }
+//        if ($this->pushCredentialSid) {
+//            $payload['push_credential_sid'] = $this->pushCredentialSid;
+//        }
 
         return $payload;
     }
