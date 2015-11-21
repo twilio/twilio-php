@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 5.0.0-edge
+-------------
+Released November 20, 2015
+
+- Adds support for First Person Grants
+
 Version 4.6.1
 -------------
 Released November 9, 2015
