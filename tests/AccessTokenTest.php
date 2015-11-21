@@ -22,7 +22,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testEmptyGrants()
     {
-        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
@@ -30,63 +30,51 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0, count($payload->grants));
     }
 
-    function testAddGrant()
+    function testConversationGrant()
     {
-        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
-        $scat->addGrant('https://api.twilio.com/**');
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat->addGrant(new Services_Twilio_Auth_ConversationsGrant());
+
         $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals(1, count($payload->grants));
-        $grant = $payload->grants[0];
-        $this->assertEquals('https://api.twilio.com/**', $grant->res);
-        $this->assertEquals(array('*'), $grant->act);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(1, count($grants));
+        $this->assertArrayHasKey("rtc", $grants);
     }
 
-
-
-    function testEndpointGrant()
+    function testIpMessagingGrant()
     {
-        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
-        $scat->addEndpointGrant('bob');
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
+
         $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals(1, count($payload->grants));
-        $grant = $payload->grants[0];
-        $this->assertEquals('sip:bob@AC123.endpoint.twilio.com', $grant->res);
-        $this->assertEquals(array('listen', 'invite'), $grant->act);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(1, count($grants));
+        $this->assertArrayHasKey("ip_messaging", $grants);
     }
 
-    function testRestGrant()
+    function testGrants()
     {
-        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
-        $scat->addRestGrant('/Apps');
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat->addGrant(new Services_Twilio_Auth_ConversationsGrant());
+        $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
+
         $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals(1, count($payload->grants));
-        $grant = $payload->grants[0];
-        $this->assertEquals('https://api.twilio.com/2010-04-01/Accounts/AC123/Apps', $grant->res);
-        $this->assertEquals(array('*'), $grant->act);
-    }
 
-    function testEnableNTS()
-    {
-        $scat = new Services_Twilio_AccessToken(self::SIGNING_KEY_SID, self::ACCOUNT_SID, 'secret');
-        $scat->enableNTS();
-        $token = $scat->toJWT();
-        $this->assertNotNull($token);
-        $payload = JWT::decode($token, 'secret');
-        $this->validateClaims($payload);
-        $this->assertEquals(1, count($payload->grants));
-        $grant = $payload->grants[0];
-        $this->assertEquals('https://api.twilio.com/2010-04-01/Accounts/AC123/Tokens.json', $grant->res);
-        $this->assertEquals(array('POST'), $grant->act);
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(2, count($grants));
+        $this->assertArrayHasKey("rtc", $grants);
+        $this->assertArrayHasKey("ip_messaging", $grants);
     }
-
 
 }
