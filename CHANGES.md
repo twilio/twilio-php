@@ -1,7 +1,13 @@
 twilio-php Changelog
 ====================
 
-Version 4.6.0-edge
+Version 4.6.1
+-------------
+Released November 9, 2015
+
+- Secured Signature header validation from timing attack
+
+Version 4.6.0
 -------------
 Released October 30, 2015
 
