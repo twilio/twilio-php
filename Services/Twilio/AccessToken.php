@@ -19,7 +19,7 @@ class Services_Twilio_AccessToken
         $this->ttl = $ttl;
 
         if (!is_null($identity)) {
-            $this->$identity = $identity;
+            $this->identity = $identity;
         }
 
         $this->grants = array();
