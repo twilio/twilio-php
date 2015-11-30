@@ -27,7 +27,7 @@ spl_autoload_register('Services_Twilio_autoload');
  */
 abstract class Base_Services_Twilio
 {
-    const USER_AGENT = 'twilio-php/5.0.0-edge';
+    const USER_AGENT = 'twilio-php/5.0.1-edge';
 
     protected $http;
     protected $last_response;
