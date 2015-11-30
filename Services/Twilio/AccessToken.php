@@ -19,10 +19,33 @@ class Services_Twilio_AccessToken
         $this->ttl = $ttl;
 
         if (!is_null($identity)) {
-            $this->$identity = $identity;
+            $this->identity = $identity;
         }
 
         $this->grants = array();
+    }
+
+    /**
+     * Set the identity of this access token
+     *
+     * @param string $identity identity of the grant
+     *
+     * @return Services_Twilio_AccessToken updated access token
+     */
+    public function setIdentity($identity)
+    {
+        $this->identity = $identity;
+        return $this;
+    }
+
+    /**
+     * Returns the identity of the grant
+     *
+     * @return string the identity
+     */
+    public function getIdentity()
+    {
+        return $this->identity;
     }
 
     /**
@@ -54,7 +77,12 @@ class Services_Twilio_AccessToken
         }
 
         foreach ($this->grants as $grant) {
-            $grants[$grant->getGrantKey()] = $grant->getPayload();
+            $payload = $grant->getPayload();
+            if (empty($payload)) {
+                $payload = json_encode(json_decode('{}'));
+            }
+
+            $grants[$grant->getGrantKey()] = $payload;
         }
 
         $payload = array(
