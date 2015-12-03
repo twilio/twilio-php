@@ -45,15 +45,17 @@ class JWT
     }
 
     /**
-      * @param object|array $payload PHP object or array
-      * @param string       $key     The secret key
-      * @param string       $algo    The signing algorithm
-      *
-      * @return string A JWT
-      */
-    public static function encode($payload, $key, $algo = 'HS256')
+     * @param object|array $payload           PHP object or array
+     * @param string       $key               The secret key
+     * @param string       $algo              The signing algorithm
+     * @param array        $additionalHeaders Additional keys/values to add to the header
+     *
+     * @return string A JWT
+     */
+    public static function encode($payload, $key, $algo = 'HS256', $additionalHeaders = array())
     {
         $header = array('typ' => 'JWT', 'alg' => $algo);
+        $header = $header + $additionalHeaders;
 
         $segments = array();
         $segments[] = JWT::urlsafeB64Encode(JWT::jsonEncode($header));
