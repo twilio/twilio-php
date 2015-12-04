@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.7.0
+-------------
+Released December 3, 2015
+
+- Add access tokens
+
 Version 4.6.1
 -------------
 Released November 9, 2015
