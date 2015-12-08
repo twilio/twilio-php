@@ -37,7 +37,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
 
-        $now = new DateTime();
+        $now = time();
         $scat->setNbf($now);
 
         $token = $scat->toJWT();
@@ -45,7 +45,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
         $this->assertEquals(0, count($payload->grants));
-        $this->assertEquals($now->getTimestamp(), $payload->nbf);
+        $this->assertEquals($now, $payload->nbf);
         $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
 

@@ -52,7 +52,7 @@ class Services_Twilio_AccessToken
     /**
      * Set the nbf of this access token
      *
-     * @param DateTime $nbf nbf of the grant
+     * @param integer $nbf nbf in epoch seconds of the grant
      *
      * @return Services_Twilio_AccessToken updated access token
      */
@@ -65,7 +65,7 @@ class Services_Twilio_AccessToken
     /**
      * Returns the nbf of the grant
      *
-     * @return DateTime the nbf
+     * @return integer the nbf in epoch seconds
      */
     public function getNbf()
     {
@@ -118,7 +118,7 @@ class Services_Twilio_AccessToken
         );
 
         if (!is_null($this->nbf)) {
-            $payload['nbf'] = $this->nbf->getTimestamp();
+            $payload['nbf'] = $this->nbf;
         }
 
         return JWT::encode($payload, $this->secret, $algorithm, $header);
