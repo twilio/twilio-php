@@ -9,6 +9,7 @@ class Services_Twilio_AccessToken
     private $secret;
     private $ttl;
     private $identity;
+    private $nbf;
     private $grants;
 
     public function __construct($accountSid, $signingKeySid, $secret, $ttl = 3600, $identity = null)
@@ -49,6 +50,29 @@ class Services_Twilio_AccessToken
     }
 
     /**
+     * Set the nbf of this access token
+     *
+     * @param integer $nbf nbf in epoch seconds of the grant
+     *
+     * @return Services_Twilio_AccessToken updated access token
+     */
+    public function setNbf($nbf)
+    {
+        $this->nbf = $nbf;
+        return $this;
+    }
+
+    /**
+     * Returns the nbf of the grant
+     *
+     * @return integer the nbf in epoch seconds
+     */
+    public function getNbf()
+    {
+        return $this->nbf;
+    }
+
+    /**
      * Add a grant to the access token
      *
      * @param Services_Twilio_Auth_Grant $grant to be added
@@ -79,20 +103,27 @@ class Services_Twilio_AccessToken
         foreach ($this->grants as $grant) {
             $payload = $grant->getPayload();
             if (empty($payload)) {
-                $payload = json_encode(json_decode('{}'));
+                $payload = json_decode('{}');
             }
 
             $grants[$grant->getGrantKey()] = $payload;
+        }
+
+        if (empty($grants)) {
+            $grants = json_decode('{}');
         }
 
         $payload = array(
             'jti' => $this->signingKeySid . '-' . $now,
             'iss' => $this->signingKeySid,
             'sub' => $this->accountSid,
-            'nbf' => $now,
             'exp' => $now + $this->ttl,
             'grants' => $grants
         );
+
+        if (!is_null($this->nbf)) {
+            $payload['nbf'] = $this->nbf;
+        }
 
         return JWT::encode($payload, $this->secret, $algorithm, $header);
     }

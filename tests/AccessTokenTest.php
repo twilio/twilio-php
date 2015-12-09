@@ -12,11 +12,14 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(self::SIGNING_KEY_SID, $payload->iss);
         $this->assertEquals(self::ACCOUNT_SID, $payload->sub);
-        $this->assertNotNull($payload->nbf);
+
         $this->assertNotNull($payload->exp);
-        $this->assertEquals($payload->nbf + 3600, $payload->exp);
+
+        $this->assertGreaterThanOrEqual(time(), $payload->exp);
+
         $this->assertNotNull($payload->jti);
-        $this->assertEquals($payload->iss . '-' . $payload->nbf, $payload->jti);
+        $this->assertStringStartsWith($payload->iss . '-', $payload->jti);
+
         $this->assertNotNull($payload->grants);
     }
 
@@ -27,7 +30,24 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals(0, count($payload->grants));
+
+        $this->assertEquals('{}', json_encode($payload->grants));
+    }
+
+    function testNbf()
+    {
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+
+        $now = time();
+        $scat->setNbf($now);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+        $this->assertEquals('{}', json_encode($payload->grants));
+        $this->assertEquals($now, $payload->nbf);
+        $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
 
     function testConversationGrant()
@@ -38,6 +58,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
+
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
@@ -76,17 +97,16 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
 
         $token = $scat->toJWT();
+
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
         $grants = json_decode(json_encode($payload->grants), true);
         $this->assertEquals(3, count($grants));
-        $this->assertEquals('test identity', $grants['identity']);
-        $this->assertArrayHasKey("rtc", $grants);
-        $this->assertEquals(json_decode(json_encode('{}')), $grants['rtc']);
-        $this->assertArrayHasKey("ip_messaging", $grants);
-        $this->assertEquals(json_decode(json_encode('{}')), $grants['ip_messaging']);
+        $this->assertEquals('test identity', $payload->grants->identity);
+        $this->assertEquals('{}', json_encode($payload->grants->rtc));
+        $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
     }
 
 }
