@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.8.0
+-------------
+Released December 8, 2015
+
+- Update access tokens to support optional NBF
+
 Version 4.7.0
 -------------
 Released December 3, 2015
