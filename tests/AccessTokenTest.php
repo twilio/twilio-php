@@ -30,7 +30,8 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals(0, count($payload->grants));
+
+        $this->assertEquals('{}', json_encode($payload->grants));
     }
 
     function testNbf()
@@ -44,7 +45,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals(0, count($payload->grants));
+        $this->assertEquals('{}', json_encode($payload->grants));
         $this->assertEquals($now, $payload->nbf);
         $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
@@ -57,6 +58,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
+
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
@@ -95,17 +97,16 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
 
         $token = $scat->toJWT();
+
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
         $grants = json_decode(json_encode($payload->grants), true);
         $this->assertEquals(3, count($grants));
-        $this->assertEquals('test identity', $grants['identity']);
-        $this->assertArrayHasKey("rtc", $grants);
-        $this->assertEquals(json_decode(json_encode('{}')), $grants['rtc']);
-        $this->assertArrayHasKey("ip_messaging", $grants);
-        $this->assertEquals(json_decode(json_encode('{}')), $grants['ip_messaging']);
+        $this->assertEquals('test identity', $payload->grants->identity);
+        $this->assertEquals('{}', json_encode($payload->grants->rtc));
+        $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
     }
 
 }

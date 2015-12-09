@@ -103,10 +103,14 @@ class Services_Twilio_AccessToken
         foreach ($this->grants as $grant) {
             $payload = $grant->getPayload();
             if (empty($payload)) {
-                $payload = json_encode(json_decode('{}'));
+                $payload = json_decode('{}');
             }
 
             $grants[$grant->getGrantKey()] = $payload;
+        }
+
+        if (empty($grants)) {
+            $grants = json_decode('{}');
         }
 
         $payload = array(
