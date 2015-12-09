@@ -9,6 +9,7 @@ class Services_Twilio_AccessToken
     private $secret;
     private $ttl;
     private $identity;
+    private $nbf;
     private $grants;
 
     public function __construct($accountSid, $signingKeySid, $secret, $ttl = 3600, $identity = null)
@@ -46,6 +47,29 @@ class Services_Twilio_AccessToken
     public function getIdentity()
     {
         return $this->identity;
+    }
+
+    /**
+     * Set the nbf of this access token
+     *
+     * @param integer $nbf nbf in epoch seconds of the grant
+     *
+     * @return Services_Twilio_AccessToken updated access token
+     */
+    public function setNbf($nbf)
+    {
+        $this->nbf = $nbf;
+        return $this;
+    }
+
+    /**
+     * Returns the nbf of the grant
+     *
+     * @return integer the nbf in epoch seconds
+     */
+    public function getNbf()
+    {
+        return $this->nbf;
     }
 
     /**
@@ -89,10 +113,13 @@ class Services_Twilio_AccessToken
             'jti' => $this->signingKeySid . '-' . $now,
             'iss' => $this->signingKeySid,
             'sub' => $this->accountSid,
-            'nbf' => $now,
             'exp' => $now + $this->ttl,
             'grants' => $grants
         );
+
+        if (!is_null($this->nbf)) {
+            $payload['nbf'] = $this->nbf;
+        }
 
         return JWT::encode($payload, $this->secret, $algorithm, $header);
     }

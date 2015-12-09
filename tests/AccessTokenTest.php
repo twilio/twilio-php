@@ -12,11 +12,14 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(self::SIGNING_KEY_SID, $payload->iss);
         $this->assertEquals(self::ACCOUNT_SID, $payload->sub);
-        $this->assertNotNull($payload->nbf);
+
         $this->assertNotNull($payload->exp);
-        $this->assertEquals($payload->nbf + 3600, $payload->exp);
+
+        $this->assertGreaterThanOrEqual(time(), $payload->exp);
+
         $this->assertNotNull($payload->jti);
-        $this->assertEquals($payload->iss . '-' . $payload->nbf, $payload->jti);
+        $this->assertStringStartsWith($payload->iss . '-', $payload->jti);
+
         $this->assertNotNull($payload->grants);
     }
 
@@ -28,6 +31,22 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
         $this->assertEquals(0, count($payload->grants));
+    }
+
+    function testNbf()
+    {
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+
+        $now = time();
+        $scat->setNbf($now);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+        $this->assertEquals(0, count($payload->grants));
+        $this->assertEquals($now, $payload->nbf);
+        $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
 
     function testConversationGrant()
