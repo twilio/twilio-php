@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.8.1
+-------------
+Released December 8, 2015
+
+- Fix issue with empty grant encoding
+
 Version 4.8.0
 -------------
 Released December 8, 2015
