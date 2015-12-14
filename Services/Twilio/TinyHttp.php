@@ -6,6 +6,31 @@
 
 class Services_Twilio_TinyHttpException extends ErrorException {}
 
+/**
+ * An HTTP client that makes requests
+ *
+ * :param string $uri: The base uri to use for requests
+ * :param array $kwargs: An array of additional arguments to pass to the
+ *  library. Accepted arguments are:
+ *
+ *      - **debug** - Print the HTTP request before making it to Twilio
+ *      - **curlopts** - An array of keys and values that are passed to
+ *          ``curl_setopt_array``.
+ *
+ * Here's an example. This is the default HTTP client used by the library.
+ *
+ * .. code-block:: php
+ *
+ *     $_http = new Services_Twilio_TinyHttp(
+ *         "https://api.twilio.com",
+ *         array("curlopts" => array(
+ *             CURLOPT_USERAGENT => self::USER_AGENT,
+ *             CURLOPT_HTTPHEADER => array('Accept-Charset: utf-8'),
+ *             CURLOPT_CAINFO => dirname(__FILE__) . '/cacert.pem',
+ *         ))
+ *     );
+ */
+
 class Services_Twilio_TinyHttp {
 	
 	var $user, $pass, $scheme, $host, $port, $debug, $curlopts;
