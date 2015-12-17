@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.9.0
+-------------
+Released December 18, 2015
+
+- Add IP Messaging capability
+
 Version 4.8.1
 -------------
 Released December 8, 2015
