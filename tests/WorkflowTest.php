@@ -227,4 +227,186 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals($json, $expectedJson);
 	}
+
+	public function testParseWorkflow() {
+		$json = "{
+				\"task_routing\":{
+				  \"filters\":[
+					 {
+						\"expression\":\"type=='sales'\",
+						\"targets\":[
+						   {
+							  \"queue\":\"WQf6724bd5005b30eeb6ea990c3e59e536\",
+							  \"priority\": 5,
+							  \"timeout\": 30
+						   },
+						   {
+							  \"queue\":\"WQf6724bd5005b30eeb6ea990c3e59e536\",
+							  \"priority\": 10
+						   }
+						],
+						\"friendly_name\":\"Sales\"
+					 },
+					 {
+						\"expression\":\"type=='marketing'\",
+						\"targets\":[
+						   {
+							  \"queue\":\"WQ8c62f84b61ccfa6a333757cd508f0aae\",
+							  \"priority\": 1,
+							  \"timeout\": 120
+						   },
+						   {
+							  \"queue\":\"WQ8c62f84b61ccfa6a333757cd508f0aae\",
+							  \"priority\": 3
+						   }
+						],
+						\"friendly_name\":\"Marketing\"
+					 },
+					 {
+						\"expression\":\"type=='support'\",
+						\"targets\":[
+						   {
+							  \"queue\":\"WQ5940dc0da87eaf6e3321d62041d4403b\",
+							  \"priority\": 10,
+							  \"timeout\": 30
+						   },
+						   {
+							  \"queue\":\"WQ5940dc0da87eaf6e3321d62041d4403b\",
+							  \"priority\": 15
+						   }
+						],
+						\"friendly_name\":\"Support\"
+					 }
+				  ],
+				  \"default_filter\":{
+					 \"queue\":\"WQ6d29383312b24bd898a8df32779fc043\"
+				  }
+				}
+			}";
+
+		$config = WorkflowConfiguration::parse($json);
+
+		$this->assertEquals(3, count($config->filters));
+		$this->assertEquals(1, count($config->default_filter));
+		// sales assertions
+		$this->assertEquals("type=='sales'", $config->filters[0]->expression);
+		$this->assertEquals("Sales", $config->filters[0]->friendly_name);
+		$this->assertEquals(2, count($config->filters[0]->targets));
+		$this->assertEquals("WQf6724bd5005b30eeb6ea990c3e59e536", $config->filters[0]->targets[0]->queue);
+		$this->assertEquals(5, $config->filters[0]->targets[0]->priority);
+		$this->assertEquals(30, $config->filters[0]->targets[0]->timeout);
+		$this->assertEquals("WQf6724bd5005b30eeb6ea990c3e59e536", $config->filters[0]->targets[1]->queue);
+		$this->assertEquals(10, $config->filters[0]->targets[1]->priority);
+		// marketing assertions
+		$this->assertEquals("type=='marketing'", $config->filters[1]->expression);
+		$this->assertEquals("Marketing", $config->filters[1]->friendly_name);
+		$this->assertEquals(2, count($config->filters[1]->targets));
+		$this->assertEquals("WQ8c62f84b61ccfa6a333757cd508f0aae", $config->filters[1]->targets[0]->queue);
+		$this->assertEquals(1, $config->filters[1]->targets[0]->priority);
+		$this->assertEquals(120, $config->filters[1]->targets[0]->timeout);
+		$this->assertEquals("WQ8c62f84b61ccfa6a333757cd508f0aae", $config->filters[1]->targets[1]->queue);
+		$this->assertEquals(3, $config->filters[1]->targets[1]->priority);
+		// support assertions
+		$this->assertEquals("type=='support'", $config->filters[2]->expression);
+		$this->assertEquals("Support", $config->filters[2]->friendly_name);
+		$this->assertEquals(2, count($config->filters[2]->targets));
+		$this->assertEquals("WQ5940dc0da87eaf6e3321d62041d4403b", $config->filters[2]->targets[0]->queue);
+		$this->assertEquals(10, $config->filters[2]->targets[0]->priority);
+		$this->assertEquals(30, $config->filters[2]->targets[0]->timeout);
+		$this->assertEquals("WQ5940dc0da87eaf6e3321d62041d4403b", $config->filters[2]->targets[1]->queue);
+		$this->assertEquals(15, $config->filters[2]->targets[1]->priority);
+		// default filter
+		$this->assertEquals("WQ6d29383312b24bd898a8df32779fc043", $config->default_filter->queue);
+	}
+
+	public function testParseWorkflowFilterFriendlyName() {
+		$json = "{
+				\"task_routing\":{
+				  \"filters\":[
+					 {
+						\"expression\":\"type=='sales'\",
+						\"targets\":[
+						   {
+							  \"queue\":\"WQf6724bd5005b30eeb6ea990c3e59e536\",
+							  \"priority\": 5,
+							  \"timeout\": 30
+						   },
+						   {
+							  \"queue\":\"WQf6724bd5005b30eeb6ea990c3e59e536\",
+							  \"priority\": 10
+						   }
+						],
+						\"filter_friendly_name\":\"Sales\"
+					 },
+					 {
+						\"expression\":\"type=='marketing'\",
+						\"targets\":[
+						   {
+							  \"queue\":\"WQ8c62f84b61ccfa6a333757cd508f0aae\",
+							  \"priority\": 1,
+							  \"timeout\": 120
+						   },
+						   {
+							  \"queue\":\"WQ8c62f84b61ccfa6a333757cd508f0aae\",
+							  \"priority\": 3
+						   }
+						],
+						\"filter_friendly_name\":\"Marketing\"
+					 },
+					 {
+						\"expression\":\"type=='support'\",
+						\"targets\":[
+						   {
+							  \"queue\":\"WQ5940dc0da87eaf6e3321d62041d4403b\",
+							  \"priority\": 10,
+							  \"timeout\": 30
+						   },
+						   {
+							  \"queue\":\"WQ5940dc0da87eaf6e3321d62041d4403b\",
+							  \"priority\": 15
+						   }
+						],
+						\"filter_friendly_name\":\"Support\"
+					 }
+				  ],
+				  \"default_filter\":{
+					 \"queue\":\"WQ6d29383312b24bd898a8df32779fc043\"
+				  }
+				}
+			}";
+
+		$config = WorkflowConfiguration::parse($json);
+
+		$this->assertEquals(3, count($config->filters));
+		$this->assertEquals(1, count($config->default_filter));
+		// sales assertions
+		$this->assertEquals("type=='sales'", $config->filters[0]->expression);
+		$this->assertEquals("Sales", $config->filters[0]->friendly_name);
+		$this->assertEquals(2, count($config->filters[0]->targets));
+		$this->assertEquals("WQf6724bd5005b30eeb6ea990c3e59e536", $config->filters[0]->targets[0]->queue);
+		$this->assertEquals(5, $config->filters[0]->targets[0]->priority);
+		$this->assertEquals(30, $config->filters[0]->targets[0]->timeout);
+		$this->assertEquals("WQf6724bd5005b30eeb6ea990c3e59e536", $config->filters[0]->targets[1]->queue);
+		$this->assertEquals(10, $config->filters[0]->targets[1]->priority);
+		// marketing assertions
+		$this->assertEquals("type=='marketing'", $config->filters[1]->expression);
+		$this->assertEquals("Marketing", $config->filters[1]->friendly_name);
+		$this->assertEquals(2, count($config->filters[1]->targets));
+		$this->assertEquals("WQ8c62f84b61ccfa6a333757cd508f0aae", $config->filters[1]->targets[0]->queue);
+		$this->assertEquals(1, $config->filters[1]->targets[0]->priority);
+		$this->assertEquals(120, $config->filters[1]->targets[0]->timeout);
+		$this->assertEquals("WQ8c62f84b61ccfa6a333757cd508f0aae", $config->filters[1]->targets[1]->queue);
+		$this->assertEquals(3, $config->filters[1]->targets[1]->priority);
+		// support assertions
+		$this->assertEquals("type=='support'", $config->filters[2]->expression);
+		$this->assertEquals("Support", $config->filters[2]->friendly_name);
+		$this->assertEquals(2, count($config->filters[2]->targets));
+		$this->assertEquals("WQ5940dc0da87eaf6e3321d62041d4403b", $config->filters[2]->targets[0]->queue);
+		$this->assertEquals(10, $config->filters[2]->targets[0]->priority);
+		$this->assertEquals(30, $config->filters[2]->targets[0]->timeout);
+		$this->assertEquals("WQ5940dc0da87eaf6e3321d62041d4403b", $config->filters[2]->targets[1]->queue);
+		$this->assertEquals(15, $config->filters[2]->targets[1]->priority);
+		// default filter
+		$this->assertEquals("WQ6d29383312b24bd898a8df32779fc043", $config->default_filter->queue);
+	}
 }

@@ -21,7 +21,21 @@ class WorkflowConfiguration implements JsonSerializable {
 	}
 
 	public static function parse($json) {
-		return json_decode($json);
+		$configJSON = json_decode($json);
+		$filters = $configJSON->task_routing->filters;
+		$default_filter = $configJSON->task_routing->default_filter;
+		// aggressive check to see if filter_friendly_name is used
+		if(isset($configJSON->task_routing->filters[0]->filter_friendly_name)) {
+			$filters = array();
+			foreach($configJSON->task_routing->filters as $filter) {
+				// friendly_name and filter_friendly_name should map to same variable
+				$friendly_name = isset($filter->filter_friendly_name) ? $filter->filter_friendly_name : $filter->friendly_name;
+				$filter = new WorkflowRule($filter->expression, $filter->targets, $friendly_name);
+				$filters[] = $filter;
+			}
+			$configJSON->task_routing->filters = $filters;
+		}
+		return new WorkflowConfiguration($filters, $default_filter);
 	}
 
 	public function jsonSerialize() {
