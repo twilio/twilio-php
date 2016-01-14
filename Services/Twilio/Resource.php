@@ -71,13 +71,17 @@ abstract class Services_Twilio_Resource {
 
     public static function decamelize($word)
     {
-        $callback = create_function('$matches',
-            'return strtolower(strlen("$matches[1]") ? "$matches[1]_$matches[2]" : "$matches[2]");');
-
         return preg_replace_callback(
-            '/(^|[a-z])([A-Z])/',
-            $callback,
-            $word
+          '/(^|[a-z])([A-Z])/',
+          function ($m)
+          {
+              return strtolower(
+                strlen(
+                  "$m[1]"
+                ) ? "$m[1]_$m[2]" : "$m[2]"
+              );
+          },
+          $word
         );
     }
 
@@ -87,14 +91,19 @@ abstract class Services_Twilio_Resource {
      * incoming_phone_numbers => IncomingPhoneNumbers
      *
      * @param string $word The word to camelize
+     *
      * @return string
      */
-    public static function camelize($word) {
-        $callback = create_function('$matches', 'return strtoupper("$matches[2]");');
-
-        return preg_replace_callback('/(^|_)([a-z])/',
-            $callback,
-            $word);
+    public static function camelize($word)
+    {
+        return preg_replace_callback(
+          '/(^|_)([a-z])/',
+          function ($m)
+          {
+              return strtoupper("$m[2]");
+          },
+          $word
+        );
     }
 
     /**
