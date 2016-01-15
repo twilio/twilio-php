@@ -64,48 +64,6 @@ class CountryInstance extends InstanceResource {
     }
 
     /**
-     * @return string The country
-     */
-    protected function getCountry() {
-        return $this->properties['country'];
-    }
-
-    /**
-     * @return string The iso_country
-     */
-    protected function getIsoCountry() {
-        return $this->properties['isoCountry'];
-    }
-
-    /**
-     * @return string The phone_number_prices
-     */
-    protected function getPhoneNumberPrices() {
-        return $this->properties['phoneNumberPrices'];
-    }
-
-    /**
-     * @return string The price_unit
-     */
-    protected function getPriceUnit() {
-        return $this->properties['priceUnit'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a CountryInstance
      * 
      * @return CountryInstance Fetched CountryInstance
@@ -123,8 +81,7 @@ class CountryInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

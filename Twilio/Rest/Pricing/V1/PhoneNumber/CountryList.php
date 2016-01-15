@@ -25,6 +25,7 @@ class CountryList extends ListResource {
         
         // Path Solution
         $this->solution = array();
+        
         $this->uri = '/PhoneNumbers/Countries';
     }
 

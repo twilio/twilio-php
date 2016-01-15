@@ -36,6 +36,7 @@ class CallList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Calls.json';
     }
 
@@ -44,9 +45,12 @@ class CallList extends ListResource {
      * 
      * @param string $to Phone number, SIP address or client identifier to call
      * @param string $from Twilio number from which to originate the call
+     * @param array $options Optional Arguments
      * @return CallInstance Newly created CallInstance
      */
-    public function create($to, $from, $options) {
+    public function create($to, $from, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'To' => $to,
             'From' => $from,

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Recording;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -17,8 +18,8 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string apiVersion
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string duration
  * @property string price
  * @property string priceUnit
@@ -42,8 +43,8 @@ class TranscriptionInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'duration' => $payload['duration'],
             'price' => $payload['price'],
             'priceUnit' => $payload['price_unit'],
@@ -82,97 +83,6 @@ class TranscriptionInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The duration
-     */
-    protected function getDuration() {
-        return $this->properties['duration'];
-    }
-
-    /**
-     * @return string The price
-     */
-    protected function getPrice() {
-        return $this->properties['price'];
-    }
-
-    /**
-     * @return string The price_unit
-     */
-    protected function getPriceUnit() {
-        return $this->properties['priceUnit'];
-    }
-
-    /**
-     * @return string The recording_sid
-     */
-    protected function getRecordingSid() {
-        return $this->properties['recordingSid'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return transcription.Status The status
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
-    }
-
-    /**
-     * @return string The transcription_text
-     */
-    protected function getTranscriptionText() {
-        return $this->properties['transcriptionText'];
-    }
-
-    /**
-     * @return string The type
-     */
-    protected function getType() {
-        return $this->properties['type'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a TranscriptionInstance
      * 
      * @return TranscriptionInstance Fetched TranscriptionInstance
@@ -199,8 +109,7 @@ class TranscriptionInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

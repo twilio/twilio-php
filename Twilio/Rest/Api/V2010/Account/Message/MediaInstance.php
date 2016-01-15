@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Message;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -17,8 +18,8 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string contentType
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string parentSid
  * @property string sid
  * @property string uri
@@ -36,8 +37,8 @@ class MediaInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'contentType' => $payload['content_type'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'parentSid' => $payload['parent_sid'],
             'sid' => $payload['sid'],
             'uri' => $payload['uri'],
@@ -70,55 +71,6 @@ class MediaInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The default mime-type of the media
-     */
-    protected function getContentType() {
-        return $this->properties['contentType'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The unique id of the resource that created the media.
-     */
-    protected function getParentSid() {
-        return $this->properties['parentSid'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this media
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Deletes the MediaInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
@@ -145,8 +97,7 @@ class MediaInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

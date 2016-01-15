@@ -59,90 +59,6 @@ class MobileInstance extends InstanceResource {
     }
 
     /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The phone_number
-     */
-    protected function getPhoneNumber() {
-        return $this->properties['phoneNumber'];
-    }
-
-    /**
-     * @return string The lata
-     */
-    protected function getLata() {
-        return $this->properties['lata'];
-    }
-
-    /**
-     * @return string The rate_center
-     */
-    protected function getRateCenter() {
-        return $this->properties['rateCenter'];
-    }
-
-    /**
-     * @return string The latitude
-     */
-    protected function getLatitude() {
-        return $this->properties['latitude'];
-    }
-
-    /**
-     * @return string The longitude
-     */
-    protected function getLongitude() {
-        return $this->properties['longitude'];
-    }
-
-    /**
-     * @return string The region
-     */
-    protected function getRegion() {
-        return $this->properties['region'];
-    }
-
-    /**
-     * @return string The postal_code
-     */
-    protected function getPostalCode() {
-        return $this->properties['postalCode'];
-    }
-
-    /**
-     * @return string The iso_country
-     */
-    protected function getIsoCountry() {
-        return $this->properties['isoCountry'];
-    }
-
-    /**
-     * @return string The address_requirements
-     */
-    protected function getAddressRequirements() {
-        return $this->properties['addressRequirements'];
-    }
-
-    /**
-     * @return string The beta
-     */
-    protected function getBeta() {
-        return $this->properties['beta'];
-    }
-
-    /**
-     * @return string The capabilities
-     */
-    protected function getCapabilities() {
-        return $this->properties['capabilities'];
-    }
-
-    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access
@@ -151,8 +67,7 @@ class MobileInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -11,7 +11,6 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Client;
 use Twilio\Rest\Monitor\V1;
 
 /**
@@ -35,7 +34,7 @@ class Monitor extends Domain {
     /**
      * @return V1 Version v1 of monitor
      */
-    public function getV1() {
+    protected function getV1() {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -46,7 +45,7 @@ class Monitor extends Domain {
      * Magic getter to lazy load version
      * 
      * @param string $name Version to return
-     * @return Version The requested version
+     * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
     public function __get($name) {

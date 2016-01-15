@@ -32,6 +32,7 @@ class CredentialListMappingContext extends InstanceContext {
             'domainSid' => $domainSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains/' . $domainSid . '/CredentialListMappings/' . $sid . '.json';
     }
 

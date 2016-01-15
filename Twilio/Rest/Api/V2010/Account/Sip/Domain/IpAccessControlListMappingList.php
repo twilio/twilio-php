@@ -30,6 +30,7 @@ class IpAccessControlListMappingList extends ListResource {
             'accountSid' => $accountSid,
             'domainSid' => $domainSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains/' . $domainSid . '/IpAccessControlListMappings.json';
     }
 

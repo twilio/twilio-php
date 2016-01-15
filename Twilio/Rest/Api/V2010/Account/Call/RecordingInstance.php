@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string callSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string duration
  * @property string sid
  * @property string uri
@@ -38,8 +39,8 @@ class RecordingInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'callSid' => $payload['call_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'duration' => $payload['duration'],
             'sid' => $payload['sid'],
             'uri' => $payload['uri'],
@@ -72,62 +73,6 @@ class RecordingInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The call_sid
-     */
-    protected function getCallSid() {
-        return $this->properties['callSid'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The duration
-     */
-    protected function getDuration() {
-        return $this->properties['duration'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a RecordingInstance
      * 
      * @return RecordingInstance Fetched RecordingInstance
@@ -154,8 +99,7 @@ class RecordingInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

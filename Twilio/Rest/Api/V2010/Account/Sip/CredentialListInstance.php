@@ -9,16 +9,16 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\Sip\CredentialList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string sid
  * @property string subresourceUris
@@ -36,8 +36,8 @@ class CredentialListInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'subresourceUris' => $payload['subresource_uris'],
@@ -66,55 +66,6 @@ class CredentialListInstance extends InstanceResource {
         }
         
         return $this->context;
-    }
-
-    /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this credential
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The subresource_uris
-     */
-    protected function getSubresourceUris() {
-        return $this->properties['subresourceUris'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
     }
 
     /**
@@ -165,8 +116,7 @@ class CredentialListInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

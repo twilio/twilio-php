@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string subresourceUris
  * @property string uri
  */
@@ -38,8 +38,8 @@ class IpAccessControlListInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'subresourceUris' => $payload['subresource_uris'],
             'uri' => $payload['uri'],
         );
@@ -67,55 +67,6 @@ class IpAccessControlListInstance extends InstanceResource {
         }
         
         return $this->context;
-    }
-
-    /**
-     * @return string A string that uniquely identifies this resource
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string A human readable description of this resource
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The subresource_uris
-     */
-    protected function getSubresourceUris() {
-        return $this->properties['subresourceUris'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
     }
 
     /**
@@ -166,8 +117,7 @@ class IpAccessControlListInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

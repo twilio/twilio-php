@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -16,8 +17,8 @@ use Twilio\Version;
 
 /**
  * @property string sid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string accountSid
  * @property string phoneNumber
@@ -35,8 +36,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'sid' => $payload['sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'accountSid' => $payload['account_sid'],
             'phoneNumber' => $payload['phone_number'],
@@ -68,55 +69,6 @@ class OutgoingCallerIdInstance extends InstanceResource {
     }
 
     /**
-     * @return string A string that uniquely identifies this outgoing-caller-ids
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string A human readable description for this resource
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The incoming phone number
-     */
-    protected function getPhoneNumber() {
-        return $this->properties['phoneNumber'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a OutgoingCallerIdInstance
      * 
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
@@ -128,9 +80,10 @@ class OutgoingCallerIdInstance extends InstanceResource {
     /**
      * Update the OutgoingCallerIdInstance
      * 
+     * @param array $options Optional Arguments
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -154,8 +107,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

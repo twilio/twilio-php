@@ -30,6 +30,7 @@ class MediaList extends ListResource {
             'accountSid' => $accountSid,
             'messageSid' => $messageSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Messages/' . $messageSid . '/Media.json';
     }
 

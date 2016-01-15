@@ -28,6 +28,7 @@ class EventContext extends InstanceContext {
         $this->solution = array(
             'sid' => $sid,
         );
+        
         $this->uri = '/Events/' . $sid . '';
     }
 

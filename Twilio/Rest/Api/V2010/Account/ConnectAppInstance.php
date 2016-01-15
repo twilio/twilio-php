@@ -76,85 +76,6 @@ class ConnectAppInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string URIL Twilio sends requests when users authorize
-     */
-    protected function getAuthorizeRedirectUrl() {
-        return $this->properties['authorizeRedirectUrl'];
-    }
-
-    /**
-     * @return string The company name set for this Connect App.
-     */
-    protected function getCompanyName() {
-        return $this->properties['companyName'];
-    }
-
-    /**
-     * @return string HTTP method Twilio WIll use making requests to the url
-     */
-    protected function getDeauthorizeCallbackMethod() {
-        return $this->properties['deauthorizeCallbackMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will send a request when a user de-authorizes this
-     *                app
-     */
-    protected function getDeauthorizeCallbackUrl() {
-        return $this->properties['deauthorizeCallbackUrl'];
-    }
-
-    /**
-     * @return string A more detailed human readable description
-     */
-    protected function getDescription() {
-        return $this->properties['description'];
-    }
-
-    /**
-     * @return string A human readable name for the Connect App.
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The URL users can obtain more information
-     */
-    protected function getHomepageUrl() {
-        return $this->properties['homepageUrl'];
-    }
-
-    /**
-     * @return connect_app.Permission The set of permissions that your ConnectApp
-     *                                requests.
-     */
-    protected function getPermissions() {
-        return $this->properties['permissions'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this connect-apps
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a ConnectAppInstance
      * 
      * @return ConnectAppInstance Fetched ConnectAppInstance
@@ -166,9 +87,10 @@ class ConnectAppInstance extends InstanceResource {
     /**
      * Update the ConnectAppInstance
      * 
+     * @param array $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -183,8 +105,7 @@ class ConnectAppInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -37,6 +37,7 @@ class RecordingContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Recordings/' . $sid . '.json';
     }
 

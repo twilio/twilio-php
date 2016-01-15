@@ -29,6 +29,7 @@ class MobileList extends ListResource {
         $this->solution = array(
             'ownerAccountSid' => $ownerAccountSid,
         );
+        
         $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers/Mobile.json';
     }
 
@@ -36,9 +37,12 @@ class MobileList extends ListResource {
      * Create a new MobileInstance
      * 
      * @param string $phoneNumber The phone_number
+     * @param array $options Optional Arguments
      * @return MobileInstance Newly created MobileInstance
      */
-    public function create($phoneNumber, $options) {
+    public function create($phoneNumber, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'PhoneNumber' => $phoneNumber,
             'ApiVersion' => $options['apiVersion'],

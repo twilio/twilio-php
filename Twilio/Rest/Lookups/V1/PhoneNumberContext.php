@@ -28,15 +28,19 @@ class PhoneNumberContext extends InstanceContext {
         $this->solution = array(
             'phoneNumber' => $phoneNumber,
         );
+        
         $this->uri = '/PhoneNumbers/' . $phoneNumber . '';
     }
 
     /**
      * Fetch a PhoneNumberInstance
      * 
+     * @param array $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      */
-    public function fetch($options) {
+    public function fetch(array $options = array()) {
+        $options = new Values($options);
+        
         $params = Values::of(array(
             'CountryCode' => $options['countryCode'],
             'Type' => $options['type'],

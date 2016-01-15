@@ -9,14 +9,15 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string pin
  * @property string accountSid
  * @property string phoneNumber
@@ -41,8 +42,8 @@ class SandboxInstance extends InstanceResource {
         
         // Marshaled Properties
         $this->properties = array(
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'pin' => $payload['pin'],
             'accountSid' => $payload['account_sid'],
             'phoneNumber' => $payload['phone_number'],
@@ -80,104 +81,6 @@ class SandboxInstance extends InstanceResource {
     }
 
     /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The pin
-     */
-    protected function getPin() {
-        return $this->properties['pin'];
-    }
-
-    /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The phone_number
-     */
-    protected function getPhoneNumber() {
-        return $this->properties['phoneNumber'];
-    }
-
-    /**
-     * @return string The application_sid
-     */
-    protected function getApplicationSid() {
-        return $this->properties['applicationSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The voice_url
-     */
-    protected function getVoiceUrl() {
-        return $this->properties['voiceUrl'];
-    }
-
-    /**
-     * @return string The voice_method
-     */
-    protected function getVoiceMethod() {
-        return $this->properties['voiceMethod'];
-    }
-
-    /**
-     * @return string The sms_url
-     */
-    protected function getSmsUrl() {
-        return $this->properties['smsUrl'];
-    }
-
-    /**
-     * @return string The sms_method
-     */
-    protected function getSmsMethod() {
-        return $this->properties['smsMethod'];
-    }
-
-    /**
-     * @return string The status_callback
-     */
-    protected function getStatusCallback() {
-        return $this->properties['statusCallback'];
-    }
-
-    /**
-     * @return string The status_callback_method
-     */
-    protected function getStatusCallbackMethod() {
-        return $this->properties['statusCallbackMethod'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a SandboxInstance
      * 
      * @return SandboxInstance Fetched SandboxInstance
@@ -189,9 +92,10 @@ class SandboxInstance extends InstanceResource {
     /**
      * Update the SandboxInstance
      * 
+     * @param array $options Optional Arguments
      * @return SandboxInstance Updated SandboxInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -206,8 +110,7 @@ class SandboxInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

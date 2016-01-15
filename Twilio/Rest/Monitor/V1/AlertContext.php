@@ -28,6 +28,7 @@ class AlertContext extends InstanceContext {
         $this->solution = array(
             'sid' => $sid,
         );
+        
         $this->uri = '/Alerts/' . $sid . '';
     }
 

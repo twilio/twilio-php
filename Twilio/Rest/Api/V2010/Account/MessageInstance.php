@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\Message;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,9 +19,9 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string body
- * @property string dateCreated
- * @property string dateUpdated
- * @property string dateSent
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
+ * @property \DateTime dateSent
  * @property message.Direction direction
  * @property string errorCode
  * @property string errorMessage
@@ -50,9 +50,9 @@ class MessageInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'body' => $payload['body'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
-            'dateSent' => $payload['date_sent'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateSent' => Deserialize::iso8601DateTime($payload['date_sent']),
             'direction' => $payload['direction'],
             'errorCode' => $payload['error_code'],
             'errorMessage' => $payload['error_message'],
@@ -93,139 +93,6 @@ class MessageInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The version of the Twilio API used to process the message.
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The text body of the message. Up to 1600 characters long.
-     */
-    protected function getBody() {
-        return $this->properties['body'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The date the message was sent
-     */
-    protected function getDateSent() {
-        return $this->properties['dateSent'];
-    }
-
-    /**
-     * @return message.Direction The direction of the message
-     */
-    protected function getDirection() {
-        return $this->properties['direction'];
-    }
-
-    /**
-     * @return string The error code associated with the message
-     */
-    protected function getErrorCode() {
-        return $this->properties['errorCode'];
-    }
-
-    /**
-     * @return string Human readable description of the ErrorCode
-     */
-    protected function getErrorMessage() {
-        return $this->properties['errorMessage'];
-    }
-
-    /**
-     * @return string The phone number that initiated the message
-     */
-    protected function getFrom() {
-        return $this->properties['from'];
-    }
-
-    /**
-     * @return string Number of media files associated with the message
-     */
-    protected function getNumMedia() {
-        return $this->properties['numMedia'];
-    }
-
-    /**
-     * @return string Indicates number of messages used to delivery the body
-     */
-    protected function getNumSegments() {
-        return $this->properties['numSegments'];
-    }
-
-    /**
-     * @return string The amount billed for the message
-     */
-    protected function getPrice() {
-        return $this->properties['price'];
-    }
-
-    /**
-     * @return string The currency in which Price is measured
-     */
-    protected function getPriceUnit() {
-        return $this->properties['priceUnit'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this message
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return message.Status The status of this message
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
-    }
-
-    /**
-     * @return string The subresource_uris
-     */
-    protected function getSubresourceUris() {
-        return $this->properties['subresourceUris'];
-    }
-
-    /**
-     * @return string The phone number that received the message
-     */
-    protected function getTo() {
-        return $this->properties['to'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Deletes the MessageInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
@@ -246,9 +113,10 @@ class MessageInstance extends InstanceResource {
     /**
      * Update the MessageInstance
      * 
+     * @param array $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -272,8 +140,7 @@ class MessageInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

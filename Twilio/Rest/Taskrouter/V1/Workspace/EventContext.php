@@ -30,6 +30,7 @@ class EventContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Events/' . $sid . '';
     }
 

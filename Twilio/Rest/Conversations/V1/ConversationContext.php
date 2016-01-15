@@ -35,6 +35,7 @@ class ConversationContext extends InstanceContext {
         $this->solution = array(
             'sid' => $sid,
         );
+        
         $this->uri = '/Conversations/' . $sid . '';
     }
 

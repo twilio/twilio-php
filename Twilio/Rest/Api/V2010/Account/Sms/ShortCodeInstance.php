@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sms;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -17,8 +18,8 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string apiVersion
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string shortCode
  * @property string sid
@@ -41,8 +42,8 @@ class ShortCodeInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'shortCode' => $payload['short_code'],
             'sid' => $payload['sid'],
@@ -78,90 +79,6 @@ class ShortCodeInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The API version to use
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string A human readable description of this resource
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The short code. e.g., 894546.
-     */
-    protected function getShortCode() {
-        return $this->properties['shortCode'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this short-codes
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string HTTP method Twilio will use with sms fallback url
-     */
-    protected function getSmsFallbackMethod() {
-        return $this->properties['smsFallbackMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request if an error occurs in executing TwiML
-     */
-    protected function getSmsFallbackUrl() {
-        return $this->properties['smsFallbackUrl'];
-    }
-
-    /**
-     * @return string HTTP method to use when requesting the sms url
-     */
-    protected function getSmsMethod() {
-        return $this->properties['smsMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request when receiving an SMS
-     */
-    protected function getSmsUrl() {
-        return $this->properties['smsUrl'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a ShortCodeInstance
      * 
      * @return ShortCodeInstance Fetched ShortCodeInstance
@@ -173,9 +90,10 @@ class ShortCodeInstance extends InstanceResource {
     /**
      * Update the ShortCodeInstance
      * 
+     * @param array $options Optional Arguments
      * @return ShortCodeInstance Updated ShortCodeInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -190,8 +108,7 @@ class ShortCodeInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

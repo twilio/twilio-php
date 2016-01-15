@@ -30,6 +30,7 @@ class ConnectAppContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/ConnectApps/' . $sid . '.json';
     }
 
@@ -58,9 +59,12 @@ class ConnectAppContext extends InstanceContext {
     /**
      * Update the ConnectAppInstance
      * 
+     * @param array $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'AuthorizeRedirectUrl' => $options['authorizeRedirectUrl'],
             'CompanyName' => $options['companyName'],

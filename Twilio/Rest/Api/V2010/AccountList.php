@@ -25,15 +25,19 @@ class AccountList extends ListResource {
         
         // Path Solution
         $this->solution = array();
+        
         $this->uri = '/Accounts.json';
     }
 
     /**
      * Create a new AccountInstance
      * 
+     * @param array $options Optional Arguments
      * @return AccountInstance Newly created AccountInstance
      */
-    public function create($options) {
+    public function create(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
         ));

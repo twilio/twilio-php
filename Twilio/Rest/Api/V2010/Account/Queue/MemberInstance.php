@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Queue;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -16,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property string callSid
- * @property string dateEnqueued
+ * @property \DateTime dateEnqueued
  * @property string position
  * @property string uri
  * @property string waitTime
@@ -33,7 +34,7 @@ class MemberInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'callSid' => $payload['call_sid'],
-            'dateEnqueued' => $payload['date_enqueued'],
+            'dateEnqueued' => Deserialize::iso8601DateTime($payload['date_enqueued']),
             'position' => $payload['position'],
             'uri' => $payload['uri'],
             'waitTime' => $payload['wait_time'],
@@ -63,41 +64,6 @@ class MemberInstance extends InstanceResource {
         }
         
         return $this->context;
-    }
-
-    /**
-     * @return string Unique string that identifies this resource
-     */
-    protected function getCallSid() {
-        return $this->properties['callSid'];
-    }
-
-    /**
-     * @return string The date the member was enqueued
-     */
-    protected function getDateEnqueued() {
-        return $this->properties['dateEnqueued'];
-    }
-
-    /**
-     * @return string This member's current position in the queue.
-     */
-    protected function getPosition() {
-        return $this->properties['position'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The number of seconds the member has been in the queue.
-     */
-    protected function getWaitTime() {
-        return $this->properties['waitTime'];
     }
 
     /**
@@ -132,8 +98,7 @@ class MemberInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

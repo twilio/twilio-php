@@ -11,7 +11,6 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -66,41 +65,6 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     }
 
     /**
-     * @return string The country_code
-     */
-    protected function getCountryCode() {
-        return $this->properties['countryCode'];
-    }
-
-    /**
-     * @return string The country
-     */
-    protected function getCountry() {
-        return $this->properties['country'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The beta
-     */
-    protected function getBeta() {
-        return $this->properties['beta'];
-    }
-
-    /**
-     * @return string The subresource_uris
-     */
-    protected function getSubresourceUris() {
-        return $this->properties['subresourceUris'];
-    }
-
-    /**
      * Fetch a AvailablePhoneNumberCountryInstance
      * 
      * @return AvailablePhoneNumberCountryInstance Fetched
@@ -146,8 +110,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

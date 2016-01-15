@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Monitor\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,9 +19,9 @@ use Twilio\Version;
  * @property string accountSid
  * @property string alertText
  * @property string apiVersion
- * @property string dateCreated
- * @property string dateGenerated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateGenerated
+ * @property \DateTime dateUpdated
  * @property string errorCode
  * @property string logLevel
  * @property string moreInfo
@@ -47,9 +48,9 @@ class AlertInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'alertText' => $payload['alert_text'],
             'apiVersion' => $payload['api_version'],
-            'dateCreated' => $payload['date_created'],
-            'dateGenerated' => $payload['date_generated'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateGenerated' => Deserialize::iso8601DateTime($payload['date_generated']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'errorCode' => $payload['error_code'],
             'logLevel' => $payload['log_level'],
             'moreInfo' => $payload['more_info'],
@@ -86,125 +87,6 @@ class AlertInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The alert_text
-     */
-    protected function getAlertText() {
-        return $this->properties['alertText'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_generated
-     */
-    protected function getDateGenerated() {
-        return $this->properties['dateGenerated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The error_code
-     */
-    protected function getErrorCode() {
-        return $this->properties['errorCode'];
-    }
-
-    /**
-     * @return string The log_level
-     */
-    protected function getLogLevel() {
-        return $this->properties['logLevel'];
-    }
-
-    /**
-     * @return string The more_info
-     */
-    protected function getMoreInfo() {
-        return $this->properties['moreInfo'];
-    }
-
-    /**
-     * @return string The request_method
-     */
-    protected function getRequestMethod() {
-        return $this->properties['requestMethod'];
-    }
-
-    /**
-     * @return string The request_url
-     */
-    protected function getRequestUrl() {
-        return $this->properties['requestUrl'];
-    }
-
-    /**
-     * @return string The request_variables
-     */
-    protected function getRequestVariables() {
-        return $this->properties['requestVariables'];
-    }
-
-    /**
-     * @return string The resource_sid
-     */
-    protected function getResourceSid() {
-        return $this->properties['resourceSid'];
-    }
-
-    /**
-     * @return string The response_body
-     */
-    protected function getResponseBody() {
-        return $this->properties['responseBody'];
-    }
-
-    /**
-     * @return string The response_headers
-     */
-    protected function getResponseHeaders() {
-        return $this->properties['responseHeaders'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a AlertInstance
      * 
      * @return AlertInstance Fetched AlertInstance
@@ -231,8 +113,7 @@ class AlertInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

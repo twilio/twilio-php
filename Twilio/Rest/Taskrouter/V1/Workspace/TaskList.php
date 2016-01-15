@@ -28,6 +28,7 @@ class TaskList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks';
     }
 
@@ -36,9 +37,12 @@ class TaskList extends ListResource {
      * 
      * @param string $attributes The attributes
      * @param string $workflowSid The workflow_sid
+     * @param array $options Optional Arguments
      * @return TaskInstance Newly created TaskInstance
      */
-    public function create($attributes, $workflowSid, $options) {
+    public function create($attributes, $workflowSid, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Attributes' => $attributes,
             'WorkflowSid' => $workflowSid,

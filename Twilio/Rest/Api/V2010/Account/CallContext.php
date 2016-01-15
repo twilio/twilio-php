@@ -43,6 +43,7 @@ class CallContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Calls/' . $sid . '.json';
     }
 
@@ -80,9 +81,12 @@ class CallContext extends InstanceContext {
     /**
      * Update the CallInstance
      * 
+     * @param array $options Optional Arguments
      * @return CallInstance Updated CallInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Url' => $options['url'],
             'Method' => $options['method'],

@@ -38,27 +38,6 @@ class VoiceInstance extends InstanceResource {
     }
 
     /**
-     * @return string The name
-     */
-    protected function getName() {
-        return $this->properties['name'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
-     * @return string The links
-     */
-    protected function getLinks() {
-        return $this->properties['links'];
-    }
-
-    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access
@@ -67,8 +46,7 @@ class VoiceInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

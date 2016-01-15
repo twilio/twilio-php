@@ -28,15 +28,19 @@ class WorkersStatisticsContext extends InstanceContext {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/Statistics';
     }
 
     /**
      * Fetch a WorkersStatisticsInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      */
-    public function fetch($options) {
+    public function fetch(array $options = array()) {
+        $options = new Values($options);
+        
         $params = Values::of(array(
             'Minutes' => $options['minutes'],
             'StartDate' => $options['startDate'],

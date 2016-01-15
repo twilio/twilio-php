@@ -12,7 +12,6 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010;
-use Twilio\Rest\Client;
 
 /**
  * @property V2010 v2010
@@ -35,7 +34,7 @@ class Api extends Domain {
     /**
      * @return V2010 Version v2010 of api
      */
-    public function getV2010() {
+    protected function getV2010() {
         if (!$this->_v2010) {
             $this->_v2010 = new V2010($this);
         }
@@ -46,7 +45,7 @@ class Api extends Domain {
      * Magic getter to lazy load version
      * 
      * @param string $name Version to return
-     * @return Version The requested version
+     * @return \Twilio\Version The requested version
      * @throws TwilioException For unknown versions
      */
     public function __get($name) {

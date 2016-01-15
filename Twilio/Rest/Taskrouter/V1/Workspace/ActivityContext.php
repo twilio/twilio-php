@@ -30,6 +30,7 @@ class ActivityContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Activities/' . $sid . '';
     }
 

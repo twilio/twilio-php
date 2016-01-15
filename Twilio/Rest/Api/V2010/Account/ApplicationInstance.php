@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -17,8 +18,8 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string apiVersion
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string messageStatusCallback
  * @property string sid
@@ -49,8 +50,8 @@ class ApplicationInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'messageStatusCallback' => $payload['message_status_callback'],
             'sid' => $payload['sid'],
@@ -94,146 +95,6 @@ class ApplicationInstance extends InstanceResource {
     }
 
     /**
-     * @return string A string that uniquely identifies this resource
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The API version to use
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string Date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string Date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string Human readable description of this resource
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string URL to make requests to with status updates
-     */
-    protected function getMessageStatusCallback() {
-        return $this->properties['messageStatusCallback'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this resource
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string HTTP method to use with sms_fallback_method
-     */
-    protected function getSmsFallbackMethod() {
-        return $this->properties['smsFallbackMethod'];
-    }
-
-    /**
-     * @return string Fallback URL if there's an error parsing TwiML
-     */
-    protected function getSmsFallbackUrl() {
-        return $this->properties['smsFallbackUrl'];
-    }
-
-    /**
-     * @return string HTTP method to use with sms_url
-     */
-    protected function getSmsMethod() {
-        return $this->properties['smsMethod'];
-    }
-
-    /**
-     * @return string URL Twilio with request with status updates
-     */
-    protected function getSmsStatusCallback() {
-        return $this->properties['smsStatusCallback'];
-    }
-
-    /**
-     * @return string URL Twilio will request when receiving an SMS
-     */
-    protected function getSmsUrl() {
-        return $this->properties['smsUrl'];
-    }
-
-    /**
-     * @return string URL to hit with status updates
-     */
-    protected function getStatusCallback() {
-        return $this->properties['statusCallback'];
-    }
-
-    /**
-     * @return string HTTP method to use with the status callback
-     */
-    protected function getStatusCallbackMethod() {
-        return $this->properties['statusCallbackMethod'];
-    }
-
-    /**
-     * @return string URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string True or False
-     */
-    protected function getVoiceCallerIdLookup() {
-        return $this->properties['voiceCallerIdLookup'];
-    }
-
-    /**
-     * @return string HTTP method to use with the fallback url
-     */
-    protected function getVoiceFallbackMethod() {
-        return $this->properties['voiceFallbackMethod'];
-    }
-
-    /**
-     * @return string Fallback URL
-     */
-    protected function getVoiceFallbackUrl() {
-        return $this->properties['voiceFallbackUrl'];
-    }
-
-    /**
-     * @return string HTTP method to use with the URL
-     */
-    protected function getVoiceMethod() {
-        return $this->properties['voiceMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will make requests to when relieving a call
-     */
-    protected function getVoiceUrl() {
-        return $this->properties['voiceUrl'];
-    }
-
-    /**
      * Deletes the ApplicationInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
@@ -254,9 +115,10 @@ class ApplicationInstance extends InstanceResource {
     /**
      * Update the ApplicationInstance
      * 
+     * @param array $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -271,8 +133,7 @@ class ApplicationInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

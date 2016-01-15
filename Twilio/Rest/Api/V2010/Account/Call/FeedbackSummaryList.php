@@ -29,6 +29,7 @@ class FeedbackSummaryList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Calls/FeedbackSummary.json';
     }
 
@@ -37,9 +38,12 @@ class FeedbackSummaryList extends ListResource {
      * 
      * @param string $startDate The start_date
      * @param string $endDate The end_date
+     * @param array $options Optional Arguments
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      */
-    public function create($startDate, $endDate, $options) {
+    public function create($startDate, $endDate, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'StartDate' => $startDate,
             'EndDate' => $endDate,

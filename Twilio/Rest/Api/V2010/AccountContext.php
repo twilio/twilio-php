@@ -92,6 +92,7 @@ class AccountContext extends InstanceContext {
         $this->solution = array(
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $sid . '.json';
     }
 
@@ -119,9 +120,12 @@ class AccountContext extends InstanceContext {
     /**
      * Update the AccountInstance
      * 
+     * @param array $options Optional Arguments
      * @return AccountInstance Updated AccountInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'Status' => $options['status'],

@@ -30,6 +30,7 @@ class CredentialList extends ListResource {
             'accountSid' => $accountSid,
             'credentialListSid' => $credentialListSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/CredentialLists/' . $credentialListSid . '/Credentials.json';
     }
 

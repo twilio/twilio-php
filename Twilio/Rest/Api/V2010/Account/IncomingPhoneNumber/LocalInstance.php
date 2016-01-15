@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Version;
@@ -19,8 +20,8 @@ use Twilio\Version;
  * @property string apiVersion
  * @property string beta
  * @property string capabilities
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string phoneNumber
  * @property string sid
@@ -55,8 +56,8 @@ class LocalInstance extends InstanceResource {
             'apiVersion' => $payload['api_version'],
             'beta' => $payload['beta'],
             'capabilities' => $payload['capabilities'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'phoneNumber' => $payload['phone_number'],
             'sid' => $payload['sid'],
@@ -82,174 +83,6 @@ class LocalInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return local.AddressRequirement The address_requirements
-     */
-    protected function getAddressRequirements() {
-        return $this->properties['addressRequirements'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The beta
-     */
-    protected function getBeta() {
-        return $this->properties['beta'];
-    }
-
-    /**
-     * @return string The capabilities
-     */
-    protected function getCapabilities() {
-        return $this->properties['capabilities'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The phone_number
-     */
-    protected function getPhoneNumber() {
-        return $this->properties['phoneNumber'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The sms_application_sid
-     */
-    protected function getSmsApplicationSid() {
-        return $this->properties['smsApplicationSid'];
-    }
-
-    /**
-     * @return string The sms_fallback_method
-     */
-    protected function getSmsFallbackMethod() {
-        return $this->properties['smsFallbackMethod'];
-    }
-
-    /**
-     * @return string The sms_fallback_url
-     */
-    protected function getSmsFallbackUrl() {
-        return $this->properties['smsFallbackUrl'];
-    }
-
-    /**
-     * @return string The sms_method
-     */
-    protected function getSmsMethod() {
-        return $this->properties['smsMethod'];
-    }
-
-    /**
-     * @return string The sms_url
-     */
-    protected function getSmsUrl() {
-        return $this->properties['smsUrl'];
-    }
-
-    /**
-     * @return string The status_callback
-     */
-    protected function getStatusCallback() {
-        return $this->properties['statusCallback'];
-    }
-
-    /**
-     * @return string The status_callback_method
-     */
-    protected function getStatusCallbackMethod() {
-        return $this->properties['statusCallbackMethod'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The voice_application_sid
-     */
-    protected function getVoiceApplicationSid() {
-        return $this->properties['voiceApplicationSid'];
-    }
-
-    /**
-     * @return string The voice_caller_id_lookup
-     */
-    protected function getVoiceCallerIdLookup() {
-        return $this->properties['voiceCallerIdLookup'];
-    }
-
-    /**
-     * @return string The voice_fallback_method
-     */
-    protected function getVoiceFallbackMethod() {
-        return $this->properties['voiceFallbackMethod'];
-    }
-
-    /**
-     * @return string The voice_fallback_url
-     */
-    protected function getVoiceFallbackUrl() {
-        return $this->properties['voiceFallbackUrl'];
-    }
-
-    /**
-     * @return string The voice_method
-     */
-    protected function getVoiceMethod() {
-        return $this->properties['voiceMethod'];
-    }
-
-    /**
-     * @return string The voice_url
-     */
-    protected function getVoiceUrl() {
-        return $this->properties['voiceUrl'];
-    }
-
-    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access
@@ -258,8 +91,7 @@ class LocalInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

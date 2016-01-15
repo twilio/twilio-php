@@ -28,6 +28,7 @@ class NumberContext extends InstanceContext {
         $this->solution = array(
             'number' => $number,
         );
+        
         $this->uri = '/Voice/Numbers/' . $number . '';
     }
 

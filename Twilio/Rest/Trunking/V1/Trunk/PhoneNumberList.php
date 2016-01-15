@@ -28,6 +28,7 @@ class PhoneNumberList extends ListResource {
         $this->solution = array(
             'trunkSid' => $trunkSid,
         );
+        
         $this->uri = '/Trunks/' . $trunkSid . '/PhoneNumbers';
     }
 

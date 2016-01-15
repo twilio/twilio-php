@@ -30,6 +30,7 @@ class OutgoingCallerIdContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/OutgoingCallerIds/' . $sid . '.json';
     }
 
@@ -58,9 +59,12 @@ class OutgoingCallerIdContext extends InstanceContext {
     /**
      * Update the OutgoingCallerIdInstance
      * 
+     * @param array $options Optional Arguments
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
         ));

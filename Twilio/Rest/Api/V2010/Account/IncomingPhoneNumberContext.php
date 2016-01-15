@@ -30,15 +30,19 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'ownerAccountSid' => $ownerAccountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers/' . $sid . '.json';
     }
 
     /**
      * Update the IncomingPhoneNumberInstance
      * 
+     * @param array $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'AccountSid' => $options['accountSid'],
             'ApiVersion' => $options['apiVersion'],

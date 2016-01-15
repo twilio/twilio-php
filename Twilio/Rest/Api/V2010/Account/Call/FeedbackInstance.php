@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -16,8 +17,8 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property feedback.Issues issues
  * @property string qualityScore
  * @property string sid
@@ -34,8 +35,8 @@ class FeedbackInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'issues' => $payload['issues'],
             'qualityScore' => $payload['quality_score'],
             'sid' => $payload['sid'],
@@ -66,54 +67,13 @@ class FeedbackInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return feedback.Issues The issues
-     */
-    protected function getIssues() {
-        return $this->properties['issues'];
-    }
-
-    /**
-     * @return string 1 to 5 quality score
-     */
-    protected function getQualityScore() {
-        return $this->properties['qualityScore'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
      * Create a new FeedbackInstance
      * 
      * @param string $qualityScore The quality_score
+     * @param array $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      */
-    public function create($qualityScore, $options) {
+    public function create($qualityScore, array $options = array()) {
         return $this->proxy()->create(
             $qualityScore,
             $options
@@ -133,9 +93,10 @@ class FeedbackInstance extends InstanceResource {
      * Update the FeedbackInstance
      * 
      * @param string $qualityScore An integer from 1 to 5
+     * @param array $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      */
-    public function update($qualityScore, $options) {
+    public function update($qualityScore, array $options = array()) {
         return $this->proxy()->update(
             $qualityScore,
             $options
@@ -151,8 +112,7 @@ class FeedbackInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

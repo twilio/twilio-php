@@ -30,6 +30,7 @@ class ReservationList extends ListResource {
             'workspaceSid' => $workspaceSid,
             'taskSid' => $taskSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks/' . $taskSid . '/Reservations';
     }
 

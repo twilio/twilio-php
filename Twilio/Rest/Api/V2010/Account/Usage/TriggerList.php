@@ -29,6 +29,7 @@ class TriggerList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Usage/Triggers.json';
     }
 
@@ -39,9 +40,12 @@ class TriggerList extends ListResource {
      * @param string $triggerValue the value at which the trigger will fire
      * @param trigger.UsageCategory $usageCategory The usage category the trigger
      *                                             watches
+     * @param array $options Optional Arguments
      * @return TriggerInstance Newly created TriggerInstance
      */
-    public function create($callbackUrl, $triggerValue, $usageCategory, $options) {
+    public function create($callbackUrl, $triggerValue, $usageCategory, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'CallbackUrl' => $callbackUrl,
             'TriggerValue' => $triggerValue,

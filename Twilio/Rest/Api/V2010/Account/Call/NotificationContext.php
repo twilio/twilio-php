@@ -32,6 +32,7 @@ class NotificationContext extends InstanceContext {
             'callSid' => $callSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Calls/' . $callSid . '/Notifications/' . $sid . '.json';
     }
 

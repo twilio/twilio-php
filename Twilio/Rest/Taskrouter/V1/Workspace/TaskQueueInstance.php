@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string assignmentActivitySid
  * @property string assignmentActivityName
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string maxReservedWorkers
  * @property string reservationActivitySid
@@ -44,8 +44,8 @@ class TaskQueueInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'assignmentActivitySid' => $payload['assignment_activity_sid'],
             'assignmentActivityName' => $payload['assignment_activity_name'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'maxReservedWorkers' => $payload['max_reserved_workers'],
             'reservationActivitySid' => $payload['reservation_activity_sid'],
@@ -81,97 +81,6 @@ class TaskQueueInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The assignment_activity_sid
-     */
-    protected function getAssignmentActivitySid() {
-        return $this->properties['assignmentActivitySid'];
-    }
-
-    /**
-     * @return string The assignment_activity_name
-     */
-    protected function getAssignmentActivityName() {
-        return $this->properties['assignmentActivityName'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The max_reserved_workers
-     */
-    protected function getMaxReservedWorkers() {
-        return $this->properties['maxReservedWorkers'];
-    }
-
-    /**
-     * @return string The reservation_activity_sid
-     */
-    protected function getReservationActivitySid() {
-        return $this->properties['reservationActivitySid'];
-    }
-
-    /**
-     * @return string The reservation_activity_name
-     */
-    protected function getReservationActivityName() {
-        return $this->properties['reservationActivityName'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The target_workers
-     */
-    protected function getTargetWorkers() {
-        return $this->properties['targetWorkers'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
-     * @return string The workspace_sid
-     */
-    protected function getWorkspaceSid() {
-        return $this->properties['workspaceSid'];
-    }
-
-    /**
      * Fetch a TaskQueueInstance
      * 
      * @return TaskQueueInstance Fetched TaskQueueInstance
@@ -183,9 +92,10 @@ class TaskQueueInstance extends InstanceResource {
     /**
      * Update the TaskQueueInstance
      * 
+     * @param array $options Optional Arguments
      * @return TaskQueueInstance Updated TaskQueueInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -218,8 +128,7 @@ class TaskQueueInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

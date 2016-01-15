@@ -9,18 +9,18 @@
 
 namespace Twilio\Rest\Conversations\V1\Conversation;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Conversations\V1\Conversation;
 use Twilio\Version;
 
 /**
  * @property string sid
  * @property in_progress.Status status
  * @property string duration
- * @property string dateCreated
- * @property string startTime
- * @property string endTime
+ * @property \DateTime dateCreated
+ * @property \DateTime startTime
+ * @property \DateTime endTime
  * @property string accountSid
  * @property string url
  */
@@ -38,70 +38,14 @@ class InProgressInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'status' => $payload['status'],
             'duration' => $payload['duration'],
-            'dateCreated' => $payload['date_created'],
-            'startTime' => $payload['start_time'],
-            'endTime' => $payload['end_time'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'startTime' => Deserialize::iso8601DateTime($payload['start_time']),
+            'endTime' => Deserialize::iso8601DateTime($payload['end_time']),
             'accountSid' => $payload['account_sid'],
             'url' => $payload['url'],
         );
         
         $this->solution = array();
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return in_progress.Status The status
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
-    }
-
-    /**
-     * @return string The duration
-     */
-    protected function getDuration() {
-        return $this->properties['duration'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The start_time
-     */
-    protected function getStartTime() {
-        return $this->properties['startTime'];
-    }
-
-    /**
-     * @return string The end_time
-     */
-    protected function getEndTime() {
-        return $this->properties['endTime'];
-    }
-
-    /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
     }
 
     /**
@@ -122,8 +66,7 @@ class InProgressInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

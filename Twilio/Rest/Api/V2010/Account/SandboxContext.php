@@ -28,6 +28,7 @@ class SandboxContext extends InstanceContext {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Sandbox.json';
     }
 
@@ -55,9 +56,12 @@ class SandboxContext extends InstanceContext {
     /**
      * Update the SandboxInstance
      * 
+     * @param array $options Optional Arguments
      * @return SandboxInstance Updated SandboxInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'VoiceUrl' => $options['voiceUrl'],
             'VoiceMethod' => $options['voiceMethod'],

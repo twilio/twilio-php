@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Taskrouter\V1\Workspace\Task;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -16,8 +17,8 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string reservationStatus
  * @property string sid
  * @property string taskSid
@@ -37,8 +38,8 @@ class ReservationInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'reservationStatus' => $payload['reservation_status'],
             'sid' => $payload['sid'],
             'taskSid' => $payload['task_sid'],
@@ -74,69 +75,6 @@ class ReservationInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The reservation_status
-     */
-    protected function getReservationStatus() {
-        return $this->properties['reservationStatus'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The task_sid
-     */
-    protected function getTaskSid() {
-        return $this->properties['taskSid'];
-    }
-
-    /**
-     * @return string The worker_name
-     */
-    protected function getWorkerName() {
-        return $this->properties['workerName'];
-    }
-
-    /**
-     * @return string The worker_sid
-     */
-    protected function getWorkerSid() {
-        return $this->properties['workerSid'];
-    }
-
-    /**
-     * @return string The workspace_sid
-     */
-    protected function getWorkspaceSid() {
-        return $this->properties['workspaceSid'];
-    }
-
-    /**
      * Fetch a ReservationInstance
      * 
      * @return ReservationInstance Fetched ReservationInstance
@@ -149,9 +87,10 @@ class ReservationInstance extends InstanceResource {
      * Update the ReservationInstance
      * 
      * @param string $reservationStatus The reservation_status
+     * @param array $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
      */
-    public function update($reservationStatus, $options) {
+    public function update($reservationStatus, array $options = array()) {
         return $this->proxy()->update(
             $reservationStatus,
             $options
@@ -167,8 +106,7 @@ class ReservationInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

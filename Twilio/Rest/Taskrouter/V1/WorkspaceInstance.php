@@ -9,16 +9,16 @@
 
 namespace Twilio\Rest\Taskrouter\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string defaultActivityName
  * @property string defaultActivitySid
  * @property string eventCallbackUrl
@@ -39,8 +39,8 @@ class WorkspaceInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'defaultActivityName' => $payload['default_activity_name'],
             'defaultActivitySid' => $payload['default_activity_sid'],
             'eventCallbackUrl' => $payload['event_callback_url'],
@@ -73,76 +73,6 @@ class WorkspaceInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The default_activity_name
-     */
-    protected function getDefaultActivityName() {
-        return $this->properties['defaultActivityName'];
-    }
-
-    /**
-     * @return string The default_activity_sid
-     */
-    protected function getDefaultActivitySid() {
-        return $this->properties['defaultActivitySid'];
-    }
-
-    /**
-     * @return string The event_callback_url
-     */
-    protected function getEventCallbackUrl() {
-        return $this->properties['eventCallbackUrl'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The timeout_activity_name
-     */
-    protected function getTimeoutActivityName() {
-        return $this->properties['timeoutActivityName'];
-    }
-
-    /**
-     * @return string The timeout_activity_sid
-     */
-    protected function getTimeoutActivitySid() {
-        return $this->properties['timeoutActivitySid'];
-    }
-
-    /**
      * Fetch a WorkspaceInstance
      * 
      * @return WorkspaceInstance Fetched WorkspaceInstance
@@ -154,9 +84,10 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Update the WorkspaceInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -243,8 +174,7 @@ class WorkspaceInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

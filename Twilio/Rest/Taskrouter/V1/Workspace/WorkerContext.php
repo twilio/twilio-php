@@ -37,6 +37,7 @@ class WorkerContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $sid . '';
     }
 
@@ -65,9 +66,12 @@ class WorkerContext extends InstanceContext {
     /**
      * Update the WorkerInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkerInstance Updated WorkerInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'ActivitySid' => $options['activitySid'],
             'Attributes' => $options['attributes'],

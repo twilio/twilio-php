@@ -28,6 +28,7 @@ class NotificationList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Notifications.json';
     }
 

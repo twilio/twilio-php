@@ -30,15 +30,19 @@ class TaskQueueStatisticsContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'taskQueueSid' => $taskQueueSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/TaskQueues/' . $taskQueueSid . '/Statistics';
     }
 
     /**
      * Fetch a TaskQueueStatisticsInstance
      * 
+     * @param array $options Optional Arguments
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
      */
-    public function fetch($options) {
+    public function fetch(array $options = array()) {
+        $options = new Values($options);
+        
         $params = Values::of(array(
             'EndDate' => $options['endDate'],
             'FriendlyName' => $options['friendlyName'],

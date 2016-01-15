@@ -28,6 +28,7 @@ class ParticipantList extends ListResource {
         $this->solution = array(
             'conversationSid' => $conversationSid,
         );
+        
         $this->uri = '/Conversations/' . $conversationSid . '/Participants';
     }
 

@@ -28,6 +28,7 @@ class EventList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Events';
     }
 

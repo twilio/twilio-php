@@ -28,6 +28,7 @@ class CountryContext extends InstanceContext {
         $this->solution = array(
             'isoCountry' => $isoCountry,
         );
+        
         $this->uri = '/PhoneNumbers/Countries/' . $isoCountry . '';
     }
 

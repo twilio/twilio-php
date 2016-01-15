@@ -28,6 +28,7 @@ class AuthorizedConnectAppList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/AuthorizedConnectApps.json';
     }
 

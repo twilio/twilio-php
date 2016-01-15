@@ -28,15 +28,19 @@ class TokenList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Tokens.json';
     }
 
     /**
      * Create a new TokenInstance
      * 
+     * @param array $options Optional Arguments
      * @return TokenInstance Newly created TokenInstance
      */
-    public function create($options) {
+    public function create(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Ttl' => $options['ttl'],
         ));

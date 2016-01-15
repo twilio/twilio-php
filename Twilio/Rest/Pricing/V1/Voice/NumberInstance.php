@@ -66,55 +66,6 @@ class NumberInstance extends InstanceResource {
     }
 
     /**
-     * @return string The number
-     */
-    protected function getNumber() {
-        return $this->properties['number'];
-    }
-
-    /**
-     * @return string The country
-     */
-    protected function getCountry() {
-        return $this->properties['country'];
-    }
-
-    /**
-     * @return string The iso_country
-     */
-    protected function getIsoCountry() {
-        return $this->properties['isoCountry'];
-    }
-
-    /**
-     * @return string The outbound_call_price
-     */
-    protected function getOutboundCallPrice() {
-        return $this->properties['outboundCallPrice'];
-    }
-
-    /**
-     * @return string The inbound_call_price
-     */
-    protected function getInboundCallPrice() {
-        return $this->properties['inboundCallPrice'];
-    }
-
-    /**
-     * @return string The price_unit
-     */
-    protected function getPriceUnit() {
-        return $this->properties['priceUnit'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a NumberInstance
      * 
      * @return NumberInstance Fetched NumberInstance
@@ -132,8 +83,7 @@ class NumberInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\Sip\Domain;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string authType
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string domainName
  * @property string friendlyName
  * @property string sid
@@ -46,8 +46,8 @@ class DomainInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'authType' => $payload['auth_type'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'domainName' => $payload['domain_name'],
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
@@ -85,111 +85,6 @@ class DomainInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique id of the account that sent the message
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The Twilio API version used to process the message
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The types of authentication mapped to the domain
-     */
-    protected function getAuthType() {
-        return $this->properties['authType'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The unique address on Twilio to route SIP traffic
-     */
-    protected function getDomainName() {
-        return $this->properties['domainName'];
-    }
-
-    /**
-     * @return string A user-specified, human-readable name for the trigger.
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies the SIP Domain
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string HTTP method used with voice_fallback_url
-     */
-    protected function getVoiceFallbackMethod() {
-        return $this->properties['voiceFallbackMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request if an error occurs in executing TwiML
-     */
-    protected function getVoiceFallbackUrl() {
-        return $this->properties['voiceFallbackUrl'];
-    }
-
-    /**
-     * @return string HTTP method to use with voice_url
-     */
-    protected function getVoiceMethod() {
-        return $this->properties['voiceMethod'];
-    }
-
-    /**
-     * @return string The voice_status_callback_method
-     */
-    protected function getVoiceStatusCallbackMethod() {
-        return $this->properties['voiceStatusCallbackMethod'];
-    }
-
-    /**
-     * @return string URL that Twilio will request with status updates
-     */
-    protected function getVoiceStatusCallbackUrl() {
-        return $this->properties['voiceStatusCallbackUrl'];
-    }
-
-    /**
-     * @return string URL Twilio will request when receiving a call
-     */
-    protected function getVoiceUrl() {
-        return $this->properties['voiceUrl'];
-    }
-
-    /**
      * Fetch a DomainInstance
      * 
      * @return DomainInstance Fetched DomainInstance
@@ -201,9 +96,10 @@ class DomainInstance extends InstanceResource {
     /**
      * Update the DomainInstance
      * 
+     * @param array $options Optional Arguments
      * @return DomainInstance Updated DomainInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -245,8 +141,7 @@ class DomainInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -30,6 +30,7 @@ class ShortCodeContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SMS/ShortCodes/' . $sid . '.json';
     }
 
@@ -58,9 +59,12 @@ class ShortCodeContext extends InstanceContext {
     /**
      * Update the ShortCodeInstance
      * 
+     * @param array $options Optional Arguments
      * @return ShortCodeInstance Updated ShortCodeInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'ApiVersion' => $options['apiVersion'],

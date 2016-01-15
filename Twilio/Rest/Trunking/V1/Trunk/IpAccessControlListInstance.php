@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Trunking\V1\Trunk;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -19,8 +20,8 @@ use Twilio\Version;
  * @property string sid
  * @property string trunkSid
  * @property string friendlyName
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string url
  */
 class IpAccessControlListInstance extends InstanceResource {
@@ -38,8 +39,8 @@ class IpAccessControlListInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'trunkSid' => $payload['trunk_sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         
@@ -69,55 +70,6 @@ class IpAccessControlListInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The trunk_sid
-     */
-    protected function getTrunkSid() {
-        return $this->properties['trunkSid'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a IpAccessControlListInstance
      * 
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
@@ -144,8 +96,7 @@ class IpAccessControlListInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

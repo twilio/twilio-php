@@ -30,6 +30,7 @@ class OriginationUrlContext extends InstanceContext {
             'trunkSid' => $trunkSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Trunks/' . $trunkSid . '/OriginationUrls/' . $sid . '';
     }
 
@@ -67,9 +68,12 @@ class OriginationUrlContext extends InstanceContext {
     /**
      * Update the OriginationUrlInstance
      * 
+     * @param array $options Optional Arguments
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Weight' => $options['weight'],
             'Priority' => $options['priority'],

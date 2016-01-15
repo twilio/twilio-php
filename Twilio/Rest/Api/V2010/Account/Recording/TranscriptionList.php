@@ -30,6 +30,7 @@ class TranscriptionList extends ListResource {
             'accountSid' => $accountSid,
             'recordingSid' => $recordingSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Recordings/' . $recordingSid . '/Transcriptions.json';
     }
 

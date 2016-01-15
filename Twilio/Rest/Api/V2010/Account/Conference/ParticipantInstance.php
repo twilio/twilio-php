@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Conference;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string callSid
  * @property string conferenceSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string endConferenceOnExit
  * @property string muted
  * @property string startConferenceOnEnter
@@ -39,8 +40,8 @@ class ParticipantInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'callSid' => $payload['call_sid'],
             'conferenceSid' => $payload['conference_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'endConferenceOnExit' => $payload['end_conference_on_exit'],
             'muted' => $payload['muted'],
             'startConferenceOnEnter' => $payload['start_conference_on_enter'],
@@ -71,69 +72,6 @@ class ParticipantInstance extends InstanceResource {
         }
         
         return $this->context;
-    }
-
-    /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this call
-     */
-    protected function getCallSid() {
-        return $this->properties['callSid'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this conference
-     */
-    protected function getConferenceSid() {
-        return $this->properties['conferenceSid'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string Indicates if the endConferenceOnExit was set
-     */
-    protected function getEndConferenceOnExit() {
-        return $this->properties['endConferenceOnExit'];
-    }
-
-    /**
-     * @return string Indicates if the participant is muted
-     */
-    protected function getMuted() {
-        return $this->properties['muted'];
-    }
-
-    /**
-     * @return string Indicates if the startConferenceOnEnter attribute was set
-     */
-    protected function getStartConferenceOnEnter() {
-        return $this->properties['startConferenceOnEnter'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
     }
 
     /**
@@ -175,8 +113,7 @@ class ParticipantInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

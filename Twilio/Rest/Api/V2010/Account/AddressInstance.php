@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\Address;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string city
  * @property string customerName
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string isoCountry
  * @property string postalCode
@@ -43,8 +43,8 @@ class AddressInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'city' => $payload['city'],
             'customerName' => $payload['customer_name'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'isoCountry' => $payload['iso_country'],
             'postalCode' => $payload['postal_code'],
@@ -79,90 +79,6 @@ class AddressInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The city
-     */
-    protected function getCity() {
-        return $this->properties['city'];
-    }
-
-    /**
-     * @return string The customer_name
-     */
-    protected function getCustomerName() {
-        return $this->properties['customerName'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The iso_country
-     */
-    protected function getIsoCountry() {
-        return $this->properties['isoCountry'];
-    }
-
-    /**
-     * @return string The postal_code
-     */
-    protected function getPostalCode() {
-        return $this->properties['postalCode'];
-    }
-
-    /**
-     * @return string The region
-     */
-    protected function getRegion() {
-        return $this->properties['region'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The street
-     */
-    protected function getStreet() {
-        return $this->properties['street'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Deletes the AddressInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
@@ -183,9 +99,10 @@ class AddressInstance extends InstanceResource {
     /**
      * Update the AddressInstance
      * 
+     * @param array $options Optional Arguments
      * @return AddressInstance Updated AddressInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -209,8 +126,7 @@ class AddressInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

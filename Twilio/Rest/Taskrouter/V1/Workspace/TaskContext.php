@@ -37,6 +37,7 @@ class TaskContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks/' . $sid . '';
     }
 
@@ -65,9 +66,12 @@ class TaskContext extends InstanceContext {
     /**
      * Update the TaskInstance
      * 
+     * @param array $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Attributes' => $options['attributes'],
             'AssignmentStatus' => $options['assignmentStatus'],

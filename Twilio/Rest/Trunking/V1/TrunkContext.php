@@ -44,6 +44,7 @@ class TrunkContext extends InstanceContext {
         $this->solution = array(
             'sid' => $sid,
         );
+        
         $this->uri = '/Trunks/' . $sid . '';
     }
 
@@ -80,9 +81,12 @@ class TrunkContext extends InstanceContext {
     /**
      * Update the TrunkInstance
      * 
+     * @param array $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'DomainName' => $options['domainName'],

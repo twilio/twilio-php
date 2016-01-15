@@ -28,6 +28,7 @@ class ActivityList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Activities';
     }
 

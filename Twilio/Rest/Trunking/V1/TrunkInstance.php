@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Trunking\V1;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Trunking\V1\Trunk;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,8 +25,8 @@ use Twilio\Version;
  * @property string recording
  * @property string authType
  * @property string authTypeSet
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string sid
  * @property string url
  * @property string links
@@ -51,8 +51,8 @@ class TrunkInstance extends InstanceResource {
             'recording' => $payload['recording'],
             'authType' => $payload['auth_type'],
             'authTypeSet' => $payload['auth_type_set'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'sid' => $payload['sid'],
             'url' => $payload['url'],
             'links' => $payload['links'],
@@ -81,104 +81,6 @@ class TrunkInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The domain_name
-     */
-    protected function getDomainName() {
-        return $this->properties['domainName'];
-    }
-
-    /**
-     * @return string The disaster_recovery_method
-     */
-    protected function getDisasterRecoveryMethod() {
-        return $this->properties['disasterRecoveryMethod'];
-    }
-
-    /**
-     * @return string The disaster_recovery_url
-     */
-    protected function getDisasterRecoveryUrl() {
-        return $this->properties['disasterRecoveryUrl'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The secure
-     */
-    protected function getSecure() {
-        return $this->properties['secure'];
-    }
-
-    /**
-     * @return string The recording
-     */
-    protected function getRecording() {
-        return $this->properties['recording'];
-    }
-
-    /**
-     * @return string The auth_type
-     */
-    protected function getAuthType() {
-        return $this->properties['authType'];
-    }
-
-    /**
-     * @return string The auth_type_set
-     */
-    protected function getAuthTypeSet() {
-        return $this->properties['authTypeSet'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
-     * @return string The links
-     */
-    protected function getLinks() {
-        return $this->properties['links'];
-    }
-
-    /**
      * Fetch a TrunkInstance
      * 
      * @return TrunkInstance Fetched TrunkInstance
@@ -199,9 +101,10 @@ class TrunkInstance extends InstanceResource {
     /**
      * Update the TrunkInstance
      * 
+     * @param array $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -252,8 +155,7 @@ class TrunkInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -37,6 +37,7 @@ class TaskQueueContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/TaskQueues/' . $sid . '';
     }
 
@@ -65,9 +66,12 @@ class TaskQueueContext extends InstanceContext {
     /**
      * Update the TaskQueueInstance
      * 
+     * @param array $options Optional Arguments
      * @return TaskQueueInstance Updated TaskQueueInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'TargetWorkers' => $options['targetWorkers'],

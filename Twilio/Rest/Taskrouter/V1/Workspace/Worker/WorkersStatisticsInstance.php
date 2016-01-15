@@ -60,39 +60,12 @@ class WorkersStatisticsInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The cumulative
-     */
-    protected function getCumulative() {
-        return $this->properties['cumulative'];
-    }
-
-    /**
-     * @return string The realtime
-     */
-    protected function getRealtime() {
-        return $this->properties['realtime'];
-    }
-
-    /**
-     * @return string The workspace_sid
-     */
-    protected function getWorkspaceSid() {
-        return $this->properties['workspaceSid'];
-    }
-
-    /**
      * Fetch a WorkersStatisticsInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      */
-    public function fetch($options) {
+    public function fetch(array $options = array()) {
         return $this->proxy()->fetch(
             $options
         );
@@ -107,8 +80,7 @@ class WorkersStatisticsInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

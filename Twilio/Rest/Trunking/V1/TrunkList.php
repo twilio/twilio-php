@@ -25,15 +25,19 @@ class TrunkList extends ListResource {
         
         // Path Solution
         $this->solution = array();
+        
         $this->uri = '/Trunks';
     }
 
     /**
      * Create a new TrunkInstance
      * 
+     * @param array $options Optional Arguments
      * @return TrunkInstance Newly created TrunkInstance
      */
-    public function create($options) {
+    public function create(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'DomainName' => $options['domainName'],

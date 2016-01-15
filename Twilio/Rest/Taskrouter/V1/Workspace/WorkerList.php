@@ -35,6 +35,7 @@ class WorkerList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Workers';
     }
 
@@ -42,9 +43,12 @@ class WorkerList extends ListResource {
      * Create a new WorkerInstance
      * 
      * @param string $friendlyName The friendly_name
+     * @param array $options Optional Arguments
      * @return WorkerInstance Newly created WorkerInstance
      */
-    public function create($friendlyName, $options) {
+    public function create($friendlyName, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'ActivitySid' => $options['activitySid'],

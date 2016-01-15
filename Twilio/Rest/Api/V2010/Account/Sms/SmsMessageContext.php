@@ -30,6 +30,7 @@ class SmsMessageContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SMS/Messages/' . $sid . '.json';
     }
 
@@ -67,9 +68,12 @@ class SmsMessageContext extends InstanceContext {
     /**
      * Update the SmsMessageInstance
      * 
+     * @param array $options Optional Arguments
      * @return SmsMessageInstance Updated SmsMessageInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Body' => $options['body'],
         ));

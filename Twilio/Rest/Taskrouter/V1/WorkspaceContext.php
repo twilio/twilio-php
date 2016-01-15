@@ -53,6 +53,7 @@ class WorkspaceContext extends InstanceContext {
         $this->solution = array(
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $sid . '';
     }
 
@@ -80,9 +81,12 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Update the WorkspaceInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'DefaultActivitySid' => $options['defaultActivitySid'],
             'EventCallbackUrl' => $options['eventCallbackUrl'],

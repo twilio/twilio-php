@@ -31,6 +31,7 @@ class TollFreeList extends ListResource {
             'accountSid' => $accountSid,
             'countryCode' => $countryCode,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/AvailablePhoneNumbers/' . $countryCode . '/TollFree.json';
     }
 

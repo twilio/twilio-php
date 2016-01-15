@@ -30,6 +30,7 @@ class CredentialListMappingList extends ListResource {
             'accountSid' => $accountSid,
             'domainSid' => $domainSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains/' . $domainSid . '/CredentialListMappings.json';
     }
 

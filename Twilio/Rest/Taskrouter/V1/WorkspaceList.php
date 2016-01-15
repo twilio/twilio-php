@@ -25,6 +25,7 @@ class WorkspaceList extends ListResource {
         
         // Path Solution
         $this->solution = array();
+        
         $this->uri = '/Workspaces';
     }
 
@@ -32,9 +33,12 @@ class WorkspaceList extends ListResource {
      * Create a new WorkspaceInstance
      * 
      * @param string $friendlyName The friendly_name
+     * @param array $options Optional Arguments
      * @return WorkspaceInstance Newly created WorkspaceInstance
      */
-    public function create($friendlyName, $options) {
+    public function create($friendlyName, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'EventCallbackUrl' => $options['eventCallbackUrl'],

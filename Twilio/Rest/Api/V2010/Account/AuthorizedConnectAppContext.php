@@ -30,6 +30,7 @@ class AuthorizedConnectAppContext extends InstanceContext {
             'accountSid' => $accountSid,
             'connectAppSid' => $connectAppSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/AuthorizedConnectApps/' . $connectAppSid . '.json';
     }
 

@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Taskrouter\V1\Workspace\Task;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -20,8 +20,8 @@ use Twilio\Version;
  * @property string age
  * @property task.Status assignmentStatus
  * @property string attributes
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string priority
  * @property string reason
  * @property string sid
@@ -45,8 +45,8 @@ class TaskInstance extends InstanceResource {
             'age' => $payload['age'],
             'assignmentStatus' => $payload['assignment_status'],
             'attributes' => $payload['attributes'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'priority' => $payload['priority'],
             'reason' => $payload['reason'],
             'sid' => $payload['sid'],
@@ -81,97 +81,6 @@ class TaskInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The age
-     */
-    protected function getAge() {
-        return $this->properties['age'];
-    }
-
-    /**
-     * @return task.Status The assignment_status
-     */
-    protected function getAssignmentStatus() {
-        return $this->properties['assignmentStatus'];
-    }
-
-    /**
-     * @return string The attributes
-     */
-    protected function getAttributes() {
-        return $this->properties['attributes'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The priority
-     */
-    protected function getPriority() {
-        return $this->properties['priority'];
-    }
-
-    /**
-     * @return string The reason
-     */
-    protected function getReason() {
-        return $this->properties['reason'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The task_queue_sid
-     */
-    protected function getTaskQueueSid() {
-        return $this->properties['taskQueueSid'];
-    }
-
-    /**
-     * @return string The timeout
-     */
-    protected function getTimeout() {
-        return $this->properties['timeout'];
-    }
-
-    /**
-     * @return string The workflow_sid
-     */
-    protected function getWorkflowSid() {
-        return $this->properties['workflowSid'];
-    }
-
-    /**
-     * @return string The workspace_sid
-     */
-    protected function getWorkspaceSid() {
-        return $this->properties['workspaceSid'];
-    }
-
-    /**
      * Fetch a TaskInstance
      * 
      * @return TaskInstance Fetched TaskInstance
@@ -183,9 +92,10 @@ class TaskInstance extends InstanceResource {
     /**
      * Update the TaskInstance
      * 
+     * @param array $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -218,8 +128,7 @@ class TaskInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

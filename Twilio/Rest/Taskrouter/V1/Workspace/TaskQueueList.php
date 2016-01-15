@@ -35,6 +35,7 @@ class TaskQueueList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/TaskQueues';
     }
 
@@ -44,9 +45,12 @@ class TaskQueueList extends ListResource {
      * @param string $friendlyName The friendly_name
      * @param string $reservationActivitySid The reservation_activity_sid
      * @param string $assignmentActivitySid The assignment_activity_sid
+     * @param array $options Optional Arguments
      * @return TaskQueueInstance Newly created TaskQueueInstance
      */
-    public function create($friendlyName, $reservationActivitySid, $assignmentActivitySid, $options) {
+    public function create($friendlyName, $reservationActivitySid, $assignmentActivitySid, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'ReservationActivitySid' => $reservationActivitySid,

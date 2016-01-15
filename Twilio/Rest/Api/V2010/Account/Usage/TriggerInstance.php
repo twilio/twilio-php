@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Usage;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -20,9 +21,9 @@ use Twilio\Version;
  * @property string callbackMethod
  * @property string callbackUrl
  * @property string currentValue
- * @property string dateCreated
- * @property string dateFired
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateFired
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property trigger.Recurring recurring
  * @property string sid
@@ -48,9 +49,9 @@ class TriggerInstance extends InstanceResource {
             'callbackMethod' => $payload['callback_method'],
             'callbackUrl' => $payload['callback_url'],
             'currentValue' => $payload['current_value'],
-            'dateCreated' => $payload['date_created'],
-            'dateFired' => $payload['date_fired'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateFired' => Deserialize::iso8601DateTime($payload['date_fired']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'recurring' => $payload['recurring'],
             'sid' => $payload['sid'],
@@ -86,119 +87,6 @@ class TriggerInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account this trigger monitors.
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string HTTP method to use with callback_url
-     */
-    protected function getCallbackMethod() {
-        return $this->properties['callbackMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request when the trigger fires
-     */
-    protected function getCallbackUrl() {
-        return $this->properties['callbackUrl'];
-    }
-
-    /**
-     * @return string The current value of the field the trigger is watching.
-     */
-    protected function getCurrentValue() {
-        return $this->properties['currentValue'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date the trigger was last fired
-     */
-    protected function getDateFired() {
-        return $this->properties['dateFired'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string A user-specified, human-readable name for the trigger.
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return trigger.Recurring How this trigger recurs
-     */
-    protected function getRecurring() {
-        return $this->properties['recurring'];
-    }
-
-    /**
-     * @return string The trigger's unique Sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return trigger.TriggerField The field in the UsageRecord that fires the
-     *                              trigger
-     */
-    protected function getTriggerBy() {
-        return $this->properties['triggerBy'];
-    }
-
-    /**
-     * @return string the value at which the trigger will fire
-     */
-    protected function getTriggerValue() {
-        return $this->properties['triggerValue'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return trigger.UsageCategory The usage category the trigger watches
-     */
-    protected function getUsageCategory() {
-        return $this->properties['usageCategory'];
-    }
-
-    /**
-     * @return string The URI of the UsageRecord this trigger is watching
-     */
-    protected function getUsageRecordUri() {
-        return $this->properties['usageRecordUri'];
-    }
-
-    /**
      * Fetch a TriggerInstance
      * 
      * @return TriggerInstance Fetched TriggerInstance
@@ -210,9 +98,10 @@ class TriggerInstance extends InstanceResource {
     /**
      * Update the TriggerInstance
      * 
+     * @param array $options Optional Arguments
      * @return TriggerInstance Updated TriggerInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -236,8 +125,7 @@ class TriggerInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

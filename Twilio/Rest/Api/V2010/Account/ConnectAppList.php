@@ -28,6 +28,7 @@ class ConnectAppList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/ConnectApps.json';
     }
 

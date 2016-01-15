@@ -57,6 +57,7 @@ class RecordList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Usage/Records.json';
     }
 

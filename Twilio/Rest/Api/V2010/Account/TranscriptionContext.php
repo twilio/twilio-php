@@ -30,6 +30,7 @@ class TranscriptionContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Transcriptions/' . $sid . '.json';
     }
 

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -21,7 +22,7 @@ use Twilio\Version;
  * @property string actorUrl
  * @property string description
  * @property string eventData
- * @property string eventDate
+ * @property \DateTime eventDate
  * @property string eventType
  * @property string resourceSid
  * @property string resourceType
@@ -48,7 +49,7 @@ class EventInstance extends InstanceResource {
             'actorUrl' => $payload['actor_url'],
             'description' => $payload['description'],
             'eventData' => $payload['event_data'],
-            'eventDate' => $payload['event_date'],
+            'eventDate' => Deserialize::iso8601DateTime($payload['event_date']),
             'eventType' => $payload['event_type'],
             'resourceSid' => $payload['resource_sid'],
             'resourceType' => $payload['resource_type'],
@@ -84,111 +85,6 @@ class EventInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The actor_sid
-     */
-    protected function getActorSid() {
-        return $this->properties['actorSid'];
-    }
-
-    /**
-     * @return string The actor_type
-     */
-    protected function getActorType() {
-        return $this->properties['actorType'];
-    }
-
-    /**
-     * @return string The actor_url
-     */
-    protected function getActorUrl() {
-        return $this->properties['actorUrl'];
-    }
-
-    /**
-     * @return string The description
-     */
-    protected function getDescription() {
-        return $this->properties['description'];
-    }
-
-    /**
-     * @return string The event_data
-     */
-    protected function getEventData() {
-        return $this->properties['eventData'];
-    }
-
-    /**
-     * @return string The event_date
-     */
-    protected function getEventDate() {
-        return $this->properties['eventDate'];
-    }
-
-    /**
-     * @return string The event_type
-     */
-    protected function getEventType() {
-        return $this->properties['eventType'];
-    }
-
-    /**
-     * @return string The resource_sid
-     */
-    protected function getResourceSid() {
-        return $this->properties['resourceSid'];
-    }
-
-    /**
-     * @return string The resource_type
-     */
-    protected function getResourceType() {
-        return $this->properties['resourceType'];
-    }
-
-    /**
-     * @return string The resource_url
-     */
-    protected function getResourceUrl() {
-        return $this->properties['resourceUrl'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The source
-     */
-    protected function getSource() {
-        return $this->properties['source'];
-    }
-
-    /**
-     * @return string The source_ip_address
-     */
-    protected function getSourceIpAddress() {
-        return $this->properties['sourceIpAddress'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a EventInstance
      * 
      * @return EventInstance Fetched EventInstance
@@ -206,8 +102,7 @@ class EventInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

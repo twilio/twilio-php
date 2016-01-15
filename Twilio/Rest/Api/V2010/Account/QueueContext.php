@@ -37,6 +37,7 @@ class QueueContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Queues/' . $sid . '.json';
     }
 
@@ -65,9 +66,12 @@ class QueueContext extends InstanceContext {
     /**
      * Update the QueueInstance
      * 
+     * @param array $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'MaxSize' => $options['maxSize'],

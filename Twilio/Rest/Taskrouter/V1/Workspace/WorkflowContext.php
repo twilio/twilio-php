@@ -37,6 +37,7 @@ class WorkflowContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Workflows/' . $sid . '';
     }
 
@@ -65,9 +66,12 @@ class WorkflowContext extends InstanceContext {
     /**
      * Update the WorkflowInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkflowInstance Updated WorkflowInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'AssignmentCallbackUrl' => $options['assignmentCallbackUrl'],

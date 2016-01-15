@@ -60,39 +60,12 @@ class PhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * @return string The country_code
-     */
-    protected function getCountryCode() {
-        return $this->properties['countryCode'];
-    }
-
-    /**
-     * @return string The phone_number
-     */
-    protected function getPhoneNumber() {
-        return $this->properties['phoneNumber'];
-    }
-
-    /**
-     * @return string The national_format
-     */
-    protected function getNationalFormat() {
-        return $this->properties['nationalFormat'];
-    }
-
-    /**
-     * @return string The carrier
-     */
-    protected function getCarrier() {
-        return $this->properties['carrier'];
-    }
-
-    /**
      * Fetch a PhoneNumberInstance
      * 
+     * @param array $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      */
-    public function fetch($options) {
+    public function fetch(array $options = array()) {
         return $this->proxy()->fetch(
             $options
         );
@@ -107,8 +80,7 @@ class PhoneNumberInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

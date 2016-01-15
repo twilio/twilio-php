@@ -30,6 +30,7 @@ class FeedbackContext extends InstanceContext {
             'accountSid' => $accountSid,
             'callSid' => $callSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Calls/' . $callSid . '/Feedback.json';
     }
 
@@ -37,9 +38,12 @@ class FeedbackContext extends InstanceContext {
      * Create a new FeedbackInstance
      * 
      * @param string $qualityScore The quality_score
+     * @param array $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      */
-    public function create($qualityScore, $options) {
+    public function create($qualityScore, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'QualityScore' => $qualityScore,
             'Issue' => $options['issue'],
@@ -86,9 +90,12 @@ class FeedbackContext extends InstanceContext {
      * Update the FeedbackInstance
      * 
      * @param string $qualityScore An integer from 1 to 5
+     * @param array $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      */
-    public function update($qualityScore, $options) {
+    public function update($qualityScore, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'QualityScore' => $qualityScore,
             'Issue' => $options['issue'],

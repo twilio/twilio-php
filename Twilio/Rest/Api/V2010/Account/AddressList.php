@@ -28,6 +28,7 @@ class AddressList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Addresses.json';
     }
 
@@ -40,9 +41,12 @@ class AddressList extends ListResource {
      * @param string $region The region
      * @param string $postalCode The postal_code
      * @param string $isoCountry The iso_country
+     * @param array $options Optional Arguments
      * @return AddressInstance Newly created AddressInstance
      */
-    public function create($customerName, $street, $city, $region, $postalCode, $isoCountry, $options) {
+    public function create($customerName, $street, $city, $region, $postalCode, $isoCountry, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'CustomerName' => $customerName,
             'Street' => $street,

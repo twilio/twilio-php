@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Taskrouter\V1\Workspace\Workflow;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string assignmentCallbackUrl
  * @property string configuration
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string documentContentType
  * @property string fallbackAssignmentCallbackUrl
  * @property string friendlyName
@@ -42,8 +42,8 @@ class WorkflowInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'assignmentCallbackUrl' => $payload['assignment_callback_url'],
             'configuration' => $payload['configuration'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'documentContentType' => $payload['document_content_type'],
             'fallbackAssignmentCallbackUrl' => $payload['fallback_assignment_callback_url'],
             'friendlyName' => $payload['friendly_name'],
@@ -77,83 +77,6 @@ class WorkflowInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The assignment_callback_url
-     */
-    protected function getAssignmentCallbackUrl() {
-        return $this->properties['assignmentCallbackUrl'];
-    }
-
-    /**
-     * @return string The configuration
-     */
-    protected function getConfiguration() {
-        return $this->properties['configuration'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The document_content_type
-     */
-    protected function getDocumentContentType() {
-        return $this->properties['documentContentType'];
-    }
-
-    /**
-     * @return string The fallback_assignment_callback_url
-     */
-    protected function getFallbackAssignmentCallbackUrl() {
-        return $this->properties['fallbackAssignmentCallbackUrl'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The task_reservation_timeout
-     */
-    protected function getTaskReservationTimeout() {
-        return $this->properties['taskReservationTimeout'];
-    }
-
-    /**
-     * @return string The workspace_sid
-     */
-    protected function getWorkspaceSid() {
-        return $this->properties['workspaceSid'];
-    }
-
-    /**
      * Fetch a WorkflowInstance
      * 
      * @return WorkflowInstance Fetched WorkflowInstance
@@ -165,9 +88,10 @@ class WorkflowInstance extends InstanceResource {
     /**
      * Update the WorkflowInstance
      * 
+     * @param array $options Optional Arguments
      * @return WorkflowInstance Updated WorkflowInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -200,8 +124,7 @@ class WorkflowInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

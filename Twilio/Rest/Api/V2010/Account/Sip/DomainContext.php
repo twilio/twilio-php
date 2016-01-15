@@ -40,6 +40,7 @@ class DomainContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains/' . $sid . '.json';
     }
 
@@ -68,9 +69,12 @@ class DomainContext extends InstanceContext {
     /**
      * Update the DomainInstance
      * 
+     * @param array $options Optional Arguments
      * @return DomainInstance Updated DomainInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'ApiVersion' => $options['apiVersion'],
             'FriendlyName' => $options['friendlyName'],

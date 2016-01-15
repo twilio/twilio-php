@@ -9,16 +9,16 @@
 
 namespace Twilio\Rest\Api\V2010;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string authToken
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string ownerAccountSid
  * @property string sid
@@ -39,8 +39,8 @@ class AccountInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'authToken' => $payload['auth_token'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'ownerAccountSid' => $payload['owner_account_sid'],
             'sid' => $payload['sid'],
@@ -73,78 +73,6 @@ class AccountInstance extends InstanceResource {
     }
 
     /**
-     * @return string The authorization token for this account
-     */
-    protected function getAuthToken() {
-        return $this->properties['authToken'];
-    }
-
-    /**
-     * @return string The date this account was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this account was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string A human readable description of this account
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The unique 34 character id representing the parent of this
-     *                account
-     */
-    protected function getOwnerAccountSid() {
-        return $this->properties['ownerAccountSid'];
-    }
-
-    /**
-     * @return string A 34 character string that uniquely identifies this resource.
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return account.Status The status of this account
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
-    }
-
-    /**
-     * @return string Account Instance Subresources
-     */
-    protected function getSubresourceUris() {
-        return $this->properties['subresourceUris'];
-    }
-
-    /**
-     * @return account.Type The type of this account
-     */
-    protected function getType() {
-        return $this->properties['type'];
-    }
-
-    /**
-     * @return string The URI for this resource, relative to
-     *                `https://api.twilio.com`
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a AccountInstance
      * 
      * @return AccountInstance Fetched AccountInstance
@@ -156,9 +84,10 @@ class AccountInstance extends InstanceResource {
     /**
      * Update the AccountInstance
      * 
+     * @param array $options Optional Arguments
      * @return AccountInstance Updated AccountInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -353,8 +282,7 @@ class AccountInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

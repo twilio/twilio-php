@@ -29,6 +29,7 @@ class SmsMessageList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SMS/Messages.json';
     }
 
@@ -37,9 +38,12 @@ class SmsMessageList extends ListResource {
      * 
      * @param string $to The to
      * @param string $from The from
+     * @param array $options Optional Arguments
      * @return SmsMessageInstance Newly created SmsMessageInstance
      */
-    public function create($to, $from, $options) {
+    public function create($to, $from, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'To' => $to,
             'From' => $from,

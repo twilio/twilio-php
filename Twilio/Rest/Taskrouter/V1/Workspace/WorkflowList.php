@@ -28,6 +28,7 @@ class WorkflowList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/Workflows';
     }
 
@@ -37,9 +38,12 @@ class WorkflowList extends ListResource {
      * @param string $friendlyName The friendly_name
      * @param string $configuration The configuration
      * @param string $assignmentCallbackUrl The assignment_callback_url
+     * @param array $options Optional Arguments
      * @return WorkflowInstance Newly created WorkflowInstance
      */
-    public function create($friendlyName, $configuration, $assignmentCallbackUrl, $options) {
+    public function create($friendlyName, $configuration, $assignmentCallbackUrl, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Configuration' => $configuration,

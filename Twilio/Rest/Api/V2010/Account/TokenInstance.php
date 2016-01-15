@@ -9,14 +9,15 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string iceServers
  * @property string password
  * @property string ttl
@@ -34,8 +35,8 @@ class TokenInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'iceServers' => $payload['ice_servers'],
             'password' => $payload['password'],
             'ttl' => $payload['ttl'],
@@ -48,55 +49,6 @@ class TokenInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string An array representing the ephemeral credentials
-     */
-    protected function getIceServers() {
-        return $this->properties['iceServers'];
-    }
-
-    /**
-     * @return string The temporary password used for authenticating
-     */
-    protected function getPassword() {
-        return $this->properties['password'];
-    }
-
-    /**
-     * @return string The duration in seconds the credentials are valid
-     */
-    protected function getTtl() {
-        return $this->properties['ttl'];
-    }
-
-    /**
-     * @return string The temporary username that uniquely identifies a Token.
-     */
-    protected function getUsername() {
-        return $this->properties['username'];
-    }
-
-    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access
@@ -105,8 +57,7 @@ class TokenInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

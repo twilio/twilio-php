@@ -31,6 +31,7 @@ class ParticipantList extends ListResource {
             'accountSid' => $accountSid,
             'conferenceSid' => $conferenceSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Conferences/' . $conferenceSid . '/Participants.json';
     }
 

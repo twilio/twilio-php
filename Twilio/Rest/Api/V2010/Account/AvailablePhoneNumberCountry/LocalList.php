@@ -31,6 +31,7 @@ class LocalList extends ListResource {
             'accountSid' => $accountSid,
             'countryCode' => $countryCode,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/AvailablePhoneNumbers/' . $countryCode . '/Local.json';
     }
 

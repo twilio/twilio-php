@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,16 +19,16 @@ use Twilio\Version;
  * @property string accountSid
  * @property string callCount
  * @property string callFeedbackCount
- * @property string dateCreated
- * @property string dateUpdated
- * @property string endDate
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
+ * @property \DateTime endDate
  * @property string includeSubaccounts
  * @property string issues
  * @property string qualityScoreAverage
  * @property string qualityScoreMedian
  * @property string qualityScoreStandardDeviation
  * @property string sid
- * @property string startDate
+ * @property \DateTime startDate
  * @property feedback_summary.Status status
  */
 class FeedbackSummaryInstance extends InstanceResource {
@@ -44,16 +45,16 @@ class FeedbackSummaryInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'callCount' => $payload['call_count'],
             'callFeedbackCount' => $payload['call_feedback_count'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
-            'endDate' => $payload['end_date'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'endDate' => Deserialize::iso8601DateTime($payload['end_date']),
             'includeSubaccounts' => $payload['include_subaccounts'],
             'issues' => $payload['issues'],
             'qualityScoreAverage' => $payload['quality_score_average'],
             'qualityScoreMedian' => $payload['quality_score_median'],
             'qualityScoreStandardDeviation' => $payload['quality_score_standard_deviation'],
             'sid' => $payload['sid'],
-            'startDate' => $payload['start_date'],
+            'startDate' => Deserialize::iso8601DateTime($payload['start_date']),
             'status' => $payload['status'],
         );
         
@@ -79,104 +80,6 @@ class FeedbackSummaryInstance extends InstanceResource {
         }
         
         return $this->context;
-    }
-
-    /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The call_count
-     */
-    protected function getCallCount() {
-        return $this->properties['callCount'];
-    }
-
-    /**
-     * @return string The call_feedback_count
-     */
-    protected function getCallFeedbackCount() {
-        return $this->properties['callFeedbackCount'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The end_date
-     */
-    protected function getEndDate() {
-        return $this->properties['endDate'];
-    }
-
-    /**
-     * @return string The include_subaccounts
-     */
-    protected function getIncludeSubaccounts() {
-        return $this->properties['includeSubaccounts'];
-    }
-
-    /**
-     * @return string The issues
-     */
-    protected function getIssues() {
-        return $this->properties['issues'];
-    }
-
-    /**
-     * @return string The quality_score_average
-     */
-    protected function getQualityScoreAverage() {
-        return $this->properties['qualityScoreAverage'];
-    }
-
-    /**
-     * @return string The quality_score_median
-     */
-    protected function getQualityScoreMedian() {
-        return $this->properties['qualityScoreMedian'];
-    }
-
-    /**
-     * @return string The quality_score_standard_deviation
-     */
-    protected function getQualityScoreStandardDeviation() {
-        return $this->properties['qualityScoreStandardDeviation'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The start_date
-     */
-    protected function getStartDate() {
-        return $this->properties['startDate'];
-    }
-
-    /**
-     * @return feedback_summary.Status The status
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
     }
 
     /**
@@ -206,8 +109,7 @@ class FeedbackSummaryInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

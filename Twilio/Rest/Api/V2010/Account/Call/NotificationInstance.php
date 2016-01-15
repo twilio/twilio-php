@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,11 +19,11 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string callSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string errorCode
  * @property string log
- * @property string messageDate
+ * @property \DateTime messageDate
  * @property string messageText
  * @property string moreInfo
  * @property string requestMethod
@@ -47,11 +48,11 @@ class NotificationInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'callSid' => $payload['call_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'errorCode' => $payload['error_code'],
             'log' => $payload['log'],
-            'messageDate' => $payload['message_date'],
+            'messageDate' => Deserialize::iso8601DateTime($payload['message_date']),
             'messageText' => $payload['message_text'],
             'moreInfo' => $payload['more_info'],
             'requestMethod' => $payload['request_method'],
@@ -90,125 +91,6 @@ class NotificationInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The call_sid
-     */
-    protected function getCallSid() {
-        return $this->properties['callSid'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The error_code
-     */
-    protected function getErrorCode() {
-        return $this->properties['errorCode'];
-    }
-
-    /**
-     * @return string The log
-     */
-    protected function getLog() {
-        return $this->properties['log'];
-    }
-
-    /**
-     * @return string The message_date
-     */
-    protected function getMessageDate() {
-        return $this->properties['messageDate'];
-    }
-
-    /**
-     * @return string The message_text
-     */
-    protected function getMessageText() {
-        return $this->properties['messageText'];
-    }
-
-    /**
-     * @return string The more_info
-     */
-    protected function getMoreInfo() {
-        return $this->properties['moreInfo'];
-    }
-
-    /**
-     * @return string The request_method
-     */
-    protected function getRequestMethod() {
-        return $this->properties['requestMethod'];
-    }
-
-    /**
-     * @return string The request_url
-     */
-    protected function getRequestUrl() {
-        return $this->properties['requestUrl'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The request_variables
-     */
-    protected function getRequestVariables() {
-        return $this->properties['requestVariables'];
-    }
-
-    /**
-     * @return string The response_body
-     */
-    protected function getResponseBody() {
-        return $this->properties['responseBody'];
-    }
-
-    /**
-     * @return string The response_headers
-     */
-    protected function getResponseHeaders() {
-        return $this->properties['responseHeaders'];
-    }
-
-    /**
      * Fetch a NotificationInstance
      * 
      * @return NotificationInstance Fetched NotificationInstance
@@ -235,8 +117,7 @@ class NotificationInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Trunking\V1\Trunk;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -23,8 +24,8 @@ use Twilio\Version;
  * @property string sipUrl
  * @property string friendlyName
  * @property string priority
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string url
  */
 class OriginationUrlInstance extends InstanceResource {
@@ -46,8 +47,8 @@ class OriginationUrlInstance extends InstanceResource {
             'sipUrl' => $payload['sip_url'],
             'friendlyName' => $payload['friendly_name'],
             'priority' => $payload['priority'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         
@@ -76,83 +77,6 @@ class OriginationUrlInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The trunk_sid
-     */
-    protected function getTrunkSid() {
-        return $this->properties['trunkSid'];
-    }
-
-    /**
-     * @return string The weight
-     */
-    protected function getWeight() {
-        return $this->properties['weight'];
-    }
-
-    /**
-     * @return string The enabled
-     */
-    protected function getEnabled() {
-        return $this->properties['enabled'];
-    }
-
-    /**
-     * @return string The sip_url
-     */
-    protected function getSipUrl() {
-        return $this->properties['sipUrl'];
-    }
-
-    /**
-     * @return string The friendly_name
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The priority
-     */
-    protected function getPriority() {
-        return $this->properties['priority'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a OriginationUrlInstance
      * 
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
@@ -173,9 +97,10 @@ class OriginationUrlInstance extends InstanceResource {
     /**
      * Update the OriginationUrlInstance
      * 
+     * @param array $options Optional Arguments
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -190,8 +115,7 @@ class OriginationUrlInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

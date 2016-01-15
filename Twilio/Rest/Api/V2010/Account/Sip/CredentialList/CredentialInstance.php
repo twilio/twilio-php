@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip\CredentialList;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -19,8 +20,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string credentialListSid
  * @property string username
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string uri
  */
 class CredentialInstance extends InstanceResource {
@@ -38,8 +39,8 @@ class CredentialInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'credentialListSid' => $payload['credential_list_sid'],
             'username' => $payload['username'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'uri' => $payload['uri'],
         );
         
@@ -67,55 +68,6 @@ class CredentialInstance extends InstanceResource {
         }
         
         return $this->context;
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The credential_list_sid
-     */
-    protected function getCredentialListSid() {
-        return $this->properties['credentialListSid'];
-    }
-
-    /**
-     * @return string The username
-     */
-    protected function getUsername() {
-        return $this->properties['username'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
     }
 
     /**
@@ -159,8 +111,7 @@ class CredentialInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -42,15 +42,19 @@ class IncomingPhoneNumberList extends ListResource {
         $this->solution = array(
             'ownerAccountSid' => $ownerAccountSid,
         );
+        
         $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers.json';
     }
 
     /**
      * Create a new IncomingPhoneNumberInstance
      * 
+     * @param array $options Optional Arguments
      * @return IncomingPhoneNumberInstance Newly created IncomingPhoneNumberInstance
      */
-    public function create($options) {
+    public function create(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'PhoneNumber' => $options['phoneNumber'],
             'AreaCode' => $options['areaCode'],

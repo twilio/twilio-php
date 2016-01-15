@@ -37,6 +37,7 @@ class IpAccessControlListContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/IpAccessControlLists/' . $sid . '.json';
     }
 

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Usage;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Version;
@@ -20,10 +21,10 @@ use Twilio\Version;
  * @property string count
  * @property string countUnit
  * @property string description
- * @property string endDate
+ * @property \DateTime endDate
  * @property string price
  * @property string priceUnit
- * @property string startDate
+ * @property \DateTime startDate
  * @property string subresourceUris
  * @property string uri
  * @property string usage
@@ -46,10 +47,10 @@ class RecordInstance extends InstanceResource {
             'count' => $payload['count'],
             'countUnit' => $payload['count_unit'],
             'description' => $payload['description'],
-            'endDate' => $payload['end_date'],
+            'endDate' => Deserialize::iso8601DateTime($payload['end_date']),
             'price' => $payload['price'],
             'priceUnit' => $payload['price_unit'],
-            'startDate' => $payload['start_date'],
+            'startDate' => Deserialize::iso8601DateTime($payload['start_date']),
             'subresourceUris' => $payload['subresource_uris'],
             'uri' => $payload['uri'],
             'usage' => $payload['usage'],
@@ -62,104 +63,6 @@ class RecordInstance extends InstanceResource {
     }
 
     /**
-     * @return string The Account that accrued the usage
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return record.Category The category of usage
-     */
-    protected function getCategory() {
-        return $this->properties['category'];
-    }
-
-    /**
-     * @return string The number of usage events (e.g. the number of calls).
-     */
-    protected function getCount() {
-        return $this->properties['count'];
-    }
-
-    /**
-     * @return string The unit in which `Count` is measured
-     */
-    protected function getCountUnit() {
-        return $this->properties['countUnit'];
-    }
-
-    /**
-     * @return string A human-readable description of the usage category.
-     */
-    protected function getDescription() {
-        return $this->properties['description'];
-    }
-
-    /**
-     * @return string The last date usage is included in this record
-     */
-    protected function getEndDate() {
-        return $this->properties['endDate'];
-    }
-
-    /**
-     * @return string The total price of the usage
-     */
-    protected function getPrice() {
-        return $this->properties['price'];
-    }
-
-    /**
-     * @return string The currency in which `Price` is measured
-     */
-    protected function getPriceUnit() {
-        return $this->properties['priceUnit'];
-    }
-
-    /**
-     * @return string The first date usage is included in this record
-     */
-    protected function getStartDate() {
-        return $this->properties['startDate'];
-    }
-
-    /**
-     * @return string Subresources Uris for this UsageRecord
-     */
-    protected function getSubresourceUris() {
-        return $this->properties['subresourceUris'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The amount of usage
-     */
-    protected function getUsage() {
-        return $this->properties['usage'];
-    }
-
-    /**
-     * @return string The units in which `Usage` is measured
-     */
-    protected function getUsageUnit() {
-        return $this->properties['usageUnit'];
-    }
-
-    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access
@@ -168,8 +71,7 @@ class RecordInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

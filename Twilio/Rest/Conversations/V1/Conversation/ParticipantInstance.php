@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Conversations\V1\Conversation;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -19,9 +20,9 @@ use Twilio\Version;
  * @property string address
  * @property participant.Status status
  * @property string conversationSid
- * @property string dateCreated
- * @property string startTime
- * @property string endTime
+ * @property \DateTime dateCreated
+ * @property \DateTime startTime
+ * @property \DateTime endTime
  * @property string duration
  * @property string accountSid
  * @property string url
@@ -41,9 +42,9 @@ class ParticipantInstance extends InstanceResource {
             'address' => $payload['address'],
             'status' => $payload['status'],
             'conversationSid' => $payload['conversation_sid'],
-            'dateCreated' => $payload['date_created'],
-            'startTime' => $payload['start_time'],
-            'endTime' => $payload['end_time'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'startTime' => Deserialize::iso8601DateTime($payload['start_time']),
+            'endTime' => Deserialize::iso8601DateTime($payload['end_time']),
             'duration' => $payload['duration'],
             'accountSid' => $payload['account_sid'],
             'url' => $payload['url'],
@@ -74,76 +75,6 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The address
-     */
-    protected function getAddress() {
-        return $this->properties['address'];
-    }
-
-    /**
-     * @return participant.Status The status
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
-    }
-
-    /**
-     * @return string The conversation_sid
-     */
-    protected function getConversationSid() {
-        return $this->properties['conversationSid'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The start_time
-     */
-    protected function getStartTime() {
-        return $this->properties['startTime'];
-    }
-
-    /**
-     * @return string The end_time
-     */
-    protected function getEndTime() {
-        return $this->properties['endTime'];
-    }
-
-    /**
-     * @return string The duration
-     */
-    protected function getDuration() {
-        return $this->properties['duration'];
-    }
-
-    /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The url
-     */
-    protected function getUrl() {
-        return $this->properties['url'];
-    }
-
-    /**
      * Fetch a ParticipantInstance
      * 
      * @return ParticipantInstance Fetched ParticipantInstance
@@ -161,8 +92,7 @@ class ParticipantInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

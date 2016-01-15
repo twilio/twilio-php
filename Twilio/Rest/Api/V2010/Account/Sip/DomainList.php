@@ -29,6 +29,7 @@ class DomainList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains.json';
     }
 
@@ -36,9 +37,12 @@ class DomainList extends ListResource {
      * Create a new DomainInstance
      * 
      * @param string $domainName The unique address on Twilio to route SIP traffic
+     * @param array $options Optional Arguments
      * @return DomainInstance Newly created DomainInstance
      */
-    public function create($domainName, $options) {
+    public function create($domainName, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'DomainName' => $domainName,
             'FriendlyName' => $options['friendlyName'],

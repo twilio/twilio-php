@@ -25,6 +25,7 @@ class EventList extends ListResource {
         
         // Path Solution
         $this->solution = array();
+        
         $this->uri = '/Events';
     }
 

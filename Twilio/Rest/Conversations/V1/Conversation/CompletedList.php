@@ -25,6 +25,7 @@ class CompletedList extends ListResource {
         
         // Path Solution
         $this->solution = array();
+        
         $this->uri = '/Conversations/Completed';
     }
 

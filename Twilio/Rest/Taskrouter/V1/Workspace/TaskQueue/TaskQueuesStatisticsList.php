@@ -28,6 +28,7 @@ class TaskQueuesStatisticsList extends ListResource {
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
+        
         $this->uri = '/Workspaces/' . $workspaceSid . '/TaskQueues/Statistics';
     }
 

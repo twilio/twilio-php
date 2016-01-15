@@ -29,6 +29,7 @@ class LocalList extends ListResource {
         $this->solution = array(
             'ownerAccountSid' => $ownerAccountSid,
         );
+        
         $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers/Local.json';
     }
 
@@ -36,9 +37,12 @@ class LocalList extends ListResource {
      * Create a new LocalInstance
      * 
      * @param string $phoneNumber The phone_number
+     * @param array $options Optional Arguments
      * @return LocalInstance Newly created LocalInstance
      */
-    public function create($phoneNumber, $options) {
+    public function create($phoneNumber, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'PhoneNumber' => $phoneNumber,
             'ApiVersion' => $options['apiVersion'],

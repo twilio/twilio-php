@@ -37,6 +37,7 @@ class AddressContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Addresses/' . $sid . '.json';
     }
 
@@ -74,9 +75,12 @@ class AddressContext extends InstanceContext {
     /**
      * Update the AddressInstance
      * 
+     * @param array $options Optional Arguments
      * @return AddressInstance Updated AddressInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'CustomerName' => $options['customerName'],

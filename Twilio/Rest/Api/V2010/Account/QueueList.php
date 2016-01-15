@@ -28,15 +28,19 @@ class QueueList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Queues.json';
     }
 
     /**
      * Create a new QueueInstance
      * 
+     * @param array $options Optional Arguments
      * @return QueueInstance Newly created QueueInstance
      */
-    public function create($options) {
+    public function create(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'MaxSize' => $options['maxSize'],

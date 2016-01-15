@@ -30,6 +30,7 @@ class MemberList extends ListResource {
             'accountSid' => $accountSid,
             'queueSid' => $queueSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Queues/' . $queueSid . '/Members.json';
     }
 

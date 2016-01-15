@@ -28,6 +28,7 @@ class ApplicationList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Applications.json';
     }
 
@@ -35,9 +36,12 @@ class ApplicationList extends ListResource {
      * Create a new ApplicationInstance
      * 
      * @param string $friendlyName Human readable description of this resource
+     * @param array $options Optional Arguments
      * @return ApplicationInstance Newly created ApplicationInstance
      */
-    public function create($friendlyName, $options) {
+    public function create($friendlyName, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'ApiVersion' => $options['apiVersion'],

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sms;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,9 +19,9 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string body
- * @property string dateCreated
- * @property string dateUpdated
- * @property string dateSent
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
+ * @property \DateTime dateSent
  * @property sms_message.Direction direction
  * @property string from
  * @property string price
@@ -44,9 +45,9 @@ class SmsMessageInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'body' => $payload['body'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
-            'dateSent' => $payload['date_sent'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateSent' => Deserialize::iso8601DateTime($payload['date_sent']),
             'direction' => $payload['direction'],
             'from' => $payload['from'],
             'price' => $payload['price'],
@@ -82,104 +83,6 @@ class SmsMessageInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The api_version
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string The body
-     */
-    protected function getBody() {
-        return $this->properties['body'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string The date_sent
-     */
-    protected function getDateSent() {
-        return $this->properties['dateSent'];
-    }
-
-    /**
-     * @return sms_message.Direction The direction
-     */
-    protected function getDirection() {
-        return $this->properties['direction'];
-    }
-
-    /**
-     * @return string The from
-     */
-    protected function getFrom() {
-        return $this->properties['from'];
-    }
-
-    /**
-     * @return string The price
-     */
-    protected function getPrice() {
-        return $this->properties['price'];
-    }
-
-    /**
-     * @return string The price_unit
-     */
-    protected function getPriceUnit() {
-        return $this->properties['priceUnit'];
-    }
-
-    /**
-     * @return string The sid
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return sms_message.Status The status
-     */
-    protected function getStatus() {
-        return $this->properties['status'];
-    }
-
-    /**
-     * @return string The to
-     */
-    protected function getTo() {
-        return $this->properties['to'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Deletes the SmsMessageInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
@@ -200,9 +103,10 @@ class SmsMessageInstance extends InstanceResource {
     /**
      * Update the SmsMessageInstance
      * 
+     * @param array $options Optional Arguments
      * @return SmsMessageInstance Updated SmsMessageInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -217,8 +121,7 @@ class SmsMessageInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -20,8 +21,8 @@ use Twilio\Version;
  * @property string apiVersion
  * @property string beta
  * @property string capabilities
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string phoneNumber
  * @property string sid
@@ -56,8 +57,8 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'apiVersion' => $payload['api_version'],
             'beta' => $payload['beta'],
             'capabilities' => $payload['capabilities'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'phoneNumber' => $payload['phone_number'],
             'sid' => $payload['sid'],
@@ -103,180 +104,12 @@ class IncomingPhoneNumberInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return incoming_phone_number.AddressRequirement Indicates if the customer
-     *                                                  requires an address
-     */
-    protected function getAddressRequirements() {
-        return $this->properties['addressRequirements'];
-    }
-
-    /**
-     * @return string The Twilio REST API version to use
-     */
-    protected function getApiVersion() {
-        return $this->properties['apiVersion'];
-    }
-
-    /**
-     * @return string Indicates if the phone number is a beta number
-     */
-    protected function getBeta() {
-        return $this->properties['beta'];
-    }
-
-    /**
-     * @return string Indicate if a phone can receive calls or messages
-     */
-    protected function getCapabilities() {
-        return $this->properties['capabilities'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string A human readable description of this resouce
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The incoming phone number
-     */
-    protected function getPhoneNumber() {
-        return $this->properties['phoneNumber'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this resource
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string Unique string that identifies the application
-     */
-    protected function getSmsApplicationSid() {
-        return $this->properties['smsApplicationSid'];
-    }
-
-    /**
-     * @return string HTTP method used with sms fallback url
-     */
-    protected function getSmsFallbackMethod() {
-        return $this->properties['smsFallbackMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request if an error occurs in executing TwiML
-     */
-    protected function getSmsFallbackUrl() {
-        return $this->properties['smsFallbackUrl'];
-    }
-
-    /**
-     * @return string HTTP method to use with sms url
-     */
-    protected function getSmsMethod() {
-        return $this->properties['smsMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request when receiving an SMS
-     */
-    protected function getSmsUrl() {
-        return $this->properties['smsUrl'];
-    }
-
-    /**
-     * @return string URL Twilio will use to pass status parameters
-     */
-    protected function getStatusCallback() {
-        return $this->properties['statusCallback'];
-    }
-
-    /**
-     * @return string HTTP method twilio will use with status callback
-     */
-    protected function getStatusCallbackMethod() {
-        return $this->properties['statusCallbackMethod'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
-     * @return string The unique sid of the application to handle this number
-     */
-    protected function getVoiceApplicationSid() {
-        return $this->properties['voiceApplicationSid'];
-    }
-
-    /**
-     * @return string Look up the caller's caller-ID
-     */
-    protected function getVoiceCallerIdLookup() {
-        return $this->properties['voiceCallerIdLookup'];
-    }
-
-    /**
-     * @return string HTTP method used with fallback_url
-     */
-    protected function getVoiceFallbackMethod() {
-        return $this->properties['voiceFallbackMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request when an error occurs in TwiML
-     */
-    protected function getVoiceFallbackUrl() {
-        return $this->properties['voiceFallbackUrl'];
-    }
-
-    /**
-     * @return string HTTP method used with the voice url
-     */
-    protected function getVoiceMethod() {
-        return $this->properties['voiceMethod'];
-    }
-
-    /**
-     * @return string URL Twilio will request when receiving a call
-     */
-    protected function getVoiceUrl() {
-        return $this->properties['voiceUrl'];
-    }
-
-    /**
      * Update the IncomingPhoneNumberInstance
      * 
+     * @param array $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -309,8 +142,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

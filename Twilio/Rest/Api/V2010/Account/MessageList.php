@@ -28,6 +28,7 @@ class MessageList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Messages.json';
     }
 
@@ -36,9 +37,12 @@ class MessageList extends ListResource {
      * 
      * @param string $to The phone number to receive the message
      * @param string $from The phone number that initiated the message
+     * @param array $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
      */
-    public function create($to, $from, $options) {
+    public function create($to, $from, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'To' => $to,
             'From' => $from,

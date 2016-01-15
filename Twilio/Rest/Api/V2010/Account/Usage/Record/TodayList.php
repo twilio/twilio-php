@@ -29,6 +29,7 @@ class TodayList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Usage/Records/Today.json';
     }
 

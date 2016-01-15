@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -21,8 +22,8 @@ use Twilio\Version;
  * @property string connectAppFriendlyName
  * @property string connectAppHomepageUrl
  * @property string connectAppSid
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property authorized_connect_app.Permission permissions
  * @property string uri
  */
@@ -43,8 +44,8 @@ class AuthorizedConnectAppInstance extends InstanceResource {
             'connectAppFriendlyName' => $payload['connect_app_friendly_name'],
             'connectAppHomepageUrl' => $payload['connect_app_homepage_url'],
             'connectAppSid' => $payload['connect_app_sid'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'permissions' => $payload['permissions'],
             'uri' => $payload['uri'],
         );
@@ -75,76 +76,6 @@ class AuthorizedConnectAppInstance extends InstanceResource {
     }
 
     /**
-     * @return string The unique sid that identifies this account
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string The company name set for this Connect App.
-     */
-    protected function getConnectAppCompanyName() {
-        return $this->properties['connectAppCompanyName'];
-    }
-
-    /**
-     * @return string Human readable description of the app
-     */
-    protected function getConnectAppDescription() {
-        return $this->properties['connectAppDescription'];
-    }
-
-    /**
-     * @return string A human readable name for the Connect App.
-     */
-    protected function getConnectAppFriendlyName() {
-        return $this->properties['connectAppFriendlyName'];
-    }
-
-    /**
-     * @return string The public URL for this Connect App.
-     */
-    protected function getConnectAppHomepageUrl() {
-        return $this->properties['connectAppHomepageUrl'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this app
-     */
-    protected function getConnectAppSid() {
-        return $this->properties['connectAppSid'];
-    }
-
-    /**
-     * @return string The date this resource was created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date this resource was last updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return authorized_connect_app.Permission Permissions authorized to this app
-     */
-    protected function getPermissions() {
-        return $this->properties['permissions'];
-    }
-
-    /**
-     * @return string The URI for this resource
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a AuthorizedConnectAppInstance
      * 
      * @return AuthorizedConnectAppInstance Fetched AuthorizedConnectAppInstance
@@ -162,8 +93,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -30,6 +30,7 @@ class IpAccessControlListContext extends InstanceContext {
             'trunkSid' => $trunkSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Trunks/' . $trunkSid . '/IpAccessControlLists/' . $sid . '';
     }
 

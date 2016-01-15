@@ -30,6 +30,7 @@ class DependentPhoneNumberList extends ListResource {
             'accountSid' => $accountSid,
             'addressSid' => $addressSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Addresses/' . $addressSid . '/DependentPhoneNumbers.json';
     }
 

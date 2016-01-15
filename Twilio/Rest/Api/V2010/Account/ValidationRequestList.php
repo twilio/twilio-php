@@ -28,6 +28,7 @@ class ValidationRequestList extends ListResource {
         $this->solution = array(
             'accountSid' => $accountSid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/OutgoingCallerIds.json';
     }
 
@@ -35,9 +36,12 @@ class ValidationRequestList extends ListResource {
      * Create a new ValidationRequestInstance
      * 
      * @param string $phoneNumber The phone_number
+     * @param array $options Optional Arguments
      * @return ValidationRequestInstance Newly created ValidationRequestInstance
      */
-    public function create($phoneNumber, $options) {
+    public function create($phoneNumber, array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'PhoneNumber' => $phoneNumber,
             'FriendlyName' => $options['friendlyName'],

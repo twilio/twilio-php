@@ -9,9 +9,9 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Rest\Api\V2010\Account\Queue;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string averageWaitTime
  * @property string currentSize
- * @property string dateCreated
- * @property string dateUpdated
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string maxSize
  * @property string sid
@@ -40,8 +40,8 @@ class QueueInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'averageWaitTime' => $payload['average_wait_time'],
             'currentSize' => $payload['current_size'],
-            'dateCreated' => $payload['date_created'],
-            'dateUpdated' => $payload['date_updated'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'maxSize' => $payload['max_size'],
             'sid' => $payload['sid'],
@@ -73,69 +73,6 @@ class QueueInstance extends InstanceResource {
     }
 
     /**
-     * @return string The account_sid
-     */
-    protected function getAccountSid() {
-        return $this->properties['accountSid'];
-    }
-
-    /**
-     * @return string Average wait time of members in the queue
-     */
-    protected function getAverageWaitTime() {
-        return $this->properties['averageWaitTime'];
-    }
-
-    /**
-     * @return string The count of calls currently in the queue.
-     */
-    protected function getCurrentSize() {
-        return $this->properties['currentSize'];
-    }
-
-    /**
-     * @return string The date_created
-     */
-    protected function getDateCreated() {
-        return $this->properties['dateCreated'];
-    }
-
-    /**
-     * @return string The date_updated
-     */
-    protected function getDateUpdated() {
-        return $this->properties['dateUpdated'];
-    }
-
-    /**
-     * @return string A user-provided string that identifies this queue.
-     */
-    protected function getFriendlyName() {
-        return $this->properties['friendlyName'];
-    }
-
-    /**
-     * @return string The max number of calls allowed in the queue
-     */
-    protected function getMaxSize() {
-        return $this->properties['maxSize'];
-    }
-
-    /**
-     * @return string A string that uniquely identifies this queue
-     */
-    protected function getSid() {
-        return $this->properties['sid'];
-    }
-
-    /**
-     * @return string The uri
-     */
-    protected function getUri() {
-        return $this->properties['uri'];
-    }
-
-    /**
      * Fetch a QueueInstance
      * 
      * @return QueueInstance Fetched QueueInstance
@@ -147,9 +84,10 @@ class QueueInstance extends InstanceResource {
     /**
      * Update the QueueInstance
      * 
+     * @param array $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
@@ -182,8 +120,7 @@ class QueueInstance extends InstanceResource {
      */
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
-            $method = 'get' . ucfirst($name);
-            return $this->$method();
+            return $this->properties[$name];
         }
         
         throw new TwilioException('Unknown property: ' . $name);

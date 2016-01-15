@@ -37,6 +37,7 @@ class MessageContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Messages/' . $sid . '.json';
     }
 
@@ -74,9 +75,12 @@ class MessageContext extends InstanceContext {
     /**
      * Update the MessageInstance
      * 
+     * @param array $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Body' => $options['body'],
         ));

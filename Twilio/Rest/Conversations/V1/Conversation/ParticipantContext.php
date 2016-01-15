@@ -30,6 +30,7 @@ class ParticipantContext extends InstanceContext {
             'conversationSid' => $conversationSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Conversations/' . $conversationSid . '/Participants/' . $sid . '';
     }
 

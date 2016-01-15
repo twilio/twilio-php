@@ -13,13 +13,6 @@ use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
 use Twilio\Http\CurlClient;
-use Twilio\Rest\Api;
-use Twilio\Rest\Conversations;
-use Twilio\Rest\Lookups;
-use Twilio\Rest\Monitor;
-use Twilio\Rest\Pricing;
-use Twilio\Rest\Taskrouter;
-use Twilio\Rest\Trunking;
 use Twilio\VersionInfo;
 
 /**

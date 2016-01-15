@@ -30,6 +30,7 @@ class ApplicationContext extends InstanceContext {
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
+        
         $this->uri = '/Accounts/' . $accountSid . '/Applications/' . $sid . '.json';
     }
 
@@ -67,9 +68,12 @@ class ApplicationContext extends InstanceContext {
     /**
      * Update the ApplicationInstance
      * 
+     * @param array $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
      */
-    public function update($options) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'ApiVersion' => $options['apiVersion'],
