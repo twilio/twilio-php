@@ -42,7 +42,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
         Services_Twilio_TinyHttp $_http = null,
         $retryAttempts = 1
     ) {
-        $this->version = in_array($version, $this->versions) ? $version : end($this->versions);
+        $this->version = in_array($version, $this->versions, true) ? $version : end($this->versions);
 
         if (null === $_http) {
             if (!in_array('openssl', get_loaded_extensions())) {
