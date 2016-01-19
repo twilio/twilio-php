@@ -9,4 +9,14 @@ class Services_Twilio_Rest_Address
             'dependent_phone_numbers'
         );
     }
+
+    /**
+     * Make a request to delete the specified resource.
+     *
+     * :rtype: boolean
+     */
+    public function delete()
+    {
+        return $this->client->deleteData($this->uri);
+    }
 }
