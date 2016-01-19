@@ -25,7 +25,7 @@ class WorkflowConfiguration implements JsonSerializable {
 	}
 
 	public static function fromJson($json) {
-		$configJSON = json_decode($json);
+		$configJSON = self::parse($json);
 		$filters = $configJSON->task_routing->filters;
 		$default_filter = $configJSON->task_routing->default_filter;
 		// aggressive check to see if filter_friendly_name is used

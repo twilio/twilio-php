@@ -284,8 +284,10 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 				}
 			}";
 
-		$config = WorkflowConfiguration::parse($json);
+		$config = WorkflowConfiguration::fromJson($json);
+		$taskRoutingConfig = WorkflowConfiguration::parse($json)->task_routing;
 
+		$this->assertEquals(3, count($taskRoutingConfig->filters));
 		$this->assertEquals(3, count($config->filters));
 		$this->assertEquals(1, count($config->default_filter));
 		// sales assertions
@@ -375,8 +377,10 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 				}
 			}";
 
-		$config = WorkflowConfiguration::parse($json);
+		$config = WorkflowConfiguration::fromJson($json);
+		$taskRoutingConfig = WorkflowConfiguration::parse($json)->task_routing;
 
+		$this->assertEquals(3, count($taskRoutingConfig->filters));
 		$this->assertEquals(3, count($config->filters));
 		$this->assertEquals(1, count($config->default_filter));
 		// sales assertions
