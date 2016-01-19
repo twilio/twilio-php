@@ -47,7 +47,7 @@ install:
 # if these fail, you may need to install the helper library - run "make
 # test-install"
 test:
-	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml;
+	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
 
 venv:
 	virtualenv venv

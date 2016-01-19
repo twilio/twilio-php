@@ -69,7 +69,7 @@ class Client {
         }
         
         if ($password) {
-            $this->$password = $password;
+            $this->password = $password;
         } else {
             if (array_key_exists(self::ENV_AUTH_TOKEN, $environment)) {
                 $this->password = $environment[self::ENV_AUTH_TOKEN];
