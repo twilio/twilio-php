@@ -27,7 +27,7 @@ abstract class Page implements \Iterator {
     protected $solution;
     protected $records;
 
-    abstract public function buildInstance();
+    abstract public function buildInstance(array $payload);
 
     public function __construct(Version $version, Response $response) {
         $payload = $this->processResponse($response);
@@ -112,7 +112,7 @@ abstract class Page implements \Iterator {
      * @return mixed Can return any type.
      */
     public function current() {
-        return $this->records->current();
+        return $this->buildInstance($this->records->current());
     }
 
     /**
