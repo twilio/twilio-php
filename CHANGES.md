@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.9.1
+-------------
+Released January 19, 2016
+
+- Add missing create/delete methods on Address
+
 Version 4.9.0
 -------------
 Released December 18, 2015
