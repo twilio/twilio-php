@@ -79,6 +79,7 @@ class Stream implements \Iterator {
      */
     public function rewind() {
         $this->page = $this->firstPage;
+        $this->page->rewind();
         $this->currentPage = 1;
         $this->currentRecord = 1;
     }
