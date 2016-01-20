@@ -106,15 +106,15 @@ class MessageContext extends InstanceContext {
      * @return MediaList 
      */
     protected function getMedia() {
-        if (!$this->media) {
-            $this->media = new MediaList(
+        if (!$this->_media) {
+            $this->_media = new MediaList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->media;
+        return $this->_media;
     }
 
     /**
@@ -131,6 +131,23 @@ class MessageContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

@@ -123,14 +123,14 @@ class WorkspaceContext extends InstanceContext {
      * @return ActivityList 
      */
     protected function getActivities() {
-        if (!$this->activities) {
-            $this->activities = new ActivityList(
+        if (!$this->_activities) {
+            $this->_activities = new ActivityList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->activities;
+        return $this->_activities;
     }
 
     /**
@@ -139,14 +139,14 @@ class WorkspaceContext extends InstanceContext {
      * @return EventList 
      */
     protected function getEvents() {
-        if (!$this->events) {
-            $this->events = new EventList(
+        if (!$this->_events) {
+            $this->_events = new EventList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->events;
+        return $this->_events;
     }
 
     /**
@@ -155,14 +155,14 @@ class WorkspaceContext extends InstanceContext {
      * @return TaskList 
      */
     protected function getTasks() {
-        if (!$this->tasks) {
-            $this->tasks = new TaskList(
+        if (!$this->_tasks) {
+            $this->_tasks = new TaskList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->tasks;
+        return $this->_tasks;
     }
 
     /**
@@ -171,14 +171,14 @@ class WorkspaceContext extends InstanceContext {
      * @return TaskQueueList 
      */
     protected function getTaskQueues() {
-        if (!$this->taskQueues) {
-            $this->taskQueues = new TaskQueueList(
+        if (!$this->_taskQueues) {
+            $this->_taskQueues = new TaskQueueList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->taskQueues;
+        return $this->_taskQueues;
     }
 
     /**
@@ -187,14 +187,14 @@ class WorkspaceContext extends InstanceContext {
      * @return WorkerList 
      */
     protected function getWorkers() {
-        if (!$this->workers) {
-            $this->workers = new WorkerList(
+        if (!$this->_workers) {
+            $this->_workers = new WorkerList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->workers;
+        return $this->_workers;
     }
 
     /**
@@ -203,14 +203,14 @@ class WorkspaceContext extends InstanceContext {
      * @return WorkflowList 
      */
     protected function getWorkflows() {
-        if (!$this->workflows) {
-            $this->workflows = new WorkflowList(
+        if (!$this->_workflows) {
+            $this->_workflows = new WorkflowList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->workflows;
+        return $this->_workflows;
     }
 
     /**
@@ -219,14 +219,14 @@ class WorkspaceContext extends InstanceContext {
      * @return WorkspaceStatisticsList 
      */
     protected function getStatistics() {
-        if (!$this->statistics) {
-            $this->statistics = new WorkspaceStatisticsList(
+        if (!$this->_statistics) {
+            $this->_statistics = new WorkspaceStatisticsList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->statistics;
+        return $this->_statistics;
     }
 
     /**
@@ -243,6 +243,23 @@ class WorkspaceContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

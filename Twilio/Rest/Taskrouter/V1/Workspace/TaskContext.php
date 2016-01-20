@@ -109,15 +109,15 @@ class TaskContext extends InstanceContext {
      * @return ReservationList 
      */
     protected function getReservations() {
-        if (!$this->reservations) {
-            $this->reservations = new ReservationList(
+        if (!$this->_reservations) {
+            $this->_reservations = new ReservationList(
                 $this->version,
                 $this->solution['workspaceSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->reservations;
+        return $this->_reservations;
     }
 
     /**
@@ -134,6 +134,23 @@ class TaskContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

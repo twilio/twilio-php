@@ -78,15 +78,15 @@ class RecordingContext extends InstanceContext {
      * @return TranscriptionList 
      */
     protected function getTranscriptions() {
-        if (!$this->transcriptions) {
-            $this->transcriptions = new TranscriptionList(
+        if (!$this->_transcriptions) {
+            $this->_transcriptions = new TranscriptionList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->transcriptions;
+        return $this->_transcriptions;
     }
 
     /**
@@ -103,6 +103,23 @@ class RecordingContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

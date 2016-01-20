@@ -11,6 +11,7 @@ namespace Twilio\Tests\Integration\Api\V2010\Account;
 
 use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
+use Twilio\Tests\Request;
 
 class CallTest extends HolodeckTestCase {
     public function testCreateRequest() {

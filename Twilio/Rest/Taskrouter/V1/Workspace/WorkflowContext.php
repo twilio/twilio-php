@@ -110,15 +110,15 @@ class WorkflowContext extends InstanceContext {
      * @return WorkflowStatisticsList 
      */
     protected function getStatistics() {
-        if (!$this->statistics) {
-            $this->statistics = new WorkflowStatisticsList(
+        if (!$this->_statistics) {
+            $this->_statistics = new WorkflowStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->statistics;
+        return $this->_statistics;
     }
 
     /**
@@ -135,6 +135,23 @@ class WorkflowContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

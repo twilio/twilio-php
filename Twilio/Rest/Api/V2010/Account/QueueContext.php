@@ -107,15 +107,15 @@ class QueueContext extends InstanceContext {
      * @return MemberList 
      */
     protected function getMembers() {
-        if (!$this->members) {
-            $this->members = new MemberList(
+        if (!$this->_members) {
+            $this->_members = new MemberList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->members;
+        return $this->_members;
     }
 
     /**
@@ -132,6 +132,23 @@ class QueueContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

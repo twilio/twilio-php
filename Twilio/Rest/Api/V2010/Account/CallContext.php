@@ -118,15 +118,15 @@ class CallContext extends InstanceContext {
      * @return RecordingList 
      */
     protected function getRecordings() {
-        if (!$this->recordings) {
-            $this->recordings = new RecordingList(
+        if (!$this->_recordings) {
+            $this->_recordings = new RecordingList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->recordings;
+        return $this->_recordings;
     }
 
     /**
@@ -135,15 +135,15 @@ class CallContext extends InstanceContext {
      * @return NotificationList 
      */
     protected function getNotifications() {
-        if (!$this->notifications) {
-            $this->notifications = new NotificationList(
+        if (!$this->_notifications) {
+            $this->_notifications = new NotificationList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->notifications;
+        return $this->_notifications;
     }
 
     /**
@@ -152,15 +152,15 @@ class CallContext extends InstanceContext {
      * @return FeedbackList 
      */
     protected function getFeedback() {
-        if (!$this->feedback) {
-            $this->feedback = new FeedbackList(
+        if (!$this->_feedback) {
+            $this->_feedback = new FeedbackList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->feedback;
+        return $this->_feedback;
     }
 
     /**
@@ -177,6 +177,23 @@ class CallContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

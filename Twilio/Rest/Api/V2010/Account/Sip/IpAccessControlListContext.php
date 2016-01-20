@@ -104,15 +104,15 @@ class IpAccessControlListContext extends InstanceContext {
      * @return IpAddressList 
      */
     protected function getIpAddresses() {
-        if (!$this->ipAddresses) {
-            $this->ipAddresses = new IpAddressList(
+        if (!$this->_ipAddresses) {
+            $this->_ipAddresses = new IpAddressList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->ipAddresses;
+        return $this->_ipAddresses;
     }
 
     /**
@@ -129,6 +129,23 @@ class IpAccessControlListContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

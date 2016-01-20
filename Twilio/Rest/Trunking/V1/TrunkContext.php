@@ -116,14 +116,14 @@ class TrunkContext extends InstanceContext {
      * @return OriginationUrlList 
      */
     protected function getOriginationUrls() {
-        if (!$this->originationUrls) {
-            $this->originationUrls = new OriginationUrlList(
+        if (!$this->_originationUrls) {
+            $this->_originationUrls = new OriginationUrlList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->originationUrls;
+        return $this->_originationUrls;
     }
 
     /**
@@ -132,14 +132,14 @@ class TrunkContext extends InstanceContext {
      * @return CredentialListList 
      */
     protected function getCredentialsLists() {
-        if (!$this->credentialsLists) {
-            $this->credentialsLists = new CredentialListList(
+        if (!$this->_credentialsLists) {
+            $this->_credentialsLists = new CredentialListList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->credentialsLists;
+        return $this->_credentialsLists;
     }
 
     /**
@@ -148,14 +148,14 @@ class TrunkContext extends InstanceContext {
      * @return IpAccessControlListList 
      */
     protected function getIpAccessControlLists() {
-        if (!$this->ipAccessControlLists) {
-            $this->ipAccessControlLists = new IpAccessControlListList(
+        if (!$this->_ipAccessControlLists) {
+            $this->_ipAccessControlLists = new IpAccessControlListList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->ipAccessControlLists;
+        return $this->_ipAccessControlLists;
     }
 
     /**
@@ -164,14 +164,14 @@ class TrunkContext extends InstanceContext {
      * @return PhoneNumberList 
      */
     protected function getPhoneNumbers() {
-        if (!$this->phoneNumbers) {
-            $this->phoneNumbers = new PhoneNumberList(
+        if (!$this->_phoneNumbers) {
+            $this->_phoneNumbers = new PhoneNumberList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->phoneNumbers;
+        return $this->_phoneNumbers;
     }
 
     /**
@@ -188,6 +188,23 @@ class TrunkContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

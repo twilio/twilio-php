@@ -104,15 +104,15 @@ class CredentialListContext extends InstanceContext {
      * @return CredentialList 
      */
     protected function getCredentials() {
-        if (!$this->credentials) {
-            $this->credentials = new CredentialList(
+        if (!$this->_credentials) {
+            $this->_credentials = new CredentialList(
                 $this->version,
                 $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->credentials;
+        return $this->_credentials;
     }
 
     /**
@@ -129,6 +129,23 @@ class CredentialListContext extends InstanceContext {
         }
         
         throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**
