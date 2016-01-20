@@ -10,11 +10,11 @@ class Stream implements \Iterator {
 
     function __construct(Page $page, $limit, $pageLimit) {
         $this->page = $page;
+        $this->firstPage = $page;
         $this->limit = $limit;
         $this->currentRecord = 1;
         $this->pageLimit = $pageLimit;
         $this->currentPage = 1;
-        $this->started = false;
     }
 
     /**
@@ -76,12 +76,11 @@ class Stream implements \Iterator {
      * Rewind the Iterator to the first element
      * @link http://php.net/manual/en/iterator.rewind.php
      * @return void Any returned value is ignored.
-     * @throws TwilioException on restart
      */
     public function rewind() {
-        if ($this->started) {
-            throw new TwilioException('Streams can not be restarted');
-        }
+        $this->page = $this->firstPage;
+        $this->currentPage = 1;
+        $this->currentRecord = 1;
     }
 
     protected function overLimit() {
