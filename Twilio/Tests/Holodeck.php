@@ -6,7 +6,6 @@ namespace Twilio\Tests;
 
 use Twilio\Http\Client;
 use Twilio\Http\Response;
-use Twilio\Exceptions\EnvironmentException;
 
 class Holodeck implements Client {
     private $requests = array();
@@ -34,10 +33,7 @@ class Holodeck implements Client {
             if (strtolower($request->method) == strtolower($c->method) &&
                 $request->url == $c->url &&
                 $request->params == $c->params &&
-                $request->data == $c->data &&
-                $request->headers == $c->headers &&
-                $request->user == $c->user &&
-                $request->password == $c->password) {
+                $request->data == $c->data) {
                 return true;
             }
         }
