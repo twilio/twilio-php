@@ -31,7 +31,7 @@ class Holodeck implements Client {
     public function hasRequest($request) {
         for ($i = 0; $i < count($this->requests); $i++) {
             $c = $this->requests[$i];
-            if ($request->method == $c->method &&
+            if (strtolower($request->method) == strtolower($c->method) &&
                 $request->url == $c->url &&
                 $request->params == $c->params &&
                 $request->data == $c->data &&

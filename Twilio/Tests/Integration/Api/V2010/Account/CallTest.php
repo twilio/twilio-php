@@ -9,23 +9,28 @@
 
 namespace Twilio\Tests\Integration\Api\V2010\Account;
 
+use Twilio\Exceptions\DeserializeException;
+use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class CallTest extends HolodeckTestCase {
     public function testCreateRequest() {
-        $this->holodeck->mock(new Response(200, ''));
+        $this->holodeck->mock(new Response(500, ''));
         
-        $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                 ->calls->create(array('To' => "+123456789", 'From' => "+987654321"));
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->calls->create("+123456789", "+987654321");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
         
         $values = array(
             'To' => "+123456789",
             'From' => "+987654321",
         );
         
-        $this->assertTrue($this->holodeck.hasRequest(new Request(
+        $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json',
             null,
@@ -71,16 +76,19 @@ class CallTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls->create(array('To' => "+123456789", 'From' => "+987654321"));
+                                           ->calls->create("+123456789", "+987654321");
         
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
-        $this->holodeck->mock(new Response(200, ''));
+        $this->holodeck->mock(new Response(500, ''));
         
-        $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                 ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete(array());
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'delete',
@@ -95,16 +103,19 @@ class CallTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete(array());
+                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         
         $this->assertTrue($actual);
     }
 
     public function testFetchRequest() {
-        $this->holodeck->mock(new Response(200, ''));
+        $this->holodeck->mock(new Response(500, ''));
         
-        $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                 ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch(array());
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'get',
@@ -150,16 +161,19 @@ class CallTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch(array());
+                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
-        $this->holodeck->mock(new Response(200, ''));
+        $this->holodeck->mock(new Response(500, ''));
         
-        $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                 ->calls->read(array());
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->calls->read();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'get',
@@ -220,7 +234,7 @@ class CallTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls->read(array());
+                                           ->calls->read();
         
         $this->assertNotNull($actual);
     }
@@ -247,16 +261,19 @@ class CallTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls->read(array());
+                                           ->calls->read();
         
         $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
-        $this->holodeck->mock(new Response(200, ''));
+        $this->holodeck->mock(new Response(500, ''));
         
-        $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                 ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update(array());
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
@@ -302,7 +319,7 @@ class CallTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update(array());
+                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }
