@@ -104,8 +104,8 @@ class Client {
      * @return Response Response from the Twilio API
      */
     public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null) {
-        $username = $username || $this->username;
-        $password = $password || $this->password;
+        $username = $username ? $username : $this->username;
+        $password = $password ? $password : $this->password;
         
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
                                  ' (PHP ' . phpversion() . ')';

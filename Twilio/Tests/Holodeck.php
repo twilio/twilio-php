@@ -37,6 +37,8 @@ class Holodeck implements Client {
                 return true;
             }
         }
+        var_dump($this->requests);
+        var_dump($request);
 
         return false;
     }

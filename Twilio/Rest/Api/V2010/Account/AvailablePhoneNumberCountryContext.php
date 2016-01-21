@@ -79,8 +79,8 @@ class AvailablePhoneNumberCountryContext extends InstanceContext {
         if (!$this->_local) {
             $this->_local = new LocalList(
                 $this->version,
-                $this->solution['countryCode'],
-                $this->solution['accountSid']
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
             );
         }
         
@@ -96,8 +96,8 @@ class AvailablePhoneNumberCountryContext extends InstanceContext {
         if (!$this->_tollFree) {
             $this->_tollFree = new TollFreeList(
                 $this->version,
-                $this->solution['countryCode'],
-                $this->solution['accountSid']
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
             );
         }
         
@@ -113,8 +113,8 @@ class AvailablePhoneNumberCountryContext extends InstanceContext {
         if (!$this->_mobile) {
             $this->_mobile = new MobileList(
                 $this->version,
-                $this->solution['countryCode'],
-                $this->solution['accountSid']
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
             );
         }
         

@@ -12,7 +12,7 @@ class Values implements \ArrayAccess {
     public static function of($array) {
         $result = array();
         foreach ($array as $key => $value) {
-            if ($value == self::NONE) {
+            if ($value === self::NONE) {
                 continue;
             }
             $result[$key] = $value;
