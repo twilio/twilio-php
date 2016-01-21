@@ -12,12 +12,14 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010;
+use Twilio\Rest\Api\V2010\AccountContext;
 
 /**
  * @property V2010 v2010
  */
 class Api extends Domain {
     protected $_v2010 = null;
+    protected $_account = null;
 
     /**
      * Construct the Api Domain
@@ -58,10 +60,20 @@ class Api extends Domain {
     }
 
     /**
-     * @return Account Account provided as the authenticating account
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
      */
-    public function account() {
-        return $this->v2010->account;
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**
@@ -72,142 +84,165 @@ class Api extends Domain {
     }
 
     /**
+     * @return AccountContext Account provided as the authenticating account
+     */
+    protected function getAccount() {
+        if (!$this->_account) {
+            $this->_account = new AccountContext(
+                $this,
+                $this->domain->getClient()->getAccountSid()
+            );
+        }
+        return $this->_account;
+    }
+
+    /**
+     * Setter to override the primary account
+     * 
+     * @param AccountContext|AccountInstance $account account to use as the primary
+     *                                                account
+     */
+    public function setAccount($account) {
+        $this->_account = $account;
+    }
+
+    /**
      * @return AddressList 
      */
-    public function addresses() {
+    protected function getAddresses() {
         return $this->account->addresses;
     }
 
     /**
      * @return ApplicationList 
      */
-    public function applications() {
+    protected function getApplications() {
         return $this->account->applications;
     }
 
     /**
      * @return AuthorizedConnectAppList 
      */
-    public function authorizedConnectApps() {
+    protected function getAuthorizedConnectApps() {
         return $this->account->authorizedConnectApps;
     }
 
     /**
      * @return AvailablePhoneNumberCountryList 
      */
-    public function availablePhoneNumbers() {
+    protected function getAvailablePhoneNumbers() {
         return $this->account->availablePhoneNumbers;
     }
 
     /**
      * @return CallList 
      */
-    public function calls() {
+    protected function getCalls() {
         return $this->account->calls;
     }
 
     /**
      * @return ConferenceList 
      */
-    public function conferences() {
+    protected function getConferences() {
         return $this->account->conferences;
     }
 
     /**
      * @return ConnectAppList 
      */
-    public function connectApps() {
+    protected function getConnectApps() {
         return $this->account->connectApps;
     }
 
     /**
      * @return IncomingPhoneNumberList 
      */
-    public function incomingPhoneNumbers() {
+    protected function getIncomingPhoneNumbers() {
         return $this->account->incomingPhoneNumbers;
     }
 
     /**
      * @return MessageList 
      */
-    public function messages() {
+    protected function getMessages() {
         return $this->account->messages;
     }
 
     /**
      * @return NotificationList 
      */
-    public function notifications() {
+    protected function getNotifications() {
         return $this->account->notifications;
     }
 
     /**
      * @return OutgoingCallerIdList 
      */
-    public function outgoingCallerIds() {
+    protected function getOutgoingCallerIds() {
         return $this->account->outgoingCallerIds;
     }
 
     /**
      * @return QueueList 
      */
-    public function queues() {
+    protected function getQueues() {
         return $this->account->queues;
     }
 
     /**
      * @return RecordingList 
      */
-    public function recordings() {
+    protected function getRecordings() {
         return $this->account->recordings;
     }
 
     /**
      * @return SandboxList 
      */
-    public function sandbox() {
+    protected function getSandbox() {
         return $this->account->sandbox;
     }
 
     /**
      * @return SipList 
      */
-    public function sip() {
+    protected function getSip() {
         return $this->account->sip;
     }
 
     /**
      * @return SmsList 
      */
-    public function sms() {
+    protected function getSms() {
         return $this->account->sms;
     }
 
     /**
      * @return TokenList 
      */
-    public function tokens() {
+    protected function getTokens() {
         return $this->account->tokens;
     }
 
     /**
      * @return TranscriptionList 
      */
-    public function transcriptions() {
+    protected function getTranscriptions() {
         return $this->account->transcriptions;
     }
 
     /**
      * @return UsageList 
      */
-    public function usage() {
+    protected function getUsage() {
         return $this->account->usage;
     }
 
     /**
      * @return ValidationRequestList 
      */
-    public function validationRequests() {
+    protected function getValidationRequests() {
         return $this->account->validationRequests;
     }
 
