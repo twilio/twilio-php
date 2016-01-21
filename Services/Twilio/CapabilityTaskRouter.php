@@ -55,12 +55,15 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
 		}else if(substr($this->channelId,0,2) == 'WK') {
 			$this->resourceUrl = $this->baseUrl.'/Workers/'.$this->channelId;
 
-			//add permissions to fetch the list of activities and list of worker reservations
+			//add permissions to fetch the list of activities, tasks and worker reservations
 			$activityUrl = $this->baseUrl.'/Activities';
 			$this->allow($activityUrl, "GET", null, null);
 
-			$reservationsUrl = $this->baseUrl.'/Tasks/**';
-			$this->allow($reservationsUrl, "GET", null, null);
+			$tasksUrl = $this->baseUrl.'/Tasks/**';
+			$this->allow($tasksUrl, "GET", null, null);
+
+			$workerReservationsUrl = $this->resourceUrl.'/Reservations/**';
+			$this->allow($workerReservationsUrl, "GET", null, null);
 
 		}else if(substr($this->channelId,0,2) == 'WQ') {
 			$this->resourceUrl = $this->baseUrl.'/TaskQueues/'.$this->channelId;
@@ -177,19 +180,22 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capabili
  */
 class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskRouter_Capability
 {
-	private $reservationsUrl;
+	private $tasksUrl;
+	private $workerReservationsUrl;
 	private $activityUrl;
 
 	public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
 	{
 		parent::__construct($accountSid, $authToken, $workspaceSid, $workerSid, null, $overrideBaseUrl, $overrideBaseWSUrl);
 
-		$this->reservationsUrl = $this->baseUrl.'/Tasks/**';
+		$this->tasksUrl = $this->baseUrl.'/Tasks/**';
 		$this->activityUrl = $this->baseUrl.'/Activities';
+		$this->workerReservationsUrl = $this->resourceUrl.'/Reservations/**';
 
-		//add permissions to fetch the list of activities and list of worker reservations
+		//add permissions to fetch the list of activities, tasks, and worker reservations
 		$this->allow($this->activityUrl, "GET", null, null);
-		$this->allow($this->reservationsUrl, "GET", null, null);
+		$this->allow($this->tasksUrl, "GET", null, null);
+		$this->allow($this->workerReservationsUrl, "GET", null, null);
 	}
 
 	protected function setupResource() {
@@ -207,7 +213,8 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
 		$method = 'POST';
 		$queryFilter = array();
 		$postFilter = array();
-		$this->allow($this->reservationsUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->tasksUrl, $method, $queryFilter, $postFilter);
+		$this->allow($this->workerReservationsUrl, $method, $queryFilter, $postFilter);
 	}
 }
 
