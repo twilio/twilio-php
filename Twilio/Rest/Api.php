@@ -12,14 +12,12 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010;
-use Twilio\Rest\Api\V2010\AccountContext;
 
 /**
  * @property V2010 v2010
  */
 class Api extends Domain {
     protected $_v2010 = null;
-    protected $_account = null;
 
     /**
      * Construct the Api Domain
@@ -77,6 +75,13 @@ class Api extends Domain {
     }
 
     /**
+     * @return Account Account provided as the authenticating account
+     */
+    public function account() {
+        return $this->v2010->account;
+    }
+
+    /**
      * @return AccountList 
      */
     public function accounts() {
@@ -84,166 +89,143 @@ class Api extends Domain {
     }
 
     /**
-     * @return AccountContext Account provided as the authenticating account
-     */
-    protected function getAccount() {
-        if (!$this->_account) {
-            $this->_account = new AccountContext(
-                $this,
-                $this->domain->getClient()->getAccountSid()
-            );
-        }
-        return $this->_account;
-    }
-
-    /**
-     * Setter to override the primary account
-     * 
-     * @param AccountContext|AccountInstance $account account to use as the primary
-     *                                                account
-     */
-    public function setAccount($account) {
-        $this->_account = $account;
-    }
-
-    /**
      * @return AddressList 
      */
-    protected function getAddresses() {
-        return $this->account->addresses;
+    public function addresses() {
+        return $this->v2010->account->addresses;
     }
 
     /**
      * @return ApplicationList 
      */
-    protected function getApplications() {
-        return $this->account->applications;
+    public function applications() {
+        return $this->v2010->account->applications;
     }
 
     /**
      * @return AuthorizedConnectAppList 
      */
-    protected function getAuthorizedConnectApps() {
-        return $this->account->authorizedConnectApps;
+    public function authorizedConnectApps() {
+        return $this->v2010->account->authorizedConnectApps;
     }
 
     /**
      * @return AvailablePhoneNumberCountryList 
      */
-    protected function getAvailablePhoneNumbers() {
-        return $this->account->availablePhoneNumbers;
+    public function availablePhoneNumbers() {
+        return $this->v2010->account->availablePhoneNumbers;
     }
 
     /**
      * @return CallList 
      */
-    protected function getCalls() {
-        return $this->account->calls;
+    public function calls() {
+        return $this->v2010->account->calls;
     }
 
     /**
      * @return ConferenceList 
      */
-    protected function getConferences() {
-        return $this->account->conferences;
+    public function conferences() {
+        return $this->v2010->account->conferences;
     }
 
     /**
      * @return ConnectAppList 
      */
-    protected function getConnectApps() {
-        return $this->account->connectApps;
+    public function connectApps() {
+        return $this->v2010->account->connectApps;
     }
 
     /**
      * @return IncomingPhoneNumberList 
      */
-    protected function getIncomingPhoneNumbers() {
-        return $this->account->incomingPhoneNumbers;
+    public function incomingPhoneNumbers() {
+        return $this->v2010->account->incomingPhoneNumbers;
     }
 
     /**
      * @return MessageList 
      */
-    protected function getMessages() {
-        return $this->account->messages;
+    public function messages() {
+        return $this->v2010->account->messages;
     }
 
     /**
      * @return NotificationList 
      */
-    protected function getNotifications() {
-        return $this->account->notifications;
+    public function notifications() {
+        return $this->v2010->account->notifications;
     }
 
     /**
      * @return OutgoingCallerIdList 
      */
-    protected function getOutgoingCallerIds() {
-        return $this->account->outgoingCallerIds;
+    public function outgoingCallerIds() {
+        return $this->v2010->account->outgoingCallerIds;
     }
 
     /**
      * @return QueueList 
      */
-    protected function getQueues() {
-        return $this->account->queues;
+    public function queues() {
+        return $this->v2010->account->queues;
     }
 
     /**
      * @return RecordingList 
      */
-    protected function getRecordings() {
-        return $this->account->recordings;
+    public function recordings() {
+        return $this->v2010->account->recordings;
     }
 
     /**
      * @return SandboxList 
      */
-    protected function getSandbox() {
-        return $this->account->sandbox;
+    public function sandbox() {
+        return $this->v2010->account->sandbox;
     }
 
     /**
      * @return SipList 
      */
-    protected function getSip() {
-        return $this->account->sip;
+    public function sip() {
+        return $this->v2010->account->sip;
     }
 
     /**
      * @return SmsList 
      */
-    protected function getSms() {
-        return $this->account->sms;
+    public function sms() {
+        return $this->v2010->account->sms;
     }
 
     /**
      * @return TokenList 
      */
-    protected function getTokens() {
-        return $this->account->tokens;
+    public function tokens() {
+        return $this->v2010->account->tokens;
     }
 
     /**
      * @return TranscriptionList 
      */
-    protected function getTranscriptions() {
-        return $this->account->transcriptions;
+    public function transcriptions() {
+        return $this->v2010->account->transcriptions;
     }
 
     /**
      * @return UsageList 
      */
-    protected function getUsage() {
-        return $this->account->usage;
+    public function usage() {
+        return $this->v2010->account->usage;
     }
 
     /**
      * @return ValidationRequestList 
      */
-    protected function getValidationRequests() {
-        return $this->account->validationRequests;
+    public function validationRequests() {
+        return $this->v2010->account->validationRequests;
     }
 
     /**

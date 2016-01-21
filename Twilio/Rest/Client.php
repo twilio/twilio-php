@@ -171,6 +171,160 @@ class Client {
     }
 
     /**
+     * @return Account Account provided as the authenticating account
+     */
+    public function account() {
+        return $this->api->v2010->account;
+    }
+
+    /**
+     * @return AccountList 
+     */
+    public function accounts() {
+        return $this->api->v2010->accounts();
+    }
+
+    /**
+     * @return AddressList 
+     */
+    public function addresses() {
+        return $this->api->v2010->account->addresses;
+    }
+
+    /**
+     * @return ApplicationList 
+     */
+    public function applications() {
+        return $this->api->v2010->account->applications;
+    }
+
+    /**
+     * @return AuthorizedConnectAppList 
+     */
+    public function authorizedConnectApps() {
+        return $this->api->v2010->account->authorizedConnectApps;
+    }
+
+    /**
+     * @return AvailablePhoneNumberCountryList 
+     */
+    public function availablePhoneNumbers() {
+        return $this->api->v2010->account->availablePhoneNumbers;
+    }
+
+    /**
+     * @return CallList 
+     */
+    public function calls() {
+        return $this->api->v2010->account->calls;
+    }
+
+    /**
+     * @return ConferenceList 
+     */
+    public function conferences() {
+        return $this->api->v2010->account->conferences;
+    }
+
+    /**
+     * @return ConnectAppList 
+     */
+    public function connectApps() {
+        return $this->api->v2010->account->connectApps;
+    }
+
+    /**
+     * @return IncomingPhoneNumberList 
+     */
+    public function incomingPhoneNumbers() {
+        return $this->api->v2010->account->incomingPhoneNumbers;
+    }
+
+    /**
+     * @return MessageList 
+     */
+    public function messages() {
+        return $this->api->v2010->account->messages;
+    }
+
+    /**
+     * @return NotificationList 
+     */
+    public function notifications() {
+        return $this->api->v2010->account->notifications;
+    }
+
+    /**
+     * @return OutgoingCallerIdList 
+     */
+    public function outgoingCallerIds() {
+        return $this->api->v2010->account->outgoingCallerIds;
+    }
+
+    /**
+     * @return QueueList 
+     */
+    public function queues() {
+        return $this->api->v2010->account->queues;
+    }
+
+    /**
+     * @return RecordingList 
+     */
+    public function recordings() {
+        return $this->api->v2010->account->recordings;
+    }
+
+    /**
+     * @return SandboxList 
+     */
+    public function sandbox() {
+        return $this->api->v2010->account->sandbox;
+    }
+
+    /**
+     * @return SipList 
+     */
+    public function sip() {
+        return $this->api->v2010->account->sip;
+    }
+
+    /**
+     * @return SmsList 
+     */
+    public function sms() {
+        return $this->api->v2010->account->sms;
+    }
+
+    /**
+     * @return TokenList 
+     */
+    public function tokens() {
+        return $this->api->v2010->account->tokens;
+    }
+
+    /**
+     * @return TranscriptionList 
+     */
+    public function transcriptions() {
+        return $this->api->v2010->account->transcriptions;
+    }
+
+    /**
+     * @return UsageList 
+     */
+    public function usage() {
+        return $this->api->v2010->account->usage;
+    }
+
+    /**
+     * @return ValidationRequestList 
+     */
+    public function validationRequests() {
+        return $this->api->v2010->account->validationRequests;
+    }
+
+    /**
      * Access the Conversations Twilio Domain
      * 
      * @return Conversations Conversations Twilio Domain
