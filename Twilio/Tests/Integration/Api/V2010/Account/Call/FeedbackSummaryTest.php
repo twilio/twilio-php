@@ -22,13 +22,13 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->calls
-                                     ->feedbackSummaries->create(date(2008, 1, 2), date(2008, 1, 2));
+                                     ->feedbackSummaries->create(new \DateTime('2008-01-02'), new \DateTime('2008-01-02'));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
-            'StartDate' => date(2008, 1, 2),
-            'EndDate' => date(2008, 1, 2),
+            'StartDate' => new \DateTime('2008-01-02'),
+            'EndDate' => new \DateTime('2008-01-02'),
         );
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
@@ -70,7 +70,7 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->calls
-                                           ->feedbackSummaries->create(date(2008, 1, 2), date(2008, 1, 2));
+                                           ->feedbackSummaries->create(new \DateTime('2008-01-02'), new \DateTime('2008-01-02'));
         
         $this->assertNotNull($actual);
     }

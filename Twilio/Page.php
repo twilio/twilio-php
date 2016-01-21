@@ -60,6 +60,7 @@ abstract class Page implements \Iterator {
         } else {
             $keys = array_keys($this->payload);
             $key = array_diff($keys, self::$metaKeys);
+            $key = array_values($key);
 
             if (count($key) == 1) {
                 return $this->payload[$key[0]];
