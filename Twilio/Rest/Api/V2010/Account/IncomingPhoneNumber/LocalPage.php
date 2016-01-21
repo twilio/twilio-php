@@ -47,7 +47,9 @@ class LocalPage extends Page {
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page(
+            $options, 
+        $limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -71,7 +73,9 @@ class LocalPage extends Page {
      * @return LocalInstance[] Array of results
      */
     public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize));
+        return iterator_to_array($this->stream(
+            $options, 
+        $limit, $pageSize));
     }
 
     /**

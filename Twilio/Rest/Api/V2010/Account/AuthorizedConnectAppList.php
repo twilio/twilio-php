@@ -57,7 +57,7 @@ class AuthorizedConnectAppList extends ListResource {
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -80,7 +80,7 @@ class AuthorizedConnectAppList extends ListResource {
      * @return AuthorizedConnectAppInstance[] Array of results
      */
     public function read($limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize));
+        return iterator_to_array($this->stream($limit, $pageSize));
     }
 
     /**
@@ -93,7 +93,6 @@ class AuthorizedConnectAppList extends ListResource {
      * @return Page Page of AuthorizedConnectAppInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $options = new Values($options);
         $params = Values::of(array(
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
