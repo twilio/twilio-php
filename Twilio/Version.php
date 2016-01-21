@@ -4,7 +4,7 @@ namespace Twilio;
 
 use Twilio\Exceptions\TwilioException;
 
-class Version {
+abstract class Version {
     /**
      * @const int MAX_PAGE_SIZE largest page the Twilio API will return
      */
