@@ -15,9 +15,51 @@ use Twilio\Rest\Api\V2010;
 
 /**
  * @property V2010 v2010
+ * @property AccountContext account
+ * @property AddressList addresses
+ * @property ApplicationList applications
+ * @property AuthorizedConnectAppList authorizedConnectApps
+ * @property AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property CallList calls
+ * @property ConferenceList conferences
+ * @property ConnectAppList connectApps
+ * @property IncomingPhoneNumberList incomingPhoneNumbers
+ * @property MessageList messages
+ * @property NotificationList notifications
+ * @property OutgoingCallerIdList outgoingCallerIds
+ * @property QueueList queues
+ * @property RecordingList recordings
+ * @property SandboxList sandbox
+ * @property SipList sip
+ * @property SmsList sms
+ * @property TokenList tokens
+ * @property TranscriptionList transcriptions
+ * @property UsageList usage
+ * @property ValidationRequestList validationRequests
  */
 class Api extends Domain {
     protected $_v2010 = null;
+    protected $_account = null;
+    protected $_addresses = null;
+    protected $_applications = null;
+    protected $_authorizedConnectApps = null;
+    protected $_availablePhoneNumbers = null;
+    protected $_calls = null;
+    protected $_conferences = null;
+    protected $_connectApps = null;
+    protected $_incomingPhoneNumbers = null;
+    protected $_messages = null;
+    protected $_notifications = null;
+    protected $_outgoingCallerIds = null;
+    protected $_queues = null;
+    protected $_recordings = null;
+    protected $_sandbox = null;
+    protected $_sip = null;
+    protected $_sms = null;
+    protected $_tokens = null;
+    protected $_transcriptions = null;
+    protected $_usage = null;
+    protected $_validationRequests = null;
 
     /**
      * Construct the Api Domain
@@ -91,140 +133,140 @@ class Api extends Domain {
     /**
      * @return AddressList 
      */
-    public function addresses() {
+    public function getAddresses() {
         return $this->v2010->account->addresses;
     }
 
     /**
      * @return ApplicationList 
      */
-    public function applications() {
+    public function getApplications() {
         return $this->v2010->account->applications;
     }
 
     /**
      * @return AuthorizedConnectAppList 
      */
-    public function authorizedConnectApps() {
+    public function getAuthorizedConnectApps() {
         return $this->v2010->account->authorizedConnectApps;
     }
 
     /**
      * @return AvailablePhoneNumberCountryList 
      */
-    public function availablePhoneNumbers() {
+    public function getAvailablePhoneNumbers() {
         return $this->v2010->account->availablePhoneNumbers;
     }
 
     /**
      * @return CallList 
      */
-    public function calls() {
+    public function getCalls() {
         return $this->v2010->account->calls;
     }
 
     /**
      * @return ConferenceList 
      */
-    public function conferences() {
+    public function getConferences() {
         return $this->v2010->account->conferences;
     }
 
     /**
      * @return ConnectAppList 
      */
-    public function connectApps() {
+    public function getConnectApps() {
         return $this->v2010->account->connectApps;
     }
 
     /**
      * @return IncomingPhoneNumberList 
      */
-    public function incomingPhoneNumbers() {
+    public function getIncomingPhoneNumbers() {
         return $this->v2010->account->incomingPhoneNumbers;
     }
 
     /**
      * @return MessageList 
      */
-    public function messages() {
+    public function getMessages() {
         return $this->v2010->account->messages;
     }
 
     /**
      * @return NotificationList 
      */
-    public function notifications() {
+    public function getNotifications() {
         return $this->v2010->account->notifications;
     }
 
     /**
      * @return OutgoingCallerIdList 
      */
-    public function outgoingCallerIds() {
+    public function getOutgoingCallerIds() {
         return $this->v2010->account->outgoingCallerIds;
     }
 
     /**
      * @return QueueList 
      */
-    public function queues() {
+    public function getQueues() {
         return $this->v2010->account->queues;
     }
 
     /**
      * @return RecordingList 
      */
-    public function recordings() {
+    public function getRecordings() {
         return $this->v2010->account->recordings;
     }
 
     /**
      * @return SandboxList 
      */
-    public function sandbox() {
+    public function getSandbox() {
         return $this->v2010->account->sandbox;
     }
 
     /**
      * @return SipList 
      */
-    public function sip() {
+    public function getSip() {
         return $this->v2010->account->sip;
     }
 
     /**
      * @return SmsList 
      */
-    public function sms() {
+    public function getSms() {
         return $this->v2010->account->sms;
     }
 
     /**
      * @return TokenList 
      */
-    public function tokens() {
+    public function getTokens() {
         return $this->v2010->account->tokens;
     }
 
     /**
      * @return TranscriptionList 
      */
-    public function transcriptions() {
+    public function getTranscriptions() {
         return $this->v2010->account->transcriptions;
     }
 
     /**
      * @return UsageList 
      */
-    public function usage() {
+    public function getUsage() {
         return $this->v2010->account->usage;
     }
 
     /**
      * @return ValidationRequestList 
      */
-    public function validationRequests() {
+    public function getValidationRequests() {
         return $this->v2010->account->validationRequests;
     }
 

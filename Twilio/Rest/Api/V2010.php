@@ -42,6 +42,26 @@ use Twilio\Version;
 class V2010 extends Version {
     protected $_accounts = null;
     protected $_account = null;
+    protected $_addresses = null;
+    protected $_applications = null;
+    protected $_authorizedConnectApps = null;
+    protected $_availablePhoneNumbers = null;
+    protected $_calls = null;
+    protected $_conferences = null;
+    protected $_connectApps = null;
+    protected $_incomingPhoneNumbers = null;
+    protected $_messages = null;
+    protected $_notifications = null;
+    protected $_outgoingCallerIds = null;
+    protected $_queues = null;
+    protected $_recordings = null;
+    protected $_sandbox = null;
+    protected $_sip = null;
+    protected $_sms = null;
+    protected $_tokens = null;
+    protected $_transcriptions = null;
+    protected $_usage = null;
+    protected $_validationRequests = null;
 
     /**
      * Construct the V2010 version of Api
