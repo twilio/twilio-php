@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.9.2
+-------------
+Released January 22, 2016
+
+- Fix Address instance reference
+
 Version 4.9.1
 -------------
 Released January 19, 2016
