@@ -536,6 +536,10 @@ Workspace Statistics
 
 		The Tasks broken down by status (for example: pending: 1, reserved = 3, assigned = 2)
 
+	.. php:attr:: tasks_by_priority
+
+		The Tasks broken down by priority (for example: Priority-1: 2, Priority-3: 2, Priority-7: 1)
+
 	.. php:attr:: activity_statistics
 
 		A breakdown of Workers by Activity (for example: Idle : 0, Busy: 5, Reserved = 0, Offline = 2)
@@ -609,6 +613,10 @@ Workflow Statistics
 	.. php:attr:: tasks_by_status
 
 		The Tasks broken down by status (for example: pending: 1, reserved = 3, assigned = 2)
+
+	.. php:attr:: tasks_by_priority
+
+		The Tasks broken down by priority (for example: Priority-1: 2, Priority-3: 2, Priority-7: 1)
 
 	.. php:attr:: tasks_entered
 
@@ -708,6 +716,10 @@ TaskQueue Statistics
 	.. php:attr:: tasks_by_status
 
 		The Tasks broken down by status (for example: pending: 1, reserved = 3, assigned = 2)
+
+	.. php:attr:: tasks_by_priority
+
+		The Tasks broken down by priority (for example: Priority-1: 2, Priority-3: 2, Priority-7: 1)
 
 	.. php:attr:: activity_statistics
 
