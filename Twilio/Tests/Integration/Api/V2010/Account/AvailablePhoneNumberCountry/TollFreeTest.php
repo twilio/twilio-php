@@ -42,8 +42,8 @@ class TollFreeTest extends HolodeckTestCase {
                         "address_requirements": "none",
                         "beta": false,
                         "capabilities": {
-                            "MMS": true,
-                            "SMS": true,
+                            "mms": true,
+                            "sms": true,
                             "voice": true
                         },
                         "friendly_name": "(800) 100-0052",
@@ -57,6 +57,15 @@ class TollFreeTest extends HolodeckTestCase {
                         "region": null
                     }
                 ],
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0",
+                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0",
+                "next_page_uri": null,
+                "num_pages": 1,
+                "page": 0,
+                "page_size": 50,
+                "previous_page_uri": null,
+                "start": 0,
+                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=1"
             }
             '
@@ -75,6 +84,15 @@ class TollFreeTest extends HolodeckTestCase {
             '
             {
                 "available_phone_numbers": [],
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0",
+                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=50&Page=0",
+                "next_page_uri": null,
+                "num_pages": 1,
+                "page": 0,
+                "page_size": 50,
+                "previous_page_uri": null,
+                "start": 0,
+                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json?PageSize=1"
             }
             '

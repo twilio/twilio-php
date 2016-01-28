@@ -11,15 +11,18 @@ namespace Twilio\Rest\Pricing;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Pricing\V1\MessagingList;
 use Twilio\Rest\Pricing\V1\PhoneNumberList;
 use Twilio\Rest\Pricing\V1\VoiceList;
 use Twilio\Version;
 
 /**
+ * @property MessagingList messaging
  * @property PhoneNumberList phoneNumbers
  * @property VoiceList voice
  */
 class V1 extends Version {
+    protected $_messaging = null;
     protected $_phoneNumbers = null;
     protected $_voice = null;
 
@@ -32,6 +35,16 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    /**
+     * @return MessagingList 
+     */
+    protected function getMessaging() {
+        if (!$this->_messaging) {
+            $this->_messaging = new MessagingList($this);
+        }
+        return $this->_messaging;
     }
 
     /**

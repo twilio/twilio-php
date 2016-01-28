@@ -75,6 +75,13 @@ class Pricing extends Domain {
     }
 
     /**
+     * @return MessagingList 
+     */
+    public function messaging() {
+        return $this->v1->messaging();
+    }
+
+    /**
      * @return PhoneNumberList 
      */
     public function phoneNumbers() {
