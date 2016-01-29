@@ -80,7 +80,7 @@ abstract class Version {
             throw new TwilioException('Unable to fetch record', $response->getStatusCode());
         }
 
-        return json_decode($response->getContent(), true);
+        return $response->getContent();
     }
 
     public function update($method, $uri, $params = array(), $data = array(),
@@ -101,7 +101,7 @@ abstract class Version {
             throw new TwilioException('Unable to update record', $response->getStatusCode());
         }
 
-        return json_decode($response->getContent(), true);
+        return $response->getContent();
     }
 
     public function delete($method, $uri, $params = array(), $data = array(),
@@ -179,7 +179,7 @@ abstract class Version {
             throw new TwilioException('Unable to create record', $response->getStatusCode());
         }
 
-        return json_decode($response->getContent(), true);
+        return $response->getContent();
     }
 
     /**

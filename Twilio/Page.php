@@ -42,7 +42,7 @@ abstract class Page implements \Iterator {
         if ($response->getStatusCode() != 200) {
             throw new DeserializeException('Unable to fetch page', $response->getStatusCode());
         }
-        return json_decode($response->getContent(), true);
+        return $response->getContent();
     }
 
     protected function hasMeta($key) {

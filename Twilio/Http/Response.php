@@ -19,7 +19,7 @@ class Response {
      * @return mixed
      */
     public function getContent() {
-        return $this->content;
+        return json_decode($this->content, true);
     }
 
     /**
