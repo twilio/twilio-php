@@ -538,7 +538,7 @@ Workspace Statistics
 
 	.. php:attr:: tasks_by_priority
 
-		The Tasks broken down by priority (for example: Priority-1: 2, Priority-3: 2, Priority-7: 1)
+		The Tasks broken down by priority (for example: 1: 2, 3: 2, 7: 1)
 
 	.. php:attr:: activity_statistics
 
@@ -616,7 +616,7 @@ Workflow Statistics
 
 	.. php:attr:: tasks_by_priority
 
-		The Tasks broken down by priority (for example: Priority-1: 2, Priority-3: 2, Priority-7: 1)
+		The Tasks broken down by priority (for example: 1: 2, 3: 2, 7: 1)
 
 	.. php:attr:: tasks_entered
 
@@ -719,7 +719,7 @@ TaskQueue Statistics
 
 	.. php:attr:: tasks_by_priority
 
-		The Tasks broken down by priority (for example: Priority-1: 2, Priority-3: 2, Priority-7: 1)
+		The Tasks broken down by priority (for example: 1: 2, 3: 2, 7: 1)
 
 	.. php:attr:: activity_statistics
 
