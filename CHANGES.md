@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 4.10.0
+-------------
+Released January 28, 2016
+
+- Add support for filter_friendly_name in WorkflowConfig
+- Load reservations by default in TaskRouter
+
 Version 4.9.2
 -------------
 Released January 22, 2016
