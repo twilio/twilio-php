@@ -1,7 +1,7 @@
 twilio-php Changelog
 ====================
 
-Version 4.10.0
+Version 5.2.0-edge
 -------------
 Released January 28, 2016
 
