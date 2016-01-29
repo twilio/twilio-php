@@ -1,6 +1,37 @@
 twilio-php Changelog
 ====================
 
+Version 4.10.0
+-------------
+Released January 28, 2016
+
+- Add support for filter_friendly_name in WorkflowConfig
+- Load reservations by default in TaskRouter
+
+Version 4.9.2
+-------------
+Released January 22, 2016
+
+- Fix Address instance reference
+
+Version 4.9.1
+-------------
+Released January 19, 2016
+
+- Add missing create/delete methods on Address
+
+Version 4.9.0
+-------------
+Released December 18, 2015
+
+- Add IP Messaging capability
+
+Version 4.8.1
+-------------
+Released December 8, 2015
+
+- Fix issue with empty grant encoding
+
 Version 5.1.0-edge
 -------------
 Released December 8, 2015

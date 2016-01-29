@@ -823,6 +823,7 @@ class Trunking_Services_Twilio extends Base_Services_Twilio
 		return 'https://trunking.twilio.com';
 	}
 }
+
 /**
  * Create a client to talk to the Twilio IP Messaging API.
  *
