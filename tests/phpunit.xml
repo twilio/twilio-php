@@ -2,6 +2,7 @@
   <testsuites>
     <testsuite name="Services Twilio Test Suite">
       <directory>./</directory>
+      <exclude>WorkflowTest.php</exclude>
     </testsuite>
   </testsuites>
 </phpunit>
