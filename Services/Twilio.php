@@ -9,15 +9,19 @@
 function Services_Twilio_autoload($className)
 {
     if (substr($className, 0, 15) != 'Services_Twilio'
-        && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
+        && substr($className, 0, 26) != 'Services_Twilio_TaskRouter'
         && substr($className, 0, 23) != 'Lookups_Services_Twilio'
         && substr($className, 0, 23) != 'Monitor_Services_Twilio'
         && substr($className, 0, 23) != 'Pricing_Services_Twilio') {
         return false;
     }
-    $file = str_replace('_', '/', $className);
-    $file = str_replace('Services/', '', $file);
-    return include dirname(__FILE__) . "/$file.php";
+	if(substr($className, 0, 26) == 'Services_Twilio_TaskRouter') {
+		$file = "/Twilio/CapabilityTaskRouter";
+	}else {
+		$file = str_replace('_', '/', $className);
+		$file = str_replace('Services/', '', $file);
+	}
+	return include dirname(__FILE__) . "/$file.php";
 }
 
 spl_autoload_register('Services_Twilio_autoload');
@@ -451,9 +455,9 @@ class TaskRouter_Services_Twilio extends Base_Services_Twilio
     }
 
     protected function _getBaseUri()
-    {
-        return 'https://taskrouter.twilio.com';
-    }
+	{
+		return 'https://taskrouter.twilio.com';
+	}
 }
 
 /**
