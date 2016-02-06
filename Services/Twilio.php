@@ -15,7 +15,10 @@ function Services_Twilio_autoload($className)
         && substr($className, 0, 23) != 'Pricing_Services_Twilio') {
         return false;
     }
-    if(substr($className, 0, 26) == 'Services_Twilio_TaskRouter') {
+    if(substr($className, 0, 37) == 'Services_Twilio_TaskRouter_Capability' ||
+        substr($className, 0, 45) == 'Services_Twilio_TaskRouter_Worker_Capability' ||
+        substr($className, 0, 48) == 'Services_Twilio_TaskRouter_TaskQueue_Capability' ||
+        substr($className, 0, 48) == 'Services_Twilio_TaskRouter_Workspace_Capability') {
         $file = "/Twilio/CapabilityTaskRouter";
     }else {
         $file = str_replace('_', '/', $className);
