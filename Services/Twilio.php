@@ -9,7 +9,7 @@
 function Services_Twilio_autoload($className)
 {
     if (substr($className, 0, 15) != 'Services_Twilio'
-        && substr($className, 0, 26) != 'Services_Twilio_TaskRouter'
+        && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
         && substr($className, 0, 23) != 'Lookups_Services_Twilio'
         && substr($className, 0, 23) != 'Monitor_Services_Twilio'
         && substr($className, 0, 23) != 'Pricing_Services_Twilio') {
