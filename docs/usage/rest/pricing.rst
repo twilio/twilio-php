@@ -90,9 +90,9 @@ To retrieve pricing information for calls to and from a specific phone number:
 
     $number = $client->voiceNumbers->get("+15105551234");
     echo $number->price_unit . "\n";
-    echo $number->outbound_call_price->call_base_price . "\n";
+    echo $number->outbound_call_price->base_price . "\n";
     // $number->inbound_call_price is only set for Twilio-hosted numbers
-    echo $number->inbound_call_price->call_base_price . "\n";
+    echo $number->inbound_call_price->base_price . "\n";
 
 Phone Number Pricing
 ====================
