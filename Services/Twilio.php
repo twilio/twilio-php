@@ -8,6 +8,10 @@
 
 function Services_Twilio_autoload($className)
 {
+    if($className == 'Services_Twilio_TaskRouter_Worker_Capability') {
+        return include dirname(__FILE__) . "/Twilio/CapabilityTaskRouter.php";
+    }
+    
     if (substr($className, 0, 15) != 'Services_Twilio'
         && substr($className, 0, 26) != 'TaskRouter_Services_Twilio'
         && substr($className, 0, 23) != 'Lookups_Services_Twilio'
