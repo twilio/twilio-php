@@ -1,6 +1,9 @@
 <?php
 
-require_once 'Twilio/CapabilityTaskRouter.php';
+require_once 'Twilio/TaskRouter/Workspace/Capability.php';
+require_once 'Twilio/TaskRouter/Worker/Capability.php';
+require_once 'Twilio/TaskRouter/TaskQueue/Capability.php';
+require_once 'Twilio/TaskRouter/Capability.php';
 
 class CapabilityTaskRouter extends PHPUnit_Framework_TestCase {
 

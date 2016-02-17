@@ -1,5 +1,4 @@
 <?php
-require_once('../Capability.php');
 
 /**
  * Twilio TaskRouter Worker Capability assigner

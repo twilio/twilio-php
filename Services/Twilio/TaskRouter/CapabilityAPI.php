@@ -1,5 +1,4 @@
 <?php
-include_once 'JWT.php';
 /**
  * Twilio API Capability Token generator
  *
@@ -8,7 +7,7 @@ include_once 'JWT.php';
  * @author Justin Witz <justin.witz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Twilio_API_Capability
+class Services_Twilio_TaskRouter_CapabilityAPI
 {
 	protected $accountSid;
 	protected $authToken;

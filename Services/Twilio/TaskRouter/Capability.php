@@ -1,5 +1,4 @@
 <?php
-include_once '../CapabilityAPI.php';
 
 /**
  * Twilio TaskRouter Capability assigner
@@ -9,7 +8,7 @@ include_once '../CapabilityAPI.php';
  * @author Justin Witz <justin.witz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Twilio_TaskRouter_Capability extends Services_Twilio_API_Capability
+class Services_Twilio_TaskRouter_Capability extends Services_Twilio_TaskRouter_CapabilityAPI
 {
 	protected $baseUrl = 'https://taskrouter.twilio.com/v1';
 	protected $baseWsUrl = 'https://event-bridge.twilio.com/v1/wschannels';
