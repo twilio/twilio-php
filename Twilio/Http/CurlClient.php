@@ -12,7 +12,9 @@ class CurlClient implements Client {
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
                             $timeout = null) {
-        $timeout = $timeout || self::DEFAULT_TIMEOUT;
+        $timeout = is_null($timeout)
+                 ? self::DEFAULT_TIMEOUT
+                 : $timeout;
 
         $options = array(
             CURLOPT_URL => $url,
@@ -28,7 +30,7 @@ class CurlClient implements Client {
         }
 
         if ($user && $password) {
-            $options[CURLOPT_USERPWD] = "$user:$password";
+            $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . base64_encode("$user:$password");
         }
 
         $body = $this->buildQuery($params);
