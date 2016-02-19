@@ -85,11 +85,11 @@ class Stream implements \Iterator {
     }
 
     protected function overLimit() {
-        return $this->limit !== null && $this->limit <= $this->currentRecord;
+        return $this->limit !== null && $this->limit < $this->currentRecord;
     }
 
     protected function overPageLimit() {
-        return $this->pageLimit !== null && $this->pageLimit <= $this->currentPage;
+        return $this->pageLimit !== null && $this->pageLimit < $this->currentPage;
     }
 
 }
