@@ -38,6 +38,9 @@ class CurlClient implements Client {
         switch (strtolower(trim($method))) {
             case 'get':
                 $options[CURLOPT_HTTPGET] = true;
+                if ($body) {
+                  $options[CURLOPT_URL] = $options[CURLOPT_URL] . '?' . $body;
+                }
                 break;
             case 'post':
                 $options[CURLOPT_POST] = true;
