@@ -67,7 +67,7 @@ class InProgressTest extends HolodeckTestCase {
         $actual = $this->twilio->conversations->v1->conversations
                                                   ->inProgress->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

@@ -72,6 +72,23 @@ class ReservationContext extends InstanceContext {
         $data = Values::of(array(
             'ReservationStatus' => $reservationStatus,
             'WorkerActivitySid' => $options['workerActivitySid'],
+            'Instruction' => $options['instruction'],
+            'DequeuePostWorkActivitySid' => $options['dequeuePostWorkActivitySid'],
+            'DequeueFrom' => $options['dequeueFrom'],
+            'DequeueRecord' => $options['dequeueRecord'],
+            'DequeueTimeout' => $options['dequeueTimeout'],
+            'DequeueTo' => $options['dequeueTo'],
+            'DequeueStatusCallbackUrl' => $options['dequeueStatusCallbackUrl'],
+            'CallFrom' => $options['callFrom'],
+            'CallRecord' => $options['callRecord'],
+            'CallTimeout' => $options['callTimeout'],
+            'CallTo' => $options['callTo'],
+            'CallUrl' => $options['callUrl'],
+            'CallStatusCallbackUrl' => $options['callStatusCallbackUrl'],
+            'CallAccept' => $options['callAccept'],
+            'RedirectCallSid' => $options['redirectCallSid'],
+            'RedirectAccept' => $options['redirectAccept'],
+            'RedirectUrl' => $options['redirectUrl'],
         ));
         
         $payload = $this->version->update(

@@ -65,7 +65,7 @@ class AvailablePhoneNumberCountryTest extends HolodeckTestCase {
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->availablePhoneNumbers->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

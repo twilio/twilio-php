@@ -59,7 +59,7 @@ class CountryTest extends HolodeckTestCase {
         $actual = $this->twilio->pricing->v1->phoneNumbers
                                             ->countries->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

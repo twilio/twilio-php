@@ -134,7 +134,7 @@ class EventTest extends HolodeckTestCase {
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                ->events->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

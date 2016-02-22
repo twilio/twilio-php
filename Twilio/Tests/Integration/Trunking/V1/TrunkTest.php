@@ -201,7 +201,7 @@ class TrunkTest extends HolodeckTestCase {
         
         $actual = $this->twilio->trunking->v1->trunks->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

@@ -139,7 +139,7 @@ class RecordingTest extends HolodeckTestCase {
                                            ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->recordings->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

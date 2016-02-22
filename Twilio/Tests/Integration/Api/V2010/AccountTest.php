@@ -183,7 +183,7 @@ class AccountTest extends HolodeckTestCase {
         
         $actual = $this->twilio->api->v2010->accounts->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

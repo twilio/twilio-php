@@ -49,15 +49,6 @@ class InProgressInstance extends InstanceResource {
     }
 
     /**
-     * Access the participants
-     * 
-     * @return ParticipantList 
-     */
-    protected function getParticipants() {
-        return $this->proxy()->participants;
-    }
-
-    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access

@@ -67,7 +67,7 @@ class CompletedTest extends HolodeckTestCase {
         $actual = $this->twilio->conversations->v1->conversations
                                                   ->completed->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

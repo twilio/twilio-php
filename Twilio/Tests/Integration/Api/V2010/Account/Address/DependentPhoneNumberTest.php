@@ -70,7 +70,7 @@ class DependentPhoneNumberTest extends HolodeckTestCase {
                                            ->addresses("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->dependentPhoneNumbers->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

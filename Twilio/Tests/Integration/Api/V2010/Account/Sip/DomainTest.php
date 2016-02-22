@@ -74,7 +74,7 @@ class DomainTest extends HolodeckTestCase {
                                            ->sip
                                            ->domains->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

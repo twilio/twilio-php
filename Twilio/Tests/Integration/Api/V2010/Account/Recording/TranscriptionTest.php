@@ -147,7 +147,7 @@ class TranscriptionTest extends HolodeckTestCase {
                                            ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->transcriptions->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

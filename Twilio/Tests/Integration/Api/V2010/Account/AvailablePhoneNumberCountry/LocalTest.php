@@ -76,7 +76,7 @@ class LocalTest extends HolodeckTestCase {
                                            ->availablePhoneNumbers("US")
                                            ->local->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

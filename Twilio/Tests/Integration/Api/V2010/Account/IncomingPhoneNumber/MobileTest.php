@@ -89,7 +89,7 @@ class MobileTest extends HolodeckTestCase {
                                            ->incomingPhoneNumbers
                                            ->mobile->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

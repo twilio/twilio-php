@@ -20,6 +20,7 @@ use Twilio\VersionInfo;
  * 
  * @property Api api
  * @property Conversations conversations
+ * @property IpMessaging ipMessaging
  * @property Lookups lookups
  * @property Monitor monitor
  * @property Pricing pricing
@@ -36,6 +37,7 @@ class Client {
     protected $httpClient;
     protected $_api = null;
     protected $_conversations = null;
+    protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
     protected $_pricing = null;
@@ -354,6 +356,18 @@ class Client {
             $this->_conversations = new Conversations($this);
         }
         return $this->_conversations;
+    }
+
+    /**
+     * Access the IpMessaging Twilio Domain
+     * 
+     * @return IpMessaging IpMessaging Twilio Domain
+     */
+    protected function getIpMessaging() {
+        if (!$this->_ipMessaging) {
+            $this->_ipMessaging = new IpMessaging($this);
+        }
+        return $this->_ipMessaging;
     }
 
     /**

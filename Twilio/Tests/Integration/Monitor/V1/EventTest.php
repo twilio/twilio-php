@@ -126,7 +126,7 @@ class EventTest extends HolodeckTestCase {
         
         $actual = $this->twilio->monitor->v1->events->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

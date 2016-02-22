@@ -138,7 +138,7 @@ class AlertTest extends HolodeckTestCase {
         
         $actual = $this->twilio->monitor->v1->alerts->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {

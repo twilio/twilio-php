@@ -42,6 +42,7 @@ class ReservationList extends ListResource {
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
+     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -55,10 +56,12 @@ class ReservationList extends ListResource {
      *                      min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page(
+            $options, 
+        $limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -68,6 +71,7 @@ class ReservationList extends ListResource {
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
+     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -80,21 +84,28 @@ class ReservationList extends ListResource {
      *                      min(limit, 1000)
      * @return ReservationInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($limit, $pageSize));
+    public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
+        return iterator_to_array($this->stream(
+            $options, 
+        $limit, $pageSize));
     }
 
     /**
      * Retrieve a single page of ReservationInstance records from the API.
      * Request is executed immediately
      * 
+     * @param array $options Optional Arguments
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
      * @return Page Page of ReservationInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+        $options = new Values($options);
         $params = Values::of(array(
+            'Status' => $options['status'],
+            'AssignmentStatus' => $options['assignmentStatus'],
+            'ReservationStatus' => $options['reservationStatus'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -85,7 +85,7 @@ class AllTimeTest extends HolodeckTestCase {
                                            ->records
                                            ->allTime->read();
         
-        $this->assertNotNull($actual);
+        $this->assertTrue(count($actual) > 0);
     }
 
     public function testReadEmptyResponse() {
