@@ -34,7 +34,7 @@ class YearlyInstance extends InstanceResource {
     /**
      * Initialize the YearlyInstance
      * 
-     * @return YearlyInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

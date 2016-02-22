@@ -16,8 +16,8 @@ use Twilio\Rest\Conversations\V1\Conversation\InProgressList;
 use Twilio\Version;
 
 /**
- * @property InProgressList inProgress
- * @property CompletedList completed
+ * @property \Twilio\Rest\Conversations\V1\Conversation\InProgressList inProgress
+ * @property \Twilio\Rest\Conversations\V1\Conversation\CompletedList completed
  */
 class ConversationList extends ListResource {
     protected $_inProgress = null;
@@ -27,7 +27,7 @@ class ConversationList extends ListResource {
      * Construct the ConversationList
      * 
      * @param Version $version Version that contains the resource
-     * @return ConversationList 
+     * @return \Twilio\Rest\Conversations\V1\ConversationList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -66,7 +66,7 @@ class ConversationList extends ListResource {
      * Constructs a ConversationContext
      * 
      * @param string $sid The sid
-     * @return ConversationContext 
+     * @return \Twilio\Rest\Conversations\V1\ConversationContext 
      */
     public function getContext($sid) {
         return new ConversationContext(
@@ -79,8 +79,8 @@ class ConversationList extends ListResource {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -96,8 +96,8 @@ class ConversationList extends ListResource {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

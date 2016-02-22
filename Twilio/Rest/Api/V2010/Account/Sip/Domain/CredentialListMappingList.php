@@ -20,7 +20,7 @@ class CredentialListMappingList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $domainSid A string that uniquely identifies the SIP Domain
-     * @return CredentialListMappingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList 
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
         parent::__construct($version);
@@ -81,7 +81,7 @@ class CredentialListMappingList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -119,7 +119,7 @@ class CredentialListMappingList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of CredentialListMappingInstance
+     * @return \Twilio\Page Page of CredentialListMappingInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -146,7 +146,7 @@ class CredentialListMappingList extends ListResource {
      * Constructs a CredentialListMappingContext
      * 
      * @param string $sid The sid
-     * @return CredentialListMappingContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext 
      */
     public function getContext($sid) {
         return new CredentialListMappingContext(

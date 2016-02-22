@@ -17,10 +17,10 @@ class PhoneNumberContext extends InstanceContext {
     /**
      * Initialize the PhoneNumberContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
-     * @return PhoneNumberContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext 
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);

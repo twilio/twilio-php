@@ -17,9 +17,9 @@ class CredentialContext extends InstanceContext {
     /**
      * Initialize the CredentialContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return CredentialContext 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);

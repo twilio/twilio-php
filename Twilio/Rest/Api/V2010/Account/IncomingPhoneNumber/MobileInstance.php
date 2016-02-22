@@ -44,7 +44,7 @@ class MobileInstance extends InstanceResource {
     /**
      * Initialize the MobileInstance
      * 
-     * @return MobileInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileInstance 
      */
     public function __construct(Version $version, array $payload, $ownerAccountSid) {
         parent::__construct($version);

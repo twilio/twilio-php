@@ -22,13 +22,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property ActivityList activities
- * @property EventList events
- * @property TaskList tasks
- * @property TaskQueueList taskQueues
- * @property WorkerList workers
- * @property WorkflowList workflows
- * @property WorkspaceStatisticsList statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList activities
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\EventList events
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskList tasks
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList taskQueues
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList workers
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList workflows
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList statistics
  */
 class WorkspaceContext extends InstanceContext {
     protected $_activities = null;
@@ -42,9 +42,9 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Initialize the WorkspaceContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return WorkspaceContext 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -120,7 +120,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the activities
      * 
-     * @return ActivityList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList 
      */
     protected function getActivities() {
         if (!$this->_activities) {
@@ -136,7 +136,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the events
      * 
-     * @return EventList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList 
      */
     protected function getEvents() {
         if (!$this->_events) {
@@ -152,7 +152,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the tasks
      * 
-     * @return TaskList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList 
      */
     protected function getTasks() {
         if (!$this->_tasks) {
@@ -168,7 +168,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the taskQueues
      * 
-     * @return TaskQueueList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList 
      */
     protected function getTaskQueues() {
         if (!$this->_taskQueues) {
@@ -184,7 +184,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the workers
      * 
-     * @return WorkerList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
      */
     protected function getWorkers() {
         if (!$this->_workers) {
@@ -200,7 +200,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the workflows
      * 
-     * @return WorkflowList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList 
      */
     protected function getWorkflows() {
         if (!$this->_workflows) {
@@ -216,7 +216,7 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Access the statistics
      * 
-     * @return WorkspaceStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList 
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
@@ -233,8 +233,8 @@ class WorkspaceContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -250,8 +250,8 @@ class WorkspaceContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

@@ -33,7 +33,7 @@ class AddressInstance extends InstanceResource {
     /**
      * Initialize the AddressInstance
      * 
-     * @return AddressInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -64,7 +64,8 @@ class AddressInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return AddressContext Context for this AddressInstance
+     * @return \Twilio\Rest\Api\V2010\Account\AddressContext Context for this
+     *                                                       AddressInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -111,7 +112,7 @@ class AddressInstance extends InstanceResource {
     /**
      * Access the dependentPhoneNumbers
      * 
-     * @return DependentPhoneNumberList 
+     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList 
      */
     protected function getDependentPhoneNumbers() {
         return $this->proxy()->dependentPhoneNumbers;

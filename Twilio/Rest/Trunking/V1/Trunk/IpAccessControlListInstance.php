@@ -28,7 +28,7 @@ class IpAccessControlListInstance extends InstanceResource {
     /**
      * Initialize the IpAccessControlListInstance
      * 
-     * @return IpAccessControlListInstance 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListInstance 
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {
         parent::__construct($version);
@@ -54,8 +54,9 @@ class IpAccessControlListInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return IpAccessControlListContext Context for this
-     *                                    IpAccessControlListInstance
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext Context
+     *                                                                   for this
+     *                                                                   IpAccessControlListInstance
      */
     protected function proxy() {
         if (!$this->context) {

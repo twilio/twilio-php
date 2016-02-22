@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property CredentialList credentials
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList credentials
  */
 class CredentialListContext extends InstanceContext {
     protected $_credentials = null;
@@ -24,10 +24,10 @@ class CredentialListContext extends InstanceContext {
     /**
      * Initialize the CredentialListContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique credential Sid
-     * @return CredentialListContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -101,7 +101,7 @@ class CredentialListContext extends InstanceContext {
     /**
      * Access the credentials
      * 
-     * @return CredentialList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList 
      */
     protected function getCredentials() {
         if (!$this->_credentials) {
@@ -119,8 +119,8 @@ class CredentialListContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -136,8 +136,8 @@ class CredentialListContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

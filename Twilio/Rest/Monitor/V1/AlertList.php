@@ -18,7 +18,7 @@ class AlertList extends ListResource {
      * Construct the AlertList
      * 
      * @param Version $version Version that contains the resource
-     * @return AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -49,7 +49,7 @@ class AlertList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -93,7 +93,7 @@ class AlertList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of AlertInstance
+     * @return \Twilio\Page Page of AlertInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -126,7 +126,7 @@ class AlertList extends ListResource {
      * Constructs a AlertContext
      * 
      * @param string $sid The sid
-     * @return AlertContext 
+     * @return \Twilio\Rest\Monitor\V1\AlertContext 
      */
     public function getContext($sid) {
         return new AlertContext(

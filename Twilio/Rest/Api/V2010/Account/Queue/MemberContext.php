@@ -17,11 +17,11 @@ class MemberContext extends InstanceContext {
     /**
      * Initialize the MemberContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $queueSid The Queue in which to find the members
      * @param string $callSid The call_sid
-     * @return MemberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext 
      */
     public function __construct(Version $version, $accountSid, $queueSid, $callSid) {
         parent::__construct($version);

@@ -17,7 +17,7 @@ class UsageInstance extends InstanceResource {
     /**
      * Initialize the UsageInstance
      * 
-     * @return UsageInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\UsageInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

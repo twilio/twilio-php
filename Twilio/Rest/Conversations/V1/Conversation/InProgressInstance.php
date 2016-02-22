@@ -28,7 +28,7 @@ class InProgressInstance extends InstanceResource {
     /**
      * Initialize the InProgressInstance
      * 
-     * @return InProgressInstance 
+     * @return \Twilio\Rest\Conversations\V1\Conversation\InProgressInstance 
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);

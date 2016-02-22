@@ -30,7 +30,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the DependentPhoneNumberInstance
      * 
-     * @return DependentPhoneNumberInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $addressSid) {
         parent::__construct($version);

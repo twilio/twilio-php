@@ -28,7 +28,7 @@ class CompletedInstance extends InstanceResource {
     /**
      * Initialize the CompletedInstance
      * 
-     * @return CompletedInstance 
+     * @return \Twilio\Rest\Conversations\V1\Conversation\CompletedInstance 
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);

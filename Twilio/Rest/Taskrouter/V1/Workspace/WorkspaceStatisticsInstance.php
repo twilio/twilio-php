@@ -24,7 +24,7 @@ class WorkspaceStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceStatisticsInstance
      * 
-     * @return WorkspaceStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
@@ -46,8 +46,7 @@ class WorkspaceStatisticsInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return WorkspaceStatisticsContext Context for this
-     *                                    WorkspaceStatisticsInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext Context for this WorkspaceStatisticsInstance
      */
     protected function proxy() {
         if (!$this->context) {

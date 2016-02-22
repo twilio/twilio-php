@@ -32,7 +32,7 @@ class OriginationUrlInstance extends InstanceResource {
     /**
      * Initialize the OriginationUrlInstance
      * 
-     * @return OriginationUrlInstance 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlInstance 
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {
         parent::__construct($version);
@@ -62,7 +62,9 @@ class OriginationUrlInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return OriginationUrlContext Context for this OriginationUrlInstance
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext Context for
+     *                                                              this
+     *                                                              OriginationUrlInstance
      */
     protected function proxy() {
         if (!$this->context) {

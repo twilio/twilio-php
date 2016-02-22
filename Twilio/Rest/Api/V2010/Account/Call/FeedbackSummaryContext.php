@@ -17,10 +17,10 @@ class FeedbackSummaryContext extends InstanceContext {
     /**
      * Initialize the FeedbackSummaryContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid The sid
-     * @return FeedbackSummaryContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);

@@ -19,7 +19,7 @@ class TaskQueueStatisticsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $taskQueueSid The task_queue_sid
-     * @return TaskQueueStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class TaskQueueStatisticsList extends ListResource {
     /**
      * Constructs a TaskQueueStatisticsContext
      * 
-     * @return TaskQueueStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext 
      */
     public function getContext() {
         return new TaskQueueStatisticsContext(

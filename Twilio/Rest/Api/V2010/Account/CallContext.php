@@ -18,9 +18,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property RecordingList recordings
- * @property NotificationList notifications
- * @property FeedbackList feedback
+ * @property \Twilio\Rest\Api\V2010\Account\Call\RecordingList recordings
+ * @property \Twilio\Rest\Api\V2010\Account\Call\NotificationList notifications
+ * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackList feedback
  */
 class CallContext extends InstanceContext {
     protected $_recordings = null;
@@ -30,10 +30,10 @@ class CallContext extends InstanceContext {
     /**
      * Initialize the CallContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Call Sid that uniquely identifies the Call to fetch
-     * @return CallContext 
+     * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -115,7 +115,7 @@ class CallContext extends InstanceContext {
     /**
      * Access the recordings
      * 
-     * @return RecordingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingList 
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
@@ -132,7 +132,7 @@ class CallContext extends InstanceContext {
     /**
      * Access the notifications
      * 
-     * @return NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationList 
      */
     protected function getNotifications() {
         if (!$this->_notifications) {
@@ -149,7 +149,7 @@ class CallContext extends InstanceContext {
     /**
      * Access the feedback
      * 
-     * @return FeedbackList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList 
      */
     protected function getFeedback() {
         if (!$this->_feedback) {
@@ -167,8 +167,8 @@ class CallContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -184,8 +184,8 @@ class CallContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

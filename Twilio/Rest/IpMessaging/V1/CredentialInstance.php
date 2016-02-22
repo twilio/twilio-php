@@ -29,7 +29,7 @@ class CredentialInstance extends InstanceResource {
     /**
      * Initialize the CredentialInstance
      * 
-     * @return CredentialInstance 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -55,7 +55,8 @@ class CredentialInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return CredentialContext Context for this CredentialInstance
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialContext Context for this
+     *                                                       CredentialInstance
      */
     protected function proxy() {
         if (!$this->context) {

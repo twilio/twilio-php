@@ -17,10 +17,10 @@ class ActivityContext extends InstanceContext {
     /**
      * Initialize the ActivityContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return ActivityContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext 
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);

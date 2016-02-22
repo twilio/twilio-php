@@ -17,11 +17,11 @@ class IpAddressContext extends InstanceContext {
     /**
      * Initialize the IpAddressContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $ipAccessControlListSid The ip_access_control_list_sid
      * @param string $sid The sid
-     * @return IpAddressContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext 
      */
     public function __construct(Version $version, $accountSid, $ipAccessControlListSid, $sid) {
         parent::__construct($version);

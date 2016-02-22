@@ -27,7 +27,7 @@ class TokenInstance extends InstanceResource {
     /**
      * Initialize the TokenInstance
      * 
-     * @return TokenInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\TokenInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

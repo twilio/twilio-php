@@ -36,7 +36,7 @@ class EventInstance extends InstanceResource {
     /**
      * Initialize the EventInstance
      * 
-     * @return EventInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -70,7 +70,8 @@ class EventInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return EventContext Context for this EventInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventContext Context for this
+     *                                                           EventInstance
      */
     protected function proxy() {
         if (!$this->context) {

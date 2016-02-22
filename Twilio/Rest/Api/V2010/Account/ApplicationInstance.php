@@ -41,7 +41,7 @@ class ApplicationInstance extends InstanceResource {
     /**
      * Initialize the ApplicationInstance
      * 
-     * @return ApplicationInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -80,7 +80,8 @@ class ApplicationInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ApplicationContext Context for this ApplicationInstance
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext Context for this
+     *                                                           ApplicationInstance
      */
     protected function proxy() {
         if (!$this->context) {

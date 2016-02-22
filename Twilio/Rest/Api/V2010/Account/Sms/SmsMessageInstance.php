@@ -35,7 +35,7 @@ class SmsMessageInstance extends InstanceResource {
     /**
      * Initialize the SmsMessageInstance
      * 
-     * @return SmsMessageInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -68,7 +68,9 @@ class SmsMessageInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return SmsMessageContext Context for this SmsMessageInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageContext Context for
+     *                                                              this
+     *                                                              SmsMessageInstance
      */
     protected function proxy() {
         if (!$this->context) {

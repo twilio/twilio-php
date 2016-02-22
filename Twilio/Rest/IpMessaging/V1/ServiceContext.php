@@ -18,9 +18,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property ChannelList channels
- * @property RoleList roles
- * @property UserList users
+ * @property \Twilio\Rest\IpMessaging\V1\Service\ChannelList channels
+ * @property \Twilio\Rest\IpMessaging\V1\Service\RoleList roles
+ * @property \Twilio\Rest\IpMessaging\V1\Service\UserList users
  */
 class ServiceContext extends InstanceContext {
     protected $_channels = null;
@@ -30,9 +30,9 @@ class ServiceContext extends InstanceContext {
     /**
      * Initialize the ServiceContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return ServiceContext 
+     * @return \Twilio\Rest\IpMessaging\V1\ServiceContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -112,7 +112,7 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the channels
      * 
-     * @return ChannelList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelList 
      */
     protected function getChannels() {
         if (!$this->_channels) {
@@ -128,7 +128,7 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the roles
      * 
-     * @return RoleList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleList 
      */
     protected function getRoles() {
         if (!$this->_roles) {
@@ -144,7 +144,7 @@ class ServiceContext extends InstanceContext {
     /**
      * Access the users
      * 
-     * @return UserList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserList 
      */
     protected function getUsers() {
         if (!$this->_users) {
@@ -161,8 +161,8 @@ class ServiceContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -178,8 +178,8 @@ class ServiceContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

@@ -17,9 +17,9 @@ class AlertContext extends InstanceContext {
     /**
      * Initialize the AlertContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return AlertContext 
+     * @return \Twilio\Rest\Monitor\V1\AlertContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);

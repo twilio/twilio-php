@@ -17,9 +17,9 @@ class EventContext extends InstanceContext {
     /**
      * Initialize the EventContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return EventContext 
+     * @return \Twilio\Rest\Monitor\V1\EventContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);

@@ -19,7 +19,7 @@ class ValidationRequestList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @return ValidationRequestList 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);

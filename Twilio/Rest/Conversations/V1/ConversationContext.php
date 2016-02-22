@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property ParticipantList participants
+ * @property \Twilio\Rest\Conversations\V1\Conversation\ParticipantList participants
  */
 class ConversationContext extends InstanceContext {
     protected $_participants = null;
@@ -24,9 +24,9 @@ class ConversationContext extends InstanceContext {
     /**
      * Initialize the ConversationContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return ConversationContext 
+     * @return \Twilio\Rest\Conversations\V1\ConversationContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class ConversationContext extends InstanceContext {
     /**
      * Access the participants
      * 
-     * @return ParticipantList 
+     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantList 
      */
     protected function getParticipants() {
         if (!$this->_participants) {
@@ -80,8 +80,8 @@ class ConversationContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -97,8 +97,8 @@ class ConversationContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

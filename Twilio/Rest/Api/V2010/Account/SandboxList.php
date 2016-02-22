@@ -18,7 +18,7 @@ class SandboxList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @return SandboxList 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -32,7 +32,7 @@ class SandboxList extends ListResource {
     /**
      * Constructs a SandboxContext
      * 
-     * @return SandboxContext 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext 
      */
     public function getContext() {
         return new SandboxContext(

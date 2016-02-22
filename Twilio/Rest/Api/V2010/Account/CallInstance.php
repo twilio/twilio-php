@@ -46,7 +46,7 @@ class CallInstance extends InstanceResource {
     /**
      * Initialize the CallInstance
      * 
-     * @return CallInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\CallInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -90,7 +90,8 @@ class CallInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return CallContext Context for this CallInstance
+     * @return \Twilio\Rest\Api\V2010\Account\CallContext Context for this
+     *                                                    CallInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -137,7 +138,7 @@ class CallInstance extends InstanceResource {
     /**
      * Access the recordings
      * 
-     * @return RecordingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingList 
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;
@@ -146,7 +147,7 @@ class CallInstance extends InstanceResource {
     /**
      * Access the notifications
      * 
-     * @return NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationList 
      */
     protected function getNotifications() {
         return $this->proxy()->notifications;
@@ -155,7 +156,7 @@ class CallInstance extends InstanceResource {
     /**
      * Access the feedback
      * 
-     * @return FeedbackList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList 
      */
     protected function getFeedback() {
         return $this->proxy()->feedback;

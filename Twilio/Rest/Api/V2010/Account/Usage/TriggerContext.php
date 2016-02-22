@@ -17,10 +17,10 @@ class TriggerContext extends InstanceContext {
     /**
      * Initialize the TriggerContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique usage-trigger Sid
-     * @return TriggerContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);

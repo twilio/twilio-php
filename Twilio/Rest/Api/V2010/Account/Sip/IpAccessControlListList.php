@@ -20,7 +20,7 @@ class IpAccessControlListList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return IpAccessControlListList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -53,7 +53,7 @@ class IpAccessControlListList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -91,7 +91,7 @@ class IpAccessControlListList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of IpAccessControlListInstance
+     * @return \Twilio\Page Page of IpAccessControlListInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -142,7 +142,7 @@ class IpAccessControlListList extends ListResource {
      * Constructs a IpAccessControlListContext
      * 
      * @param string $sid Fetch by unique ip-access-control-list Sid
-     * @return IpAccessControlListContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext 
      */
     public function getContext($sid) {
         return new IpAccessControlListContext(

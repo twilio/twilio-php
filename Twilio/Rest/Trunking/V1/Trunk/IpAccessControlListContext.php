@@ -17,10 +17,10 @@ class IpAccessControlListContext extends InstanceContext {
     /**
      * Initialize the IpAccessControlListContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
-     * @return IpAccessControlListContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext 
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);

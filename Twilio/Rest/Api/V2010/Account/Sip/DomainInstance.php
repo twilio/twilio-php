@@ -36,7 +36,7 @@ class DomainInstance extends InstanceResource {
     /**
      * Initialize the DomainInstance
      * 
-     * @return DomainInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -70,7 +70,8 @@ class DomainInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return DomainContext Context for this DomainInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext Context for this
+     *                                                          DomainInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -117,7 +118,7 @@ class DomainInstance extends InstanceResource {
     /**
      * Access the ipAccessControlListMappings
      * 
-     * @return IpAccessControlListMappingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList 
      */
     protected function getIpAccessControlListMappings() {
         return $this->proxy()->ipAccessControlListMappings;
@@ -126,7 +127,7 @@ class DomainInstance extends InstanceResource {
     /**
      * Access the credentialListMappings
      * 
-     * @return CredentialListMappingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList 
      */
     protected function getCredentialListMappings() {
         return $this->proxy()->credentialListMappings;

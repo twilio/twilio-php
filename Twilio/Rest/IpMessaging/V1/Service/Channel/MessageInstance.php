@@ -31,7 +31,7 @@ class MessageInstance extends InstanceResource {
     /**
      * Initialize the MessageInstance
      * 
-     * @return MessageInstance 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
@@ -61,7 +61,9 @@ class MessageInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return MessageContext Context for this MessageInstance
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageContext Context
+     *                                                                    for this
+     *                                                                    MessageInstance
      */
     protected function proxy() {
         if (!$this->context) {

@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property FeedbackSummaryList feedbackSummaries
+ * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList feedbackSummaries
  */
 class CallList extends ListResource {
     protected $_feedbackSummaries = null;
@@ -27,7 +27,7 @@ class CallList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique id of the Account responsible for
      *                           creating this Call
-     * @return CallList 
+     * @return \Twilio\Rest\Api\V2010\Account\CallList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -101,7 +101,7 @@ class CallList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -145,7 +145,7 @@ class CallList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of CallInstance
+     * @return \Twilio\Page Page of CallInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -196,7 +196,7 @@ class CallList extends ListResource {
      * Constructs a CallContext
      * 
      * @param string $sid Call Sid that uniquely identifies the Call to fetch
-     * @return CallContext 
+     * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     public function getContext($sid) {
         return new CallContext(
@@ -210,8 +210,8 @@ class CallList extends ListResource {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -227,8 +227,8 @@ class CallList extends ListResource {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

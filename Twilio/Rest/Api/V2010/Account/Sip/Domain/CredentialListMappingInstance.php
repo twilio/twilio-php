@@ -27,7 +27,7 @@ class CredentialListMappingInstance extends InstanceResource {
     /**
      * Initialize the CredentialListMappingInstance
      * 
-     * @return CredentialListMappingInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $domainSid, $sid = null) {
         parent::__construct($version);
@@ -53,8 +53,8 @@ class CredentialListMappingInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return CredentialListMappingContext Context for this
-     *                                      CredentialListMappingInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext Context for this
+     *                                                                                CredentialListMappingInstance
      */
     protected function proxy() {
         if (!$this->context) {

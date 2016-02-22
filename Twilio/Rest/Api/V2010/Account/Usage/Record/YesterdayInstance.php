@@ -34,7 +34,7 @@ class YesterdayInstance extends InstanceResource {
     /**
      * Initialize the YesterdayInstance
      * 
-     * @return YesterdayInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

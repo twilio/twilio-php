@@ -17,7 +17,7 @@ class NumberList extends ListResource {
      * Construct the NumberList
      * 
      * @param Version $version Version that contains the resource
-     * @return NumberList 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -30,7 +30,7 @@ class NumberList extends ListResource {
      * Constructs a NumberContext
      * 
      * @param string $number The number
-     * @return NumberContext 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext 
      */
     public function getContext($number) {
         return new NumberContext(

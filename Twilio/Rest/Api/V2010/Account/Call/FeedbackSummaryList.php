@@ -20,7 +20,7 @@ class FeedbackSummaryList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique id of the Account responsible for
      *                           creating this Call
-     * @return FeedbackSummaryList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -70,7 +70,7 @@ class FeedbackSummaryList extends ListResource {
      * Constructs a FeedbackSummaryContext
      * 
      * @param string $sid The sid
-     * @return FeedbackSummaryContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext 
      */
     public function getContext($sid) {
         return new FeedbackSummaryContext(

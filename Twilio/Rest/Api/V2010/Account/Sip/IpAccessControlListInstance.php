@@ -28,7 +28,7 @@ class IpAccessControlListInstance extends InstanceResource {
     /**
      * Initialize the IpAccessControlListInstance
      * 
-     * @return IpAccessControlListInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -54,8 +54,7 @@ class IpAccessControlListInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return IpAccessControlListContext Context for this
-     *                                    IpAccessControlListInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext Context for this IpAccessControlListInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -102,7 +101,7 @@ class IpAccessControlListInstance extends InstanceResource {
     /**
      * Access the ipAddresses
      * 
-     * @return IpAddressList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList 
      */
     protected function getIpAddresses() {
         return $this->proxy()->ipAddresses;

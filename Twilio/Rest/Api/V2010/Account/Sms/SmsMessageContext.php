@@ -17,10 +17,10 @@ class SmsMessageContext extends InstanceContext {
     /**
      * Initialize the SmsMessageContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid The sid
-     * @return SmsMessageContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);

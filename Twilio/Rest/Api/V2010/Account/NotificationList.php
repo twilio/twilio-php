@@ -19,7 +19,7 @@ class NotificationList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
-     * @return NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class NotificationList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -96,7 +96,7 @@ class NotificationList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of NotificationInstance
+     * @return \Twilio\Page Page of NotificationInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -127,7 +127,7 @@ class NotificationList extends ListResource {
      * Constructs a NotificationContext
      * 
      * @param string $sid Fetch by unique notification Sid
-     * @return NotificationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext 
      */
     public function getContext($sid) {
         return new NotificationContext(

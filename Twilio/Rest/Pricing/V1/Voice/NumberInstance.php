@@ -27,7 +27,7 @@ class NumberInstance extends InstanceResource {
     /**
      * Initialize the NumberInstance
      * 
-     * @return NumberInstance 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberInstance 
      */
     public function __construct(Version $version, array $payload, $number = null) {
         parent::__construct($version);
@@ -52,7 +52,8 @@ class NumberInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return NumberContext Context for this NumberInstance
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext Context for this
+     *                                                     NumberInstance
      */
     protected function proxy() {
         if (!$this->context) {

@@ -24,7 +24,7 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskQueuesStatisticsInstance
      * 
-     * @return TaskQueuesStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);

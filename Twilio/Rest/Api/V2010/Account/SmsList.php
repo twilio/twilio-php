@@ -16,8 +16,8 @@ use Twilio\Rest\Api\V2010\Account\Sms\SmsMessageList;
 use Twilio\Version;
 
 /**
- * @property SmsMessageList messages
- * @property ShortCodeList shortCodes
+ * @property \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageList messages
+ * @property \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeList shortCodes
  */
 class SmsList extends ListResource {
     protected $_messages = null;
@@ -29,7 +29,7 @@ class SmsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -72,8 +72,8 @@ class SmsList extends ListResource {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -89,8 +89,8 @@ class SmsList extends ListResource {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

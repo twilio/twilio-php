@@ -19,7 +19,7 @@ class WorkerStatisticsList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
-     * @return WorkerStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList 
      */
     public function __construct(Version $version, $workspaceSid, $workerSid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class WorkerStatisticsList extends ListResource {
     /**
      * Constructs a WorkerStatisticsContext
      * 
-     * @return WorkerStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext 
      */
     public function getContext() {
         return new WorkerStatisticsContext(

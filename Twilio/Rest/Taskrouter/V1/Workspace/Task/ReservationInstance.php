@@ -30,7 +30,7 @@ class ReservationInstance extends InstanceResource {
     /**
      * Initialize the ReservationInstance
      * 
-     * @return ReservationInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $taskSid, $sid = null) {
         parent::__construct($version);
@@ -59,7 +59,10 @@ class ReservationInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ReservationContext Context for this ReservationInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationContext Context
+     *                                                                      for
+     *                                                                      this
+     *                                                                      ReservationInstance
      */
     protected function proxy() {
         if (!$this->context) {

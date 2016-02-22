@@ -17,11 +17,11 @@ class RecordingContext extends InstanceContext {
     /**
      * Initialize the RecordingContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $callSid The call_sid
      * @param string $sid The sid
-     * @return RecordingContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext 
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);

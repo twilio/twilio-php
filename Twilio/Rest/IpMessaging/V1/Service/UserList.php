@@ -19,7 +19,7 @@ class UserList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
-     * @return UserList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserList 
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -78,7 +78,7 @@ class UserList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -116,7 +116,7 @@ class UserList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of UserInstance
+     * @return \Twilio\Page Page of UserInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -142,7 +142,7 @@ class UserList extends ListResource {
      * Constructs a UserContext
      * 
      * @param string $sid The sid
-     * @return UserContext 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserContext 
      */
     public function getContext($sid) {
         return new UserContext(

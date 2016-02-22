@@ -17,10 +17,10 @@ class UserContext extends InstanceContext {
     /**
      * Initialize the UserContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return UserContext 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);

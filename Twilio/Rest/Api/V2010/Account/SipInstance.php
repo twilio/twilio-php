@@ -17,7 +17,7 @@ class SipInstance extends InstanceResource {
     /**
      * Initialize the SipInstance
      * 
-     * @return SipInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\SipInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

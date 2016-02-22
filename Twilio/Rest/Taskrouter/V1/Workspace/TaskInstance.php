@@ -34,7 +34,7 @@ class TaskInstance extends InstanceResource {
     /**
      * Initialize the TaskInstance
      * 
-     * @return TaskInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -66,7 +66,8 @@ class TaskInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return TaskContext Context for this TaskInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext Context for this
+     *                                                          TaskInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -113,7 +114,7 @@ class TaskInstance extends InstanceResource {
     /**
      * Access the reservations
      * 
-     * @return ReservationList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList 
      */
     protected function getReservations() {
         return $this->proxy()->reservations;

@@ -17,7 +17,7 @@ class SmsInstance extends InstanceResource {
     /**
      * Initialize the SmsInstance
      * 
-     * @return SmsInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\SmsInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

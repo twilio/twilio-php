@@ -17,10 +17,10 @@ class ApplicationContext extends InstanceContext {
     /**
      * Initialize the ApplicationContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique Application Sid
-     * @return ApplicationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);

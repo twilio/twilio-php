@@ -35,7 +35,7 @@ class SandboxInstance extends InstanceResource {
     /**
      * Initialize the SandboxInstance
      * 
-     * @return SandboxInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
@@ -67,7 +67,8 @@ class SandboxInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return SandboxContext Context for this SandboxInstance
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext Context for this
+     *                                                       SandboxInstance
      */
     protected function proxy() {
         if (!$this->context) {

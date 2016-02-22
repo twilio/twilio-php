@@ -30,7 +30,7 @@ class UserInstance extends InstanceResource {
     /**
      * Initialize the UserInstance
      * 
-     * @return UserInstance 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -58,7 +58,8 @@ class UserInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return UserContext Context for this UserInstance
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserContext Context for this
+     *                                                         UserInstance
      */
     protected function proxy() {
         if (!$this->context) {

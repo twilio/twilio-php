@@ -21,7 +21,7 @@ class ParticipantList extends ListResource {
      * @param string $accountSid The unique sid that identifies this account
      * @param string $conferenceSid A string that uniquely identifies this
      *                              conference
-     * @return ParticipantList 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList 
      */
     public function __construct(Version $version, $accountSid, $conferenceSid) {
         parent::__construct($version);
@@ -55,7 +55,7 @@ class ParticipantList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -99,7 +99,7 @@ class ParticipantList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of ParticipantInstance
+     * @return \Twilio\Page Page of ParticipantInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -128,7 +128,7 @@ class ParticipantList extends ListResource {
      * Constructs a ParticipantContext
      * 
      * @param string $callSid The call_sid
-     * @return ParticipantContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
      */
     public function getContext($callSid) {
         return new ParticipantContext(

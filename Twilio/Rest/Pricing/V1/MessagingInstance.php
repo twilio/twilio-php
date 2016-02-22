@@ -22,7 +22,7 @@ class MessagingInstance extends InstanceResource {
     /**
      * Initialize the MessagingInstance
      * 
-     * @return MessagingInstance 
+     * @return \Twilio\Rest\Pricing\V1\MessagingInstance 
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);

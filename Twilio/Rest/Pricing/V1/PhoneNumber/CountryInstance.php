@@ -26,7 +26,7 @@ class CountryInstance extends InstanceResource {
     /**
      * Initialize the CountryInstance
      * 
-     * @return CountryInstance 
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumber\CountryInstance 
      */
     public function __construct(Version $version, array $payload, $isoCountry = null) {
         parent::__construct($version);
@@ -50,7 +50,8 @@ class CountryInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return CountryContext Context for this CountryInstance
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumber\CountryContext Context for this
+     *                                                            CountryInstance
      */
     protected function proxy() {
         if (!$this->context) {

@@ -18,7 +18,7 @@ class CountryList extends ListResource {
      * Construct the CountryList
      * 
      * @param Version $version Version that contains the resource
-     * @return CountryList 
+     * @return \Twilio\Rest\Pricing\V1\Voice\CountryList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -48,7 +48,7 @@ class CountryList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -86,7 +86,7 @@ class CountryList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of CountryInstance
+     * @return \Twilio\Page Page of CountryInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -111,7 +111,7 @@ class CountryList extends ListResource {
      * Constructs a CountryContext
      * 
      * @param string $isoCountry The iso_country
-     * @return CountryContext 
+     * @return \Twilio\Rest\Pricing\V1\Voice\CountryContext 
      */
     public function getContext($isoCountry) {
         return new CountryContext(

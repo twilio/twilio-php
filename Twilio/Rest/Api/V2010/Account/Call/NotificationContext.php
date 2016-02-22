@@ -17,11 +17,11 @@ class NotificationContext extends InstanceContext {
     /**
      * Initialize the NotificationContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $callSid The call_sid
      * @param string $sid The sid
-     * @return NotificationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationContext 
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);

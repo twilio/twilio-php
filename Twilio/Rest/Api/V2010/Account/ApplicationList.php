@@ -19,7 +19,7 @@ class ApplicationList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid A string that uniquely identifies this resource
-     * @return ApplicationList 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -94,7 +94,7 @@ class ApplicationList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -138,7 +138,7 @@ class ApplicationList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of ApplicationInstance
+     * @return \Twilio\Page Page of ApplicationInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -166,7 +166,7 @@ class ApplicationList extends ListResource {
      * Constructs a ApplicationContext
      * 
      * @param string $sid Fetch by unique Application Sid
-     * @return ApplicationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
      */
     public function getContext($sid) {
         return new ApplicationContext(

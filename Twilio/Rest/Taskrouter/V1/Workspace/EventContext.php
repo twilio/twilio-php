@@ -17,10 +17,10 @@ class EventContext extends InstanceContext {
     /**
      * Initialize the EventContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return EventContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventContext 
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);

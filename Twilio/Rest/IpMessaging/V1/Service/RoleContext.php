@@ -17,10 +17,10 @@ class RoleContext extends InstanceContext {
     /**
      * Initialize the RoleContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return RoleContext 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);

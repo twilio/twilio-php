@@ -17,9 +17,9 @@ class PhoneNumberContext extends InstanceContext {
     /**
      * Initialize the PhoneNumberContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $phoneNumber The phone_number
-     * @return PhoneNumberContext 
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
      */
     public function __construct(Version $version, $phoneNumber) {
         parent::__construct($version);

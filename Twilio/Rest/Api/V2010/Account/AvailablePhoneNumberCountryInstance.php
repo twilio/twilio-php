@@ -25,7 +25,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     /**
      * Initialize the AvailablePhoneNumberCountryInstance
      * 
-     * @return AvailablePhoneNumberCountryInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {
         parent::__construct($version);
@@ -49,8 +49,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return AvailablePhoneNumberCountryContext Context for this
-     *                                            AvailablePhoneNumberCountryInstance
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext Context for this AvailablePhoneNumberCountryInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -77,7 +76,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     /**
      * Access the local
      * 
-     * @return LocalList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList 
      */
     protected function getLocal() {
         return $this->proxy()->local;
@@ -86,7 +85,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     /**
      * Access the tollFree
      * 
-     * @return TollFreeList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList 
      */
     protected function getTollFree() {
         return $this->proxy()->tollFree;
@@ -95,7 +94,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     /**
      * Access the mobile
      * 
-     * @return MobileList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList 
      */
     protected function getMobile() {
         return $this->proxy()->mobile;

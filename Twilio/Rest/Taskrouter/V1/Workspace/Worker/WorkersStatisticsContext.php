@@ -17,9 +17,9 @@ class WorkersStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkersStatisticsContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @return WorkersStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext 
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);

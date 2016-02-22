@@ -30,7 +30,7 @@ class QueueInstance extends InstanceResource {
     /**
      * Initialize the QueueInstance
      * 
-     * @return QueueInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -58,7 +58,8 @@ class QueueInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return QueueContext Context for this QueueInstance
+     * @return \Twilio\Rest\Api\V2010\Account\QueueContext Context for this
+     *                                                     QueueInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -105,7 +106,7 @@ class QueueInstance extends InstanceResource {
     /**
      * Access the members
      * 
-     * @return MemberList 
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList 
      */
     protected function getMembers() {
         return $this->proxy()->members;

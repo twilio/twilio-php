@@ -20,7 +20,7 @@ class ShortCodeList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return ShortCodeList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -53,7 +53,7 @@ class ShortCodeList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -97,7 +97,7 @@ class ShortCodeList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of ShortCodeInstance
+     * @return \Twilio\Page Page of ShortCodeInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -126,7 +126,7 @@ class ShortCodeList extends ListResource {
      * Constructs a ShortCodeContext
      * 
      * @param string $sid Fetch by unique short-code Sid
-     * @return ShortCodeContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeContext 
      */
     public function getContext($sid) {
         return new ShortCodeContext(

@@ -30,7 +30,7 @@ class RoleInstance extends InstanceResource {
     /**
      * Initialize the RoleInstance
      * 
-     * @return RoleInstance 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -58,7 +58,8 @@ class RoleInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return RoleContext Context for this RoleInstance
+     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleContext Context for this
+     *                                                         RoleInstance
      */
     protected function proxy() {
         if (!$this->context) {

@@ -29,7 +29,7 @@ class RecordingInstance extends InstanceResource {
     /**
      * Initialize the RecordingInstance
      * 
-     * @return RecordingInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
         parent::__construct($version);
@@ -57,7 +57,9 @@ class RecordingInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return RecordingContext Context for this RecordingInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext Context for
+     *                                                              this
+     *                                                              RecordingInstance
      */
     protected function proxy() {
         if (!$this->context) {

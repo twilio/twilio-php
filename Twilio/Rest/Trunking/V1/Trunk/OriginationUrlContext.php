@@ -17,10 +17,10 @@ class OriginationUrlContext extends InstanceContext {
     /**
      * Initialize the OriginationUrlContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
-     * @return OriginationUrlContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext 
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);

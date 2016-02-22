@@ -20,7 +20,7 @@ class FeedbackList extends ListResource {
      * @param string $accountSid The account_sid
      * @param string $callSid A 34 character string that uniquely identifies this
      *                        resource.
-     * @return FeedbackList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList 
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class FeedbackList extends ListResource {
     /**
      * Constructs a FeedbackContext
      * 
-     * @return FeedbackContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext 
      */
     public function getContext() {
         return new FeedbackContext(

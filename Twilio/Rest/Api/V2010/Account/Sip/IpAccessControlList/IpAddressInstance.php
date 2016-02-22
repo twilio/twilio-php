@@ -29,7 +29,7 @@ class IpAddressInstance extends InstanceResource {
     /**
      * Initialize the IpAddressInstance
      * 
-     * @return IpAddressInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $ipAccessControlListSid, $sid = null) {
         parent::__construct($version);
@@ -57,7 +57,8 @@ class IpAddressInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return IpAddressContext Context for this IpAddressInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext Context for this
+     *                                                                                 IpAddressInstance
      */
     protected function proxy() {
         if (!$this->context) {

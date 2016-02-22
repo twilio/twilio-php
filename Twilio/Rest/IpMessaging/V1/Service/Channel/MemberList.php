@@ -20,7 +20,7 @@ class MemberList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $channelSid The channel_sid
-     * @return MemberList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList 
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
         parent::__construct($version);
@@ -83,7 +83,7 @@ class MemberList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -121,7 +121,7 @@ class MemberList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of MemberInstance
+     * @return \Twilio\Page Page of MemberInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -148,7 +148,7 @@ class MemberList extends ListResource {
      * Constructs a MemberContext
      * 
      * @param string $sid The sid
-     * @return MemberContext 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberContext 
      */
     public function getContext($sid) {
         return new MemberContext(

@@ -31,7 +31,7 @@ class TollFreeInstance extends InstanceResource {
     /**
      * Initialize the TollFreeInstance
      * 
-     * @return TollFreeInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
         parent::__construct($version);

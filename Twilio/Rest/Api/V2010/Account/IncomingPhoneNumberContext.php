@@ -17,10 +17,10 @@ class IncomingPhoneNumberContext extends InstanceContext {
     /**
      * Initialize the IncomingPhoneNumberContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $ownerAccountSid The owner_account_sid
      * @param string $sid Fetch by unique incoming-phone-number Sid
-     * @return IncomingPhoneNumberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
      */
     public function __construct(Version $version, $ownerAccountSid, $sid) {
         parent::__construct($version);

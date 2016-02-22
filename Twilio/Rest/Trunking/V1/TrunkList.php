@@ -18,7 +18,7 @@ class TrunkList extends ListResource {
      * Construct the TrunkList
      * 
      * @param Version $version Version that contains the resource
-     * @return TrunkList 
+     * @return \Twilio\Rest\Trunking\V1\TrunkList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -79,7 +79,7 @@ class TrunkList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -117,7 +117,7 @@ class TrunkList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of TrunkInstance
+     * @return \Twilio\Page Page of TrunkInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -142,7 +142,7 @@ class TrunkList extends ListResource {
      * Constructs a TrunkContext
      * 
      * @param string $sid The sid
-     * @return TrunkContext 
+     * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     public function getContext($sid) {
         return new TrunkContext(

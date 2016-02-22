@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property TaskQueueStatisticsList statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList statistics
  */
 class TaskQueueContext extends InstanceContext {
     protected $_statistics = null;
@@ -24,10 +24,10 @@ class TaskQueueContext extends InstanceContext {
     /**
      * Initialize the TaskQueueContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return TaskQueueContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext 
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
@@ -107,7 +107,7 @@ class TaskQueueContext extends InstanceContext {
     /**
      * Access the statistics
      * 
-     * @return TaskQueueStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
@@ -125,8 +125,8 @@ class TaskQueueContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -142,8 +142,8 @@ class TaskQueueContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

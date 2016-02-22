@@ -20,7 +20,7 @@ class DomainList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return DomainList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class DomainList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -90,7 +90,7 @@ class DomainList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of DomainInstance
+     * @return \Twilio\Page Page of DomainInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -151,7 +151,7 @@ class DomainList extends ListResource {
      * Constructs a DomainContext
      * 
      * @param string $sid Fetch by unique Domain Sid
-     * @return DomainContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext 
      */
     public function getContext($sid) {
         return new DomainContext(

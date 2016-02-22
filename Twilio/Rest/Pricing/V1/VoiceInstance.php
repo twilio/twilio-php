@@ -22,7 +22,7 @@ class VoiceInstance extends InstanceResource {
     /**
      * Initialize the VoiceInstance
      * 
-     * @return VoiceInstance 
+     * @return \Twilio\Rest\Pricing\V1\VoiceInstance 
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);

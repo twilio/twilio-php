@@ -17,11 +17,11 @@ class MemberContext extends InstanceContext {
     /**
      * Initialize the MemberContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $channelSid The channel_sid
      * @param string $sid The sid
-     * @return MemberContext 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberContext 
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);

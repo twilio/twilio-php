@@ -29,7 +29,7 @@ class ConferenceInstance extends InstanceResource {
     /**
      * Initialize the ConferenceInstance
      * 
-     * @return ConferenceInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -56,7 +56,8 @@ class ConferenceInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ConferenceContext Context for this ConferenceInstance
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext Context for this
+     *                                                          ConferenceInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -82,7 +83,7 @@ class ConferenceInstance extends InstanceResource {
     /**
      * Access the participants
      * 
-     * @return ParticipantList 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList 
      */
     protected function getParticipants() {
         return $this->proxy()->participants;

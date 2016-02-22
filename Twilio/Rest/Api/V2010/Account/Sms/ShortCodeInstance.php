@@ -33,7 +33,7 @@ class ShortCodeInstance extends InstanceResource {
     /**
      * Initialize the ShortCodeInstance
      * 
-     * @return ShortCodeInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -64,7 +64,8 @@ class ShortCodeInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ShortCodeContext Context for this ShortCodeInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeContext Context for this
+     *                                                             ShortCodeInstance
      */
     protected function proxy() {
         if (!$this->context) {

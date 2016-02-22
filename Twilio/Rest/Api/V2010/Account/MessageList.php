@@ -19,7 +19,7 @@ class MessageList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
-     * @return MessageList 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -86,7 +86,7 @@ class MessageList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -130,7 +130,7 @@ class MessageList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of MessageInstance
+     * @return \Twilio\Page Page of MessageInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -162,7 +162,7 @@ class MessageList extends ListResource {
      * Constructs a MessageContext
      * 
      * @param string $sid Fetch by unique message Sid
-     * @return MessageContext 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageContext 
      */
     public function getContext($sid) {
         return new MessageContext(

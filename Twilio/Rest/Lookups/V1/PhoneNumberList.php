@@ -17,7 +17,7 @@ class PhoneNumberList extends ListResource {
      * Construct the PhoneNumberList
      * 
      * @param Version $version Version that contains the resource
-     * @return PhoneNumberList 
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -30,7 +30,7 @@ class PhoneNumberList extends ListResource {
      * Constructs a PhoneNumberContext
      * 
      * @param string $phoneNumber The phone_number
-     * @return PhoneNumberContext 
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
      */
     public function getContext($phoneNumber) {
         return new PhoneNumberContext(

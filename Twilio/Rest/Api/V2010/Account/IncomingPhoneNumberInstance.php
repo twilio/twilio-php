@@ -45,7 +45,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the IncomingPhoneNumberInstance
      * 
-     * @return IncomingPhoneNumberInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $ownerAccountSid, $sid = null) {
         parent::__construct($version);
@@ -88,8 +88,9 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return IncomingPhoneNumberContext Context for this
-     *                                    IncomingPhoneNumberInstance
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext Context
+     *                                                                   for this
+     *                                                                   IncomingPhoneNumberInstance
      */
     protected function proxy() {
         if (!$this->context) {

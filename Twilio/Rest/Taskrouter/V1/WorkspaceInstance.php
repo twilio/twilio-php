@@ -31,7 +31,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceInstance
      * 
-     * @return WorkspaceInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -59,7 +59,8 @@ class WorkspaceInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return WorkspaceContext Context for this WorkspaceInstance
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext Context for this
+     *                                                     WorkspaceInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -105,7 +106,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the activities
      * 
-     * @return ActivityList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList 
      */
     protected function getActivities() {
         return $this->proxy()->activities;
@@ -114,7 +115,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the events
      * 
-     * @return EventList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList 
      */
     protected function getEvents() {
         return $this->proxy()->events;
@@ -123,7 +124,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the tasks
      * 
-     * @return TaskList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList 
      */
     protected function getTasks() {
         return $this->proxy()->tasks;
@@ -132,7 +133,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the taskQueues
      * 
-     * @return TaskQueueList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList 
      */
     protected function getTaskQueues() {
         return $this->proxy()->taskQueues;
@@ -141,7 +142,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the workers
      * 
-     * @return WorkerList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
      */
     protected function getWorkers() {
         return $this->proxy()->workers;
@@ -150,7 +151,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the workflows
      * 
-     * @return WorkflowList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList 
      */
     protected function getWorkflows() {
         return $this->proxy()->workflows;
@@ -159,7 +160,7 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Access the statistics
      * 
-     * @return WorkspaceStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList 
      */
     protected function getStatistics() {
         return $this->proxy()->statistics;

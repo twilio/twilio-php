@@ -18,7 +18,7 @@ class CredentialList extends ListResource {
      * Construct the CredentialList
      * 
      * @param Version $version Version that contains the resource
-     * @return CredentialList 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -48,7 +48,7 @@ class CredentialList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -86,7 +86,7 @@ class CredentialList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of CredentialInstance
+     * @return \Twilio\Page Page of CredentialInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -144,7 +144,7 @@ class CredentialList extends ListResource {
      * Constructs a CredentialContext
      * 
      * @param string $sid The sid
-     * @return CredentialContext 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialContext 
      */
     public function getContext($sid) {
         return new CredentialContext(

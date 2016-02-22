@@ -19,7 +19,7 @@ class PhoneNumberList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
-     * @return PhoneNumberList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList 
      */
     public function __construct(Version $version, $trunkSid) {
         parent::__construct($version);
@@ -76,7 +76,7 @@ class PhoneNumberList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -114,7 +114,7 @@ class PhoneNumberList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of PhoneNumberInstance
+     * @return \Twilio\Page Page of PhoneNumberInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -140,7 +140,7 @@ class PhoneNumberList extends ListResource {
      * Constructs a PhoneNumberContext
      * 
      * @param string $sid The sid
-     * @return PhoneNumberContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext 
      */
     public function getContext($sid) {
         return new PhoneNumberContext(

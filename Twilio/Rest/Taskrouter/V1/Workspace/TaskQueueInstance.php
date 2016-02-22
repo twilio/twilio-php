@@ -34,7 +34,7 @@ class TaskQueueInstance extends InstanceResource {
     /**
      * Initialize the TaskQueueInstance
      * 
-     * @return TaskQueueInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -66,7 +66,9 @@ class TaskQueueInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return TaskQueueContext Context for this TaskQueueInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext Context for
+     *                                                               this
+     *                                                               TaskQueueInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -113,7 +115,7 @@ class TaskQueueInstance extends InstanceResource {
     /**
      * Access the statistics
      * 
-     * @return TaskQueueStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
     protected function getStatistics() {
         return $this->proxy()->statistics;

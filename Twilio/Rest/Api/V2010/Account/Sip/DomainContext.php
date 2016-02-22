@@ -17,8 +17,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property IpAccessControlListMappingList ipAccessControlListMappings
- * @property CredentialListMappingList credentialListMappings
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList ipAccessControlListMappings
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList credentialListMappings
  */
 class DomainContext extends InstanceContext {
     protected $_ipAccessControlListMappings = null;
@@ -27,10 +27,10 @@ class DomainContext extends InstanceContext {
     /**
      * Initialize the DomainContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique Domain Sid
-     * @return DomainContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -113,7 +113,7 @@ class DomainContext extends InstanceContext {
     /**
      * Access the ipAccessControlListMappings
      * 
-     * @return IpAccessControlListMappingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList 
      */
     protected function getIpAccessControlListMappings() {
         if (!$this->_ipAccessControlListMappings) {
@@ -130,7 +130,7 @@ class DomainContext extends InstanceContext {
     /**
      * Access the credentialListMappings
      * 
-     * @return CredentialListMappingList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList 
      */
     protected function getCredentialListMappings() {
         if (!$this->_credentialListMappings) {
@@ -148,8 +148,8 @@ class DomainContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -165,8 +165,8 @@ class DomainContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

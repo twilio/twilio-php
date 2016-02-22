@@ -35,7 +35,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Initialize the ServiceInstance
      * 
-     * @return ServiceInstance 
+     * @return \Twilio\Rest\IpMessaging\V1\ServiceInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -67,7 +67,8 @@ class ServiceInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ServiceContext Context for this ServiceInstance
+     * @return \Twilio\Rest\IpMessaging\V1\ServiceContext Context for this
+     *                                                    ServiceInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -113,7 +114,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Access the channels
      * 
-     * @return ChannelList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelList 
      */
     protected function getChannels() {
         return $this->proxy()->channels;
@@ -122,7 +123,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Access the roles
      * 
-     * @return RoleList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleList 
      */
     protected function getRoles() {
         return $this->proxy()->roles;
@@ -131,7 +132,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Access the users
      * 
-     * @return UserList 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\UserList 
      */
     protected function getUsers() {
         return $this->proxy()->users;

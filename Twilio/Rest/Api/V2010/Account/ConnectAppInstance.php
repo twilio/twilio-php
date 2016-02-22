@@ -31,7 +31,7 @@ class ConnectAppInstance extends InstanceResource {
     /**
      * Initialize the ConnectAppInstance
      * 
-     * @return ConnectAppInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -61,7 +61,8 @@ class ConnectAppInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ConnectAppContext Context for this ConnectAppInstance
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext Context for this
+     *                                                          ConnectAppInstance
      */
     protected function proxy() {
         if (!$this->context) {

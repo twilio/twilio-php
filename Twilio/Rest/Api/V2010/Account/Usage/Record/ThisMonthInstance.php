@@ -34,7 +34,7 @@ class ThisMonthInstance extends InstanceResource {
     /**
      * Initialize the ThisMonthInstance
      * 
-     * @return ThisMonthInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

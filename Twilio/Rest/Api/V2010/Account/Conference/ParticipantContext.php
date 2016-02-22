@@ -17,12 +17,12 @@ class ParticipantContext extends InstanceContext {
     /**
      * Initialize the ParticipantContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $conferenceSid The string that uniquely identifies this
      *                              conference
      * @param string $callSid The call_sid
-     * @return ParticipantContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
      */
     public function __construct(Version $version, $accountSid, $conferenceSid, $callSid) {
         parent::__construct($version);

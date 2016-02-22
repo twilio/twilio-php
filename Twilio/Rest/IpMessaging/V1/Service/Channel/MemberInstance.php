@@ -30,7 +30,7 @@ class MemberInstance extends InstanceResource {
     /**
      * Initialize the MemberInstance
      * 
-     * @return MemberInstance 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
@@ -59,7 +59,9 @@ class MemberInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return MemberContext Context for this MemberInstance
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberContext Context
+     *                                                                   for this
+     *                                                                   MemberInstance
      */
     protected function proxy() {
         if (!$this->context) {

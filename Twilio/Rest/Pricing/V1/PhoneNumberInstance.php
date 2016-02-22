@@ -22,7 +22,7 @@ class PhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the PhoneNumberInstance
      * 
-     * @return PhoneNumberInstance 
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);

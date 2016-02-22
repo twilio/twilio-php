@@ -34,7 +34,7 @@ class DailyInstance extends InstanceResource {
     /**
      * Initialize the DailyInstance
      * 
-     * @return DailyInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

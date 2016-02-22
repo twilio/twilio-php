@@ -40,7 +40,7 @@ class MessageInstance extends InstanceResource {
     /**
      * Initialize the MessageInstance
      * 
-     * @return MessageInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -78,7 +78,8 @@ class MessageInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return MessageContext Context for this MessageInstance
+     * @return \Twilio\Rest\Api\V2010\Account\MessageContext Context for this
+     *                                                       MessageInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -125,7 +126,7 @@ class MessageInstance extends InstanceResource {
     /**
      * Access the media
      * 
-     * @return MediaList 
+     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList 
      */
     protected function getMedia() {
         return $this->proxy()->media;

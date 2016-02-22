@@ -17,9 +17,9 @@ class SandboxContext extends InstanceContext {
     /**
      * Initialize the SandboxContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @return SandboxContext 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);

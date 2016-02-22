@@ -38,7 +38,7 @@ class NotificationInstance extends InstanceResource {
     /**
      * Initialize the NotificationInstance
      * 
-     * @return NotificationInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -74,7 +74,8 @@ class NotificationInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return NotificationContext Context for this NotificationInstance
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext Context for this
+     *                                                            NotificationInstance
      */
     protected function proxy() {
         if (!$this->context) {

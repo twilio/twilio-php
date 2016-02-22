@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property WorkersStatisticsList statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsList statistics
  */
 class WorkerList extends ListResource {
     protected $_statistics = null;
@@ -26,7 +26,7 @@ class WorkerList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @return WorkerList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -59,7 +59,7 @@ class WorkerList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -103,7 +103,7 @@ class WorkerList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of WorkerInstance
+     * @return \Twilio\Page Page of WorkerInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -181,7 +181,7 @@ class WorkerList extends ListResource {
      * Constructs a WorkerContext
      * 
      * @param string $sid The sid
-     * @return WorkerContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext 
      */
     public function getContext($sid) {
         return new WorkerContext(
@@ -195,8 +195,8 @@ class WorkerList extends ListResource {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -212,8 +212,8 @@ class WorkerList extends ListResource {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

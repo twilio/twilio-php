@@ -17,11 +17,11 @@ class TranscriptionContext extends InstanceContext {
     /**
      * Initialize the TranscriptionContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $recordingSid The recording_sid
      * @param string $sid The sid
-     * @return TranscriptionContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionContext 
      */
     public function __construct(Version $version, $accountSid, $recordingSid, $sid) {
         parent::__construct($version);

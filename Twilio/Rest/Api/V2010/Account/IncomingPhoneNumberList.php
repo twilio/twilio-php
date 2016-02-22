@@ -18,9 +18,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property LocalList local
- * @property MobileList mobile
- * @property TollFreeList tollFree
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalList local
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileList mobile
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeList tollFree
  */
 class IncomingPhoneNumberList extends ListResource {
     protected $_local = null;
@@ -33,7 +33,7 @@ class IncomingPhoneNumberList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $ownerAccountSid A 34 character string that uniquely
      *                                identifies this resource.
-     * @return IncomingPhoneNumberList 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
      */
     public function __construct(Version $version, $ownerAccountSid) {
         parent::__construct($version);
@@ -67,7 +67,7 @@ class IncomingPhoneNumberList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -111,7 +111,7 @@ class IncomingPhoneNumberList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of IncomingPhoneNumberInstance
+     * @return \Twilio\Page Page of IncomingPhoneNumberInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -226,7 +226,7 @@ class IncomingPhoneNumberList extends ListResource {
      * Constructs a IncomingPhoneNumberContext
      * 
      * @param string $sid Fetch by unique incoming-phone-number Sid
-     * @return IncomingPhoneNumberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
      */
     public function getContext($sid) {
         return new IncomingPhoneNumberContext(
@@ -240,8 +240,8 @@ class IncomingPhoneNumberList extends ListResource {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -257,8 +257,8 @@ class IncomingPhoneNumberList extends ListResource {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

@@ -16,8 +16,8 @@ use Twilio\Rest\Pricing\V1\Voice\NumberList;
 use Twilio\Version;
 
 /**
- * @property NumberList numbers
- * @property CountryList countries
+ * @property \Twilio\Rest\Pricing\V1\Voice\NumberList numbers
+ * @property \Twilio\Rest\Pricing\V1\Voice\CountryList countries
  */
 class VoiceList extends ListResource {
     protected $_numbers = null;
@@ -27,7 +27,7 @@ class VoiceList extends ListResource {
      * Construct the VoiceList
      * 
      * @param Version $version Version that contains the resource
-     * @return VoiceList 
+     * @return \Twilio\Rest\Pricing\V1\VoiceList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -66,8 +66,8 @@ class VoiceList extends ListResource {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -83,8 +83,8 @@ class VoiceList extends ListResource {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

@@ -31,7 +31,7 @@ class LocalInstance extends InstanceResource {
     /**
      * Initialize the LocalInstance
      * 
-     * @return LocalInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
         parent::__construct($version);

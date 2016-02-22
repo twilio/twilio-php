@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property MemberList members
+ * @property \Twilio\Rest\Api\V2010\Account\Queue\MemberList members
  */
 class QueueContext extends InstanceContext {
     protected $_members = null;
@@ -24,10 +24,10 @@ class QueueContext extends InstanceContext {
     /**
      * Initialize the QueueContext
      * 
-     * @param Version $version Version that contains the resource
+     * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique queue Sid
-     * @return QueueContext 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -104,7 +104,7 @@ class QueueContext extends InstanceContext {
     /**
      * Access the members
      * 
-     * @return MemberList 
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList 
      */
     protected function getMembers() {
         if (!$this->_members) {
@@ -122,8 +122,8 @@ class QueueContext extends InstanceContext {
      * Magic getter to lazy load subresources
      * 
      * @param string $name Subresource to return
-     * @return ListResource The requested subresource
-     * @throws TwilioException For unknown subresources
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -139,8 +139,8 @@ class QueueContext extends InstanceContext {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

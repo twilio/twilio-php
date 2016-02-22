@@ -35,7 +35,7 @@ class TrunkInstance extends InstanceResource {
     /**
      * Initialize the TrunkInstance
      * 
-     * @return TrunkInstance 
+     * @return \Twilio\Rest\Trunking\V1\TrunkInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -67,7 +67,7 @@ class TrunkInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return TrunkContext Context for this TrunkInstance
+     * @return \Twilio\Rest\Trunking\V1\TrunkContext Context for this TrunkInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -113,7 +113,7 @@ class TrunkInstance extends InstanceResource {
     /**
      * Access the originationUrls
      * 
-     * @return OriginationUrlList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
      */
     protected function getOriginationUrls() {
         return $this->proxy()->originationUrls;
@@ -122,7 +122,7 @@ class TrunkInstance extends InstanceResource {
     /**
      * Access the credentialsLists
      * 
-     * @return CredentialListList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList 
      */
     protected function getCredentialsLists() {
         return $this->proxy()->credentialsLists;
@@ -131,7 +131,7 @@ class TrunkInstance extends InstanceResource {
     /**
      * Access the ipAccessControlLists
      * 
-     * @return IpAccessControlListList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList 
      */
     protected function getIpAccessControlLists() {
         return $this->proxy()->ipAccessControlLists;
@@ -140,7 +140,7 @@ class TrunkInstance extends InstanceResource {
     /**
      * Access the phoneNumbers
      * 
-     * @return PhoneNumberList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList 
      */
     protected function getPhoneNumbers() {
         return $this->proxy()->phoneNumbers;

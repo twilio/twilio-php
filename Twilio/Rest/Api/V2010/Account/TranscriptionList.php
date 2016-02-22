@@ -19,7 +19,7 @@ class TranscriptionList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
-     * @return TranscriptionList 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -51,7 +51,7 @@ class TranscriptionList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -89,7 +89,7 @@ class TranscriptionList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of TranscriptionInstance
+     * @return \Twilio\Page Page of TranscriptionInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -115,7 +115,7 @@ class TranscriptionList extends ListResource {
      * Constructs a TranscriptionContext
      * 
      * @param string $sid Fetch by unique transcription Sid
-     * @return TranscriptionContext 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
      */
     public function getContext($sid) {
         return new TranscriptionContext(

@@ -31,7 +31,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Initialize the AccountInstance
      * 
-     * @return AccountInstance 
+     * @return \Twilio\Rest\Api\V2010\AccountInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -59,7 +59,8 @@ class AccountInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return AccountContext Context for this AccountInstance
+     * @return \Twilio\Rest\Api\V2010\AccountContext Context for this
+     *                                               AccountInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -96,7 +97,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the addresses
      * 
-     * @return AddressList 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressList 
      */
     protected function getAddresses() {
         return $this->proxy()->addresses;
@@ -105,7 +106,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the applications
      * 
-     * @return ApplicationList 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
      */
     protected function getApplications() {
         return $this->proxy()->applications;
@@ -114,7 +115,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the authorizedConnectApps
      * 
-     * @return AuthorizedConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
      */
     protected function getAuthorizedConnectApps() {
         return $this->proxy()->authorizedConnectApps;
@@ -123,7 +124,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the availablePhoneNumbers
      * 
-     * @return AvailablePhoneNumberCountryList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList 
      */
     protected function getAvailablePhoneNumbers() {
         return $this->proxy()->availablePhoneNumbers;
@@ -132,7 +133,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the calls
      * 
-     * @return CallList 
+     * @return \Twilio\Rest\Api\V2010\Account\CallList 
      */
     protected function getCalls() {
         return $this->proxy()->calls;
@@ -141,7 +142,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the conferences
      * 
-     * @return ConferenceList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
      */
     protected function getConferences() {
         return $this->proxy()->conferences;
@@ -150,7 +151,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the connectApps
      * 
-     * @return ConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
      */
     protected function getConnectApps() {
         return $this->proxy()->connectApps;
@@ -159,7 +160,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the incomingPhoneNumbers
      * 
-     * @return IncomingPhoneNumberList 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
      */
     protected function getIncomingPhoneNumbers() {
         return $this->proxy()->incomingPhoneNumbers;
@@ -168,7 +169,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the messages
      * 
-     * @return MessageList 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
      */
     protected function getMessages() {
         return $this->proxy()->messages;
@@ -177,7 +178,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the notifications
      * 
-     * @return NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
      */
     protected function getNotifications() {
         return $this->proxy()->notifications;
@@ -186,7 +187,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the outgoingCallerIds
      * 
-     * @return OutgoingCallerIdList 
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
      */
     protected function getOutgoingCallerIds() {
         return $this->proxy()->outgoingCallerIds;
@@ -195,7 +196,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the queues
      * 
-     * @return QueueList 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueList 
      */
     protected function getQueues() {
         return $this->proxy()->queues;
@@ -204,7 +205,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the recordings
      * 
-     * @return RecordingList 
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingList 
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;
@@ -213,7 +214,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the sandbox
      * 
-     * @return SandboxList 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
      */
     protected function getSandbox() {
         return $this->proxy()->sandbox;
@@ -222,7 +223,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the sip
      * 
-     * @return SipList 
+     * @return \Twilio\Rest\Api\V2010\Account\SipList 
      */
     protected function getSip() {
         return $this->proxy()->sip;
@@ -231,7 +232,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the sms
      * 
-     * @return SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
      */
     protected function getSms() {
         return $this->proxy()->sms;
@@ -240,7 +241,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the tokens
      * 
-     * @return TokenList 
+     * @return \Twilio\Rest\Api\V2010\Account\TokenList 
      */
     protected function getTokens() {
         return $this->proxy()->tokens;
@@ -249,7 +250,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the transcriptions
      * 
-     * @return TranscriptionList 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
      */
     protected function getTranscriptions() {
         return $this->proxy()->transcriptions;
@@ -258,7 +259,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the usage
      * 
-     * @return UsageList 
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
      */
     protected function getUsage() {
         return $this->proxy()->usage;
@@ -267,7 +268,7 @@ class AccountInstance extends InstanceResource {
     /**
      * Access the validationRequests
      * 
-     * @return ValidationRequestList 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
      */
     protected function getValidationRequests() {
         return $this->proxy()->validationRequests;

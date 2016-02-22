@@ -18,7 +18,7 @@ class AccountList extends ListResource {
      * Construct the AccountList
      * 
      * @param Version $version Version that contains the resource
-     * @return AccountList 
+     * @return \Twilio\Rest\Api\V2010\AccountList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -75,7 +75,7 @@ class AccountList extends ListResource {
      *                      the
      *                      limit with the most efficient page size, i.e.
      *                      min(limit, 1000)
-     * @return Stream stream of results
+     * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
@@ -119,7 +119,7 @@ class AccountList extends ListResource {
      * @param int $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param int $pageNumber Page Number, this value is simply for client state
-     * @return Page Page of AccountInstance
+     * @return \Twilio\Page Page of AccountInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
@@ -147,7 +147,7 @@ class AccountList extends ListResource {
      * Constructs a AccountContext
      * 
      * @param string $sid Fetch by unique Account Sid
-     * @return AccountContext 
+     * @return \Twilio\Rest\Api\V2010\AccountContext 
      */
     public function getContext($sid) {
         return new AccountContext(

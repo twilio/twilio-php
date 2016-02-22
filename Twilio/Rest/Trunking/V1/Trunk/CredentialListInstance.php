@@ -28,7 +28,7 @@ class CredentialListInstance extends InstanceResource {
     /**
      * Initialize the CredentialListInstance
      * 
-     * @return CredentialListInstance 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListInstance 
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {
         parent::__construct($version);
@@ -54,7 +54,9 @@ class CredentialListInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return CredentialListContext Context for this CredentialListInstance
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext Context for
+     *                                                              this
+     *                                                              CredentialListInstance
      */
     protected function proxy() {
         if (!$this->context) {

@@ -31,7 +31,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
     /**
      * Initialize the AuthorizedConnectAppInstance
      * 
-     * @return AuthorizedConnectAppInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $connectAppSid = null) {
         parent::__construct($version);
@@ -60,8 +60,9 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return AuthorizedConnectAppContext Context for this
-     *                                     AuthorizedConnectAppInstance
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext Context
+     *                                                                    for this
+     *                                                                    AuthorizedConnectAppInstance
      */
     protected function proxy() {
         if (!$this->context) {

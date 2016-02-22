@@ -35,7 +35,7 @@ class FeedbackSummaryInstance extends InstanceResource {
     /**
      * Initialize the FeedbackSummaryInstance
      * 
-     * @return FeedbackSummaryInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -68,7 +68,9 @@ class FeedbackSummaryInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return FeedbackSummaryContext Context for this FeedbackSummaryInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext Context
+     *                                                                    for this
+     *                                                                    FeedbackSummaryInstance
      */
     protected function proxy() {
         if (!$this->context) {

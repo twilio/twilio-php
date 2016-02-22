@@ -34,7 +34,7 @@ class AllTimeInstance extends InstanceResource {
     /**
      * Initialize the AllTimeInstance
      * 
-     * @return AllTimeInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);

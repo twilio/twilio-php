@@ -29,7 +29,7 @@ class ConversationInstance extends InstanceResource {
     /**
      * Initialize the ConversationInstance
      * 
-     * @return ConversationInstance 
+     * @return \Twilio\Rest\Conversations\V1\ConversationInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -55,7 +55,8 @@ class ConversationInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return ConversationContext Context for this ConversationInstance
+     * @return \Twilio\Rest\Conversations\V1\ConversationContext Context for this
+     *                                                           ConversationInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -80,7 +81,7 @@ class ConversationInstance extends InstanceResource {
     /**
      * Access the participants
      * 
-     * @return ParticipantList 
+     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantList 
      */
     protected function getParticipants() {
         return $this->proxy()->participants;

@@ -37,7 +37,7 @@ class TriggerInstance extends InstanceResource {
     /**
      * Initialize the TriggerInstance
      * 
-     * @return TriggerInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -72,7 +72,8 @@ class TriggerInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return TriggerContext Context for this TriggerInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext Context for this
+     *                                                             TriggerInstance
      */
     protected function proxy() {
         if (!$this->context) {
