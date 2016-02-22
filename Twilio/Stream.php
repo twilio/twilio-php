@@ -4,9 +4,13 @@
 namespace Twilio;
 
 
-use Twilio\Exceptions\TwilioException;
-
 class Stream implements \Iterator {
+    public $page;
+    public $firstPage;
+    public $limit;
+    public $currentRecord;
+    public $pageLimit;
+    public $currentPage;
 
     function __construct(Page $page, $limit, $pageLimit) {
         $this->page = $page;
@@ -85,11 +89,15 @@ class Stream implements \Iterator {
     }
 
     protected function overLimit() {
-        return $this->limit !== null && $this->limit < $this->currentRecord;
+        return ($this->limit !== null
+            && $this->limit !== Values::NONE
+            && $this->limit < $this->currentRecord);
     }
 
     protected function overPageLimit() {
-        return $this->pageLimit !== null && $this->pageLimit < $this->currentPage;
+        return ($this->pageLimit !== null
+            && $this->pageLimit !== Values::NONE
+            && $this->pageLimit < $this->currentPage);
     }
 
 }
