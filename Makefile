@@ -52,11 +52,11 @@ test:
 venv:
 	virtualenv venv
 
-docs-install: venv
-	. venv/bin/activate; pip install -r docs/requirements.txt
+docs-install:
+	brew install apigen
 
 docs:
-	. venv/bin/activate; cd docs && make html
+	sh docs-update.sh
 
 release-install:
 	pear channel-discover twilio.github.com/pear || true
