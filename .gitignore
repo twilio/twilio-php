@@ -1,4 +1,4 @@
-docs/_build/
+docs/
 vendor/*
 composer.phar
 coverage

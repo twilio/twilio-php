@@ -56,6 +56,7 @@ docs-install:
 	brew install apigen
 
 docs:
+	apigen generate -s ./ -d docs --exclude="Tests/*" --main Twilio
 	sh docs-update.sh
 
 release-install:
