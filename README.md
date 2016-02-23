@@ -18,7 +18,7 @@ You can install **twilio-php** via composer or by downloading the source.
 $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
-$client = new Twilio\Client($sid, $token);
+$client = new Twilio\Rest\Client($sid, $token);
 $message = $client->account->messages->create(
   '9991231234', // From a valid Twilio number
   '8881231234', // Text this number
@@ -37,7 +37,7 @@ print $message->sid;
 $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
-$client = new Twilio\Client($sid, $token);
+$client = new Twilio\Rest\Client($sid, $token);
 $call = $client->account->calls->create(
   '9991231234', // From a valid Twilio number
   '8881231234', // Call this number
