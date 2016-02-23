@@ -9,47 +9,22 @@ You can install **twilio-php** via composer or by downloading the source.
 **twilio-php** is available on Packagist as the
 [`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
 
-#### Via ZIP file:
-
-[Click here to download the source
-(.zip)](https://github.com/twilio/twilio-php/zipball/master) which includes all
-dependencies.
-
-Once you download the library, move the twilio-php folder to your project
-directory and then include the library file:
-
-    require '/path/to/twilio-php/Services/Twilio.php';
-
-and you're good to go!
-
-## A Brief Introduction
-
-With the twilio-php library, we've simplified interaction with the
-Twilio REST API. No need to manually create URLS or parse XML/JSON.
-You now interact with resources directly. Follow the [Quickstart
-Guide](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart)
-to get up and running right now. The [User
-Guide](http://readthedocs.org/docs/twilio-php/en/latest/#user-guide) shows you
-how to get the most out of **twilio-php**.
-
 ## Quickstart
 
 ### Send an SMS
 
 ```php
 <?php
-// Install the library via PEAR or download the .zip file to your project folder.
-// This line loads the library
-require('/path/to/twilio-php/Services/Twilio.php');
-
 $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
-$client = new Services_Twilio($sid, $token);
-$message = $client->account->messages->sendMessage(
+$client = new Twilio\Client($sid, $token);
+$message = $client->account->messages->create(
   '9991231234', // From a valid Twilio number
   '8881231234', // Text this number
-  "Hello monkey!"
+  array(
+    'Body' => "Hello monkey!"
+  )
 );
 
 print $message->sid;
@@ -59,14 +34,10 @@ print $message->sid;
 
 ```php
 <?php
-// Install the library via PEAR or download the .zip file to your project folder.
-// This line loads the library
-require('/path/to/twilio-php/Services/Twilio.php');
-
 $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
-$client = new Services_Twilio($sid, $token);
+$client = new Twilio\Client($sid, $token);
 $call = $client->account->calls->create(
   '9991231234', // From a valid Twilio number
   '8881231234', // Call this number
@@ -84,9 +55,7 @@ To control phone calls, your application needs to output
 
 ```php
 <?php
-require('/path/to/twilio-php/Services/Twilio.php');
-
-$response = new Services_Twilio_Twiml();
+$response = new Twilio\Twiml();
 $response->say('Hello');
 $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
 print $response;
@@ -102,16 +71,18 @@ That will output XML that looks like this:
 <Response>
 ```
 
-## [Full Documentation](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP Library Documentation")
+### Release Candidate
+This is a release candidate version of the PHP library. To submit feedback, open an issue on the Github repo.
 
-The documentation for **twilio-php** is hosted
-at Read the Docs. [Click here to read our full
-documentation.](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP
-Library Documentation")
+## Documentation
+
+The documentation for the Twilio API is located [here][apidocs].
+
+The PHP library documentation can be found [here][documentation].
 
 ## Prerequisites
 
-* PHP >= 5.2.3
+* PHP >= 5.3
 * The PHP JSON extension
 
 # Getting help
@@ -120,3 +91,5 @@ If you need help installing or using the library, please contact Twilio Support 
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
+[apidocs]: http://twilio.github.io/twilio-php/
+[documentation]: https://twilio.com/api/docs
