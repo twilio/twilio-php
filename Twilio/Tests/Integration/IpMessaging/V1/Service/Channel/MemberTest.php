@@ -20,9 +20,9 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -36,9 +36,9 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members->create("identity");
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->members->create("identity");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -58,9 +58,9 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members->read();
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->members->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -74,9 +74,9 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         

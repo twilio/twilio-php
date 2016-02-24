@@ -20,9 +20,9 @@ class MessageTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -36,9 +36,9 @@ class MessageTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->messages->create("body");
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->messages->create("body");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -58,9 +58,9 @@ class MessageTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->messages->read();
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->messages->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         

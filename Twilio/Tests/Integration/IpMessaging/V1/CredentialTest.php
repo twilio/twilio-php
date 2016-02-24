@@ -20,7 +20,7 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->credentials->read();
+            $this->twilio->ipMessaging->v1->credentials->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -34,7 +34,7 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->credentials->create("friendlyName", "gcm");
+            $this->twilio->ipMessaging->v1->credentials->create("friendlyName", "gcm");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -55,7 +55,7 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -69,7 +69,7 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", "gcm");
+            $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", "gcm");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -90,7 +90,7 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ip_messaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
