@@ -11,7 +11,7 @@ abstract class Version {
     const MAX_PAGE_SIZE = 1000;
 
     /**
-     * @var Domain $domain
+     * @var \Twilio\Domain $domain
      */
     protected $domain;
 
@@ -21,7 +21,7 @@ abstract class Version {
     protected $version;
 
     /**
-     * @param Domain $domain
+     * @param \Twilio\Domain $domain
      */
     public function __construct(Domain $domain) {
         $this->domain = $domain;
@@ -183,7 +183,7 @@ abstract class Version {
     }
 
     /**
-     * @return Domain $domain
+     * @return \Twilio\Domain $domain
      */
     public function getDomain() {
         return $this->domain;

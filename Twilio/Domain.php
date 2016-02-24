@@ -14,7 +14,7 @@ use Twilio\Rest\Client;
  */
 abstract class Domain {
     /**
-     * @var Client Twilio Client
+     * @var \Twilio\Rest\Client Twilio Client
      */
     protected $client;
 
@@ -25,7 +25,7 @@ abstract class Domain {
 
     /**
      * Construct a new Domain
-     * @param Client $client used to communicate with Twilio
+     * @param \Twilio\Rest\Client $client used to communicate with Twilio
      */
     public function __construct(Client $client) {
         $this->client = $client;
@@ -53,7 +53,7 @@ abstract class Domain {
      * @param string $user User to authenticate as
      * @param string $password Password
      * @param null $timeout Request timeout
-     * @return Response the response for the request
+     * @return \Twilio\Http\Response the response for the request
      */
     public function request($method, $uri, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password=null,
@@ -72,7 +72,7 @@ abstract class Domain {
     }
 
     /**
-     * @return Client
+     * @return \Twilio\Rest\Client
      */
     public function getClient() {
         return $this->client;
