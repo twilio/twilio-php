@@ -14,7 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Trunking\V1;
 
 /**
- * @property V1 v1
+ * @property \Twilio\Rest\Trunking\V1 v1
  */
 class Trunking extends Domain {
     protected $_v1 = null;
@@ -22,8 +22,9 @@ class Trunking extends Domain {
     /**
      * Construct the Trunking Domain
      * 
-     * @param Client $client Twilio\Rest\Client to communicate with Twilio
-     * @return Trunking Domain for Trunking
+     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
+     *                                    Twilio
+     * @return \Twilio\Rest\Trunking Domain for Trunking
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -32,7 +33,7 @@ class Trunking extends Domain {
     }
 
     /**
-     * @return V1 Version v1 of trunking
+     * @return \Twilio\Rest\Trunking\V1 Version v1 of trunking
      */
     protected function getV1() {
         if (!$this->_v1) {
@@ -46,7 +47,7 @@ class Trunking extends Domain {
      * 
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
-     * @throws TwilioException For unknown versions
+     * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -62,8 +63,8 @@ class Trunking extends Domain {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\Rest\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
@@ -75,7 +76,7 @@ class Trunking extends Domain {
     }
 
     /**
-     * @return TrunkList 
+     * @return \Twilio\Rest\Trunking\V1\TrunkList 
      */
     public function trunks() {
         return $this->v1->trunks();

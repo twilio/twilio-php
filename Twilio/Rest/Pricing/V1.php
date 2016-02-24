@@ -17,9 +17,9 @@ use Twilio\Rest\Pricing\V1\VoiceList;
 use Twilio\Version;
 
 /**
- * @property MessagingList messaging
- * @property PhoneNumberList phoneNumbers
- * @property VoiceList voice
+ * @property \Twilio\Rest\Pricing\V1\MessagingList messaging
+ * @property \Twilio\Rest\Pricing\V1\PhoneNumberList phoneNumbers
+ * @property \Twilio\Rest\Pricing\V1\VoiceList voice
  */
 class V1 extends Version {
     protected $_messaging = null;
@@ -29,8 +29,8 @@ class V1 extends Version {
     /**
      * Construct the V1 version of Pricing
      * 
-     * @param Domain $domain Domain that contains the version
-     * @return V1 V1 version of Pricing
+     * @param \Twilio\Domain $domain Domain that contains the version
+     * @return \Twilio\Rest\Pricing\V1 V1 version of Pricing
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
@@ -38,7 +38,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return MessagingList 
+     * @return \Twilio\Rest\Pricing\V1\MessagingList 
      */
     protected function getMessaging() {
         if (!$this->_messaging) {
@@ -48,7 +48,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return PhoneNumberList 
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumberList 
      */
     protected function getPhoneNumbers() {
         if (!$this->_phoneNumbers) {
@@ -58,7 +58,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return VoiceList 
+     * @return \Twilio\Rest\Pricing\V1\VoiceList 
      */
     protected function getVoice() {
         if (!$this->_voice) {
@@ -71,8 +71,8 @@ class V1 extends Version {
      * Magic getter to lazy load root resources
      * 
      * @param string $name Resource to return
-     * @return ListResource The requested resource
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\ListResource The requested resource
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -88,8 +88,8 @@ class V1 extends Version {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

@@ -14,28 +14,28 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010;
 
 /**
- * @property V2010 v2010
- * @property AccountContext account
- * @property AddressList addresses
- * @property ApplicationList applications
- * @property AuthorizedConnectAppList authorizedConnectApps
- * @property AvailablePhoneNumberCountryList availablePhoneNumbers
- * @property CallList calls
- * @property ConferenceList conferences
- * @property ConnectAppList connectApps
- * @property IncomingPhoneNumberList incomingPhoneNumbers
- * @property MessageList messages
- * @property NotificationList notifications
- * @property OutgoingCallerIdList outgoingCallerIds
- * @property QueueList queues
- * @property RecordingList recordings
- * @property SandboxList sandbox
- * @property SipList sip
- * @property SmsList sms
- * @property TokenList tokens
- * @property TranscriptionList transcriptions
- * @property UsageList usage
- * @property ValidationRequestList validationRequests
+ * @property \Twilio\Rest\Api\V2010 v2010
+ * @property \Twilio\Rest\Api\V2010\AccountContext account
+ * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
+ * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
+ * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\CallList calls
+ * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
+ * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList incomingPhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\MessageList messages
+ * @property \Twilio\Rest\Api\V2010\Account\NotificationList notifications
+ * @property \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList outgoingCallerIds
+ * @property \Twilio\Rest\Api\V2010\Account\QueueList queues
+ * @property \Twilio\Rest\Api\V2010\Account\RecordingList recordings
+ * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
+ * @property \Twilio\Rest\Api\V2010\Account\SipList sip
+ * @property \Twilio\Rest\Api\V2010\Account\SmsList sms
+ * @property \Twilio\Rest\Api\V2010\Account\TokenList tokens
+ * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
+ * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
+ * @property \Twilio\Rest\Api\V2010\Account\ValidationRequestList validationRequests
  */
 class Api extends Domain {
     protected $_v2010 = null;
@@ -64,8 +64,9 @@ class Api extends Domain {
     /**
      * Construct the Api Domain
      * 
-     * @param Client $client Twilio\Rest\Client to communicate with Twilio
-     * @return Api Domain for Api
+     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
+     *                                    Twilio
+     * @return \Twilio\Rest\Api Domain for Api
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -74,7 +75,7 @@ class Api extends Domain {
     }
 
     /**
-     * @return V2010 Version v2010 of api
+     * @return \Twilio\Rest\Api\V2010 Version v2010 of api
      */
     protected function getV2010() {
         if (!$this->_v2010) {
@@ -88,7 +89,7 @@ class Api extends Domain {
      * 
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
-     * @throws TwilioException For unknown versions
+     * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -104,8 +105,8 @@ class Api extends Domain {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\Rest\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
@@ -117,154 +118,155 @@ class Api extends Domain {
     }
 
     /**
-     * @return Account Account provided as the authenticating account
+     * @return \Twilio\Rest\Api\V2010\Account Account provided as the
+     *                                        authenticating account
      */
     public function account() {
         return $this->v2010->account;
     }
 
     /**
-     * @return AccountList 
+     * @return \Twilio\Rest\Api\V2010\AccountList 
      */
     public function accounts() {
         return $this->v2010->accounts();
     }
 
     /**
-     * @return AddressList 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressList 
      */
     public function getAddresses() {
         return $this->v2010->account->addresses;
     }
 
     /**
-     * @return ApplicationList 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
      */
     public function getApplications() {
         return $this->v2010->account->applications;
     }
 
     /**
-     * @return AuthorizedConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
      */
     public function getAuthorizedConnectApps() {
         return $this->v2010->account->authorizedConnectApps;
     }
 
     /**
-     * @return AvailablePhoneNumberCountryList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList 
      */
     public function getAvailablePhoneNumbers() {
         return $this->v2010->account->availablePhoneNumbers;
     }
 
     /**
-     * @return CallList 
+     * @return \Twilio\Rest\Api\V2010\Account\CallList 
      */
     public function getCalls() {
         return $this->v2010->account->calls;
     }
 
     /**
-     * @return ConferenceList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
      */
     public function getConferences() {
         return $this->v2010->account->conferences;
     }
 
     /**
-     * @return ConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
      */
     public function getConnectApps() {
         return $this->v2010->account->connectApps;
     }
 
     /**
-     * @return IncomingPhoneNumberList 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
      */
     public function getIncomingPhoneNumbers() {
         return $this->v2010->account->incomingPhoneNumbers;
     }
 
     /**
-     * @return MessageList 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
      */
     public function getMessages() {
         return $this->v2010->account->messages;
     }
 
     /**
-     * @return NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
      */
     public function getNotifications() {
         return $this->v2010->account->notifications;
     }
 
     /**
-     * @return OutgoingCallerIdList 
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
      */
     public function getOutgoingCallerIds() {
         return $this->v2010->account->outgoingCallerIds;
     }
 
     /**
-     * @return QueueList 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueList 
      */
     public function getQueues() {
         return $this->v2010->account->queues;
     }
 
     /**
-     * @return RecordingList 
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingList 
      */
     public function getRecordings() {
         return $this->v2010->account->recordings;
     }
 
     /**
-     * @return SandboxList 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
      */
     public function getSandbox() {
         return $this->v2010->account->sandbox;
     }
 
     /**
-     * @return SipList 
+     * @return \Twilio\Rest\Api\V2010\Account\SipList 
      */
     public function getSip() {
         return $this->v2010->account->sip;
     }
 
     /**
-     * @return SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
      */
     public function getSms() {
         return $this->v2010->account->sms;
     }
 
     /**
-     * @return TokenList 
+     * @return \Twilio\Rest\Api\V2010\Account\TokenList 
      */
     public function getTokens() {
         return $this->v2010->account->tokens;
     }
 
     /**
-     * @return TranscriptionList 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
      */
     public function getTranscriptions() {
         return $this->v2010->account->transcriptions;
     }
 
     /**
-     * @return UsageList 
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
      */
     public function getUsage() {
         return $this->v2010->account->usage;
     }
 
     /**
-     * @return ValidationRequestList 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
      */
     public function getValidationRequests() {
         return $this->v2010->account->validationRequests;

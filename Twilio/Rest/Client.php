@@ -18,14 +18,14 @@ use Twilio\VersionInfo;
 /**
  * A client for accessing the Twilio API.
  * 
- * @property Api api
- * @property Conversations conversations
- * @property IpMessaging ipMessaging
- * @property Lookups lookups
- * @property Monitor monitor
- * @property Pricing pricing
- * @property Taskrouter taskrouter
- * @property Trunking trunking
+ * @property \Twilio\Rest\Api api
+ * @property \Twilio\Rest\Conversations conversations
+ * @property \Twilio\Rest\IpMessaging ipMessaging
+ * @property \Twilio\Rest\Lookups lookups
+ * @property \Twilio\Rest\Monitor monitor
+ * @property \Twilio\Rest\Pricing pricing
+ * @property \Twilio\Rest\Taskrouter taskrouter
+ * @property \Twilio\Rest\Trunking trunking
  */
 class Client {
     const ENV_ACCOUNT_SID = "TWILIO_ACCOUNT_SID";
@@ -71,10 +71,10 @@ class Client {
      * @param string $password Password to authenticate with
      * @param string $accountSid Account Sid to authenticate with, defaults to
      *                           $username
-     * @param HttpClient $httpClient HttpClient, defaults to CurlClient
+     * @param \Twilio\Http\HttpClient $httpClient HttpClient, defaults to CurlClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
-     * @return Client Twilio Client
+     * @return \Twilio\Rest\Client Twilio Client
      * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct($username = null, $password = null, $accountSid = null, HttpClient $httpClient = null, $environment = null) {
@@ -123,7 +123,7 @@ class Client {
      * @param string $username User for Authentication
      * @param string $password Password for Authentication
      * @param int $timeout Timeout in seconds
-     * @return Response Response from the Twilio API
+     * @return \Twilio\Http\Response Response from the Twilio API
      */
     public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null) {
         $username = $username ? $username : $this->username;
@@ -165,7 +165,7 @@ class Client {
     /**
      * Retrieve the HttpClient
      * 
-     * @return HttpClient Current HttpClient
+     * @return \Twilio\Http\HttpClient Current HttpClient
      */
     public function getHttpClient() {
         return $this->httpClient;
@@ -176,14 +176,14 @@ class Client {
      * 
      * @param HttpClient $httpClient HttpClient to use
      */
-    public function setHttpClient(HttpClient $httpClient) {
+    public function setHttpClient(\Twilio\Http\HttpClient $httpClient) {
         $this->httpClient = $httpClient;
     }
 
     /**
      * Access the Api Twilio Domain
      * 
-     * @return Api Api Twilio Domain
+     * @return \Twilio\Rest\Api Api Twilio Domain
      */
     protected function getApi() {
         if (!$this->_api) {
@@ -193,154 +193,155 @@ class Client {
     }
 
     /**
-     * @return Account Account provided as the authenticating account
+     * @return \Twilio\Rest\Api\V2010\Account Account provided as the
+     *                                        authenticating account
      */
     public function account() {
         return $this->api->v2010->account;
     }
 
     /**
-     * @return AccountList 
+     * @return \Twilio\Rest\Api\V2010\AccountList 
      */
     public function getAccounts() {
         return $this->api->v2010->accounts();
     }
 
     /**
-     * @return AddressList 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressList 
      */
     public function getAddresses() {
         return $this->api->v2010->account->addresses;
     }
 
     /**
-     * @return ApplicationList 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
      */
     public function getApplications() {
         return $this->api->v2010->account->applications;
     }
 
     /**
-     * @return AuthorizedConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
      */
     public function getAuthorizedConnectApps() {
         return $this->api->v2010->account->authorizedConnectApps;
     }
 
     /**
-     * @return AvailablePhoneNumberCountryList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList 
      */
     public function getAvailablePhoneNumbers() {
         return $this->api->v2010->account->availablePhoneNumbers;
     }
 
     /**
-     * @return CallList 
+     * @return \Twilio\Rest\Api\V2010\Account\CallList 
      */
     public function getCalls() {
         return $this->api->v2010->account->calls;
     }
 
     /**
-     * @return ConferenceList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
      */
     public function getConferences() {
         return $this->api->v2010->account->conferences;
     }
 
     /**
-     * @return ConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
      */
     public function getConnectApps() {
         return $this->api->v2010->account->connectApps;
     }
 
     /**
-     * @return IncomingPhoneNumberList 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
      */
     public function getIncomingPhoneNumbers() {
         return $this->api->v2010->account->incomingPhoneNumbers;
     }
 
     /**
-     * @return MessageList 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
      */
     public function getMessages() {
         return $this->api->v2010->account->messages;
     }
 
     /**
-     * @return NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
      */
     public function getNotifications() {
         return $this->api->v2010->account->notifications;
     }
 
     /**
-     * @return OutgoingCallerIdList 
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
      */
     public function getOutgoingCallerIds() {
         return $this->api->v2010->account->outgoingCallerIds;
     }
 
     /**
-     * @return QueueList 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueList 
      */
     public function getQueues() {
         return $this->api->v2010->account->queues;
     }
 
     /**
-     * @return RecordingList 
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingList 
      */
     public function getRecordings() {
         return $this->api->v2010->account->recordings;
     }
 
     /**
-     * @return SandboxList 
+     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
      */
     public function getSandbox() {
         return $this->api->v2010->account->sandbox;
     }
 
     /**
-     * @return SipList 
+     * @return \Twilio\Rest\Api\V2010\Account\SipList 
      */
     public function getSip() {
         return $this->api->v2010->account->sip;
     }
 
     /**
-     * @return SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
      */
     public function getSms() {
         return $this->api->v2010->account->sms;
     }
 
     /**
-     * @return TokenList 
+     * @return \Twilio\Rest\Api\V2010\Account\TokenList 
      */
     public function getTokens() {
         return $this->api->v2010->account->tokens;
     }
 
     /**
-     * @return TranscriptionList 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
      */
     public function getTranscriptions() {
         return $this->api->v2010->account->transcriptions;
     }
 
     /**
-     * @return UsageList 
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
      */
     public function getUsage() {
         return $this->api->v2010->account->usage;
     }
 
     /**
-     * @return ValidationRequestList 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
      */
     public function getValidationRequests() {
         return $this->api->v2010->account->validationRequests;
@@ -349,7 +350,7 @@ class Client {
     /**
      * Access the Conversations Twilio Domain
      * 
-     * @return Conversations Conversations Twilio Domain
+     * @return \Twilio\Rest\Conversations Conversations Twilio Domain
      */
     protected function getConversations() {
         if (!$this->_conversations) {
@@ -361,7 +362,7 @@ class Client {
     /**
      * Access the IpMessaging Twilio Domain
      * 
-     * @return IpMessaging IpMessaging Twilio Domain
+     * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
      */
     protected function getIpMessaging() {
         if (!$this->_ipMessaging) {
@@ -373,7 +374,7 @@ class Client {
     /**
      * Access the Lookups Twilio Domain
      * 
-     * @return Lookups Lookups Twilio Domain
+     * @return \Twilio\Rest\Lookups Lookups Twilio Domain
      */
     protected function getLookups() {
         if (!$this->_lookups) {
@@ -385,7 +386,7 @@ class Client {
     /**
      * Access the Monitor Twilio Domain
      * 
-     * @return Monitor Monitor Twilio Domain
+     * @return \Twilio\Rest\Monitor Monitor Twilio Domain
      */
     protected function getMonitor() {
         if (!$this->_monitor) {
@@ -397,7 +398,7 @@ class Client {
     /**
      * Access the Pricing Twilio Domain
      * 
-     * @return Pricing Pricing Twilio Domain
+     * @return \Twilio\Rest\Pricing Pricing Twilio Domain
      */
     protected function getPricing() {
         if (!$this->_pricing) {
@@ -409,7 +410,7 @@ class Client {
     /**
      * Access the Taskrouter Twilio Domain
      * 
-     * @return Taskrouter Taskrouter Twilio Domain
+     * @return \Twilio\Rest\Taskrouter Taskrouter Twilio Domain
      */
     protected function getTaskrouter() {
         if (!$this->_taskrouter) {
@@ -421,7 +422,7 @@ class Client {
     /**
      * Access the Trunking Twilio Domain
      * 
-     * @return Trunking Trunking Twilio Domain
+     * @return \Twilio\Rest\Trunking Trunking Twilio Domain
      */
     protected function getTrunking() {
         if (!$this->_trunking) {
@@ -434,7 +435,7 @@ class Client {
      * Magic getter to lazy load domains
      * 
      * @param string $name Domain to return
-     * @return Domain The requested domain
+     * @return \Twilio\Domain The requested domain
      * @throws TwilioException For unknown domains
      */
     public function __get($name) {

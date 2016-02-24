@@ -14,7 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Monitor\V1;
 
 /**
- * @property V1 v1
+ * @property \Twilio\Rest\Monitor\V1 v1
  */
 class Monitor extends Domain {
     protected $_v1 = null;
@@ -22,8 +22,9 @@ class Monitor extends Domain {
     /**
      * Construct the Monitor Domain
      * 
-     * @param Client $client Twilio\Rest\Client to communicate with Twilio
-     * @return Monitor Domain for Monitor
+     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
+     *                                    Twilio
+     * @return \Twilio\Rest\Monitor Domain for Monitor
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -32,7 +33,7 @@ class Monitor extends Domain {
     }
 
     /**
-     * @return V1 Version v1 of monitor
+     * @return \Twilio\Rest\Monitor\V1 Version v1 of monitor
      */
     protected function getV1() {
         if (!$this->_v1) {
@@ -46,7 +47,7 @@ class Monitor extends Domain {
      * 
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
-     * @throws TwilioException For unknown versions
+     * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -62,8 +63,8 @@ class Monitor extends Domain {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\Rest\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
@@ -75,14 +76,14 @@ class Monitor extends Domain {
     }
 
     /**
-     * @return AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList 
      */
     public function alerts() {
         return $this->v1->alerts();
     }
 
     /**
-     * @return EventList 
+     * @return \Twilio\Rest\Monitor\V1\EventList 
      */
     public function events() {
         return $this->v1->events();

@@ -15,7 +15,7 @@ use Twilio\Rest\Trunking\V1\TrunkList;
 use Twilio\Version;
 
 /**
- * @property TrunkList trunks
+ * @property \Twilio\Rest\Trunking\V1\TrunkList trunks
  */
 class V1 extends Version {
     protected $_trunks = null;
@@ -23,8 +23,8 @@ class V1 extends Version {
     /**
      * Construct the V1 version of Trunking
      * 
-     * @param Domain $domain Domain that contains the version
-     * @return V1 V1 version of Trunking
+     * @param \Twilio\Domain $domain Domain that contains the version
+     * @return \Twilio\Rest\Trunking\V1 V1 version of Trunking
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
@@ -32,7 +32,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return TrunkList 
+     * @return \Twilio\Rest\Trunking\V1\TrunkList 
      */
     protected function getTrunks() {
         if (!$this->_trunks) {
@@ -45,8 +45,8 @@ class V1 extends Version {
      * Magic getter to lazy load root resources
      * 
      * @param string $name Resource to return
-     * @return ListResource The requested resource
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\ListResource The requested resource
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -62,8 +62,8 @@ class V1 extends Version {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

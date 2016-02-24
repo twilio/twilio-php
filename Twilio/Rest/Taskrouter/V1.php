@@ -15,7 +15,7 @@ use Twilio\Rest\Taskrouter\V1\WorkspaceList;
 use Twilio\Version;
 
 /**
- * @property WorkspaceList workspaces
+ * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList workspaces
  */
 class V1 extends Version {
     protected $_workspaces = null;
@@ -23,8 +23,8 @@ class V1 extends Version {
     /**
      * Construct the V1 version of Taskrouter
      * 
-     * @param Domain $domain Domain that contains the version
-     * @return V1 V1 version of Taskrouter
+     * @param \Twilio\Domain $domain Domain that contains the version
+     * @return \Twilio\Rest\Taskrouter\V1 V1 version of Taskrouter
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
@@ -32,7 +32,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return WorkspaceList 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList 
      */
     protected function getWorkspaces() {
         if (!$this->_workspaces) {
@@ -45,8 +45,8 @@ class V1 extends Version {
      * Magic getter to lazy load root resources
      * 
      * @param string $name Resource to return
-     * @return ListResource The requested resource
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\ListResource The requested resource
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -62,8 +62,8 @@ class V1 extends Version {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

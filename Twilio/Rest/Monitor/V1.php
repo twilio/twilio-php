@@ -16,8 +16,8 @@ use Twilio\Rest\Monitor\V1\EventList;
 use Twilio\Version;
 
 /**
- * @property AlertList alerts
- * @property EventList events
+ * @property \Twilio\Rest\Monitor\V1\AlertList alerts
+ * @property \Twilio\Rest\Monitor\V1\EventList events
  */
 class V1 extends Version {
     protected $_alerts = null;
@@ -26,8 +26,8 @@ class V1 extends Version {
     /**
      * Construct the V1 version of Monitor
      * 
-     * @param Domain $domain Domain that contains the version
-     * @return V1 V1 version of Monitor
+     * @param \Twilio\Domain $domain Domain that contains the version
+     * @return \Twilio\Rest\Monitor\V1 V1 version of Monitor
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
@@ -35,7 +35,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList 
      */
     protected function getAlerts() {
         if (!$this->_alerts) {
@@ -45,7 +45,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return EventList 
+     * @return \Twilio\Rest\Monitor\V1\EventList 
      */
     protected function getEvents() {
         if (!$this->_events) {
@@ -58,8 +58,8 @@ class V1 extends Version {
      * Magic getter to lazy load root resources
      * 
      * @param string $name Resource to return
-     * @return ListResource The requested resource
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\ListResource The requested resource
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -75,8 +75,8 @@ class V1 extends Version {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

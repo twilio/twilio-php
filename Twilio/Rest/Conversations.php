@@ -14,7 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Conversations\V1;
 
 /**
- * @property V1 v1
+ * @property \Twilio\Rest\Conversations\V1 v1
  */
 class Conversations extends Domain {
     protected $_v1 = null;
@@ -22,8 +22,9 @@ class Conversations extends Domain {
     /**
      * Construct the Conversations Domain
      * 
-     * @param Client $client Twilio\Rest\Client to communicate with Twilio
-     * @return Conversations Domain for Conversations
+     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
+     *                                    Twilio
+     * @return \Twilio\Rest\Conversations Domain for Conversations
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -32,7 +33,7 @@ class Conversations extends Domain {
     }
 
     /**
-     * @return V1 Version v1 of conversations
+     * @return \Twilio\Rest\Conversations\V1 Version v1 of conversations
      */
     protected function getV1() {
         if (!$this->_v1) {
@@ -46,7 +47,7 @@ class Conversations extends Domain {
      * 
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
-     * @throws TwilioException For unknown versions
+     * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -62,8 +63,8 @@ class Conversations extends Domain {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\Rest\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
@@ -75,7 +76,7 @@ class Conversations extends Domain {
     }
 
     /**
-     * @return ConversationList 
+     * @return \Twilio\Rest\Conversations\V1\ConversationList 
      */
     public function conversations() {
         return $this->v1->conversations();

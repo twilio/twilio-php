@@ -14,7 +14,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\IpMessaging\V1;
 
 /**
- * @property V1 v1
+ * @property \Twilio\Rest\IpMessaging\V1 v1
  */
 class IpMessaging extends Domain {
     protected $_v1 = null;
@@ -22,8 +22,9 @@ class IpMessaging extends Domain {
     /**
      * Construct the IpMessaging Domain
      * 
-     * @param Client $client Twilio\Rest\Client to communicate with Twilio
-     * @return IpMessaging Domain for IpMessaging
+     * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
+     *                                    Twilio
+     * @return \Twilio\Rest\IpMessaging Domain for IpMessaging
      */
     public function __construct(Client $client) {
         parent::__construct($client);
@@ -32,7 +33,7 @@ class IpMessaging extends Domain {
     }
 
     /**
-     * @return V1 Version v1 of ip_messaging
+     * @return \Twilio\Rest\IpMessaging\V1 Version v1 of ip_messaging
      */
     protected function getV1() {
         if (!$this->_v1) {
@@ -46,7 +47,7 @@ class IpMessaging extends Domain {
      * 
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
-     * @throws TwilioException For unknown versions
+     * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -62,8 +63,8 @@ class IpMessaging extends Domain {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\Rest\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
@@ -75,14 +76,14 @@ class IpMessaging extends Domain {
     }
 
     /**
-     * @return CredentialList 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialList 
      */
     public function credentials() {
         return $this->v1->credentials();
     }
 
     /**
-     * @return ServiceList 
+     * @return \Twilio\Rest\IpMessaging\V1\ServiceList 
      */
     public function services() {
         return $this->v1->services();

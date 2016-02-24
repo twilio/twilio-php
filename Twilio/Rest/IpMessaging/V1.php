@@ -16,8 +16,8 @@ use Twilio\Rest\IpMessaging\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property CredentialList credentials
- * @property ServiceList services
+ * @property \Twilio\Rest\IpMessaging\V1\CredentialList credentials
+ * @property \Twilio\Rest\IpMessaging\V1\ServiceList services
  */
 class V1 extends Version {
     protected $_credentials = null;
@@ -26,8 +26,8 @@ class V1 extends Version {
     /**
      * Construct the V1 version of IpMessaging
      * 
-     * @param Domain $domain Domain that contains the version
-     * @return V1 V1 version of IpMessaging
+     * @param \Twilio\Domain $domain Domain that contains the version
+     * @return \Twilio\Rest\IpMessaging\V1 V1 version of IpMessaging
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
@@ -35,7 +35,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return CredentialList 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialList 
      */
     protected function getCredentials() {
         if (!$this->_credentials) {
@@ -45,7 +45,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return ServiceList 
+     * @return \Twilio\Rest\IpMessaging\V1\ServiceList 
      */
     protected function getServices() {
         if (!$this->_services) {
@@ -58,8 +58,8 @@ class V1 extends Version {
      * Magic getter to lazy load root resources
      * 
      * @param string $name Resource to return
-     * @return ListResource The requested resource
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\ListResource The requested resource
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -75,8 +75,8 @@ class V1 extends Version {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return InstanceContext The requested resource context
-     * @throws TwilioException For unknown resource
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
