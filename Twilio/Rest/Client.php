@@ -71,7 +71,7 @@ class Client {
      * @param string $password Password to authenticate with
      * @param string $accountSid Account Sid to authenticate with, defaults to
      *                           $username
-     * @param \Twilio\Http\HttpClient $httpClient HttpClient, defaults to CurlClient
+     * @param \Twilio\Http\Client $httpClient HttpClient, defaults to CurlClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
      * @return \Twilio\Rest\Client Twilio Client
@@ -165,7 +165,7 @@ class Client {
     /**
      * Retrieve the HttpClient
      * 
-     * @return \Twilio\Http\HttpClient Current HttpClient
+     * @return \Twilio\Http\Client Current HttpClient
      */
     public function getHttpClient() {
         return $this->httpClient;
@@ -174,9 +174,9 @@ class Client {
     /**
      * Set the HttpClient
      * 
-     * @param HttpClient $httpClient HttpClient to use
+     * @param \Twilio\Http\Client $httpClient HttpClient to use
      */
-    public function setHttpClient(\Twilio\Http\HttpClient $httpClient) {
+    public function setHttpClient(\Twilio\Http\Client $httpClient) {
         $this->httpClient = $httpClient;
     }
 
