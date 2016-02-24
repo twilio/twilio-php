@@ -105,7 +105,7 @@ class Api extends Domain {
      * 
      * @param string $name Resource to return
      * @param array $arguments Context parameters
-     * @return \Twilio\Rest\InstanceContext The requested resource context
+     * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
