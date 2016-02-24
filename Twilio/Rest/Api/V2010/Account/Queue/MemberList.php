@@ -106,12 +106,7 @@ class MemberList extends ListResource {
             $params
         );
         
-        return new MemberPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['queueSid']
-        );
+        return new MemberPage($this->version, $response, $this->solution);
     }
 
     /**

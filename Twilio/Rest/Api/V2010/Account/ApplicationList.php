@@ -155,11 +155,7 @@ class ApplicationList extends ListResource {
             $params
         );
         
-        return new ApplicationPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ApplicationPage($this->version, $response, $this->solution);
     }
 
     /**

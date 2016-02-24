@@ -116,10 +116,7 @@ class AlertList extends ListResource {
             $params
         );
         
-        return new AlertPage(
-            $this->version,
-            $response
-        );
+        return new AlertPage($this->version, $response, $this->solution);
     }
 
     /**

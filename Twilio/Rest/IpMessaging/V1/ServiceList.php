@@ -125,10 +125,7 @@ class ServiceList extends ListResource {
             $params
         );
         
-        return new ServicePage(
-            $this->version,
-            $response
-        );
+        return new ServicePage($this->version, $response, $this->solution);
     }
 
     /**

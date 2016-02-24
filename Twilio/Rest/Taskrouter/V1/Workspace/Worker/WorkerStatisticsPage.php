@@ -16,10 +16,7 @@ class WorkerStatisticsPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'workerSid' => $workerSid
-        );
+        $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {

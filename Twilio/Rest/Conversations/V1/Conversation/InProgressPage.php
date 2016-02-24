@@ -17,7 +17,7 @@ class InProgressPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array();
+        $this->solution = $solution;
     }
 
     /**
@@ -92,10 +92,7 @@ class InProgressPage extends Page {
             $params
         );
         
-        return new InProgressPage(
-            $this->version,
-            $response
-        );
+        return new InProgressPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

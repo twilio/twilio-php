@@ -94,7 +94,7 @@ abstract class Page implements \Iterator {
         }
 
         $response = $this->getVersion()->getDomain()->getClient()->request('GET', $this->getNextPageUrl());
-        return new static($this->getVersion(), $response);
+        return new static($this->getVersion(), $response, $this->solution);
     }
 
     public function previousPage() {
@@ -103,7 +103,7 @@ abstract class Page implements \Iterator {
         }
 
         $response = $this->getVersion()->getDomain()->getClient()->request('GET', $this->getPreviousPageUrl());
-        return new static($this->getVersion(), $response);
+        return new static($this->getVersion(), $response, $this->solution);
     }
 
     /**

@@ -115,11 +115,7 @@ class RecordingList extends ListResource {
             $params
         );
         
-        return new RecordingPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new RecordingPage($this->version, $response, $this->solution);
     }
 
     /**

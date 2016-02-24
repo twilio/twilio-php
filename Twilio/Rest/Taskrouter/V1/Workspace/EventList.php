@@ -121,11 +121,7 @@ class EventList extends ListResource {
             $params
         );
         
-        return new EventPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new EventPage($this->version, $response, $this->solution);
     }
 
     /**

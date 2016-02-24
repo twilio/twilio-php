@@ -105,11 +105,7 @@ class LastMonthList extends ListResource {
             $params
         );
         
-        return new LastMonthPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new LastMonthPage($this->version, $response, $this->solution);
     }
 
     /**

@@ -152,11 +152,7 @@ class SmsMessageList extends ListResource {
             $params
         );
         
-        return new SmsMessagePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new SmsMessagePage($this->version, $response, $this->solution);
     }
 
     /**

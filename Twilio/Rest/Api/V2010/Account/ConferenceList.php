@@ -120,11 +120,7 @@ class ConferenceList extends ListResource {
             $params
         );
         
-        return new ConferencePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ConferencePage($this->version, $response, $this->solution);
     }
 
     /**

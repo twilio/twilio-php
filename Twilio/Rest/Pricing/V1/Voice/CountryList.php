@@ -101,10 +101,7 @@ class CountryList extends ListResource {
             $params
         );
         
-        return new CountryPage(
-            $this->version,
-            $response
-        );
+        return new CountryPage($this->version, $response, $this->solution);
     }
 
     /**

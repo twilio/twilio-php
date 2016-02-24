@@ -16,10 +16,7 @@ class FeedbackPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'callSid' => $callSid
-        );
+        $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {

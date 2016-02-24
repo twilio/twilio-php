@@ -131,11 +131,7 @@ class UserList extends ListResource {
             $params
         );
         
-        return new UserPage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid']
-        );
+        return new UserPage($this->version, $response, $this->solution);
     }
 
     /**

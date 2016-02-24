@@ -17,7 +17,7 @@ class EventPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array();
+        $this->solution = $solution;
     }
 
     /**
@@ -110,10 +110,7 @@ class EventPage extends Page {
             $params
         );
         
-        return new EventPage(
-            $this->version,
-            $response
-        );
+        return new EventPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

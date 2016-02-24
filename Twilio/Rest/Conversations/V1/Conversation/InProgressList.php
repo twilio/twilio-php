@@ -101,10 +101,7 @@ class InProgressList extends ListResource {
             $params
         );
         
-        return new InProgressPage(
-            $this->version,
-            $response
-        );
+        return new InProgressPage($this->version, $response, $this->solution);
     }
 
     /**

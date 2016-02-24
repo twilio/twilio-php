@@ -17,10 +17,7 @@ class MediaPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'messageSid' => $messageSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -106,12 +103,7 @@ class MediaPage extends Page {
             $params
         );
         
-        return new MediaPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['messageSid']
-        );
+        return new MediaPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

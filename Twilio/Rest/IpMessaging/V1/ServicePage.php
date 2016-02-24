@@ -17,7 +17,7 @@ class ServicePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array();
+        $this->solution = $solution;
     }
 
     /**
@@ -116,10 +116,7 @@ class ServicePage extends Page {
             $params
         );
         
-        return new ServicePage(
-            $this->version,
-            $response
-        );
+        return new ServicePage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

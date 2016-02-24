@@ -17,9 +17,7 @@ class TaskPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -108,11 +106,7 @@ class TaskPage extends Page {
             $params
         );
         
-        return new TaskPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new TaskPage($this->version, $response, $this->solution);
     }
 
     /**

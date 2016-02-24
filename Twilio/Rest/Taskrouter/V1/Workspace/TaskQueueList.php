@@ -121,11 +121,7 @@ class TaskQueueList extends ListResource {
             $params
         );
         
-        return new TaskQueuePage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new TaskQueuePage($this->version, $response, $this->solution);
     }
 
     /**

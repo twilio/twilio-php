@@ -117,12 +117,7 @@ class ReservationList extends ListResource {
             $params
         );
         
-        return new ReservationPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid'],
-            $this->solution['taskSid']
-        );
+        return new ReservationPage($this->version, $response, $this->solution);
     }
 
     /**

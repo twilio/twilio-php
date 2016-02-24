@@ -129,11 +129,7 @@ class PhoneNumberList extends ListResource {
             $params
         );
         
-        return new PhoneNumberPage(
-            $this->version,
-            $response,
-            $this->solution['trunkSid']
-        );
+        return new PhoneNumberPage($this->version, $response, $this->solution);
     }
 
     /**

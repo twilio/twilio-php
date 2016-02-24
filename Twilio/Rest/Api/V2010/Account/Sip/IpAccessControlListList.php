@@ -106,11 +106,7 @@ class IpAccessControlListList extends ListResource {
             $params
         );
         
-        return new IpAccessControlListPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new IpAccessControlListPage($this->version, $response, $this->solution);
     }
 
     /**

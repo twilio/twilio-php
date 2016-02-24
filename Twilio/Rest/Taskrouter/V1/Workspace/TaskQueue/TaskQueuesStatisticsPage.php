@@ -17,9 +17,7 @@ class TaskQueuesStatisticsPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -107,11 +105,7 @@ class TaskQueuesStatisticsPage extends Page {
             $params
         );
         
-        return new TaskQueuesStatisticsPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new TaskQueuesStatisticsPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

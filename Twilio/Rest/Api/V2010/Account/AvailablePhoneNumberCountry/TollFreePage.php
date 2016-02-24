@@ -17,10 +17,7 @@ class TollFreePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'countryCode' => $countryCode
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -112,12 +109,7 @@ class TollFreePage extends Page {
             $params
         );
         
-        return new TollFreePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['countryCode']
-        );
+        return new TollFreePage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

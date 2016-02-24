@@ -17,9 +17,7 @@ class LocalPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'ownerAccountSid' => $ownerAccountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -105,11 +103,7 @@ class LocalPage extends Page {
             $params
         );
         
-        return new LocalPage(
-            $this->version,
-            $response,
-            $this->solution['ownerAccountSid']
-        );
+        return new LocalPage($this->version, $response, $this->solution);
     }
 
     /**

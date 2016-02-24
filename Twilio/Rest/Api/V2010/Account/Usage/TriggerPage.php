@@ -17,9 +17,7 @@ class TriggerPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -142,11 +140,7 @@ class TriggerPage extends Page {
             $params
         );
         
-        return new TriggerPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new TriggerPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

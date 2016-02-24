@@ -17,9 +17,7 @@ class WorkerPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -109,11 +107,7 @@ class WorkerPage extends Page {
             $params
         );
         
-        return new WorkerPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new WorkerPage($this->version, $response, $this->solution);
     }
 
     /**

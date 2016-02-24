@@ -114,11 +114,7 @@ class ActivityList extends ListResource {
             $params
         );
         
-        return new ActivityPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new ActivityPage($this->version, $response, $this->solution);
     }
 
     /**

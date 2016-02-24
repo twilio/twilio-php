@@ -153,11 +153,7 @@ class TriggerList extends ListResource {
             $params
         );
         
-        return new TriggerPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new TriggerPage($this->version, $response, $this->solution);
     }
 
     /**

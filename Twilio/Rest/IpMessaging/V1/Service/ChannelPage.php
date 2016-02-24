@@ -17,9 +17,7 @@ class ChannelPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -126,11 +124,7 @@ class ChannelPage extends Page {
             $params
         );
         
-        return new ChannelPage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid']
-        );
+        return new ChannelPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

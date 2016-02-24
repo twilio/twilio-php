@@ -17,9 +17,7 @@ class QueuePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -94,11 +92,7 @@ class QueuePage extends Page {
             $params
         );
         
-        return new QueuePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new QueuePage($this->version, $response, $this->solution);
     }
 
     /**

@@ -154,11 +154,7 @@ class AddressList extends ListResource {
             $params
         );
         
-        return new AddressPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new AddressPage($this->version, $response, $this->solution);
     }
 
     /**

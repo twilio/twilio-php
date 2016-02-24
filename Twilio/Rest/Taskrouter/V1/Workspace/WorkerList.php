@@ -126,11 +126,7 @@ class WorkerList extends ListResource {
             $params
         );
         
-        return new WorkerPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new WorkerPage($this->version, $response, $this->solution);
     }
 
     /**

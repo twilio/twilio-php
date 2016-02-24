@@ -104,11 +104,7 @@ class ConnectAppList extends ListResource {
             $params
         );
         
-        return new ConnectAppPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ConnectAppPage($this->version, $response, $this->solution);
     }
 
     /**

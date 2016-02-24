@@ -101,10 +101,7 @@ class CredentialList extends ListResource {
             $params
         );
         
-        return new CredentialPage(
-            $this->version,
-            $response
-        );
+        return new CredentialPage($this->version, $response, $this->solution);
     }
 
     /**

@@ -17,9 +17,7 @@ class IpAccessControlListPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'trunkSid' => $trunkSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -120,11 +118,7 @@ class IpAccessControlListPage extends Page {
             $params
         );
         
-        return new IpAccessControlListPage(
-            $this->version,
-            $response,
-            $this->solution['trunkSid']
-        );
+        return new IpAccessControlListPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

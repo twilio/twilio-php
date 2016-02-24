@@ -105,11 +105,7 @@ class DailyList extends ListResource {
             $params
         );
         
-        return new DailyPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new DailyPage($this->version, $response, $this->solution);
     }
 
     /**

@@ -136,12 +136,7 @@ class MemberList extends ListResource {
             $params
         );
         
-        return new MemberPage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid'],
-            $this->solution['channelSid']
-        );
+        return new MemberPage($this->version, $response, $this->solution);
     }
 
     /**

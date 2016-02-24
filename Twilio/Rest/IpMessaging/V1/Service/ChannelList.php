@@ -136,11 +136,7 @@ class ChannelList extends ListResource {
             $params
         );
         
-        return new ChannelPage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid']
-        );
+        return new ChannelPage($this->version, $response, $this->solution);
     }
 
     /**

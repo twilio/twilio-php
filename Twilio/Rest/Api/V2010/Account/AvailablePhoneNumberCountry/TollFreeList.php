@@ -124,12 +124,7 @@ class TollFreeList extends ListResource {
             $params
         );
         
-        return new TollFreePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['countryCode']
-        );
+        return new TollFreePage($this->version, $response, $this->solution);
     }
 
     /**

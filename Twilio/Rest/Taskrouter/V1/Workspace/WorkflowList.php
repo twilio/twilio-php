@@ -113,11 +113,7 @@ class WorkflowList extends ListResource {
             $params
         );
         
-        return new WorkflowPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new WorkflowPage($this->version, $response, $this->solution);
     }
 
     /**

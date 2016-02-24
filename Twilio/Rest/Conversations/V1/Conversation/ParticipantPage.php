@@ -17,9 +17,7 @@ class ParticipantPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'conversationSid' => $conversationSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -94,11 +92,7 @@ class ParticipantPage extends Page {
             $params
         );
         
-        return new ParticipantPage(
-            $this->version,
-            $response,
-            $this->solution['conversationSid']
-        );
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**

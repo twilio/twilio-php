@@ -151,11 +151,7 @@ class MessageList extends ListResource {
             $params
         );
         
-        return new MessagePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new MessagePage($this->version, $response, $this->solution);
     }
 
     /**

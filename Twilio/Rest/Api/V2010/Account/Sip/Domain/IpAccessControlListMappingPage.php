@@ -17,10 +17,7 @@ class IpAccessControlListMappingPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'domainSid' => $domainSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -124,12 +121,7 @@ class IpAccessControlListMappingPage extends Page {
             $params
         );
         
-        return new IpAccessControlListMappingPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['domainSid']
-        );
+        return new IpAccessControlListMappingPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

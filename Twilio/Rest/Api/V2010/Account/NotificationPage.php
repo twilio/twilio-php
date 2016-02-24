@@ -17,9 +17,7 @@ class NotificationPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -106,11 +104,7 @@ class NotificationPage extends Page {
             $params
         );
         
-        return new NotificationPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new NotificationPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

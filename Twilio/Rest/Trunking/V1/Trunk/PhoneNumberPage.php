@@ -17,9 +17,7 @@ class PhoneNumberPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'trunkSid' => $trunkSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -119,11 +117,7 @@ class PhoneNumberPage extends Page {
             $params
         );
         
-        return new PhoneNumberPage(
-            $this->version,
-            $response,
-            $this->solution['trunkSid']
-        );
+        return new PhoneNumberPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

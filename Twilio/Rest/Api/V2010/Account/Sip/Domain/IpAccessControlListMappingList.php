@@ -135,12 +135,7 @@ class IpAccessControlListMappingList extends ListResource {
             $params
         );
         
-        return new IpAccessControlListMappingPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['domainSid']
-        );
+        return new IpAccessControlListMappingPage($this->version, $response, $this->solution);
     }
 
     /**

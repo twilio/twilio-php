@@ -17,10 +17,7 @@ class CredentialPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'credentialListSid' => $credentialListSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -95,12 +92,7 @@ class CredentialPage extends Page {
             $params
         );
         
-        return new CredentialPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['credentialListSid']
-        );
+        return new CredentialPage($this->version, $response, $this->solution);
     }
 
     /**

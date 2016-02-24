@@ -129,11 +129,7 @@ class CredentialListList extends ListResource {
             $params
         );
         
-        return new CredentialListPage(
-            $this->version,
-            $response,
-            $this->solution['trunkSid']
-        );
+        return new CredentialListPage($this->version, $response, $this->solution);
     }
 
     /**

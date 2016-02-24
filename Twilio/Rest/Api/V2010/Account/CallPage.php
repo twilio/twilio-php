@@ -17,9 +17,7 @@ class CallPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -153,11 +151,7 @@ class CallPage extends Page {
             $params
         );
         
-        return new CallPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new CallPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

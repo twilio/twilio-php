@@ -17,9 +17,7 @@ class RolePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -123,11 +121,7 @@ class RolePage extends Page {
             $params
         );
         
-        return new RolePage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid']
-        );
+        return new RolePage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

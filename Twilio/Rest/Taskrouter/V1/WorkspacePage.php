@@ -17,7 +17,7 @@ class WorkspacePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array();
+        $this->solution = $solution;
     }
 
     /**
@@ -101,10 +101,7 @@ class WorkspacePage extends Page {
             $params
         );
         
-        return new WorkspacePage(
-            $this->version,
-            $response
-        );
+        return new WorkspacePage($this->version, $response, $this->solution);
     }
 
     /**

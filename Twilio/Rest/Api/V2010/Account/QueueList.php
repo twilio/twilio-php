@@ -104,11 +104,7 @@ class QueueList extends ListResource {
             $params
         );
         
-        return new QueuePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new QueuePage($this->version, $response, $this->solution);
     }
 
     /**

@@ -117,12 +117,7 @@ class MediaList extends ListResource {
             $params
         );
         
-        return new MediaPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['messageSid']
-        );
+        return new MediaPage($this->version, $response, $this->solution);
     }
 
     /**

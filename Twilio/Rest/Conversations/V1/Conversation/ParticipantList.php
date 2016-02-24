@@ -104,11 +104,7 @@ class ParticipantList extends ListResource {
             $params
         );
         
-        return new ParticipantPage(
-            $this->version,
-            $response,
-            $this->solution['conversationSid']
-        );
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**

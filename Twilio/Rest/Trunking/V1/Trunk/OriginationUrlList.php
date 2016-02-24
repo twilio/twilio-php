@@ -137,11 +137,7 @@ class OriginationUrlList extends ListResource {
             $params
         );
         
-        return new OriginationUrlPage(
-            $this->version,
-            $response,
-            $this->solution['trunkSid']
-        );
+        return new OriginationUrlPage($this->version, $response, $this->solution);
     }
 
     /**

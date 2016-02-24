@@ -105,11 +105,7 @@ class TodayList extends ListResource {
             $params
         );
         
-        return new TodayPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new TodayPage($this->version, $response, $this->solution);
     }
 
     /**

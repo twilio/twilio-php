@@ -105,11 +105,7 @@ class AllTimeList extends ListResource {
             $params
         );
         
-        return new AllTimePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new AllTimePage($this->version, $response, $this->solution);
     }
 
     /**

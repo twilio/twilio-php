@@ -118,11 +118,7 @@ class TaskList extends ListResource {
             $params
         );
         
-        return new TaskPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new TaskPage($this->version, $response, $this->solution);
     }
 
     /**

@@ -17,9 +17,7 @@ class UserPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -121,11 +119,7 @@ class UserPage extends Page {
             $params
         );
         
-        return new UserPage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid']
-        );
+        return new UserPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

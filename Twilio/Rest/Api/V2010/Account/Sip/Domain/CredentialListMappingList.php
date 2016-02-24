@@ -134,12 +134,7 @@ class CredentialListMappingList extends ListResource {
             $params
         );
         
-        return new CredentialListMappingPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['domainSid']
-        );
+        return new CredentialListMappingPage($this->version, $response, $this->solution);
     }
 
     /**

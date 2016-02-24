@@ -16,9 +16,7 @@ class UsagePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {

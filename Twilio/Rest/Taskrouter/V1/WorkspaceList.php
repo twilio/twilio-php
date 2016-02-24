@@ -110,10 +110,7 @@ class WorkspaceList extends ListResource {
             $params
         );
         
-        return new WorkspacePage(
-            $this->version,
-            $response
-        );
+        return new WorkspacePage($this->version, $response, $this->solution);
     }
 
     /**

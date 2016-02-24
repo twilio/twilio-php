@@ -17,9 +17,7 @@ class OriginationUrlPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'trunkSid' => $trunkSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -127,11 +125,7 @@ class OriginationUrlPage extends Page {
             $params
         );
         
-        return new OriginationUrlPage(
-            $this->version,
-            $response,
-            $this->solution['trunkSid']
-        );
+        return new OriginationUrlPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

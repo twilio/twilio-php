@@ -105,11 +105,7 @@ class YearlyList extends ListResource {
             $params
         );
         
-        return new YearlyPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new YearlyPage($this->version, $response, $this->solution);
     }
 
     /**

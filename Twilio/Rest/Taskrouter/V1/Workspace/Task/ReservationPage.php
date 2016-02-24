@@ -17,10 +17,7 @@ class ReservationPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'taskSid' => $taskSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -106,12 +103,7 @@ class ReservationPage extends Page {
             $params
         );
         
-        return new ReservationPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid'],
-            $this->solution['taskSid']
-        );
+        return new ReservationPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

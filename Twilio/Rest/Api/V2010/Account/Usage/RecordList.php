@@ -148,11 +148,7 @@ class RecordList extends ListResource {
             $params
         );
         
-        return new RecordPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new RecordPage($this->version, $response, $this->solution);
     }
 
     /**

@@ -17,10 +17,7 @@ class IpAddressPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'ipAccessControlListSid' => $ipAccessControlListSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -95,12 +92,7 @@ class IpAddressPage extends Page {
             $params
         );
         
-        return new IpAddressPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['ipAccessControlListSid']
-        );
+        return new IpAddressPage($this->version, $response, $this->solution);
     }
 
     /**

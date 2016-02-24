@@ -107,12 +107,7 @@ class DependentPhoneNumberList extends ListResource {
             $params
         );
         
-        return new DependentPhoneNumberPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['addressSid']
-        );
+        return new DependentPhoneNumberPage($this->version, $response, $this->solution);
     }
 
     /**

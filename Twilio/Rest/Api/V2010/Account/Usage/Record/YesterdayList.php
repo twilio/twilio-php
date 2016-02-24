@@ -105,11 +105,7 @@ class YesterdayList extends ListResource {
             $params
         );
         
-        return new YesterdayPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new YesterdayPage($this->version, $response, $this->solution);
     }
 
     /**

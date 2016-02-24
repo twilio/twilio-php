@@ -17,10 +17,7 @@ class DependentPhoneNumberPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'addressSid' => $addressSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -96,12 +93,7 @@ class DependentPhoneNumberPage extends Page {
             $params
         );
         
-        return new DependentPhoneNumberPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['addressSid']
-        );
+        return new DependentPhoneNumberPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

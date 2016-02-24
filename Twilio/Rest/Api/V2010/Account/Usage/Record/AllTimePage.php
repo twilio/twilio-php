@@ -17,9 +17,7 @@ class AllTimePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -94,11 +92,7 @@ class AllTimePage extends Page {
             $params
         );
         
-        return new AllTimePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new AllTimePage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

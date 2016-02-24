@@ -117,11 +117,7 @@ class TaskQueuesStatisticsList extends ListResource {
             $params
         );
         
-        return new TaskQueuesStatisticsPage(
-            $this->version,
-            $response,
-            $this->solution['workspaceSid']
-        );
+        return new TaskQueuesStatisticsPage($this->version, $response, $this->solution);
     }
 
     /**

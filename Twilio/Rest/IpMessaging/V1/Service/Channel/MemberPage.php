@@ -17,10 +17,7 @@ class MemberPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'channelSid' => $channelSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -125,12 +122,7 @@ class MemberPage extends Page {
             $params
         );
         
-        return new MemberPage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid'],
-            $this->solution['channelSid']
-        );
+        return new MemberPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

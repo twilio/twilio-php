@@ -17,7 +17,7 @@ class CredentialPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array();
+        $this->solution = $solution;
     }
 
     /**
@@ -92,10 +92,7 @@ class CredentialPage extends Page {
             $params
         );
         
-        return new CredentialPage(
-            $this->version,
-            $response
-        );
+        return new CredentialPage($this->version, $response, $this->solution);
     }
 
     /**

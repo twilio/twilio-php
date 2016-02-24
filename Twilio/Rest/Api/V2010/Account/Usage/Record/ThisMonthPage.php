@@ -17,9 +17,7 @@ class ThisMonthPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -94,11 +92,7 @@ class ThisMonthPage extends Page {
             $params
         );
         
-        return new ThisMonthPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ThisMonthPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

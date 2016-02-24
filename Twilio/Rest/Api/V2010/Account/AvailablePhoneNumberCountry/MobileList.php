@@ -124,12 +124,7 @@ class MobileList extends ListResource {
             $params
         );
         
-        return new MobilePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['countryCode']
-        );
+        return new MobilePage($this->version, $response, $this->solution);
     }
 
     /**

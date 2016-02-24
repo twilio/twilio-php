@@ -106,12 +106,7 @@ class IpAddressList extends ListResource {
             $params
         );
         
-        return new IpAddressPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['ipAccessControlListSid']
-        );
+        return new IpAddressPage($this->version, $response, $this->solution);
     }
 
     /**

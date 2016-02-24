@@ -105,11 +105,7 @@ class DomainList extends ListResource {
             $params
         );
         
-        return new DomainPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new DomainPage($this->version, $response, $this->solution);
     }
 
     /**

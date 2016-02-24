@@ -101,10 +101,7 @@ class CompletedList extends ListResource {
             $params
         );
         
-        return new CompletedPage(
-            $this->version,
-            $response
-        );
+        return new CompletedPage($this->version, $response, $this->solution);
     }
 
     /**

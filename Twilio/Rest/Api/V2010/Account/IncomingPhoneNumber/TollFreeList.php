@@ -116,11 +116,7 @@ class TollFreeList extends ListResource {
             $params
         );
         
-        return new TollFreePage(
-            $this->version,
-            $response,
-            $this->solution['ownerAccountSid']
-        );
+        return new TollFreePage($this->version, $response, $this->solution);
     }
 
     /**

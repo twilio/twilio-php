@@ -133,11 +133,7 @@ class RoleList extends ListResource {
             $params
         );
         
-        return new RolePage(
-            $this->version,
-            $response,
-            $this->solution['serviceSid']
-        );
+        return new RolePage($this->version, $response, $this->solution);
     }
 
     /**

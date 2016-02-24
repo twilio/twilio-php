@@ -17,9 +17,7 @@ class RecordingPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -105,11 +103,7 @@ class RecordingPage extends Page {
             $params
         );
         
-        return new RecordingPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new RecordingPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

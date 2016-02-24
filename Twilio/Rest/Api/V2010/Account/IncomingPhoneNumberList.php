@@ -130,11 +130,7 @@ class IncomingPhoneNumberList extends ListResource {
             $params
         );
         
-        return new IncomingPhoneNumberPage(
-            $this->version,
-            $response,
-            $this->solution['ownerAccountSid']
-        );
+        return new IncomingPhoneNumberPage($this->version, $response, $this->solution);
     }
 
     /**

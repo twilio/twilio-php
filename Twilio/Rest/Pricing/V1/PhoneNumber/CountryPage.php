@@ -17,7 +17,7 @@ class CountryPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array();
+        $this->solution = $solution;
     }
 
     /**
@@ -92,10 +92,7 @@ class CountryPage extends Page {
             $params
         );
         
-        return new CountryPage(
-            $this->version,
-            $response
-        );
+        return new CountryPage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

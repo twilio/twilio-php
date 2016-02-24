@@ -105,11 +105,7 @@ class ThisMonthList extends ListResource {
             $params
         );
         
-        return new ThisMonthPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ThisMonthPage($this->version, $response, $this->solution);
     }
 
     /**

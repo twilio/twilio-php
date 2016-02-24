@@ -132,10 +132,7 @@ class TrunkList extends ListResource {
             $params
         );
         
-        return new TrunkPage(
-            $this->version,
-            $response
-        );
+        return new TrunkPage($this->version, $response, $this->solution);
     }
 
     /**

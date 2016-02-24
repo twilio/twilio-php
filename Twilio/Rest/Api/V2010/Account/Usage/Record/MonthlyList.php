@@ -105,11 +105,7 @@ class MonthlyList extends ListResource {
             $params
         );
         
-        return new MonthlyPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new MonthlyPage($this->version, $response, $this->solution);
     }
 
     /**

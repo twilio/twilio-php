@@ -17,9 +17,7 @@ class IncomingPhoneNumberPage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'ownerAccountSid' => $ownerAccountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -106,11 +104,7 @@ class IncomingPhoneNumberPage extends Page {
             $params
         );
         
-        return new IncomingPhoneNumberPage(
-            $this->version,
-            $response,
-            $this->solution['ownerAccountSid']
-        );
+        return new IncomingPhoneNumberPage($this->version, $response, $this->solution);
     }
 
     /**

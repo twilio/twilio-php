@@ -107,11 +107,7 @@ class AvailablePhoneNumberCountryList extends ListResource {
             $params
         );
         
-        return new AvailablePhoneNumberCountryPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new AvailablePhoneNumberCountryPage($this->version, $response, $this->solution);
     }
 
     /**

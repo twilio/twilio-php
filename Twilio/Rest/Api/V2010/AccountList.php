@@ -137,10 +137,7 @@ class AccountList extends ListResource {
             $params
         );
         
-        return new AccountPage(
-            $this->version,
-            $response
-        );
+        return new AccountPage($this->version, $response, $this->solution);
     }
 
     /**

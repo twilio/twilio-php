@@ -116,11 +116,7 @@ class NotificationList extends ListResource {
             $params
         );
         
-        return new NotificationPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new NotificationPage($this->version, $response, $this->solution);
     }
 
     /**

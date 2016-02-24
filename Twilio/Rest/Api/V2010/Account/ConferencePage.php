@@ -17,9 +17,7 @@ class ConferencePage extends Page {
         parent::__construct($version, $response);
         
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid
-        );
+        $this->solution = $solution;
     }
 
     /**
@@ -110,11 +108,7 @@ class ConferencePage extends Page {
             $params
         );
         
-        return new ConferencePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ConferencePage($this->version, $response, $this->solution);
     }
 
     public function buildInstance(array $payload) {

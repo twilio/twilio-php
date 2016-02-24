@@ -124,12 +124,7 @@ class LocalList extends ListResource {
             $params
         );
         
-        return new LocalPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['countryCode']
-        );
+        return new LocalPage($this->version, $response, $this->solution);
     }
 
     /**

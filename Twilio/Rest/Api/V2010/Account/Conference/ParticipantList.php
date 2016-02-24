@@ -116,12 +116,7 @@ class ParticipantList extends ListResource {
             $params
         );
         
-        return new ParticipantPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['conferenceSid']
-        );
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**

@@ -106,12 +106,7 @@ class TranscriptionList extends ListResource {
             $params
         );
         
-        return new TranscriptionPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid'],
-            $this->solution['recordingSid']
-        );
+        return new TranscriptionPage($this->version, $response, $this->solution);
     }
 
     /**

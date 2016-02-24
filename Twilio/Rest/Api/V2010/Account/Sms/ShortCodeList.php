@@ -115,11 +115,7 @@ class ShortCodeList extends ListResource {
             $params
         );
         
-        return new ShortCodePage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new ShortCodePage($this->version, $response, $this->solution);
     }
 
     /**

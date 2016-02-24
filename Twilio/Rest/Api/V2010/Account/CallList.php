@@ -171,11 +171,7 @@ class CallList extends ListResource {
             $params
         );
         
-        return new CallPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new CallPage($this->version, $response, $this->solution);
     }
 
     /**

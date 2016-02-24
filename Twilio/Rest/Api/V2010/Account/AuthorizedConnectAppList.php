@@ -105,11 +105,7 @@ class AuthorizedConnectAppList extends ListResource {
             $params
         );
         
-        return new AuthorizedConnectAppPage(
-            $this->version,
-            $response,
-            $this->solution['accountSid']
-        );
+        return new AuthorizedConnectAppPage($this->version, $response, $this->solution);
     }
 
     /**
