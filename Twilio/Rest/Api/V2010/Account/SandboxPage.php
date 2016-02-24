@@ -12,7 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Page;
 
 class SandboxPage extends Page {
-    public function __construct($version, $response, $accountSid) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

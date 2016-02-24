@@ -13,7 +13,7 @@ use Twilio\Page;
 use Twilio\Values;
 
 class ReservationPage extends Page {
-    public function __construct($version, $response, $workspaceSid, $taskSid) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

@@ -13,7 +13,7 @@ use Twilio\Page;
 use Twilio\Values;
 
 class RolePage extends Page {
-    public function __construct($version, $response, $serviceSid) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

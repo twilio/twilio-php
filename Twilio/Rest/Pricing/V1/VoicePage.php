@@ -12,7 +12,7 @@ namespace Twilio\Rest\Pricing\V1;
 use Twilio\Page;
 
 class VoicePage extends Page {
-    public function __construct($version, $response) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

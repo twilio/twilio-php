@@ -12,7 +12,7 @@ namespace Twilio\Rest\Conversations\V1;
 use Twilio\Page;
 
 class ConversationPage extends Page {
-    public function __construct($version, $response) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

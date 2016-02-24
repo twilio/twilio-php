@@ -12,7 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 use Twilio\Page;
 
 class WorkerStatisticsPage extends Page {
-    public function __construct($version, $response, $workspaceSid, $workerSid) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

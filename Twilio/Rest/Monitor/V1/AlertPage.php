@@ -13,7 +13,7 @@ use Twilio\Page;
 use Twilio\Values;
 
 class AlertPage extends Page {
-    public function __construct($version, $response) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution

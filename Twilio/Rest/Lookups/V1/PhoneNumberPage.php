@@ -12,7 +12,7 @@ namespace Twilio\Rest\Lookups\V1;
 use Twilio\Page;
 
 class PhoneNumberPage extends Page {
-    public function __construct($version, $response) {
+    public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
         // Path Solution
