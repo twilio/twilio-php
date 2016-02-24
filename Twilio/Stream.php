@@ -72,7 +72,7 @@ class Stream implements \Iterator {
      * Returns true on success or false on failure.
      */
     public function valid() {
-        return !$this->overLimit() && !$this->overPageLimit();
+        return $this->page && $this->page->valid() && !$this->overLimit() && !$this->overPageLimit();
     }
 
     /**
