@@ -193,8 +193,8 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account Account provided as the
-     *                                        authenticating account
+     * @return \Twilio\Rest\Api\V2010\AccountContext Account provided as the
+     *                                               authenticating account
      */
     public function account() {
         return $this->api->v2010->account;

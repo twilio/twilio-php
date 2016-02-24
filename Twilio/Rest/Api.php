@@ -118,8 +118,8 @@ class Api extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account Account provided as the
-     *                                        authenticating account
+     * @return \Twilio\Rest\Api\V2010\AccountContext Account provided as the
+     *                                               authenticating account
      */
     public function account() {
         return $this->v2010->account;
