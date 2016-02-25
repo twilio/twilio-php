@@ -79,14 +79,14 @@ class IpMessaging extends Domain {
      * @return \Twilio\Rest\IpMessaging\V1\CredentialList 
      */
     public function credentials() {
-        return $this->v1->credentials();
+        return $this->v1->credentials;
     }
 
     /**
      * @return \Twilio\Rest\IpMessaging\V1\ServiceList 
      */
     public function services() {
-        return $this->v1->services();
+        return $this->v1->services;
     }
 
     /**

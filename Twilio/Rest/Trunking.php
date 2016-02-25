@@ -79,7 +79,7 @@ class Trunking extends Domain {
      * @return \Twilio\Rest\Trunking\V1\TrunkList 
      */
     public function trunks() {
-        return $this->v1->trunks();
+        return $this->v1->trunks;
     }
 
     /**

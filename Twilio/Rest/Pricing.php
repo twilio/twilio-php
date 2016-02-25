@@ -79,21 +79,21 @@ class Pricing extends Domain {
      * @return \Twilio\Rest\Pricing\V1\MessagingList 
      */
     public function messaging() {
-        return $this->v1->messaging();
+        return $this->v1->messaging;
     }
 
     /**
      * @return \Twilio\Rest\Pricing\V1\PhoneNumberList 
      */
     public function phoneNumbers() {
-        return $this->v1->phoneNumbers();
+        return $this->v1->phoneNumbers;
     }
 
     /**
      * @return \Twilio\Rest\Pricing\V1\VoiceList 
      */
     public function voice() {
-        return $this->v1->voice();
+        return $this->v1->voice;
     }
 
     /**

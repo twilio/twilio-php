@@ -149,7 +149,7 @@ class Api extends Domain {
      * @return \Twilio\Rest\Api\V2010\AccountList 
      */
     public function accounts() {
-        return $this->v2010->accounts();
+        return $this->v2010->accounts;
     }
 
     /**
