@@ -8,7 +8,9 @@ use Twilio\Rest\Client;
 
 class HolodeckTestCase extends PHPUnit_Framework_TestCase
 {
+    /** @var Holodeck $holodeck */
     protected $holodeck = null;
+    /** @var Client $twilio */
     protected $twilio = null;
 
     protected function setUp() {
