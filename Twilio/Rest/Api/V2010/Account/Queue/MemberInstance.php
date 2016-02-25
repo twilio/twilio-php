@@ -28,6 +28,8 @@ class MemberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The account_sid
+     * @param string $queueSid A string that uniquely identifies this queue
      * @param string $callSid The call_sid
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberInstance 
      */

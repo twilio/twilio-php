@@ -33,6 +33,7 @@ class ConnectAppInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $sid Fetch by unique connect-app Sid
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppInstance 
      */

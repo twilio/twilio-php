@@ -33,6 +33,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $connectAppSid The connect_app_sid
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance 
      */

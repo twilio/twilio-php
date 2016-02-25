@@ -36,6 +36,7 @@ class TaskInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance 
      */

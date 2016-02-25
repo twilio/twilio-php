@@ -33,6 +33,7 @@ class ParticipantInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $conversationSid The conversation_sid
      * @param string $sid The sid
      * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantInstance 
      */

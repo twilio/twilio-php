@@ -47,6 +47,8 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $ownerAccountSid A 34 character string that uniquely
+     *                                identifies this resource.
      * @param string $sid Fetch by unique incoming-phone-number Sid
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance 
      */

@@ -30,6 +30,8 @@ class MediaInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The unique sid that identifies this account
+     * @param string $messageSid A string that uniquely identifies this message
      * @param string $sid Fetch by unique media Sid
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaInstance 
      */

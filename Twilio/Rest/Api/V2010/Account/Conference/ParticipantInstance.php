@@ -32,6 +32,9 @@ class ParticipantInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The unique sid that identifies this account
+     * @param string $conferenceSid A string that uniquely identifies this
+     *                              conference
      * @param string $callSid The call_sid
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantInstance 
      */

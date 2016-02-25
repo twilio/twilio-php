@@ -43,6 +43,7 @@ class ApplicationInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid A string that uniquely identifies this resource
      * @param string $sid Fetch by unique Application Sid
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationInstance 
      */

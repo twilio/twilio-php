@@ -36,6 +36,8 @@ class DailyInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid A 34 character string that uniquely identifies
+     *                           this resource.
      * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {

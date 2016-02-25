@@ -30,6 +30,7 @@ class CredentialListInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
      * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListInstance 
      */

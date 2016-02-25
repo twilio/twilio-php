@@ -36,6 +36,8 @@ class TranscriptionInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The account_sid
+     * @param string $recordingSid The recording_sid
      * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionInstance 
      */

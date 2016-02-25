@@ -46,6 +46,8 @@ class LocalInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $ownerAccountSid A 34 character string that uniquely
+     *                                identifies this resource.
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalInstance 
      */
     public function __construct(Version $version, array $payload, $ownerAccountSid) {

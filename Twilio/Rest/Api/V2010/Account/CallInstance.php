@@ -48,6 +48,8 @@ class CallInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $accountSid The unique id of the Account responsible for
+     *                           creating this Call
      * @param string $sid Call Sid that uniquely identifies the Call to fetch
      * @return \Twilio\Rest\Api\V2010\Account\CallInstance 
      */
