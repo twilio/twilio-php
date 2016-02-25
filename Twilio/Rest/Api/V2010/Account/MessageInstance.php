@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property \DateTime dateSent
- * @property message.Direction direction
+ * @property string direction
  * @property string errorCode
  * @property string errorMessage
  * @property string from
@@ -31,7 +31,7 @@ use Twilio\Version;
  * @property string price
  * @property string priceUnit
  * @property string sid
- * @property message.Status status
+ * @property string status
  * @property string subresourceUris
  * @property string to
  * @property string uri

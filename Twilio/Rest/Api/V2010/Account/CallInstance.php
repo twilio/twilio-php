@@ -36,7 +36,7 @@ use Twilio\Version;
  * @property string priceUnit
  * @property string sid
  * @property \DateTime startTime
- * @property call.Status status
+ * @property string status
  * @property string subresourceUris
  * @property string to
  * @property string toFormatted

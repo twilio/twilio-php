@@ -22,12 +22,12 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property \DateTime dateSent
- * @property sms_message.Direction direction
+ * @property string direction
  * @property string from
  * @property string price
  * @property string priceUnit
  * @property string sid
- * @property sms_message.Status status
+ * @property string status
  * @property string to
  * @property string uri
  */

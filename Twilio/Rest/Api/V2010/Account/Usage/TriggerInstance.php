@@ -25,12 +25,12 @@ use Twilio\Version;
  * @property \DateTime dateFired
  * @property \DateTime dateUpdated
  * @property string friendlyName
- * @property trigger.Recurring recurring
+ * @property string recurring
  * @property string sid
- * @property trigger.TriggerField triggerBy
+ * @property string triggerBy
  * @property string triggerValue
  * @property string uri
- * @property trigger.UsageCategory usageCategory
+ * @property string usageCategory
  * @property string usageRecordUri
  */
 class TriggerInstance extends InstanceResource {

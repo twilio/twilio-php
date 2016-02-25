@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property string apiVersion
  * @property string friendlyName
  * @property string sid
- * @property conference.Status status
+ * @property string status
  * @property string uri
  */
 class ConferenceInstance extends InstanceResource {

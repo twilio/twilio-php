@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string uniqueName
  * @property string attributes
- * @property channel.ChannelType type
+ * @property string type
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy

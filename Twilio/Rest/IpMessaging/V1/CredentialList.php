@@ -45,9 +45,9 @@ class CredentialList extends ListResource {
      *                        the default value of 50 records.  If no page_size is
      *                        defined
      *                        but a limit is defined, stream() will attempt to read
-     *                        the
-     *                        limit with the most efficient page size, i.e.
-     *                        min(limit, 1000)
+     *                        the limit
+     *                        with the most efficient page size, i.e. min(limit,
+     *                        1000)
      * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
@@ -109,7 +109,7 @@ class CredentialList extends ListResource {
      * Create a new CredentialInstance
      * 
      * @param string $friendlyName The friendly_name
-     * @param credential.PushService $type The type
+     * @param string $type The type
      * @param array $options Optional Arguments
      * @return CredentialInstance Newly created CredentialInstance
      */

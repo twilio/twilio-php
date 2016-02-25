@@ -18,7 +18,7 @@ use Twilio\Version;
 /**
  * @property string sid
  * @property string address
- * @property participant.Status status
+ * @property string status
  * @property string conversationSid
  * @property \DateTime dateCreated
  * @property \DateTime startTime

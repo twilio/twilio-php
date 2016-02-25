@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string serviceSid
  * @property string friendlyName
- * @property role.RoleType type
+ * @property string type
  * @property string permissions
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated

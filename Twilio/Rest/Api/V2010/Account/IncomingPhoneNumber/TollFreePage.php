@@ -37,9 +37,9 @@ class TollFreePage extends Page {
      *                        the default value of 50 records.  If no page_size is
      *                        defined
      *                        but a limit is defined, stream() will attempt to read
-     *                        the
-     *                        limit with the most efficient page size, i.e.
-     *                        min(limit, 1000)
+     *                        the limit
+     *                        with the most efficient page size, i.e. min(limit,
+     *                        1000)
      * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {

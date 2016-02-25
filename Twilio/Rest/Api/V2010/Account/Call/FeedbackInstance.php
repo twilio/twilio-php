@@ -19,7 +19,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property feedback.Issues issues
+ * @property string issues
  * @property string qualityScore
  * @property string sid
  */

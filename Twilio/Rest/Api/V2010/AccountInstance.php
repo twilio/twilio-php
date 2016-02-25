@@ -22,9 +22,9 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string ownerAccountSid
  * @property string sid
- * @property account.Status status
+ * @property string status
  * @property string subresourceUris
- * @property account.Type type
+ * @property string type
  * @property string uri
  */
 class AccountInstance extends InstanceResource {

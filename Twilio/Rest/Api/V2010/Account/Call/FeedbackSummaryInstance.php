@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string qualityScoreStandardDeviation
  * @property string sid
  * @property \DateTime startDate
- * @property feedback_summary.Status status
+ * @property string status
  */
 class FeedbackSummaryInstance extends InstanceResource {
     /**

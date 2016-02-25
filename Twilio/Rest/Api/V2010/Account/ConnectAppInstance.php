@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property string description
  * @property string friendlyName
  * @property string homepageUrl
- * @property connect_app.Permission permissions
+ * @property string permissions
  * @property string sid
  * @property string uri
  */

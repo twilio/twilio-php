@@ -57,7 +57,7 @@ class CredentialContext extends InstanceContext {
      * Update the CredentialInstance
      * 
      * @param string $friendlyName The friendly_name
-     * @param credential.PushService $type The type
+     * @param string $type The type
      * @param array $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      */

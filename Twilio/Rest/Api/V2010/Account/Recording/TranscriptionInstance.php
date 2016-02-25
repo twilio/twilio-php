@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string priceUnit
  * @property string recordingSid
  * @property string sid
- * @property transcription.Status status
+ * @property string status
  * @property string transcriptionText
  * @property string type
  * @property string uri

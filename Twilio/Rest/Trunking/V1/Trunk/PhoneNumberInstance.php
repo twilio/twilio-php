@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property phone_number.AddressRequirement addressRequirements
+ * @property string addressRequirements
  * @property string apiVersion
  * @property string beta
  * @property string capabilities

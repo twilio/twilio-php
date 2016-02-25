@@ -19,7 +19,7 @@ use Twilio\Version;
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
- * @property credential.PushService type
+ * @property string type
  * @property string sandbox
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -85,7 +85,7 @@ class CredentialInstance extends InstanceResource {
      * Update the CredentialInstance
      * 
      * @param string $friendlyName The friendly_name
-     * @param credential.PushService $type The type
+     * @param string $type The type
      * @param array $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      */

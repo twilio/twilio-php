@@ -18,7 +18,7 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string age
- * @property task.Status assignmentStatus
+ * @property string assignmentStatus
  * @property string attributes
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated

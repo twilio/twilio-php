@@ -17,7 +17,7 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string apiVersion
- * @property today.Category category
+ * @property string category
  * @property string count
  * @property string countUnit
  * @property string description

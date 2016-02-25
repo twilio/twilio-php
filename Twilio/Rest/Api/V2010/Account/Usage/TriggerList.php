@@ -38,8 +38,7 @@ class TriggerList extends ListResource {
      * 
      * @param string $callbackUrl URL Twilio will request when the trigger fires
      * @param string $triggerValue the value at which the trigger will fire
-     * @param trigger.UsageCategory $usageCategory The usage category the trigger
-     *                                             watches
+     * @param string $usageCategory The usage category the trigger watches
      * @param array $options Optional Arguments
      * @return TriggerInstance Newly created TriggerInstance
      */
@@ -87,9 +86,9 @@ class TriggerList extends ListResource {
      *                        the default value of 50 records.  If no page_size is
      *                        defined
      *                        but a limit is defined, stream() will attempt to read
-     *                        the
-     *                        limit with the most efficient page size, i.e.
-     *                        min(limit, 1000)
+     *                        the limit
+     *                        with the most efficient page size, i.e. min(limit,
+     *                        1000)
      * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {

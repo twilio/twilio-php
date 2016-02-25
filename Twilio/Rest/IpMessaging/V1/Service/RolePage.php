@@ -24,7 +24,7 @@ class RolePage extends Page {
      * Create a new RoleInstance
      * 
      * @param string $friendlyName The friendly_name
-     * @param role.RoleType $type The type
+     * @param string $type The type
      * @param string $permission The permission
      * @return RoleInstance Newly created RoleInstance
      */
@@ -65,9 +65,9 @@ class RolePage extends Page {
      *                        the default value of 50 records.  If no page_size is
      *                        defined
      *                        but a limit is defined, stream() will attempt to read
-     *                        the
-     *                        limit with the most efficient page size, i.e.
-     *                        min(limit, 1000)
+     *                        the limit
+     *                        with the most efficient page size, i.e. min(limit,
+     *                        1000)
      * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
