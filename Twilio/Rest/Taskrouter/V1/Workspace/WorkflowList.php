@@ -44,14 +44,14 @@ class WorkflowList extends ListResource {
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
-     * @param int $pageSize Number of records to fetch per request, when not set
-     *                      will use
-     *                      the default value of 50 records.  If no page_size is
-     *                      defined
-     *                      but a limit is defined, stream() will attempt to read
-     *                      the
-     *                      limit with the most efficient page size, i.e.
-     *                      min(limit, 1000)
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use
+     *                        the default value of 50 records.  If no page_size is
+     *                        defined
+     *                        but a limit is defined, stream() will attempt to read
+     *                        the
+     *                        limit with the most efficient page size, i.e.
+     *                        min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
@@ -73,13 +73,14 @@ class WorkflowList extends ListResource {
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
-     * @param int $pageSize Number of records to fetch per request, when not set
-     *                      will use
-     *                      the default value of 50 records.  If no page_size is
-     *                      defined
-     *                      but a limit is defined, read() will attempt to read the
-     *                      limit with the most efficient page size, i.e.
-     *                      min(limit, 1000)
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use
+     *                        the default value of 50 records.  If no page_size is
+     *                        defined
+     *                        but a limit is defined, read() will attempt to read
+     *                        the
+     *                        limit with the most efficient page size, i.e.
+     *                        min(limit, 1000)
      * @return WorkflowInstance[] Array of results
      */
     public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
@@ -93,9 +94,9 @@ class WorkflowList extends ListResource {
      * Request is executed immediately
      * 
      * @param array $options Optional Arguments
-     * @param int $pageSize Number of records to return, defaults to 50
+     * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
-     * @param int $pageNumber Page Number, this value is simply for client state
+     * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return \Twilio\Page Page of WorkflowInstance
      */
     public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
