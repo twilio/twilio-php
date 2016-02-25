@@ -35,6 +35,9 @@ class SmsMessageInstance extends InstanceResource {
     /**
      * Initialize the SmsMessageInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

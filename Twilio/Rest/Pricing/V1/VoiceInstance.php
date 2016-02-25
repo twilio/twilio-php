@@ -22,6 +22,8 @@ class VoiceInstance extends InstanceResource {
     /**
      * Initialize the VoiceInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Pricing\V1\VoiceInstance 
      */
     public function __construct(Version $version, array $payload) {

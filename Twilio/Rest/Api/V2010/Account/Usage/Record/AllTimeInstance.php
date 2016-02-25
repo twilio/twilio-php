@@ -34,6 +34,8 @@ class AllTimeInstance extends InstanceResource {
     /**
      * Initialize the AllTimeInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {

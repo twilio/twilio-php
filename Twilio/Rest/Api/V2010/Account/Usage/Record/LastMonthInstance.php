@@ -34,6 +34,8 @@ class LastMonthInstance extends InstanceResource {
     /**
      * Initialize the LastMonthInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {

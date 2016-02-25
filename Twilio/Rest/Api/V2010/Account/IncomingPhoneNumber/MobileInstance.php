@@ -44,6 +44,8 @@ class MobileInstance extends InstanceResource {
     /**
      * Initialize the MobileInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileInstance 
      */
     public function __construct(Version $version, array $payload, $ownerAccountSid) {

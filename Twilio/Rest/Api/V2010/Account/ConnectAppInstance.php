@@ -31,6 +31,9 @@ class ConnectAppInstance extends InstanceResource {
     /**
      * Initialize the ConnectAppInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Fetch by unique connect-app Sid
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

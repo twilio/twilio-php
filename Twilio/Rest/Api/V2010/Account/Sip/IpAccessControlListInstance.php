@@ -28,6 +28,9 @@ class IpAccessControlListInstance extends InstanceResource {
     /**
      * Initialize the IpAccessControlListInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Fetch by unique ip-access-control-list Sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

@@ -31,6 +31,9 @@ class AuthorizedConnectAppInstance extends InstanceResource {
     /**
      * Initialize the AuthorizedConnectAppInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $connectAppSid The connect_app_sid
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $connectAppSid = null) {

@@ -31,6 +31,9 @@ class AccountInstance extends InstanceResource {
     /**
      * Initialize the AccountInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Fetch by unique Account Sid
      * @return \Twilio\Rest\Api\V2010\AccountInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

@@ -35,6 +35,8 @@ class SandboxInstance extends InstanceResource {
     /**
      * Initialize the SandboxInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Api\V2010\Account\SandboxInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {

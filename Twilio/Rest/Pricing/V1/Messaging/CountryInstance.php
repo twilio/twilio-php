@@ -26,6 +26,9 @@ class CountryInstance extends InstanceResource {
     /**
      * Initialize the CountryInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $isoCountry The iso_country
      * @return \Twilio\Rest\Pricing\V1\Messaging\CountryInstance 
      */
     public function __construct(Version $version, array $payload, $isoCountry = null) {

@@ -24,6 +24,8 @@ class WorkspaceStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceStatisticsInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {

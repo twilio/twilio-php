@@ -46,6 +46,9 @@ class CallInstance extends InstanceResource {
     /**
      * Initialize the CallInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Call Sid that uniquely identifies the Call to fetch
      * @return \Twilio\Rest\Api\V2010\Account\CallInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

@@ -30,6 +30,8 @@ class DependentPhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the DependentPhoneNumberInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $addressSid) {

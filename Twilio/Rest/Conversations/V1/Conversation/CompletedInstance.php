@@ -28,6 +28,8 @@ class CompletedInstance extends InstanceResource {
     /**
      * Initialize the CompletedInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Conversations\V1\Conversation\CompletedInstance 
      */
     public function __construct(Version $version, array $payload) {

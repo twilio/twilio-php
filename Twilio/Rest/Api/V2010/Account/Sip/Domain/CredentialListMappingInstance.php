@@ -27,6 +27,9 @@ class CredentialListMappingInstance extends InstanceResource {
     /**
      * Initialize the CredentialListMappingInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $domainSid, $sid = null) {

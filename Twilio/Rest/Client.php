@@ -176,7 +176,7 @@ class Client {
      * 
      * @param \Twilio\Http\Client $httpClient HttpClient to use
      */
-    public function setHttpClient(\Twilio\Http\Client $httpClient) {
+    public function setHttpClient(HttpClient $httpClient) {
         $this->httpClient = $httpClient;
     }
 

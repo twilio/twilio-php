@@ -37,6 +37,9 @@ class TriggerInstance extends InstanceResource {
     /**
      * Initialize the TriggerInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Fetch by unique usage-trigger Sid
      * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

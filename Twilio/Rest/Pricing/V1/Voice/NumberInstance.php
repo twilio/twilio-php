@@ -27,6 +27,9 @@ class NumberInstance extends InstanceResource {
     /**
      * Initialize the NumberInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $number The number
      * @return \Twilio\Rest\Pricing\V1\Voice\NumberInstance 
      */
     public function __construct(Version $version, array $payload, $number = null) {

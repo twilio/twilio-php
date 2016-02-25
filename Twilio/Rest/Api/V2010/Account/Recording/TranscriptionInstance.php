@@ -34,6 +34,9 @@ class TranscriptionInstance extends InstanceResource {
     /**
      * Initialize the TranscriptionInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $recordingSid, $sid = null) {

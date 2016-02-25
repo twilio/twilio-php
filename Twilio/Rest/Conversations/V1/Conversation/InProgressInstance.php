@@ -28,6 +28,8 @@ class InProgressInstance extends InstanceResource {
     /**
      * Initialize the InProgressInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Conversations\V1\Conversation\InProgressInstance 
      */
     public function __construct(Version $version, array $payload) {

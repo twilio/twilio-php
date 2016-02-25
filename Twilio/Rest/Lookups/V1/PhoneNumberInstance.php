@@ -24,6 +24,9 @@ class PhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the PhoneNumberInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $phoneNumber The phone_number
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $phoneNumber = null) {

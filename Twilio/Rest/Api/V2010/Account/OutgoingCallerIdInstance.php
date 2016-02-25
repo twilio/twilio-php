@@ -28,6 +28,9 @@ class OutgoingCallerIdInstance extends InstanceResource {
     /**
      * Initialize the OutgoingCallerIdInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Fetch by unique outgoing-caller-id Sid
      * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

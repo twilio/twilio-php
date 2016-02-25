@@ -30,6 +30,9 @@ class ReservationInstance extends InstanceResource {
     /**
      * Initialize the ReservationInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $taskSid, $sid = null) {

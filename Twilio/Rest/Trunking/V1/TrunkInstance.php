@@ -35,6 +35,9 @@ class TrunkInstance extends InstanceResource {
     /**
      * Initialize the TrunkInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Trunking\V1\TrunkInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

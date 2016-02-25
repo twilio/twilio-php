@@ -35,6 +35,9 @@ class ServiceInstance extends InstanceResource {
     /**
      * Initialize the ServiceInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\IpMessaging\V1\ServiceInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

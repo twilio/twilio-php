@@ -51,14 +51,14 @@ class RoleTest extends HolodeckTestCase {
         
         try {
             $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->roles->create("friendlyName", "channel", ['permission']);
+                                          ->roles->create("friendlyName", "channel", array('permission'));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
             'FriendlyName' => "friendlyName",
             'Type' => "channel",
-            'Permission' => ['permission'],
+            'Permission' => array('permission'),
         );
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
@@ -89,13 +89,13 @@ class RoleTest extends HolodeckTestCase {
         
         try {
             $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", ['permission']);
+                                          ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", array('permission'));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
             'FriendlyName' => "friendlyName",
-            'Permission' => ['permission'],
+            'Permission' => array('permission'),
         );
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(

@@ -24,6 +24,8 @@ class ValidationRequestInstance extends InstanceResource {
     /**
      * Initialize the ValidationRequestInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
      * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {

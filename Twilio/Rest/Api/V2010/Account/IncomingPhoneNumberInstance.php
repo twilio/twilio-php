@@ -45,6 +45,9 @@ class IncomingPhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the IncomingPhoneNumberInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid Fetch by unique incoming-phone-number Sid
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $ownerAccountSid, $sid = null) {

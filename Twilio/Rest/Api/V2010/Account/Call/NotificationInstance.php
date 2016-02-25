@@ -38,6 +38,9 @@ class NotificationInstance extends InstanceResource {
     /**
      * Initialize the NotificationInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {

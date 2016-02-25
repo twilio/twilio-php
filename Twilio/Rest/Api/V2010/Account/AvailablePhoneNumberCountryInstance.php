@@ -25,6 +25,9 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     /**
      * Initialize the AvailablePhoneNumberCountryInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $countryCode The country_code
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {

@@ -30,6 +30,9 @@ class MemberInstance extends InstanceResource {
     /**
      * Initialize the MemberInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {

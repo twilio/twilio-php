@@ -33,6 +33,9 @@ class EventInstance extends InstanceResource {
     /**
      * Initialize the EventInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Monitor\V1\EventInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

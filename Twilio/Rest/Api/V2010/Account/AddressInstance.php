@@ -33,6 +33,9 @@ class AddressInstance extends InstanceResource {
     /**
      * Initialize the AddressInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\AddressInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

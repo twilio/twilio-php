@@ -26,6 +26,9 @@ class MemberInstance extends InstanceResource {
     /**
      * Initialize the MemberInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $callSid The call_sid
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $queueSid, $callSid = null) {

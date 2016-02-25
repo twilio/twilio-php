@@ -31,6 +31,9 @@ class ParticipantInstance extends InstanceResource {
     /**
      * Initialize the ParticipantInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantInstance 
      */
     public function __construct(Version $version, array $payload, $conversationSid, $sid = null) {

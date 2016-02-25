@@ -27,6 +27,9 @@ class IpAccessControlListMappingInstance extends InstanceResource {
     /**
      * Initialize the IpAccessControlListMappingInstance
      * 
+     * @param \Twilio\Version $version Version that contains the resource
+     * @param mixed[] $payload The response payload
+     * @param string $sid The sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $domainSid, $sid = null) {
