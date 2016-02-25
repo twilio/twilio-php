@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList statistics
- * @method WorkerStatisticsContext statistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext statistics()
  */
 class WorkerContext extends InstanceContext {
     protected $_statistics = null;

@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList ipAddresses
- * @method IpAddressContext ipAddresses(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext ipAddresses(string $sid)
  */
 class IpAccessControlListContext extends InstanceContext {
     protected $_ipAddresses = null;

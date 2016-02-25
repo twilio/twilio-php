@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Message\MediaList media
- * @method MediaContext media(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Message\MediaContext media(string $sid)
  */
 class MessageContext extends InstanceContext {
     protected $_media = null;
