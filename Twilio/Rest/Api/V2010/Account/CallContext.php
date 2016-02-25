@@ -21,6 +21,9 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\Call\RecordingList recordings
  * @property \Twilio\Rest\Api\V2010\Account\Call\NotificationList notifications
  * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackList feedback
+ * @method RecordingContext recordings(string $sid)
+ * @method NotificationContext notifications(string $sid)
+ * @method FeedbackContext feedback()
  */
 class CallContext extends InstanceContext {
     protected $_recordings = null;

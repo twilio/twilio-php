@@ -79,7 +79,7 @@ class Taskrouter extends Domain {
      * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList 
      */
     public function workspaces() {
-        return $this->v1->workspaces();
+        return $this->v1->workspaces;
     }
 
     /**

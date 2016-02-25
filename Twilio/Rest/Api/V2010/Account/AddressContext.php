@@ -17,6 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList dependentPhoneNumbers
+ * @method DependentPhoneNumberContext dependentPhoneNumbers()
  */
 class AddressContext extends InstanceContext {
     protected $_dependentPhoneNumbers = null;

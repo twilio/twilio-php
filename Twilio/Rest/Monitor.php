@@ -79,14 +79,14 @@ class Monitor extends Domain {
      * @return \Twilio\Rest\Monitor\V1\AlertList 
      */
     public function alerts() {
-        return $this->v1->alerts();
+        return $this->v1->alerts;
     }
 
     /**
      * @return \Twilio\Rest\Monitor\V1\EventList 
      */
     public function events() {
-        return $this->v1->events();
+        return $this->v1->events;
     }
 
     /**

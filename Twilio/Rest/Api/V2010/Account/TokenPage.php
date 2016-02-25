@@ -10,7 +10,6 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Page;
-use Twilio\Values;
 
 class TokenPage extends Page {
     public function __construct($version, $response, $solution) {
@@ -18,33 +17,6 @@ class TokenPage extends Page {
         
         // Path Solution
         $this->solution = $solution;
-    }
-
-    /**
-     * Create a new TokenInstance
-     * 
-     * @param array $options Optional Arguments
-     * @return TokenInstance Newly created TokenInstance
-     */
-    public function create(array $options = array()) {
-        $options = new Values($options);
-        
-        $data = Values::of(array(
-            'Ttl' => $options['ttl'],
-        ));
-        
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-        
-        return new TokenInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
     }
 
     public function buildInstance(array $payload) {

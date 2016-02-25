@@ -17,6 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList reservations
+ * @method ReservationContext reservations(string $sid)
  */
 class TaskContext extends InstanceContext {
     protected $_reservations = null;

@@ -79,7 +79,7 @@ class Lookups extends Domain {
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberList 
      */
     public function phoneNumbers() {
-        return $this->v1->phoneNumbers();
+        return $this->v1->phoneNumbers;
     }
 
     /**

@@ -79,7 +79,7 @@ class Conversations extends Domain {
      * @return \Twilio\Rest\Conversations\V1\ConversationList 
      */
     public function conversations() {
-        return $this->v1->conversations();
+        return $this->v1->conversations;
     }
 
     /**

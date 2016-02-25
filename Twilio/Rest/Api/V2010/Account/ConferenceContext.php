@@ -17,6 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList participants
+ * @method ParticipantContext participants(string $callSid)
  */
 class ConferenceContext extends InstanceContext {
     protected $_participants = null;
