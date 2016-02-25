@@ -12,7 +12,6 @@ namespace Twilio\Rest\Conversations\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 /**

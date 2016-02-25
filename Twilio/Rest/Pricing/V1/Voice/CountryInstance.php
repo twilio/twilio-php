@@ -11,7 +11,6 @@ namespace Twilio\Rest\Pricing\V1\Voice;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 /**

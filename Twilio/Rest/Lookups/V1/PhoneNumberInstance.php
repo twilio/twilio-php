@@ -11,7 +11,6 @@ namespace Twilio\Rest\Lookups\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 /**

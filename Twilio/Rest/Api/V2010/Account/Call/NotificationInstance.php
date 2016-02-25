@@ -12,7 +12,6 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 /**
