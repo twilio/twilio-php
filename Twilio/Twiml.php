@@ -13,7 +13,7 @@ class Twiml {
     /**
      * Constructs a Twiml response.
      *
-     * @param SimpleXmlElement|array $arg
+     * @param \SimpleXmlElement|array $arg
      * @throws TwimlException
      * :param SimpleXmlElement|array $arg: Can be any of
      *
@@ -23,14 +23,14 @@ class Twiml {
      */
     public function __construct($arg = null) {
         switch (true) {
-        case $arg instanceof SimpleXmlElement:
+        case $arg instanceof \SimpleXmlElement:
             $this->element = $arg;
             break;
         case $arg === null:
-            $this->element = new SimpleXmlElement('<Response/>');
+            $this->element = new \SimpleXmlElement('<Response/>');
             break;
         case is_array($arg):
-            $this->element = new SimpleXmlElement('<Response/>');
+            $this->element = new \SimpleXmlElement('<Response/>');
             foreach ($arg as $name => $value) {
                 $this->element->addAttribute($name, $value);
             }
