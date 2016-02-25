@@ -64,6 +64,9 @@ class Twiml {
      *     print $this->gather(array('timeout' => '20'));
      *     <Gather timeout="20"/>
      *
+     * @param string $verb The Twiml verb.
+     * @param mixed[] $args
+     * @return self
      * :param string $verb: The Twiml verb.
      * :param array  $args:
      *   - (noun string)
