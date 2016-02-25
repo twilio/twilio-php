@@ -13,6 +13,8 @@ class Twiml {
     /**
      * Constructs a Twiml response.
      *
+     * @param SimpleXmlElement|array $arg
+     * @throws TwimlException
      * :param SimpleXmlElement|array $arg: Can be any of
      *
      *   - the element to wrap
