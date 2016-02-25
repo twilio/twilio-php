@@ -10,7 +10,6 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Page;
-use Twilio\Values;
 
 class ValidationRequestPage extends Page {
     public function __construct($version, $response, $solution) {
@@ -18,39 +17,6 @@ class ValidationRequestPage extends Page {
         
         // Path Solution
         $this->solution = $solution;
-    }
-
-    /**
-     * Create a new ValidationRequestInstance
-     * 
-     * @param string $phoneNumber The phone_number
-     * @param array $options Optional Arguments
-     * @return ValidationRequestInstance Newly created ValidationRequestInstance
-     */
-    public function create($phoneNumber, array $options = array()) {
-        $options = new Values($options);
-        
-        $data = Values::of(array(
-            'PhoneNumber' => $phoneNumber,
-            'FriendlyName' => $options['friendlyName'],
-            'CallDelay' => $options['callDelay'],
-            'Extension' => $options['extension'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-        ));
-        
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-        
-        return new ValidationRequestInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
     }
 
     public function buildInstance(array $payload) {
