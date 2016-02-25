@@ -13,9 +13,11 @@ set_include_path(implode(PATH_SEPARATOR, $path));
 $vendorFilename = dirname(__FILE__) . '/../vendor/autoload.php';
 if (file_exists($vendorFilename)) {
     /* composer install */
+    /** @noinspection PhpIncludeInspection */
     require $vendorFilename;
 }
 
+/** @noinspection PhpIncludeInspection */
 require_once 'Client.php';
 
 unset($root, $library, $tests, $path);
