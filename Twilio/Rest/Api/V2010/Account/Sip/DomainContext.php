@@ -19,8 +19,8 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList ipAccessControlListMappings
  * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList credentialListMappings
- * @method IpAccessControlListMappingContext ipAccessControlListMappings(string $sid)
- * @method CredentialListMappingContext credentialListMappings(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingContext ipAccessControlListMappings(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext credentialListMappings(string $sid)
  */
 class DomainContext extends InstanceContext {
     protected $_ipAccessControlListMappings = null;

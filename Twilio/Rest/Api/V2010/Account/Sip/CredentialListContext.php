@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList credentials
- * @method CredentialContext credentials(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext credentials(string $sid)
  */
 class CredentialListContext extends InstanceContext {
     protected $_credentials = null;

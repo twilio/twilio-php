@@ -23,10 +23,10 @@ use Twilio\Version;
  * @property \Twilio\Rest\Trunking\V1\Trunk\CredentialListList credentialsLists
  * @property \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList ipAccessControlLists
  * @property \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList phoneNumbers
- * @method OriginationUrlContext originationUrls(string $sid)
- * @method CredentialListContext credentialsLists(string $sid)
- * @method IpAccessControlListContext ipAccessControlLists(string $sid)
- * @method PhoneNumberContext phoneNumbers(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext originationUrls(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext credentialsLists(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext ipAccessControlLists(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext phoneNumbers(string $sid)
  */
 class TrunkContext extends InstanceContext {
     protected $_originationUrls = null;

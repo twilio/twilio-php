@@ -19,8 +19,8 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList members
  * @property \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList messages
- * @method MemberContext members(string $sid)
- * @method MessageContext messages(string $sid)
+ * @method \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberContext members(string $sid)
+ * @method \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageContext messages(string $sid)
  */
 class ChannelContext extends InstanceContext {
     protected $_members = null;

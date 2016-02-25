@@ -29,13 +29,13 @@ use Twilio\Version;
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList workers
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList workflows
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList statistics
- * @method ActivityContext activities(string $sid)
- * @method EventContext events(string $sid)
- * @method TaskContext tasks(string $sid)
- * @method TaskQueueContext taskQueues(string $sid)
- * @method WorkerContext workers(string $sid)
- * @method WorkflowContext workflows(string $sid)
- * @method WorkspaceStatisticsContext statistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext tasks(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext taskQueues(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext workers(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext workflows(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext statistics()
  */
 class WorkspaceContext extends InstanceContext {
     protected $_activities = null;
