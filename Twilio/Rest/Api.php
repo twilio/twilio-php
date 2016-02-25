@@ -36,6 +36,26 @@ use Twilio\Rest\Api\V2010;
  * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
  * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
  * @property \Twilio\Rest\Api\V2010\Account\ValidationRequestList validationRequests
+ * @method AddressContext addresses(string $sid)
+ * @method ApplicationContext applications(string $sid)
+ * @method AuthorizedConnectAppContext authorizedConnectApps(string $connectAppSid)
+ * @method AvailablePhoneNumberCountryContext availablePhoneNumbers(string $countryCode)
+ * @method CallContext calls(string $sid)
+ * @method ConferenceContext conferences(string $sid)
+ * @method ConnectAppContext connectApps(string $sid)
+ * @method IncomingPhoneNumberContext incomingPhoneNumbers(string $sid)
+ * @method MessageContext messages(string $sid)
+ * @method NotificationContext notifications(string $sid)
+ * @method OutgoingCallerIdContext outgoingCallerIds(string $sid)
+ * @method QueueContext queues(string $sid)
+ * @method RecordingContext recordings(string $sid)
+ * @method SandboxContext sandbox()
+ * @method SipContext sip()
+ * @method SmsContext sms()
+ * @method TokenContext tokens()
+ * @method TranscriptionContext transcriptions(string $sid)
+ * @method UsageContext usage()
+ * @method ValidationRequestContext validationRequests()
  */
 class Api extends Domain {
     protected $_v2010 = null;

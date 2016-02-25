@@ -17,6 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList transcriptions
+ * @method TranscriptionContext transcriptions(string $sid)
  */
 class RecordingContext extends InstanceContext {
     protected $_transcriptions = null;
