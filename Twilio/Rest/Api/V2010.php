@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010\AccountContext;
+use Twilio\Rest\Api\V2010\AccountInstance;
 use Twilio\Rest\Api\V2010\AccountList;
 use Twilio\Version;
 
