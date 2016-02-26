@@ -18,6 +18,8 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Pricing\V1\Voice\NumberList numbers
  * @property \Twilio\Rest\Pricing\V1\Voice\CountryList countries
+ * @method \Twilio\Rest\Pricing\V1\Voice\NumberContext numbers(string $number)
+ * @method \Twilio\Rest\Pricing\V1\Voice\CountryContext countries(string $isoCountry)
  */
 class VoiceList extends ListResource {
     protected $_numbers = null;

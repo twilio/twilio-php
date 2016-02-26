@@ -13,10 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingContext ipAccessControlListMappings(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext credentialListMappings(string $sid)
- */
 class DomainList extends ListResource {
     /**
      * Construct the DomainList

@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Api\V2010\Account\Message\MediaContext media(string $sid)
- */
 class MessageList extends ListResource {
     /**
      * Construct the MessageList

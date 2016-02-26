@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext credentials(string $sid)
- */
 class CredentialListList extends ListResource {
     /**
      * Construct the CredentialListList

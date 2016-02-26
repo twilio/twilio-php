@@ -18,7 +18,6 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Conversations\V1\Conversation\InProgressList inProgress
  * @property \Twilio\Rest\Conversations\V1\Conversation\CompletedList completed
- * @method \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext participants(string $sid)
  */
 class ConversationList extends ListResource {
     protected $_inProgress = null;

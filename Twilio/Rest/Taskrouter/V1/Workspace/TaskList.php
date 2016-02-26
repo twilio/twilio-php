@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationContext reservations(string $sid)
- */
 class TaskList extends ListResource {
     /**
      * Construct the TaskList

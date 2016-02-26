@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionContext transcriptions(string $sid)
- */
 class RecordingList extends ListResource {
     /**
      * Construct the RecordingList

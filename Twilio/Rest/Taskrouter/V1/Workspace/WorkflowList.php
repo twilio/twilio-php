@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsContext statistics()
- */
 class WorkflowList extends ListResource {
     /**
      * Construct the WorkflowList

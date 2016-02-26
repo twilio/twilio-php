@@ -16,6 +16,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Pricing\V1\Messaging\CountryList countries
+ * @method \Twilio\Rest\Pricing\V1\Messaging\CountryContext countries(string $isoCountry)
  */
 class MessagingList extends ListResource {
     protected $_countries = null;

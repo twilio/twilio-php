@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext participants(string $callSid)
- */
 class ConferenceList extends ListResource {
     /**
      * Construct the ConferenceList

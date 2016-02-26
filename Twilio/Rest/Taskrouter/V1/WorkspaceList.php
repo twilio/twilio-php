@@ -13,15 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext tasks(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext taskQueues(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext workers(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext workflows(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext statistics()
- */
 class WorkspaceList extends ListResource {
     /**
      * Construct the WorkspaceList

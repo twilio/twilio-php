@@ -16,6 +16,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Pricing\V1\PhoneNumber\CountryList countries
+ * @method \Twilio\Rest\Pricing\V1\PhoneNumber\CountryContext countries(string $isoCountry)
  */
 class PhoneNumberList extends ListResource {
     protected $_countries = null;

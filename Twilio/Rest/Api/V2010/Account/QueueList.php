@@ -13,9 +13,6 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * @method \Twilio\Rest\Api\V2010\Account\Queue\MemberContext members(string $callSid)
- */
 class QueueList extends ListResource {
     /**
      * Construct the QueueList

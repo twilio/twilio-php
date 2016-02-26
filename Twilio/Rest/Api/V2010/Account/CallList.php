@@ -17,9 +17,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList feedbackSummaries
- * @method \Twilio\Rest\Api\V2010\Account\Call\RecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\Call\NotificationContext notifications(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext feedback()
+ * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext feedbackSummaries(string $sid)
  */
 class CallList extends ListResource {
     protected $_feedbackSummaries = null;

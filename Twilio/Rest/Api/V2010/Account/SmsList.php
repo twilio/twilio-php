@@ -18,6 +18,8 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageList messages
  * @property \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeList shortCodes
+ * @method \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageContext messages(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeContext shortCodes(string $sid)
  */
 class SmsList extends ListResource {
     protected $_messages = null;

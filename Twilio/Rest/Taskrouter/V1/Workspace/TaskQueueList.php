@@ -17,7 +17,6 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList statistics
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext statistics()
  */
 class TaskQueueList extends ListResource {
     protected $_statistics = null;
