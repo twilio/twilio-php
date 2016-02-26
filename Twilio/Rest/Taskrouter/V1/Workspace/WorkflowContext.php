@@ -17,7 +17,6 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsList statistics
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsContext statistics()
  */
 class WorkflowContext extends InstanceContext {
     protected $_statistics = null;

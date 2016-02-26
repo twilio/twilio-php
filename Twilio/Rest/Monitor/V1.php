@@ -18,6 +18,8 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Monitor\V1\AlertList alerts
  * @property \Twilio\Rest\Monitor\V1\EventList events
+ * @method \Twilio\Rest\Monitor\V1\AlertContext alerts(string $sid)
+ * @method \Twilio\Rest\Monitor\V1\EventContext events(string $sid)
  */
 class V1 extends Version {
     protected $_alerts = null;

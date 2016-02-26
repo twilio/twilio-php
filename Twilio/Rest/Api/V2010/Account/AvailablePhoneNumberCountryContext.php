@@ -21,9 +21,6 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList local
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList tollFree
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList mobile
- * @method \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalContext local()
- * @method \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeContext tollFree()
- * @method \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileContext mobile()
  */
 class AvailablePhoneNumberCountryContext extends InstanceContext {
     protected $_local = null;

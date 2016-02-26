@@ -16,6 +16,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Conversations\V1\ConversationList conversations
+ * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
  */
 class V1 extends Version {
     protected $_conversations = null;

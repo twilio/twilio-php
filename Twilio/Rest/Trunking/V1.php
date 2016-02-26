@@ -16,6 +16,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Trunking\V1\TrunkList trunks
+ * @method \Twilio\Rest\Trunking\V1\TrunkContext trunks(string $sid)
  */
 class V1 extends Version {
     protected $_trunks = null;

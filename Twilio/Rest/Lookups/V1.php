@@ -16,6 +16,7 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Lookups\V1\PhoneNumberList phoneNumbers
+ * @method \Twilio\Rest\Lookups\V1\PhoneNumberContext phoneNumbers(string $phoneNumber)
  */
 class V1 extends Version {
     protected $_phoneNumbers = null;

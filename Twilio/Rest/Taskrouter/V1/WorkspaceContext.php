@@ -35,7 +35,6 @@ use Twilio\Version;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext taskQueues(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext workers(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext workflows(string $sid)
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext statistics()
  */
 class WorkspaceContext extends InstanceContext {
     protected $_activities = null;

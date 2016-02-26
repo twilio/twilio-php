@@ -49,13 +49,7 @@ use Twilio\Rest\Api\V2010;
  * @method \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext outgoingCallerIds(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\QueueContext queues(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
- * @method \Twilio\Rest\Api\V2010\Account\SipContext sip()
- * @method \Twilio\Rest\Api\V2010\Account\SmsContext sms()
- * @method \Twilio\Rest\Api\V2010\Account\TokenContext tokens()
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\UsageContext usage()
- * @method \Twilio\Rest\Api\V2010\Account\ValidationRequestContext validationRequests()
  */
 class Api extends Domain {
     protected $_v2010 = null;
