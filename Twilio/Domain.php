@@ -4,7 +4,6 @@
 namespace Twilio;
 
 
-use Twilio\Http\Response;
 use Twilio\Rest\Client;
 
 /**

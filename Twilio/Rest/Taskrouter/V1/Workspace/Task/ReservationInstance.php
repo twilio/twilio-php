@@ -12,7 +12,6 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Task;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 /**
