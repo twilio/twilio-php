@@ -239,7 +239,7 @@ class Client {
      * @return \Twilio\Rest\Api\V2010\AccountList 
      */
     public function getAccounts() {
-        return $this->api->v2010->accounts();
+        return $this->api->v2010->accounts;
     }
 
     /**
