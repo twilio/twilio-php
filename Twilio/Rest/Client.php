@@ -26,6 +26,26 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
+ * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
+ * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
+ * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\CallList calls
+ * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
+ * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList incomingPhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\MessageList messages
+ * @property \Twilio\Rest\Api\V2010\Account\NotificationList notifications
+ * @property \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList outgoingCallerIds
+ * @property \Twilio\Rest\Api\V2010\Account\QueueList queues
+ * @property \Twilio\Rest\Api\V2010\Account\RecordingList recordings
+ * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
+ * @property \Twilio\Rest\Api\V2010\Account\SipList sip
+ * @property \Twilio\Rest\Api\V2010\Account\SmsList sms
+ * @property \Twilio\Rest\Api\V2010\Account\TokenList tokens
+ * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
+ * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
+ * @property \Twilio\Rest\Api\V2010\Account\ValidationRequestList validationRequests
  * @method \Twilio\Rest\Api\V2010\Account\AddressContext addresses(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\ApplicationContext applications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext authorizedConnectApps(string $connectAppSid)
