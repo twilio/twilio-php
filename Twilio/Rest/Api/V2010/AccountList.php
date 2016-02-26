@@ -13,6 +13,23 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * @method \Twilio\Rest\Api\V2010\Account\AddressContext addresses(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\ApplicationContext applications(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext authorizedConnectApps(string $connectAppSid)
+ * @method \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext availablePhoneNumbers(string $countryCode)
+ * @method \Twilio\Rest\Api\V2010\Account\CallContext calls(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\ConferenceContext conferences(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\ConnectAppContext connectApps(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext incomingPhoneNumbers(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\MessageContext messages(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\NotificationContext notifications(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext outgoingCallerIds(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\QueueContext queues(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
+ * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
+ */
 class AccountList extends ListResource {
     /**
      * Construct the AccountList

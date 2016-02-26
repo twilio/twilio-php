@@ -13,6 +13,11 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * @method \Twilio\Rest\IpMessaging\V1\Service\ChannelContext channels(string $sid)
+ * @method \Twilio\Rest\IpMessaging\V1\Service\RoleContext roles(string $sid)
+ * @method \Twilio\Rest\IpMessaging\V1\Service\UserContext users(string $sid)
+ */
 class ServiceList extends ListResource {
     /**
      * Construct the ServiceList

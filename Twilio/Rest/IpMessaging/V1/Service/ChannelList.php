@@ -13,6 +13,10 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * @method \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberContext members(string $sid)
+ * @method \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageContext messages(string $sid)
+ */
 class ChannelList extends ListResource {
     /**
      * Construct the ChannelList

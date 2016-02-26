@@ -13,6 +13,9 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * @method \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext ipAddresses(string $sid)
+ */
 class IpAccessControlListList extends ListResource {
     /**
      * Construct the IpAccessControlListList
