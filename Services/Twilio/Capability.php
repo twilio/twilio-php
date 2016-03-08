@@ -1,5 +1,5 @@
 <?php
-include_once 'JWT.php';
+include_once (dirname(__FILE__).'/JWT.php');
 /**
  * Twilio Capability Token generator
  *
