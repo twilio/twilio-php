@@ -1,5 +1,5 @@
 <?php
-
+include_once 'CapabilityAPI.php';
 /**
  * Twilio TaskRouter Capability assigner
  *
