@@ -16,6 +16,7 @@ class Services_Twilio_AutoPagingIterator
         $this->filters = $filters;
 		$this->next_page_uri = null;
         $this->items = array();
+        $this->loaded = false;
 
         // Save a backup for rewind()
         $this->_args = array(
@@ -92,7 +93,7 @@ class Services_Twilio_AutoPagingIterator
     protected function loadIfNecessary()
     {
         if (// Empty because it's the first time or last page was empty
-            empty($this->items)
+            !$this->loaded
             // null key when the items list is iterated over completely
             || (key($this->items) === null && $this->next_page_uri)
         ) {
@@ -105,6 +106,7 @@ class Services_Twilio_AutoPagingIterator
             $this->next_page_uri = $page->next_page_uri;
             $this->items = $page->getItems();
             $this->page = $this->page + 1;
+            $this->loaded = true;
         }
     }
 }
