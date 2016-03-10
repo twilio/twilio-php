@@ -23,11 +23,6 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                     ))
                 ))
             ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?Page=1&PageSize=50')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
-            ));
 
         $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records as $record) {
@@ -53,11 +48,6 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                         'end_date' => '2012-08-01',
                     ))
                 ))
-            ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Usage/Records/LastMonth.json?Page=1&PageSize=50')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
             ));
 
         $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
@@ -105,11 +95,6 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $params = 'Page=1&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31';
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Usage/Records.json?' . $params)
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
-            ));
         $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records->getIterator(0, 50, array(
             'StartDate' => '2012-08-01',
@@ -161,11 +146,6 @@ class UsageRecordsTest extends PHPUnit_Framework_TestCase {
                 ))
             ));
         $params = 'Page=1&PageSize=50&StartDate=2012-08-01&EndDate=2012-08-31&Category=recordings';
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Usage/Records/Daily.json?' . $params)
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
-            ));
         $client = new Services_Twilio('AC123', '456bef', '2010-04-01', $http);
         foreach ($client->account->usage_records->daily->getIterator(0, 50, array(
             'StartDate' => '2012-08-01',
