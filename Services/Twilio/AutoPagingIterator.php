@@ -94,7 +94,7 @@ class Services_Twilio_AutoPagingIterator
         if (// Empty because it's the first time or last page was empty
             empty($this->items)
             // null key when the items list is iterated over completely
-            || key($this->items) === null
+            || (key($this->items) === null && $this->next_page_uri)
         ) {
             $page = call_user_func_array($this->generator, array(
                 $this->page,

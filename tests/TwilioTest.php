@@ -471,13 +471,8 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
             ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode(array(
-                    'calls' => array(array('sid' => 'CA123'))
+                  'calls' => array(array('sid' => 'CA123')),
                 ))
-            ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=1&PageSize=50')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->calls as $call) {
@@ -524,11 +519,6 @@ class TwilioTest extends PHPUnit_Framework_TestCase {
                         'price' => '-0.02000',
                     ))
                 ))
-            ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/Calls.json?Page=3&PageSize=1')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->calls->getIterator(0, 1) as $call) {

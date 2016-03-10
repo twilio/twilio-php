@@ -52,11 +52,6 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode($this->apiResponse)
             ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Mobile.json?Page=1&PageSize=50')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
-            ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->incoming_phone_numbers->mobile as $num) {
             $this->assertEquals('(510) 564-7903', $num->friendly_name);
@@ -69,11 +64,6 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Local.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode($this->apiResponse)
-            ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/Local.json?Page=1&PageSize=50')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
 
@@ -88,11 +78,6 @@ class IncomingPhoneNumbersTest extends PHPUnit_Framework_TestCase {
             ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/TollFree.json?Page=0&PageSize=50')
             ->andReturn(array(200, array('Content-Type' => 'application/json'),
                 json_encode($this->apiResponse)
-            ));
-        $http->shouldReceive('get')->once()
-            ->with('/2010-04-01/Accounts/AC123/IncomingPhoneNumbers/TollFree.json?Page=1&PageSize=50')
-            ->andReturn(array(400, array('Content-Type' => 'application/json'),
-                '{"status":400,"message":"foo", "code": "20006"}'
             ));
         $client = new Services_Twilio('AC123', '123', '2010-04-01', $http);
         foreach ($client->account->incoming_phone_numbers->toll_free as $num) {
