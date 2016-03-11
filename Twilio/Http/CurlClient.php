@@ -34,26 +34,27 @@ class CurlClient implements Client {
         }
 
         $body = $this->buildQuery($params);
+        if ($body) {
+            $options[CURLOPT_URL] .= '?' . $body;
+        }
 
         switch (strtolower(trim($method))) {
             case 'get':
                 $options[CURLOPT_HTTPGET] = true;
-                if ($body) {
-                  $options[CURLOPT_URL] = $options[CURLOPT_URL] . '?' . $body;
-                }
                 break;
             case 'post':
                 $options[CURLOPT_POST] = true;
-                $options[CURLOPT_POSTFIELDS] = $body;
+                $options[CURLOPT_POSTFIELDS] = $data;
                 break;
             case 'put':
                 $options[CURLOPT_PUT] = true;
-                if ($body) {
+                if ($data) {
                     if ($buffer = fopen('php://memory', 'w+')) {
-                        fwrite($buffer, $body);
+                        $dataString = $this->buildQuery($data);
+                        fwrite($buffer, $dataString);
                         fseek($buffer, 0);
                         $options[CURLOPT_INFILE] = $buffer;
-                        $options[CURLOPT_INFILESIZE] = strlen($body);
+                        $options[CURLOPT_INFILESIZE] = strlen($dataString);
                     }
                 } else {
                     throw new EnvironmentException('Unable to open a temporary file');
