@@ -99,7 +99,9 @@ class CurlClient implements Client {
                 break;
             case 'post':
                 $options[CURLOPT_POST] = true;
-                $options[CURLOPT_POSTFIELDS] = $data;
+                $options[CURLOPT_POSTFIELDS] = $data
+                                             ? $this->buildQuery($data)
+                                             : '';
                 break;
             case 'put':
                 $options[CURLOPT_PUT] = true;

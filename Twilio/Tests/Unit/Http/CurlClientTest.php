@@ -7,7 +7,7 @@ namespace Twilio\Tests\Unit\Http;
 use Twilio\Http\CurlClient;
 use Twilio\Tests\Unit\UnitTest;
 
-class TestCurlClientOptions extends UnitTest {
+class CurlClientTest extends UnitTest {
 
     public function testPreemptiveAuthorization() {
         $client = new CurlClient();
@@ -159,12 +159,12 @@ class TestCurlClientOptions extends UnitTest {
      * @dataProvider postFieldsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testPostFields($params, $data) {
+    public function testPostFields($params, $data, $expected) {
         $client = new CurlClient();
 
         $actual = $client->options('POST', 'url', $params, $data);
 
-        $this->assertEquals($data, $actual[CURLOPT_POSTFIELDS]);
+        $this->assertEquals($expected, $actual[CURLOPT_POSTFIELDS]);
     }
 
     public function postFieldsProvider() {
@@ -172,6 +172,7 @@ class TestCurlClientOptions extends UnitTest {
             array(
                 array(),
                 array(),
+                '',
             ),
 
             array(
@@ -181,6 +182,7 @@ class TestCurlClientOptions extends UnitTest {
                 array(
                     'a' => 'b',
                 ),
+                'a=b'
             ),
 
             array(
@@ -189,8 +191,21 @@ class TestCurlClientOptions extends UnitTest {
                 ),
                 array(
                     'a' => 'x',
-                )
-            )
+                ),
+                'a=x'
+            ),
+
+            array(
+                array(
+                    'a' => 'x',
+                ),
+                array(
+                    'a' => 'z',
+                    'b' => 7,
+                    'c' => array(1, 2, 3),
+                ),
+                'a=z&b=7&c=1&c=2&c=3',
+            ),
         );
     }
 
