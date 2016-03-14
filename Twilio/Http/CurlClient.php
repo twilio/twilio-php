@@ -12,60 +12,8 @@ class CurlClient implements Client {
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
                             $timeout = null) {
-        $timeout = is_null($timeout)
-                 ? self::DEFAULT_TIMEOUT
-                 : $timeout;
-
-        $options = array(
-            CURLOPT_URL => $url,
-            CURLOPT_HEADER => true,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_INFILESIZE => -1,
-            CURLOPT_HTTPHEADER => array(),
-            CURLOPT_TIMEOUT => $timeout,
-        );
-
-        foreach ($headers as $key => $value) {
-            $options[CURLOPT_HTTPHEADER][] = "$key: $value";
-        }
-
-        if ($user && $password) {
-            $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . base64_encode("$user:$password");
-        }
-
-        $body = $this->buildQuery($params);
-        if ($body) {
-            $options[CURLOPT_URL] .= '?' . $body;
-        }
-
-        switch (strtolower(trim($method))) {
-            case 'get':
-                $options[CURLOPT_HTTPGET] = true;
-                break;
-            case 'post':
-                $options[CURLOPT_POST] = true;
-                $options[CURLOPT_POSTFIELDS] = $data;
-                break;
-            case 'put':
-                $options[CURLOPT_PUT] = true;
-                if ($data) {
-                    if ($buffer = fopen('php://memory', 'w+')) {
-                        $dataString = $this->buildQuery($data);
-                        fwrite($buffer, $dataString);
-                        fseek($buffer, 0);
-                        $options[CURLOPT_INFILE] = $buffer;
-                        $options[CURLOPT_INFILESIZE] = strlen($dataString);
-                    }
-                } else {
-                    throw new EnvironmentException('Unable to open a temporary file');
-                }
-                break;
-            case 'head':
-                $opts[CURLOPT_NOBODY] = true;
-                break;
-            default:
-                $opts[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-        }
+        $options = $this->options($method, $url, $params, $data, $headers,
+                                  $user, $password, $timeout);
 
         try {
             if (!$curl = curl_init()) {
@@ -115,7 +63,69 @@ class CurlClient implements Client {
         }
     }
 
-    protected function buildQuery($params) {
+    public function options($method, $url, $params = array(), $data = array(),
+                            $headers = array(), $user = null, $password = null,
+                            $timeout = null) {
+
+        $timeout = is_null($timeout)
+            ? self::DEFAULT_TIMEOUT
+            : $timeout;
+
+        $options = array(
+            CURLOPT_URL => $url,
+            CURLOPT_HEADER => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_INFILESIZE => -1,
+            CURLOPT_HTTPHEADER => array(),
+            CURLOPT_TIMEOUT => $timeout,
+        );
+
+        foreach ($headers as $key => $value) {
+            $options[CURLOPT_HTTPHEADER][] = "$key: $value";
+        }
+
+        if ($user && $password) {
+            $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . base64_encode("$user:$password");
+        }
+
+        $body = $this->buildQuery($params);
+        if ($body) {
+            $options[CURLOPT_URL] .= '?' . $body;
+        }
+
+        switch (strtolower(trim($method))) {
+            case 'get':
+                $options[CURLOPT_HTTPGET] = true;
+                break;
+            case 'post':
+                $options[CURLOPT_POST] = true;
+                $options[CURLOPT_POSTFIELDS] = $data;
+                break;
+            case 'put':
+                $options[CURLOPT_PUT] = true;
+                if ($data) {
+                    if ($buffer = fopen('php://memory', 'w+')) {
+                        $dataString = $this->buildQuery($data);
+                        fwrite($buffer, $dataString);
+                        fseek($buffer, 0);
+                        $options[CURLOPT_INFILE] = $buffer;
+                        $options[CURLOPT_INFILESIZE] = strlen($dataString);
+                    } else {
+                        throw new EnvironmentException('Unable to open a temporary file');
+                    }
+                }
+                break;
+            case 'head':
+                $options[CURLOPT_NOBODY] = true;
+                break;
+            default:
+                $options[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
+        }
+
+        return $options;
+    }
+
+    public function buildQuery($params) {
         $parts = array();
 
         foreach ($params as $key => $value) {
