@@ -99,9 +99,8 @@ class CurlClient implements Client {
                 break;
             case 'post':
                 $options[CURLOPT_POST] = true;
-                $options[CURLOPT_POSTFIELDS] = $data
-                                             ? $this->buildQuery($data)
-                                             : '';
+                $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
+
                 break;
             case 'put':
                 $options[CURLOPT_PUT] = true;
@@ -129,6 +128,8 @@ class CurlClient implements Client {
 
     public function buildQuery($params) {
         $parts = array();
+
+        $params = $params ?: array();
 
         foreach ($params as $key => $value) {
             if (is_array($value)) {

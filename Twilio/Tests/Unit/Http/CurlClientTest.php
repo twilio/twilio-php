@@ -61,6 +61,11 @@ class CurlClientTest extends UnitTest {
     public function buildQueryProvider() {
         return array(
             array(
+                'Null Params',
+                null,
+                ''
+            ),
+            array(
                 'Empty Params',
                 array(),
                 '',
