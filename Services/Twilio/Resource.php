@@ -11,11 +11,13 @@
  */
 abstract class Services_Twilio_Resource {
     protected $subresources;
+    protected $_params;
 
     public function __construct($client, $uri, $params = array())
     {
         $this->subresources = array();
         $this->client = $client;
+        $this->_params = $params;
 
         foreach ($params as $name => $param) {
             $this->$name = $param;
