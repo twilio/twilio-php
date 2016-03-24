@@ -78,6 +78,7 @@ class Client {
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
+    protected $_accounts = null;
     protected $_addresses = null;
     protected $_applications = null;
     protected $_authorizedConnectApps = null;
