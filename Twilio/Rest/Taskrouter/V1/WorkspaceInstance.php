@@ -27,6 +27,14 @@ use Twilio\Version;
  * @property string timeoutActivitySid
  */
 class WorkspaceInstance extends InstanceResource {
+    protected $_activities = null;
+    protected $_events = null;
+    protected $_tasks = null;
+    protected $_taskQueues = null;
+    protected $_workers = null;
+    protected $_workflows = null;
+    protected $_statistics = null;
+
     /**
      * Initialize the WorkspaceInstance
      * 
@@ -178,6 +186,11 @@ class WorkspaceInstance extends InstanceResource {
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
+        }
+        
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
         }
         
         throw new TwilioException('Unknown property: ' . $name);

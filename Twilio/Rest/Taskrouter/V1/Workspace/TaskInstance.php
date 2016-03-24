@@ -30,6 +30,8 @@ use Twilio\Version;
  * @property string workspaceSid
  */
 class TaskInstance extends InstanceResource {
+    protected $_reservations = null;
+
     /**
      * Initialize the TaskInstance
      * 
@@ -133,6 +135,11 @@ class TaskInstance extends InstanceResource {
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
+        }
+        
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
         }
         
         throw new TwilioException('Unknown property: ' . $name);

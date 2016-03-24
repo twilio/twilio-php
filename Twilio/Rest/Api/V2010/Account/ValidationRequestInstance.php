@@ -58,6 +58,11 @@ class ValidationRequestInstance extends InstanceResource {
             return $this->properties[$name];
         }
         
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
+        }
+        
         throw new TwilioException('Unknown property: ' . $name);
     }
 

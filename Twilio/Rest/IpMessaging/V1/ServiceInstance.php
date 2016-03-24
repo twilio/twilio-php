@@ -31,6 +31,10 @@ use Twilio\Version;
  * @property string links
  */
 class ServiceInstance extends InstanceResource {
+    protected $_channels = null;
+    protected $_roles = null;
+    protected $_users = null;
+
     /**
      * Initialize the ServiceInstance
      * 
@@ -150,6 +154,11 @@ class ServiceInstance extends InstanceResource {
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
+        }
+        
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
         }
         
         throw new TwilioException('Unknown property: ' . $name);

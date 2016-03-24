@@ -21,6 +21,10 @@ use Twilio\Version;
  * @property string subresourceUris
  */
 class AvailablePhoneNumberCountryInstance extends InstanceResource {
+    protected $_local = null;
+    protected $_tollFree = null;
+    protected $_mobile = null;
+
     /**
      * Initialize the AvailablePhoneNumberCountryInstance
      * 
@@ -114,6 +118,11 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
+        }
+        
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
         }
         
         throw new TwilioException('Unknown property: ' . $name);

@@ -32,6 +32,9 @@ use Twilio\Version;
  * @property string voiceUrl
  */
 class DomainInstance extends InstanceResource {
+    protected $_ipAccessControlListMappings = null;
+    protected $_credentialListMappings = null;
+
     /**
      * Initialize the DomainInstance
      * 
@@ -147,6 +150,11 @@ class DomainInstance extends InstanceResource {
     public function __get($name) {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
+        }
+        
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
         }
         
         throw new TwilioException('Unknown property: ' . $name);
