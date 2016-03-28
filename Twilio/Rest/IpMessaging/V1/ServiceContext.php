@@ -75,7 +75,7 @@ class ServiceContext extends InstanceContext {
      * @return boolean True if delete succeeds, false otherwise
      */
     public function delete() {
-        return $this->version->delete('get', $this->uri);
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**

@@ -7,49 +7,55 @@
  * /       /
  */
 
-namespace Twilio\Rest\IpMessaging\V1\Service;
+namespace Twilio\Rest\Notifications\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList;
-use Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList;
+use Twilio\Rest\Notifications\V1\Service\BindingList;
+use Twilio\Rest\Notifications\V1\Service\NotificationList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList members
- * @property \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList messages
- * @method \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberContext members(string $sid)
- * @method \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageContext messages(string $sid)
+ * @property \Twilio\Rest\Notifications\V1\Service\BindingList bindings
+ * @property \Twilio\Rest\Notifications\V1\Service\NotificationList notifications
+ * @method \Twilio\Rest\Notifications\V1\Service\BindingContext bindings(string $sid)
  */
-class ChannelContext extends InstanceContext {
-    protected $_members = null;
-    protected $_messages = null;
+class ServiceContext extends InstanceContext {
+    protected $_bindings = null;
+    protected $_notifications = null;
 
     /**
-     * Initialize the ChannelContext
+     * Initialize the ServiceContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelContext 
+     * @return \Twilio\Rest\Notifications\V1\ServiceContext 
      */
-    public function __construct(Version $version, $serviceSid, $sid) {
+    public function __construct(Version $version, $sid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
-            'serviceSid' => $serviceSid,
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Channels/' . $sid . '';
+        $this->uri = '/Services/' . $sid . '';
     }
 
     /**
-     * Fetch a ChannelInstance
+     * Deletes the ServiceInstance
      * 
-     * @return ChannelInstance Fetched ChannelInstance
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Fetch a ServiceInstance
+     * 
+     * @return ServiceInstance Fetched ServiceInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -60,37 +66,28 @@ class ChannelContext extends InstanceContext {
             $params
         );
         
-        return new ChannelInstance(
+        return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
             $this->solution['sid']
         );
     }
 
     /**
-     * Deletes the ChannelInstance
-     * 
-     * @return boolean True if delete succeeds, false otherwise
-     */
-    public function delete() {
-        return $this->version->delete('delete', $this->uri);
-    }
-
-    /**
-     * Update the ChannelInstance
+     * Update the ServiceInstance
      * 
      * @param array $options Optional Arguments
-     * @return ChannelInstance Updated ChannelInstance
+     * @return ServiceInstance Updated ServiceInstance
      */
     public function update(array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
-            'UniqueName' => $options['uniqueName'],
-            'Attributes' => $options['attributes'],
-            'Type' => $options['type'],
+            'ApnCredentialSid' => $options['apnCredentialSid'],
+            'GcmCredentialSid' => $options['gcmCredentialSid'],
+            'DefaultApnNotificationProtocolVersion' => $options['defaultApnNotificationProtocolVersion'],
+            'DefaultGcmNotificationProtocolVersion' => $options['defaultGcmNotificationProtocolVersion'],
         ));
         
         $payload = $this->version->update(
@@ -100,46 +97,43 @@ class ChannelContext extends InstanceContext {
             $data
         );
         
-        return new ChannelInstance(
+        return new ServiceInstance(
             $this->version,
             $payload,
-            $this->solution['serviceSid'],
             $this->solution['sid']
         );
     }
 
     /**
-     * Access the members
+     * Access the bindings
      * 
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList 
+     * @return \Twilio\Rest\Notifications\V1\Service\BindingList 
      */
-    protected function getMembers() {
-        if (!$this->_members) {
-            $this->_members = new MemberList(
+    protected function getBindings() {
+        if (!$this->_bindings) {
+            $this->_bindings = new BindingList(
                 $this->version,
-                $this->solution['serviceSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->_members;
+        return $this->_bindings;
     }
 
     /**
-     * Access the messages
+     * Access the notifications
      * 
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList 
+     * @return \Twilio\Rest\Notifications\V1\Service\NotificationList 
      */
-    protected function getMessages() {
-        if (!$this->_messages) {
-            $this->_messages = new MessageList(
+    protected function getNotifications() {
+        if (!$this->_notifications) {
+            $this->_notifications = new NotificationList(
                 $this->version,
-                $this->solution['serviceSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->_messages;
+        return $this->_notifications;
     }
 
     /**
@@ -185,6 +179,6 @@ class ChannelContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.IpMessaging.V1.ChannelContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Notifications.V1.ServiceContext ' . implode(' ', $context) . ']';
     }
 }

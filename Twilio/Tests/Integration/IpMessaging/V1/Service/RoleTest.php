@@ -31,6 +31,35 @@ class RoleTest extends HolodeckTestCase {
         )));
     }
 
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "channel user",
+                "type": "channel",
+                "permissions": [
+                    "sendMessage",
+                    "leaveChannel",
+                    "editOwnMessage",
+                    "deleteOwnMessage"
+                ],
+                "date_created": "2016-03-03T19:47:15Z",
+                "date_updated": "2016-03-03T19:47:15Z",
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -41,9 +70,21 @@ class RoleTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
-            'get',
+            'delete',
             'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        
+        $this->assertTrue($actual);
     }
 
     public function testCreateRequest() {
@@ -69,6 +110,35 @@ class RoleTest extends HolodeckTestCase {
         )));
     }
 
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "channel user",
+                "type": "channel",
+                "permissions": [
+                    "sendMessage",
+                    "leaveChannel",
+                    "editOwnMessage",
+                    "deleteOwnMessage"
+                ],
+                "date_created": "2016-03-03T19:47:15Z",
+                "date_updated": "2016-03-03T19:47:15Z",
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->roles->create("friendlyName", "channel", array('permission'));
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -82,6 +152,73 @@ class RoleTest extends HolodeckTestCase {
             'get',
             'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles'
         )));
+    }
+
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 1,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=0",
+                    "next_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=1&PageToken=PTRL3ea1a94dd9cd408c8b29d18bf0f99033",
+                    "key": "roles"
+                },
+                "roles": [
+                    {
+                        "sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "friendly_name": "channel user",
+                        "type": "channel",
+                        "permissions": [
+                            "sendMessage",
+                            "leaveChannel",
+                            "editOwnMessage",
+                            "deleteOwnMessage"
+                        ],
+                        "date_created": "2016-03-03T19:47:15Z",
+                        "date_updated": "2016-03-03T19:47:15Z",
+                        "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ]
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->roles->read();
+        
+        $this->assertTrue(count($actual) > 0);
+    }
+
+    public function testReadEmptyResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 1,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=0",
+                    "next_page_url": null,
+                    "key": "roles"
+                },
+                "roles": []
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->roles->read();
+        
+        $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
@@ -104,5 +241,34 @@ class RoleTest extends HolodeckTestCase {
             null,
             $values
         )));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "channel user",
+                "type": "channel",
+                "permissions": [
+                    "sendMessage",
+                    "leaveChannel",
+                    "editOwnMessage",
+                    "deleteOwnMessage"
+                ],
+                "date_created": "2016-03-03T19:47:15Z",
+                "date_updated": "2016-03-03T19:47:15Z",
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", array('permission'));
+        
+        $this->assertNotNull($actual);
     }
 }

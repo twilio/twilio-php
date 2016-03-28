@@ -7,20 +7,20 @@
  * /       /
  */
 
-namespace Twilio\Rest\IpMessaging\V1\Service;
+namespace Twilio\Rest\Notifications\V1\Service;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class RoleContext extends InstanceContext {
+class BindingContext extends InstanceContext {
     /**
-     * Initialize the RoleContext
+     * Initialize the BindingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\IpMessaging\V1\Service\RoleContext 
+     * @return \Twilio\Rest\Notifications\V1\Service\BindingContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -31,13 +31,13 @@ class RoleContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Roles/' . $sid . '';
+        $this->uri = '/Services/' . $serviceSid . '/Bindings/' . $sid . '';
     }
 
     /**
-     * Fetch a RoleInstance
+     * Fetch a BindingInstance
      * 
-     * @return RoleInstance Fetched RoleInstance
+     * @return BindingInstance Fetched BindingInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -48,7 +48,7 @@ class RoleContext extends InstanceContext {
             $params
         );
         
-        return new RoleInstance(
+        return new BindingInstance(
             $this->version,
             $payload,
             $this->solution['serviceSid'],
@@ -57,40 +57,12 @@ class RoleContext extends InstanceContext {
     }
 
     /**
-     * Deletes the RoleInstance
+     * Deletes the BindingInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
-    }
-
-    /**
-     * Update the RoleInstance
-     * 
-     * @param string $friendlyName The friendly_name
-     * @param string $permission The permission
-     * @return RoleInstance Updated RoleInstance
-     */
-    public function update($friendlyName, $permission) {
-        $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-            'Permission' => $permission,
-        ));
-        
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-        
-        return new RoleInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['sid']
-        );
     }
 
     /**
@@ -103,6 +75,6 @@ class RoleContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.IpMessaging.V1.RoleContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Notifications.V1.BindingContext ' . implode(' ', $context) . ']';
     }
 }

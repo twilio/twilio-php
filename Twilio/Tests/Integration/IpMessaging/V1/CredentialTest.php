@@ -30,6 +30,65 @@ class CredentialTest extends HolodeckTestCase {
         )));
     }
 
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "credentials": [
+                    {
+                        "sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "friendly_name": "Test slow create",
+                        "type": "apn",
+                        "sandbox": "False",
+                        "date_created": "2015-10-07T17:50:01Z",
+                        "date_updated": "2015-10-07T17:50:01Z",
+                        "url": "https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 1,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Credentials?PageSize=1&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Credentials?PageSize=1&Page=0",
+                    "next_page_url": "https://ip-messaging.twilio.com/v1/Credentials?PageSize=1&Page=1&PageToken=PTMDAwMTQ0NDI0MDIwMTE3MjoxOjE%3D",
+                    "key": "credentials"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->credentials->read();
+        
+        $this->assertTrue(count($actual) > 0);
+    }
+
+    public function testReadEmptyResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "credentials": [],
+                "meta": {
+                    "page": 0,
+                    "page_size": 1,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Credentials?PageSize=1&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Credentials?PageSize=1&Page=0",
+                    "next_page_url": null,
+                    "key": "credentials"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->credentials->read();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -51,6 +110,28 @@ class CredentialTest extends HolodeckTestCase {
         )));
     }
 
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "Test slow create",
+                "type": "apn",
+                "sandbox": "False",
+                "date_created": "2015-10-07T17:50:01Z",
+                "date_updated": "2015-10-07T17:50:01Z",
+                "url": "https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->credentials->create("friendlyName", "gcm");
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -63,6 +144,28 @@ class CredentialTest extends HolodeckTestCase {
             'get',
             'https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
+    }
+
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "Test slow create",
+                "type": "apn",
+                "sandbox": "False",
+                "date_created": "2015-10-07T17:50:01Z",
+                "date_updated": "2015-10-07T17:50:01Z",
+                "url": "https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        
+        $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
@@ -86,6 +189,28 @@ class CredentialTest extends HolodeckTestCase {
         )));
     }
 
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "Test slow create",
+                "type": "apn",
+                "sandbox": "False",
+                "date_created": "2015-10-07T17:50:01Z",
+                "date_updated": "2015-10-07T17:50:01Z",
+                "url": "https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", "gcm");
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -98,5 +223,16 @@ class CredentialTest extends HolodeckTestCase {
             'delete',
             'https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        
+        $this->assertTrue($actual);
     }
 }

@@ -23,6 +23,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
+ * @property \Twilio\Rest\Notifications notifications
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
@@ -35,7 +36,6 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
  * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList incomingPhoneNumbers
  * @property \Twilio\Rest\Api\V2010\Account\MessageList messages
- * @property \Twilio\Rest\Api\V2010\Account\NotificationList notifications
  * @property \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList outgoingCallerIds
  * @property \Twilio\Rest\Api\V2010\Account\QueueList queues
  * @property \Twilio\Rest\Api\V2010\Account\RecordingList recordings
@@ -55,7 +55,6 @@ use Twilio\VersionInfo;
  * @method \Twilio\Rest\Api\V2010\Account\ConnectAppContext connectApps(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext incomingPhoneNumbers(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\MessageContext messages(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\NotificationContext notifications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext outgoingCallerIds(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\QueueContext queues(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
@@ -75,6 +74,7 @@ class Client {
     protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
+    protected $_notifications = null;
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
@@ -88,7 +88,6 @@ class Client {
     protected $_connectApps = null;
     protected $_incomingPhoneNumbers = null;
     protected $_messages = null;
-    protected $_notifications = null;
     protected $_outgoingCallerIds = null;
     protected $_queues = null;
     protected $_recordings = null;
@@ -307,13 +306,6 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
-     */
-    public function getNotifications() {
-        return $this->api->v2010->account->notifications;
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
      */
     public function getOutgoingCallerIds() {
@@ -429,6 +421,18 @@ class Client {
             $this->_monitor = new Monitor($this);
         }
         return $this->_monitor;
+    }
+
+    /**
+     * Access the Notifications Twilio Domain
+     * 
+     * @return \Twilio\Rest\Notifications Notifications Twilio Domain
+     */
+    protected function getNotifications() {
+        if (!$this->_notifications) {
+            $this->_notifications = new Notifications($this);
+        }
+        return $this->_notifications;
     }
 
     /**

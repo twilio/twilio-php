@@ -30,6 +30,38 @@ class ServiceTest extends HolodeckTestCase {
         )));
     }
 
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
+                "date_created": "2015-12-16T17:53:05Z",
+                "date_updated": "2015-12-16T17:53:05Z",
+                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "read_status_enabled": true,
+                "typing_indicator_timeout": 5,
+                "consumption_report_interval": 10,
+                "webhooks": {},
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -39,9 +71,20 @@ class ServiceTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
-            'get',
+            'delete',
             'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        
+        $this->assertTrue($actual);
     }
 
     public function testCreateRequest() {
@@ -64,6 +107,38 @@ class ServiceTest extends HolodeckTestCase {
         )));
     }
 
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
+                "date_created": "2015-12-16T17:53:05Z",
+                "date_updated": "2015-12-16T17:53:05Z",
+                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "read_status_enabled": true,
+                "typing_indicator_timeout": 5,
+                "consumption_report_interval": 10,
+                "webhooks": {},
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services->create("friendlyName");
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -78,6 +153,75 @@ class ServiceTest extends HolodeckTestCase {
         )));
     }
 
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 1,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services?PageSize=1&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services?PageSize=1&Page=0",
+                    "next_page_url": null,
+                    "key": "services"
+                },
+                "services": [
+                    {
+                        "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
+                        "date_created": "2015-12-16T17:53:05Z",
+                        "date_updated": "2015-12-16T17:53:05Z",
+                        "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "read_status_enabled": true,
+                        "typing_indicator_timeout": 5,
+                        "consumption_report_interval": 10,
+                        "webhooks": {},
+                        "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                            "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                            "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
+                        }
+                    }
+                ]
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services->read();
+        
+        $this->assertTrue(count($actual) > 0);
+    }
+
+    public function testReadEmptyResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "services"
+                },
+                "services": []
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services->read();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -90,5 +234,37 @@ class ServiceTest extends HolodeckTestCase {
             'post',
             'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
+                "date_created": "2015-12-16T17:53:05Z",
+                "date_updated": "2015-12-16T17:53:05Z",
+                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "read_status_enabled": true,
+                "typing_indicator_timeout": 5,
+                "consumption_report_interval": 10,
+                "webhooks": {},
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
+                    "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        
+        $this->assertNotNull($actual);
     }
 }
