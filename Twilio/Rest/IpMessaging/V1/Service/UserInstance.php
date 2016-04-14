@@ -23,7 +23,6 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
- * @property string links
  */
 class UserInstance extends InstanceResource {
     /**
@@ -48,7 +47,6 @@ class UserInstance extends InstanceResource {
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'url' => $payload['url'],
-            'links' => $payload['links'],
         );
         
         $this->solution = array(

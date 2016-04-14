@@ -165,7 +165,7 @@ class RoleTest extends HolodeckTestCase {
                     "first_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=0",
                     "previous_page_url": null,
                     "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=0",
-                    "next_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles?PageSize=1&Page=1&PageToken=PTRL3ea1a94dd9cd408c8b29d18bf0f99033",
+                    "next_page_url": null,
                     "key": "roles"
                 },
                 "roles": [
