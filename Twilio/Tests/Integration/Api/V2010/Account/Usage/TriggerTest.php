@@ -147,14 +147,14 @@ class TriggerTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->usage
-                                     ->triggers->create("https://example.com", "triggerValue", "calleridlookups");
+                                     ->triggers->create("https://example.com", "triggerValue", "authy-authentications");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
             'CallbackUrl' => "https://example.com",
             'TriggerValue' => "triggerValue",
-            'UsageCategory' => "calleridlookups",
+            'UsageCategory' => "authy-authentications",
         );
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
@@ -192,7 +192,7 @@ class TriggerTest extends HolodeckTestCase {
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->usage
-                                           ->triggers->create("https://example.com", "triggerValue", "calleridlookups");
+                                           ->triggers->create("https://example.com", "triggerValue", "authy-authentications");
         
         $this->assertNotNull($actual);
     }
