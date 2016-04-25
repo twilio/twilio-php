@@ -232,7 +232,7 @@ Conference with Task
         "muted" => "true",
         "beep" => "false",
     ));
-    $conf->task('Task1', array('priority' => 10));
+    $conf->task({}, array('workflowSid' => 'WFXXXXX', priority' => 10));
     print $response;
 
 .. code-block:: xml
