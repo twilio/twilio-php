@@ -232,7 +232,7 @@ Conference with Task
         "muted" => "true",
         "beep" => "false",
     ));
-    $conf->task({}, array('workflowSid' => 'WFXXXXX', priority' => 10));
+    $conf->task('{}', array('workflowSid' => 'WFXXXXX', priority' => 10));
     print $response;
 
 .. code-block:: xml
@@ -242,7 +242,7 @@ Conference with Task
         <Dial>
             <Conference startConferenceOnEnter="true" muted="true" beep="false">
                 Customer Waiting Room
-                <Task priority="10">Task1</Task>
+                <Task workflowSid="WFXXXXX" priority="10">{}</Task>
             </Conference>
         </Dial>
     </Response>
