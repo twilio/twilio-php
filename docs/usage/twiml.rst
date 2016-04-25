@@ -219,6 +219,34 @@ Conference
         </Dial>
     </Response>
 
+Conference with Task
+~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: php
+
+    require("Services/Twilio.php");
+    $response = new Services_Twilio_Twiml;
+    $dial = $response->dial();
+    $conf = $dial->conference('Customer Waiting Room', array(
+        "startConferenceOnEnter" => "true",
+        "muted" => "true",
+        "beep" => "false",
+    ));
+    $conf->task('{}', array('workflowSid' => 'WFXXXXX', priority' => 10));
+    print $response;
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response>
+        <Dial>
+            <Conference startConferenceOnEnter="true" muted="true" beep="false">
+                Customer Waiting Room
+                <Task workflowSid="WFXXXXX" priority="10">{}</Task>
+            </Conference>
+        </Dial>
+    </Response>
+
 Sip
 ~~~
 
