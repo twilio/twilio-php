@@ -7,18 +7,18 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class InProgressList extends ListResource {
+class RatePlanList extends ListResource {
     /**
-     * Construct the InProgressList
+     * Construct the RatePlanList
      * 
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Conversations\V1\Conversation\InProgressList 
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -26,11 +26,11 @@ class InProgressList extends ListResource {
         // Path Solution
         $this->solution = array();
         
-        $this->uri = '/Conversations/InProgress';
+        $this->uri = '/RatePlans';
     }
 
     /**
-     * Streams InProgressInstance records from the API as a generator stream.
+     * Streams RatePlanInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +59,7 @@ class InProgressList extends ListResource {
     }
 
     /**
-     * Reads InProgressInstance records from the API as a list.
+     * Reads RatePlanInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
@@ -74,20 +74,20 @@ class InProgressList extends ListResource {
      *                        the
      *                        limit with the most efficient page size, i.e.
      *                        min(limit, 1000)
-     * @return InProgressInstance[] Array of results
+     * @return RatePlanInstance[] Array of results
      */
     public function read($limit = null, $pageSize = Values::NONE) {
         return iterator_to_array($this->stream($limit, $pageSize));
     }
 
     /**
-     * Retrieve a single page of InProgressInstance records from the API.
+     * Retrieve a single page of RatePlanInstance records from the API.
      * Request is executed immediately
      * 
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of InProgressInstance
+     * @return \Twilio\Page Page of RatePlanInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -102,7 +102,20 @@ class InProgressList extends ListResource {
             $params
         );
         
-        return new InProgressPage($this->version, $response, $this->solution);
+        return new RatePlanPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Constructs a RatePlanContext
+     * 
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanContext 
+     */
+    public function getContext($sid) {
+        return new RatePlanContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -111,6 +124,6 @@ class InProgressList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1.InProgressList]';
+        return '[Twilio.Preview.Wireless.RatePlanList]';
     }
 }

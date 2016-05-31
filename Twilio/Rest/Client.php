@@ -19,11 +19,11 @@ use Twilio\VersionInfo;
  * A client for accessing the Twilio API.
  * 
  * @property \Twilio\Rest\Api api
- * @property \Twilio\Rest\Conversations conversations
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
  * @property \Twilio\Rest\Notifications notifications
+ * @property \Twilio\Rest\Preview preview
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
@@ -69,12 +69,13 @@ class Client {
     protected $password;
     protected $accountSid;
     protected $httpClient;
+    protected $_account;
     protected $_api = null;
-    protected $_conversations = null;
     protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
     protected $_notifications = null;
+    protected $_preview = null;
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
@@ -231,7 +232,7 @@ class Client {
      * @return \Twilio\Rest\Api\V2010\AccountContext Account provided as the
      *                                               authenticating account
      */
-    public function account() {
+    public function getAccount() {
         return $this->api->v2010->account;
     }
 
@@ -376,18 +377,6 @@ class Client {
     }
 
     /**
-     * Access the Conversations Twilio Domain
-     * 
-     * @return \Twilio\Rest\Conversations Conversations Twilio Domain
-     */
-    protected function getConversations() {
-        if (!$this->_conversations) {
-            $this->_conversations = new Conversations($this);
-        }
-        return $this->_conversations;
-    }
-
-    /**
      * Access the IpMessaging Twilio Domain
      * 
      * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
@@ -433,6 +422,18 @@ class Client {
             $this->_notifications = new Notifications($this);
         }
         return $this->_notifications;
+    }
+
+    /**
+     * Access the Preview Twilio Domain
+     * 
+     * @return \Twilio\Rest\Preview Preview Twilio Domain
+     */
+    protected function getPreview() {
+        if (!$this->_preview) {
+            $this->_preview = new Preview($this);
+        }
+        return $this->_preview;
     }
 
     /**

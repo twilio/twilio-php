@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\Page;
 
-class ConversationPage extends Page {
+class RatePlanPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,7 +20,7 @@ class ConversationPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ConversationInstance(
+        return new RatePlanInstance(
             $this->version,
             $payload
         );
@@ -32,6 +32,6 @@ class ConversationPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1.ConversationPage]';
+        return '[Twilio.Preview.Wireless.RatePlanPage]';
     }
 }

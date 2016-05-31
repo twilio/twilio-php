@@ -11,14 +11,18 @@ namespace Twilio\Rest\Notifications;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Notifications\V1\CredentialList;
 use Twilio\Rest\Notifications\V1\ServiceList;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\Notifications\V1\CredentialList credentials
  * @property \Twilio\Rest\Notifications\V1\ServiceList services
+ * @method \Twilio\Rest\Notifications\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Notifications\V1\ServiceContext services(string $sid)
  */
 class V1 extends Version {
+    protected $_credentials = null;
     protected $_services = null;
 
     /**
@@ -30,6 +34,16 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    /**
+     * @return \Twilio\Rest\Notifications\V1\CredentialList 
+     */
+    protected function getCredentials() {
+        if (!$this->_credentials) {
+            $this->_credentials = new CredentialList($this);
+        }
+        return $this->_credentials;
     }
 
     /**

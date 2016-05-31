@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Notifications\V1;
 
 use Twilio\Page;
 
-class CompletedPage extends Page {
+class CredentialPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,7 +20,7 @@ class CompletedPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CompletedInstance(
+        return new CredentialInstance(
             $this->version,
             $payload
         );
@@ -32,6 +32,6 @@ class CompletedPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1.CompletedPage]';
+        return '[Twilio.Notifications.V1.CredentialPage]';
     }
 }

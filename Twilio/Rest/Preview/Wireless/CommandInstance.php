@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,45 +16,41 @@ use Twilio\Version;
 
 /**
  * @property string sid
- * @property string address
- * @property string status
- * @property string conversationSid
- * @property \DateTime dateCreated
- * @property \DateTime startTime
- * @property \DateTime endTime
- * @property string duration
  * @property string accountSid
+ * @property string deviceSid
+ * @property string command
+ * @property string status
+ * @property string direction
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
  * @property string url
  */
-class ParticipantInstance extends InstanceResource {
+class CommandInstance extends InstanceResource {
     /**
-     * Initialize the ParticipantInstance
+     * Initialize the CommandInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conversationSid The conversation_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantInstance 
+     * @return \Twilio\Rest\Preview\Wireless\CommandInstance 
      */
-    public function __construct(Version $version, array $payload, $conversationSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
         
         // Marshaled Properties
         $this->properties = array(
             'sid' => $payload['sid'],
-            'address' => $payload['address'],
-            'status' => $payload['status'],
-            'conversationSid' => $payload['conversation_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'startTime' => Deserialize::iso8601DateTime($payload['start_time']),
-            'endTime' => Deserialize::iso8601DateTime($payload['end_time']),
-            'duration' => $payload['duration'],
             'accountSid' => $payload['account_sid'],
+            'deviceSid' => $payload['device_sid'],
+            'command' => $payload['command'],
+            'status' => $payload['status'],
+            'direction' => $payload['direction'],
+            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         
         $this->solution = array(
-            'conversationSid' => $conversationSid,
             'sid' => $sid ?: $this->properties['sid'],
         );
     }
@@ -63,13 +59,13 @@ class ParticipantInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext Context for this ParticipantInstance
+     * @return \Twilio\Rest\Preview\Wireless\CommandContext Context for this
+     *                                                      CommandInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ParticipantContext(
+            $this->context = new CommandContext(
                 $this->version,
-                $this->solution['conversationSid'],
                 $this->solution['sid']
             );
         }
@@ -78,9 +74,9 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch a CommandInstance
      * 
-     * @return ParticipantInstance Fetched ParticipantInstance
+     * @return CommandInstance Fetched CommandInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -116,6 +112,6 @@ class ParticipantInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.ParticipantInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.CommandInstance ' . implode(' ', $context) . ']';
     }
 }

@@ -11,35 +11,35 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Conversations\V1;
+use Twilio\Rest\Preview\Wireless;
 
 /**
- * @property \Twilio\Rest\Conversations\V1 v1
+ * @property \Twilio\Rest\Preview\Wireless wireless
  */
-class Conversations extends Domain {
-    protected $_v1 = null;
+class Preview extends Domain {
+    protected $_wireless = null;
 
     /**
-     * Construct the Conversations Domain
+     * Construct the Preview Domain
      * 
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
-     * @return \Twilio\Rest\Conversations Domain for Conversations
+     * @return \Twilio\Rest\Preview Domain for Preview
      */
     public function __construct(Client $client) {
         parent::__construct($client);
         
-        $this->baseUrl = 'https://conversations.twilio.com';
+        $this->baseUrl = 'https://preview.twilio.com';
     }
 
     /**
-     * @return \Twilio\Rest\Conversations\V1 Version v1 of conversations
+     * @return \Twilio\Rest\Preview\Wireless Version wireless of preview
      */
-    protected function getV1() {
-        if (!$this->_v1) {
-            $this->_v1 = new V1($this);
+    protected function getWireless() {
+        if (!$this->_wireless) {
+            $this->_wireless = new Wireless($this);
         }
-        return $this->_v1;
+        return $this->_wireless;
     }
 
     /**
@@ -76,10 +76,24 @@ class Conversations extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Conversations\V1\ConversationList 
+     * @return \Twilio\Rest\Preview\Wireless\CommandList 
      */
-    public function conversations() {
-        return $this->v1->conversations;
+    public function commands() {
+        return $this->wireless->commands;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Wireless\DeviceList 
+     */
+    public function devices() {
+        return $this->wireless->devices;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanList 
+     */
+    public function ratePlans() {
+        return $this->wireless->ratePlans;
     }
 
     /**
@@ -88,6 +102,6 @@ class Conversations extends Domain {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations]';
+        return '[Twilio.Preview]';
     }
 }

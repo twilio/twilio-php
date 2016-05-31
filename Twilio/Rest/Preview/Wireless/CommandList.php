@@ -7,18 +7,18 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class CompletedList extends ListResource {
+class CommandList extends ListResource {
     /**
-     * Construct the CompletedList
+     * Construct the CommandList
      * 
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Conversations\V1\Conversation\CompletedList 
+     * @return \Twilio\Rest\Preview\Wireless\CommandList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -26,17 +26,18 @@ class CompletedList extends ListResource {
         // Path Solution
         $this->solution = array();
         
-        $this->uri = '/Conversations/Completed';
+        $this->uri = '/Commands';
     }
 
     /**
-     * Streams CompletedInstance records from the API as a generator stream.
+     * Streams CommandInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
+     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -50,19 +51,22 @@ class CompletedList extends ListResource {
      *                        1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page(
+            $options, 
+        $limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads CompletedInstance records from the API as a list.
+     * Reads CommandInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
+     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -74,23 +78,30 @@ class CompletedList extends ListResource {
      *                        the
      *                        limit with the most efficient page size, i.e.
      *                        min(limit, 1000)
-     * @return CompletedInstance[] Array of results
+     * @return CommandInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($limit, $pageSize));
+    public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
+        return iterator_to_array($this->stream(
+            $options, 
+        $limit, $pageSize));
     }
 
     /**
-     * Retrieve a single page of CompletedInstance records from the API.
+     * Retrieve a single page of CommandInstance records from the API.
      * Request is executed immediately
      * 
+     * @param array $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of CompletedInstance
+     * @return \Twilio\Page Page of CommandInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+        $options = new Values($options);
         $params = Values::of(array(
+            'Device' => $options['device'],
+            'Status' => $options['status'],
+            'Direction' => $options['direction'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -102,7 +113,51 @@ class CompletedList extends ListResource {
             $params
         );
         
-        return new CompletedPage($this->version, $response, $this->solution);
+        return new CommandPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Create a new CommandInstance
+     * 
+     * @param string $device The device
+     * @param string $command The command
+     * @param array $options Optional Arguments
+     * @return CommandInstance Newly created CommandInstance
+     */
+    public function create($device, $command, array $options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'Device' => $device,
+            'Command' => $command,
+            'CallbackMethod' => $options['callbackMethod'],
+            'CallbackUrl' => $options['callbackUrl'],
+        ));
+        
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+        
+        return new CommandInstance(
+            $this->version,
+            $payload
+        );
+    }
+
+    /**
+     * Constructs a CommandContext
+     * 
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Wireless\CommandContext 
+     */
+    public function getContext($sid) {
+        return new CommandContext(
+            $this->version,
+            $sid
+        );
     }
 
     /**
@@ -111,6 +166,6 @@ class CompletedList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1.CompletedList]';
+        return '[Twilio.Preview.Wireless.CommandList]';
     }
 }

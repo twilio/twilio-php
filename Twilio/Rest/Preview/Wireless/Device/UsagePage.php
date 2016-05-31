@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Preview\Wireless\Device;
 
 use Twilio\Page;
 
-class InProgressPage extends Page {
+class UsagePage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,9 +20,10 @@ class InProgressPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new InProgressInstance(
+        return new UsageInstance(
             $this->version,
-            $payload
+            $payload,
+            $this->solution['deviceSid']
         );
     }
 
@@ -32,6 +33,6 @@ class InProgressPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1.InProgressPage]';
+        return '[Twilio.Preview.Wireless.UsagePage]';
     }
 }

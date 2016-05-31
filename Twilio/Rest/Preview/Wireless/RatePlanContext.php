@@ -7,37 +7,35 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class ParticipantContext extends InstanceContext {
+class RatePlanContext extends InstanceContext {
     /**
-     * Initialize the ParticipantContext
+     * Initialize the RatePlanContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $conversationSid The conversation_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext 
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanContext 
      */
-    public function __construct(Version $version, $conversationSid, $sid) {
+    public function __construct(Version $version, $sid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
-            'conversationSid' => $conversationSid,
             'sid' => $sid,
         );
         
-        $this->uri = '/Conversations/' . $conversationSid . '/Participants/' . $sid . '';
+        $this->uri = '/RatePlans/' . $sid . '';
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch a RatePlanInstance
      * 
-     * @return ParticipantInstance Fetched ParticipantInstance
+     * @return RatePlanInstance Fetched RatePlanInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -48,10 +46,9 @@ class ParticipantContext extends InstanceContext {
             $params
         );
         
-        return new ParticipantInstance(
+        return new RatePlanInstance(
             $this->version,
             $payload,
-            $this->solution['conversationSid'],
             $this->solution['sid']
         );
     }
@@ -66,6 +63,6 @@ class ParticipantContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.ParticipantContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.RatePlanContext ' . implode(' ', $context) . ']';
     }
 }

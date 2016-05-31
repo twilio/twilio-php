@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Conversation;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\Page;
 
-class ParticipantPage extends Page {
+class CommandPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,10 +20,9 @@ class ParticipantPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ParticipantInstance(
+        return new CommandInstance(
             $this->version,
-            $payload,
-            $this->solution['conversationSid']
+            $payload
         );
     }
 
@@ -33,6 +32,6 @@ class ParticipantPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1.ParticipantPage]';
+        return '[Twilio.Preview.Wireless.CommandPage]';
     }
 }

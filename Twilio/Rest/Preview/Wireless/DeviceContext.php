@@ -7,27 +7,27 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1;
+namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Conversations\V1\Conversation\ParticipantList;
+use Twilio\Rest\Preview\Wireless\Device\UsageList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Conversations\V1\Conversation\ParticipantList participants
- * @method \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext participants(string $sid)
+ * @property \Twilio\Rest\Preview\Wireless\Device\UsageList usage
+ * @method \Twilio\Rest\Preview\Wireless\Device\UsageContext usage()
  */
-class ConversationContext extends InstanceContext {
-    protected $_participants = null;
+class DeviceContext extends InstanceContext {
+    protected $_usage = null;
 
     /**
-     * Initialize the ConversationContext
+     * Initialize the DeviceContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Conversations\V1\ConversationContext 
+     * @return \Twilio\Rest\Preview\Wireless\DeviceContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -37,13 +37,13 @@ class ConversationContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Conversations/' . $sid . '';
+        $this->uri = '/Devices/' . $sid . '';
     }
 
     /**
-     * Fetch a ConversationInstance
+     * Fetch a DeviceInstance
      * 
-     * @return ConversationInstance Fetched ConversationInstance
+     * @return DeviceInstance Fetched DeviceInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -54,7 +54,7 @@ class ConversationContext extends InstanceContext {
             $params
         );
         
-        return new ConversationInstance(
+        return new DeviceInstance(
             $this->version,
             $payload,
             $this->solution['sid']
@@ -62,19 +62,53 @@ class ConversationContext extends InstanceContext {
     }
 
     /**
-     * Access the participants
+     * Update the DeviceInstance
      * 
-     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantList 
+     * @param array $options Optional Arguments
+     * @return DeviceInstance Updated DeviceInstance
      */
-    protected function getParticipants() {
-        if (!$this->_participants) {
-            $this->_participants = new ParticipantList(
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'Alias' => $options['alias'],
+            'CallbackMethod' => $options['callbackMethod'],
+            'CallbackUrl' => $options['callbackUrl'],
+            'FriendlyName' => $options['friendlyName'],
+            'SimIdentifier' => $options['simIdentifier'],
+            'Status' => $options['status'],
+            'CommandsCallbackMethod' => $options['commandsCallbackMethod'],
+            'CommandsCallbackUrl' => $options['commandsCallbackUrl'],
+        ));
+        
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+        
+        return new DeviceInstance(
+            $this->version,
+            $payload,
+            $this->solution['sid']
+        );
+    }
+
+    /**
+     * Access the usage
+     * 
+     * @return \Twilio\Rest\Preview\Wireless\Device\UsageList 
+     */
+    protected function getUsage() {
+        if (!$this->_usage) {
+            $this->_usage = new UsageList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->_participants;
+        return $this->_usage;
     }
 
     /**
@@ -120,6 +154,6 @@ class ConversationContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.ConversationContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.DeviceContext ' . implode(' ', $context) . ']';
     }
 }

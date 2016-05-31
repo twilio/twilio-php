@@ -7,39 +7,67 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations;
+namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Conversations\V1\ConversationList;
+use Twilio\Rest\Preview\Wireless\CommandList;
+use Twilio\Rest\Preview\Wireless\DeviceList;
+use Twilio\Rest\Preview\Wireless\RatePlanList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Conversations\V1\ConversationList conversations
- * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
+ * @property \Twilio\Rest\Preview\Wireless\CommandList commands
+ * @property \Twilio\Rest\Preview\Wireless\DeviceList devices
+ * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
+ * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
+ * @method \Twilio\Rest\Preview\Wireless\DeviceContext devices(string $sid)
+ * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  */
-class V1 extends Version {
-    protected $_conversations = null;
+class Wireless extends Version {
+    protected $_commands = null;
+    protected $_devices = null;
+    protected $_ratePlans = null;
 
     /**
-     * Construct the V1 version of Conversations
+     * Construct the Wireless version of Preview
      * 
      * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Conversations\V1 V1 version of Conversations
+     * @return \Twilio\Rest\Preview\Wireless Wireless version of Preview
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
-        $this->version = 'v1';
+        $this->version = 'wireless';
     }
 
     /**
-     * @return \Twilio\Rest\Conversations\V1\ConversationList 
+     * @return \Twilio\Rest\Preview\Wireless\CommandList 
      */
-    protected function getConversations() {
-        if (!$this->_conversations) {
-            $this->_conversations = new ConversationList($this);
+    protected function getCommands() {
+        if (!$this->_commands) {
+            $this->_commands = new CommandList($this);
         }
-        return $this->_conversations;
+        return $this->_commands;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Wireless\DeviceList 
+     */
+    protected function getDevices() {
+        if (!$this->_devices) {
+            $this->_devices = new DeviceList($this);
+        }
+        return $this->_devices;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanList 
+     */
+    protected function getRatePlans() {
+        if (!$this->_ratePlans) {
+            $this->_ratePlans = new RatePlanList($this);
+        }
+        return $this->_ratePlans;
     }
 
     /**
@@ -81,6 +109,6 @@ class V1 extends Version {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Conversations.V1]';
+        return '[Twilio.Preview.Wireless]';
     }
 }
