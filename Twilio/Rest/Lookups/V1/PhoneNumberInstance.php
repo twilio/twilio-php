@@ -11,6 +11,7 @@ namespace Twilio\Rest\Lookups\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Serialize;
 use Twilio\Version;
 
 /**
@@ -18,6 +19,7 @@ use Twilio\Version;
  * @property string phoneNumber
  * @property string nationalFormat
  * @property string carrier
+ * @property string addOns
  */
 class PhoneNumberInstance extends InstanceResource {
     /**
@@ -37,6 +39,7 @@ class PhoneNumberInstance extends InstanceResource {
             'phoneNumber' => $payload['phone_number'],
             'nationalFormat' => $payload['national_format'],
             'carrier' => $payload['carrier'],
+            'addOns' => $payload['add_ons'],
         );
         
         $this->solution = array(
