@@ -44,10 +44,15 @@ class RecordingInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'callSid' => $payload['call_sid'],
+            'channels' => $payload['channels'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'duration' => $payload['duration'],
+            'price' => $payload['price'],
+            'priceUnit' => $payload['price_unit'],
             'sid' => $payload['sid'],
+            'status' => $payload['status'],
+            'source' => $payload['source'],
             'uri' => $payload['uri'],
         );
         
