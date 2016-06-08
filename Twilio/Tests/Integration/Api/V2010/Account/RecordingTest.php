@@ -39,10 +39,15 @@ class RecordingTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channels": 1,
                 "date_created": "Wed, 01 Sep 2010 15:15:41 +0000",
                 "date_updated": "Wed, 01 Sep 2010 15:15:41 +0000",
                 "duration": "6",
+                "price": -0.0025,
+                "priceUnit": "USD",
                 "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "source": null,
+                "status": "completed",
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -112,13 +117,17 @@ class RecordingTest extends HolodeckTestCase {
                 "recordings": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "api_version": "2008-08-01",
+                        "api_version": "2010-04-01",
                         "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "Wed, 22 Aug 2012 20:58:45 +0000",
-                        "date_updated": "Wed, 22 Aug 2012 20:58:45 +0000",
-                        "duration": null,
-                        "price": null,
+                        "channels": 1,
+                        "date_created": "Wed, 01 Sep 2010 15:15:41 +0000",
+                        "date_updated": "Wed, 01 Sep 2010 15:15:41 +0000",
+                        "duration": "6",
+                        "price": -0.0025,
+                        "priceUnit": "USD",
                         "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "source": null,
+                        "status": "completed",
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],
