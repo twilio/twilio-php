@@ -18,10 +18,15 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string callSid
+ * @property int channel
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string duration
+ * @property float price
+ * @property string priceUnit
  * @property string sid
+ * @property string status
+ * @property string source
  * @property string uri
  */
 class RecordingInstance extends InstanceResource {
