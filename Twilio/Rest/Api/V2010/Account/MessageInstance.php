@@ -37,6 +37,7 @@ use Twilio\Version;
  */
 class MessageInstance extends InstanceResource {
     protected $_media = null;
+    protected $_feedback = null;
 
     /**
      * Initialize the MessageInstance
@@ -135,6 +136,15 @@ class MessageInstance extends InstanceResource {
      */
     protected function getMedia() {
         return $this->proxy()->media;
+    }
+
+    /**
+     * Access the feedback
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList 
+     */
+    protected function getFeedback() {
+        return $this->proxy()->feedback;
     }
 
     /**
