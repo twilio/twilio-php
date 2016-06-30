@@ -17,6 +17,7 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_TaskRouter_C
 	protected $workspaceSid;
 	protected $channelId;
 	protected $resourceUrl;
+	protected $channelUrl;
 
 	protected $required = array("required" => true);
 	protected $optional = array("required" => false);
@@ -63,6 +64,8 @@ class Services_Twilio_TaskRouter_Capability extends Services_Twilio_TaskRouter_C
 
 			$workerReservationsUrl = $this->resourceUrl.'/Reservations/**';
 			$this->allow($workerReservationsUrl, "GET", null, null);
+			$this->channelUrl = $this->resourceUrl.'/Channels/**';
+			$this->allow($channelUrl, "GET", null, null);
 
 		}else if(substr($this->channelId,0,2) == 'WQ') {
 			$this->resourceUrl = $this->baseUrl.'/TaskQueues/'.$this->channelId;

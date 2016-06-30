@@ -21,7 +21,7 @@ class CapabilityTaskRouter extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('v1', $payload->version);
 
 		$policies = $payload->policies;
-		$this->assertEquals(6, count($policies));
+		$this->assertEquals(7, count($policies));
 
 		$this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WK789', $policies[0]->url);
 		$this->assertEquals('GET', $policies[0]->method);
@@ -58,6 +58,12 @@ class CapabilityTaskRouter extends PHPUnit_Framework_TestCase {
 		$this->assertObjectNotHasAttribute('query_filter', $policies[5]);
 		$this->assertObjectNotHasAttribute('post_filter', $policies[5]);
 		$this->assertEquals(true, $policies[5]->allow);
+		
+		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789/Channels/**', $policies[6]->url);
+		$this->assertEquals('GET', $policies[6]->method);
+		$this->assertObjectNotHasAttribute('query_filter', $policies[6]);
+		$this->assertObjectNotHasAttribute('post_filter', $policies[6]);
+		$this->assertEquals(true, $policies[6]->allow);
     }
 
 	public function testAllowWorkerUpdates()
@@ -75,13 +81,12 @@ class CapabilityTaskRouter extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('v1', $payload->version);
 
 		$policies = $payload->policies;
-		$this->assertEquals(7, count($policies));
-
-		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789', $policies[6]->url);
-		$this->assertEquals('POST', $policies[6]->method);
-		$this->assertEquals(new stdClass(), $policies[6]->query_filter);
-		$this->assertEquals(true, $policies[6]->post_filter->ActivitySid->required);
-		$this->assertEquals(true, $policies[6]->allow);
+		$this->assertEquals(8, count($policies));
+		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789', $policies[7]->url);
+		$this->assertEquals('POST', $policies[7]->method);
+		$this->assertEquals(new stdClass(), $policies[7]->query_filter);
+		$this->assertEquals(true, $policies[7]->post_filter->ActivitySid->required);
+		$this->assertEquals(true, $policies[7]->allow);
 	}
 
 	public function testAllowReservationUpdates()
@@ -100,19 +105,19 @@ class CapabilityTaskRouter extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('v1', $payload->version);
 
 		$policies = $payload->policies;
-		$this->assertEquals(9, count($policies));
+		$this->assertEquals(10, count($policies));
 
-		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**', $policies[7]->url);
-		$this->assertEquals('POST', $policies[7]->method);
-		$this->assertEquals(new stdClass(), $policies[7]->query_filter);
-		$this->assertEquals(new stdClass(), $policies[7]->post_filter);
-		$this->assertEquals(true, $policies[7]->allow);
-
-		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789/Reservations/**', $policies[8]->url);
+		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**', $policies[8]->url);
 		$this->assertEquals('POST', $policies[8]->method);
 		$this->assertEquals(new stdClass(), $policies[8]->query_filter);
 		$this->assertEquals(new stdClass(), $policies[8]->post_filter);
 		$this->assertEquals(true, $policies[8]->allow);
+
+		$this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789/Reservations/**', $policies[9]->url);
+		$this->assertEquals('POST', $policies[9]->method);
+		$this->assertEquals(new stdClass(), $policies[9]->query_filter);
+		$this->assertEquals(new stdClass(), $policies[9]->post_filter);
+		$this->assertEquals(true, $policies[9]->allow);
 	}
 
 	public function testDefaultWorkspace()

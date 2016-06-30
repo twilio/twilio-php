@@ -13,6 +13,7 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
 	private $tasksUrl;
 	private $workerReservationsUrl;
 	private $activityUrl;
+	protected $channelUrl;
 
 	public function __construct($accountSid, $authToken, $workspaceSid, $workerSid, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
 	{
@@ -21,11 +22,13 @@ class Services_Twilio_TaskRouter_Worker_Capability extends Services_Twilio_TaskR
 		$this->tasksUrl = $this->baseUrl.'/Tasks/**';
 		$this->activityUrl = $this->baseUrl.'/Activities';
 		$this->workerReservationsUrl = $this->resourceUrl.'/Reservations/**';
+		$this->channelUrl = $this->resourceUrl.'/Channels/**';
 
 		//add permissions to fetch the list of activities, tasks, and worker reservations
 		$this->allow($this->activityUrl, "GET", null, null);
 		$this->allow($this->tasksUrl, "GET", null, null);
 		$this->allow($this->workerReservationsUrl, "GET", null, null);
+		$this->allow($this->channelUrl, "GET", null, null);
 	}
 
 	protected function setupResource() {
