@@ -89,12 +89,33 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("IS123", $grants['ip_messaging']['service_sid']);
     }
 
+    function testSyncGrant()
+    {
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new Services_Twilio_Auth_SyncGrant();
+        $grant->setEndpointId("EP123");
+        $grant->setServiceSid("IS123");
+        $scat->addGrant($grant);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(1, count($grants));
+        $this->assertArrayHasKey("data_sync", $grants);
+        $this->assertEquals("EP123", $grants['data_sync']['endpoint_id']);
+        $this->assertEquals("IS123", $grants['data_sync']['service_sid']);
+    }
+
     function testGrants()
     {
         $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
         $scat->addGrant(new Services_Twilio_Auth_ConversationsGrant());
         $scat->addGrant(new Services_Twilio_Auth_IpMessagingGrant());
+        $scat->addGrant(new Services_Twilio_Auth_SyncGrant());
 
         $token = $scat->toJWT();
 
@@ -103,10 +124,11 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->validateClaims($payload);
 
         $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(3, count($grants));
+        $this->assertEquals(4, count($grants));
         $this->assertEquals('test identity', $payload->grants->identity);
         $this->assertEquals('{}', json_encode($payload->grants->rtc));
         $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
+        $this->assertEquals('{}', json_encode($payload->grants->data_sync));
     }
 
 }
