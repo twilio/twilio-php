@@ -114,6 +114,13 @@ class CurlClientTest extends UnitTest {
                     'a' => 'un$afe:// value!',
                 ),
                 'a=un%24afe%3A%2F%2F+value%21',
+            ),
+            array(
+                'Encoded Key',
+                array(
+                    'StartTime>' => '2012-06-14',
+                ),
+                'StartTime%3E=2012-06-14',
             )
         );
     }
