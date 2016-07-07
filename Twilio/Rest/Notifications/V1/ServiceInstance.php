@@ -22,6 +22,8 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string apnCredentialSid
  * @property string gcmCredentialSid
+ * @property string messagingServiceSid
+ * @property string facebookMessengerPageId
  * @property string defaultApnNotificationProtocolVersion
  * @property string defaultGcmNotificationProtocolVersion
  * @property string url
@@ -51,6 +53,8 @@ class ServiceInstance extends InstanceResource {
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'apnCredentialSid' => $payload['apn_credential_sid'],
             'gcmCredentialSid' => $payload['gcm_credential_sid'],
+            'messagingServiceSid' => $payload['messaging_service_sid'],
+            'facebookMessengerPageId' => $payload['facebook_messenger_page_id'],
             'defaultApnNotificationProtocolVersion' => $payload['default_apn_notification_protocol_version'],
             'defaultGcmNotificationProtocolVersion' => $payload['default_gcm_notification_protocol_version'],
             'url' => $payload['url'],
