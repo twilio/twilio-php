@@ -50,7 +50,7 @@ class MessageList extends ListResource {
             'MediaUrl' => $options['mediaUrl'],
             'StatusCallback' => $options['statusCallback'],
             'ApplicationSid' => $options['applicationSid'],
-            'ProvideFeeback' => $options['provideFeeback'],
+            'ProvideFeedback' => $options['provideFeedback'],
         ));
         
         $payload = $this->version->create(
