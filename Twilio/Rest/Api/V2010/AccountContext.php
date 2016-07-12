@@ -19,12 +19,16 @@ use Twilio\Rest\Api\V2010\Account\CallList;
 use Twilio\Rest\Api\V2010\Account\ConferenceList;
 use Twilio\Rest\Api\V2010\Account\ConnectAppList;
 use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList;
+use Twilio\Rest\Api\V2010\Account\KeyList;
 use Twilio\Rest\Api\V2010\Account\MessageList;
+use Twilio\Rest\Api\V2010\Account\NewKeyList;
+use Twilio\Rest\Api\V2010\Account\NewSigningKeyList;
 use Twilio\Rest\Api\V2010\Account\NotificationList;
 use Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList;
 use Twilio\Rest\Api\V2010\Account\QueueList;
 use Twilio\Rest\Api\V2010\Account\RecordingList;
 use Twilio\Rest\Api\V2010\Account\SandboxList;
+use Twilio\Rest\Api\V2010\Account\SigningKeyList;
 use Twilio\Rest\Api\V2010\Account\SipList;
 use Twilio\Rest\Api\V2010\Account\SmsList;
 use Twilio\Rest\Api\V2010\Account\TokenList;
@@ -43,12 +47,16 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
  * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
  * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList incomingPhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\KeyList keys
  * @property \Twilio\Rest\Api\V2010\Account\MessageList messages
+ * @property \Twilio\Rest\Api\V2010\Account\NewKeyList newKeys
+ * @property \Twilio\Rest\Api\V2010\Account\NewSigningKeyList newSigningKeys
  * @property \Twilio\Rest\Api\V2010\Account\NotificationList notifications
  * @property \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList outgoingCallerIds
  * @property \Twilio\Rest\Api\V2010\Account\QueueList queues
  * @property \Twilio\Rest\Api\V2010\Account\RecordingList recordings
  * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
+ * @property \Twilio\Rest\Api\V2010\Account\SigningKeyList signingKeys
  * @property \Twilio\Rest\Api\V2010\Account\SipList sip
  * @property \Twilio\Rest\Api\V2010\Account\SmsList sms
  * @property \Twilio\Rest\Api\V2010\Account\TokenList tokens
@@ -63,12 +71,14 @@ use Twilio\Version;
  * @method \Twilio\Rest\Api\V2010\Account\ConferenceContext conferences(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\ConnectAppContext connectApps(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext incomingPhoneNumbers(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\KeyContext keys(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\NotificationContext notifications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext outgoingCallerIds(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\QueueContext queues(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
+ * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
  */
 class AccountContext extends InstanceContext {
@@ -80,12 +90,16 @@ class AccountContext extends InstanceContext {
     protected $_conferences = null;
     protected $_connectApps = null;
     protected $_incomingPhoneNumbers = null;
+    protected $_keys = null;
     protected $_messages = null;
+    protected $_newKeys = null;
+    protected $_newSigningKeys = null;
     protected $_notifications = null;
     protected $_outgoingCallerIds = null;
     protected $_queues = null;
     protected $_recordings = null;
     protected $_sandbox = null;
+    protected $_signingKeys = null;
     protected $_sip = null;
     protected $_sms = null;
     protected $_tokens = null;
@@ -289,6 +303,22 @@ class AccountContext extends InstanceContext {
     }
 
     /**
+     * Access the keys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\KeyList 
+     */
+    protected function getKeys() {
+        if (!$this->_keys) {
+            $this->_keys = new KeyList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_keys;
+    }
+
+    /**
      * Access the messages
      * 
      * @return \Twilio\Rest\Api\V2010\Account\MessageList 
@@ -302,6 +332,38 @@ class AccountContext extends InstanceContext {
         }
         
         return $this->_messages;
+    }
+
+    /**
+     * Access the newKeys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList 
+     */
+    protected function getNewKeys() {
+        if (!$this->_newKeys) {
+            $this->_newKeys = new NewKeyList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_newKeys;
+    }
+
+    /**
+     * Access the newSigningKeys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     */
+    protected function getNewSigningKeys() {
+        if (!$this->_newSigningKeys) {
+            $this->_newSigningKeys = new NewSigningKeyList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_newSigningKeys;
     }
 
     /**
@@ -382,6 +444,22 @@ class AccountContext extends InstanceContext {
         }
         
         return $this->_sandbox;
+    }
+
+    /**
+     * Access the signingKeys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
+     */
+    protected function getSigningKeys() {
+        if (!$this->_signingKeys) {
+            $this->_signingKeys = new SigningKeyList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_signingKeys;
     }
 
     /**

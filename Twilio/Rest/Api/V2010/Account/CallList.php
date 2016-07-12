@@ -66,6 +66,8 @@ class CallList extends ListResource {
             'IfMachine' => $options['ifMachine'],
             'Timeout' => $options['timeout'],
             'Record' => $options['record'],
+            'SipAuthUsername' => $options['sipAuthUsername'],
+            'SipAuthPassword' => $options['sipAuthPassword'],
         ));
         
         $payload = $this->version->create(

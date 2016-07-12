@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string data
  * @property string apn
  * @property string gcm
+ * @property string sms
  * @property string facebookMessenger
  */
 class NotificationInstance extends InstanceResource {
@@ -61,6 +62,7 @@ class NotificationInstance extends InstanceResource {
             'data' => $payload['data'],
             'apn' => $payload['apn'],
             'gcm' => $payload['gcm'],
+            'sms' => $payload['sms'],
             'facebookMessenger' => $payload['facebook_messenger'],
         );
         
