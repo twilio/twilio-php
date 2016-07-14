@@ -1,8 +1,8 @@
 <?php
 
-include_once 'Grant.php';
+namespace Twilio\Auth;
 
-class Twilio_Auth_ConversationsGrant implements Twilio_Auth_Grant
+class ConversationsGrant implements Grant
 {
     private $configurationProfileSid;
 
@@ -20,7 +20,7 @@ class Twilio_Auth_ConversationsGrant implements Twilio_Auth_Grant
      * @param string $configurationProfileSid the configuration profile sid
      * we want to enable for this grant
      *
-     * @return Twilio_Auth_ConversationsGrant updated grant
+     * @return ConversationsGrant updated grant
      */
     public function setConfigurationProfileSid($configurationProfileSid)
     {

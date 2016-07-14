@@ -1,6 +1,8 @@
 <?php
 
-interface Twilio_Auth_Grant
+namespace Twilio\Auth;
+
+interface Grant
 {
     /**
      * Returns the grant type

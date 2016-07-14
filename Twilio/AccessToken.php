@@ -1,11 +1,8 @@
 <?php
 
-include_once 'JWT.php';
-include_once 'Auth/ConversationsGrant.php';
-include_once 'Auth/IpMessagingGrant.php';
-include_once 'Auth/SyncGrant.php';
+namespace Twilio;
 
-class Twilio_AccessToken
+class AccessToken
 {
     private $signingKeySid;
     private $accountSid;
@@ -82,7 +79,7 @@ class Twilio_AccessToken
      *
      * @return $this the updated access token
      */
-    public function addGrant(Twilio_Auth_Grant $grant)
+    public function addGrant(Auth\Grant $grant)
     {
         $this->grants[] = $grant;
         return $this;

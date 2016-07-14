@@ -1,8 +1,8 @@
 <?php
 
-include_once 'Grant.php';
+namespace Twilio\Auth;
 
-class Twilio_Auth_SyncGrant implements Twilio_Auth_Grant
+class SyncGrant implements Grant
 {
     private $serviceSid;
     private $endpointId;
@@ -24,7 +24,7 @@ class Twilio_Auth_SyncGrant implements Twilio_Auth_Grant
      *
      * @param string $serviceSid service sid of the grant
      *
-     * @return Twilio_Auth_SyncGrant updated grant
+     * @return SyncGrant updated grant
      */
     public function setServiceSid($serviceSid)
     {
@@ -47,7 +47,7 @@ class Twilio_Auth_SyncGrant implements Twilio_Auth_Grant
      *
      * @param string $endpointId endpoint id of the grant
      *
-     * @return Twilio_Auth_SyncGrant updated grant
+     * @return SyncGrant updated grant
      */
     public function setEndpointId($endpointId)
     {
@@ -70,7 +70,7 @@ class Twilio_Auth_SyncGrant implements Twilio_Auth_Grant
      *
      * @param string $deploymentRoleSid role sid of the grant
      *
-     * @return Twilio_Auth_SyncGrant updated grant
+     * @return SyncGrant updated grant
      */
     public function setDeploymentRoleSid($deploymentRoleSid)
     {
@@ -93,7 +93,7 @@ class Twilio_Auth_SyncGrant implements Twilio_Auth_Grant
      *
      * @param string $pushCredentialSid push credential sid of the grant
      *
-     * @return Twilio_Auth_SyncGrant updated grant
+     * @return SyncGrant updated grant
      */
     public function setPushCredentialSid($pushCredentialSid)
     {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Twilio;
+
 /**
  * JSON Web Token implementation
  *
