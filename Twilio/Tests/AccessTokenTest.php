@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Twilio/AccessToken.php';
+use Twilio\JWT;
 
 class AccessTokenTest extends PHPUnit_Framework_TestCase
 {
@@ -25,7 +25,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testEmptyGrants()
     {
-        $scat = new Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat = new Twilio\AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
@@ -36,7 +36,7 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testNbf()
     {
-        $scat = new Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat = new Twilio\AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
 
         $now = time();
         $scat->setNbf($now);
@@ -52,8 +52,8 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testConversationGrant()
     {
-        $scat = new Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $grant = new Twilio_Auth_ConversationsGrant();
+        $scat = new Twilio\AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new Twilio\Auth\ConversationsGrant();
         $grant->setConfigurationProfileSid("CP123");
         $scat->addGrant($grant);
 
@@ -71,8 +71,8 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testIpMessagingGrant()
     {
-        $scat = new Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $grant = new Twilio_Auth_IpMessagingGrant();
+        $scat = new Twilio\AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new Twilio\Auth\IpMessagingGrant();
         $grant->setEndpointId("EP123");
         $grant->setServiceSid("IS123");
         $scat->addGrant($grant);
@@ -91,8 +91,8 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testSyncGrant()
     {
-        $scat = new Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $grant = new Twilio_Auth_SyncGrant();
+        $scat = new Twilio\AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new Twilio\Auth\SyncGrant();
         $grant->setEndpointId("EP123");
         $grant->setServiceSid("IS123");
         $scat->addGrant($grant);
@@ -111,11 +111,11 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
 
     function testGrants()
     {
-        $scat = new Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat = new Twilio\AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
-        $scat->addGrant(new Twilio_Auth_ConversationsGrant());
-        $scat->addGrant(new Twilio_Auth_IpMessagingGrant());
-        $scat->addGrant(new Twilio_Auth_SyncGrant());
+        $scat->addGrant(new Twilio\Auth\ConversationsGrant());
+        $scat->addGrant(new Twilio\Auth\IpMessagingGrant());
+        $scat->addGrant(new Twilio\Auth\SyncGrant());
 
         $token = $scat->toJWT();
 
