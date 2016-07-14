@@ -78,7 +78,7 @@ class DomainContext extends InstanceContext {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'ApiVersion' => $options['apiVersion'],
+            'AuthType' => $options['authType'],
             'FriendlyName' => $options['friendlyName'],
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],

@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Lookups\V1;
 
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -44,8 +45,10 @@ class PhoneNumberContext extends InstanceContext {
         $params = Values::of(array(
             'CountryCode' => $options['countryCode'],
             'Type' => $options['type'],
+            'AddOns' => $options['addOns'],
         ));
         
+        $params = array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));
         $payload = $this->version->fetch(
             'GET',
             $this->uri,

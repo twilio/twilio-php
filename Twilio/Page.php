@@ -39,10 +39,14 @@ abstract class Page implements \Iterator {
     }
 
     protected function processResponse(Response $response) {
-        if ($response->getStatusCode() != 200) {
+        if ($response->getStatusCode() != 200 && !$this->isPagingEol($response->getContent())) {
             throw new DeserializeException('Unable to fetch page', $response->getStatusCode());
         }
         return $response->getContent();
+    }
+
+    protected function isPagingEol($content) {
+        return !is_null($content) && array_key_exists('code', $content) && $content['code'] == 20006;
     }
 
     protected function hasMeta($key) {
@@ -65,6 +69,11 @@ abstract class Page implements \Iterator {
             if (count($key) == 1) {
                 return $this->payload[$key[0]];
             }
+        }
+
+        // handle end of results error code
+        if ($this->isPagingEol($this->payload)) {
+            return array();
         }
 
         throw new DeserializeException('Page Records can not be deserialized');

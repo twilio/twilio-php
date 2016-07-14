@@ -122,6 +122,7 @@ class DomainList extends ListResource {
         $data = Values::of(array(
             'DomainName' => $domainName,
             'FriendlyName' => $options['friendlyName'],
+            'AuthType' => $options['authType'],
             'VoiceUrl' => $options['voiceUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],

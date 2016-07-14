@@ -76,6 +76,13 @@ class Notifications extends Domain {
     }
 
     /**
+     * @return \Twilio\Rest\Notifications\V1\CredentialList 
+     */
+    public function credentials() {
+        return $this->v1->credentials;
+    }
+
+    /**
      * @return \Twilio\Rest\Notifications\V1\ServiceList 
      */
     public function services() {

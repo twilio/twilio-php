@@ -36,20 +36,22 @@ class MessageList extends ListResource {
      * Create a new MessageInstance
      * 
      * @param string $to The phone number to receive the message
-     * @param string $from The phone number that initiated the message
      * @param array $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
      */
-    public function create($to, $from, array $options = array()) {
+    public function create($to, array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
             'To' => $to,
-            'From' => $from,
             'Body' => $options['body'],
             'MediaUrl' => $options['mediaUrl'],
+            'From' => $options['from'],
+            'MessagingServiceSid' => $options['messagingServiceSid'],
             'StatusCallback' => $options['statusCallback'],
             'ApplicationSid' => $options['applicationSid'],
+            'MaxPrice' => $options['maxPrice'],
+            'ProvideFeedback' => $options['provideFeedback'],
         ));
         
         $payload = $this->version->create(

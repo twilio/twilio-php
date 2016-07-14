@@ -42,6 +42,8 @@ class ServiceList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'ApnCredentialSid' => $options['apnCredentialSid'],
             'GcmCredentialSid' => $options['gcmCredentialSid'],
+            'MessagingServiceSid' => $options['messagingServiceSid'],
+            'FacebookMessengerPageId' => $options['facebookMessengerPageId'],
             'DefaultApnNotificationProtocolVersion' => $options['defaultApnNotificationProtocolVersion'],
             'DefaultGcmNotificationProtocolVersion' => $options['defaultGcmNotificationProtocolVersion'],
         ));

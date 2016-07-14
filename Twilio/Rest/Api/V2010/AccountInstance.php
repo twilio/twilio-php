@@ -35,12 +35,16 @@ class AccountInstance extends InstanceResource {
     protected $_conferences = null;
     protected $_connectApps = null;
     protected $_incomingPhoneNumbers = null;
+    protected $_keys = null;
     protected $_messages = null;
+    protected $_newKeys = null;
+    protected $_newSigningKeys = null;
     protected $_notifications = null;
     protected $_outgoingCallerIds = null;
     protected $_queues = null;
     protected $_recordings = null;
     protected $_sandbox = null;
+    protected $_signingKeys = null;
     protected $_sip = null;
     protected $_sms = null;
     protected $_tokens = null;
@@ -190,12 +194,39 @@ class AccountInstance extends InstanceResource {
     }
 
     /**
+     * Access the keys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\KeyList 
+     */
+    protected function getKeys() {
+        return $this->proxy()->keys;
+    }
+
+    /**
      * Access the messages
      * 
      * @return \Twilio\Rest\Api\V2010\Account\MessageList 
      */
     protected function getMessages() {
         return $this->proxy()->messages;
+    }
+
+    /**
+     * Access the newKeys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList 
+     */
+    protected function getNewKeys() {
+        return $this->proxy()->newKeys;
+    }
+
+    /**
+     * Access the newSigningKeys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     */
+    protected function getNewSigningKeys() {
+        return $this->proxy()->newSigningKeys;
     }
 
     /**
@@ -241,6 +272,15 @@ class AccountInstance extends InstanceResource {
      */
     protected function getSandbox() {
         return $this->proxy()->sandbox;
+    }
+
+    /**
+     * Access the signingKeys
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
+     */
+    protected function getSigningKeys() {
+        return $this->proxy()->signingKeys;
     }
 
     /**

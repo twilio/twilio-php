@@ -76,7 +76,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() != 200) {
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw new TwilioException('Unable to fetch record', $response->getStatusCode());
         }
 
@@ -97,7 +97,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() != 200) {
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw new TwilioException('Unable to update record', $response->getStatusCode());
         }
 
@@ -118,7 +118,7 @@ abstract class Version {
             $timeout
         );
 
-        if (500 <= $response->getStatusCode() && $response->getStatusCode() < 600) {
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw new TwilioException('Unable to delete record', $response->getStatusCode());
         }
 
@@ -175,7 +175,7 @@ abstract class Version {
             $timeout
         );
 
-        if (!($response->getStatusCode() == 200 || $response->getStatusCode() == 201)) {
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw new TwilioException('Unable to create record', $response->getStatusCode());
         }
 

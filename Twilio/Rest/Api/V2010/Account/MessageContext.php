@@ -11,16 +11,19 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Api\V2010\Account\Message\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Message\MediaList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Message\MediaList media
+ * @property \Twilio\Rest\Api\V2010\Account\Message\FeedbackList feedback
  * @method \Twilio\Rest\Api\V2010\Account\Message\MediaContext media(string $sid)
  */
 class MessageContext extends InstanceContext {
     protected $_media = null;
+    protected $_feedback = null;
 
     /**
      * Initialize the MessageContext
@@ -116,6 +119,23 @@ class MessageContext extends InstanceContext {
         }
         
         return $this->_media;
+    }
+
+    /**
+     * Access the feedback
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList 
+     */
+    protected function getFeedback() {
+        if (!$this->_feedback) {
+            $this->_feedback = new FeedbackList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_feedback;
     }
 
     /**
