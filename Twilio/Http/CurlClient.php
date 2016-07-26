@@ -134,10 +134,10 @@ class CurlClient implements Client {
         foreach ($params as $key => $value) {
             if (is_array($value)) {
                 foreach ($value as $item) {
-                    $parts[] = $key . '=' . urlencode((string)$item);
+                    $parts[] = urlencode((string)$key) . '=' . urlencode((string)$item);
                 }
             } else {
-                $parts[] = $key . '=' . urlencode((string)$value);
+                $parts[] = urlencode((string)$key) . '=' . urlencode((string)$value);
             }
         }
 
