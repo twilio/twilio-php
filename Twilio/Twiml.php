@@ -1,6 +1,6 @@
 <?php
 
-namespace Twilio\Twiml;
+namespace Twilio;
 use Twilio\Exceptions\TwimlException;
 
 /**
