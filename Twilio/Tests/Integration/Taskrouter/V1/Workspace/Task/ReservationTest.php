@@ -155,19 +155,13 @@ class ReservationTest extends HolodeckTestCase {
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->tasks("WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->reservations("WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("reservationStatus");
+                                         ->reservations("WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'ReservationStatus' => "reservationStatus",
-        );
-        
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
-            'https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations/WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            null,
-            $values
+            'https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations/WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
     }
 
@@ -197,7 +191,7 @@ class ReservationTest extends HolodeckTestCase {
         
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                ->tasks("WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->reservations("WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("reservationStatus");
+                                               ->reservations("WRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

@@ -35,17 +35,15 @@ class ChannelList extends ListResource {
     /**
      * Create a new ChannelInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $uniqueName The unique_name
      * @param array $options Optional Arguments
      * @return ChannelInstance Newly created ChannelInstance
      */
-    public function create($friendlyName, $uniqueName, array $options = array()) {
+    public function create(array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-            'UniqueName' => $uniqueName,
+            'FriendlyName' => $options['friendlyName'],
+            'UniqueName' => $options['uniqueName'],
             'Attributes' => $options['attributes'],
             'Type' => $options['type'],
         ));

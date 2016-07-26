@@ -95,12 +95,12 @@ class UserInstance extends InstanceResource {
     /**
      * Update the UserInstance
      * 
-     * @param string $roleSid The role_sid
+     * @param array $options Optional Arguments
      * @return UserInstance Updated UserInstance
      */
-    public function update($roleSid) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
-            $roleSid
+            $options
         );
     }
 

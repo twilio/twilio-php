@@ -108,17 +108,16 @@ class CredentialList extends ListResource {
     /**
      * Create a new CredentialInstance
      * 
-     * @param string $friendlyName The friendly_name
      * @param string $type The type
      * @param array $options Optional Arguments
      * @return CredentialInstance Newly created CredentialInstance
      */
-    public function create($friendlyName, $type, array $options = array()) {
+    public function create($type, array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
             'Type' => $type,
+            'FriendlyName' => $options['friendlyName'],
             'Certificate' => $options['certificate'],
             'PrivateKey' => $options['privateKey'],
             'Sandbox' => $options['sandbox'],

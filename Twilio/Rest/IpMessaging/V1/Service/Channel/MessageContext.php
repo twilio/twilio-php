@@ -60,6 +60,46 @@ class MessageContext extends InstanceContext {
     }
 
     /**
+     * Deletes the MessageInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Update the MessageInstance
+     * 
+     * @param string $body The body
+     * @param array $options Optional Arguments
+     * @return MessageInstance Updated MessageInstance
+     */
+    public function update($body, array $options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'Body' => $body,
+            'Attributes' => $options['attributes'],
+        ));
+        
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+        
+        return new MessageInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
+            $this->solution['sid']
+        );
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

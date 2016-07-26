@@ -213,19 +213,13 @@ class UserTest extends HolodeckTestCase {
         
         try {
             $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                          ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'RoleSid' => "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        );
-        
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            null,
-            $values
+            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
     }
 
@@ -249,7 +243,7 @@ class UserTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                                ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

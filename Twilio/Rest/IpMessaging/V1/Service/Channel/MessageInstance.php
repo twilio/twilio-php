@@ -92,6 +92,29 @@ class MessageInstance extends InstanceResource {
     }
 
     /**
+     * Deletes the MessageInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
+     * Update the MessageInstance
+     * 
+     * @param string $body The body
+     * @param array $options Optional Arguments
+     * @return MessageInstance Updated MessageInstance
+     */
+    public function update($body, array $options = array()) {
+        return $this->proxy()->update(
+            $body,
+            $options
+        );
+    }
+
+    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access

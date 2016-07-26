@@ -83,15 +83,11 @@ class CredentialInstance extends InstanceResource {
     /**
      * Update the CredentialInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $type The type
      * @param array $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      */
-    public function update($friendlyName, $type, array $options = array()) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
-            $friendlyName,
-            $type,
             $options
         );
     }

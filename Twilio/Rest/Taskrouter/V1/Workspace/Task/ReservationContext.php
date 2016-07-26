@@ -62,15 +62,14 @@ class ReservationContext extends InstanceContext {
     /**
      * Update the ReservationInstance
      * 
-     * @param string $reservationStatus The reservation_status
      * @param array $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
      */
-    public function update($reservationStatus, array $options = array()) {
+    public function update(array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'ReservationStatus' => $reservationStatus,
+            'ReservationStatus' => $options['reservationStatus'],
             'WorkerActivitySid' => $options['workerActivitySid'],
             'Instruction' => $options['instruction'],
             'DequeuePostWorkActivitySid' => $options['dequeuePostWorkActivitySid'],

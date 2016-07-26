@@ -89,14 +89,12 @@ class IpAddressInstance extends InstanceResource {
     /**
      * Update the IpAddressInstance
      * 
-     * @param string $ipAddress The ip_address
-     * @param string $friendlyName The friendly_name
+     * @param array $options Optional Arguments
      * @return IpAddressInstance Updated IpAddressInstance
      */
-    public function update($ipAddress, $friendlyName) {
+    public function update(array $options = array()) {
         return $this->proxy()->update(
-            $ipAddress,
-            $friendlyName
+            $options
         );
     }
 
