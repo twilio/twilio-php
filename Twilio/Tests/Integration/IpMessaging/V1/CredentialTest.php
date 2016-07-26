@@ -93,12 +93,11 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ipMessaging->v1->credentials->create("friendlyName", "gcm");
+            $this->twilio->ipMessaging->v1->credentials->create("gcm");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
-            'FriendlyName' => "friendlyName",
             'Type' => "gcm",
         );
         
@@ -127,7 +126,7 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
         
-        $actual = $this->twilio->ipMessaging->v1->credentials->create("friendlyName", "gcm");
+        $actual = $this->twilio->ipMessaging->v1->credentials->create("gcm");
         
         $this->assertNotNull($actual);
     }
@@ -172,20 +171,13 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", "gcm");
+            $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'FriendlyName' => "friendlyName",
-            'Type' => "gcm",
-        );
-        
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            null,
-            $values
+            'https://ip-messaging.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
     }
 
@@ -206,7 +198,7 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
         
-        $actual = $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", "gcm");
+        $actual = $this->twilio->ipMessaging->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

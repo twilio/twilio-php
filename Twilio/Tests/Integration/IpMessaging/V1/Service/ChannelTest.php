@@ -93,20 +93,13 @@ class ChannelTest extends HolodeckTestCase {
         
         try {
             $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->channels->create("friendlyName", "uniqueName");
+                                          ->channels->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'FriendlyName' => "friendlyName",
-            'UniqueName' => "uniqueName",
-        );
-        
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels',
-            null,
-            $values
+            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels'
         )));
     }
 
@@ -135,7 +128,7 @@ class ChannelTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels->create("friendlyName", "uniqueName");
+                                                ->channels->create();
         
         $this->assertNotNull($actual);
     }

@@ -200,20 +200,13 @@ class IpAddressTest extends HolodeckTestCase {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->sip
                                      ->ipAccessControlLists("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->ipAddresses("IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("ipAddress", "friendlyName");
+                                     ->ipAddresses("IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'IpAddress' => "ipAddress",
-            'FriendlyName' => "friendlyName",
-        );
-        
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json',
-            null,
-            $values
+            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
         )));
     }
 
@@ -237,7 +230,7 @@ class IpAddressTest extends HolodeckTestCase {
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->sip
                                            ->ipAccessControlLists("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->ipAddresses("IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("ipAddress", "friendlyName");
+                                           ->ipAddresses("IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

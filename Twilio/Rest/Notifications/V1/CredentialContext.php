@@ -56,17 +56,14 @@ class CredentialContext extends InstanceContext {
     /**
      * Update the CredentialInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $type The type
      * @param array $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      */
-    public function update($friendlyName, $type, array $options = array()) {
+    public function update(array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-            'Type' => $type,
+            'FriendlyName' => $options['friendlyName'],
             'Certificate' => $options['certificate'],
             'PrivateKey' => $options['privateKey'],
             'Sandbox' => $options['sandbox'],

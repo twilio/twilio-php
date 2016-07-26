@@ -68,12 +68,16 @@ class UserContext extends InstanceContext {
     /**
      * Update the UserInstance
      * 
-     * @param string $roleSid The role_sid
+     * @param array $options Optional Arguments
      * @return UserInstance Updated UserInstance
      */
-    public function update($roleSid) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
-            'RoleSid' => $roleSid,
+            'RoleSid' => $options['roleSid'],
+            'Attributes' => $options['attributes'],
+            'FriendlyName' => $options['friendlyName'],
         ));
         
         $payload = $this->version->update(

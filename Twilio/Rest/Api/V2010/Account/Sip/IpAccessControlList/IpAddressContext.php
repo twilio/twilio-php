@@ -62,14 +62,15 @@ class IpAddressContext extends InstanceContext {
     /**
      * Update the IpAddressInstance
      * 
-     * @param string $ipAddress The ip_address
-     * @param string $friendlyName The friendly_name
+     * @param array $options Optional Arguments
      * @return IpAddressInstance Updated IpAddressInstance
      */
-    public function update($ipAddress, $friendlyName) {
+    public function update(array $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
-            'IpAddress' => $ipAddress,
-            'FriendlyName' => $friendlyName,
+            'IpAddress' => $options['ipAddress'],
+            'FriendlyName' => $options['friendlyName'],
         ));
         
         $payload = $this->version->update(
