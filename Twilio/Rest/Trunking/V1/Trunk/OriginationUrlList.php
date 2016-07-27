@@ -113,7 +113,7 @@ class OriginationUrlList extends ListResource {
      * @return OriginationUrlInstance[] Array of results
      */
     public function read($limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($limit, $pageSize));
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -20,13 +20,13 @@ class DeviceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->preview->wireless->devices("sid")->fetch();
+            $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/Devices/sid'
+            'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
     }
 
@@ -68,13 +68,13 @@ class DeviceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->preview->wireless->devices("sid")->update();
+            $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'post',
-            'https://preview.twilio.com/wireless/Devices/sid'
+            'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         )));
     }
 }

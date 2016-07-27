@@ -36,17 +36,12 @@ dist: clean
 	  mv $$php.new $$php; \
 	done
 
-test-install:
+vendor:
 	# Composer: http://getcomposer.org/download/
 	$(COMPOSER) install
 
-install:
-	pear channel-discover twilio.github.com/pear
-	pear install twilio/Services_Twilio
-
-# if these fail, you may need to install the helper library - run "make
-# test-install"
-test:
+# if these fail, you may need to install the helper library
+test: vendor
 	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
 
 venv:

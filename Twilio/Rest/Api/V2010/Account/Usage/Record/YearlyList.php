@@ -81,7 +81,7 @@ class YearlyList extends ListResource {
      * @return YearlyInstance[] Array of results
      */
     public function read($limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($limit, $pageSize));
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -89,7 +89,7 @@ class TollFreeList extends ListResource {
     public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
         return iterator_to_array($this->stream(
             $options, 
-        $limit, $pageSize));
+        $limit, $pageSize), false);
     }
 
     /**

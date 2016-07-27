@@ -81,7 +81,7 @@ class SigningKeyList extends ListResource {
      * @return SigningKeyInstance[] Array of results
      */
     public function read($limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($limit, $pageSize));
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

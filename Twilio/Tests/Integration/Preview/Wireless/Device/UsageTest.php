@@ -20,14 +20,14 @@ class UsageTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
-            $this->twilio->preview->wireless->devices("sid")
+            $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                             ->usage()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertTrue($this->holodeck->hasRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/Devices/sid/Usage'
+            'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage'
         )));
     }
 }
