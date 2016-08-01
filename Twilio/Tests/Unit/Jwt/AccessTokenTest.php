@@ -5,6 +5,7 @@ namespace Twilio\Tests\Unit\Jwt;
 use Twilio\Jwt\Grants\ConversationsGrant;
 use Twilio\Jwt\Grants\IpMessagingGrant;
 use Twilio\Jwt\Grants\ProgrammableVoiceGrant;
+use Twilio\Jwt\Grants\SyncGrant;
 use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
 use Twilio\Jwt\AccessToken;
@@ -88,6 +89,26 @@ class AccessTokenTest extends UnitTest {
         $this->assertArrayHasKey("ip_messaging", $grants);
         $this->assertEquals("EP123", $grants['ip_messaging']['endpoint_id']);
         $this->assertEquals("IS123", $grants['ip_messaging']['service_sid']);
+    }
+
+    function testSyncGrant()
+    {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new SyncGrant();
+        $grant->setEndpointId("EP123");
+        $grant->setServiceSid("IS123");
+        $scat->addGrant($grant);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(1, count($grants));
+        $this->assertArrayHasKey("data_sync", $grants);
+        $this->assertEquals("EP123", $grants['data_sync']['endpoint_id']);
+        $this->assertEquals("IS123", $grants['data_sync']['service_sid']);
     }
 
     function testGrants() {
