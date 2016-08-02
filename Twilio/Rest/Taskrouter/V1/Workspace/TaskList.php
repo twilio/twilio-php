@@ -57,9 +57,7 @@ class TaskList extends ListResource {
     public function stream(array $options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page(
-            $options, 
-        $limits['pageSize']);
+        $page = $this->page($options, $limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -84,9 +82,7 @@ class TaskList extends ListResource {
      * @return TaskInstance[] Array of results
      */
     public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream(
-            $options, 
-        $limit, $pageSize), false);
+        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
