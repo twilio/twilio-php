@@ -76,9 +76,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw new TwilioException('Unable to fetch record', $response->getStatusCode());
-        }
+        $this->throwExceptionIfResponseUnsuccessful('Unable to fetch record', $response);
 
         return $response->getContent();
     }
@@ -97,9 +95,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw new TwilioException('Unable to update record', $response->getStatusCode());
-        }
+        $this->throwExceptionIfResponseUnsuccessful('Unable to update record', $response);
 
         return $response->getContent();
     }
@@ -118,9 +114,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw new TwilioException('Unable to delete record', $response->getStatusCode());
-        }
+        $this->throwExceptionIfResponseUnsuccessful('Unable to delete record', $response);
 
         return $response->getStatusCode() == 204;
     }
@@ -175,9 +169,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw new TwilioException('Unable to create record', $response->getStatusCode());
-        }
+        $this->throwExceptionIfResponseUnsuccessful('Unable to create record', $response);
 
         return $response->getContent();
     }
@@ -191,5 +183,23 @@ abstract class Version {
 
     public function __toString() {
         return '[Version]';
+    }
+
+    /**
+     * @param string $exceptionMessage      Provide a base string for the exception message
+     * @param Http\Response $response
+     * @throws TwilioException
+     */
+    private function throwExceptionIfResponseUnsuccessful($exceptionMessage, $response) {
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
+            $responseContent = $response->getContent();
+            if (!empty($responseContent['message'])) {
+                $exceptionMessage .= ': ' . $responseContent['message'];
+            }
+            if (!empty($responseContent['code'])) {
+                $exceptionMessage .= ' (Code ' . $responseContent['code'] . ')';
+            }
+            throw new TwilioException($exceptionMessage, $response->getStatusCode());
+        }
     }
 }
