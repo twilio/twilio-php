@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Taskrouter\V1\Workspace;
+namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,50 +16,45 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string activityName
- * @property string activitySid
- * @property string attributes
- * @property string available
  * @property \DateTime dateCreated
- * @property \DateTime dateStatusChanged
  * @property \DateTime dateUpdated
- * @property string friendlyName
+ * @property string reservationStatus
  * @property string sid
+ * @property string taskSid
+ * @property string workerName
+ * @property string workerSid
  * @property string workspaceSid
  */
-class WorkerInstance extends InstanceResource {
-    protected $_statistics = null;
-    protected $_reservations = null;
-
+class ReservationInstance extends InstanceResource {
     /**
-     * Initialize the WorkerInstance
+     * Initialize the ReservationInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
+     * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationInstance 
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
         
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'activityName' => $payload['activity_name'],
-            'activitySid' => $payload['activity_sid'],
-            'attributes' => $payload['attributes'],
-            'available' => $payload['available'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateStatusChanged' => Deserialize::iso8601DateTime($payload['date_status_changed']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
+            'reservationStatus' => $payload['reservation_status'],
             'sid' => $payload['sid'],
+            'taskSid' => $payload['task_sid'],
+            'workerName' => $payload['worker_name'],
+            'workerSid' => $payload['worker_sid'],
             'workspaceSid' => $payload['workspace_sid'],
         );
         
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
+            'workerSid' => $workerSid,
             'sid' => $sid ?: $this->properties['sid'],
         );
     }
@@ -68,14 +63,14 @@ class WorkerInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext Context for this
-     *                                                            WorkerInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext Context for this ReservationInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new WorkerContext(
+            $this->context = new ReservationContext(
                 $this->version,
                 $this->solution['workspaceSid'],
+                $this->solution['workerSid'],
                 $this->solution['sid']
             );
         }
@@ -84,51 +79,24 @@ class WorkerInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkerInstance
+     * Fetch a ReservationInstance
      * 
-     * @return WorkerInstance Fetched WorkerInstance
+     * @return ReservationInstance Fetched ReservationInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the WorkerInstance
+     * Update the ReservationInstance
      * 
      * @param array $options Optional Arguments
-     * @return WorkerInstance Updated WorkerInstance
+     * @return ReservationInstance Updated ReservationInstance
      */
     public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
-    }
-
-    /**
-     * Deletes the WorkerInstance
-     * 
-     * @return boolean True if delete succeeds, false otherwise
-     */
-    public function delete() {
-        return $this->proxy()->delete();
-    }
-
-    /**
-     * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList 
-     */
-    protected function getStatistics() {
-        return $this->proxy()->statistics;
-    }
-
-    /**
-     * Access the reservations
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList 
-     */
-    protected function getReservations() {
-        return $this->proxy()->reservations;
     }
 
     /**
@@ -161,6 +129,6 @@ class WorkerInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Taskrouter.V1.WorkerInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.ReservationInstance ' . implode(' ', $context) . ']';
     }
 }

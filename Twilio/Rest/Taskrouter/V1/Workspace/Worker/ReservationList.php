@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Taskrouter\V1\Workspace\Task;
+namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\ListResource;
 use Twilio\Values;
@@ -19,19 +19,19 @@ class ReservationList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @param string $taskSid The task_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList 
+     * @param string $workerSid The worker_sid
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList 
      */
-    public function __construct(Version $version, $workspaceSid, $taskSid) {
+    public function __construct(Version $version, $workspaceSid, $workerSid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
-            'taskSid' => $taskSid,
+            'workerSid' => $workerSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks/' . $taskSid . '/Reservations';
+        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $workerSid . '/Reservations';
     }
 
     /**
@@ -119,13 +119,13 @@ class ReservationList extends ListResource {
      * Constructs a ReservationContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext 
      */
     public function getContext($sid) {
         return new ReservationContext(
             $this->version,
             $this->solution['workspaceSid'],
-            $this->solution['taskSid'],
+            $this->solution['workerSid'],
             $sid
         );
     }

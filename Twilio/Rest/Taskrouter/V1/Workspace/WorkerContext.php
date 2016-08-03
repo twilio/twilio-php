@@ -11,16 +11,20 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList reservations
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext statistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext reservations(string $sid)
  */
 class WorkerContext extends InstanceContext {
     protected $_statistics = null;
+    protected $_reservations = null;
 
     /**
      * Initialize the WorkerContext
@@ -118,6 +122,23 @@ class WorkerContext extends InstanceContext {
         }
         
         return $this->_statistics;
+    }
+
+    /**
+     * Access the reservations
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList 
+     */
+    protected function getReservations() {
+        if (!$this->_reservations) {
+            $this->_reservations = new ReservationList(
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_reservations;
     }
 
     /**

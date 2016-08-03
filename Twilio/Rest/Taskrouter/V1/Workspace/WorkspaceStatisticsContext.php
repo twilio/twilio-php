@@ -43,12 +43,8 @@ class WorkspaceStatisticsContext extends InstanceContext {
         
         $params = Values::of(array(
             'Minutes' => $options['minutes'],
-            'StartDate<' => $options['startdateBefore'],
             'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startdateAfter'],
-            'EndDate<' => $options['enddateBefore'],
             'EndDate' => $options['endDate'],
-            'EndDate>' => $options['enddateAfter'],
         ));
         
         $payload = $this->version->fetch(
