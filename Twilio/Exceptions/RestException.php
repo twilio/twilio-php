@@ -4,8 +4,6 @@
 namespace Twilio\Exceptions;
 
 
-use Exception;
-
 class RestException extends TwilioException {
     protected $statusCode;
 
@@ -15,12 +13,11 @@ class RestException extends TwilioException {
      * @param string $message [optional] The Exception message to throw.
      * @param int $code [optional] The Exception code.
      * @param int $statusCode [optional] The HTTP Status code.
-     * @param Exception $previous [optional] The previous exception used for the exception chaining. Since 5.3.0
      * @since 5.1.0
      */
-    public function __construct($message, $code, $statusCode, Exception $previous) {
+    public function __construct($message, $code, $statusCode) {
         $this->statusCode = $statusCode;
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, $code);
     }
 
     /**
