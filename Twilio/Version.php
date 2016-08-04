@@ -2,6 +2,7 @@
 
 namespace Twilio;
 
+use Twilio\Exceptions\RestException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
 
@@ -75,15 +76,15 @@ abstract class Version {
      * @return TwilioException
      */
     protected function exception($response, $header) {
-        $message = '[' . $response->getStatusCode() . '] ' . $header;
+        $message = '[HTTP ' . $response->getStatusCode() . '] ' . $header;
 
         $content = $response->getContent();
         if (is_array($content)) {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
             $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
-            return new TwilioException($message, $code);
+            return new RestException($message, $code, $response->getStatusCode());
         } else {
-            return new TwilioException($message, $response->getStatusCode());
+            return new RestException($message, $response->getStatusCode(), $response->getStatusCode());
         }
     }
 
