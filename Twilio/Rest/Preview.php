@@ -15,6 +15,12 @@ use Twilio\Rest\Preview\Wireless;
 
 /**
  * @property \Twilio\Rest\Preview\Wireless wireless
+ * @property \Twilio\Rest\Preview\Wireless\CommandList commands
+ * @property \Twilio\Rest\Preview\Wireless\DeviceList devices
+ * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
+ * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
+ * @method \Twilio\Rest\Preview\Wireless\DeviceContext devices(string $sid)
+ * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  */
 class Preview extends Domain {
     protected $_wireless = null;
@@ -50,8 +56,8 @@ class Preview extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         
@@ -67,33 +73,57 @@ class Preview extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
-        $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        $method = 'context' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        throw new TwilioException('Resource does not have a context');
+        throw new TwilioException('Unknown context ' . $name);
     }
 
     /**
      * @return \Twilio\Rest\Preview\Wireless\CommandList 
      */
-    public function commands() {
+    protected function getCommands() {
         return $this->wireless->commands;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Wireless\CommandContext 
+     */
+    protected function contextCommands($sid) {
+        return $this->wireless->commands($sid);
     }
 
     /**
      * @return \Twilio\Rest\Preview\Wireless\DeviceList 
      */
-    public function devices() {
+    protected function getDevices() {
         return $this->wireless->devices;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Wireless\DeviceContext 
+     */
+    protected function contextDevices($sid) {
+        return $this->wireless->devices($sid);
     }
 
     /**
      * @return \Twilio\Rest\Preview\Wireless\RatePlanList 
      */
-    public function ratePlans() {
+    protected function getRatePlans() {
         return $this->wireless->ratePlans;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanContext 
+     */
+    protected function contextRatePlans($sid) {
+        return $this->wireless->ratePlans($sid);
     }
 
     /**

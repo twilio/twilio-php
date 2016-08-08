@@ -15,6 +15,10 @@ use Twilio\Rest\Notifications\V1;
 
 /**
  * @property \Twilio\Rest\Notifications\V1 v1
+ * @property \Twilio\Rest\Notifications\V1\CredentialList credentials
+ * @property \Twilio\Rest\Notifications\V1\ServiceList services
+ * @method \Twilio\Rest\Notifications\V1\CredentialContext credentials(string $sid)
+ * @method \Twilio\Rest\Notifications\V1\ServiceContext services(string $sid)
  */
 class Notifications extends Domain {
     protected $_v1 = null;
@@ -50,8 +54,8 @@ class Notifications extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         
@@ -67,26 +71,42 @@ class Notifications extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
-        $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        $method = 'context' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        throw new TwilioException('Resource does not have a context');
+        throw new TwilioException('Unknown context ' . $name);
     }
 
     /**
      * @return \Twilio\Rest\Notifications\V1\CredentialList 
      */
-    public function credentials() {
+    protected function getCredentials() {
         return $this->v1->credentials;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Notifications\V1\CredentialContext 
+     */
+    protected function contextCredentials($sid) {
+        return $this->v1->credentials($sid);
     }
 
     /**
      * @return \Twilio\Rest\Notifications\V1\ServiceList 
      */
-    public function services() {
+    protected function getServices() {
         return $this->v1->services;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Notifications\V1\ServiceContext 
+     */
+    protected function contextServices($sid) {
+        return $this->v1->services($sid);
     }
 
     /**

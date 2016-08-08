@@ -15,6 +15,7 @@ use Twilio\Rest\Api\V2010;
 
 /**
  * @property \Twilio\Rest\Api\V2010 v2010
+ * @property \Twilio\Rest\Api\V2010\AccountList accounts
  * @property \Twilio\Rest\Api\V2010\AccountContext account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -57,6 +58,7 @@ use Twilio\Rest\Api\V2010;
  * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
  * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
+ * @method \Twilio\Rest\Api\V2010\AccountContext accounts(string $sid)
  */
 class Api extends Domain {
     protected $_v2010 = null;
@@ -117,8 +119,8 @@ class Api extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         
@@ -134,12 +136,12 @@ class Api extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
-        $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        $method = 'context' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        throw new TwilioException('Resource does not have a context');
+        throw new TwilioException('Unknown context ' . $name);
     }
 
     /**
@@ -153,8 +155,16 @@ class Api extends Domain {
     /**
      * @return \Twilio\Rest\Api\V2010\AccountList 
      */
-    public function accounts() {
+    protected function getAccounts() {
         return $this->v2010->accounts;
+    }
+
+    /**
+     * @param string $sid Fetch by unique Account Sid
+     * @return \Twilio\Rest\Api\V2010\AccountContext 
+     */
+    protected function contextAccounts($sid) {
+        return $this->v2010->accounts($sid);
     }
 
     /**

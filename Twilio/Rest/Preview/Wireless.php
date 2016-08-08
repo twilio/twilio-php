@@ -78,8 +78,8 @@ class Wireless extends Version {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         

@@ -15,6 +15,8 @@ use Twilio\Rest\Taskrouter\V1;
 
 /**
  * @property \Twilio\Rest\Taskrouter\V1 v1
+ * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList workspaces
+ * @method \Twilio\Rest\Taskrouter\V1\WorkspaceContext workspaces(string $sid)
  */
 class Taskrouter extends Domain {
     protected $_v1 = null;
@@ -50,8 +52,8 @@ class Taskrouter extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         
@@ -67,19 +69,27 @@ class Taskrouter extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
-        $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        $method = 'context' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        throw new TwilioException('Resource does not have a context');
+        throw new TwilioException('Unknown context ' . $name);
     }
 
     /**
      * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList 
      */
-    public function workspaces() {
+    protected function getWorkspaces() {
         return $this->v1->workspaces;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext 
+     */
+    protected function contextWorkspaces($sid) {
+        return $this->v1->workspaces($sid);
     }
 
     /**

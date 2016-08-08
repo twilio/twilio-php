@@ -15,6 +15,8 @@ use Twilio\Rest\Trunking\V1;
 
 /**
  * @property \Twilio\Rest\Trunking\V1 v1
+ * @property \Twilio\Rest\Trunking\V1\TrunkList trunks
+ * @method \Twilio\Rest\Trunking\V1\TrunkContext trunks(string $sid)
  */
 class Trunking extends Domain {
     protected $_v1 = null;
@@ -50,8 +52,8 @@ class Trunking extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         
@@ -67,19 +69,27 @@ class Trunking extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
-        $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        $method = 'context' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        throw new TwilioException('Resource does not have a context');
+        throw new TwilioException('Unknown context ' . $name);
     }
 
     /**
      * @return \Twilio\Rest\Trunking\V1\TrunkList 
      */
-    public function trunks() {
+    protected function getTrunks() {
         return $this->v1->trunks;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Trunking\V1\TrunkContext 
+     */
+    protected function contextTrunks($sid) {
+        return $this->v1->trunks($sid);
     }
 
     /**

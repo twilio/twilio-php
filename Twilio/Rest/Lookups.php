@@ -15,6 +15,8 @@ use Twilio\Rest\Lookups\V1;
 
 /**
  * @property \Twilio\Rest\Lookups\V1 v1
+ * @property \Twilio\Rest\Lookups\V1\PhoneNumberList phoneNumbers
+ * @method \Twilio\Rest\Lookups\V1\PhoneNumberContext phoneNumbers(string $phoneNumber)
  */
 class Lookups extends Domain {
     protected $_v1 = null;
@@ -50,8 +52,8 @@ class Lookups extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        $method = 'get' . ucfirst($name);
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
         
@@ -67,19 +69,27 @@ class Lookups extends Domain {
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
-        $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        $method = 'context' . ucfirst($name);
+        if (method_exists($this, $method)) {
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        throw new TwilioException('Resource does not have a context');
+        throw new TwilioException('Unknown context ' . $name);
     }
 
     /**
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberList 
      */
-    public function phoneNumbers() {
+    protected function getPhoneNumbers() {
         return $this->v1->phoneNumbers;
+    }
+
+    /**
+     * @param string $phoneNumber The phone_number
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
+     */
+    protected function contextPhoneNumbers($phoneNumber) {
+        return $this->v1->phoneNumbers($phoneNumber);
     }
 
     /**
