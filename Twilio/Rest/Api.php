@@ -62,31 +62,6 @@ use Twilio\Rest\Api\V2010;
  */
 class Api extends Domain {
     protected $_v2010 = null;
-    protected $_account = null;
-    protected $_addresses = null;
-    protected $_applications = null;
-    protected $_authorizedConnectApps = null;
-    protected $_availablePhoneNumbers = null;
-    protected $_calls = null;
-    protected $_conferences = null;
-    protected $_connectApps = null;
-    protected $_incomingPhoneNumbers = null;
-    protected $_keys = null;
-    protected $_messages = null;
-    protected $_newKeys = null;
-    protected $_newSigningKeys = null;
-    protected $_notifications = null;
-    protected $_outgoingCallerIds = null;
-    protected $_queues = null;
-    protected $_recordings = null;
-    protected $_sandbox = null;
-    protected $_signingKeys = null;
-    protected $_sip = null;
-    protected $_sms = null;
-    protected $_tokens = null;
-    protected $_transcriptions = null;
-    protected $_usage = null;
-    protected $_validationRequests = null;
 
     /**
      * Construct the Api Domain
@@ -148,7 +123,7 @@ class Api extends Domain {
      * @return \Twilio\Rest\Api\V2010\AccountContext Account provided as the
      *                                               authenticating account
      */
-    public function account() {
+    protected function getAccount() {
         return $this->v2010->account;
     }
 
