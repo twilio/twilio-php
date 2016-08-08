@@ -21,7 +21,10 @@ class Values implements \ArrayAccess {
     }
 
     public function __construct($options) {
-        $this->options = $options;
+        $this->options = array();
+        foreach ($options as $key => $value) {
+            $this->options[strtolower($key)] = $value;
+        }
     }
 
     /**
@@ -50,6 +53,7 @@ class Values implements \ArrayAccess {
      * @return mixed Can return all value types.
      */
     public function offsetGet($offset) {
+        $offset = strtolower($offset);
         return array_key_exists($offset, $this->options) ? $this->options[$offset] : self::NONE;
     }
 
@@ -66,7 +70,7 @@ class Values implements \ArrayAccess {
      * @return void
      */
     public function offsetSet($offset, $value) {
-        $this->options[$offset] = $value;
+        $this->options[strtolower($offset)] = $value;
     }
 
     /**
