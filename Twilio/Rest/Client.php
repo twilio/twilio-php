@@ -27,6 +27,8 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
+ * @property \Twilio\Rest\Api\V2010\AccountInstance account
+ * @property \Twilio\Rest\Api\V2010\AccountList accounts
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
@@ -50,6 +52,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
  * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
  * @property \Twilio\Rest\Api\V2010\Account\ValidationRequestList validationRequests
+ * @method \Twilio\Rest\Api\V2010\AccountContext accounts(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\AddressContext addresses(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\ApplicationContext applications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext authorizedConnectApps(string $connectAppSid)
