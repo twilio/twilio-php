@@ -86,13 +86,6 @@ class Pricing extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Pricing\V1\MessagingContext 
-     */
-    protected function contextMessaging() {
-        return $this->v1->messaging();
-    }
-
-    /**
      * @return \Twilio\Rest\Pricing\V1\PhoneNumberList 
      */
     protected function getPhoneNumbers() {
@@ -100,24 +93,10 @@ class Pricing extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumberContext 
-     */
-    protected function contextPhoneNumbers() {
-        return $this->v1->phoneNumbers();
-    }
-
-    /**
      * @return \Twilio\Rest\Pricing\V1\VoiceList 
      */
     protected function getVoice() {
         return $this->v1->voice;
-    }
-
-    /**
-     * @return \Twilio\Rest\Pricing\V1\VoiceContext 
-     */
-    protected function contextVoice() {
-        return $this->v1->voice();
     }
 
     /**
