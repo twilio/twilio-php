@@ -231,6 +231,14 @@ class Client {
     }
 
     /**
+     * @param string $sid Fetch by unique Account Sid
+     * @return \Twilio\Rest\Api\V2010\AccountContext 
+     */
+    protected function contextAccounts($sid) {
+        return $this->api->v2010->accounts($sid);
+    }
+
+    /**
      * @return \Twilio\Rest\Api\V2010\Account\AddressList 
      */
     protected function getAddresses() {
@@ -388,24 +396,10 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\NewKeyContext 
-     */
-    protected function contextNewKeys() {
-        return $this->api->v2010->account->newKeys();
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
      */
     protected function getNewSigningKeys() {
         return $this->api->v2010->account->newSigningKeys;
-    }
-
-    /**
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyContext 
-     */
-    protected function contextNewSigningKeys() {
-        return $this->api->v2010->account->newSigningKeys();
     }
 
     /**
@@ -490,13 +484,6 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SipContext 
-     */
-    protected function contextSip() {
-        return $this->api->v2010->account->sip();
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\SmsList 
      */
     protected function getSms() {
@@ -504,24 +491,10 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SmsContext 
-     */
-    protected function contextSms() {
-        return $this->api->v2010->account->sms();
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\TokenList 
      */
     protected function getTokens() {
         return $this->api->v2010->account->tokens;
-    }
-
-    /**
-     * @return \Twilio\Rest\Api\V2010\Account\TokenContext 
-     */
-    protected function contextTokens() {
-        return $this->api->v2010->account->tokens();
     }
 
     /**
@@ -547,24 +520,10 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\UsageContext 
-     */
-    protected function contextUsage() {
-        return $this->api->v2010->account->usage();
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
      */
     protected function getValidationRequests() {
         return $this->api->v2010->account->validationRequests;
-    }
-
-    /**
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestContext 
-     */
-    protected function contextValidationRequests() {
-        return $this->api->v2010->account->validationRequests();
     }
 
     /**
