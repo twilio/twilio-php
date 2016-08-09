@@ -49,6 +49,20 @@ abstract class Services_Twilio_InstanceResource extends Services_Twilio_Resource
     }
 
     /**
+     * Force an HTTP request to the API and update the instance based off the
+     * response.  This method will perform the HTTP Request even if the instance
+     * has already been loaded, any changed attributes will be refreshed from
+     * the API.
+     *
+     * :return: Nothing, updates internal state
+     * :rtype: null
+     */
+    public function synchronize() {
+        $params = $this->client->retrieveData($this->uri);
+        $this->updateAttributes($params);
+    }
+
+    /**
      * Get the value of a property on this resource.
      *
      * Instead of defining all of the properties of an object directly, we rely
@@ -76,8 +90,7 @@ abstract class Services_Twilio_InstanceResource extends Services_Twilio_Resource
             return $subresource;
         }
         if (!isset($this->$key)) {
-            $params = $this->client->retrieveData($this->uri);
-            $this->updateAttributes($params);
+            $this->synchronize();
         }
         return $this->$key;
     }
