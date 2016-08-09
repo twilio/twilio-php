@@ -62,7 +62,9 @@ class Services_Twilio_TinyHttp {
     foreach ($req_headers as $k => $v) $opts[CURLOPT_HTTPHEADER][] = "$k: $v";
     if ($this->port) $opts[CURLOPT_PORT] = $this->port;
     if ($this->debug) $opts[CURLINFO_HEADER_OUT] = TRUE;
-    if ($this->user && $this->pass) $opts[CURLOPT_USERPWD] = "$this->user:$this->pass";
+    if ($this->user && $this->pass) {
+      $opts[CURLOPT_USERPWD] = strpos($this->pass, ':')?$this->pass:"$this->user:$this->pass";
+    }
     switch ($name) {
     case 'get':
       $opts[CURLOPT_HTTPGET] = TRUE;
