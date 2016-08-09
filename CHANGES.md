@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+Version 4.11.0
+--------------
+Released August 9, 2016
+
+- Add `synchronize` method to InstanceResoure
+
 Version 4.10.0
 -------------
 Released January 28, 2016
