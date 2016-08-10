@@ -102,7 +102,7 @@ class Services_Twilio_Twiml {
          */
         $decoded = html_entity_decode($noun, ENT_COMPAT, 'UTF-8');
         $normalized = htmlspecialchars($decoded, ENT_COMPAT, 'UTF-8', false);
-        $child = empty($noun)
+        $child = (empty($noun) && !(is_string($noun) && strlen($noun) > 0))
             ? $this->element->addChild(ucfirst($verb))
             : $this->element->addChild(ucfirst($verb), $normalized);
         foreach ($attrs as $name => $value) {
