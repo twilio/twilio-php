@@ -1,5 +1,5 @@
 export GIT_INDEX_FILE=$PWD/.git/index-deploy
-export GIT_WORK_TREE=$PWD/docs
+export GIT_WORK_TREE=$PWD/docs/api
 REF=refs/heads/gh-pages
 git read-tree "$REF"
 git add --all --intent-to-add
