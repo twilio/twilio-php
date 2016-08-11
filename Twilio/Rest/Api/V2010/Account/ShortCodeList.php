@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
 use Twilio\Values;
@@ -18,9 +18,8 @@ class ShortCodeList extends ListResource {
      * Construct the ShortCodeList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid A 34 character string that uniquely identifies
-     *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeList 
+     * @param string $accountSid The unique sid that identifies this account
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -119,7 +118,7 @@ class ShortCodeList extends ListResource {
      * Constructs a ShortCodeContext
      * 
      * @param string $sid Fetch by unique short-code Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
      */
     public function getContext($sid) {
         return new ShortCodeContext(

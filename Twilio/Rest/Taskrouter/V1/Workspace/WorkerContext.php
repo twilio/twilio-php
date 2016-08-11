@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList;
+use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
@@ -19,12 +20,15 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList statistics
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList reservations
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList workerChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext statistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext reservations(string $sid)
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext workerChannels(string $sid)
  */
 class WorkerContext extends InstanceContext {
     protected $_statistics = null;
     protected $_reservations = null;
+    protected $_workerChannels = null;
 
     /**
      * Initialize the WorkerContext
@@ -139,6 +143,23 @@ class WorkerContext extends InstanceContext {
         }
         
         return $this->_reservations;
+    }
+
+    /**
+     * Access the workerChannels
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList 
+     */
+    protected function getWorkerChannels() {
+        if (!$this->_workerChannels) {
+            $this->_workerChannels = new WorkerChannelList(
+                $this->version,
+                $this->solution['workspaceSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_workerChannels;
     }
 
     /**

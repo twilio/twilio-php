@@ -44,10 +44,10 @@ class MessageList extends ListResource {
         
         $data = Values::of(array(
             'To' => $to,
-            'Body' => $options['body'],
-            'MediaUrl' => $options['mediaUrl'],
             'From' => $options['from'],
             'MessagingServiceSid' => $options['messagingServiceSid'],
+            'Body' => $options['body'],
+            'MediaUrl' => $options['mediaUrl'],
             'StatusCallback' => $options['statusCallback'],
             'ApplicationSid' => $options['applicationSid'],
             'MaxPrice' => $options['maxPrice'],

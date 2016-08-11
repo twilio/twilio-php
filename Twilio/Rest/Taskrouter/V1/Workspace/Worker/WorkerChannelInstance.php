@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,54 +16,55 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string apiVersion
- * @property string body
+ * @property string assignedTasks
+ * @property string available
+ * @property string availableCapacityPercentage
+ * @property string configuredCapacity
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property \DateTime dateSent
- * @property string direction
- * @property string from
- * @property string price
- * @property string priceUnit
  * @property string sid
- * @property string status
- * @property string to
- * @property string uri
+ * @property string taskChannelSid
+ * @property string taskChannelUniqueName
+ * @property string workerSid
+ * @property string workspaceSid
+ * @property string links
+ * @property string url
  */
-class SmsMessageInstance extends InstanceResource {
+class WorkerChannelInstance extends InstanceResource {
     /**
-     * Initialize the SmsMessageInstance
+     * Initialize the WorkerChannelInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid A 34 character string that uniquely identifies
-     *                           this resource.
+     * @param string $workspaceSid The workspace_sid
+     * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance 
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
         
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'body' => $payload['body'],
+            'assignedTasks' => $payload['assigned_tasks'],
+            'available' => $payload['available'],
+            'availableCapacityPercentage' => $payload['available_capacity_percentage'],
+            'configuredCapacity' => $payload['configured_capacity'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'dateSent' => Deserialize::iso8601DateTime($payload['date_sent']),
-            'direction' => $payload['direction'],
-            'from' => $payload['from'],
-            'price' => $payload['price'],
-            'priceUnit' => $payload['price_unit'],
             'sid' => $payload['sid'],
-            'status' => $payload['status'],
-            'to' => $payload['to'],
-            'uri' => $payload['uri'],
+            'taskChannelSid' => $payload['task_channel_sid'],
+            'taskChannelUniqueName' => $payload['task_channel_unique_name'],
+            'workerSid' => $payload['worker_sid'],
+            'workspaceSid' => $payload['workspace_sid'],
+            'links' => $payload['links'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(
-            'accountSid' => $accountSid,
+            'workspaceSid' => $workspaceSid,
+            'workerSid' => $workerSid,
             'sid' => $sid ?: $this->properties['sid'],
         );
     }
@@ -72,15 +73,14 @@ class SmsMessageInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageContext Context for
-     *                                                              this
-     *                                                              SmsMessageInstance
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext Context for this WorkerChannelInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new SmsMessageContext(
+            $this->context = new WorkerChannelContext(
                 $this->version,
-                $this->solution['accountSid'],
+                $this->solution['workspaceSid'],
+                $this->solution['workerSid'],
                 $this->solution['sid']
             );
         }
@@ -89,28 +89,19 @@ class SmsMessageInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the SmsMessageInstance
+     * Fetch a WorkerChannelInstance
      * 
-     * @return boolean True if delete succeeds, false otherwise
-     */
-    public function delete() {
-        return $this->proxy()->delete();
-    }
-
-    /**
-     * Fetch a SmsMessageInstance
-     * 
-     * @return SmsMessageInstance Fetched SmsMessageInstance
+     * @return WorkerChannelInstance Fetched WorkerChannelInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the SmsMessageInstance
+     * Update the WorkerChannelInstance
      * 
      * @param array $options Optional Arguments
-     * @return SmsMessageInstance Updated SmsMessageInstance
+     * @return WorkerChannelInstance Updated WorkerChannelInstance
      */
     public function update(array $options = array()) {
         return $this->proxy()->update(
@@ -148,6 +139,6 @@ class SmsMessageInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.SmsMessageInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.WorkerChannelInstance ' . implode(' ', $context) . ']';
     }
 }

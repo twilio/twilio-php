@@ -13,13 +13,13 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class TaskList extends ListResource {
+class TaskChannelList extends ListResource {
     /**
-     * Construct the TaskList
+     * Construct the TaskChannelList
      * 
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList 
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -29,18 +29,17 @@ class TaskList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks';
+        $this->uri = '/Workspaces/' . $workspaceSid . '/TaskChannels';
     }
 
     /**
-     * Streams TaskInstance records from the API as a generator stream.
+     * Streams TaskChannelInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
-     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -54,20 +53,19 @@ class TaskList extends ListResource {
      *                        1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream(array $options = array(), $limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads TaskInstance records from the API as a list.
+     * Reads TaskChannelInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
-     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -79,32 +77,23 @@ class TaskList extends ListResource {
      *                        the
      *                        limit with the most efficient page size, i.e.
      *                        min(limit, 1000)
-     * @return TaskInstance[] Array of results
+     * @return TaskChannelInstance[] Array of results
      */
-    public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read($limit = null, $pageSize = Values::NONE) {
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of TaskInstance records from the API.
+     * Retrieve a single page of TaskChannelInstance records from the API.
      * Request is executed immediately
      * 
-     * @param array $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of TaskInstance
+     * @return \Twilio\Page Page of TaskChannelInstance
      */
-    public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $options = new Values($options);
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
-            'Priority' => $options['priority'],
-            'AssignmentStatus' => $options['assignmentStatus'],
-            'WorkflowSid' => $options['workflowSid'],
-            'WorkflowName' => $options['workflowName'],
-            'TaskQueueSid' => $options['taskQueueSid'],
-            'TaskQueueName' => $options['taskQueueName'],
-            'TaskChannel' => $options['taskChannel'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -116,50 +105,17 @@ class TaskList extends ListResource {
             $params
         );
         
-        return new TaskPage($this->version, $response, $this->solution);
+        return new TaskChannelPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create a new TaskInstance
-     * 
-     * @param string $attributes The attributes
-     * @param string $workflowSid The workflow_sid
-     * @param array $options Optional Arguments
-     * @return TaskInstance Newly created TaskInstance
-     */
-    public function create($attributes, $workflowSid, array $options = array()) {
-        $options = new Values($options);
-        
-        $data = Values::of(array(
-            'Attributes' => $attributes,
-            'WorkflowSid' => $workflowSid,
-            'Timeout' => $options['timeout'],
-            'Priority' => $options['priority'],
-            'TaskChannel' => $options['taskChannel'],
-        ));
-        
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-        
-        return new TaskInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
-    }
-
-    /**
-     * Constructs a TaskContext
+     * Constructs a TaskChannelContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext 
      */
     public function getContext($sid) {
-        return new TaskContext(
+        return new TaskChannelContext(
             $this->version,
             $this->solution['workspaceSid'],
             $sid
@@ -172,6 +128,6 @@ class TaskList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Taskrouter.V1.TaskList]';
+        return '[Twilio.Taskrouter.V1.TaskChannelList]';
     }
 }

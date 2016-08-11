@@ -7,37 +7,39 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class ShortCodeContext extends InstanceContext {
+class WorkerChannelContext extends InstanceContext {
     /**
-     * Initialize the ShortCodeContext
+     * Initialize the WorkerChannelContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique short-code Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\ShortCodeContext 
+     * @param string $workspaceSid The workspace_sid
+     * @param string $workerSid The worker_sid
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext 
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $workspaceSid, $workerSid, $sid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
+            'workspaceSid' => $workspaceSid,
+            'workerSid' => $workerSid,
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SMS/ShortCodes/' . $sid . '.json';
+        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $workerSid . '/Channels/' . $sid . '';
     }
 
     /**
-     * Fetch a ShortCodeInstance
+     * Fetch a WorkerChannelInstance
      * 
-     * @return ShortCodeInstance Fetched ShortCodeInstance
+     * @return WorkerChannelInstance Fetched WorkerChannelInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -48,30 +50,27 @@ class ShortCodeContext extends InstanceContext {
             $params
         );
         
-        return new ShortCodeInstance(
+        return new WorkerChannelInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['workspaceSid'],
+            $this->solution['workerSid'],
             $this->solution['sid']
         );
     }
 
     /**
-     * Update the ShortCodeInstance
+     * Update the WorkerChannelInstance
      * 
      * @param array $options Optional Arguments
-     * @return ShortCodeInstance Updated ShortCodeInstance
+     * @return WorkerChannelInstance Updated WorkerChannelInstance
      */
     public function update(array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
-            'ApiVersion' => $options['apiVersion'],
-            'SmsUrl' => $options['smsUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'SmsFallbackUrl' => $options['smsFallbackUrl'],
-            'SmsFallbackMethod' => $options['smsFallbackMethod'],
+            'Capacity' => $options['capacity'],
+            'Available' => $options['available'],
         ));
         
         $payload = $this->version->update(
@@ -81,10 +80,11 @@ class ShortCodeContext extends InstanceContext {
             $data
         );
         
-        return new ShortCodeInstance(
+        return new WorkerChannelInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
+            $this->solution['workspaceSid'],
+            $this->solution['workerSid'],
             $this->solution['sid']
         );
     }
@@ -99,6 +99,6 @@ class ShortCodeContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ShortCodeContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.WorkerChannelContext ' . implode(' ', $context) . ']';
     }
 }

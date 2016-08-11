@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Page;
 
-class SmsMessagePage extends Page {
+class ShortCodePage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,7 +20,7 @@ class SmsMessagePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SmsMessageInstance(
+        return new ShortCodeInstance(
             $this->version,
             $payload,
             $this->solution['accountSid']
@@ -33,6 +33,6 @@ class SmsMessagePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.SmsMessagePage]';
+        return '[Twilio.Api.V2010.ShortCodePage]';
     }
 }

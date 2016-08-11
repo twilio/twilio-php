@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\Page;
 
-class ShortCodePage extends Page {
+class WorkerChannelPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,10 +20,11 @@ class ShortCodePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ShortCodeInstance(
+        return new WorkerChannelInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid']
+            $this->solution['workspaceSid'],
+            $this->solution['workerSid']
         );
     }
 
@@ -33,6 +34,6 @@ class ShortCodePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.ShortCodePage]';
+        return '[Twilio.Taskrouter.V1.WorkerChannelPage]';
     }
 }

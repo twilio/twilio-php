@@ -34,6 +34,7 @@ class WorkspaceInstance extends InstanceResource {
     protected $_workers = null;
     protected $_workflows = null;
     protected $_statistics = null;
+    protected $_taskChannels = null;
 
     /**
      * Initialize the WorkspaceInstance
@@ -174,6 +175,15 @@ class WorkspaceInstance extends InstanceResource {
      */
     protected function getStatistics() {
         return $this->proxy()->statistics;
+    }
+
+    /**
+     * Access the taskChannels
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList 
+     */
+    protected function getTaskChannels() {
+        return $this->proxy()->taskChannels;
     }
 
     /**

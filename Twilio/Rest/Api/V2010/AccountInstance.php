@@ -46,7 +46,7 @@ class AccountInstance extends InstanceResource {
     protected $_sandbox = null;
     protected $_signingKeys = null;
     protected $_sip = null;
-    protected $_sms = null;
+    protected $_shortCodes = null;
     protected $_tokens = null;
     protected $_transcriptions = null;
     protected $_usage = null;
@@ -293,12 +293,12 @@ class AccountInstance extends InstanceResource {
     }
 
     /**
-     * Access the sms
+     * Access the shortCodes
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
      */
-    protected function getSms() {
-        return $this->proxy()->sms;
+    protected function getShortCodes() {
+        return $this->proxy()->shortCodes;
     }
 
     /**

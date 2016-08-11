@@ -28,9 +28,9 @@ use Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList;
 use Twilio\Rest\Api\V2010\Account\QueueList;
 use Twilio\Rest\Api\V2010\Account\RecordingList;
 use Twilio\Rest\Api\V2010\Account\SandboxList;
+use Twilio\Rest\Api\V2010\Account\ShortCodeList;
 use Twilio\Rest\Api\V2010\Account\SigningKeyList;
 use Twilio\Rest\Api\V2010\Account\SipList;
-use Twilio\Rest\Api\V2010\Account\SmsList;
 use Twilio\Rest\Api\V2010\Account\TokenList;
 use Twilio\Rest\Api\V2010\Account\TranscriptionList;
 use Twilio\Rest\Api\V2010\Account\UsageList;
@@ -58,7 +58,7 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
  * @property \Twilio\Rest\Api\V2010\Account\SigningKeyList signingKeys
  * @property \Twilio\Rest\Api\V2010\Account\SipList sip
- * @property \Twilio\Rest\Api\V2010\Account\SmsList sms
+ * @property \Twilio\Rest\Api\V2010\Account\ShortCodeList shortCodes
  * @property \Twilio\Rest\Api\V2010\Account\TokenList tokens
  * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
  * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
@@ -79,6 +79,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
  * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
  */
 class AccountContext extends InstanceContext {
@@ -101,7 +102,7 @@ class AccountContext extends InstanceContext {
     protected $_sandbox = null;
     protected $_signingKeys = null;
     protected $_sip = null;
-    protected $_sms = null;
+    protected $_shortCodes = null;
     protected $_tokens = null;
     protected $_transcriptions = null;
     protected $_usage = null;
@@ -479,19 +480,19 @@ class AccountContext extends InstanceContext {
     }
 
     /**
-     * Access the sms
+     * Access the shortCodes
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
      */
-    protected function getSms() {
-        if (!$this->_sms) {
-            $this->_sms = new SmsList(
+    protected function getShortCodes() {
+        if (!$this->_shortCodes) {
+            $this->_shortCodes = new ShortCodeList(
                 $this->version,
                 $this->solution['sid']
             );
         }
         
-        return $this->_sms;
+        return $this->_shortCodes;
     }
 
     /**

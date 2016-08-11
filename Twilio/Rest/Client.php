@@ -47,7 +47,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
  * @property \Twilio\Rest\Api\V2010\Account\SigningKeyList signingKeys
  * @property \Twilio\Rest\Api\V2010\Account\SipList sip
- * @property \Twilio\Rest\Api\V2010\Account\SmsList sms
+ * @property \Twilio\Rest\Api\V2010\Account\ShortCodeList shortCodes
  * @property \Twilio\Rest\Api\V2010\Account\TokenList tokens
  * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
  * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
@@ -68,6 +68,7 @@ use Twilio\VersionInfo;
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
  * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
  */
 class Client {
@@ -487,10 +488,18 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
      */
-    protected function getSms() {
-        return $this->api->v2010->account->sms;
+    protected function getShortCodes() {
+        return $this->api->v2010->account->shortCodes;
+    }
+
+    /**
+     * @param string $sid Fetch by unique short-code Sid
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
+     */
+    protected function contextShortCodes($sid) {
+        return $this->api->v2010->account->shortCodes($sid);
     }
 
     /**

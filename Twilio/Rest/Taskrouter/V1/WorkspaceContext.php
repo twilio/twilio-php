@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Taskrouter\V1\Workspace\ActivityList;
 use Twilio\Rest\Taskrouter\V1\Workspace\EventList;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkerList;
@@ -29,6 +30,7 @@ use Twilio\Version;
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList workers
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList workflows
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList taskChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext tasks(string $sid)
@@ -36,6 +38,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext workers(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext workflows(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext statistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext taskChannels(string $sid)
  */
 class WorkspaceContext extends InstanceContext {
     protected $_activities = null;
@@ -45,6 +48,7 @@ class WorkspaceContext extends InstanceContext {
     protected $_workers = null;
     protected $_workflows = null;
     protected $_statistics = null;
+    protected $_taskChannels = null;
 
     /**
      * Initialize the WorkspaceContext
@@ -234,6 +238,22 @@ class WorkspaceContext extends InstanceContext {
         }
         
         return $this->_statistics;
+    }
+
+    /**
+     * Access the taskChannels
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList 
+     */
+    protected function getTaskChannels() {
+        if (!$this->_taskChannels) {
+            $this->_taskChannels = new TaskChannelList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_taskChannels;
     }
 
     /**

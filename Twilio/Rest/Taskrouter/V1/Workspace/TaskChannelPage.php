@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\Page;
 
-class SmsPage extends Page {
+class TaskChannelPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,10 +20,10 @@ class SmsPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SmsInstance(
+        return new TaskChannelInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid']
+            $this->solution['workspaceSid']
         );
     }
 
@@ -33,6 +33,6 @@ class SmsPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.SmsPage]';
+        return '[Twilio.Taskrouter.V1.TaskChannelPage]';
     }
 }

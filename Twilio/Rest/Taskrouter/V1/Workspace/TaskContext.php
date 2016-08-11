@@ -78,6 +78,7 @@ class TaskContext extends InstanceContext {
             'AssignmentStatus' => $options['assignmentStatus'],
             'Reason' => $options['reason'],
             'Priority' => $options['priority'],
+            'TaskChannel' => $options['taskChannel'],
         ));
         
         $payload = $this->version->update(

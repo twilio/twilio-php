@@ -25,6 +25,8 @@ use Twilio\Version;
  * @property string reason
  * @property string sid
  * @property string taskQueueSid
+ * @property string taskChannelSid
+ * @property string taskChannelUniqueName
  * @property string timeout
  * @property string workflowSid
  * @property string workspaceSid
@@ -56,6 +58,8 @@ class TaskInstance extends InstanceResource {
             'reason' => $payload['reason'],
             'sid' => $payload['sid'],
             'taskQueueSid' => $payload['task_queue_sid'],
+            'taskChannelSid' => $payload['task_channel_sid'],
+            'taskChannelUniqueName' => $payload['task_channel_unique_name'],
             'timeout' => $payload['timeout'],
             'workflowSid' => $payload['workflow_sid'],
             'workspaceSid' => $payload['workspace_sid'],

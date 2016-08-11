@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Taskrouter\V1\Workspace;
+namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,51 +16,49 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string activityName
- * @property string activitySid
- * @property string attributes
- * @property string available
+ * @property string apiVersion
  * @property \DateTime dateCreated
- * @property \DateTime dateStatusChanged
  * @property \DateTime dateUpdated
  * @property string friendlyName
+ * @property string shortCode
  * @property string sid
- * @property string workspaceSid
+ * @property string smsFallbackMethod
+ * @property string smsFallbackUrl
+ * @property string smsMethod
+ * @property string smsUrl
+ * @property string uri
  */
-class WorkerInstance extends InstanceResource {
-    protected $_statistics = null;
-    protected $_reservations = null;
-    protected $_workerChannels = null;
-
+class ShortCodeInstance extends InstanceResource {
     /**
-     * Initialize the WorkerInstance
+     * Initialize the ShortCodeInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerInstance 
+     * @param string $accountSid The unique sid that identifies this account
+     * @param string $sid Fetch by unique short-code Sid
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeInstance 
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
         
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'activityName' => $payload['activity_name'],
-            'activitySid' => $payload['activity_sid'],
-            'attributes' => $payload['attributes'],
-            'available' => $payload['available'],
+            'apiVersion' => $payload['api_version'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateStatusChanged' => Deserialize::iso8601DateTime($payload['date_status_changed']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
+            'shortCode' => $payload['short_code'],
             'sid' => $payload['sid'],
-            'workspaceSid' => $payload['workspace_sid'],
+            'smsFallbackMethod' => $payload['sms_fallback_method'],
+            'smsFallbackUrl' => $payload['sms_fallback_url'],
+            'smsMethod' => $payload['sms_method'],
+            'smsUrl' => $payload['sms_url'],
+            'uri' => $payload['uri'],
         );
         
         $this->solution = array(
-            'workspaceSid' => $workspaceSid,
+            'accountSid' => $accountSid,
             'sid' => $sid ?: $this->properties['sid'],
         );
     }
@@ -69,14 +67,14 @@ class WorkerInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext Context for this
-     *                                                            WorkerInstance
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext Context for this
+     *                                                         ShortCodeInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new WorkerContext(
+            $this->context = new ShortCodeContext(
                 $this->version,
-                $this->solution['workspaceSid'],
+                $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
@@ -85,60 +83,24 @@ class WorkerInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a WorkerInstance
+     * Fetch a ShortCodeInstance
      * 
-     * @return WorkerInstance Fetched WorkerInstance
+     * @return ShortCodeInstance Fetched ShortCodeInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the WorkerInstance
+     * Update the ShortCodeInstance
      * 
      * @param array $options Optional Arguments
-     * @return WorkerInstance Updated WorkerInstance
+     * @return ShortCodeInstance Updated ShortCodeInstance
      */
     public function update(array $options = array()) {
         return $this->proxy()->update(
             $options
         );
-    }
-
-    /**
-     * Deletes the WorkerInstance
-     * 
-     * @return boolean True if delete succeeds, false otherwise
-     */
-    public function delete() {
-        return $this->proxy()->delete();
-    }
-
-    /**
-     * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList 
-     */
-    protected function getStatistics() {
-        return $this->proxy()->statistics;
-    }
-
-    /**
-     * Access the reservations
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList 
-     */
-    protected function getReservations() {
-        return $this->proxy()->reservations;
-    }
-
-    /**
-     * Access the workerChannels
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList 
-     */
-    protected function getWorkerChannels() {
-        return $this->proxy()->workerChannels;
     }
 
     /**
@@ -171,6 +133,6 @@ class WorkerInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Taskrouter.V1.WorkerInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.ShortCodeInstance ' . implode(' ', $context) . ']';
     }
 }

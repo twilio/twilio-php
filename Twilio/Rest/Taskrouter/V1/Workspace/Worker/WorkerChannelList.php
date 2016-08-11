@@ -7,75 +7,41 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class SmsMessageList extends ListResource {
+class WorkerChannelList extends ListResource {
     /**
-     * Construct the SmsMessageList
+     * Construct the WorkerChannelList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid A 34 character string that uniquely identifies
-     *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageList 
+     * @param string $workspaceSid The workspace_sid
+     * @param string $workerSid The worker_sid
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList 
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, $workspaceSid, $workerSid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
+            'workspaceSid' => $workspaceSid,
+            'workerSid' => $workerSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SMS/Messages.json';
+        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $workerSid . '/Channels';
     }
 
     /**
-     * Create a new SmsMessageInstance
-     * 
-     * @param string $to The to
-     * @param string $from The from
-     * @param array $options Optional Arguments
-     * @return SmsMessageInstance Newly created SmsMessageInstance
-     */
-    public function create($to, $from, array $options = array()) {
-        $options = new Values($options);
-        
-        $data = Values::of(array(
-            'To' => $to,
-            'From' => $from,
-            'Body' => $options['body'],
-            'MediaUrl' => $options['mediaUrl'],
-            'StatusCallback' => $options['statusCallback'],
-            'ApplicationSid' => $options['applicationSid'],
-        ));
-        
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-        
-        return new SmsMessageInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
-    }
-
-    /**
-     * Streams SmsMessageInstance records from the API as a generator stream.
+     * Streams WorkerChannelInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
-     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -89,20 +55,19 @@ class SmsMessageList extends ListResource {
      *                        1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream(array $options = array(), $limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads SmsMessageInstance records from the API as a list.
+     * Reads WorkerChannelInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
-     * @param array $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -114,30 +79,23 @@ class SmsMessageList extends ListResource {
      *                        the
      *                        limit with the most efficient page size, i.e.
      *                        min(limit, 1000)
-     * @return SmsMessageInstance[] Array of results
+     * @return WorkerChannelInstance[] Array of results
      */
-    public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read($limit = null, $pageSize = Values::NONE) {
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of SmsMessageInstance records from the API.
+     * Retrieve a single page of WorkerChannelInstance records from the API.
      * Request is executed immediately
      * 
-     * @param array $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of SmsMessageInstance
+     * @return \Twilio\Page Page of WorkerChannelInstance
      */
-    public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $options = new Values($options);
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
-            'To' => $options['to'],
-            'From' => $options['from'],
-            'DateSent<' => $options['datesentBefore'],
-            'DateSent' => $options['dateSent'],
-            'DateSent>' => $options['datesentAfter'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -149,19 +107,20 @@ class SmsMessageList extends ListResource {
             $params
         );
         
-        return new SmsMessagePage($this->version, $response, $this->solution);
+        return new WorkerChannelPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a SmsMessageContext
+     * Constructs a WorkerChannelContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext 
      */
     public function getContext($sid) {
-        return new SmsMessageContext(
+        return new WorkerChannelContext(
             $this->version,
-            $this->solution['accountSid'],
+            $this->solution['workspaceSid'],
+            $this->solution['workerSid'],
             $sid
         );
     }
@@ -172,6 +131,6 @@ class SmsMessageList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.SmsMessageList]';
+        return '[Twilio.Taskrouter.V1.WorkerChannelList]';
     }
 }

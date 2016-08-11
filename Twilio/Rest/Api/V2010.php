@@ -39,7 +39,7 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
  * @property \Twilio\Rest\Api\V2010\Account\SigningKeyList signingKeys
  * @property \Twilio\Rest\Api\V2010\Account\SipList sip
- * @property \Twilio\Rest\Api\V2010\Account\SmsList sms
+ * @property \Twilio\Rest\Api\V2010\Account\ShortCodeList shortCodes
  * @property \Twilio\Rest\Api\V2010\Account\TokenList tokens
  * @property \Twilio\Rest\Api\V2010\Account\TranscriptionList transcriptions
  * @property \Twilio\Rest\Api\V2010\Account\UsageList usage
@@ -60,6 +60,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
  * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
  */
 class V2010 extends Version {
@@ -84,7 +85,7 @@ class V2010 extends Version {
     protected $_sandbox = null;
     protected $_signingKeys = null;
     protected $_sip = null;
-    protected $_sms = null;
+    protected $_shortCodes = null;
     protected $_tokens = null;
     protected $_transcriptions = null;
     protected $_usage = null;
@@ -269,10 +270,10 @@ class V2010 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SmsList 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
      */
-    protected function getSms() {
-        return $this->account->sms;
+    protected function getShortCodes() {
+        return $this->account->shortCodes;
     }
 
     /**

@@ -7,20 +7,20 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sms;
+namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class SmsMessageContext extends InstanceContext {
+class ShortCodeContext extends InstanceContext {
     /**
-     * Initialize the SmsMessageContext
+     * Initialize the ShortCodeContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sms\SmsMessageContext 
+     * @param string $sid Fetch by unique short-code Sid
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -31,22 +31,13 @@ class SmsMessageContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SMS/Messages/' . $sid . '.json';
+        $this->uri = '/Accounts/' . $accountSid . '/SMS/ShortCodes/' . $sid . '.json';
     }
 
     /**
-     * Deletes the SmsMessageInstance
+     * Fetch a ShortCodeInstance
      * 
-     * @return boolean True if delete succeeds, false otherwise
-     */
-    public function delete() {
-        return $this->version->delete('delete', $this->uri);
-    }
-
-    /**
-     * Fetch a SmsMessageInstance
-     * 
-     * @return SmsMessageInstance Fetched SmsMessageInstance
+     * @return ShortCodeInstance Fetched ShortCodeInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -57,7 +48,7 @@ class SmsMessageContext extends InstanceContext {
             $params
         );
         
-        return new SmsMessageInstance(
+        return new ShortCodeInstance(
             $this->version,
             $payload,
             $this->solution['accountSid'],
@@ -66,16 +57,21 @@ class SmsMessageContext extends InstanceContext {
     }
 
     /**
-     * Update the SmsMessageInstance
+     * Update the ShortCodeInstance
      * 
      * @param array $options Optional Arguments
-     * @return SmsMessageInstance Updated SmsMessageInstance
+     * @return ShortCodeInstance Updated ShortCodeInstance
      */
     public function update(array $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Body' => $options['body'],
+            'FriendlyName' => $options['friendlyName'],
+            'ApiVersion' => $options['apiVersion'],
+            'SmsUrl' => $options['smsUrl'],
+            'SmsMethod' => $options['smsMethod'],
+            'SmsFallbackUrl' => $options['smsFallbackUrl'],
+            'SmsFallbackMethod' => $options['smsFallbackMethod'],
         ));
         
         $payload = $this->version->update(
@@ -85,7 +81,7 @@ class SmsMessageContext extends InstanceContext {
             $data
         );
         
-        return new SmsMessageInstance(
+        return new ShortCodeInstance(
             $this->version,
             $payload,
             $this->solution['accountSid'],
@@ -103,6 +99,6 @@ class SmsMessageContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.SmsMessageContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.ShortCodeContext ' . implode(' ', $context) . ']';
     }
 }
