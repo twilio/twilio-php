@@ -78,6 +78,7 @@ class Client {
     protected $username;
     protected $password;
     protected $accountSid;
+    protected $region;
     protected $httpClient;
     protected $_account;
     protected $_api = null;
@@ -98,14 +99,16 @@ class Client {
      * @param string $password Password to authenticate with
      * @param string $accountSid Account Sid to authenticate with, defaults to
      *                           $username
+     * @param string $region Region to send requests to, defaults to no region
+     *                       selection
      * @param \Twilio\Http\Client $httpClient HttpClient, defaults to CurlClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
      * @return \Twilio\Rest\Client Twilio Client
      * @throws ConfigurationException If valid authentication is not present
      */
-    public function __construct($username = null, $password = null, $accountSid = null, HttpClient $httpClient = null, $environment = null) {
-        if (!$environment) {
+    public function __construct($username = null, $password = null, $accountSid = null, $region = null, HttpClient $httpClient = null, $environment = null) {
+        if (is_null($environment)) {
             $environment = $_ENV;
         }
         
@@ -130,6 +133,7 @@ class Client {
         }
         
         $this->accountSid = $accountSid ?: $this->username;
+        $this->region = $region;
         
         if ($httpClient) {
             $this->httpClient = $httpClient;
@@ -168,6 +172,11 @@ class Client {
             $headers['Accept'] = 'application/json';
         }
         
+        if ($this->region) {
+            list($head, $tail) = explode('.', $uri, 2);
+            $uri = implode('.', array($head, $this->region, $tail));
+        }
+        
         return $this->getHttpClient()->request(
             $method,
             $uri,
@@ -181,12 +190,39 @@ class Client {
     }
 
     /**
+     * Retrieve the Username
+     * 
+     * @return string Current Username
+     */
+    public function getUsername() {
+        return $this->username;
+    }
+
+    /**
+     * Retrieve the Password
+     * 
+     * @return string Current Password
+     */
+    public function getPassword() {
+        return $this->password;
+    }
+
+    /**
      * Retrieve the AccountSid
      * 
      * @return string Current AccountSid
      */
     public function getAccountSid() {
         return $this->accountSid;
+    }
+
+    /**
+     * Retrieve the Region
+     * 
+     * @return string Current Region
+     */
+    public function getRegion() {
+        return $this->region;
     }
 
     /**

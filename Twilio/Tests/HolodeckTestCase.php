@@ -15,7 +15,7 @@ class HolodeckTestCase extends PHPUnit_Framework_TestCase
 
     protected function setUp() {
         $this->holodeck = new Holodeck();
-        $this->twilio = new Client('ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'AUTHTOKEN', null, $this->holodeck);
+        $this->twilio = new Client('ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'AUTHTOKEN', null, null, $this->holodeck);
     }
 
     protected function tearDown() {
