@@ -72,13 +72,10 @@ class TrunkList extends ListResource {
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
      * @param mixed $pageSize Number of records to fetch per request, when not set
-     *                        will use
-     *                        the default value of 50 records.  If no page_size is
-     *                        defined
-     *                        but a limit is defined, stream() will attempt to read
-     *                        the limit
-     *                        with the most efficient page size, i.e. min(limit,
-     *                        1000)
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
     public function stream($limit = null, $pageSize = null) {
@@ -98,13 +95,10 @@ class TrunkList extends ListResource {
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
      * @param mixed $pageSize Number of records to fetch per request, when not set
-     *                        will use
-     *                        the default value of 50 records.  If no page_size is
-     *                        defined
-     *                        but a limit is defined, read() will attempt to read
-     *                        the
-     *                        limit with the most efficient page size, i.e.
-     *                        min(limit, 1000)
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
      * @return TrunkInstance[] Array of results
      */
     public function read($limit = null, $pageSize = Values::NONE) {
