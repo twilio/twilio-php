@@ -1,6 +1,7 @@
 <?php
 
 namespace Twilio;
+
 use Twilio\Exceptions\TwimlException;
 
 /**
@@ -23,20 +24,20 @@ class Twiml {
      */
     public function __construct($arg = null) {
         switch (true) {
-        case $arg instanceof \SimpleXmlElement:
-            $this->element = $arg;
-            break;
-        case $arg === null:
-            $this->element = new \SimpleXmlElement('<Response/>');
-            break;
-        case is_array($arg):
-            $this->element = new \SimpleXmlElement('<Response/>');
-            foreach ($arg as $name => $value) {
-                $this->element->addAttribute($name, $value);
-            }
-            break;
-        default:
-            throw new TwimlException('Invalid argument');
+            case $arg instanceof \SimpleXMLElement:
+                $this->element = $arg;
+                break;
+            case $arg === null:
+                $this->element = new \SimpleXMLElement('<Response/>');
+                break;
+            case is_array($arg):
+                $this->element = new \SimpleXMLElement('<Response/>');
+                foreach ($arg as $name => $value) {
+                    $this->element->addAttribute($name, $value);
+                }
+                break;
+            default:
+                throw new TwimlException('Invalid argument');
         }
     }
 
@@ -76,8 +77,7 @@ class Twiml {
      * :return: A SimpleXmlElement
      * :rtype: SimpleXmlElement
      */
-    public function __call($verb, array $args)
-    {
+    public function __call($verb, array $args) {
         list($noun, $attrs) = $args + array('', array());
         if (is_array($noun)) {
             list($attrs, $noun) = array($noun, '');
@@ -127,10 +127,9 @@ class Twiml {
      * :return: The response as an XML string
      * :rtype: string
      */
-    public function __toString()
-    {
-        $xml = $this->element->asXml();
-        return str_replace(
+    public function __toString() {
+        $xml = $this->element->asXML();
+        return (string)str_replace(
             '<?xml version="1.0"?>',
             '<?xml version="1.0" encoding="UTF-8"?>', $xml);
     }

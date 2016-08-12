@@ -166,8 +166,9 @@ class CurlClientTest extends UnitTest {
     }
 
     /**
-     * @param $params
-     * @param $data
+     * @param mixed[] $params Parameters to post
+     * @param mixed[] $data Data to post
+     * @param string $expected Expected POSTFIELDS
      * @dataProvider postFieldsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
