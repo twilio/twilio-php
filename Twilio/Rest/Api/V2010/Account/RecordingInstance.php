@@ -18,10 +18,15 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string callSid
+ * @property int channel
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string duration
+ * @property float price
+ * @property string priceUnit
  * @property string sid
+ * @property string status
+ * @property string source
  * @property string uri
  */
 class RecordingInstance extends InstanceResource {
@@ -44,10 +49,15 @@ class RecordingInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'callSid' => $payload['call_sid'],
+            'channels' => $payload['channels'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'duration' => $payload['duration'],
+            'price' => $payload['price'],
+            'priceUnit' => $payload['price_unit'],
             'sid' => $payload['sid'],
+            'status' => $payload['status'],
+            'source' => $payload['source'],
             'uri' => $payload['uri'],
         );
         
