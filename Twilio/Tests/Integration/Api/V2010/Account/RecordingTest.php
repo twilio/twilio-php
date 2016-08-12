@@ -43,6 +43,11 @@ class RecordingTest extends HolodeckTestCase {
                 "date_updated": "Wed, 01 Sep 2010 15:15:41 +0000",
                 "duration": "6",
                 "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "price": "0.04",
+                "price_unit": "USD",
+                "status": "completed",
+                "channels": 1,
+                "source": "Trunking",
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -117,8 +122,12 @@ class RecordingTest extends HolodeckTestCase {
                         "date_created": "Wed, 22 Aug 2012 20:58:45 +0000",
                         "date_updated": "Wed, 22 Aug 2012 20:58:45 +0000",
                         "duration": null,
-                        "price": null,
+                        "price": "0.04",
                         "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "price_unit": "USD",
+                        "status": "completed",
+                        "channels": 1,
+                        "source": "Trunking",
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],
