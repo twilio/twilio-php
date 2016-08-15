@@ -128,3 +128,20 @@ libcurl <http://curl.haxx.se/download.html>`_.
 If this does not work, double check your Account SID, token, and that you do
 not have errors anywhere else in your code. If you need further assistance,
 please email our customer support at `help@twilio.com`_.
+
+Update your CA certificate bundle for libcurl
+=============================================
+
+You can also retrieve a stand-alone bundle of CA certificates and configure
+your PHP/libcurl installation to use it over the one that came with your
+installation.
+
+`Click here to find the latest libcurl cert bundle
+<http://curl.haxx.se/docs/caextract.html>`_.
+
+After downloading this file to your system, place it in a known location
+and edit your ``php.ini`` file to add the following:
+
+.. code-block:: ini
+    curl.cainfo=/path/to/cacert.pem
+
