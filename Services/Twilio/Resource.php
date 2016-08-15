@@ -12,8 +12,7 @@
 abstract class Services_Twilio_Resource {
     protected $subresources;
 
-    public function __construct($client, $uri, $params = array())
-    {
+    public function __construct($client, $uri, $params = array()) {
         $this->subresources = array();
         $this->client = $client;
 
@@ -25,8 +24,7 @@ abstract class Services_Twilio_Resource {
         $this->init($client, $uri);
     }
 
-    protected function init($client, $uri)
-    {
+    protected function init($client, $uri) {
         // Left empty for derived classes to implement
     }
 
@@ -39,8 +37,7 @@ abstract class Services_Twilio_Resource {
         return $this->subresources;
     }
 
-    protected function setupSubresources()
-    {
+    protected function setupSubresources() {
         foreach (func_get_args() as $name) {
             $constantized = ucfirst(self::camelize($name));
             $type = "Services_Twilio_Rest_" . $constantized;
@@ -57,8 +54,7 @@ abstract class Services_Twilio_Resource {
      *
      * @param boolean $camelized Whether to return camel case or not
      */
-    public function getResourceName($camelized = false)
-    {
+    public function getResourceName($camelized = false) {
         $name = get_class($this);
         $parts = explode('_', $name);
         $basename = end($parts);
@@ -68,15 +64,19 @@ abstract class Services_Twilio_Resource {
             return self::decamelize($basename);
         }
     }
+    
+    public static function camelizeWord($matches) {
+        return strtoupper($matches[2]);
+    }
+    
+    public static function decamelizeWord($matches) {
+        return strtolower(strlen($matches[1]) ? $matches[1] . '_' . $matches[2] : $matches[2]);;
+    }
 
-    public static function decamelize($word)
-    {
-        $callback = create_function('$matches',
-            'return strtolower(strlen("$matches[1]") ? "$matches[1]_$matches[2]" : "$matches[2]");');
-
+    public static function decamelize($word) {
         return preg_replace_callback(
             '/(^|[a-z])([A-Z])/',
-            $callback,
+            array('self', 'decamelizeWord'),
             $word
         );
     }
@@ -90,10 +90,8 @@ abstract class Services_Twilio_Resource {
      * @return string
      */
     public static function camelize($word) {
-        $callback = create_function('$matches', 'return strtoupper("$matches[2]");');
-
         return preg_replace_callback('/(^|_)([a-z])/',
-            $callback,
+            array('self', 'camelizeWord'),
             $word);
     }
 
