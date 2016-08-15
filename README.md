@@ -71,9 +71,6 @@ That will output XML that looks like this:
 <Response>
 ```
 
-### Release Candidate
-This is a release candidate version of the PHP library. To submit feedback, open an issue on the Github repo.
-
 ## Documentation
 
 The documentation for the Twilio API is located [here][apidocs].
