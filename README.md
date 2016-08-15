@@ -77,6 +77,10 @@ The documentation for the Twilio API is located [here][apidocs].
 
 The PHP library documentation can be found [here][documentation].
 
+## Versions
+
+`twilio-php`'s versioning strategy can be found [here][versioning].
+
 ## Prerequisites
 
 * PHP >= 5.3
@@ -90,3 +94,4 @@ If you've instead found a bug in the library or would like new features added, g
 
 [apidocs]: http://twilio.github.io/twilio-php/
 [documentation]: https://twilio.com/api/docs
+[versioning]: https://github.com/twilio/twilio-php/blob/master/VERSIONS.md
