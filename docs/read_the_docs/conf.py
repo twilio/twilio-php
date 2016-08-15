@@ -49,8 +49,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'twilio-php'
-copyright = u'2016, Neuman Vong'
-author = u'Neuman Vong'
+copyright = u'2016, Twilio'
+author = u'Twilio'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -260,7 +260,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'twilio-php.tex', u'twilio-php Documentation',
-     u'Neuman Vong', 'manual'),
+     u'Twilio', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
