@@ -22,6 +22,8 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
+ * @property \Twilio\Rest\Notify notify
+ * @property \Twilio\Rest\Preview preview
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
@@ -85,6 +87,8 @@ class Client {
     protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
+    protected $_notify = null;
+    protected $_preview = null;
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
@@ -621,6 +625,30 @@ class Client {
             $this->_monitor = new Monitor($this);
         }
         return $this->_monitor;
+    }
+
+    /**
+     * Access the Notify Twilio Domain
+     * 
+     * @return \Twilio\Rest\Notify Notify Twilio Domain
+     */
+    protected function getNotify() {
+        if (!$this->_notify) {
+            $this->_notify = new Notify($this);
+        }
+        return $this->_notify;
+    }
+
+    /**
+     * Access the Preview Twilio Domain
+     * 
+     * @return \Twilio\Rest\Preview Preview Twilio Domain
+     */
+    protected function getPreview() {
+        if (!$this->_preview) {
+            $this->_preview = new Preview($this);
+        }
+        return $this->_preview;
     }
 
     /**
