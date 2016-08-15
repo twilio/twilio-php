@@ -23,6 +23,27 @@ class TwimlTest extends PHPUnit_Framework_TestCase {
         $expected = '<Response><Say>Hello Monkey</Say></Response>';
         $this->assertXmlStringEqualsXmlString($expected, $r);
     }
+	
+    public function testSayTrue() {   
+        $r = new Services_Twilio_Twiml();
+        $r->say(true);
+        $expected = '<Response><Say>1</Say></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+	
+    public function testSayFalse() {   
+        $r = new Services_Twilio_Twiml();
+        $r->say(false);
+        $expected = '<Response><Say></Say></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
+	
+    public function testSayFalsy() {   
+        $r = new Services_Twilio_Twiml();
+        $r->say("0");
+        $expected = '<Response><Say>0</Say></Response>';
+        $this->assertXmlStringEqualsXmlString($expected, $r);
+    }
     
     public function testSayLoopThree() {
         $r = new Services_Twilio_Twiml();
