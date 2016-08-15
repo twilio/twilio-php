@@ -47,11 +47,17 @@ test: vendor
 venv:
 	virtualenv venv
 
+rtd-install: venv
+	. venv/bin/activate; pip install -r docs/read_the_docs/requirements.txt
+
+rtd: rtd-install
+	. venv/bin/activate; cd docs/read_the_docs && make html
+
 docs-install:
 	composer require --dev apigen/apigen
 
 docs: docs-install
-	apigen generate -s ./ -d docs --exclude="Tests/*" --exclude="vendor/*" --main Twilio
+	vendor/bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
 	sh docs-update.sh
 
 release-install:
