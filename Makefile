@@ -57,7 +57,7 @@ docs-install:
 	composer require --dev apigen/apigen
 
 docs: docs-install
-	apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
+	vendor/bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
 	sh docs-update.sh
 
 release-install:
