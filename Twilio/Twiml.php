@@ -102,21 +102,25 @@ class Twiml {
          */
         $decoded = html_entity_decode($noun, ENT_COMPAT, 'UTF-8');
         $normalized = htmlspecialchars($decoded, ENT_COMPAT, 'UTF-8', false);
-        $child = empty($noun)
-            ? $this->element->addChild(ucfirst($verb))
-            : $this->element->addChild(ucfirst($verb), $normalized);
-        foreach ($attrs as $name => $value) {
-            /* Note that addAttribute escapes raw ampersands by default, so we
-             * haven't touched its implementation. So this is the matrix for
-             * addAttribute:
-             *
-             * & turns into &amp;
-             * &amp; turns into &amp;amp;
-             */
-            if (is_bool($value)) {
-                $value = ($value === true) ? 'true' : 'false';
+        $hasNoun = is_scalar($noun) && strlen($noun);
+        $child = $hasNoun
+               ? $this->element->addChild(ucfirst($verb), $normalized)
+               : $this->element->addChild(ucfirst($verb));
+
+        if (is_array($attrs)) {
+            foreach ($attrs as $name => $value) {
+                /* Note that addAttribute escapes raw ampersands by default, so we
+                 * haven't touched its implementation. So this is the matrix for
+                 * addAttribute:
+                 *
+                 * & turns into &amp;
+                 * &amp; turns into &amp;amp;
+                 */
+                if (is_bool($value)) {
+                    $value = ($value === true) ? 'true' : 'false';
+                }
+                $child->addAttribute($name, $value);
             }
-            $child->addAttribute($name, $value);
         }
         return new static($child);
     }
