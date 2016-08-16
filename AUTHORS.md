@@ -11,6 +11,7 @@ A huge thanks to all of our contributors:
 - Alexandre Payment 
 - Andrew Nicols 
 - Andrew Ryno 
+- Andrew T. Baker 
 - Ben Paster 
 - Brett Gerry 
 - Bulat Shakirzyanov 
@@ -28,6 +29,7 @@ A huge thanks to all of our contributors:
 - Justin Witz 
 - Keith Casey 
 - Kevin Burke 
+- Kevin Whinnery 
 - Kyle 
 - Kyle Conroy 
 - Luke Waite 
