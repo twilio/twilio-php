@@ -14,16 +14,17 @@ You can install **twilio-php** via composer or by downloading the source.
 ### Send an SMS
 
 ```php
+// Send an SMS using Twilio's REST API and PHP
 <?php
-$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
-$token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
+$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/console
+$token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
 
 $client = new Twilio\Rest\Client($sid, $token);
 $message = $client->account->messages->create(
   '9991231234', // From a valid Twilio number
   '8881231234', // Text this number
   array(
-    'Body' => "Hello monkey!"
+    'Body' => "Hello from Twilio!"
   )
 );
 
@@ -34,8 +35,8 @@ print $message->sid;
 
 ```php
 <?php
-$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
-$token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
+$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/console
+$token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
 
 $client = new Twilio\Rest\Client($sid, $token);
 $call = $client->account->calls->create(
@@ -92,6 +93,6 @@ If you need help installing or using the library, please contact Twilio Support 
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-[apidocs]: http://twilio.github.io/twilio-php/
-[documentation]: https://twilio.com/api/docs
+[apidocs]: https://twilio.com/api/docs
+[documentation]: http://twilio.github.io/twilio-php/
 [versioning]: https://github.com/twilio/twilio-php/blob/master/VERSIONS.md
