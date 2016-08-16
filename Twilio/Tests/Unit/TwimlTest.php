@@ -14,37 +14,55 @@ class TwimlTest extends UnitTest {
 
     public function testEmpty() {
         $twiml = new Twiml();
-        $this->assertEquals($this->twiml('<Response/>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response></Response>') == $actual) ||
+            ($this->twiml('<Response/>') == $actual)
+        );
     }
 
     public function testSingle() {
         $twiml = new Twiml();
         $twiml->Example();
-        $this->assertEquals($this->twiml('<Response><Example/></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Example></Example></Response>') == $actual) ||
+            ($this->twiml('<Response><Example/></Response>') == $actual)
+        );
     }
 
     public function testSingleWithBody() {
         $twiml = new Twiml();
         $twiml->Example('body');
-        $this->assertEquals($this->twiml('<Response><Example>body</Example></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Example>body</Example></Response>'), $actual);
     }
 
     public function testSingleWithAttributes() {
         $twiml = new Twiml();
         $twiml->Example(array('attr1' => 'val1', 'attr2' => 'val2'));
-        $this->assertEquals($this->twiml('<Response><Example attr1="val1" attr2="val2"/></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Example attr1="val1" attr2="val2"></Example></Response>') == $actual) ||
+            ($this->twiml('<Response><Example attr1="val1" attr2="val2"/></Response>') == $actual)
+        );
     }
 
     public function testSingleWithBodyAndAttributes() {
         $twiml = new Twiml();
         $twiml->Example('body', array('attr1' => 'val1', 'attr2' => 'val2'));
-        $this->assertEquals($this->twiml('<Response><Example attr1="val1" attr2="val2">body</Example></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Example attr1="val1" attr2="val2">body</Example></Response>'), $actual);
     }
 
     public function testNested() {
         $twiml = new Twiml();
         $twiml->Parent()->Child();
-        $this->assertEquals($this->twiml('<Response><Parent><Child/></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Parent><Child></Child></Parent></Response>') == $actual) ||
+            ($this->twiml('<Response><Parent><Child/></Parent></Response>') == $actual)
+        );
     }
 
     /**
@@ -54,13 +72,18 @@ class TwimlTest extends UnitTest {
     public function testNestedWithParentBody() {
         $twiml = new Twiml();
         $twiml->Parent('body')->Child();
-        $this->assertEquals($this->twiml('<Response><Parent>body<Child/></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Parent>body<Child></Child></Parent></Response>') == $actual) ||
+            ($this->twiml('<Response><Parent>body<Child/></Parent></Response>') == $actual)
+        );
     }
 
     public function testNestedWithChildBody() {
         $twiml = new Twiml();
         $twiml->Parent()->Child('body');
-        $this->assertEquals($this->twiml('<Response><Parent><Child>body</Child></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Parent><Child>body</Child></Parent></Response>'), $actual);
     }
 
     /**
@@ -70,15 +93,19 @@ class TwimlTest extends UnitTest {
     public function testNestedWithParentAndChildBody() {
         $twiml = new Twiml();
         $twiml->Parent('parent-body')->Child('child-body');
-        $this->assertEquals($this->twiml('<Response><Parent>parent-body<Child>child-body</Child></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Parent>parent-body<Child>child-body</Child></Parent></Response>'), $actual);
     }
 
     public function testNestedWithAttributes() {
         $twiml = new Twiml();
         $twiml->Parent(array('attr1' => 'val1'))->Child(array('attr2' => 'val2'));
-        $this->assertEquals($this->twiml('<Response><Parent attr1="val1"><Child attr2="val2"/></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Parent attr1="val1"><Child attr2="val2"></Child></Parent></Response>') == $actual) ||
+            ($this->twiml('<Response><Parent attr1="val1"><Child attr2="val2"/></Parent></Response>') == $actual)
+        );
     }
-
 
     /**
      * This behavior is almost certainly incorrect.  Writing a test case just to
@@ -87,13 +114,18 @@ class TwimlTest extends UnitTest {
     public function testNestedWithAttributesAndParentBody() {
         $twiml = new Twiml();
         $twiml->Parent('body', array('attr1' => 'val1'))->Child(array('attr2' => 'val2'));
-        $this->assertEquals($this->twiml('<Response><Parent attr1="val1">body<Child attr2="val2"/></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Parent attr1="val1">body<Child attr2="val2"></Child></Parent></Response>') == $actual) ||
+            ($this->twiml('<Response><Parent attr1="val1">body<Child attr2="val2"/></Parent></Response>') == $actual)
+        );
     }
 
     public function testNestedWithAttributesAndChildBody() {
         $twiml = new Twiml();
         $twiml->Parent(array('attr1' => 'val1'))->Child('body', array('attr2' => 'val2'));
-        $this->assertEquals($this->twiml('<Response><Parent attr1="val1"><Child attr2="val2">body</Child></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Parent attr1="val1"><Child attr2="val2">body</Child></Parent></Response>'), $actual);
     }
 
     /**
@@ -103,7 +135,8 @@ class TwimlTest extends UnitTest {
     public function testNestedWithAttributesAndParentAndChildBody() {
         $twiml = new Twiml();
         $twiml->Parent('parent-body', array('attr1' => 'val1'))->Child('child-body', array('attr2' => 'val2'));
-        $this->assertEquals($this->twiml('<Response><Parent attr1="val1">parent-body<Child attr2="val2">child-body</Child></Parent></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Parent attr1="val1">parent-body<Child attr2="val2">child-body</Child></Parent></Response>'), $actual);
     }
 
     /**
@@ -114,7 +147,8 @@ class TwimlTest extends UnitTest {
     public function testPrintingFalseyBody($value) {
         $twiml = new Twiml();
         $twiml->Example($value);
-        $this->assertEquals($this->twiml('<Response><Example>' . $value . '</Example></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertEquals($this->twiml('<Response><Example>' . $value . '</Example></Response>'), $actual);
     }
 
     public function printingFalseyProvider() {
@@ -133,7 +167,11 @@ class TwimlTest extends UnitTest {
     public function testSilentFalseyBody($value) {
         $twiml = new Twiml();
         $twiml->Example($value);
-        $this->assertEquals($this->twiml('<Response><Example/></Response>'), (string)$twiml);
+        $actual = (string)$twiml;
+        $this->assertTrue(
+            ($this->twiml('<Response><Example></Example></Response>') == $actual) ||
+            ($this->twiml('<Response><Example/></Response>') == $actual)
+        );
     }
 
     public function silentFalseyProvider() {
