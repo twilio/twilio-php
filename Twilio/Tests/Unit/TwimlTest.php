@@ -106,5 +106,42 @@ class TwimlTest extends UnitTest {
         $this->assertEquals($this->twiml('<Response><Parent attr1="val1">parent-body<Child attr2="val2">child-body</Child></Parent></Response>'), (string)$twiml);
     }
 
+    /**
+     * @param mixed $value A "Falsey" value that should become the body of the
+     *                     Example tag
+     * @dataProvider printingFalseyProvider
+     */
+    public function testPrintingFalseyBody($value) {
+        $twiml = new Twiml();
+        $twiml->Example($value);
+        $this->assertEquals($this->twiml('<Response><Example>' . $value . '</Example></Response>'), (string)$twiml);
+    }
 
+    public function printingFalseyProvider() {
+        return array(
+            array(0),
+            array('0'),
+            array('false'),
+        );
+    }
+
+    /**
+     * @param mixed $value A "Falsey" value that should be ignored by the TwiML
+     *                     generator
+     * @dataProvider silentFalseyProvider
+     */
+    public function testSilentFalseyBody($value) {
+        $twiml = new Twiml();
+        $twiml->Example($value);
+        $this->assertEquals($this->twiml('<Response><Example/></Response>'), (string)$twiml);
+    }
+
+    public function silentFalseyProvider() {
+        return array(
+            array(''),
+            array(false),
+            array(null),
+            array(array()),
+        );
+    }
 }
