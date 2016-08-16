@@ -1,6 +1,98 @@
 twilio-php Changelog
 ====================
 
+Version 5.0.2
+-------------
+Released August 16, 2016
+
+- Fixes a bug where reading lists with a `$limit` and no `$pageSize` would cause
+  a divide by zero error.
+- Sanity check in the `Twiml` generator
+- Better tests for `Twiml` and `Version`
+
+Version 5.0.1
+-------------
+Released August 15, 2016
+
+Add the VERSIONS.md to explain the versioning strategy, first alpha release.
+
+Version 5.0.0
+-------------
+Released August 15, 2016
+
+**New Major Version**
+
+The newest version of the `twilio-php` helper library, supporting PHP 5.3+
+
+This version brings a host of changes to update and modernize the `twilio-php` 
+helper library.  It is auto-generated to produce a more consistent and correct 
+product.
+
+- [Migration Guide](https://www.twilio.com/docs/libraries/php/migration-guide)
+- [Full API Documentation](https://twilio.github.io/twilio-php/)
+- [General Documentation](https://www.twilio.com/docs/libraries/php)
+
+Version 4.11.0
+--------------
+Released August 9, 2016
+
+- Add `synchronize` method to InstanceResoure
+
+Version 4.10.0
+-------------
+Released January 28, 2016
+
+- Add support for filter_friendly_name in WorkflowConfig
+- Load reservations by default in TaskRouter
+
+Version 4.9.2
+-------------
+Released January 22, 2016
+
+- Fix Address instance reference
+
+Version 4.9.1
+-------------
+Released January 19, 2016
+
+- Add missing create/delete methods on Address
+
+Version 4.9.0
+-------------
+Released December 18, 2015
+
+- Add IP Messaging capability
+
+Version 4.8.1
+-------------
+Released December 8, 2015
+
+- Fix issue with empty grant encoding
+
+Version 4.8.0
+-------------
+Released December 8, 2015
+
+- Update access tokens to support optional NBF
+
+Version 4.7.0
+-------------
+Released December 3, 2015
+
+- Add access tokens
+
+Version 4.6.1
+-------------
+Released November 9, 2015
+
+- Secured Signature header validation from timing attack
+
+Version 4.6.0
+-------------
+Released October 30, 2015
+
+- Add support for Keys
+
 Version 4.4.0
 -------------
 Released September 21, 2015
