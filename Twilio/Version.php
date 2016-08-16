@@ -155,11 +155,13 @@ abstract class Version {
         $pageLimit = Values::NONE;
 
         if ($limit) {
-            if ($pageSize) {
+            if (is_null($pageSize)) {
                 $pageSize = min($limit, self::MAX_PAGE_SIZE);
             }
             $pageLimit = (int)(ceil($limit / (float)$pageSize));
         }
+
+        $pageSize = min($pageSize, self::MAX_PAGE_SIZE);
 
         return array(
             'limit' => $limit ?: Values::NONE,
