@@ -21,6 +21,7 @@ A huge thanks to all of our contributors:
 - D. Keith Casey, Jr. 
 - Doug Black 
 - Elliot Lings 
+- Jarod Reyes 
 - Jen Li 
 - Jingming Niu 
 - John Britton 

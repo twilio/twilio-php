@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+Version 5.0.3
+-------------
+Released August 18, 2016
+
+- Adds the ability to pass options into `Twilio\Http\CurlClient`.  This feature
+  brings `CurlClient` closer to parity with `Services_Twilio_TinyHttp`.
+
 Version 5.0.2
 -------------
 Released August 16, 2016

@@ -229,4 +229,84 @@ class CurlClientTest extends UnitTest {
         $this->assertEquals('a=1&b=2', fread($actual[CURLOPT_INFILE], $actual[CURLOPT_INFILESIZE]));
         $this->assertEquals(7, $actual[CURLOPT_INFILESIZE]);
     }
+
+    /**
+     * @param string $message Case message, displayed on assertion error
+     * @param mixed[] $options Options to inject
+     * @param mixed[] $expected Partial array to expect
+     * @dataProvider userInjectedOptionsProvider
+     */
+    public function testUserInjectedOptions($message, $options, $expected) {
+        $client = new CurlClient($options);
+        $actual = $client->options(
+            'GET',
+            'url',
+            array('param-key' => 'param-value'),
+            array('data-key' => 'data-value'),
+            array('header-key' => 'header-value'),
+            'user',
+            'password',
+            20
+        );
+        foreach ($expected as $key => $value) {
+            $this->assertEquals($value, $actual[$key], $message);
+        }
+    }
+
+    public function userInjectedOptionsProvider() {
+        return array(
+            array(
+                'No Conflict Options',
+                array(
+                    CURLOPT_VERBOSE => true,
+                ),
+                array(
+                    CURLOPT_VERBOSE => true,
+                ),
+            ),
+            array(
+                'Options preferred over Defaults',
+                array(
+                    CURLOPT_TIMEOUT => 1000,
+                ),
+                array(
+                    CURLOPT_TIMEOUT => 1000,
+                ),
+            ),
+            array(
+                'Required Options can not be injected',
+                array(
+                    CURLOPT_HTTPGET => false,
+                ),
+                array(
+                    CURLOPT_HTTPGET => true,
+                ),
+            ),
+            array(
+                'Injected URL decorated with Query String',
+                array(
+                    CURLOPT_URL => 'user-provided-url',
+                ),
+                array(
+                    CURLOPT_URL => 'user-provided-url?param-key=param-value',
+                ),
+            ),
+            array(
+                'Injected Headers are additive',
+                array(
+                    CURLOPT_HTTPHEADER => array(
+                        'injected-key: injected-value',
+                    ),
+                ),
+                array(
+                    CURLOPT_HTTPHEADER => array(
+                        'injected-key: injected-value',
+                        'header-key: header-value',
+                        'Authorization: Basic ' . base64_encode('user:password'),
+                    ),
+                ),
+            ),
+        );
+    }
+
 }
