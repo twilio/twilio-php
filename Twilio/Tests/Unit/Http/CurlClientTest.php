@@ -256,11 +256,6 @@ class CurlClientTest extends UnitTest {
     public function userInjectedOptionsProvider() {
         return array(
             array(
-                'No Options',
-                array(),
-                array(),
-            ),
-            array(
                 'No Conflict Options',
                 array(
                     CURLOPT_VERBOSE => true,
