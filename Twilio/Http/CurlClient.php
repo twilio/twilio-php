@@ -8,6 +8,11 @@ use Twilio\Exceptions\EnvironmentException;
 
 class CurlClient implements Client {
     const DEFAULT_TIMEOUT = 60;
+    protected $curlOptions = array();
+
+    public function __construct(array $options = array()) {
+        $this->curlOptions = $options;
+    }
 
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
@@ -71,7 +76,7 @@ class CurlClient implements Client {
             ? self::DEFAULT_TIMEOUT
             : $timeout;
 
-        $options = array(
+        $options = $this->curlOptions + array(
             CURLOPT_URL => $url,
             CURLOPT_HEADER => true,
             CURLOPT_RETURNTRANSFER => true,
