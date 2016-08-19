@@ -1,6 +1,67 @@
 twilio-php Changelog
 ====================
 
+Version 5.1.0
+-------------
+Released August 19, 2016
+
+Optional arguments are handled in the `twilio-php` by accepting an associative 
+array of optional keys and values to pass to the API.  This makes it easy to 
+support all the optional parameters, but lessens developer ergonomics, since it 
+doesn't provide any inline documentation or autocomplete for optional arguments.
+
+This change introduces new Options builders that support 2 new ways for 
+specifying optional arguments that provide better usability.
+
+```php
+<?php
+
+use Twilio\Values;
+use Twilio\Rest\Client;
+use Twilio\Rest\Api\V2010\Account\CallOptions;
+
+$client = new Client();
+
+// Original Way (5.0.x)
+$client->calls->create(
+    '+14155551234',
+    '+14155557890',
+    array(
+        'applicationSid' => 'AP123',
+        'method' => 'POST',
+    )
+);
+
+// Options Factory
+$client->calls->create(
+    '+14155551234',
+    '+14155557890',
+    CallOptions::create(
+        Values::NONE,
+        'AP123',
+        'POST'
+    )
+);
+
+// Options Builder
+$client->calls->create(
+    '+14155551234',
+    '+14155557890',
+    CallOptions::create()->setApplicationSid('AP123')
+                         ->setMethod('POST')
+);
+```
+
+The `Options Factory` provides fully documented optional arguments for every 
+optional argument supported by the Resource's Action.  This is a fast way to 
+handle endpoints that have a few optional arguments.
+
+The `Options Builder` provides fully documented setters for every optional 
+arguments, this is great for actions that support a large number of optional 
+arguments, so that you don't need to provided tons of default values.
+
+Both of these options work well with autocompleting IDEs.
+
 Version 5.0.3
 -------------
 Released August 18, 2016

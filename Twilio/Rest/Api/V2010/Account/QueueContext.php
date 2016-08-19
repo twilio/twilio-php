@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Queue\MemberList;
 use Twilio\Values;
 use Twilio\Version;
@@ -67,10 +68,10 @@ class QueueContext extends InstanceContext {
     /**
      * Update the QueueInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

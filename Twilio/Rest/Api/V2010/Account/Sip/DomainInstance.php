@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Sip;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -104,10 +105,10 @@ class DomainInstance extends InstanceResource {
     /**
      * Update the DomainInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return DomainInstance Updated DomainInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

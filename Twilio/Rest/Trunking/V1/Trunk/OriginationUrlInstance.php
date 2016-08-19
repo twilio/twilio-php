@@ -12,6 +12,7 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -102,10 +103,10 @@ class OriginationUrlInstance extends InstanceResource {
     /**
      * Update the OriginationUrlInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

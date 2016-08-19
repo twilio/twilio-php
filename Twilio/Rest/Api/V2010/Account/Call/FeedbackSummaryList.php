@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -38,10 +39,10 @@ class FeedbackSummaryList extends ListResource {
      * 
      * @param string $startDate The start_date
      * @param string $endDate The end_date
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      */
-    public function create($startDate, $endDate, array $options = array()) {
+    public function create($startDate, $endDate, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

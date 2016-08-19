@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Message;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -37,10 +38,10 @@ class FeedbackList extends ListResource {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      */
-    public function create(array $options = array()) {
+    public function create($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

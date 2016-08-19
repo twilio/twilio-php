@@ -10,6 +10,7 @@
 namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -38,10 +39,10 @@ class MemberList extends ListResource {
      * Create a new MemberInstance
      * 
      * @param string $identity The identity
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return MemberInstance Newly created MemberInstance
      */
-    public function create($identity, array $options = array()) {
+    public function create($identity, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

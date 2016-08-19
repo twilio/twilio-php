@@ -11,7 +11,7 @@ namespace Twilio\Rest\Lookups\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Serialize;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -68,10 +68,10 @@ class PhoneNumberInstance extends InstanceResource {
     /**
      * Fetch a PhoneNumberInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         return $this->proxy()->fetch(
             $options
         );

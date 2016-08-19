@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Sip;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList;
 use Twilio\Values;
@@ -71,10 +72,10 @@ class DomainContext extends InstanceContext {
     /**
      * Update the DomainInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return DomainInstance Updated DomainInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Trunking\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -108,10 +109,10 @@ class TrunkInstance extends InstanceResource {
     /**
      * Update the TrunkInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

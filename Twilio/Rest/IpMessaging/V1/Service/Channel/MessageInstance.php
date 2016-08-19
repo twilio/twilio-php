@@ -12,6 +12,7 @@ namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -104,10 +105,10 @@ class MessageInstance extends InstanceResource {
      * Update the MessageInstance
      * 
      * @param string $body The body
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($body, array $options = array()) {
+    public function update($body, $options = array()) {
         return $this->proxy()->update(
             $body,
             $options
