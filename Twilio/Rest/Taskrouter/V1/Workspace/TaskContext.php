@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
 use Twilio\Values;
 use Twilio\Version;
@@ -67,10 +68,10 @@ class TaskContext extends InstanceContext {
     /**
      * Update the TaskInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

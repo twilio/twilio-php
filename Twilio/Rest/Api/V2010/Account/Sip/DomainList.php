@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Sip;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -107,10 +108,10 @@ class DomainList extends ListResource {
      * Create a new DomainInstance
      * 
      * @param string $domainName The unique address on Twilio to route SIP traffic
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return DomainInstance Newly created DomainInstance
      */
-    public function create($domainName, array $options = array()) {
+    public function create($domainName, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\AddressList;
 use Twilio\Rest\Api\V2010\Account\ApplicationList;
 use Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList;
@@ -150,10 +151,10 @@ class AccountContext extends InstanceContext {
     /**
      * Update the AccountInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return AccountInstance Updated AccountInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

@@ -12,6 +12,7 @@ namespace Twilio\Rest\IpMessaging\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -83,10 +84,10 @@ class CredentialInstance extends InstanceResource {
     /**
      * Update the CredentialInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

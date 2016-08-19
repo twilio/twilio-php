@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -75,10 +76,10 @@ class FeedbackInstance extends InstanceResource {
      * Create a new FeedbackInstance
      * 
      * @param string $qualityScore The quality_score
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      */
-    public function create($qualityScore, array $options = array()) {
+    public function create($qualityScore, $options = array()) {
         return $this->proxy()->create(
             $qualityScore,
             $options
@@ -98,10 +99,10 @@ class FeedbackInstance extends InstanceResource {
      * Update the FeedbackInstance
      * 
      * @param string $qualityScore An integer from 1 to 5
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      */
-    public function update($qualityScore, array $options = array()) {
+    public function update($qualityScore, $options = array()) {
         return $this->proxy()->update(
             $qualityScore,
             $options

@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Taskrouter\V1;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -37,7 +38,7 @@ class WorkspaceList extends ListResource {
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -48,7 +49,7 @@ class WorkspaceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream(array $options = array(), $limit = null, $pageSize = null) {
+    public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
         $page = $this->page($options, $limits['pageSize']);
@@ -61,7 +62,7 @@ class WorkspaceList extends ListResource {
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -72,7 +73,7 @@ class WorkspaceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return WorkspaceInstance[] Array of results
      */
-    public function read(array $options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -80,13 +81,13 @@ class WorkspaceList extends ListResource {
      * Retrieve a single page of WorkspaceInstance records from the API.
      * Request is executed immediately
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return \Twilio\Page Page of WorkspaceInstance
      */
-    public function page(array $options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
@@ -108,10 +109,10 @@ class WorkspaceList extends ListResource {
      * Create a new WorkspaceInstance
      * 
      * @param string $friendlyName The friendly_name
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Newly created WorkspaceInstance
      */
-    public function create($friendlyName, array $options = array()) {
+    public function create($friendlyName, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

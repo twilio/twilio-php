@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -37,10 +38,10 @@ class TaskQueueStatisticsContext extends InstanceContext {
     /**
      * Fetch a TaskQueueStatisticsInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         $options = new Values($options);
         
         $params = Values::of(array(
