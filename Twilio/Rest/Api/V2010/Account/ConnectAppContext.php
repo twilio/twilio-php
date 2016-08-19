@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -59,10 +60,10 @@ class ConnectAppContext extends InstanceContext {
     /**
      * Update the ConnectAppInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

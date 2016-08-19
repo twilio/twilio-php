@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,10 +36,10 @@ class WorkersStatisticsContext extends InstanceContext {
     /**
      * Fetch a WorkersStatisticsInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         $options = new Values($options);
         
         $params = Values::of(array(

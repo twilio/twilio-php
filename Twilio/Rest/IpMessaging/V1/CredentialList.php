@@ -10,6 +10,7 @@
 namespace Twilio\Rest\IpMessaging\V1;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -103,10 +104,10 @@ class CredentialList extends ListResource {
      * Create a new CredentialInstance
      * 
      * @param string $type The type
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return CredentialInstance Newly created CredentialInstance
      */
-    public function create($type, array $options = array()) {
+    public function create($type, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -64,10 +65,10 @@ class WorkersStatisticsInstance extends InstanceResource {
     /**
      * Fetch a WorkersStatisticsInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         return $this->proxy()->fetch(
             $options
         );

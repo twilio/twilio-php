@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Workflow;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -70,10 +71,10 @@ class WorkflowStatisticsInstance extends InstanceResource {
     /**
      * Fetch a WorkflowStatisticsInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         return $this->proxy()->fetch(
             $options
         );

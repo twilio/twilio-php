@@ -10,6 +10,7 @@
 namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -72,10 +73,10 @@ class MessageContext extends InstanceContext {
      * Update the MessageInstance
      * 
      * @param string $body The body
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($body, array $options = array()) {
+    public function update($body, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

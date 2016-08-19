@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\ActivityList;
 use Twilio\Rest\Taskrouter\V1\Workspace\EventList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList;
@@ -92,10 +93,10 @@ class WorkspaceContext extends InstanceContext {
     /**
      * Update the WorkspaceInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

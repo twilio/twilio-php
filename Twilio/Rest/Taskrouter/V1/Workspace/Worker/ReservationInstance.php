@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -90,10 +91,10 @@ class ReservationInstance extends InstanceResource {
     /**
      * Update the ReservationInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

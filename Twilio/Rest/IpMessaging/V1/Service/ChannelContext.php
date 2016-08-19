@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList;
 use Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList;
 use Twilio\Values;
@@ -80,10 +81,10 @@ class ChannelContext extends InstanceContext {
     /**
      * Update the ChannelInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return ChannelInstance Updated ChannelInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

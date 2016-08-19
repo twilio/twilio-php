@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -99,10 +100,10 @@ class TaskQueueInstance extends InstanceResource {
     /**
      * Update the TaskQueueInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Updated TaskQueueInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

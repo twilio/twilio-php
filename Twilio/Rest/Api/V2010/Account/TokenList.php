@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,10 +36,10 @@ class TokenList extends ListResource {
     /**
      * Create a new TokenInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return TokenInstance Newly created TokenInstance
      */
-    public function create(array $options = array()) {
+    public function create($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

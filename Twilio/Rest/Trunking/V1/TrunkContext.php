@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Trunking\V1\Trunk\CredentialListList;
 use Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList;
 use Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList;
@@ -85,10 +86,10 @@ class TrunkContext extends InstanceContext {
     /**
      * Update the TrunkInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

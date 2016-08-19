@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Lookups\V1;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -36,10 +37,10 @@ class PhoneNumberContext extends InstanceContext {
     /**
      * Fetch a PhoneNumberInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         $options = new Values($options);
         
         $params = Values::of(array(

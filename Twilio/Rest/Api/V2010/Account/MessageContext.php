@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Message\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Message\MediaList;
 use Twilio\Values;
@@ -79,10 +80,10 @@ class MessageContext extends InstanceContext {
     /**
      * Update the MessageInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

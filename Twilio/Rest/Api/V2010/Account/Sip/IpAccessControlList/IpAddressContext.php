@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -62,10 +63,10 @@ class IpAddressContext extends InstanceContext {
     /**
      * Update the IpAddressInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return IpAddressInstance Updated IpAddressInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

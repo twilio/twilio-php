@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,10 +37,10 @@ class ValidationRequestList extends ListResource {
      * Create a new ValidationRequestInstance
      * 
      * @param string $phoneNumber The phone_number
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return ValidationRequestInstance Newly created ValidationRequestInstance
      */
-    public function create($phoneNumber, array $options = array()) {
+    public function create($phoneNumber, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
