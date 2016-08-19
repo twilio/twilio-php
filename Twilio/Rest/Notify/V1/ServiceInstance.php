@@ -12,6 +12,7 @@ namespace Twilio\Rest\Notify\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -105,10 +106,10 @@ class ServiceInstance extends InstanceResource {
     /**
      * Update the ServiceInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );

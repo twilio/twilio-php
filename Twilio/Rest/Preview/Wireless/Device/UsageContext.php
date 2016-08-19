@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Preview\Wireless\Device;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,10 +36,10 @@ class UsageContext extends InstanceContext {
     /**
      * Fetch a UsageInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return UsageInstance Fetched UsageInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         $options = new Values($options);
         
         $params = Values::of(array(

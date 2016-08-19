@@ -11,6 +11,7 @@ namespace Twilio\Rest\Notify\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Notify\V1\Service\BindingList;
 use Twilio\Rest\Notify\V1\Service\NotificationList;
 use Twilio\Values;
@@ -76,10 +77,10 @@ class ServiceContext extends InstanceContext {
     /**
      * Update the ServiceInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      */
-    public function update(array $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

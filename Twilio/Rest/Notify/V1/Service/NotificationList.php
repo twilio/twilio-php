@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Notify\V1\Service;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,10 +36,10 @@ class NotificationList extends ListResource {
     /**
      * Create a new NotificationInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return NotificationInstance Newly created NotificationInstance
      */
-    public function create(array $options = array()) {
+    public function create($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(

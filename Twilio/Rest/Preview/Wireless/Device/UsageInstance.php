@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Wireless\Device;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -75,10 +76,10 @@ class UsageInstance extends InstanceResource {
     /**
      * Fetch a UsageInstance
      * 
-     * @param array $options Optional Arguments
+     * @param array|Options $options Optional Arguments
      * @return UsageInstance Fetched UsageInstance
      */
-    public function fetch(array $options = array()) {
+    public function fetch($options = array()) {
         return $this->proxy()->fetch(
             $options
         );
