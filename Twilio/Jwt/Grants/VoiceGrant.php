@@ -4,7 +4,7 @@
 namespace Twilio\Jwt\Grants;
 
 
-class ProgrammableVoiceGrant implements Grant {
+class VoiceGrant implements Grant {
 
     private $outgoingApplicationSid;
     private $outgoingApplicationParams;
@@ -111,7 +111,7 @@ class ProgrammableVoiceGrant implements Grant {
      */
     public function getGrantKey()
     {
-        return "programmable_voice";
+        return "voice";
     }
 
     /**
