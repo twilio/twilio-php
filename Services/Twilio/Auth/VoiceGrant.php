@@ -1,7 +1,7 @@
 <?php
 
 
-class Services_Twilio_Auth_ProgrammableVoiceGrant implements Services_Twilio_Auth_Grant {
+class Services_Twilio_Auth_VoiceGrant implements Services_Twilio_Auth_Grant {
 
     private $outgoingApplicationSid;
     private $outgoingApplicationParams;
@@ -108,7 +108,7 @@ class Services_Twilio_Auth_ProgrammableVoiceGrant implements Services_Twilio_Aut
      */
     public function getGrantKey()
     {
-        return "programmable_voice";
+        return "voice";
     }
 
     /**
