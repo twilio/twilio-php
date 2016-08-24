@@ -141,5 +141,4 @@ class Services_Twilio_Auth_VoiceGrant implements Services_Twilio_Auth_Grant {
         return $payload;
     }
 
-
 }
