@@ -30,7 +30,7 @@ class BindingList extends ListResource {
             'serviceSid' => $serviceSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Bindings';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Bindings';
     }
 
     /**

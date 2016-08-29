@@ -29,7 +29,7 @@ class CommandContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Commands/' . $sid . '';
+        $this->uri = '/Commands/' . rawurlencode($sid) . '';
     }
 
     /**

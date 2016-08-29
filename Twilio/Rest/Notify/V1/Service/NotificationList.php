@@ -30,7 +30,7 @@ class NotificationList extends ListResource {
             'serviceSid' => $serviceSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Notifications';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Notifications';
     }
 
     /**

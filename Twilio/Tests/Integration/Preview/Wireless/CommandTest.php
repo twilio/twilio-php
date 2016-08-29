@@ -24,10 +24,10 @@ class CommandTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )));
+        ));
     }
 
     public function testReadRequest() {
@@ -38,10 +38,10 @@ class CommandTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/Commands'
-        )));
+        ));
     }
 
     public function testCreateRequest() {
@@ -57,11 +57,11 @@ class CommandTest extends HolodeckTestCase {
             'Command' => "command",
         );
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/wireless/Commands',
             null,
             $values
-        )));
+        ));
     }
 }

@@ -41,7 +41,7 @@ class ServiceContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $sid . '';
+        $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
 
     /**

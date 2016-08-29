@@ -31,7 +31,7 @@ class BindingContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Bindings/' . $sid . '';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Bindings/' . rawurlencode($sid) . '';
     }
 
     /**

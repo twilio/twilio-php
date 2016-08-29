@@ -38,7 +38,7 @@ class DeviceContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Devices/' . $sid . '';
+        $this->uri = '/Devices/' . rawurlencode($sid) . '';
     }
 
     /**

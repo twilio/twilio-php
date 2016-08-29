@@ -11,19 +11,24 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Preview\Sync;
 use Twilio\Rest\Preview\Wireless;
 
 /**
  * @property \Twilio\Rest\Preview\Wireless wireless
+ * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
  * @property \Twilio\Rest\Preview\Wireless\DeviceList devices
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
+ * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\DeviceContext devices(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
+ * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  */
 class Preview extends Domain {
     protected $_wireless = null;
+    protected $_sync = null;
 
     /**
      * Construct the Preview Domain
@@ -46,6 +51,16 @@ class Preview extends Domain {
             $this->_wireless = new Wireless($this);
         }
         return $this->_wireless;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Sync Version sync of preview
+     */
+    protected function getSync() {
+        if (!$this->_sync) {
+            $this->_sync = new Sync($this);
+        }
+        return $this->_sync;
     }
 
     /**
@@ -124,6 +139,21 @@ class Preview extends Domain {
      */
     protected function contextRatePlans($sid) {
         return $this->wireless->ratePlans($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Sync\ServiceList 
+     */
+    protected function getServices() {
+        return $this->sync->services;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Sync\ServiceContext 
+     */
+    protected function contextServices($sid) {
+        return $this->sync->services($sid);
     }
 
     /**

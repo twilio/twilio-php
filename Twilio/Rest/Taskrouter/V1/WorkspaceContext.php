@@ -102,7 +102,9 @@ class WorkspaceContext extends InstanceContext {
         $data = Values::of(array(
             'DefaultActivitySid' => $options['defaultActivitySid'],
             'EventCallbackUrl' => $options['eventCallbackUrl'],
+            'EventsFilter' => $options['eventsFilter'],
             'FriendlyName' => $options['friendlyName'],
+            'MultiTaskEnabled' => $options['multiTaskEnabled'],
             'TimeoutActivitySid' => $options['timeoutActivitySid'],
         ));
         

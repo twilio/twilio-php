@@ -24,10 +24,10 @@ class RatePlanTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/RatePlans'
-        )));
+        ));
     }
 
     public function testFetchRequest() {
@@ -38,9 +38,9 @@ class RatePlanTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/RatePlans/sid'
-        )));
+        ));
     }
 }

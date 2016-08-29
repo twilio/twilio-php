@@ -30,7 +30,7 @@ class UsageContext extends InstanceContext {
             'deviceSid' => $deviceSid,
         );
         
-        $this->uri = '/Devices/' . $deviceSid . '/Usage';
+        $this->uri = '/Devices/' . rawurlencode($deviceSid) . '/Usage';
     }
 
     /**

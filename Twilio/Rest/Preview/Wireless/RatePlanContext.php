@@ -29,7 +29,7 @@ class RatePlanContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/RatePlans/' . $sid . '';
+        $this->uri = '/RatePlans/' . rawurlencode($sid) . '';
     }
 
     /**

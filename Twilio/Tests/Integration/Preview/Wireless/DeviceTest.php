@@ -24,10 +24,10 @@ class DeviceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )));
+        ));
     }
 
     public function testReadRequest() {
@@ -38,10 +38,10 @@ class DeviceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/Devices'
-        )));
+        ));
     }
 
     public function testCreateRequest() {
@@ -56,12 +56,12 @@ class DeviceTest extends HolodeckTestCase {
             'RatePlan' => "ratePlan",
         );
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/wireless/Devices',
             null,
             $values
-        )));
+        ));
     }
 
     public function testUpdateRequest() {
@@ -72,9 +72,9 @@ class DeviceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )));
+        ));
     }
 }

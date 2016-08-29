@@ -15,6 +15,7 @@ use Twilio\Options;
 use Twilio\Version;
 
 /**
+ * @property string callerName
  * @property string countryCode
  * @property string phoneNumber
  * @property string nationalFormat
@@ -35,6 +36,7 @@ class PhoneNumberInstance extends InstanceResource {
         
         // Marshaled Properties
         $this->properties = array(
+            'callerName' => $payload['caller_name'],
             'countryCode' => $payload['country_code'],
             'phoneNumber' => $payload['phone_number'],
             'nationalFormat' => $payload['national_format'],

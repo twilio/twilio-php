@@ -22,7 +22,9 @@ use Twilio\Version;
  * @property string defaultActivityName
  * @property string defaultActivitySid
  * @property string eventCallbackUrl
+ * @property string eventsFilter
  * @property string friendlyName
+ * @property string multiTaskEnabled
  * @property string sid
  * @property string timeoutActivityName
  * @property string timeoutActivitySid
@@ -56,7 +58,9 @@ class WorkspaceInstance extends InstanceResource {
             'defaultActivityName' => $payload['default_activity_name'],
             'defaultActivitySid' => $payload['default_activity_sid'],
             'eventCallbackUrl' => $payload['event_callback_url'],
+            'eventsFilter' => $payload['events_filter'],
             'friendlyName' => $payload['friendly_name'],
+            'multiTaskEnabled' => $payload['multi_task_enabled'],
             'sid' => $payload['sid'],
             'timeoutActivityName' => $payload['timeout_activity_name'],
             'timeoutActivitySid' => $payload['timeout_activity_sid'],
