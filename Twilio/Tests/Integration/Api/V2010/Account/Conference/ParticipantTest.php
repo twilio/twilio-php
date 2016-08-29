@@ -44,6 +44,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
                 "end_conference_on_exit": false,
                 "muted": false,
+                "hold": false,
                 "start_conference_on_enter": true,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
@@ -85,6 +86,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
                 "end_conference_on_exit": false,
                 "muted": false,
+                "hold": false,
                 "start_conference_on_enter": true,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
@@ -164,6 +166,7 @@ class ParticipantTest extends HolodeckTestCase {
                         "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
                         "end_conference_on_exit": false,
                         "muted": false,
+                        "hold": false,
                         "start_conference_on_enter": true,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
