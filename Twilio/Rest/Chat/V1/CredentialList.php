@@ -7,41 +7,37 @@
  * /       /
  */
 
-namespace Twilio\Rest\Taskrouter\V1\Workspace;
+namespace Twilio\Rest\Chat\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class WorkflowList extends ListResource {
+class CredentialList extends ListResource {
     /**
-     * Construct the WorkflowList
+     * Construct the CredentialList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList 
+     * @return \Twilio\Rest\Chat\V1\CredentialList 
      */
-    public function __construct(Version $version, $workspaceSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
         
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array();
         
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows';
+        $this->uri = '/Credentials';
     }
 
     /**
-     * Streams WorkflowInstance records from the API as a generator stream.
+     * Streams CredentialInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -52,20 +48,19 @@ class WorkflowList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads WorkflowInstance records from the API as a list.
+     * Reads CredentialInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -74,26 +69,23 @@ class WorkflowList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return WorkflowInstance[] Array of results
+     * @return CredentialInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read($limit = null, $pageSize = Values::NONE) {
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of WorkflowInstance records from the API.
+     * Retrieve a single page of CredentialInstance records from the API.
      * Request is executed immediately
      * 
-     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of WorkflowInstance
+     * @return \Twilio\Page Page of CredentialInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $options = new Values($options);
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -105,26 +97,26 @@ class WorkflowList extends ListResource {
             $params
         );
         
-        return new WorkflowPage($this->version, $response, $this->solution);
+        return new CredentialPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create a new WorkflowInstance
+     * Create a new CredentialInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $configuration The configuration
+     * @param string $type The type
      * @param array|Options $options Optional Arguments
-     * @return WorkflowInstance Newly created WorkflowInstance
+     * @return CredentialInstance Newly created CredentialInstance
      */
-    public function create($friendlyName, $configuration, $options = array()) {
+    public function create($type, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-            'Configuration' => $configuration,
-            'AssignmentCallbackUrl' => $options['assignmentCallbackUrl'],
-            'FallbackAssignmentCallbackUrl' => $options['fallbackAssignmentCallbackUrl'],
-            'TaskReservationTimeout' => $options['taskReservationTimeout'],
+            'Type' => $type,
+            'FriendlyName' => $options['friendlyName'],
+            'Certificate' => $options['certificate'],
+            'PrivateKey' => $options['privateKey'],
+            'Sandbox' => $options['sandbox'],
+            'ApiKey' => $options['apiKey'],
         ));
         
         $payload = $this->version->create(
@@ -134,23 +126,21 @@ class WorkflowList extends ListResource {
             $data
         );
         
-        return new WorkflowInstance(
+        return new CredentialInstance(
             $this->version,
-            $payload,
-            $this->solution['workspaceSid']
+            $payload
         );
     }
 
     /**
-     * Constructs a WorkflowContext
+     * Constructs a CredentialContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext 
+     * @return \Twilio\Rest\Chat\V1\CredentialContext 
      */
     public function getContext($sid) {
-        return new WorkflowContext(
+        return new CredentialContext(
             $this->version,
-            $this->solution['workspaceSid'],
             $sid
         );
     }
@@ -161,6 +151,6 @@ class WorkflowList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Taskrouter.V1.WorkflowList]';
+        return '[Twilio.Chat.V1.CredentialList]';
     }
 }

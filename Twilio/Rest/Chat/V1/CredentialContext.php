@@ -7,41 +7,36 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Conference;
+namespace Twilio\Rest\Chat\V1;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class ParticipantContext extends InstanceContext {
+class CredentialContext extends InstanceContext {
     /**
-     * Initialize the ParticipantContext
+     * Initialize the CredentialContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $conferenceSid The string that uniquely identifies this
-     *                              conference
-     * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Chat\V1\CredentialContext 
      */
-    public function __construct(Version $version, $accountSid, $conferenceSid, $callSid) {
+    public function __construct(Version $version, $sid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
-            'conferenceSid' => $conferenceSid,
-            'callSid' => $callSid,
+            'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants/' . rawurlencode($callSid) . '.json';
+        $this->uri = '/Credentials/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch a CredentialInstance
      * 
-     * @return ParticipantInstance Fetched ParticipantInstance
+     * @return CredentialInstance Fetched CredentialInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -52,29 +47,28 @@ class ParticipantContext extends InstanceContext {
             $params
         );
         
-        return new ParticipantInstance(
+        return new CredentialInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
-            $this->solution['conferenceSid'],
-            $this->solution['callSid']
+            $this->solution['sid']
         );
     }
 
     /**
-     * Update the ParticipantInstance
+     * Update the CredentialInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Updated ParticipantInstance
+     * @return CredentialInstance Updated CredentialInstance
      */
     public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Muted' => $options['muted'],
-            'Hold' => $options['hold'],
-            'HoldUrl' => $options['holdUrl'],
-            'HoldMethod' => $options['holdMethod'],
+            'FriendlyName' => $options['friendlyName'],
+            'Certificate' => $options['certificate'],
+            'PrivateKey' => $options['privateKey'],
+            'Sandbox' => $options['sandbox'],
+            'ApiKey' => $options['apiKey'],
         ));
         
         $payload = $this->version->update(
@@ -84,17 +78,15 @@ class ParticipantContext extends InstanceContext {
             $data
         );
         
-        return new ParticipantInstance(
+        return new CredentialInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
-            $this->solution['conferenceSid'],
-            $this->solution['callSid']
+            $this->solution['sid']
         );
     }
 
     /**
-     * Deletes the ParticipantInstance
+     * Deletes the CredentialInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
      */
@@ -112,6 +104,6 @@ class ParticipantContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ParticipantContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Chat.V1.CredentialContext ' . implode(' ', $context) . ']';
     }
 }

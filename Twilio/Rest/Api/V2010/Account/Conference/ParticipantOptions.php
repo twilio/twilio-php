@@ -14,20 +14,108 @@ use Twilio\Values;
 
 abstract class ParticipantOptions {
     /**
+     * @param string $muted Indicates if the participant should be muted
+     * @param string $hold The hold
+     * @param string $holdUrl The hold_url
+     * @param string $holdMethod The hold_method
+     * @return UpdateParticipantOptions Options builder
+     */
+    public static function update($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE) {
+        return new UpdateParticipantOptions($muted, $hold, $holdUrl, $holdMethod);
+    }
+
+    /**
      * @param string $muted Filter by muted participants
+     * @param string $hold The hold
      * @return ReadParticipantOptions Options builder
      */
-    public static function read($muted = Values::NONE) {
-        return new ReadParticipantOptions($muted);
+    public static function read($muted = Values::NONE, $hold = Values::NONE) {
+        return new ReadParticipantOptions($muted, $hold);
+    }
+}
+
+class UpdateParticipantOptions extends Options {
+    /**
+     * @param string $muted Indicates if the participant should be muted
+     * @param string $hold The hold
+     * @param string $holdUrl The hold_url
+     * @param string $holdMethod The hold_method
+     */
+    public function __construct($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE) {
+        $this->options['muted'] = $muted;
+        $this->options['hold'] = $hold;
+        $this->options['holdUrl'] = $holdUrl;
+        $this->options['holdMethod'] = $holdMethod;
+    }
+
+    /**
+     * Indicates if the participant should be muted
+     * 
+     * @param string $muted Indicates if the participant should be muted
+     * @return $this Fluent Builder
+     */
+    public function setMuted($muted) {
+        $this->options['muted'] = $muted;
+        return $this;
+    }
+
+    /**
+     * The hold
+     * 
+     * @param string $hold The hold
+     * @return $this Fluent Builder
+     */
+    public function setHold($hold) {
+        $this->options['hold'] = $hold;
+        return $this;
+    }
+
+    /**
+     * The hold_url
+     * 
+     * @param string $holdUrl The hold_url
+     * @return $this Fluent Builder
+     */
+    public function setHoldUrl($holdUrl) {
+        $this->options['holdUrl'] = $holdUrl;
+        return $this;
+    }
+
+    /**
+     * The hold_method
+     * 
+     * @param string $holdMethod The hold_method
+     * @return $this Fluent Builder
+     */
+    public function setHoldMethod($holdMethod) {
+        $this->options['holdMethod'] = $holdMethod;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Api.V2010.UpdateParticipantOptions ' . implode(' ', $options) . ']';
     }
 }
 
 class ReadParticipantOptions extends Options {
     /**
      * @param string $muted Filter by muted participants
+     * @param string $hold The hold
      */
-    public function __construct($muted = Values::NONE) {
+    public function __construct($muted = Values::NONE, $hold = Values::NONE) {
         $this->options['muted'] = $muted;
+        $this->options['hold'] = $hold;
     }
 
     /**
@@ -38,6 +126,17 @@ class ReadParticipantOptions extends Options {
      */
     public function setMuted($muted) {
         $this->options['muted'] = $muted;
+        return $this;
+    }
+
+    /**
+     * The hold
+     * 
+     * @param string $hold The hold
+     * @return $this Fluent Builder
+     */
+    public function setHold($hold) {
+        $this->options['hold'] = $hold;
         return $this;
     }
 

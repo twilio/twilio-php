@@ -35,6 +35,11 @@ class PhoneNumberTest extends HolodeckTestCase {
             200,
             '
             {
+                "caller_name": {
+                    "caller_name": "Delicious Cheese Cake",
+                    "caller_type": "CONSUMER",
+                    "error_code": null
+                },
                 "carrier": {
                     "error_code": null,
                     "mobile_country_code": "310",

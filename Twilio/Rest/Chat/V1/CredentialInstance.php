@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Conference;
+namespace Twilio\Rest\Chat\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,50 +16,41 @@ use Twilio\Options;
 use Twilio\Version;
 
 /**
+ * @property string sid
  * @property string accountSid
- * @property string callSid
- * @property string conferenceSid
+ * @property string friendlyName
+ * @property string type
+ * @property string sandbox
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string endConferenceOnExit
- * @property string muted
- * @property string hold
- * @property string startConferenceOnEnter
- * @property string uri
+ * @property string url
  */
-class ParticipantInstance extends InstanceResource {
+class CredentialInstance extends InstanceResource {
     /**
-     * Initialize the ParticipantInstance
+     * Initialize the CredentialInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $conferenceSid A string that uniquely identifies this
-     *                              conference
-     * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantInstance 
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Chat\V1\CredentialInstance 
      */
-    public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $callSid = null) {
+    public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
         
         // Marshaled Properties
         $this->properties = array(
+            'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
-            'callSid' => $payload['call_sid'],
-            'conferenceSid' => $payload['conference_sid'],
+            'friendlyName' => $payload['friendly_name'],
+            'type' => $payload['type'],
+            'sandbox' => $payload['sandbox'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'endConferenceOnExit' => $payload['end_conference_on_exit'],
-            'muted' => $payload['muted'],
-            'hold' => $payload['hold'],
-            'startConferenceOnEnter' => $payload['start_conference_on_enter'],
-            'uri' => $payload['uri'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(
-            'accountSid' => $accountSid,
-            'conferenceSid' => $conferenceSid,
-            'callSid' => $callSid ?: $this->properties['callSid'],
+            'sid' => $sid ?: $this->properties['sid'],
         );
     }
 
@@ -67,18 +58,14 @@ class ParticipantInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext Context
-     *                                                                      for
-     *                                                                      this
-     *                                                                      ParticipantInstance
+     * @return \Twilio\Rest\Chat\V1\CredentialContext Context for this
+     *                                                CredentialInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ParticipantContext(
+            $this->context = new CredentialContext(
                 $this->version,
-                $this->solution['accountSid'],
-                $this->solution['conferenceSid'],
-                $this->solution['callSid']
+                $this->solution['sid']
             );
         }
         
@@ -86,19 +73,19 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch a CredentialInstance
      * 
-     * @return ParticipantInstance Fetched ParticipantInstance
+     * @return CredentialInstance Fetched CredentialInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the ParticipantInstance
+     * Update the CredentialInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Updated ParticipantInstance
+     * @return CredentialInstance Updated CredentialInstance
      */
     public function update($options = array()) {
         return $this->proxy()->update(
@@ -107,7 +94,7 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ParticipantInstance
+     * Deletes the CredentialInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
      */
@@ -145,6 +132,6 @@ class ParticipantInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ParticipantInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Chat.V1.CredentialInstance ' . implode(' ', $context) . ']';
     }
 }

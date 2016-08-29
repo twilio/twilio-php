@@ -63,19 +63,13 @@ class ParticipantTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->participants("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update(True);
+                                     ->participants("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'Muted' => True,
-        );
-        
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json',
-            null,
-            $values
+            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
         ));
     }
 
@@ -99,7 +93,7 @@ class ParticipantTest extends HolodeckTestCase {
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->participants("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update(True);
+                                           ->participants("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

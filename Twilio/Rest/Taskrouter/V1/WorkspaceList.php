@@ -118,6 +118,8 @@ class WorkspaceList extends ListResource {
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'EventCallbackUrl' => $options['eventCallbackUrl'],
+            'EventsFilter' => $options['eventsFilter'],
+            'MultiTaskEnabled' => $options['multiTaskEnabled'],
             'Template' => $options['template'],
         ));
         

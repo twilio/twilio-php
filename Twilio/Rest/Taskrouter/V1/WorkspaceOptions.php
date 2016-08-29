@@ -16,12 +16,14 @@ abstract class WorkspaceOptions {
     /**
      * @param string $defaultActivitySid The default_activity_sid
      * @param string $eventCallbackUrl The event_callback_url
+     * @param string $eventsFilter The events_filter
      * @param string $friendlyName The friendly_name
+     * @param string $multiTaskEnabled The multi_task_enabled
      * @param string $timeoutActivitySid The timeout_activity_sid
      * @return UpdateWorkspaceOptions Options builder
      */
-    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $friendlyName = Values::NONE, $timeoutActivitySid = Values::NONE) {
-        return new UpdateWorkspaceOptions($defaultActivitySid, $eventCallbackUrl, $friendlyName, $timeoutActivitySid);
+    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE) {
+        return new UpdateWorkspaceOptions($defaultActivitySid, $eventCallbackUrl, $eventsFilter, $friendlyName, $multiTaskEnabled, $timeoutActivitySid);
     }
 
     /**
@@ -34,11 +36,13 @@ abstract class WorkspaceOptions {
 
     /**
      * @param string $eventCallbackUrl The event_callback_url
+     * @param string $eventsFilter The events_filter
+     * @param string $multiTaskEnabled The multi_task_enabled
      * @param string $template The template
      * @return CreateWorkspaceOptions Options builder
      */
-    public static function create($eventCallbackUrl = Values::NONE, $template = Values::NONE) {
-        return new CreateWorkspaceOptions($eventCallbackUrl, $template);
+    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE) {
+        return new CreateWorkspaceOptions($eventCallbackUrl, $eventsFilter, $multiTaskEnabled, $template);
     }
 }
 
@@ -46,13 +50,17 @@ class UpdateWorkspaceOptions extends Options {
     /**
      * @param string $defaultActivitySid The default_activity_sid
      * @param string $eventCallbackUrl The event_callback_url
+     * @param string $eventsFilter The events_filter
      * @param string $friendlyName The friendly_name
+     * @param string $multiTaskEnabled The multi_task_enabled
      * @param string $timeoutActivitySid The timeout_activity_sid
      */
-    public function __construct($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $friendlyName = Values::NONE, $timeoutActivitySid = Values::NONE) {
+    public function __construct($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE) {
         $this->options['defaultActivitySid'] = $defaultActivitySid;
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
+        $this->options['eventsFilter'] = $eventsFilter;
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         $this->options['timeoutActivitySid'] = $timeoutActivitySid;
     }
 
@@ -79,6 +87,17 @@ class UpdateWorkspaceOptions extends Options {
     }
 
     /**
+     * The events_filter
+     * 
+     * @param string $eventsFilter The events_filter
+     * @return $this Fluent Builder
+     */
+    public function setEventsFilter($eventsFilter) {
+        $this->options['eventsFilter'] = $eventsFilter;
+        return $this;
+    }
+
+    /**
      * The friendly_name
      * 
      * @param string $friendlyName The friendly_name
@@ -86,6 +105,17 @@ class UpdateWorkspaceOptions extends Options {
      */
     public function setFriendlyName($friendlyName) {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The multi_task_enabled
+     * 
+     * @param string $multiTaskEnabled The multi_task_enabled
+     * @return $this Fluent Builder
+     */
+    public function setMultiTaskEnabled($multiTaskEnabled) {
+        $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         return $this;
     }
 
@@ -154,10 +184,14 @@ class ReadWorkspaceOptions extends Options {
 class CreateWorkspaceOptions extends Options {
     /**
      * @param string $eventCallbackUrl The event_callback_url
+     * @param string $eventsFilter The events_filter
+     * @param string $multiTaskEnabled The multi_task_enabled
      * @param string $template The template
      */
-    public function __construct($eventCallbackUrl = Values::NONE, $template = Values::NONE) {
+    public function __construct($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE) {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
+        $this->options['eventsFilter'] = $eventsFilter;
+        $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         $this->options['template'] = $template;
     }
 
@@ -169,6 +203,28 @@ class CreateWorkspaceOptions extends Options {
      */
     public function setEventCallbackUrl($eventCallbackUrl) {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
+        return $this;
+    }
+
+    /**
+     * The events_filter
+     * 
+     * @param string $eventsFilter The events_filter
+     * @return $this Fluent Builder
+     */
+    public function setEventsFilter($eventsFilter) {
+        $this->options['eventsFilter'] = $eventsFilter;
+        return $this;
+    }
+
+    /**
+     * The multi_task_enabled
+     * 
+     * @param string $multiTaskEnabled The multi_task_enabled
+     * @return $this Fluent Builder
+     */
+    public function setMultiTaskEnabled($multiTaskEnabled) {
+        $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         return $this;
     }
 

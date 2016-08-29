@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Conference;
+namespace Twilio\Rest\Chat\V1\Service;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,50 +16,54 @@ use Twilio\Options;
 use Twilio\Version;
 
 /**
+ * @property string sid
  * @property string accountSid
- * @property string callSid
- * @property string conferenceSid
+ * @property string serviceSid
+ * @property string friendlyName
+ * @property string uniqueName
+ * @property string attributes
+ * @property string type
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string endConferenceOnExit
- * @property string muted
- * @property string hold
- * @property string startConferenceOnEnter
- * @property string uri
+ * @property string createdBy
+ * @property string url
+ * @property string links
  */
-class ParticipantInstance extends InstanceResource {
+class ChannelInstance extends InstanceResource {
+    protected $_members = null;
+    protected $_messages = null;
+
     /**
-     * Initialize the ParticipantInstance
+     * Initialize the ChannelInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $conferenceSid A string that uniquely identifies this
-     *                              conference
-     * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantInstance 
+     * @param string $serviceSid The service_sid
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Chat\V1\Service\ChannelInstance 
      */
-    public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $callSid = null) {
+    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
         
         // Marshaled Properties
         $this->properties = array(
+            'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
-            'callSid' => $payload['call_sid'],
-            'conferenceSid' => $payload['conference_sid'],
+            'serviceSid' => $payload['service_sid'],
+            'friendlyName' => $payload['friendly_name'],
+            'uniqueName' => $payload['unique_name'],
+            'attributes' => $payload['attributes'],
+            'type' => $payload['type'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'endConferenceOnExit' => $payload['end_conference_on_exit'],
-            'muted' => $payload['muted'],
-            'hold' => $payload['hold'],
-            'startConferenceOnEnter' => $payload['start_conference_on_enter'],
-            'uri' => $payload['uri'],
+            'createdBy' => $payload['created_by'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(
-            'accountSid' => $accountSid,
-            'conferenceSid' => $conferenceSid,
-            'callSid' => $callSid ?: $this->properties['callSid'],
+            'serviceSid' => $serviceSid,
+            'sid' => $sid ?: $this->properties['sid'],
         );
     }
 
@@ -67,18 +71,15 @@ class ParticipantInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext Context
-     *                                                                      for
-     *                                                                      this
-     *                                                                      ParticipantInstance
+     * @return \Twilio\Rest\Chat\V1\Service\ChannelContext Context for this
+     *                                                     ChannelInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ParticipantContext(
+            $this->context = new ChannelContext(
                 $this->version,
-                $this->solution['accountSid'],
-                $this->solution['conferenceSid'],
-                $this->solution['callSid']
+                $this->solution['serviceSid'],
+                $this->solution['sid']
             );
         }
         
@@ -86,19 +87,28 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a ParticipantInstance
+     * Fetch a ChannelInstance
      * 
-     * @return ParticipantInstance Fetched ParticipantInstance
+     * @return ChannelInstance Fetched ChannelInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the ParticipantInstance
+     * Deletes the ChannelInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
+     * Update the ChannelInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Updated ParticipantInstance
+     * @return ChannelInstance Updated ChannelInstance
      */
     public function update($options = array()) {
         return $this->proxy()->update(
@@ -107,12 +117,21 @@ class ParticipantInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the ParticipantInstance
+     * Access the members
      * 
-     * @return boolean True if delete succeeds, false otherwise
+     * @return \Twilio\Rest\Chat\V1\Service\Channel\MemberList 
      */
-    public function delete() {
-        return $this->proxy()->delete();
+    protected function getMembers() {
+        return $this->proxy()->members;
+    }
+
+    /**
+     * Access the messages
+     * 
+     * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageList 
+     */
+    protected function getMessages() {
+        return $this->proxy()->messages;
     }
 
     /**
@@ -145,6 +164,6 @@ class ParticipantInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ParticipantInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Chat.V1.ChannelInstance ' . implode(' ', $context) . ']';
     }
 }

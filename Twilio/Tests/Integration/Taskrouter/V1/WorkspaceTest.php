@@ -41,6 +41,7 @@ class WorkspaceTest extends HolodeckTestCase {
                 "default_activity_name": "Offline",
                 "default_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "event_callback_url": "",
+                "events_filter": "",
                 "friendly_name": "8064de33-3a05-11e5-8bae-98e0d9a1eb73",
                 "links": {
                     "activities": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities",
@@ -50,6 +51,7 @@ class WorkspaceTest extends HolodeckTestCase {
                     "workers": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers",
                     "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                 },
+                "multi_task_enabled": "false",
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -88,6 +90,7 @@ class WorkspaceTest extends HolodeckTestCase {
                 "default_activity_name": "Offline",
                 "default_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "event_callback_url": "",
+                "events_filter": "",
                 "friendly_name": "8064de33-3a05-11e5-8bae-98e0d9a1eb73",
                 "links": {
                     "activities": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities",
@@ -97,6 +100,7 @@ class WorkspaceTest extends HolodeckTestCase {
                     "workers": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers",
                     "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                 },
+                "multi_task_enabled": "false",
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -146,6 +150,7 @@ class WorkspaceTest extends HolodeckTestCase {
                         "default_activity_name": "Offline",
                         "default_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "event_callback_url": "",
+                        "events_filter": "",
                         "friendly_name": "cce151db-4644-4d48-95a1-d962829b69f0",
                         "links": {
                             "activities": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities",
@@ -155,6 +160,7 @@ class WorkspaceTest extends HolodeckTestCase {
                             "workers": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers",
                             "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                         },
+                        "multi_task_enabled": "false",
                         "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "timeout_activity_name": "Offline",
                         "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -225,6 +231,7 @@ class WorkspaceTest extends HolodeckTestCase {
                 "default_activity_name": "Offline",
                 "default_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "event_callback_url": "",
+                "events_filter": "",
                 "friendly_name": "8064de33-3a05-11e5-8bae-98e0d9a1eb73",
                 "links": {
                     "activities": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities",
@@ -234,6 +241,7 @@ class WorkspaceTest extends HolodeckTestCase {
                     "workers": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workers",
                     "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                 },
+                "multi_task_enabled": "false",
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

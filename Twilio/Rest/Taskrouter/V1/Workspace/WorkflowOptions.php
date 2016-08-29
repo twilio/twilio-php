@@ -35,13 +35,14 @@ abstract class WorkflowOptions {
     }
 
     /**
+     * @param string $assignmentCallbackUrl The assignment_callback_url
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @param string $taskReservationTimeout The task_reservation_timeout
      * @return CreateWorkflowOptions Options builder
      */
-    public static function create($fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
-        return new CreateWorkflowOptions($fallbackAssignmentCallbackUrl, $taskReservationTimeout);
+    public static function create($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
+        return new CreateWorkflowOptions($assignmentCallbackUrl, $fallbackAssignmentCallbackUrl, $taskReservationTimeout);
     }
 }
 
@@ -171,13 +172,26 @@ class ReadWorkflowOptions extends Options {
 
 class CreateWorkflowOptions extends Options {
     /**
+     * @param string $assignmentCallbackUrl The assignment_callback_url
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @param string $taskReservationTimeout The task_reservation_timeout
      */
-    public function __construct($fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
+    public function __construct($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
+        $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
+    }
+
+    /**
+     * The assignment_callback_url
+     * 
+     * @param string $assignmentCallbackUrl The assignment_callback_url
+     * @return $this Fluent Builder
+     */
+    public function setAssignmentCallbackUrl($assignmentCallbackUrl) {
+        $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
+        return $this;
     }
 
     /**
