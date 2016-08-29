@@ -30,7 +30,7 @@ class AvailablePhoneNumberCountryList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/AvailablePhoneNumbers.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers.json';
     }
 
     /**

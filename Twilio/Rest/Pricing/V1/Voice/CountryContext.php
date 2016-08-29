@@ -29,7 +29,7 @@ class CountryContext extends InstanceContext {
             'isoCountry' => $isoCountry,
         );
         
-        $this->uri = '/Voice/Countries/' . $isoCountry . '';
+        $this->uri = '/Voice/Countries/' . rawurlencode($isoCountry) . '';
     }
 
     /**

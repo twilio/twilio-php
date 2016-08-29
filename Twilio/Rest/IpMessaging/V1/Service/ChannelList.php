@@ -30,7 +30,7 @@ class ChannelList extends ListResource {
             'serviceSid' => $serviceSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Channels';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels';
     }
 
     /**

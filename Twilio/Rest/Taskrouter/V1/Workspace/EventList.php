@@ -30,7 +30,7 @@ class EventList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Events';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Events';
     }
 
     /**

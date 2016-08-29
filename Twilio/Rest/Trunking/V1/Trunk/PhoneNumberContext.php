@@ -31,7 +31,7 @@ class PhoneNumberContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/PhoneNumbers/' . $sid . '';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/PhoneNumbers/' . rawurlencode($sid) . '';
     }
 
     /**

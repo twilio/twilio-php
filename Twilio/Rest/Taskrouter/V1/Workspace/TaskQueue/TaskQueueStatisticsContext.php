@@ -32,7 +32,7 @@ class TaskQueueStatisticsContext extends InstanceContext {
             'taskQueueSid' => $taskQueueSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/TaskQueues/' . $taskQueueSid . '/Statistics';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskQueues/' . rawurlencode($taskQueueSid) . '/Statistics';
     }
 
     /**

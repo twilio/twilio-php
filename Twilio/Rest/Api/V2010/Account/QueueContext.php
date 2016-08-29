@@ -40,7 +40,7 @@ class QueueContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Queues/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues/' . rawurlencode($sid) . '.json';
     }
 
     /**

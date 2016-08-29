@@ -29,7 +29,7 @@ class IpAccessControlListList extends ListResource {
             'trunkSid' => $trunkSid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/IpAccessControlLists';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/IpAccessControlLists';
     }
 
     /**

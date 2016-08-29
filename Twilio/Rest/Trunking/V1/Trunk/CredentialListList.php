@@ -29,7 +29,7 @@ class CredentialListList extends ListResource {
             'trunkSid' => $trunkSid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/CredentialLists';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/CredentialLists';
     }
 
     /**

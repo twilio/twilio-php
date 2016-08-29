@@ -29,7 +29,7 @@ class OriginationUrlList extends ListResource {
             'trunkSid' => $trunkSid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/OriginationUrls';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/OriginationUrls';
     }
 
     /**

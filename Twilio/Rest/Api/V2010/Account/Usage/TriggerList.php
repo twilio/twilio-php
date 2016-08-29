@@ -31,7 +31,7 @@ class TriggerList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Triggers.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Triggers.json';
     }
 
     /**

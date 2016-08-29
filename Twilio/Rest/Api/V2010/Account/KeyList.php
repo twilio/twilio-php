@@ -30,7 +30,7 @@ class KeyList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Keys.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Keys.json';
     }
 
     /**

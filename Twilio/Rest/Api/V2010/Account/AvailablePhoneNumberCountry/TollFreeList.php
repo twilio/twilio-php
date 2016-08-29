@@ -33,7 +33,7 @@ class TollFreeList extends ListResource {
             'countryCode' => $countryCode,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/AvailablePhoneNumbers/' . $countryCode . '/TollFree.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . rawurlencode($countryCode) . '/TollFree.json';
     }
 
     /**

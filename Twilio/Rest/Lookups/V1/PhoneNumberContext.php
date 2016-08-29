@@ -31,7 +31,7 @@ class PhoneNumberContext extends InstanceContext {
             'phoneNumber' => $phoneNumber,
         );
         
-        $this->uri = '/PhoneNumbers/' . $phoneNumber . '';
+        $this->uri = '/PhoneNumbers/' . rawurlencode($phoneNumber) . '';
     }
 
     /**

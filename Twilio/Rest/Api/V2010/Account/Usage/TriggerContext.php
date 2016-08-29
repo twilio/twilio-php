@@ -32,7 +32,7 @@ class TriggerContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Triggers/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Triggers/' . rawurlencode($sid) . '.json';
     }
 
     /**

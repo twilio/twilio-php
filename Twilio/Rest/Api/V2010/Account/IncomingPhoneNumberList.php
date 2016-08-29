@@ -44,7 +44,7 @@ class IncomingPhoneNumberList extends ListResource {
             'ownerAccountSid' => $ownerAccountSid,
         );
         
-        $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers.json';
+        $this->uri = '/Accounts/' . rawurlencode($ownerAccountSid) . '/IncomingPhoneNumbers.json';
     }
 
     /**

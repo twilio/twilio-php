@@ -44,7 +44,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext {
             'countryCode' => $countryCode,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/AvailablePhoneNumbers/' . $countryCode . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . rawurlencode($countryCode) . '.json';
     }
 
     /**

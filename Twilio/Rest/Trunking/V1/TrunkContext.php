@@ -50,7 +50,7 @@ class TrunkContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Trunks/' . $sid . '';
+        $this->uri = '/Trunks/' . rawurlencode($sid) . '';
     }
 
     /**

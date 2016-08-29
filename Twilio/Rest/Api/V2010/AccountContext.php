@@ -124,7 +124,7 @@ class AccountContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($sid) . '.json';
     }
 
     /**

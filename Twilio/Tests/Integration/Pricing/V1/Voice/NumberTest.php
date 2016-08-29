@@ -25,10 +25,10 @@ class NumberTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
-            'https://pricing.twilio.com/v1/Voice/Numbers/+987654321'
-        )));
+            'https://pricing.twilio.com/v1/Voice/Numbers/%2B987654321'
+        ));
     }
 
     public function testFetchResponse() {

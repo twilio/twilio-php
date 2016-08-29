@@ -31,7 +31,7 @@ class DailyList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Records/Daily.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/Daily.json';
     }
 
     /**

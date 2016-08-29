@@ -29,7 +29,7 @@ class PhoneNumberList extends ListResource {
             'trunkSid' => $trunkSid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/PhoneNumbers';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/PhoneNumbers';
     }
 
     /**

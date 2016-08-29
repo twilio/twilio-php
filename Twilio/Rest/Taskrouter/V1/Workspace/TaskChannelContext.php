@@ -31,7 +31,7 @@ class TaskChannelContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/TaskChannels/' . $sid . '';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskChannels/' . rawurlencode($sid) . '';
     }
 
     /**

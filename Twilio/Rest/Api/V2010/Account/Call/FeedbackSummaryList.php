@@ -31,7 +31,7 @@ class FeedbackSummaryList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Calls/FeedbackSummary.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/FeedbackSummary.json';
     }
 
     /**

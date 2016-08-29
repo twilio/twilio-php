@@ -31,7 +31,7 @@ class CredentialListContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/CredentialLists/' . $sid . '';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/CredentialLists/' . rawurlencode($sid) . '';
     }
 
     /**
