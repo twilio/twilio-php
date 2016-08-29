@@ -20,11 +20,11 @@ $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/console
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
 
 $client = new Twilio\Rest\Client($sid, $token);
-$message = $client->account->messages->create(
-  '9991231234', // From a valid Twilio number
+$message = $client->messages->create(
   '8881231234', // Text this number
   array(
-    'Body' => "Hello from Twilio!"
+    'from' => '9991231234', // From a valid Twilio number
+    'body' => 'Hello from Twilio!'
   )
 );
 
@@ -39,12 +39,14 @@ $sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/console
 $token = "YYYYYY"; // Your Auth Token from www.twilio.com/console
 
 $client = new Twilio\Rest\Client($sid, $token);
-$call = $client->account->calls->create(
-  '9991231234', // From a valid Twilio number
-  '8881231234', // Call this number
 
-  // Read TwiML at this URL when a call connects (hold music)
-  'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+// Read TwiML at this URL when a call connects (hold music)
+$call = $client->calls->create(
+  '8881231234', // Call this number
+  '9991231234', // From a valid Twilio number
+  array(
+      'url' => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+  )
 );
 ```
 
@@ -52,7 +54,7 @@ $call = $client->account->calls->create(
 
 To control phone calls, your application needs to output
 [TwiML](http://www.twilio.com/docs/api/twiml/ "Twilio Markup Language"). Use
-`Services_Twilio_Twiml` to easily create such responses.
+`Twilio\Twiml` to easily create such responses.
 
 ```php
 <?php
