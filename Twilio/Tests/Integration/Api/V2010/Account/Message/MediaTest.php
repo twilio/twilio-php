@@ -26,10 +26,10 @@ class MediaTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'delete',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media/MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
-        )));
+        ));
     }
 
     public function testDeleteResponse() {
@@ -55,10 +55,10 @@ class MediaTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media/MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
-        )));
+        ));
     }
 
     public function testFetchResponse() {
@@ -94,10 +94,10 @@ class MediaTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -135,7 +135,7 @@ class MediaTest extends HolodeckTestCase {
                                            ->messages("MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->media->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

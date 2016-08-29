@@ -32,7 +32,7 @@ class MessageList extends ListResource {
             'channelSid' => $channelSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Channels/' . $channelSid . '/Messages';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages';
     }
 
     /**

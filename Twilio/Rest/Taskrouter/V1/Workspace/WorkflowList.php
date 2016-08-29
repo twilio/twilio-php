@@ -30,7 +30,7 @@ class WorkflowList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workflows';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows';
     }
 
     /**

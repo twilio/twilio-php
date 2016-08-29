@@ -40,7 +40,7 @@ class WorkflowContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workflows/' . $sid . '';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows/' . rawurlencode($sid) . '';
     }
 
     /**

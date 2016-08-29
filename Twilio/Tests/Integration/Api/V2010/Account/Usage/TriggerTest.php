@@ -26,10 +26,10 @@ class TriggerTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
-        )));
+        ));
     }
 
     public function testFetchResponse() {
@@ -74,10 +74,10 @@ class TriggerTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
-        )));
+        ));
     }
 
     public function testUpdateResponse() {
@@ -122,10 +122,10 @@ class TriggerTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'delete',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers/UTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
-        )));
+        ));
     }
 
     public function testDeleteResponse() {
@@ -157,12 +157,12 @@ class TriggerTest extends HolodeckTestCase {
             'UsageCategory' => "authy-authentications",
         );
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers.json',
             null,
             $values
-        )));
+        ));
     }
 
     public function testCreateResponse() {
@@ -207,10 +207,10 @@ class TriggerTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Triggers.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -257,7 +257,7 @@ class TriggerTest extends HolodeckTestCase {
                                            ->usage
                                            ->triggers->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

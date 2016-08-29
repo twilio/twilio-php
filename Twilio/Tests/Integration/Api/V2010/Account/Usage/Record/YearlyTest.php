@@ -27,10 +27,10 @@ class YearlyTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Records/Yearly.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -85,7 +85,7 @@ class YearlyTest extends HolodeckTestCase {
                                            ->records
                                            ->yearly->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -44,7 +44,7 @@ class DomainContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($sid) . '.json';
     }
 
     /**

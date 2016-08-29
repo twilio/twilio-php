@@ -30,7 +30,7 @@ class ActivityList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Activities';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Activities';
     }
 
     /**

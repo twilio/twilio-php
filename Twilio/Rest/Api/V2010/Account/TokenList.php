@@ -30,7 +30,7 @@ class TokenList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Tokens.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Tokens.json';
     }
 
     /**

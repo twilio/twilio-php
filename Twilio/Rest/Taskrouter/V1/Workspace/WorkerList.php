@@ -38,7 +38,7 @@ class WorkerList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers';
     }
 
     /**

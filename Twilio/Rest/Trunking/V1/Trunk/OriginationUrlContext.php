@@ -32,7 +32,7 @@ class OriginationUrlContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/OriginationUrls/' . $sid . '';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/OriginationUrls/' . rawurlencode($sid) . '';
     }
 
     /**

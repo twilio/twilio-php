@@ -34,7 +34,7 @@ class MessageContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Channels/' . $channelSid . '/Messages/' . $sid . '';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages/' . rawurlencode($sid) . '';
     }
 
     /**

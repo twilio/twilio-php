@@ -34,7 +34,7 @@ class ReservationContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $workerSid . '/Reservations/' . $sid . '';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($workerSid) . '/Reservations/' . rawurlencode($sid) . '';
     }
 
     /**

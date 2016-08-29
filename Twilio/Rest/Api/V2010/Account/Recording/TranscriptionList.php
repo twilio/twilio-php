@@ -31,7 +31,7 @@ class TranscriptionList extends ListResource {
             'recordingSid' => $recordingSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Recordings/' . $recordingSid . '/Transcriptions.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($recordingSid) . '/Transcriptions.json';
     }
 
     /**

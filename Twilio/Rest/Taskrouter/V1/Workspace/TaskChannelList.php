@@ -29,7 +29,7 @@ class TaskChannelList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/TaskChannels';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskChannels';
     }
 
     /**

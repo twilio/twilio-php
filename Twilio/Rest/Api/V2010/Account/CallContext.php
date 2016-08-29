@@ -48,7 +48,7 @@ class CallContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Calls/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($sid) . '.json';
     }
 
     /**

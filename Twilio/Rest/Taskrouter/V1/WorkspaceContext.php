@@ -66,7 +66,7 @@ class WorkspaceContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Workspaces/' . $sid . '';
+        $this->uri = '/Workspaces/' . rawurlencode($sid) . '';
     }
 
     /**

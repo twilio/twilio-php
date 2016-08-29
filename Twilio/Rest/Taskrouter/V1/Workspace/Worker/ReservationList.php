@@ -32,7 +32,7 @@ class ReservationList extends ListResource {
             'workerSid' => $workerSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $workerSid . '/Reservations';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($workerSid) . '/Reservations';
     }
 
     /**

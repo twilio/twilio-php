@@ -31,7 +31,7 @@ class YearlyList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Records/Yearly.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/Yearly.json';
     }
 
     /**

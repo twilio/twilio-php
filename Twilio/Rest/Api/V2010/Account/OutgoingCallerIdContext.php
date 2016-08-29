@@ -32,7 +32,7 @@ class OutgoingCallerIdContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/OutgoingCallerIds/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/OutgoingCallerIds/' . rawurlencode($sid) . '.json';
     }
 
     /**

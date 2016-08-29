@@ -32,7 +32,7 @@ class MemberList extends ListResource {
             'channelSid' => $channelSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Channels/' . $channelSid . '/Members';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members';
     }
 
     /**

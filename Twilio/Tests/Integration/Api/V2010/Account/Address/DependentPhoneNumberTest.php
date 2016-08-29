@@ -26,10 +26,10 @@ class DependentPhoneNumberTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DependentPhoneNumbers.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -70,7 +70,7 @@ class DependentPhoneNumberTest extends HolodeckTestCase {
                                            ->addresses("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->dependentPhoneNumbers->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

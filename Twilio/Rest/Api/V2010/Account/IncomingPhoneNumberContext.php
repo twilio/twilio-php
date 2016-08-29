@@ -32,7 +32,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($ownerAccountSid) . '/IncomingPhoneNumbers/' . rawurlencode($sid) . '.json';
     }
 
     /**

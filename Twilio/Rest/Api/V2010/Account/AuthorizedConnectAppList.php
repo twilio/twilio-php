@@ -29,7 +29,7 @@ class AuthorizedConnectAppList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/AuthorizedConnectApps.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps.json';
     }
 
     /**

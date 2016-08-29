@@ -33,7 +33,7 @@ class MobileList extends ListResource {
             'countryCode' => $countryCode,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/AvailablePhoneNumbers/' . $countryCode . '/Mobile.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . rawurlencode($countryCode) . '/Mobile.json';
     }
 
     /**

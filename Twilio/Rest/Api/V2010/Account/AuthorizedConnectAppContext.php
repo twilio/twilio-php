@@ -31,7 +31,7 @@ class AuthorizedConnectAppContext extends InstanceContext {
             'connectAppSid' => $connectAppSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/AuthorizedConnectApps/' . $connectAppSid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps/' . rawurlencode($connectAppSid) . '.json';
     }
 
     /**

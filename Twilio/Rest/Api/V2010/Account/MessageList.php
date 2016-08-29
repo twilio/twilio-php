@@ -30,7 +30,7 @@ class MessageList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Messages.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages.json';
     }
 
     /**

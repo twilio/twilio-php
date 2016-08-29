@@ -37,7 +37,7 @@ class TaskQueueList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/TaskQueues';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskQueues';
     }
 
     /**

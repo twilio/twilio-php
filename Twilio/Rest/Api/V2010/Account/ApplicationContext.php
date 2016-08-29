@@ -32,7 +32,7 @@ class ApplicationContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Applications/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Applications/' . rawurlencode($sid) . '.json';
     }
 
     /**

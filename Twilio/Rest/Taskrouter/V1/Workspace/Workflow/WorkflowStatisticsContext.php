@@ -32,7 +32,7 @@ class WorkflowStatisticsContext extends InstanceContext {
             'workflowSid' => $workflowSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workflows/' . $workflowSid . '/Statistics';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows/' . rawurlencode($workflowSid) . '/Statistics';
     }
 
     /**

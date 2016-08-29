@@ -32,7 +32,7 @@ class RecordingList extends ListResource {
             'callSid' => $callSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Calls/' . $callSid . '/Recordings.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Recordings.json';
     }
 
     /**

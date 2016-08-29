@@ -32,7 +32,7 @@ class KeyContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Keys/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Keys/' . rawurlencode($sid) . '.json';
     }
 
     /**

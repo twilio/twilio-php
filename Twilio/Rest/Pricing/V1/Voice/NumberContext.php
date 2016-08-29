@@ -29,7 +29,7 @@ class NumberContext extends InstanceContext {
             'number' => $number,
         );
         
-        $this->uri = '/Voice/Numbers/' . $number . '';
+        $this->uri = '/Voice/Numbers/' . rawurlencode($number) . '';
     }
 
     /**

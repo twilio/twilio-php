@@ -27,10 +27,10 @@ class AllTimeTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Records/AllTime.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -85,7 +85,7 @@ class AllTimeTest extends HolodeckTestCase {
                                            ->records
                                            ->allTime->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

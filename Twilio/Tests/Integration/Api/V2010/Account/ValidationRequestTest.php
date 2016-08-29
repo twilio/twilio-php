@@ -29,11 +29,11 @@ class ValidationRequestTest extends HolodeckTestCase {
             'PhoneNumber' => "+987654321",
         );
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json',
             null,
             $values
-        )));
+        ));
     }
 }

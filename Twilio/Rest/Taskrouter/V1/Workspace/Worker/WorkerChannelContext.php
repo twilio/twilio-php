@@ -34,7 +34,7 @@ class WorkerChannelContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/' . $workerSid . '/Channels/' . $sid . '';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($workerSid) . '/Channels/' . rawurlencode($sid) . '';
     }
 
     /**

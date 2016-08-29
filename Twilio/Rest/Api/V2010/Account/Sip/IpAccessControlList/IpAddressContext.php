@@ -34,7 +34,7 @@ class IpAddressContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SIP/IpAccessControlLists/' . $ipAccessControlListSid . '/IpAddresses/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . rawurlencode($ipAccessControlListSid) . '/IpAddresses/' . rawurlencode($sid) . '.json';
     }
 
     /**

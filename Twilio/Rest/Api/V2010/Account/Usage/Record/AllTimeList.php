@@ -31,7 +31,7 @@ class AllTimeList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Records/AllTime.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/AllTime.json';
     }
 
     /**

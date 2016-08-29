@@ -39,7 +39,7 @@ class CallList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Calls.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls.json';
     }
 
     /**

@@ -30,7 +30,7 @@ class ConferenceList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Conferences.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences.json';
     }
 
     /**

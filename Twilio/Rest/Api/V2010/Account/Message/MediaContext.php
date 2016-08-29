@@ -33,7 +33,7 @@ class MediaContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Messages/' . $messageSid . '/Media/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Media/' . rawurlencode($sid) . '.json';
     }
 
     /**

@@ -26,10 +26,10 @@ class TollFreeTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -75,7 +75,7 @@ class TollFreeTest extends HolodeckTestCase {
                                            ->availablePhoneNumbers("US")
                                            ->tollFree->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

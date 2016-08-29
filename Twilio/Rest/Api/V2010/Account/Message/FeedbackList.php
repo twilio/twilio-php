@@ -32,7 +32,7 @@ class FeedbackList extends ListResource {
             'messageSid' => $messageSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Messages/' . $messageSid . '/Feedback.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Feedback.json';
     }
 
     /**

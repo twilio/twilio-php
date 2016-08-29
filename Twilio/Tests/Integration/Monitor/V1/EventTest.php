@@ -24,10 +24,10 @@ class EventTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://monitor.twilio.com/v1/Events/AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-        )));
+        ));
     }
 
     public function testFetchResponse() {
@@ -74,10 +74,10 @@ class EventTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://monitor.twilio.com/v1/Events'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -126,7 +126,7 @@ class EventTest extends HolodeckTestCase {
         
         $actual = $this->twilio->monitor->v1->events->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {
