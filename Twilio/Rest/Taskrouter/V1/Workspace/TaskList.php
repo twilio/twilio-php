@@ -30,7 +30,7 @@ class TaskList extends ListResource {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks';
     }
 
     /**

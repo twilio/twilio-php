@@ -31,7 +31,7 @@ class ThisMonthList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Records/ThisMonth.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/ThisMonth.json';
     }
 
     /**

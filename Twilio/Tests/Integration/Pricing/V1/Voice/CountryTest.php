@@ -25,10 +25,10 @@ class CountryTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://pricing.twilio.com/v1/Voice/Countries'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -59,7 +59,7 @@ class CountryTest extends HolodeckTestCase {
         $actual = $this->twilio->pricing->v1->voice
                                             ->countries->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {
@@ -96,10 +96,10 @@ class CountryTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://pricing.twilio.com/v1/Voice/Countries/US'
-        )));
+        ));
     }
 
     public function testFetchResponse() {

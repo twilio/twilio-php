@@ -34,7 +34,7 @@ class ParticipantContext extends InstanceContext {
             'callSid' => $callSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Conferences/' . $conferenceSid . '/Participants/' . $callSid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants/' . rawurlencode($callSid) . '.json';
     }
 
     /**

@@ -29,7 +29,7 @@ class AlertContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Alerts/' . $sid . '';
+        $this->uri = '/Alerts/' . rawurlencode($sid) . '';
     }
 
     /**

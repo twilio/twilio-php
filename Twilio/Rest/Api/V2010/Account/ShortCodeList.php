@@ -30,7 +30,7 @@ class ShortCodeList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SMS/ShortCodes.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SMS/ShortCodes.json';
     }
 
     /**

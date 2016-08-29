@@ -26,10 +26,10 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/Statistics'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -120,7 +120,7 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
                                                ->taskQueues
                                                ->statistics->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {

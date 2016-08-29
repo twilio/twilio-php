@@ -30,7 +30,7 @@ class OutgoingCallerIdList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/OutgoingCallerIds.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/OutgoingCallerIds.json';
     }
 
     /**

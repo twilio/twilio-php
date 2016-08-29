@@ -25,10 +25,10 @@ class CountryTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://pricing.twilio.com/v1/Messaging/Countries'
-        )));
+        ));
     }
 
     public function testFetchRequest() {
@@ -40,9 +40,9 @@ class CountryTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://pricing.twilio.com/v1/Messaging/Countries/US'
-        )));
+        ));
     }
 }

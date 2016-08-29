@@ -31,7 +31,7 @@ class YesterdayList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Usage/Records/Yesterday.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/Yesterday.json';
     }
 
     /**

@@ -31,7 +31,7 @@ class FeedbackSummaryContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Calls/FeedbackSummary/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/FeedbackSummary/' . rawurlencode($sid) . '.json';
     }
 
     /**

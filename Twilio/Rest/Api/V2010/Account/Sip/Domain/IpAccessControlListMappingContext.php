@@ -33,7 +33,7 @@ class IpAccessControlListMappingContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SIP/Domains/' . $domainSid . '/IpAccessControlListMappings/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/IpAccessControlListMappings/' . rawurlencode($sid) . '.json';
     }
 
     /**

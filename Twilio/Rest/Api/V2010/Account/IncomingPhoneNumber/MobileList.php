@@ -31,7 +31,7 @@ class MobileList extends ListResource {
             'ownerAccountSid' => $ownerAccountSid,
         );
         
-        $this->uri = '/Accounts/' . $ownerAccountSid . '/IncomingPhoneNumbers/Mobile.json';
+        $this->uri = '/Accounts/' . rawurlencode($ownerAccountSid) . '/IncomingPhoneNumbers/Mobile.json';
     }
 
     /**

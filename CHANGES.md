@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+Version 5.1.1
+-------------
+Released August 29, 2016
+
+Changes the way that `uri`s are constructed to make sure that they are always 
+`rawurlencode()`d by the `twilio-php` library
+
+Updates the output of the unit tests on failure introducing a new method,
+`assertRequest()`, that will output a friendlier error message when a request is
+missing in the `Holodeck` network mock.
+
 Version 5.1.0
 -------------
 Released August 19, 2016

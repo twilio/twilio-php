@@ -32,7 +32,7 @@ class SigningKeyContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SigningKeys/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SigningKeys/' . rawurlencode($sid) . '.json';
     }
 
     /**

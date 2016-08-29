@@ -22,4 +22,9 @@ class HolodeckTestCase extends PHPUnit_Framework_TestCase
         $this->twilio = null;
         $this->holodeck = null;
     }
+
+    public function assertRequest($request) {
+        $this->holodeck->assertRequest($request);
+        $this->assertTrue(true);
+    }
 }

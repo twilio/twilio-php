@@ -29,7 +29,7 @@ class UserList extends ListResource {
             'serviceSid' => $serviceSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Users';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users';
     }
 
     /**

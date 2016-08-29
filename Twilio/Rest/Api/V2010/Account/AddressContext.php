@@ -39,7 +39,7 @@ class AddressContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Addresses/' . $sid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses/' . rawurlencode($sid) . '.json';
     }
 
     /**

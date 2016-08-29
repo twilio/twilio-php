@@ -31,7 +31,7 @@ class IpAccessControlListContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Trunks/' . $trunkSid . '/IpAccessControlLists/' . $sid . '';
+        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/IpAccessControlLists/' . rawurlencode($sid) . '';
     }
 
     /**

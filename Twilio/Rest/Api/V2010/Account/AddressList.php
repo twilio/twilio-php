@@ -30,7 +30,7 @@ class AddressList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Addresses.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses.json';
     }
 
     /**

@@ -4,7 +4,7 @@ namespace Twilio\Tests\Unit\Jwt;
 
 use Twilio\Jwt\Grants\ConversationsGrant;
 use Twilio\Jwt\Grants\IpMessagingGrant;
-use Twilio\Jwt\Grants\ProgrammableVoiceGrant;
+use Twilio\Jwt\Grants\VoiceGrant;
 use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
 use Twilio\Jwt\AccessToken;
@@ -109,11 +109,11 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
     }
 
-    function testProgrammableVoiceGrant() {
+    function testVoiceGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
 
-        $pvg = new ProgrammableVoiceGrant();
+        $pvg = new VoiceGrant();
         $pvg->setOutgoingApplication('AP123', array('foo' => 'bar'));
 
         $scat->addGrant($pvg);
@@ -128,7 +128,7 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals(2, count($grants));
         $this->assertEquals('test identity', $payload->grants->identity);
 
-        $decodedGrant = $grants['programmable_voice'];
+        $decodedGrant = $grants['voice'];
         $outgoing = $decodedGrant['outgoing'];
         $this->assertEquals('AP123', $outgoing['application_sid']);
 

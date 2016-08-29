@@ -33,7 +33,7 @@ class ParticipantList extends ListResource {
             'conferenceSid' => $conferenceSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Conferences/' . $conferenceSid . '/Participants.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants.json';
     }
 
     /**

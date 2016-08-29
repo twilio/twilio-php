@@ -29,7 +29,7 @@ class EventContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Events/' . $sid . '';
+        $this->uri = '/Events/' . rawurlencode($sid) . '';
     }
 
     /**

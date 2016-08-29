@@ -30,7 +30,7 @@ class WorkersStatisticsContext extends InstanceContext {
             'workspaceSid' => $workspaceSid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Workers/Statistics';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/Statistics';
     }
 
     /**

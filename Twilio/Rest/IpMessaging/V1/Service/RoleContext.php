@@ -31,7 +31,7 @@ class RoleContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Roles/' . $sid . '';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Roles/' . rawurlencode($sid) . '';
     }
 
     /**

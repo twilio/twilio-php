@@ -33,7 +33,7 @@ class MemberContext extends InstanceContext {
             'callSid' => $callSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Queues/' . $queueSid . '/Members/' . $callSid . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues/' . rawurlencode($queueSid) . '/Members/' . rawurlencode($callSid) . '.json';
     }
 
     /**

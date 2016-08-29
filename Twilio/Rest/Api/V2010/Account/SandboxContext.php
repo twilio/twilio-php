@@ -30,7 +30,7 @@ class SandboxContext extends InstanceContext {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Sandbox.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Sandbox.json';
     }
 
     /**

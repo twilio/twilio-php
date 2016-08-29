@@ -26,10 +26,10 @@ class MobileTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json'
-        )));
+        ));
     }
 
     public function testReadFullResponse() {
@@ -89,7 +89,7 @@ class MobileTest extends HolodeckTestCase {
                                            ->incomingPhoneNumbers
                                            ->mobile->read();
         
-        $this->assertTrue(count($actual) > 0);
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testReadEmptyResponse() {
@@ -134,12 +134,12 @@ class MobileTest extends HolodeckTestCase {
             'PhoneNumber' => "+987654321",
         );
         
-        $this->assertTrue($this->holodeck->hasRequest(new Request(
+        $this->assertRequest(new Request(
             'post',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Mobile.json',
             null,
             $values
-        )));
+        ));
     }
 
     public function testCreateResponse() {

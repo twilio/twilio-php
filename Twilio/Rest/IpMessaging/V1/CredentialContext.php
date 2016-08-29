@@ -30,7 +30,7 @@ class CredentialContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Credentials/' . $sid . '';
+        $this->uri = '/Credentials/' . rawurlencode($sid) . '';
     }
 
     /**

@@ -40,7 +40,7 @@ class TaskContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Workspaces/' . $workspaceSid . '/Tasks/' . $sid . '';
+        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks/' . rawurlencode($sid) . '';
     }
 
     /**

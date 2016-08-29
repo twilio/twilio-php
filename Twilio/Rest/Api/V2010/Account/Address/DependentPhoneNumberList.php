@@ -31,7 +31,7 @@ class DependentPhoneNumberList extends ListResource {
             'addressSid' => $addressSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Addresses/' . $addressSid . '/DependentPhoneNumbers.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses/' . rawurlencode($addressSid) . '/DependentPhoneNumbers.json';
     }
 
     /**

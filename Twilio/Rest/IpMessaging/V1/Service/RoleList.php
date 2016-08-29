@@ -29,7 +29,7 @@ class RoleList extends ListResource {
             'serviceSid' => $serviceSid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Roles';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Roles';
     }
 
     /**

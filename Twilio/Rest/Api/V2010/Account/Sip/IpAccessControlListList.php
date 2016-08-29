@@ -30,7 +30,7 @@ class IpAccessControlListList extends ListResource {
             'accountSid' => $accountSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/SIP/IpAccessControlLists.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists.json';
     }
 
     /**

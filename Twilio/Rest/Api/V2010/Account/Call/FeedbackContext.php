@@ -32,7 +32,7 @@ class FeedbackContext extends InstanceContext {
             'callSid' => $callSid,
         );
         
-        $this->uri = '/Accounts/' . $accountSid . '/Calls/' . $callSid . '/Feedback.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Feedback.json';
     }
 
     /**

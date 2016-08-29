@@ -33,7 +33,7 @@ class MemberContext extends InstanceContext {
             'sid' => $sid,
         );
         
-        $this->uri = '/Services/' . $serviceSid . '/Channels/' . $channelSid . '/Members/' . $sid . '';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members/' . rawurlencode($sid) . '';
     }
 
     /**
