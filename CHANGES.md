@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2016-08-29] Version 5.2.0
+--------------------------
+**Breaking Changes, refer to [Upgrade Guide][upgrade]**
+
+  - New options for Conference Participant management.
+     - Adds support for `hold`, `holdUrl`, `holdMethod`
+  - Mount `ip-messaging` under the new `chat` domain
+  - Demote `assignmentCallbackUrl` from a required argument to optional for 
+    Taskrouter Workflows to better support client managed reservations.
+
 [2016-08-29] Version 5.1.1
 --------------------------
 Changes the way that `uri`s are constructed to make sure that they are always 
@@ -539,3 +549,4 @@ Released on March 14, 2012
 - If no version is passed to the Services_Twilio constructor, the library will
   default to the most recent API version.
 
+[upgrade]: https://github.com/twilio/twilio-php/blob/master/UPGRADE.md
