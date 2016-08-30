@@ -96,9 +96,9 @@ $client->conferences('CF123')->participants('CA123')->update(array(
 ```
 #### Rationale
 
-Conference Participants actually support a wider range of mutations than the 
+Conference Participants actually support a wider range of mutations than the
 `5.1.x` library supported.  Mute was incorrectly marked as a `required` property
-when it is actually `optional`.  This change allows the library to provide 
+when it is actually `optional`.  This change allows the library to provide
 support for the full range of mutation options.
 
 |  Option    | Definition                                                                                                                                                                             |
@@ -113,7 +113,7 @@ support for the full range of mutation options.
 ### CHANGED - Taskrouter Workflow Create
 
   - `WorkflowList::create(string $friendlyName, string $configuration, string $assignmentCallbackUrl, array|WorkflowOptions $options)` to `WorkflowList::create(string $friendlyName, string $configuration, array|WorkflowOptions $options)`
-  
+
 #### 5.1.x
 ```php
 <?php
@@ -148,8 +148,8 @@ $client->taskrouter->workspaces('WS123')->workflows->create(
 
 When Taskrouter was first released all workflows had to communicate reservations
 back to a server for handling.  As the product has matured a capable JavaScript
-SDK has been released that can handle reservations.  This change allows one to 
-use Taskrouter without an `assignmentCallbackUrl` instead using the client 
+SDK has been released that can handle reservations.  This change allows one to
+use Taskrouter without an `assignmentCallbackUrl` instead using the client
 events to handle reservations.
 
 [Full documentation](https://www.twilio.com/docs/api/taskrouter/worker-js)
