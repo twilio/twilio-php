@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+[2016-08-30] Version 5.3.0
+--------------------------
+**Breaking Changes, refer to [Upgrade Guide][upgrade]**
+
+  - Demote `password` to optional and remove unsupported `username` on
+    SIP Credential Update
+  - Demote `RoleSid` to optional and add optional `attributes`, `friendlyName`
+    parameters on IP Messaging/Chat User creation
+  - Add optional `attributes` parameter on IP Messaging/Chat message creation
+
+
 [2016-08-29] Version 5.2.0
 --------------------------
 **Breaking Changes, refer to [Upgrade Guide][upgrade]**

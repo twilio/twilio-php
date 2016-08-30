@@ -48,6 +48,7 @@ class MessageList extends ListResource {
         $data = Values::of(array(
             'Body' => $body,
             'From' => $options['from'],
+            'Attributes' => $options['attributes'],
         ));
         
         $payload = $this->version->create(

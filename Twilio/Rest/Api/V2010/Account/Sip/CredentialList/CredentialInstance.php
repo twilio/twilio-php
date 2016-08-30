@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Sip\CredentialList;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -86,14 +87,12 @@ class CredentialInstance extends InstanceResource {
     /**
      * Update the CredentialInstance
      * 
-     * @param string $username The username
-     * @param string $password The password
+     * @param array|Options $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      */
-    public function update($username, $password) {
+    public function update($options = array()) {
         return $this->proxy()->update(
-            $username,
-            $password
+            $options
         );
     }
 

@@ -15,10 +15,11 @@ use Twilio\Values;
 abstract class MessageOptions {
     /**
      * @param string $from The from
+     * @param string $attributes The attributes
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE) {
-        return new CreateMessageOptions($from);
+    public static function create($from = Values::NONE, $attributes = Values::NONE) {
+        return new CreateMessageOptions($from, $attributes);
     }
 
     /**
@@ -33,9 +34,11 @@ abstract class MessageOptions {
 class CreateMessageOptions extends Options {
     /**
      * @param string $from The from
+     * @param string $attributes The attributes
      */
-    public function __construct($from = Values::NONE) {
+    public function __construct($from = Values::NONE, $attributes = Values::NONE) {
         $this->options['from'] = $from;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -46,6 +49,17 @@ class CreateMessageOptions extends Options {
      */
     public function setFrom($from) {
         $this->options['from'] = $from;
+        return $this;
+    }
+
+    /**
+     * The attributes
+     * 
+     * @param string $attributes The attributes
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
         return $this;
     }
 

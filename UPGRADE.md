@@ -3,6 +3,68 @@
 _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes 
 posted here._
 
+[2015-08-30] 5.2.x to 5.3.x
+---------------------------
+
+### CHANGED - SIP Credential Update
+  - `CredentialInstance::update(string $username, string $password)` to `CredentialInstance::update(array|CredentialOptions $options)`
+  - `CredentialContext::update(string $username, string $password)` to `CredentialContext::update(array|CredentialOptions $options)`
+
+#### 5.2.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->sip->credentialLists('CL123')->credentials('CA123')->update('username', 'password');
+```
+
+#### 5.3.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->sip->credentialLists('CL123')->credentials('CA123')->update(array(
+    'password' => 'password'
+));
+```
+
+#### Rationale
+Credential Updates only supported Updating the password and it is an optional parameter.
+
+
+### CHANGED - Chat/IP Messaging Role Creation
+
+#### 5.2.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->v1->services('IS123')->users->create('identity', 'RL123');
+```
+
+#### 5.3.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->v1->services('IS123')->users->create('identity', array(
+    'roleSid' => 'RL123'
+));
+```
+
+#### Rationale
+As the Chat product has evolved, we have added a default Role sid to User creation
+making the parameter optional.
+
+
 [2016-08-29] 5.1.x to 5.2.x
 ---------------------------
 

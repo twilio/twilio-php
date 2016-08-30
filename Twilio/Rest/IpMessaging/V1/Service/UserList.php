@@ -10,6 +10,7 @@
 namespace Twilio\Rest\IpMessaging\V1\Service;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,13 +37,17 @@ class UserList extends ListResource {
      * Create a new UserInstance
      * 
      * @param string $identity The identity
-     * @param string $roleSid The role_sid
+     * @param array|Options $options Optional Arguments
      * @return UserInstance Newly created UserInstance
      */
-    public function create($identity, $roleSid) {
+    public function create($identity, $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'Identity' => $identity,
-            'RoleSid' => $roleSid,
+            'RoleSid' => $options['roleSid'],
+            'Attributes' => $options['attributes'],
+            'FriendlyName' => $options['friendlyName'],
         ));
         
         $payload = $this->version->create(

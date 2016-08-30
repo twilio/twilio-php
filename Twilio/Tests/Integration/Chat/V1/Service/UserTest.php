@@ -88,13 +88,12 @@ class UserTest extends HolodeckTestCase {
         
         try {
             $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->users->create("identity", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                   ->users->create("identity");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
             'Identity' => "identity",
-            'RoleSid' => "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         );
         
         $this->assertRequest(new Request(
@@ -125,7 +124,7 @@ class UserTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->users->create("identity", "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                         ->users->create("identity");
         
         $this->assertNotNull($actual);
     }
