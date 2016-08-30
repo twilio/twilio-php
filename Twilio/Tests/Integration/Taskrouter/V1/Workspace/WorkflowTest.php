@@ -214,14 +214,13 @@ class WorkflowTest extends HolodeckTestCase {
         
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->workflows->create("friendlyName", "configuration", "/example");
+                                         ->workflows->create("friendlyName", "configuration");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
             'FriendlyName' => "friendlyName",
             'Configuration' => "configuration",
-            'AssignmentCallbackUrl' => "/example",
         );
         
         $this->assertRequest(new Request(
@@ -254,7 +253,7 @@ class WorkflowTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->workflows->create("friendlyName", "configuration", "/example");
+                                               ->workflows->create("friendlyName", "configuration");
         
         $this->assertNotNull($actual);
     }

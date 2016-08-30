@@ -97,6 +97,7 @@ class ParticipantList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Muted' => $options['muted'],
+            'Hold' => $options['hold'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -1,10 +1,18 @@
 twilio-php Changelog
 ====================
 
-Version 5.1.1
--------------
-Released August 29, 2016
+[2016-08-29] Version 5.2.0
+--------------------------
+**Breaking Changes, refer to [Upgrade Guide][upgrade]**
 
+  - New options for Conference Participant management.
+     - Adds support for `hold`, `holdUrl`, `holdMethod`
+  - Mount `ip-messaging` under the new `chat` domain
+  - Demote `assignmentCallbackUrl` from a required argument to optional for 
+    Taskrouter Workflows to better support client managed reservations.
+
+[2016-08-29] Version 5.1.1
+--------------------------
 Changes the way that `uri`s are constructed to make sure that they are always 
 `rawurlencode()`d by the `twilio-php` library
 
@@ -12,10 +20,8 @@ Updates the output of the unit tests on failure introducing a new method,
 `assertRequest()`, that will output a friendlier error message when a request is
 missing in the `Holodeck` network mock.
 
-Version 5.1.0
--------------
-Released August 19, 2016
-
+[2016-08-19] Version 5.1.0
+--------------------------
 Optional arguments are handled in the `twilio-php` by accepting an associative 
 array of optional keys and values to pass to the API.  This makes it easy to 
 support all the optional parameters, but lessens developer ergonomics, since it 
@@ -73,32 +79,24 @@ arguments, so that you don't need to provided tons of default values.
 
 Both of these options work well with autocompleting IDEs.
 
-Version 5.0.3
--------------
-Released August 18, 2016
-
+[2016-08-18] Version 5.0.3
+--------------------------
 - Adds the ability to pass options into `Twilio\Http\CurlClient`.  This feature
   brings `CurlClient` closer to parity with `Services_Twilio_TinyHttp`.
 
-Version 5.0.2
--------------
-Released August 16, 2016
-
+[2016-08-16] Version 5.0.2
+--------------------------
 - Fixes a bug where reading lists with a `$limit` and no `$pageSize` would cause
   a divide by zero error.
 - Sanity check in the `Twiml` generator
 - Better tests for `Twiml` and `Version`
 
-Version 5.0.1
--------------
-Released August 15, 2016
-
+[2016-08-15] Version 5.0.1
+--------------------------
 Add the VERSIONS.md to explain the versioning strategy, first alpha release.
 
-Version 5.0.0
--------------
-Released August 15, 2016
-
+[2016-08-15] Version 5.0.0
+--------------------------
 **New Major Version**
 
 The newest version of the `twilio-php` helper library, supporting PHP 5.3+
@@ -551,3 +549,4 @@ Released on March 14, 2012
 - If no version is passed to the Services_Twilio constructor, the library will
   default to the most recent API version.
 
+[upgrade]: https://github.com/twilio/twilio-php/blob/master/UPGRADE.md

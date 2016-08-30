@@ -1,27 +1,44 @@
 # Versioning Strategy
 
-`twilio-php` uses [Semantic Versioning][semver] for all changes to the helper 
-library.  It is strongly encouraged that you pin at least the major version to 
-avoid pulling in breaking changes.
+`twilio-php` uses a modified version of [Semantic Versioning][semver] for all 
+changes to the helper library.  It is strongly encouraged that you pin at least 
+the major version and potentially the minor version to avoid pulling in breaking 
+changes.
 
 Semantic Versions take the form of `MAJOR`.`MINOR`.`PATCH`
 
 When bugs are fixed in the library in a backwards compatible way, the `PATCH` 
-level will be incremented by one.  `PATCH` changes should _not_ break your code 
-and are generally safe to upgrade to.
+level will be incremented by one.  When new features are added to the library 
+in a backwards compatible way, the `PATCH` level will be incremented by one.
+`PATCH` changes should _not_ break your code and are generally safe for upgrade.
 
-When new features are added to the library in a backwards compatible way, the 
-`MINOR` level will be incremented by one and the `PATCH` level will be reset to
-zero.  `MINOR` changes are should _not_ break your code and are generally safe
-to upgrade to.  After a `MINOR` change you may wish to review the helper library
-for new features and functionality.
+When a new large feature set comes online or a small breaking change is 
+introduced, the `MINOR` version will be incremented by one and the `PATCH` 
+version reset to zero. `MINOR` changes _may_ require some amount of manual code
+change for upgrade, guidance will be provided in the [Upgrade Guide][upgrade]. 
+These backwards-incompatible changes will generally be limited to a small number 
+of function signature changes.
 
-When a bug or feature requires a breaking change, the `MAJOR` level will be 
-incremented by one and the `MINOR` and `PATCH` levels will reset to zero.  These
-changes can break your code.  Twilio understands that this can be very 
-disruptive, we will only introduce breaking changes when absolutely necessary. 
-Breaking changes will be communicated in advance with `Release Candidates` and a
+The `MAJOR` version is used to indicate the family of technology represented by 
+the helper library.  It increased from `4.x.x` to `5.x.x` when Twilio moved to 
+auto generation of helper libraries.  Breaking changes that requires extensive 
+reworking of code (like the `4.x.x` to `5.x.x` upgrade) will case the `MAJOR` 
+version to be incremented by one, the `MINOR` and `PATCH` versions will be reset 
+to zero.  Twilio understands that this can be very disruptive, we will only 
+introduce this type of breaking change when absolutely necessary. New `MAJOR` 
+versions will be communicated in advance with `Release Candidates` and a 
 schedule.
+
+## Change Logs
+
+Twilio maintains a comprehensive [Changelog][changelog] for every version that 
+is released.  This will contain useful information every new version and what 
+bugs have been fixed, features added, and functionality enhanced.  After 5.1.1 
+Twilio will maintain an [Upgrade Guide][upgrade] for every change (`MINOR` or 
+`MAJOR`) that requires changes to your code.  When upgrading between two 
+versions that have more than a `PATCH` level change, it's best practice to check
+the [Upgrade Guide][upgrade] and to make sure that all your tests and static 
+checks pass after upgrade.
 
 ## Supported Versions
 
@@ -57,3 +74,5 @@ To use an `Edge` artifact in your PHP project you will have to make sure that
 you pin the artifact with `alpha` stability in your package.json.
 
 [semver]: http://semver.org/
+[changelog]: https://github.com/twilio/twilio-php/blob/master/CHANGES.md
+[upgrade]: https://github.com/twilio/twilio-php/blob/master/UPGRADE.md

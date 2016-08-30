@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -63,12 +64,17 @@ class ParticipantContext extends InstanceContext {
     /**
      * Update the ParticipantInstance
      * 
-     * @param string $muted Indicates if the participant should be muted
+     * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
      */
-    public function update($muted) {
+    public function update($options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
-            'Muted' => $muted,
+            'Muted' => $options['muted'],
+            'Hold' => $options['hold'],
+            'HoldUrl' => $options['holdUrl'],
+            'HoldMethod' => $options['holdMethod'],
         ));
         
         $payload = $this->version->update(

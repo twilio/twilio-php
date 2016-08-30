@@ -113,17 +113,16 @@ class WorkflowList extends ListResource {
      * 
      * @param string $friendlyName The friendly_name
      * @param string $configuration The configuration
-     * @param string $assignmentCallbackUrl The assignment_callback_url
      * @param array|Options $options Optional Arguments
      * @return WorkflowInstance Newly created WorkflowInstance
      */
-    public function create($friendlyName, $configuration, $assignmentCallbackUrl, $options = array()) {
+    public function create($friendlyName, $configuration, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Configuration' => $configuration,
-            'AssignmentCallbackUrl' => $assignmentCallbackUrl,
+            'AssignmentCallbackUrl' => $options['assignmentCallbackUrl'],
             'FallbackAssignmentCallbackUrl' => $options['fallbackAssignmentCallbackUrl'],
             'TaskReservationTimeout' => $options['taskReservationTimeout'],
         ));

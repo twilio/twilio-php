@@ -10,7 +10,7 @@ $args = $_SERVER['argv'];
 array_shift($args);
 
 if ($args) {
-    $version = $args;
+    $version = $args[0];
 } else {
     $patchParts = explode('-', VersionInfo::PATCH);
     $lastPatch = array_pop($patchParts);

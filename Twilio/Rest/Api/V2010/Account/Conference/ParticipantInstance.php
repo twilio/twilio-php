@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Conference;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -22,6 +23,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string endConferenceOnExit
  * @property string muted
+ * @property string hold
  * @property string startConferenceOnEnter
  * @property string uri
  */
@@ -49,6 +51,7 @@ class ParticipantInstance extends InstanceResource {
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'endConferenceOnExit' => $payload['end_conference_on_exit'],
             'muted' => $payload['muted'],
+            'hold' => $payload['hold'],
             'startConferenceOnEnter' => $payload['start_conference_on_enter'],
             'uri' => $payload['uri'],
         );
@@ -94,12 +97,12 @@ class ParticipantInstance extends InstanceResource {
     /**
      * Update the ParticipantInstance
      * 
-     * @param string $muted Indicates if the participant should be muted
+     * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
      */
-    public function update($muted) {
+    public function update($options = array()) {
         return $this->proxy()->update(
-            $muted
+            $options
         );
     }
 
