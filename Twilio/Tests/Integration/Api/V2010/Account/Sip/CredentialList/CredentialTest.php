@@ -197,20 +197,13 @@ class CredentialTest extends HolodeckTestCase {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->sip
                                      ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("username", "password");
+                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'Username' => "username",
-            'Password' => "password",
-        );
-        
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json',
-            null,
-            $values
+            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
         ));
     }
 
@@ -233,7 +226,7 @@ class CredentialTest extends HolodeckTestCase {
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->sip
                                            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("username", "password");
+                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

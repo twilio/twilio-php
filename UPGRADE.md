@@ -3,6 +3,68 @@
 _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes 
 posted here._
 
+[2015-08-30] 5.2.x to 5.3.x
+---------------------------
+
+### CHANGED - SIP Credential Update
+  - `CredentialInstance::update(string $username, string $password)` to `CredentialInstance::update(array|CredentialOptions $options)`
+  - `CredentialContext::update(string $username, string $password)` to `CredentialContext::update(array|CredentialOptions $options)`
+
+#### 5.2.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->sip->credentialLists('CL123')->credentials('CA123')->update('username', 'password');
+```
+
+#### 5.3.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->sip->credentialLists('CL123')->credentials('CA123')->update(array(
+    'password' => 'password'
+));
+```
+
+#### Rationale
+Credential Updates only supported Updating the password and it is an optional parameter.
+
+
+### CHANGED - Chat/IP Messaging Role Creation
+
+#### 5.2.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->v1->services('IS123')->users->create('identity', 'RL123');
+```
+
+#### 5.3.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->v1->services('IS123')->users->create('identity', array(
+    'roleSid' => 'RL123'
+));
+```
+
+#### Rationale
+As the Chat product has evolved, we have added a default Role sid to User creation
+making the parameter optional.
+
+
 [2016-08-29] 5.1.x to 5.2.x
 ---------------------------
 
@@ -34,9 +96,9 @@ $client->conferences('CF123')->participants('CA123')->update(array(
 ```
 #### Rationale
 
-Conference Participants actually support a wider range of mutations than the 
+Conference Participants actually support a wider range of mutations than the
 `5.1.x` library supported.  Mute was incorrectly marked as a `required` property
-when it is actually `optional`.  This change allows the library to provide 
+when it is actually `optional`.  This change allows the library to provide
 support for the full range of mutation options.
 
 |  Option    | Definition                                                                                                                                                                             |
@@ -51,7 +113,7 @@ support for the full range of mutation options.
 ### CHANGED - Taskrouter Workflow Create
 
   - `WorkflowList::create(string $friendlyName, string $configuration, string $assignmentCallbackUrl, array|WorkflowOptions $options)` to `WorkflowList::create(string $friendlyName, string $configuration, array|WorkflowOptions $options)`
-  
+
 #### 5.1.x
 ```php
 <?php
@@ -86,8 +148,8 @@ $client->taskrouter->workspaces('WS123')->workflows->create(
 
 When Taskrouter was first released all workflows had to communicate reservations
 back to a server for handling.  As the product has matured a capable JavaScript
-SDK has been released that can handle reservations.  This change allows one to 
-use Taskrouter without an `assignmentCallbackUrl` instead using the client 
+SDK has been released that can handle reservations.  This change allows one to
+use Taskrouter without an `assignmentCallbackUrl` instead using the client
 events to handle reservations.
 
 [Full documentation](https://www.twilio.com/docs/api/taskrouter/worker-js)
