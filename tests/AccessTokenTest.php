@@ -109,4 +109,31 @@ class AccessTokenTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
     }
 
+    function testProgrammableVoiceGrant() {
+        $scat = new Services_Twilio_AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat->setIdentity('test identity');
+
+        $pvg = new Services_Twilio_Auth_VoiceGrant();
+        $pvg->setOutgoingApplication('AP123', array('foo' => 'bar'));
+
+        $scat->addGrant($pvg);
+
+        $token = $scat->toJWT();
+
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(2, count($grants));
+        $this->assertEquals('test identity', $payload->grants->identity);
+
+        $decodedGrant = $grants['voice'];
+        $outgoing = $decodedGrant['outgoing'];
+        $this->assertEquals('AP123', $outgoing['application_sid']);
+
+        $params = $outgoing['params'];
+        $this->assertEquals('bar', $params['foo']);
+    }
+
 }
