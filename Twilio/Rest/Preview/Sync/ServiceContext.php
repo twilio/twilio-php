@@ -91,6 +91,7 @@ class ServiceContext extends InstanceContext {
         $data = Values::of(array(
             'WebhookUrl' => $options['webhookUrl'],
             'FriendlyName' => $options['friendlyName'],
+            'ReachabilityWebhooksEnabled' => $options['reachabilityWebhooksEnabled'],
         ));
         
         $payload = $this->version->update(

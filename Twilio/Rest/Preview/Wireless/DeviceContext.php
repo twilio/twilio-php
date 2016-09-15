@@ -76,6 +76,7 @@ class DeviceContext extends InstanceContext {
             'CallbackMethod' => $options['callbackMethod'],
             'CallbackUrl' => $options['callbackUrl'],
             'FriendlyName' => $options['friendlyName'],
+            'RatePlan' => $options['ratePlan'],
             'SimIdentifier' => $options['simIdentifier'],
             'Status' => $options['status'],
             'CommandsCallbackMethod' => $options['commandsCallbackMethod'],

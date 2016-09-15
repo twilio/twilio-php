@@ -42,6 +42,7 @@ class ServiceList extends ListResource {
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'WebhookUrl' => $options['webhookUrl'],
+            'ReachabilityWebhooksEnabled' => $options['reachabilityWebhooksEnabled'],
         ));
         
         $payload = $this->version->create(

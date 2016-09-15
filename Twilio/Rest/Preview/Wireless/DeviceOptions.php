@@ -43,14 +43,15 @@ abstract class DeviceOptions {
      * @param string $callbackMethod The callback_method
      * @param string $callbackUrl The callback_url
      * @param string $friendlyName The friendly_name
+     * @param string $ratePlan The rate_plan
      * @param string $simIdentifier The sim_identifier
      * @param string $status The status
      * @param string $commandsCallbackMethod The commands_callback_method
      * @param string $commandsCallbackUrl The commands_callback_url
      * @return UpdateDeviceOptions Options builder
      */
-    public static function update($alias = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $simIdentifier = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE) {
-        return new UpdateDeviceOptions($alias, $callbackMethod, $callbackUrl, $friendlyName, $simIdentifier, $status, $commandsCallbackMethod, $commandsCallbackUrl);
+    public static function update($alias = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $simIdentifier = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE) {
+        return new UpdateDeviceOptions($alias, $callbackMethod, $callbackUrl, $friendlyName, $ratePlan, $simIdentifier, $status, $commandsCallbackMethod, $commandsCallbackUrl);
     }
 }
 
@@ -247,16 +248,18 @@ class UpdateDeviceOptions extends Options {
      * @param string $callbackMethod The callback_method
      * @param string $callbackUrl The callback_url
      * @param string $friendlyName The friendly_name
+     * @param string $ratePlan The rate_plan
      * @param string $simIdentifier The sim_identifier
      * @param string $status The status
      * @param string $commandsCallbackMethod The commands_callback_method
      * @param string $commandsCallbackUrl The commands_callback_url
      */
-    public function __construct($alias = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $simIdentifier = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE) {
+    public function __construct($alias = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $simIdentifier = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE) {
         $this->options['alias'] = $alias;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['ratePlan'] = $ratePlan;
         $this->options['simIdentifier'] = $simIdentifier;
         $this->options['status'] = $status;
         $this->options['commandsCallbackMethod'] = $commandsCallbackMethod;
@@ -304,6 +307,17 @@ class UpdateDeviceOptions extends Options {
      */
     public function setFriendlyName($friendlyName) {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The rate_plan
+     * 
+     * @param string $ratePlan The rate_plan
+     * @return $this Fluent Builder
+     */
+    public function setRatePlan($ratePlan) {
+        $this->options['ratePlan'] = $ratePlan;
         return $this;
     }
 

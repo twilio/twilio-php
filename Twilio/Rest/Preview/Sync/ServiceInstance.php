@@ -23,6 +23,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  * @property string webhookUrl
+ * @property string reachabilityWebhooksEnabled
  * @property string links
  */
 class ServiceInstance extends InstanceResource {
@@ -50,6 +51,7 @@ class ServiceInstance extends InstanceResource {
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'url' => $payload['url'],
             'webhookUrl' => $payload['webhook_url'],
+            'reachabilityWebhooksEnabled' => $payload['reachability_webhooks_enabled'],
             'links' => $payload['links'],
         );
         
