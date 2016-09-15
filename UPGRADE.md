@@ -3,6 +3,97 @@
 _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes 
 posted here._
 
+[2015-09-15] 5.3.x to 5.4.x
+
+### CHANGED - IP Messaging / Chat Roles Update
+  - `RoleInstance::update(string $friendlyName, string[] $permission)` to `RoleInstance::update(string[] $permission)`
+  - `RoleContext::update(string $friendlyName, string[] $permission)` to `RoleContext::update(string[] $permission)`
+  
+#### 5.3.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->services('IS123')->roles('RL123')->update('Example Role', array('permission'));
+
+```
+
+#### 5.4.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->services('IS123')->roles('RL123')->update(array('permission'));
+
+```
+
+#### Rationale
+Role Updates do not support updating the friendlyName.
+
+### CHANGED - Page Load Exception
+  - `Page::processResponse(Response $response) throws DeserializeException` to `Page::processResponse(Response $response) throws RestException`
+  
+#### 5.3.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+use Twilio\Exceptions\DeserializeException;
+
+$client = new Client();
+
+try {
+    $calls = $client->calls->read();
+} catch (DeserializeException $e) {
+    echo("Error reading: {$e->getMessage()}");
+}
+```
+
+#### 5.4.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+use Twilio\Exceptions\RestException;
+
+$client = new Client();
+
+try {
+    $calls = $client->calls->read();
+} catch (RestException $e) {
+    echo("Error reading: {$e->getMessage()}");
+}
+```
+
+Alternatively
+
+```php
+<?php
+
+use Twilio\Rest\Client;
+use Twilio\Exceptions\TwilioException;
+
+$client = new Client();
+
+try {
+    $calls = $client->calls->read();
+} catch (TwilioException $e) {
+    echo("Error reading: {$e->getMessage()}");
+}
+```
+
+#### Rationale
+Exceptions were improved to include more information about what went wrong.  The
+`Page` class that is used by `read` and `stream` was missed, this bring `Page` 
+up to parity with other exceptions.
+
+The Exception class was changed to reflect that the failure is not in processing
+the response (Deserialization) but that the response is invalid (Rest).
+
 [2015-08-30] 5.2.x to 5.3.x
 ---------------------------
 
