@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2016-09-15] Version 5.4.0
+--------------------------
+**Breaking Changes, refer to [Upgrade Guide][upgrade]**
+
+  - Remove required parameter `friendlyName` on IP Messaging/Chat Role update.
+  - Alphabetize domain mounts
+  - Better exceptions when an error is encountered loading a page of records,  
+    the exception class has been corrected from `DeserializeException` to 
+    `RestException`.
+
 [2016-08-30] Version 5.3.0
 --------------------------
 **Breaking Changes, refer to [Upgrade Guide][upgrade]**

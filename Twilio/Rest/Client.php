@@ -19,8 +19,8 @@ use Twilio\VersionInfo;
  * A client for accessing the Twilio API.
  * 
  * @property \Twilio\Rest\Api api
- * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Chat chat
+ * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
  * @property \Twilio\Rest\Notify notify
@@ -85,8 +85,8 @@ class Client {
     protected $httpClient;
     protected $_account;
     protected $_api = null;
-    protected $_ipMessaging = null;
     protected $_chat = null;
+    protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
     protected $_notify = null;
@@ -594,18 +594,6 @@ class Client {
     }
 
     /**
-     * Access the IpMessaging Twilio Domain
-     * 
-     * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
-     */
-    protected function getIpMessaging() {
-        if (!$this->_ipMessaging) {
-            $this->_ipMessaging = new IpMessaging($this);
-        }
-        return $this->_ipMessaging;
-    }
-
-    /**
      * Access the Chat Twilio Domain
      * 
      * @return \Twilio\Rest\Chat Chat Twilio Domain
@@ -615,6 +603,18 @@ class Client {
             $this->_chat = new Chat($this);
         }
         return $this->_chat;
+    }
+
+    /**
+     * Access the IpMessaging Twilio Domain
+     * 
+     * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
+     */
+    protected function getIpMessaging() {
+        if (!$this->_ipMessaging) {
+            $this->_ipMessaging = new IpMessaging($this);
+        }
+        return $this->_ipMessaging;
     }
 
     /**
