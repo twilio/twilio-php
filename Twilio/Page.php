@@ -5,6 +5,7 @@ namespace Twilio;
 
 
 use Twilio\Exceptions\DeserializeException;
+use Twilio\Exceptions\RestException;
 use Twilio\Http\Response;
 
 abstract class Page implements \Iterator {
@@ -40,7 +41,17 @@ abstract class Page implements \Iterator {
 
     protected function processResponse(Response $response) {
         if ($response->getStatusCode() != 200 && !$this->isPagingEol($response->getContent())) {
-            throw new DeserializeException('Unable to fetch page', $response->getStatusCode());
+            $message = '[HTTP ' . $response->getStatusCode() . '] Unable to fetch page';
+            $code = $response->getStatusCode();
+
+            $content = $response->getContent();
+
+            if (is_array($content)) {
+                $message .= isset($content['message']) ? ': ' . $content['message'] : '';
+                $code = isset($content['code']) ? $content['code'] : $code;
+            }
+
+            throw new RestException($message, $code, $response->getStatusCode());
         }
         return $response->getContent();
     }
