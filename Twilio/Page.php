@@ -5,6 +5,7 @@ namespace Twilio;
 
 
 use Twilio\Exceptions\DeserializeException;
+use Twilio\Exceptions\RestException;
 use Twilio\Http\Response;
 
 abstract class Page implements \Iterator {
@@ -50,7 +51,7 @@ abstract class Page implements \Iterator {
                 $code = isset($content['code']) ? $content['code'] : $code;
             }
 
-            throw new DeserializeException($message, $code);
+            throw new RestException($message, $code, $response->getStatusCode());
         }
         return $response->getContent();
     }
