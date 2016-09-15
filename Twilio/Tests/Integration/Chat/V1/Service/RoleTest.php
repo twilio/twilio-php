@@ -226,12 +226,11 @@ class RoleTest extends HolodeckTestCase {
         
         try {
             $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", array('permission'));
+                                   ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update(array('permission'));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $values = array(
-            'FriendlyName' => "friendlyName",
             'Permission' => array('permission'),
         );
         
@@ -267,7 +266,7 @@ class RoleTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("friendlyName", array('permission'));
+                                         ->roles("RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update(array('permission'));
         
         $this->assertNotNull($actual);
     }

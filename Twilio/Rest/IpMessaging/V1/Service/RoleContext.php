@@ -68,13 +68,11 @@ class RoleContext extends InstanceContext {
     /**
      * Update the RoleInstance
      * 
-     * @param string $friendlyName The friendly_name
      * @param string $permission The permission
      * @return RoleInstance Updated RoleInstance
      */
-    public function update($friendlyName, $permission) {
+    public function update($permission) {
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
             'Permission' => $permission,
         ));
         

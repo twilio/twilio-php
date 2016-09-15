@@ -97,13 +97,11 @@ class RoleInstance extends InstanceResource {
     /**
      * Update the RoleInstance
      * 
-     * @param string $friendlyName The friendly_name
      * @param string $permission The permission
      * @return RoleInstance Updated RoleInstance
      */
-    public function update($friendlyName, $permission) {
+    public function update($permission) {
         return $this->proxy()->update(
-            $friendlyName,
             $permission
         );
     }
