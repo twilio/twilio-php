@@ -9,6 +9,7 @@ A huge thanks to all of our contributors:
 - Alex Chan 
 - Alex Rowley 
 - Alexandre Payment 
+- Andres Jaan Tack 
 - Andrew Nicols 
 - Andrew Ryno 
 - Andrew T. Baker 
