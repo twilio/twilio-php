@@ -1,6 +1,11 @@
 twilio-php Changelog
 ====================
 
+[2016-09-19] Version 5.4.1
+--------------------------
+
+  - Add Video Grant
+
 [2016-09-15] Version 5.4.0
 --------------------------
 **Breaking Changes, refer to [Upgrade Guide][upgrade]**
