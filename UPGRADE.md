@@ -4,6 +4,7 @@ _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes
 posted here._
 
 [2015-09-15] 5.3.x to 5.4.x
+---------------------------
 
 ### CHANGED - IP Messaging / Chat Roles Update
   - `RoleInstance::update(string $friendlyName, string[] $permission)` to `RoleInstance::update(string[] $permission)`
