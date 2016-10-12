@@ -14,6 +14,10 @@ class InstanceResource {
         $this->version = $version;
     }
 
+    public function toArray() {
+        return $this->properties;
+    }
+
     public function __toString() {
         return '[InstanceResource]';
     }
