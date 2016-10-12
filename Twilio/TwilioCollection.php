@@ -4,7 +4,7 @@
 namespace Twilio;
 
 
-class TwilioCollection {
+class TwilioCollection implements \IteratorAggregate {
     protected $items;
 
     public function __construct(Array $collection) {
@@ -23,6 +23,10 @@ class TwilioCollection {
         }
 
         return $collection;
+    }
+
+    public function getIterator() {
+        return new ArrayIterator( $this->items );
     }
 
     public function __toString() {
