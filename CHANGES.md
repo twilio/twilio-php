@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2016-10-12] Version 5.4.2
+--------------------------
+
+ - Add `InstanceResource::toArray()`
+ 
+Thanks to @johnpaulmedina for this suggestion.
+
 [2016-09-19] Version 5.4.1
 --------------------------
 
