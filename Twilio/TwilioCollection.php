@@ -26,7 +26,7 @@ class TwilioCollection implements \IteratorAggregate {
     }
 
     public function getIterator() {
-        return new ArrayIterator( $this->items );
+        return new \ArrayIterator( $this->toArray() );
     }
 
     public function __toString() {
