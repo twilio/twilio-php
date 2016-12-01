@@ -44,7 +44,7 @@ class AddressTest extends HolodeckTestCase {
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -52,6 +52,7 @@ class AddressTest extends HolodeckTestCase {
                 "customer_name": "name",
                 "date_created": "Tue, 18 Aug 2015 17:07:30 +0000",
                 "date_updated": "Tue, 18 Aug 2015 17:07:30 +0000",
+                "emergency_enabled": false,
                 "friendly_name": null,
                 "iso_country": "US",
                 "postal_code": "94019",
@@ -121,6 +122,7 @@ class AddressTest extends HolodeckTestCase {
                 "customer_name": "name",
                 "date_created": "Tue, 18 Aug 2015 17:07:30 +0000",
                 "date_updated": "Tue, 18 Aug 2015 17:07:30 +0000",
+                "emergency_enabled": false,
                 "friendly_name": null,
                 "iso_country": "US",
                 "postal_code": "94019",
@@ -163,6 +165,7 @@ class AddressTest extends HolodeckTestCase {
                 "customer_name": "name",
                 "date_created": "Tue, 18 Aug 2015 17:07:30 +0000",
                 "date_updated": "Tue, 18 Aug 2015 17:07:30 +0000",
+                "emergency_enabled": false,
                 "friendly_name": null,
                 "iso_country": "US",
                 "postal_code": "94019",
@@ -207,6 +210,7 @@ class AddressTest extends HolodeckTestCase {
                         "customer_name": "name",
                         "date_created": "Tue, 18 Aug 2015 17:07:30 +0000",
                         "date_updated": "Tue, 18 Aug 2015 17:07:30 +0000",
+                        "emergency_enabled": false,
                         "friendly_name": null,
                         "iso_country": "US",
                         "postal_code": "94019",

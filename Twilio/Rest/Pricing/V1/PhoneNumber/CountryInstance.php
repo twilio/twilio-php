@@ -18,7 +18,6 @@ use Twilio\Version;
  * @property string isoCountry
  * @property string phoneNumberPrices
  * @property string priceUnit
- * @property string uri
  * @property string url
  */
 class CountryInstance extends InstanceResource {
@@ -37,10 +36,9 @@ class CountryInstance extends InstanceResource {
         $this->properties = array(
             'country' => $payload['country'],
             'isoCountry' => $payload['iso_country'],
+            'url' => $payload['url'],
             'phoneNumberPrices' => array_key_exists('phone_number_prices', $payload) ? $payload['phone_number_prices'] : null,
             'priceUnit' => array_key_exists('price_unit', $payload) ? $payload['price_unit'] : null,
-            'uri' => array_key_exists('uri', $payload) ? $payload['uri'] : null,
-            'url' => array_key_exists('url', $payload) ? $payload['url'] : null,
         );
         
         $this->solution = array(

@@ -27,6 +27,8 @@ use Twilio\Version;
  * @property string sid
  * @property string source
  * @property string sourceIpAddress
+ * @property string url
+ * @property string links
  */
 class EventInstance extends InstanceResource {
     /**
@@ -54,6 +56,8 @@ class EventInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'source' => $payload['source'],
             'sourceIpAddress' => $payload['source_ip_address'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

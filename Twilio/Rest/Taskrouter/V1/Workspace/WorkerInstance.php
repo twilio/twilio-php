@@ -27,6 +27,8 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string sid
  * @property string workspaceSid
+ * @property string url
+ * @property string links
  */
 class WorkerInstance extends InstanceResource {
     protected $_statistics = null;
@@ -58,6 +60,8 @@ class WorkerInstance extends InstanceResource {
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

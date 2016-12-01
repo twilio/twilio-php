@@ -27,10 +27,13 @@ use Twilio\Version;
  * @property string reservationActivityName
  * @property string sid
  * @property string targetWorkers
+ * @property string taskOrder
  * @property string url
  * @property string workspaceSid
+ * @property string links
  */
 class TaskQueueInstance extends InstanceResource {
+    protected $_statistics = null;
     protected $_statistics = null;
 
     /**
@@ -58,8 +61,10 @@ class TaskQueueInstance extends InstanceResource {
             'reservationActivityName' => $payload['reservation_activity_name'],
             'sid' => $payload['sid'],
             'targetWorkers' => $payload['target_workers'],
+            'taskOrder' => $payload['task_order'],
             'url' => $payload['url'],
             'workspaceSid' => $payload['workspace_sid'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(
@@ -116,6 +121,15 @@ class TaskQueueInstance extends InstanceResource {
      */
     public function delete() {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Access the statistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
+     */
+    protected function getStatistics() {
+        return $this->proxy()->statistics;
     }
 
     /**

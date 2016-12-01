@@ -37,6 +37,55 @@ class ParticipantList extends ListResource {
     }
 
     /**
+     * Create a new ParticipantInstance
+     * 
+     * @param string $from The from
+     * @param string $to The to
+     * @param array|Options $options Optional Arguments
+     * @return ParticipantInstance Newly created ParticipantInstance
+     */
+    public function create($from, $to, $options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'From' => $from,
+            'To' => $to,
+            'StatusCallback' => $options['statusCallback'],
+            'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'StatusCallbackEvent' => $options['statusCallbackEvent'],
+            'Timeout' => $options['timeout'],
+            'Record' => $options['record'],
+            'Muted' => $options['muted'],
+            'Beep' => $options['beep'],
+            'StartConferenceOnEnter' => $options['startConferenceOnEnter'],
+            'EndConferenceOnExit' => $options['endConferenceOnExit'],
+            'WaitUrl' => $options['waitUrl'],
+            'WaitMethod' => $options['waitMethod'],
+            'EarlyMedia' => $options['earlyMedia'],
+            'MaxParticipants' => $options['maxParticipants'],
+            'ConferenceRecord' => $options['conferenceRecord'],
+            'ConferenceTrim' => $options['conferenceTrim'],
+            'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
+            'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
+            'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
+        ));
+        
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+        
+        return new ParticipantInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['conferenceSid']
+        );
+    }
+
+    /**
      * Streams ParticipantInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
@@ -79,7 +128,7 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ParticipantInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 

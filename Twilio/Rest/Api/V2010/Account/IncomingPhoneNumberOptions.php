@@ -27,6 +27,7 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $statusCallback URL Twilio will use to pass status parameters
      * @param string $statusCallbackMethod HTTP method twilio will use with status
      *                                     callback
+     * @param string $trunkSid Unique string to identify the trunk
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
      * @param string $voiceCallerIdLookup Look up the caller's caller-ID
@@ -35,10 +36,12 @@ abstract class IncomingPhoneNumberOptions {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
+     * @param string $emergencyStatus The emergency_status
+     * @param string $emergencyAddressSid The emergency_address_sid
      * @return UpdateIncomingPhoneNumberOptions Options builder
      */
-    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
-        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl);
+    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trunkSid = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE) {
+        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $trunkSid, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid);
     }
 
     /**
@@ -66,6 +69,7 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $statusCallback URL Twilio will use to pass status parameters
      * @param string $statusCallbackMethod HTTP method twilio will use with status
      *                                     callback
+     * @param string $trunkSid Unique string to identify the trunk
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
      * @param string $voiceCallerIdLookup Look up the caller's caller-ID
@@ -74,10 +78,12 @@ abstract class IncomingPhoneNumberOptions {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
+     * @param string $emergencyStatus The emergency_status
+     * @param string $emergencyAddressSid The emergency_address_sid
      * @return CreateIncomingPhoneNumberOptions Options builder
      */
-    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
-        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl);
+    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trunkSid = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE) {
+        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $trunkSid, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid);
     }
 }
 
@@ -96,6 +102,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      * @param string $statusCallback URL Twilio will use to pass status parameters
      * @param string $statusCallbackMethod HTTP method twilio will use with status
      *                                     callback
+     * @param string $trunkSid Unique string to identify the trunk
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
      * @param string $voiceCallerIdLookup Look up the caller's caller-ID
@@ -104,8 +111,10 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
+     * @param string $emergencyStatus The emergency_status
+     * @param string $emergencyAddressSid The emergency_address_sid
      */
-    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
+    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trunkSid = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
@@ -116,12 +125,15 @@ class UpdateIncomingPhoneNumberOptions extends Options {
         $this->options['smsUrl'] = $smsUrl;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        $this->options['trunkSid'] = $trunkSid;
         $this->options['voiceApplicationSid'] = $voiceApplicationSid;
         $this->options['voiceCallerIdLookup'] = $voiceCallerIdLookup;
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         $this->options['voiceMethod'] = $voiceMethod;
         $this->options['voiceUrl'] = $voiceUrl;
+        $this->options['emergencyStatus'] = $emergencyStatus;
+        $this->options['emergencyAddressSid'] = $emergencyAddressSid;
     }
 
     /**
@@ -238,6 +250,17 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
+     * The 34 character sid of the Trunk Twilio should use to handle phone calls to this number. If a `TrunkSid` is present, Twilio will ignore all of the voice urls  and voice applications above and use those set on the Trunk. Setting a `TrunkSid` will automatically delete your `VoiceApplicationSid` and vice versa.
+     * 
+     * @param string $trunkSid Unique string to identify the trunk
+     * @return $this Fluent Builder
+     */
+    public function setTrunkSid($trunkSid) {
+        $this->options['trunkSid'] = $trunkSid;
+        return $this;
+    }
+
+    /**
      * The 34 character sid of the application Twilio should use to handle phone calls to this number. If a `VoiceApplicationSid` is present, Twilio will ignore all of the voice urls above and use those set on the application. Setting a `VoiceApplicationSid` will automatically delete your `TrunkSid` and vice versa.
      * 
      * @param string $voiceApplicationSid The unique sid of the application to
@@ -302,6 +325,28 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      */
     public function setVoiceUrl($voiceUrl) {
         $this->options['voiceUrl'] = $voiceUrl;
+        return $this;
+    }
+
+    /**
+     * The emergency_status
+     * 
+     * @param string $emergencyStatus The emergency_status
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyStatus($emergencyStatus) {
+        $this->options['emergencyStatus'] = $emergencyStatus;
+        return $this;
+    }
+
+    /**
+     * The emergency_address_sid
+     * 
+     * @param string $emergencyAddressSid The emergency_address_sid
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyAddressSid($emergencyAddressSid) {
+        $this->options['emergencyAddressSid'] = $emergencyAddressSid;
         return $this;
     }
 
@@ -398,6 +443,7 @@ class CreateIncomingPhoneNumberOptions extends Options {
      * @param string $statusCallback URL Twilio will use to pass status parameters
      * @param string $statusCallbackMethod HTTP method twilio will use with status
      *                                     callback
+     * @param string $trunkSid Unique string to identify the trunk
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
      * @param string $voiceCallerIdLookup Look up the caller's caller-ID
@@ -406,8 +452,10 @@ class CreateIncomingPhoneNumberOptions extends Options {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
+     * @param string $emergencyStatus The emergency_status
+     * @param string $emergencyAddressSid The emergency_address_sid
      */
-    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
+    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trunkSid = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE) {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['areaCode'] = $areaCode;
         $this->options['apiVersion'] = $apiVersion;
@@ -419,12 +467,15 @@ class CreateIncomingPhoneNumberOptions extends Options {
         $this->options['smsUrl'] = $smsUrl;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        $this->options['trunkSid'] = $trunkSid;
         $this->options['voiceApplicationSid'] = $voiceApplicationSid;
         $this->options['voiceCallerIdLookup'] = $voiceCallerIdLookup;
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         $this->options['voiceMethod'] = $voiceMethod;
         $this->options['voiceUrl'] = $voiceUrl;
+        $this->options['emergencyStatus'] = $emergencyStatus;
+        $this->options['emergencyAddressSid'] = $emergencyAddressSid;
     }
 
     /**
@@ -552,6 +603,17 @@ class CreateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
+     * The 34 character sid of the Trunk Twilio should use to handle phone calls to this number. If a `TrunkSid` is present, Twilio will ignore all of the voice urls  and voice applications above and use those set on the Trunk. Setting a `TrunkSid` will automatically delete your `VoiceApplicationSid` and vice versa.
+     * 
+     * @param string $trunkSid Unique string to identify the trunk
+     * @return $this Fluent Builder
+     */
+    public function setTrunkSid($trunkSid) {
+        $this->options['trunkSid'] = $trunkSid;
+        return $this;
+    }
+
+    /**
      * The 34 character sid of the application Twilio should use to handle phone calls to this number. If a `VoiceApplicationSid` is present, Twilio will ignore all of the voice urls above and use those set on the application. Setting a `VoiceApplicationSid` will automatically delete your `TrunkSid` and vice versa.
      * 
      * @param string $voiceApplicationSid The unique sid of the application to
@@ -616,6 +678,28 @@ class CreateIncomingPhoneNumberOptions extends Options {
      */
     public function setVoiceUrl($voiceUrl) {
         $this->options['voiceUrl'] = $voiceUrl;
+        return $this;
+    }
+
+    /**
+     * The emergency_status
+     * 
+     * @param string $emergencyStatus The emergency_status
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyStatus($emergencyStatus) {
+        $this->options['emergencyStatus'] = $emergencyStatus;
+        return $this;
+    }
+
+    /**
+     * The emergency_address_sid
+     * 
+     * @param string $emergencyAddressSid The emergency_address_sid
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyAddressSid($emergencyAddressSid) {
+        $this->options['emergencyAddressSid'] = $emergencyAddressSid;
         return $this;
     }
 

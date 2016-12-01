@@ -32,6 +32,7 @@ use Twilio\Version;
  * @property string smsUrl
  * @property string statusCallback
  * @property string statusCallbackMethod
+ * @property string trunkSid
  * @property string uri
  * @property string voiceApplicationSid
  * @property string voiceCallerIdLookup
@@ -72,6 +73,7 @@ class LocalInstance extends InstanceResource {
             'smsUrl' => $payload['sms_url'],
             'statusCallback' => $payload['status_callback'],
             'statusCallbackMethod' => $payload['status_callback_method'],
+            'trunkSid' => $payload['trunk_sid'],
             'uri' => $payload['uri'],
             'voiceApplicationSid' => $payload['voice_application_sid'],
             'voiceCallerIdLookup' => $payload['voice_caller_id_lookup'],

@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string sid
  * @property string workspaceSid
+ * @property string url
  */
 class ActivityInstance extends InstanceResource {
     /**
@@ -45,6 +46,7 @@ class ActivityInstance extends InstanceResource {
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(

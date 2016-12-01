@@ -56,6 +56,7 @@ class AddressList extends ListResource {
             'PostalCode' => $postalCode,
             'IsoCountry' => $isoCountry,
             'FriendlyName' => $options['friendlyName'],
+            'EmergencyEnabled' => $options['emergencyEnabled'],
         ));
         
         $payload = $this->version->create(
@@ -115,7 +116,7 @@ class AddressList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AddressInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 

@@ -55,12 +55,15 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'SmsUrl' => $options['smsUrl'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'TrunkSid' => $options['trunkSid'],
             'VoiceApplicationSid' => $options['voiceApplicationSid'],
             'VoiceCallerIdLookup' => $options['voiceCallerIdLookup'],
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
+            'EmergencyStatus' => $options['emergencyStatus'],
+            'EmergencyAddressSid' => $options['emergencyAddressSid'],
         ));
         
         $payload = $this->version->update(

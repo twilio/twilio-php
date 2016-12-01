@@ -20,13 +20,120 @@ abstract class ServiceOptions {
      * @param string $defaultChannelCreatorRoleSid The
      *                                             default_channel_creator_role_sid
      * @param string $readStatusEnabled The read_status_enabled
+     * @param string $reachabilityEnabled The reachability_enabled
      * @param string $typingIndicatorTimeout The typing_indicator_timeout
      * @param string $consumptionReportInterval The consumption_report_interval
-     * @param string $webhooks The webhooks
+     * @param string $notifications.NewMessage.Enabled The
+     *                                                 notifications.new_message.enabled
+     * @param string $notifications.NewMessage.Template The
+     *                                                  notifications.new_message.template
+     * @param string $notifications.AddedToChannel.Enabled The
+     *                                                     notifications.added_to_channel.enabled
+     * @param string $notifications.AddedToChannel.Template The
+     *                                                      notifications.added_to_channel.template
+     * @param string $notifications.RemovedFromChannel.Enabled The
+     *                                                         notifications.removed_from_channel.enabled
+     * @param string $notifications.RemovedFromChannel.Template The
+     *                                                          notifications.removed_from_channel.template
+     * @param string $notifications.InvitedToChannel.Enabled The
+     *                                                       notifications.invited_to_channel.enabled
+     * @param string $notifications.InvitedToChannel.Template The
+     *                                                        notifications.invited_to_channel.template
+     * @param string $preWebhookUrl The pre_webhook_url
+     * @param string $postWebhookUrl The post_webhook_url
+     * @param string $webhookMethod The webhook_method
+     * @param string $webhookFilters The webhook_filters
+     * @param string $webhooks.OnMessageSend.Url The webhooks.on_message_send.url
+     * @param string $webhooks.OnMessageSend.Method The
+     *                                              webhooks.on_message_send.method
+     * @param string $webhooks.OnMessageSend.Format The
+     *                                              webhooks.on_message_send.format
+     * @param string $webhooks.OnMessageUpdate.Url The
+     *                                             webhooks.on_message_update.url
+     * @param string $webhooks.OnMessageUpdate.Method The
+     *                                                webhooks.on_message_update.method
+     * @param string $webhooks.OnMessageUpdate.Format The
+     *                                                webhooks.on_message_update.format
+     * @param string $webhooks.OnMessageRemove.Url The
+     *                                             webhooks.on_message_remove.url
+     * @param string $webhooks.OnMessageRemove.Method The
+     *                                                webhooks.on_message_remove.method
+     * @param string $webhooks.OnMessageRemove.Format The
+     *                                                webhooks.on_message_remove.format
+     * @param string $webhooks.OnChannelAdd.Url The webhooks.on_channel_add.url
+     * @param string $webhooks.OnChannelAdd.Method The
+     *                                             webhooks.on_channel_add.method
+     * @param string $webhooks.OnChannelAdd.Format The
+     *                                             webhooks.on_channel_add.format
+     * @param string $webhooks.OnChannelDestroy.Url The
+     *                                              webhooks.on_channel_destroy.url
+     * @param string $webhooks.OnChannelDestroy.Method The
+     *                                                 webhooks.on_channel_destroy.method
+     * @param string $webhooks.OnChannelDestroy.Format The
+     *                                                 webhooks.on_channel_destroy.format
+     * @param string $webhooks.OnChannelUpdate.Url The
+     *                                             webhooks.on_channel_update.url
+     * @param string $webhooks.OnChannelUpdate.Method The
+     *                                                webhooks.on_channel_update.method
+     * @param string $webhooks.OnChannelUpdate.Format The
+     *                                                webhooks.on_channel_update.format
+     * @param string $webhooks.OnMemberAdd.Url The webhooks.on_member_add.url
+     * @param string $webhooks.OnMemberAdd.Method The webhooks.on_member_add.method
+     * @param string $webhooks.OnMemberAdd.Format The webhooks.on_member_add.format
+     * @param string $webhooks.OnMemberRemove.Url The webhooks.on_member_remove.url
+     * @param string $webhooks.OnMemberRemove.Method The
+     *                                               webhooks.on_member_remove.method
+     * @param string $webhooks.OnMemberRemove.Format The
+     *                                               webhooks.on_member_remove.format
+     * @param string $webhooks.OnMessageSent.Url The webhooks.on_message_sent.url
+     * @param string $webhooks.OnMessageSent.Method The
+     *                                              webhooks.on_message_sent.method
+     * @param string $webhooks.OnMessageSent.Format The
+     *                                              webhooks.on_message_sent.format
+     * @param string $webhooks.OnMessageUpdated.Url The
+     *                                              webhooks.on_message_updated.url
+     * @param string $webhooks.OnMessageUpdated.Method The
+     *                                                 webhooks.on_message_updated.method
+     * @param string $webhooks.OnMessageUpdated.Format The
+     *                                                 webhooks.on_message_updated.format
+     * @param string $webhooks.OnMessageRemoved.Url The
+     *                                              webhooks.on_message_removed.url
+     * @param string $webhooks.OnMessageRemoved.Method The
+     *                                                 webhooks.on_message_removed.method
+     * @param string $webhooks.OnMessageRemoved.Format The
+     *                                                 webhooks.on_message_removed.format
+     * @param string $webhooks.OnChannelAdded.Url The webhooks.on_channel_added.url
+     * @param string $webhooks.OnChannelAdded.Method The
+     *                                               webhooks.on_channel_added.method
+     * @param string $webhooks.OnChannelAdded.Format The
+     *                                               webhooks.on_channel_added.format
+     * @param string $webhooks.OnChannelDestroyed.Url The
+     *                                                webhooks.on_channel_destroyed.url
+     * @param string $webhooks.OnChannelDestroyed.Method The
+     *                                                   webhooks.on_channel_destroyed.method
+     * @param string $webhooks.OnChannelDestroyed.Format The
+     *                                                   webhooks.on_channel_destroyed.format
+     * @param string $webhooks.OnChannelUpdated.Url The
+     *                                              webhooks.on_channel_updated.url
+     * @param string $webhooks.OnChannelUpdated.Method The
+     *                                                 webhooks.on_channel_updated.method
+     * @param string $webhooks.OnChannelUpdated.Format The
+     *                                                 webhooks.on_channel_updated.format
+     * @param string $webhooks.OnMemberAdded.Url The webhooks.on_member_added.url
+     * @param string $webhooks.OnMemberAdded.Method The
+     *                                              webhooks.on_member_added.method
+     * @param string $webhooks.OnMemberAdded.Format The
+     *                                              webhooks.on_member_added.format
+     * @param string $webhooks.OnMemberRemoved.Url The
+     *                                             webhooks.on_member_removed.url
+     * @param string $webhooks.OnMemberRemoved.Method The
+     *                                                webhooks.on_member_removed.method
+     * @param string $webhooks.OnMemberRemoved.Format The
+     *                                                webhooks.on_member_removed.format
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $webhooks = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $webhooks);
+    public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notifications.NewMessage.Enabled = Values::NONE, $notifications.NewMessage.Template = Values::NONE, $notifications.AddedToChannel.Enabled = Values::NONE, $notifications.AddedToChannel.Template = Values::NONE, $notifications.RemovedFromChannel.Enabled = Values::NONE, $notifications.RemovedFromChannel.Template = Values::NONE, $notifications.InvitedToChannel.Enabled = Values::NONE, $notifications.InvitedToChannel.Template = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooks.OnMessageSend.Url = Values::NONE, $webhooks.OnMessageSend.Method = Values::NONE, $webhooks.OnMessageSend.Format = Values::NONE, $webhooks.OnMessageUpdate.Url = Values::NONE, $webhooks.OnMessageUpdate.Method = Values::NONE, $webhooks.OnMessageUpdate.Format = Values::NONE, $webhooks.OnMessageRemove.Url = Values::NONE, $webhooks.OnMessageRemove.Method = Values::NONE, $webhooks.OnMessageRemove.Format = Values::NONE, $webhooks.OnChannelAdd.Url = Values::NONE, $webhooks.OnChannelAdd.Method = Values::NONE, $webhooks.OnChannelAdd.Format = Values::NONE, $webhooks.OnChannelDestroy.Url = Values::NONE, $webhooks.OnChannelDestroy.Method = Values::NONE, $webhooks.OnChannelDestroy.Format = Values::NONE, $webhooks.OnChannelUpdate.Url = Values::NONE, $webhooks.OnChannelUpdate.Method = Values::NONE, $webhooks.OnChannelUpdate.Format = Values::NONE, $webhooks.OnMemberAdd.Url = Values::NONE, $webhooks.OnMemberAdd.Method = Values::NONE, $webhooks.OnMemberAdd.Format = Values::NONE, $webhooks.OnMemberRemove.Url = Values::NONE, $webhooks.OnMemberRemove.Method = Values::NONE, $webhooks.OnMemberRemove.Format = Values::NONE, $webhooks.OnMessageSent.Url = Values::NONE, $webhooks.OnMessageSent.Method = Values::NONE, $webhooks.OnMessageSent.Format = Values::NONE, $webhooks.OnMessageUpdated.Url = Values::NONE, $webhooks.OnMessageUpdated.Method = Values::NONE, $webhooks.OnMessageUpdated.Format = Values::NONE, $webhooks.OnMessageRemoved.Url = Values::NONE, $webhooks.OnMessageRemoved.Method = Values::NONE, $webhooks.OnMessageRemoved.Format = Values::NONE, $webhooks.OnChannelAdded.Url = Values::NONE, $webhooks.OnChannelAdded.Method = Values::NONE, $webhooks.OnChannelAdded.Format = Values::NONE, $webhooks.OnChannelDestroyed.Url = Values::NONE, $webhooks.OnChannelDestroyed.Method = Values::NONE, $webhooks.OnChannelDestroyed.Format = Values::NONE, $webhooks.OnChannelUpdated.Url = Values::NONE, $webhooks.OnChannelUpdated.Method = Values::NONE, $webhooks.OnChannelUpdated.Format = Values::NONE, $webhooks.OnMemberAdded.Url = Values::NONE, $webhooks.OnMemberAdded.Method = Values::NONE, $webhooks.OnMemberAdded.Format = Values::NONE, $webhooks.OnMemberRemoved.Url = Values::NONE, $webhooks.OnMemberRemoved.Method = Values::NONE, $webhooks.OnMemberRemoved.Format = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $reachabilityEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $notifications.NewMessage.Enabled, $notifications.NewMessage.Template, $notifications.AddedToChannel.Enabled, $notifications.AddedToChannel.Template, $notifications.RemovedFromChannel.Enabled, $notifications.RemovedFromChannel.Template, $notifications.InvitedToChannel.Enabled, $notifications.InvitedToChannel.Template, $preWebhookUrl, $postWebhookUrl, $webhookMethod, $webhookFilters, $webhooks.OnMessageSend.Url, $webhooks.OnMessageSend.Method, $webhooks.OnMessageSend.Format, $webhooks.OnMessageUpdate.Url, $webhooks.OnMessageUpdate.Method, $webhooks.OnMessageUpdate.Format, $webhooks.OnMessageRemove.Url, $webhooks.OnMessageRemove.Method, $webhooks.OnMessageRemove.Format, $webhooks.OnChannelAdd.Url, $webhooks.OnChannelAdd.Method, $webhooks.OnChannelAdd.Format, $webhooks.OnChannelDestroy.Url, $webhooks.OnChannelDestroy.Method, $webhooks.OnChannelDestroy.Format, $webhooks.OnChannelUpdate.Url, $webhooks.OnChannelUpdate.Method, $webhooks.OnChannelUpdate.Format, $webhooks.OnMemberAdd.Url, $webhooks.OnMemberAdd.Method, $webhooks.OnMemberAdd.Format, $webhooks.OnMemberRemove.Url, $webhooks.OnMemberRemove.Method, $webhooks.OnMemberRemove.Format, $webhooks.OnMessageSent.Url, $webhooks.OnMessageSent.Method, $webhooks.OnMessageSent.Format, $webhooks.OnMessageUpdated.Url, $webhooks.OnMessageUpdated.Method, $webhooks.OnMessageUpdated.Format, $webhooks.OnMessageRemoved.Url, $webhooks.OnMessageRemoved.Method, $webhooks.OnMessageRemoved.Format, $webhooks.OnChannelAdded.Url, $webhooks.OnChannelAdded.Method, $webhooks.OnChannelAdded.Format, $webhooks.OnChannelDestroyed.Url, $webhooks.OnChannelDestroyed.Method, $webhooks.OnChannelDestroyed.Format, $webhooks.OnChannelUpdated.Url, $webhooks.OnChannelUpdated.Method, $webhooks.OnChannelUpdated.Format, $webhooks.OnMemberAdded.Url, $webhooks.OnMemberAdded.Method, $webhooks.OnMemberAdded.Format, $webhooks.OnMemberRemoved.Url, $webhooks.OnMemberRemoved.Method, $webhooks.OnMemberRemoved.Format);
     }
 }
 
@@ -38,19 +145,186 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultChannelCreatorRoleSid The
      *                                             default_channel_creator_role_sid
      * @param string $readStatusEnabled The read_status_enabled
+     * @param string $reachabilityEnabled The reachability_enabled
      * @param string $typingIndicatorTimeout The typing_indicator_timeout
      * @param string $consumptionReportInterval The consumption_report_interval
-     * @param string $webhooks The webhooks
+     * @param string $notifications.NewMessage.Enabled The
+     *                                                 notifications.new_message.enabled
+     * @param string $notifications.NewMessage.Template The
+     *                                                  notifications.new_message.template
+     * @param string $notifications.AddedToChannel.Enabled The
+     *                                                     notifications.added_to_channel.enabled
+     * @param string $notifications.AddedToChannel.Template The
+     *                                                      notifications.added_to_channel.template
+     * @param string $notifications.RemovedFromChannel.Enabled The
+     *                                                         notifications.removed_from_channel.enabled
+     * @param string $notifications.RemovedFromChannel.Template The
+     *                                                          notifications.removed_from_channel.template
+     * @param string $notifications.InvitedToChannel.Enabled The
+     *                                                       notifications.invited_to_channel.enabled
+     * @param string $notifications.InvitedToChannel.Template The
+     *                                                        notifications.invited_to_channel.template
+     * @param string $preWebhookUrl The pre_webhook_url
+     * @param string $postWebhookUrl The post_webhook_url
+     * @param string $webhookMethod The webhook_method
+     * @param string $webhookFilters The webhook_filters
+     * @param string $webhooks.OnMessageSend.Url The webhooks.on_message_send.url
+     * @param string $webhooks.OnMessageSend.Method The
+     *                                              webhooks.on_message_send.method
+     * @param string $webhooks.OnMessageSend.Format The
+     *                                              webhooks.on_message_send.format
+     * @param string $webhooks.OnMessageUpdate.Url The
+     *                                             webhooks.on_message_update.url
+     * @param string $webhooks.OnMessageUpdate.Method The
+     *                                                webhooks.on_message_update.method
+     * @param string $webhooks.OnMessageUpdate.Format The
+     *                                                webhooks.on_message_update.format
+     * @param string $webhooks.OnMessageRemove.Url The
+     *                                             webhooks.on_message_remove.url
+     * @param string $webhooks.OnMessageRemove.Method The
+     *                                                webhooks.on_message_remove.method
+     * @param string $webhooks.OnMessageRemove.Format The
+     *                                                webhooks.on_message_remove.format
+     * @param string $webhooks.OnChannelAdd.Url The webhooks.on_channel_add.url
+     * @param string $webhooks.OnChannelAdd.Method The
+     *                                             webhooks.on_channel_add.method
+     * @param string $webhooks.OnChannelAdd.Format The
+     *                                             webhooks.on_channel_add.format
+     * @param string $webhooks.OnChannelDestroy.Url The
+     *                                              webhooks.on_channel_destroy.url
+     * @param string $webhooks.OnChannelDestroy.Method The
+     *                                                 webhooks.on_channel_destroy.method
+     * @param string $webhooks.OnChannelDestroy.Format The
+     *                                                 webhooks.on_channel_destroy.format
+     * @param string $webhooks.OnChannelUpdate.Url The
+     *                                             webhooks.on_channel_update.url
+     * @param string $webhooks.OnChannelUpdate.Method The
+     *                                                webhooks.on_channel_update.method
+     * @param string $webhooks.OnChannelUpdate.Format The
+     *                                                webhooks.on_channel_update.format
+     * @param string $webhooks.OnMemberAdd.Url The webhooks.on_member_add.url
+     * @param string $webhooks.OnMemberAdd.Method The webhooks.on_member_add.method
+     * @param string $webhooks.OnMemberAdd.Format The webhooks.on_member_add.format
+     * @param string $webhooks.OnMemberRemove.Url The webhooks.on_member_remove.url
+     * @param string $webhooks.OnMemberRemove.Method The
+     *                                               webhooks.on_member_remove.method
+     * @param string $webhooks.OnMemberRemove.Format The
+     *                                               webhooks.on_member_remove.format
+     * @param string $webhooks.OnMessageSent.Url The webhooks.on_message_sent.url
+     * @param string $webhooks.OnMessageSent.Method The
+     *                                              webhooks.on_message_sent.method
+     * @param string $webhooks.OnMessageSent.Format The
+     *                                              webhooks.on_message_sent.format
+     * @param string $webhooks.OnMessageUpdated.Url The
+     *                                              webhooks.on_message_updated.url
+     * @param string $webhooks.OnMessageUpdated.Method The
+     *                                                 webhooks.on_message_updated.method
+     * @param string $webhooks.OnMessageUpdated.Format The
+     *                                                 webhooks.on_message_updated.format
+     * @param string $webhooks.OnMessageRemoved.Url The
+     *                                              webhooks.on_message_removed.url
+     * @param string $webhooks.OnMessageRemoved.Method The
+     *                                                 webhooks.on_message_removed.method
+     * @param string $webhooks.OnMessageRemoved.Format The
+     *                                                 webhooks.on_message_removed.format
+     * @param string $webhooks.OnChannelAdded.Url The webhooks.on_channel_added.url
+     * @param string $webhooks.OnChannelAdded.Method The
+     *                                               webhooks.on_channel_added.method
+     * @param string $webhooks.OnChannelAdded.Format The
+     *                                               webhooks.on_channel_added.format
+     * @param string $webhooks.OnChannelDestroyed.Url The
+     *                                                webhooks.on_channel_destroyed.url
+     * @param string $webhooks.OnChannelDestroyed.Method The
+     *                                                   webhooks.on_channel_destroyed.method
+     * @param string $webhooks.OnChannelDestroyed.Format The
+     *                                                   webhooks.on_channel_destroyed.format
+     * @param string $webhooks.OnChannelUpdated.Url The
+     *                                              webhooks.on_channel_updated.url
+     * @param string $webhooks.OnChannelUpdated.Method The
+     *                                                 webhooks.on_channel_updated.method
+     * @param string $webhooks.OnChannelUpdated.Format The
+     *                                                 webhooks.on_channel_updated.format
+     * @param string $webhooks.OnMemberAdded.Url The webhooks.on_member_added.url
+     * @param string $webhooks.OnMemberAdded.Method The
+     *                                              webhooks.on_member_added.method
+     * @param string $webhooks.OnMemberAdded.Format The
+     *                                              webhooks.on_member_added.format
+     * @param string $webhooks.OnMemberRemoved.Url The
+     *                                             webhooks.on_member_removed.url
+     * @param string $webhooks.OnMemberRemoved.Method The
+     *                                                webhooks.on_member_removed.method
+     * @param string $webhooks.OnMemberRemoved.Format The
+     *                                                webhooks.on_member_removed.format
      */
-    public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $webhooks = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notifications.NewMessage.Enabled = Values::NONE, $notifications.NewMessage.Template = Values::NONE, $notifications.AddedToChannel.Enabled = Values::NONE, $notifications.AddedToChannel.Template = Values::NONE, $notifications.RemovedFromChannel.Enabled = Values::NONE, $notifications.RemovedFromChannel.Template = Values::NONE, $notifications.InvitedToChannel.Enabled = Values::NONE, $notifications.InvitedToChannel.Template = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooks.OnMessageSend.Url = Values::NONE, $webhooks.OnMessageSend.Method = Values::NONE, $webhooks.OnMessageSend.Format = Values::NONE, $webhooks.OnMessageUpdate.Url = Values::NONE, $webhooks.OnMessageUpdate.Method = Values::NONE, $webhooks.OnMessageUpdate.Format = Values::NONE, $webhooks.OnMessageRemove.Url = Values::NONE, $webhooks.OnMessageRemove.Method = Values::NONE, $webhooks.OnMessageRemove.Format = Values::NONE, $webhooks.OnChannelAdd.Url = Values::NONE, $webhooks.OnChannelAdd.Method = Values::NONE, $webhooks.OnChannelAdd.Format = Values::NONE, $webhooks.OnChannelDestroy.Url = Values::NONE, $webhooks.OnChannelDestroy.Method = Values::NONE, $webhooks.OnChannelDestroy.Format = Values::NONE, $webhooks.OnChannelUpdate.Url = Values::NONE, $webhooks.OnChannelUpdate.Method = Values::NONE, $webhooks.OnChannelUpdate.Format = Values::NONE, $webhooks.OnMemberAdd.Url = Values::NONE, $webhooks.OnMemberAdd.Method = Values::NONE, $webhooks.OnMemberAdd.Format = Values::NONE, $webhooks.OnMemberRemove.Url = Values::NONE, $webhooks.OnMemberRemove.Method = Values::NONE, $webhooks.OnMemberRemove.Format = Values::NONE, $webhooks.OnMessageSent.Url = Values::NONE, $webhooks.OnMessageSent.Method = Values::NONE, $webhooks.OnMessageSent.Format = Values::NONE, $webhooks.OnMessageUpdated.Url = Values::NONE, $webhooks.OnMessageUpdated.Method = Values::NONE, $webhooks.OnMessageUpdated.Format = Values::NONE, $webhooks.OnMessageRemoved.Url = Values::NONE, $webhooks.OnMessageRemoved.Method = Values::NONE, $webhooks.OnMessageRemoved.Format = Values::NONE, $webhooks.OnChannelAdded.Url = Values::NONE, $webhooks.OnChannelAdded.Method = Values::NONE, $webhooks.OnChannelAdded.Format = Values::NONE, $webhooks.OnChannelDestroyed.Url = Values::NONE, $webhooks.OnChannelDestroyed.Method = Values::NONE, $webhooks.OnChannelDestroyed.Format = Values::NONE, $webhooks.OnChannelUpdated.Url = Values::NONE, $webhooks.OnChannelUpdated.Method = Values::NONE, $webhooks.OnChannelUpdated.Format = Values::NONE, $webhooks.OnMemberAdded.Url = Values::NONE, $webhooks.OnMemberAdded.Method = Values::NONE, $webhooks.OnMemberAdded.Format = Values::NONE, $webhooks.OnMemberRemoved.Url = Values::NONE, $webhooks.OnMemberRemoved.Method = Values::NONE, $webhooks.OnMemberRemoved.Format = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;
         $this->options['defaultChannelCreatorRoleSid'] = $defaultChannelCreatorRoleSid;
         $this->options['readStatusEnabled'] = $readStatusEnabled;
+        $this->options['reachabilityEnabled'] = $reachabilityEnabled;
         $this->options['typingIndicatorTimeout'] = $typingIndicatorTimeout;
         $this->options['consumptionReportInterval'] = $consumptionReportInterval;
-        $this->options['webhooks'] = $webhooks;
+        $this->options['notifications.NewMessage.Enabled'] = $notifications.NewMessage.Enabled;
+        $this->options['notifications.NewMessage.Template'] = $notifications.NewMessage.Template;
+        $this->options['notifications.AddedToChannel.Enabled'] = $notifications.AddedToChannel.Enabled;
+        $this->options['notifications.AddedToChannel.Template'] = $notifications.AddedToChannel.Template;
+        $this->options['notifications.RemovedFromChannel.Enabled'] = $notifications.RemovedFromChannel.Enabled;
+        $this->options['notifications.RemovedFromChannel.Template'] = $notifications.RemovedFromChannel.Template;
+        $this->options['notifications.InvitedToChannel.Enabled'] = $notifications.InvitedToChannel.Enabled;
+        $this->options['notifications.InvitedToChannel.Template'] = $notifications.InvitedToChannel.Template;
+        $this->options['preWebhookUrl'] = $preWebhookUrl;
+        $this->options['postWebhookUrl'] = $postWebhookUrl;
+        $this->options['webhookMethod'] = $webhookMethod;
+        $this->options['webhookFilters'] = $webhookFilters;
+        $this->options['webhooks.OnMessageSend.Url'] = $webhooks.OnMessageSend.Url;
+        $this->options['webhooks.OnMessageSend.Method'] = $webhooks.OnMessageSend.Method;
+        $this->options['webhooks.OnMessageSend.Format'] = $webhooks.OnMessageSend.Format;
+        $this->options['webhooks.OnMessageUpdate.Url'] = $webhooks.OnMessageUpdate.Url;
+        $this->options['webhooks.OnMessageUpdate.Method'] = $webhooks.OnMessageUpdate.Method;
+        $this->options['webhooks.OnMessageUpdate.Format'] = $webhooks.OnMessageUpdate.Format;
+        $this->options['webhooks.OnMessageRemove.Url'] = $webhooks.OnMessageRemove.Url;
+        $this->options['webhooks.OnMessageRemove.Method'] = $webhooks.OnMessageRemove.Method;
+        $this->options['webhooks.OnMessageRemove.Format'] = $webhooks.OnMessageRemove.Format;
+        $this->options['webhooks.OnChannelAdd.Url'] = $webhooks.OnChannelAdd.Url;
+        $this->options['webhooks.OnChannelAdd.Method'] = $webhooks.OnChannelAdd.Method;
+        $this->options['webhooks.OnChannelAdd.Format'] = $webhooks.OnChannelAdd.Format;
+        $this->options['webhooks.OnChannelDestroy.Url'] = $webhooks.OnChannelDestroy.Url;
+        $this->options['webhooks.OnChannelDestroy.Method'] = $webhooks.OnChannelDestroy.Method;
+        $this->options['webhooks.OnChannelDestroy.Format'] = $webhooks.OnChannelDestroy.Format;
+        $this->options['webhooks.OnChannelUpdate.Url'] = $webhooks.OnChannelUpdate.Url;
+        $this->options['webhooks.OnChannelUpdate.Method'] = $webhooks.OnChannelUpdate.Method;
+        $this->options['webhooks.OnChannelUpdate.Format'] = $webhooks.OnChannelUpdate.Format;
+        $this->options['webhooks.OnMemberAdd.Url'] = $webhooks.OnMemberAdd.Url;
+        $this->options['webhooks.OnMemberAdd.Method'] = $webhooks.OnMemberAdd.Method;
+        $this->options['webhooks.OnMemberAdd.Format'] = $webhooks.OnMemberAdd.Format;
+        $this->options['webhooks.OnMemberRemove.Url'] = $webhooks.OnMemberRemove.Url;
+        $this->options['webhooks.OnMemberRemove.Method'] = $webhooks.OnMemberRemove.Method;
+        $this->options['webhooks.OnMemberRemove.Format'] = $webhooks.OnMemberRemove.Format;
+        $this->options['webhooks.OnMessageSent.Url'] = $webhooks.OnMessageSent.Url;
+        $this->options['webhooks.OnMessageSent.Method'] = $webhooks.OnMessageSent.Method;
+        $this->options['webhooks.OnMessageSent.Format'] = $webhooks.OnMessageSent.Format;
+        $this->options['webhooks.OnMessageUpdated.Url'] = $webhooks.OnMessageUpdated.Url;
+        $this->options['webhooks.OnMessageUpdated.Method'] = $webhooks.OnMessageUpdated.Method;
+        $this->options['webhooks.OnMessageUpdated.Format'] = $webhooks.OnMessageUpdated.Format;
+        $this->options['webhooks.OnMessageRemoved.Url'] = $webhooks.OnMessageRemoved.Url;
+        $this->options['webhooks.OnMessageRemoved.Method'] = $webhooks.OnMessageRemoved.Method;
+        $this->options['webhooks.OnMessageRemoved.Format'] = $webhooks.OnMessageRemoved.Format;
+        $this->options['webhooks.OnChannelAdded.Url'] = $webhooks.OnChannelAdded.Url;
+        $this->options['webhooks.OnChannelAdded.Method'] = $webhooks.OnChannelAdded.Method;
+        $this->options['webhooks.OnChannelAdded.Format'] = $webhooks.OnChannelAdded.Format;
+        $this->options['webhooks.OnChannelDestroyed.Url'] = $webhooks.OnChannelDestroyed.Url;
+        $this->options['webhooks.OnChannelDestroyed.Method'] = $webhooks.OnChannelDestroyed.Method;
+        $this->options['webhooks.OnChannelDestroyed.Format'] = $webhooks.OnChannelDestroyed.Format;
+        $this->options['webhooks.OnChannelUpdated.Url'] = $webhooks.OnChannelUpdated.Url;
+        $this->options['webhooks.OnChannelUpdated.Method'] = $webhooks.OnChannelUpdated.Method;
+        $this->options['webhooks.OnChannelUpdated.Format'] = $webhooks.OnChannelUpdated.Format;
+        $this->options['webhooks.OnMemberAdded.Url'] = $webhooks.OnMemberAdded.Url;
+        $this->options['webhooks.OnMemberAdded.Method'] = $webhooks.OnMemberAdded.Method;
+        $this->options['webhooks.OnMemberAdded.Format'] = $webhooks.OnMemberAdded.Format;
+        $this->options['webhooks.OnMemberRemoved.Url'] = $webhooks.OnMemberRemoved.Url;
+        $this->options['webhooks.OnMemberRemoved.Method'] = $webhooks.OnMemberRemoved.Method;
+        $this->options['webhooks.OnMemberRemoved.Format'] = $webhooks.OnMemberRemoved.Format;
     }
 
     /**
@@ -110,6 +384,17 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
+     * The reachability_enabled
+     * 
+     * @param string $reachabilityEnabled The reachability_enabled
+     * @return $this Fluent Builder
+     */
+    public function setReachabilityEnabled($reachabilityEnabled) {
+        $this->options['reachabilityEnabled'] = $reachabilityEnabled;
+        return $this;
+    }
+
+    /**
      * The typing_indicator_timeout
      * 
      * @param string $typingIndicatorTimeout The typing_indicator_timeout
@@ -132,13 +417,709 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks
+     * The notifications.new_message.enabled
      * 
-     * @param string $webhooks The webhooks
+     * @param string $notifications.NewMessage.Enabled The
+     *                                                 notifications.new_message.enabled
      * @return $this Fluent Builder
      */
-    public function setWebhooks($webhooks) {
-        $this->options['webhooks'] = $webhooks;
+    public function setNotifications.NewMessage.Enabled($notifications.NewMessage.Enabled) {
+        $this->options['notifications.NewMessage.Enabled'] = $notifications.NewMessage.Enabled;
+        return $this;
+    }
+
+    /**
+     * The notifications.new_message.template
+     * 
+     * @param string $notifications.NewMessage.Template The
+     *                                                  notifications.new_message.template
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.NewMessage.Template($notifications.NewMessage.Template) {
+        $this->options['notifications.NewMessage.Template'] = $notifications.NewMessage.Template;
+        return $this;
+    }
+
+    /**
+     * The notifications.added_to_channel.enabled
+     * 
+     * @param string $notifications.AddedToChannel.Enabled The
+     *                                                     notifications.added_to_channel.enabled
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.AddedToChannel.Enabled($notifications.AddedToChannel.Enabled) {
+        $this->options['notifications.AddedToChannel.Enabled'] = $notifications.AddedToChannel.Enabled;
+        return $this;
+    }
+
+    /**
+     * The notifications.added_to_channel.template
+     * 
+     * @param string $notifications.AddedToChannel.Template The
+     *                                                      notifications.added_to_channel.template
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.AddedToChannel.Template($notifications.AddedToChannel.Template) {
+        $this->options['notifications.AddedToChannel.Template'] = $notifications.AddedToChannel.Template;
+        return $this;
+    }
+
+    /**
+     * The notifications.removed_from_channel.enabled
+     * 
+     * @param string $notifications.RemovedFromChannel.Enabled The
+     *                                                         notifications.removed_from_channel.enabled
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.RemovedFromChannel.Enabled($notifications.RemovedFromChannel.Enabled) {
+        $this->options['notifications.RemovedFromChannel.Enabled'] = $notifications.RemovedFromChannel.Enabled;
+        return $this;
+    }
+
+    /**
+     * The notifications.removed_from_channel.template
+     * 
+     * @param string $notifications.RemovedFromChannel.Template The
+     *                                                          notifications.removed_from_channel.template
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.RemovedFromChannel.Template($notifications.RemovedFromChannel.Template) {
+        $this->options['notifications.RemovedFromChannel.Template'] = $notifications.RemovedFromChannel.Template;
+        return $this;
+    }
+
+    /**
+     * The notifications.invited_to_channel.enabled
+     * 
+     * @param string $notifications.InvitedToChannel.Enabled The
+     *                                                       notifications.invited_to_channel.enabled
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.InvitedToChannel.Enabled($notifications.InvitedToChannel.Enabled) {
+        $this->options['notifications.InvitedToChannel.Enabled'] = $notifications.InvitedToChannel.Enabled;
+        return $this;
+    }
+
+    /**
+     * The notifications.invited_to_channel.template
+     * 
+     * @param string $notifications.InvitedToChannel.Template The
+     *                                                        notifications.invited_to_channel.template
+     * @return $this Fluent Builder
+     */
+    public function setNotifications.InvitedToChannel.Template($notifications.InvitedToChannel.Template) {
+        $this->options['notifications.InvitedToChannel.Template'] = $notifications.InvitedToChannel.Template;
+        return $this;
+    }
+
+    /**
+     * The pre_webhook_url
+     * 
+     * @param string $preWebhookUrl The pre_webhook_url
+     * @return $this Fluent Builder
+     */
+    public function setPreWebhookUrl($preWebhookUrl) {
+        $this->options['preWebhookUrl'] = $preWebhookUrl;
+        return $this;
+    }
+
+    /**
+     * The post_webhook_url
+     * 
+     * @param string $postWebhookUrl The post_webhook_url
+     * @return $this Fluent Builder
+     */
+    public function setPostWebhookUrl($postWebhookUrl) {
+        $this->options['postWebhookUrl'] = $postWebhookUrl;
+        return $this;
+    }
+
+    /**
+     * The webhook_method
+     * 
+     * @param string $webhookMethod The webhook_method
+     * @return $this Fluent Builder
+     */
+    public function setWebhookMethod($webhookMethod) {
+        $this->options['webhookMethod'] = $webhookMethod;
+        return $this;
+    }
+
+    /**
+     * The webhook_filters
+     * 
+     * @param string $webhookFilters The webhook_filters
+     * @return $this Fluent Builder
+     */
+    public function setWebhookFilters($webhookFilters) {
+        $this->options['webhookFilters'] = $webhookFilters;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_send.url
+     * 
+     * @param string $webhooks.OnMessageSend.Url The webhooks.on_message_send.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageSend.Url($webhooks.OnMessageSend.Url) {
+        $this->options['webhooks.OnMessageSend.Url'] = $webhooks.OnMessageSend.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_send.method
+     * 
+     * @param string $webhooks.OnMessageSend.Method The
+     *                                              webhooks.on_message_send.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageSend.Method($webhooks.OnMessageSend.Method) {
+        $this->options['webhooks.OnMessageSend.Method'] = $webhooks.OnMessageSend.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_send.format
+     * 
+     * @param string $webhooks.OnMessageSend.Format The
+     *                                              webhooks.on_message_send.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageSend.Format($webhooks.OnMessageSend.Format) {
+        $this->options['webhooks.OnMessageSend.Format'] = $webhooks.OnMessageSend.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_update.url
+     * 
+     * @param string $webhooks.OnMessageUpdate.Url The
+     *                                             webhooks.on_message_update.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageUpdate.Url($webhooks.OnMessageUpdate.Url) {
+        $this->options['webhooks.OnMessageUpdate.Url'] = $webhooks.OnMessageUpdate.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_update.method
+     * 
+     * @param string $webhooks.OnMessageUpdate.Method The
+     *                                                webhooks.on_message_update.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageUpdate.Method($webhooks.OnMessageUpdate.Method) {
+        $this->options['webhooks.OnMessageUpdate.Method'] = $webhooks.OnMessageUpdate.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_update.format
+     * 
+     * @param string $webhooks.OnMessageUpdate.Format The
+     *                                                webhooks.on_message_update.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageUpdate.Format($webhooks.OnMessageUpdate.Format) {
+        $this->options['webhooks.OnMessageUpdate.Format'] = $webhooks.OnMessageUpdate.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_remove.url
+     * 
+     * @param string $webhooks.OnMessageRemove.Url The
+     *                                             webhooks.on_message_remove.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageRemove.Url($webhooks.OnMessageRemove.Url) {
+        $this->options['webhooks.OnMessageRemove.Url'] = $webhooks.OnMessageRemove.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_remove.method
+     * 
+     * @param string $webhooks.OnMessageRemove.Method The
+     *                                                webhooks.on_message_remove.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageRemove.Method($webhooks.OnMessageRemove.Method) {
+        $this->options['webhooks.OnMessageRemove.Method'] = $webhooks.OnMessageRemove.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_remove.format
+     * 
+     * @param string $webhooks.OnMessageRemove.Format The
+     *                                                webhooks.on_message_remove.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageRemove.Format($webhooks.OnMessageRemove.Format) {
+        $this->options['webhooks.OnMessageRemove.Format'] = $webhooks.OnMessageRemove.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_add.url
+     * 
+     * @param string $webhooks.OnChannelAdd.Url The webhooks.on_channel_add.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelAdd.Url($webhooks.OnChannelAdd.Url) {
+        $this->options['webhooks.OnChannelAdd.Url'] = $webhooks.OnChannelAdd.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_add.method
+     * 
+     * @param string $webhooks.OnChannelAdd.Method The
+     *                                             webhooks.on_channel_add.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelAdd.Method($webhooks.OnChannelAdd.Method) {
+        $this->options['webhooks.OnChannelAdd.Method'] = $webhooks.OnChannelAdd.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_add.format
+     * 
+     * @param string $webhooks.OnChannelAdd.Format The
+     *                                             webhooks.on_channel_add.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelAdd.Format($webhooks.OnChannelAdd.Format) {
+        $this->options['webhooks.OnChannelAdd.Format'] = $webhooks.OnChannelAdd.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_destroy.url
+     * 
+     * @param string $webhooks.OnChannelDestroy.Url The
+     *                                              webhooks.on_channel_destroy.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelDestroy.Url($webhooks.OnChannelDestroy.Url) {
+        $this->options['webhooks.OnChannelDestroy.Url'] = $webhooks.OnChannelDestroy.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_destroy.method
+     * 
+     * @param string $webhooks.OnChannelDestroy.Method The
+     *                                                 webhooks.on_channel_destroy.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelDestroy.Method($webhooks.OnChannelDestroy.Method) {
+        $this->options['webhooks.OnChannelDestroy.Method'] = $webhooks.OnChannelDestroy.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_destroy.format
+     * 
+     * @param string $webhooks.OnChannelDestroy.Format The
+     *                                                 webhooks.on_channel_destroy.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelDestroy.Format($webhooks.OnChannelDestroy.Format) {
+        $this->options['webhooks.OnChannelDestroy.Format'] = $webhooks.OnChannelDestroy.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_update.url
+     * 
+     * @param string $webhooks.OnChannelUpdate.Url The
+     *                                             webhooks.on_channel_update.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelUpdate.Url($webhooks.OnChannelUpdate.Url) {
+        $this->options['webhooks.OnChannelUpdate.Url'] = $webhooks.OnChannelUpdate.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_update.method
+     * 
+     * @param string $webhooks.OnChannelUpdate.Method The
+     *                                                webhooks.on_channel_update.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelUpdate.Method($webhooks.OnChannelUpdate.Method) {
+        $this->options['webhooks.OnChannelUpdate.Method'] = $webhooks.OnChannelUpdate.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_update.format
+     * 
+     * @param string $webhooks.OnChannelUpdate.Format The
+     *                                                webhooks.on_channel_update.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelUpdate.Format($webhooks.OnChannelUpdate.Format) {
+        $this->options['webhooks.OnChannelUpdate.Format'] = $webhooks.OnChannelUpdate.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_add.url
+     * 
+     * @param string $webhooks.OnMemberAdd.Url The webhooks.on_member_add.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberAdd.Url($webhooks.OnMemberAdd.Url) {
+        $this->options['webhooks.OnMemberAdd.Url'] = $webhooks.OnMemberAdd.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_add.method
+     * 
+     * @param string $webhooks.OnMemberAdd.Method The webhooks.on_member_add.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberAdd.Method($webhooks.OnMemberAdd.Method) {
+        $this->options['webhooks.OnMemberAdd.Method'] = $webhooks.OnMemberAdd.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_add.format
+     * 
+     * @param string $webhooks.OnMemberAdd.Format The webhooks.on_member_add.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberAdd.Format($webhooks.OnMemberAdd.Format) {
+        $this->options['webhooks.OnMemberAdd.Format'] = $webhooks.OnMemberAdd.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_remove.url
+     * 
+     * @param string $webhooks.OnMemberRemove.Url The webhooks.on_member_remove.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberRemove.Url($webhooks.OnMemberRemove.Url) {
+        $this->options['webhooks.OnMemberRemove.Url'] = $webhooks.OnMemberRemove.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_remove.method
+     * 
+     * @param string $webhooks.OnMemberRemove.Method The
+     *                                               webhooks.on_member_remove.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberRemove.Method($webhooks.OnMemberRemove.Method) {
+        $this->options['webhooks.OnMemberRemove.Method'] = $webhooks.OnMemberRemove.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_remove.format
+     * 
+     * @param string $webhooks.OnMemberRemove.Format The
+     *                                               webhooks.on_member_remove.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberRemove.Format($webhooks.OnMemberRemove.Format) {
+        $this->options['webhooks.OnMemberRemove.Format'] = $webhooks.OnMemberRemove.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_sent.url
+     * 
+     * @param string $webhooks.OnMessageSent.Url The webhooks.on_message_sent.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageSent.Url($webhooks.OnMessageSent.Url) {
+        $this->options['webhooks.OnMessageSent.Url'] = $webhooks.OnMessageSent.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_sent.method
+     * 
+     * @param string $webhooks.OnMessageSent.Method The
+     *                                              webhooks.on_message_sent.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageSent.Method($webhooks.OnMessageSent.Method) {
+        $this->options['webhooks.OnMessageSent.Method'] = $webhooks.OnMessageSent.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_sent.format
+     * 
+     * @param string $webhooks.OnMessageSent.Format The
+     *                                              webhooks.on_message_sent.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageSent.Format($webhooks.OnMessageSent.Format) {
+        $this->options['webhooks.OnMessageSent.Format'] = $webhooks.OnMessageSent.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_updated.url
+     * 
+     * @param string $webhooks.OnMessageUpdated.Url The
+     *                                              webhooks.on_message_updated.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageUpdated.Url($webhooks.OnMessageUpdated.Url) {
+        $this->options['webhooks.OnMessageUpdated.Url'] = $webhooks.OnMessageUpdated.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_updated.method
+     * 
+     * @param string $webhooks.OnMessageUpdated.Method The
+     *                                                 webhooks.on_message_updated.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageUpdated.Method($webhooks.OnMessageUpdated.Method) {
+        $this->options['webhooks.OnMessageUpdated.Method'] = $webhooks.OnMessageUpdated.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_updated.format
+     * 
+     * @param string $webhooks.OnMessageUpdated.Format The
+     *                                                 webhooks.on_message_updated.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageUpdated.Format($webhooks.OnMessageUpdated.Format) {
+        $this->options['webhooks.OnMessageUpdated.Format'] = $webhooks.OnMessageUpdated.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_removed.url
+     * 
+     * @param string $webhooks.OnMessageRemoved.Url The
+     *                                              webhooks.on_message_removed.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageRemoved.Url($webhooks.OnMessageRemoved.Url) {
+        $this->options['webhooks.OnMessageRemoved.Url'] = $webhooks.OnMessageRemoved.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_removed.method
+     * 
+     * @param string $webhooks.OnMessageRemoved.Method The
+     *                                                 webhooks.on_message_removed.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageRemoved.Method($webhooks.OnMessageRemoved.Method) {
+        $this->options['webhooks.OnMessageRemoved.Method'] = $webhooks.OnMessageRemoved.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_message_removed.format
+     * 
+     * @param string $webhooks.OnMessageRemoved.Format The
+     *                                                 webhooks.on_message_removed.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMessageRemoved.Format($webhooks.OnMessageRemoved.Format) {
+        $this->options['webhooks.OnMessageRemoved.Format'] = $webhooks.OnMessageRemoved.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_added.url
+     * 
+     * @param string $webhooks.OnChannelAdded.Url The webhooks.on_channel_added.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelAdded.Url($webhooks.OnChannelAdded.Url) {
+        $this->options['webhooks.OnChannelAdded.Url'] = $webhooks.OnChannelAdded.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_added.method
+     * 
+     * @param string $webhooks.OnChannelAdded.Method The
+     *                                               webhooks.on_channel_added.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelAdded.Method($webhooks.OnChannelAdded.Method) {
+        $this->options['webhooks.OnChannelAdded.Method'] = $webhooks.OnChannelAdded.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_added.format
+     * 
+     * @param string $webhooks.OnChannelAdded.Format The
+     *                                               webhooks.on_channel_added.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelAdded.Format($webhooks.OnChannelAdded.Format) {
+        $this->options['webhooks.OnChannelAdded.Format'] = $webhooks.OnChannelAdded.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_destroyed.url
+     * 
+     * @param string $webhooks.OnChannelDestroyed.Url The
+     *                                                webhooks.on_channel_destroyed.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelDestroyed.Url($webhooks.OnChannelDestroyed.Url) {
+        $this->options['webhooks.OnChannelDestroyed.Url'] = $webhooks.OnChannelDestroyed.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_destroyed.method
+     * 
+     * @param string $webhooks.OnChannelDestroyed.Method The
+     *                                                   webhooks.on_channel_destroyed.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelDestroyed.Method($webhooks.OnChannelDestroyed.Method) {
+        $this->options['webhooks.OnChannelDestroyed.Method'] = $webhooks.OnChannelDestroyed.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_destroyed.format
+     * 
+     * @param string $webhooks.OnChannelDestroyed.Format The
+     *                                                   webhooks.on_channel_destroyed.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelDestroyed.Format($webhooks.OnChannelDestroyed.Format) {
+        $this->options['webhooks.OnChannelDestroyed.Format'] = $webhooks.OnChannelDestroyed.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_updated.url
+     * 
+     * @param string $webhooks.OnChannelUpdated.Url The
+     *                                              webhooks.on_channel_updated.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelUpdated.Url($webhooks.OnChannelUpdated.Url) {
+        $this->options['webhooks.OnChannelUpdated.Url'] = $webhooks.OnChannelUpdated.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_updated.method
+     * 
+     * @param string $webhooks.OnChannelUpdated.Method The
+     *                                                 webhooks.on_channel_updated.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelUpdated.Method($webhooks.OnChannelUpdated.Method) {
+        $this->options['webhooks.OnChannelUpdated.Method'] = $webhooks.OnChannelUpdated.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_channel_updated.format
+     * 
+     * @param string $webhooks.OnChannelUpdated.Format The
+     *                                                 webhooks.on_channel_updated.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnChannelUpdated.Format($webhooks.OnChannelUpdated.Format) {
+        $this->options['webhooks.OnChannelUpdated.Format'] = $webhooks.OnChannelUpdated.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_added.url
+     * 
+     * @param string $webhooks.OnMemberAdded.Url The webhooks.on_member_added.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberAdded.Url($webhooks.OnMemberAdded.Url) {
+        $this->options['webhooks.OnMemberAdded.Url'] = $webhooks.OnMemberAdded.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_added.method
+     * 
+     * @param string $webhooks.OnMemberAdded.Method The
+     *                                              webhooks.on_member_added.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberAdded.Method($webhooks.OnMemberAdded.Method) {
+        $this->options['webhooks.OnMemberAdded.Method'] = $webhooks.OnMemberAdded.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_added.format
+     * 
+     * @param string $webhooks.OnMemberAdded.Format The
+     *                                              webhooks.on_member_added.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberAdded.Format($webhooks.OnMemberAdded.Format) {
+        $this->options['webhooks.OnMemberAdded.Format'] = $webhooks.OnMemberAdded.Format;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_removed.url
+     * 
+     * @param string $webhooks.OnMemberRemoved.Url The
+     *                                             webhooks.on_member_removed.url
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberRemoved.Url($webhooks.OnMemberRemoved.Url) {
+        $this->options['webhooks.OnMemberRemoved.Url'] = $webhooks.OnMemberRemoved.Url;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_removed.method
+     * 
+     * @param string $webhooks.OnMemberRemoved.Method The
+     *                                                webhooks.on_member_removed.method
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberRemoved.Method($webhooks.OnMemberRemoved.Method) {
+        $this->options['webhooks.OnMemberRemoved.Method'] = $webhooks.OnMemberRemoved.Method;
+        return $this;
+    }
+
+    /**
+     * The webhooks.on_member_removed.format
+     * 
+     * @param string $webhooks.OnMemberRemoved.Format The
+     *                                                webhooks.on_member_removed.format
+     * @return $this Fluent Builder
+     */
+    public function setWebhooks.OnMemberRemoved.Format($webhooks.OnMemberRemoved.Format) {
+        $this->options['webhooks.OnMemberRemoved.Format'] = $webhooks.OnMemberRemoved.Format;
         return $this;
     }
 

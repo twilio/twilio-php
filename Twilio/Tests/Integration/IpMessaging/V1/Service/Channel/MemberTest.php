@@ -218,4 +218,74 @@ class MemberTest extends HolodeckTestCase {
         
         $this->assertTrue($actual);
     }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+        
+        try {
+            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+        
+        $this->assertRequest(new Request(
+            'post',
+            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        ));
+    }
+
+    public function testUpdateRoleSidResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "jing",
+                "role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "last_consumed_message_index": null,
+                "last_consumption_timestamp": null,
+                "date_created": "2016-03-24T21:05:50Z",
+                "date_updated": "2016-03-24T21:05:50Z",
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateLastConsumedMessageIndexResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "identity": "jing",
+                "role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "last_consumed_message_index": 666,
+                "last_consumption_timestamp": null,
+                "date_created": "2016-03-24T21:05:50Z",
+                "date_updated": "2016-03-24T21:05:50Z",
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        
+        $this->assertNotNull($actual);
+    }
 }

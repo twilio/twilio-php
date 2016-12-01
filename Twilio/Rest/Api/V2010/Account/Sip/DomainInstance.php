@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string voiceStatusCallbackMethod
  * @property string voiceStatusCallbackUrl
  * @property string voiceUrl
+ * @property string subresourceUris
  */
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings = null;
@@ -66,6 +67,7 @@ class DomainInstance extends InstanceResource {
             'voiceStatusCallbackMethod' => $payload['voice_status_callback_method'],
             'voiceStatusCallbackUrl' => $payload['voice_status_callback_url'],
             'voiceUrl' => $payload['voice_url'],
+            'subresourceUris' => $payload['subresource_uris'],
         );
         
         $this->solution = array(

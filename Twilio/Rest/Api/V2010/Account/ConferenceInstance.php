@@ -23,6 +23,7 @@ use Twilio\Version;
  * @property string sid
  * @property string status
  * @property string uri
+ * @property string subresourceUris
  */
 class ConferenceInstance extends InstanceResource {
     protected $_participants = null;
@@ -49,6 +50,7 @@ class ConferenceInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'status' => $payload['status'],
             'uri' => $payload['uri'],
+            'subresourceUris' => $payload['subresource_uris'],
         );
         
         $this->solution = array(

@@ -27,11 +27,11 @@ use Twilio\Version;
  * @property string moreInfo
  * @property string requestMethod
  * @property string requestUrl
- * @property string sid
- * @property string uri
  * @property string requestVariables
  * @property string responseBody
  * @property string responseHeaders
+ * @property string sid
+ * @property string uri
  */
 class NotificationInstance extends InstanceResource {
     /**

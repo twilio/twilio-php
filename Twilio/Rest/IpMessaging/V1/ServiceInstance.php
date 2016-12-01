@@ -25,9 +25,15 @@ use Twilio\Version;
  * @property string defaultChannelRoleSid
  * @property string defaultChannelCreatorRoleSid
  * @property string readStatusEnabled
+ * @property string reachabilityEnabled
  * @property string typingIndicatorTimeout
  * @property string consumptionReportInterval
  * @property string webhooks
+ * @property string preWebhookUrl
+ * @property string postWebhookUrl
+ * @property string webhookMethod
+ * @property string webhookFilters
+ * @property string notifications
  * @property string url
  * @property string links
  */
@@ -58,9 +64,15 @@ class ServiceInstance extends InstanceResource {
             'defaultChannelRoleSid' => $payload['default_channel_role_sid'],
             'defaultChannelCreatorRoleSid' => $payload['default_channel_creator_role_sid'],
             'readStatusEnabled' => $payload['read_status_enabled'],
+            'reachabilityEnabled' => $payload['reachability_enabled'],
             'typingIndicatorTimeout' => $payload['typing_indicator_timeout'],
             'consumptionReportInterval' => $payload['consumption_report_interval'],
             'webhooks' => $payload['webhooks'],
+            'preWebhookUrl' => $payload['pre_webhook_url'],
+            'postWebhookUrl' => $payload['post_webhook_url'],
+            'webhookMethod' => $payload['webhook_method'],
+            'webhookFilters' => $payload['webhook_filters'],
+            'notifications' => $payload['notifications'],
             'url' => $payload['url'],
             'links' => $payload['links'],
         );

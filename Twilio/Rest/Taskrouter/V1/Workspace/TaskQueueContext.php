@@ -13,14 +13,17 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList statistics
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList statistics
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext statistics()
  */
 class TaskQueueContext extends InstanceContext {
+    protected $_statistics = null;
     protected $_statistics = null;
 
     /**
@@ -80,6 +83,7 @@ class TaskQueueContext extends InstanceContext {
             'ReservationActivitySid' => $options['reservationActivitySid'],
             'AssignmentActivitySid' => $options['assignmentActivitySid'],
             'MaxReservedWorkers' => $options['maxReservedWorkers'],
+            'TaskOrder' => $options['taskOrder'],
         ));
         
         $payload = $this->version->update(
@@ -104,6 +108,22 @@ class TaskQueueContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Access the statistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
+     */
+    protected function getStatistics() {
+        if (!$this->_statistics) {
+            $this->_statistics = new TaskQueuesStatisticsList(
+                $this->version,
+                $this->solution['workspaceSid']
+            );
+        }
+        
+        return $this->_statistics;
     }
 
     /**

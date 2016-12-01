@@ -77,7 +77,7 @@ class YearlyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return YearlyInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -95,12 +95,8 @@ class YearlyList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Category' => $options['category'],
-            'StartDate<' => $options['startDateBefore'],
             'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startDateAfter'],
-            'EndDate<' => $options['endDateBefore'],
             'EndDate' => $options['endDate'],
-            'EndDate>' => $options['endDateAfter'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

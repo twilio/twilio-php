@@ -91,7 +91,7 @@ class IncomingPhoneNumberList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return IncomingPhoneNumberInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -146,12 +146,15 @@ class IncomingPhoneNumberList extends ListResource {
             'SmsUrl' => $options['smsUrl'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'TrunkSid' => $options['trunkSid'],
             'VoiceApplicationSid' => $options['voiceApplicationSid'],
             'VoiceCallerIdLookup' => $options['voiceCallerIdLookup'],
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
+            'EmergencyStatus' => $options['emergencyStatus'],
+            'EmergencyAddressSid' => $options['emergencyAddressSid'],
         ));
         
         $payload = $this->version->create(

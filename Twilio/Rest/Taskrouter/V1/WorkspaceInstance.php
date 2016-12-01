@@ -28,6 +28,9 @@ use Twilio\Version;
  * @property string sid
  * @property string timeoutActivityName
  * @property string timeoutActivitySid
+ * @property string prioritizeQueueOrder
+ * @property string url
+ * @property string links
  */
 class WorkspaceInstance extends InstanceResource {
     protected $_activities = null;
@@ -64,6 +67,9 @@ class WorkspaceInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'timeoutActivityName' => $payload['timeout_activity_name'],
             'timeoutActivitySid' => $payload['timeout_activity_sid'],
+            'prioritizeQueueOrder' => $payload['prioritize_queue_order'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

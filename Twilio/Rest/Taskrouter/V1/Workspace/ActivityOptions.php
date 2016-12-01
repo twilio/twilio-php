@@ -21,6 +21,14 @@ abstract class ActivityOptions {
     public static function read($friendlyName = Values::NONE, $available = Values::NONE) {
         return new ReadActivityOptions($friendlyName, $available);
     }
+
+    /**
+     * @param string $available The available
+     * @return CreateActivityOptions Options builder
+     */
+    public static function create($available = Values::NONE) {
+        return new CreateActivityOptions($available);
+    }
 }
 
 class ReadActivityOptions extends Options {
@@ -68,5 +76,40 @@ class ReadActivityOptions extends Options {
             }
         }
         return '[Twilio.Taskrouter.V1.ReadActivityOptions ' . implode(' ', $options) . ']';
+    }
+}
+
+class CreateActivityOptions extends Options {
+    /**
+     * @param string $available The available
+     */
+    public function __construct($available = Values::NONE) {
+        $this->options['available'] = $available;
+    }
+
+    /**
+     * The available
+     * 
+     * @param string $available The available
+     * @return $this Fluent Builder
+     */
+    public function setAvailable($available) {
+        $this->options['available'] = $available;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Taskrouter.V1.CreateActivityOptions ' . implode(' ', $options) . ']';
     }
 }

@@ -19,8 +19,7 @@ class LocalList extends ListResource {
      * Construct the LocalList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid A 34 character string that uniquely identifies
-     *                           this resource.
+     * @param string $accountSid The account_sid
      * @param string $countryCode The country_code
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList 
      */
@@ -79,7 +78,7 @@ class LocalList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return LocalInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 

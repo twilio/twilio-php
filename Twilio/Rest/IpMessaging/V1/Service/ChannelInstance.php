@@ -32,6 +32,7 @@ use Twilio\Version;
 class ChannelInstance extends InstanceResource {
     protected $_members = null;
     protected $_messages = null;
+    protected $_invites = null;
 
     /**
      * Initialize the ChannelInstance
@@ -132,6 +133,15 @@ class ChannelInstance extends InstanceResource {
      */
     protected function getMessages() {
         return $this->proxy()->messages;
+    }
+
+    /**
+     * Access the invites
+     * 
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\InviteList 
+     */
+    protected function getInvites() {
+        return $this->proxy()->invites;
     }
 
     /**

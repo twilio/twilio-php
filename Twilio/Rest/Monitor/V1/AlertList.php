@@ -73,7 +73,7 @@ class AlertList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AlertInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -91,12 +91,8 @@ class AlertList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'LogLevel' => $options['logLevel'],
-            'StartDate<' => $options['startDateBefore'],
             'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startDateAfter'],
-            'EndDate<' => $options['endDateBefore'],
             'EndDate' => $options['endDate'],
-            'EndDate>' => $options['endDateAfter'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

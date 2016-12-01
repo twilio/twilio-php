@@ -33,8 +33,7 @@ class TollFreeInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid A 34 character string that uniquely identifies
-     *                           this resource.
+     * @param string $accountSid The account_sid
      * @param string $countryCode The country_code
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeInstance 
      */
