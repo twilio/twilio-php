@@ -152,9 +152,9 @@ class IncomingPhoneNumberList extends ListResource {
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
-            'TrunkSid' => $options['trunkSid'],
             'EmergencyStatus' => $options['emergencyStatus'],
             'EmergencyAddressSid' => $options['emergencyAddressSid'],
+            'TrunkSid' => $options['trunkSid'],
         ));
         
         $payload = $this->version->create(

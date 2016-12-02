@@ -127,11 +127,11 @@ class TaskList extends ListResource {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Attributes' => $options['attributes'],
-            'WorkflowSid' => $options['workflowSid'],
             'Timeout' => $options['timeout'],
             'Priority' => $options['priority'],
             'TaskChannel' => $options['taskChannel'],
+            'WorkflowSid' => $options['workflowSid'],
+            'Attributes' => $options['attributes'],
         ));
         
         $payload = $this->version->create(

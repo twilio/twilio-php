@@ -43,15 +43,15 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param string $attributes The attributes
-     * @param string $workflowSid The workflow_sid
      * @param string $timeout The timeout
      * @param string $priority The priority
      * @param string $taskChannel The task_channel
+     * @param string $workflowSid The workflow_sid
+     * @param string $attributes The attributes
      * @return CreateTaskOptions Options builder
      */
-    public static function create($attributes = Values::NONE, $workflowSid = Values::NONE, $timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE) {
-        return new CreateTaskOptions($attributes, $workflowSid, $timeout, $priority, $taskChannel);
+    public static function create($timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE, $workflowSid = Values::NONE, $attributes = Values::NONE) {
+        return new CreateTaskOptions($timeout, $priority, $taskChannel, $workflowSid, $attributes);
     }
 }
 
@@ -296,40 +296,18 @@ class ReadTaskOptions extends Options {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param string $attributes The attributes
-     * @param string $workflowSid The workflow_sid
      * @param string $timeout The timeout
      * @param string $priority The priority
      * @param string $taskChannel The task_channel
+     * @param string $workflowSid The workflow_sid
+     * @param string $attributes The attributes
      */
-    public function __construct($attributes = Values::NONE, $workflowSid = Values::NONE, $timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE) {
-        $this->options['attributes'] = $attributes;
-        $this->options['workflowSid'] = $workflowSid;
+    public function __construct($timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE, $workflowSid = Values::NONE, $attributes = Values::NONE) {
         $this->options['timeout'] = $timeout;
         $this->options['priority'] = $priority;
         $this->options['taskChannel'] = $taskChannel;
-    }
-
-    /**
-     * The attributes
-     * 
-     * @param string $attributes The attributes
-     * @return $this Fluent Builder
-     */
-    public function setAttributes($attributes) {
-        $this->options['attributes'] = $attributes;
-        return $this;
-    }
-
-    /**
-     * The workflow_sid
-     * 
-     * @param string $workflowSid The workflow_sid
-     * @return $this Fluent Builder
-     */
-    public function setWorkflowSid($workflowSid) {
         $this->options['workflowSid'] = $workflowSid;
-        return $this;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -362,6 +340,28 @@ class CreateTaskOptions extends Options {
      */
     public function setTaskChannel($taskChannel) {
         $this->options['taskChannel'] = $taskChannel;
+        return $this;
+    }
+
+    /**
+     * The workflow_sid
+     * 
+     * @param string $workflowSid The workflow_sid
+     * @return $this Fluent Builder
+     */
+    public function setWorkflowSid($workflowSid) {
+        $this->options['workflowSid'] = $workflowSid;
+        return $this;
+    }
+
+    /**
+     * The attributes
+     * 
+     * @param string $attributes The attributes
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
         return $this;
     }
 
