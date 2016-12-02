@@ -19,8 +19,9 @@ class TollFreeList extends ListResource {
      * Construct the TollFreeList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $countryCode The country_code
+     * @param string $accountSid The 34 character string that uniquely identifies
+     *                           your account.
+     * @param string $countryCode The ISO Country code to lookup phone numbers for.
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList 
      */
     public function __construct(Version $version, $accountSid, $countryCode) {
