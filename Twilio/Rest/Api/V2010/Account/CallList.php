@@ -66,8 +66,6 @@ class CallList extends ListResource {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SendDigits' => $options['sendDigits'],
             'IfMachine' => $options['ifMachine'],
-            'MachineDetection' => $options['machineDetection'],
-            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
             'Timeout' => $options['timeout'],
             'Record' => $options['record'],
             'RecordingChannels' => $options['recordingChannels'],
@@ -75,6 +73,8 @@ class CallList extends ListResource {
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
             'SipAuthUsername' => $options['sipAuthUsername'],
             'SipAuthPassword' => $options['sipAuthPassword'],
+            'MachineDetection' => $options['machineDetection'],
+            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
         ));
         
         $payload = $this->version->create(
