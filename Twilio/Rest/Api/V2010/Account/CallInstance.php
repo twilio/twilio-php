@@ -37,7 +37,7 @@ use Twilio\Version;
  * @property string sid
  * @property \DateTime startTime
  * @property string status
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string to
  * @property string toFormatted
  * @property string uri

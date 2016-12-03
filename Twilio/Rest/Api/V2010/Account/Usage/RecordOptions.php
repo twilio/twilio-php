@@ -15,8 +15,8 @@ use Twilio\Values;
 abstract class RecordOptions {
     /**
      * @param string $category Only include usage of a given category
-     * @param string $startDate Filter by start date
-     * @param string $endDate Filter by end date
+     * @param \DateTime $startDate Filter by start date
+     * @param \DateTime $endDate Filter by end date
      * @return ReadRecordOptions Options builder
      */
     public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -27,8 +27,8 @@ abstract class RecordOptions {
 class ReadRecordOptions extends Options {
     /**
      * @param string $category Only include usage of a given category
-     * @param string $startDate Filter by start date
-     * @param string $endDate Filter by end date
+     * @param \DateTime $startDate Filter by start date
+     * @param \DateTime $endDate Filter by end date
      */
     public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['category'] = $category;
@@ -50,7 +50,7 @@ class ReadRecordOptions extends Options {
     /**
      * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, StartDate=-30days, which will make StartDate 30 days before today
      * 
-     * @param string $startDate Filter by start date
+     * @param \DateTime $startDate Filter by start date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -61,7 +61,7 @@ class ReadRecordOptions extends Options {
     /**
      * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, EndDate=+30days, which will make EndDate 30 days from today
      * 
-     * @param string $endDate Filter by end date
+     * @param \DateTime $endDate Filter by end date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

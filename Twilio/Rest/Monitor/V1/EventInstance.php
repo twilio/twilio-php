@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string source
  * @property string sourceIpAddress
  * @property string url
- * @property string links
+ * @property array links
  */
 class EventInstance extends InstanceResource {
     /**

@@ -35,7 +35,7 @@ use Twilio\Version;
  * @property string workflowFriendlyName
  * @property string workspaceSid
  * @property string url
- * @property string links
+ * @property array links
  */
 class TaskInstance extends InstanceResource {
     protected $_reservations = null;

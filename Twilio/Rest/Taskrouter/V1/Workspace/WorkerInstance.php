@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string sid
  * @property string workspaceSid
  * @property string url
- * @property string links
+ * @property array links
  */
 class WorkerInstance extends InstanceResource {
     protected $_statistics = null;

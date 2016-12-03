@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property string workerSid
  * @property string workspaceSid
  * @property string url
- * @property string links
+ * @property array links
  */
 class ReservationInstance extends InstanceResource {
     /**

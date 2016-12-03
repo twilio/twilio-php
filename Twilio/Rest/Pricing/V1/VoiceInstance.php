@@ -16,7 +16,7 @@ use Twilio\Version;
 /**
  * @property string name
  * @property string url
- * @property string links
+ * @property array links
  */
 class VoiceInstance extends InstanceResource {
     /**

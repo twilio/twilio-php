@@ -18,8 +18,8 @@ abstract class EventOptions {
      * @param string $eventType The event_type
      * @param string $resourceSid The resource_sid
      * @param string $sourceIpAddress The source_ip_address
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @return ReadEventOptions Options builder
      */
     public static function read($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -33,8 +33,8 @@ class ReadEventOptions extends Options {
      * @param string $eventType The event_type
      * @param string $resourceSid The resource_sid
      * @param string $sourceIpAddress The source_ip_address
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      */
     public function __construct($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['actorSid'] = $actorSid;
@@ -92,7 +92,7 @@ class ReadEventOptions extends Options {
     /**
      * The start_date
      * 
-     * @param string $startDate The start_date
+     * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -103,7 +103,7 @@ class ReadEventOptions extends Options {
     /**
      * The end_date
      * 
-     * @param string $endDate The end_date
+     * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

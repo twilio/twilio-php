@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Usage\Record;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Version;
@@ -20,11 +21,11 @@ use Twilio\Version;
  * @property string count
  * @property string countUnit
  * @property string description
- * @property string endDate
+ * @property \DateTime endDate
  * @property string price
  * @property string priceUnit
- * @property string startDate
- * @property string subresourceUris
+ * @property \DateTime startDate
+ * @property array subresourceUris
  * @property string uri
  * @property string usage
  * @property string usageUnit
@@ -50,10 +51,10 @@ class LastMonthInstance extends InstanceResource {
             'count' => $payload['count'],
             'countUnit' => $payload['count_unit'],
             'description' => $payload['description'],
-            'endDate' => $payload['end_date'],
+            'endDate' => Deserialize::iso8601DateTime($payload['end_date']),
             'price' => $payload['price'],
             'priceUnit' => $payload['price_unit'],
-            'startDate' => $payload['start_date'],
+            'startDate' => Deserialize::iso8601DateTime($payload['start_date']),
             'subresourceUris' => $payload['subresource_uris'],
             'uri' => $payload['uri'],
             'usage' => $payload['usage'],

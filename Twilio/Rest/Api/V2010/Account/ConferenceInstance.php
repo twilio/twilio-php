@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string sid
  * @property string status
  * @property string uri
- * @property string subresourceUris
+ * @property array subresourceUris
  */
 class ConferenceInstance extends InstanceResource {
     protected $_participants = null;

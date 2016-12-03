@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string priceUnit
  * @property string sid
  * @property string status
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string to
  * @property string uri
  */

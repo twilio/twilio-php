@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string sid
  * @property string uri
- * @property string subresourceUris
+ * @property array subresourceUris
  */
 class IpAccessControlListMappingInstance extends InstanceResource {
     /**

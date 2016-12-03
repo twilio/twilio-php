@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string country
  * @property string uri
  * @property string beta
- * @property string subresourceUris
+ * @property array subresourceUris
  */
 class AvailablePhoneNumberCountryInstance extends InstanceResource {
     protected $_local = null;

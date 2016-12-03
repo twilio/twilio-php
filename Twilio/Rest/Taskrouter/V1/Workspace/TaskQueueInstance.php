@@ -30,7 +30,7 @@ use Twilio\Version;
  * @property string taskOrder
  * @property string url
  * @property string workspaceSid
- * @property string links
+ * @property array links
  */
 class TaskQueueInstance extends InstanceResource {
     protected $_statistics = null;

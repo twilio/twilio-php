@@ -30,7 +30,7 @@ use Twilio\Version;
  * @property string timeoutActivitySid
  * @property string prioritizeQueueOrder
  * @property string url
- * @property string links
+ * @property array links
  */
 class WorkspaceInstance extends InstanceResource {
     protected $_activities = null;

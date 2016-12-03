@@ -15,8 +15,8 @@ use Twilio\Values;
 abstract class AllTimeOptions {
     /**
      * @param string $category The category
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @return ReadAllTimeOptions Options builder
      */
     public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -27,8 +27,8 @@ abstract class AllTimeOptions {
 class ReadAllTimeOptions extends Options {
     /**
      * @param string $category The category
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      */
     public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['category'] = $category;
@@ -50,7 +50,7 @@ class ReadAllTimeOptions extends Options {
     /**
      * The start_date
      * 
-     * @param string $startDate The start_date
+     * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -61,7 +61,7 @@ class ReadAllTimeOptions extends Options {
     /**
      * The end_date
      * 
-     * @param string $endDate The end_date
+     * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

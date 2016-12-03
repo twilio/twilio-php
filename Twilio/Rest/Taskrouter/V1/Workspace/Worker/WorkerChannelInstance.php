@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string taskChannelUniqueName
  * @property string workerSid
  * @property string workspaceSid
- * @property string links
+ * @property array links
  * @property string url
  */
 class WorkerChannelInstance extends InstanceResource {

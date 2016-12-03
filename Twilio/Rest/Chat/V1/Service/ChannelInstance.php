@@ -27,7 +27,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string createdBy
  * @property string url
- * @property string links
+ * @property array links
  */
 class ChannelInstance extends InstanceResource {
     protected $_members = null;

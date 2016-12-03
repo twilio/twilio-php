@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string sid
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string uri
  */
 class CredentialListInstance extends InstanceResource {

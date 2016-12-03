@@ -15,8 +15,8 @@ use Twilio\Values;
 abstract class AlertOptions {
     /**
      * @param string $logLevel The log_level
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @return ReadAlertOptions Options builder
      */
     public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -27,8 +27,8 @@ abstract class AlertOptions {
 class ReadAlertOptions extends Options {
     /**
      * @param string $logLevel The log_level
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      */
     public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['logLevel'] = $logLevel;
@@ -50,7 +50,7 @@ class ReadAlertOptions extends Options {
     /**
      * The start_date
      * 
-     * @param string $startDate The start_date
+     * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -61,7 +61,7 @@ class ReadAlertOptions extends Options {
     /**
      * The end_date
      * 
-     * @param string $endDate The end_date
+     * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

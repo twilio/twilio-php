@@ -31,7 +31,7 @@ use Twilio\Version;
  * @property string voiceStatusCallbackMethod
  * @property string voiceStatusCallbackUrl
  * @property string voiceUrl
- * @property string subresourceUris
+ * @property array subresourceUris
  */
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings = null;

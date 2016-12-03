@@ -35,7 +35,7 @@ use Twilio\Version;
  * @property string webhookFilters
  * @property string notifications
  * @property string url
- * @property string links
+ * @property array links
  */
 class ServiceInstance extends InstanceResource {
     protected $_channels = null;
