@@ -18,13 +18,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList statistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList statistics
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext statistics()
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList taskQueuesStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList taskQueueStatistics
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext taskQueueStatistics()
  */
 class TaskQueueContext extends InstanceContext {
-    protected $_statistics = null;
-    protected $_statistics = null;
+    protected $_taskQueuesStatistics = null;
+    protected $_taskQueueStatistics = null;
 
     /**
      * Initialize the TaskQueueContext
@@ -111,36 +111,36 @@ class TaskQueueContext extends InstanceContext {
     }
 
     /**
-     * Access the statistics
+     * Access the taskQueuesStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
      */
-    protected function getStatistics() {
-        if (!$this->_statistics) {
-            $this->_statistics = new TaskQueuesStatisticsList(
+    protected function getTaskQueuesStatistics() {
+        if (!$this->_taskQueuesStatistics) {
+            $this->_taskQueuesStatistics = new TaskQueuesStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid']
             );
         }
         
-        return $this->_statistics;
+        return $this->_taskQueuesStatistics;
     }
 
     /**
-     * Access the statistics
+     * Access the taskQueueStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
-    protected function getStatistics() {
-        if (!$this->_statistics) {
-            $this->_statistics = new TaskQueueStatisticsList(
+    protected function getTaskQueueStatistics() {
+        if (!$this->_taskQueueStatistics) {
+            $this->_taskQueueStatistics = new TaskQueueStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
                 $this->solution['sid']
             );
         }
         
-        return $this->_statistics;
+        return $this->_taskQueueStatistics;
     }
 
     /**

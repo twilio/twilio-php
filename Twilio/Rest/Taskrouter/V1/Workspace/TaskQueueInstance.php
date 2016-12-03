@@ -33,8 +33,8 @@ use Twilio\Version;
  * @property array links
  */
 class TaskQueueInstance extends InstanceResource {
-    protected $_statistics = null;
-    protected $_statistics = null;
+    protected $_taskQueuesStatistics = null;
+    protected $_taskQueueStatistics = null;
 
     /**
      * Initialize the TaskQueueInstance
@@ -124,21 +124,21 @@ class TaskQueueInstance extends InstanceResource {
     }
 
     /**
-     * Access the statistics
+     * Access the taskQueuesStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
      */
-    protected function getStatistics() {
-        return $this->proxy()->statistics;
+    protected function getTaskQueuesStatistics() {
+        return $this->proxy()->taskQueuesStatistics;
     }
 
     /**
-     * Access the statistics
+     * Access the taskQueueStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
-    protected function getStatistics() {
-        return $this->proxy()->statistics;
+    protected function getTaskQueueStatistics() {
+        return $this->proxy()->taskQueueStatistics;
     }
 
     /**
