@@ -76,7 +76,7 @@ class TaskList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TaskInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -100,6 +100,9 @@ class TaskList extends ListResource {
             'TaskQueueSid' => $options['taskQueueSid'],
             'TaskQueueName' => $options['taskQueueName'],
             'TaskChannel' => $options['taskChannel'],
+            'EvaluateTaskAttributes' => $options['evaluateTaskAttributes'],
+            'Ordering' => $options['ordering'],
+            'HasAddons' => $options['hasAddons'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -117,20 +120,18 @@ class TaskList extends ListResource {
     /**
      * Create a new TaskInstance
      * 
-     * @param string $attributes The attributes
-     * @param string $workflowSid The workflow_sid
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Newly created TaskInstance
      */
-    public function create($attributes, $workflowSid, $options = array()) {
+    public function create($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Attributes' => $attributes,
-            'WorkflowSid' => $workflowSid,
             'Timeout' => $options['timeout'],
             'Priority' => $options['priority'],
             'TaskChannel' => $options['taskChannel'],
+            'WorkflowSid' => $options['workflowSid'],
+            'Attributes' => $options['attributes'],
         ));
         
         $payload = $this->version->create(

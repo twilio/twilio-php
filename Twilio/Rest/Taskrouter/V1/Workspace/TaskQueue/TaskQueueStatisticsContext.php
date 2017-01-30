@@ -46,7 +46,6 @@ class TaskQueueStatisticsContext extends InstanceContext {
         
         $params = Values::of(array(
             'EndDate' => $options['endDate'],
-            'FriendlyName' => $options['friendlyName'],
             'Minutes' => $options['minutes'],
             'StartDate' => $options['startDate'],
         ));

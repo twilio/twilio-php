@@ -15,37 +15,25 @@ use Twilio\Values;
 abstract class RecordOptions {
     /**
      * @param string $category Only include usage of a given category
-     * @param string $startDateBefore Filter by start date
-     * @param string $startDate Filter by start date
-     * @param string $startDateAfter Filter by start date
-     * @param string $endDateBefore Filter by end date
-     * @param string $endDate Filter by end date
-     * @param string $endDateAfter Filter by end date
+     * @param \DateTime $startDate Filter by start date
+     * @param \DateTime $endDate Filter by end date
      * @return ReadRecordOptions Options builder
      */
-    public static function read($category = Values::NONE, $startDateBefore = Values::NONE, $startDate = Values::NONE, $startDateAfter = Values::NONE, $endDateBefore = Values::NONE, $endDate = Values::NONE, $endDateAfter = Values::NONE) {
-        return new ReadRecordOptions($category, $startDateBefore, $startDate, $startDateAfter, $endDateBefore, $endDate, $endDateAfter);
+    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+        return new ReadRecordOptions($category, $startDate, $endDate);
     }
 }
 
 class ReadRecordOptions extends Options {
     /**
      * @param string $category Only include usage of a given category
-     * @param string $startDateBefore Filter by start date
-     * @param string $startDate Filter by start date
-     * @param string $startDateAfter Filter by start date
-     * @param string $endDateBefore Filter by end date
-     * @param string $endDate Filter by end date
-     * @param string $endDateAfter Filter by end date
+     * @param \DateTime $startDate Filter by start date
+     * @param \DateTime $endDate Filter by end date
      */
-    public function __construct($category = Values::NONE, $startDateBefore = Values::NONE, $startDate = Values::NONE, $startDateAfter = Values::NONE, $endDateBefore = Values::NONE, $endDate = Values::NONE, $endDateAfter = Values::NONE) {
+    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['category'] = $category;
-        $this->options['startDateBefore'] = $startDateBefore;
         $this->options['startDate'] = $startDate;
-        $this->options['startDateAfter'] = $startDateAfter;
-        $this->options['endDateBefore'] = $endDateBefore;
         $this->options['endDate'] = $endDate;
-        $this->options['endDateAfter'] = $endDateAfter;
     }
 
     /**
@@ -62,18 +50,7 @@ class ReadRecordOptions extends Options {
     /**
      * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, StartDate=-30days, which will make StartDate 30 days before today
      * 
-     * @param string $startDateBefore Filter by start date
-     * @return $this Fluent Builder
-     */
-    public function setStartDateBefore($startDateBefore) {
-        $this->options['startDateBefore'] = $startDateBefore;
-        return $this;
-    }
-
-    /**
-     * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, StartDate=-30days, which will make StartDate 30 days before today
-     * 
-     * @param string $startDate Filter by start date
+     * @param \DateTime $startDate Filter by start date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -82,46 +59,13 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, StartDate=-30days, which will make StartDate 30 days before today
-     * 
-     * @param string $startDateAfter Filter by start date
-     * @return $this Fluent Builder
-     */
-    public function setStartDateAfter($startDateAfter) {
-        $this->options['startDateAfter'] = $startDateAfter;
-        return $this;
-    }
-
-    /**
      * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, EndDate=+30days, which will make EndDate 30 days from today
      * 
-     * @param string $endDateBefore Filter by end date
-     * @return $this Fluent Builder
-     */
-    public function setEndDateBefore($endDateBefore) {
-        $this->options['endDateBefore'] = $endDateBefore;
-        return $this;
-    }
-
-    /**
-     * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, EndDate=+30days, which will make EndDate 30 days from today
-     * 
-     * @param string $endDate Filter by end date
+     * @param \DateTime $endDate Filter by end date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
         $this->options['endDate'] = $endDate;
-        return $this;
-    }
-
-    /**
-     * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, EndDate=+30days, which will make EndDate 30 days from today
-     * 
-     * @param string $endDateAfter Filter by end date
-     * @return $this Fluent Builder
-     */
-    public function setEndDateAfter($endDateAfter) {
-        $this->options['endDateAfter'] = $endDateAfter;
         return $this;
     }
 

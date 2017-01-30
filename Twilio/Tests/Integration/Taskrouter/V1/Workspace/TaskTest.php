@@ -51,7 +51,16 @@ class TaskTest extends HolodeckTestCase {
                 "timeout": 60,
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "workflow_sid": "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workflow_friendly_name": "Test Workflow",
+                "task_queue_friendly_name": "Test Queue",
+                "addons": "{}",
+                "links": {
+                    "task_queue": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "workflow": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "workspace": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "reservations": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations"
+                }
             }
             '
         ));
@@ -97,7 +106,16 @@ class TaskTest extends HolodeckTestCase {
                 "timeout": 60,
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "workflow_sid": "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workflow_friendly_name": "Test Workflow",
+                "task_queue_friendly_name": "Test Queue",
+                "addons": "{}",
+                "links": {
+                    "task_queue": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "workflow": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "workspace": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "reservations": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations"
+                }
             }
             '
         ));
@@ -182,7 +200,16 @@ class TaskTest extends HolodeckTestCase {
                         "timeout": 60,
                         "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "workflow_sid": "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "workflow_friendly_name": "Test Workflow",
+                        "task_queue_friendly_name": "Test Queue",
+                        "addons": "{}",
+                        "links": {
+                            "task_queue": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "workflow": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "workspace": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                            "reservations": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations"
+                        }
                     }
                 ]
             }
@@ -226,26 +253,19 @@ class TaskTest extends HolodeckTestCase {
         
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->tasks->create("attributes", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                         ->tasks->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'Attributes' => "attributes",
-            'WorkflowSid' => "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        );
-        
         $this->assertRequest(new Request(
             'post',
-            'https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks',
-            null,
-            $values
+            'https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks'
         ));
     }
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -262,14 +282,23 @@ class TaskTest extends HolodeckTestCase {
                 "task_channel_unique_name": "task-channel",
                 "timeout": 60,
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "workflow_sid": "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "workflow_friendly_name": "Test Workflow",
+                "task_queue_friendly_name": "Test Queue",
+                "addons": "{}",
+                "links": {
+                    "task_queue": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "workflow": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "workspace": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "reservations": "/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Reservations"
+                }
             }
             '
         ));
         
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->tasks->create("attributes", "WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                               ->tasks->create();
         
         $this->assertNotNull($actual);
     }

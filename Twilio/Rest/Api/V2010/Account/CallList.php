@@ -73,6 +73,8 @@ class CallList extends ListResource {
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
             'SipAuthUsername' => $options['sipAuthUsername'],
             'SipAuthPassword' => $options['sipAuthPassword'],
+            'MachineDetection' => $options['machineDetection'],
+            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
         ));
         
         $payload = $this->version->create(
@@ -132,7 +134,7 @@ class CallList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CallInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 

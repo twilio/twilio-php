@@ -61,6 +61,9 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
+            'EmergencyStatus' => $options['emergencyStatus'],
+            'EmergencyAddressSid' => $options['emergencyAddressSid'],
+            'TrunkSid' => $options['trunkSid'],
         ));
         
         $payload = $this->version->update(

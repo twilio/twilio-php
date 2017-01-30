@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string sid
  * @property string url
- * @property string links
+ * @property array links
  */
 class TrunkInstance extends InstanceResource {
     protected $_originationUrls = null;

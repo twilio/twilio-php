@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property string ownerAccountSid
  * @property string sid
  * @property string status
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string type
  * @property string uri
  */

@@ -89,6 +89,7 @@ class AddressContext extends InstanceContext {
             'City' => $options['city'],
             'Region' => $options['region'],
             'PostalCode' => $options['postalCode'],
+            'EmergencyEnabled' => $options['emergencyEnabled'],
         ));
         
         $payload = $this->version->update(

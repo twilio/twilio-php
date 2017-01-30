@@ -19,8 +19,12 @@ use Twilio\Version;
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
+ * @property string attributes
+ * @property string friendlyName
  * @property string roleSid
  * @property string identity
+ * @property string isOnline
+ * @property string isNotifiable
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -43,8 +47,12 @@ class UserInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'serviceSid' => $payload['service_sid'],
+            'attributes' => $payload['attributes'],
+            'friendlyName' => $payload['friendly_name'],
             'roleSid' => $payload['role_sid'],
             'identity' => $payload['identity'],
+            'isOnline' => $payload['is_online'],
+            'isNotifiable' => $payload['is_notifiable'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
             'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
             'url' => $payload['url'],

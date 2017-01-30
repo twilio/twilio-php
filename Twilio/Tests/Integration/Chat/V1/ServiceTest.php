@@ -35,24 +35,28 @@ class ServiceTest extends HolodeckTestCase {
             200,
             '
             {
-                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
-                "date_created": "2015-12-16T17:53:05Z",
-                "date_updated": "2015-12-16T17:53:05Z",
-                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "consumption_report_interval": 100,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
                 "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "read_status_enabled": true,
-                "typing_indicator_timeout": 5,
-                "consumption_report_interval": 10,
-                "webhooks": {},
-                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "links": {
-                    "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                    "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                    "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
-                }
+                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "friendly_name",
+                "links": {},
+                "notifications": {},
+                "post_webhook_url": "post_webhook_url",
+                "pre_webhook_url": "pre_webhook_url",
+                "reachability_enabled": false,
+                "read_status_enabled": false,
+                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "typing_indicator_timeout": 100,
+                "url": "http://www.example.com",
+                "webhook_filters": [
+                    "webhook_filters"
+                ],
+                "webhook_method": "webhook_method",
+                "webhooks": {}
             }
             '
         ));
@@ -112,24 +116,28 @@ class ServiceTest extends HolodeckTestCase {
             201,
             '
             {
-                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
-                "date_created": "2015-12-16T17:53:05Z",
-                "date_updated": "2015-12-16T17:53:05Z",
-                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "consumption_report_interval": 100,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
                 "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "read_status_enabled": true,
-                "typing_indicator_timeout": 5,
-                "consumption_report_interval": 10,
-                "webhooks": {},
-                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "links": {
-                    "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                    "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                    "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
-                }
+                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "friendly_name",
+                "links": {},
+                "notifications": {},
+                "post_webhook_url": "post_webhook_url",
+                "pre_webhook_url": "pre_webhook_url",
+                "reachability_enabled": false,
+                "read_status_enabled": false,
+                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "typing_indicator_timeout": 100,
+                "url": "http://www.example.com",
+                "webhook_filters": [
+                    "webhook_filters"
+                ],
+                "webhook_method": "webhook_method",
+                "webhooks": {}
             }
             '
         ));
@@ -153,64 +161,19 @@ class ServiceTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
-        $this->holodeck->mock(new Response(
-            200,
-            '
-            {
-                "meta": {
-                    "page": 0,
-                    "page_size": 1,
-                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services?PageSize=1&Page=0",
-                    "previous_page_url": null,
-                    "url": "https://ip-messaging.twilio.com/v1/Services?PageSize=1&Page=0",
-                    "next_page_url": null,
-                    "key": "services"
-                },
-                "services": [
-                    {
-                        "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
-                        "date_created": "2015-12-16T17:53:05Z",
-                        "date_updated": "2015-12-16T17:53:05Z",
-                        "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "read_status_enabled": true,
-                        "typing_indicator_timeout": 5,
-                        "consumption_report_interval": 10,
-                        "webhooks": {},
-                        "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "links": {
-                            "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                            "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                            "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
-                        }
-                    }
-                ]
-            }
-            '
-        ));
-        
-        $actual = $this->twilio->chat->v1->services->read();
-        
-        $this->assertGreaterThan(0, count($actual));
-    }
-
     public function testReadEmptyResponse() {
         $this->holodeck->mock(new Response(
             200,
             '
             {
                 "meta": {
-                    "page": 0,
-                    "page_size": 50,
-                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services?PageSize=50&Page=0",
-                    "previous_page_url": null,
-                    "url": "https://ip-messaging.twilio.com/v1/Services?PageSize=50&Page=0",
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services?Page=0&PageSize=50",
+                    "key": "services",
                     "next_page_url": null,
-                    "key": "services"
+                    "page": 0,
+                    "page_size": 0,
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services"
                 },
                 "services": []
             }
@@ -220,6 +183,55 @@ class ServiceTest extends HolodeckTestCase {
         $actual = $this->twilio->chat->v1->services->read();
         
         $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services?Page=0&PageSize=50",
+                    "key": "services",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 1,
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services"
+                },
+                "services": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "consumption_report_interval": 100,
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "friendly_name": "friendly_name",
+                        "links": {},
+                        "notifications": {},
+                        "post_webhook_url": "post_webhook_url",
+                        "pre_webhook_url": "pre_webhook_url",
+                        "reachability_enabled": false,
+                        "read_status_enabled": false,
+                        "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "typing_indicator_timeout": 100,
+                        "url": "http://www.example.com",
+                        "webhook_filters": [
+                            "webhook_filters"
+                        ],
+                        "webhook_method": "webhook_method",
+                        "webhooks": {}
+                    }
+                ]
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->chat->v1->services->read();
+        
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testUpdateRequest() {
@@ -241,24 +253,28 @@ class ServiceTest extends HolodeckTestCase {
             200,
             '
             {
-                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "216d4a5b-654a-4b60-acea-cf4e42604fb3",
-                "date_created": "2015-12-16T17:53:05Z",
-                "date_updated": "2015-12-16T17:53:05Z",
-                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "consumption_report_interval": 100,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
                 "default_channel_creator_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "read_status_enabled": true,
-                "typing_indicator_timeout": 5,
-                "consumption_report_interval": 10,
-                "webhooks": {},
-                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "links": {
-                    "channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
-                    "roles": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles",
-                    "users": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users"
-                }
+                "default_channel_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "friendly_name",
+                "links": {},
+                "notifications": {},
+                "post_webhook_url": "post_webhook_url",
+                "pre_webhook_url": "pre_webhook_url",
+                "reachability_enabled": false,
+                "read_status_enabled": false,
+                "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "typing_indicator_timeout": 100,
+                "url": "http://www.example.com",
+                "webhook_filters": [
+                    "webhook_filters"
+                ],
+                "webhook_method": "webhook_method",
+                "webhooks": {}
             }
             '
         ));

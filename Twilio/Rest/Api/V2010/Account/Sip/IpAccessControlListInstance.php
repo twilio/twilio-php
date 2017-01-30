@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string uri
  */
 class IpAccessControlListInstance extends InstanceResource {

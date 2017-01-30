@@ -18,6 +18,7 @@ use Twilio\Version;
 /**
  * @property string sid
  * @property string accountSid
+ * @property string attributes
  * @property string serviceSid
  * @property string to
  * @property \DateTime dateCreated
@@ -25,6 +26,7 @@ use Twilio\Version;
  * @property string wasEdited
  * @property string from
  * @property string body
+ * @property string index
  * @property string url
  */
 class MessageInstance extends InstanceResource {
@@ -45,6 +47,7 @@ class MessageInstance extends InstanceResource {
         $this->properties = array(
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
+            'attributes' => $payload['attributes'],
             'serviceSid' => $payload['service_sid'],
             'to' => $payload['to'],
             'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
@@ -52,6 +55,7 @@ class MessageInstance extends InstanceResource {
             'wasEdited' => $payload['was_edited'],
             'from' => $payload['from'],
             'body' => $payload['body'],
+            'index' => $payload['index'],
             'url' => $payload['url'],
         );
         

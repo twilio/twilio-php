@@ -73,7 +73,7 @@ class EventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EventInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -91,15 +91,11 @@ class EventList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'ActorSid' => $options['actorSid'],
-            'EndDate<' => $options['endDateBefore'],
-            'EndDate' => $options['endDate'],
-            'EndDate>' => $options['endDateAfter'],
             'EventType' => $options['eventType'],
             'ResourceSid' => $options['resourceSid'],
             'SourceIpAddress' => $options['sourceIpAddress'],
-            'StartDate<' => $options['startDateBefore'],
             'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startDateAfter'],
+            'EndDate' => $options['endDate'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

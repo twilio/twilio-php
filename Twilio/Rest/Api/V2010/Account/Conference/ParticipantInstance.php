@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string muted
  * @property string hold
  * @property string startConferenceOnEnter
+ * @property string status
  * @property string uri
  */
 class ParticipantInstance extends InstanceResource {
@@ -53,6 +54,7 @@ class ParticipantInstance extends InstanceResource {
             'muted' => $payload['muted'],
             'hold' => $payload['hold'],
             'startConferenceOnEnter' => $payload['start_conference_on_enter'],
+            'status' => $payload['status'],
             'uri' => $payload['uri'],
         );
         

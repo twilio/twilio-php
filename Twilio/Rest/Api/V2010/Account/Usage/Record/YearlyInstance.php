@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string price
  * @property string priceUnit
  * @property \DateTime startDate
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string uri
  * @property string usage
  * @property string usageUnit

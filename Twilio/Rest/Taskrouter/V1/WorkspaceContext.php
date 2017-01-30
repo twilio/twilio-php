@@ -106,6 +106,7 @@ class WorkspaceContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'MultiTaskEnabled' => $options['multiTaskEnabled'],
             'TimeoutActivitySid' => $options['timeoutActivitySid'],
+            'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ));
         
         $payload = $this->version->update(

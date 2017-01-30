@@ -37,8 +37,8 @@ class FeedbackSummaryList extends ListResource {
     /**
      * Create a new FeedbackSummaryInstance
      * 
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @param array|Options $options Optional Arguments
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      */

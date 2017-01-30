@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
- * @property string links
+ * @property array links
  * @property string phoneNumber
  * @property string sid
  * @property string smsApplicationSid

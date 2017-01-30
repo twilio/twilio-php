@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property string sid
  * @property string taskReservationTimeout
  * @property string workspaceSid
+ * @property string url
  */
 class WorkflowInstance extends InstanceResource {
     protected $_statistics = null;
@@ -56,6 +57,7 @@ class WorkflowInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'taskReservationTimeout' => $payload['task_reservation_timeout'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(

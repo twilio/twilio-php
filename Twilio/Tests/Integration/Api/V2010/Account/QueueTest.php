@@ -207,19 +207,25 @@ class QueueTest extends HolodeckTestCase {
         
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues->create();
+                                     ->queues->create("friendlyName");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
+        $values = array(
+            'FriendlyName' => "friendlyName",
+        );
+        
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json',
+            null,
+            $values
         ));
     }
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -236,7 +242,7 @@ class QueueTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues->create();
+                                           ->queues->create("friendlyName");
         
         $this->assertNotNull($actual);
     }

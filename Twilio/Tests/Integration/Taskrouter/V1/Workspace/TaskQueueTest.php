@@ -52,6 +52,7 @@ class TaskQueueTest extends HolodeckTestCase {
                 "reservation_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "sid": "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "target_workers": null,
+                "task_order": "FIFO",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -100,6 +101,7 @@ class TaskQueueTest extends HolodeckTestCase {
                 "reservation_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "sid": "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "target_workers": null,
+                "task_order": "FIFO",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -159,6 +161,7 @@ class TaskQueueTest extends HolodeckTestCase {
                         "reservation_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "sid": "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "target_workers": null,
+                        "task_order": "FIFO",
                         "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
@@ -223,7 +226,7 @@ class TaskQueueTest extends HolodeckTestCase {
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -242,6 +245,7 @@ class TaskQueueTest extends HolodeckTestCase {
                 "reservation_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "sid": "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "target_workers": null,
+                "task_order": "FIFO",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
