@@ -22,7 +22,7 @@ class TaskQueueStatisticsTest extends HolodeckTestCase {
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->statistics()->fetch();
+                                         ->taskQueueStatistics()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -38,16 +38,17 @@ class TaskQueueStatisticsTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Statistics",
                 "cumulative": {
                     "avg_task_acceptance_time": 0.0,
-                    "end_time": "2015-08-18T00:42:34Z",
+                    "end_time": "2015-08-18T08:42:34Z",
                     "reservations_accepted": 0,
                     "reservations_canceled": 0,
                     "reservations_created": 0,
                     "reservations_rejected": 0,
                     "reservations_rescinded": 0,
                     "reservations_timed_out": 0,
-                    "start_time": "2015-08-18T00:27:34Z",
+                    "start_time": "2015-08-18T08:27:34Z",
                     "tasks_canceled": 0,
                     "tasks_deleted": 0,
                     "tasks_entered": 0,
@@ -105,7 +106,7 @@ class TaskQueueStatisticsTest extends HolodeckTestCase {
         
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->statistics()->fetch();
+                                               ->taskQueueStatistics()->fetch();
         
         $this->assertNotNull($actual);
     }

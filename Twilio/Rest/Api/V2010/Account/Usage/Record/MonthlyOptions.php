@@ -15,37 +15,25 @@ use Twilio\Values;
 abstract class MonthlyOptions {
     /**
      * @param string $category The category
-     * @param string $startDateBefore The start_date
-     * @param string $startDate The start_date
-     * @param string $startDateAfter The start_date
-     * @param string $endDateBefore The end_date
-     * @param string $endDate The end_date
-     * @param string $endDateAfter The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @return ReadMonthlyOptions Options builder
      */
-    public static function read($category = Values::NONE, $startDateBefore = Values::NONE, $startDate = Values::NONE, $startDateAfter = Values::NONE, $endDateBefore = Values::NONE, $endDate = Values::NONE, $endDateAfter = Values::NONE) {
-        return new ReadMonthlyOptions($category, $startDateBefore, $startDate, $startDateAfter, $endDateBefore, $endDate, $endDateAfter);
+    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+        return new ReadMonthlyOptions($category, $startDate, $endDate);
     }
 }
 
 class ReadMonthlyOptions extends Options {
     /**
      * @param string $category The category
-     * @param string $startDateBefore The start_date
-     * @param string $startDate The start_date
-     * @param string $startDateAfter The start_date
-     * @param string $endDateBefore The end_date
-     * @param string $endDate The end_date
-     * @param string $endDateAfter The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      */
-    public function __construct($category = Values::NONE, $startDateBefore = Values::NONE, $startDate = Values::NONE, $startDateAfter = Values::NONE, $endDateBefore = Values::NONE, $endDate = Values::NONE, $endDateAfter = Values::NONE) {
+    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['category'] = $category;
-        $this->options['startDateBefore'] = $startDateBefore;
         $this->options['startDate'] = $startDate;
-        $this->options['startDateAfter'] = $startDateAfter;
-        $this->options['endDateBefore'] = $endDateBefore;
         $this->options['endDate'] = $endDate;
-        $this->options['endDateAfter'] = $endDateAfter;
     }
 
     /**
@@ -62,18 +50,7 @@ class ReadMonthlyOptions extends Options {
     /**
      * The start_date
      * 
-     * @param string $startDateBefore The start_date
-     * @return $this Fluent Builder
-     */
-    public function setStartDateBefore($startDateBefore) {
-        $this->options['startDateBefore'] = $startDateBefore;
-        return $this;
-    }
-
-    /**
-     * The start_date
-     * 
-     * @param string $startDate The start_date
+     * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -82,46 +59,13 @@ class ReadMonthlyOptions extends Options {
     }
 
     /**
-     * The start_date
-     * 
-     * @param string $startDateAfter The start_date
-     * @return $this Fluent Builder
-     */
-    public function setStartDateAfter($startDateAfter) {
-        $this->options['startDateAfter'] = $startDateAfter;
-        return $this;
-    }
-
-    /**
      * The end_date
      * 
-     * @param string $endDateBefore The end_date
-     * @return $this Fluent Builder
-     */
-    public function setEndDateBefore($endDateBefore) {
-        $this->options['endDateBefore'] = $endDateBefore;
-        return $this;
-    }
-
-    /**
-     * The end_date
-     * 
-     * @param string $endDate The end_date
+     * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
         $this->options['endDate'] = $endDate;
-        return $this;
-    }
-
-    /**
-     * The end_date
-     * 
-     * @param string $endDateAfter The end_date
-     * @return $this Fluent Builder
-     */
-    public function setEndDateAfter($endDateAfter) {
-        $this->options['endDateAfter'] = $endDateAfter;
         return $this;
     }
 

@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -59,12 +60,14 @@ class ActivityContext extends InstanceContext {
     /**
      * Update the ActivityInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param array|Options $options Optional Arguments
      * @return ActivityInstance Updated ActivityInstance
      */
-    public function update($friendlyName) {
+    public function update($options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
+            'FriendlyName' => $options['friendlyName'],
         ));
         
         $payload = $this->version->update(

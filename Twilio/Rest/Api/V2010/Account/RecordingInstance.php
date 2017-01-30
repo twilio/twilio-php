@@ -31,6 +31,7 @@ use Twilio\Version;
  */
 class RecordingInstance extends InstanceResource {
     protected $_transcriptions = null;
+    protected $_addOnResults = null;
 
     /**
      * Initialize the RecordingInstance
@@ -111,6 +112,15 @@ class RecordingInstance extends InstanceResource {
      */
     protected function getTranscriptions() {
         return $this->proxy()->transcriptions;
+    }
+
+    /**
+     * Access the addOnResults
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList 
+     */
+    protected function getAddOnResults() {
+        return $this->proxy()->addOnResults;
     }
 
     /**

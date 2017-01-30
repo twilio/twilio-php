@@ -71,7 +71,7 @@ class CredentialList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CredentialInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -117,6 +117,7 @@ class CredentialList extends ListResource {
             'PrivateKey' => $options['privateKey'],
             'Sandbox' => $options['sandbox'],
             'ApiKey' => $options['apiKey'],
+            'Secret' => $options['secret'],
         ));
         
         $payload = $this->version->create(

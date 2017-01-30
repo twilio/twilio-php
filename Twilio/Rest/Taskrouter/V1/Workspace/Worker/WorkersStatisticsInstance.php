@@ -19,6 +19,7 @@ use Twilio\Version;
  * @property string cumulative
  * @property string realtime
  * @property string workspaceSid
+ * @property string url
  */
 class WorkersStatisticsInstance extends InstanceResource {
     /**
@@ -38,6 +39,7 @@ class WorkersStatisticsInstance extends InstanceResource {
             'cumulative' => $payload['cumulative'],
             'realtime' => $payload['realtime'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(

@@ -42,6 +42,7 @@ class ConferenceTest extends HolodeckTestCase {
                 "date_updated": "Fri, 18 Feb 2011 19:27:33 +0000",
                 "friendly_name": "AHH YEAH",
                 "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "region": "us1",
                 "status": "completed",
                 "subresource_uris": {
                     "participants": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json"
@@ -84,6 +85,7 @@ class ConferenceTest extends HolodeckTestCase {
                         "date_created": "Mon, 22 Aug 2011 20:58:45 +0000",
                         "date_updated": "Mon, 22 Aug 2011 20:58:46 +0000",
                         "friendly_name": null,
+                        "region": "us1",
                         "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "in-progress",
                         "subresource_uris": {
@@ -136,6 +138,48 @@ class ConferenceTest extends HolodeckTestCase {
         
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->conferences->read();
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+        
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+        
+        $this->assertRequest(new Request(
+            'post',
+            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+        ));
+    }
+
+    public function testUpdateEndConferenceResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "api_version": "2010-04-01",
+                "date_created": "Mon, 22 Aug 2011 20:58:45 +0000",
+                "date_updated": "Mon, 22 Aug 2011 20:58:46 +0000",
+                "friendly_name": null,
+                "region": "us1",
+                "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "completed",
+                "subresource_uris": {
+                    "participants": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json"
+                },
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         
         $this->assertNotNull($actual);
     }

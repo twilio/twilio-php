@@ -23,13 +23,11 @@ abstract class QueueOptions {
     }
 
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
      * @param string $maxSize The max number of calls allowed in the queue
      * @return CreateQueueOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $maxSize = Values::NONE) {
-        return new CreateQueueOptions($friendlyName, $maxSize);
+    public static function create($maxSize = Values::NONE) {
+        return new CreateQueueOptions($maxSize);
     }
 }
 
@@ -83,25 +81,10 @@ class UpdateQueueOptions extends Options {
 
 class CreateQueueOptions extends Options {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
      * @param string $maxSize The max number of calls allowed in the queue
      */
-    public function __construct($friendlyName = Values::NONE, $maxSize = Values::NONE) {
-        $this->options['friendlyName'] = $friendlyName;
+    public function __construct($maxSize = Values::NONE) {
         $this->options['maxSize'] = $maxSize;
-    }
-
-    /**
-     * A user-provided string that identifies this queue.
-     * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
-     * @return $this Fluent Builder
-     */
-    public function setFriendlyName($friendlyName) {
-        $this->options['friendlyName'] = $friendlyName;
-        return $this;
     }
 
     /**

@@ -25,6 +25,8 @@ use Twilio\Version;
  * @property string workerName
  * @property string workerSid
  * @property string workspaceSid
+ * @property string url
+ * @property array links
  */
 class ReservationInstance extends InstanceResource {
     /**
@@ -51,6 +53,8 @@ class ReservationInstance extends InstanceResource {
             'workerName' => $payload['worker_name'],
             'workerSid' => $payload['worker_sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

@@ -69,6 +69,7 @@ class CredentialContext extends InstanceContext {
             'PrivateKey' => $options['privateKey'],
             'Sandbox' => $options['sandbox'],
             'ApiKey' => $options['apiKey'],
+            'Secret' => $options['secret'],
         ));
         
         $payload = $this->version->update(

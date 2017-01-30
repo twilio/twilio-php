@@ -27,6 +27,14 @@ abstract class ConferenceOptions {
     public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $dateUpdatedBefore = Values::NONE, $dateUpdated = Values::NONE, $dateUpdatedAfter = Values::NONE, $friendlyName = Values::NONE, $status = Values::NONE) {
         return new ReadConferenceOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter, $dateUpdatedBefore, $dateUpdated, $dateUpdatedAfter, $friendlyName, $status);
     }
+
+    /**
+     * @param string $status The status
+     * @return UpdateConferenceOptions Options builder
+     */
+    public static function update($status = Values::NONE) {
+        return new UpdateConferenceOptions($status);
+    }
 }
 
 class ReadConferenceOptions extends Options {
@@ -152,5 +160,40 @@ class ReadConferenceOptions extends Options {
             }
         }
         return '[Twilio.Api.V2010.ReadConferenceOptions ' . implode(' ', $options) . ']';
+    }
+}
+
+class UpdateConferenceOptions extends Options {
+    /**
+     * @param string $status The status
+     */
+    public function __construct($status = Values::NONE) {
+        $this->options['status'] = $status;
+    }
+
+    /**
+     * The status
+     * 
+     * @param string $status The status
+     * @return $this Fluent Builder
+     */
+    public function setStatus($status) {
+        $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Api.V2010.UpdateConferenceOptions ' . implode(' ', $options) . ']';
     }
 }

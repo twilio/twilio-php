@@ -37,12 +37,12 @@ class IpAccessControlListTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "trunk_sid": "TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "date_created": "Fri, 17 Jul 2015 21:25:15 +0000",
-                "date_updated": "Fri, 17 Jul 2015 21:25:15 +0000",
-                "friendly_name": "aaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
                 "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "http://www.example.com"
             }
             '
         ));
@@ -103,16 +103,16 @@ class IpAccessControlListTest extends HolodeckTestCase {
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "trunk_sid": "TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "date_created": "Fri, 17 Jul 2015 21:25:15 +0000",
-                "date_updated": "Fri, 17 Jul 2015 21:25:15 +0000",
-                "friendly_name": "aaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
                 "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "http://www.example.com"
             }
             '
         ));
@@ -138,56 +138,21 @@ class IpAccessControlListTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
-        $this->holodeck->mock(new Response(
-            200,
-            '
-            {
-                "end": 0,
-                "first_page_uri": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0",
-                "ip_access_control_lists": [
-                    {
-                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "trunk_sid": "TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "Fri, 17 Jul 2015 21:25:15 +0000",
-                        "date_updated": "Fri, 17 Jul 2015 21:25:15 +0000",
-                        "friendly_name": "aaaa",
-                        "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "url": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                    }
-                ],
-                "last_page_uri": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0",
-                "next_page_uri": null,
-                "page": 0,
-                "page_size": 50,
-                "previous_page_uri": null,
-                "start": 0,
-                "total": 1,
-                "uri": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0"
-            }
-            '
-        ));
-        
-        $actual = $this->twilio->trunking->v1->trunks("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                             ->ipAccessControlLists->read();
-        
-        $this->assertGreaterThan(0, count($actual));
-    }
-
     public function testReadEmptyResponse() {
         $this->holodeck->mock(new Response(
             200,
             '
             {
-                "end": 0,
-                "first_page_uri": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0",
                 "ip_access_control_lists": [],
-                "next_page_uri": null,
-                "page": 0,
-                "page_size": 50,
-                "previous_page_uri": null,
-                "start": 0,
-                "uri": "https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0"
+                "meta": {
+                    "first_page_url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?Page=0&PageSize=50",
+                    "key": "ip_access_control_lists",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 0,
+                    "previous_page_url": null,
+                    "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists"
+                }
             }
             '
         ));
@@ -196,5 +161,40 @@ class IpAccessControlListTest extends HolodeckTestCase {
                                              ->ipAccessControlLists->read();
         
         $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "ip_access_control_lists": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "friendly_name": "friendly_name",
+                        "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "url": "http://www.example.com"
+                    }
+                ],
+                "meta": {
+                    "first_page_url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?Page=0&PageSize=50",
+                    "key": "ip_access_control_lists",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 1,
+                    "previous_page_url": null,
+                    "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->trunking->v1->trunks("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                             ->ipAccessControlLists->read();
+        
+        $this->assertGreaterThan(0, count($actual));
     }
 }

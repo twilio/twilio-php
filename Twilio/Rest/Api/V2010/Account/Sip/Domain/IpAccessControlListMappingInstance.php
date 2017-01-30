@@ -21,6 +21,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string sid
  * @property string uri
+ * @property array subresourceUris
  */
 class IpAccessControlListMappingInstance extends InstanceResource {
     /**
@@ -44,6 +45,7 @@ class IpAccessControlListMappingInstance extends InstanceResource {
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'uri' => $payload['uri'],
+            'subresourceUris' => $payload['subresource_uris'],
         );
         
         $this->solution = array(
