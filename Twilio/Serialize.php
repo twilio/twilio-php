@@ -30,4 +30,8 @@ class Serialize {
         return $result;
     }
 
+    public static function iso8601Date($dateTime) {
+        return $dateTime->format("Y-m-d");
+    }
+
 }
