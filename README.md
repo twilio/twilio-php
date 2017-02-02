@@ -20,10 +20,10 @@ $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
 $client = new Twilio\Rest\Client($sid, $token);
 $message = $client->account->messages->create(
-  '9991231234', // From a valid Twilio number
   '8881231234', // Text this number
+  '9991231234', // From a valid Twilio number
   array(
-    'Body' => "Hello monkey!"
+    'body' => "Hello monkey!"
   )
 );
 
@@ -39,11 +39,12 @@ $token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
 $client = new Twilio\Rest\Client($sid, $token);
 $call = $client->account->calls->create(
-  '9991231234', // From a valid Twilio number
   '8881231234', // Call this number
-
-  // Read TwiML at this URL when a call connects (hold music)
-  'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+  '9991231234', // From a valid Twilio number
+  array(
+    // Read TwiML at this URL when a call connects (hold music)
+    'url' => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
+  )
 );
 ```
 
