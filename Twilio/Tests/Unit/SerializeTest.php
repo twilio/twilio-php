@@ -74,4 +74,21 @@ class SerializeTest extends UnitTest {
         $this->assertEquals("2017-02-01T17:15:41-0800", $date->format(\DateTime::ISO8601));
         $this->assertEquals("2017-02-02", $actual);
     }
+
+    public function testBooleanToString() {
+        $actual = Serialize::booleanToString(True);
+        $this->assertEquals("True", $actual);
+
+        $actual = Serialize::booleanToString(False);
+        $this->assertEquals("False", $actual);
+    }
+
+    public function testBooleanToStringPassThroughSpecialVals() {
+        $actual = Serialize::booleanToString(null);
+        $this->assertEquals(null, $actual);
+
+        // For backwards compatibility
+        $actual = Serialize::booleanToString("True");
+        $this->assertEquals("True", $actual);
+    }
 }

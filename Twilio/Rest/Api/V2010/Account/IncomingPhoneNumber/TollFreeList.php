@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -94,7 +95,7 @@ class TollFreeList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Beta' => $options['beta'],
+            'Beta' => Serialize::booleanToString($options['beta']),
             'FriendlyName' => $options['friendlyName'],
             'PhoneNumber' => $options['phoneNumber'],
             'PageToken' => $pageToken,
@@ -133,7 +134,7 @@ class TollFreeList extends ListResource {
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'VoiceApplicationSid' => $options['voiceApplicationSid'],
-            'VoiceCallerIdLookup' => $options['voiceCallerIdLookup'],
+            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],

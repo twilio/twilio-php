@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -98,13 +99,13 @@ class TollFreeList extends ListResource {
         $params = Values::of(array(
             'AreaCode' => $options['areaCode'],
             'Contains' => $options['contains'],
-            'SmsEnabled' => $options['smsEnabled'],
-            'MmsEnabled' => $options['mmsEnabled'],
-            'VoiceEnabled' => $options['voiceEnabled'],
-            'ExcludeAllAddressRequired' => $options['excludeAllAddressRequired'],
-            'ExcludeLocalAddressRequired' => $options['excludeLocalAddressRequired'],
-            'ExcludeForeignAddressRequired' => $options['excludeForeignAddressRequired'],
-            'Beta' => $options['beta'],
+            'SmsEnabled' => Serialize::booleanToString($options['smsEnabled']),
+            'MmsEnabled' => Serialize::booleanToString($options['mmsEnabled']),
+            'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
+            'ExcludeAllAddressRequired' => Serialize::booleanToString($options['excludeAllAddressRequired']),
+            'ExcludeLocalAddressRequired' => Serialize::booleanToString($options['excludeLocalAddressRequired']),
+            'ExcludeForeignAddressRequired' => Serialize::booleanToString($options['excludeForeignAddressRequired']),
+            'Beta' => Serialize::booleanToString($options['beta']),
             'NearNumber' => $options['nearNumber'],
             'NearLatLong' => $options['nearLatLong'],
             'Distance' => $options['distance'],

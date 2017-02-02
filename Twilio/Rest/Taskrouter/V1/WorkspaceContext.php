@@ -20,6 +20,7 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkerList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -104,7 +105,7 @@ class WorkspaceContext extends InstanceContext {
             'EventCallbackUrl' => $options['eventCallbackUrl'],
             'EventsFilter' => $options['eventsFilter'],
             'FriendlyName' => $options['friendlyName'],
-            'MultiTaskEnabled' => $options['multiTaskEnabled'],
+            'MultiTaskEnabled' => Serialize::booleanToString($options['multiTaskEnabled']),
             'TimeoutActivitySid' => $options['timeoutActivitySid'],
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ));

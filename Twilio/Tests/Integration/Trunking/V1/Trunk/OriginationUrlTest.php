@@ -12,6 +12,7 @@ namespace Twilio\Tests\Integration\Trunking\V1\Trunk;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -96,7 +97,7 @@ class OriginationUrlTest extends HolodeckTestCase {
         $values = array(
             'Weight' => 1,
             'Priority' => 1,
-            'Enabled' => True,
+            'Enabled' => Serialize::booleanToString(True),
             'FriendlyName' => "friendlyName",
             'SipUrl' => "https://example.com",
         );

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -71,7 +72,7 @@ class WorkerChannelContext extends InstanceContext {
         
         $data = Values::of(array(
             'Capacity' => $options['capacity'],
-            'Available' => $options['available'],
+            'Available' => Serialize::booleanToString($options['available']),
         ));
         
         $payload = $this->version->update(

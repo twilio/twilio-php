@@ -15,6 +15,7 @@ use Twilio\Options;
 use Twilio\Rest\IpMessaging\V1\Service\ChannelList;
 use Twilio\Rest\IpMessaging\V1\Service\RoleList;
 use Twilio\Rest\IpMessaging\V1\Service\UserList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -93,17 +94,17 @@ class ServiceContext extends InstanceContext {
             'DefaultServiceRoleSid' => $options['defaultServiceRoleSid'],
             'DefaultChannelRoleSid' => $options['defaultChannelRoleSid'],
             'DefaultChannelCreatorRoleSid' => $options['defaultChannelCreatorRoleSid'],
-            'ReadStatusEnabled' => $options['readStatusEnabled'],
-            'ReachabilityEnabled' => $options['reachabilityEnabled'],
+            'ReadStatusEnabled' => Serialize::booleanToString($options['readStatusEnabled']),
+            'ReachabilityEnabled' => Serialize::booleanToString($options['reachabilityEnabled']),
             'TypingIndicatorTimeout' => $options['typingIndicatorTimeout'],
             'ConsumptionReportInterval' => $options['consumptionReportInterval'],
-            'Notifications.NewMessage.Enabled' => $options['notifications.NewMessage.Enabled'],
+            'Notifications.NewMessage.Enabled' => Serialize::booleanToString($options['notifications.NewMessage.Enabled']),
             'Notifications.NewMessage.Template' => $options['notifications.NewMessage.Template'],
-            'Notifications.AddedToChannel.Enabled' => $options['notifications.AddedToChannel.Enabled'],
+            'Notifications.AddedToChannel.Enabled' => Serialize::booleanToString($options['notifications.AddedToChannel.Enabled']),
             'Notifications.AddedToChannel.Template' => $options['notifications.AddedToChannel.Template'],
-            'Notifications.RemovedFromChannel.Enabled' => $options['notifications.RemovedFromChannel.Enabled'],
+            'Notifications.RemovedFromChannel.Enabled' => Serialize::booleanToString($options['notifications.RemovedFromChannel.Enabled']),
             'Notifications.RemovedFromChannel.Template' => $options['notifications.RemovedFromChannel.Template'],
-            'Notifications.InvitedToChannel.Enabled' => $options['notifications.InvitedToChannel.Enabled'],
+            'Notifications.InvitedToChannel.Enabled' => Serialize::booleanToString($options['notifications.InvitedToChannel.Enabled']),
             'Notifications.InvitedToChannel.Template' => $options['notifications.InvitedToChannel.Template'],
             'PreWebhookUrl' => $options['preWebhookUrl'],
             'PostWebhookUrl' => $options['postWebhookUrl'],

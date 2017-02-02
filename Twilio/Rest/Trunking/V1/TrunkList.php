@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -45,7 +46,7 @@ class TrunkList extends ListResource {
             'DisasterRecoveryUrl' => $options['disasterRecoveryUrl'],
             'DisasterRecoveryMethod' => $options['disasterRecoveryMethod'],
             'Recording' => $options['recording'],
-            'Secure' => $options['secure'],
+            'Secure' => Serialize::booleanToString($options['secure']),
         ));
         
         $payload = $this->version->create(

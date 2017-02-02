@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -56,7 +57,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'VoiceApplicationSid' => $options['voiceApplicationSid'],
-            'VoiceCallerIdLookup' => $options['voiceCallerIdLookup'],
+            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],

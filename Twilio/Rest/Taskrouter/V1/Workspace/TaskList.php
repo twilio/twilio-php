@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -102,7 +103,7 @@ class TaskList extends ListResource {
             'TaskChannel' => $options['taskChannel'],
             'EvaluateTaskAttributes' => $options['evaluateTaskAttributes'],
             'Ordering' => $options['ordering'],
-            'HasAddons' => $options['hasAddons'],
+            'HasAddons' => Serialize::booleanToString($options['hasAddons']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -52,7 +53,7 @@ class ApplicationList extends ListResource {
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'VoiceCallerIdLookup' => $options['voiceCallerIdLookup'],
+            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
             'SmsUrl' => $options['smsUrl'],
             'SmsMethod' => $options['smsMethod'],
             'SmsFallbackUrl' => $options['smsFallbackUrl'],

@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -115,7 +116,7 @@ class CredentialList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'Certificate' => $options['certificate'],
             'PrivateKey' => $options['privateKey'],
-            'Sandbox' => $options['sandbox'],
+            'Sandbox' => Serialize::booleanToString($options['sandbox']),
             'ApiKey' => $options['apiKey'],
             'Secret' => $options['secret'],
         ));

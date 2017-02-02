@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -54,14 +55,14 @@ class ParticipantList extends ListResource {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'StatusCallbackEvent' => $options['statusCallbackEvent'],
             'Timeout' => $options['timeout'],
-            'Record' => $options['record'],
-            'Muted' => $options['muted'],
+            'Record' => Serialize::booleanToString($options['record']),
+            'Muted' => Serialize::booleanToString($options['muted']),
             'Beep' => $options['beep'],
-            'StartConferenceOnEnter' => $options['startConferenceOnEnter'],
-            'EndConferenceOnExit' => $options['endConferenceOnExit'],
+            'StartConferenceOnEnter' => Serialize::booleanToString($options['startConferenceOnEnter']),
+            'EndConferenceOnExit' => Serialize::booleanToString($options['endConferenceOnExit']),
             'WaitUrl' => $options['waitUrl'],
             'WaitMethod' => $options['waitMethod'],
-            'EarlyMedia' => $options['earlyMedia'],
+            'EarlyMedia' => Serialize::booleanToString($options['earlyMedia']),
             'MaxParticipants' => $options['maxParticipants'],
             'ConferenceRecord' => $options['conferenceRecord'],
             'ConferenceTrim' => $options['conferenceTrim'],
@@ -145,8 +146,8 @@ class ParticipantList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Muted' => $options['muted'],
-            'Hold' => $options['hold'],
+            'Muted' => Serialize::booleanToString($options['muted']),
+            'Hold' => Serialize::booleanToString($options['hold']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

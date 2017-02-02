@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -52,7 +53,7 @@ class MessageList extends ListResource {
             'StatusCallback' => $options['statusCallback'],
             'ApplicationSid' => $options['applicationSid'],
             'MaxPrice' => $options['maxPrice'],
-            'ProvideFeedback' => $options['provideFeedback'],
+            'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
         ));
         
         $payload = $this->version->create(

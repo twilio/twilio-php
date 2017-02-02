@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\ListResource;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -46,7 +47,7 @@ class OriginationUrlList extends ListResource {
         $data = Values::of(array(
             'Weight' => $weight,
             'Priority' => $priority,
-            'Enabled' => $enabled,
+            'Enabled' => Serialize::booleanToString($enabled),
             'FriendlyName' => $friendlyName,
             'SipUrl' => $sipUrl,
         ));

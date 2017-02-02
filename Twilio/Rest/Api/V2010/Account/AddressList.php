@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -56,7 +57,7 @@ class AddressList extends ListResource {
             'PostalCode' => $postalCode,
             'IsoCountry' => $isoCountry,
             'FriendlyName' => $options['friendlyName'],
-            'EmergencyEnabled' => $options['emergencyEnabled'],
+            'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
         ));
         
         $payload = $this->version->create(

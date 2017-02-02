@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -67,7 +68,7 @@ class CallList extends ListResource {
             'SendDigits' => $options['sendDigits'],
             'IfMachine' => $options['ifMachine'],
             'Timeout' => $options['timeout'],
-            'Record' => $options['record'],
+            'Record' => Serialize::booleanToString($options['record']),
             'RecordingChannels' => $options['recordingChannels'],
             'RecordingStatusCallback' => $options['recordingStatusCallback'],
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],

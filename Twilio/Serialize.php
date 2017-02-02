@@ -40,4 +40,12 @@ class Serialize {
         return $utcDate->format('Y-m-d');
     }
 
+    public static function booleanToString($boolOrStr) {
+        if (is_null($boolOrStr) || is_string($boolOrStr)) {
+            return $boolOrStr;
+        }
+
+        return $boolOrStr ? 'True' : 'False';
+    }
+
 }

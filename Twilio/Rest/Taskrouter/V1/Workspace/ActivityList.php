@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -121,7 +122,7 @@ class ActivityList extends ListResource {
         
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
-            'Available' => $options['available'],
+            'Available' => Serialize::booleanToString($options['available']),
         ));
         
         $payload = $this->version->create(

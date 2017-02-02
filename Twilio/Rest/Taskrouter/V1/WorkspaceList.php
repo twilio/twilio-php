@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -119,7 +120,7 @@ class WorkspaceList extends ListResource {
             'FriendlyName' => $friendlyName,
             'EventCallbackUrl' => $options['eventCallbackUrl'],
             'EventsFilter' => $options['eventsFilter'],
-            'MultiTaskEnabled' => $options['multiTaskEnabled'],
+            'MultiTaskEnabled' => Serialize::booleanToString($options['multiTaskEnabled']),
             'Template' => $options['template'],
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ));

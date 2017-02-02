@@ -49,7 +49,7 @@ class FeedbackSummaryList extends ListResource {
         $data = Values::of(array(
             'StartDate' => Serialize::iso8601Date($startDate),
             'EndDate' => Serialize::iso8601Date($endDate),
-            'IncludeSubaccounts' => $options['includeSubaccounts'],
+            'IncludeSubaccounts' => Serialize::booleanToString($options['includeSubaccounts']),
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ));
