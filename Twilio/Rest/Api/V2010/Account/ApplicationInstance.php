@@ -54,8 +54,8 @@ class ApplicationInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'messageStatusCallback' => $payload['message_status_callback'],
             'sid' => $payload['sid'],

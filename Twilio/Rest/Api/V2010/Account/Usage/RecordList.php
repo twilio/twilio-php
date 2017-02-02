@@ -20,6 +20,7 @@ use Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthList;
 use Twilio\Rest\Api\V2010\Account\Usage\Record\TodayList;
 use Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyList;
 use Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -123,8 +124,8 @@ class RecordList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Category' => $options['category'],
-            'StartDate' => $options['startDate'],
-            'EndDate' => $options['endDate'],
+            'StartDate' => Serialize::iso8601Date($options['startDate']),
+            'EndDate' => Serialize::iso8601Date($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

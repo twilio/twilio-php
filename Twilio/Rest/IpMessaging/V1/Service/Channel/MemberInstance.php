@@ -49,11 +49,11 @@ class MemberInstance extends InstanceResource {
             'channelSid' => $payload['channel_sid'],
             'serviceSid' => $payload['service_sid'],
             'identity' => $payload['identity'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'roleSid' => $payload['role_sid'],
             'lastConsumedMessageIndex' => $payload['last_consumed_message_index'],
-            'lastConsumptionTimestamp' => Deserialize::iso8601DateTime($payload['last_consumption_timestamp']),
+            'lastConsumptionTimestamp' => Deserialize::dateTime($payload['last_consumption_timestamp']),
             'url' => $payload['url'],
         );
         

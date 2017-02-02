@@ -67,8 +67,8 @@ class AccountInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'authToken' => $payload['auth_token'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'ownerAccountSid' => $payload['owner_account_sid'],
             'sid' => $payload['sid'],

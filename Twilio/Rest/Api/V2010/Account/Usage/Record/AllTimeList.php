@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Usage\Record;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -95,8 +96,8 @@ class AllTimeList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Category' => $options['category'],
-            'StartDate' => $options['startDate'],
-            'EndDate' => $options['endDate'],
+            'StartDate' => Serialize::iso8601Date($options['startDate']),
+            'EndDate' => Serialize::iso8601Date($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

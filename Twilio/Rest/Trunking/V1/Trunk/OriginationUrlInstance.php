@@ -51,8 +51,8 @@ class OriginationUrlInstance extends InstanceResource {
             'sipUrl' => $payload['sip_url'],
             'friendlyName' => $payload['friendly_name'],
             'priority' => $payload['priority'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         

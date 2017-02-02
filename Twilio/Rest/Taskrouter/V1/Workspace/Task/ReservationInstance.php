@@ -45,8 +45,8 @@ class ReservationInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'reservationStatus' => $payload['reservation_status'],
             'sid' => $payload['sid'],
             'taskSid' => $payload['task_sid'],

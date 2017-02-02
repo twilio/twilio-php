@@ -47,8 +47,8 @@ class AuthorizedConnectAppInstance extends InstanceResource {
             'connectAppFriendlyName' => $payload['connect_app_friendly_name'],
             'connectAppHomepageUrl' => $payload['connect_app_homepage_url'],
             'connectAppSid' => $payload['connect_app_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'permissions' => $payload['permissions'],
             'uri' => $payload['uri'],
         );

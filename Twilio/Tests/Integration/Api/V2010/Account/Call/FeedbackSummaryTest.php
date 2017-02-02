@@ -12,6 +12,7 @@ namespace Twilio\Tests\Integration\Api\V2010\Account\Call;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -27,8 +28,8 @@ class FeedbackSummaryTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
         
         $values = array(
-            'StartDate' => new \DateTime('2008-01-02'),
-            'EndDate' => new \DateTime('2008-01-02'),
+            'StartDate' => Serialize::iso8601Date(new \DateTime('2008-01-02')),
+            'EndDate' => Serialize::iso8601Date(new \DateTime('2008-01-02')),
         );
         
         $this->assertRequest(new Request(

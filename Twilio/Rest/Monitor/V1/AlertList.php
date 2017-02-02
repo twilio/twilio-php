@@ -11,6 +11,7 @@ namespace Twilio\Rest\Monitor\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -91,8 +92,8 @@ class AlertList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'LogLevel' => $options['logLevel'],
-            'StartDate' => $options['startDate'],
-            'EndDate' => $options['endDate'],
+            'StartDate' => Serialize::iso8601Date($options['startDate']),
+            'EndDate' => Serialize::iso8601Date($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

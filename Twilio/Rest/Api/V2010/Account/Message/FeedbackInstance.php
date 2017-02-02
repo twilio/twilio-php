@@ -40,8 +40,8 @@ class FeedbackInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'messageSid' => $payload['message_sid'],
             'outcome' => $payload['outcome'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'uri' => $payload['uri'],
         );
         

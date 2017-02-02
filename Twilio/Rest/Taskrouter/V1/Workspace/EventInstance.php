@@ -52,7 +52,7 @@ class EventInstance extends InstanceResource {
             'actorUrl' => $payload['actor_url'],
             'description' => $payload['description'],
             'eventData' => $payload['event_data'],
-            'eventDate' => Deserialize::iso8601DateTime($payload['event_date']),
+            'eventDate' => Deserialize::dateTime($payload['event_date']),
             'eventType' => $payload['event_type'],
             'resourceSid' => $payload['resource_sid'],
             'resourceType' => $payload['resource_type'],

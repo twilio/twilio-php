@@ -44,8 +44,8 @@ class IpAccessControlListInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'subresourceUris' => $payload['subresource_uris'],
             'uri' => $payload['uri'],
         );

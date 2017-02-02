@@ -56,8 +56,8 @@ class UserInstance extends InstanceResource {
             'identity' => $payload['identity'],
             'isOnline' => $payload['is_online'],
             'isNotifiable' => $payload['is_notifiable'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'links' => $payload['links'],
             'url' => $payload['url'],
         );

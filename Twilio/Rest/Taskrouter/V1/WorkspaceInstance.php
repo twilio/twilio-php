@@ -56,8 +56,8 @@ class WorkspaceInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'defaultActivityName' => $payload['default_activity_name'],
             'defaultActivitySid' => $payload['default_activity_sid'],
             'eventCallbackUrl' => $payload['event_callback_url'],

@@ -231,9 +231,7 @@ class ParticipantTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
                 "next_page_uri": null,
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "participants": [
@@ -253,7 +251,6 @@ class ParticipantTest extends HolodeckTestCase {
                 ],
                 "previous_page_uri": null,
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json"
             }
             '
@@ -273,15 +270,12 @@ class ParticipantTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
                 "next_page_uri": null,
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "participants": [],
                 "previous_page_uri": null,
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json"
             }
             '

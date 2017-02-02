@@ -49,9 +49,9 @@ class AddOnResultInstance extends InstanceResource {
             'status' => $payload['status'],
             'addOnSid' => $payload['add_on_sid'],
             'addOnConfigurationSid' => $payload['add_on_configuration_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'dateCompleted' => Deserialize::iso8601DateTime($payload['date_completed']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
+            'dateCompleted' => Deserialize::dateTime($payload['date_completed']),
             'referenceSid' => $payload['reference_sid'],
             'subresourceUris' => $payload['subresource_uris'],
         );

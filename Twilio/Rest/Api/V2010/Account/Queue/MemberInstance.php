@@ -38,7 +38,7 @@ class MemberInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'callSid' => $payload['call_sid'],
-            'dateEnqueued' => Deserialize::iso8601DateTime($payload['date_enqueued']),
+            'dateEnqueued' => Deserialize::dateTime($payload['date_enqueued']),
             'position' => $payload['position'],
             'uri' => $payload['uri'],
             'waitTime' => $payload['wait_time'],

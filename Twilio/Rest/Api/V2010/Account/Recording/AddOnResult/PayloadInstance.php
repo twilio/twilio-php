@@ -51,8 +51,8 @@ class PayloadInstance extends InstanceResource {
             'addOnSid' => $payload['add_on_sid'],
             'addOnConfigurationSid' => $payload['add_on_configuration_sid'],
             'contentType' => $payload['content_type'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'referenceSid' => $payload['reference_sid'],
             'subresourceUris' => $payload['subresource_uris'],
         );
