@@ -7,8 +7,8 @@ posted here._
 ---------------------------
 
 ### CHANGED - Removed uri field from Pricing Phone Number Countries resource
-  - the `uri` property on this object has been removed and is no longer returned by the api
-  - the `url` property is still present and unchanged and should be used instead of the `uri` property
+  - the `uri` property on this object has been removed and is no longer returned by the api.
+  - the `url` property is still present and unchanged and should be used instead of the `uri` property.
 
 #### Rationale
 This corrects a oversight in our code generation, new style resources such as this use `url` and `links` properties
@@ -20,10 +20,10 @@ while legacy resources use `uri` and `subresource_uris`. Previously we were inco
   - `StartDate` and `EndDate` params are now `DateTime` objects rather than `strings`. They will automcatically be converted to UTC timezone, the original DateTime object will not be modified.
 
 #### Affected Resources
-  - All Account Usage Record Resources (Last Month, This Month, Yesterday, All Time, Monthly, Yearly, Today, Daily)
-  - Monitor Alerts, Events
-  - Taskrouter WorkspaceStatistics
-  - Call Feedback Summaries
+  - All Account Usage Record Resources (Last Month, This Month, Yesterday, All Time, Monthly, Yearly, Today, Daily).
+  - Monitor Alerts, Events.
+  - Taskrouter WorkspaceStatistics.
+  - Call Feedback Summaries.
 
 #### 5.3.x
 ```php
@@ -59,8 +59,8 @@ $client->usage->records->read(array(
 Not serializing API Dates into DateTimes was an oversight initially, removing library support for date inequality filters (ie `StartDate>` etc) bring the library into alignment with the API behavior. Only select resources on our 2010 API support date inequalities, date inequalities were included on unsupported resources mistakenly and that functionality would never have worked anyways.
 
 ### CHANGED - Chat Members and Channels List Takes Optional Parameters
-  - Reading members of channel and listing channels now takes an array of options as is its first argument
-  - Affects the `read`, `stream`, and `page` methods of MemberList
+  - Reading members of channel and listing channels now takes an array of options as is its first argument.
+  - Affects the `read`, `stream`, and `page` methods of MemberList.
 
 #### 5.3.x
 ```php
@@ -71,7 +71,6 @@ use Twilio\Rest\Client;
 $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->members->read(10);
 $client->chat->v1->services('IS123')->channels->read(10);
-
 ```
 
 #### 5.4.x
@@ -84,7 +83,6 @@ $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->members->read(array(), 10);
 $client->chat->v1->services('IS123')->channels->read(array(), 10);
 $client->chat->v1->services('IS123')->channels('CH123')->members->read(array('type' => 'public'), 10);
-
 ```
 
 ### CHANGED - Remove ability to update type on Twilio Chat Channels
@@ -97,7 +95,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->update(array('type'=>'public'));
-
 ```
 
 #### 5.4.x
@@ -117,7 +114,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->messages('IM123')->update('new body', array());
-
 ```
 
 #### 5.4.x
@@ -128,7 +124,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->messages('IM123')->update(array('body' => 'new body'));
-
 ```
 
 #### Rationale
@@ -220,7 +215,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->api->v2010->accounts('AC123')->messages('MM123')->update(array('body' => ''));
-
 ```
 
 #### 5.4.x
@@ -231,7 +225,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->api->v2010->accounts('AC123')->messages('MM123')->update('');
-
 ```
 
 #### Rationale
@@ -249,7 +242,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->api->v2010->accounts('AC123')->queues('QU123')->create(array('friendlyName' => 'Test'));
-
 ```
 
 #### 5.4.x
@@ -260,7 +252,6 @@ use Twilio\Rest\Client;
 
 $client = new Client();
 $client->api->v2010->accounts('AC123')->queues('QU123')->create('Test', array());
-
 ```
 
 #### Rationale
