@@ -6,6 +6,10 @@ twilio-php Changelog
 Breaking Changes, refer to [Upgrade Guide][upgrade]
 
  - Fix broken default page size for all reads, thanks @rtek! Issue [#388] (https://github.com/twilio/twilio-php/issues/388)
+    - Credential List Mappings, IP ACL Mappings, SIP Domains
+ - Fix incorrect types documentation of `links`/`subresourceUri` fields on various resources. Was incorrectly documented as string, actual type was an array.
+ - Fix some properties incorrectly documented as `string` when actually were `array` types.
+ - Fix boolean parameters did not accept boolean values, now accept both boolean and strings for backwards compatibility.
  - Add `emergencyEnabled` field to Addresses.
  - Add `price` and `callSid` fields to Recordings.
     - Allow filtering recordings list by call sid.
@@ -14,10 +18,6 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
  - Add `url` and/or `links` fields to various resources which were missing them
     - Lookups PhoneNumber, Monitor Events, 
  - Add `subresourceUri` fields to resources where missing
-    - Credential List Mappings, IP ACL Mappings, SIP Domains
- - Fix incorrect types documentation of `links`/`subresourceUri` fields on various resources. Was incorrectly documented as string, actual type was an array.
- - Fix some properties incorrectly documented as `string` when actually were `array` types.
- - Fix boolean parameters did not accept boolean values, now accept both boolean and strings for backwards compatibility.
  - Remove `uri` field from Pricing Phone Number Countries resource (backwards incompatible)
  - Properly deserialize date times for various resources (backwards incompatible)
  - Accept DateTime inputs for date parameters for various resources (backwards incompatible)
@@ -50,7 +50,7 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
     - Add UserChannel resource
     - Add `attributes`, `friendlyName`, `isOnline`, `isNotifiable`, `links` to Users
     - Add `reachabilityEnabled`, `preWebhookUrl`, `postWebhookUrl`, `webhookMethod`, `webhookFilters`, `notifications` to Services
-    - Fix webhooks, notifications on Service by separating into individual parameters
+    - Fix webhooks, notifications updating on Service by separating into individual parameters
     - Remove ability to update `type` on Channels, was never supported by api (backwards incompatible)
     - Demote update Message `body` to optional parameter (backwards incompatible)
 
