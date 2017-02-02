@@ -18,6 +18,7 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
  - Remove `uri` field from Pricing Phone Number Countries resource (backwards incompatible)
  - Fix incorrect types of `links`/`subresourceUri` fields on various resources (backwards incompatible)
  - Properly deserialize date times for various resources (backwards incompatible)
+ - Accept DateTime inputs for date parameters for various resources (backwards incompatible)
  - Remove library support for date inquality for resources that don't support them (backwards incompatible)
  - Message `body` parameter now required on update (backwards incompatible)
  - Require `friendlyName` on Queue creation (backwards incompatible)

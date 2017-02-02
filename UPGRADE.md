@@ -36,7 +36,7 @@ while legacy resources use `uri` and `subresource_uris`. Previously we were inco
 ### CHANGED - Use DateTime objects for dates and remove unsupported date query param filters
   - Listing some resources and filtering by `StartDate<`, `StartDate>`, `EndDate<`, and `EndDate>` will no longer work.
   - Filtering by `StartDate` and `EndDate` will continue to work, these dates are inclusive.
-  - `StartDate` and `EndDate` are now `DateTime` objects rather than `strings`.
+  - `StartDate` and `EndDate` params are now `DateTime` objects rather than `strings`. They will automcatically be converted to UTC timezone, the original DateTime object will not be modified.
 
 #### Affected Resources
   - All Account Usage Record Resources (Last Month, This Month, Yesterday, All Time, Monthly, Yearly, Today, Daily)
@@ -51,9 +51,10 @@ while legacy resources use `uri` and `subresource_uris`. Previously we were inco
 use Twilio\Rest\Client;
 
 $client = new Client();
-$client->api->v2010->accounts('AC123')->messages('MM123')->update(array('body' => ''));
-
-TODODODODODDO
+$client->usage->records->read(array(
+    "StartDate" => "1999-09-07",
+    "EndDate<" => "2000-01-01"      // Allowed but would have had no effect.
+));
 ```
 
 #### 5.4.x
@@ -62,10 +63,15 @@ TODODODODODDO
 
 use Twilio\Rest\Client;
 
-$client = new Client();
-$client->api->v2010->accounts('AC123')->messages('MM123')->update('');
+$startDate = new DateTime("now", new DateTimeZone("America/Los_Angeles"));
+$endDate = clone $startDate;
+$endDate->add(new DateInterval("P2D")); // Add 2 days
 
-TODODODODDODODO
+$client = new Client();
+$client->usage->records->read(array(
+    "StartDate" => $startDate,
+    "EndDate" => $endDate
+));
 ```
 
 #### Rationale
