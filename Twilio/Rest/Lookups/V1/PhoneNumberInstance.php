@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string phoneNumber
  * @property string nationalFormat
  * @property string carrier
- * @property string addOns
+ * @property array addOns
  * @property string url
  */
 class PhoneNumberInstance extends InstanceResource {

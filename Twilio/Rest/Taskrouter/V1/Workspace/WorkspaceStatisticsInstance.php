@@ -15,8 +15,8 @@ use Twilio\Options;
 use Twilio\Version;
 
 /**
- * @property string realtime
- * @property string cumulative
+ * @property array realtime
+ * @property array cumulative
  * @property string accountSid
  * @property string workspaceSid
  * @property string url

@@ -16,7 +16,7 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string cumulative
+ * @property array cumulative
  * @property string workerSid
  * @property string workspaceSid
  * @property string url

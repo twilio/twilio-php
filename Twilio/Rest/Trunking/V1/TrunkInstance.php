@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property string disasterRecoveryUrl
  * @property string friendlyName
  * @property string secure
- * @property string recording
+ * @property array recording
  * @property string authType
  * @property string authTypeSet
  * @property \DateTime dateCreated

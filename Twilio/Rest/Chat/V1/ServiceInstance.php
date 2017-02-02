@@ -28,12 +28,12 @@ use Twilio\Version;
  * @property string reachabilityEnabled
  * @property string typingIndicatorTimeout
  * @property string consumptionReportInterval
- * @property string webhooks
+ * @property array webhooks
  * @property string preWebhookUrl
  * @property string postWebhookUrl
  * @property string webhookMethod
  * @property string webhookFilters
- * @property string notifications
+ * @property array notifications
  * @property string url
  * @property array links
  */

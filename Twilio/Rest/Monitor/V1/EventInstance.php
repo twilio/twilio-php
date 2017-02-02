@@ -19,7 +19,7 @@ use Twilio\Version;
  * @property string actorSid
  * @property string actorType
  * @property string description
- * @property string eventData
+ * @property array eventData
  * @property \DateTime eventDate
  * @property string eventType
  * @property string resourceSid
