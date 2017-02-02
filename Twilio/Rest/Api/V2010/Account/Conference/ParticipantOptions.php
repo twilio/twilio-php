@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class ParticipantOptions {
     /**
-     * @param string $muted Indicates if the participant should be muted
-     * @param string $hold The hold
+     * @param boolean $muted Indicates if the participant should be muted
+     * @param boolean $hold The hold
      * @param string $holdUrl The hold_url
      * @param string $holdMethod The hold_method
      * @return UpdateParticipantOptions Options builder
@@ -28,16 +28,16 @@ abstract class ParticipantOptions {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $statusCallbackEvent The status_callback_event
-     * @param string $timeout The timeout
-     * @param string $record The record
-     * @param string $muted The muted
+     * @param integer $timeout The timeout
+     * @param boolean $record The record
+     * @param boolean $muted The muted
      * @param string $beep The beep
-     * @param string $startConferenceOnEnter The start_conference_on_enter
-     * @param string $endConferenceOnExit The end_conference_on_exit
+     * @param boolean $startConferenceOnEnter The start_conference_on_enter
+     * @param boolean $endConferenceOnExit The end_conference_on_exit
      * @param string $waitUrl The wait_url
      * @param string $waitMethod The wait_method
-     * @param string $earlyMedia The early_media
-     * @param string $maxParticipants The max_participants
+     * @param boolean $earlyMedia The early_media
+     * @param integer $maxParticipants The max_participants
      * @param string $conferenceRecord The conference_record
      * @param string $conferenceTrim The conference_trim
      * @param string $conferenceStatusCallback The conference_status_callback
@@ -52,8 +52,8 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param string $muted Filter by muted participants
-     * @param string $hold The hold
+     * @param boolean $muted Filter by muted participants
+     * @param boolean $hold The hold
      * @return ReadParticipantOptions Options builder
      */
     public static function read($muted = Values::NONE, $hold = Values::NONE) {
@@ -63,8 +63,8 @@ abstract class ParticipantOptions {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param string $muted Indicates if the participant should be muted
-     * @param string $hold The hold
+     * @param boolean $muted Indicates if the participant should be muted
+     * @param boolean $hold The hold
      * @param string $holdUrl The hold_url
      * @param string $holdMethod The hold_method
      */
@@ -78,7 +78,7 @@ class UpdateParticipantOptions extends Options {
     /**
      * Indicates if the participant should be muted
      * 
-     * @param string $muted Indicates if the participant should be muted
+     * @param boolean $muted Indicates if the participant should be muted
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -89,7 +89,7 @@ class UpdateParticipantOptions extends Options {
     /**
      * The hold
      * 
-     * @param string $hold The hold
+     * @param boolean $hold The hold
      * @return $this Fluent Builder
      */
     public function setHold($hold) {
@@ -140,16 +140,16 @@ class CreateParticipantOptions extends Options {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $statusCallbackEvent The status_callback_event
-     * @param string $timeout The timeout
-     * @param string $record The record
-     * @param string $muted The muted
+     * @param integer $timeout The timeout
+     * @param boolean $record The record
+     * @param boolean $muted The muted
      * @param string $beep The beep
-     * @param string $startConferenceOnEnter The start_conference_on_enter
-     * @param string $endConferenceOnExit The end_conference_on_exit
+     * @param boolean $startConferenceOnEnter The start_conference_on_enter
+     * @param boolean $endConferenceOnExit The end_conference_on_exit
      * @param string $waitUrl The wait_url
      * @param string $waitMethod The wait_method
-     * @param string $earlyMedia The early_media
-     * @param string $maxParticipants The max_participants
+     * @param boolean $earlyMedia The early_media
+     * @param integer $maxParticipants The max_participants
      * @param string $conferenceRecord The conference_record
      * @param string $conferenceTrim The conference_trim
      * @param string $conferenceStatusCallback The conference_status_callback
@@ -215,7 +215,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The timeout
      * 
-     * @param string $timeout The timeout
+     * @param integer $timeout The timeout
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -226,7 +226,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The record
      * 
-     * @param string $record The record
+     * @param boolean $record The record
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -237,7 +237,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The muted
      * 
-     * @param string $muted The muted
+     * @param boolean $muted The muted
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -259,7 +259,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The start_conference_on_enter
      * 
-     * @param string $startConferenceOnEnter The start_conference_on_enter
+     * @param boolean $startConferenceOnEnter The start_conference_on_enter
      * @return $this Fluent Builder
      */
     public function setStartConferenceOnEnter($startConferenceOnEnter) {
@@ -270,7 +270,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The end_conference_on_exit
      * 
-     * @param string $endConferenceOnExit The end_conference_on_exit
+     * @param boolean $endConferenceOnExit The end_conference_on_exit
      * @return $this Fluent Builder
      */
     public function setEndConferenceOnExit($endConferenceOnExit) {
@@ -303,7 +303,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The early_media
      * 
-     * @param string $earlyMedia The early_media
+     * @param boolean $earlyMedia The early_media
      * @return $this Fluent Builder
      */
     public function setEarlyMedia($earlyMedia) {
@@ -314,7 +314,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The max_participants
      * 
-     * @param string $maxParticipants The max_participants
+     * @param integer $maxParticipants The max_participants
      * @return $this Fluent Builder
      */
     public function setMaxParticipants($maxParticipants) {
@@ -397,8 +397,8 @@ class CreateParticipantOptions extends Options {
 
 class ReadParticipantOptions extends Options {
     /**
-     * @param string $muted Filter by muted participants
-     * @param string $hold The hold
+     * @param boolean $muted Filter by muted participants
+     * @param boolean $hold The hold
      */
     public function __construct($muted = Values::NONE, $hold = Values::NONE) {
         $this->options['muted'] = $muted;
@@ -408,7 +408,7 @@ class ReadParticipantOptions extends Options {
     /**
      * Only show participants that are muted or unmuted
      * 
-     * @param string $muted Filter by muted participants
+     * @param boolean $muted Filter by muted participants
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -419,7 +419,7 @@ class ReadParticipantOptions extends Options {
     /**
      * The hold
      * 
-     * @param string $hold The hold
+     * @param boolean $hold The hold
      * @return $this Fluent Builder
      */
     public function setHold($hold) {

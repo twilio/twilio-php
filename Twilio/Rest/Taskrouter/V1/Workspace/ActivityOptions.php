@@ -31,7 +31,7 @@ abstract class ActivityOptions {
     }
 
     /**
-     * @param string $available The available
+     * @param boolean $available The available
      * @return CreateActivityOptions Options builder
      */
     public static function create($available = Values::NONE) {
@@ -124,7 +124,7 @@ class ReadActivityOptions extends Options {
 
 class CreateActivityOptions extends Options {
     /**
-     * @param string $available The available
+     * @param boolean $available The available
      */
     public function __construct($available = Values::NONE) {
         $this->options['available'] = $available;
@@ -133,7 +133,7 @@ class CreateActivityOptions extends Options {
     /**
      * The available
      * 
-     * @param string $available The available
+     * @param boolean $available The available
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {

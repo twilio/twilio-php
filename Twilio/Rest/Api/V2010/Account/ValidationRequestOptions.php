@@ -15,7 +15,7 @@ use Twilio\Values;
 abstract class ValidationRequestOptions {
     /**
      * @param string $friendlyName The friendly_name
-     * @param string $callDelay The call_delay
+     * @param integer $callDelay The call_delay
      * @param string $extension The extension
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
@@ -29,7 +29,7 @@ abstract class ValidationRequestOptions {
 class CreateValidationRequestOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
-     * @param string $callDelay The call_delay
+     * @param integer $callDelay The call_delay
      * @param string $extension The extension
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
@@ -56,7 +56,7 @@ class CreateValidationRequestOptions extends Options {
     /**
      * The call_delay
      * 
-     * @param string $callDelay The call_delay
+     * @param integer $callDelay The call_delay
      * @return $this Fluent Builder
      */
     public function setCallDelay($callDelay) {

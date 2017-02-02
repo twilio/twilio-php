@@ -19,8 +19,8 @@ use Twilio\Version;
  * @property string channelSid
  * @property string memberSid
  * @property string status
- * @property string lastConsumedMessageIndex
- * @property string unreadMessagesCount
+ * @property integer lastConsumedMessageIndex
+ * @property integer unreadMessagesCount
  * @property array links
  */
 class UserChannelInstance extends InstanceResource {

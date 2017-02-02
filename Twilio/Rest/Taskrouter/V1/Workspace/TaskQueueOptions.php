@@ -18,7 +18,7 @@ abstract class TaskQueueOptions {
      * @param string $targetWorkers The target_workers
      * @param string $reservationActivitySid The reservation_activity_sid
      * @param string $assignmentActivitySid The assignment_activity_sid
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @param string $taskOrder The task_order
      * @return UpdateTaskQueueOptions Options builder
      */
@@ -38,7 +38,7 @@ abstract class TaskQueueOptions {
 
     /**
      * @param string $targetWorkers The target_workers
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @param string $taskOrder The task_order
      * @return CreateTaskQueueOptions Options builder
      */
@@ -53,7 +53,7 @@ class UpdateTaskQueueOptions extends Options {
      * @param string $targetWorkers The target_workers
      * @param string $reservationActivitySid The reservation_activity_sid
      * @param string $assignmentActivitySid The assignment_activity_sid
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @param string $taskOrder The task_order
      */
     public function __construct($friendlyName = Values::NONE, $targetWorkers = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
@@ -112,7 +112,7 @@ class UpdateTaskQueueOptions extends Options {
     /**
      * The max_reserved_workers
      * 
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {
@@ -211,7 +211,7 @@ class ReadTaskQueueOptions extends Options {
 class CreateTaskQueueOptions extends Options {
     /**
      * @param string $targetWorkers The target_workers
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @param string $taskOrder The task_order
      */
     public function __construct($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
@@ -234,7 +234,7 @@ class CreateTaskQueueOptions extends Options {
     /**
      * The max_reserved_workers
      * 
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {

@@ -17,7 +17,7 @@ abstract class CredentialOptions {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
      * @param string $secret The secret
      * @return CreateCredentialOptions Options builder
@@ -30,7 +30,7 @@ abstract class CredentialOptions {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
      * @param string $secret The secret
      * @return UpdateCredentialOptions Options builder
@@ -45,7 +45,7 @@ class CreateCredentialOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
      * @param string $secret The secret
      */
@@ -94,7 +94,7 @@ class CreateCredentialOptions extends Options {
     /**
      * The sandbox
      * 
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {
@@ -145,7 +145,7 @@ class UpdateCredentialOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
      * @param string $secret The secret
      */
@@ -194,7 +194,7 @@ class UpdateCredentialOptions extends Options {
     /**
      * The sandbox
      * 
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {

@@ -14,9 +14,9 @@ use Twilio\Values;
 
 abstract class OriginationUrlOptions {
     /**
-     * @param string $weight The weight
-     * @param string $priority The priority
-     * @param string $enabled The enabled
+     * @param integer $weight The weight
+     * @param integer $priority The priority
+     * @param boolean $enabled The enabled
      * @param string $friendlyName The friendly_name
      * @param string $sipUrl The sip_url
      * @return UpdateOriginationUrlOptions Options builder
@@ -28,9 +28,9 @@ abstract class OriginationUrlOptions {
 
 class UpdateOriginationUrlOptions extends Options {
     /**
-     * @param string $weight The weight
-     * @param string $priority The priority
-     * @param string $enabled The enabled
+     * @param integer $weight The weight
+     * @param integer $priority The priority
+     * @param boolean $enabled The enabled
      * @param string $friendlyName The friendly_name
      * @param string $sipUrl The sip_url
      */
@@ -45,7 +45,7 @@ class UpdateOriginationUrlOptions extends Options {
     /**
      * The weight
      * 
-     * @param string $weight The weight
+     * @param integer $weight The weight
      * @return $this Fluent Builder
      */
     public function setWeight($weight) {
@@ -56,7 +56,7 @@ class UpdateOriginationUrlOptions extends Options {
     /**
      * The priority
      * 
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -67,7 +67,7 @@ class UpdateOriginationUrlOptions extends Options {
     /**
      * The enabled
      * 
-     * @param string $enabled The enabled
+     * @param boolean $enabled The enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {

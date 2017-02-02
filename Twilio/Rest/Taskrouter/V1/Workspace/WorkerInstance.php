@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string activityName
  * @property string activitySid
  * @property string attributes
- * @property string available
+ * @property boolean available
  * @property \DateTime dateCreated
  * @property \DateTime dateStatusChanged
  * @property \DateTime dateUpdated

@@ -23,10 +23,10 @@ use Twilio\Version;
  * @property string to
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string wasEdited
+ * @property boolean wasEdited
  * @property string from
  * @property string body
- * @property string index
+ * @property integer index
  * @property string url
  */
 class MessageInstance extends InstanceResource {

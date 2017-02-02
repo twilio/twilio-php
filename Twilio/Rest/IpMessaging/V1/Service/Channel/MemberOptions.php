@@ -31,7 +31,7 @@ abstract class MemberOptions {
 
     /**
      * @param string $roleSid The role_sid
-     * @param string $lastConsumedMessageIndex The last_consumed_message_index
+     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
      * @return UpdateMemberOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
@@ -112,7 +112,7 @@ class ReadMemberOptions extends Options {
 class UpdateMemberOptions extends Options {
     /**
      * @param string $roleSid The role_sid
-     * @param string $lastConsumedMessageIndex The last_consumed_message_index
+     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
      */
     public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -133,7 +133,7 @@ class UpdateMemberOptions extends Options {
     /**
      * The last_consumed_message_index
      * 
-     * @param string $lastConsumedMessageIndex The last_consumed_message_index
+     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {

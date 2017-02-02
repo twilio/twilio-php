@@ -17,12 +17,12 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string averageWaitTime
- * @property string currentSize
+ * @property integer averageWaitTime
+ * @property integer currentSize
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
- * @property string maxSize
+ * @property integer maxSize
  * @property string sid
  * @property string uri
  */

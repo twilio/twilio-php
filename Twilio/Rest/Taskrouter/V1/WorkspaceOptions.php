@@ -18,7 +18,7 @@ abstract class WorkspaceOptions {
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
      * @param string $friendlyName The friendly_name
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $timeoutActivitySid The timeout_activity_sid
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return UpdateWorkspaceOptions Options builder
@@ -38,7 +38,7 @@ abstract class WorkspaceOptions {
     /**
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $template The template
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return CreateWorkspaceOptions Options builder
@@ -54,7 +54,7 @@ class UpdateWorkspaceOptions extends Options {
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
      * @param string $friendlyName The friendly_name
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $timeoutActivitySid The timeout_activity_sid
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      */
@@ -115,7 +115,7 @@ class UpdateWorkspaceOptions extends Options {
     /**
      * The multi_task_enabled
      * 
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {
@@ -200,7 +200,7 @@ class CreateWorkspaceOptions extends Options {
     /**
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $template The template
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      */
@@ -237,7 +237,7 @@ class CreateWorkspaceOptions extends Options {
     /**
      * The multi_task_enabled
      * 
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {

@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string available
+ * @property boolean available
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName

@@ -17,7 +17,7 @@ abstract class TaskOptions {
      * @param string $attributes The attributes
      * @param string $assignmentStatus The assignment_status
      * @param string $reason The reason
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @param string $taskChannel The task_channel
      * @return UpdateTaskOptions Options builder
      */
@@ -26,7 +26,7 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @param string $assignmentStatus The assignment_status
      * @param string $workflowSid The workflow_sid
      * @param string $workflowName The workflow_name
@@ -35,7 +35,7 @@ abstract class TaskOptions {
      * @param string $taskChannel The task_channel
      * @param string $evaluateTaskAttributes The evaluate_task_attributes
      * @param string $ordering The ordering
-     * @param string $hasAddons The has_addons
+     * @param boolean $hasAddons The has_addons
      * @return ReadTaskOptions Options builder
      */
     public static function read($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $taskChannel = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE) {
@@ -43,8 +43,8 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param string $timeout The timeout
-     * @param string $priority The priority
+     * @param integer $timeout The timeout
+     * @param integer $priority The priority
      * @param string $taskChannel The task_channel
      * @param string $workflowSid The workflow_sid
      * @param string $attributes The attributes
@@ -60,7 +60,7 @@ class UpdateTaskOptions extends Options {
      * @param string $attributes The attributes
      * @param string $assignmentStatus The assignment_status
      * @param string $reason The reason
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @param string $taskChannel The task_channel
      */
     public function __construct($attributes = Values::NONE, $assignmentStatus = Values::NONE, $reason = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE) {
@@ -107,7 +107,7 @@ class UpdateTaskOptions extends Options {
     /**
      * The priority
      * 
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -144,7 +144,7 @@ class UpdateTaskOptions extends Options {
 
 class ReadTaskOptions extends Options {
     /**
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @param string $assignmentStatus The assignment_status
      * @param string $workflowSid The workflow_sid
      * @param string $workflowName The workflow_name
@@ -153,7 +153,7 @@ class ReadTaskOptions extends Options {
      * @param string $taskChannel The task_channel
      * @param string $evaluateTaskAttributes The evaluate_task_attributes
      * @param string $ordering The ordering
-     * @param string $hasAddons The has_addons
+     * @param boolean $hasAddons The has_addons
      */
     public function __construct($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $taskChannel = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE) {
         $this->options['priority'] = $priority;
@@ -171,7 +171,7 @@ class ReadTaskOptions extends Options {
     /**
      * The priority
      * 
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -270,7 +270,7 @@ class ReadTaskOptions extends Options {
     /**
      * The has_addons
      * 
-     * @param string $hasAddons The has_addons
+     * @param boolean $hasAddons The has_addons
      * @return $this Fluent Builder
      */
     public function setHasAddons($hasAddons) {
@@ -296,8 +296,8 @@ class ReadTaskOptions extends Options {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param string $timeout The timeout
-     * @param string $priority The priority
+     * @param integer $timeout The timeout
+     * @param integer $priority The priority
      * @param string $taskChannel The task_channel
      * @param string $workflowSid The workflow_sid
      * @param string $attributes The attributes
@@ -313,7 +313,7 @@ class CreateTaskOptions extends Options {
     /**
      * The timeout
      * 
-     * @param string $timeout The timeout
+     * @param integer $timeout The timeout
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -324,7 +324,7 @@ class CreateTaskOptions extends Options {
     /**
      * The priority
      * 
-     * @param string $priority The priority
+     * @param integer $priority The priority
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {

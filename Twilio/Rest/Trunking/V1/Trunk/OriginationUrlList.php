@@ -35,9 +35,9 @@ class OriginationUrlList extends ListResource {
     /**
      * Create a new OriginationUrlInstance
      * 
-     * @param string $weight The weight
-     * @param string $priority The priority
-     * @param string $enabled The enabled
+     * @param integer $weight The weight
+     * @param integer $priority The priority
+     * @param boolean $enabled The enabled
      * @param string $friendlyName The friendly_name
      * @param string $sipUrl The sip_url
      * @return OriginationUrlInstance Newly created OriginationUrlInstance

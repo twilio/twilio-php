@@ -21,7 +21,7 @@ abstract class MessageOptions {
      * @param string $statusCallback URL Twilio will request when the status changes
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The max_price
-     * @param string $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback The provide_feedback
      * @return CreateMessageOptions Options builder
      */
     public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE) {
@@ -50,7 +50,7 @@ class CreateMessageOptions extends Options {
      * @param string $statusCallback URL Twilio will request when the status changes
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The max_price
-     * @param string $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback The provide_feedback
      */
     public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE) {
         $this->options['from'] = $from;
@@ -143,7 +143,7 @@ class CreateMessageOptions extends Options {
     /**
      * The provide_feedback
      * 
-     * @param string $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback The provide_feedback
      * @return $this Fluent Builder
      */
     public function setProvideFeedback($provideFeedback) {

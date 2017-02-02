@@ -21,10 +21,10 @@ use Twilio\Version;
  * @property string conferenceSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string endConferenceOnExit
- * @property string muted
- * @property string hold
- * @property string startConferenceOnEnter
+ * @property boolean endConferenceOnExit
+ * @property boolean muted
+ * @property boolean hold
+ * @property boolean startConferenceOnEnter
  * @property string status
  * @property string uri
  */

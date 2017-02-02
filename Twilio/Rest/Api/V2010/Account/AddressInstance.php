@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string sid
  * @property string street
  * @property string uri
- * @property string emergencyEnabled
+ * @property boolean emergencyEnabled
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;

@@ -24,10 +24,10 @@ use Twilio\Version;
  * @property string defaultServiceRoleSid
  * @property string defaultChannelRoleSid
  * @property string defaultChannelCreatorRoleSid
- * @property string readStatusEnabled
- * @property string reachabilityEnabled
- * @property string typingIndicatorTimeout
- * @property string consumptionReportInterval
+ * @property boolean readStatusEnabled
+ * @property boolean reachabilityEnabled
+ * @property integer typingIndicatorTimeout
+ * @property integer consumptionReportInterval
  * @property array webhooks
  * @property string preWebhookUrl
  * @property string postWebhookUrl

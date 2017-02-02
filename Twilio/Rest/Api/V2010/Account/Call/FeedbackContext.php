@@ -38,7 +38,7 @@ class FeedbackContext extends InstanceContext {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param string $qualityScore The quality_score
+     * @param integer $qualityScore The quality_score
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      */
@@ -90,7 +90,7 @@ class FeedbackContext extends InstanceContext {
     /**
      * Update the FeedbackInstance
      * 
-     * @param string $qualityScore An integer from 1 to 5
+     * @param integer $qualityScore An integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      */

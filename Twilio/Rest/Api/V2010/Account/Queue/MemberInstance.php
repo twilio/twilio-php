@@ -17,9 +17,9 @@ use Twilio\Version;
 /**
  * @property string callSid
  * @property \DateTime dateEnqueued
- * @property string position
+ * @property integer position
  * @property string uri
- * @property string waitTime
+ * @property integer waitTime
  */
 class MemberInstance extends InstanceResource {
     /**

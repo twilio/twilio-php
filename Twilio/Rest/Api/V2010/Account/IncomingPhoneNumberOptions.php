@@ -29,7 +29,7 @@ abstract class IncomingPhoneNumberOptions {
      *                                     callback
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
-     * @param string $voiceCallerIdLookup Look up the caller's caller-ID
+     * @param boolean $voiceCallerIdLookup Look up the caller's caller-ID
      * @param string $voiceFallbackMethod HTTP method used with fallback_url
      * @param string $voiceFallbackUrl URL Twilio will request when an error occurs
      *                                 in TwiML
@@ -45,7 +45,7 @@ abstract class IncomingPhoneNumberOptions {
     }
 
     /**
-     * @param string $beta Include new phone numbers
+     * @param boolean $beta Include new phone numbers
      * @param string $friendlyName Filter by friendly name
      * @param string $phoneNumber Filter by incoming phone number
      * @return ReadIncomingPhoneNumberOptions Options builder
@@ -71,7 +71,7 @@ abstract class IncomingPhoneNumberOptions {
      *                                     callback
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
-     * @param string $voiceCallerIdLookup Look up the caller's caller-ID
+     * @param boolean $voiceCallerIdLookup Look up the caller's caller-ID
      * @param string $voiceFallbackMethod HTTP method used with fallback_url
      * @param string $voiceFallbackUrl URL Twilio will request when an error occurs
      *                                 in TwiML
@@ -104,7 +104,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      *                                     callback
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
-     * @param string $voiceCallerIdLookup Look up the caller's caller-ID
+     * @param boolean $voiceCallerIdLookup Look up the caller's caller-ID
      * @param string $voiceFallbackMethod HTTP method used with fallback_url
      * @param string $voiceFallbackUrl URL Twilio will request when an error occurs
      *                                 in TwiML
@@ -264,7 +264,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     /**
      * Look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Either `true` or `false`.
      * 
-     * @param string $voiceCallerIdLookup Look up the caller's caller-ID
+     * @param boolean $voiceCallerIdLookup Look up the caller's caller-ID
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
@@ -368,7 +368,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
 
 class ReadIncomingPhoneNumberOptions extends Options {
     /**
-     * @param string $beta Include new phone numbers
+     * @param boolean $beta Include new phone numbers
      * @param string $friendlyName Filter by friendly name
      * @param string $phoneNumber Filter by incoming phone number
      */
@@ -381,7 +381,7 @@ class ReadIncomingPhoneNumberOptions extends Options {
     /**
      * Include phone numbers new to the Twilio platform
      * 
-     * @param string $beta Include new phone numbers
+     * @param boolean $beta Include new phone numbers
      * @return $this Fluent Builder
      */
     public function setBeta($beta) {
@@ -445,7 +445,7 @@ class CreateIncomingPhoneNumberOptions extends Options {
      *                                     callback
      * @param string $voiceApplicationSid The unique sid of the application to
      *                                    handle this number
-     * @param string $voiceCallerIdLookup Look up the caller's caller-ID
+     * @param boolean $voiceCallerIdLookup Look up the caller's caller-ID
      * @param string $voiceFallbackMethod HTTP method used with fallback_url
      * @param string $voiceFallbackUrl URL Twilio will request when an error occurs
      *                                 in TwiML
@@ -617,7 +617,7 @@ class CreateIncomingPhoneNumberOptions extends Options {
     /**
      * Look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Either `true` or `false`.
      * 
-     * @param string $voiceCallerIdLookup Look up the caller's caller-ID
+     * @param boolean $voiceCallerIdLookup Look up the caller's caller-ID
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {

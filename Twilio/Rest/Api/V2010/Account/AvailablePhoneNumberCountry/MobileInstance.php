@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string postalCode
  * @property string isoCountry
  * @property string addressRequirements
- * @property string beta
+ * @property boolean beta
  * @property string capabilities
  */
 class MobileInstance extends InstanceResource {

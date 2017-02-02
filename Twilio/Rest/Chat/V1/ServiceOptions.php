@@ -19,24 +19,24 @@ abstract class ServiceOptions {
      * @param string $defaultChannelRoleSid The default_channel_role_sid
      * @param string $defaultChannelCreatorRoleSid The
      *                                             default_channel_creator_role_sid
-     * @param string $readStatusEnabled The read_status_enabled
-     * @param string $reachabilityEnabled The reachability_enabled
-     * @param string $typingIndicatorTimeout The typing_indicator_timeout
-     * @param string $consumptionReportInterval The consumption_report_interval
-     * @param string $notifications.NewMessage.Enabled The
-     *                                                 notifications.new_message.enabled
+     * @param boolean $readStatusEnabled The read_status_enabled
+     * @param boolean $reachabilityEnabled The reachability_enabled
+     * @param integer $typingIndicatorTimeout The typing_indicator_timeout
+     * @param integer $consumptionReportInterval The consumption_report_interval
+     * @param boolean $notifications.NewMessage.Enabled The
+     *                                                  notifications.new_message.enabled
      * @param string $notifications.NewMessage.Template The
      *                                                  notifications.new_message.template
-     * @param string $notifications.AddedToChannel.Enabled The
-     *                                                     notifications.added_to_channel.enabled
+     * @param boolean $notifications.AddedToChannel.Enabled The
+     *                                                      notifications.added_to_channel.enabled
      * @param string $notifications.AddedToChannel.Template The
      *                                                      notifications.added_to_channel.template
-     * @param string $notifications.RemovedFromChannel.Enabled The
-     *                                                         notifications.removed_from_channel.enabled
+     * @param boolean $notifications.RemovedFromChannel.Enabled The
+     *                                                          notifications.removed_from_channel.enabled
      * @param string $notifications.RemovedFromChannel.Template The
      *                                                          notifications.removed_from_channel.template
-     * @param string $notifications.InvitedToChannel.Enabled The
-     *                                                       notifications.invited_to_channel.enabled
+     * @param boolean $notifications.InvitedToChannel.Enabled The
+     *                                                        notifications.invited_to_channel.enabled
      * @param string $notifications.InvitedToChannel.Template The
      *                                                        notifications.invited_to_channel.template
      * @param string $preWebhookUrl The pre_webhook_url
@@ -144,24 +144,24 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultChannelRoleSid The default_channel_role_sid
      * @param string $defaultChannelCreatorRoleSid The
      *                                             default_channel_creator_role_sid
-     * @param string $readStatusEnabled The read_status_enabled
-     * @param string $reachabilityEnabled The reachability_enabled
-     * @param string $typingIndicatorTimeout The typing_indicator_timeout
-     * @param string $consumptionReportInterval The consumption_report_interval
-     * @param string $notifications.NewMessage.Enabled The
-     *                                                 notifications.new_message.enabled
+     * @param boolean $readStatusEnabled The read_status_enabled
+     * @param boolean $reachabilityEnabled The reachability_enabled
+     * @param integer $typingIndicatorTimeout The typing_indicator_timeout
+     * @param integer $consumptionReportInterval The consumption_report_interval
+     * @param boolean $notifications.NewMessage.Enabled The
+     *                                                  notifications.new_message.enabled
      * @param string $notifications.NewMessage.Template The
      *                                                  notifications.new_message.template
-     * @param string $notifications.AddedToChannel.Enabled The
-     *                                                     notifications.added_to_channel.enabled
+     * @param boolean $notifications.AddedToChannel.Enabled The
+     *                                                      notifications.added_to_channel.enabled
      * @param string $notifications.AddedToChannel.Template The
      *                                                      notifications.added_to_channel.template
-     * @param string $notifications.RemovedFromChannel.Enabled The
-     *                                                         notifications.removed_from_channel.enabled
+     * @param boolean $notifications.RemovedFromChannel.Enabled The
+     *                                                          notifications.removed_from_channel.enabled
      * @param string $notifications.RemovedFromChannel.Template The
      *                                                          notifications.removed_from_channel.template
-     * @param string $notifications.InvitedToChannel.Enabled The
-     *                                                       notifications.invited_to_channel.enabled
+     * @param boolean $notifications.InvitedToChannel.Enabled The
+     *                                                        notifications.invited_to_channel.enabled
      * @param string $notifications.InvitedToChannel.Template The
      *                                                        notifications.invited_to_channel.template
      * @param string $preWebhookUrl The pre_webhook_url
@@ -375,7 +375,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The read_status_enabled
      * 
-     * @param string $readStatusEnabled The read_status_enabled
+     * @param boolean $readStatusEnabled The read_status_enabled
      * @return $this Fluent Builder
      */
     public function setReadStatusEnabled($readStatusEnabled) {
@@ -386,7 +386,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The reachability_enabled
      * 
-     * @param string $reachabilityEnabled The reachability_enabled
+     * @param boolean $reachabilityEnabled The reachability_enabled
      * @return $this Fluent Builder
      */
     public function setReachabilityEnabled($reachabilityEnabled) {
@@ -397,7 +397,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The typing_indicator_timeout
      * 
-     * @param string $typingIndicatorTimeout The typing_indicator_timeout
+     * @param integer $typingIndicatorTimeout The typing_indicator_timeout
      * @return $this Fluent Builder
      */
     public function setTypingIndicatorTimeout($typingIndicatorTimeout) {
@@ -408,7 +408,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The consumption_report_interval
      * 
-     * @param string $consumptionReportInterval The consumption_report_interval
+     * @param integer $consumptionReportInterval The consumption_report_interval
      * @return $this Fluent Builder
      */
     public function setConsumptionReportInterval($consumptionReportInterval) {
@@ -419,8 +419,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The notifications.new_message.enabled
      * 
-     * @param string $notifications.NewMessage.Enabled The
-     *                                                 notifications.new_message.enabled
+     * @param boolean $notifications.NewMessage.Enabled The
+     *                                                  notifications.new_message.enabled
      * @return $this Fluent Builder
      */
     public function setNotifications.NewMessage.Enabled($notifications.NewMessage.Enabled) {
@@ -443,8 +443,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The notifications.added_to_channel.enabled
      * 
-     * @param string $notifications.AddedToChannel.Enabled The
-     *                                                     notifications.added_to_channel.enabled
+     * @param boolean $notifications.AddedToChannel.Enabled The
+     *                                                      notifications.added_to_channel.enabled
      * @return $this Fluent Builder
      */
     public function setNotifications.AddedToChannel.Enabled($notifications.AddedToChannel.Enabled) {
@@ -467,8 +467,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The notifications.removed_from_channel.enabled
      * 
-     * @param string $notifications.RemovedFromChannel.Enabled The
-     *                                                         notifications.removed_from_channel.enabled
+     * @param boolean $notifications.RemovedFromChannel.Enabled The
+     *                                                          notifications.removed_from_channel.enabled
      * @return $this Fluent Builder
      */
     public function setNotifications.RemovedFromChannel.Enabled($notifications.RemovedFromChannel.Enabled) {
@@ -491,8 +491,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The notifications.invited_to_channel.enabled
      * 
-     * @param string $notifications.InvitedToChannel.Enabled The
-     *                                                       notifications.invited_to_channel.enabled
+     * @param boolean $notifications.InvitedToChannel.Enabled The
+     *                                                        notifications.invited_to_channel.enabled
      * @return $this Fluent Builder
      */
     public function setNotifications.InvitedToChannel.Enabled($notifications.InvitedToChannel.Enabled) {

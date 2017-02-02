@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string price
  * @property string priceUnit
  * @property string status
- * @property string channels
+ * @property integer channels
  * @property string source
  * @property string uri
  */

@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property \DateTime dateSent
  * @property string direction
- * @property string errorCode
+ * @property integer errorCode
  * @property string errorMessage
  * @property string from
  * @property string messagingServiceSid

@@ -23,8 +23,8 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string roleSid
  * @property string identity
- * @property string isOnline
- * @property string isNotifiable
+ * @property boolean isOnline
+ * @property boolean isNotifiable
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property array links

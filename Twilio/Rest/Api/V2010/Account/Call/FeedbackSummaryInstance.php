@@ -16,12 +16,12 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string callCount
- * @property string callFeedbackCount
+ * @property integer callCount
+ * @property integer callFeedbackCount
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property \DateTime endDate
- * @property string includeSubaccounts
+ * @property boolean includeSubaccounts
  * @property string issues
  * @property string qualityScoreAverage
  * @property string qualityScoreMedian

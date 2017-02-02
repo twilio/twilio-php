@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string addressRequirements
  * @property string apiVersion
- * @property string beta
+ * @property boolean beta
  * @property string capabilities
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -36,7 +36,7 @@ use Twilio\Version;
  * @property string trunkSid
  * @property string url
  * @property string voiceApplicationSid
- * @property string voiceCallerIdLookup
+ * @property boolean voiceCallerIdLookup
  * @property string voiceFallbackMethod
  * @property string voiceFallbackUrl
  * @property string voiceMethod

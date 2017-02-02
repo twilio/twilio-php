@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string disasterRecoveryMethod
  * @property string disasterRecoveryUrl
  * @property string friendlyName
- * @property string secure
+ * @property boolean secure
  * @property array recording
  * @property string authType
  * @property string authTypeSet

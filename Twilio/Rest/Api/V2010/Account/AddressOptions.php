@@ -15,7 +15,7 @@ use Twilio\Values;
 abstract class AddressOptions {
     /**
      * @param string $friendlyName The friendly_name
-     * @param string $emergencyEnabled The emergency_enabled
+     * @param boolean $emergencyEnabled The emergency_enabled
      * @return CreateAddressOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE) {
@@ -29,7 +29,7 @@ abstract class AddressOptions {
      * @param string $city The city
      * @param string $region The region
      * @param string $postalCode The postal_code
-     * @param string $emergencyEnabled The emergency_enabled
+     * @param boolean $emergencyEnabled The emergency_enabled
      * @return UpdateAddressOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE) {
@@ -50,7 +50,7 @@ abstract class AddressOptions {
 class CreateAddressOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
-     * @param string $emergencyEnabled The emergency_enabled
+     * @param boolean $emergencyEnabled The emergency_enabled
      */
     public function __construct($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -71,7 +71,7 @@ class CreateAddressOptions extends Options {
     /**
      * The emergency_enabled
      * 
-     * @param string $emergencyEnabled The emergency_enabled
+     * @param boolean $emergencyEnabled The emergency_enabled
      * @return $this Fluent Builder
      */
     public function setEmergencyEnabled($emergencyEnabled) {
@@ -103,7 +103,7 @@ class UpdateAddressOptions extends Options {
      * @param string $city The city
      * @param string $region The region
      * @param string $postalCode The postal_code
-     * @param string $emergencyEnabled The emergency_enabled
+     * @param boolean $emergencyEnabled The emergency_enabled
      */
     public function __construct($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -184,7 +184,7 @@ class UpdateAddressOptions extends Options {
     /**
      * The emergency_enabled
      * 
-     * @param string $emergencyEnabled The emergency_enabled
+     * @param boolean $emergencyEnabled The emergency_enabled
      * @return $this Fluent Builder
      */
     public function setEmergencyEnabled($emergencyEnabled) {

@@ -16,7 +16,7 @@ abstract class TaskQueuesStatisticsOptions {
     /**
      * @param \DateTime $endDate The end_date
      * @param string $friendlyName The friendly_name
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      * @return ReadTaskQueuesStatisticsOptions Options builder
      */
@@ -29,7 +29,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
     /**
      * @param \DateTime $endDate The end_date
      * @param string $friendlyName The friendly_name
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      */
     public function __construct($endDate = Values::NONE, $friendlyName = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE) {
@@ -64,7 +64,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
     /**
      * The minutes
      * 
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
