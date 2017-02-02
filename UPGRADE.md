@@ -6,25 +6,6 @@ posted here._
 [2017-02-01] 5.4.x to 5.5.x
 ---------------------------
 
-### CHANGED - Subresource uri / Links field type changed to array for multiple resources
-  - the `subresourceUris` or `links` property on many resources has been changed from a string to an array
-
-#### Affected Resources
-  - Available Phone Number Countries (`subresource_uris`)
-  - Call (`subresource_uris`)
-  - Message (`subresource_uris`)
-  - Sip Credential Lists (`subresource_uris`)
-  - Sip IP Access Control Lists (`subresource_uris`)
-  - All Account Usage Record Resources (Last Month, This Month, Yesterday, All Time, Monthly, Yearly, Today, Daily) (`subresource_uris`)
-  - Account (`subresource_uris`)
-  - Chat Channel, Service (`links`)
-  - Pricing Messaging, Phone Numbers, Voice (`links`)
-  - Taskrouter WorkerChannel (`links`)
-  - Trunking Phone Number, Trunk (`links`)
-
-#### Rationale
-This was incorrectly typed initially, the API returns a map so the correct datatype in php is an array. Its unlikely that the `links` and `subresourceUri` properties were functioning correctly in the previous versions.????
-
 ### CHANGED - Removed uri field from Pricing Phone Number Countries resource
   - the `uri` property on this object has been removed and is no longer returned by the api
   - the `url` property is still present and unchanged and should be used instead of the `uri` property
