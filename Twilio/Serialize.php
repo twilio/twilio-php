@@ -35,6 +35,10 @@ class Serialize {
             return \Twilio\Values::NONE;
         }
 
+        if (is_string($dateTime)) {
+            return $dateTime;
+        }
+
         $utcDate = clone $dateTime;
         $utcDate->setTimezone(new \DateTimeZone('UTC'));
         return $utcDate->format('Y-m-d');
@@ -43,6 +47,10 @@ class Serialize {
     public static function iso8601DateTime($dateTime) {
         if (is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
+        }
+
+        if (is_string($dateTime)) {
+            return $dateTime;
         }
 
         $utcDate = clone $dateTime;

@@ -132,9 +132,9 @@ class MessageList extends ListResource {
         $params = Values::of(array(
             'To' => $options['to'],
             'From' => $options['from'],
-            'DateSent<' => $options['dateSentBefore'],
-            'DateSent' => $options['dateSent'],
-            'DateSent>' => $options['dateSentAfter'],
+            'DateSent<' => Serialize::iso8601DateTime($options['dateSentBefore']),
+            'DateSent' => Serialize::iso8601DateTime($options['dateSent']),
+            'DateSent>' => Serialize::iso8601DateTime($options['dateSentAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

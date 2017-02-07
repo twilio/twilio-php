@@ -53,10 +53,15 @@ $client->usage->records->read(array(
     "StartDate" => $startDate,
     "EndDate" => $endDate
 ));
+
+// Passing strings will still work
+$client->usage->records->read(array(
+    "StartDate" => "1999-09-07" // OK
+));
 ```
 
 #### Rationale
-Not serializing API Dates into DateTimes was an oversight initially, removing library support for date inequality filters (ie `StartDate>` etc) bring the library into alignment with the API behavior. Only select resources on our 2010 API support date inequalities, date inequalities were included on unsupported resources mistakenly and that functionality would never have worked anyways.
+Not serializing API Dates into DateTimes was an oversight initially, removing library support for date inequality filters (ie `StartDate>` etc) brings the library into alignment with the API behavior. Only select resources on our 2010 API support date inequalities, date inequalities were included on unsupported resources mistakenly and that functionality would never have worked anyways.
 
 ### CHANGED - Chat Members and Channels List Takes Optional Parameters
   - Reading members of channel and listing channels now takes an array of options as is its first argument.

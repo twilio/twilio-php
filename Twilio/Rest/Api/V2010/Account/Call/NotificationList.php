@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -96,9 +97,9 @@ class NotificationList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Log' => $options['log'],
-            'MessageDate<' => $options['messageDateBefore'],
-            'MessageDate' => $options['messageDate'],
-            'MessageDate>' => $options['messageDateAfter'],
+            'MessageDate<' => Serialize::iso8601Date($options['messageDateBefore']),
+            'MessageDate' => Serialize::iso8601Date($options['messageDate']),
+            'MessageDate>' => Serialize::iso8601Date($options['messageDateAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

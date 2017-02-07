@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -93,12 +94,12 @@ class ConferenceList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'DateCreated<' => $options['dateCreatedBefore'],
-            'DateCreated' => $options['dateCreated'],
-            'DateCreated>' => $options['dateCreatedAfter'],
-            'DateUpdated<' => $options['dateUpdatedBefore'],
-            'DateUpdated' => $options['dateUpdated'],
-            'DateUpdated>' => $options['dateUpdatedAfter'],
+            'DateCreated<' => Serialize::iso8601Date($options['dateCreatedBefore']),
+            'DateCreated' => Serialize::iso8601Date($options['dateCreated']),
+            'DateCreated>' => Serialize::iso8601Date($options['dateCreatedAfter']),
+            'DateUpdated<' => Serialize::iso8601Date($options['dateUpdatedBefore']),
+            'DateUpdated' => Serialize::iso8601Date($options['dateUpdated']),
+            'DateUpdated>' => Serialize::iso8601Date($options['dateUpdatedAfter']),
             'FriendlyName' => $options['friendlyName'],
             'Status' => $options['status'],
             'PageToken' => $pageToken,

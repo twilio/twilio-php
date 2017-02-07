@@ -61,6 +61,13 @@ class SerializeTest extends UnitTest {
         $this->assertEquals(\Twilio\Values::NONE, $actual);
     }
 
+    public function testIso8601DatePassString() {
+        // Backwards compatibility, prior to 5.5.0 date parameters were passed as strings.
+        // After 5.5.0 parameters can be DateTime objects or strings.
+        $actual = Serialize::iso8601DateTime("2017-02-01");
+        $this->assertEquals("2017-02-01", $actual);
+    }
+
     public function testIso8601DateSameTimezone() {
         $date = new \DateTime("now", new \DateTimeZone("UTC"));
         $actual = Serialize::iso8601Date($date);
@@ -83,6 +90,13 @@ class SerializeTest extends UnitTest {
     public function testIso8601DateTimeNone() {
         $actual = Serialize::iso8601DateTime(\Twilio\Values::NONE);
         $this->assertEquals(\Twilio\Values::NONE, $actual);
+    }
+
+    public function testIso8601DateTimePassString() {
+        // Backwards compatibility, prior to 5.5.0 date parameters were passed as strings.
+        // After 5.5.0 parameters can be DateTime objects or strings.
+        $actual = Serialize::iso8601DateTime("2017-02-01T17:15:41Z");
+        $this->assertEquals("2017-02-01T17:15:41Z", $actual);
     }
 
     public function testIso8601DateTimeSameTimezone() {

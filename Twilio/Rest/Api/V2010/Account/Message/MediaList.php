@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Message;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -95,9 +96,9 @@ class MediaList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'DateCreated<' => $options['dateCreatedBefore'],
-            'DateCreated' => $options['dateCreated'],
-            'DateCreated>' => $options['dateCreatedAfter'],
+            'DateCreated<' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateCreated>' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
