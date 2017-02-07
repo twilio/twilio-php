@@ -75,6 +75,30 @@ class SerializeTest extends UnitTest {
         $this->assertEquals("2017-02-02", $actual);
     }
 
+    public function testIso8601DateTimeNull() {
+        $actual = Serialize::iso8601DateTime(null);
+        $this->assertEquals(\Twilio\Values::NONE, $actual);
+    }
+
+    public function testIso8601DateTimeNone() {
+        $actual = Serialize::iso8601DateTime(\Twilio\Values::NONE);
+        $this->assertEquals(\Twilio\Values::NONE, $actual);
+    }
+
+    public function testIso8601DateTimeSameTimezone() {
+        $date = new \DateTime("2017-02-01T17:15:41", new \DateTimeZone("UTC"));
+        $actual = Serialize::iso8601DateTime($date);
+        $this->assertEquals("2017-02-01T17:15:41Z", $actual);
+    }
+
+    public function testIso8601DateTimeDifferentTimezone() {
+        $date = new \DateTime("2017-02-01T17:15:41-0800");
+        $actual = Serialize::iso8601DateTime($date);
+        // assert original date time object is unchanged
+        $this->assertEquals("2017-02-01T17:15:41-0800", $date->format(\DateTime::ISO8601));
+        $this->assertEquals("2017-02-02T01:15:41Z", $actual);
+    }
+
     public function testBooleanToString() {
         $actual = Serialize::booleanToString(True);
         $this->assertEquals("True", $actual);
