@@ -22,7 +22,7 @@ while legacy resources use `uri` and `subresource_uris`. Previously we were inco
 #### Affected Resources
   - All Account Usage Record Resources (Last Month, This Month, Yesterday, All Time, Monthly, Yearly, Today, Daily).
   - Monitor Alerts, Events.
-  - Taskrouter WorkspaceStatistics.
+  - Taskrouter All Statistics endpoints (Workspace, TaskQueues, Workers...), Workspace Events.
   - Call Feedback Summaries.
 
 #### 5.3.x
@@ -165,6 +165,13 @@ $client->taskrouter->v1->workspaces('WS123')->tasks->create(array(
 
 #### Rationale
 This is a correction for what the API actually expects.
+
+### CHANGED - Taskrouter Task list no longer filterable by TaskChannel
+  - Previous version incorrectly allowed setting a `taskChannel` on a `TaskReadOptions` object, this is no longer supported.
+
+#### Rationale
+This is a correction for what the API actually allows. Previous versions allowed this to be set but it would not have
+had any effect.
 
 ### CHANGED - Rename getStatistics to getTaskQueueStatistics method on Taskrouter TaskQueues
 

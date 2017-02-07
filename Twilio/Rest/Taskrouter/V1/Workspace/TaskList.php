@@ -100,7 +100,6 @@ class TaskList extends ListResource {
             'WorkflowName' => $options['workflowName'],
             'TaskQueueSid' => $options['taskQueueSid'],
             'TaskQueueName' => $options['taskQueueName'],
-            'TaskChannel' => $options['taskChannel'],
             'EvaluateTaskAttributes' => $options['evaluateTaskAttributes'],
             'Ordering' => $options['ordering'],
             'HasAddons' => Serialize::booleanToString($options['hasAddons']),

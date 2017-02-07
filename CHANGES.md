@@ -32,6 +32,7 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
     - Add `taskOrder` field to TaskQueues, allow updating `taskOrder`.
     - Add `prioritizeQueueOrder` field to Workspace.
     - Allow filtering Tasks list by `evaluateTaskAttributes`, `ordering`, `hasAddons`.
+    - Disallow filtering Tasks list by `taskChannel`, was never supported.
     - Allow filtering TaskQueues list by `workerSid` and `taskOrder`.
     - Allow updating `prioritizeQueueOrder` on Workspaces.
     - Demote `friendlyName` to optional parameter when updating Activities (backwards incompatible).

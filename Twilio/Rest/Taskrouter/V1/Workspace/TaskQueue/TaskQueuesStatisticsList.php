@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -94,10 +95,10 @@ class TaskQueuesStatisticsList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'EndDate' => $options['endDate'],
+            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'FriendlyName' => $options['friendlyName'],
             'Minutes' => $options['minutes'],
-            'StartDate' => $options['startDate'],
+            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
