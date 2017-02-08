@@ -52,6 +52,7 @@ class NotificationTest extends HolodeckTestCase {
                 "action": null,
                 "data": null,
                 "apn": null,
+                "fcm": null,
                 "gcm": null,
                 "sms": null,
                 "facebook_messenger": null

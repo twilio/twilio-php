@@ -12,15 +12,19 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList;
+use Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList syncListItems
- * @method \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext syncListItems(string $index)
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList syncListPermissions
+ * @method \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext syncListItems(integer $index)
+ * @method \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionContext syncListPermissions(string $identity)
  */
 class SyncListContext extends InstanceContext {
     protected $_syncListItems = null;
+    protected $_syncListPermissions = null;
 
     /**
      * Initialize the SyncListContext
@@ -88,6 +92,23 @@ class SyncListContext extends InstanceContext {
         }
         
         return $this->_syncListItems;
+    }
+
+    /**
+     * Access the syncListPermissions
+     * 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList 
+     */
+    protected function getSyncListPermissions() {
+        if (!$this->_syncListPermissions) {
+            $this->_syncListPermissions = new SyncListPermissionList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_syncListPermissions;
     }
 
     /**

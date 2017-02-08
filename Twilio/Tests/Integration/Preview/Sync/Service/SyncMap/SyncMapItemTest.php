@@ -32,6 +32,32 @@ class SyncMapItemTest extends HolodeckTestCase {
         ));
     }
 
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "created_by": "created_by",
+                "data": {},
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "key": "key",
+                "map_sid": "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "revision": "revision",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMapItems("key")->fetch();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -46,6 +72,19 @@ class SyncMapItemTest extends HolodeckTestCase {
             'delete',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key'
         ));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+        
+        $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMapItems("key")->delete();
+        
+        $this->assertTrue($actual);
     }
 
     public function testCreateRequest() {
@@ -71,6 +110,32 @@ class SyncMapItemTest extends HolodeckTestCase {
         ));
     }
 
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "created_by": "created_by",
+                "data": {},
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "key": "key",
+                "map_sid": "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "revision": "revision",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMapItems->create("key", "{}");
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -85,6 +150,71 @@ class SyncMapItemTest extends HolodeckTestCase {
             'get',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items'
         ));
+    }
+
+    public function testReadEmptyResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "items": [],
+                "meta": {
+                    "first_page_url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items?PageSize=50&Page=0",
+                    "key": "items",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items?PageSize=50&Page=0"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMapItems->read();
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "items": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "created_by": "created_by",
+                        "data": {},
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "key": "key",
+                        "map_sid": "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "revision": "revision",
+                        "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key"
+                    }
+                ],
+                "meta": {
+                    "first_page_url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items?PageSize=50&Page=0",
+                    "key": "items",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items?PageSize=50&Page=0"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMapItems->read();
+        
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testUpdateRequest() {
@@ -107,5 +237,31 @@ class SyncMapItemTest extends HolodeckTestCase {
             null,
             $values
         ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "created_by": "created_by",
+                "data": {},
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "key": "key",
+                "map_sid": "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "revision": "revision",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "url": "https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->syncMapItems("key")->update("{}");
+        
+        $this->assertNotNull($actual);
     }
 }

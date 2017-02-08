@@ -36,6 +36,7 @@ use Twilio\Version;
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings = null;
     protected $_credentialListMappings = null;
+    protected $_registrationEndpoints = null;
 
     /**
      * Initialize the DomainInstance
@@ -141,6 +142,15 @@ class DomainInstance extends InstanceResource {
      */
     protected function getCredentialListMappings() {
         return $this->proxy()->credentialListMappings;
+    }
+
+    /**
+     * Access the registrationEndpoints
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointList 
+     */
+    protected function getRegistrationEndpoints() {
+        return $this->proxy()->registrationEndpoints;
     }
 
     /**

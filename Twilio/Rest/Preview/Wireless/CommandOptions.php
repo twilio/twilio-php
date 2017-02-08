@@ -26,10 +26,12 @@ abstract class CommandOptions {
     /**
      * @param string $callbackMethod The callback_method
      * @param string $callbackUrl The callback_url
+     * @param string $commandMode The command_mode
+     * @param string $includeSid The include_sid
      * @return CreateCommandOptions Options builder
      */
-    public static function create($callbackMethod = Values::NONE, $callbackUrl = Values::NONE) {
-        return new CreateCommandOptions($callbackMethod, $callbackUrl);
+    public static function create($callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
+        return new CreateCommandOptions($callbackMethod, $callbackUrl, $commandMode, $includeSid);
     }
 }
 
@@ -98,10 +100,14 @@ class CreateCommandOptions extends Options {
     /**
      * @param string $callbackMethod The callback_method
      * @param string $callbackUrl The callback_url
+     * @param string $commandMode The command_mode
+     * @param string $includeSid The include_sid
      */
-    public function __construct($callbackMethod = Values::NONE, $callbackUrl = Values::NONE) {
+    public function __construct($callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
+        $this->options['commandMode'] = $commandMode;
+        $this->options['includeSid'] = $includeSid;
     }
 
     /**
@@ -123,6 +129,28 @@ class CreateCommandOptions extends Options {
      */
     public function setCallbackUrl($callbackUrl) {
         $this->options['callbackUrl'] = $callbackUrl;
+        return $this;
+    }
+
+    /**
+     * The command_mode
+     * 
+     * @param string $commandMode The command_mode
+     * @return $this Fluent Builder
+     */
+    public function setCommandMode($commandMode) {
+        $this->options['commandMode'] = $commandMode;
+        return $this;
+    }
+
+    /**
+     * The include_sid
+     * 
+     * @param string $includeSid The include_sid
+     * @return $this Fluent Builder
+     */
+    public function setIncludeSid($includeSid) {
+        $this->options['includeSid'] = $includeSid;
         return $this;
     }
 

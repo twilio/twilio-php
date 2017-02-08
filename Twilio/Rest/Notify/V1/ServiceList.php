@@ -47,6 +47,8 @@ class ServiceList extends ListResource {
             'FacebookMessengerPageId' => $options['facebookMessengerPageId'],
             'DefaultApnNotificationProtocolVersion' => $options['defaultApnNotificationProtocolVersion'],
             'DefaultGcmNotificationProtocolVersion' => $options['defaultGcmNotificationProtocolVersion'],
+            'FcmCredentialSid' => $options['fcmCredentialSid'],
+            'DefaultFcmNotificationProtocolVersion' => $options['defaultFcmNotificationProtocolVersion'],
         ));
         
         $payload = $this->version->create(
@@ -105,7 +107,7 @@ class ServiceList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ServiceInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 

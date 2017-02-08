@@ -18,11 +18,11 @@ use Twilio\Version;
  * @property string deviceSid
  * @property string deviceAlias
  * @property string accountSid
- * @property string period
- * @property string commandsUsage
- * @property string commandsCosts
- * @property string dataUsage
- * @property string dataCosts
+ * @property array period
+ * @property array commandsUsage
+ * @property array commandsCosts
+ * @property array dataUsage
+ * @property array dataCosts
  * @property string url
  */
 class UsageInstance extends InstanceResource {

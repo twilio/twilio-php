@@ -9,11 +9,19 @@
 
 namespace Twilio\Rest\Preview\Sync\Service;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * @property \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList documentPermissions
+ * @method \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionContext documentPermissions(string $identity)
+ */
 class DocumentContext extends InstanceContext {
+    protected $_documentPermissions = null;
+
     /**
      * Initialize the DocumentContext
      * 
@@ -68,7 +76,7 @@ class DocumentContext extends InstanceContext {
     /**
      * Update the DocumentInstance
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return DocumentInstance Updated DocumentInstance
      */
     public function update($data) {
@@ -89,6 +97,56 @@ class DocumentContext extends InstanceContext {
             $this->solution['serviceSid'],
             $this->solution['sid']
         );
+    }
+
+    /**
+     * Access the documentPermissions
+     * 
+     * @return \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList 
+     */
+    protected function getDocumentPermissions() {
+        if (!$this->_documentPermissions) {
+            $this->_documentPermissions = new DocumentPermissionList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_documentPermissions;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     * 
+     * @param string $name Subresource to return
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
+     */
+    public function __get($name) {
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
+        }
+        
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+        
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**

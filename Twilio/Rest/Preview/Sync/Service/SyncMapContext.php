@@ -12,15 +12,19 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList;
+use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList syncMapItems
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList syncMapPermissions
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemContext syncMapItems(string $key)
+ * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext syncMapPermissions(string $identity)
  */
 class SyncMapContext extends InstanceContext {
     protected $_syncMapItems = null;
+    protected $_syncMapPermissions = null;
 
     /**
      * Initialize the SyncMapContext
@@ -88,6 +92,23 @@ class SyncMapContext extends InstanceContext {
         }
         
         return $this->_syncMapItems;
+    }
+
+    /**
+     * Access the syncMapPermissions
+     * 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList 
+     */
+    protected function getSyncMapPermissions() {
+        if (!$this->_syncMapPermissions) {
+            $this->_syncMapPermissions = new SyncMapPermissionList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_syncMapPermissions;
     }
 
     /**

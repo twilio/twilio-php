@@ -91,6 +91,8 @@ class ServiceContext extends InstanceContext {
             'FacebookMessengerPageId' => $options['facebookMessengerPageId'],
             'DefaultApnNotificationProtocolVersion' => $options['defaultApnNotificationProtocolVersion'],
             'DefaultGcmNotificationProtocolVersion' => $options['defaultGcmNotificationProtocolVersion'],
+            'FcmCredentialSid' => $options['fcmCredentialSid'],
+            'DefaultFcmNotificationProtocolVersion' => $options['defaultFcmNotificationProtocolVersion'],
         ));
         
         $payload = $this->version->update(

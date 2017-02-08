@@ -18,7 +18,7 @@ abstract class NotificationOptions {
      * @param string $tag The tag
      * @param string $body The body
      * @param string $priority The priority
-     * @param string $ttl The ttl
+     * @param integer $ttl The ttl
      * @param string $title The title
      * @param string $sound The sound
      * @param string $action The action
@@ -26,11 +26,12 @@ abstract class NotificationOptions {
      * @param string $apn The apn
      * @param string $gcm The gcm
      * @param string $sms The sms
-     * @param string $facebookMessenger The facebook_messenger
+     * @param array $facebookMessenger The facebook_messenger
+     * @param string $fcm The fcm
      * @return CreateNotificationOptions Options builder
      */
-    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE) {
-        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger);
+    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE) {
+        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm);
     }
 }
 
@@ -40,7 +41,7 @@ class CreateNotificationOptions extends Options {
      * @param string $tag The tag
      * @param string $body The body
      * @param string $priority The priority
-     * @param string $ttl The ttl
+     * @param integer $ttl The ttl
      * @param string $title The title
      * @param string $sound The sound
      * @param string $action The action
@@ -48,9 +49,10 @@ class CreateNotificationOptions extends Options {
      * @param string $apn The apn
      * @param string $gcm The gcm
      * @param string $sms The sms
-     * @param string $facebookMessenger The facebook_messenger
+     * @param array $facebookMessenger The facebook_messenger
+     * @param string $fcm The fcm
      */
-    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE) {
+    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -64,6 +66,7 @@ class CreateNotificationOptions extends Options {
         $this->options['gcm'] = $gcm;
         $this->options['sms'] = $sms;
         $this->options['facebookMessenger'] = $facebookMessenger;
+        $this->options['fcm'] = $fcm;
     }
 
     /**
@@ -113,7 +116,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The ttl
      * 
-     * @param string $ttl The ttl
+     * @param integer $ttl The ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -201,11 +204,22 @@ class CreateNotificationOptions extends Options {
     /**
      * The facebook_messenger
      * 
-     * @param string $facebookMessenger The facebook_messenger
+     * @param array $facebookMessenger The facebook_messenger
      * @return $this Fluent Builder
      */
     public function setFacebookMessenger($facebookMessenger) {
         $this->options['facebookMessenger'] = $facebookMessenger;
+        return $this;
+    }
+
+    /**
+     * The fcm
+     * 
+     * @param string $fcm The fcm
+     * @return $this Fluent Builder
+     */
+    public function setFcm($fcm) {
+        $this->options['fcm'] = $fcm;
         return $this;
     }
 

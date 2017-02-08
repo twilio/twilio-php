@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string serviceSid
  * @property string url
- * @property string links
+ * @property array links
  * @property string revision
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -28,6 +28,7 @@ use Twilio\Version;
  */
 class SyncMapInstance extends InstanceResource {
     protected $_syncMapItems = null;
+    protected $_syncMapPermissions = null;
 
     /**
      * Initialize the SyncMapInstance
@@ -50,8 +51,8 @@ class SyncMapInstance extends InstanceResource {
             'url' => $payload['url'],
             'links' => $payload['links'],
             'revision' => $payload['revision'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'createdBy' => $payload['created_by'],
         );
         
@@ -105,6 +106,15 @@ class SyncMapInstance extends InstanceResource {
      */
     protected function getSyncMapItems() {
         return $this->proxy()->syncMapItems;
+    }
+
+    /**
+     * Access the syncMapPermissions
+     * 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList 
+     */
+    protected function getSyncMapPermissions() {
+        return $this->proxy()->syncMapPermissions;
     }
 
     /**

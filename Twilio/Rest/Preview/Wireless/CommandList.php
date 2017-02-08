@@ -73,7 +73,7 @@ class CommandList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CommandInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -123,6 +123,8 @@ class CommandList extends ListResource {
             'Command' => $command,
             'CallbackMethod' => $options['callbackMethod'],
             'CallbackUrl' => $options['callbackUrl'],
+            'CommandMode' => $options['commandMode'],
+            'IncludeSid' => $options['includeSid'],
         ));
         
         $payload = $this->version->create(

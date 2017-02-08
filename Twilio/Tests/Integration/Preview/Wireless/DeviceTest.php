@@ -30,6 +30,36 @@ class DeviceTest extends HolodeckTestCase {
         ));
     }
 
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "alias": "alias",
+                "commands_callback_method": "commands_callback_method",
+                "commands_callback_url": "http://www.example.com",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
+                "links": {
+                    "usage": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage",
+                    "rate_plan": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                },
+                "rate_plan_sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_identifier": "sim_identifier",
+                "status": "status",
+                "url": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -42,6 +72,73 @@ class DeviceTest extends HolodeckTestCase {
             'get',
             'https://preview.twilio.com/wireless/Devices'
         ));
+    }
+
+    public function testReadEmptyResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "devices": [],
+                "meta": {
+                    "first_page_url": "https://preview.twilio.com/wireless/Devices?PageSize=50&Page=0",
+                    "key": "devices",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://preview.twilio.com/wireless/Devices?PageSize=50&Page=0"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->wireless->devices->read();
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "devices": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "alias": "alias",
+                        "commands_callback_method": "commands_callback_method",
+                        "commands_callback_url": "http://www.example.com",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "friendly_name": "friendly_name",
+                        "links": {
+                            "usage": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage",
+                            "rate_plan": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        },
+                        "rate_plan_sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sim_identifier": "sim_identifier",
+                        "status": "status",
+                        "url": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ],
+                "meta": {
+                    "first_page_url": "https://preview.twilio.com/wireless/Devices?PageSize=50&Page=0",
+                    "key": "devices",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://preview.twilio.com/wireless/Devices?PageSize=50&Page=0"
+                }
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->wireless->devices->read();
+        
+        $this->assertGreaterThan(0, count($actual));
     }
 
     public function testCreateRequest() {
@@ -64,6 +161,36 @@ class DeviceTest extends HolodeckTestCase {
         ));
     }
 
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "alias": "alias",
+                "commands_callback_method": "commands_callback_method",
+                "commands_callback_url": "http://www.example.com",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
+                "links": {
+                    "usage": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage",
+                    "rate_plan": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                },
+                "rate_plan_sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_identifier": "sim_identifier",
+                "status": "status",
+                "url": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->wireless->devices->create("ratePlan");
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -76,5 +203,35 @@ class DeviceTest extends HolodeckTestCase {
             'post',
             'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "alias": "alias",
+                "commands_callback_method": "commands_callback_method",
+                "commands_callback_url": "http://www.example.com",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "friendly_name": "friendly_name",
+                "links": {
+                    "usage": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage",
+                    "rate_plan": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                },
+                "rate_plan_sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_identifier": "sim_identifier",
+                "status": "status",
+                "url": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        
+        $this->assertNotNull($actual);
     }
 }

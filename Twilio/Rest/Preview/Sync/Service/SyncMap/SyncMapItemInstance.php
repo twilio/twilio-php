@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string mapSid
  * @property string url
  * @property string revision
- * @property string data
+ * @property array data
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
@@ -49,8 +49,8 @@ class SyncMapItemInstance extends InstanceResource {
             'url' => $payload['url'],
             'revision' => $payload['revision'],
             'data' => $payload['data'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'createdBy' => $payload['created_by'],
         );
         
@@ -104,7 +104,7 @@ class SyncMapItemInstance extends InstanceResource {
     /**
      * Update the SyncMapItemInstance
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      */
     public function update($data) {

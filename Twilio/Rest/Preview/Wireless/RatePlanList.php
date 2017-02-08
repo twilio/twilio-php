@@ -10,6 +10,8 @@
 namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\ListResource;
+use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -70,7 +72,7 @@ class RatePlanList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RatePlanInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -97,6 +99,38 @@ class RatePlanList extends ListResource {
         );
         
         return new RatePlanPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Create a new RatePlanInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return RatePlanInstance Newly created RatePlanInstance
+     */
+    public function create($options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'Alias' => $options['alias'],
+            'FriendlyName' => $options['friendlyName'],
+            'Roaming' => $options['roaming'],
+            'DataLimit' => $options['dataLimit'],
+            'DataMetering' => $options['dataMetering'],
+            'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
+            'Renewal' => $options['renewal'],
+        ));
+        
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+        
+        return new RatePlanInstance(
+            $this->version,
+            $payload
+        );
     }
 
     /**

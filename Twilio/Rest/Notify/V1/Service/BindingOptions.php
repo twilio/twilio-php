@@ -16,25 +16,22 @@ abstract class BindingOptions {
     /**
      * @param string $tag The tag
      * @param string $notificationProtocolVersion The notification_protocol_version
+     * @param string $credentialSid The credential_sid
      * @return CreateBindingOptions Options builder
      */
-    public static function create($tag = Values::NONE, $notificationProtocolVersion = Values::NONE) {
-        return new CreateBindingOptions($tag, $notificationProtocolVersion);
+    public static function create($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE) {
+        return new CreateBindingOptions($tag, $notificationProtocolVersion, $credentialSid);
     }
 
     /**
-     * @param string $startDateBefore The start_date
-     * @param string $startDate The start_date
-     * @param string $startDateAfter The start_date
-     * @param string $endDateBefore The end_date
-     * @param string $endDate The end_date
-     * @param string $endDateAfter The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @param string $identity The identity
      * @param string $tag The tag
      * @return ReadBindingOptions Options builder
      */
-    public static function read($startDateBefore = Values::NONE, $startDate = Values::NONE, $startDateAfter = Values::NONE, $endDateBefore = Values::NONE, $endDate = Values::NONE, $endDateAfter = Values::NONE, $identity = Values::NONE, $tag = Values::NONE) {
-        return new ReadBindingOptions($startDateBefore, $startDate, $startDateAfter, $endDateBefore, $endDate, $endDateAfter, $identity, $tag);
+    public static function read($startDate = Values::NONE, $endDate = Values::NONE, $identity = Values::NONE, $tag = Values::NONE) {
+        return new ReadBindingOptions($startDate, $endDate, $identity, $tag);
     }
 }
 
@@ -42,10 +39,12 @@ class CreateBindingOptions extends Options {
     /**
      * @param string $tag The tag
      * @param string $notificationProtocolVersion The notification_protocol_version
+     * @param string $credentialSid The credential_sid
      */
-    public function __construct($tag = Values::NONE, $notificationProtocolVersion = Values::NONE) {
+    public function __construct($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE) {
         $this->options['tag'] = $tag;
         $this->options['notificationProtocolVersion'] = $notificationProtocolVersion;
+        $this->options['credentialSid'] = $credentialSid;
     }
 
     /**
@@ -71,6 +70,17 @@ class CreateBindingOptions extends Options {
     }
 
     /**
+     * The credential_sid
+     * 
+     * @param string $credentialSid The credential_sid
+     * @return $this Fluent Builder
+     */
+    public function setCredentialSid($credentialSid) {
+        $this->options['credentialSid'] = $credentialSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -88,22 +98,14 @@ class CreateBindingOptions extends Options {
 
 class ReadBindingOptions extends Options {
     /**
-     * @param string $startDateBefore The start_date
-     * @param string $startDate The start_date
-     * @param string $startDateAfter The start_date
-     * @param string $endDateBefore The end_date
-     * @param string $endDate The end_date
-     * @param string $endDateAfter The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @param string $identity The identity
      * @param string $tag The tag
      */
-    public function __construct($startDateBefore = Values::NONE, $startDate = Values::NONE, $startDateAfter = Values::NONE, $endDateBefore = Values::NONE, $endDate = Values::NONE, $endDateAfter = Values::NONE, $identity = Values::NONE, $tag = Values::NONE) {
-        $this->options['startDateBefore'] = $startDateBefore;
+    public function __construct($startDate = Values::NONE, $endDate = Values::NONE, $identity = Values::NONE, $tag = Values::NONE) {
         $this->options['startDate'] = $startDate;
-        $this->options['startDateAfter'] = $startDateAfter;
-        $this->options['endDateBefore'] = $endDateBefore;
         $this->options['endDate'] = $endDate;
-        $this->options['endDateAfter'] = $endDateAfter;
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
     }
@@ -111,18 +113,7 @@ class ReadBindingOptions extends Options {
     /**
      * The start_date
      * 
-     * @param string $startDateBefore The start_date
-     * @return $this Fluent Builder
-     */
-    public function setStartDateBefore($startDateBefore) {
-        $this->options['startDateBefore'] = $startDateBefore;
-        return $this;
-    }
-
-    /**
-     * The start_date
-     * 
-     * @param string $startDate The start_date
+     * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -131,46 +122,13 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The start_date
-     * 
-     * @param string $startDateAfter The start_date
-     * @return $this Fluent Builder
-     */
-    public function setStartDateAfter($startDateAfter) {
-        $this->options['startDateAfter'] = $startDateAfter;
-        return $this;
-    }
-
-    /**
      * The end_date
      * 
-     * @param string $endDateBefore The end_date
-     * @return $this Fluent Builder
-     */
-    public function setEndDateBefore($endDateBefore) {
-        $this->options['endDateBefore'] = $endDateBefore;
-        return $this;
-    }
-
-    /**
-     * The end_date
-     * 
-     * @param string $endDate The end_date
+     * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
         $this->options['endDate'] = $endDate;
-        return $this;
-    }
-
-    /**
-     * The end_date
-     * 
-     * @param string $endDateAfter The end_date
-     * @return $this Fluent Builder
-     */
-    public function setEndDateAfter($endDateAfter) {
-        $this->options['endDateAfter'] = $endDateAfter;
         return $this;
     }
 

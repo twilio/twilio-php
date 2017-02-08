@@ -15,7 +15,7 @@ use Twilio\Values;
 abstract class DocumentOptions {
     /**
      * @param string $uniqueName The unique_name
-     * @param string $data The data
+     * @param array $data The data
      * @return CreateDocumentOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $data = Values::NONE) {
@@ -26,7 +26,7 @@ abstract class DocumentOptions {
 class CreateDocumentOptions extends Options {
     /**
      * @param string $uniqueName The unique_name
-     * @param string $data The data
+     * @param array $data The data
      */
     public function __construct($uniqueName = Values::NONE, $data = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -47,7 +47,7 @@ class CreateDocumentOptions extends Options {
     /**
      * The data
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return $this Fluent Builder
      */
     public function setData($data) {

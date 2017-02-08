@@ -20,13 +20,16 @@ use Twilio\Version;
  * @property string accountSid
  * @property string serviceSid
  * @property string url
+ * @property array links
  * @property string revision
- * @property string data
+ * @property array data
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
  */
 class DocumentInstance extends InstanceResource {
+    protected $_documentPermissions = null;
+
     /**
      * Initialize the DocumentInstance
      * 
@@ -46,10 +49,11 @@ class DocumentInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'serviceSid' => $payload['service_sid'],
             'url' => $payload['url'],
+            'links' => $payload['links'],
             'revision' => $payload['revision'],
             'data' => $payload['data'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'createdBy' => $payload['created_by'],
         );
         
@@ -99,13 +103,22 @@ class DocumentInstance extends InstanceResource {
     /**
      * Update the DocumentInstance
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return DocumentInstance Updated DocumentInstance
      */
     public function update($data) {
         return $this->proxy()->update(
             $data
         );
+    }
+
+    /**
+     * Access the documentPermissions
+     * 
+     * @return \Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList 
+     */
+    protected function getDocumentPermissions() {
+        return $this->proxy()->documentPermissions;
     }
 
     /**

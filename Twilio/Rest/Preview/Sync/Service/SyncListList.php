@@ -101,7 +101,7 @@ class SyncListList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncListInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 

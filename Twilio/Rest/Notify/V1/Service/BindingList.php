@@ -11,6 +11,7 @@ namespace Twilio\Rest\Notify\V1\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -53,6 +54,7 @@ class BindingList extends ListResource {
             'Address' => $address,
             'Tag' => $options['tag'],
             'NotificationProtocolVersion' => $options['notificationProtocolVersion'],
+            'CredentialSid' => $options['credentialSid'],
         ));
         
         $payload = $this->version->create(
@@ -112,7 +114,7 @@ class BindingList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return BindingInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -129,12 +131,8 @@ class BindingList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'StartDate<' => $options['startDateBefore'],
-            'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startDateAfter'],
-            'EndDate<' => $options['endDateBefore'],
-            'EndDate' => $options['endDate'],
-            'EndDate>' => $options['endDateAfter'],
+            'StartDate' => Serialize::iso8601Date($options['startDate']),
+            'EndDate' => Serialize::iso8601Date($options['endDate']),
             'Identity' => $options['identity'],
             'Tag' => $options['tag'],
             'PageToken' => $pageToken,
