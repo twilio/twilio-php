@@ -12,6 +12,7 @@ namespace Twilio\Rest\Chat\V1\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Chat\V1\Service\Channel\InviteList;
 use Twilio\Rest\Chat\V1\Service\Channel\MemberList;
 use Twilio\Rest\Chat\V1\Service\Channel\MessageList;
 use Twilio\Values;
@@ -20,12 +21,15 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Chat\V1\Service\Channel\MemberList members
  * @property \Twilio\Rest\Chat\V1\Service\Channel\MessageList messages
+ * @property \Twilio\Rest\Chat\V1\Service\Channel\InviteList invites
  * @method \Twilio\Rest\Chat\V1\Service\Channel\MemberContext members(string $sid)
  * @method \Twilio\Rest\Chat\V1\Service\Channel\MessageContext messages(string $sid)
+ * @method \Twilio\Rest\Chat\V1\Service\Channel\InviteContext invites(string $sid)
  */
 class ChannelContext extends InstanceContext {
     protected $_members = null;
     protected $_messages = null;
+    protected $_invites = null;
 
     /**
      * Initialize the ChannelContext
@@ -91,7 +95,6 @@ class ChannelContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
             'Attributes' => $options['attributes'],
-            'Type' => $options['type'],
         ));
         
         $payload = $this->version->update(
@@ -141,6 +144,23 @@ class ChannelContext extends InstanceContext {
         }
         
         return $this->_messages;
+    }
+
+    /**
+     * Access the invites
+     * 
+     * @return \Twilio\Rest\Chat\V1\Service\Channel\InviteList 
+     */
+    protected function getInvites() {
+        if (!$this->_invites) {
+            $this->_invites = new InviteList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_invites;
     }
 
     /**

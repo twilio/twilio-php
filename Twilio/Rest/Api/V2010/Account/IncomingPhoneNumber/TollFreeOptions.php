@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class TollFreeOptions {
     /**
-     * @param string $beta The beta
+     * @param boolean $beta The beta
      * @param string $friendlyName The friendly_name
      * @param string $phoneNumber The phone_number
      * @return ReadTollFreeOptions Options builder
@@ -34,7 +34,7 @@ abstract class TollFreeOptions {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $voiceApplicationSid The voice_application_sid
-     * @param string $voiceCallerIdLookup The voice_caller_id_lookup
+     * @param boolean $voiceCallerIdLookup The voice_caller_id_lookup
      * @param string $voiceFallbackMethod The voice_fallback_method
      * @param string $voiceFallbackUrl The voice_fallback_url
      * @param string $voiceMethod The voice_method
@@ -48,7 +48,7 @@ abstract class TollFreeOptions {
 
 class ReadTollFreeOptions extends Options {
     /**
-     * @param string $beta The beta
+     * @param boolean $beta The beta
      * @param string $friendlyName The friendly_name
      * @param string $phoneNumber The phone_number
      */
@@ -61,7 +61,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The beta
      * 
-     * @param string $beta The beta
+     * @param boolean $beta The beta
      * @return $this Fluent Builder
      */
     public function setBeta($beta) {
@@ -119,7 +119,7 @@ class CreateTollFreeOptions extends Options {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $voiceApplicationSid The voice_application_sid
-     * @param string $voiceCallerIdLookup The voice_caller_id_lookup
+     * @param boolean $voiceCallerIdLookup The voice_caller_id_lookup
      * @param string $voiceFallbackMethod The voice_fallback_method
      * @param string $voiceFallbackUrl The voice_fallback_url
      * @param string $voiceMethod The voice_method
@@ -256,7 +256,7 @@ class CreateTollFreeOptions extends Options {
     /**
      * The voice_caller_id_lookup
      * 
-     * @param string $voiceCallerIdLookup The voice_caller_id_lookup
+     * @param boolean $voiceCallerIdLookup The voice_caller_id_lookup
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {

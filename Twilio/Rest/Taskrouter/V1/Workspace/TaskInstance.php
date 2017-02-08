@@ -17,20 +17,25 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string age
+ * @property integer age
  * @property string assignmentStatus
  * @property string attributes
+ * @property string addons
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string priority
+ * @property integer priority
  * @property string reason
  * @property string sid
  * @property string taskQueueSid
+ * @property string taskQueueFriendlyName
  * @property string taskChannelSid
  * @property string taskChannelUniqueName
- * @property string timeout
+ * @property integer timeout
  * @property string workflowSid
+ * @property string workflowFriendlyName
  * @property string workspaceSid
+ * @property string url
+ * @property array links
  */
 class TaskInstance extends InstanceResource {
     protected $_reservations = null;
@@ -53,17 +58,22 @@ class TaskInstance extends InstanceResource {
             'age' => $payload['age'],
             'assignmentStatus' => $payload['assignment_status'],
             'attributes' => $payload['attributes'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'addons' => $payload['addons'],
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'priority' => $payload['priority'],
             'reason' => $payload['reason'],
             'sid' => $payload['sid'],
             'taskQueueSid' => $payload['task_queue_sid'],
+            'taskQueueFriendlyName' => $payload['task_queue_friendly_name'],
             'taskChannelSid' => $payload['task_channel_sid'],
             'taskChannelUniqueName' => $payload['task_channel_unique_name'],
             'timeout' => $payload['timeout'],
             'workflowSid' => $payload['workflow_sid'],
+            'workflowFriendlyName' => $payload['workflow_friendly_name'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

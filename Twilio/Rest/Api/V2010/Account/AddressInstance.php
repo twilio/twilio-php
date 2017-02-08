@@ -28,6 +28,7 @@ use Twilio\Version;
  * @property string sid
  * @property string street
  * @property string uri
+ * @property boolean emergencyEnabled
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;
@@ -49,8 +50,8 @@ class AddressInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'city' => $payload['city'],
             'customerName' => $payload['customer_name'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'isoCountry' => $payload['iso_country'],
             'postalCode' => $payload['postal_code'],
@@ -58,6 +59,7 @@ class AddressInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'street' => $payload['street'],
             'uri' => $payload['uri'],
+            'emergencyEnabled' => $payload['emergency_enabled'],
         );
         
         $this->solution = array(

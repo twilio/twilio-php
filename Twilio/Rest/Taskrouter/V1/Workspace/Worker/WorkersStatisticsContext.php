@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -44,8 +45,8 @@ class WorkersStatisticsContext extends InstanceContext {
         
         $params = Values::of(array(
             'Minutes' => $options['minutes'],
-            'StartDate' => $options['startDate'],
-            'EndDate' => $options['endDate'],
+            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
+            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'TaskQueueSid' => $options['taskQueueSid'],
             'TaskQueueName' => $options['taskQueueName'],
             'FriendlyName' => $options['friendlyName'],

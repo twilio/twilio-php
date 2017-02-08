@@ -15,10 +15,11 @@ use Twilio\Values;
 abstract class AddressOptions {
     /**
      * @param string $friendlyName The friendly_name
+     * @param boolean $emergencyEnabled The emergency_enabled
      * @return CreateAddressOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE) {
-        return new CreateAddressOptions($friendlyName);
+    public static function create($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE) {
+        return new CreateAddressOptions($friendlyName, $emergencyEnabled);
     }
 
     /**
@@ -28,10 +29,11 @@ abstract class AddressOptions {
      * @param string $city The city
      * @param string $region The region
      * @param string $postalCode The postal_code
+     * @param boolean $emergencyEnabled The emergency_enabled
      * @return UpdateAddressOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE) {
-        return new UpdateAddressOptions($friendlyName, $customerName, $street, $city, $region, $postalCode);
+    public static function update($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE) {
+        return new UpdateAddressOptions($friendlyName, $customerName, $street, $city, $region, $postalCode, $emergencyEnabled);
     }
 
     /**
@@ -48,9 +50,11 @@ abstract class AddressOptions {
 class CreateAddressOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
+     * @param boolean $emergencyEnabled The emergency_enabled
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['emergencyEnabled'] = $emergencyEnabled;
     }
 
     /**
@@ -61,6 +65,17 @@ class CreateAddressOptions extends Options {
      */
     public function setFriendlyName($friendlyName) {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The emergency_enabled
+     * 
+     * @param boolean $emergencyEnabled The emergency_enabled
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyEnabled($emergencyEnabled) {
+        $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
 
@@ -88,14 +103,16 @@ class UpdateAddressOptions extends Options {
      * @param string $city The city
      * @param string $region The region
      * @param string $postalCode The postal_code
+     * @param boolean $emergencyEnabled The emergency_enabled
      */
-    public function __construct($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['customerName'] = $customerName;
         $this->options['street'] = $street;
         $this->options['city'] = $city;
         $this->options['region'] = $region;
         $this->options['postalCode'] = $postalCode;
+        $this->options['emergencyEnabled'] = $emergencyEnabled;
     }
 
     /**
@@ -161,6 +178,17 @@ class UpdateAddressOptions extends Options {
      */
     public function setPostalCode($postalCode) {
         $this->options['postalCode'] = $postalCode;
+        return $this;
+    }
+
+    /**
+     * The emergency_enabled
+     * 
+     * @param boolean $emergencyEnabled The emergency_enabled
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyEnabled($emergencyEnabled) {
+        $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
 

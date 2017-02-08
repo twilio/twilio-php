@@ -15,7 +15,7 @@ use Twilio\Values;
 abstract class QueueOptions {
     /**
      * @param string $friendlyName A human readable description of the queue
-     * @param string $maxSize The max number of members allowed in the queue
+     * @param integer $maxSize The max number of members allowed in the queue
      * @return UpdateQueueOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $maxSize = Values::NONE) {
@@ -23,20 +23,18 @@ abstract class QueueOptions {
     }
 
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
-     * @param string $maxSize The max number of calls allowed in the queue
+     * @param integer $maxSize The max number of calls allowed in the queue
      * @return CreateQueueOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $maxSize = Values::NONE) {
-        return new CreateQueueOptions($friendlyName, $maxSize);
+    public static function create($maxSize = Values::NONE) {
+        return new CreateQueueOptions($maxSize);
     }
 }
 
 class UpdateQueueOptions extends Options {
     /**
      * @param string $friendlyName A human readable description of the queue
-     * @param string $maxSize The max number of members allowed in the queue
+     * @param integer $maxSize The max number of members allowed in the queue
      */
     public function __construct($friendlyName = Values::NONE, $maxSize = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -57,7 +55,7 @@ class UpdateQueueOptions extends Options {
     /**
      * The maximum number of members that can be in the queue at a time
      * 
-     * @param string $maxSize The max number of members allowed in the queue
+     * @param integer $maxSize The max number of members allowed in the queue
      * @return $this Fluent Builder
      */
     public function setMaxSize($maxSize) {
@@ -83,31 +81,16 @@ class UpdateQueueOptions extends Options {
 
 class CreateQueueOptions extends Options {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
-     * @param string $maxSize The max number of calls allowed in the queue
+     * @param integer $maxSize The max number of calls allowed in the queue
      */
-    public function __construct($friendlyName = Values::NONE, $maxSize = Values::NONE) {
-        $this->options['friendlyName'] = $friendlyName;
+    public function __construct($maxSize = Values::NONE) {
         $this->options['maxSize'] = $maxSize;
-    }
-
-    /**
-     * A user-provided string that identifies this queue.
-     * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
-     * @return $this Fluent Builder
-     */
-    public function setFriendlyName($friendlyName) {
-        $this->options['friendlyName'] = $friendlyName;
-        return $this;
     }
 
     /**
      * The upper limit of calls allowed to be in the queue. The default is 100. The maximum is 1000.
      * 
-     * @param string $maxSize The max number of calls allowed in the queue
+     * @param integer $maxSize The max number of calls allowed in the queue
      * @return $this Fluent Builder
      */
     public function setMaxSize($maxSize) {

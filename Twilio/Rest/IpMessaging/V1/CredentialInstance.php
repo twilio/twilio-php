@@ -44,8 +44,8 @@ class CredentialInstance extends InstanceResource {
             'friendlyName' => $payload['friendly_name'],
             'type' => $payload['type'],
             'sandbox' => $payload['sandbox'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         

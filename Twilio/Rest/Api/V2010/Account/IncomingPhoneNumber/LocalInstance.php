@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string addressRequirements
  * @property string apiVersion
- * @property string beta
+ * @property boolean beta
  * @property string capabilities
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -32,9 +32,10 @@ use Twilio\Version;
  * @property string smsUrl
  * @property string statusCallback
  * @property string statusCallbackMethod
+ * @property string trunkSid
  * @property string uri
  * @property string voiceApplicationSid
- * @property string voiceCallerIdLookup
+ * @property boolean voiceCallerIdLookup
  * @property string voiceFallbackMethod
  * @property string voiceFallbackUrl
  * @property string voiceMethod
@@ -60,8 +61,8 @@ class LocalInstance extends InstanceResource {
             'apiVersion' => $payload['api_version'],
             'beta' => $payload['beta'],
             'capabilities' => $payload['capabilities'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'phoneNumber' => $payload['phone_number'],
             'sid' => $payload['sid'],
@@ -72,6 +73,7 @@ class LocalInstance extends InstanceResource {
             'smsUrl' => $payload['sms_url'],
             'statusCallback' => $payload['status_callback'],
             'statusCallbackMethod' => $payload['status_callback_method'],
+            'trunkSid' => $payload['trunk_sid'],
             'uri' => $payload['uri'],
             'voiceApplicationSid' => $payload['voice_application_sid'],
             'voiceCallerIdLookup' => $payload['voice_caller_id_lookup'],

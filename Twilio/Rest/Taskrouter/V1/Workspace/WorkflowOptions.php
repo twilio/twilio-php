@@ -19,7 +19,7 @@ abstract class WorkflowOptions {
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @param string $configuration The configuration
-     * @param string $taskReservationTimeout The task_reservation_timeout
+     * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return UpdateWorkflowOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
@@ -38,7 +38,7 @@ abstract class WorkflowOptions {
      * @param string $assignmentCallbackUrl The assignment_callback_url
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
-     * @param string $taskReservationTimeout The task_reservation_timeout
+     * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return CreateWorkflowOptions Options builder
      */
     public static function create($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
@@ -53,7 +53,7 @@ class UpdateWorkflowOptions extends Options {
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @param string $configuration The configuration
-     * @param string $taskReservationTimeout The task_reservation_timeout
+     * @param integer $taskReservationTimeout The task_reservation_timeout
      */
     public function __construct($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -111,7 +111,7 @@ class UpdateWorkflowOptions extends Options {
     /**
      * The task_reservation_timeout
      * 
-     * @param string $taskReservationTimeout The task_reservation_timeout
+     * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return $this Fluent Builder
      */
     public function setTaskReservationTimeout($taskReservationTimeout) {
@@ -175,7 +175,7 @@ class CreateWorkflowOptions extends Options {
      * @param string $assignmentCallbackUrl The assignment_callback_url
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
-     * @param string $taskReservationTimeout The task_reservation_timeout
+     * @param integer $taskReservationTimeout The task_reservation_timeout
      */
     public function __construct($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
@@ -209,7 +209,7 @@ class CreateWorkflowOptions extends Options {
     /**
      * The task_reservation_timeout
      * 
-     * @param string $taskReservationTimeout The task_reservation_timeout
+     * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return $this Fluent Builder
      */
     public function setTaskReservationTimeout($taskReservationTimeout) {

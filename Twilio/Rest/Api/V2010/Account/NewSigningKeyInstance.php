@@ -38,8 +38,8 @@ class NewSigningKeyInstance extends InstanceResource {
         $this->properties = array(
             'sid' => $payload['sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'secret' => $payload['secret'],
         );
         

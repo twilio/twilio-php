@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -76,7 +77,7 @@ class EventList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EventInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -93,11 +94,11 @@ class EventList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'EndDate' => $options['endDate'],
+            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'EventType' => $options['eventType'],
             'Minutes' => $options['minutes'],
             'ReservationSid' => $options['reservationSid'],
-            'StartDate' => $options['startDate'],
+            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'TaskQueueSid' => $options['taskQueueSid'],
             'TaskSid' => $options['taskSid'],
             'WorkerSid' => $options['workerSid'],

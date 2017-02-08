@@ -15,10 +15,11 @@ use Twilio\Options;
 use Twilio\Version;
 
 /**
- * @property string realtime
- * @property string cumulative
+ * @property array realtime
+ * @property array cumulative
  * @property string accountSid
  * @property string workspaceSid
+ * @property string url
  */
 class WorkspaceStatisticsInstance extends InstanceResource {
     /**
@@ -38,6 +39,7 @@ class WorkspaceStatisticsInstance extends InstanceResource {
             'cumulative' => $payload['cumulative'],
             'accountSid' => $payload['account_sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(

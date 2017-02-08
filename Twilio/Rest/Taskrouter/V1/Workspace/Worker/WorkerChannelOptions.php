@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class WorkerChannelOptions {
     /**
-     * @param string $capacity The capacity
-     * @param string $available The available
+     * @param integer $capacity The capacity
+     * @param boolean $available The available
      * @return UpdateWorkerChannelOptions Options builder
      */
     public static function update($capacity = Values::NONE, $available = Values::NONE) {
@@ -25,8 +25,8 @@ abstract class WorkerChannelOptions {
 
 class UpdateWorkerChannelOptions extends Options {
     /**
-     * @param string $capacity The capacity
-     * @param string $available The available
+     * @param integer $capacity The capacity
+     * @param boolean $available The available
      */
     public function __construct($capacity = Values::NONE, $available = Values::NONE) {
         $this->options['capacity'] = $capacity;
@@ -36,7 +36,7 @@ class UpdateWorkerChannelOptions extends Options {
     /**
      * The capacity
      * 
-     * @param string $capacity The capacity
+     * @param integer $capacity The capacity
      * @return $this Fluent Builder
      */
     public function setCapacity($capacity) {
@@ -47,7 +47,7 @@ class UpdateWorkerChannelOptions extends Options {
     /**
      * The available
      * 
-     * @param string $available The available
+     * @param boolean $available The available
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {

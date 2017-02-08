@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string issues
- * @property string qualityScore
+ * @property integer qualityScore
  * @property string sid
  */
 class FeedbackInstance extends InstanceResource {
@@ -40,8 +40,8 @@ class FeedbackInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'issues' => $payload['issues'],
             'qualityScore' => $payload['quality_score'],
             'sid' => $payload['sid'],
@@ -75,7 +75,7 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param string $qualityScore The quality_score
+     * @param integer $qualityScore The quality_score
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      */
@@ -98,7 +98,7 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Update the FeedbackInstance
      * 
-     * @param string $qualityScore An integer from 1 to 5
+     * @param integer $qualityScore An integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      */

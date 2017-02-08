@@ -28,18 +28,18 @@ abstract class ReservationOptions {
      * @param string $dequeuePostWorkActivitySid The dequeue_post_work_activity_sid
      * @param string $dequeueFrom The dequeue_from
      * @param string $dequeueRecord The dequeue_record
-     * @param string $dequeueTimeout The dequeue_timeout
+     * @param integer $dequeueTimeout The dequeue_timeout
      * @param string $dequeueTo The dequeue_to
      * @param string $dequeueStatusCallbackUrl The dequeue_status_callback_url
      * @param string $callFrom The call_from
      * @param string $callRecord The call_record
-     * @param string $callTimeout The call_timeout
+     * @param integer $callTimeout The call_timeout
      * @param string $callTo The call_to
      * @param string $callUrl The call_url
      * @param string $callStatusCallbackUrl The call_status_callback_url
-     * @param string $callAccept The call_accept
+     * @param boolean $callAccept The call_accept
      * @param string $redirectCallSid The redirect_call_sid
-     * @param string $redirectAccept The redirect_accept
+     * @param boolean $redirectAccept The redirect_accept
      * @param string $redirectUrl The redirect_url
      * @return UpdateReservationOptions Options builder
      */
@@ -91,18 +91,18 @@ class UpdateReservationOptions extends Options {
      * @param string $dequeuePostWorkActivitySid The dequeue_post_work_activity_sid
      * @param string $dequeueFrom The dequeue_from
      * @param string $dequeueRecord The dequeue_record
-     * @param string $dequeueTimeout The dequeue_timeout
+     * @param integer $dequeueTimeout The dequeue_timeout
      * @param string $dequeueTo The dequeue_to
      * @param string $dequeueStatusCallbackUrl The dequeue_status_callback_url
      * @param string $callFrom The call_from
      * @param string $callRecord The call_record
-     * @param string $callTimeout The call_timeout
+     * @param integer $callTimeout The call_timeout
      * @param string $callTo The call_to
      * @param string $callUrl The call_url
      * @param string $callStatusCallbackUrl The call_status_callback_url
-     * @param string $callAccept The call_accept
+     * @param boolean $callAccept The call_accept
      * @param string $redirectCallSid The redirect_call_sid
-     * @param string $redirectAccept The redirect_accept
+     * @param boolean $redirectAccept The redirect_accept
      * @param string $redirectUrl The redirect_url
      */
     public function __construct($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE) {
@@ -196,7 +196,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The dequeue_timeout
      * 
-     * @param string $dequeueTimeout The dequeue_timeout
+     * @param integer $dequeueTimeout The dequeue_timeout
      * @return $this Fluent Builder
      */
     public function setDequeueTimeout($dequeueTimeout) {
@@ -251,7 +251,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The call_timeout
      * 
-     * @param string $callTimeout The call_timeout
+     * @param integer $callTimeout The call_timeout
      * @return $this Fluent Builder
      */
     public function setCallTimeout($callTimeout) {
@@ -295,7 +295,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The call_accept
      * 
-     * @param string $callAccept The call_accept
+     * @param boolean $callAccept The call_accept
      * @return $this Fluent Builder
      */
     public function setCallAccept($callAccept) {
@@ -317,7 +317,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The redirect_accept
      * 
-     * @param string $redirectAccept The redirect_accept
+     * @param boolean $redirectAccept The redirect_accept
      * @return $this Fluent Builder
      */
     public function setRedirectAccept($redirectAccept) {

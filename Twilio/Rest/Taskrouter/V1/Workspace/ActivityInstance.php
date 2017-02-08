@@ -12,16 +12,18 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string available
+ * @property boolean available
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string sid
  * @property string workspaceSid
+ * @property string url
  */
 class ActivityInstance extends InstanceResource {
     /**
@@ -40,11 +42,12 @@ class ActivityInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'available' => $payload['available'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(
@@ -85,12 +88,12 @@ class ActivityInstance extends InstanceResource {
     /**
      * Update the ActivityInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param array|Options $options Optional Arguments
      * @return ActivityInstance Updated ActivityInstance
      */
-    public function update($friendlyName) {
+    public function update($options = array()) {
         return $this->proxy()->update(
-            $friendlyName
+            $options
         );
     }
 

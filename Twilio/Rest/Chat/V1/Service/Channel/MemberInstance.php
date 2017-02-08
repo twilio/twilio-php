@@ -12,6 +12,7 @@ namespace Twilio\Rest\Chat\V1\Service\Channel;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -23,6 +24,8 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string roleSid
+ * @property integer lastConsumedMessageIndex
+ * @property \DateTime lastConsumptionTimestamp
  * @property string url
  */
 class MemberInstance extends InstanceResource {
@@ -46,9 +49,11 @@ class MemberInstance extends InstanceResource {
             'channelSid' => $payload['channel_sid'],
             'serviceSid' => $payload['service_sid'],
             'identity' => $payload['identity'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'roleSid' => $payload['role_sid'],
+            'lastConsumedMessageIndex' => $payload['last_consumed_message_index'],
+            'lastConsumptionTimestamp' => Deserialize::dateTime($payload['last_consumption_timestamp']),
             'url' => $payload['url'],
         );
         
@@ -95,6 +100,18 @@ class MemberInstance extends InstanceResource {
      */
     public function delete() {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Update the MemberInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return MemberInstance Updated MemberInstance
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update(
+            $options
+        );
     }
 
     /**

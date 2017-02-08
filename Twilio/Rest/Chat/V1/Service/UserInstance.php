@@ -19,13 +19,20 @@ use Twilio\Version;
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
+ * @property string attributes
+ * @property string friendlyName
  * @property string roleSid
  * @property string identity
+ * @property boolean isOnline
+ * @property boolean isNotifiable
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
+ * @property array links
  * @property string url
  */
 class UserInstance extends InstanceResource {
+    protected $_userChannels = null;
+
     /**
      * Initialize the UserInstance
      * 
@@ -43,10 +50,15 @@ class UserInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'serviceSid' => $payload['service_sid'],
+            'attributes' => $payload['attributes'],
+            'friendlyName' => $payload['friendly_name'],
             'roleSid' => $payload['role_sid'],
             'identity' => $payload['identity'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'isOnline' => $payload['is_online'],
+            'isNotifiable' => $payload['is_notifiable'],
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
+            'links' => $payload['links'],
             'url' => $payload['url'],
         );
         
@@ -103,6 +115,15 @@ class UserInstance extends InstanceResource {
         return $this->proxy()->update(
             $options
         );
+    }
+
+    /**
+     * Access the userChannels
+     * 
+     * @return \Twilio\Rest\Chat\V1\Service\User\UserChannelList 
+     */
+    protected function getUserChannels() {
+        return $this->proxy()->userChannels;
     }
 
     /**

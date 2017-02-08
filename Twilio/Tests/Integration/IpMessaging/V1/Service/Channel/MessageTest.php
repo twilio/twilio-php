@@ -32,6 +32,34 @@ class MessageTest extends HolodeckTestCase {
         ));
     }
 
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "attributes": "{}",
+                "date_created": "2016-03-24T20:37:57Z",
+                "date_updated": "2016-03-24T20:37:57Z",
+                "was_edited": false,
+                "from": "system",
+                "body": "Hello",
+                "index": 0,
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -54,6 +82,62 @@ class MessageTest extends HolodeckTestCase {
         ));
     }
 
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "attributes": null,
+                "date_created": "2016-03-24T20:37:57Z",
+                "date_updated": "2016-03-24T20:37:57Z",
+                "was_edited": false,
+                "from": "system",
+                "body": "Hello",
+                "index": 0,
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages->create("body");
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithAttributesResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "attributes": "{}",
+                "date_created": "2016-03-24T20:37:57Z",
+                "date_updated": "2016-03-24T20:37:57Z",
+                "was_edited": false,
+                "from": "system",
+                "body": "Hello",
+                "index": 0,
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages->create("body");
+        
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
@@ -68,6 +152,73 @@ class MessageTest extends HolodeckTestCase {
             'get',
             'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages'
         ));
+    }
+
+    public function testReadFullResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "messages"
+                },
+                "messages": [
+                    {
+                        "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "attributes": "{}",
+                        "date_created": "2016-03-24T20:37:57Z",
+                        "date_updated": "2016-03-24T20:37:57Z",
+                        "was_edited": false,
+                        "from": "system",
+                        "body": "Hello",
+                        "index": 0,
+                        "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ]
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages->read();
+        
+        $this->assertGreaterThan(0, count($actual));
+    }
+
+    public function testReadEmptyResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "messages"
+                },
+                "messages": []
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages->read();
+        
+        $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
@@ -86,25 +237,60 @@ class MessageTest extends HolodeckTestCase {
         ));
     }
 
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        
+        $this->assertTrue($actual);
+    }
+
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
         
         try {
             $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("body");
+                                          ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
-        $values = array(
-            'Body' => "body",
-        );
-        
         $this->assertRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            null,
-            $values
+            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "attributes": "{\\"test\\": \\"test\\"}",
+                "date_created": "2016-03-24T20:37:57Z",
+                "date_updated": "2016-03-24T20:37:57Z",
+                "was_edited": false,
+                "from": "system",
+                "body": "Hello",
+                "index": 0,
+                "url": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages("IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        
+        $this->assertNotNull($actual);
     }
 }

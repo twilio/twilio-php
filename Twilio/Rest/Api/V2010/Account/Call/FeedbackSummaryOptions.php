@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class FeedbackSummaryOptions {
     /**
-     * @param string $includeSubaccounts The include_subaccounts
+     * @param boolean $includeSubaccounts The include_subaccounts
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @return CreateFeedbackSummaryOptions Options builder
@@ -26,7 +26,7 @@ abstract class FeedbackSummaryOptions {
 
 class CreateFeedbackSummaryOptions extends Options {
     /**
-     * @param string $includeSubaccounts The include_subaccounts
+     * @param boolean $includeSubaccounts The include_subaccounts
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      */
@@ -39,7 +39,7 @@ class CreateFeedbackSummaryOptions extends Options {
     /**
      * The include_subaccounts
      * 
-     * @param string $includeSubaccounts The include_subaccounts
+     * @param boolean $includeSubaccounts The include_subaccounts
      * @return $this Fluent Builder
      */
     public function setIncludeSubaccounts($includeSubaccounts) {

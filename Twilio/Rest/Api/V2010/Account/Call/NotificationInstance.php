@@ -27,11 +27,11 @@ use Twilio\Version;
  * @property string moreInfo
  * @property string requestMethod
  * @property string requestUrl
- * @property string sid
- * @property string uri
  * @property string requestVariables
  * @property string responseBody
  * @property string responseHeaders
+ * @property string sid
+ * @property string uri
  */
 class NotificationInstance extends InstanceResource {
     /**
@@ -52,11 +52,11 @@ class NotificationInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'callSid' => $payload['call_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'errorCode' => $payload['error_code'],
             'log' => $payload['log'],
-            'messageDate' => Deserialize::iso8601DateTime($payload['message_date']),
+            'messageDate' => Deserialize::dateTime($payload['message_date']),
             'messageText' => $payload['message_text'],
             'moreInfo' => $payload['more_info'],
             'requestMethod' => $payload['request_method'],

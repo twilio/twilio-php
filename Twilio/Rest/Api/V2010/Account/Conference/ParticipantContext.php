@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -71,8 +72,8 @@ class ParticipantContext extends InstanceContext {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Muted' => $options['muted'],
-            'Hold' => $options['hold'],
+            'Muted' => Serialize::booleanToString($options['muted']),
+            'Hold' => Serialize::booleanToString($options['hold']),
             'HoldUrl' => $options['holdUrl'],
             'HoldMethod' => $options['holdMethod'],
         ));

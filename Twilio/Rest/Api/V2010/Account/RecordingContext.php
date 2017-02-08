@@ -11,16 +11,20 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList;
 use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList transcriptions
+ * @property \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList addOnResults
  * @method \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionContext transcriptions(string $sid)
+ * @method \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext addOnResults(string $sid)
  */
 class RecordingContext extends InstanceContext {
     protected $_transcriptions = null;
+    protected $_addOnResults = null;
 
     /**
      * Initialize the RecordingContext
@@ -88,6 +92,23 @@ class RecordingContext extends InstanceContext {
         }
         
         return $this->_transcriptions;
+    }
+
+    /**
+     * Access the addOnResults
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList 
+     */
+    protected function getAddOnResults() {
+        if (!$this->_addOnResults) {
+            $this->_addOnResults = new AddOnResultList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+        
+        return $this->_addOnResults;
     }
 
     /**

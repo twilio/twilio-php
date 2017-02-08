@@ -12,7 +12,6 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -23,16 +22,17 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property \DateTime dateSent
  * @property string direction
- * @property string errorCode
+ * @property integer errorCode
  * @property string errorMessage
  * @property string from
+ * @property string messagingServiceSid
  * @property string numMedia
  * @property string numSegments
  * @property string price
  * @property string priceUnit
  * @property string sid
  * @property string status
- * @property string subresourceUris
+ * @property array subresourceUris
  * @property string to
  * @property string uri
  */
@@ -57,13 +57,14 @@ class MessageInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'body' => $payload['body'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'dateSent' => Deserialize::iso8601DateTime($payload['date_sent']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
+            'dateSent' => Deserialize::dateTime($payload['date_sent']),
             'direction' => $payload['direction'],
             'errorCode' => $payload['error_code'],
             'errorMessage' => $payload['error_message'],
             'from' => $payload['from'],
+            'messagingServiceSid' => $payload['messaging_service_sid'],
             'numMedia' => $payload['num_media'],
             'numSegments' => $payload['num_segments'],
             'price' => $payload['price'],
@@ -121,12 +122,12 @@ class MessageInstance extends InstanceResource {
     /**
      * Update the MessageInstance
      * 
-     * @param array|Options $options Optional Arguments
+     * @param string $body The body
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($options = array()) {
+    public function update($body) {
         return $this->proxy()->update(
-            $options
+            $body
         );
     }
 

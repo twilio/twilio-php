@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string duration
  * @property string sid
+ * @property string price
  * @property string uri
  */
 class RecordingInstance extends InstanceResource {
@@ -43,10 +44,11 @@ class RecordingInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'callSid' => $payload['call_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'duration' => $payload['duration'],
             'sid' => $payload['sid'],
+            'price' => $payload['price'],
             'uri' => $payload['uri'],
         );
         

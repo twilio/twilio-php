@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string voiceStatusCallbackMethod
  * @property string voiceStatusCallbackUrl
  * @property string voiceUrl
+ * @property array subresourceUris
  */
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings = null;
@@ -54,8 +55,8 @@ class DomainInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'apiVersion' => $payload['api_version'],
             'authType' => $payload['auth_type'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'domainName' => $payload['domain_name'],
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
@@ -66,6 +67,7 @@ class DomainInstance extends InstanceResource {
             'voiceStatusCallbackMethod' => $payload['voice_status_callback_method'],
             'voiceStatusCallbackUrl' => $payload['voice_status_callback_url'],
             'voiceUrl' => $payload['voice_url'],
+            'subresourceUris' => $payload['subresource_uris'],
         );
         
         $this->solution = array(

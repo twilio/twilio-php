@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -89,6 +90,7 @@ class AddressContext extends InstanceContext {
             'City' => $options['city'],
             'Region' => $options['region'],
             'PostalCode' => $options['postalCode'],
+            'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
         ));
         
         $payload = $this->version->update(

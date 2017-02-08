@@ -36,4 +36,24 @@ class ValidationRequestTest extends HolodeckTestCase {
             $values
         ));
     }
+
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "friendly_name",
+                "phone_number": "+18001234567",
+                "validation_code": 100
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->validationRequests->create("+987654321");
+        
+        $this->assertNotNull($actual);
+    }
 }

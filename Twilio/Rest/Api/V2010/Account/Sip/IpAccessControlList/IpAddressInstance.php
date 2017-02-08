@@ -46,8 +46,8 @@ class IpAddressInstance extends InstanceResource {
             'friendlyName' => $payload['friendly_name'],
             'ipAddress' => $payload['ip_address'],
             'ipAccessControlListSid' => $payload['ip_access_control_list_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'uri' => $payload['uri'],
         );
         

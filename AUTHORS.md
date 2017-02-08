@@ -18,10 +18,10 @@ A huge thanks to all of our contributors:
 - Bulat Shakirzyanov 
 - Carlos Diaz-Padron 
 - Chris Barr 
-- D Keith Casey Jr 
 - D. Keith Casey, Jr. 
 - Doug Black 
 - Elliot Lings 
+- Evan Fossier
 - Jarod Reyes 
 - Jen Li 
 - Jingming Niu 

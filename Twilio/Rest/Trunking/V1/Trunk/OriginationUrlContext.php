@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -78,7 +79,7 @@ class OriginationUrlContext extends InstanceContext {
         $data = Values::of(array(
             'Weight' => $options['weight'],
             'Priority' => $options['priority'],
-            'Enabled' => $options['enabled'],
+            'Enabled' => Serialize::booleanToString($options['enabled']),
             'FriendlyName' => $options['friendlyName'],
             'SipUrl' => $options['sipUrl'],
         ));

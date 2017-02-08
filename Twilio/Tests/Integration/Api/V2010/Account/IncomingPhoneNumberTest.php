@@ -47,6 +47,8 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 },
                 "date_created": "Thu, 30 Jul 2015 23:19:04 +0000",
                 "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
+                "emergency_status": "Inactive",
+                "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "(808) 925-5327",
                 "phone_number": "+18089255327",
                 "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -106,6 +108,8 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 },
                 "date_created": "Thu, 30 Jul 2015 23:19:04 +0000",
                 "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
+                "emergency_status": "Active",
+                "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "(808) 925-5327",
                 "phone_number": "+18089255327",
                 "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -196,6 +200,8 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                         },
                         "date_created": "Thu, 30 Jul 2015 23:19:04 +0000",
                         "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
+                        "emergency_status": "Active",
+                        "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "friendly_name": "(808) 925-5327",
                         "phone_number": "+18089255327",
                         "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -279,7 +285,7 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -293,6 +299,8 @@ class IncomingPhoneNumberTest extends HolodeckTestCase {
                 },
                 "date_created": "Thu, 30 Jul 2015 23:19:04 +0000",
                 "date_updated": "Thu, 30 Jul 2015 23:19:04 +0000",
+                "emergency_status": "Active",
+                "emergency_address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "(808) 925-5327",
                 "phone_number": "+18089255327",
                 "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

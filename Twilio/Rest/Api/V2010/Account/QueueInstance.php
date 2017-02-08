@@ -17,12 +17,12 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string averageWaitTime
- * @property string currentSize
+ * @property integer averageWaitTime
+ * @property integer currentSize
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
- * @property string maxSize
+ * @property integer maxSize
  * @property string sid
  * @property string uri
  */
@@ -46,8 +46,8 @@ class QueueInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'averageWaitTime' => $payload['average_wait_time'],
             'currentSize' => $payload['current_size'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'maxSize' => $payload['max_size'],
             'sid' => $payload['sid'],

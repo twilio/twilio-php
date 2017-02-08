@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Trunking\V1\Trunk;
 
 use Twilio\ListResource;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -35,9 +36,9 @@ class OriginationUrlList extends ListResource {
     /**
      * Create a new OriginationUrlInstance
      * 
-     * @param string $weight The weight
-     * @param string $priority The priority
-     * @param string $enabled The enabled
+     * @param integer $weight The weight
+     * @param integer $priority The priority
+     * @param boolean $enabled The enabled
      * @param string $friendlyName The friendly_name
      * @param string $sipUrl The sip_url
      * @return OriginationUrlInstance Newly created OriginationUrlInstance
@@ -46,7 +47,7 @@ class OriginationUrlList extends ListResource {
         $data = Values::of(array(
             'Weight' => $weight,
             'Priority' => $priority,
-            'Enabled' => $enabled,
+            'Enabled' => Serialize::booleanToString($enabled),
             'FriendlyName' => $friendlyName,
             'SipUrl' => $sipUrl,
         ));
@@ -106,7 +107,7 @@ class OriginationUrlList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return OriginationUrlInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 

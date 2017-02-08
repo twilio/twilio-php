@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class WorkerStatisticsOptions {
     /**
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      * @return FetchWorkerStatisticsOptions Options builder
@@ -26,7 +26,7 @@ abstract class WorkerStatisticsOptions {
 
 class FetchWorkerStatisticsOptions extends Options {
     /**
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      */
@@ -39,7 +39,7 @@ class FetchWorkerStatisticsOptions extends Options {
     /**
      * The minutes
      * 
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {

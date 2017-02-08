@@ -22,16 +22,19 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
- * @property string maxReservedWorkers
+ * @property integer maxReservedWorkers
  * @property string reservationActivitySid
  * @property string reservationActivityName
  * @property string sid
  * @property string targetWorkers
+ * @property string taskOrder
  * @property string url
  * @property string workspaceSid
+ * @property array links
  */
 class TaskQueueInstance extends InstanceResource {
-    protected $_statistics = null;
+    protected $_taskQueuesStatistics = null;
+    protected $_taskQueueStatistics = null;
 
     /**
      * Initialize the TaskQueueInstance
@@ -50,16 +53,18 @@ class TaskQueueInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'assignmentActivitySid' => $payload['assignment_activity_sid'],
             'assignmentActivityName' => $payload['assignment_activity_name'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'maxReservedWorkers' => $payload['max_reserved_workers'],
             'reservationActivitySid' => $payload['reservation_activity_sid'],
             'reservationActivityName' => $payload['reservation_activity_name'],
             'sid' => $payload['sid'],
             'targetWorkers' => $payload['target_workers'],
+            'taskOrder' => $payload['task_order'],
             'url' => $payload['url'],
             'workspaceSid' => $payload['workspace_sid'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(
@@ -119,12 +124,21 @@ class TaskQueueInstance extends InstanceResource {
     }
 
     /**
-     * Access the statistics
+     * Access the taskQueuesStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
+     */
+    protected function getTaskQueuesStatistics() {
+        return $this->proxy()->taskQueuesStatistics;
+    }
+
+    /**
+     * Access the taskQueueStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
-    protected function getStatistics() {
-        return $this->proxy()->statistics;
+    protected function getTaskQueueStatistics() {
+        return $this->proxy()->taskQueueStatistics;
     }
 
     /**

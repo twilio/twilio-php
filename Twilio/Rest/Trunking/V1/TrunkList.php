@@ -11,6 +11,7 @@ namespace Twilio\Rest\Trunking\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -45,7 +46,7 @@ class TrunkList extends ListResource {
             'DisasterRecoveryUrl' => $options['disasterRecoveryUrl'],
             'DisasterRecoveryMethod' => $options['disasterRecoveryMethod'],
             'Recording' => $options['recording'],
-            'Secure' => $options['secure'],
+            'Secure' => Serialize::booleanToString($options['secure']),
         ));
         
         $payload = $this->version->create(
@@ -102,7 +103,7 @@ class TrunkList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TrunkInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 

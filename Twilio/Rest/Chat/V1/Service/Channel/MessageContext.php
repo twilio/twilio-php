@@ -72,15 +72,14 @@ class MessageContext extends InstanceContext {
     /**
      * Update the MessageInstance
      * 
-     * @param string $body The body
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($body, $options = array()) {
+    public function update($options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Body' => $body,
+            'Body' => $options['body'],
             'Attributes' => $options['attributes'],
         ));
         

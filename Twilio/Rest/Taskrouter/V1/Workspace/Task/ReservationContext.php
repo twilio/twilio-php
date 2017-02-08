@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Task;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -85,9 +86,9 @@ class ReservationContext extends InstanceContext {
             'CallTo' => $options['callTo'],
             'CallUrl' => $options['callUrl'],
             'CallStatusCallbackUrl' => $options['callStatusCallbackUrl'],
-            'CallAccept' => $options['callAccept'],
+            'CallAccept' => Serialize::booleanToString($options['callAccept']),
             'RedirectCallSid' => $options['redirectCallSid'],
-            'RedirectAccept' => $options['redirectAccept'],
+            'RedirectAccept' => Serialize::booleanToString($options['redirectAccept']),
             'RedirectUrl' => $options['redirectUrl'],
         ));
         

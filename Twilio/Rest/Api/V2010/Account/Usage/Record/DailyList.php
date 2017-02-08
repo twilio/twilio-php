@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Usage\Record;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -77,7 +78,7 @@ class DailyList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DailyInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -95,12 +96,8 @@ class DailyList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Category' => $options['category'],
-            'StartDate<' => $options['startDateBefore'],
-            'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startDateAfter'],
-            'EndDate<' => $options['endDateBefore'],
-            'EndDate' => $options['endDate'],
-            'EndDate>' => $options['endDateAfter'],
+            'StartDate' => Serialize::iso8601Date($options['startDate']),
+            'EndDate' => Serialize::iso8601Date($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

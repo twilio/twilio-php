@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Conference\ParticipantList;
 use Twilio\Values;
 use Twilio\Version;
@@ -54,6 +55,34 @@ class ConferenceContext extends InstanceContext {
             'GET',
             $this->uri,
             $params
+        );
+        
+        return new ConferenceInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['sid']
+        );
+    }
+
+    /**
+     * Update the ConferenceInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return ConferenceInstance Updated ConferenceInstance
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'Status' => $options['status'],
+        ));
+        
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
         );
         
         return new ConferenceInstance(

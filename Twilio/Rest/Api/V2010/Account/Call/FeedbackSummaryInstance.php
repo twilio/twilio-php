@@ -16,12 +16,12 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string callCount
- * @property string callFeedbackCount
+ * @property integer callCount
+ * @property integer callFeedbackCount
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property \DateTime endDate
- * @property string includeSubaccounts
+ * @property boolean includeSubaccounts
  * @property string issues
  * @property string qualityScoreAverage
  * @property string qualityScoreMedian
@@ -49,16 +49,16 @@ class FeedbackSummaryInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'callCount' => $payload['call_count'],
             'callFeedbackCount' => $payload['call_feedback_count'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
-            'endDate' => Deserialize::iso8601DateTime($payload['end_date']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
+            'endDate' => Deserialize::dateTime($payload['end_date']),
             'includeSubaccounts' => $payload['include_subaccounts'],
             'issues' => $payload['issues'],
             'qualityScoreAverage' => $payload['quality_score_average'],
             'qualityScoreMedian' => $payload['quality_score_median'],
             'qualityScoreStandardDeviation' => $payload['quality_score_standard_deviation'],
             'sid' => $payload['sid'],
-            'startDate' => Deserialize::iso8601DateTime($payload['start_date']),
+            'startDate' => Deserialize::dateTime($payload['start_date']),
             'status' => $payload['status'],
         );
         

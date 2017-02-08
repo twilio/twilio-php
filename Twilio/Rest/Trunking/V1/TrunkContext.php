@@ -16,6 +16,7 @@ use Twilio\Rest\Trunking\V1\Trunk\CredentialListList;
 use Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList;
 use Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList;
 use Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -98,7 +99,7 @@ class TrunkContext extends InstanceContext {
             'DisasterRecoveryUrl' => $options['disasterRecoveryUrl'],
             'DisasterRecoveryMethod' => $options['disasterRecoveryMethod'],
             'Recording' => $options['recording'],
-            'Secure' => $options['secure'],
+            'Secure' => Serialize::booleanToString($options['secure']),
         ));
         
         $payload = $this->version->update(

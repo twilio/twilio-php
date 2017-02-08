@@ -74,7 +74,7 @@ class QueueList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return QueueInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = Values::NONE) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
@@ -106,14 +106,16 @@ class QueueList extends ListResource {
     /**
      * Create a new QueueInstance
      * 
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             queue.
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Newly created QueueInstance
      */
-    public function create($options = array()) {
+    public function create($friendlyName, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
+            'FriendlyName' => $friendlyName,
             'MaxSize' => $options['maxSize'],
         ));
         

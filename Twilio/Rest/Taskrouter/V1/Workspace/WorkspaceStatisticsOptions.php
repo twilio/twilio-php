@@ -14,9 +14,9 @@ use Twilio\Values;
 
 abstract class WorkspaceStatisticsOptions {
     /**
-     * @param string $minutes The minutes
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param integer $minutes The minutes
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @return FetchWorkspaceStatisticsOptions Options builder
      */
     public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -26,9 +26,9 @@ abstract class WorkspaceStatisticsOptions {
 
 class FetchWorkspaceStatisticsOptions extends Options {
     /**
-     * @param string $minutes The minutes
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param integer $minutes The minutes
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      */
     public function __construct($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['minutes'] = $minutes;
@@ -39,7 +39,7 @@ class FetchWorkspaceStatisticsOptions extends Options {
     /**
      * The minutes
      * 
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -50,7 +50,7 @@ class FetchWorkspaceStatisticsOptions extends Options {
     /**
      * The start_date
      * 
-     * @param string $startDate The start_date
+     * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -61,7 +61,7 @@ class FetchWorkspaceStatisticsOptions extends Options {
     /**
      * The end_date
      * 
-     * @param string $endDate The end_date
+     * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

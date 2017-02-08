@@ -20,7 +20,8 @@ use Twilio\Version;
  * @property string phoneNumber
  * @property string nationalFormat
  * @property string carrier
- * @property string addOns
+ * @property array addOns
+ * @property string url
  */
 class PhoneNumberInstance extends InstanceResource {
     /**
@@ -42,6 +43,7 @@ class PhoneNumberInstance extends InstanceResource {
             'nationalFormat' => $payload['national_format'],
             'carrier' => $payload['carrier'],
             'addOns' => $payload['add_ons'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(

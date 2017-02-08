@@ -18,7 +18,7 @@ use Twilio\Version;
 /**
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string pin
+ * @property integer pin
  * @property string accountSid
  * @property string phoneNumber
  * @property string applicationSid
@@ -45,8 +45,8 @@ class SandboxInstance extends InstanceResource {
         
         // Marshaled Properties
         $this->properties = array(
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'pin' => $payload['pin'],
             'accountSid' => $payload['account_sid'],
             'phoneNumber' => $payload['phone_number'],

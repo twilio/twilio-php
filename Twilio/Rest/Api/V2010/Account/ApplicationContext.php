@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -84,7 +85,7 @@ class ApplicationContext extends InstanceContext {
             'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'VoiceCallerIdLookup' => $options['voiceCallerIdLookup'],
+            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
             'SmsUrl' => $options['smsUrl'],
             'SmsMethod' => $options['smsMethod'],
             'SmsFallbackUrl' => $options['smsFallbackUrl'],

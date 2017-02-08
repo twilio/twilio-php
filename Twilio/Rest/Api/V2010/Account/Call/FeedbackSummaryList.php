@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -37,8 +38,8 @@ class FeedbackSummaryList extends ListResource {
     /**
      * Create a new FeedbackSummaryInstance
      * 
-     * @param string $startDate The start_date
-     * @param string $endDate The end_date
+     * @param \DateTime $startDate The start_date
+     * @param \DateTime $endDate The end_date
      * @param array|Options $options Optional Arguments
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      */
@@ -46,9 +47,9 @@ class FeedbackSummaryList extends ListResource {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'StartDate' => $startDate,
-            'EndDate' => $endDate,
-            'IncludeSubaccounts' => $options['includeSubaccounts'],
+            'StartDate' => Serialize::iso8601Date($startDate),
+            'EndDate' => Serialize::iso8601Date($endDate),
+            'IncludeSubaccounts' => Serialize::booleanToString($options['includeSubaccounts']),
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ));
