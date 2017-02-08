@@ -21,7 +21,7 @@ abstract class MessageOptions {
      * @param string $statusCallback URL Twilio will request when the status changes
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The max_price
-     * @param string $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback The provide_feedback
      * @return CreateMessageOptions Options builder
      */
     public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE) {
@@ -39,14 +39,6 @@ abstract class MessageOptions {
     public static function read($to = Values::NONE, $from = Values::NONE, $dateSentBefore = Values::NONE, $dateSent = Values::NONE, $dateSentAfter = Values::NONE) {
         return new ReadMessageOptions($to, $from, $dateSentBefore, $dateSent, $dateSentAfter);
     }
-
-    /**
-     * @param string $body The body
-     * @return UpdateMessageOptions Options builder
-     */
-    public static function update($body = Values::NONE) {
-        return new UpdateMessageOptions($body);
-    }
 }
 
 class CreateMessageOptions extends Options {
@@ -58,7 +50,7 @@ class CreateMessageOptions extends Options {
      * @param string $statusCallback URL Twilio will request when the status changes
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The max_price
-     * @param string $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback The provide_feedback
      */
     public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE) {
         $this->options['from'] = $from;
@@ -151,7 +143,7 @@ class CreateMessageOptions extends Options {
     /**
      * The provide_feedback
      * 
-     * @param string $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback The provide_feedback
      * @return $this Fluent Builder
      */
     public function setProvideFeedback($provideFeedback) {
@@ -259,40 +251,5 @@ class ReadMessageOptions extends Options {
             }
         }
         return '[Twilio.Api.V2010.ReadMessageOptions ' . implode(' ', $options) . ']';
-    }
-}
-
-class UpdateMessageOptions extends Options {
-    /**
-     * @param string $body The body
-     */
-    public function __construct($body = Values::NONE) {
-        $this->options['body'] = $body;
-    }
-
-    /**
-     * The body
-     * 
-     * @param string $body The body
-     * @return $this Fluent Builder
-     */
-    public function setBody($body) {
-        $this->options['body'] = $body;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     * 
-     * @return string Machine friendly representation
-     */
-    public function __toString() {
-        $options = array();
-        foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Api.V2010.UpdateMessageOptions ' . implode(' ', $options) . ']';
     }
 }

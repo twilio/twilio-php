@@ -1,6 +1,73 @@
 twilio-php Changelog
 ====================
 
+[2017-02-01] Version 5.5.0
+-------------------------
+Breaking Changes, refer to [Upgrade Guide][upgrade]
+
+ - Fix broken default page size for all reads, thanks @rtek! Issue [#388] (https://github.com/twilio/twilio-php/issues/388)
+    - Credential List Mappings, IP ACL Mappings, SIP Domains.
+ - Fix incorrect types documentation of `links`/`subresourceUri` fields on various resources. Was incorrectly documented as string, actual type was an array.
+ - Fix some properties incorrectly documented as `string` when actually were `array` types.
+ - Fix boolean parameters did not accept boolean values, now accept both boolean and strings for backwards compatibility.
+ - Add `emergencyEnabled` field to Addresses.
+ - Add `price` and `callSid` fields to Recordings.
+    - Allow filtering recordings list by call sid.
+ - Add `trunkSid`, `emergencyStatus`, and `emergencyAddressSid` fields to IncomingPhoneNumbers.
+ - Add `messagingServiceSid` field to Messages.
+ - Add `url` and/or `links` fields to various resources which were missing them.
+    - Lookups PhoneNumber, Monitor Events.
+ - Add `subresourceUri` fields to resources where missing.
+ - Accept DateTime inputs for date parameters for various resources, previously expected strings.
+ - Remove `uri` field from Pricing Phone Number Countries resource (backwards incompatible).
+ - Properly deserialize date times for various resources (backwards incompatible).
+ - Remove library support for date inquality for resources that don't support them (backwards incompatible).
+ - Message `body` parameter now required on update (backwards incompatible).
+ - Require `friendlyName` on Queue creation (backwards incompatible).
+
+ - Taskrouter
+    - Add `url` and/or `links` fields to resources where missing.
+        - Activities, Reservations, TaskQueue Statistics, WorkerStatistics, WorkersStatistics, Worker, Workflow, WorkflowStatistics, WorkspaceStatistics, Tasks, TaskQueues, Workspaces.
+    - Add `addons`, `taskQueueFriendlyName`, `workflowFriendlyName` fields to Tasks.
+    - Add `taskOrder` field to TaskQueues, allow updating `taskOrder`.
+    - Add `prioritizeQueueOrder` field to Workspace.
+    - Allow filtering Tasks list by `evaluateTaskAttributes`, `ordering`, `hasAddons`.
+    - Disallow filtering Tasks list by `taskChannel`, was never supported.
+    - Allow filtering TaskQueues list by `workerSid` and `taskOrder`.
+    - Allow updating `prioritizeQueueOrder` on Workspaces.
+    - Demote `friendlyName` to optional parameter when updating Activities (backwards incompatible).
+    - Demote `available` to optional parameter when creating Activities (backwards incompatible).
+    - Demote `workflowSid` and `attributes` to optional parameters when creating a Task (backwards incompatible).
+    - Remove `friendlyName` as optional parameter when fetching Task Queue Statistics (backwards incompatible).
+    - WorkspaceStatistics now take `DateTime` objects when filtering by `startDate` and `endDate` (backwards incompatible).
+ 
+ - Chat
+    - Add `Secret` field to Chat credentials and allow setting on create and update.
+    - Add Channel Invite resource.
+    - Add `lastConsumedMessageIndex` and `lastConsumptionTimestamp` fields to Channel Members.
+    - `Body` parameter no longer required for updating a message.
+    - Add `attributes` and `index` fields to Messages.
+    - Add `membersCount` and `messagesCount` to Channels.
+    - Add UserChannel resource.
+    - Add `attributes`, `friendlyName`, `isOnline`, `isNotifiable`, `links` to Users.
+    - Add `reachabilityEnabled`, `preWebhookUrl`, `postWebhookUrl`, `webhookMethod`, `webhookFilters`, `notifications` to Services.
+    - Fix webhooks, notifications updating on Service by separating into individual parameters.
+    - Remove ability to update `type` on Channels, was never supported by api (backwards incompatible).
+    - Demote update Message `body` to optional parameter (backwards incompatible).
+
+ - Conferences
+    - Add `status` field to Participants.
+    - Add ability to add/remove Participants via the API.
+    - Add ability to end Conferences via the API.
+    - Add `region` and `subresourceUri` fields to Conference.
+ 
+ - Marketplace
+    - Add resources for Recording AddOns.
+        - AddOnResults.
+        - AddOnResultPayloads.
+    - Add `getAddOnResults` helper to Recordings.
+    
+
 [2016-10-12] Version 5.4.2
 --------------------------
 

@@ -16,10 +16,11 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string cumulative
- * @property string realtime
+ * @property array cumulative
+ * @property array realtime
  * @property string taskQueueSid
  * @property string workspaceSid
+ * @property string url
  */
 class TaskQueueStatisticsInstance extends InstanceResource {
     /**
@@ -41,6 +42,7 @@ class TaskQueueStatisticsInstance extends InstanceResource {
             'realtime' => $payload['realtime'],
             'taskQueueSid' => $payload['task_queue_sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
         );
         
         $this->solution = array(

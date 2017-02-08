@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class WorkersStatisticsOptions {
     /**
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      * @param string $taskQueueSid The task_queue_sid
@@ -29,7 +29,7 @@ abstract class WorkersStatisticsOptions {
 
 class FetchWorkersStatisticsOptions extends Options {
     /**
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      * @param string $taskQueueSid The task_queue_sid
@@ -48,7 +48,7 @@ class FetchWorkersStatisticsOptions extends Options {
     /**
      * The minutes
      * 
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {

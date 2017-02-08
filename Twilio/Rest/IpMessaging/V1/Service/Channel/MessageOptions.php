@@ -23,11 +23,12 @@ abstract class MessageOptions {
     }
 
     /**
+     * @param string $body The body
      * @param string $attributes The attributes
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($attributes = Values::NONE) {
-        return new UpdateMessageOptions($attributes);
+    public static function update($body = Values::NONE, $attributes = Values::NONE) {
+        return new UpdateMessageOptions($body, $attributes);
     }
 }
 
@@ -81,10 +82,23 @@ class CreateMessageOptions extends Options {
 
 class UpdateMessageOptions extends Options {
     /**
+     * @param string $body The body
      * @param string $attributes The attributes
      */
-    public function __construct($attributes = Values::NONE) {
+    public function __construct($body = Values::NONE, $attributes = Values::NONE) {
+        $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
+    }
+
+    /**
+     * The body
+     * 
+     * @param string $body The body
+     * @return $this Fluent Builder
+     */
+    public function setBody($body) {
+        $this->options['body'] = $body;
+        return $this;
     }
 
     /**

@@ -40,8 +40,8 @@ class OutgoingCallerIdInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'sid' => $payload['sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'accountSid' => $payload['account_sid'],
             'phoneNumber' => $payload['phone_number'],

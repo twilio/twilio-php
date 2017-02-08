@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -76,7 +77,7 @@ class ActivityList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ActivityInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -113,13 +114,15 @@ class ActivityList extends ListResource {
      * Create a new ActivityInstance
      * 
      * @param string $friendlyName The friendly_name
-     * @param string $available The available
+     * @param array|Options $options Optional Arguments
      * @return ActivityInstance Newly created ActivityInstance
      */
-    public function create($friendlyName, $available) {
+    public function create($friendlyName, $options = array()) {
+        $options = new Values($options);
+        
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
-            'Available' => $available,
+            'Available' => Serialize::booleanToString($options['available']),
         ));
         
         $payload = $this->version->create(

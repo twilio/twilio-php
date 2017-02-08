@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -45,10 +46,9 @@ class TaskQueueStatisticsContext extends InstanceContext {
         $options = new Values($options);
         
         $params = Values::of(array(
-            'EndDate' => $options['endDate'],
-            'FriendlyName' => $options['friendlyName'],
+            'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'Minutes' => $options['minutes'],
-            'StartDate' => $options['startDate'],
+            'StartDate' => Serialize::iso8601DateTime($options['startDate']),
         ));
         
         $payload = $this->version->fetch(

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -20,9 +21,11 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string apiVersion
  * @property string friendlyName
+ * @property string region
  * @property string sid
  * @property string status
  * @property string uri
+ * @property array subresourceUris
  */
 class ConferenceInstance extends InstanceResource {
     protected $_participants = null;
@@ -42,13 +45,15 @@ class ConferenceInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'apiVersion' => $payload['api_version'],
             'friendlyName' => $payload['friendly_name'],
+            'region' => $payload['region'],
             'sid' => $payload['sid'],
             'status' => $payload['status'],
             'uri' => $payload['uri'],
+            'subresourceUris' => $payload['subresource_uris'],
         );
         
         $this->solution = array(
@@ -83,6 +88,18 @@ class ConferenceInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the ConferenceInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return ConferenceInstance Updated ConferenceInstance
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update(
+            $options
+        );
     }
 
     /**

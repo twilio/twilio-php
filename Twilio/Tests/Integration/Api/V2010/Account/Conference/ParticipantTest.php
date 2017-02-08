@@ -45,6 +45,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
+                "status": "complete",
                 "start_conference_on_enter": true,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
@@ -87,6 +88,7 @@ class ParticipantTest extends HolodeckTestCase {
                 "end_conference_on_exit": false,
                 "muted": false,
                 "hold": false,
+                "status": "complete",
                 "start_conference_on_enter": true,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
@@ -96,6 +98,83 @@ class ParticipantTest extends HolodeckTestCase {
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->participants("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+        
+        try {
+            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->participants->create("+987654321", "+123456789");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+        
+        $values = array(
+            'From' => "+987654321",
+            'To' => "+123456789",
+        );
+        
+        $this->assertRequest(new Request(
+            'post',
+            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json',
+            null,
+            $values
+        ));
+    }
+
+    public function testCreateWithSidResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": false,
+                "status": "complete",
+                "start_conference_on_enter": true,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->participants->create("+987654321", "+123456789");
+        
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithFriendlyNameResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "date_updated": "Fri, 18 Feb 2011 21:07:19 +0000",
+                "end_conference_on_exit": false,
+                "muted": false,
+                "hold": false,
+                "status": "complete",
+                "start_conference_on_enter": true,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->participants->create("+987654321", "+123456789");
         
         $this->assertNotNull($actual);
     }
@@ -152,9 +231,7 @@ class ParticipantTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
                 "next_page_uri": null,
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "participants": [
@@ -167,13 +244,13 @@ class ParticipantTest extends HolodeckTestCase {
                         "end_conference_on_exit": false,
                         "muted": false,
                         "hold": false,
+                        "status": "complete",
                         "start_conference_on_enter": true,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],
                 "previous_page_uri": null,
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json"
             }
             '
@@ -193,15 +270,12 @@ class ParticipantTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50",
                 "next_page_uri": null,
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "participants": [],
                 "previous_page_uri": null,
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json"
             }
             '

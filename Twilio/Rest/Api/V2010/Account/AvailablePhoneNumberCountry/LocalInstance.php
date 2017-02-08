@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string postalCode
  * @property string isoCountry
  * @property string addressRequirements
- * @property string beta
+ * @property boolean beta
  * @property string capabilities
  */
 class LocalInstance extends InstanceResource {
@@ -33,9 +33,9 @@ class LocalInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid A 34 character string that uniquely identifies
-     *                           this resource.
-     * @param string $countryCode The country_code
+     * @param string $accountSid The 34 character string that uniquely identifies
+     *                           your account.
+     * @param string $countryCode The ISO Country code to lookup phone numbers for.
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {

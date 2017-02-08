@@ -25,8 +25,10 @@ use Twilio\Version;
  * @property string fallbackAssignmentCallbackUrl
  * @property string friendlyName
  * @property string sid
- * @property string taskReservationTimeout
+ * @property integer taskReservationTimeout
  * @property string workspaceSid
+ * @property string url
+ * @property array links
  */
 class WorkflowInstance extends InstanceResource {
     protected $_statistics = null;
@@ -48,14 +50,16 @@ class WorkflowInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'assignmentCallbackUrl' => $payload['assignment_callback_url'],
             'configuration' => $payload['configuration'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'documentContentType' => $payload['document_content_type'],
             'fallbackAssignmentCallbackUrl' => $payload['fallback_assignment_callback_url'],
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'taskReservationTimeout' => $payload['task_reservation_timeout'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

@@ -21,10 +21,11 @@ use Twilio\Version;
  * @property string conferenceSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property string endConferenceOnExit
- * @property string muted
- * @property string hold
- * @property string startConferenceOnEnter
+ * @property boolean endConferenceOnExit
+ * @property boolean muted
+ * @property boolean hold
+ * @property boolean startConferenceOnEnter
+ * @property string status
  * @property string uri
  */
 class ParticipantInstance extends InstanceResource {
@@ -47,12 +48,13 @@ class ParticipantInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'callSid' => $payload['call_sid'],
             'conferenceSid' => $payload['conference_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'endConferenceOnExit' => $payload['end_conference_on_exit'],
             'muted' => $payload['muted'],
             'hold' => $payload['hold'],
             'startConferenceOnEnter' => $payload['start_conference_on_enter'],
+            'status' => $payload['status'],
             'uri' => $payload['uri'],
         );
         

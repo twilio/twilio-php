@@ -19,7 +19,7 @@ abstract class TrunkOptions {
      * @param string $disasterRecoveryUrl The disaster_recovery_url
      * @param string $disasterRecoveryMethod The disaster_recovery_method
      * @param string $recording The recording
-     * @param string $secure The secure
+     * @param boolean $secure The secure
      * @return CreateTrunkOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
@@ -32,7 +32,7 @@ abstract class TrunkOptions {
      * @param string $disasterRecoveryUrl The disaster_recovery_url
      * @param string $disasterRecoveryMethod The disaster_recovery_method
      * @param string $recording The recording
-     * @param string $secure The secure
+     * @param boolean $secure The secure
      * @return UpdateTrunkOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
@@ -47,7 +47,7 @@ class CreateTrunkOptions extends Options {
      * @param string $disasterRecoveryUrl The disaster_recovery_url
      * @param string $disasterRecoveryMethod The disaster_recovery_method
      * @param string $recording The recording
-     * @param string $secure The secure
+     * @param boolean $secure The secure
      */
     public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -116,7 +116,7 @@ class CreateTrunkOptions extends Options {
     /**
      * The secure
      * 
-     * @param string $secure The secure
+     * @param boolean $secure The secure
      * @return $this Fluent Builder
      */
     public function setSecure($secure) {
@@ -147,7 +147,7 @@ class UpdateTrunkOptions extends Options {
      * @param string $disasterRecoveryUrl The disaster_recovery_url
      * @param string $disasterRecoveryMethod The disaster_recovery_method
      * @param string $recording The recording
-     * @param string $secure The secure
+     * @param boolean $secure The secure
      */
     public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -216,7 +216,7 @@ class UpdateTrunkOptions extends Options {
     /**
      * The secure
      * 
-     * @param string $secure The secure
+     * @param boolean $secure The secure
      * @return $this Fluent Builder
      */
     public function setSecure($secure) {

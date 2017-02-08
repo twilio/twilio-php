@@ -44,8 +44,8 @@ class CredentialInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'credentialListSid' => $payload['credential_list_sid'],
             'username' => $payload['username'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'uri' => $payload['uri'],
         );
         

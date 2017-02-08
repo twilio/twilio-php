@@ -41,8 +41,8 @@ class MediaInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
             'contentType' => $payload['content_type'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'parentSid' => $payload['parent_sid'],
             'sid' => $payload['sid'],
             'uri' => $payload['uri'],

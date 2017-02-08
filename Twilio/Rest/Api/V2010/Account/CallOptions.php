@@ -25,8 +25,8 @@ abstract class CallOptions {
      * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
      * @param string $sendDigits Digits to send
      * @param string $ifMachine Action to take if a machine has answered the call
-     * @param string $timeout Number of seconds to wait for an answer
-     * @param string $record Whether or not to record the Call
+     * @param integer $timeout Number of seconds to wait for an answer
+     * @param boolean $record Whether or not to record the Call
      * @param string $recordingChannels The recording_channels
      * @param string $recordingStatusCallback The recording_status_callback
      * @param string $recordingStatusCallbackMethod The
@@ -84,8 +84,8 @@ class CreateCallOptions extends Options {
      * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
      * @param string $sendDigits Digits to send
      * @param string $ifMachine Action to take if a machine has answered the call
-     * @param string $timeout Number of seconds to wait for an answer
-     * @param string $record Whether or not to record the Call
+     * @param integer $timeout Number of seconds to wait for an answer
+     * @param boolean $record Whether or not to record the Call
      * @param string $recordingChannels The recording_channels
      * @param string $recordingStatusCallback The recording_status_callback
      * @param string $recordingStatusCallbackMethod The
@@ -227,7 +227,7 @@ class CreateCallOptions extends Options {
     /**
      * The integer number of seconds that Twilio should allow the phone to ring before assuming there is no answer. Default is `60` seconds, the maximum is `999` seconds. Note, you could set this to a low value, such as `15`, to hangup before reaching an answering machine or voicemail.
      * 
-     * @param string $timeout Number of seconds to wait for an answer
+     * @param integer $timeout Number of seconds to wait for an answer
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -238,7 +238,7 @@ class CreateCallOptions extends Options {
     /**
      * Set this parameter to true to record the entirety of a phone call. The RecordingUrl will be sent to the StatusCallback URL. Defaults to false.
      * 
-     * @param string $record Whether or not to record the Call
+     * @param boolean $record Whether or not to record the Call
      * @return $this Fluent Builder
      */
     public function setRecord($record) {

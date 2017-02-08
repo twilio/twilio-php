@@ -26,12 +26,15 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
+ * @property integer membersCount
+ * @property integer messagesCount
  * @property string url
- * @property string links
+ * @property array links
  */
 class ChannelInstance extends InstanceResource {
     protected $_members = null;
     protected $_messages = null;
+    protected $_invites = null;
 
     /**
      * Initialize the ChannelInstance
@@ -54,9 +57,11 @@ class ChannelInstance extends InstanceResource {
             'uniqueName' => $payload['unique_name'],
             'attributes' => $payload['attributes'],
             'type' => $payload['type'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'createdBy' => $payload['created_by'],
+            'membersCount' => $payload['members_count'],
+            'messagesCount' => $payload['messages_count'],
             'url' => $payload['url'],
             'links' => $payload['links'],
         );
@@ -132,6 +137,15 @@ class ChannelInstance extends InstanceResource {
      */
     protected function getMessages() {
         return $this->proxy()->messages;
+    }
+
+    /**
+     * Access the invites
+     * 
+     * @return \Twilio\Rest\Chat\V1\Service\Channel\InviteList 
+     */
+    protected function getInvites() {
+        return $this->proxy()->invites;
     }
 
     /**

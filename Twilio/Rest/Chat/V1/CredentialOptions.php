@@ -17,24 +17,26 @@ abstract class CredentialOptions {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
+     * @param string $secret The secret
      * @return CreateCredentialOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE) {
-        return new CreateCredentialOptions($friendlyName, $certificate, $privateKey, $sandbox, $apiKey);
+    public static function create($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
+        return new CreateCredentialOptions($friendlyName, $certificate, $privateKey, $sandbox, $apiKey, $secret);
     }
 
     /**
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
+     * @param string $secret The secret
      * @return UpdateCredentialOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE) {
-        return new UpdateCredentialOptions($friendlyName, $certificate, $privateKey, $sandbox, $apiKey);
+    public static function update($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
+        return new UpdateCredentialOptions($friendlyName, $certificate, $privateKey, $sandbox, $apiKey, $secret);
     }
 }
 
@@ -43,15 +45,17 @@ class CreateCredentialOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
+     * @param string $secret The secret
      */
-    public function __construct($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['certificate'] = $certificate;
         $this->options['privateKey'] = $privateKey;
         $this->options['sandbox'] = $sandbox;
         $this->options['apiKey'] = $apiKey;
+        $this->options['secret'] = $secret;
     }
 
     /**
@@ -90,7 +94,7 @@ class CreateCredentialOptions extends Options {
     /**
      * The sandbox
      * 
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {
@@ -106,6 +110,17 @@ class CreateCredentialOptions extends Options {
      */
     public function setApiKey($apiKey) {
         $this->options['apiKey'] = $apiKey;
+        return $this;
+    }
+
+    /**
+     * The secret
+     * 
+     * @param string $secret The secret
+     * @return $this Fluent Builder
+     */
+    public function setSecret($secret) {
+        $this->options['secret'] = $secret;
         return $this;
     }
 
@@ -130,15 +145,17 @@ class UpdateCredentialOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @param string $certificate The certificate
      * @param string $privateKey The private_key
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @param string $apiKey The api_key
+     * @param string $secret The secret
      */
-    public function __construct($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['certificate'] = $certificate;
         $this->options['privateKey'] = $privateKey;
         $this->options['sandbox'] = $sandbox;
         $this->options['apiKey'] = $apiKey;
+        $this->options['secret'] = $secret;
     }
 
     /**
@@ -177,7 +194,7 @@ class UpdateCredentialOptions extends Options {
     /**
      * The sandbox
      * 
-     * @param string $sandbox The sandbox
+     * @param boolean $sandbox The sandbox
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {
@@ -193,6 +210,17 @@ class UpdateCredentialOptions extends Options {
      */
     public function setApiKey($apiKey) {
         $this->options['apiKey'] = $apiKey;
+        return $this;
+    }
+
+    /**
+     * The secret
+     * 
+     * @param string $secret The secret
+     * @return $this Fluent Builder
+     */
+    public function setSecret($secret) {
+        $this->options['secret'] = $secret;
         return $this;
     }
 

@@ -38,8 +38,8 @@ class TokenInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'iceServers' => $payload['ice_servers'],
             'password' => $payload['password'],
             'ttl' => $payload['ttl'],

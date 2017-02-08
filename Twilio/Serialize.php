@@ -30,4 +30,40 @@ class Serialize {
         return $result;
     }
 
+    public static function iso8601Date($dateTime) {
+        if (is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
+            return \Twilio\Values::NONE;
+        }
+
+        if (is_string($dateTime)) {
+            return $dateTime;
+        }
+
+        $utcDate = clone $dateTime;
+        $utcDate->setTimezone(new \DateTimeZone('UTC'));
+        return $utcDate->format('Y-m-d');
+    }
+
+    public static function iso8601DateTime($dateTime) {
+        if (is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
+            return \Twilio\Values::NONE;
+        }
+
+        if (is_string($dateTime)) {
+            return $dateTime;
+        }
+
+        $utcDate = clone $dateTime;
+        $utcDate->setTimezone(new \DateTimeZone('UTC'));
+        return $utcDate->format('Y-m-d\TH:i:s\Z');
+    }
+
+    public static function booleanToString($boolOrStr) {
+        if (is_null($boolOrStr) || is_string($boolOrStr)) {
+            return $boolOrStr;
+        }
+
+        return $boolOrStr ? 'True' : 'False';
+    }
+
 }

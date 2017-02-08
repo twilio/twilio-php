@@ -18,12 +18,13 @@ abstract class WorkspaceOptions {
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
      * @param string $friendlyName The friendly_name
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $timeoutActivitySid The timeout_activity_sid
+     * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return UpdateWorkspaceOptions Options builder
      */
-    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE) {
-        return new UpdateWorkspaceOptions($defaultActivitySid, $eventCallbackUrl, $eventsFilter, $friendlyName, $multiTaskEnabled, $timeoutActivitySid);
+    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+        return new UpdateWorkspaceOptions($defaultActivitySid, $eventCallbackUrl, $eventsFilter, $friendlyName, $multiTaskEnabled, $timeoutActivitySid, $prioritizeQueueOrder);
     }
 
     /**
@@ -37,12 +38,13 @@ abstract class WorkspaceOptions {
     /**
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $template The template
+     * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return CreateWorkspaceOptions Options builder
      */
-    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE) {
-        return new CreateWorkspaceOptions($eventCallbackUrl, $eventsFilter, $multiTaskEnabled, $template);
+    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+        return new CreateWorkspaceOptions($eventCallbackUrl, $eventsFilter, $multiTaskEnabled, $template, $prioritizeQueueOrder);
     }
 }
 
@@ -52,16 +54,18 @@ class UpdateWorkspaceOptions extends Options {
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
      * @param string $friendlyName The friendly_name
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $timeoutActivitySid The timeout_activity_sid
+     * @param string $prioritizeQueueOrder The prioritize_queue_order
      */
-    public function __construct($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE) {
+    public function __construct($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
         $this->options['defaultActivitySid'] = $defaultActivitySid;
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         $this->options['eventsFilter'] = $eventsFilter;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         $this->options['timeoutActivitySid'] = $timeoutActivitySid;
+        $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
     }
 
     /**
@@ -111,7 +115,7 @@ class UpdateWorkspaceOptions extends Options {
     /**
      * The multi_task_enabled
      * 
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {
@@ -127,6 +131,17 @@ class UpdateWorkspaceOptions extends Options {
      */
     public function setTimeoutActivitySid($timeoutActivitySid) {
         $this->options['timeoutActivitySid'] = $timeoutActivitySid;
+        return $this;
+    }
+
+    /**
+     * The prioritize_queue_order
+     * 
+     * @param string $prioritizeQueueOrder The prioritize_queue_order
+     * @return $this Fluent Builder
+     */
+    public function setPrioritizeQueueOrder($prioritizeQueueOrder) {
+        $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
         return $this;
     }
 
@@ -185,14 +200,16 @@ class CreateWorkspaceOptions extends Options {
     /**
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @param string $template The template
+     * @param string $prioritizeQueueOrder The prioritize_queue_order
      */
-    public function __construct($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE) {
+    public function __construct($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         $this->options['eventsFilter'] = $eventsFilter;
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         $this->options['template'] = $template;
+        $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
     }
 
     /**
@@ -220,7 +237,7 @@ class CreateWorkspaceOptions extends Options {
     /**
      * The multi_task_enabled
      * 
-     * @param string $multiTaskEnabled The multi_task_enabled
+     * @param boolean $multiTaskEnabled The multi_task_enabled
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {
@@ -236,6 +253,17 @@ class CreateWorkspaceOptions extends Options {
      */
     public function setTemplate($template) {
         $this->options['template'] = $template;
+        return $this;
+    }
+
+    /**
+     * The prioritize_queue_order
+     * 
+     * @param string $prioritizeQueueOrder The prioritize_queue_order
+     * @return $this Fluent Builder
+     */
+    public function setPrioritizeQueueOrder($prioritizeQueueOrder) {
+        $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
         return $this;
     }
 

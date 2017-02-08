@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -52,7 +53,7 @@ class MessageList extends ListResource {
             'StatusCallback' => $options['statusCallback'],
             'ApplicationSid' => $options['applicationSid'],
             'MaxPrice' => $options['maxPrice'],
-            'ProvideFeedback' => $options['provideFeedback'],
+            'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
         ));
         
         $payload = $this->version->create(
@@ -112,7 +113,7 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return MessageInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -131,9 +132,9 @@ class MessageList extends ListResource {
         $params = Values::of(array(
             'To' => $options['to'],
             'From' => $options['from'],
-            'DateSent<' => $options['dateSentBefore'],
-            'DateSent' => $options['dateSent'],
-            'DateSent>' => $options['dateSentAfter'],
+            'DateSent<' => Serialize::iso8601DateTime($options['dateSentBefore']),
+            'DateSent' => Serialize::iso8601DateTime($options['dateSent']),
+            'DateSent>' => Serialize::iso8601DateTime($options['dateSentAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

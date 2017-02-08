@@ -24,12 +24,18 @@ use Twilio\Version;
  * @property string defaultServiceRoleSid
  * @property string defaultChannelRoleSid
  * @property string defaultChannelCreatorRoleSid
- * @property string readStatusEnabled
- * @property string typingIndicatorTimeout
- * @property string consumptionReportInterval
- * @property string webhooks
+ * @property boolean readStatusEnabled
+ * @property boolean reachabilityEnabled
+ * @property integer typingIndicatorTimeout
+ * @property integer consumptionReportInterval
+ * @property array webhooks
+ * @property string preWebhookUrl
+ * @property string postWebhookUrl
+ * @property string webhookMethod
+ * @property string webhookFilters
+ * @property array notifications
  * @property string url
- * @property string links
+ * @property array links
  */
 class ServiceInstance extends InstanceResource {
     protected $_channels = null;
@@ -52,15 +58,21 @@ class ServiceInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'defaultServiceRoleSid' => $payload['default_service_role_sid'],
             'defaultChannelRoleSid' => $payload['default_channel_role_sid'],
             'defaultChannelCreatorRoleSid' => $payload['default_channel_creator_role_sid'],
             'readStatusEnabled' => $payload['read_status_enabled'],
+            'reachabilityEnabled' => $payload['reachability_enabled'],
             'typingIndicatorTimeout' => $payload['typing_indicator_timeout'],
             'consumptionReportInterval' => $payload['consumption_report_interval'],
             'webhooks' => $payload['webhooks'],
+            'preWebhookUrl' => $payload['pre_webhook_url'],
+            'postWebhookUrl' => $payload['post_webhook_url'],
+            'webhookMethod' => $payload['webhook_method'],
+            'webhookFilters' => $payload['webhook_filters'],
+            'notifications' => $payload['notifications'],
             'url' => $payload['url'],
             'links' => $payload['links'],
         );

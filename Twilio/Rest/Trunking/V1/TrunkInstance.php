@@ -21,15 +21,15 @@ use Twilio\Version;
  * @property string disasterRecoveryMethod
  * @property string disasterRecoveryUrl
  * @property string friendlyName
- * @property string secure
- * @property string recording
+ * @property boolean secure
+ * @property array recording
  * @property string authType
  * @property string authTypeSet
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string sid
  * @property string url
- * @property string links
+ * @property array links
  */
 class TrunkInstance extends InstanceResource {
     protected $_originationUrls = null;
@@ -59,8 +59,8 @@ class TrunkInstance extends InstanceResource {
             'recording' => $payload['recording'],
             'authType' => $payload['auth_type'],
             'authTypeSet' => $payload['auth_type_set'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'sid' => $payload['sid'],
             'url' => $payload['url'],
             'links' => $payload['links'],

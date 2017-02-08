@@ -17,10 +17,10 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property string assignedTasks
- * @property string available
- * @property string availableCapacityPercentage
- * @property string configuredCapacity
+ * @property integer assignedTasks
+ * @property boolean available
+ * @property integer availableCapacityPercentage
+ * @property integer configuredCapacity
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string sid
@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string taskChannelUniqueName
  * @property string workerSid
  * @property string workspaceSid
- * @property string links
+ * @property array links
  * @property string url
  */
 class WorkerChannelInstance extends InstanceResource {
@@ -52,8 +52,8 @@ class WorkerChannelInstance extends InstanceResource {
             'available' => $payload['available'],
             'availableCapacityPercentage' => $payload['available_capacity_percentage'],
             'configuredCapacity' => $payload['configured_capacity'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'sid' => $payload['sid'],
             'taskChannelSid' => $payload['task_channel_sid'],
             'taskChannelUniqueName' => $payload['task_channel_unique_name'],

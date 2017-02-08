@@ -11,6 +11,7 @@ namespace Twilio\Rest\Monitor\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -73,7 +74,7 @@ class AlertList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return AlertInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -91,12 +92,8 @@ class AlertList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'LogLevel' => $options['logLevel'],
-            'StartDate<' => $options['startDateBefore'],
-            'StartDate' => $options['startDate'],
-            'StartDate>' => $options['startDateAfter'],
-            'EndDate<' => $options['endDateBefore'],
-            'EndDate' => $options['endDate'],
-            'EndDate>' => $options['endDateAfter'],
+            'StartDate' => Serialize::iso8601Date($options['startDate']),
+            'EndDate' => Serialize::iso8601Date($options['endDate']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -24,10 +24,13 @@ use Twilio\Version;
  * @property string eventCallbackUrl
  * @property string eventsFilter
  * @property string friendlyName
- * @property string multiTaskEnabled
+ * @property boolean multiTaskEnabled
  * @property string sid
  * @property string timeoutActivityName
  * @property string timeoutActivitySid
+ * @property string prioritizeQueueOrder
+ * @property string url
+ * @property array links
  */
 class WorkspaceInstance extends InstanceResource {
     protected $_activities = null;
@@ -53,8 +56,8 @@ class WorkspaceInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'defaultActivityName' => $payload['default_activity_name'],
             'defaultActivitySid' => $payload['default_activity_sid'],
             'eventCallbackUrl' => $payload['event_callback_url'],
@@ -64,6 +67,9 @@ class WorkspaceInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'timeoutActivityName' => $payload['timeout_activity_name'],
             'timeoutActivitySid' => $payload['timeout_activity_sid'],
+            'prioritizeQueueOrder' => $payload['prioritize_queue_order'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

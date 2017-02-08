@@ -20,13 +20,15 @@ use Twilio\Version;
  * @property string activityName
  * @property string activitySid
  * @property string attributes
- * @property string available
+ * @property boolean available
  * @property \DateTime dateCreated
  * @property \DateTime dateStatusChanged
  * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string sid
  * @property string workspaceSid
+ * @property string url
+ * @property array links
  */
 class WorkerInstance extends InstanceResource {
     protected $_statistics = null;
@@ -52,12 +54,14 @@ class WorkerInstance extends InstanceResource {
             'activitySid' => $payload['activity_sid'],
             'attributes' => $payload['attributes'],
             'available' => $payload['available'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateStatusChanged' => Deserialize::iso8601DateTime($payload['date_status_changed']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateStatusChanged' => Deserialize::dateTime($payload['date_status_changed']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'friendlyName' => $payload['friendly_name'],
             'sid' => $payload['sid'],
             'workspaceSid' => $payload['workspace_sid'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

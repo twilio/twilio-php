@@ -19,11 +19,11 @@ use Twilio\Version;
  * @property string accountSid
  * @property string sid
  * @property string trunkSid
- * @property string weight
- * @property string enabled
+ * @property integer weight
+ * @property boolean enabled
  * @property string sipUrl
  * @property string friendlyName
- * @property string priority
+ * @property integer priority
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -51,8 +51,8 @@ class OriginationUrlInstance extends InstanceResource {
             'sipUrl' => $payload['sip_url'],
             'friendlyName' => $payload['friendly_name'],
             'priority' => $payload['priority'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         

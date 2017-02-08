@@ -18,29 +18,32 @@ abstract class TaskQueueOptions {
      * @param string $targetWorkers The target_workers
      * @param string $reservationActivitySid The reservation_activity_sid
      * @param string $assignmentActivitySid The assignment_activity_sid
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
+     * @param string $taskOrder The task_order
      * @return UpdateTaskQueueOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $targetWorkers = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE, $maxReservedWorkers = Values::NONE) {
-        return new UpdateTaskQueueOptions($friendlyName, $targetWorkers, $reservationActivitySid, $assignmentActivitySid, $maxReservedWorkers);
+    public static function update($friendlyName = Values::NONE, $targetWorkers = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
+        return new UpdateTaskQueueOptions($friendlyName, $targetWorkers, $reservationActivitySid, $assignmentActivitySid, $maxReservedWorkers, $taskOrder);
     }
 
     /**
      * @param string $friendlyName The friendly_name
      * @param string $evaluateWorkerAttributes The evaluate_worker_attributes
+     * @param string $workerSid The worker_sid
      * @return ReadTaskQueueOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE, $evaluateWorkerAttributes = Values::NONE) {
-        return new ReadTaskQueueOptions($friendlyName, $evaluateWorkerAttributes);
+    public static function read($friendlyName = Values::NONE, $evaluateWorkerAttributes = Values::NONE, $workerSid = Values::NONE) {
+        return new ReadTaskQueueOptions($friendlyName, $evaluateWorkerAttributes, $workerSid);
     }
 
     /**
      * @param string $targetWorkers The target_workers
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
+     * @param string $taskOrder The task_order
      * @return CreateTaskQueueOptions Options builder
      */
-    public static function create($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE) {
-        return new CreateTaskQueueOptions($targetWorkers, $maxReservedWorkers);
+    public static function create($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
+        return new CreateTaskQueueOptions($targetWorkers, $maxReservedWorkers, $taskOrder);
     }
 }
 
@@ -50,14 +53,16 @@ class UpdateTaskQueueOptions extends Options {
      * @param string $targetWorkers The target_workers
      * @param string $reservationActivitySid The reservation_activity_sid
      * @param string $assignmentActivitySid The assignment_activity_sid
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
+     * @param string $taskOrder The task_order
      */
-    public function __construct($friendlyName = Values::NONE, $targetWorkers = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE, $maxReservedWorkers = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $targetWorkers = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['targetWorkers'] = $targetWorkers;
         $this->options['reservationActivitySid'] = $reservationActivitySid;
         $this->options['assignmentActivitySid'] = $assignmentActivitySid;
         $this->options['maxReservedWorkers'] = $maxReservedWorkers;
+        $this->options['taskOrder'] = $taskOrder;
     }
 
     /**
@@ -107,11 +112,22 @@ class UpdateTaskQueueOptions extends Options {
     /**
      * The max_reserved_workers
      * 
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {
         $this->options['maxReservedWorkers'] = $maxReservedWorkers;
+        return $this;
+    }
+
+    /**
+     * The task_order
+     * 
+     * @param string $taskOrder The task_order
+     * @return $this Fluent Builder
+     */
+    public function setTaskOrder($taskOrder) {
+        $this->options['taskOrder'] = $taskOrder;
         return $this;
     }
 
@@ -135,10 +151,12 @@ class ReadTaskQueueOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
      * @param string $evaluateWorkerAttributes The evaluate_worker_attributes
+     * @param string $workerSid The worker_sid
      */
-    public function __construct($friendlyName = Values::NONE, $evaluateWorkerAttributes = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $evaluateWorkerAttributes = Values::NONE, $workerSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['evaluateWorkerAttributes'] = $evaluateWorkerAttributes;
+        $this->options['workerSid'] = $workerSid;
     }
 
     /**
@@ -164,6 +182,17 @@ class ReadTaskQueueOptions extends Options {
     }
 
     /**
+     * The worker_sid
+     * 
+     * @param string $workerSid The worker_sid
+     * @return $this Fluent Builder
+     */
+    public function setWorkerSid($workerSid) {
+        $this->options['workerSid'] = $workerSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -182,11 +211,13 @@ class ReadTaskQueueOptions extends Options {
 class CreateTaskQueueOptions extends Options {
     /**
      * @param string $targetWorkers The target_workers
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
+     * @param string $taskOrder The task_order
      */
-    public function __construct($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE) {
+    public function __construct($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
         $this->options['targetWorkers'] = $targetWorkers;
         $this->options['maxReservedWorkers'] = $maxReservedWorkers;
+        $this->options['taskOrder'] = $taskOrder;
     }
 
     /**
@@ -203,11 +234,22 @@ class CreateTaskQueueOptions extends Options {
     /**
      * The max_reserved_workers
      * 
-     * @param string $maxReservedWorkers The max_reserved_workers
+     * @param integer $maxReservedWorkers The max_reserved_workers
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {
         $this->options['maxReservedWorkers'] = $maxReservedWorkers;
+        return $this;
+    }
+
+    /**
+     * The task_order
+     * 
+     * @param string $taskOrder The task_order
+     * @return $this Fluent Builder
+     */
+    public function setTaskOrder($taskOrder) {
+        $this->options['taskOrder'] = $taskOrder;
         return $this;
     }
 

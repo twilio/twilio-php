@@ -21,8 +21,8 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->taskQueues
-                                         ->statistics->read();
+                                         ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                         ->taskQueuesStatistics->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -51,14 +51,14 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "cumulative": {
                             "avg_task_acceptance_time": 0.0,
-                            "end_time": "2015-08-18T00:46:15Z",
+                            "end_time": "2015-08-18T08:46:15Z",
                             "reservations_accepted": 0,
                             "reservations_canceled": 0,
                             "reservations_created": 0,
                             "reservations_rejected": 0,
                             "reservations_rescinded": 0,
                             "reservations_timed_out": 0,
-                            "start_time": "2015-08-18T00:31:15Z",
+                            "start_time": "2015-08-18T08:31:15Z",
                             "tasks_canceled": 0,
                             "tasks_deleted": 0,
                             "tasks_entered": 0,
@@ -117,8 +117,8 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->taskQueues
-                                               ->statistics->read();
+                                               ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                               ->taskQueuesStatistics->read();
         
         $this->assertGreaterThan(0, count($actual));
     }
@@ -143,8 +143,8 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->taskQueues
-                                               ->statistics->read();
+                                               ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                               ->taskQueuesStatistics->read();
         
         $this->assertNotNull($actual);
     }

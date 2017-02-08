@@ -23,7 +23,7 @@ abstract class ApplicationOptions {
      * @param string $statusCallback URL to hit with status updates
      * @param string $statusCallbackMethod HTTP method to use with the status
      *                                     callback
-     * @param string $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup True or False
      * @param string $smsUrl URL Twilio will request when receiving an SMS
      * @param string $smsMethod HTTP method to use with sms_url
      * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
@@ -56,7 +56,7 @@ abstract class ApplicationOptions {
      * @param string $statusCallback URL to hit with status updates
      * @param string $statusCallbackMethod HTTP method to use with the status
      *                                     callback
-     * @param string $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup True or False
      * @param string $smsUrl URL Twilio will request when receiving an SMS
      * @param string $smsMethod HTTP method to use with sms_url
      * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
@@ -82,7 +82,7 @@ class CreateApplicationOptions extends Options {
      * @param string $statusCallback URL to hit with status updates
      * @param string $statusCallbackMethod HTTP method to use with the status
      *                                     callback
-     * @param string $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup True or False
      * @param string $smsUrl URL Twilio will request when receiving an SMS
      * @param string $smsMethod HTTP method to use with sms_url
      * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
@@ -190,7 +190,7 @@ class CreateApplicationOptions extends Options {
     /**
      * Look up the caller's caller-ID name from the CNAM database (additional charges apply). Either `true` or `false`.
      * 
-     * @param string $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup True or False
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
@@ -328,7 +328,7 @@ class UpdateApplicationOptions extends Options {
      * @param string $statusCallback URL to hit with status updates
      * @param string $statusCallbackMethod HTTP method to use with the status
      *                                     callback
-     * @param string $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup True or False
      * @param string $smsUrl URL Twilio will request when receiving an SMS
      * @param string $smsMethod HTTP method to use with sms_url
      * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
@@ -448,7 +448,7 @@ class UpdateApplicationOptions extends Options {
     /**
      * Look up the caller's caller-ID name from the CNAM database (additional charges apply). Either `true` or `false`.
      * 
-     * @param string $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup True or False
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {

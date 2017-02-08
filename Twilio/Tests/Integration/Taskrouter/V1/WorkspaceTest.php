@@ -52,6 +52,7 @@ class WorkspaceTest extends HolodeckTestCase {
                     "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                 },
                 "multi_task_enabled": "false",
+                "prioritize_queue_order": "FIFO",
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -101,6 +102,7 @@ class WorkspaceTest extends HolodeckTestCase {
                     "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                 },
                 "multi_task_enabled": "false",
+                "prioritize_queue_order": "FIFO",
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -161,6 +163,7 @@ class WorkspaceTest extends HolodeckTestCase {
                             "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                         },
                         "multi_task_enabled": "false",
+                        "prioritize_queue_order": "FIFO",
                         "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "timeout_activity_name": "Offline",
                         "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -222,7 +225,7 @@ class WorkspaceTest extends HolodeckTestCase {
 
     public function testCreateResponse() {
         $this->holodeck->mock(new Response(
-            200,
+            201,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -242,6 +245,7 @@ class WorkspaceTest extends HolodeckTestCase {
                     "workflows": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows"
                 },
                 "multi_task_enabled": "false",
+                "prioritize_queue_order": "FIFO",
                 "sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "timeout_activity_name": "Offline",
                 "timeout_activity_sid": "WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

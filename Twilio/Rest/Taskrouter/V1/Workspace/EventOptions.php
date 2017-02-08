@@ -16,7 +16,7 @@ abstract class EventOptions {
     /**
      * @param \DateTime $endDate The end_date
      * @param string $eventType The event_type
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param string $reservationSid The reservation_sid
      * @param \DateTime $startDate The start_date
      * @param string $taskQueueSid The task_queue_sid
@@ -34,7 +34,7 @@ class ReadEventOptions extends Options {
     /**
      * @param \DateTime $endDate The end_date
      * @param string $eventType The event_type
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @param string $reservationSid The reservation_sid
      * @param \DateTime $startDate The start_date
      * @param string $taskQueueSid The task_queue_sid
@@ -79,7 +79,7 @@ class ReadEventOptions extends Options {
     /**
      * The minutes
      * 
-     * @param string $minutes The minutes
+     * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {

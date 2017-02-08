@@ -19,7 +19,7 @@ use Twilio\Version;
  * @property string actorSid
  * @property string actorType
  * @property string description
- * @property string eventData
+ * @property array eventData
  * @property \DateTime eventDate
  * @property string eventType
  * @property string resourceSid
@@ -27,6 +27,8 @@ use Twilio\Version;
  * @property string sid
  * @property string source
  * @property string sourceIpAddress
+ * @property string url
+ * @property array links
  */
 class EventInstance extends InstanceResource {
     /**
@@ -47,13 +49,15 @@ class EventInstance extends InstanceResource {
             'actorType' => $payload['actor_type'],
             'description' => $payload['description'],
             'eventData' => $payload['event_data'],
-            'eventDate' => Deserialize::iso8601DateTime($payload['event_date']),
+            'eventDate' => Deserialize::dateTime($payload['event_date']),
             'eventType' => $payload['event_type'],
             'resourceSid' => $payload['resource_sid'],
             'resourceType' => $payload['resource_type'],
             'sid' => $payload['sid'],
             'source' => $payload['source'],
             'sourceIpAddress' => $payload['source_ip_address'],
+            'url' => $payload['url'],
+            'links' => $payload['links'],
         );
         
         $this->solution = array(

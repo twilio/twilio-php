@@ -14,19 +14,20 @@ use Twilio\Values;
 
 abstract class TollFreeOptions {
     /**
-     * @param string $areaCode The area_code
+     * @param integer $areaCode The area_code
      * @param string $contains The contains
-     * @param string $smsEnabled The sms_enabled
-     * @param string $mmsEnabled The mms_enabled
-     * @param string $voiceEnabled The voice_enabled
-     * @param string $excludeAllAddressRequired The exclude_all_address_required
-     * @param string $excludeLocalAddressRequired The exclude_local_address_required
-     * @param string $excludeForeignAddressRequired The
-     *                                              exclude_foreign_address_required
-     * @param string $beta The beta
+     * @param boolean $smsEnabled The sms_enabled
+     * @param boolean $mmsEnabled The mms_enabled
+     * @param boolean $voiceEnabled The voice_enabled
+     * @param boolean $excludeAllAddressRequired The exclude_all_address_required
+     * @param boolean $excludeLocalAddressRequired The
+     *                                             exclude_local_address_required
+     * @param boolean $excludeForeignAddressRequired The
+     *                                               exclude_foreign_address_required
+     * @param boolean $beta The beta
      * @param string $nearNumber The near_number
      * @param string $nearLatLong The near_lat_long
-     * @param string $distance The distance
+     * @param integer $distance The distance
      * @param string $inPostalCode The in_postal_code
      * @param string $inRegion The in_region
      * @param string $inRateCenter The in_rate_center
@@ -40,19 +41,20 @@ abstract class TollFreeOptions {
 
 class ReadTollFreeOptions extends Options {
     /**
-     * @param string $areaCode The area_code
+     * @param integer $areaCode The area_code
      * @param string $contains The contains
-     * @param string $smsEnabled The sms_enabled
-     * @param string $mmsEnabled The mms_enabled
-     * @param string $voiceEnabled The voice_enabled
-     * @param string $excludeAllAddressRequired The exclude_all_address_required
-     * @param string $excludeLocalAddressRequired The exclude_local_address_required
-     * @param string $excludeForeignAddressRequired The
-     *                                              exclude_foreign_address_required
-     * @param string $beta The beta
+     * @param boolean $smsEnabled The sms_enabled
+     * @param boolean $mmsEnabled The mms_enabled
+     * @param boolean $voiceEnabled The voice_enabled
+     * @param boolean $excludeAllAddressRequired The exclude_all_address_required
+     * @param boolean $excludeLocalAddressRequired The
+     *                                             exclude_local_address_required
+     * @param boolean $excludeForeignAddressRequired The
+     *                                               exclude_foreign_address_required
+     * @param boolean $beta The beta
      * @param string $nearNumber The near_number
      * @param string $nearLatLong The near_lat_long
-     * @param string $distance The distance
+     * @param integer $distance The distance
      * @param string $inPostalCode The in_postal_code
      * @param string $inRegion The in_region
      * @param string $inRateCenter The in_rate_center
@@ -80,7 +82,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The area_code
      * 
-     * @param string $areaCode The area_code
+     * @param integer $areaCode The area_code
      * @return $this Fluent Builder
      */
     public function setAreaCode($areaCode) {
@@ -102,7 +104,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The sms_enabled
      * 
-     * @param string $smsEnabled The sms_enabled
+     * @param boolean $smsEnabled The sms_enabled
      * @return $this Fluent Builder
      */
     public function setSmsEnabled($smsEnabled) {
@@ -113,7 +115,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The mms_enabled
      * 
-     * @param string $mmsEnabled The mms_enabled
+     * @param boolean $mmsEnabled The mms_enabled
      * @return $this Fluent Builder
      */
     public function setMmsEnabled($mmsEnabled) {
@@ -124,7 +126,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The voice_enabled
      * 
-     * @param string $voiceEnabled The voice_enabled
+     * @param boolean $voiceEnabled The voice_enabled
      * @return $this Fluent Builder
      */
     public function setVoiceEnabled($voiceEnabled) {
@@ -135,7 +137,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The exclude_all_address_required
      * 
-     * @param string $excludeAllAddressRequired The exclude_all_address_required
+     * @param boolean $excludeAllAddressRequired The exclude_all_address_required
      * @return $this Fluent Builder
      */
     public function setExcludeAllAddressRequired($excludeAllAddressRequired) {
@@ -146,7 +148,8 @@ class ReadTollFreeOptions extends Options {
     /**
      * The exclude_local_address_required
      * 
-     * @param string $excludeLocalAddressRequired The exclude_local_address_required
+     * @param boolean $excludeLocalAddressRequired The
+     *                                             exclude_local_address_required
      * @return $this Fluent Builder
      */
     public function setExcludeLocalAddressRequired($excludeLocalAddressRequired) {
@@ -157,8 +160,8 @@ class ReadTollFreeOptions extends Options {
     /**
      * The exclude_foreign_address_required
      * 
-     * @param string $excludeForeignAddressRequired The
-     *                                              exclude_foreign_address_required
+     * @param boolean $excludeForeignAddressRequired The
+     *                                               exclude_foreign_address_required
      * @return $this Fluent Builder
      */
     public function setExcludeForeignAddressRequired($excludeForeignAddressRequired) {
@@ -169,7 +172,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The beta
      * 
-     * @param string $beta The beta
+     * @param boolean $beta The beta
      * @return $this Fluent Builder
      */
     public function setBeta($beta) {
@@ -202,7 +205,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * The distance
      * 
-     * @param string $distance The distance
+     * @param integer $distance The distance
      * @return $this Fluent Builder
      */
     public function setDistance($distance) {

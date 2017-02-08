@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -34,6 +35,55 @@ class ParticipantList extends ListResource {
         );
         
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants.json';
+    }
+
+    /**
+     * Create a new ParticipantInstance
+     * 
+     * @param string $from The from
+     * @param string $to The to
+     * @param array|Options $options Optional Arguments
+     * @return ParticipantInstance Newly created ParticipantInstance
+     */
+    public function create($from, $to, $options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'From' => $from,
+            'To' => $to,
+            'StatusCallback' => $options['statusCallback'],
+            'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'StatusCallbackEvent' => $options['statusCallbackEvent'],
+            'Timeout' => $options['timeout'],
+            'Record' => Serialize::booleanToString($options['record']),
+            'Muted' => Serialize::booleanToString($options['muted']),
+            'Beep' => $options['beep'],
+            'StartConferenceOnEnter' => Serialize::booleanToString($options['startConferenceOnEnter']),
+            'EndConferenceOnExit' => Serialize::booleanToString($options['endConferenceOnExit']),
+            'WaitUrl' => $options['waitUrl'],
+            'WaitMethod' => $options['waitMethod'],
+            'EarlyMedia' => Serialize::booleanToString($options['earlyMedia']),
+            'MaxParticipants' => $options['maxParticipants'],
+            'ConferenceRecord' => $options['conferenceRecord'],
+            'ConferenceTrim' => $options['conferenceTrim'],
+            'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
+            'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
+            'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
+        ));
+        
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+        
+        return new ParticipantInstance(
+            $this->version,
+            $payload,
+            $this->solution['accountSid'],
+            $this->solution['conferenceSid']
+        );
     }
 
     /**
@@ -79,7 +129,7 @@ class ParticipantList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ParticipantInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -96,8 +146,8 @@ class ParticipantList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Muted' => $options['muted'],
-            'Hold' => $options['hold'],
+            'Muted' => Serialize::booleanToString($options['muted']),
+            'Hold' => Serialize::booleanToString($options['hold']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
