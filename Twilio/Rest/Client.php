@@ -30,7 +30,6 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
- * @property \Twilio\Rest\Api\V2010\AccountList accounts
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
@@ -96,7 +95,6 @@ class Client {
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
-    protected $_accounts = null;
 
     /**
      * Initializes the Twilio Client
