@@ -7,6 +7,7 @@ use Twilio\Jwt\Grants\IpMessagingGrant;
 use Twilio\Jwt\Grants\VideoGrant;
 use Twilio\Jwt\Grants\VoiceGrant;
 use Twilio\Jwt\Grants\SyncGrant;
+use Twilio\Jwt\Grants\TaskRouterGrant;
 use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
 use Twilio\Jwt\AccessToken;
@@ -136,6 +137,7 @@ class AccessTokenTest extends UnitTest {
         $scat->addGrant(new ConversationsGrant());
         $scat->addGrant(new IpMessagingGrant());
         $scat->addGrant(new VideoGrant());
+        $scat->addGrant(new TaskRouterGrant());
 
         $token = $scat->toJWT();
 
@@ -144,11 +146,12 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(4, count($grants));
+        $this->assertEquals(5, count($grants));
         $this->assertEquals('test identity', $payload->grants->identity);
         $this->assertEquals('{}', json_encode($payload->grants->rtc));
         $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
         $this->assertEquals('{}', json_encode($payload->grants->video));
+        $this->assertEquals('{}', json_encode($payload->grants->task_router));
     }
 
     function testVoiceGrant() {
@@ -176,6 +179,27 @@ class AccessTokenTest extends UnitTest {
 
         $params = $outgoing['params'];
         $this->assertEquals('bar', $params['foo']);
+    }
+
+    function testTaskRouterGrant() {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new TaskRouterGrant();
+        $grant->setWorkspaceSid("WS123");
+        $grant->setWorkerSid("WK123");
+        $grant->setRole("worker");
+        $scat->addGrant($grant);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(1, count($grants));
+        $this->assertArrayHasKey("task_router", $grants);
+        $this->assertEquals("WS123", $grants['task_router']['workspace_sid']);
+        $this->assertEquals("WK123", $grants['task_router']['worker_sid']);
+        $this->assertEquals("worker", $grants['task_router']['role']);
     }
 
 }
