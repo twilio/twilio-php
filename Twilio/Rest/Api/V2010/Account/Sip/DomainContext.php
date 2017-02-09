@@ -14,21 +14,18 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList;
-use Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList ipAccessControlListMappings
  * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList credentialListMappings
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointList registrationEndpoints
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingContext ipAccessControlListMappings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext credentialListMappings(string $sid)
  */
 class DomainContext extends InstanceContext {
     protected $_ipAccessControlListMappings = null;
     protected $_credentialListMappings = null;
-    protected $_registrationEndpoints = null;
 
     /**
      * Initialize the DomainContext
@@ -148,23 +145,6 @@ class DomainContext extends InstanceContext {
         }
         
         return $this->_credentialListMappings;
-    }
-
-    /**
-     * Access the registrationEndpoints
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointList 
-     */
-    protected function getRegistrationEndpoints() {
-        if (!$this->_registrationEndpoints) {
-            $this->_registrationEndpoints = new RegistrationEndpointList(
-                $this->version,
-                $this->solution['accountSid'],
-                $this->solution['sid']
-            );
-        }
-        
-        return $this->_registrationEndpoints;
     }
 
     /**

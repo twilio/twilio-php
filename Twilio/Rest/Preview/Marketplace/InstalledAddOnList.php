@@ -7,48 +7,44 @@
  * /       /
  */
 
-namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
+namespace Twilio\Rest\Preview\Marketplace;
 
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class MessageList extends ListResource {
+class InstalledAddOnList extends ListResource {
     /**
-     * Construct the MessageList
+     * Construct the InstalledAddOnList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $channelSid The sid
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList 
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
      */
-    public function __construct(Version $version, $serviceSid, $channelSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
         
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'channelSid' => $channelSid,
-        );
+        $this->solution = array();
         
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages';
+        $this->uri = '/InstalledAddOns';
     }
 
     /**
-     * Create a new MessageInstance
+     * Create a new InstalledAddOnInstance
      * 
-     * @param string $body The body
+     * @param string $availableAddOnSid A string that uniquely identifies the
+     *                                  Add-on to install
      * @param array|Options $options Optional Arguments
-     * @return MessageInstance Newly created MessageInstance
+     * @return InstalledAddOnInstance Newly created InstalledAddOnInstance
      */
-    public function create($body, $options = array()) {
+    public function create($availableAddOnSid, $options = array()) {
         $options = new Values($options);
         
         $data = Values::of(array(
-            'Body' => $body,
-            'From' => $options['from'],
-            'Attributes' => $options['attributes'],
+            'AvailableAddOnSid' => $availableAddOnSid,
+            'Configuration' => $options['configuration'],
+            'UniqueName' => $options['uniqueName'],
         ));
         
         $payload = $this->version->create(
@@ -58,23 +54,20 @@ class MessageList extends ListResource {
             $data
         );
         
-        return new MessageInstance(
+        return new InstalledAddOnInstance(
             $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['channelSid']
+            $payload
         );
     }
 
     /**
-     * Streams MessageInstance records from the API as a generator stream.
+     * Streams InstalledAddOnInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -85,20 +78,19 @@ class MessageList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($options = array(), $limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
         
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads MessageInstance records from the API as a list.
+     * Reads InstalledAddOnInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -107,26 +99,23 @@ class MessageList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return MessageInstance[] Array of results
+     * @return InstalledAddOnInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    public function read($limit = null, $pageSize = null) {
+        return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of MessageInstance records from the API.
+     * Retrieve a single page of InstalledAddOnInstance records from the API.
      * Request is executed immediately
      * 
-     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of MessageInstance
+     * @return \Twilio\Page Page of InstalledAddOnInstance
      */
-    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
-        $options = new Values($options);
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
-            'Order' => $options['order'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -138,20 +127,18 @@ class MessageList extends ListResource {
             $params
         );
         
-        return new MessagePage($this->version, $response, $this->solution);
+        return new InstalledAddOnPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a MessageContext
+     * Constructs a InstalledAddOnContext
      * 
-     * @param string $sid The sid
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageContext 
+     * @param string $sid The unique Installed Add-on Sid
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
      */
     public function getContext($sid) {
-        return new MessageContext(
+        return new InstalledAddOnContext(
             $this->version,
-            $this->solution['serviceSid'],
-            $this->solution['channelSid'],
             $sid
         );
     }
@@ -162,6 +149,6 @@ class MessageList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.IpMessaging.V1.MessageList]';
+        return '[Twilio.Preview.Marketplace.InstalledAddOnList]';
     }
 }

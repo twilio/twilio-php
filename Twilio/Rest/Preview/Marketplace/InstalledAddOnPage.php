@@ -7,11 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sip\Domain;
+namespace Twilio\Rest\Preview\Marketplace;
 
 use Twilio\Page;
 
-class RegistrationEndpointPage extends Page {
+class InstalledAddOnPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
         
@@ -20,11 +20,9 @@ class RegistrationEndpointPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RegistrationEndpointInstance(
+        return new InstalledAddOnInstance(
             $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['domainSid']
+            $payload
         );
     }
 
@@ -34,6 +32,6 @@ class RegistrationEndpointPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.RegistrationEndpointPage]';
+        return '[Twilio.Preview.Marketplace.InstalledAddOnPage]';
     }
 }

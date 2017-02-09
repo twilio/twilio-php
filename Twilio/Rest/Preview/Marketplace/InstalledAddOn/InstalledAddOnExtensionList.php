@@ -7,35 +7,33 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sip\Domain;
+namespace Twilio\Rest\Preview\Marketplace\InstalledAddOn;
 
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class RegistrationEndpointList extends ListResource {
+class InstalledAddOnExtensionList extends ListResource {
     /**
-     * Construct the RegistrationEndpointList
+     * Construct the InstalledAddOnExtensionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the account that sent the message
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointList 
+     * @param string $installedAddOnSid The installed_add_on_sid
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList 
      */
-    public function __construct(Version $version, $accountSid, $domainSid) {
+    public function __construct(Version $version, $installedAddOnSid) {
         parent::__construct($version);
         
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
-            'domainSid' => $domainSid,
+            'installedAddOnSid' => $installedAddOnSid,
         );
         
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/Registrations/' . rawurlencode($region) . '/' . rawurlencode($registrant) . '.json';
+        $this->uri = '/InstalledAddOns/' . rawurlencode($installedAddOnSid) . '/Extensions';
     }
 
     /**
-     * Streams RegistrationEndpointInstance records from the API as a generator
+     * Streams InstalledAddOnExtensionInstance records from the API as a generator
      * stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
@@ -43,8 +41,6 @@ class RegistrationEndpointList extends ListResource {
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
-     * @param string $region The region
-     * @param string $registrant The registrant
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -55,7 +51,7 @@ class RegistrationEndpointList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($region, $registrant, $limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
         
         $page = $this->page($limits['pageSize']);
@@ -64,12 +60,10 @@ class RegistrationEndpointList extends ListResource {
     }
 
     /**
-     * Reads RegistrationEndpointInstance records from the API as a list.
+     * Reads InstalledAddOnExtensionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
-     * @param string $region The region
-     * @param string $registrant The registrant
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -78,27 +72,24 @@ class RegistrationEndpointList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RegistrationEndpointInstance[] Array of results
+     * @return InstalledAddOnExtensionInstance[] Array of results
      */
-    public function read($region, $registrant, $limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RegistrationEndpointInstance records from the API.
+     * Retrieve a single page of InstalledAddOnExtensionInstance records from the
+     * API.
      * Request is executed immediately
      * 
-     * @param string $region The region
-     * @param string $registrant The registrant
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of RegistrationEndpointInstance
+     * @return \Twilio\Page Page of InstalledAddOnExtensionInstance
      */
-    public function page($region, $registrant, $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
-            'Region' => $options['region'],
-            'Registrant' => $options['registrant'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -110,7 +101,21 @@ class RegistrationEndpointList extends ListResource {
             $params
         );
         
-        return new RegistrationEndpointPage($this->version, $response, $this->solution);
+        return new InstalledAddOnExtensionPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Constructs a InstalledAddOnExtensionContext
+     * 
+     * @param string $sid The unique Extension Sid
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext 
+     */
+    public function getContext($sid) {
+        return new InstalledAddOnExtensionContext(
+            $this->version,
+            $this->solution['installedAddOnSid'],
+            $sid
+        );
     }
 
     /**
@@ -119,6 +124,6 @@ class RegistrationEndpointList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.RegistrationEndpointList]';
+        return '[Twilio.Preview.Marketplace.InstalledAddOnExtensionList]';
     }
 }
