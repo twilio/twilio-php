@@ -21,13 +21,13 @@ class DocumentTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")->fetch();
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/sid'
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -54,7 +54,7 @@ class DocumentTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")->fetch();
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         
         $this->assertNotNull($actual);
     }
@@ -64,13 +64,13 @@ class DocumentTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")->delete();
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/sid'
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -81,7 +81,7 @@ class DocumentTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")->delete();
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         
         $this->assertTrue($actual);
     }
@@ -215,7 +215,7 @@ class DocumentTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")->update("{}");
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("{}");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
@@ -225,7 +225,7 @@ class DocumentTest extends HolodeckTestCase {
         
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/sid',
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             null,
             $values
         ));
@@ -254,7 +254,7 @@ class DocumentTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")->update("{}");
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("{}");
         
         $this->assertNotNull($actual);
     }

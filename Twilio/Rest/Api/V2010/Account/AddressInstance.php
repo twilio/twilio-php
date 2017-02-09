@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string street
  * @property string uri
  * @property boolean emergencyEnabled
+ * @property boolean validated
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;
@@ -60,6 +61,7 @@ class AddressInstance extends InstanceResource {
             'street' => $payload['street'],
             'uri' => $payload['uri'],
             'emergencyEnabled' => $payload['emergency_enabled'],
+            'validated' => $payload['validated'],
         );
         
         $this->solution = array(

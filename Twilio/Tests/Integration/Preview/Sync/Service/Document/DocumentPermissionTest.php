@@ -22,14 +22,14 @@ class DocumentPermissionTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->documentPermissions("identity")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/documentSid/Permissions/identity'
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity'
         ));
     }
 
@@ -51,7 +51,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->documentPermissions("identity")->fetch();
         
         $this->assertNotNull($actual);
@@ -62,14 +62,14 @@ class DocumentPermissionTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->documentPermissions("identity")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/documentSid/Permissions/identity'
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity'
         ));
     }
 
@@ -80,7 +80,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->documentPermissions("identity")->delete();
         
         $this->assertTrue($actual);
@@ -91,14 +91,14 @@ class DocumentPermissionTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->documentPermissions->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
         
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/documentSid/Permissions'
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions'
         ));
     }
 
@@ -122,7 +122,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->documentPermissions->read();
         
         $this->assertNotNull($actual);
@@ -159,7 +159,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->documentPermissions->read();
         
         $this->assertGreaterThan(0, count($actual));
@@ -170,7 +170,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->documents("sid")
+                                        ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->documentPermissions("identity")->update(True, True, True);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -183,7 +183,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/documentSid/Permissions/identity',
+            'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity',
             null,
             $values
         ));
@@ -207,7 +207,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
         
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->documents("sid")
+                                              ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->documentPermissions("identity")->update(True, True, True);
         
         $this->assertNotNull($actual);
