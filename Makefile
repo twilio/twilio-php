@@ -58,7 +58,6 @@ docs-install:
 
 docs: docs-install
 	vendor/bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
-	sh docs-update.sh
 
 release-install:
 	pear channel-discover twilio.github.com/pear || true
