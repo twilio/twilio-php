@@ -1,4 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/twilio/twilio-php.png?branch=master)](http://travis-ci.org/twilio/twilio-php)
+[![PHP version](https://badge.fury.io/ph/twilio%2Fsdk.svg)](https://badge.fury.io/ph/twilio%2Fsdk)
 
 ## Installation
 
