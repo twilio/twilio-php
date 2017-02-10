@@ -23,8 +23,9 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  * @property string webhookUrl
- * @property string reachabilityWebhooksEnabled
- * @property string links
+ * @property boolean reachabilityWebhooksEnabled
+ * @property boolean aclEnabled
+ * @property array links
  */
 class ServiceInstance extends InstanceResource {
     protected $_documents = null;
@@ -47,11 +48,12 @@ class ServiceInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
             'webhookUrl' => $payload['webhook_url'],
             'reachabilityWebhooksEnabled' => $payload['reachability_webhooks_enabled'],
+            'aclEnabled' => $payload['acl_enabled'],
             'links' => $payload['links'],
         );
         

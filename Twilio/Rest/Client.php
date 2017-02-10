@@ -18,6 +18,7 @@ use Twilio\VersionInfo;
 /**
  * A client for accessing the Twilio API.
  * 
+ * @property \Twilio\Rest\Accounts accounts
  * @property \Twilio\Rest\Api api
  * @property \Twilio\Rest\Chat chat
  * @property \Twilio\Rest\IpMessaging ipMessaging
@@ -29,7 +30,6 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
- * @property \Twilio\Rest\Api\V2010\AccountList accounts
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
@@ -84,6 +84,7 @@ class Client {
     protected $region;
     protected $httpClient;
     protected $_account;
+    protected $_accounts = null;
     protected $_api = null;
     protected $_chat = null;
     protected $_ipMessaging = null;
@@ -94,7 +95,6 @@ class Client {
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
-    protected $_accounts = null;
 
     /**
      * Initializes the Twilio Client
@@ -248,6 +248,18 @@ class Client {
     }
 
     /**
+     * Access the Accounts Twilio Domain
+     * 
+     * @return \Twilio\Rest\Accounts Accounts Twilio Domain
+     */
+    protected function getAccounts() {
+        if (!$this->_accounts) {
+            $this->_accounts = new Accounts($this);
+        }
+        return $this->_accounts;
+    }
+
+    /**
      * Access the Api Twilio Domain
      * 
      * @return \Twilio\Rest\Api Api Twilio Domain
@@ -265,21 +277,6 @@ class Client {
      */
     public function getAccount() {
         return $this->api->v2010->account;
-    }
-
-    /**
-     * @return \Twilio\Rest\Api\V2010\AccountList 
-     */
-    public function getAccounts() {
-        return $this->api->v2010->accounts;
-    }
-
-    /**
-     * @param string $sid Fetch by unique Account Sid
-     * @return \Twilio\Rest\Api\V2010\AccountContext 
-     */
-    protected function contextAccounts($sid) {
-        return $this->api->v2010->accounts($sid);
     }
 
     /**

@@ -22,16 +22,17 @@ use Twilio\Version;
  * @property string identities
  * @property string tags
  * @property string priority
- * @property string ttl
+ * @property integer ttl
  * @property string title
  * @property string body
  * @property string sound
  * @property string action
- * @property string data
- * @property string apn
- * @property string gcm
- * @property string sms
- * @property string facebookMessenger
+ * @property array data
+ * @property array apn
+ * @property array gcm
+ * @property array fcm
+ * @property array sms
+ * @property array facebookMessenger
  */
 class NotificationInstance extends InstanceResource {
     /**
@@ -50,7 +51,7 @@ class NotificationInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'serviceSid' => $payload['service_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
             'identities' => $payload['identities'],
             'tags' => $payload['tags'],
             'priority' => $payload['priority'],
@@ -62,6 +63,7 @@ class NotificationInstance extends InstanceResource {
             'data' => $payload['data'],
             'apn' => $payload['apn'],
             'gcm' => $payload['gcm'],
+            'fcm' => $payload['fcm'],
             'sms' => $payload['sms'],
             'facebookMessenger' => $payload['facebook_messenger'],
         );

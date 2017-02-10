@@ -18,6 +18,7 @@ use Twilio\Version;
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
+ * @property string credentialSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string notificationProtocolVersion
@@ -46,8 +47,9 @@ class BindingInstance extends InstanceResource {
             'sid' => $payload['sid'],
             'accountSid' => $payload['account_sid'],
             'serviceSid' => $payload['service_sid'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'credentialSid' => $payload['credential_sid'],
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'notificationProtocolVersion' => $payload['notification_protocol_version'],
             'endpoint' => $payload['endpoint'],
             'identity' => $payload['identity'],

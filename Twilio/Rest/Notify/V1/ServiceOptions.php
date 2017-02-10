@@ -23,10 +23,13 @@ abstract class ServiceOptions {
      *                                                      default_apn_notification_protocol_version
      * @param string $defaultGcmNotificationProtocolVersion The
      *                                                      default_gcm_notification_protocol_version
+     * @param string $fcmCredentialSid The fcm_credential_sid
+     * @param string $defaultFcmNotificationProtocolVersion The
+     *                                                      default_fcm_notification_protocol_version
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion);
+    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
+        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion);
     }
 
     /**
@@ -47,10 +50,13 @@ abstract class ServiceOptions {
      *                                                      default_apn_notification_protocol_version
      * @param string $defaultGcmNotificationProtocolVersion The
      *                                                      default_gcm_notification_protocol_version
+     * @param string $fcmCredentialSid The fcm_credential_sid
+     * @param string $defaultFcmNotificationProtocolVersion The
+     *                                                      default_fcm_notification_protocol_version
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion);
+    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion);
     }
 }
 
@@ -65,8 +71,11 @@ class CreateServiceOptions extends Options {
      *                                                      default_apn_notification_protocol_version
      * @param string $defaultGcmNotificationProtocolVersion The
      *                                                      default_gcm_notification_protocol_version
+     * @param string $fcmCredentialSid The fcm_credential_sid
+     * @param string $defaultFcmNotificationProtocolVersion The
+     *                                                      default_fcm_notification_protocol_version
      */
-    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -74,6 +83,8 @@ class CreateServiceOptions extends Options {
         $this->options['facebookMessengerPageId'] = $facebookMessengerPageId;
         $this->options['defaultApnNotificationProtocolVersion'] = $defaultApnNotificationProtocolVersion;
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
+        $this->options['fcmCredentialSid'] = $fcmCredentialSid;
+        $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
     }
 
     /**
@@ -152,6 +163,29 @@ class CreateServiceOptions extends Options {
      */
     public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion) {
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
+        return $this;
+    }
+
+    /**
+     * The fcm_credential_sid
+     * 
+     * @param string $fcmCredentialSid The fcm_credential_sid
+     * @return $this Fluent Builder
+     */
+    public function setFcmCredentialSid($fcmCredentialSid) {
+        $this->options['fcmCredentialSid'] = $fcmCredentialSid;
+        return $this;
+    }
+
+    /**
+     * The default_fcm_notification_protocol_version
+     * 
+     * @param string $defaultFcmNotificationProtocolVersion The
+     *                                                      default_fcm_notification_protocol_version
+     * @return $this Fluent Builder
+     */
+    public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
+        $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
         return $this;
     }
 
@@ -217,8 +251,11 @@ class UpdateServiceOptions extends Options {
      *                                                      default_apn_notification_protocol_version
      * @param string $defaultGcmNotificationProtocolVersion The
      *                                                      default_gcm_notification_protocol_version
+     * @param string $fcmCredentialSid The fcm_credential_sid
+     * @param string $defaultFcmNotificationProtocolVersion The
+     *                                                      default_fcm_notification_protocol_version
      */
-    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -226,6 +263,8 @@ class UpdateServiceOptions extends Options {
         $this->options['facebookMessengerPageId'] = $facebookMessengerPageId;
         $this->options['defaultApnNotificationProtocolVersion'] = $defaultApnNotificationProtocolVersion;
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
+        $this->options['fcmCredentialSid'] = $fcmCredentialSid;
+        $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
     }
 
     /**
@@ -304,6 +343,29 @@ class UpdateServiceOptions extends Options {
      */
     public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion) {
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
+        return $this;
+    }
+
+    /**
+     * The fcm_credential_sid
+     * 
+     * @param string $fcmCredentialSid The fcm_credential_sid
+     * @return $this Fluent Builder
+     */
+    public function setFcmCredentialSid($fcmCredentialSid) {
+        $this->options['fcmCredentialSid'] = $fcmCredentialSid;
+        return $this;
+    }
+
+    /**
+     * The default_fcm_notification_protocol_version
+     * 
+     * @param string $defaultFcmNotificationProtocolVersion The
+     *                                                      default_fcm_notification_protocol_version
+     * @return $this Fluent Builder
+     */
+    public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
+        $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
         return $this;
     }
 

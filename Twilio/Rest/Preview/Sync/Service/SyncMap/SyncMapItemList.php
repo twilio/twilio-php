@@ -39,7 +39,7 @@ class SyncMapItemList extends ListResource {
      * Create a new SyncMapItemInstance
      * 
      * @param string $key The key
-     * @param string $data The data
+     * @param array $data The data
      * @return SyncMapItemInstance Newly created SyncMapItemInstance
      */
     public function create($key, $data) {
@@ -106,7 +106,7 @@ class SyncMapItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapItemInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 

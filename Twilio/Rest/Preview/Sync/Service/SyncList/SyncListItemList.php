@@ -38,7 +38,7 @@ class SyncListItemList extends ListResource {
     /**
      * Create a new SyncListItemInstance
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return SyncListItemInstance Newly created SyncListItemInstance
      */
     public function create($data) {
@@ -104,7 +104,7 @@ class SyncListItemList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncListItemInstance[] Array of results
      */
-    public function read($options = array(), $limit = null, $pageSize = Values::NONE) {
+    public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
@@ -141,7 +141,7 @@ class SyncListItemList extends ListResource {
     /**
      * Constructs a SyncListItemContext
      * 
-     * @param string $index The index
+     * @param integer $index The index
      * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext 
      */
     public function getContext($index) {

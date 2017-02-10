@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
- * @property string links
+ * @property array links
  */
 class DeviceInstance extends InstanceResource {
     protected $_usage = null;
@@ -55,8 +55,8 @@ class DeviceInstance extends InstanceResource {
             'status' => $payload['status'],
             'commandsCallbackUrl' => $payload['commands_callback_url'],
             'commandsCallbackMethod' => $payload['commands_callback_method'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
             'links' => $payload['links'],
         );

@@ -16,21 +16,23 @@ abstract class ServiceOptions {
     /**
      * @param string $friendlyName The friendly_name
      * @param string $webhookUrl The webhook_url
-     * @param string $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $aclEnabled The acl_enabled
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled);
+    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
+        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled);
     }
 
     /**
      * @param string $webhookUrl The webhook_url
      * @param string $friendlyName The friendly_name
-     * @param string $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $aclEnabled The acl_enabled
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE) {
-        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled);
+    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
+        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled);
     }
 }
 
@@ -38,12 +40,14 @@ class CreateServiceOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
      * @param string $webhookUrl The webhook_url
-     * @param string $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $aclEnabled The acl_enabled
      */
-    public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
+        $this->options['aclEnabled'] = $aclEnabled;
     }
 
     /**
@@ -71,11 +75,22 @@ class CreateServiceOptions extends Options {
     /**
      * The reachability_webhooks_enabled
      * 
-     * @param string $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
+        return $this;
+    }
+
+    /**
+     * The acl_enabled
+     * 
+     * @param boolean $aclEnabled The acl_enabled
+     * @return $this Fluent Builder
+     */
+    public function setAclEnabled($aclEnabled) {
+        $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
 
@@ -99,12 +114,14 @@ class UpdateServiceOptions extends Options {
     /**
      * @param string $webhookUrl The webhook_url
      * @param string $friendlyName The friendly_name
-     * @param string $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $aclEnabled The acl_enabled
      */
-    public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE) {
+    public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
+        $this->options['aclEnabled'] = $aclEnabled;
     }
 
     /**
@@ -132,11 +149,22 @@ class UpdateServiceOptions extends Options {
     /**
      * The reachability_webhooks_enabled
      * 
-     * @param string $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
+        return $this;
+    }
+
+    /**
+     * The acl_enabled
+     * 
+     * @param boolean $aclEnabled The acl_enabled
+     * @return $this Fluent Builder
+     */
+    public function setAclEnabled($aclEnabled) {
+        $this->options['aclEnabled'] = $aclEnabled;
         return $this;
     }
 

@@ -15,6 +15,7 @@ use Twilio\Options;
 use Twilio\Rest\Preview\Sync\Service\DocumentList;
 use Twilio\Rest\Preview\Sync\Service\SyncListList;
 use Twilio\Rest\Preview\Sync\Service\SyncMapList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -91,7 +92,8 @@ class ServiceContext extends InstanceContext {
         $data = Values::of(array(
             'WebhookUrl' => $options['webhookUrl'],
             'FriendlyName' => $options['friendlyName'],
-            'ReachabilityWebhooksEnabled' => $options['reachabilityWebhooksEnabled'],
+            'ReachabilityWebhooksEnabled' => Serialize::booleanToString($options['reachabilityWebhooksEnabled']),
+            'AclEnabled' => Serialize::booleanToString($options['aclEnabled']),
         ));
         
         $payload = $this->version->update(

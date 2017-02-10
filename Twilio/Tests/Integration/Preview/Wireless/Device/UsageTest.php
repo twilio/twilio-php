@@ -30,4 +30,28 @@ class UsageTest extends HolodeckTestCase {
             'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage'
         ));
     }
+
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "commands_costs": {},
+                "commands_usage": {},
+                "data_costs": {},
+                "data_usage": {},
+                "device_alias": "device_alias",
+                "device_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "period": {},
+                "url": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage"
+            }
+            '
+        ));
+        
+        $actual = $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                  ->usage()->fetch();
+        
+        $this->assertNotNull($actual);
+    }
 }

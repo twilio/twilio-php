@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Wireless;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Version;
 
 /**
@@ -19,14 +20,10 @@ use Twilio\Version;
  * @property string alias
  * @property string accountSid
  * @property string friendlyName
- * @property string dataMetering
- * @property string capabilities
- * @property string voiceCap
- * @property string messagingCap
- * @property string commandsCap
- * @property string dataCap
- * @property string capPeriod
- * @property string capUnit
+ * @property string roaming
+ * @property array data
+ * @property array commands
+ * @property string renewal
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -49,16 +46,12 @@ class RatePlanInstance extends InstanceResource {
             'alias' => $payload['alias'],
             'accountSid' => $payload['account_sid'],
             'friendlyName' => $payload['friendly_name'],
-            'dataMetering' => $payload['data_metering'],
-            'capabilities' => $payload['capabilities'],
-            'voiceCap' => $payload['voice_cap'],
-            'messagingCap' => $payload['messaging_cap'],
-            'commandsCap' => $payload['commands_cap'],
-            'dataCap' => $payload['data_cap'],
-            'capPeriod' => $payload['cap_period'],
-            'capUnit' => $payload['cap_unit'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'roaming' => $payload['roaming'],
+            'data' => $payload['data'],
+            'commands' => $payload['commands'],
+            'renewal' => $payload['renewal'],
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         
@@ -92,6 +85,18 @@ class RatePlanInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the RatePlanInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return RatePlanInstance Updated RatePlanInstance
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update(
+            $options
+        );
     }
 
     /**

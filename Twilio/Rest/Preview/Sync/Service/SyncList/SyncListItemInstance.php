@@ -15,13 +15,13 @@ use Twilio\InstanceResource;
 use Twilio\Version;
 
 /**
- * @property string index
+ * @property integer index
  * @property string accountSid
  * @property string serviceSid
  * @property string listSid
  * @property string url
  * @property string revision
- * @property string data
+ * @property array data
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
@@ -34,7 +34,7 @@ class SyncListItemInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $listSid The list_sid
-     * @param string $index The index
+     * @param integer $index The index
      * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $listSid, $index = null) {
@@ -49,8 +49,8 @@ class SyncListItemInstance extends InstanceResource {
             'url' => $payload['url'],
             'revision' => $payload['revision'],
             'data' => $payload['data'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'createdBy' => $payload['created_by'],
         );
         
@@ -101,7 +101,7 @@ class SyncListItemInstance extends InstanceResource {
     /**
      * Update the SyncListItemInstance
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return SyncListItemInstance Updated SyncListItemInstance
      */
     public function update($data) {

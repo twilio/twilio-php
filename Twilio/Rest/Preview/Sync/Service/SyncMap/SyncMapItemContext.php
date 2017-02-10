@@ -71,7 +71,7 @@ class SyncMapItemContext extends InstanceContext {
     /**
      * Update the SyncMapItemInstance
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      */
     public function update($data) {

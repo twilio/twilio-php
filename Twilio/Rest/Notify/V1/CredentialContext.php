@@ -11,6 +11,7 @@ namespace Twilio\Rest\Notify\V1;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -67,8 +68,9 @@ class CredentialContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'Certificate' => $options['certificate'],
             'PrivateKey' => $options['privateKey'],
-            'Sandbox' => $options['sandbox'],
+            'Sandbox' => Serialize::booleanToString($options['sandbox']),
             'ApiKey' => $options['apiKey'],
+            'Secret' => $options['secret'],
         ));
         
         $payload = $this->version->update(

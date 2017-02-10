@@ -59,6 +59,7 @@ class AddressTest extends HolodeckTestCase {
                 "region": "CA",
                 "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "street": "4th",
+                "validated": false,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -129,6 +130,7 @@ class AddressTest extends HolodeckTestCase {
                 "region": "CA",
                 "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "street": "4th",
+                "validated": false,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -172,6 +174,7 @@ class AddressTest extends HolodeckTestCase {
                 "region": "CA",
                 "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "street": "4th",
+                "validated": false,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -217,6 +220,7 @@ class AddressTest extends HolodeckTestCase {
                         "region": "CA",
                         "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "street": "4th",
+                        "validated": false,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],

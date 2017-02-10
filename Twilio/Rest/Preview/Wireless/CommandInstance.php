@@ -19,6 +19,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string deviceSid
  * @property string command
+ * @property string commandMode
  * @property string status
  * @property string direction
  * @property \DateTime dateCreated
@@ -43,10 +44,11 @@ class CommandInstance extends InstanceResource {
             'accountSid' => $payload['account_sid'],
             'deviceSid' => $payload['device_sid'],
             'command' => $payload['command'],
+            'commandMode' => $payload['command_mode'],
             'status' => $payload['status'],
             'direction' => $payload['direction'],
-            'dateCreated' => Deserialize::iso8601DateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::iso8601DateTime($payload['date_updated']),
+            'dateCreated' => Deserialize::dateTime($payload['date_created']),
+            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
         

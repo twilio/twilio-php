@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -44,6 +45,34 @@ class RatePlanContext extends InstanceContext {
             'GET',
             $this->uri,
             $params
+        );
+        
+        return new RatePlanInstance(
+            $this->version,
+            $payload,
+            $this->solution['sid']
+        );
+    }
+
+    /**
+     * Update the RatePlanInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return RatePlanInstance Updated RatePlanInstance
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+        
+        $data = Values::of(array(
+            'Alias' => $options['alias'],
+            'FriendlyName' => $options['friendlyName'],
+        ));
+        
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
         );
         
         return new RatePlanInstance(
