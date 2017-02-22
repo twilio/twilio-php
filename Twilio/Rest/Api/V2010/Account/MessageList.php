@@ -54,6 +54,7 @@ class MessageList extends ListResource {
             'ApplicationSid' => $options['applicationSid'],
             'MaxPrice' => $options['maxPrice'],
             'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
+            'ValidityPeriod' => $options['validityPeriod'],
         ));
         
         $payload = $this->version->create(
