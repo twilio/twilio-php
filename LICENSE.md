@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (C) 2016, Twilio, Inc. <help at twilio dot com>
+Copyright (C) 2017, Twilio, Inc. <help@twilio.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
