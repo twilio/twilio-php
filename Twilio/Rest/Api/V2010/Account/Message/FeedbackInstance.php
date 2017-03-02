@@ -34,7 +34,7 @@ class FeedbackInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -44,7 +44,7 @@ class FeedbackInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'uri' => $payload['uri'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'messageSid' => $messageSid,
@@ -62,12 +62,12 @@ class FeedbackInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

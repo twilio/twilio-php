@@ -25,12 +25,12 @@ class TriggerList extends ListResource {
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Triggers.json';
     }
 
@@ -45,7 +45,7 @@ class TriggerList extends ListResource {
      */
     public function create($callbackUrl, $triggerValue, $usageCategory, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'CallbackUrl' => $callbackUrl,
             'TriggerValue' => $triggerValue,
@@ -55,14 +55,14 @@ class TriggerList extends ListResource {
             'Recurring' => $options['recurring'],
             'TriggerBy' => $options['triggerBy'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new TriggerInstance(
             $this->version,
             $payload,
@@ -91,9 +91,9 @@ class TriggerList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -137,13 +137,13 @@ class TriggerList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TriggerPage($this->version, $response, $this->solution);
     }
 

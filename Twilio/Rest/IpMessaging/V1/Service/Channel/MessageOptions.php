@@ -23,6 +23,14 @@ abstract class MessageOptions {
     }
 
     /**
+     * @param string $order The order
+     * @return ReadMessageOptions Options builder
+     */
+    public static function read($order = Values::NONE) {
+        return new ReadMessageOptions($order);
+    }
+
+    /**
      * @param string $body The body
      * @param string $attributes The attributes
      * @return UpdateMessageOptions Options builder
@@ -77,6 +85,41 @@ class CreateMessageOptions extends Options {
             }
         }
         return '[Twilio.IpMessaging.V1.CreateMessageOptions ' . implode(' ', $options) . ']';
+    }
+}
+
+class ReadMessageOptions extends Options {
+    /**
+     * @param string $order The order
+     */
+    public function __construct($order = Values::NONE) {
+        $this->options['order'] = $order;
+    }
+
+    /**
+     * The order
+     * 
+     * @param string $order The order
+     * @return $this Fluent Builder
+     */
+    public function setOrder($order) {
+        $this->options['order'] = $order;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.IpMessaging.V1.ReadMessageOptions ' . implode(' ', $options) . ']';
     }
 }
 

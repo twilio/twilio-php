@@ -25,13 +25,13 @@ class ConnectAppContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/ConnectApps/' . rawurlencode($sid) . '.json';
     }
 
@@ -42,13 +42,13 @@ class ConnectAppContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ConnectAppInstance(
             $this->version,
             $payload,
@@ -65,7 +65,7 @@ class ConnectAppContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'AuthorizeRedirectUrl' => $options['authorizeRedirectUrl'],
             'CompanyName' => $options['companyName'],
@@ -76,14 +76,14 @@ class ConnectAppContext extends InstanceContext {
             'HomepageUrl' => $options['homepageUrl'],
             'Permissions' => $options['permissions'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ConnectAppInstance(
             $this->version,
             $payload,

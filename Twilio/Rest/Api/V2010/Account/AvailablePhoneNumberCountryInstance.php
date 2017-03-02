@@ -37,7 +37,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'countryCode' => $payload['country_code'],
@@ -46,7 +46,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
             'beta' => $payload['beta'],
             'subresourceUris' => $payload['subresource_uris'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'countryCode' => $countryCode ?: $this->properties['countryCode'],
@@ -67,7 +67,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
                 $this->solution['countryCode']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -119,12 +119,12 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

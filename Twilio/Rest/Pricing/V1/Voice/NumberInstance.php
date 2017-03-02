@@ -33,7 +33,7 @@ class NumberInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $number = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'number' => $payload['number'],
@@ -44,7 +44,7 @@ class NumberInstance extends InstanceResource {
             'priceUnit' => $payload['price_unit'],
             'url' => $payload['url'],
         );
-        
+
         $this->solution = array(
             'number' => $number ?: $this->properties['number'],
         );
@@ -64,7 +64,7 @@ class NumberInstance extends InstanceResource {
                 $this->solution['number']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -88,12 +88,12 @@ class NumberInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

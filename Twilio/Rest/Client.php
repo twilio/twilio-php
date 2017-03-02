@@ -18,6 +18,7 @@ use Twilio\VersionInfo;
 /**
  * A client for accessing the Twilio API.
  * 
+ * @property \Twilio\Rest\Accounts accounts
  * @property \Twilio\Rest\Api api
  * @property \Twilio\Rest\Chat chat
  * @property \Twilio\Rest\IpMessaging ipMessaging
@@ -27,7 +28,6 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
- * @property \Twilio\Rest\Api\V2010\AccountList accounts
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
@@ -44,7 +44,6 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList outgoingCallerIds
  * @property \Twilio\Rest\Api\V2010\Account\QueueList queues
  * @property \Twilio\Rest\Api\V2010\Account\RecordingList recordings
- * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
  * @property \Twilio\Rest\Api\V2010\Account\SigningKeyList signingKeys
  * @property \Twilio\Rest\Api\V2010\Account\SipList sip
  * @property \Twilio\Rest\Api\V2010\Account\ShortCodeList shortCodes
@@ -67,7 +66,6 @@ use Twilio\VersionInfo;
  * @method \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext outgoingCallerIds(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\QueueContext queues(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
  * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
@@ -82,6 +80,7 @@ class Client {
     protected $region;
     protected $httpClient;
     protected $_account;
+    protected $_accounts = null;
     protected $_api = null;
     protected $_chat = null;
     protected $_ipMessaging = null;
@@ -90,7 +89,6 @@ class Client {
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
-    protected $_accounts = null;
 
     /**
      * Initializes the Twilio Client
@@ -111,7 +109,7 @@ class Client {
         if (is_null($environment)) {
             $environment = $_ENV;
         }
-        
+
         if ($username) {
             $this->username = $username;
         } else {
@@ -119,7 +117,7 @@ class Client {
                 $this->username = $environment[self::ENV_ACCOUNT_SID];
             }
         }
-        
+
         if ($password) {
             $this->password = $password;
         } else {
@@ -127,14 +125,14 @@ class Client {
                 $this->password = $environment[self::ENV_AUTH_TOKEN];
             }
         }
-        
+
         if (!$this->username || !$this->password) {
             throw new ConfigurationException("Credentials are required to create a Client");
         }
-        
+
         $this->accountSid = $accountSid ?: $this->username;
         $this->region = $region;
-        
+
         if ($httpClient) {
             $this->httpClient = $httpClient;
         } else {
@@ -159,24 +157,24 @@ class Client {
     public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null) {
         $username = $username ? $username : $this->username;
         $password = $password ? $password : $this->password;
-        
+
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
                                  ' (PHP ' . phpversion() . ')';
         $headers['Accept-Charset'] = 'utf-8';
-        
+
         if ($method == 'POST' && !array_key_exists('Content-Type', $headers)) {
             $headers['Content-Type'] = 'application/x-www-form-urlencoded';
         }
-        
+
         if (!array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
         }
-        
+
         if ($this->region) {
             list($head, $tail) = explode('.', $uri, 2);
             $uri = implode('.', array($head, $this->region, $tail));
         }
-        
+
         return $this->getHttpClient()->request(
             $method,
             $uri,
@@ -244,6 +242,18 @@ class Client {
     }
 
     /**
+     * Access the Accounts Twilio Domain
+     * 
+     * @return \Twilio\Rest\Accounts Accounts Twilio Domain
+     */
+    protected function getAccounts() {
+        if (!$this->_accounts) {
+            $this->_accounts = new Accounts($this);
+        }
+        return $this->_accounts;
+    }
+
+    /**
      * Access the Api Twilio Domain
      * 
      * @return \Twilio\Rest\Api Api Twilio Domain
@@ -261,21 +271,6 @@ class Client {
      */
     public function getAccount() {
         return $this->api->v2010->account;
-    }
-
-    /**
-     * @return \Twilio\Rest\Api\V2010\AccountList 
-     */
-    public function getAccounts() {
-        return $this->api->v2010->accounts;
-    }
-
-    /**
-     * @param string $sid Fetch by unique Account Sid
-     * @return \Twilio\Rest\Api\V2010\AccountContext 
-     */
-    protected function contextAccounts($sid) {
-        return $this->api->v2010->accounts($sid);
     }
 
     /**
@@ -503,20 +498,6 @@ class Client {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
-     */
-    protected function getSandbox() {
-        return $this->api->v2010->account->sandbox;
-    }
-
-    /**
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext 
-     */
-    protected function contextSandbox() {
-        return $this->api->v2010->account->sandbox();
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
      */
     protected function getSigningKeys() {
@@ -685,7 +666,7 @@ class Client {
         if (method_exists($this, $method)) {
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown domain ' . $name);
     }
 
@@ -702,7 +683,7 @@ class Client {
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
         }
-        
+
         throw new TwilioException('Unknown context ' . $name);
     }
 

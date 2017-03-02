@@ -46,7 +46,7 @@ class TriggerInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -66,7 +66,7 @@ class TriggerInstance extends InstanceResource {
             'usageCategory' => $payload['usage_category'],
             'usageRecordUri' => $payload['usage_record_uri'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -88,7 +88,7 @@ class TriggerInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -133,12 +133,12 @@ class TriggerInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

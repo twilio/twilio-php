@@ -61,12 +61,12 @@ class WorkspaceContext extends InstanceContext {
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($sid) . '';
     }
 
@@ -77,13 +77,13 @@ class WorkspaceContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new WorkspaceInstance(
             $this->version,
             $payload,
@@ -99,7 +99,7 @@ class WorkspaceContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'DefaultActivitySid' => $options['defaultActivitySid'],
             'EventCallbackUrl' => $options['eventCallbackUrl'],
@@ -109,14 +109,14 @@ class WorkspaceContext extends InstanceContext {
             'TimeoutActivitySid' => $options['timeoutActivitySid'],
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new WorkspaceInstance(
             $this->version,
             $payload,
@@ -145,7 +145,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_activities;
     }
 
@@ -161,7 +161,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_events;
     }
 
@@ -177,7 +177,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_tasks;
     }
 
@@ -193,7 +193,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_taskQueues;
     }
 
@@ -209,7 +209,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_workers;
     }
 
@@ -225,7 +225,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_workflows;
     }
 
@@ -241,7 +241,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_statistics;
     }
 
@@ -257,7 +257,7 @@ class WorkspaceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_taskChannels;
     }
 
@@ -273,7 +273,7 @@ class WorkspaceContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -290,7 +290,7 @@ class WorkspaceContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

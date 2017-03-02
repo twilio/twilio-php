@@ -33,13 +33,13 @@ class ConferenceContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($sid) . '.json';
     }
 
@@ -50,13 +50,13 @@ class ConferenceContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ConferenceInstance(
             $this->version,
             $payload,
@@ -73,18 +73,18 @@ class ConferenceContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Status' => $options['status'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ConferenceInstance(
             $this->version,
             $payload,
@@ -106,7 +106,7 @@ class ConferenceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_participants;
     }
 
@@ -122,7 +122,7 @@ class ConferenceContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -139,7 +139,7 @@ class ConferenceContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

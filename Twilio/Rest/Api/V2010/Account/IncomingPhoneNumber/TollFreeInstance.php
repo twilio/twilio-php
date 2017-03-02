@@ -47,13 +47,12 @@ class TollFreeInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $ownerAccountSid A 34 character string that uniquely
-     *                                identifies this resource.
+     * @param string $accountSid The unique sid that identifies this account
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeInstance 
      */
-    public function __construct(Version $version, array $payload, $ownerAccountSid) {
+    public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -82,9 +81,9 @@ class TollFreeInstance extends InstanceResource {
             'voiceMethod' => $payload['voice_method'],
             'voiceUrl' => $payload['voice_url'],
         );
-        
+
         $this->solution = array(
-            'ownerAccountSid' => $ownerAccountSid,
+            'accountSid' => $accountSid,
         );
     }
 
@@ -99,12 +98,12 @@ class TollFreeInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

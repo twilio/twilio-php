@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string street
  * @property string uri
  * @property boolean emergencyEnabled
+ * @property boolean validated
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;
@@ -44,7 +45,7 @@ class AddressInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -60,8 +61,9 @@ class AddressInstance extends InstanceResource {
             'street' => $payload['street'],
             'uri' => $payload['uri'],
             'emergencyEnabled' => $payload['emergency_enabled'],
+            'validated' => $payload['validated'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -83,7 +85,7 @@ class AddressInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -137,12 +139,12 @@ class AddressInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

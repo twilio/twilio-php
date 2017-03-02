@@ -42,7 +42,7 @@ class TranscriptionInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $recordingSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -59,7 +59,7 @@ class TranscriptionInstance extends InstanceResource {
             'type' => $payload['type'],
             'uri' => $payload['uri'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'recordingSid' => $recordingSid,
@@ -82,7 +82,7 @@ class TranscriptionInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -115,12 +115,12 @@ class TranscriptionInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

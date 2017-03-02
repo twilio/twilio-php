@@ -44,7 +44,6 @@ class AccountInstance extends InstanceResource {
     protected $_outgoingCallerIds = null;
     protected $_queues = null;
     protected $_recordings = null;
-    protected $_sandbox = null;
     protected $_signingKeys = null;
     protected $_sip = null;
     protected $_shortCodes = null;
@@ -63,7 +62,7 @@ class AccountInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'authToken' => $payload['auth_token'],
@@ -77,7 +76,7 @@ class AccountInstance extends InstanceResource {
             'type' => $payload['type'],
             'uri' => $payload['uri'],
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -97,7 +96,7 @@ class AccountInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -267,15 +266,6 @@ class AccountInstance extends InstanceResource {
     }
 
     /**
-     * Access the sandbox
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
-     */
-    protected function getSandbox() {
-        return $this->proxy()->sandbox;
-    }
-
-    /**
      * Access the signingKeys
      * 
      * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
@@ -349,12 +339,12 @@ class AccountInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

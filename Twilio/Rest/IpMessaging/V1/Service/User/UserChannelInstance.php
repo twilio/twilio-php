@@ -35,7 +35,7 @@ class UserChannelInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -47,7 +47,7 @@ class UserChannelInstance extends InstanceResource {
             'unreadMessagesCount' => $payload['unread_messages_count'],
             'links' => $payload['links'],
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'userSid' => $userSid,
@@ -65,12 +65,12 @@ class UserChannelInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

@@ -37,7 +37,7 @@ class RoleInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'sid' => $payload['sid'],
@@ -50,7 +50,7 @@ class RoleInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
             'url' => $payload['url'],
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -72,7 +72,7 @@ class RoleInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -117,12 +117,12 @@ class RoleInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

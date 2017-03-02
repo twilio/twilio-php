@@ -26,14 +26,14 @@ class IpAddressContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $ipAccessControlListSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'ipAccessControlListSid' => $ipAccessControlListSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . rawurlencode($ipAccessControlListSid) . '/IpAddresses/' . rawurlencode($sid) . '.json';
     }
 
@@ -44,13 +44,13 @@ class IpAddressContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new IpAddressInstance(
             $this->version,
             $payload,
@@ -68,19 +68,19 @@ class IpAddressContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'IpAddress' => $options['ipAddress'],
             'FriendlyName' => $options['friendlyName'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new IpAddressInstance(
             $this->version,
             $payload,

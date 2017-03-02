@@ -50,14 +50,13 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $ownerAccountSid A 34 character string that uniquely
-     *                                identifies this resource.
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $sid Fetch by unique incoming-phone-number Sid
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance 
      */
-    public function __construct(Version $version, array $payload, $ownerAccountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -88,9 +87,9 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'emergencyStatus' => $payload['emergency_status'],
             'emergencyAddressSid' => $payload['emergency_address_sid'],
         );
-        
+
         $this->solution = array(
-            'ownerAccountSid' => $ownerAccountSid,
+            'accountSid' => $accountSid,
             'sid' => $sid ?: $this->properties['sid'],
         );
     }
@@ -107,11 +106,11 @@ class IncomingPhoneNumberInstance extends InstanceResource {
         if (!$this->context) {
             $this->context = new IncomingPhoneNumberContext(
                 $this->version,
-                $this->solution['ownerAccountSid'],
+                $this->solution['accountSid'],
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -156,12 +155,12 @@ class IncomingPhoneNumberInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

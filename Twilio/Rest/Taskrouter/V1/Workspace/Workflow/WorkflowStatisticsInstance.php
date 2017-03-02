@@ -34,7 +34,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workflowSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => $payload['account_sid'],
@@ -44,7 +44,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
             'workspaceSid' => $payload['workspace_sid'],
             'url' => $payload['url'],
         );
-        
+
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'workflowSid' => $workflowSid,
@@ -66,7 +66,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
                 $this->solution['workflowSid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -93,12 +93,12 @@ class WorkflowStatisticsInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

@@ -20,19 +20,18 @@ class MobileList extends ListResource {
      * Construct the MobileList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $ownerAccountSid A 34 character string that uniquely
-     *                                identifies this resource.
+     * @param string $accountSid The unique sid that identifies this account
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileList 
      */
-    public function __construct(Version $version, $ownerAccountSid) {
+    public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
-            'ownerAccountSid' => $ownerAccountSid,
+            'accountSid' => $accountSid,
         );
-        
-        $this->uri = '/Accounts/' . rawurlencode($ownerAccountSid) . '/IncomingPhoneNumbers/Mobile.json';
+
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/Mobile.json';
     }
 
     /**
@@ -56,9 +55,9 @@ class MobileList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -102,13 +101,13 @@ class MobileList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new MobilePage($this->version, $response, $this->solution);
     }
 
@@ -121,7 +120,7 @@ class MobileList extends ListResource {
      */
     public function create($phoneNumber, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'PhoneNumber' => $phoneNumber,
             'ApiVersion' => $options['apiVersion'],
@@ -140,18 +139,18 @@ class MobileList extends ListResource {
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new MobileInstance(
             $this->version,
             $payload,
-            $this->solution['ownerAccountSid']
+            $this->solution['accountSid']
         );
     }
 

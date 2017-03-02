@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class AlertTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->monitor->v1->alerts("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://monitor.twilio.com/v1/Alerts/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -55,20 +55,20 @@ class AlertTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->monitor->v1->alerts("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->monitor->v1->alerts("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'delete',
             'https://monitor.twilio.com/v1/Alerts/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -80,20 +80,20 @@ class AlertTest extends HolodeckTestCase {
             204,
             null
         ));
-        
+
         $actual = $this->twilio->monitor->v1->alerts("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        
+
         $this->assertTrue($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->monitor->v1->alerts->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://monitor.twilio.com/v1/Alerts'
@@ -118,9 +118,9 @@ class AlertTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->monitor->v1->alerts->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -159,9 +159,9 @@ class AlertTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->monitor->v1->alerts->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 }

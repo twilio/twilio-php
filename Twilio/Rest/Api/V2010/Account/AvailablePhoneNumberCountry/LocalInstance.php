@@ -40,7 +40,7 @@ class LocalInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'friendlyName' => $payload['friendly_name'],
@@ -56,7 +56,7 @@ class LocalInstance extends InstanceResource {
             'beta' => $payload['beta'],
             'capabilities' => $payload['capabilities'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'countryCode' => $countryCode,
@@ -74,12 +74,12 @@ class LocalInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

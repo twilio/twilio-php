@@ -24,12 +24,12 @@ class TaskQueueList extends ListResource {
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskQueues';
     }
 
@@ -54,9 +54,9 @@ class TaskQueueList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -100,13 +100,13 @@ class TaskQueueList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TaskQueuePage($this->version, $response, $this->solution);
     }
 
@@ -121,7 +121,7 @@ class TaskQueueList extends ListResource {
      */
     public function create($friendlyName, $reservationActivitySid, $assignmentActivitySid, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'ReservationActivitySid' => $reservationActivitySid,
@@ -130,14 +130,14 @@ class TaskQueueList extends ListResource {
             'MaxReservedWorkers' => $options['maxReservedWorkers'],
             'TaskOrder' => $options['taskOrder'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new TaskQueueInstance(
             $this->version,
             $payload,

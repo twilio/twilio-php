@@ -23,12 +23,12 @@ class AlertContext extends InstanceContext {
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Alerts/' . rawurlencode($sid) . '';
     }
 
@@ -39,13 +39,13 @@ class AlertContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AlertInstance(
             $this->version,
             $payload,

@@ -14,7 +14,7 @@ use Twilio\Page;
 class IncomingPhoneNumberPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }
@@ -23,7 +23,7 @@ class IncomingPhoneNumberPage extends Page {
         return new IncomingPhoneNumberInstance(
             $this->version,
             $payload,
-            $this->solution['ownerAccountSid']
+            $this->solution['accountSid']
         );
     }
 

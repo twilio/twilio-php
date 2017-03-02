@@ -34,7 +34,7 @@ class MemberInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $queueSid, $callSid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
             'callSid' => $payload['call_sid'],
@@ -43,7 +43,7 @@ class MemberInstance extends InstanceResource {
             'uri' => $payload['uri'],
             'waitTime' => $payload['wait_time'],
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'queueSid' => $queueSid,
@@ -67,7 +67,7 @@ class MemberInstance extends InstanceResource {
                 $this->solution['callSid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -105,12 +105,12 @@ class MemberInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 
