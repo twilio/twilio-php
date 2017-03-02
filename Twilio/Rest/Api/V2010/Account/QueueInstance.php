@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -43,15 +44,15 @@ class QueueInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'averageWaitTime' => $payload['average_wait_time'],
-            'currentSize' => $payload['current_size'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'maxSize' => $payload['max_size'],
-            'sid' => $payload['sid'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'averageWaitTime' => Values::array_get($payload, 'average_wait_time'),
+            'currentSize' => Values::array_get($payload, 'current_size'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'maxSize' => Values::array_get($payload, 'max_size'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

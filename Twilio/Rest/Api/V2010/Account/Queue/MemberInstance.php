@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Queue;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -37,11 +38,11 @@ class MemberInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'callSid' => $payload['call_sid'],
-            'dateEnqueued' => Deserialize::dateTime($payload['date_enqueued']),
-            'position' => $payload['position'],
-            'uri' => $payload['uri'],
-            'waitTime' => $payload['wait_time'],
+            'callSid' => Values::array_get($payload, 'call_sid'),
+            'dateEnqueued' => Deserialize::dateTime(Values::array_get($payload, 'date_enqueued')),
+            'position' => Values::array_get($payload, 'position'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'waitTime' => Values::array_get($payload, 'wait_time'),
         );
 
         $this->solution = array(

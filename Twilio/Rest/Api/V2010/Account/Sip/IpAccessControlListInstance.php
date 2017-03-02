@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Sip;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,13 +42,13 @@ class IpAccessControlListInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'subresourceUris' => $payload['subresource_uris'],
-            'uri' => $payload['uri'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -44,16 +45,16 @@ class ConferenceInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'apiVersion' => $payload['api_version'],
-            'friendlyName' => $payload['friendly_name'],
-            'region' => $payload['region'],
-            'sid' => $payload['sid'],
-            'status' => $payload['status'],
-            'uri' => $payload['uri'],
-            'subresourceUris' => $payload['subresource_uris'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'region' => Values::array_get($payload, 'region'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'status' => Values::array_get($payload, 'status'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
         $this->solution = array(

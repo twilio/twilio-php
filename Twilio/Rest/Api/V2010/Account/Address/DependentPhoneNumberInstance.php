@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Address;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,17 +42,17 @@ class DependentPhoneNumberInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'friendlyName' => $payload['friendly_name'],
-            'phoneNumber' => $payload['phone_number'],
-            'lata' => $payload['lata'],
-            'rateCenter' => $payload['rate_center'],
-            'latitude' => $payload['latitude'],
-            'longitude' => $payload['longitude'],
-            'region' => $payload['region'],
-            'postalCode' => $payload['postal_code'],
-            'isoCountry' => $payload['iso_country'],
-            'addressRequirements' => $payload['address_requirements'],
-            'capabilities' => $payload['capabilities'],
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'lata' => Values::array_get($payload, 'lata'),
+            'rateCenter' => Values::array_get($payload, 'rate_center'),
+            'latitude' => Values::array_get($payload, 'latitude'),
+            'longitude' => Values::array_get($payload, 'longitude'),
+            'region' => Values::array_get($payload, 'region'),
+            'postalCode' => Values::array_get($payload, 'postal_code'),
+            'isoCountry' => Values::array_get($payload, 'iso_country'),
+            'addressRequirements' => Values::array_get($payload, 'address_requirements'),
+            'capabilities' => Values::array_get($payload, 'capabilities'),
         );
 
         $this->solution = array(

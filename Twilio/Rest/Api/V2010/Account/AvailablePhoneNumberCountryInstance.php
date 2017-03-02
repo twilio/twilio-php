@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -40,11 +41,11 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'countryCode' => $payload['country_code'],
-            'country' => $payload['country'],
-            'uri' => $payload['uri'],
-            'beta' => $payload['beta'],
-            'subresourceUris' => $payload['subresource_uris'],
+            'countryCode' => Values::array_get($payload, 'country_code'),
+            'country' => Values::array_get($payload, 'country'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'beta' => Values::array_get($payload, 'beta'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
         $this->solution = array(

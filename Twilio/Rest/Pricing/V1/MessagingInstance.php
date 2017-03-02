@@ -11,6 +11,7 @@ namespace Twilio\Rest\Pricing\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -31,9 +32,9 @@ class MessagingInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'name' => $payload['name'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'name' => Values::array_get($payload, 'name'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array();

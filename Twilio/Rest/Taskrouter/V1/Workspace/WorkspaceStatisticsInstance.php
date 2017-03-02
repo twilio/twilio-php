@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -35,11 +36,11 @@ class WorkspaceStatisticsInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'realtime' => $payload['realtime'],
-            'cumulative' => $payload['cumulative'],
-            'accountSid' => $payload['account_sid'],
-            'workspaceSid' => $payload['workspace_sid'],
-            'url' => $payload['url'],
+            'realtime' => Values::array_get($payload, 'realtime'),
+            'cumulative' => Values::array_get($payload, 'cumulative'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(

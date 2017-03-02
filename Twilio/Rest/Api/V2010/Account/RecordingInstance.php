@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -47,19 +48,19 @@ class RecordingInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'callSid' => $payload['call_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'duration' => $payload['duration'],
-            'sid' => $payload['sid'],
-            'price' => $payload['price'],
-            'priceUnit' => $payload['price_unit'],
-            'status' => $payload['status'],
-            'channels' => $payload['channels'],
-            'source' => $payload['source'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'callSid' => Values::array_get($payload, 'call_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'duration' => Values::array_get($payload, 'duration'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'price' => Values::array_get($payload, 'price'),
+            'priceUnit' => Values::array_get($payload, 'price_unit'),
+            'status' => Values::array_get($payload, 'status'),
+            'channels' => Values::array_get($payload, 'channels'),
+            'source' => Values::array_get($payload, 'source'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -50,20 +51,20 @@ class ChannelInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'uniqueName' => $payload['unique_name'],
-            'attributes' => $payload['attributes'],
-            'type' => $payload['type'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'createdBy' => $payload['created_by'],
-            'membersCount' => $payload['members_count'],
-            'messagesCount' => $payload['messages_count'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'attributes' => Values::array_get($payload, 'attributes'),
+            'type' => Values::array_get($payload, 'type'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'createdBy' => Values::array_get($payload, 'created_by'),
+            'membersCount' => Values::array_get($payload, 'members_count'),
+            'messagesCount' => Values::array_get($payload, 'messages_count'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array(

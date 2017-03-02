@@ -11,6 +11,7 @@ namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 class CredentialInstance extends InstanceResource {

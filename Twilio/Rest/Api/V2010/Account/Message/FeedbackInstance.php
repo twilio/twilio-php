@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Message;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -37,12 +38,12 @@ class FeedbackInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'messageSid' => $payload['message_sid'],
-            'outcome' => $payload['outcome'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'messageSid' => Values::array_get($payload, 'message_sid'),
+            'outcome' => Values::array_get($payload, 'outcome'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -55,26 +56,26 @@ class ServiceInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'defaultServiceRoleSid' => $payload['default_service_role_sid'],
-            'defaultChannelRoleSid' => $payload['default_channel_role_sid'],
-            'defaultChannelCreatorRoleSid' => $payload['default_channel_creator_role_sid'],
-            'readStatusEnabled' => $payload['read_status_enabled'],
-            'reachabilityEnabled' => $payload['reachability_enabled'],
-            'typingIndicatorTimeout' => $payload['typing_indicator_timeout'],
-            'consumptionReportInterval' => $payload['consumption_report_interval'],
-            'webhooks' => $payload['webhooks'],
-            'preWebhookUrl' => $payload['pre_webhook_url'],
-            'postWebhookUrl' => $payload['post_webhook_url'],
-            'webhookMethod' => $payload['webhook_method'],
-            'webhookFilters' => $payload['webhook_filters'],
-            'notifications' => $payload['notifications'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'defaultServiceRoleSid' => Values::array_get($payload, 'default_service_role_sid'),
+            'defaultChannelRoleSid' => Values::array_get($payload, 'default_channel_role_sid'),
+            'defaultChannelCreatorRoleSid' => Values::array_get($payload, 'default_channel_creator_role_sid'),
+            'readStatusEnabled' => Values::array_get($payload, 'read_status_enabled'),
+            'reachabilityEnabled' => Values::array_get($payload, 'reachability_enabled'),
+            'typingIndicatorTimeout' => Values::array_get($payload, 'typing_indicator_timeout'),
+            'consumptionReportInterval' => Values::array_get($payload, 'consumption_report_interval'),
+            'webhooks' => Values::array_get($payload, 'webhooks'),
+            'preWebhookUrl' => Values::array_get($payload, 'pre_webhook_url'),
+            'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),
+            'webhookMethod' => Values::array_get($payload, 'webhook_method'),
+            'webhookFilters' => Values::array_get($payload, 'webhook_filters'),
+            'notifications' => Values::array_get($payload, 'notifications'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array(

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -37,12 +38,12 @@ class TaskQueueStatisticsInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'cumulative' => $payload['cumulative'],
-            'realtime' => $payload['realtime'],
-            'taskQueueSid' => $payload['task_queue_sid'],
-            'workspaceSid' => $payload['workspace_sid'],
-            'url' => $payload['url'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'cumulative' => Values::array_get($payload, 'cumulative'),
+            'realtime' => Values::array_get($payload, 'realtime'),
+            'taskQueueSid' => Values::array_get($payload, 'task_queue_sid'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(

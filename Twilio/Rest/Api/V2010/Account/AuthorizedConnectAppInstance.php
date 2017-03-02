@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,16 +42,16 @@ class AuthorizedConnectAppInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'connectAppCompanyName' => $payload['connect_app_company_name'],
-            'connectAppDescription' => $payload['connect_app_description'],
-            'connectAppFriendlyName' => $payload['connect_app_friendly_name'],
-            'connectAppHomepageUrl' => $payload['connect_app_homepage_url'],
-            'connectAppSid' => $payload['connect_app_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'permissions' => $payload['permissions'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'connectAppCompanyName' => Values::array_get($payload, 'connect_app_company_name'),
+            'connectAppDescription' => Values::array_get($payload, 'connect_app_description'),
+            'connectAppFriendlyName' => Values::array_get($payload, 'connect_app_friendly_name'),
+            'connectAppHomepageUrl' => Values::array_get($payload, 'connect_app_homepage_url'),
+            'connectAppSid' => Values::array_get($payload, 'connect_app_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'permissions' => Values::array_get($payload, 'permissions'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

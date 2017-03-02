@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -44,17 +45,17 @@ class MemberInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'channelSid' => $payload['channel_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'identity' => $payload['identity'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'roleSid' => $payload['role_sid'],
-            'lastConsumedMessageIndex' => $payload['last_consumed_message_index'],
-            'lastConsumptionTimestamp' => Deserialize::dateTime($payload['last_consumption_timestamp']),
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'channelSid' => Values::array_get($payload, 'channel_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'identity' => Values::array_get($payload, 'identity'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'roleSid' => Values::array_get($payload, 'role_sid'),
+            'lastConsumedMessageIndex' => Values::array_get($payload, 'last_consumed_message_index'),
+            'lastConsumptionTimestamp' => Deserialize::dateTime(Values::array_get($payload, 'last_consumption_timestamp')),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(

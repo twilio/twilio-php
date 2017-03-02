@@ -12,6 +12,7 @@ namespace Twilio\Rest\Lookups\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -37,13 +38,13 @@ class PhoneNumberInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'callerName' => $payload['caller_name'],
-            'countryCode' => $payload['country_code'],
-            'phoneNumber' => $payload['phone_number'],
-            'nationalFormat' => $payload['national_format'],
-            'carrier' => $payload['carrier'],
-            'addOns' => $payload['add_ons'],
-            'url' => $payload['url'],
+            'callerName' => Values::array_get($payload, 'caller_name'),
+            'countryCode' => Values::array_get($payload, 'country_code'),
+            'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'nationalFormat' => Values::array_get($payload, 'national_format'),
+            'carrier' => Values::array_get($payload, 'carrier'),
+            'addOns' => Values::array_get($payload, 'add_ons'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(

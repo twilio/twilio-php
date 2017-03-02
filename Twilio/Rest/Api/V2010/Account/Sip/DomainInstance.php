@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -52,22 +53,22 @@ class DomainInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'authType' => $payload['auth_type'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'domainName' => $payload['domain_name'],
-            'friendlyName' => $payload['friendly_name'],
-            'sid' => $payload['sid'],
-            'uri' => $payload['uri'],
-            'voiceFallbackMethod' => $payload['voice_fallback_method'],
-            'voiceFallbackUrl' => $payload['voice_fallback_url'],
-            'voiceMethod' => $payload['voice_method'],
-            'voiceStatusCallbackMethod' => $payload['voice_status_callback_method'],
-            'voiceStatusCallbackUrl' => $payload['voice_status_callback_url'],
-            'voiceUrl' => $payload['voice_url'],
-            'subresourceUris' => $payload['subresource_uris'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'authType' => Values::array_get($payload, 'auth_type'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'domainName' => Values::array_get($payload, 'domain_name'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'voiceFallbackMethod' => Values::array_get($payload, 'voice_fallback_method'),
+            'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
+            'voiceMethod' => Values::array_get($payload, 'voice_method'),
+            'voiceStatusCallbackMethod' => Values::array_get($payload, 'voice_status_callback_method'),
+            'voiceStatusCallbackUrl' => Values::array_get($payload, 'voice_status_callback_url'),
+            'voiceUrl' => Values::array_get($payload, 'voice_url'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
         $this->solution = array(

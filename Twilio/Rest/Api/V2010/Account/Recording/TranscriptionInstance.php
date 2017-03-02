@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Recording;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -45,19 +46,19 @@ class TranscriptionInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'duration' => $payload['duration'],
-            'price' => $payload['price'],
-            'priceUnit' => $payload['price_unit'],
-            'recordingSid' => $payload['recording_sid'],
-            'sid' => $payload['sid'],
-            'status' => $payload['status'],
-            'transcriptionText' => $payload['transcription_text'],
-            'type' => $payload['type'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'duration' => Values::array_get($payload, 'duration'),
+            'price' => Values::array_get($payload, 'price'),
+            'priceUnit' => Values::array_get($payload, 'price_unit'),
+            'recordingSid' => Values::array_get($payload, 'recording_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'status' => Values::array_get($payload, 'status'),
+            'transcriptionText' => Values::array_get($payload, 'transcription_text'),
+            'type' => Values::array_get($payload, 'type'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

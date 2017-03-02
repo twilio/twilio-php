@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -48,23 +49,23 @@ class NotificationInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'callSid' => $payload['call_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'errorCode' => $payload['error_code'],
-            'log' => $payload['log'],
-            'messageDate' => Deserialize::dateTime($payload['message_date']),
-            'messageText' => $payload['message_text'],
-            'moreInfo' => $payload['more_info'],
-            'requestMethod' => $payload['request_method'],
-            'requestUrl' => $payload['request_url'],
-            'sid' => $payload['sid'],
-            'uri' => $payload['uri'],
-            'requestVariables' => array_key_exists('request_variables', $payload) ? $payload['request_variables'] : null,
-            'responseBody' => array_key_exists('response_body', $payload) ? $payload['response_body'] : null,
-            'responseHeaders' => array_key_exists('response_headers', $payload) ? $payload['response_headers'] : null,
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'callSid' => Values::array_get($payload, 'call_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'errorCode' => Values::array_get($payload, 'error_code'),
+            'log' => Values::array_get($payload, 'log'),
+            'messageDate' => Deserialize::dateTime(Values::array_get($payload, 'message_date')),
+            'messageText' => Values::array_get($payload, 'message_text'),
+            'moreInfo' => Values::array_get($payload, 'more_info'),
+            'requestMethod' => Values::array_get($payload, 'request_method'),
+            'requestUrl' => Values::array_get($payload, 'request_url'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'requestVariables' => Values::array_get($payload, 'request_variables'),
+            'responseBody' => Values::array_get($payload, 'response_body'),
+            'responseHeaders' => Values::array_get($payload, 'response_headers'),
         );
 
         $this->solution = array(

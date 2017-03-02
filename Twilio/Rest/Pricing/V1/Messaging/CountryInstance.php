@@ -11,6 +11,7 @@ namespace Twilio\Rest\Pricing\V1\Messaging;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -35,12 +36,12 @@ class CountryInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'country' => $payload['country'],
-            'isoCountry' => $payload['iso_country'],
-            'url' => $payload['url'],
-            'outboundSmsPrices' => array_key_exists('outbound_sms_prices', $payload) ? $payload['outbound_sms_prices'] : null,
-            'inboundSmsPrices' => array_key_exists('inbound_sms_prices', $payload) ? $payload['inbound_sms_prices'] : null,
-            'priceUnit' => array_key_exists('price_unit', $payload) ? $payload['price_unit'] : null,
+            'country' => Values::array_get($payload, 'country'),
+            'isoCountry' => Values::array_get($payload, 'iso_country'),
+            'url' => Values::array_get($payload, 'url'),
+            'outboundSmsPrices' => Values::array_get($payload, 'outbound_sms_prices'),
+            'inboundSmsPrices' => Values::array_get($payload, 'inbound_sms_prices'),
+            'priceUnit' => Values::array_get($payload, 'price_unit'),
         );
 
         $this->solution = array(

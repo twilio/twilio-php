@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -46,20 +47,20 @@ class FeedbackSummaryInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'callCount' => $payload['call_count'],
-            'callFeedbackCount' => $payload['call_feedback_count'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'endDate' => Deserialize::dateTime($payload['end_date']),
-            'includeSubaccounts' => $payload['include_subaccounts'],
-            'issues' => $payload['issues'],
-            'qualityScoreAverage' => $payload['quality_score_average'],
-            'qualityScoreMedian' => $payload['quality_score_median'],
-            'qualityScoreStandardDeviation' => $payload['quality_score_standard_deviation'],
-            'sid' => $payload['sid'],
-            'startDate' => Deserialize::dateTime($payload['start_date']),
-            'status' => $payload['status'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'callCount' => Values::array_get($payload, 'call_count'),
+            'callFeedbackCount' => Values::array_get($payload, 'call_feedback_count'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'endDate' => Deserialize::dateTime(Values::array_get($payload, 'end_date')),
+            'includeSubaccounts' => Values::array_get($payload, 'include_subaccounts'),
+            'issues' => Values::array_get($payload, 'issues'),
+            'qualityScoreAverage' => Values::array_get($payload, 'quality_score_average'),
+            'qualityScoreMedian' => Values::array_get($payload, 'quality_score_median'),
+            'qualityScoreStandardDeviation' => Values::array_get($payload, 'quality_score_standard_deviation'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'startDate' => Deserialize::dateTime(Values::array_get($payload, 'start_date')),
+            'status' => Values::array_get($payload, 'status'),
         );
 
         $this->solution = array(

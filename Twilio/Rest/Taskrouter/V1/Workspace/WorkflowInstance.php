@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -47,19 +48,19 @@ class WorkflowInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'assignmentCallbackUrl' => $payload['assignment_callback_url'],
-            'configuration' => $payload['configuration'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'documentContentType' => $payload['document_content_type'],
-            'fallbackAssignmentCallbackUrl' => $payload['fallback_assignment_callback_url'],
-            'friendlyName' => $payload['friendly_name'],
-            'sid' => $payload['sid'],
-            'taskReservationTimeout' => $payload['task_reservation_timeout'],
-            'workspaceSid' => $payload['workspace_sid'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'assignmentCallbackUrl' => Values::array_get($payload, 'assignment_callback_url'),
+            'configuration' => Values::array_get($payload, 'configuration'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'documentContentType' => Values::array_get($payload, 'document_content_type'),
+            'fallbackAssignmentCallbackUrl' => Values::array_get($payload, 'fallback_assignment_callback_url'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'taskReservationTimeout' => Values::array_get($payload, 'task_reservation_timeout'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array(

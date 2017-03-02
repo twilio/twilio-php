@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -46,21 +47,21 @@ class EventInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'actorSid' => $payload['actor_sid'],
-            'actorType' => $payload['actor_type'],
-            'actorUrl' => $payload['actor_url'],
-            'description' => $payload['description'],
-            'eventData' => $payload['event_data'],
-            'eventDate' => Deserialize::dateTime($payload['event_date']),
-            'eventType' => $payload['event_type'],
-            'resourceSid' => $payload['resource_sid'],
-            'resourceType' => $payload['resource_type'],
-            'resourceUrl' => $payload['resource_url'],
-            'sid' => $payload['sid'],
-            'source' => $payload['source'],
-            'sourceIpAddress' => $payload['source_ip_address'],
-            'url' => $payload['url'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'actorSid' => Values::array_get($payload, 'actor_sid'),
+            'actorType' => Values::array_get($payload, 'actor_type'),
+            'actorUrl' => Values::array_get($payload, 'actor_url'),
+            'description' => Values::array_get($payload, 'description'),
+            'eventData' => Values::array_get($payload, 'event_data'),
+            'eventDate' => Deserialize::dateTime(Values::array_get($payload, 'event_date')),
+            'eventType' => Values::array_get($payload, 'event_type'),
+            'resourceSid' => Values::array_get($payload, 'resource_sid'),
+            'resourceType' => Values::array_get($payload, 'resource_type'),
+            'resourceUrl' => Values::array_get($payload, 'resource_url'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'source' => Values::array_get($payload, 'source'),
+            'sourceIpAddress' => Values::array_get($payload, 'source_ip_address'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(

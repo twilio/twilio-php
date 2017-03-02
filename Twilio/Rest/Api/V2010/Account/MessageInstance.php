@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -54,26 +55,26 @@ class MessageInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'body' => $payload['body'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'dateSent' => Deserialize::dateTime($payload['date_sent']),
-            'direction' => $payload['direction'],
-            'errorCode' => $payload['error_code'],
-            'errorMessage' => $payload['error_message'],
-            'from' => $payload['from'],
-            'messagingServiceSid' => $payload['messaging_service_sid'],
-            'numMedia' => $payload['num_media'],
-            'numSegments' => $payload['num_segments'],
-            'price' => $payload['price'],
-            'priceUnit' => $payload['price_unit'],
-            'sid' => $payload['sid'],
-            'status' => $payload['status'],
-            'subresourceUris' => $payload['subresource_uris'],
-            'to' => $payload['to'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'body' => Values::array_get($payload, 'body'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'dateSent' => Deserialize::dateTime(Values::array_get($payload, 'date_sent')),
+            'direction' => Values::array_get($payload, 'direction'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
+            'errorMessage' => Values::array_get($payload, 'error_message'),
+            'from' => Values::array_get($payload, 'from'),
+            'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
+            'numMedia' => Values::array_get($payload, 'num_media'),
+            'numSegments' => Values::array_get($payload, 'num_segments'),
+            'price' => Values::array_get($payload, 'price'),
+            'priceUnit' => Values::array_get($payload, 'price_unit'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'status' => Values::array_get($payload, 'status'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
+            'to' => Values::array_get($payload, 'to'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

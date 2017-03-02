@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -39,13 +40,13 @@ class OutgoingCallerIdInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'accountSid' => $payload['account_sid'],
-            'phoneNumber' => $payload['phone_number'],
-            'uri' => $payload['uri'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

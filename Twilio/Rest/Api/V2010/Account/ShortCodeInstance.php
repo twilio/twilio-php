@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -44,18 +45,18 @@ class ShortCodeInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'shortCode' => $payload['short_code'],
-            'sid' => $payload['sid'],
-            'smsFallbackMethod' => $payload['sms_fallback_method'],
-            'smsFallbackUrl' => $payload['sms_fallback_url'],
-            'smsMethod' => $payload['sms_method'],
-            'smsUrl' => $payload['sms_url'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'shortCode' => Values::array_get($payload, 'short_code'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),
+            'smsFallbackUrl' => Values::array_get($payload, 'sms_fallback_url'),
+            'smsMethod' => Values::array_get($payload, 'sms_method'),
+            'smsUrl' => Values::array_get($payload, 'sms_url'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(

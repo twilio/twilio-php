@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -49,22 +50,22 @@ class TriggerInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'callbackMethod' => $payload['callback_method'],
-            'callbackUrl' => $payload['callback_url'],
-            'currentValue' => $payload['current_value'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateFired' => Deserialize::dateTime($payload['date_fired']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'recurring' => $payload['recurring'],
-            'sid' => $payload['sid'],
-            'triggerBy' => $payload['trigger_by'],
-            'triggerValue' => $payload['trigger_value'],
-            'uri' => $payload['uri'],
-            'usageCategory' => $payload['usage_category'],
-            'usageRecordUri' => $payload['usage_record_uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'callbackMethod' => Values::array_get($payload, 'callback_method'),
+            'callbackUrl' => Values::array_get($payload, 'callback_url'),
+            'currentValue' => Values::array_get($payload, 'current_value'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateFired' => Deserialize::dateTime(Values::array_get($payload, 'date_fired')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'recurring' => Values::array_get($payload, 'recurring'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'triggerBy' => Values::array_get($payload, 'trigger_by'),
+            'triggerValue' => Values::array_get($payload, 'trigger_value'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'usageCategory' => Values::array_get($payload, 'usage_category'),
+            'usageRecordUri' => Values::array_get($payload, 'usage_record_uri'),
         );
 
         $this->solution = array(

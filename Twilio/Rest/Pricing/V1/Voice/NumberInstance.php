@@ -11,6 +11,7 @@ namespace Twilio\Rest\Pricing\V1\Voice;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -36,13 +37,13 @@ class NumberInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'number' => $payload['number'],
-            'country' => $payload['country'],
-            'isoCountry' => $payload['iso_country'],
-            'outboundCallPrice' => $payload['outbound_call_price'],
-            'inboundCallPrice' => $payload['inbound_call_price'],
-            'priceUnit' => $payload['price_unit'],
-            'url' => $payload['url'],
+            'number' => Values::array_get($payload, 'number'),
+            'country' => Values::array_get($payload, 'country'),
+            'isoCountry' => Values::array_get($payload, 'iso_country'),
+            'outboundCallPrice' => Values::array_get($payload, 'outbound_call_price'),
+            'inboundCallPrice' => Values::array_get($payload, 'inbound_call_price'),
+            'priceUnit' => Values::array_get($payload, 'price_unit'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(

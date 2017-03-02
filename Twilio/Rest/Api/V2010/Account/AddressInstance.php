@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -48,20 +49,20 @@ class AddressInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'city' => $payload['city'],
-            'customerName' => $payload['customer_name'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'isoCountry' => $payload['iso_country'],
-            'postalCode' => $payload['postal_code'],
-            'region' => $payload['region'],
-            'sid' => $payload['sid'],
-            'street' => $payload['street'],
-            'uri' => $payload['uri'],
-            'emergencyEnabled' => $payload['emergency_enabled'],
-            'validated' => $payload['validated'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'city' => Values::array_get($payload, 'city'),
+            'customerName' => Values::array_get($payload, 'customer_name'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'isoCountry' => Values::array_get($payload, 'iso_country'),
+            'postalCode' => Values::array_get($payload, 'postal_code'),
+            'region' => Values::array_get($payload, 'region'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'street' => Values::array_get($payload, 'street'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'emergencyEnabled' => Values::array_get($payload, 'emergency_enabled'),
+            'validated' => Values::array_get($payload, 'validated'),
         );
 
         $this->solution = array(

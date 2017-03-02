@@ -12,6 +12,7 @@ namespace Twilio\Rest\Chat\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -40,15 +41,15 @@ class RoleInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'type' => $payload['type'],
-            'permissions' => $payload['permissions'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'type' => Values::array_get($payload, 'type'),
+            'permissions' => Values::array_get($payload, 'permissions'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array(
