@@ -81,6 +81,7 @@ class Client {
     protected $accountSid;
     protected $region;
     protected $httpClient;
+    protected $port;
     protected $_account;
     protected $_api = null;
     protected $_chat = null;
@@ -104,10 +105,11 @@ class Client {
      * @param \Twilio\Http\Client $httpClient HttpClient, defaults to CurlClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
+     * @param int $port Port to make requests too
      * @return \Twilio\Rest\Client Twilio Client
      * @throws ConfigurationException If valid authentication is not present
      */
-    public function __construct($username = null, $password = null, $accountSid = null, $region = null, HttpClient $httpClient = null, $environment = null) {
+    public function __construct($username = null, $password = null, $accountSid = null, $region = null, HttpClient $httpClient = null, $environment = null, $port = null) {
         if (is_null($environment)) {
             $environment = $_ENV;
         }
@@ -134,6 +136,7 @@ class Client {
         
         $this->accountSid = $accountSid ?: $this->username;
         $this->region = $region;
+        $this->port = $port;
         
         if ($httpClient) {
             $this->httpClient = $httpClient;
@@ -170,6 +173,13 @@ class Client {
         
         if (!array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
+        }
+        
+        if ($this->port) {
+            list($subdomain, $twilio, $tail) = explode('.', $uri, 3);
+            list($domain, $path) = explode('/', $tail, 2);
+        
+            $uri = implode('.', array($subdomain, $twilio, implode('/', array($domain.':'.$this->port, $path))));
         }
         
         if ($this->region) {

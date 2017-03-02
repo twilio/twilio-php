@@ -110,4 +110,28 @@ class ClientTest extends UnitTest {
         $this->assertTrue($network->hasRequest($expected));
     }
 
+    public function testPortDefaultsToEmpty() {
+        $network = new Holodeck();
+        $client = new Client('username', 'password', null, null, $network);
+        $client->request('POST', 'https://test.twilio.com/v1/Resources');
+        $expected = new Request('POST', 'https://test.twilio.com/v1/Resources');
+        $this->assertTrue($network->hasRequest($expected));
+    }
+
+    public function testPortInjectedWhenSet() {
+        $network = new Holodeck();
+        $client = new Client('username', 'password', null, null, $network, null, 8443);
+        $client->request('POST', 'https://test.twilio.com/v1/Resources');
+        $expected = new Request('POST', 'https://test.twilio.com:8443/v1/Resources');
+        $this->assertTrue($network->hasRequest($expected));
+    }
+
+    public function testPortAndRegionInjectedWhenSet() {
+        $network = new Holodeck();
+        $client = new Client('username', 'password', null, 'ie1', $network, null, 8443);
+        $client->request('POST', 'https://test.twilio.com/v1/Resources');
+        $expected = new Request('POST', 'https://test.ie1.twilio.com:8443/v1/Resources');
+        $this->assertTrue($network->hasRequest($expected));
+    }
+
 }
