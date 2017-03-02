@@ -9,6 +9,13 @@ class Values implements \ArrayAccess {
 
     protected $options;
 
+    public static function array_get($array, $key, $default = null) {
+        if (array_key_exists($key, $array)) {
+            return $array[$key];
+        }
+        return $default;
+    }
+
     public static function of($array) {
         $result = array();
         foreach ($array as $key => $value) {
