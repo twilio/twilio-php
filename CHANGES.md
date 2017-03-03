@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2017-03-03] Version 5.6.0
+-------------------------
+Breaking Changes, refer to [Upgrade Guide][upgrade]
+
+ - Remove end of life Sandbox resource (backwards incompatible).
+ - Support new `accounts.twilio.com` subdomain and products.
+    - `client->accounts` now references `accounts.twilio.com` instead of Accounts resource (backwards incompatible).
+ - Fix resources throwing error on instantiation when response is missing a field.
+ - Chat:
+    - Add `order` as filter when listing Messages.
+    - Messages `.read()`, `.stream()`, `.page()` now accept options array as first parameter (backwards incompatible).
+
+
 [2017-02-01] Version 5.5.0
 -------------------------
 Breaking Changes, refer to [Upgrade Guide][upgrade]
