@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -6,7 +7,7 @@ namespace Twilio;
 
 class VersionInfo {
     const MAJOR = 5;
-    const MINOR = 5;
+    const MINOR = 6;
     const PATCH = 0;
 
     public static function string() {
