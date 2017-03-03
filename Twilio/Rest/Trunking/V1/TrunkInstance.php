@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -47,25 +48,25 @@ class TrunkInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'domainName' => $payload['domain_name'],
-            'disasterRecoveryMethod' => $payload['disaster_recovery_method'],
-            'disasterRecoveryUrl' => $payload['disaster_recovery_url'],
-            'friendlyName' => $payload['friendly_name'],
-            'secure' => $payload['secure'],
-            'recording' => $payload['recording'],
-            'authType' => $payload['auth_type'],
-            'authTypeSet' => $payload['auth_type_set'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'sid' => $payload['sid'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'domainName' => Values::array_get($payload, 'domain_name'),
+            'disasterRecoveryMethod' => Values::array_get($payload, 'disaster_recovery_method'),
+            'disasterRecoveryUrl' => Values::array_get($payload, 'disaster_recovery_url'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'secure' => Values::array_get($payload, 'secure'),
+            'recording' => Values::array_get($payload, 'recording'),
+            'authType' => Values::array_get($payload, 'auth_type'),
+            'authTypeSet' => Values::array_get($payload, 'auth_type_set'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'sid' => Values::array_get($payload, 'sid'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -84,7 +85,7 @@ class TrunkInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -165,12 +166,12 @@ class TrunkInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

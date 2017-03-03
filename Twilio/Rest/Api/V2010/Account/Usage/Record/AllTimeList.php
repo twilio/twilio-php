@@ -26,12 +26,12 @@ class AllTimeList extends ListResource {
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records/AllTime.json';
     }
 
@@ -56,9 +56,9 @@ class AllTimeList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -102,13 +102,13 @@ class AllTimeList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AllTimePage($this->version, $response, $this->solution);
     }
 

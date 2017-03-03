@@ -26,13 +26,13 @@ class TaskQueueStatisticsContext extends InstanceContext {
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'taskQueueSid' => $taskQueueSid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskQueues/' . rawurlencode($taskQueueSid) . '/Statistics';
     }
 
@@ -44,19 +44,19 @@ class TaskQueueStatisticsContext extends InstanceContext {
      */
     public function fetch($options = array()) {
         $options = new Values($options);
-        
+
         $params = Values::of(array(
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
         ));
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TaskQueueStatisticsInstance(
             $this->version,
             $payload,

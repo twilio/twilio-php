@@ -28,14 +28,14 @@ class ParticipantContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $conferenceSid, $callSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'conferenceSid' => $conferenceSid,
             'callSid' => $callSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants/' . rawurlencode($callSid) . '.json';
     }
 
@@ -46,13 +46,13 @@ class ParticipantContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ParticipantInstance(
             $this->version,
             $payload,
@@ -70,21 +70,21 @@ class ParticipantContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Muted' => Serialize::booleanToString($options['muted']),
             'Hold' => Serialize::booleanToString($options['hold']),
             'HoldUrl' => $options['holdUrl'],
             'HoldMethod' => $options['holdMethod'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ParticipantInstance(
             $this->version,
             $payload,

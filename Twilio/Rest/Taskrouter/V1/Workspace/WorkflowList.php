@@ -24,12 +24,12 @@ class WorkflowList extends ListResource {
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows';
     }
 
@@ -54,9 +54,9 @@ class WorkflowList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -98,13 +98,13 @@ class WorkflowList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new WorkflowPage($this->version, $response, $this->solution);
     }
 
@@ -118,7 +118,7 @@ class WorkflowList extends ListResource {
      */
     public function create($friendlyName, $configuration, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Configuration' => $configuration,
@@ -126,14 +126,14 @@ class WorkflowList extends ListResource {
             'FallbackAssignmentCallbackUrl' => $options['fallbackAssignmentCallbackUrl'],
             'TaskReservationTimeout' => $options['taskReservationTimeout'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new WorkflowInstance(
             $this->version,
             $payload,

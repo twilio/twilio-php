@@ -18,7 +18,7 @@ use Twilio\Tests\Request;
 class ThisMonthTest extends HolodeckTestCase {
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->usage
@@ -26,7 +26,7 @@ class ThisMonthTest extends HolodeckTestCase {
                                      ->thisMonth->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage/Records/ThisMonth.json'
@@ -79,12 +79,12 @@ class ThisMonthTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->usage
                                            ->records
                                            ->thisMonth->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -108,12 +108,12 @@ class ThisMonthTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->usage
                                            ->records
                                            ->thisMonth->read();
-        
+
         $this->assertNotNull($actual);
     }
 }

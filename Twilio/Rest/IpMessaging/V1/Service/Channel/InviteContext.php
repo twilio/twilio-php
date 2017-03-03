@@ -25,14 +25,14 @@ class InviteContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Invites/' . rawurlencode($sid) . '';
     }
 
@@ -43,13 +43,13 @@ class InviteContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new InviteInstance(
             $this->version,
             $payload,

@@ -32,13 +32,13 @@ class IpAccessControlListContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . rawurlencode($sid) . '.json';
     }
 
@@ -49,13 +49,13 @@ class IpAccessControlListContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new IpAccessControlListInstance(
             $this->version,
             $payload,
@@ -74,14 +74,14 @@ class IpAccessControlListContext extends InstanceContext {
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new IpAccessControlListInstance(
             $this->version,
             $payload,
@@ -112,7 +112,7 @@ class IpAccessControlListContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_ipAddresses;
     }
 
@@ -128,7 +128,7 @@ class IpAccessControlListContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -145,7 +145,7 @@ class IpAccessControlListContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

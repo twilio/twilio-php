@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -52,26 +53,26 @@ class WorkspaceInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'defaultActivityName' => $payload['default_activity_name'],
-            'defaultActivitySid' => $payload['default_activity_sid'],
-            'eventCallbackUrl' => $payload['event_callback_url'],
-            'eventsFilter' => $payload['events_filter'],
-            'friendlyName' => $payload['friendly_name'],
-            'multiTaskEnabled' => $payload['multi_task_enabled'],
-            'sid' => $payload['sid'],
-            'timeoutActivityName' => $payload['timeout_activity_name'],
-            'timeoutActivitySid' => $payload['timeout_activity_sid'],
-            'prioritizeQueueOrder' => $payload['prioritize_queue_order'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'defaultActivityName' => Values::array_get($payload, 'default_activity_name'),
+            'defaultActivitySid' => Values::array_get($payload, 'default_activity_sid'),
+            'eventCallbackUrl' => Values::array_get($payload, 'event_callback_url'),
+            'eventsFilter' => Values::array_get($payload, 'events_filter'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'multiTaskEnabled' => Values::array_get($payload, 'multi_task_enabled'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'timeoutActivityName' => Values::array_get($payload, 'timeout_activity_name'),
+            'timeoutActivitySid' => Values::array_get($payload, 'timeout_activity_sid'),
+            'prioritizeQueueOrder' => Values::array_get($payload, 'prioritize_queue_order'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -91,7 +92,7 @@ class WorkspaceInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -208,12 +209,12 @@ class WorkspaceInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

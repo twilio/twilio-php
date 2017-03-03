@@ -25,12 +25,12 @@ class AddressList extends ListResource {
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses.json';
     }
 
@@ -48,7 +48,7 @@ class AddressList extends ListResource {
      */
     public function create($customerName, $street, $city, $region, $postalCode, $isoCountry, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'CustomerName' => $customerName,
             'Street' => $street,
@@ -59,14 +59,14 @@ class AddressList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new AddressInstance(
             $this->version,
             $payload,
@@ -95,9 +95,9 @@ class AddressList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -141,13 +141,13 @@ class AddressList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AddressPage($this->version, $response, $this->solution);
     }
 

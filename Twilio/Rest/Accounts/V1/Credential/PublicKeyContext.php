@@ -7,83 +7,87 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Accounts\V1\Credential;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class SandboxContext extends InstanceContext {
+class PublicKeyContext extends InstanceContext {
     /**
-     * Initialize the SandboxContext
+     * Initialize the PublicKeyContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext 
+     * @param string $sid Fetch by unique Credential Sid
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext 
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
+            'sid' => $sid,
         );
-        
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Sandbox.json';
+
+        $this->uri = '/Credentials/PublicKeys/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch a SandboxInstance
+     * Fetch a PublicKeyInstance
      * 
-     * @return SandboxInstance Fetched SandboxInstance
+     * @return PublicKeyInstance Fetched PublicKeyInstance
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
-        return new SandboxInstance(
+
+        return new PublicKeyInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid']
+            $this->solution['sid']
         );
     }
 
     /**
-     * Update the SandboxInstance
+     * Update the PublicKeyInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return SandboxInstance Updated SandboxInstance
+     * @return PublicKeyInstance Updated PublicKeyInstance
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
-            'VoiceUrl' => $options['voiceUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'SmsUrl' => $options['smsUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'FriendlyName' => $options['friendlyName'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
-        return new SandboxInstance(
+
+        return new PublicKeyInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid']
+            $this->solution['sid']
         );
+    }
+
+    /**
+     * Deletes the PublicKeyInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**
@@ -96,6 +100,6 @@ class SandboxContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.SandboxContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Accounts.V1.PublicKeyContext ' . implode(' ', $context) . ']';
     }
 }

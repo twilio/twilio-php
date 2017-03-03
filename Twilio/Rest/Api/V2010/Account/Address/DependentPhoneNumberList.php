@@ -24,13 +24,13 @@ class DependentPhoneNumberList extends ListResource {
      */
     public function __construct(Version $version, $accountSid, $addressSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'addressSid' => $addressSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses/' . rawurlencode($addressSid) . '/DependentPhoneNumbers.json';
     }
 
@@ -55,9 +55,9 @@ class DependentPhoneNumberList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -95,13 +95,13 @@ class DependentPhoneNumberList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new DependentPhoneNumberPage($this->version, $response, $this->solution);
     }
 

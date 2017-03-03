@@ -24,10 +24,10 @@ class WorkspaceList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/Workspaces';
     }
 
@@ -52,9 +52,9 @@ class WorkspaceList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -96,13 +96,13 @@ class WorkspaceList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new WorkspacePage($this->version, $response, $this->solution);
     }
 
@@ -115,7 +115,7 @@ class WorkspaceList extends ListResource {
      */
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'EventCallbackUrl' => $options['eventCallbackUrl'],
@@ -124,14 +124,14 @@ class WorkspaceList extends ListResource {
             'Template' => $options['template'],
             'PrioritizeQueueOrder' => $options['prioritizeQueueOrder'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new WorkspaceInstance(
             $this->version,
             $payload

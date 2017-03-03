@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class CredentialTest extends HolodeckTestCase {
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->credentials->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://chat.twilio.com/v1/Credentials'
@@ -59,9 +59,9 @@ class CredentialTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->credentials->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -83,24 +83,24 @@ class CredentialTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->credentials->read();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->credentials->create("gcm");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
             'Type' => "gcm",
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Credentials',
@@ -125,20 +125,20 @@ class CredentialTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->credentials->create("gcm");
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://chat.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -161,20 +161,20 @@ class CredentialTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -197,20 +197,20 @@ class CredentialTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'delete',
             'https://chat.twilio.com/v1/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -222,9 +222,9 @@ class CredentialTest extends HolodeckTestCase {
             204,
             null
         ));
-        
+
         $actual = $this->twilio->chat->v1->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        
+
         $this->assertTrue($actual);
     }
 }

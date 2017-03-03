@@ -11,6 +11,7 @@ namespace Twilio\Rest\Pricing\V1\PhoneNumber;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -31,16 +32,16 @@ class CountryInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $isoCountry = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'country' => $payload['country'],
-            'isoCountry' => $payload['iso_country'],
-            'url' => $payload['url'],
-            'phoneNumberPrices' => array_key_exists('phone_number_prices', $payload) ? $payload['phone_number_prices'] : null,
-            'priceUnit' => array_key_exists('price_unit', $payload) ? $payload['price_unit'] : null,
+            'country' => Values::array_get($payload, 'country'),
+            'isoCountry' => Values::array_get($payload, 'iso_country'),
+            'url' => Values::array_get($payload, 'url'),
+            'phoneNumberPrices' => Values::array_get($payload, 'phone_number_prices'),
+            'priceUnit' => Values::array_get($payload, 'price_unit'),
         );
-        
+
         $this->solution = array(
             'isoCountry' => $isoCountry ?: $this->properties['isoCountry'],
         );
@@ -60,7 +61,7 @@ class CountryInstance extends InstanceResource {
                 $this->solution['isoCountry']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -84,12 +85,12 @@ class CountryInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

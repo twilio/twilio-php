@@ -26,14 +26,14 @@ class MessageContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages/' . rawurlencode($sid) . '';
     }
 
@@ -44,13 +44,13 @@ class MessageContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new MessageInstance(
             $this->version,
             $payload,
@@ -77,19 +77,19 @@ class MessageContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Body' => $options['body'],
             'Attributes' => $options['attributes'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new MessageInstance(
             $this->version,
             $payload,

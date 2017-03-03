@@ -26,12 +26,12 @@ class FeedbackSummaryList extends ListResource {
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/FeedbackSummary.json';
     }
 
@@ -45,7 +45,7 @@ class FeedbackSummaryList extends ListResource {
      */
     public function create($startDate, $endDate, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'StartDate' => Serialize::iso8601Date($startDate),
             'EndDate' => Serialize::iso8601Date($endDate),
@@ -53,14 +53,14 @@ class FeedbackSummaryList extends ListResource {
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new FeedbackSummaryInstance(
             $this->version,
             $payload,

@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -46,24 +47,24 @@ class WorkerInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'activityName' => $payload['activity_name'],
-            'activitySid' => $payload['activity_sid'],
-            'attributes' => $payload['attributes'],
-            'available' => $payload['available'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateStatusChanged' => Deserialize::dateTime($payload['date_status_changed']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'sid' => $payload['sid'],
-            'workspaceSid' => $payload['workspace_sid'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'activityName' => Values::array_get($payload, 'activity_name'),
+            'activitySid' => Values::array_get($payload, 'activity_sid'),
+            'attributes' => Values::array_get($payload, 'attributes'),
+            'available' => Values::array_get($payload, 'available'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateStatusChanged' => Deserialize::dateTime(Values::array_get($payload, 'date_status_changed')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -85,7 +86,7 @@ class WorkerInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -157,12 +158,12 @@ class WorkerInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

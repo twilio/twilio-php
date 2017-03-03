@@ -26,14 +26,14 @@ class CredentialContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $credentialListSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'credentialListSid' => $credentialListSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/CredentialLists/' . rawurlencode($credentialListSid) . '/Credentials/' . rawurlencode($sid) . '.json';
     }
 
@@ -44,13 +44,13 @@ class CredentialContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new CredentialInstance(
             $this->version,
             $payload,
@@ -68,18 +68,18 @@ class CredentialContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Password' => $options['password'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new CredentialInstance(
             $this->version,
             $payload,

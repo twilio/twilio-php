@@ -24,13 +24,13 @@ class AddOnResultList extends ListResource {
      */
     public function __construct(Version $version, $accountSid, $referenceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'referenceSid' => $referenceSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults.json';
     }
 
@@ -54,9 +54,9 @@ class AddOnResultList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -94,13 +94,13 @@ class AddOnResultList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AddOnResultPage($this->version, $response, $this->solution);
     }
 

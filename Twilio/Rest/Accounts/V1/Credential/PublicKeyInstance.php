@@ -7,62 +7,47 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Accounts\V1\Credential;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * @property string sid
+ * @property string accountSid
+ * @property string friendlyName
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property integer pin
- * @property string accountSid
- * @property string phoneNumber
- * @property string applicationSid
- * @property string apiVersion
- * @property string voiceUrl
- * @property string voiceMethod
- * @property string smsUrl
- * @property string smsMethod
- * @property string statusCallback
- * @property string statusCallbackMethod
- * @property string uri
+ * @property string url
  */
-class SandboxInstance extends InstanceResource {
+class PublicKeyInstance extends InstanceResource {
     /**
-     * Initialize the SandboxInstance
+     * Initialize the PublicKeyInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The account_sid
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxInstance 
+     * @param string $sid Fetch by unique Credential Sid
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyInstance 
      */
-    public function __construct(Version $version, array $payload, $accountSid) {
+    public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'pin' => $payload['pin'],
-            'accountSid' => $payload['account_sid'],
-            'phoneNumber' => $payload['phone_number'],
-            'applicationSid' => $payload['application_sid'],
-            'apiVersion' => $payload['api_version'],
-            'voiceUrl' => $payload['voice_url'],
-            'voiceMethod' => $payload['voice_method'],
-            'smsUrl' => $payload['sms_url'],
-            'smsMethod' => $payload['sms_method'],
-            'statusCallback' => $payload['status_callback'],
-            'statusCallbackMethod' => $payload['status_callback_method'],
-            'uri' => $payload['uri'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
-            'accountSid' => $accountSid,
+            'sid' => $sid ?: $this->properties['sid'],
         );
     }
 
@@ -70,39 +55,49 @@ class SandboxInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext Context for this
-     *                                                       SandboxInstance
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext Context for
+     *                                                              this
+     *                                                              PublicKeyInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new SandboxContext(
+            $this->context = new PublicKeyContext(
                 $this->version,
-                $this->solution['accountSid']
+                $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
     /**
-     * Fetch a SandboxInstance
+     * Fetch a PublicKeyInstance
      * 
-     * @return SandboxInstance Fetched SandboxInstance
+     * @return PublicKeyInstance Fetched PublicKeyInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the SandboxInstance
+     * Update the PublicKeyInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return SandboxInstance Updated SandboxInstance
+     * @return PublicKeyInstance Updated PublicKeyInstance
      */
     public function update($options = array()) {
         return $this->proxy()->update(
             $options
         );
+    }
+
+    /**
+     * Deletes the PublicKeyInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**
@@ -116,12 +111,12 @@ class SandboxInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 
@@ -135,6 +130,6 @@ class SandboxInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.SandboxInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Accounts.V1.PublicKeyInstance ' . implode(' ', $context) . ']';
     }
 }

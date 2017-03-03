@@ -12,6 +12,7 @@ namespace Twilio\Rest\Monitor\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,25 +42,25 @@ class EventInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'actorSid' => $payload['actor_sid'],
-            'actorType' => $payload['actor_type'],
-            'description' => $payload['description'],
-            'eventData' => $payload['event_data'],
-            'eventDate' => Deserialize::dateTime($payload['event_date']),
-            'eventType' => $payload['event_type'],
-            'resourceSid' => $payload['resource_sid'],
-            'resourceType' => $payload['resource_type'],
-            'sid' => $payload['sid'],
-            'source' => $payload['source'],
-            'sourceIpAddress' => $payload['source_ip_address'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'actorSid' => Values::array_get($payload, 'actor_sid'),
+            'actorType' => Values::array_get($payload, 'actor_type'),
+            'description' => Values::array_get($payload, 'description'),
+            'eventData' => Values::array_get($payload, 'event_data'),
+            'eventDate' => Deserialize::dateTime(Values::array_get($payload, 'event_date')),
+            'eventType' => Values::array_get($payload, 'event_type'),
+            'resourceSid' => Values::array_get($payload, 'resource_sid'),
+            'resourceType' => Values::array_get($payload, 'resource_type'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'source' => Values::array_get($payload, 'source'),
+            'sourceIpAddress' => Values::array_get($payload, 'source_ip_address'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -78,7 +79,7 @@ class EventInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -102,12 +103,12 @@ class EventInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

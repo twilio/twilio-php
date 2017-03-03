@@ -32,12 +32,12 @@ class WorkerList extends ListResource {
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers';
     }
 
@@ -62,9 +62,9 @@ class WorkerList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -112,13 +112,13 @@ class WorkerList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new WorkerPage($this->version, $response, $this->solution);
     }
 
@@ -131,20 +131,20 @@ class WorkerList extends ListResource {
      */
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'ActivitySid' => $options['activitySid'],
             'Attributes' => $options['attributes'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new WorkerInstance(
             $this->version,
             $payload,
@@ -162,7 +162,7 @@ class WorkerList extends ListResource {
                 $this->solution['workspaceSid']
             );
         }
-        
+
         return $this->_statistics;
     }
 
@@ -192,7 +192,7 @@ class WorkerList extends ListResource {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -209,7 +209,7 @@ class WorkerList extends ListResource {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

@@ -7,23 +7,22 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Page;
 
-class SandboxPage extends Page {
+class CredentialPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {
-        return new SandboxInstance(
+        return new CredentialInstance(
             $this->version,
-            $payload,
-            $this->solution['accountSid']
+            $payload
         );
     }
 
@@ -33,6 +32,6 @@ class SandboxPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.SandboxPage]';
+        return '[Twilio.Accounts.V1.CredentialPage]';
     }
 }

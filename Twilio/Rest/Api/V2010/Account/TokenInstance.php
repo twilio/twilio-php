@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -34,18 +35,18 @@ class TokenInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'iceServers' => $payload['ice_servers'],
-            'password' => $payload['password'],
-            'ttl' => $payload['ttl'],
-            'username' => $payload['username'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'iceServers' => Values::array_get($payload, 'ice_servers'),
+            'password' => Values::array_get($payload, 'password'),
+            'ttl' => Values::array_get($payload, 'ttl'),
+            'username' => Values::array_get($payload, 'username'),
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
         );
@@ -62,12 +63,12 @@ class TokenInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

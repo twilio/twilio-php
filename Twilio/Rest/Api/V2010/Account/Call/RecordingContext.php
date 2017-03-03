@@ -25,14 +25,14 @@ class RecordingContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'callSid' => $callSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Recordings/' . rawurlencode($sid) . '.json';
     }
 
@@ -43,13 +43,13 @@ class RecordingContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new RecordingInstance(
             $this->version,
             $payload,

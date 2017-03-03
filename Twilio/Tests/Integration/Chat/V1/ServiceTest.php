@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class ServiceTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -60,20 +60,20 @@ class ServiceTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'delete',
             'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -85,24 +85,24 @@ class ServiceTest extends HolodeckTestCase {
             204,
             null
         ));
-        
+
         $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        
+
         $this->assertTrue($actual);
     }
 
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->services->create("friendlyName");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
             'FriendlyName' => "friendlyName",
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Services',
@@ -141,20 +141,20 @@ class ServiceTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->services->create("friendlyName");
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->services->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://chat.twilio.com/v1/Services'
@@ -179,9 +179,9 @@ class ServiceTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->services->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -228,20 +228,20 @@ class ServiceTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->services->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -278,9 +278,9 @@ class ServiceTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        
+
         $this->assertNotNull($actual);
     }
 }

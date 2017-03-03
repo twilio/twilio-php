@@ -25,12 +25,12 @@ class WorkspaceStatisticsContext extends InstanceContext {
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Statistics';
     }
 
@@ -42,19 +42,19 @@ class WorkspaceStatisticsContext extends InstanceContext {
      */
     public function fetch($options = array()) {
         $options = new Values($options);
-        
+
         $params = Values::of(array(
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
         ));
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new WorkspaceStatisticsInstance(
             $this->version,
             $payload,
