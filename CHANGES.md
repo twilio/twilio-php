@@ -12,6 +12,13 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
  - Chat:
     - Add `order` as filter when listing Messages.
     - Messages `.read()`, `.stream()`, `.page()` now accept options array as first parameter (backwards incompatible).
+ - Alpha Changes:
+    - IncomingPhoneNumber's AssignedAddon and AssignedAddonExtension Resource
+    - Support `video.twilio.com` preview product.
+    - Rename Wireless Device resource to Sim
+        - Replace `simIdentifier` property with `iccid` and `eId` properties.
+    - Rename `alias` parameter to `uniqueName` on Wireless RatePlan
+    - Add `acceptTermsOfService` required param to Marketplace InstalledAddOn creation.
 
 
 [2017-02-01] Version 5.5.0
