@@ -27,14 +27,14 @@ class SyncListPermissionContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $listSid, $identity) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'listSid' => $listSid,
             'identity' => $identity,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Permissions/' . rawurlencode($identity) . '';
     }
 
@@ -45,13 +45,13 @@ class SyncListPermissionContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncListPermissionInstance(
             $this->version,
             $payload,
@@ -84,14 +84,14 @@ class SyncListPermissionContext extends InstanceContext {
             'Write' => Serialize::booleanToString($write),
             'Manage' => Serialize::booleanToString($manage),
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new SyncListPermissionInstance(
             $this->version,
             $payload,

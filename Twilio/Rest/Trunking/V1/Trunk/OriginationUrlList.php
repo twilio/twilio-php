@@ -24,12 +24,12 @@ class OriginationUrlList extends ListResource {
      */
     public function __construct(Version $version, $trunkSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'trunkSid' => $trunkSid,
         );
-        
+
         $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/OriginationUrls';
     }
 
@@ -51,14 +51,14 @@ class OriginationUrlList extends ListResource {
             'FriendlyName' => $friendlyName,
             'SipUrl' => $sipUrl,
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new OriginationUrlInstance(
             $this->version,
             $payload,
@@ -86,9 +86,9 @@ class OriginationUrlList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -126,13 +126,13 @@ class OriginationUrlList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new OriginationUrlPage($this->version, $response, $this->solution);
     }
 

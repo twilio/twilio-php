@@ -12,6 +12,7 @@ namespace Twilio\Rest\Notify\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -45,29 +46,29 @@ class NotificationInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'identities' => $payload['identities'],
-            'tags' => $payload['tags'],
-            'priority' => $payload['priority'],
-            'ttl' => $payload['ttl'],
-            'title' => $payload['title'],
-            'body' => $payload['body'],
-            'sound' => $payload['sound'],
-            'action' => $payload['action'],
-            'data' => $payload['data'],
-            'apn' => $payload['apn'],
-            'gcm' => $payload['gcm'],
-            'fcm' => $payload['fcm'],
-            'sms' => $payload['sms'],
-            'facebookMessenger' => $payload['facebook_messenger'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'identities' => Values::array_get($payload, 'identities'),
+            'tags' => Values::array_get($payload, 'tags'),
+            'priority' => Values::array_get($payload, 'priority'),
+            'ttl' => Values::array_get($payload, 'ttl'),
+            'title' => Values::array_get($payload, 'title'),
+            'body' => Values::array_get($payload, 'body'),
+            'sound' => Values::array_get($payload, 'sound'),
+            'action' => Values::array_get($payload, 'action'),
+            'data' => Values::array_get($payload, 'data'),
+            'apn' => Values::array_get($payload, 'apn'),
+            'gcm' => Values::array_get($payload, 'gcm'),
+            'fcm' => Values::array_get($payload, 'fcm'),
+            'sms' => Values::array_get($payload, 'sms'),
+            'facebookMessenger' => Values::array_get($payload, 'facebook_messenger'),
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
         );
@@ -84,12 +85,12 @@ class NotificationInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

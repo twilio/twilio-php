@@ -7,23 +7,22 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Wireless\Device;
+namespace Twilio\Rest\Video\V1;
 
 use Twilio\Page;
 
-class UsagePage extends Page {
+class RoomPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {
-        return new UsageInstance(
+        return new RoomInstance(
             $this->version,
-            $payload,
-            $this->solution['deviceSid']
+            $payload
         );
     }
 
@@ -33,6 +32,6 @@ class UsagePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Wireless.UsagePage]';
+        return '[Twilio.Video.V1.RoomPage]';
     }
 }

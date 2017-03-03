@@ -36,7 +36,6 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList outgoingCallerIds
  * @property \Twilio\Rest\Api\V2010\Account\QueueList queues
  * @property \Twilio\Rest\Api\V2010\Account\RecordingList recordings
- * @property \Twilio\Rest\Api\V2010\Account\SandboxList sandbox
  * @property \Twilio\Rest\Api\V2010\Account\SigningKeyList signingKeys
  * @property \Twilio\Rest\Api\V2010\Account\SipList sip
  * @property \Twilio\Rest\Api\V2010\Account\ShortCodeList shortCodes
@@ -58,7 +57,6 @@ use Twilio\Version;
  * @method \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext outgoingCallerIds(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\QueueContext queues(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\RecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Api\V2010\Account\SandboxContext sandbox()
  * @method \Twilio\Rest\Api\V2010\Account\SigningKeyContext signingKeys(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
@@ -82,7 +80,6 @@ class V2010 extends Version {
     protected $_outgoingCallerIds = null;
     protected $_queues = null;
     protected $_recordings = null;
-    protected $_sandbox = null;
     protected $_signingKeys = null;
     protected $_sip = null;
     protected $_shortCodes = null;
@@ -249,13 +246,6 @@ class V2010 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
-     */
-    protected function getSandbox() {
-        return $this->account->sandbox;
-    }
-
-    /**
      * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
      */
     protected function getSigningKeys() {
@@ -316,7 +306,7 @@ class V2010 extends Version {
         if (method_exists($this, $method)) {
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown resource ' . $name);
     }
 
@@ -333,7 +323,7 @@ class V2010 extends Version {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

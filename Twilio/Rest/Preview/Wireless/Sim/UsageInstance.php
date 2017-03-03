@@ -7,16 +7,17 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Wireless\Device;
+namespace Twilio\Rest\Preview\Wireless\Sim;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string deviceSid
- * @property string deviceAlias
+ * @property string simSid
+ * @property string simUniqueName
  * @property string accountSid
  * @property array period
  * @property array commandsUsage
@@ -31,27 +32,27 @@ class UsageInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $deviceSid The device_sid
-     * @return \Twilio\Rest\Preview\Wireless\Device\UsageInstance 
+     * @param string $simSid The sim_sid
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageInstance 
      */
-    public function __construct(Version $version, array $payload, $deviceSid) {
+    public function __construct(Version $version, array $payload, $simSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'deviceSid' => $payload['device_sid'],
-            'deviceAlias' => $payload['device_alias'],
-            'accountSid' => $payload['account_sid'],
-            'period' => $payload['period'],
-            'commandsUsage' => $payload['commands_usage'],
-            'commandsCosts' => $payload['commands_costs'],
-            'dataUsage' => $payload['data_usage'],
-            'dataCosts' => $payload['data_costs'],
-            'url' => $payload['url'],
+            'simSid' => Values::array_get($payload, 'sim_sid'),
+            'simUniqueName' => Values::array_get($payload, 'sim_unique_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'period' => Values::array_get($payload, 'period'),
+            'commandsUsage' => Values::array_get($payload, 'commands_usage'),
+            'commandsCosts' => Values::array_get($payload, 'commands_costs'),
+            'dataUsage' => Values::array_get($payload, 'data_usage'),
+            'dataCosts' => Values::array_get($payload, 'data_costs'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
-            'deviceSid' => $deviceSid,
+            'simSid' => $simSid,
         );
     }
 
@@ -59,17 +60,17 @@ class UsageInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Preview\Wireless\Device\UsageContext Context for this
-     *                                                           UsageInstance
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext Context for this
+     *                                                        UsageInstance
      */
     protected function proxy() {
         if (!$this->context) {
             $this->context = new UsageContext(
                 $this->version,
-                $this->solution['deviceSid']
+                $this->solution['simSid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -96,12 +97,12 @@ class UsageInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

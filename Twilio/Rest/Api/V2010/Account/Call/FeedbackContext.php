@@ -25,13 +25,13 @@ class FeedbackContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'callSid' => $callSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Feedback.json';
     }
 
@@ -44,19 +44,19 @@ class FeedbackContext extends InstanceContext {
      */
     public function create($qualityScore, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'QualityScore' => $qualityScore,
             'Issue' => $options['issue'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new FeedbackInstance(
             $this->version,
             $payload,
@@ -72,13 +72,13 @@ class FeedbackContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new FeedbackInstance(
             $this->version,
             $payload,
@@ -96,19 +96,19 @@ class FeedbackContext extends InstanceContext {
      */
     public function update($qualityScore, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'QualityScore' => $qualityScore,
             'Issue' => $options['issue'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new FeedbackInstance(
             $this->version,
             $payload,

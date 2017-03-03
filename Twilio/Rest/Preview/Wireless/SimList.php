@@ -14,24 +14,24 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class DeviceList extends ListResource {
+class SimList extends ListResource {
     /**
-     * Construct the DeviceList
+     * Construct the SimList
      * 
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\Wireless\DeviceList 
+     * @return \Twilio\Rest\Preview\Wireless\SimList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
-        $this->uri = '/Devices';
+
+        $this->uri = '/Sims';
     }
 
     /**
-     * Streams DeviceInstance records from the API as a generator stream.
+     * Streams SimInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -51,14 +51,14 @@ class DeviceList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads DeviceInstance records from the API as a list.
+     * Reads SimInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
@@ -71,85 +71,52 @@ class DeviceList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return DeviceInstance[] Array of results
+     * @return SimInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of DeviceInstance records from the API.
+     * Retrieve a single page of SimInstance records from the API.
      * Request is executed immediately
      * 
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of DeviceInstance
+     * @return \Twilio\Page Page of SimInstance
      */
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
             'Status' => $options['status'],
-            'SimIdentifier' => $options['simIdentifier'],
+            'Iccid' => $options['iccid'],
             'RatePlan' => $options['ratePlan'],
+            'EId' => $options['eId'],
+            'SimRegistrationCode' => $options['simRegistrationCode'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
-        return new DevicePage($this->version, $response, $this->solution);
+
+        return new SimPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create a new DeviceInstance
-     * 
-     * @param string $ratePlan The rate_plan
-     * @param array|Options $options Optional Arguments
-     * @return DeviceInstance Newly created DeviceInstance
-     */
-    public function create($ratePlan, $options = array()) {
-        $options = new Values($options);
-        
-        $data = Values::of(array(
-            'RatePlan' => $ratePlan,
-            'Alias' => $options['alias'],
-            'CallbackMethod' => $options['callbackMethod'],
-            'CallbackUrl' => $options['callbackUrl'],
-            'FriendlyName' => $options['friendlyName'],
-            'SimIdentifier' => $options['simIdentifier'],
-            'Status' => $options['status'],
-            'CommandsCallbackMethod' => $options['commandsCallbackMethod'],
-            'CommandsCallbackUrl' => $options['commandsCallbackUrl'],
-        ));
-        
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-        
-        return new DeviceInstance(
-            $this->version,
-            $payload
-        );
-    }
-
-    /**
-     * Constructs a DeviceContext
+     * Constructs a SimContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\DeviceContext 
+     * @return \Twilio\Rest\Preview\Wireless\SimContext 
      */
     public function getContext($sid) {
-        return new DeviceContext(
+        return new SimContext(
             $this->version,
             $sid
         );
@@ -161,6 +128,6 @@ class DeviceList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Wireless.DeviceList]';
+        return '[Twilio.Preview.Wireless.SimList]';
     }
 }

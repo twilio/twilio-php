@@ -25,14 +25,14 @@ class TranscriptionContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $recordingSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'recordingSid' => $recordingSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($recordingSid) . '/Transcriptions/' . rawurlencode($sid) . '.json';
     }
 
@@ -43,13 +43,13 @@ class TranscriptionContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TranscriptionInstance(
             $this->version,
             $payload,

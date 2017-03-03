@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Marketplace\AvailableAddOn;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -33,17 +34,17 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $availableAddOnSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'availableAddOnSid' => $payload['available_add_on_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'productName' => $payload['product_name'],
-            'uniqueName' => $payload['unique_name'],
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'availableAddOnSid' => Values::array_get($payload, 'available_add_on_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'productName' => Values::array_get($payload, 'product_name'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'availableAddOnSid' => $availableAddOnSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -65,7 +66,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -90,12 +91,12 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

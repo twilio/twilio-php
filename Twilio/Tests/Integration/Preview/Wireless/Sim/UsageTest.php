@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Preview\Wireless\Device;
+namespace Twilio\Tests\Integration\Preview\Wireless\Sim;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -18,16 +18,16 @@ use Twilio\Tests\Request;
 class UsageTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
-            $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->wireless->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                             ->usage()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage'
+            'https://preview.twilio.com/wireless/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage'
         ));
     }
 
@@ -41,17 +41,17 @@ class UsageTest extends HolodeckTestCase {
                 "commands_usage": {},
                 "data_costs": {},
                 "data_usage": {},
-                "device_alias": "device_alias",
-                "device_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_unique_name": "sim_unique_name",
+                "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "period": {},
-                "url": "https://preview.twilio.com/wireless/Devices/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage"
+                "url": "https://preview.twilio.com/wireless/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage"
             }
             '
         ));
-        
-        $actual = $this->twilio->preview->wireless->devices("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
+        $actual = $this->twilio->preview->wireless->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                   ->usage()->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 }

@@ -26,7 +26,7 @@ class PayloadContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
@@ -34,7 +34,7 @@ class PayloadContext extends InstanceContext {
             'addOnResultSid' => $addOnResultSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults/' . rawurlencode($addOnResultSid) . '/Payloads/' . rawurlencode($sid) . '.json';
     }
 
@@ -45,13 +45,13 @@ class PayloadContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new PayloadInstance(
             $this->version,
             $payload,

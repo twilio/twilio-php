@@ -23,12 +23,12 @@ class AvailableAddOnExtensionList extends ListResource {
      */
     public function __construct(Version $version, $availableAddOnSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'availableAddOnSid' => $availableAddOnSid,
         );
-        
+
         $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions';
     }
 
@@ -53,9 +53,9 @@ class AvailableAddOnExtensionList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -94,13 +94,13 @@ class AvailableAddOnExtensionList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AvailableAddOnExtensionPage($this->version, $response, $this->solution);
     }
 

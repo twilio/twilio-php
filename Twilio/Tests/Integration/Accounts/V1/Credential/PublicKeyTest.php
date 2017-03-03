@@ -18,13 +18,13 @@ use Twilio\Tests\Request;
 class PublicKeyTest extends HolodeckTestCase {
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->accounts->v1->credentials
                                        ->publicKey->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://accounts.twilio.com/v1/Credentials/PublicKeys'
@@ -49,10 +49,10 @@ class PublicKeyTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -83,26 +83,26 @@ class PublicKeyTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->accounts->v1->credentials
                                        ->publicKey->create("publickey");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
             'PublicKey' => "publickey",
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://accounts.twilio.com/v1/Credentials/PublicKeys',
@@ -125,22 +125,22 @@ class PublicKeyTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey->create("publickey");
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->accounts->v1->credentials
                                        ->publicKey("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -161,22 +161,22 @@ class PublicKeyTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->accounts->v1->credentials
                                        ->publicKey("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -197,22 +197,22 @@ class PublicKeyTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->accounts->v1->credentials
                                        ->publicKey("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'delete',
             'https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -224,10 +224,10 @@ class PublicKeyTest extends HolodeckTestCase {
             204,
             null
         ));
-        
+
         $actual = $this->twilio->accounts->v1->credentials
                                              ->publicKey("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        
+
         $this->assertTrue($actual);
     }
 }

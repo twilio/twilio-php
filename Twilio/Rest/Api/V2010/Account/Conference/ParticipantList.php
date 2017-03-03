@@ -27,13 +27,13 @@ class ParticipantList extends ListResource {
      */
     public function __construct(Version $version, $accountSid, $conferenceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'conferenceSid' => $conferenceSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants.json';
     }
 
@@ -47,7 +47,7 @@ class ParticipantList extends ListResource {
      */
     public function create($from, $to, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'From' => $from,
             'To' => $to,
@@ -70,14 +70,14 @@ class ParticipantList extends ListResource {
             'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
             'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ParticipantInstance(
             $this->version,
             $payload,
@@ -107,9 +107,9 @@ class ParticipantList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -152,13 +152,13 @@ class ParticipantList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ParticipantPage($this->version, $response, $this->solution);
     }
 

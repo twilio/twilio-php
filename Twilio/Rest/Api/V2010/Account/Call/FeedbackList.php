@@ -24,7 +24,7 @@ class FeedbackList extends ListResource {
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,

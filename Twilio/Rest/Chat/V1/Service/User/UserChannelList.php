@@ -24,13 +24,13 @@ class UserChannelList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid, $userSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'userSid' => $userSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Channels';
     }
 
@@ -54,9 +54,9 @@ class UserChannelList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -94,13 +94,13 @@ class UserChannelList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new UserChannelPage($this->version, $response, $this->solution);
     }
 

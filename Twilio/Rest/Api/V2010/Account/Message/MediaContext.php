@@ -25,14 +25,14 @@ class MediaContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $messageSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'messageSid' => $messageSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Media/' . rawurlencode($sid) . '.json';
     }
 
@@ -52,13 +52,13 @@ class MediaContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new MediaInstance(
             $this->version,
             $payload,

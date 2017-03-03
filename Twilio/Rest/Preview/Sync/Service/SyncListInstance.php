@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,21 +42,21 @@ class SyncListInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'uniqueName' => $payload['unique_name'],
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
-            'revision' => $payload['revision'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'createdBy' => $payload['created_by'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
+            'revision' => Values::array_get($payload, 'revision'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'createdBy' => Values::array_get($payload, 'created_by'),
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -77,7 +78,7 @@ class SyncListInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -128,12 +129,12 @@ class SyncListInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

@@ -41,13 +41,13 @@ class WorkerContext extends InstanceContext {
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($sid) . '';
     }
 
@@ -58,13 +58,13 @@ class WorkerContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new WorkerInstance(
             $this->version,
             $payload,
@@ -81,20 +81,20 @@ class WorkerContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'ActivitySid' => $options['activitySid'],
             'Attributes' => $options['attributes'],
             'FriendlyName' => $options['friendlyName'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new WorkerInstance(
             $this->version,
             $payload,
@@ -125,7 +125,7 @@ class WorkerContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_statistics;
     }
 
@@ -142,7 +142,7 @@ class WorkerContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_reservations;
     }
 
@@ -159,7 +159,7 @@ class WorkerContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_workerChannels;
     }
 
@@ -175,7 +175,7 @@ class WorkerContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -192,7 +192,7 @@ class WorkerContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

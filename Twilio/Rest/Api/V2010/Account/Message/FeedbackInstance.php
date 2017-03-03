@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Message;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -34,17 +35,17 @@ class FeedbackInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'messageSid' => $payload['message_sid'],
-            'outcome' => $payload['outcome'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'messageSid' => Values::array_get($payload, 'message_sid'),
+            'outcome' => Values::array_get($payload, 'outcome'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'uri' => Values::array_get($payload, 'uri'),
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'messageSid' => $messageSid,
@@ -62,12 +63,12 @@ class FeedbackInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

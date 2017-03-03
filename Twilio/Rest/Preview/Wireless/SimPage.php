@@ -11,16 +11,16 @@ namespace Twilio\Rest\Preview\Wireless;
 
 use Twilio\Page;
 
-class DevicePage extends Page {
+class SimPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {
-        return new DeviceInstance(
+        return new SimInstance(
             $this->version,
             $payload
         );
@@ -32,6 +32,6 @@ class DevicePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Wireless.DevicePage]';
+        return '[Twilio.Preview.Wireless.SimPage]';
     }
 }

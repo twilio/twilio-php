@@ -18,14 +18,14 @@ use Twilio\Tests\Request;
 class TollFreeTest extends HolodeckTestCase {
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->availablePhoneNumbers("US")
                                      ->tollFree->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/TollFree.json'
@@ -70,11 +70,11 @@ class TollFreeTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->availablePhoneNumbers("US")
                                            ->tollFree->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -97,11 +97,11 @@ class TollFreeTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->availablePhoneNumbers("US")
                                            ->tollFree->read();
-        
+
         $this->assertNotNull($actual);
     }
 }

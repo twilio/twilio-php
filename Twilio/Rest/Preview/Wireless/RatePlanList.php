@@ -24,10 +24,10 @@ class RatePlanList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/RatePlans';
     }
 
@@ -51,9 +51,9 @@ class RatePlanList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -91,13 +91,13 @@ class RatePlanList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new RatePlanPage($this->version, $response, $this->solution);
     }
 
@@ -109,9 +109,9 @@ class RatePlanList extends ListResource {
      */
     public function create($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
-            'Alias' => $options['alias'],
+            'UniqueName' => $options['uniqueName'],
             'FriendlyName' => $options['friendlyName'],
             'Roaming' => $options['roaming'],
             'DataLimit' => $options['dataLimit'],
@@ -119,14 +119,14 @@ class RatePlanList extends ListResource {
             'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
             'Renewal' => $options['renewal'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new RatePlanInstance(
             $this->version,
             $payload

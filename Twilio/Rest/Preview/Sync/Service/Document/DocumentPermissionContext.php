@@ -27,14 +27,14 @@ class DocumentPermissionContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $documentSid, $identity) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'documentSid' => $documentSid,
             'identity' => $identity,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents/' . rawurlencode($documentSid) . '/Permissions/' . rawurlencode($identity) . '';
     }
 
@@ -45,13 +45,13 @@ class DocumentPermissionContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new DocumentPermissionInstance(
             $this->version,
             $payload,
@@ -84,14 +84,14 @@ class DocumentPermissionContext extends InstanceContext {
             'Write' => Serialize::booleanToString($write),
             'Manage' => Serialize::booleanToString($manage),
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new DocumentPermissionInstance(
             $this->version,
             $payload,

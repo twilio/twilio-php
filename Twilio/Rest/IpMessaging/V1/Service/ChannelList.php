@@ -24,12 +24,12 @@ class ChannelList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels';
     }
 
@@ -41,21 +41,21 @@ class ChannelList extends ListResource {
      */
     public function create($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
             'Attributes' => $options['attributes'],
             'Type' => $options['type'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ChannelInstance(
             $this->version,
             $payload,
@@ -84,9 +84,9 @@ class ChannelList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -128,13 +128,13 @@ class ChannelList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ChannelPage($this->version, $response, $this->solution);
     }
 

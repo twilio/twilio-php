@@ -12,50 +12,50 @@ namespace Twilio\Rest\Preview\Wireless;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
-use Twilio\Rest\Preview\Wireless\Device\UsageList;
+use Twilio\Rest\Preview\Wireless\Sim\UsageList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Wireless\Device\UsageList usage
- * @method \Twilio\Rest\Preview\Wireless\Device\UsageContext usage()
+ * @property \Twilio\Rest\Preview\Wireless\Sim\UsageList usage
+ * @method \Twilio\Rest\Preview\Wireless\Sim\UsageContext usage()
  */
-class DeviceContext extends InstanceContext {
+class SimContext extends InstanceContext {
     protected $_usage = null;
 
     /**
-     * Initialize the DeviceContext
+     * Initialize the SimContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\DeviceContext 
+     * @return \Twilio\Rest\Preview\Wireless\SimContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
-        $this->uri = '/Devices/' . rawurlencode($sid) . '';
+
+        $this->uri = '/Sims/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch a DeviceInstance
+     * Fetch a SimInstance
      * 
-     * @return DeviceInstance Fetched DeviceInstance
+     * @return SimInstance Fetched SimInstance
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
-        return new DeviceInstance(
+
+        return new SimInstance(
             $this->version,
             $payload,
             $this->solution['sid']
@@ -63,34 +63,33 @@ class DeviceContext extends InstanceContext {
     }
 
     /**
-     * Update the DeviceInstance
+     * Update the SimInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return DeviceInstance Updated DeviceInstance
+     * @return SimInstance Updated SimInstance
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
-            'Alias' => $options['alias'],
+            'UniqueName' => $options['uniqueName'],
             'CallbackMethod' => $options['callbackMethod'],
             'CallbackUrl' => $options['callbackUrl'],
             'FriendlyName' => $options['friendlyName'],
             'RatePlan' => $options['ratePlan'],
-            'SimIdentifier' => $options['simIdentifier'],
             'Status' => $options['status'],
             'CommandsCallbackMethod' => $options['commandsCallbackMethod'],
             'CommandsCallbackUrl' => $options['commandsCallbackUrl'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
-        return new DeviceInstance(
+
+        return new SimInstance(
             $this->version,
             $payload,
             $this->solution['sid']
@@ -100,7 +99,7 @@ class DeviceContext extends InstanceContext {
     /**
      * Access the usage
      * 
-     * @return \Twilio\Rest\Preview\Wireless\Device\UsageList 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
      */
     protected function getUsage() {
         if (!$this->_usage) {
@@ -109,7 +108,7 @@ class DeviceContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_usage;
     }
 
@@ -125,7 +124,7 @@ class DeviceContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -142,7 +141,7 @@ class DeviceContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 
@@ -156,6 +155,6 @@ class DeviceContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Wireless.DeviceContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.SimContext ' . implode(' ', $context) . ']';
     }
 }

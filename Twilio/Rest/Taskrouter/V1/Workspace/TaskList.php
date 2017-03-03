@@ -25,12 +25,12 @@ class TaskList extends ListResource {
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks';
     }
 
@@ -55,9 +55,9 @@ class TaskList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -107,13 +107,13 @@ class TaskList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TaskPage($this->version, $response, $this->solution);
     }
 
@@ -125,7 +125,7 @@ class TaskList extends ListResource {
      */
     public function create($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Timeout' => $options['timeout'],
             'Priority' => $options['priority'],
@@ -133,14 +133,14 @@ class TaskList extends ListResource {
             'WorkflowSid' => $options['workflowSid'],
             'Attributes' => $options['attributes'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new TaskInstance(
             $this->version,
             $payload,

@@ -25,14 +25,14 @@ class SyncListItemContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $listSid, $index) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'listSid' => $listSid,
             'index' => $index,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Items/' . rawurlencode($index) . '';
     }
 
@@ -43,13 +43,13 @@ class SyncListItemContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncListItemInstance(
             $this->version,
             $payload,
@@ -78,14 +78,14 @@ class SyncListItemContext extends InstanceContext {
         $data = Values::of(array(
             'Data' => $data,
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new SyncListItemInstance(
             $this->version,
             $payload,

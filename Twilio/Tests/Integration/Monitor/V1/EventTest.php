@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class EventTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->monitor->v1->events("AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://monitor.twilio.com/v1/Events/AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -60,20 +60,20 @@ class EventTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->monitor->v1->events("AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->monitor->v1->events->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://monitor.twilio.com/v1/Events'
@@ -123,9 +123,9 @@ class EventTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->monitor->v1->events->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -147,9 +147,9 @@ class EventTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->monitor->v1->events->read();
-        
+
         $this->assertNotNull($actual);
     }
 }

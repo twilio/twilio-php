@@ -27,14 +27,14 @@ class ReservationContext extends InstanceContext {
      */
     public function __construct(Version $version, $workspaceSid, $taskSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'taskSid' => $taskSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks/' . rawurlencode($taskSid) . '/Reservations/' . rawurlencode($sid) . '';
     }
 
@@ -45,13 +45,13 @@ class ReservationContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ReservationInstance(
             $this->version,
             $payload,
@@ -69,7 +69,7 @@ class ReservationContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'ReservationStatus' => $options['reservationStatus'],
             'WorkerActivitySid' => $options['workerActivitySid'],
@@ -91,14 +91,14 @@ class ReservationContext extends InstanceContext {
             'RedirectAccept' => Serialize::booleanToString($options['redirectAccept']),
             'RedirectUrl' => $options['redirectUrl'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ReservationInstance(
             $this->version,
             $payload,

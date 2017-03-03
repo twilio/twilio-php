@@ -26,13 +26,13 @@ class OriginationUrlContext extends InstanceContext {
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'trunkSid' => $trunkSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/OriginationUrls/' . rawurlencode($sid) . '';
     }
 
@@ -43,13 +43,13 @@ class OriginationUrlContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new OriginationUrlInstance(
             $this->version,
             $payload,
@@ -75,7 +75,7 @@ class OriginationUrlContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Weight' => $options['weight'],
             'Priority' => $options['priority'],
@@ -83,14 +83,14 @@ class OriginationUrlContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'SipUrl' => $options['sipUrl'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new OriginationUrlInstance(
             $this->version,
             $payload,

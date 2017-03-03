@@ -33,7 +33,7 @@ class VoiceList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
     }
@@ -47,7 +47,7 @@ class VoiceList extends ListResource {
                 $this->version
             );
         }
-        
+
         return $this->_numbers;
     }
 
@@ -60,7 +60,7 @@ class VoiceList extends ListResource {
                 $this->version
             );
         }
-        
+
         return $this->_countries;
     }
 
@@ -76,7 +76,7 @@ class VoiceList extends ListResource {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -93,7 +93,7 @@ class VoiceList extends ListResource {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

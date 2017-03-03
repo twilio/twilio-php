@@ -14,7 +14,7 @@ use Twilio\Page;
 class InvitePage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }

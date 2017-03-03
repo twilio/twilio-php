@@ -24,13 +24,13 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      */
     public function __construct(Version $version, $availableAddOnSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'availableAddOnSid' => $availableAddOnSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions/' . rawurlencode($sid) . '';
     }
 
@@ -42,13 +42,13 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AvailableAddOnExtensionInstance(
             $this->version,
             $payload,

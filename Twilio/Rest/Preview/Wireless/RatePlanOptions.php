@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class RatePlanOptions {
     /**
-     * @param string $alias The alias
+     * @param string $uniqueName The unique_name
      * @param string $friendlyName The friendly_name
      * @param string $roaming The roaming
      * @param integer $dataLimit The data_limit
@@ -23,23 +23,23 @@ abstract class RatePlanOptions {
      * @param string $renewal The renewal
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create($alias = Values::NONE, $friendlyName = Values::NONE, $roaming = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $commandsEnabled = Values::NONE, $renewal = Values::NONE) {
-        return new CreateRatePlanOptions($alias, $friendlyName, $roaming, $dataLimit, $dataMetering, $commandsEnabled, $renewal);
+    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $roaming = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $commandsEnabled = Values::NONE, $renewal = Values::NONE) {
+        return new CreateRatePlanOptions($uniqueName, $friendlyName, $roaming, $dataLimit, $dataMetering, $commandsEnabled, $renewal);
     }
 
     /**
-     * @param string $alias The alias
+     * @param string $uniqueName The unique_name
      * @param string $friendlyName The friendly_name
      * @return UpdateRatePlanOptions Options builder
      */
-    public static function update($alias = Values::NONE, $friendlyName = Values::NONE) {
-        return new UpdateRatePlanOptions($alias, $friendlyName);
+    public static function update($uniqueName = Values::NONE, $friendlyName = Values::NONE) {
+        return new UpdateRatePlanOptions($uniqueName, $friendlyName);
     }
 }
 
 class CreateRatePlanOptions extends Options {
     /**
-     * @param string $alias The alias
+     * @param string $uniqueName The unique_name
      * @param string $friendlyName The friendly_name
      * @param string $roaming The roaming
      * @param integer $dataLimit The data_limit
@@ -47,8 +47,8 @@ class CreateRatePlanOptions extends Options {
      * @param boolean $commandsEnabled The commands_enabled
      * @param string $renewal The renewal
      */
-    public function __construct($alias = Values::NONE, $friendlyName = Values::NONE, $roaming = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $commandsEnabled = Values::NONE, $renewal = Values::NONE) {
-        $this->options['alias'] = $alias;
+    public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE, $roaming = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $commandsEnabled = Values::NONE, $renewal = Values::NONE) {
+        $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['roaming'] = $roaming;
         $this->options['dataLimit'] = $dataLimit;
@@ -58,13 +58,13 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The alias
+     * The unique_name
      * 
-     * @param string $alias The alias
+     * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setAlias($alias) {
-        $this->options['alias'] = $alias;
+    public function setUniqueName($uniqueName) {
+        $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
@@ -152,22 +152,22 @@ class CreateRatePlanOptions extends Options {
 
 class UpdateRatePlanOptions extends Options {
     /**
-     * @param string $alias The alias
+     * @param string $uniqueName The unique_name
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($alias = Values::NONE, $friendlyName = Values::NONE) {
-        $this->options['alias'] = $alias;
+    public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE) {
+        $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * The alias
+     * The unique_name
      * 
-     * @param string $alias The alias
+     * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setAlias($alias) {
-        $this->options['alias'] = $alias;
+    public function setUniqueName($uniqueName) {
+        $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 

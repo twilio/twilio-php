@@ -24,12 +24,12 @@ class SyncListList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists';
     }
 
@@ -41,18 +41,18 @@ class SyncListList extends ListResource {
      */
     public function create($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'UniqueName' => $options['uniqueName'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new SyncListInstance(
             $this->version,
             $payload,
@@ -80,9 +80,9 @@ class SyncListList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -120,13 +120,13 @@ class SyncListList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncListPage($this->version, $response, $this->solution);
     }
 

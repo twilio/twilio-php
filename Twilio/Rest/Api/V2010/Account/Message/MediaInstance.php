@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Message;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -36,18 +37,18 @@ class MediaInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'contentType' => $payload['content_type'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'parentSid' => $payload['parent_sid'],
-            'sid' => $payload['sid'],
-            'uri' => $payload['uri'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'contentType' => Values::array_get($payload, 'content_type'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'parentSid' => Values::array_get($payload, 'parent_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'messageSid' => $messageSid,
@@ -71,7 +72,7 @@ class MediaInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -104,12 +105,12 @@ class MediaInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

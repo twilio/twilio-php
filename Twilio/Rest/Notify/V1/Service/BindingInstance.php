@@ -12,6 +12,7 @@ namespace Twilio\Rest\Notify\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,24 +42,24 @@ class BindingInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'credentialSid' => $payload['credential_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'notificationProtocolVersion' => $payload['notification_protocol_version'],
-            'endpoint' => $payload['endpoint'],
-            'identity' => $payload['identity'],
-            'bindingType' => $payload['binding_type'],
-            'address' => $payload['address'],
-            'tags' => $payload['tags'],
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'credentialSid' => Values::array_get($payload, 'credential_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'notificationProtocolVersion' => Values::array_get($payload, 'notification_protocol_version'),
+            'endpoint' => Values::array_get($payload, 'endpoint'),
+            'identity' => Values::array_get($payload, 'identity'),
+            'bindingType' => Values::array_get($payload, 'binding_type'),
+            'address' => Values::array_get($payload, 'address'),
+            'tags' => Values::array_get($payload, 'tags'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -80,7 +81,7 @@ class BindingInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -113,12 +114,12 @@ class BindingInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

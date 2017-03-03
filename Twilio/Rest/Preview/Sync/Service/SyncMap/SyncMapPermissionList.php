@@ -24,13 +24,13 @@ class SyncMapPermissionList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid, $mapSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'mapSid' => $mapSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Permissions';
     }
 
@@ -54,9 +54,9 @@ class SyncMapPermissionList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -94,13 +94,13 @@ class SyncMapPermissionList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncMapPermissionPage($this->version, $response, $this->solution);
     }
 

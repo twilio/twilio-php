@@ -20,18 +20,18 @@ class MessageList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
-     * @param string $channelSid The sid
+     * @param string $channelSid The channel_sid
      * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList 
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages';
     }
 
@@ -44,20 +44,20 @@ class MessageList extends ListResource {
      */
     public function create($body, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Body' => $body,
             'From' => $options['from'],
             'Attributes' => $options['attributes'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new MessageInstance(
             $this->version,
             $payload,
@@ -87,9 +87,9 @@ class MessageList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -131,13 +131,13 @@ class MessageList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new MessagePage($this->version, $response, $this->solution);
     }
 

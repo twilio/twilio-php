@@ -21,14 +21,14 @@ use Twilio\Rest\Preview\Wireless;
  * @property \Twilio\Rest\Preview\Marketplace marketplace
  * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
- * @property \Twilio\Rest\Preview\Wireless\DeviceList devices
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
+ * @property \Twilio\Rest\Preview\Wireless\SimList sims
  * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
  * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
- * @method \Twilio\Rest\Preview\Wireless\DeviceContext devices(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
+ * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  */
@@ -46,7 +46,7 @@ class Preview extends Domain {
      */
     public function __construct(Client $client) {
         parent::__construct($client);
-        
+
         $this->baseUrl = 'https://preview.twilio.com';
     }
 
@@ -92,7 +92,7 @@ class Preview extends Domain {
         if (method_exists($this, $method)) {
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown version ' . $name);
     }
 
@@ -109,7 +109,7 @@ class Preview extends Domain {
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
         }
-        
+
         throw new TwilioException('Unknown context ' . $name);
     }
 
@@ -144,21 +144,6 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Wireless\DeviceList 
-     */
-    protected function getDevices() {
-        return $this->wireless->devices;
-    }
-
-    /**
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\DeviceContext 
-     */
-    protected function contextDevices($sid) {
-        return $this->wireless->devices($sid);
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\Wireless\RatePlanList 
      */
     protected function getRatePlans() {
@@ -171,6 +156,21 @@ class Preview extends Domain {
      */
     protected function contextRatePlans($sid) {
         return $this->wireless->ratePlans($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Wireless\SimList 
+     */
+    protected function getSims() {
+        return $this->wireless->sims;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Wireless\SimContext 
+     */
+    protected function contextSims($sid) {
+        return $this->wireless->sims($sid);
     }
 
     /**

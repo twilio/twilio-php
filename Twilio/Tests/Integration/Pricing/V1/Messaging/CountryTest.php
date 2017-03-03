@@ -18,13 +18,13 @@ use Twilio\Tests\Request;
 class CountryTest extends HolodeckTestCase {
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->pricing->v1->messaging
                                       ->countries->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://pricing.twilio.com/v1/Messaging/Countries'
@@ -49,10 +49,10 @@ class CountryTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->pricing->v1->messaging
                                             ->countries->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -80,22 +80,22 @@ class CountryTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->pricing->v1->messaging
                                             ->countries->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->pricing->v1->messaging
                                       ->countries("US")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://pricing.twilio.com/v1/Messaging/Countries/US'
@@ -135,10 +135,10 @@ class CountryTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->pricing->v1->messaging
                                             ->countries("US")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 }

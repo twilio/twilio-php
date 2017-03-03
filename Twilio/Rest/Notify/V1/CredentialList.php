@@ -24,10 +24,10 @@ class CredentialList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/Credentials';
     }
 
@@ -51,9 +51,9 @@ class CredentialList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -91,13 +91,13 @@ class CredentialList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new CredentialPage($this->version, $response, $this->solution);
     }
 
@@ -110,7 +110,7 @@ class CredentialList extends ListResource {
      */
     public function create($type, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Type' => $type,
             'FriendlyName' => $options['friendlyName'],
@@ -120,14 +120,14 @@ class CredentialList extends ListResource {
             'ApiKey' => $options['apiKey'],
             'Secret' => $options['secret'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new CredentialInstance(
             $this->version,
             $payload

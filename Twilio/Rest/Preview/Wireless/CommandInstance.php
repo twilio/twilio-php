@@ -12,12 +12,14 @@ namespace Twilio\Rest\Preview\Wireless;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string sid
  * @property string accountSid
  * @property string deviceSid
+ * @property string simSid
  * @property string command
  * @property string commandMode
  * @property string status
@@ -37,21 +39,22 @@ class CommandInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'deviceSid' => $payload['device_sid'],
-            'command' => $payload['command'],
-            'commandMode' => $payload['command_mode'],
-            'status' => $payload['status'],
-            'direction' => $payload['direction'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'deviceSid' => Values::array_get($payload, 'device_sid'),
+            'simSid' => Values::array_get($payload, 'sim_sid'),
+            'command' => Values::array_get($payload, 'command'),
+            'commandMode' => Values::array_get($payload, 'command_mode'),
+            'status' => Values::array_get($payload, 'status'),
+            'direction' => Values::array_get($payload, 'direction'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -71,7 +74,7 @@ class CommandInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -95,12 +98,12 @@ class CommandInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

@@ -27,14 +27,14 @@ class SyncMapPermissionContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $mapSid, $identity) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'mapSid' => $mapSid,
             'identity' => $identity,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Permissions/' . rawurlencode($identity) . '';
     }
 
@@ -45,13 +45,13 @@ class SyncMapPermissionContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncMapPermissionInstance(
             $this->version,
             $payload,
@@ -84,14 +84,14 @@ class SyncMapPermissionContext extends InstanceContext {
             'Write' => Serialize::booleanToString($write),
             'Manage' => Serialize::booleanToString($manage),
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new SyncMapPermissionInstance(
             $this->version,
             $payload,

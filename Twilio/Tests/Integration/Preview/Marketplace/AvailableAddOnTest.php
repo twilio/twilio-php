@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class AvailableAddOnTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -57,20 +57,20 @@ class AvailableAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->availableAddOns->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/marketplace/AvailableAddOns'
@@ -117,9 +117,9 @@ class AvailableAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->availableAddOns->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -141,9 +141,9 @@ class AvailableAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->availableAddOns->read();
-        
+
         $this->assertNotNull($actual);
     }
 }

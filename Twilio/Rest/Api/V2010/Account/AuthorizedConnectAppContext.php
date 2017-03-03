@@ -24,13 +24,13 @@ class AuthorizedConnectAppContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $connectAppSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'connectAppSid' => $connectAppSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps/' . rawurlencode($connectAppSid) . '.json';
     }
 
@@ -41,13 +41,13 @@ class AuthorizedConnectAppContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AuthorizedConnectAppInstance(
             $this->version,
             $payload,

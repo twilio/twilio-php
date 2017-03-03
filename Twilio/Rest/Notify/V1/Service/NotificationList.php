@@ -24,12 +24,12 @@ class NotificationList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Notifications';
     }
 
@@ -41,7 +41,7 @@ class NotificationList extends ListResource {
      */
     public function create($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Identity' => $options['identity'],
             'Tag' => $options['tag'],
@@ -58,14 +58,14 @@ class NotificationList extends ListResource {
             'FacebookMessenger' => $options['facebookMessenger'],
             'Fcm' => $options['fcm'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new NotificationInstance(
             $this->version,
             $payload,

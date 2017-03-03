@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class CommandTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->wireless->commands("DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -41,6 +41,7 @@ class CommandTest extends HolodeckTestCase {
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "device_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "direction": "direction",
                 "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "status",
@@ -48,20 +49,20 @@ class CommandTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->commands("DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->wireless->commands->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/Commands'
@@ -86,9 +87,9 @@ class CommandTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->commands->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -105,6 +106,7 @@ class CommandTest extends HolodeckTestCase {
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "device_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "direction": "direction",
                         "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "status",
@@ -123,25 +125,24 @@ class CommandTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->commands->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
-            $this->twilio->preview->wireless->commands->create("device", "command");
+            $this->twilio->preview->wireless->commands->create("command");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
-            'Device' => "device",
             'Command' => "command",
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/wireless/Commands',
@@ -161,6 +162,7 @@ class CommandTest extends HolodeckTestCase {
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "device_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "direction": "direction",
                 "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "status",
@@ -168,9 +170,9 @@ class CommandTest extends HolodeckTestCase {
             }
             '
         ));
-        
-        $actual = $this->twilio->preview->wireless->commands->create("device", "command");
-        
+
+        $actual = $this->twilio->preview->wireless->commands->create("command");
+
         $this->assertNotNull($actual);
     }
 }

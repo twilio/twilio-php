@@ -36,13 +36,13 @@ class RecordingContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($sid) . '.json';
     }
 
@@ -53,13 +53,13 @@ class RecordingContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new RecordingInstance(
             $this->version,
             $payload,
@@ -90,7 +90,7 @@ class RecordingContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_transcriptions;
     }
 
@@ -107,7 +107,7 @@ class RecordingContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_addOnResults;
     }
 
@@ -123,7 +123,7 @@ class RecordingContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -140,7 +140,7 @@ class RecordingContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

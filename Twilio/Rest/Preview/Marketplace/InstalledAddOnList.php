@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Marketplace;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,10 +24,10 @@ class InstalledAddOnList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/InstalledAddOns';
     }
 
@@ -35,25 +36,28 @@ class InstalledAddOnList extends ListResource {
      * 
      * @param string $availableAddOnSid A string that uniquely identifies the
      *                                  Add-on to install
+     * @param boolean $acceptTermsOfService A boolean reflecting your acceptance of
+     *                                      the Terms of Service
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Newly created InstalledAddOnInstance
      */
-    public function create($availableAddOnSid, $options = array()) {
+    public function create($availableAddOnSid, $acceptTermsOfService, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'AvailableAddOnSid' => $availableAddOnSid,
+            'AcceptTermsOfService' => Serialize::booleanToString($acceptTermsOfService),
             'Configuration' => $options['configuration'],
             'UniqueName' => $options['uniqueName'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new InstalledAddOnInstance(
             $this->version,
             $payload
@@ -80,9 +84,9 @@ class InstalledAddOnList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -120,13 +124,13 @@ class InstalledAddOnList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new InstalledAddOnPage($this->version, $response, $this->solution);
     }
 

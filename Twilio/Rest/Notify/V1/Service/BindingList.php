@@ -25,12 +25,12 @@ class BindingList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Bindings';
     }
 
@@ -46,7 +46,7 @@ class BindingList extends ListResource {
      */
     public function create($endpoint, $identity, $bindingType, $address, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Endpoint' => $endpoint,
             'Identity' => $identity,
@@ -56,14 +56,14 @@ class BindingList extends ListResource {
             'NotificationProtocolVersion' => $options['notificationProtocolVersion'],
             'CredentialSid' => $options['credentialSid'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new BindingInstance(
             $this->version,
             $payload,
@@ -92,9 +92,9 @@ class BindingList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -139,13 +139,13 @@ class BindingList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new BindingPage($this->version, $response, $this->solution);
     }
 
