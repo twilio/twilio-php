@@ -18,13 +18,13 @@ use Twilio\Tests\Request;
 class AvailableAddOnExtensionTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                ->extensions("XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions/XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -45,22 +45,22 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                      ->extensions("XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                ->extensions->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions'
@@ -94,10 +94,10 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                      ->extensions->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -119,10 +119,10 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                      ->extensions->read();
-        
+
         $this->assertNotNull($actual);
     }
 }

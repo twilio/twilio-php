@@ -23,10 +23,10 @@ class CommandList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/Commands';
     }
 
@@ -51,9 +51,9 @@ class CommandList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -91,49 +91,50 @@ class CommandList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Device' => $options['device'],
+            'Sim' => $options['sim'],
             'Status' => $options['status'],
             'Direction' => $options['direction'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new CommandPage($this->version, $response, $this->solution);
     }
 
     /**
      * Create a new CommandInstance
      * 
-     * @param string $device The device
      * @param string $command The command
      * @param array|Options $options Optional Arguments
      * @return CommandInstance Newly created CommandInstance
      */
-    public function create($device, $command, $options = array()) {
+    public function create($command, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
-            'Device' => $device,
             'Command' => $command,
+            'Device' => $options['device'],
+            'Sim' => $options['sim'],
             'CallbackMethod' => $options['callbackMethod'],
             'CallbackUrl' => $options['callbackUrl'],
             'CommandMode' => $options['commandMode'],
             'IncludeSid' => $options['includeSid'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new CommandInstance(
             $this->version,
             $payload

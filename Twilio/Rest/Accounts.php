@@ -29,7 +29,7 @@ class Accounts extends Domain {
      */
     public function __construct(Client $client) {
         parent::__construct($client);
-        
+
         $this->baseUrl = 'https://accounts.twilio.com';
     }
 
@@ -55,7 +55,7 @@ class Accounts extends Domain {
         if (method_exists($this, $method)) {
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown version ' . $name);
     }
 
@@ -72,7 +72,7 @@ class Accounts extends Domain {
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
         }
-        
+
         throw new TwilioException('Unknown context ' . $name);
     }
 

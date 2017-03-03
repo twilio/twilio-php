@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -36,17 +37,17 @@ class FeedbackInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'issues' => $payload['issues'],
-            'qualityScore' => $payload['quality_score'],
-            'sid' => $payload['sid'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'issues' => Values::array_get($payload, 'issues'),
+            'qualityScore' => Values::array_get($payload, 'quality_score'),
+            'sid' => Values::array_get($payload, 'sid'),
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'callSid' => $callSid,
@@ -68,7 +69,7 @@ class FeedbackInstance extends InstanceResource {
                 $this->solution['callSid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -120,12 +121,12 @@ class FeedbackInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

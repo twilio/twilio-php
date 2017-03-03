@@ -18,14 +18,14 @@ use Twilio\Tests\Request;
 class SyncMapItemTest extends HolodeckTestCase {
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMapItems("key")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key'
@@ -50,24 +50,24 @@ class SyncMapItemTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMapItems("key")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMapItems("key")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'delete',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key'
@@ -79,29 +79,29 @@ class SyncMapItemTest extends HolodeckTestCase {
             204,
             null
         ));
-        
+
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMapItems("key")->delete();
-        
+
         $this->assertTrue($actual);
     }
 
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMapItems->create("key", "{}");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
             'Key' => "key",
             'Data' => "{}",
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items',
@@ -128,24 +128,24 @@ class SyncMapItemTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMapItems->create("key", "{}");
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMapItems->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items'
@@ -170,11 +170,11 @@ class SyncMapItemTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMapItems->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -209,28 +209,28 @@ class SyncMapItemTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMapItems->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                         ->syncMapItems("key")->update("{}");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
             'Data' => "{}",
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key',
@@ -257,11 +257,11 @@ class SyncMapItemTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                               ->syncMapItems("key")->update("{}");
-        
+
         $this->assertNotNull($actual);
     }
 }

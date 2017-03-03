@@ -25,13 +25,13 @@ class SyncMapItemList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid, $mapSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'mapSid' => $mapSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Items';
     }
 
@@ -47,14 +47,14 @@ class SyncMapItemList extends ListResource {
             'Key' => $key,
             'Data' => $data,
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new SyncMapItemInstance(
             $this->version,
             $payload,
@@ -84,9 +84,9 @@ class SyncMapItemList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -130,13 +130,13 @@ class SyncMapItemList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncMapItemPage($this->version, $response, $this->solution);
     }
 

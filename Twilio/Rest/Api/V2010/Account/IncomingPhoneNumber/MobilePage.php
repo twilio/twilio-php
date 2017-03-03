@@ -14,7 +14,7 @@ use Twilio\Page;
 class MobilePage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }
@@ -23,7 +23,7 @@ class MobilePage extends Page {
         return new MobileInstance(
             $this->version,
             $payload,
-            $this->solution['ownerAccountSid']
+            $this->solution['accountSid']
         );
     }
 

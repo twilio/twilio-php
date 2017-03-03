@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Wireless\Device;
+namespace Twilio\Rest\Preview\Wireless\Sim;
 
 use Twilio\Options;
 use Twilio\Values;

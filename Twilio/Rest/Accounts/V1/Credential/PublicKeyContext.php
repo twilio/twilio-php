@@ -19,17 +19,17 @@ class PublicKeyContext extends InstanceContext {
      * Initialize the PublicKeyContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid Fetch by unique Credential Sid
      * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext 
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Credentials/PublicKeys/' . rawurlencode($sid) . '';
     }
 
@@ -40,13 +40,13 @@ class PublicKeyContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new PublicKeyInstance(
             $this->version,
             $payload,
@@ -62,18 +62,18 @@ class PublicKeyContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new PublicKeyInstance(
             $this->version,
             $payload,

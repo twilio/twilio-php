@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Sync\Service\SyncList;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -37,19 +38,19 @@ class SyncListPermissionInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid, $listSid, $identity = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'listSid' => $payload['list_sid'],
-            'identity' => $payload['identity'],
-            'read' => $payload['read'],
-            'write' => $payload['write'],
-            'manage' => $payload['manage'],
-            'url' => $payload['url'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'listSid' => Values::array_get($payload, 'list_sid'),
+            'identity' => Values::array_get($payload, 'identity'),
+            'read' => Values::array_get($payload, 'read'),
+            'write' => Values::array_get($payload, 'write'),
+            'manage' => Values::array_get($payload, 'manage'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'listSid' => $listSid,
@@ -72,7 +73,7 @@ class SyncListPermissionInstance extends InstanceResource {
                 $this->solution['identity']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -121,12 +122,12 @@ class SyncListPermissionInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

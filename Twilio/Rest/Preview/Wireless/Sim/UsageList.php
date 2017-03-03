@@ -7,37 +7,37 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Preview\Wireless\Sim;
 
 use Twilio\ListResource;
 use Twilio\Version;
 
-class SandboxList extends ListResource {
+class UsageList extends ListResource {
     /**
-     * Construct the SandboxList
+     * Construct the UsageList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxList 
+     * @param string $simSid The sim_sid
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, $simSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
+            'simSid' => $simSid,
         );
     }
 
     /**
-     * Constructs a SandboxContext
+     * Constructs a UsageContext
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\SandboxContext 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext 
      */
     public function getContext() {
-        return new SandboxContext(
+        return new UsageContext(
             $this->version,
-            $this->solution['accountSid']
+            $this->solution['simSid']
         );
     }
 
@@ -47,6 +47,6 @@ class SandboxList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.SandboxList]';
+        return '[Twilio.Preview.Wireless.UsageList]';
     }
 }

@@ -18,13 +18,13 @@ use Twilio\Tests\Request;
 class NotificationTest extends HolodeckTestCase {
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->notifications->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications'
@@ -59,10 +59,10 @@ class NotificationTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->notifications->create();
-        
+
         $this->assertNotNull($actual);
     }
 }

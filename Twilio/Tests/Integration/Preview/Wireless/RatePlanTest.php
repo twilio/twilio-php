@@ -18,12 +18,12 @@ use Twilio\Tests\Request;
 class RatePlanTest extends HolodeckTestCase {
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->wireless->ratePlans->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/RatePlans'
@@ -48,9 +48,9 @@ class RatePlanTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->ratePlans->read();
-        
+
         $this->assertNotNull($actual);
     }
 
@@ -71,7 +71,7 @@ class RatePlanTest extends HolodeckTestCase {
                 "rate_plans": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "alias": "alias",
+                        "unique_name": "unique_name",
                         "commands": {
                             "enabled": true
                         },
@@ -93,20 +93,20 @@ class RatePlanTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->ratePlans->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -119,7 +119,7 @@ class RatePlanTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "alias": "alias",
+                "unique_name": "unique_name",
                 "commands": {
                     "enabled": true
                 },
@@ -139,20 +139,20 @@ class RatePlanTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->wireless->ratePlans->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/wireless/RatePlans'
@@ -165,7 +165,7 @@ class RatePlanTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "alias": "alias",
+                "unique_name": "unique_name",
                 "commands": {
                     "enabled": true
                 },
@@ -185,20 +185,20 @@ class RatePlanTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->ratePlans->create();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -211,7 +211,7 @@ class RatePlanTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "alias": "alias",
+                "unique_name": "unique_name",
                 "commands": {
                     "enabled": true
                 },
@@ -231,9 +231,9 @@ class RatePlanTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        
+
         $this->assertNotNull($actual);
     }
 }

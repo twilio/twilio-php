@@ -25,13 +25,13 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      */
     public function __construct(Version $version, $installedAddOnSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'installedAddOnSid' => $installedAddOnSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/InstalledAddOns/' . rawurlencode($installedAddOnSid) . '/Extensions/' . rawurlencode($sid) . '';
     }
 
@@ -43,13 +43,13 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new InstalledAddOnExtensionInstance(
             $this->version,
             $payload,
@@ -69,14 +69,14 @@ class InstalledAddOnExtensionContext extends InstanceContext {
         $data = Values::of(array(
             'Enabled' => Serialize::booleanToString($enabled),
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new InstalledAddOnExtensionInstance(
             $this->version,
             $payload,

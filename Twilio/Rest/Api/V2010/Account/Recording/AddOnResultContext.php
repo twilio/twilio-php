@@ -33,14 +33,14 @@ class AddOnResultContext extends InstanceContext {
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
             'referenceSid' => $referenceSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults/' . rawurlencode($sid) . '.json';
     }
 
@@ -51,13 +51,13 @@ class AddOnResultContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new AddOnResultInstance(
             $this->version,
             $payload,
@@ -90,7 +90,7 @@ class AddOnResultContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_payloads;
     }
 
@@ -106,7 +106,7 @@ class AddOnResultContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -123,7 +123,7 @@ class AddOnResultContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

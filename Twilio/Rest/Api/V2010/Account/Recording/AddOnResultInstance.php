@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Recording;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -41,21 +42,21 @@ class AddOnResultInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'status' => $payload['status'],
-            'addOnSid' => $payload['add_on_sid'],
-            'addOnConfigurationSid' => $payload['add_on_configuration_sid'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'dateCompleted' => Deserialize::dateTime($payload['date_completed']),
-            'referenceSid' => $payload['reference_sid'],
-            'subresourceUris' => $payload['subresource_uris'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'status' => Values::array_get($payload, 'status'),
+            'addOnSid' => Values::array_get($payload, 'add_on_sid'),
+            'addOnConfigurationSid' => Values::array_get($payload, 'add_on_configuration_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'dateCompleted' => Deserialize::dateTime(Values::array_get($payload, 'date_completed')),
+            'referenceSid' => Values::array_get($payload, 'reference_sid'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'referenceSid' => $referenceSid,
@@ -80,7 +81,7 @@ class AddOnResultInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -122,12 +123,12 @@ class AddOnResultInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

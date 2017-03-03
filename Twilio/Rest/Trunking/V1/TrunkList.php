@@ -24,10 +24,10 @@ class TrunkList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/Trunks';
     }
 
@@ -39,7 +39,7 @@ class TrunkList extends ListResource {
      */
     public function create($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'DomainName' => $options['domainName'],
@@ -48,14 +48,14 @@ class TrunkList extends ListResource {
             'Recording' => $options['recording'],
             'Secure' => Serialize::booleanToString($options['secure']),
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new TrunkInstance(
             $this->version,
             $payload
@@ -82,9 +82,9 @@ class TrunkList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -122,13 +122,13 @@ class TrunkList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TrunkPage($this->version, $response, $this->solution);
     }
 

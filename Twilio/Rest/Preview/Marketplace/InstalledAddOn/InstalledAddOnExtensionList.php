@@ -23,12 +23,12 @@ class InstalledAddOnExtensionList extends ListResource {
      */
     public function __construct(Version $version, $installedAddOnSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'installedAddOnSid' => $installedAddOnSid,
         );
-        
+
         $this->uri = '/InstalledAddOns/' . rawurlencode($installedAddOnSid) . '/Extensions';
     }
 
@@ -53,9 +53,9 @@ class InstalledAddOnExtensionList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -94,13 +94,13 @@ class InstalledAddOnExtensionList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new InstalledAddOnExtensionPage($this->version, $response, $this->solution);
     }
 

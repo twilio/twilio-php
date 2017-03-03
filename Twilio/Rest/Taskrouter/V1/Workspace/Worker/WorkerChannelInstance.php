@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -44,25 +45,25 @@ class WorkerChannelInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'assignedTasks' => $payload['assigned_tasks'],
-            'available' => $payload['available'],
-            'availableCapacityPercentage' => $payload['available_capacity_percentage'],
-            'configuredCapacity' => $payload['configured_capacity'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'sid' => $payload['sid'],
-            'taskChannelSid' => $payload['task_channel_sid'],
-            'taskChannelUniqueName' => $payload['task_channel_unique_name'],
-            'workerSid' => $payload['worker_sid'],
-            'workspaceSid' => $payload['workspace_sid'],
-            'links' => $payload['links'],
-            'url' => $payload['url'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'assignedTasks' => Values::array_get($payload, 'assigned_tasks'),
+            'available' => Values::array_get($payload, 'available'),
+            'availableCapacityPercentage' => Values::array_get($payload, 'available_capacity_percentage'),
+            'configuredCapacity' => Values::array_get($payload, 'configured_capacity'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'sid' => Values::array_get($payload, 'sid'),
+            'taskChannelSid' => Values::array_get($payload, 'task_channel_sid'),
+            'taskChannelUniqueName' => Values::array_get($payload, 'task_channel_unique_name'),
+            'workerSid' => Values::array_get($payload, 'worker_sid'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'links' => Values::array_get($payload, 'links'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'workerSid' => $workerSid,
@@ -85,7 +86,7 @@ class WorkerChannelInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -121,12 +122,12 @@ class WorkerChannelInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

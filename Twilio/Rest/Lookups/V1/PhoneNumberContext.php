@@ -25,12 +25,12 @@ class PhoneNumberContext extends InstanceContext {
      */
     public function __construct(Version $version, $phoneNumber) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'phoneNumber' => $phoneNumber,
         );
-        
+
         $this->uri = '/PhoneNumbers/' . rawurlencode($phoneNumber) . '';
     }
 
@@ -42,20 +42,20 @@ class PhoneNumberContext extends InstanceContext {
      */
     public function fetch($options = array()) {
         $options = new Values($options);
-        
+
         $params = Values::of(array(
             'CountryCode' => $options['countryCode'],
             'Type' => $options['type'],
             'AddOns' => $options['addOns'],
         ));
-        
+
         $params = array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new PhoneNumberInstance(
             $this->version,
             $payload,

@@ -24,12 +24,12 @@ class RatePlanContext extends InstanceContext {
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
+
         $this->uri = '/RatePlans/' . rawurlencode($sid) . '';
     }
 
@@ -40,13 +40,13 @@ class RatePlanContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new RatePlanInstance(
             $this->version,
             $payload,
@@ -62,19 +62,19 @@ class RatePlanContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
-            'Alias' => $options['alias'],
+            'UniqueName' => $options['uniqueName'],
             'FriendlyName' => $options['friendlyName'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new RatePlanInstance(
             $this->version,
             $payload,

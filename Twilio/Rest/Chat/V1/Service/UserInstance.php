@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -44,24 +45,24 @@ class UserInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'serviceSid' => $payload['service_sid'],
-            'attributes' => $payload['attributes'],
-            'friendlyName' => $payload['friendly_name'],
-            'roleSid' => $payload['role_sid'],
-            'identity' => $payload['identity'],
-            'isOnline' => $payload['is_online'],
-            'isNotifiable' => $payload['is_notifiable'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'links' => $payload['links'],
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'attributes' => Values::array_get($payload, 'attributes'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'roleSid' => Values::array_get($payload, 'role_sid'),
+            'identity' => Values::array_get($payload, 'identity'),
+            'isOnline' => Values::array_get($payload, 'is_online'),
+            'isNotifiable' => Values::array_get($payload, 'is_notifiable'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'links' => Values::array_get($payload, 'links'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -83,7 +84,7 @@ class UserInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -137,12 +138,12 @@ class UserInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

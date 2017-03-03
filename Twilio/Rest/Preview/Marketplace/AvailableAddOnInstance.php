@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Marketplace;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -35,18 +36,18 @@ class AvailableAddOnInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'description' => $payload['description'],
-            'pricingType' => $payload['pricing_type'],
-            'configurationSchema' => $payload['configuration_schema'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'description' => Values::array_get($payload, 'description'),
+            'pricingType' => Values::array_get($payload, 'pricing_type'),
+            'configurationSchema' => Values::array_get($payload, 'configuration_schema'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -67,7 +68,7 @@ class AvailableAddOnInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -100,12 +101,12 @@ class AvailableAddOnInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

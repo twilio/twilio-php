@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Wireless\Device;
+namespace Twilio\Rest\Preview\Wireless\Sim;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
@@ -19,18 +19,18 @@ class UsageContext extends InstanceContext {
      * Initialize the UsageContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $deviceSid The device_sid
-     * @return \Twilio\Rest\Preview\Wireless\Device\UsageContext 
+     * @param string $simSid The sim_sid
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext 
      */
-    public function __construct(Version $version, $deviceSid) {
+    public function __construct(Version $version, $simSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
-            'deviceSid' => $deviceSid,
+            'simSid' => $simSid,
         );
-        
-        $this->uri = '/Devices/' . rawurlencode($deviceSid) . '/Usage';
+
+        $this->uri = '/Sims/' . rawurlencode($simSid) . '/Usage';
     }
 
     /**
@@ -41,22 +41,22 @@ class UsageContext extends InstanceContext {
      */
     public function fetch($options = array()) {
         $options = new Values($options);
-        
+
         $params = Values::of(array(
             'End' => $options['end'],
             'Start' => $options['start'],
         ));
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new UsageInstance(
             $this->version,
             $payload,
-            $this->solution['deviceSid']
+            $this->solution['simSid']
         );
     }
 

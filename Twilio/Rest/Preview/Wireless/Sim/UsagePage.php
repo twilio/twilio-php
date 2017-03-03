@@ -7,23 +7,23 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Preview\Wireless\Sim;
 
 use Twilio\Page;
 
-class SandboxPage extends Page {
+class UsagePage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
-        
+
         // Path Solution
         $this->solution = $solution;
     }
 
     public function buildInstance(array $payload) {
-        return new SandboxInstance(
+        return new UsageInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid']
+            $this->solution['simSid']
         );
     }
 
@@ -33,6 +33,6 @@ class SandboxPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.SandboxPage]';
+        return '[Twilio.Preview.Wireless.UsagePage]';
     }
 }

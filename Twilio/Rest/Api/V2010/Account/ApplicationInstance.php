@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -49,31 +50,31 @@ class ApplicationInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'apiVersion' => $payload['api_version'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'messageStatusCallback' => $payload['message_status_callback'],
-            'sid' => $payload['sid'],
-            'smsFallbackMethod' => $payload['sms_fallback_method'],
-            'smsFallbackUrl' => $payload['sms_fallback_url'],
-            'smsMethod' => $payload['sms_method'],
-            'smsStatusCallback' => $payload['sms_status_callback'],
-            'smsUrl' => $payload['sms_url'],
-            'statusCallback' => $payload['status_callback'],
-            'statusCallbackMethod' => $payload['status_callback_method'],
-            'uri' => $payload['uri'],
-            'voiceCallerIdLookup' => $payload['voice_caller_id_lookup'],
-            'voiceFallbackMethod' => $payload['voice_fallback_method'],
-            'voiceFallbackUrl' => $payload['voice_fallback_url'],
-            'voiceMethod' => $payload['voice_method'],
-            'voiceUrl' => $payload['voice_url'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'messageStatusCallback' => Values::array_get($payload, 'message_status_callback'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),
+            'smsFallbackUrl' => Values::array_get($payload, 'sms_fallback_url'),
+            'smsMethod' => Values::array_get($payload, 'sms_method'),
+            'smsStatusCallback' => Values::array_get($payload, 'sms_status_callback'),
+            'smsUrl' => Values::array_get($payload, 'sms_url'),
+            'statusCallback' => Values::array_get($payload, 'status_callback'),
+            'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
+            'uri' => Values::array_get($payload, 'uri'),
+            'voiceCallerIdLookup' => Values::array_get($payload, 'voice_caller_id_lookup'),
+            'voiceFallbackMethod' => Values::array_get($payload, 'voice_fallback_method'),
+            'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
+            'voiceMethod' => Values::array_get($payload, 'voice_method'),
+            'voiceUrl' => Values::array_get($payload, 'voice_url'),
         );
-        
+
         $this->solution = array(
             'accountSid' => $accountSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -95,7 +96,7 @@ class ApplicationInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -140,12 +141,12 @@ class ApplicationInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

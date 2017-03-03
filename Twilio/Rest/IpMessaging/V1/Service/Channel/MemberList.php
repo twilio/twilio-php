@@ -25,13 +25,13 @@ class MemberList extends ListResource {
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members';
     }
 
@@ -44,19 +44,19 @@ class MemberList extends ListResource {
      */
     public function create($identity, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'Identity' => $identity,
             'RoleSid' => $options['roleSid'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new MemberInstance(
             $this->version,
             $payload,
@@ -86,9 +86,9 @@ class MemberList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -130,13 +130,13 @@ class MemberList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new MemberPage($this->version, $response, $this->solution);
     }
 

@@ -45,12 +45,12 @@ class TrunkContext extends InstanceContext {
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Trunks/' . rawurlencode($sid) . '';
     }
 
@@ -61,13 +61,13 @@ class TrunkContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new TrunkInstance(
             $this->version,
             $payload,
@@ -92,7 +92,7 @@ class TrunkContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'DomainName' => $options['domainName'],
@@ -101,14 +101,14 @@ class TrunkContext extends InstanceContext {
             'Recording' => $options['recording'],
             'Secure' => Serialize::booleanToString($options['secure']),
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new TrunkInstance(
             $this->version,
             $payload,
@@ -128,7 +128,7 @@ class TrunkContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_originationUrls;
     }
 
@@ -144,7 +144,7 @@ class TrunkContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_credentialsLists;
     }
 
@@ -160,7 +160,7 @@ class TrunkContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_ipAccessControlLists;
     }
 
@@ -176,7 +176,7 @@ class TrunkContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_phoneNumbers;
     }
 
@@ -192,7 +192,7 @@ class TrunkContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -209,7 +209,7 @@ class TrunkContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

@@ -53,7 +53,7 @@ class V1 extends Version {
         if (method_exists($this, $method)) {
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown resource ' . $name);
     }
 
@@ -70,7 +70,7 @@ class V1 extends Version {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

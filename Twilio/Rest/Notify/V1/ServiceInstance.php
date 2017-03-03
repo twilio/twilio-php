@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -46,26 +47,26 @@ class ServiceInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'apnCredentialSid' => $payload['apn_credential_sid'],
-            'gcmCredentialSid' => $payload['gcm_credential_sid'],
-            'fcmCredentialSid' => $payload['fcm_credential_sid'],
-            'messagingServiceSid' => $payload['messaging_service_sid'],
-            'facebookMessengerPageId' => $payload['facebook_messenger_page_id'],
-            'defaultApnNotificationProtocolVersion' => $payload['default_apn_notification_protocol_version'],
-            'defaultGcmNotificationProtocolVersion' => $payload['default_gcm_notification_protocol_version'],
-            'defaultFcmNotificationProtocolVersion' => $payload['default_fcm_notification_protocol_version'],
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'apnCredentialSid' => Values::array_get($payload, 'apn_credential_sid'),
+            'gcmCredentialSid' => Values::array_get($payload, 'gcm_credential_sid'),
+            'fcmCredentialSid' => Values::array_get($payload, 'fcm_credential_sid'),
+            'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
+            'facebookMessengerPageId' => Values::array_get($payload, 'facebook_messenger_page_id'),
+            'defaultApnNotificationProtocolVersion' => Values::array_get($payload, 'default_apn_notification_protocol_version'),
+            'defaultGcmNotificationProtocolVersion' => Values::array_get($payload, 'default_gcm_notification_protocol_version'),
+            'defaultFcmNotificationProtocolVersion' => Values::array_get($payload, 'default_fcm_notification_protocol_version'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -85,7 +86,7 @@ class ServiceInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -148,12 +149,12 @@ class ServiceInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

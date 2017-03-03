@@ -41,13 +41,13 @@ class ChannelContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($sid) . '';
     }
 
@@ -58,13 +58,13 @@ class ChannelContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ChannelInstance(
             $this->version,
             $payload,
@@ -90,20 +90,20 @@ class ChannelContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
             'Attributes' => $options['attributes'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ChannelInstance(
             $this->version,
             $payload,
@@ -125,7 +125,7 @@ class ChannelContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_members;
     }
 
@@ -142,7 +142,7 @@ class ChannelContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_messages;
     }
 
@@ -159,7 +159,7 @@ class ChannelContext extends InstanceContext {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->_invites;
     }
 
@@ -175,7 +175,7 @@ class ChannelContext extends InstanceContext {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown subresource ' . $name);
     }
 
@@ -192,7 +192,7 @@ class ChannelContext extends InstanceContext {
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
         }
-        
+
         throw new TwilioException('Resource does not have a context');
     }
 

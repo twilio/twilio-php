@@ -25,14 +25,14 @@ class SyncMapItemContext extends InstanceContext {
      */
     public function __construct(Version $version, $serviceSid, $mapSid, $key) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'mapSid' => $mapSid,
             'key' => $key,
         );
-        
+
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Items/' . rawurlencode($key) . '';
     }
 
@@ -43,13 +43,13 @@ class SyncMapItemContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new SyncMapItemInstance(
             $this->version,
             $payload,
@@ -78,14 +78,14 @@ class SyncMapItemContext extends InstanceContext {
         $data = Values::of(array(
             'Data' => $data,
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new SyncMapItemInstance(
             $this->version,
             $payload,

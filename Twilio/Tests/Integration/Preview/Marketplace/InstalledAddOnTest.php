@@ -12,22 +12,24 @@ namespace Twilio\Tests\Integration\Preview\Marketplace;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
 class InstalledAddOnTest extends HolodeckTestCase {
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
-            $this->twilio->preview->marketplace->installedAddOns->create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            $this->twilio->preview->marketplace->installedAddOns->create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", True);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $values = array(
             'AvailableAddOnSid' => "XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            'AcceptTermsOfService' => Serialize::booleanToString(True),
         );
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/marketplace/InstalledAddOns',
@@ -59,20 +61,20 @@ class InstalledAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
-        $actual = $this->twilio->preview->marketplace->installedAddOns->create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        
+
+        $actual = $this->twilio->preview->marketplace->installedAddOns->create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", True);
+
         $this->assertNotNull($actual);
     }
 
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->installedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'delete',
             'https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -84,20 +86,20 @@ class InstalledAddOnTest extends HolodeckTestCase {
             204,
             null
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->installedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        
+
         $this->assertTrue($actual);
     }
 
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->installedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -127,20 +129,20 @@ class InstalledAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->installedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testUpdateRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->installedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'post',
             'https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -170,20 +172,20 @@ class InstalledAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->installedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        
+
         $this->assertNotNull($actual);
     }
 
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
-        
+
         try {
             $this->twilio->preview->marketplace->installedAddOns->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
-        
+
         $this->assertRequest(new Request(
             'get',
             'https://preview.twilio.com/marketplace/InstalledAddOns'
@@ -226,9 +228,9 @@ class InstalledAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->installedAddOns->read();
-        
+
         $this->assertGreaterThan(0, count($actual));
     }
 
@@ -250,9 +252,9 @@ class InstalledAddOnTest extends HolodeckTestCase {
             }
             '
         ));
-        
+
         $actual = $this->twilio->preview->marketplace->installedAddOns->read();
-        
+
         $this->assertNotNull($actual);
     }
 }

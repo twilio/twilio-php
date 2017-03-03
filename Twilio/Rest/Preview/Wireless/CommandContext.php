@@ -23,12 +23,12 @@ class CommandContext extends InstanceContext {
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Commands/' . rawurlencode($sid) . '';
     }
 
@@ -39,13 +39,13 @@ class CommandContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new CommandInstance(
             $this->version,
             $payload,

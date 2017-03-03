@@ -25,13 +25,13 @@ class ActivityContext extends InstanceContext {
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'sid' => $sid,
         );
-        
+
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Activities/' . rawurlencode($sid) . '';
     }
 
@@ -42,13 +42,13 @@ class ActivityContext extends InstanceContext {
      */
     public function fetch() {
         $params = Values::of(array());
-        
+
         $payload = $this->version->fetch(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new ActivityInstance(
             $this->version,
             $payload,
@@ -65,18 +65,18 @@ class ActivityContext extends InstanceContext {
      */
     public function update($options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
         ));
-        
+
         $payload = $this->version->update(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new ActivityInstance(
             $this->version,
             $payload,

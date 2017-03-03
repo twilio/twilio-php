@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -47,26 +48,26 @@ class TaskQueueInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'assignmentActivitySid' => $payload['assignment_activity_sid'],
-            'assignmentActivityName' => $payload['assignment_activity_name'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'friendlyName' => $payload['friendly_name'],
-            'maxReservedWorkers' => $payload['max_reserved_workers'],
-            'reservationActivitySid' => $payload['reservation_activity_sid'],
-            'reservationActivityName' => $payload['reservation_activity_name'],
-            'sid' => $payload['sid'],
-            'targetWorkers' => $payload['target_workers'],
-            'taskOrder' => $payload['task_order'],
-            'url' => $payload['url'],
-            'workspaceSid' => $payload['workspace_sid'],
-            'links' => $payload['links'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'assignmentActivitySid' => Values::array_get($payload, 'assignment_activity_sid'),
+            'assignmentActivityName' => Values::array_get($payload, 'assignment_activity_name'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'maxReservedWorkers' => Values::array_get($payload, 'max_reserved_workers'),
+            'reservationActivitySid' => Values::array_get($payload, 'reservation_activity_sid'),
+            'reservationActivityName' => Values::array_get($payload, 'reservation_activity_name'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'targetWorkers' => Values::array_get($payload, 'target_workers'),
+            'taskOrder' => Values::array_get($payload, 'task_order'),
+            'url' => Values::array_get($payload, 'url'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
             'sid' => $sid ?: $this->properties['sid'],
@@ -89,7 +90,7 @@ class TaskQueueInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -152,12 +153,12 @@ class TaskQueueInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

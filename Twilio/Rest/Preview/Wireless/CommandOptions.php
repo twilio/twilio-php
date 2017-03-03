@@ -15,34 +15,39 @@ use Twilio\Values;
 abstract class CommandOptions {
     /**
      * @param string $device The device
+     * @param string $sim The sim
      * @param string $status The status
      * @param string $direction The direction
      * @return ReadCommandOptions Options builder
      */
-    public static function read($device = Values::NONE, $status = Values::NONE, $direction = Values::NONE) {
-        return new ReadCommandOptions($device, $status, $direction);
+    public static function read($device = Values::NONE, $sim = Values::NONE, $status = Values::NONE, $direction = Values::NONE) {
+        return new ReadCommandOptions($device, $sim, $status, $direction);
     }
 
     /**
+     * @param string $device The device
+     * @param string $sim The sim
      * @param string $callbackMethod The callback_method
      * @param string $callbackUrl The callback_url
      * @param string $commandMode The command_mode
      * @param string $includeSid The include_sid
      * @return CreateCommandOptions Options builder
      */
-    public static function create($callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
-        return new CreateCommandOptions($callbackMethod, $callbackUrl, $commandMode, $includeSid);
+    public static function create($device = Values::NONE, $sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
+        return new CreateCommandOptions($device, $sim, $callbackMethod, $callbackUrl, $commandMode, $includeSid);
     }
 }
 
 class ReadCommandOptions extends Options {
     /**
      * @param string $device The device
+     * @param string $sim The sim
      * @param string $status The status
      * @param string $direction The direction
      */
-    public function __construct($device = Values::NONE, $status = Values::NONE, $direction = Values::NONE) {
+    public function __construct($device = Values::NONE, $sim = Values::NONE, $status = Values::NONE, $direction = Values::NONE) {
         $this->options['device'] = $device;
+        $this->options['sim'] = $sim;
         $this->options['status'] = $status;
         $this->options['direction'] = $direction;
     }
@@ -55,6 +60,17 @@ class ReadCommandOptions extends Options {
      */
     public function setDevice($device) {
         $this->options['device'] = $device;
+        return $this;
+    }
+
+    /**
+     * The sim
+     * 
+     * @param string $sim The sim
+     * @return $this Fluent Builder
+     */
+    public function setSim($sim) {
+        $this->options['sim'] = $sim;
         return $this;
     }
 
@@ -98,16 +114,42 @@ class ReadCommandOptions extends Options {
 
 class CreateCommandOptions extends Options {
     /**
+     * @param string $device The device
+     * @param string $sim The sim
      * @param string $callbackMethod The callback_method
      * @param string $callbackUrl The callback_url
      * @param string $commandMode The command_mode
      * @param string $includeSid The include_sid
      */
-    public function __construct($callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
+    public function __construct($device = Values::NONE, $sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
+        $this->options['device'] = $device;
+        $this->options['sim'] = $sim;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['commandMode'] = $commandMode;
         $this->options['includeSid'] = $includeSid;
+    }
+
+    /**
+     * The device
+     * 
+     * @param string $device The device
+     * @return $this Fluent Builder
+     */
+    public function setDevice($device) {
+        $this->options['device'] = $device;
+        return $this;
+    }
+
+    /**
+     * The sim
+     * 
+     * @param string $sim The sim
+     * @return $this Fluent Builder
+     */
+    public function setSim($sim) {
+        $this->options['sim'] = $sim;
+        return $this;
     }
 
     /**

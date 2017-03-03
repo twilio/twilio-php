@@ -13,15 +13,17 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string sid
- * @property string alias
+ * @property string uniqueName
  * @property string accountSid
  * @property string ratePlanSid
  * @property string friendlyName
- * @property string simIdentifier
+ * @property string iccid
+ * @property string eId
  * @property string status
  * @property string commandsCallbackUrl
  * @property string commandsCallbackMethod
@@ -30,37 +32,38 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class DeviceInstance extends InstanceResource {
+class SimInstance extends InstanceResource {
     protected $_usage = null;
 
     /**
-     * Initialize the DeviceInstance
+     * Initialize the SimInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\DeviceInstance 
+     * @return \Twilio\Rest\Preview\Wireless\SimInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'alias' => $payload['alias'],
-            'accountSid' => $payload['account_sid'],
-            'ratePlanSid' => $payload['rate_plan_sid'],
-            'friendlyName' => $payload['friendly_name'],
-            'simIdentifier' => $payload['sim_identifier'],
-            'status' => $payload['status'],
-            'commandsCallbackUrl' => $payload['commands_callback_url'],
-            'commandsCallbackMethod' => $payload['commands_callback_method'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'url' => $payload['url'],
-            'links' => $payload['links'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'ratePlanSid' => Values::array_get($payload, 'rate_plan_sid'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'iccid' => Values::array_get($payload, 'iccid'),
+            'eId' => Values::array_get($payload, 'e_id'),
+            'status' => Values::array_get($payload, 'status'),
+            'commandsCallbackUrl' => Values::array_get($payload, 'commands_callback_url'),
+            'commandsCallbackMethod' => Values::array_get($payload, 'commands_callback_method'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
-        
+
         $this->solution = array(
             'sid' => $sid ?: $this->properties['sid'],
         );
@@ -70,34 +73,33 @@ class DeviceInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Preview\Wireless\DeviceContext Context for this
-     *                                                     DeviceInstance
+     * @return \Twilio\Rest\Preview\Wireless\SimContext Context for this SimInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new DeviceContext(
+            $this->context = new SimContext(
                 $this->version,
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
     /**
-     * Fetch a DeviceInstance
+     * Fetch a SimInstance
      * 
-     * @return DeviceInstance Fetched DeviceInstance
+     * @return SimInstance Fetched SimInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the DeviceInstance
+     * Update the SimInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return DeviceInstance Updated DeviceInstance
+     * @return SimInstance Updated SimInstance
      */
     public function update($options = array()) {
         return $this->proxy()->update(
@@ -108,7 +110,7 @@ class DeviceInstance extends InstanceResource {
     /**
      * Access the usage
      * 
-     * @return \Twilio\Rest\Preview\Wireless\Device\UsageList 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
      */
     protected function getUsage() {
         return $this->proxy()->usage;
@@ -125,12 +127,12 @@ class DeviceInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 
@@ -144,6 +146,6 @@ class DeviceInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Wireless.DeviceInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.SimInstance ' . implode(' ', $context) . ']';
     }
 }

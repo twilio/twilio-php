@@ -23,10 +23,10 @@ class PublicKeyList extends ListResource {
      */
     public function __construct(Version $version) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array();
-        
+
         $this->uri = '/Credentials/PublicKeys';
     }
 
@@ -50,9 +50,9 @@ class PublicKeyList extends ListResource {
      */
     public function stream($limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -90,39 +90,39 @@ class PublicKeyList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new PublicKeyPage($this->version, $response, $this->solution);
     }
 
     /**
      * Create a new PublicKeyInstance
      * 
-     * @param string $publicKey The public_key
+     * @param string $publicKey URL encoded representation of the public key
      * @param array|Options $options Optional Arguments
      * @return PublicKeyInstance Newly created PublicKeyInstance
      */
     public function create($publicKey, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'PublicKey' => $publicKey,
             'FriendlyName' => $options['friendlyName'],
             'AccountSid' => $options['accountSid'],
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new PublicKeyInstance(
             $this->version,
             $payload
@@ -132,7 +132,7 @@ class PublicKeyList extends ListResource {
     /**
      * Constructs a PublicKeyContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Fetch by unique Credential Sid
      * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext 
      */
     public function getContext($sid) {

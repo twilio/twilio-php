@@ -13,6 +13,7 @@ use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -21,6 +22,7 @@ use Twilio\Version;
  * @property string attributes
  * @property string serviceSid
  * @property string to
+ * @property string channelSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property boolean wasEdited
@@ -36,29 +38,30 @@ class MessageInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
-     * @param string $channelSid The sid
+     * @param string $channelSid The channel_sid
      * @param string $sid The sid
      * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'sid' => $payload['sid'],
-            'accountSid' => $payload['account_sid'],
-            'attributes' => $payload['attributes'],
-            'serviceSid' => $payload['service_sid'],
-            'to' => $payload['to'],
-            'dateCreated' => Deserialize::dateTime($payload['date_created']),
-            'dateUpdated' => Deserialize::dateTime($payload['date_updated']),
-            'wasEdited' => $payload['was_edited'],
-            'from' => $payload['from'],
-            'body' => $payload['body'],
-            'index' => $payload['index'],
-            'url' => $payload['url'],
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'attributes' => Values::array_get($payload, 'attributes'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
+            'to' => Values::array_get($payload, 'to'),
+            'channelSid' => Values::array_get($payload, 'channel_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'wasEdited' => Values::array_get($payload, 'was_edited'),
+            'from' => Values::array_get($payload, 'from'),
+            'body' => Values::array_get($payload, 'body'),
+            'index' => Values::array_get($payload, 'index'),
+            'url' => Values::array_get($payload, 'url'),
         );
-        
+
         $this->solution = array(
             'serviceSid' => $serviceSid,
             'channelSid' => $channelSid,
@@ -82,7 +85,7 @@ class MessageInstance extends InstanceResource {
                 $this->solution['sid']
             );
         }
-        
+
         return $this->context;
     }
 
@@ -127,12 +130,12 @@ class MessageInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

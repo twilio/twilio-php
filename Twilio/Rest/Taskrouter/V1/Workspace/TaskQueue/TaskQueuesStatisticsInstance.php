@@ -11,6 +11,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 /**
@@ -31,16 +32,16 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
-        
+
         // Marshaled Properties
         $this->properties = array(
-            'accountSid' => $payload['account_sid'],
-            'cumulative' => $payload['cumulative'],
-            'realtime' => $payload['realtime'],
-            'taskQueueSid' => $payload['task_queue_sid'],
-            'workspaceSid' => $payload['workspace_sid'],
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'cumulative' => Values::array_get($payload, 'cumulative'),
+            'realtime' => Values::array_get($payload, 'realtime'),
+            'taskQueueSid' => Values::array_get($payload, 'task_queue_sid'),
+            'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
         );
-        
+
         $this->solution = array(
             'workspaceSid' => $workspaceSid,
         );
@@ -57,12 +58,12 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
-        
+
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
         }
-        
+
         throw new TwilioException('Unknown property: ' . $name);
     }
 

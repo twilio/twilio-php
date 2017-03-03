@@ -25,12 +25,12 @@ class MessageList extends ListResource {
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
-        
+
         // Path Solution
         $this->solution = array(
             'accountSid' => $accountSid,
         );
-        
+
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages.json';
     }
 
@@ -43,7 +43,7 @@ class MessageList extends ListResource {
      */
     public function create($to, $options = array()) {
         $options = new Values($options);
-        
+
         $data = Values::of(array(
             'To' => $to,
             'From' => $options['from'],
@@ -55,14 +55,14 @@ class MessageList extends ListResource {
             'MaxPrice' => $options['maxPrice'],
             'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
         ));
-        
+
         $payload = $this->version->create(
             'POST',
             $this->uri,
             array(),
             $data
         );
-        
+
         return new MessageInstance(
             $this->version,
             $payload,
@@ -91,9 +91,9 @@ class MessageList extends ListResource {
      */
     public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
-        
+
         $page = $this->page($options, $limits['pageSize']);
-        
+
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
@@ -139,13 +139,13 @@ class MessageList extends ListResource {
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ));
-        
+
         $response = $this->version->page(
             'GET',
             $this->uri,
             $params
         );
-        
+
         return new MessagePage($this->version, $response, $this->solution);
     }
 
