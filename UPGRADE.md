@@ -3,6 +3,91 @@
 _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes 
 posted here._
 
+[2017-03-03] 5.5.x to 5.6.x
+---------------------------
+
+### CHANGED - Removed end of life Sandbox Resource
+
+#### 5.5.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->api->v2010->sandbox->read();
+```
+
+#### 5.6.x
+Not Supported.
+
+#### Rationale
+The Sandbox resource has been removed from the API and is no longer supported.
+
+### CHANGED - Accounts property on Client now references Accounts subdomain
+
+#### 5.5.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+// Access api.twilio.com/2010-04-01/Accounts
+$client->accounts->read();
+```
+
+#### 5.6.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+// Access accounts.twilio.com/v1
+$client->accounts;
+// Access new PublicKeys resource
+$client->accounts->credentials->publicKey->read();
+
+// Access api.twilio.com/2010-04-01/Accounts
+$client->api->v2010->accounts->read();
+```
+
+#### Rationale
+`accounts.twilio.com` is now publicly available, following our convention of
+accessing subdomains of twilio via `client->{subdomain}` we replaced the shortcut
+to 2010 Accounts with a reference to the new Accounts subdomain. 2010 Accounts
+are still accessible the long way `client->api->v2010->accounts` or `client->api->accounts`.
+
+### CHANGED - Chat Messages listing methods now take options array as first parameter
+
+#### 5.5.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->messages->read(10); // limit to 10 messages
+```
+
+#### 5.6.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->messages->read(array(), 10); // limit to 10 messages
+$client->chat->messages->read(array(
+    "order" => "asc"
+), 10); // limit to 10 messages and filter by order
+```
+
+#### Rationale
+Options arrays are placed at the beginning of the function signature if the resource accepts optional params and is ommited if the resource does not accept any. Chat messages previously did not accept any optional params and now do.
+
+
 [2017-02-01] 5.4.x to 5.5.x
 ---------------------------
 
@@ -25,7 +110,7 @@ while legacy resources use `uri` and `subresource_uris`. Previously we were inco
   - Taskrouter All Statistics endpoints (Workspace, TaskQueues, Workers...), Workspace Events.
   - Call Feedback Summaries.
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -38,7 +123,7 @@ $client->usage->records->read(array(
 ));
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
@@ -67,7 +152,7 @@ Not serializing API Dates into DateTimes was an oversight initially, removing li
   - Reading members of channel and listing channels now takes an array of options as is its first argument.
   - Affects the `read`, `stream`, and `page` methods of MemberList.
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -78,7 +163,7 @@ $client->chat->v1->services('IS123')->channels('CH123')->members->read(10);
 $client->chat->v1->services('IS123')->channels->read(10);
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
@@ -92,7 +177,7 @@ $client->chat->v1->services('IS123')->channels('CH123')->members->read(array('ty
 
 ### CHANGED - Remove ability to update type on Twilio Chat Channels
 
-#### 5.3.x
+#### 5.5.x
 ```php
 <?php
 
@@ -102,7 +187,7 @@ $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->update(array('type'=>'public'));
 ```
 
-#### 5.4.x
+#### 5.5.x
 Not Supported
 
 #### Rationale
@@ -111,7 +196,7 @@ Make library consistent with public API, changing channel type was never support
 ### CHANGED - Chat Message Body parameter is no longer required on updates
   - Updating a message body no longer requires passing the body directly and is not required.
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -121,7 +206,7 @@ $client = new Client();
 $client->chat->v1->services('IS123')->channels('CH123')->messages('IM123')->update('new body', array());
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
@@ -140,7 +225,7 @@ This is a correction for what the API actually expects.
   - Creating a taskrouter task now optional takes `workflowSid` and `attributes` (were both previously required).
 
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -152,7 +237,7 @@ $client->taskrouter->v1->workspaces('WS123')->activities->create('new friendly n
 $client->taskrouter->v1->workspaces('WS123')->tasks->create('attributes', 'WW123', array('timeout' => 10));
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
@@ -180,7 +265,7 @@ had any effect.
 
 ### CHANGED - Rename getStatistics to getTaskQueueStatistics method on Taskrouter TaskQueues
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -196,7 +281,7 @@ $taskQueueStatistics = $taskQueue->getStatistics();
 $client->taskrouter->v1->workspaces('WS123')->taskQueues->getStatistics();
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
@@ -219,7 +304,7 @@ methods named `getStatistics`.
 ### CHANGED - MMS Message Body parameter is now required on updates
   - Updating a message body now requires passing the body directly and is required.
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -229,7 +314,7 @@ $client = new Client();
 $client->api->v2010->accounts('AC123')->messages('MM123')->update(array('body' => ''));
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
@@ -246,7 +331,7 @@ this to be an optional parameter was an oversight.
 ### CHANGED - Queues now require friendlyName parameter on creation
   - Updating a message body now requires passing the body directly and is required.
 
-#### 5.3.x
+#### 5.4.x
 ```php
 <?php
 
@@ -256,7 +341,7 @@ $client = new Client();
 $client->api->v2010->accounts('AC123')->queues('QU123')->create(array('friendlyName' => 'Test'));
 ```
 
-#### 5.4.x
+#### 5.5.x
 ```php
 <?php
 
