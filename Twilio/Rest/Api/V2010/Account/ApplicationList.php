@@ -37,7 +37,7 @@ class ApplicationList extends ListResource {
     /**
      * Create a new ApplicationInstance
      * 
-     * @param string $friendlyName Human readable description of this resource
+     * @param string $friendlyName The friendly_name
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Newly created ApplicationInstance
      */
