@@ -74,6 +74,8 @@ class CallList extends ListResource {
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
             'SipAuthUsername' => $options['sipAuthUsername'],
             'SipAuthPassword' => $options['sipAuthPassword'],
+            'MachineDetection' => $options['machineDetection'],
+            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
         ));
 
         $payload = $this->version->create(

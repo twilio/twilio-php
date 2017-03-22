@@ -45,6 +45,7 @@ class UserTest extends HolodeckTestCase {
                 "is_online": true,
                 "is_notifiable": null,
                 "friendly_name": null,
+                "joined_channels_count": 0,
                 "date_created": "2016-03-24T21:05:19Z",
                 "date_updated": "2016-03-24T21:05:19Z",
                 "links": {
@@ -123,6 +124,7 @@ class UserTest extends HolodeckTestCase {
                 "is_online": true,
                 "is_notifiable": null,
                 "friendly_name": null,
+                "joined_channels_count": 0,
                 "date_created": "2016-03-24T21:05:19Z",
                 "date_updated": "2016-03-24T21:05:19Z",
                 "links": {
@@ -181,6 +183,7 @@ class UserTest extends HolodeckTestCase {
                         "friendly_name": null,
                         "date_created": "2016-03-24T21:05:19Z",
                         "date_updated": "2016-03-24T21:05:19Z",
+                        "joined_channels_count": 0,
                         "links": {
                             "user_channels": "https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels"
                         },
@@ -251,6 +254,7 @@ class UserTest extends HolodeckTestCase {
                 "is_online": true,
                 "is_notifiable": null,
                 "friendly_name": null,
+                "joined_channels_count": 0,
                 "date_created": "2016-03-24T21:05:19Z",
                 "date_updated": "2016-03-24T21:05:19Z",
                 "links": {

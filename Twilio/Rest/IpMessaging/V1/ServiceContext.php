@@ -158,6 +158,8 @@ class ServiceContext extends InstanceContext {
             'Webhooks.OnMemberRemoved.Url' => $options['webhooksOnMemberRemovedUrl'],
             'Webhooks.OnMemberRemoved.Method' => $options['webhooksOnMemberRemovedMethod'],
             'Webhooks.OnMemberRemoved.Format' => $options['webhooksOnMemberRemovedFormat'],
+            'Limits.ChannelMembers' => $options['limitsChannelMembers'],
+            'Limits.UserChannels' => $options['limitsUserChannels'],
         ));
 
         $payload = $this->version->update(

@@ -33,10 +33,14 @@ abstract class CallOptions {
      *                                              recording_status_callback_method
      * @param string $sipAuthUsername The sip_auth_username
      * @param string $sipAuthPassword The sip_auth_password
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     * @param integer $machineDetectionTimeout Number of miliseconds to wait for
+     *                                         machine detection
      * @return CreateCallOptions Options builder
      */
-    public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE) {
-        return new CreateCallOptions($url, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $ifMachine, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword);
+    public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE) {
+        return new CreateCallOptions($url, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $ifMachine, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout);
     }
 
     /**
@@ -92,8 +96,12 @@ class CreateCallOptions extends Options {
      *                                              recording_status_callback_method
      * @param string $sipAuthUsername The sip_auth_username
      * @param string $sipAuthPassword The sip_auth_password
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     * @param integer $machineDetectionTimeout Number of miliseconds to wait for
+     *                                         machine detection
      */
-    public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE) {
+    public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE) {
         $this->options['url'] = $url;
         $this->options['applicationSid'] = $applicationSid;
         $this->options['method'] = $method;
@@ -111,6 +119,8 @@ class CreateCallOptions extends Options {
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
         $this->options['sipAuthUsername'] = $sipAuthUsername;
         $this->options['sipAuthPassword'] = $sipAuthPassword;
+        $this->options['machineDetection'] = $machineDetection;
+        $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
     }
 
     /**
@@ -299,6 +309,30 @@ class CreateCallOptions extends Options {
      */
     public function setSipAuthPassword($sipAuthPassword) {
         $this->options['sipAuthPassword'] = $sipAuthPassword;
+        return $this;
+    }
+
+    /**
+     * Twilio will try to detect if a human, fax machine or answering machine has answered the call. Possible value are `Enable` and `DetectMessageEnd`.
+     * 
+     * @param string $machineDetection Enable machine detection or end of greeting
+     *                                 detection
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetection($machineDetection) {
+        $this->options['machineDetection'] = $machineDetection;
+        return $this;
+    }
+
+    /**
+     * The integer number of miliseconds that Twilio should wait while machine_detection is performned before timing out.
+     * 
+     * @param integer $machineDetectionTimeout Number of miliseconds to wait for
+     *                                         machine detection
+     * @return $this Fluent Builder
+     */
+    public function setMachineDetectionTimeout($machineDetectionTimeout) {
+        $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
         return $this;
     }
 

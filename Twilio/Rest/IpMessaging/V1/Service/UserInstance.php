@@ -28,6 +28,7 @@ use Twilio\Version;
  * @property boolean isNotifiable
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
+ * @property integer joinedChannelsCount
  * @property array links
  * @property string url
  */
@@ -59,6 +60,7 @@ class UserInstance extends InstanceResource {
             'isNotifiable' => Values::array_get($payload, 'is_notifiable'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'joinedChannelsCount' => Values::array_get($payload, 'joined_channels_count'),
             'links' => Values::array_get($payload, 'links'),
             'url' => Values::array_get($payload, 'url'),
         );

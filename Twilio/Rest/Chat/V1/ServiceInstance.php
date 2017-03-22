@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property boolean reachabilityEnabled
  * @property integer typingIndicatorTimeout
  * @property integer consumptionReportInterval
+ * @property array limits
  * @property array webhooks
  * @property string preWebhookUrl
  * @property string postWebhookUrl
@@ -68,6 +69,7 @@ class ServiceInstance extends InstanceResource {
             'reachabilityEnabled' => Values::array_get($payload, 'reachability_enabled'),
             'typingIndicatorTimeout' => Values::array_get($payload, 'typing_indicator_timeout'),
             'consumptionReportInterval' => Values::array_get($payload, 'consumption_report_interval'),
+            'limits' => Values::array_get($payload, 'limits'),
             'webhooks' => Values::array_get($payload, 'webhooks'),
             'preWebhookUrl' => Values::array_get($payload, 'pre_webhook_url'),
             'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),

@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2017-03-22] Version 5.7.1
+--------------------------
+- Add Answering Machine Detection to Call creation
+- Add `WRAPPING` entry to Status for Task
+
+- **Twilio Chat**
+  - Add `limits` map to Service
+  - Add `limitsChannelMembers` and `limitsUserChannels` field to ServiceUpdater
+
 [2017-03-13] Version 5.7.0
 --------------------------
 Breaking Changes, refer to [Upgrade Guide][upgrade]
