@@ -54,6 +54,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
+            'AccountSid' => $options['accountSid'],
             'ApiVersion' => $options['apiVersion'],
             'FriendlyName' => $options['friendlyName'],
             'SmsApplicationSid' => $options['smsApplicationSid'],

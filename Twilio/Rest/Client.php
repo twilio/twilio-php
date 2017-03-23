@@ -30,6 +30,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Video video
+ * @property \Twilio\Rest\Messaging messaging
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -95,6 +96,7 @@ class Client {
     protected $_taskrouter = null;
     protected $_trunking = null;
     protected $_video = null;
+    protected $_messaging = null;
 
     /**
      * Initializes the Twilio Client
@@ -694,6 +696,18 @@ class Client {
             $this->_video = new Video($this);
         }
         return $this->_video;
+    }
+
+    /**
+     * Access the Messaging Twilio Domain
+     * 
+     * @return \Twilio\Rest\Messaging Messaging Twilio Domain
+     */
+    protected function getMessaging() {
+        if (!$this->_messaging) {
+            $this->_messaging = new Messaging($this);
+        }
+        return $this->_messaging;
     }
 
     /**

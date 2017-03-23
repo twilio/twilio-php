@@ -15,7 +15,9 @@ use Twilio\Rest\Video\V1;
 
 /**
  * @property \Twilio\Rest\Video\V1 v1
+ * @property \Twilio\Rest\Video\V1\RecordingList recordings
  * @property \Twilio\Rest\Video\V1\RoomList rooms
+ * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
 class Video extends Domain {
@@ -75,6 +77,21 @@ class Video extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    /**
+     * @return \Twilio\Rest\Video\V1\RecordingList 
+     */
+    protected function getRecordings() {
+        return $this->v1->recordings;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Video\V1\RecordingContext 
+     */
+    protected function contextRecordings($sid) {
+        return $this->v1->recordings($sid);
     }
 
     /**

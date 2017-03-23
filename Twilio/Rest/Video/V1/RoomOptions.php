@@ -20,10 +20,12 @@ abstract class RoomOptions {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param integer $maxParticipants The max_participants
+     * @param boolean $recordParticipantsOnConnect The
+     *                                             record_participants_on_connect
      * @return CreateRoomOptions Options builder
      */
-    public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE) {
-        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants);
+    public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE) {
+        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect);
     }
 
     /**
@@ -46,14 +48,17 @@ class CreateRoomOptions extends Options {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param integer $maxParticipants The max_participants
+     * @param boolean $recordParticipantsOnConnect The
+     *                                             record_participants_on_connect
      */
-    public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE) {
+    public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE) {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['maxParticipants'] = $maxParticipants;
+        $this->options['recordParticipantsOnConnect'] = $recordParticipantsOnConnect;
     }
 
     /**
@@ -119,6 +124,18 @@ class CreateRoomOptions extends Options {
      */
     public function setMaxParticipants($maxParticipants) {
         $this->options['maxParticipants'] = $maxParticipants;
+        return $this;
+    }
+
+    /**
+     * The record_participants_on_connect
+     * 
+     * @param boolean $recordParticipantsOnConnect The
+     *                                             record_participants_on_connect
+     * @return $this Fluent Builder
+     */
+    public function setRecordParticipantsOnConnect($recordParticipantsOnConnect) {
+        $this->options['recordParticipantsOnConnect'] = $recordParticipantsOnConnect;
         return $this;
     }
 

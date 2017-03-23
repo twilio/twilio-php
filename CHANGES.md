@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+[2017-03-22] Version 5.7.1
+--------------------------
+ - Add Answering Machine Detection to Call creation
+ - Add `WRAPPING` entry to Status for Task
+ - Add Recordings to `video.twilio.com`
+ - Add `messaging.twilio.com`
+ - **Twilio Chat**
+   - Add `limits` map to Service
+   - Add `limitsChannelMembers` and `limitsUserChannels` field to ServiceUpdater
+
+
 [2017-03-03] Version 5.6.0
 -------------------------
 Breaking Changes, refer to [Upgrade Guide][upgrade]
@@ -60,7 +71,7 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
     - Demote `workflowSid` and `attributes` to optional parameters when creating a Task (backwards incompatible).
     - Remove `friendlyName` as optional parameter when fetching Task Queue Statistics (backwards incompatible).
     - WorkspaceStatistics now take `DateTime` objects when filtering by `startDate` and `endDate` (backwards incompatible).
- 
+
  - Chat
     - Add `Secret` field to Chat credentials and allow setting on create and update.
     - Add Channel Invite resource.
@@ -80,19 +91,19 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
     - Add ability to add/remove Participants via the API.
     - Add ability to end Conferences via the API.
     - Add `region` and `subresourceUri` fields to Conference.
- 
+
  - Marketplace
     - Add resources for Recording AddOns.
         - AddOnResults.
         - AddOnResultPayloads.
     - Add `getAddOnResults` helper to Recordings.
-    
+
 
 [2016-10-12] Version 5.4.2
 --------------------------
 
  - Add `InstanceResource::toArray()`
- 
+
 Thanks to @johnpaulmedina for this suggestion.
 
 [2016-09-19] Version 5.4.1
@@ -107,7 +118,7 @@ Thanks to @johnpaulmedina for this suggestion.
   - Remove required parameter `friendlyName` on IP Messaging/Chat Role update.
   - Alphabetize domain mounts
   - Better exceptions when an error is encountered loading a page of records,  
-    the exception class has been corrected from `DeserializeException` to 
+    the exception class has been corrected from `DeserializeException` to
     `RestException`.
 
 [2016-08-30] Version 5.3.0
@@ -128,12 +139,12 @@ Thanks to @johnpaulmedina for this suggestion.
   - New options for Conference Participant management.
      - Adds support for `hold`, `holdUrl`, `holdMethod`
   - Mount `ip-messaging` under the new `chat` domain
-  - Demote `assignmentCallbackUrl` from a required argument to optional for 
+  - Demote `assignmentCallbackUrl` from a required argument to optional for
     Taskrouter Workflows to better support client managed reservations.
 
 [2016-08-29] Version 5.1.1
 --------------------------
-Changes the way that `uri`s are constructed to make sure that they are always 
+Changes the way that `uri`s are constructed to make sure that they are always
 `rawurlencode()`d by the `twilio-php` library
 
 Updates the output of the unit tests on failure introducing a new method,
@@ -142,12 +153,12 @@ missing in the `Holodeck` network mock.
 
 [2016-08-19] Version 5.1.0
 --------------------------
-Optional arguments are handled in the `twilio-php` by accepting an associative 
-array of optional keys and values to pass to the API.  This makes it easy to 
-support all the optional parameters, but lessens developer ergonomics, since it 
+Optional arguments are handled in the `twilio-php` by accepting an associative
+array of optional keys and values to pass to the API.  This makes it easy to
+support all the optional parameters, but lessens developer ergonomics, since it
 doesn't provide any inline documentation or autocomplete for optional arguments.
 
-This change introduces new Options builders that support 2 new ways for 
+This change introduces new Options builders that support 2 new ways for
 specifying optional arguments that provide better usability.
 
 ```php
@@ -189,12 +200,12 @@ $client->calls->create(
 );
 ```
 
-The `Options Factory` provides fully documented optional arguments for every 
-optional argument supported by the Resource's Action.  This is a fast way to 
+The `Options Factory` provides fully documented optional arguments for every
+optional argument supported by the Resource's Action.  This is a fast way to
 handle endpoints that have a few optional arguments.
 
-The `Options Builder` provides fully documented setters for every optional 
-arguments, this is great for actions that support a large number of optional 
+The `Options Builder` provides fully documented setters for every optional
+arguments, this is great for actions that support a large number of optional
 arguments, so that you don't need to provided tons of default values.
 
 Both of these options work well with autocompleting IDEs.
@@ -221,8 +232,8 @@ Add the VERSIONS.md to explain the versioning strategy, first alpha release.
 
 The newest version of the `twilio-php` helper library, supporting PHP 5.3+
 
-This version brings a host of changes to update and modernize the `twilio-php` 
-helper library.  It is auto-generated to produce a more consistent and correct 
+This version brings a host of changes to update and modernize the `twilio-php`
+helper library.  It is auto-generated to produce a more consistent and correct
 product.
 
 - [Migration Guide](https://www.twilio.com/docs/libraries/php/migration-guide)

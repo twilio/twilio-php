@@ -11,14 +11,18 @@ namespace Twilio\Rest\Video;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Video\V1\RecordingList;
 use Twilio\Rest\Video\V1\RoomList;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\Video\V1\RecordingList recordings
  * @property \Twilio\Rest\Video\V1\RoomList rooms
+ * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
 class V1 extends Version {
+    protected $_recordings = null;
     protected $_rooms = null;
 
     /**
@@ -30,6 +34,16 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    /**
+     * @return \Twilio\Rest\Video\V1\RecordingList 
+     */
+    protected function getRecordings() {
+        if (!$this->_recordings) {
+            $this->_recordings = new RecordingList($this);
+        }
+        return $this->_recordings;
     }
 
     /**
