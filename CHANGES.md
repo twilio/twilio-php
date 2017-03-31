@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-04-01] Version 5.7.1-alpha2
+---------------------------------
+ - Add Twilio Programmable Fax
+
 [2017-03-22] Version 5.7.1
 --------------------------
  - Add Answering Machine Detection to Call creation

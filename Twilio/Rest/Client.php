@@ -21,6 +21,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Accounts accounts
  * @property \Twilio\Rest\Api api
  * @property \Twilio\Rest\Chat chat
+ * @property \Twilio\Rest\Fax fax
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
@@ -87,6 +88,7 @@ class Client {
     protected $_accounts = null;
     protected $_api = null;
     protected $_chat = null;
+    protected $_fax = null;
     protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
@@ -588,6 +590,18 @@ class Client {
             $this->_chat = new Chat($this);
         }
         return $this->_chat;
+    }
+
+    /**
+     * Access the Fax Twilio Domain
+     * 
+     * @return \Twilio\Rest\Fax Fax Twilio Domain
+     */
+    protected function getFax() {
+        if (!$this->_fax) {
+            $this->_fax = new Fax($this);
+        }
+        return $this->_fax;
     }
 
     /**
