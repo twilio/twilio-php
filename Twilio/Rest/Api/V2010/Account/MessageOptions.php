@@ -22,10 +22,11 @@ abstract class MessageOptions {
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The max_price
      * @param boolean $provideFeedback The provide_feedback
+     * @param integer $validityPeriod The validity_period
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod);
     }
 
     /**
@@ -51,8 +52,9 @@ class CreateMessageOptions extends Options {
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The max_price
      * @param boolean $provideFeedback The provide_feedback
+     * @param integer $validityPeriod The validity_period
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -61,6 +63,7 @@ class CreateMessageOptions extends Options {
         $this->options['applicationSid'] = $applicationSid;
         $this->options['maxPrice'] = $maxPrice;
         $this->options['provideFeedback'] = $provideFeedback;
+        $this->options['validityPeriod'] = $validityPeriod;
     }
 
     /**
@@ -148,6 +151,17 @@ class CreateMessageOptions extends Options {
      */
     public function setProvideFeedback($provideFeedback) {
         $this->options['provideFeedback'] = $provideFeedback;
+        return $this;
+    }
+
+    /**
+     * The validity_period
+     * 
+     * @param integer $validityPeriod The validity_period
+     * @return $this Fluent Builder
+     */
+    public function setValidityPeriod($validityPeriod) {
+        $this->options['validityPeriod'] = $validityPeriod;
         return $this;
     }
 

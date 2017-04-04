@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-04-04] Version 5.7.2
+--------------------------
+- Add `validityPeriod` parameter to Message creation
+
 [2017-03-22] Version 5.7.1
 --------------------------
 - Add Answering Machine Detection to Call creation
