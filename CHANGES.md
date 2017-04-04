@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-04-04] Version 5.7.2-alpha1
+---------------------------------
+ - Add `validityPeriod` paramater to Message creation
+
 [2017-04-01] Version 5.7.1-alpha2
 ---------------------------------
  - Add Twilio Programmable Fax
