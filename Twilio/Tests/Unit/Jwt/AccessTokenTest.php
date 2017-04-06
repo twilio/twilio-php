@@ -116,7 +116,7 @@ class AccessTokenTest extends UnitTest {
     {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new VideoGrant();
-        $grant->setConfigurationProfileSid("CP123");
+        $grant->setRoom("RM123");
         $scat->addGrant($grant);
 
         $token = $scat->toJWT();
@@ -127,7 +127,7 @@ class AccessTokenTest extends UnitTest {
         $grants = json_decode(json_encode($payload->grants), true);
         $this->assertEquals(1, count($grants));
         $this->assertArrayHasKey("video", $grants);
-        $this->assertEquals("CP123", $grants['video']['configuration_profile_sid']);
+        $this->assertEquals("RM123", $grants['video']['room']);
     }
 
     function testGrants() {
