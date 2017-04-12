@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2017-04-12] Version 5.7.3
+--------------------------
+- Add TaskRouterGrant.
+- Update VideoGrant.
+    - Add `room` as preferred grant granularity.
+    - Deprecate setting `configurationProfileSid` on grant.
+
 [2017-04-04] Version 5.7.2
 --------------------------
 - Add `validityPeriod` parameter to Message creation
