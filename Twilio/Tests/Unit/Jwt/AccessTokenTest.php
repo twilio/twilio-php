@@ -56,24 +56,6 @@ class AccessTokenTest extends UnitTest {
         $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
 
-    function testConversationGrant() {
-        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $grant = new ConversationsGrant();
-        $grant->setConfigurationProfileSid("CP123");
-        $scat->addGrant($grant);
-
-        $token = $scat->toJWT();
-
-        $this->assertNotNull($token);
-        $payload = JWT::decode($token, 'secret');
-        $this->validateClaims($payload);
-
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
-        $this->assertArrayHasKey("rtc", $grants);
-        $this->assertEquals("CP123", $grants['rtc']['configuration_profile_sid']);
-    }
-
     function testIpMessagingGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new IpMessagingGrant();
@@ -134,7 +116,6 @@ class AccessTokenTest extends UnitTest {
     function testGrants() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
-        $scat->addGrant(new ConversationsGrant());
         $scat->addGrant(new IpMessagingGrant());
         $scat->addGrant(new VideoGrant());
         $scat->addGrant(new TaskRouterGrant());
@@ -146,9 +127,8 @@ class AccessTokenTest extends UnitTest {
         $this->validateClaims($payload);
 
         $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(5, count($grants));
+        $this->assertEquals(4, count($grants));
         $this->assertEquals('test identity', $payload->grants->identity);
-        $this->assertEquals('{}', json_encode($payload->grants->rtc));
         $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
         $this->assertEquals('{}', json_encode($payload->grants->video));
         $this->assertEquals('{}', json_encode($payload->grants->task_router));

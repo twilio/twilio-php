@@ -7,6 +7,10 @@ namespace Twilio\Jwt\Grants;
 class ConversationsGrant implements Grant {
     private $configurationProfileSid;
 
+    public function __construct() {
+        trigger_error("ConversationsGrant is deprecated, please use VideoGrant", E_USER_NOTICE);
+    }
+
     /**
      * Returns the configuration profile sid
      *
