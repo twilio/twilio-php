@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Chat\V1\Service\Channel;
+namespace Twilio\Tests\Integration\Chat\V2\Service\Channel;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,7 +20,7 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
@@ -28,7 +28,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -47,12 +47,12 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": null,
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:50Z",
-                "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
@@ -63,7 +63,7 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->members->create("identity");
         } catch (DeserializeException $e) {}
@@ -75,7 +75,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members',
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members',
             null,
             $values
         ));
@@ -96,12 +96,12 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": null,
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:50Z",
-                "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members->create("identity");
 
@@ -112,7 +112,7 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->members->read();
         } catch (DeserializeException $e) {}
@@ -120,7 +120,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members'
         ));
     }
 
@@ -132,9 +132,9 @@ class MemberTest extends HolodeckTestCase {
                 "meta": {
                     "page": 0,
                     "page_size": 50,
-                    "first_page_url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
+                    "first_page_url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
                     "previous_page_url": null,
-                    "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
+                    "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
                     "next_page_url": null,
                     "key": "members"
                 },
@@ -150,14 +150,14 @@ class MemberTest extends HolodeckTestCase {
                         "last_consumption_timestamp": null,
                         "date_created": "2016-03-24T21:05:50Z",
                         "date_updated": "2016-03-24T21:05:50Z",
-                        "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ]
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members->read();
 
@@ -172,9 +172,9 @@ class MemberTest extends HolodeckTestCase {
                 "meta": {
                     "page": 0,
                     "page_size": 50,
-                    "first_page_url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
+                    "first_page_url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
                     "previous_page_url": null,
-                    "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
+                    "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members?PageSize=50&Page=0",
                     "next_page_url": null,
                     "key": "members"
                 },
@@ -183,7 +183,7 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members->read();
 
@@ -194,7 +194,7 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
@@ -202,7 +202,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -212,7 +212,7 @@ class MemberTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
 
@@ -223,7 +223,7 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
@@ -231,7 +231,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -250,12 +250,12 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": null,
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:50Z",
-                "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
@@ -277,12 +277,12 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": null,
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:50Z",
-                "url": "https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 

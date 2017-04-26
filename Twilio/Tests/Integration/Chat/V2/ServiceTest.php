@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Chat\V1;
+namespace Twilio\Tests\Integration\Chat\V2;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,13 +20,13 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -44,11 +44,14 @@ class ServiceTest extends HolodeckTestCase {
                 "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "friendly_name",
                 "limits": {
-                    "actions_per_second": 20,
                     "channel_members": 100,
                     "user_channels": 250
                 },
-                "links": {},
+                "links": {
+                    "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                },
                 "notifications": {},
                 "post_webhook_url": "post_webhook_url",
                 "pre_webhook_url": "pre_webhook_url",
@@ -56,17 +59,16 @@ class ServiceTest extends HolodeckTestCase {
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "typing_indicator_timeout": 100,
-                "url": "http://www.example.com",
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "webhook_filters": [
                     "webhook_filters"
                 ],
-                "webhook_method": "webhook_method",
-                "webhooks": {}
+                "webhook_method": "webhook_method"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -75,13 +77,13 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -91,7 +93,7 @@ class ServiceTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
 
         $this->assertTrue($actual);
     }
@@ -100,7 +102,7 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services->create("friendlyName");
+            $this->twilio->chat->v2->services->create("friendlyName");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -110,7 +112,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v1/Services',
+            'https://chat.twilio.com/v2/Services',
             null,
             $values
         ));
@@ -130,11 +132,14 @@ class ServiceTest extends HolodeckTestCase {
                 "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "friendly_name",
                 "limits": {
-                    "actions_per_second": 20,
                     "channel_members": 100,
                     "user_channels": 250
                 },
-                "links": {},
+                "links": {
+                    "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                },
                 "notifications": {},
                 "post_webhook_url": "post_webhook_url",
                 "pre_webhook_url": "pre_webhook_url",
@@ -142,17 +147,16 @@ class ServiceTest extends HolodeckTestCase {
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "typing_indicator_timeout": 100,
-                "url": "http://www.example.com",
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "webhook_filters": [
                     "webhook_filters"
                 ],
-                "webhook_method": "webhook_method",
-                "webhooks": {}
+                "webhook_method": "webhook_method"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services->create("friendlyName");
+        $actual = $this->twilio->chat->v2->services->create("friendlyName");
 
         $this->assertNotNull($actual);
     }
@@ -161,13 +165,13 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services->read();
+            $this->twilio->chat->v2->services->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v1/Services'
+            'https://chat.twilio.com/v2/Services'
         ));
     }
 
@@ -177,20 +181,20 @@ class ServiceTest extends HolodeckTestCase {
             '
             {
                 "meta": {
-                    "first_page_url": "https://chat.twilio.com/v1/Services?Page=0&PageSize=50",
+                    "first_page_url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0",
                     "key": "services",
                     "next_page_url": null,
                     "page": 0,
-                    "page_size": 0,
+                    "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://chat.twilio.com/v1/Services"
+                    "url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0"
                 },
                 "services": []
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services->read();
+        $actual = $this->twilio->chat->v2->services->read();
 
         $this->assertNotNull($actual);
     }
@@ -201,13 +205,13 @@ class ServiceTest extends HolodeckTestCase {
             '
             {
                 "meta": {
-                    "first_page_url": "https://chat.twilio.com/v1/Services?Page=0&PageSize=50",
+                    "first_page_url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0",
                     "key": "services",
                     "next_page_url": null,
                     "page": 0,
-                    "page_size": 1,
+                    "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://chat.twilio.com/v1/Services"
+                    "url": "https://chat.twilio.com/v2/Services?PageSize=50&Page=0"
                 },
                 "services": [
                     {
@@ -220,11 +224,14 @@ class ServiceTest extends HolodeckTestCase {
                         "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "friendly_name": "friendly_name",
                         "limits": {
-                            "actions_per_second": 20,
                             "channel_members": 100,
                             "user_channels": 250
                         },
-                        "links": {},
+                        "links": {
+                            "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                            "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                            "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                        },
                         "notifications": {},
                         "post_webhook_url": "post_webhook_url",
                         "pre_webhook_url": "pre_webhook_url",
@@ -232,19 +239,18 @@ class ServiceTest extends HolodeckTestCase {
                         "read_status_enabled": false,
                         "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "typing_indicator_timeout": 100,
-                        "url": "http://www.example.com",
+                        "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "webhook_filters": [
                             "webhook_filters"
                         ],
-                        "webhook_method": "webhook_method",
-                        "webhooks": {}
+                        "webhook_method": "webhook_method"
                     }
                 ]
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services->read();
+        $actual = $this->twilio->chat->v2->services->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
@@ -253,13 +259,13 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -277,29 +283,49 @@ class ServiceTest extends HolodeckTestCase {
                 "default_service_role_sid": "RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "friendly_name": "friendly_name",
                 "limits": {
-                    "actions_per_second": 20,
                     "channel_members": 500,
                     "user_channels": 600
                 },
-                "links": {},
-                "notifications": {},
+                "links": {
+                    "channels": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels",
+                    "users": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users",
+                    "roles": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles"
+                },
+                "notifications": {
+                    "added_to_channel": {
+                        "enabled": false,
+                        "template": "notifications.added_to_channel.template"
+                    },
+                    "invited_to_channel": {
+                        "enabled": false,
+                        "template": "notifications.invited_to_channel.template"
+                    },
+                    "new_message": {
+                        "enabled": false,
+                        "template": "notifications.new_message.template",
+                        "badge_count_enabled": true
+                    },
+                    "removed_from_channel": {
+                        "enabled": false,
+                        "template": "notifications.removed_from_channel.template"
+                    }
+                },
                 "post_webhook_url": "post_webhook_url",
                 "pre_webhook_url": "pre_webhook_url",
                 "reachability_enabled": false,
                 "read_status_enabled": false,
                 "sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "typing_indicator_timeout": 100,
-                "url": "http://www.example.com",
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "webhook_filters": [
                     "webhook_filters"
                 ],
-                "webhook_method": "webhook_method",
-                "webhooks": {}
+                "webhook_method": "webhook_method"
             }
             '
         ));
 
-        $actual = $this->twilio->chat->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
     }
