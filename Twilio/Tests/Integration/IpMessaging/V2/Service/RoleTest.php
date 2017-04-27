@@ -27,7 +27,7 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip_messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -71,7 +71,7 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://ip_messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -104,7 +104,7 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://ip_messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles',
+            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles',
             null,
             $values
         ));
@@ -150,7 +150,7 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip_messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles'
+            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles'
         ));
     }
 
@@ -236,7 +236,7 @@ class RoleTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://ip_messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             null,
             $values
         ));

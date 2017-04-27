@@ -26,7 +26,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip_messaging.twilio.com/v2/Credentials'
+            'https://ip-messaging.twilio.com/v2/Credentials'
         ));
     }
 
@@ -103,7 +103,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://ip_messaging.twilio.com/v2/Credentials',
+            'https://ip-messaging.twilio.com/v2/Credentials',
             null,
             $values
         ));
@@ -141,7 +141,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip_messaging.twilio.com/v2/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -177,7 +177,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://ip_messaging.twilio.com/v2/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -213,7 +213,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'delete',
-            'https://ip_messaging.twilio.com/v2/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
