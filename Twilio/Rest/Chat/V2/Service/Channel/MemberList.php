@@ -7,76 +7,47 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Conference;
+namespace Twilio\Rest\Chat\V2\Service\Channel;
 
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class ParticipantList extends ListResource {
+class MemberList extends ListResource {
     /**
-     * Construct the ParticipantList
+     * Construct the MemberList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $conferenceSid A string that uniquely identifies this
-     *                              conference
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList 
+     * @param string $serviceSid The service_sid
+     * @param string $channelSid The channel_sid
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\MemberList 
      */
-    public function __construct(Version $version, $accountSid, $conferenceSid) {
+    public function __construct(Version $version, $serviceSid, $channelSid) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = array(
-            'accountSid' => $accountSid,
-            'conferenceSid' => $conferenceSid,
+            'serviceSid' => $serviceSid,
+            'channelSid' => $channelSid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants.json';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members';
     }
 
     /**
-     * Create a new ParticipantInstance
+     * Create a new MemberInstance
      * 
-     * @param string $from The from
-     * @param string $to The to
+     * @param string $identity The identity
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Newly created ParticipantInstance
+     * @return MemberInstance Newly created MemberInstance
      */
-    public function create($from, $to, $options = array()) {
+    public function create($identity, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'From' => $from,
-            'To' => $to,
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'StatusCallbackEvent' => $options['statusCallbackEvent'],
-            'Timeout' => $options['timeout'],
-            'Record' => Serialize::booleanToString($options['record']),
-            'Muted' => Serialize::booleanToString($options['muted']),
-            'Beep' => $options['beep'],
-            'StartConferenceOnEnter' => Serialize::booleanToString($options['startConferenceOnEnter']),
-            'EndConferenceOnExit' => Serialize::booleanToString($options['endConferenceOnExit']),
-            'WaitUrl' => $options['waitUrl'],
-            'WaitMethod' => $options['waitMethod'],
-            'EarlyMedia' => Serialize::booleanToString($options['earlyMedia']),
-            'MaxParticipants' => $options['maxParticipants'],
-            'ConferenceRecord' => $options['conferenceRecord'],
-            'ConferenceTrim' => $options['conferenceTrim'],
-            'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
-            'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
-            'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
-            'RecordingChannels' => $options['recordingChannels'],
-            'RecordingStatusCallback' => $options['recordingStatusCallback'],
-            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
-            'SipAuthUsername' => $options['sipAuthUsername'],
-            'SipAuthPassword' => $options['sipAuthPassword'],
-            'Region' => $options['region'],
-            'ConferenceRecordingStatusCallback' => $options['conferenceRecordingStatusCallback'],
-            'ConferenceRecordingStatusCallbackMethod' => $options['conferenceRecordingStatusCallbackMethod'],
+            'Identity' => $identity,
+            'RoleSid' => $options['roleSid'],
         ));
 
         $payload = $this->version->create(
@@ -86,16 +57,16 @@ class ParticipantList extends ListResource {
             $data
         );
 
-        return new ParticipantInstance(
+        return new MemberInstance(
             $this->version,
             $payload,
-            $this->solution['accountSid'],
-            $this->solution['conferenceSid']
+            $this->solution['serviceSid'],
+            $this->solution['channelSid']
         );
     }
 
     /**
-     * Streams ParticipantInstance records from the API as a generator stream.
+     * Streams MemberInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -122,7 +93,7 @@ class ParticipantList extends ListResource {
     }
 
     /**
-     * Reads ParticipantInstance records from the API as a list.
+     * Reads MemberInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
@@ -135,27 +106,26 @@ class ParticipantList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ParticipantInstance[] Array of results
+     * @return MemberInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ParticipantInstance records from the API.
+     * Retrieve a single page of MemberInstance records from the API.
      * Request is executed immediately
      * 
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ParticipantInstance
+     * @return \Twilio\Page Page of MemberInstance
      */
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Muted' => Serialize::booleanToString($options['muted']),
-            'Hold' => Serialize::booleanToString($options['hold']),
+            'Identity' => $options['identity'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -167,21 +137,21 @@ class ParticipantList extends ListResource {
             $params
         );
 
-        return new ParticipantPage($this->version, $response, $this->solution);
+        return new MemberPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a ParticipantContext
+     * Constructs a MemberContext
      * 
-     * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\MemberContext 
      */
-    public function getContext($callSid) {
-        return new ParticipantContext(
+    public function getContext($sid) {
+        return new MemberContext(
             $this->version,
-            $this->solution['accountSid'],
-            $this->solution['conferenceSid'],
-            $callSid
+            $this->solution['serviceSid'],
+            $this->solution['channelSid'],
+            $sid
         );
     }
 
@@ -191,6 +161,6 @@ class ParticipantList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.ParticipantList]';
+        return '[Twilio.Chat.V2.MemberList]';
     }
 }
