@@ -30,13 +30,13 @@ abstract class RoomOptions {
 
     /**
      * @param string $status The status
-     * @param \DateTime $startTimeAfter The start_time_after
-     * @param \DateTime $startTimeBefore The start_time_before
      * @param string $uniqueName The unique_name
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedBefore The date_created_before
      * @return ReadRoomOptions Options builder
      */
-    public static function read($status = Values::NONE, $startTimeAfter = Values::NONE, $startTimeBefore = Values::NONE, $uniqueName = Values::NONE) {
-        return new ReadRoomOptions($status, $startTimeAfter, $startTimeBefore, $uniqueName);
+    public static function read($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+        return new ReadRoomOptions($status, $uniqueName, $dateCreatedAfter, $dateCreatedBefore);
     }
 }
 
@@ -158,15 +158,15 @@ class CreateRoomOptions extends Options {
 class ReadRoomOptions extends Options {
     /**
      * @param string $status The status
-     * @param \DateTime $startTimeAfter The start_time_after
-     * @param \DateTime $startTimeBefore The start_time_before
      * @param string $uniqueName The unique_name
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedBefore The date_created_before
      */
-    public function __construct($status = Values::NONE, $startTimeAfter = Values::NONE, $startTimeBefore = Values::NONE, $uniqueName = Values::NONE) {
+    public function __construct($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
         $this->options['status'] = $status;
-        $this->options['startTimeAfter'] = $startTimeAfter;
-        $this->options['startTimeBefore'] = $startTimeBefore;
         $this->options['uniqueName'] = $uniqueName;
+        $this->options['dateCreatedAfter'] = $dateCreatedAfter;
+        $this->options['dateCreatedBefore'] = $dateCreatedBefore;
     }
 
     /**
@@ -181,28 +181,6 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The start_time_after
-     * 
-     * @param \DateTime $startTimeAfter The start_time_after
-     * @return $this Fluent Builder
-     */
-    public function setStartTimeAfter($startTimeAfter) {
-        $this->options['startTimeAfter'] = $startTimeAfter;
-        return $this;
-    }
-
-    /**
-     * The start_time_before
-     * 
-     * @param \DateTime $startTimeBefore The start_time_before
-     * @return $this Fluent Builder
-     */
-    public function setStartTimeBefore($startTimeBefore) {
-        $this->options['startTimeBefore'] = $startTimeBefore;
-        return $this;
-    }
-
-    /**
      * The unique_name
      * 
      * @param string $uniqueName The unique_name
@@ -210,6 +188,28 @@ class ReadRoomOptions extends Options {
      */
     public function setUniqueName($uniqueName) {
         $this->options['uniqueName'] = $uniqueName;
+        return $this;
+    }
+
+    /**
+     * The date_created_after
+     * 
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @return $this Fluent Builder
+     */
+    public function setDateCreatedAfter($dateCreatedAfter) {
+        $this->options['dateCreatedAfter'] = $dateCreatedAfter;
+        return $this;
+    }
+
+    /**
+     * The date_created_before
+     * 
+     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @return $this Fluent Builder
+     */
+    public function setDateCreatedBefore($dateCreatedBefore) {
+        $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
 

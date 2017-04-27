@@ -26,10 +26,11 @@ abstract class ServiceOptions {
      * @param string $fcmCredentialSid The fcm_credential_sid
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
+     * @param boolean $logEnabled The log_enabled
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion);
+    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
+        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled);
     }
 
     /**
@@ -53,10 +54,11 @@ abstract class ServiceOptions {
      * @param string $fcmCredentialSid The fcm_credential_sid
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
+     * @param boolean $logEnabled The log_enabled
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion);
+    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled);
     }
 }
 
@@ -74,8 +76,9 @@ class CreateServiceOptions extends Options {
      * @param string $fcmCredentialSid The fcm_credential_sid
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
+     * @param boolean $logEnabled The log_enabled
      */
-    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -85,6 +88,7 @@ class CreateServiceOptions extends Options {
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
         $this->options['fcmCredentialSid'] = $fcmCredentialSid;
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
+        $this->options['logEnabled'] = $logEnabled;
     }
 
     /**
@@ -186,6 +190,17 @@ class CreateServiceOptions extends Options {
      */
     public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
+        return $this;
+    }
+
+    /**
+     * The log_enabled
+     * 
+     * @param boolean $logEnabled The log_enabled
+     * @return $this Fluent Builder
+     */
+    public function setLogEnabled($logEnabled) {
+        $this->options['logEnabled'] = $logEnabled;
         return $this;
     }
 
@@ -254,8 +269,9 @@ class UpdateServiceOptions extends Options {
      * @param string $fcmCredentialSid The fcm_credential_sid
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
+     * @param boolean $logEnabled The log_enabled
      */
-    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -265,6 +281,7 @@ class UpdateServiceOptions extends Options {
         $this->options['defaultGcmNotificationProtocolVersion'] = $defaultGcmNotificationProtocolVersion;
         $this->options['fcmCredentialSid'] = $fcmCredentialSid;
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
+        $this->options['logEnabled'] = $logEnabled;
     }
 
     /**
@@ -366,6 +383,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
+        return $this;
+    }
+
+    /**
+     * The log_enabled
+     * 
+     * @param boolean $logEnabled The log_enabled
+     * @return $this Fluent Builder
+     */
+    public function setLogEnabled($logEnabled) {
+        $this->options['logEnabled'] = $logEnabled;
         return $this;
     }
 

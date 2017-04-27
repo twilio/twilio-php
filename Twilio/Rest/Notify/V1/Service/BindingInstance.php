@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string address
  * @property string tags
  * @property string url
+ * @property array links
  */
 class BindingInstance extends InstanceResource {
     /**
@@ -58,6 +59,7 @@ class BindingInstance extends InstanceResource {
             'address' => Values::array_get($payload, 'address'),
             'tags' => Values::array_get($payload, 'tags'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array(

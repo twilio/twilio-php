@@ -30,12 +30,15 @@ use Twilio\Version;
  * @property string defaultApnNotificationProtocolVersion
  * @property string defaultGcmNotificationProtocolVersion
  * @property string defaultFcmNotificationProtocolVersion
+ * @property boolean logEnabled
  * @property string url
  * @property array links
  */
 class ServiceInstance extends InstanceResource {
     protected $_bindings = null;
     protected $_notifications = null;
+    protected $_users = null;
+    protected $_segments = null;
 
     /**
      * Initialize the ServiceInstance
@@ -63,6 +66,7 @@ class ServiceInstance extends InstanceResource {
             'defaultApnNotificationProtocolVersion' => Values::array_get($payload, 'default_apn_notification_protocol_version'),
             'defaultGcmNotificationProtocolVersion' => Values::array_get($payload, 'default_gcm_notification_protocol_version'),
             'defaultFcmNotificationProtocolVersion' => Values::array_get($payload, 'default_fcm_notification_protocol_version'),
+            'logEnabled' => Values::array_get($payload, 'log_enabled'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
@@ -136,6 +140,24 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getNotifications() {
         return $this->proxy()->notifications;
+    }
+
+    /**
+     * Access the users
+     * 
+     * @return \Twilio\Rest\Notify\V1\Service\UserList 
+     */
+    protected function getUsers() {
+        return $this->proxy()->users;
+    }
+
+    /**
+     * Access the segments
+     * 
+     * @return \Twilio\Rest\Notify\V1\Service\SegmentList 
+     */
+    protected function getSegments() {
+        return $this->proxy()->segments;
     }
 
     /**

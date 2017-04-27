@@ -25,7 +25,6 @@ use Twilio\Version;
  * @property string uniqueName
  * @property string statusCallback
  * @property string statusCallbackMethod
- * @property \DateTime startTime
  * @property \DateTime endTime
  * @property integer duration
  * @property string type
@@ -56,7 +55,6 @@ class RoomInstance extends InstanceResource {
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'statusCallback' => Values::array_get($payload, 'status_callback'),
             'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
-            'startTime' => Deserialize::dateTime(Values::array_get($payload, 'start_time')),
             'endTime' => Deserialize::dateTime(Values::array_get($payload, 'end_time')),
             'duration' => Values::array_get($payload, 'duration'),
             'type' => Values::array_get($payload, 'type'),

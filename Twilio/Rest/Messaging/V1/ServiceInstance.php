@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string statusCallback
  * @property boolean stickySender
  * @property boolean mmsConverter
+ * @property boolean smartEncoding
  * @property string url
  * @property array links
  */
@@ -62,6 +63,7 @@ class ServiceInstance extends InstanceResource {
             'statusCallback' => Values::array_get($payload, 'status_callback'),
             'stickySender' => Values::array_get($payload, 'sticky_sender'),
             'mmsConverter' => Values::array_get($payload, 'mms_converter'),
+            'smartEncoding' => Values::array_get($payload, 'smart_encoding'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );

@@ -17,10 +17,11 @@ abstract class BindingOptions {
      * @param string $tag The tag
      * @param string $notificationProtocolVersion The notification_protocol_version
      * @param string $credentialSid The credential_sid
+     * @param string $endpoint The endpoint
      * @return CreateBindingOptions Options builder
      */
-    public static function create($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE) {
-        return new CreateBindingOptions($tag, $notificationProtocolVersion, $credentialSid);
+    public static function create($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE, $endpoint = Values::NONE) {
+        return new CreateBindingOptions($tag, $notificationProtocolVersion, $credentialSid, $endpoint);
     }
 
     /**
@@ -40,11 +41,13 @@ class CreateBindingOptions extends Options {
      * @param string $tag The tag
      * @param string $notificationProtocolVersion The notification_protocol_version
      * @param string $credentialSid The credential_sid
+     * @param string $endpoint The endpoint
      */
-    public function __construct($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE) {
+    public function __construct($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE, $endpoint = Values::NONE) {
         $this->options['tag'] = $tag;
         $this->options['notificationProtocolVersion'] = $notificationProtocolVersion;
         $this->options['credentialSid'] = $credentialSid;
+        $this->options['endpoint'] = $endpoint;
     }
 
     /**
@@ -77,6 +80,17 @@ class CreateBindingOptions extends Options {
      */
     public function setCredentialSid($credentialSid) {
         $this->options['credentialSid'] = $credentialSid;
+        return $this;
+    }
+
+    /**
+     * The endpoint
+     * 
+     * @param string $endpoint The endpoint
+     * @return $this Fluent Builder
+     */
+    public function setEndpoint($endpoint) {
+        $this->options['endpoint'] = $endpoint;
         return $this;
     }
 

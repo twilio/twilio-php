@@ -37,24 +37,23 @@ class BindingList extends ListResource {
     /**
      * Create a new BindingInstance
      * 
-     * @param string $endpoint The endpoint
      * @param string $identity The identity
      * @param string $bindingType The binding_type
      * @param string $address The address
      * @param array|Options $options Optional Arguments
      * @return BindingInstance Newly created BindingInstance
      */
-    public function create($endpoint, $identity, $bindingType, $address, $options = array()) {
+    public function create($identity, $bindingType, $address, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Endpoint' => $endpoint,
             'Identity' => $identity,
             'BindingType' => $bindingType,
             'Address' => $address,
             'Tag' => $options['tag'],
             'NotificationProtocolVersion' => $options['notificationProtocolVersion'],
             'CredentialSid' => $options['credentialSid'],
+            'Endpoint' => $options['endpoint'],
         ));
 
         $payload = $this->version->create(

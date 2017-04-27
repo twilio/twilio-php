@@ -68,6 +68,7 @@ class ServiceContext extends InstanceContext {
             'StatusCallback' => $options['statusCallback'],
             'StickySender' => Serialize::booleanToString($options['stickySender']),
             'MmsConverter' => Serialize::booleanToString($options['mmsConverter']),
+            'SmartEncoding' => Serialize::booleanToString($options['smartEncoding']),
         ));
 
         $payload = $this->version->update(

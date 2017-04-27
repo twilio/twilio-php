@@ -21,10 +21,11 @@ abstract class ServiceOptions {
      * @param string $statusCallback The status_callback
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
+     * @param boolean $smartEncoding The smart_encoding
      * @return CreateServiceOptions Options builder
      */
-    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE) {
-        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter);
+    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
+        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding);
     }
 
     /**
@@ -36,10 +37,11 @@ abstract class ServiceOptions {
      * @param string $statusCallback The status_callback
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
+     * @param boolean $smartEncoding The smart_encoding
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter);
+    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding);
     }
 }
 
@@ -52,8 +54,9 @@ class CreateServiceOptions extends Options {
      * @param string $statusCallback The status_callback
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
+     * @param boolean $smartEncoding The smart_encoding
      */
-    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE) {
+    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
         $this->options['fallbackUrl'] = $fallbackUrl;
@@ -61,6 +64,7 @@ class CreateServiceOptions extends Options {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['stickySender'] = $stickySender;
         $this->options['mmsConverter'] = $mmsConverter;
+        $this->options['smartEncoding'] = $smartEncoding;
     }
 
     /**
@@ -141,6 +145,17 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * The smart_encoding
+     * 
+     * @param boolean $smartEncoding The smart_encoding
+     * @return $this Fluent Builder
+     */
+    public function setSmartEncoding($smartEncoding) {
+        $this->options['smartEncoding'] = $smartEncoding;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -166,8 +181,9 @@ class UpdateServiceOptions extends Options {
      * @param string $statusCallback The status_callback
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
+     * @param boolean $smartEncoding The smart_encoding
      */
-    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
@@ -176,6 +192,7 @@ class UpdateServiceOptions extends Options {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['stickySender'] = $stickySender;
         $this->options['mmsConverter'] = $mmsConverter;
+        $this->options['smartEncoding'] = $smartEncoding;
     }
 
     /**
@@ -263,6 +280,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setMmsConverter($mmsConverter) {
         $this->options['mmsConverter'] = $mmsConverter;
+        return $this;
+    }
+
+    /**
+     * The smart_encoding
+     * 
+     * @param boolean $smartEncoding The smart_encoding
+     * @return $this Fluent Builder
+     */
+    public function setSmartEncoding($smartEncoding) {
+        $this->options['smartEncoding'] = $smartEncoding;
         return $this;
     }
 

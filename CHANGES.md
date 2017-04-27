@@ -1,5 +1,21 @@
 twilio-php Changelog
 ====================
+[2017-04-27] Version 5.8.0-alpha1
+---------------------------------
+- Add support for Twilio Chat v2
+- Add `recordingChannels`, `recordingStatusCallback`, `recordingStatusCallbackMethod`, `sipAuthUsername`, `sipAuthPassword`, `region`, `conferenceRecordingStatusCallback`, `conferenceRecordingStatusCallbackMethod` optional parameters to conference participant resource.
+- Add support for setting `DEBUG_HTTP_TRAFFIC=true` environment varibale to dump request and response information. Thanks @kevinburke, PR #394.
+- Add deprecation warning to `ConversationsGrant`, it is being replaced by `VideoGrant`.
+- Alpha Changes:
+    - Add `smartEncoding` parameter to messaging Service.
+    - Make `endpoint ` parameter optional for notify service bindings (backwards incompatible).
+    - Add `segments` property to notify service notifications.
+    - Add `logEnabled` property to notify services.
+    - New Notify resources: Segment, SegmentMembership, UserBinding, User
+    - Add ability to delete Wireless RatePlans
+    - Add `groupingSid` parameter to Video Recordings.
+    - Remove `startTime` property from Video Rooms (backwards incompatible).
+    - Replace `startTimeBefore/After` filtering with `dateCreatedBefore/After` on Video Rooms (backwards incompatible).
 
 [2017-04-12] Version 5.7.3-alpha1
 --------------------------

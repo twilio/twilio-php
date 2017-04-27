@@ -57,6 +57,7 @@ class NotificationList extends ListResource {
             'Sms' => $options['sms'],
             'FacebookMessenger' => $options['facebookMessenger'],
             'Fcm' => $options['fcm'],
+            'Segment' => $options['segment'],
         ));
 
         $payload = $this->version->create(

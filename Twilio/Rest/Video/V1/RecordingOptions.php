@@ -16,10 +16,11 @@ abstract class RecordingOptions {
     /**
      * @param string $status The status
      * @param string $sourceSid The source_sid
+     * @param string $groupingSid The grouping_sid
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE) {
-        return new ReadRecordingOptions($status, $sourceSid);
+    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE) {
+        return new ReadRecordingOptions($status, $sourceSid, $groupingSid);
     }
 }
 
@@ -27,10 +28,12 @@ class ReadRecordingOptions extends Options {
     /**
      * @param string $status The status
      * @param string $sourceSid The source_sid
+     * @param string $groupingSid The grouping_sid
      */
-    public function __construct($status = Values::NONE, $sourceSid = Values::NONE) {
+    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
+        $this->options['groupingSid'] = $groupingSid;
     }
 
     /**
@@ -52,6 +55,17 @@ class ReadRecordingOptions extends Options {
      */
     public function setSourceSid($sourceSid) {
         $this->options['sourceSid'] = $sourceSid;
+        return $this;
+    }
+
+    /**
+     * The grouping_sid
+     * 
+     * @param string $groupingSid The grouping_sid
+     * @return $this Fluent Builder
+     */
+    public function setGroupingSid($groupingSid) {
+        $this->options['groupingSid'] = $groupingSid;
         return $this;
     }
 

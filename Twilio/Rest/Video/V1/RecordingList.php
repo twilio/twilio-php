@@ -92,6 +92,7 @@ class RecordingList extends ListResource {
         $params = Values::of(array(
             'Status' => $options['status'],
             'SourceSid' => $options['sourceSid'],
+            'GroupingSid' => $options['groupingSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

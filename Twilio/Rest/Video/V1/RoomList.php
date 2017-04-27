@@ -124,9 +124,9 @@ class RoomList extends ListResource {
         $options = new Values($options);
         $params = Values::of(array(
             'Status' => $options['status'],
-            'StartTimeAfter' => Serialize::iso8601DateTime($options['startTimeAfter']),
-            'StartTimeBefore' => Serialize::iso8601DateTime($options['startTimeBefore']),
             'UniqueName' => $options['uniqueName'],
+            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

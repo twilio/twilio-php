@@ -11,6 +11,7 @@ namespace Twilio\Rest\Notify\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -49,6 +50,7 @@ class ServiceList extends ListResource {
             'DefaultGcmNotificationProtocolVersion' => $options['defaultGcmNotificationProtocolVersion'],
             'FcmCredentialSid' => $options['fcmCredentialSid'],
             'DefaultFcmNotificationProtocolVersion' => $options['defaultFcmNotificationProtocolVersion'],
+            'LogEnabled' => Serialize::booleanToString($options['logEnabled']),
         ));
 
         $payload = $this->version->create(

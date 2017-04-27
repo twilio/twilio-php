@@ -44,6 +44,7 @@ class NotificationTest extends HolodeckTestCase {
                     "jing"
                 ],
                 "tags": [],
+                "segments": [],
                 "priority": "high",
                 "ttl": 2419200,
                 "title": "test",

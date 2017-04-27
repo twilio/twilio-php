@@ -236,4 +236,29 @@ class RatePlanTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testDeleteRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        ));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+
+        $this->assertTrue($actual);
+    }
 }

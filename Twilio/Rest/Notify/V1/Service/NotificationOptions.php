@@ -28,10 +28,11 @@ abstract class NotificationOptions {
      * @param string $sms The sms
      * @param array $facebookMessenger The facebook_messenger
      * @param string $fcm The fcm
+     * @param string $segment The segment
      * @return CreateNotificationOptions Options builder
      */
-    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE) {
-        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm);
+    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE) {
+        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment);
     }
 }
 
@@ -51,8 +52,9 @@ class CreateNotificationOptions extends Options {
      * @param string $sms The sms
      * @param array $facebookMessenger The facebook_messenger
      * @param string $fcm The fcm
+     * @param string $segment The segment
      */
-    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE) {
+    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -67,6 +69,7 @@ class CreateNotificationOptions extends Options {
         $this->options['sms'] = $sms;
         $this->options['facebookMessenger'] = $facebookMessenger;
         $this->options['fcm'] = $fcm;
+        $this->options['segment'] = $segment;
     }
 
     /**
@@ -220,6 +223,17 @@ class CreateNotificationOptions extends Options {
      */
     public function setFcm($fcm) {
         $this->options['fcm'] = $fcm;
+        return $this;
+    }
+
+    /**
+     * The segment
+     * 
+     * @param string $segment The segment
+     * @return $this Fluent Builder
+     */
+    public function setSegment($segment) {
+        $this->options['segment'] = $segment;
         return $this;
     }
 

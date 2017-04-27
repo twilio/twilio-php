@@ -50,6 +50,9 @@ class BindingTest extends HolodeckTestCase {
                 "tags": [
                     "26607274"
                 ],
+                "links": {
+                    "user": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/24987039"
+                },
                 "url": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -93,12 +96,11 @@ class BindingTest extends HolodeckTestCase {
 
         try {
             $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->bindings->create("endpoint", "identity", "apn", "address");
+                                     ->bindings->create("identity", "apn", "address");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'Endpoint' => "endpoint",
             'Identity' => "identity",
             'BindingType' => "apn",
             'Address' => "address",
@@ -131,13 +133,16 @@ class BindingTest extends HolodeckTestCase {
                 "tags": [
                     "26607274"
                 ],
+                "links": {
+                    "user": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/24987039"
+                },
                 "url": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
         $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->bindings->create("endpoint", "identity", "apn", "address");
+                                           ->bindings->create("identity", "apn", "address");
 
         $this->assertNotNull($actual);
     }
@@ -203,6 +208,9 @@ class BindingTest extends HolodeckTestCase {
                         "tags": [
                             "26607274"
                         ],
+                        "links": {
+                            "user": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/24987039"
+                        },
                         "url": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],

@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property string identities
  * @property string tags
+ * @property string segments
  * @property string priority
  * @property integer ttl
  * @property string title
@@ -55,6 +56,7 @@ class NotificationInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'identities' => Values::array_get($payload, 'identities'),
             'tags' => Values::array_get($payload, 'tags'),
+            'segments' => Values::array_get($payload, 'segments'),
             'priority' => Values::array_get($payload, 'priority'),
             'ttl' => Values::array_get($payload, 'ttl'),
             'title' => Values::array_get($payload, 'title'),

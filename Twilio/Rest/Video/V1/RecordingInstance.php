@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property integer duration
  * @property string containerFormat
  * @property string codec
+ * @property array groupingSids
  * @property array links
  */
 class RecordingInstance extends InstanceResource {
@@ -54,6 +55,7 @@ class RecordingInstance extends InstanceResource {
             'duration' => Values::array_get($payload, 'duration'),
             'containerFormat' => Values::array_get($payload, 'container_format'),
             'codec' => Values::array_get($payload, 'codec'),
+            'groupingSids' => Values::array_get($payload, 'grouping_sids'),
             'links' => Values::array_get($payload, 'links'),
         );
 
