@@ -5,6 +5,8 @@ twilio-php Changelog
 --------------------------
 - Add support for Twilio Chat v2
 - Add `recordingChannels`, `recordingStatusCallback`, `recordingStatusCallbackMethod`, `sipAuthUsername`, `sipAuthPassword`, `region`, `conferenceRecordingStatusCallback`, `conferenceRecordingStatusCallbackMethod` optional parameters to conference participant resource.
+- Add support for setting `DEBUG_HTTP_TRAFFIC=true` environment varibale to dump request and response information. Thanks @kevinburke, PR #394.
+- Add deprecation warning to `ConversationsGrant`, it is being replaced by `VideoGrant`.
 
 [2017-04-12] Version 5.7.3
 --------------------------
