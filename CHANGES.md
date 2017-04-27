@@ -1,6 +1,11 @@
 twilio-php Changelog
 ====================
 
+[2017-04-27] Version 5.8.0
+--------------------------
+- Add support for Twilio Chat v2
+- Add `recordingChannels`, `recordingStatusCallback`, `recordingStatusCallbackMethod`, `sipAuthUsername`, `sipAuthPassword`, `region`, `conferenceRecordingStatusCallback`, `conferenceRecordingStatusCallbackMethod` optional parameters to conference participant resource.
+
 [2017-04-12] Version 5.7.3
 --------------------------
 - Add TaskRouterGrant.

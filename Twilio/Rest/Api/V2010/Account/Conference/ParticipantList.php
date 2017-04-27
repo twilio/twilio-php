@@ -69,6 +69,14 @@ class ParticipantList extends ListResource {
             'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
             'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
             'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
+            'RecordingChannels' => $options['recordingChannels'],
+            'RecordingStatusCallback' => $options['recordingStatusCallback'],
+            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
+            'SipAuthUsername' => $options['sipAuthUsername'],
+            'SipAuthPassword' => $options['sipAuthPassword'],
+            'Region' => $options['region'],
+            'ConferenceRecordingStatusCallback' => $options['conferenceRecordingStatusCallback'],
+            'ConferenceRecordingStatusCallbackMethod' => $options['conferenceRecordingStatusCallbackMethod'],
         ));
 
         $payload = $this->version->create(
