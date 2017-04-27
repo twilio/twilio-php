@@ -12,16 +12,19 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Chat\V1;
+use Twilio\Rest\Chat\V2;
 
 /**
  * @property \Twilio\Rest\Chat\V1 v1
- * @property \Twilio\Rest\Chat\V1\CredentialList credentials
- * @property \Twilio\Rest\Chat\V1\ServiceList services
- * @method \Twilio\Rest\Chat\V1\CredentialContext credentials(string $sid)
- * @method \Twilio\Rest\Chat\V1\ServiceContext services(string $sid)
+ * @property \Twilio\Rest\Chat\V2 v2
+ * @property \Twilio\Rest\Chat\V2\CredentialList credentials
+ * @property \Twilio\Rest\Chat\V2\ServiceList services
+ * @method \Twilio\Rest\Chat\V2\CredentialContext credentials(string $sid)
+ * @method \Twilio\Rest\Chat\V2\ServiceContext services(string $sid)
  */
 class Chat extends Domain {
     protected $_v1 = null;
+    protected $_v2 = null;
 
     /**
      * Construct the Chat Domain
@@ -44,6 +47,16 @@ class Chat extends Domain {
             $this->_v1 = new V1($this);
         }
         return $this->_v1;
+    }
+
+    /**
+     * @return \Twilio\Rest\Chat\V2 Version v2 of chat
+     */
+    protected function getV2() {
+        if (!$this->_v2) {
+            $this->_v2 = new V2($this);
+        }
+        return $this->_v2;
     }
 
     /**
@@ -80,33 +93,33 @@ class Chat extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Chat\V1\CredentialList 
+     * @return \Twilio\Rest\Chat\V2\CredentialList 
      */
     protected function getCredentials() {
-        return $this->v1->credentials;
+        return $this->v2->credentials;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V1\CredentialContext 
+     * @return \Twilio\Rest\Chat\V2\CredentialContext 
      */
     protected function contextCredentials($sid) {
-        return $this->v1->credentials($sid);
+        return $this->v2->credentials($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Chat\V1\ServiceList 
+     * @return \Twilio\Rest\Chat\V2\ServiceList 
      */
     protected function getServices() {
-        return $this->v1->services;
+        return $this->v2->services;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V1\ServiceContext 
+     * @return \Twilio\Rest\Chat\V2\ServiceContext 
      */
     protected function contextServices($sid) {
-        return $this->v1->services($sid);
+        return $this->v2->services($sid);
     }
 
     /**

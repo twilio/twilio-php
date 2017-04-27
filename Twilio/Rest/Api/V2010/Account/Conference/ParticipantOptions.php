@@ -45,10 +45,21 @@ abstract class ParticipantOptions {
      *                                               conference_status_callback_method
      * @param string $conferenceStatusCallbackEvent The
      *                                              conference_status_callback_event
+     * @param string $recordingChannels The recording_channels
+     * @param string $recordingStatusCallback The recording_status_callback
+     * @param string $recordingStatusCallbackMethod The
+     *                                              recording_status_callback_method
+     * @param string $sipAuthUsername The sip_auth_username
+     * @param string $sipAuthPassword The sip_auth_password
+     * @param string $region The region
+     * @param string $conferenceRecordingStatusCallback The
+     *                                                  conference_recording_status_callback
+     * @param string $conferenceRecordingStatusCallbackMethod The
+     *                                                        conference_recording_status_callback_method
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE) {
-        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent);
+    public static function create($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $region = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE) {
+        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod);
     }
 
     /**
@@ -157,8 +168,19 @@ class CreateParticipantOptions extends Options {
      *                                               conference_status_callback_method
      * @param string $conferenceStatusCallbackEvent The
      *                                              conference_status_callback_event
+     * @param string $recordingChannels The recording_channels
+     * @param string $recordingStatusCallback The recording_status_callback
+     * @param string $recordingStatusCallbackMethod The
+     *                                              recording_status_callback_method
+     * @param string $sipAuthUsername The sip_auth_username
+     * @param string $sipAuthPassword The sip_auth_password
+     * @param string $region The region
+     * @param string $conferenceRecordingStatusCallback The
+     *                                                  conference_recording_status_callback
+     * @param string $conferenceRecordingStatusCallbackMethod The
+     *                                                        conference_recording_status_callback_method
      */
-    public function __construct($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE) {
+    public function __construct($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $region = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
@@ -177,6 +199,14 @@ class CreateParticipantOptions extends Options {
         $this->options['conferenceStatusCallback'] = $conferenceStatusCallback;
         $this->options['conferenceStatusCallbackMethod'] = $conferenceStatusCallbackMethod;
         $this->options['conferenceStatusCallbackEvent'] = $conferenceStatusCallbackEvent;
+        $this->options['recordingChannels'] = $recordingChannels;
+        $this->options['recordingStatusCallback'] = $recordingStatusCallback;
+        $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
+        $this->options['sipAuthUsername'] = $sipAuthUsername;
+        $this->options['sipAuthPassword'] = $sipAuthPassword;
+        $this->options['region'] = $region;
+        $this->options['conferenceRecordingStatusCallback'] = $conferenceRecordingStatusCallback;
+        $this->options['conferenceRecordingStatusCallbackMethod'] = $conferenceRecordingStatusCallbackMethod;
     }
 
     /**
@@ -376,6 +406,97 @@ class CreateParticipantOptions extends Options {
      */
     public function setConferenceStatusCallbackEvent($conferenceStatusCallbackEvent) {
         $this->options['conferenceStatusCallbackEvent'] = $conferenceStatusCallbackEvent;
+        return $this;
+    }
+
+    /**
+     * The recording_channels
+     * 
+     * @param string $recordingChannels The recording_channels
+     * @return $this Fluent Builder
+     */
+    public function setRecordingChannels($recordingChannels) {
+        $this->options['recordingChannels'] = $recordingChannels;
+        return $this;
+    }
+
+    /**
+     * The recording_status_callback
+     * 
+     * @param string $recordingStatusCallback The recording_status_callback
+     * @return $this Fluent Builder
+     */
+    public function setRecordingStatusCallback($recordingStatusCallback) {
+        $this->options['recordingStatusCallback'] = $recordingStatusCallback;
+        return $this;
+    }
+
+    /**
+     * The recording_status_callback_method
+     * 
+     * @param string $recordingStatusCallbackMethod The
+     *                                              recording_status_callback_method
+     * @return $this Fluent Builder
+     */
+    public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
+        $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
+        return $this;
+    }
+
+    /**
+     * The sip_auth_username
+     * 
+     * @param string $sipAuthUsername The sip_auth_username
+     * @return $this Fluent Builder
+     */
+    public function setSipAuthUsername($sipAuthUsername) {
+        $this->options['sipAuthUsername'] = $sipAuthUsername;
+        return $this;
+    }
+
+    /**
+     * The sip_auth_password
+     * 
+     * @param string $sipAuthPassword The sip_auth_password
+     * @return $this Fluent Builder
+     */
+    public function setSipAuthPassword($sipAuthPassword) {
+        $this->options['sipAuthPassword'] = $sipAuthPassword;
+        return $this;
+    }
+
+    /**
+     * The region
+     * 
+     * @param string $region The region
+     * @return $this Fluent Builder
+     */
+    public function setRegion($region) {
+        $this->options['region'] = $region;
+        return $this;
+    }
+
+    /**
+     * The conference_recording_status_callback
+     * 
+     * @param string $conferenceRecordingStatusCallback The
+     *                                                  conference_recording_status_callback
+     * @return $this Fluent Builder
+     */
+    public function setConferenceRecordingStatusCallback($conferenceRecordingStatusCallback) {
+        $this->options['conferenceRecordingStatusCallback'] = $conferenceRecordingStatusCallback;
+        return $this;
+    }
+
+    /**
+     * The conference_recording_status_callback_method
+     * 
+     * @param string $conferenceRecordingStatusCallbackMethod The
+     *                                                        conference_recording_status_callback_method
+     * @return $this Fluent Builder
+     */
+    public function setConferenceRecordingStatusCallbackMethod($conferenceRecordingStatusCallbackMethod) {
+        $this->options['conferenceRecordingStatusCallbackMethod'] = $conferenceRecordingStatusCallbackMethod;
         return $this;
     }
 
