@@ -71,7 +71,7 @@ Once an `Edge` feature has matured it will be considered `Mainline` and included
 in the stable artifact, with a `MAJOR` or `MINOR` version bump.
 
 To use an `Edge` artifact in your PHP project you will have to make sure that 
-you pin the artifact with `alpha` stability in your package.json.
+you pin the artifact with `alpha` stability in your composer.json.
 
 [semver]: http://semver.org/
 [changelog]: https://github.com/twilio/twilio-php/blob/master/CHANGES.md
