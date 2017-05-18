@@ -66,4 +66,11 @@ class Serialize {
         return $boolOrStr ? 'True' : 'False';
     }
 
+    public static function json_object($object) {
+        if (is_array($object)) {
+            return json_encode($object);
+        }
+        return $object;
+    }
+
 }
