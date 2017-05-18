@@ -123,6 +123,27 @@ class WorkerList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of WorkerInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of WorkerInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for WorkerInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new WorkerPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new WorkerInstance
      * 
      * @param string $friendlyName The friendly_name

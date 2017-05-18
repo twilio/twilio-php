@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -122,6 +123,27 @@ class MobileList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new MobilePage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of MobileInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of MobileInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for MobileInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new MobilePage($this->version, $response, $this->solution);

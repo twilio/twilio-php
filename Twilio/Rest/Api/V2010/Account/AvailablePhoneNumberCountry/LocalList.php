@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -122,6 +123,27 @@ class LocalList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new LocalPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of LocalInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of LocalInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for LocalInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new LocalPage($this->version, $response, $this->solution);

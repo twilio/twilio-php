@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\IpMessaging\V2\Service\Channel;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
@@ -135,6 +136,27 @@ class InviteList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new InvitePage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of InviteInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of InviteInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for InviteInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new InvitePage($this->version, $response, $this->solution);

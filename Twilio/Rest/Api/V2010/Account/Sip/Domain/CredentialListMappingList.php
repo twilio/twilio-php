@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip\Domain;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
@@ -127,6 +128,28 @@ class CredentialListMappingList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new CredentialListMappingPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of CredentialListMappingInstance records from the
+     * API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of CredentialListMappingInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for CredentialListMappingInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new CredentialListMappingPage($this->version, $response, $this->solution);

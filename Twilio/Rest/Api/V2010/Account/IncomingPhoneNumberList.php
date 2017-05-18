@@ -126,6 +126,27 @@ class IncomingPhoneNumberList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of IncomingPhoneNumberInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of IncomingPhoneNumberInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for IncomingPhoneNumberInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new IncomingPhoneNumberPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new IncomingPhoneNumberInstance
      * 
      * @param array|Options $options Optional Arguments

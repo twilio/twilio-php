@@ -141,6 +141,27 @@ class RecordList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of RecordInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of RecordInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for RecordInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new RecordPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Access the allTime
      */
     protected function getAllTime() {

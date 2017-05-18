@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Chat\V1\Service\User;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
@@ -99,6 +100,27 @@ class UserChannelList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new UserChannelPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of UserChannelInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of UserChannelInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for UserChannelInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new UserChannelPage($this->version, $response, $this->solution);

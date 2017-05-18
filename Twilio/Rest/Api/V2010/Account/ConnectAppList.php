@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
@@ -97,6 +98,27 @@ class ConnectAppList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new ConnectAppPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of ConnectAppInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of ConnectAppInstance
+     */
+    public function getPage($targetUrl) {
+        $resourceUrl = $this->version->absoluteUrl($this->uri);
+        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
+            throw new TwilioException('Invalid targetUrl for ConnectAppInstance resource.');
+        }
+
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new ConnectAppPage($this->version, $response, $this->solution);
