@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-05-19] Version 5.9.0
+--------------------------
+- Add support for video.twilio.com.
+
 [2017-04-27] Version 5.8.0
 --------------------------
 - Add support for Twilio Chat v2

@@ -27,6 +27,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
+ * @property \Twilio\Rest\Video video
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -89,6 +90,7 @@ class Client {
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
+    protected $_video = null;
 
     /**
      * Initializes the Twilio Client
@@ -652,6 +654,18 @@ class Client {
             $this->_trunking = new Trunking($this);
         }
         return $this->_trunking;
+    }
+
+    /**
+     * Access the Video Twilio Domain
+     * 
+     * @return \Twilio\Rest\Video Video Twilio Domain
+     */
+    protected function getVideo() {
+        if (!$this->_video) {
+            $this->_video = new Video($this);
+        }
+        return $this->_video;
     }
 
     /**
