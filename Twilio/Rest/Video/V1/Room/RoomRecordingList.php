@@ -13,13 +13,13 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class RecordingList extends ListResource {
+class RoomRecordingList extends ListResource {
     /**
-     * Construct the RecordingList
+     * Construct the RoomRecordingList
      * 
      * @param Version $version Version that contains the resource
      * @param string $roomSid The room_sid
-     * @return \Twilio\Rest\Video\V1\Room\RecordingList 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
      */
     public function __construct(Version $version, $roomSid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class RecordingList extends ListResource {
     }
 
     /**
-     * Streams RecordingInstance records from the API as a generator stream.
+     * Streams RoomRecordingInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +59,7 @@ class RecordingList extends ListResource {
     }
 
     /**
-     * Reads RecordingInstance records from the API as a list.
+     * Reads RoomRecordingInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
@@ -71,20 +71,20 @@ class RecordingList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RecordingInstance[] Array of results
+     * @return RoomRecordingInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RecordingInstance records from the API.
+     * Retrieve a single page of RoomRecordingInstance records from the API.
      * Request is executed immediately
      * 
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of RecordingInstance
+     * @return \Twilio\Page Page of RoomRecordingInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -99,17 +99,17 @@ class RecordingList extends ListResource {
             $params
         );
 
-        return new RecordingPage($this->version, $response, $this->solution);
+        return new RoomRecordingPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a RecordingContext
+     * Constructs a RoomRecordingContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RecordingContext 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext 
      */
     public function getContext($sid) {
-        return new RecordingContext(
+        return new RoomRecordingContext(
             $this->version,
             $this->solution['roomSid'],
             $sid
@@ -122,6 +122,6 @@ class RecordingList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Video.V1.RecordingList]';
+        return '[Twilio.Video.V1.RoomRecordingList]';
     }
 }

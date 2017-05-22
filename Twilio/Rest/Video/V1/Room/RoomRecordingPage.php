@@ -11,7 +11,7 @@ namespace Twilio\Rest\Video\V1\Room;
 
 use Twilio\Page;
 
-class RecordingPage extends Page {
+class RoomRecordingPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
 
@@ -20,7 +20,7 @@ class RecordingPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RecordingInstance(
+        return new RoomRecordingInstance(
             $this->version,
             $payload,
             $this->solution['roomSid']
@@ -33,6 +33,6 @@ class RecordingPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Video.V1.RecordingPage]';
+        return '[Twilio.Video.V1.RoomRecordingPage]';
     }
 }

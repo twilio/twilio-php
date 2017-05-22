@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-05-22] Version 5.10.0
+--------------------------
+- Rename room `Recordings` resource to `RoomRecordings` to avoid class name conflict (backwards incompatible).
+
 [2017-05-19] Version 5.9.0
 --------------------------
 - Add support for video.twilio.com.

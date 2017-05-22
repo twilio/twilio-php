@@ -11,13 +11,13 @@ namespace Twilio\Rest\Video\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Video\V1\Room\RecordingList;
+use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\Room\RecordingList recordings
- * @method \Twilio\Rest\Video\V1\Room\RecordingContext recordings(string $sid)
+ * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList recordings
+ * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
  */
 class RoomContext extends InstanceContext {
     protected $_recordings = null;
@@ -89,11 +89,11 @@ class RoomContext extends InstanceContext {
     /**
      * Access the recordings
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RecordingList 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
-            $this->_recordings = new RecordingList(
+            $this->_recordings = new RoomRecordingList(
                 $this->version,
                 $this->solution['sid']
             );

@@ -13,14 +13,14 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class RecordingContext extends InstanceContext {
+class RoomRecordingContext extends InstanceContext {
     /**
-     * Initialize the RecordingContext
+     * Initialize the RoomRecordingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $roomSid The room_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RecordingContext 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext 
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
@@ -35,9 +35,9 @@ class RecordingContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RecordingInstance
+     * Fetch a RoomRecordingInstance
      * 
-     * @return RecordingInstance Fetched RecordingInstance
+     * @return RoomRecordingInstance Fetched RoomRecordingInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -48,7 +48,7 @@ class RecordingContext extends InstanceContext {
             $params
         );
 
-        return new RecordingInstance(
+        return new RoomRecordingInstance(
             $this->version,
             $payload,
             $this->solution['roomSid'],
@@ -66,6 +66,6 @@ class RecordingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.RecordingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.RoomRecordingContext ' . implode(' ', $context) . ']';
     }
 }
