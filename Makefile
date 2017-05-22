@@ -9,7 +9,7 @@ define LICENSE
  *
  * @category  Services
  * @package   Services_Twilio
- * @author    Twilio <help@twilio.com>
+ * @author    Neuman Vong <neuman@twilio.com>
  * @license   http://creativecommons.org/licenses/MIT/ MIT
  * @link      http://pear.php.net/package/Services_Twilio
  */

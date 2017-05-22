@@ -129,4 +129,17 @@ class SerializeTest extends UnitTest {
         $actual = Serialize::booleanToString("True");
         $this->assertEquals("True", $actual);
     }
+
+    public function testJsonObjectSerializesArrays() {
+        $actual = Serialize::json_object(array("this", "is", "a", "list"));
+        $this->assertEquals('["this","is","a","list"]', $actual);
+
+        $actual = Serialize::json_object(array("twilio" => "rocks"));
+        $this->assertEquals('{"twilio":"rocks"}', $actual);
+    }
+
+    public function testJsonObjectPassThroughOtherVals() {
+        $actual = Serialize::json_object('{"already":"serialized"}');
+        $this->assertEquals('{"already":"serialized"}', $actual);
+    }
 }
