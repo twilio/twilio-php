@@ -1,7 +1,7 @@
 twilio-php Changelog
 ====================
 
-[2017-04-27] Version 5.9.0-alpha1
+[2017-05-22] Version 5.9.0-alpha1
 ---------------------------------
 
 - Update usage record categories.
