@@ -31,8 +31,11 @@ use Twilio\Version;
  * @property integer maxParticipants
  * @property boolean recordParticipantsOnConnect
  * @property string url
+ * @property array links
  */
 class RoomInstance extends InstanceResource {
+    protected $_recordings = null;
+
     /**
      * Initialize the RoomInstance
      * 
@@ -61,6 +64,7 @@ class RoomInstance extends InstanceResource {
             'maxParticipants' => Values::array_get($payload, 'max_participants'),
             'recordParticipantsOnConnect' => Values::array_get($payload, 'record_participants_on_connect'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array(
@@ -104,6 +108,15 @@ class RoomInstance extends InstanceResource {
         return $this->proxy()->update(
             $status
         );
+    }
+
+    /**
+     * Access the recordings
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
+     */
+    protected function getRecordings() {
+        return $this->proxy()->recordings;
     }
 
     /**

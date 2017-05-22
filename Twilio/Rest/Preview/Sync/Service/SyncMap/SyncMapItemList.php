@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Sync\Service\SyncMap;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -45,7 +46,7 @@ class SyncMapItemList extends ListResource {
     public function create($key, $data) {
         $data = Values::of(array(
             'Key' => $key,
-            'Data' => $data,
+            'Data' => Serialize::json_object($data),
         ));
 
         $payload = $this->version->create(

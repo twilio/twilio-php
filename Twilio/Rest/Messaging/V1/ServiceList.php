@@ -51,6 +51,10 @@ class ServiceList extends ListResource {
             'StickySender' => Serialize::booleanToString($options['stickySender']),
             'MmsConverter' => Serialize::booleanToString($options['mmsConverter']),
             'SmartEncoding' => Serialize::booleanToString($options['smartEncoding']),
+            'ScanMessageContent' => $options['scanMessageContent'],
+            'FallbackToLongCode' => Serialize::booleanToString($options['fallbackToLongCode']),
+            'AreaCodeGeomatch' => Serialize::booleanToString($options['areaCodeGeomatch']),
+            'ValidityPeriod' => $options['validityPeriod'],
         ));
 
         $payload = $this->version->create(

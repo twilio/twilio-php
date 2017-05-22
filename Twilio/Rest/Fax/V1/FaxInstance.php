@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string from
  * @property string to
  * @property string quality
+ * @property string mediaSid
  * @property string mediaUrl
  * @property integer numPages
  * @property integer duration
@@ -32,9 +33,12 @@ use Twilio\Version;
  * @property string priceUnit
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
+ * @property array links
  * @property string url
  */
 class FaxInstance extends InstanceResource {
+    protected $_media = null;
+
     /**
      * Initialize the FaxInstance
      * 
@@ -53,6 +57,7 @@ class FaxInstance extends InstanceResource {
             'from' => Values::array_get($payload, 'from'),
             'to' => Values::array_get($payload, 'to'),
             'quality' => Values::array_get($payload, 'quality'),
+            'mediaSid' => Values::array_get($payload, 'media_sid'),
             'mediaUrl' => Values::array_get($payload, 'media_url'),
             'numPages' => Values::array_get($payload, 'num_pages'),
             'duration' => Values::array_get($payload, 'duration'),
@@ -63,6 +68,7 @@ class FaxInstance extends InstanceResource {
             'priceUnit' => Values::array_get($payload, 'price_unit'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'links' => Values::array_get($payload, 'links'),
             'url' => Values::array_get($payload, 'url'),
         );
 
@@ -107,6 +113,24 @@ class FaxInstance extends InstanceResource {
         return $this->proxy()->update(
             $options
         );
+    }
+
+    /**
+     * Deletes the FaxInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
+     * Access the media
+     * 
+     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList 
+     */
+    protected function getMedia() {
+        return $this->proxy()->media;
     }
 
     /**

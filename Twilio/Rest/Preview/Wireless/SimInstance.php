@@ -27,6 +27,14 @@ use Twilio\Version;
  * @property string status
  * @property string commandsCallbackUrl
  * @property string commandsCallbackMethod
+ * @property string smsFallbackMethod
+ * @property string smsFallbackUrl
+ * @property string smsMethod
+ * @property string smsUrl
+ * @property string voiceFallbackMethod
+ * @property string voiceFallbackUrl
+ * @property string voiceMethod
+ * @property string voiceUrl
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -58,6 +66,14 @@ class SimInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'commandsCallbackUrl' => Values::array_get($payload, 'commands_callback_url'),
             'commandsCallbackMethod' => Values::array_get($payload, 'commands_callback_method'),
+            'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),
+            'smsFallbackUrl' => Values::array_get($payload, 'sms_fallback_url'),
+            'smsMethod' => Values::array_get($payload, 'sms_method'),
+            'smsUrl' => Values::array_get($payload, 'sms_url'),
+            'voiceFallbackMethod' => Values::array_get($payload, 'voice_fallback_method'),
+            'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
+            'voiceMethod' => Values::array_get($payload, 'voice_method'),
+            'voiceUrl' => Values::array_get($payload, 'voice_url'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

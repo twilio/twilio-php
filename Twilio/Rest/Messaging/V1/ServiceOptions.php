@@ -22,10 +22,14 @@ abstract class ServiceOptions {
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
      * @param boolean $smartEncoding The smart_encoding
+     * @param string $scanMessageContent The scan_message_content
+     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     * @param integer $validityPeriod The validity_period
      * @return CreateServiceOptions Options builder
      */
-    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
-        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding);
+    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
+        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod);
     }
 
     /**
@@ -38,10 +42,14 @@ abstract class ServiceOptions {
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
      * @param boolean $smartEncoding The smart_encoding
+     * @param string $scanMessageContent The scan_message_content
+     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     * @param integer $validityPeriod The validity_period
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding);
+    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod);
     }
 }
 
@@ -55,8 +63,12 @@ class CreateServiceOptions extends Options {
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
      * @param boolean $smartEncoding The smart_encoding
+     * @param string $scanMessageContent The scan_message_content
+     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     * @param integer $validityPeriod The validity_period
      */
-    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
+    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
         $this->options['fallbackUrl'] = $fallbackUrl;
@@ -65,6 +77,10 @@ class CreateServiceOptions extends Options {
         $this->options['stickySender'] = $stickySender;
         $this->options['mmsConverter'] = $mmsConverter;
         $this->options['smartEncoding'] = $smartEncoding;
+        $this->options['scanMessageContent'] = $scanMessageContent;
+        $this->options['fallbackToLongCode'] = $fallbackToLongCode;
+        $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
+        $this->options['validityPeriod'] = $validityPeriod;
     }
 
     /**
@@ -156,6 +172,50 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * The scan_message_content
+     * 
+     * @param string $scanMessageContent The scan_message_content
+     * @return $this Fluent Builder
+     */
+    public function setScanMessageContent($scanMessageContent) {
+        $this->options['scanMessageContent'] = $scanMessageContent;
+        return $this;
+    }
+
+    /**
+     * The fallback_to_long_code
+     * 
+     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     * @return $this Fluent Builder
+     */
+    public function setFallbackToLongCode($fallbackToLongCode) {
+        $this->options['fallbackToLongCode'] = $fallbackToLongCode;
+        return $this;
+    }
+
+    /**
+     * The area_code_geomatch
+     * 
+     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     * @return $this Fluent Builder
+     */
+    public function setAreaCodeGeomatch($areaCodeGeomatch) {
+        $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
+        return $this;
+    }
+
+    /**
+     * The validity_period
+     * 
+     * @param integer $validityPeriod The validity_period
+     * @return $this Fluent Builder
+     */
+    public function setValidityPeriod($validityPeriod) {
+        $this->options['validityPeriod'] = $validityPeriod;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -182,8 +242,12 @@ class UpdateServiceOptions extends Options {
      * @param boolean $stickySender The sticky_sender
      * @param boolean $mmsConverter The mms_converter
      * @param boolean $smartEncoding The smart_encoding
+     * @param string $scanMessageContent The scan_message_content
+     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     * @param integer $validityPeriod The validity_period
      */
-    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
@@ -193,6 +257,10 @@ class UpdateServiceOptions extends Options {
         $this->options['stickySender'] = $stickySender;
         $this->options['mmsConverter'] = $mmsConverter;
         $this->options['smartEncoding'] = $smartEncoding;
+        $this->options['scanMessageContent'] = $scanMessageContent;
+        $this->options['fallbackToLongCode'] = $fallbackToLongCode;
+        $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
+        $this->options['validityPeriod'] = $validityPeriod;
     }
 
     /**
@@ -291,6 +359,50 @@ class UpdateServiceOptions extends Options {
      */
     public function setSmartEncoding($smartEncoding) {
         $this->options['smartEncoding'] = $smartEncoding;
+        return $this;
+    }
+
+    /**
+     * The scan_message_content
+     * 
+     * @param string $scanMessageContent The scan_message_content
+     * @return $this Fluent Builder
+     */
+    public function setScanMessageContent($scanMessageContent) {
+        $this->options['scanMessageContent'] = $scanMessageContent;
+        return $this;
+    }
+
+    /**
+     * The fallback_to_long_code
+     * 
+     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     * @return $this Fluent Builder
+     */
+    public function setFallbackToLongCode($fallbackToLongCode) {
+        $this->options['fallbackToLongCode'] = $fallbackToLongCode;
+        return $this;
+    }
+
+    /**
+     * The area_code_geomatch
+     * 
+     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     * @return $this Fluent Builder
+     */
+    public function setAreaCodeGeomatch($areaCodeGeomatch) {
+        $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
+        return $this;
+    }
+
+    /**
+     * The validity_period
+     * 
+     * @param integer $validityPeriod The validity_period
+     * @return $this Fluent Builder
+     */
+    public function setValidityPeriod($validityPeriod) {
+        $this->options['validityPeriod'] = $validityPeriod;
         return $this;
     }
 

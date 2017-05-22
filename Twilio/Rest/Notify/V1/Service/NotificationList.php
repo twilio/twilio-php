@@ -11,6 +11,7 @@ namespace Twilio\Rest\Notify\V1\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -55,7 +56,7 @@ class NotificationList extends ListResource {
             'Apn' => $options['apn'],
             'Gcm' => $options['gcm'],
             'Sms' => $options['sms'],
-            'FacebookMessenger' => $options['facebookMessenger'],
+            'FacebookMessenger' => Serialize::json_object($options['facebookMessenger']),
             'Fcm' => $options['fcm'],
             'Segment' => $options['segment'],
         ));

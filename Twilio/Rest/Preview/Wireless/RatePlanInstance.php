@@ -21,10 +21,13 @@ use Twilio\Version;
  * @property string uniqueName
  * @property string accountSid
  * @property string friendlyName
- * @property string roaming
- * @property array data
- * @property array commands
- * @property string renewal
+ * @property boolean dataEnabled
+ * @property string dataMetering
+ * @property integer dataLimit
+ * @property boolean messagingEnabled
+ * @property boolean voiceEnabled
+ * @property boolean nationalRoamingEnabled
+ * @property string internationalRoaming
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -47,10 +50,13 @@ class RatePlanInstance extends InstanceResource {
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'roaming' => Values::array_get($payload, 'roaming'),
-            'data' => Values::array_get($payload, 'data'),
-            'commands' => Values::array_get($payload, 'commands'),
-            'renewal' => Values::array_get($payload, 'renewal'),
+            'dataEnabled' => Values::array_get($payload, 'data_enabled'),
+            'dataMetering' => Values::array_get($payload, 'data_metering'),
+            'dataLimit' => Values::array_get($payload, 'data_limit'),
+            'messagingEnabled' => Values::array_get($payload, 'messaging_enabled'),
+            'voiceEnabled' => Values::array_get($payload, 'voice_enabled'),
+            'nationalRoamingEnabled' => Values::array_get($payload, 'national_roaming_enabled'),
+            'internationalRoaming' => Values::array_get($payload, 'international_roaming'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

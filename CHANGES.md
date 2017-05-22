@@ -1,5 +1,16 @@
 twilio-php Changelog
 ====================
+
+[2017-04-27] Version 5.9.0-alpha1
+---------------------------------
+
+- Update usage record categories.
+- Add video domain.
+- Add wireless domain.
+- Add fax domain.
+- Add sync domain.
+- Add `area_code_geomatch` to messaging `Service`.
+
 [2017-04-27] Version 5.8.0-alpha1
 ---------------------------------
 - Add support for Twilio Chat v2
@@ -148,7 +159,7 @@ Thanks to @johnpaulmedina for this suggestion.
 
   - Remove required parameter `friendlyName` on IP Messaging/Chat Role update.
   - Alphabetize domain mounts
-  - Better exceptions when an error is encountered loading a page of records,  
+  - Better exceptions when an error is encountered loading a page of records,
     the exception class has been corrected from `DeserializeException` to
     `RestException`.
 

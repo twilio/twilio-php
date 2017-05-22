@@ -30,6 +30,10 @@ use Twilio\Version;
  * @property boolean stickySender
  * @property boolean mmsConverter
  * @property boolean smartEncoding
+ * @property string scanMessageContent
+ * @property boolean fallbackToLongCode
+ * @property boolean areaCodeGeomatch
+ * @property integer validityPeriod
  * @property string url
  * @property array links
  */
@@ -64,6 +68,10 @@ class ServiceInstance extends InstanceResource {
             'stickySender' => Values::array_get($payload, 'sticky_sender'),
             'mmsConverter' => Values::array_get($payload, 'mms_converter'),
             'smartEncoding' => Values::array_get($payload, 'smart_encoding'),
+            'scanMessageContent' => Values::array_get($payload, 'scan_message_content'),
+            'fallbackToLongCode' => Values::array_get($payload, 'fallback_to_long_code'),
+            'areaCodeGeomatch' => Values::array_get($payload, 'area_code_geomatch'),
+            'validityPeriod' => Values::array_get($payload, 'validity_period'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );

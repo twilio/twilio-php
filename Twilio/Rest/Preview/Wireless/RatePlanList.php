@@ -113,11 +113,14 @@ class RatePlanList extends ListResource {
         $data = Values::of(array(
             'UniqueName' => $options['uniqueName'],
             'FriendlyName' => $options['friendlyName'],
-            'Roaming' => $options['roaming'],
+            'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
             'DataLimit' => $options['dataLimit'],
             'DataMetering' => $options['dataMetering'],
+            'MessagingEnabled' => Serialize::booleanToString($options['messagingEnabled']),
+            'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
             'CommandsEnabled' => Serialize::booleanToString($options['commandsEnabled']),
-            'Renewal' => $options['renewal'],
+            'NationalRoamingEnabled' => Serialize::booleanToString($options['nationalRoamingEnabled']),
+            'InternationalRoaming' => $options['internationalRoaming'],
         ));
 
         $payload = $this->version->create(

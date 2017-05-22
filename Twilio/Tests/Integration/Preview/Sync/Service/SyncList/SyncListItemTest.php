@@ -12,6 +12,7 @@ namespace Twilio\Tests\Integration\Preview\Sync\Service\SyncList;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -98,7 +99,7 @@ class SyncListItemTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
 
         $values = array(
-            'Data' => "{}",
+            'Data' => Serialize::json_object("{}"),
         );
 
         $this->assertRequest(new Request(
@@ -227,7 +228,7 @@ class SyncListItemTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
 
         $values = array(
-            'Data' => "{}",
+            'Data' => Serialize::json_object("{}"),
         );
 
         $this->assertRequest(new Request(

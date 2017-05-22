@@ -72,19 +72,19 @@ class RatePlanTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "unique_name": "unique_name",
-                        "commands": {
-                            "enabled": true
-                        },
-                        "data": {
-                            "limit": 1000,
-                            "metering": "pooled"
-                        },
+                        "data_enabled": true,
+                        "data_limit": 1000,
+                        "data_metering": "pooled",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "friendly_name": "friendly_name",
-                        "renewal": "monthly",
-                        "roaming": [
-                            "National"
+                        "messaging_enabled": true,
+                        "voice_enabled": true,
+                        "national_roaming_enabled": true,
+                        "international_roaming": [
+                            "data",
+                            "messaging",
+                            "voice"
                         ],
                         "sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "url": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -120,19 +120,19 @@ class RatePlanTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "unique_name": "unique_name",
-                "commands": {
-                    "enabled": true
-                },
-                "data": {
-                    "limit": 1000,
-                    "metering": "pooled"
-                },
+                "data_enabled": true,
+                "data_limit": 1000,
+                "data_metering": "pooled",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
-                "renewal": "monthly",
-                "roaming": [
-                    "National"
+                "messaging_enabled": true,
+                "voice_enabled": true,
+                "national_roaming_enabled": true,
+                "international_roaming": [
+                    "data",
+                    "messaging",
+                    "voice"
                 ],
                 "sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -166,19 +166,19 @@ class RatePlanTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "unique_name": "unique_name",
-                "commands": {
-                    "enabled": true
-                },
-                "data": {
-                    "limit": 1000,
-                    "metering": "pooled"
-                },
+                "data_enabled": true,
+                "data_limit": 1000,
+                "data_metering": "pooled",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
-                "renewal": "monthly",
-                "roaming": [
-                    "National"
+                "messaging_enabled": true,
+                "voice_enabled": true,
+                "national_roaming_enabled": true,
+                "international_roaming": [
+                    "data",
+                    "messaging",
+                    "voice"
                 ],
                 "sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -212,19 +212,19 @@ class RatePlanTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "unique_name": "unique_name",
-                "commands": {
-                    "enabled": true
-                },
-                "data": {
-                    "limit": 1000,
-                    "metering": "pooled"
-                },
+                "data_enabled": true,
+                "data_limit": 1000,
+                "data_metering": "pooled",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
-                "renewal": "monthly",
-                "roaming": [
-                    "National"
+                "messaging_enabled": true,
+                "voice_enabled": true,
+                "national_roaming_enabled": true,
+                "international_roaming": [
+                    "data",
+                    "messaging",
+                    "voice"
                 ],
                 "sid": "WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"

@@ -16,19 +16,24 @@ abstract class FaxOptions {
     /**
      * @param string $from The from
      * @param string $to The to
+     * @param \DateTime $dateCreatedOnOrBefore The date_created_on_or_before
+     * @param \DateTime $dateCreatedAfter The date_created_after
      * @return ReadFaxOptions Options builder
      */
-    public static function read($from = Values::NONE, $to = Values::NONE) {
-        return new ReadFaxOptions($from, $to);
+    public static function read($from = Values::NONE, $to = Values::NONE, $dateCreatedOnOrBefore = Values::NONE, $dateCreatedAfter = Values::NONE) {
+        return new ReadFaxOptions($from, $to, $dateCreatedOnOrBefore, $dateCreatedAfter);
     }
 
     /**
      * @param string $quality The quality
      * @param string $statusCallback The status_callback
+     * @param string $from The from
+     * @param string $sipAuthUsername The sip_auth_username
+     * @param string $sipAuthPassword The sip_auth_password
      * @return CreateFaxOptions Options builder
      */
-    public static function create($quality = Values::NONE, $statusCallback = Values::NONE) {
-        return new CreateFaxOptions($quality, $statusCallback);
+    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE) {
+        return new CreateFaxOptions($quality, $statusCallback, $from, $sipAuthUsername, $sipAuthPassword);
     }
 
     /**
@@ -44,10 +49,14 @@ class ReadFaxOptions extends Options {
     /**
      * @param string $from The from
      * @param string $to The to
+     * @param \DateTime $dateCreatedOnOrBefore The date_created_on_or_before
+     * @param \DateTime $dateCreatedAfter The date_created_after
      */
-    public function __construct($from = Values::NONE, $to = Values::NONE) {
+    public function __construct($from = Values::NONE, $to = Values::NONE, $dateCreatedOnOrBefore = Values::NONE, $dateCreatedAfter = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['to'] = $to;
+        $this->options['dateCreatedOnOrBefore'] = $dateCreatedOnOrBefore;
+        $this->options['dateCreatedAfter'] = $dateCreatedAfter;
     }
 
     /**
@@ -73,6 +82,28 @@ class ReadFaxOptions extends Options {
     }
 
     /**
+     * The date_created_on_or_before
+     * 
+     * @param \DateTime $dateCreatedOnOrBefore The date_created_on_or_before
+     * @return $this Fluent Builder
+     */
+    public function setDateCreatedOnOrBefore($dateCreatedOnOrBefore) {
+        $this->options['dateCreatedOnOrBefore'] = $dateCreatedOnOrBefore;
+        return $this;
+    }
+
+    /**
+     * The date_created_after
+     * 
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @return $this Fluent Builder
+     */
+    public function setDateCreatedAfter($dateCreatedAfter) {
+        $this->options['dateCreatedAfter'] = $dateCreatedAfter;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -92,10 +123,16 @@ class CreateFaxOptions extends Options {
     /**
      * @param string $quality The quality
      * @param string $statusCallback The status_callback
+     * @param string $from The from
+     * @param string $sipAuthUsername The sip_auth_username
+     * @param string $sipAuthPassword The sip_auth_password
      */
-    public function __construct($quality = Values::NONE, $statusCallback = Values::NONE) {
+    public function __construct($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE) {
         $this->options['quality'] = $quality;
         $this->options['statusCallback'] = $statusCallback;
+        $this->options['from'] = $from;
+        $this->options['sipAuthUsername'] = $sipAuthUsername;
+        $this->options['sipAuthPassword'] = $sipAuthPassword;
     }
 
     /**
@@ -117,6 +154,39 @@ class CreateFaxOptions extends Options {
      */
     public function setStatusCallback($statusCallback) {
         $this->options['statusCallback'] = $statusCallback;
+        return $this;
+    }
+
+    /**
+     * The from
+     * 
+     * @param string $from The from
+     * @return $this Fluent Builder
+     */
+    public function setFrom($from) {
+        $this->options['from'] = $from;
+        return $this;
+    }
+
+    /**
+     * The sip_auth_username
+     * 
+     * @param string $sipAuthUsername The sip_auth_username
+     * @return $this Fluent Builder
+     */
+    public function setSipAuthUsername($sipAuthUsername) {
+        $this->options['sipAuthUsername'] = $sipAuthUsername;
+        return $this;
+    }
+
+    /**
+     * The sip_auth_password
+     * 
+     * @param string $sipAuthPassword The sip_auth_password
+     * @return $this Fluent Builder
+     */
+    public function setSipAuthPassword($sipAuthPassword) {
+        $this->options['sipAuthPassword'] = $sipAuthPassword;
         return $this;
     }
 

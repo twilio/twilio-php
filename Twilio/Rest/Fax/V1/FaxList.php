@@ -11,6 +11,7 @@ namespace Twilio\Rest\Fax\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -92,6 +93,8 @@ class FaxList extends ListResource {
         $params = Values::of(array(
             'From' => $options['from'],
             'To' => $options['to'],
+            'DateCreatedOnOrBefore' => Serialize::iso8601DateTime($options['dateCreatedOnOrBefore']),
+            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -109,21 +112,22 @@ class FaxList extends ListResource {
     /**
      * Create a new FaxInstance
      * 
-     * @param string $from The from
      * @param string $to The to
      * @param string $mediaUrl The media_url
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Newly created FaxInstance
      */
-    public function create($from, $to, $mediaUrl, $options = array()) {
+    public function create($to, $mediaUrl, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'From' => $from,
             'To' => $to,
             'MediaUrl' => $mediaUrl,
             'Quality' => $options['quality'],
             'StatusCallback' => $options['statusCallback'],
+            'From' => $options['from'],
+            'SipAuthUsername' => $options['sipAuthUsername'],
+            'SipAuthPassword' => $options['sipAuthPassword'],
         ));
 
         $payload = $this->version->create(

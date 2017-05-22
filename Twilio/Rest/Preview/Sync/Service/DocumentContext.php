@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Preview\Sync\Service\Document\DocumentPermissionList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -81,7 +82,7 @@ class DocumentContext extends InstanceContext {
      */
     public function update($data) {
         $data = Values::of(array(
-            'Data' => $data,
+            'Data' => Serialize::json_object($data),
         ));
 
         $payload = $this->version->update(

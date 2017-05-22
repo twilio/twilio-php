@@ -42,6 +42,7 @@ class FaxTest extends HolodeckTestCase {
                 "direction": "outbound",
                 "from": "+14155551234",
                 "media_url": "https://www.example.com/fax.pdf",
+                "media_sid": "MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "num_pages": null,
                 "price": null,
                 "price_unit": null,
@@ -50,6 +51,9 @@ class FaxTest extends HolodeckTestCase {
                 "status": "queued",
                 "to": "+14155554321",
                 "duration": null,
+                "links": {
+                    "media": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"
+                },
                 "url": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -112,6 +116,7 @@ class FaxTest extends HolodeckTestCase {
                         "direction": "outbound",
                         "from": "+14155551234",
                         "media_url": "https://www.example.com/fax.pdf",
+                        "media_sid": "MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "num_pages": null,
                         "price": null,
                         "price_unit": null,
@@ -120,6 +125,9 @@ class FaxTest extends HolodeckTestCase {
                         "status": "queued",
                         "to": "+14155554321",
                         "duration": null,
+                        "links": {
+                            "media": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"
+                        },
                         "url": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
@@ -145,12 +153,11 @@ class FaxTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->fax->v1->faxes->create("from", "to", "https://example.com");
+            $this->twilio->fax->v1->faxes->create("to", "https://example.com");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'From' => "from",
             'To' => "to",
             'MediaUrl' => "https://example.com",
         );
@@ -175,6 +182,7 @@ class FaxTest extends HolodeckTestCase {
                 "direction": "outbound",
                 "from": "+14155551234",
                 "media_url": null,
+                "media_sid": null,
                 "num_pages": null,
                 "price": null,
                 "price_unit": null,
@@ -183,12 +191,15 @@ class FaxTest extends HolodeckTestCase {
                 "status": "queued",
                 "to": "+14155554321",
                 "duration": null,
+                "links": {
+                    "media": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"
+                },
                 "url": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
-        $actual = $this->twilio->fax->v1->faxes->create("from", "to", "https://example.com");
+        $actual = $this->twilio->fax->v1->faxes->create("to", "https://example.com");
 
         $this->assertNotNull($actual);
     }
@@ -219,6 +230,7 @@ class FaxTest extends HolodeckTestCase {
                 "direction": "outbound",
                 "from": "+14155551234",
                 "media_url": null,
+                "media_sid": null,
                 "num_pages": null,
                 "price": null,
                 "price_unit": null,
@@ -227,6 +239,9 @@ class FaxTest extends HolodeckTestCase {
                 "status": "canceled",
                 "to": "+14155554321",
                 "duration": null,
+                "links": {
+                    "media": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"
+                },
                 "url": "https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -235,5 +250,30 @@ class FaxTest extends HolodeckTestCase {
         $actual = $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
+    }
+
+    public function testDeleteRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        ));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+
+        $this->assertTrue($actual);
     }
 }

@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -81,7 +82,7 @@ class InstalledAddOnContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Configuration' => $options['configuration'],
+            'Configuration' => Serialize::json_object($options['configuration']),
             'UniqueName' => $options['uniqueName'],
         ));
 

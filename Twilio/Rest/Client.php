@@ -32,6 +32,8 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Video video
  * @property \Twilio\Rest\Messaging messaging
+ * @property \Twilio\Rest\Wireless wireless
+ * @property \Twilio\Rest\Sync sync
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -99,6 +101,8 @@ class Client {
     protected $_trunking = null;
     protected $_video = null;
     protected $_messaging = null;
+    protected $_wireless = null;
+    protected $_sync = null;
 
     /**
      * Initializes the Twilio Client
@@ -722,6 +726,30 @@ class Client {
             $this->_messaging = new Messaging($this);
         }
         return $this->_messaging;
+    }
+
+    /**
+     * Access the Wireless Twilio Domain
+     * 
+     * @return \Twilio\Rest\Wireless Wireless Twilio Domain
+     */
+    protected function getWireless() {
+        if (!$this->_wireless) {
+            $this->_wireless = new Wireless($this);
+        }
+        return $this->_wireless;
+    }
+
+    /**
+     * Access the Sync Twilio Domain
+     * 
+     * @return \Twilio\Rest\Sync Sync Twilio Domain
+     */
+    protected function getSync() {
+        if (!$this->_sync) {
+            $this->_sync = new Sync($this);
+        }
+        return $this->_sync;
     }
 
     /**

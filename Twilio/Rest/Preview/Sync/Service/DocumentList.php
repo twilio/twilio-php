@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -44,7 +45,7 @@ class DocumentList extends ListResource {
 
         $data = Values::of(array(
             'UniqueName' => $options['uniqueName'],
-            'Data' => $options['data'],
+            'Data' => Serialize::json_object($options['data']),
         ));
 
         $payload = $this->version->create(
