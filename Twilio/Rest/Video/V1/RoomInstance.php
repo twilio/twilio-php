@@ -113,7 +113,7 @@ class RoomInstance extends InstanceResource {
     /**
      * Access the recordings
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RecordingList 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;

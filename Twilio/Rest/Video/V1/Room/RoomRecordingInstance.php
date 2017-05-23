@@ -31,15 +31,15 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class RecordingInstance extends InstanceResource {
+class RoomRecordingInstance extends InstanceResource {
     /**
-     * Initialize the RecordingInstance
+     * Initialize the RoomRecordingInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid The room_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RecordingInstance 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingInstance 
      */
     public function __construct(Version $version, array $payload, $roomSid, $sid = null) {
         parent::__construct($version);
@@ -72,12 +72,12 @@ class RecordingInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RecordingContext Context for this
-     *                                                     RecordingInstance
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext Context for this
+     *                                                         RoomRecordingInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new RecordingContext(
+            $this->context = new RoomRecordingContext(
                 $this->version,
                 $this->solution['roomSid'],
                 $this->solution['sid']
@@ -88,9 +88,9 @@ class RecordingInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a RecordingInstance
+     * Fetch a RoomRecordingInstance
      * 
-     * @return RecordingInstance Fetched RecordingInstance
+     * @return RoomRecordingInstance Fetched RoomRecordingInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -126,6 +126,6 @@ class RecordingInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.RecordingInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.RoomRecordingInstance ' . implode(' ', $context) . ']';
     }
 }

@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-05-22] Version 5.9.1
+--------------------------
+- Rename `Recordings` to `RoomRecordings` in Twilio Video
+
 [2017-05-19] Version 5.9.0
 --------------------------
 - Add support for video.twilio.com.
