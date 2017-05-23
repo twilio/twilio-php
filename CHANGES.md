@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2018-05-24] Version 5.10.0-alpha1
+----------------------------------
+
+- Add HostedNumbers preview support.
+- Add Proxy preview support.
+- Add BulkExports preview support.
+
 [2017-05-22] Version 5.9.0-alpha1
 ---------------------------------
 
