@@ -1,7 +1,7 @@
 twilio-php Changelog
 ====================
 
-[2017-05-22] Version 5.10.0
+[2017-05-24] Version 5.10.0
 --------------------------
 - Rename room `Recordings` resource to `RoomRecordings` to avoid class name conflict (backwards incompatible).
 
