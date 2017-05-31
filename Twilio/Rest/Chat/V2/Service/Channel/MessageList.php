@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Chat\V2\Service\Channel;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
@@ -150,11 +149,6 @@ class MessageList extends ListResource {
      * @return \Twilio\Page Page of MessageInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for MessageInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

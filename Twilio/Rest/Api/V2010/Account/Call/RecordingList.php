@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -122,11 +121,6 @@ class RecordingList extends ListResource {
      * @return \Twilio\Page Page of RecordingInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for RecordingInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

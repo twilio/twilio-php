@@ -133,11 +133,6 @@ class IncomingPhoneNumberList extends ListResource {
      * @return \Twilio\Page Page of IncomingPhoneNumberInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for IncomingPhoneNumberInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

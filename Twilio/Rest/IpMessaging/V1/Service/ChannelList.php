@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\IpMessaging\V1\Service;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
@@ -147,11 +146,6 @@ class ChannelList extends ListResource {
      * @return \Twilio\Page Page of ChannelInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for ChannelInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

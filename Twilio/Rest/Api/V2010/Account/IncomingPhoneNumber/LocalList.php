@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -120,11 +119,6 @@ class LocalList extends ListResource {
      * @return \Twilio\Page Page of LocalInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for LocalInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

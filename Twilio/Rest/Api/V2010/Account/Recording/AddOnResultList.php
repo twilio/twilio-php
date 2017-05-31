@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Recording;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
@@ -113,11 +112,6 @@ class AddOnResultList extends ListResource {
      * @return \Twilio\Page Page of AddOnResultInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for AddOnResultInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

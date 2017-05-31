@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Trunking\V1\Trunk;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Serialize;
 use Twilio\Values;
@@ -145,11 +144,6 @@ class OriginationUrlList extends ListResource {
      * @return \Twilio\Page Page of OriginationUrlInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for OriginationUrlInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl

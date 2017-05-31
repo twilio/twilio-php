@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Accounts\V1\Credential;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
@@ -109,11 +108,6 @@ class PublicKeyList extends ListResource {
      * @return \Twilio\Page Page of PublicKeyInstance
      */
     public function getPage($targetUrl) {
-        $resourceUrl = $this->version->absoluteUrl($this->uri);
-        if (substr($targetUrl, 0, strlen($resourceUrl)) != $resourceUrl) {
-            throw new TwilioException('Invalid targetUrl for PublicKeyInstance resource.');
-        }
-
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
