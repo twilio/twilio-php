@@ -36,6 +36,11 @@ dist: clean
 	  mv $$php.new $$php; \
 	done
 
+
+install:
+	# Composer: http://getcomposer.org/download/
+	$(COMPOSER) install
+
 vendor:
 	# Composer: http://getcomposer.org/download/
 	$(COMPOSER) install
