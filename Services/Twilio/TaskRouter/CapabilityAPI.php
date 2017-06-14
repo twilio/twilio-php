@@ -1,4 +1,5 @@
 <?php
+include_once (dirname(__FILE__).'/../JWT.php');
 /**
  * Twilio API Capability Token generator
  *
