@@ -8,6 +8,9 @@ php:
     - 7.0
     - hhvm
 matrix:
+    include:
+        - php: hhvm
+          dist: trusty
     allow_failures:
         - 7.0
         - hhvm
