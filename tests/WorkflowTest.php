@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Twilio/WorkflowConfiguration.php';
+require_once 'Twilio.php';
 
 class WorkflowTest extends PHPUnit_Framework_TestCase
 {
@@ -8,7 +8,7 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 	public function testDefaultRuleTarget()
 	{
 		$everyoneQueue = "WQf6724bd5005b30eeb6ea990c3e59e536";
-		$defaultTarget = new WorkflowRuleTarget($everyoneQueue);
+		$defaultTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($everyoneQueue);
 		$this->assertEquals($defaultTarget->queue, "WQf6724bd5005b30eeb6ea990c3e59e536");
 		$this->assertEquals($defaultTarget->priority, null);
 		$this->assertEquals($defaultTarget->timeout, null);
@@ -21,7 +21,7 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 		$priority = 10;
 		$timeout = 60;
 		$filterWorkerExpression = null;
-		$ruleTarget = new WorkflowRuleTarget($everyoneQueue, $priority, $timeout, $filterWorkerExpression);
+		$ruleTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($everyoneQueue, $priority, $timeout, $filterWorkerExpression);
 		$this->assertEquals($ruleTarget->queue, "WQf6724bd5005b30eeb6ea990c3e59e536");
 		$this->assertEquals($ruleTarget->priority, $priority);
 		$this->assertEquals($ruleTarget->timeout, $timeout);
@@ -34,7 +34,7 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 		$priority = 10;
 		$timeout = 60;
 		$filterWorkerExpression = "task.language IN worker.languages";
-		$ruleTarget = new WorkflowRuleTarget($everyoneQueue, $priority, $timeout, $filterWorkerExpression);
+		$ruleTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($everyoneQueue, $priority, $timeout, $filterWorkerExpression);
 		$this->assertEquals($ruleTarget->queue, "WQf6724bd5005b30eeb6ea990c3e59e536");
 		$this->assertEquals($ruleTarget->priority, $priority);
 		$this->assertEquals($ruleTarget->timeout, $timeout);
@@ -44,11 +44,11 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 	public function testSimpleRule()
 	{
 		$salesQueue = "WQf6724bd5005b30eeb6ea990c3e59e536";
-		$salesTarget = new WorkflowRuleTarget($salesQueue);
+		$salesTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($salesQueue);
 		$expression = "type=='sales'";
 		$friendlyName = "Sales";
 		$salesTargets[] = $salesTarget;
-		$salesRule = new WorkflowRule($expression, $salesTargets, $friendlyName);
+		$salesRule = new Services_Twilio_TaskRouter_WorkflowRule($expression, $salesTargets, $friendlyName);
 		$this->assertEquals($salesRule->expression, $expression);
 		$this->assertEquals($salesRule->friendly_name, $friendlyName);
 		$this->assertEquals($salesRule->targets[0], $salesTarget);
@@ -61,28 +61,28 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 		$supportQueue = "WQ5940dc0da87eaf6e3321d62041d4403b";
 		$everyoneQueue = "WQ6d29383312b24bd898a8df32779fc043";
 
-		$defaultTarget = new WorkflowRuleTarget($everyoneQueue);
+		$defaultTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($everyoneQueue);
 
 		$salesTargets = array();
-		$salesTarget = new WorkflowRuleTarget($salesQueue);
+		$salesTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($salesQueue);
 		$salesTargets[] = $salesTarget;
-		$salesRule = new WorkflowRule("type=='sales'", $salesTargets, 'Sales');
+		$salesRule = new Services_Twilio_TaskRouter_WorkflowRule("type=='sales'", $salesTargets, 'Sales');
 
 		$marketingTargets = array();
-		$marketingTarget = new WorkflowRuleTarget($marketingQueue);
+		$marketingTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($marketingQueue);
 		$marketingTargets[] = $marketingTarget;
-		$marketingRule = new WorkflowRule("type=='marketing'", $marketingTargets, 'Marketing');
+		$marketingRule = new Services_Twilio_TaskRouter_WorkflowRule("type=='marketing'", $marketingTargets, 'Marketing');
 
 		$supportTargets = array();
-		$supportTarget = new WorkflowRuleTarget($supportQueue);
+		$supportTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($supportQueue);
 		$supportTargets[] = $supportTarget;
-		$supportRule = new WorkflowRule("type=='support'", $supportTargets, 'Support');
+		$supportRule = new Services_Twilio_TaskRouter_WorkflowRule("type=='support'", $supportTargets, 'Support');
 
 		$rules[] = $salesRule;
 		$rules[] = $marketingRule;
 		$rules[] = $supportRule;
 
-		$configuration = new WorkflowConfiguration($rules, $defaultTarget);
+		$configuration = new Services_Twilio_TaskRouter_WorkflowConfiguration($rules, $defaultTarget);
 		$json = $configuration->toJSON();
 
 		$expectedJsonString = "{
@@ -136,34 +136,34 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 		$supportQueue = "WQ5940dc0da87eaf6e3321d62041d4403b";
 		$everyoneQueue = "WQ6d29383312b24bd898a8df32779fc043";
 
-		$defaultTarget = new WorkflowRuleTarget($everyoneQueue);
+		$defaultTarget = new Services_Twilio_TaskRouter_WorkflowRuleTarget($everyoneQueue);
 
 		$salesTargets = array();
-		$salesTarget1 = new WorkflowRuleTarget($salesQueue, 5, 30);
-		$salesTarget2 = new WorkflowRuleTarget($salesQueue, 10);
+		$salesTarget1 = new Services_Twilio_TaskRouter_WorkflowRuleTarget($salesQueue, 5, 30);
+		$salesTarget2 = new Services_Twilio_TaskRouter_WorkflowRuleTarget($salesQueue, 10);
 		$salesTargets[] = $salesTarget1;
 		$salesTargets[] = $salesTarget2;
-		$salesRule = new WorkflowRule("type=='sales'", $salesTargets, 'Sales');
+		$salesRule = new Services_Twilio_TaskRouter_WorkflowRule("type=='sales'", $salesTargets, 'Sales');
 
 		$marketingTargets = array();
-		$marketingTarget1 = new WorkflowRuleTarget($marketingQueue, 1, 120);
-		$marketingTarget2 = new WorkflowRuleTarget($marketingQueue, 3);
+		$marketingTarget1 = new Services_Twilio_TaskRouter_WorkflowRuleTarget($marketingQueue, 1, 120);
+		$marketingTarget2 = new Services_Twilio_TaskRouter_WorkflowRuleTarget($marketingQueue, 3);
 		$marketingTargets[] = $marketingTarget1;
 		$marketingTargets[] = $marketingTarget2;
-		$marketingRule = new WorkflowRule("type=='marketing'", $marketingTargets, 'Marketing');
+		$marketingRule = new Services_Twilio_TaskRouter_WorkflowRule("type=='marketing'", $marketingTargets, 'Marketing');
 
 		$supportTargets = array();
-		$supportTarget1 = new WorkflowRuleTarget($supportQueue, 10, 30);
-		$supportTarget2 = new WorkflowRuleTarget($supportQueue, 15);
+		$supportTarget1 = new Services_Twilio_TaskRouter_WorkflowRuleTarget($supportQueue, 10, 30);
+		$supportTarget2 = new Services_Twilio_TaskRouter_WorkflowRuleTarget($supportQueue, 15);
 		$supportTargets[] = $supportTarget1;
 		$supportTargets[] = $supportTarget2;
-		$supportRule = new WorkflowRule("type=='support'", $supportTargets, 'Support');
+		$supportRule = new Services_Twilio_TaskRouter_WorkflowRule("type=='support'", $supportTargets, 'Support');
 
 		$rules[] = $salesRule;
 		$rules[] = $marketingRule;
 		$rules[] = $supportRule;
 
-		$configuration = new WorkflowConfiguration($rules, $defaultTarget);
+		$configuration = new Services_Twilio_TaskRouter_WorkflowConfiguration($rules, $defaultTarget);
 		$json = $configuration->toJSON();
 
 		$expectedJsonString = "{
@@ -284,8 +284,8 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 				}
 			}";
 
-		$config = WorkflowConfiguration::fromJson($json);
-		$taskRoutingConfig = WorkflowConfiguration::parse($json)->task_routing;
+		$config = Services_Twilio_TaskRouter_WorkflowConfiguration::fromJson($json);
+		$taskRoutingConfig = Services_Twilio_TaskRouter_WorkflowConfiguration::parse($json)->task_routing;
 
 		$this->assertEquals(3, count($taskRoutingConfig->filters));
 		$this->assertEquals(3, count($config->filters));
@@ -377,8 +377,8 @@ class WorkflowTest extends PHPUnit_Framework_TestCase
 				}
 			}";
 
-		$config = WorkflowConfiguration::fromJson($json);
-		$taskRoutingConfig = WorkflowConfiguration::parse($json)->task_routing;
+		$config = Services_Twilio_TaskRouter_WorkflowConfiguration::fromJson($json);
+		$taskRoutingConfig = Services_Twilio_TaskRouter_WorkflowConfiguration::parse($json)->task_routing;
 
 		$this->assertEquals(3, count($taskRoutingConfig->filters));
 		$this->assertEquals(3, count($config->filters));
