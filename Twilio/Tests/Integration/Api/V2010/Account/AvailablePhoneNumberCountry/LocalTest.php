@@ -50,6 +50,7 @@ class LocalTest extends HolodeckTestCase {
                         "iso_country": "US",
                         "lata": "834",
                         "latitude": "19.720000",
+                        "locality": "Hilo",
                         "longitude": "-155.090000",
                         "phone_number": "+18089251571",
                         "postal_code": "96720",

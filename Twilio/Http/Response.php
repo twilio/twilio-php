@@ -38,6 +38,6 @@ class Response {
     }
 
     public function __toString() {
-        return '[Response] HTTP ' . $this->getStatusCode() . ' ' . $this->getContent();
+        return '[Response] HTTP ' . $this->getStatusCode() . ' ' . $this->content;
     }
 }

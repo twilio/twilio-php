@@ -140,6 +140,22 @@ class SyncListItemList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of SyncListItemInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of SyncListItemInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new SyncListItemPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a SyncListItemContext
      * 
      * @param integer $index The index

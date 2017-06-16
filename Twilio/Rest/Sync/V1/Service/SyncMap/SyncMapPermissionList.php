@@ -105,6 +105,22 @@ class SyncMapPermissionList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of SyncMapPermissionInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of SyncMapPermissionInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new SyncMapPermissionPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a SyncMapPermissionContext
      * 
      * @param string $identity Identity of the user to whom the Sync Map Permission

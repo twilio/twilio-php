@@ -33,6 +33,8 @@ use Twilio\Version;
  * @property boolean logEnabled
  * @property string url
  * @property array links
+ * @property string alexaSkillId
+ * @property string defaultAlexaNotificationProtocolVersion
  */
 class ServiceInstance extends InstanceResource {
     protected $_bindings = null;
@@ -69,6 +71,8 @@ class ServiceInstance extends InstanceResource {
             'logEnabled' => Values::array_get($payload, 'log_enabled'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'alexaSkillId' => Values::array_get($payload, 'alexa_skill_id'),
+            'defaultAlexaNotificationProtocolVersion' => Values::array_get($payload, 'default_alexa_notification_protocol_version'),
         );
 
         $this->solution = array(

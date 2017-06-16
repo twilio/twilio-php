@@ -102,6 +102,8 @@ class ServiceContext extends InstanceContext {
             'FcmCredentialSid' => $options['fcmCredentialSid'],
             'DefaultFcmNotificationProtocolVersion' => $options['defaultFcmNotificationProtocolVersion'],
             'LogEnabled' => Serialize::booleanToString($options['logEnabled']),
+            'AlexaSkillId' => $options['alexaSkillId'],
+            'DefaultAlexaNotificationProtocolVersion' => $options['defaultAlexaNotificationProtocolVersion'],
         ));
 
         $payload = $this->version->update(

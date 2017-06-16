@@ -109,6 +109,22 @@ class CommandList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of CommandInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of CommandInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new CommandPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new CommandInstance
      * 
      * @param string $command The command

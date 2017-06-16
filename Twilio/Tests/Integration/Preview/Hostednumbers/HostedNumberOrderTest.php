@@ -230,14 +230,13 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "local", "isoCountry", True, "email");
+            $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "isoCountry", True, "email");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
             'AddressSid' => "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             'PhoneNumber' => "+987654321",
-            'Type' => "local",
             'IsoCountry' => "isoCountry",
             'SmsCapability' => Serialize::booleanToString(True),
             'Email' => "email",
@@ -278,7 +277,7 @@ class HostedNumberOrderTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "local", "isoCountry", True, "email");
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "isoCountry", True, "email");
 
         $this->assertNotNull($actual);
     }

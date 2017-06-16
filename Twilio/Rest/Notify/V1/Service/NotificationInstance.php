@@ -35,6 +35,7 @@ use Twilio\Version;
  * @property array fcm
  * @property array sms
  * @property array facebookMessenger
+ * @property array alexa
  */
 class NotificationInstance extends InstanceResource {
     /**
@@ -69,6 +70,7 @@ class NotificationInstance extends InstanceResource {
             'fcm' => Values::array_get($payload, 'fcm'),
             'sms' => Values::array_get($payload, 'sms'),
             'facebookMessenger' => Values::array_get($payload, 'facebook_messenger'),
+            'alexa' => Values::array_get($payload, 'alexa'),
         );
 
         $this->solution = array(

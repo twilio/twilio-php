@@ -51,6 +51,8 @@ class ServiceList extends ListResource {
             'FcmCredentialSid' => $options['fcmCredentialSid'],
             'DefaultFcmNotificationProtocolVersion' => $options['defaultFcmNotificationProtocolVersion'],
             'LogEnabled' => Serialize::booleanToString($options['logEnabled']),
+            'AlexaSkillId' => $options['alexaSkillId'],
+            'DefaultAlexaNotificationProtocolVersion' => $options['defaultAlexaNotificationProtocolVersion'],
         ));
 
         $payload = $this->version->create(
@@ -136,6 +138,22 @@ class ServiceList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new ServicePage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of ServiceInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of ServiceInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new ServicePage($this->version, $response, $this->solution);

@@ -131,6 +131,22 @@ class SyncMapList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of SyncMapInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of SyncMapInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new SyncMapPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a SyncMapContext
      * 
      * @param string $sid The sid

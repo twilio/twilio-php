@@ -105,6 +105,23 @@ class AvailableAddOnExtensionList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of AvailableAddOnExtensionInstance records from the
+     * API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of AvailableAddOnExtensionInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new AvailableAddOnExtensionPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a AvailableAddOnExtensionContext
      * 
      * @param string $sid The unique Extension Sid

@@ -59,6 +59,7 @@ class NotificationList extends ListResource {
             'FacebookMessenger' => Serialize::json_object($options['facebookMessenger']),
             'Fcm' => $options['fcm'],
             'Segment' => $options['segment'],
+            'Alexa' => $options['alexa'],
         ));
 
         $payload = $this->version->create(

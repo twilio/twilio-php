@@ -103,6 +103,22 @@ class SegmentList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of SegmentInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of SegmentInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new SegmentPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

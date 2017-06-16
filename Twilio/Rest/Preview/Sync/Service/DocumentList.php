@@ -133,6 +133,22 @@ class DocumentList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of DocumentInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of DocumentInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new DocumentPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a DocumentContext
      * 
      * @param string $sid The sid

@@ -110,10 +110,26 @@ class FaxList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of FaxInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of FaxInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new FaxPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new FaxInstance
      * 
-     * @param string $to The to
-     * @param string $mediaUrl The media_url
+     * @param string $to The phone number or SIP address to send the fax to
+     * @param string $mediaUrl URL that points to the fax media
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Newly created FaxInstance
      */
@@ -146,7 +162,7 @@ class FaxList extends ListResource {
     /**
      * Constructs a FaxContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this fax.
      * @return \Twilio\Rest\Fax\V1\FaxContext 
      */
     public function getContext($sid) {

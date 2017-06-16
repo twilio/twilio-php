@@ -110,6 +110,22 @@ class SessionList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of SessionInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of SessionInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new SessionPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new SessionInstance
      * 
      * @param array|Options $options Optional Arguments

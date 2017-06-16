@@ -100,6 +100,22 @@ class AvailableAddOnList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of AvailableAddOnInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of AvailableAddOnInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new AvailableAddOnPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a AvailableAddOnContext
      * 
      * @param string $sid The unique Available Add-on Sid

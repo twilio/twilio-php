@@ -111,24 +111,38 @@ class HostedNumberOrderList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of HostedNumberOrderInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of HostedNumberOrderInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new HostedNumberOrderPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new HostedNumberOrderInstance
      * 
      * @param string $addressSid Address sid.
      * @param string $phoneNumber An E164 formatted phone number.
-     * @param string $type Phone number type.
      * @param string $isoCountry ISO country code.
      * @param boolean $smsCapability Specify SMS capability to host.
      * @param string $email Email.
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
      */
-    public function create($addressSid, $phoneNumber, $type, $isoCountry, $smsCapability, $email, $options = array()) {
+    public function create($addressSid, $phoneNumber, $isoCountry, $smsCapability, $email, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
             'AddressSid' => $addressSid,
             'PhoneNumber' => $phoneNumber,
-            'Type' => $type,
             'IsoCountry' => $isoCountry,
             'SmsCapability' => Serialize::booleanToString($smsCapability),
             'Email' => $email,

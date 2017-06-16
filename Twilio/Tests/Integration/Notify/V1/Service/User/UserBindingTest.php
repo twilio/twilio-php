@@ -152,6 +152,40 @@ class UserBindingTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testCreateAlexaResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "address": "address",
+                "binding_type": "binding_type",
+                "credential_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "endpoint": "endpoint",
+                "identity": "identity",
+                "links": {
+                    "user": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/identity"
+                },
+                "notification_protocol_version": "notification_protocol_version",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "tags": [
+                    "tag"
+                ],
+                "url": "https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/identity/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->bindings->create("apn", "address");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
 

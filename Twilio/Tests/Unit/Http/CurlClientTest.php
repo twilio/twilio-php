@@ -219,6 +219,12 @@ class CurlClientTest extends UnitTest {
                 ),
                 'a=z&b=7&c=1&c=2&c=3',
             ),
+
+            array(
+                '',
+                'a=x&b=z',
+                'a=x&b=z',
+            ),
         );
     }
 

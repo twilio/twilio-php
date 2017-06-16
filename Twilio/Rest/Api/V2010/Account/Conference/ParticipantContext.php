@@ -76,6 +76,8 @@ class ParticipantContext extends InstanceContext {
             'Hold' => Serialize::booleanToString($options['hold']),
             'HoldUrl' => $options['holdUrl'],
             'HoldMethod' => $options['holdMethod'],
+            'AnnounceUrl' => $options['announceUrl'],
+            'AnnounceUrlMethod' => $options['announceUrlMethod'],
         ));
 
         $payload = $this->version->update(

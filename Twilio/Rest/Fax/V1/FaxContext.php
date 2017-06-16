@@ -27,7 +27,7 @@ class FaxContext extends InstanceContext {
      * Initialize the FaxContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this fax.
      * @return \Twilio\Rest\Fax\V1\FaxContext 
      */
     public function __construct(Version $version, $sid) {

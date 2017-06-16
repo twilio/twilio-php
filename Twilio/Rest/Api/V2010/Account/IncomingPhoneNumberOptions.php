@@ -48,10 +48,11 @@ abstract class IncomingPhoneNumberOptions {
      * @param boolean $beta Include new phone numbers
      * @param string $friendlyName Filter by friendly name
      * @param string $phoneNumber Filter by incoming phone number
+     * @param string $origin The origin
      * @return ReadIncomingPhoneNumberOptions Options builder
      */
-    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE) {
-        return new ReadIncomingPhoneNumberOptions($beta, $friendlyName, $phoneNumber);
+    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
+        return new ReadIncomingPhoneNumberOptions($beta, $friendlyName, $phoneNumber, $origin);
     }
 
     /**
@@ -371,11 +372,13 @@ class ReadIncomingPhoneNumberOptions extends Options {
      * @param boolean $beta Include new phone numbers
      * @param string $friendlyName Filter by friendly name
      * @param string $phoneNumber Filter by incoming phone number
+     * @param string $origin The origin
      */
-    public function __construct($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE) {
+    public function __construct($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
         $this->options['beta'] = $beta;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['phoneNumber'] = $phoneNumber;
+        $this->options['origin'] = $origin;
     }
 
     /**
@@ -408,6 +411,17 @@ class ReadIncomingPhoneNumberOptions extends Options {
      */
     public function setPhoneNumber($phoneNumber) {
         $this->options['phoneNumber'] = $phoneNumber;
+        return $this;
+    }
+
+    /**
+     * The origin
+     * 
+     * @param string $origin The origin
+     * @return $this Fluent Builder
+     */
+    public function setOrigin($origin) {
+        $this->options['origin'] = $origin;
         return $this;
     }
 

@@ -112,6 +112,22 @@ class InteractionList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of InteractionInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of InteractionInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new InteractionPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a InteractionContext
      * 
      * @param string $sid A string that uniquely identifies this Interaction.

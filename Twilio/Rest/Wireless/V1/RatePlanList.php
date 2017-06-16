@@ -102,6 +102,22 @@ class RatePlanList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of RatePlanInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of RatePlanInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new RatePlanPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new RatePlanInstance
      * 
      * @param array|Options $options Optional Arguments

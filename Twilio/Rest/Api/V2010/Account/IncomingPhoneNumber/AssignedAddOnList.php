@@ -105,6 +105,22 @@ class AssignedAddOnList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of AssignedAddOnInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of AssignedAddOnInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new AssignedAddOnPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new AssignedAddOnInstance
      * 
      * @param string $installedAddOnSid A string that uniquely identifies the

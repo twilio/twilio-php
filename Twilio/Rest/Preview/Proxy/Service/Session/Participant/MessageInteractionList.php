@@ -139,6 +139,22 @@ class MessageInteractionList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of MessageInteractionInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of MessageInteractionInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new MessageInteractionPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a MessageInteractionContext
      * 
      * @param string $sid A string that uniquely identifies this Interaction.

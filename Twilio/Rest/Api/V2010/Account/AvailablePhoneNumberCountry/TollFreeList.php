@@ -113,6 +113,7 @@ class TollFreeList extends ListResource {
             'InRegion' => $options['inRegion'],
             'InRateCenter' => $options['inRateCenter'],
             'InLata' => $options['inLata'],
+            'InLocality' => $options['inLocality'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -122,6 +123,22 @@ class TollFreeList extends ListResource {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new TollFreePage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a specific page of TollFreeInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of TollFreeInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
         );
 
         return new TollFreePage($this->version, $response, $this->solution);

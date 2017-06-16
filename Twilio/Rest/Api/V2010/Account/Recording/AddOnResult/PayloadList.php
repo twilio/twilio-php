@@ -107,6 +107,22 @@ class PayloadList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of PayloadInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of PayloadInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new PayloadPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a PayloadContext
      * 
      * @param string $sid Fetch by unique payload Sid

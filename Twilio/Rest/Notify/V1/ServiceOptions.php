@@ -27,10 +27,13 @@ abstract class ServiceOptions {
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
      * @param boolean $logEnabled The log_enabled
+     * @param string $alexaSkillId The alexa_skill_id
+     * @param string $defaultAlexaNotificationProtocolVersion The
+     *                                                        default_alexa_notification_protocol_version
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled);
+    public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
+        return new CreateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled, $alexaSkillId, $defaultAlexaNotificationProtocolVersion);
     }
 
     /**
@@ -55,10 +58,13 @@ abstract class ServiceOptions {
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
      * @param boolean $logEnabled The log_enabled
+     * @param string $alexaSkillId The alexa_skill_id
+     * @param string $defaultAlexaNotificationProtocolVersion The
+     *                                                        default_alexa_notification_protocol_version
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled);
+    public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $apnCredentialSid, $gcmCredentialSid, $messagingServiceSid, $facebookMessengerPageId, $defaultApnNotificationProtocolVersion, $defaultGcmNotificationProtocolVersion, $fcmCredentialSid, $defaultFcmNotificationProtocolVersion, $logEnabled, $alexaSkillId, $defaultAlexaNotificationProtocolVersion);
     }
 }
 
@@ -77,8 +83,11 @@ class CreateServiceOptions extends Options {
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
      * @param boolean $logEnabled The log_enabled
+     * @param string $alexaSkillId The alexa_skill_id
+     * @param string $defaultAlexaNotificationProtocolVersion The
+     *                                                        default_alexa_notification_protocol_version
      */
-    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -89,6 +98,8 @@ class CreateServiceOptions extends Options {
         $this->options['fcmCredentialSid'] = $fcmCredentialSid;
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
         $this->options['logEnabled'] = $logEnabled;
+        $this->options['alexaSkillId'] = $alexaSkillId;
+        $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
     }
 
     /**
@@ -201,6 +212,29 @@ class CreateServiceOptions extends Options {
      */
     public function setLogEnabled($logEnabled) {
         $this->options['logEnabled'] = $logEnabled;
+        return $this;
+    }
+
+    /**
+     * The alexa_skill_id
+     * 
+     * @param string $alexaSkillId The alexa_skill_id
+     * @return $this Fluent Builder
+     */
+    public function setAlexaSkillId($alexaSkillId) {
+        $this->options['alexaSkillId'] = $alexaSkillId;
+        return $this;
+    }
+
+    /**
+     * The default_alexa_notification_protocol_version
+     * 
+     * @param string $defaultAlexaNotificationProtocolVersion The
+     *                                                        default_alexa_notification_protocol_version
+     * @return $this Fluent Builder
+     */
+    public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion) {
+        $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
         return $this;
     }
 
@@ -270,8 +304,11 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultFcmNotificationProtocolVersion The
      *                                                      default_fcm_notification_protocol_version
      * @param boolean $logEnabled The log_enabled
+     * @param string $alexaSkillId The alexa_skill_id
+     * @param string $defaultAlexaNotificationProtocolVersion The
+     *                                                        default_alexa_notification_protocol_version
      */
-    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['apnCredentialSid'] = $apnCredentialSid;
         $this->options['gcmCredentialSid'] = $gcmCredentialSid;
@@ -282,6 +319,8 @@ class UpdateServiceOptions extends Options {
         $this->options['fcmCredentialSid'] = $fcmCredentialSid;
         $this->options['defaultFcmNotificationProtocolVersion'] = $defaultFcmNotificationProtocolVersion;
         $this->options['logEnabled'] = $logEnabled;
+        $this->options['alexaSkillId'] = $alexaSkillId;
+        $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
     }
 
     /**
@@ -394,6 +433,29 @@ class UpdateServiceOptions extends Options {
      */
     public function setLogEnabled($logEnabled) {
         $this->options['logEnabled'] = $logEnabled;
+        return $this;
+    }
+
+    /**
+     * The alexa_skill_id
+     * 
+     * @param string $alexaSkillId The alexa_skill_id
+     * @return $this Fluent Builder
+     */
+    public function setAlexaSkillId($alexaSkillId) {
+        $this->options['alexaSkillId'] = $alexaSkillId;
+        return $this;
+    }
+
+    /**
+     * The default_alexa_notification_protocol_version
+     * 
+     * @param string $defaultAlexaNotificationProtocolVersion The
+     *                                                        default_alexa_notification_protocol_version
+     * @return $this Fluent Builder
+     */
+    public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion) {
+        $this->options['defaultAlexaNotificationProtocolVersion'] = $defaultAlexaNotificationProtocolVersion;
         return $this;
     }
 

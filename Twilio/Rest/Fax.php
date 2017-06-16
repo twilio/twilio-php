@@ -85,7 +85,7 @@ class Fax extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this fax.
      * @return \Twilio\Rest\Fax\V1\FaxContext 
      */
     protected function contextFaxes($sid) {

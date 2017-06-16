@@ -32,10 +32,11 @@ abstract class LocalOptions {
      * @param string $inRegion The in_region
      * @param string $inRateCenter The in_rate_center
      * @param string $inLata The in_lata
+     * @param string $inLocality The in_locality
      * @return ReadLocalOptions Options builder
      */
-    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE) {
-        return new ReadLocalOptions($areaCode, $contains, $smsEnabled, $mmsEnabled, $voiceEnabled, $excludeAllAddressRequired, $excludeLocalAddressRequired, $excludeForeignAddressRequired, $beta, $nearNumber, $nearLatLong, $distance, $inPostalCode, $inRegion, $inRateCenter, $inLata);
+    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE) {
+        return new ReadLocalOptions($areaCode, $contains, $smsEnabled, $mmsEnabled, $voiceEnabled, $excludeAllAddressRequired, $excludeLocalAddressRequired, $excludeForeignAddressRequired, $beta, $nearNumber, $nearLatLong, $distance, $inPostalCode, $inRegion, $inRateCenter, $inLata, $inLocality);
     }
 }
 
@@ -59,8 +60,9 @@ class ReadLocalOptions extends Options {
      * @param string $inRegion The in_region
      * @param string $inRateCenter The in_rate_center
      * @param string $inLata The in_lata
+     * @param string $inLocality The in_locality
      */
-    public function __construct($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE) {
+    public function __construct($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE) {
         $this->options['areaCode'] = $areaCode;
         $this->options['contains'] = $contains;
         $this->options['smsEnabled'] = $smsEnabled;
@@ -77,6 +79,7 @@ class ReadLocalOptions extends Options {
         $this->options['inRegion'] = $inRegion;
         $this->options['inRateCenter'] = $inRateCenter;
         $this->options['inLata'] = $inLata;
+        $this->options['inLocality'] = $inLocality;
     }
 
     /**
@@ -254,6 +257,17 @@ class ReadLocalOptions extends Options {
      */
     public function setInLata($inLata) {
         $this->options['inLata'] = $inLata;
+        return $this;
+    }
+
+    /**
+     * The in_locality
+     * 
+     * @param string $inLocality The in_locality
+     * @return $this Fluent Builder
+     */
+    public function setInLocality($inLocality) {
+        $this->options['inLocality'] = $inLocality;
         return $this;
     }
 

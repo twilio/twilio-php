@@ -186,7 +186,10 @@ class Client {
 
         if ($this->region) {
             list($head, $tail) = explode('.', $uri, 2);
-            $uri = implode('.', array($head, $this->region, $tail));
+
+            if (strpos($tail, $this->region) !== 0) {
+                $uri = implode('.', array($head, $this->region, $tail));
+            }
         }
 
         return $this->getHttpClient()->request(
