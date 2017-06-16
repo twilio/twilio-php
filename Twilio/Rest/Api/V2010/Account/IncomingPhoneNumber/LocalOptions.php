@@ -17,10 +17,11 @@ abstract class LocalOptions {
      * @param boolean $beta The beta
      * @param string $friendlyName The friendly_name
      * @param string $phoneNumber The phone_number
+     * @param string $origin The origin
      * @return ReadLocalOptions Options builder
      */
-    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE) {
-        return new ReadLocalOptions($beta, $friendlyName, $phoneNumber);
+    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
+        return new ReadLocalOptions($beta, $friendlyName, $phoneNumber, $origin);
     }
 
     /**
@@ -51,11 +52,13 @@ class ReadLocalOptions extends Options {
      * @param boolean $beta The beta
      * @param string $friendlyName The friendly_name
      * @param string $phoneNumber The phone_number
+     * @param string $origin The origin
      */
-    public function __construct($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE) {
+    public function __construct($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
         $this->options['beta'] = $beta;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['phoneNumber'] = $phoneNumber;
+        $this->options['origin'] = $origin;
     }
 
     /**
@@ -88,6 +91,17 @@ class ReadLocalOptions extends Options {
      */
     public function setPhoneNumber($phoneNumber) {
         $this->options['phoneNumber'] = $phoneNumber;
+        return $this;
+    }
+
+    /**
+     * The origin
+     * 
+     * @param string $origin The origin
+     * @return $this Fluent Builder
+     */
+    public function setOrigin($origin) {
+        $this->options['origin'] = $origin;
         return $this;
     }
 

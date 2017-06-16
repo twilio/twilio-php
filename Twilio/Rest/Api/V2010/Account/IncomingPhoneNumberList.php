@@ -111,6 +111,7 @@ class IncomingPhoneNumberList extends ListResource {
             'Beta' => Serialize::booleanToString($options['beta']),
             'FriendlyName' => $options['friendlyName'],
             'PhoneNumber' => $options['phoneNumber'],
+            'Origin' => $options['origin'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string phoneNumber
+ * @property string origin
  * @property string sid
  * @property string smsApplicationSid
  * @property string smsFallbackMethod
@@ -69,6 +70,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'origin' => Values::array_get($payload, 'origin'),
             'sid' => Values::array_get($payload, 'sid'),
             'smsApplicationSid' => Values::array_get($payload, 'sms_application_sid'),
             'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),

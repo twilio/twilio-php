@@ -18,6 +18,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string phoneNumber
  * @property string lata
+ * @property string locality
  * @property string rateCenter
  * @property string latitude
  * @property string longitude
@@ -47,6 +48,7 @@ class TollFreeInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'lata' => Values::array_get($payload, 'lata'),
+            'locality' => Values::array_get($payload, 'locality'),
             'rateCenter' => Values::array_get($payload, 'rate_center'),
             'latitude' => Values::array_get($payload, 'latitude'),
             'longitude' => Values::array_get($payload, 'longitude'),

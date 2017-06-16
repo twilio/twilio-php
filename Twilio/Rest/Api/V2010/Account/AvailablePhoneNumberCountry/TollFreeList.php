@@ -113,6 +113,7 @@ class TollFreeList extends ListResource {
             'InRegion' => $options['inRegion'],
             'InRateCenter' => $options['inRateCenter'],
             'InLata' => $options['inLata'],
+            'InLocality' => $options['inLocality'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
