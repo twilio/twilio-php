@@ -12,7 +12,6 @@ twilio-php Changelog
 - Add `announce_url_method` parameter to `Participants`.
 - Add `getPage()` methods to lists to begin paging starting from a given url.
 
-
 [2017-05-24] Version 5.10.0
 --------------------------
 - Rename room `Recordings` resource to `RoomRecordings` to avoid class name conflict (backwards incompatible).
