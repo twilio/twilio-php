@@ -103,6 +103,22 @@ class ConnectAppList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of ConnectAppInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of ConnectAppInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new ConnectAppPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a ConnectAppContext
      * 
      * @param string $sid Fetch by unique connect-app Sid

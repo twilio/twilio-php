@@ -118,6 +118,22 @@ class TaskList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of TaskInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of TaskInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new TaskPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new TaskInstance
      * 
      * @param array|Options $options Optional Arguments

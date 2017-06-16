@@ -105,6 +105,22 @@ class MemberList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of MemberInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of MemberInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new MemberPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a MemberContext
      * 
      * @param string $callSid The call_sid

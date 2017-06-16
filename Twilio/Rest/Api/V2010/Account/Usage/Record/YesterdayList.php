@@ -113,6 +113,22 @@ class YesterdayList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of YesterdayInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of YesterdayInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new YesterdayPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

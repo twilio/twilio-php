@@ -104,6 +104,22 @@ class KeyList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of KeyInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of KeyInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new KeyPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a KeyContext
      * 
      * @param string $sid The sid

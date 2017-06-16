@@ -133,6 +133,23 @@ class CredentialListMappingList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of CredentialListMappingInstance records from the
+     * API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of CredentialListMappingInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new CredentialListMappingPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a CredentialListMappingContext
      * 
      * @param string $sid The sid
