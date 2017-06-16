@@ -156,6 +156,10 @@ class CurlClient implements Client {
     public function buildQuery($params) {
         $parts = array();
 
+        if (is_string($params)) {
+            return $params;
+        }
+
         $params = $params ?: array();
 
         foreach ($params as $key => $value) {
