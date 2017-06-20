@@ -18,16 +18,19 @@ A huge thanks to all of our contributors:
 - Bulat Shakirzyanov 
 - Carlos Diaz-Padron 
 - Chris Barr 
+- D Keith Casey Jr 
 - D. Keith Casey, Jr. 
 - Doug Black 
 - Elliot Lings 
-- Evan Fossier
+- Evan Fossier 
 - Jarod Reyes 
 - Jen Li 
+- Jeremy McEntire 
 - Jingming Niu 
 - John Britton 
 - John Wolthuis 
 - Jordi Boggiano 
+- Jozsef Vass 
 - Justin Witz 
 - Keith Casey 
 - Kevin Burke 
@@ -50,7 +53,9 @@ A huge thanks to all of our contributors:
 - Shawn Parker 
 - Stuart Langley 
 - Taichiro Yoshida 
+- Tom Connors 
 - Trenton McManus 
+- Wanjun Li 
 - Zack Pitts 
 - aaronfoss 
 - alexw23 
@@ -59,3 +64,4 @@ A huge thanks to all of our contributors:
 - sashalaundy 
 - tacman 
 - till 
+- vassjozsef 
