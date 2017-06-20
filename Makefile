@@ -21,15 +21,6 @@ vendor: install
 test: install
 	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
 
-venv: venv
-	virtualenv venv
-
-rtd-install: venv
-	. venv/bin/activate; pip install -r docs/read_the_docs/requirements.txt
-
-rtd: rtd-install
-	. venv/bin/activate; cd docs/read_the_docs && make html
-
 docs-install:
 	composer require --dev apigen/apigen
 
