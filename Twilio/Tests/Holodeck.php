@@ -9,22 +9,22 @@ use Twilio\Http\Response;
 
 class Holodeck implements Client {
     private $requests = array();
-    private $response = null;
+    private $responses = array();
 
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
                             $timeout = null) {
         array_push($this->requests, new Request($method, $url, $params, $data, $headers, $user, $password));
 
-        if ($this->response == null) {
+        if (count($this->responses) === 0) {
             return new Response(404, null, null);
         } else {
-            return $this->response;
+            return array_shift($this->responses);
         }
     }
 
     public function mock($response) {
-        $this->response = $response;
+        array_push($this->responses, $response);
     }
 
     public function assertRequest($request) {
