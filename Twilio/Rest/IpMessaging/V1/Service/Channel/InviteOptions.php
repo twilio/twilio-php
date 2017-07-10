@@ -12,12 +12,14 @@ namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class InviteOptions {
+abstract class InviteOptions
+{
     /**
      * @param string $roleSid The role_sid
      * @return CreateInviteOptions Options builder
      */
-    public static function create($roleSid = Values::NONE) {
+    public static function create($roleSid = Values::NONE)
+    {
         return new CreateInviteOptions($roleSid);
     }
 
@@ -25,36 +27,41 @@ abstract class InviteOptions {
      * @param string $identity The identity
      * @return ReadInviteOptions Options builder
      */
-    public static function read($identity = Values::NONE) {
+    public static function read($identity = Values::NONE)
+    {
         return new ReadInviteOptions($identity);
     }
 }
 
-class CreateInviteOptions extends Options {
+class CreateInviteOptions extends Options
+{
     /**
      * @param string $roleSid The role_sid
      */
-    public function __construct($roleSid = Values::NONE) {
+    public function __construct($roleSid = Values::NONE)
+    {
         $this->options['roleSid'] = $roleSid;
     }
 
     /**
      * The role_sid
-     * 
+     *
      * @param string $roleSid The role_sid
      * @return $this Fluent Builder
      */
-    public function setRoleSid($roleSid) {
+    public function setRoleSid($roleSid)
+    {
         $this->options['roleSid'] = $roleSid;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -65,31 +72,35 @@ class CreateInviteOptions extends Options {
     }
 }
 
-class ReadInviteOptions extends Options {
+class ReadInviteOptions extends Options
+{
     /**
      * @param string $identity The identity
      */
-    public function __construct($identity = Values::NONE) {
+    public function __construct($identity = Values::NONE)
+    {
         $this->options['identity'] = $identity;
     }
 
     /**
      * The identity
-     * 
+     *
      * @param string $identity The identity
      * @return $this Fluent Builder
      */
-    public function setIdentity($identity) {
+    public function setIdentity($identity)
+    {
         $this->options['identity'] = $identity;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

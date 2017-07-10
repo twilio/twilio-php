@@ -3,7 +3,6 @@
 
 namespace Twilio\Jwt\Client;
 
-
 /**
  * Scope URI implementation
  *
@@ -15,18 +14,21 @@ namespace Twilio\Jwt\Client;
  * For example:
  * scope:client:incoming?name=jonas
  */
-class ScopeURI {
+class ScopeURI
+{
     public $service;
     public $privilege;
     public $params;
 
-    public function __construct($service, $privilege, $params = array()) {
+    public function __construct($service, $privilege, $params = array())
+    {
         $this->service = $service;
         $this->privilege = $privilege;
         $this->params = $params;
     }
 
-    public function toString() {
+    public function toString()
+    {
         $uri = "scope:{$this->service}:{$this->privilege}";
         if (count($this->params)) {
             $uri .= "?" . http_build_query($this->params, '', '&');
@@ -41,7 +43,8 @@ class ScopeURI {
      * @return ScopeURI The parsed scope uri
      * @throws \UnexpectedValueException
      */
-    public static function parse($uri) {
+    public static function parse($uri)
+    {
         if (strpos($uri, 'scope:') !== 0) {
             throw new \UnexpectedValueException(
                 'Not a scope URI according to scheme');

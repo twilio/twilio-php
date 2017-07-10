@@ -12,55 +12,62 @@ namespace Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class IpAddressOptions {
+abstract class IpAddressOptions
+{
     /**
      * @param string $ipAddress The ip_address
      * @param string $friendlyName The friendly_name
      * @return UpdateIpAddressOptions Options builder
      */
-    public static function update($ipAddress = Values::NONE, $friendlyName = Values::NONE) {
+    public static function update($ipAddress = Values::NONE, $friendlyName = Values::NONE)
+    {
         return new UpdateIpAddressOptions($ipAddress, $friendlyName);
     }
 }
 
-class UpdateIpAddressOptions extends Options {
+class UpdateIpAddressOptions extends Options
+{
     /**
      * @param string $ipAddress The ip_address
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($ipAddress = Values::NONE, $friendlyName = Values::NONE) {
+    public function __construct($ipAddress = Values::NONE, $friendlyName = Values::NONE)
+    {
         $this->options['ipAddress'] = $ipAddress;
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
      * The ip_address
-     * 
+     *
      * @param string $ipAddress The ip_address
      * @return $this Fluent Builder
      */
-    public function setIpAddress($ipAddress) {
+    public function setIpAddress($ipAddress)
+    {
         $this->options['ipAddress'] = $ipAddress;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

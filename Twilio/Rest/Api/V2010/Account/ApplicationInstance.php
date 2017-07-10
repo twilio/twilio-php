@@ -38,17 +38,19 @@ use Twilio\Version;
  * @property string voiceMethod
  * @property string voiceUrl
  */
-class ApplicationInstance extends InstanceResource {
+class ApplicationInstance extends InstanceResource
+{
     /**
      * Initialize the ApplicationInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A string that uniquely identifies this resource
      * @param string $sid Fetch by unique Application Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -84,11 +86,12 @@ class ApplicationInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext Context for this
      *                                                           ApplicationInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new ApplicationContext(
                 $this->version,
@@ -102,29 +105,32 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Deletes the ApplicationInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Fetch a ApplicationInstance
-     * 
+     *
      * @return ApplicationInstance Fetched ApplicationInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the ApplicationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -132,12 +138,13 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -152,10 +159,11 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

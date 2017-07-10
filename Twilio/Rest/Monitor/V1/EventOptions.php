@@ -12,7 +12,8 @@ namespace Twilio\Rest\Monitor\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class EventOptions {
+abstract class EventOptions
+{
     /**
      * @param string $actorSid The actor_sid
      * @param string $eventType The event_type
@@ -22,12 +23,14 @@ abstract class EventOptions {
      * @param \DateTime $endDate The end_date
      * @return ReadEventOptions Options builder
      */
-    public static function read($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public static function read($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE)
+    {
         return new ReadEventOptions($actorSid, $eventType, $resourceSid, $sourceIpAddress, $startDate, $endDate);
     }
 }
 
-class ReadEventOptions extends Options {
+class ReadEventOptions extends Options
+{
     /**
      * @param string $actorSid The actor_sid
      * @param string $eventType The event_type
@@ -36,7 +39,8 @@ class ReadEventOptions extends Options {
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      */
-    public function __construct($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE)
+    {
         $this->options['actorSid'] = $actorSid;
         $this->options['eventType'] = $eventType;
         $this->options['resourceSid'] = $resourceSid;
@@ -47,76 +51,83 @@ class ReadEventOptions extends Options {
 
     /**
      * The actor_sid
-     * 
+     *
      * @param string $actorSid The actor_sid
      * @return $this Fluent Builder
      */
-    public function setActorSid($actorSid) {
+    public function setActorSid($actorSid)
+    {
         $this->options['actorSid'] = $actorSid;
         return $this;
     }
 
     /**
      * The event_type
-     * 
+     *
      * @param string $eventType The event_type
      * @return $this Fluent Builder
      */
-    public function setEventType($eventType) {
+    public function setEventType($eventType)
+    {
         $this->options['eventType'] = $eventType;
         return $this;
     }
 
     /**
      * The resource_sid
-     * 
+     *
      * @param string $resourceSid The resource_sid
      * @return $this Fluent Builder
      */
-    public function setResourceSid($resourceSid) {
+    public function setResourceSid($resourceSid)
+    {
         $this->options['resourceSid'] = $resourceSid;
         return $this;
     }
 
     /**
      * The source_ip_address
-     * 
+     *
      * @param string $sourceIpAddress The source_ip_address
      * @return $this Fluent Builder
      */
-    public function setSourceIpAddress($sourceIpAddress) {
+    public function setSourceIpAddress($sourceIpAddress)
+    {
         $this->options['sourceIpAddress'] = $sourceIpAddress;
         return $this;
     }
 
     /**
      * The start_date
-     * 
+     *
      * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate)
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
 
     /**
      * The end_date
-     * 
+     *
      * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate)
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

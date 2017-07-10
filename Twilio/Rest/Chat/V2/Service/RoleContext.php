@@ -13,16 +13,18 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class RoleContext extends InstanceContext {
+class RoleContext extends InstanceContext
+{
     /**
      * Initialize the RoleContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V2\Service\RoleContext 
+     * @return \Twilio\Rest\Chat\V2\Service\RoleContext
      */
-    public function __construct(Version $version, $serviceSid, $sid) {
+    public function __construct(Version $version, $serviceSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -36,10 +38,11 @@ class RoleContext extends InstanceContext {
 
     /**
      * Fetch a RoleInstance
-     * 
+     *
      * @return RoleInstance Fetched RoleInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -58,20 +61,22 @@ class RoleContext extends InstanceContext {
 
     /**
      * Deletes the RoleInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the RoleInstance
-     * 
+     *
      * @param string $permission The permission
      * @return RoleInstance Updated RoleInstance
      */
-    public function update($permission) {
+    public function update($permission)
+    {
         $data = Values::of(array(
             'Permission' => $permission,
         ));
@@ -93,10 +98,11 @@ class RoleContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

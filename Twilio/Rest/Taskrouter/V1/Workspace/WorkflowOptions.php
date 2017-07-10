@@ -12,7 +12,8 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WorkflowOptions {
+abstract class WorkflowOptions
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $assignmentCallbackUrl The assignment_callback_url
@@ -22,7 +23,8 @@ abstract class WorkflowOptions {
      * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return UpdateWorkflowOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE)
+    {
         return new UpdateWorkflowOptions($friendlyName, $assignmentCallbackUrl, $fallbackAssignmentCallbackUrl, $configuration, $taskReservationTimeout);
     }
 
@@ -30,7 +32,8 @@ abstract class WorkflowOptions {
      * @param string $friendlyName The friendly_name
      * @return ReadWorkflowOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE) {
+    public static function read($friendlyName = Values::NONE)
+    {
         return new ReadWorkflowOptions($friendlyName);
     }
 
@@ -41,12 +44,14 @@ abstract class WorkflowOptions {
      * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return CreateWorkflowOptions Options builder
      */
-    public static function create($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
+    public static function create($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE)
+    {
         return new CreateWorkflowOptions($assignmentCallbackUrl, $fallbackAssignmentCallbackUrl, $taskReservationTimeout);
     }
 }
 
-class UpdateWorkflowOptions extends Options {
+class UpdateWorkflowOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $assignmentCallbackUrl The assignment_callback_url
@@ -55,7 +60,8 @@ class UpdateWorkflowOptions extends Options {
      * @param string $configuration The configuration
      * @param integer $taskReservationTimeout The task_reservation_timeout
      */
-    public function __construct($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
@@ -65,66 +71,72 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The assignment_callback_url
-     * 
+     *
      * @param string $assignmentCallbackUrl The assignment_callback_url
      * @return $this Fluent Builder
      */
-    public function setAssignmentCallbackUrl($assignmentCallbackUrl) {
+    public function setAssignmentCallbackUrl($assignmentCallbackUrl)
+    {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         return $this;
     }
 
     /**
      * The fallback_assignment_callback_url
-     * 
+     *
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @return $this Fluent Builder
      */
-    public function setFallbackAssignmentCallbackUrl($fallbackAssignmentCallbackUrl) {
+    public function setFallbackAssignmentCallbackUrl($fallbackAssignmentCallbackUrl)
+    {
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
         return $this;
     }
 
     /**
      * The configuration
-     * 
+     *
      * @param string $configuration The configuration
      * @return $this Fluent Builder
      */
-    public function setConfiguration($configuration) {
+    public function setConfiguration($configuration)
+    {
         $this->options['configuration'] = $configuration;
         return $this;
     }
 
     /**
      * The task_reservation_timeout
-     * 
+     *
      * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return $this Fluent Builder
      */
-    public function setTaskReservationTimeout($taskReservationTimeout) {
+    public function setTaskReservationTimeout($taskReservationTimeout)
+    {
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -135,31 +147,35 @@ class UpdateWorkflowOptions extends Options {
     }
 }
 
-class ReadWorkflowOptions extends Options {
+class ReadWorkflowOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -170,14 +186,16 @@ class ReadWorkflowOptions extends Options {
     }
 }
 
-class CreateWorkflowOptions extends Options {
+class CreateWorkflowOptions extends Options
+{
     /**
      * @param string $assignmentCallbackUrl The assignment_callback_url
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @param integer $taskReservationTimeout The task_reservation_timeout
      */
-    public function __construct($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
+    public function __construct($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE)
+    {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
@@ -185,44 +203,48 @@ class CreateWorkflowOptions extends Options {
 
     /**
      * The assignment_callback_url
-     * 
+     *
      * @param string $assignmentCallbackUrl The assignment_callback_url
      * @return $this Fluent Builder
      */
-    public function setAssignmentCallbackUrl($assignmentCallbackUrl) {
+    public function setAssignmentCallbackUrl($assignmentCallbackUrl)
+    {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
         return $this;
     }
 
     /**
      * The fallback_assignment_callback_url
-     * 
+     *
      * @param string $fallbackAssignmentCallbackUrl The
      *                                              fallback_assignment_callback_url
      * @return $this Fluent Builder
      */
-    public function setFallbackAssignmentCallbackUrl($fallbackAssignmentCallbackUrl) {
+    public function setFallbackAssignmentCallbackUrl($fallbackAssignmentCallbackUrl)
+    {
         $this->options['fallbackAssignmentCallbackUrl'] = $fallbackAssignmentCallbackUrl;
         return $this;
     }
 
     /**
      * The task_reservation_timeout
-     * 
+     *
      * @param integer $taskReservationTimeout The task_reservation_timeout
      * @return $this Fluent Builder
      */
-    public function setTaskReservationTimeout($taskReservationTimeout) {
+    public function setTaskReservationTimeout($taskReservationTimeout)
+    {
         $this->options['taskReservationTimeout'] = $taskReservationTimeout;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

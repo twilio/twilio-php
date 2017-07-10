@@ -8,7 +8,8 @@ namespace Twilio\TaskRouter;
  * @author Justin Witz <jwitz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class WorkflowRuleTarget implements JsonSerializable {
+class WorkflowRuleTarget implements JsonSerializable
+{
     public $queue;
     public $expression;
     public $priority;
@@ -22,16 +23,17 @@ class WorkflowRuleTarget implements JsonSerializable {
         $this->expression = $expression;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $json = array();
         $json["queue"] = $this->queue;
-        if($this->priority != null) {
+        if ($this->priority != null) {
             $json["priority"] = $this->priority;
         }
-        if($this->timeout != null) {
+        if ($this->timeout != null) {
             $json["timeout"] = $this->timeout;
         }
-        if($this->expression != null) {
+        if ($this->expression != null) {
             $json["expression"] = $this->expression;
         }
         return $json;

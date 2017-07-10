@@ -21,16 +21,18 @@ use Twilio\Version;
  * @property string taskQueueSid
  * @property string workspaceSid
  */
-class TaskQueuesStatisticsInstance extends InstanceResource {
+class TaskQueuesStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the TaskQueuesStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance
      */
-    public function __construct(Version $version, array $payload, $workspaceSid) {
+    public function __construct(Version $version, array $payload, $workspaceSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -49,12 +51,13 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -69,10 +72,11 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Taskrouter.V1.TaskQueuesStatisticsInstance]';
     }
 }

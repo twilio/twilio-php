@@ -3,13 +3,14 @@
 
 namespace Twilio\Http;
 
-
-class Response {
+class Response
+{
     protected $headers;
     protected $content;
     protected $statusCode;
 
-    public function __construct($statusCode, $content, $headers = array()) {
+    public function __construct($statusCode, $content, $headers = array())
+    {
         $this->statusCode = $statusCode;
         $this->content = $content;
         $this->headers = $headers;
@@ -18,26 +19,31 @@ class Response {
     /**
      * @return mixed
      */
-    public function getContent() {
+    public function getContent()
+    {
         return json_decode($this->content, true);
     }
 
     /**
      * @return mixed
      */
-    public function getStatusCode() {
+    public function getStatusCode()
+    {
         return $this->statusCode;
     }
 
-    public function getHeaders() {
+    public function getHeaders()
+    {
         return $this->headers;
     }
 
-    public function ok() {
+    public function ok()
+    {
         return $this->getStatusCode() < 400;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return '[Response] HTTP ' . $this->getStatusCode() . ' ' . $this->content;
     }
 }

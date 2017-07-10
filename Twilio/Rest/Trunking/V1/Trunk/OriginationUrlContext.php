@@ -15,16 +15,18 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class OriginationUrlContext extends InstanceContext {
+class OriginationUrlContext extends InstanceContext
+{
     /**
      * Initialize the OriginationUrlContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext
      */
-    public function __construct(Version $version, $trunkSid, $sid) {
+    public function __construct(Version $version, $trunkSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -38,10 +40,11 @@ class OriginationUrlContext extends InstanceContext {
 
     /**
      * Fetch a OriginationUrlInstance
-     * 
+     *
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -60,20 +63,22 @@ class OriginationUrlContext extends InstanceContext {
 
     /**
      * Deletes the OriginationUrlInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the OriginationUrlInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -101,10 +106,11 @@ class OriginationUrlContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

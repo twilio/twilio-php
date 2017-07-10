@@ -12,25 +12,29 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TaskQueueStatisticsOptions {
+abstract class TaskQueueStatisticsOptions
+{
     /**
      * @param \DateTime $endDate The end_date
      * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      * @return FetchTaskQueueStatisticsOptions Options builder
      */
-    public static function fetch($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE) {
+    public static function fetch($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE)
+    {
         return new FetchTaskQueueStatisticsOptions($endDate, $minutes, $startDate);
     }
 }
 
-class FetchTaskQueueStatisticsOptions extends Options {
+class FetchTaskQueueStatisticsOptions extends Options
+{
     /**
      * @param \DateTime $endDate The end_date
      * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      */
-    public function __construct($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE) {
+    public function __construct($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE)
+    {
         $this->options['endDate'] = $endDate;
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;
@@ -38,43 +42,47 @@ class FetchTaskQueueStatisticsOptions extends Options {
 
     /**
      * The end_date
-     * 
+     *
      * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate)
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
 
     /**
      * The minutes
-     * 
+     *
      * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes) {
+    public function setMinutes($minutes)
+    {
         $this->options['minutes'] = $minutes;
         return $this;
     }
 
     /**
      * The start_date
-     * 
+     *
      * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate)
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

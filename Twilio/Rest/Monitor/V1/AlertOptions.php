@@ -12,25 +12,29 @@ namespace Twilio\Rest\Monitor\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AlertOptions {
+abstract class AlertOptions
+{
     /**
      * @param string $logLevel The log_level
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      * @return ReadAlertOptions Options builder
      */
-    public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE)
+    {
         return new ReadAlertOptions($logLevel, $startDate, $endDate);
     }
 }
 
-class ReadAlertOptions extends Options {
+class ReadAlertOptions extends Options
+{
     /**
      * @param string $logLevel The log_level
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      */
-    public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE)
+    {
         $this->options['logLevel'] = $logLevel;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
@@ -38,43 +42,47 @@ class ReadAlertOptions extends Options {
 
     /**
      * The log_level
-     * 
+     *
      * @param string $logLevel The log_level
      * @return $this Fluent Builder
      */
-    public function setLogLevel($logLevel) {
+    public function setLogLevel($logLevel)
+    {
         $this->options['logLevel'] = $logLevel;
         return $this;
     }
 
     /**
      * The start_date
-     * 
+     *
      * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate)
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
 
     /**
      * The end_date
-     * 
+     *
      * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate)
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

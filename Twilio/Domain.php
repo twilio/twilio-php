@@ -3,7 +3,6 @@
 
 namespace Twilio;
 
-
 use Twilio\Rest\Client;
 
 /**
@@ -11,7 +10,8 @@ use Twilio\Rest\Client;
  * Abstracts a Twilio sub domain
  * @package Twilio
  */
-abstract class Domain {
+abstract class Domain
+{
     /**
      * @var \Twilio\Rest\Client Twilio Client
      */
@@ -26,7 +26,8 @@ abstract class Domain {
      * Construct a new Domain
      * @param \Twilio\Rest\Client $client used to communicate with Twilio
      */
-    public function __construct(Client $client) {
+    public function __construct(Client $client)
+    {
         $this->client = $client;
         $this->baseUrl = '';
     }
@@ -37,7 +38,8 @@ abstract class Domain {
      * @param string $uri Version relative URI
      * @return string Absolute URL for this domain
      */
-    public function absoluteUrl($uri) {
+    public function absoluteUrl($uri)
+    {
         return implode('/', array(trim($this->baseUrl, '/'), trim($uri, '/')));
     }
 
@@ -56,7 +58,8 @@ abstract class Domain {
      */
     public function request($method, $uri, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password=null,
-                            $timeout=null) {
+                            $timeout=null)
+    {
         $url = $this->absoluteUrl($uri);
         return $this->client->request(
             $method,
@@ -73,11 +76,13 @@ abstract class Domain {
     /**
      * @return \Twilio\Rest\Client
      */
-    public function getClient() {
+    public function getClient()
+    {
         return $this->client;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return '[Domain]';
     }
 }

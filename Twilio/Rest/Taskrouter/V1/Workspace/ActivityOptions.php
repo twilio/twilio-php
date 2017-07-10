@@ -12,12 +12,14 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ActivityOptions {
+abstract class ActivityOptions
+{
     /**
      * @param string $friendlyName The friendly_name
      * @return UpdateActivityOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE) {
+    public static function update($friendlyName = Values::NONE)
+    {
         return new UpdateActivityOptions($friendlyName);
     }
 
@@ -26,7 +28,8 @@ abstract class ActivityOptions {
      * @param string $available The available
      * @return ReadActivityOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE, $available = Values::NONE) {
+    public static function read($friendlyName = Values::NONE, $available = Values::NONE)
+    {
         return new ReadActivityOptions($friendlyName, $available);
     }
 
@@ -34,36 +37,41 @@ abstract class ActivityOptions {
      * @param boolean $available The available
      * @return CreateActivityOptions Options builder
      */
-    public static function create($available = Values::NONE) {
+    public static function create($available = Values::NONE)
+    {
         return new CreateActivityOptions($available);
     }
 }
 
-class UpdateActivityOptions extends Options {
+class UpdateActivityOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -74,44 +82,49 @@ class UpdateActivityOptions extends Options {
     }
 }
 
-class ReadActivityOptions extends Options {
+class ReadActivityOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $available The available
      */
-    public function __construct($friendlyName = Values::NONE, $available = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $available = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['available'] = $available;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The available
-     * 
+     *
      * @param string $available The available
      * @return $this Fluent Builder
      */
-    public function setAvailable($available) {
+    public function setAvailable($available)
+    {
         $this->options['available'] = $available;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -122,31 +135,35 @@ class ReadActivityOptions extends Options {
     }
 }
 
-class CreateActivityOptions extends Options {
+class CreateActivityOptions extends Options
+{
     /**
      * @param boolean $available The available
      */
-    public function __construct($available = Values::NONE) {
+    public function __construct($available = Values::NONE)
+    {
         $this->options['available'] = $available;
     }
 
     /**
      * The available
-     * 
+     *
      * @param boolean $available The available
      * @return $this Fluent Builder
      */
-    public function setAvailable($available) {
+    public function setAvailable($available)
+    {
         $this->options['available'] = $available;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

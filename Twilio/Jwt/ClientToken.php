@@ -8,7 +8,8 @@ use Twilio\Jwt\Client\ScopeURI;
 /**
  * Twilio Capability Token generator
  */
-class ClientToken {
+class ClientToken
+{
     public $accountSid;
     public $authToken;
     /** @var ScopeURI[] $scopes */
@@ -24,7 +25,8 @@ class ClientToken {
      * @param string $authToken the secret key used to sign the token. Note,
      *        this auth token is not visible to the user of the token.
      */
-    public function __construct($accountSid, $authToken) {
+    public function __construct($accountSid, $authToken)
+    {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->scopes = array();
@@ -39,7 +41,8 @@ class ClientToken {
      * @param $clientName
      * @throws \InvalidArgumentException
      */
-    public function allowClientIncoming($clientName) {
+    public function allowClientIncoming($clientName)
+    {
 
         // clientName must be a non-zero length alphanumeric string
         if (preg_match('/\W/', $clientName)) {
@@ -64,7 +67,8 @@ class ClientToken {
      * @param mixed[] $appParams signed parameters that the user of this token
      *        cannot overwrite.
      */
-    public function allowClientOutgoing($appSid, array $appParams = array()) {
+    public function allowClientOutgoing($appSid, array $appParams = array())
+    {
         $this->allow('client', 'outgoing', array(
             'appSid' => $appSid,
             'appParams' => http_build_query($appParams, '', '&')));
@@ -75,7 +79,8 @@ class ClientToken {
      *
      * @param mixed[] $filters key/value filters to apply to the event stream
      */
-    public function allowEventStream(array $filters = array()) {
+    public function allowEventStream(array $filters = array())
+    {
         $this->allow('stream', 'subscribe', array(
             'path' => '/2010-04-01/Events',
             'params' => http_build_query($filters, '', '&'),
@@ -91,7 +96,8 @@ class ClientToken {
      * @return ClientToken the newly generated token that is valid for $ttl
      *         seconds
      */
-    public function generateToken($ttl = 3600) {
+    public function generateToken($ttl = 3600)
+    {
         $payload = array(
             'scope' => array(),
             'iss' => $this->accountSid,
@@ -100,8 +106,9 @@ class ClientToken {
         $scopeStrings = array();
 
         foreach ($this->scopes as $scope) {
-            if ($scope->privilege == "outgoing" && $this->clientName)
+            if ($scope->privilege == "outgoing" && $this->clientName) {
                 $scope->params["clientName"] = $this->clientName;
+            }
             $scopeStrings[] = $scope->toString();
         }
 
@@ -109,7 +116,8 @@ class ClientToken {
         return JWT::encode($payload, $this->authToken, 'HS256');
     }
 
-    protected function allow($service, $privilege, $params) {
+    protected function allow($service, $privilege, $params)
+    {
         $this->scopes[] = new ScopeURI($service, $privilege, $params);
     }
 }

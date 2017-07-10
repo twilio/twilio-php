@@ -12,25 +12,29 @@ namespace Twilio\Rest\Video\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RecordingOptions {
+abstract class RecordingOptions
+{
     /**
      * @param string $status The status
      * @param string $sourceSid The source_sid
      * @param string $groupingSid The grouping_sid
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE) {
+    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE)
+    {
         return new ReadRecordingOptions($status, $sourceSid, $groupingSid);
     }
 }
 
-class ReadRecordingOptions extends Options {
+class ReadRecordingOptions extends Options
+{
     /**
      * @param string $status The status
      * @param string $sourceSid The source_sid
      * @param string $groupingSid The grouping_sid
      */
-    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE) {
+    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE)
+    {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['groupingSid'] = $groupingSid;
@@ -38,43 +42,47 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The status
-     * 
+     *
      * @param string $status The status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status)
+    {
         $this->options['status'] = $status;
         return $this;
     }
 
     /**
      * The source_sid
-     * 
+     *
      * @param string $sourceSid The source_sid
      * @return $this Fluent Builder
      */
-    public function setSourceSid($sourceSid) {
+    public function setSourceSid($sourceSid)
+    {
         $this->options['sourceSid'] = $sourceSid;
         return $this;
     }
 
     /**
      * The grouping_sid
-     * 
+     *
      * @param string $groupingSid The grouping_sid
      * @return $this Fluent Builder
      */
-    public function setGroupingSid($groupingSid) {
+    public function setGroupingSid($groupingSid)
+    {
         $this->options['groupingSid'] = $groupingSid;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

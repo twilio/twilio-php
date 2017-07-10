@@ -13,15 +13,17 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class NumberContext extends InstanceContext {
+class NumberContext extends InstanceContext
+{
     /**
      * Initialize the NumberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $number The number
-     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext
      */
-    public function __construct(Version $version, $number) {
+    public function __construct(Version $version, $number)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -34,10 +36,11 @@ class NumberContext extends InstanceContext {
 
     /**
      * Fetch a NumberInstance
-     * 
+     *
      * @return NumberInstance Fetched NumberInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -55,10 +58,11 @@ class NumberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

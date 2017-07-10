@@ -3,17 +3,18 @@
 
 namespace Twilio\Tests;
 
-
 use Twilio\Http\Client;
 use Twilio\Http\Response;
 
-class Holodeck implements Client {
+class Holodeck implements Client
+{
     private $requests = array();
     private $response = null;
 
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
-                            $timeout = null) {
+                            $timeout = null)
+    {
         array_push($this->requests, new Request($method, $url, $params, $data, $headers, $user, $password));
 
         if ($this->response == null) {
@@ -23,11 +24,13 @@ class Holodeck implements Client {
         }
     }
 
-    public function mock($response) {
+    public function mock($response)
+    {
         $this->response = $response;
     }
 
-    public function assertRequest($request) {
+    public function assertRequest($request)
+    {
         if ($this->hasRequest($request)) {
             return;
         }
@@ -43,7 +46,8 @@ class Holodeck implements Client {
         throw new \PHPUnit_Framework_ExpectationFailedException($message);
     }
 
-    public function hasRequest($request) {
+    public function hasRequest($request)
+    {
         for ($i = 0; $i < count($this->requests); $i++) {
             $c = $this->requests[$i];
             if (strtolower($request->method) == strtolower($c->method) &&
@@ -57,7 +61,8 @@ class Holodeck implements Client {
         return false;
     }
 
-    protected function printRequest($request) {
+    protected function printRequest($request)
+    {
         $url = $request->url;
         if ($request->params) {
             $url .= '?' . http_build_query($request->params);

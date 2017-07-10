@@ -3,12 +3,12 @@
 
 namespace Twilio\Tests\Unit;
 
-
 use Twilio\Values;
 
-class ValuesTest extends UnitTest {
-
-    public function testDirectKeyAccess() {
+class ValuesTest extends UnitTest
+{
+    public function testDirectKeyAccess()
+    {
         $values = new Values(array(
             'a' => 1,
             'b' => 2,
@@ -20,7 +20,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(3, $values['c']);
     }
 
-    public function testCaseInsensitiveAccess() {
+    public function testCaseInsensitiveAccess()
+    {
         $values = new Values(array(
             'lowercase' => 1,
             'UPPERCASE' => 2,
@@ -40,7 +41,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(3, $values['MixedCase']);
     }
 
-    public function testUnknownKeySentinel() {
+    public function testUnknownKeySentinel()
+    {
         $values = new Values(array(
             'known' => 1,
         ));
@@ -49,7 +51,8 @@ class ValuesTest extends UnitTest {
         $this->assertEquals(Values::NONE, $values['unknown']);
     }
 
-    public function testUnknownValuesRemoved() {
+    public function testUnknownValuesRemoved()
+    {
         $values = new Values(array(
             'known' => 1,
         ));

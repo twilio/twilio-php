@@ -13,16 +13,18 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class CredentialListContext extends InstanceContext {
+class CredentialListContext extends InstanceContext
+{
     /**
      * Initialize the CredentialListContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext
      */
-    public function __construct(Version $version, $trunkSid, $sid) {
+    public function __construct(Version $version, $trunkSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -36,10 +38,11 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Fetch a CredentialListInstance
-     * 
+     *
      * @return CredentialListInstance Fetched CredentialListInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -58,19 +61,21 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Deletes the CredentialListInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

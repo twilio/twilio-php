@@ -15,17 +15,19 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class ReservationContext extends InstanceContext {
+class ReservationContext extends InstanceContext
+{
     /**
      * Initialize the ReservationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext
      */
-    public function __construct(Version $version, $workspaceSid, $workerSid, $sid) {
+    public function __construct(Version $version, $workspaceSid, $workerSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -40,10 +42,11 @@ class ReservationContext extends InstanceContext {
 
     /**
      * Fetch a ReservationInstance
-     * 
+     *
      * @return ReservationInstance Fetched ReservationInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -63,11 +66,12 @@ class ReservationContext extends InstanceContext {
 
     /**
      * Update the ReservationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -110,10 +114,11 @@ class ReservationContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

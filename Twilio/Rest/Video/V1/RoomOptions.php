@@ -12,7 +12,8 @@ namespace Twilio\Rest\Video\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RoomOptions {
+abstract class RoomOptions
+{
     /**
      * @param boolean $enableTurn The enable_turn
      * @param string $type The type
@@ -24,7 +25,8 @@ abstract class RoomOptions {
      *                                             record_participants_on_connect
      * @return CreateRoomOptions Options builder
      */
-    public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE) {
+    public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE)
+    {
         return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect);
     }
 
@@ -35,12 +37,14 @@ abstract class RoomOptions {
      * @param \DateTime $dateCreatedBefore The date_created_before
      * @return ReadRoomOptions Options builder
      */
-    public static function read($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public static function read($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE)
+    {
         return new ReadRoomOptions($status, $uniqueName, $dateCreatedAfter, $dateCreatedBefore);
     }
 }
 
-class CreateRoomOptions extends Options {
+class CreateRoomOptions extends Options
+{
     /**
      * @param boolean $enableTurn The enable_turn
      * @param string $type The type
@@ -51,7 +55,8 @@ class CreateRoomOptions extends Options {
      * @param boolean $recordParticipantsOnConnect The
      *                                             record_participants_on_connect
      */
-    public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE) {
+    public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE)
+    {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
@@ -63,88 +68,96 @@ class CreateRoomOptions extends Options {
 
     /**
      * The enable_turn
-     * 
+     *
      * @param boolean $enableTurn The enable_turn
      * @return $this Fluent Builder
      */
-    public function setEnableTurn($enableTurn) {
+    public function setEnableTurn($enableTurn)
+    {
         $this->options['enableTurn'] = $enableTurn;
         return $this;
     }
 
     /**
      * The type
-     * 
+     *
      * @param string $type The type
      * @return $this Fluent Builder
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->options['type'] = $type;
         return $this;
     }
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName)
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
     /**
      * The status_callback
-     * 
+     *
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback)
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
 
     /**
      * The status_callback_method
-     * 
+     *
      * @param string $statusCallbackMethod The status_callback_method
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod)
+    {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
 
     /**
      * The max_participants
-     * 
+     *
      * @param integer $maxParticipants The max_participants
      * @return $this Fluent Builder
      */
-    public function setMaxParticipants($maxParticipants) {
+    public function setMaxParticipants($maxParticipants)
+    {
         $this->options['maxParticipants'] = $maxParticipants;
         return $this;
     }
 
     /**
      * The record_participants_on_connect
-     * 
+     *
      * @param boolean $recordParticipantsOnConnect The
      *                                             record_participants_on_connect
      * @return $this Fluent Builder
      */
-    public function setRecordParticipantsOnConnect($recordParticipantsOnConnect) {
+    public function setRecordParticipantsOnConnect($recordParticipantsOnConnect)
+    {
         $this->options['recordParticipantsOnConnect'] = $recordParticipantsOnConnect;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -155,14 +168,16 @@ class CreateRoomOptions extends Options {
     }
 }
 
-class ReadRoomOptions extends Options {
+class ReadRoomOptions extends Options
+{
     /**
      * @param string $status The status
      * @param string $uniqueName The unique_name
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @param \DateTime $dateCreatedBefore The date_created_before
      */
-    public function __construct($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public function __construct($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE)
+    {
         $this->options['status'] = $status;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -171,54 +186,59 @@ class ReadRoomOptions extends Options {
 
     /**
      * The status
-     * 
+     *
      * @param string $status The status
      * @return $this Fluent Builder
      */
-    public function setStatus($status) {
+    public function setStatus($status)
+    {
         $this->options['status'] = $status;
         return $this;
     }
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName)
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
     /**
      * The date_created_after
-     * 
+     *
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter)
+    {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
 
     /**
      * The date_created_before
-     * 
+     *
      * @param \DateTime $dateCreatedBefore The date_created_before
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore)
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

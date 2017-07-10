@@ -3,20 +3,22 @@
 
 namespace Twilio;
 
-
-class Values implements \ArrayAccess {
+class Values implements \ArrayAccess
+{
     const NONE = 'Twilio\\Values\\NONE';
 
     protected $options;
 
-    public static function array_get($array, $key, $default = null) {
+    public static function array_get($array, $key, $default = null)
+    {
         if (array_key_exists($key, $array)) {
             return $array[$key];
         }
         return $default;
     }
 
-    public static function of($array) {
+    public static function of($array)
+    {
         $result = array();
         foreach ($array as $key => $value) {
             if ($value === self::NONE) {
@@ -27,7 +29,8 @@ class Values implements \ArrayAccess {
         return $result;
     }
 
-    public function __construct($options) {
+    public function __construct($options)
+    {
         $this->options = array();
         foreach ($options as $key => $value) {
             $this->options[strtolower($key)] = $value;
@@ -46,7 +49,8 @@ class Values implements \ArrayAccess {
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
      */
-    public function offsetExists($offset) {
+    public function offsetExists($offset)
+    {
         return true;
     }
 
@@ -59,7 +63,8 @@ class Values implements \ArrayAccess {
      * </p>
      * @return mixed Can return all value types.
      */
-    public function offsetGet($offset) {
+    public function offsetGet($offset)
+    {
         $offset = strtolower($offset);
         return array_key_exists($offset, $this->options) ? $this->options[$offset] : self::NONE;
     }
@@ -76,7 +81,8 @@ class Values implements \ArrayAccess {
      * </p>
      * @return void
      */
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value)
+    {
         $this->options[strtolower($offset)] = $value;
     }
 
@@ -89,9 +95,8 @@ class Values implements \ArrayAccess {
      * </p>
      * @return void
      */
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset)
+    {
         unset($this->options[$offset]);
     }
-
-
 }

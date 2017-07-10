@@ -134,5 +134,4 @@ class SyncGrant implements Grant
 
         return $payload;
     }
-
 }

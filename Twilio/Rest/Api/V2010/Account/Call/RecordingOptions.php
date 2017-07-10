@@ -12,25 +12,29 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RecordingOptions {
+abstract class RecordingOptions
+{
     /**
      * @param string $dateCreatedBefore The date_created
      * @param string $dateCreated The date_created
      * @param string $dateCreatedAfter The date_created
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
+    public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE)
+    {
         return new ReadRecordingOptions($dateCreatedBefore, $dateCreated, $dateCreatedAfter);
     }
 }
 
-class ReadRecordingOptions extends Options {
+class ReadRecordingOptions extends Options
+{
     /**
      * @param string $dateCreatedBefore The date_created
      * @param string $dateCreated The date_created
      * @param string $dateCreatedAfter The date_created
      */
-    public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
+    public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE)
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
@@ -38,43 +42,47 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The date_created
-     * 
+     *
      * @param string $dateCreatedBefore The date_created
      * @return $this Fluent Builder
      */
-    public function setDateCreatedBefore($dateCreatedBefore) {
+    public function setDateCreatedBefore($dateCreatedBefore)
+    {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
 
     /**
      * The date_created
-     * 
+     *
      * @param string $dateCreated The date_created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated)
+    {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
 
     /**
      * The date_created
-     * 
+     *
      * @param string $dateCreatedAfter The date_created
      * @return $this Fluent Builder
      */
-    public function setDateCreatedAfter($dateCreatedAfter) {
+    public function setDateCreatedAfter($dateCreatedAfter)
+    {
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

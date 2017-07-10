@@ -3,36 +3,40 @@
 
 namespace Twilio\Tests\Unit\Rest;
 
-
 use Twilio\Rest\Client;
 use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
 use Twilio\Tests\Unit\UnitTest;
 
-class ClientTest extends UnitTest {
+class ClientTest extends UnitTest
+{
 
     /**
      * @expectedException \Twilio\Exceptions\ConfigurationException
      */
-    public function testThrowsWhenUsernameAndPasswordMissing() {
+    public function testThrowsWhenUsernameAndPasswordMissing()
+    {
         new Client(null, null, null, null, null, array());
     }
 
     /**
      * @expectedException \Twilio\Exceptions\ConfigurationException
      */
-    public function testThrowsWhenUsernameMissing() {
+    public function testThrowsWhenUsernameMissing()
+    {
         new Client(null, 'password', null, null, null, array());
     }
 
     /**
      * @expectedException \Twilio\Exceptions\ConfigurationException
      */
-    public function testThrowsWhenPasswordMissing() {
+    public function testThrowsWhenPasswordMissing()
+    {
         new Client('username', null, null, null, null, array());
     }
 
-    public function testUsernamePulledFromEnvironment() {
+    public function testUsernamePulledFromEnvironment()
+    {
         $client = new Client(null, 'password', null, null, null, array(
             Client::ENV_ACCOUNT_SID => 'username',
         ));
@@ -40,7 +44,8 @@ class ClientTest extends UnitTest {
         $this->assertEquals('username', $client->getUsername());
     }
 
-    public function testPasswordPulledFromEnvironment() {
+    public function testPasswordPulledFromEnvironment()
+    {
         $client = new Client('username', null, null, null, null, array(
             Client::ENV_AUTH_TOKEN => 'password',
         ));
@@ -48,7 +53,8 @@ class ClientTest extends UnitTest {
         $this->assertEquals('password', $client->getPassword());
     }
 
-    public function testUsernameAndPasswordPulledFromEnvironment() {
+    public function testUsernameAndPasswordPulledFromEnvironment()
+    {
         $client = new Client(null, null, null, null, null, array(
             Client::ENV_ACCOUNT_SID => 'username',
             Client::ENV_AUTH_TOKEN => 'password',
@@ -58,7 +64,8 @@ class ClientTest extends UnitTest {
         $this->assertEquals('password', $client->getPassword());
     }
 
-    public function testUsernameParameterPreferredOverEnvironment() {
+    public function testUsernameParameterPreferredOverEnvironment()
+    {
         $client = new Client('username', 'password', null, null, null, array(
             Client::ENV_ACCOUNT_SID => 'environmentUsername',
         ));
@@ -66,7 +73,8 @@ class ClientTest extends UnitTest {
         $this->assertEquals('username', $client->getUsername());
     }
 
-    public function testPasswordParameterPreferredOverEnvironment() {
+    public function testPasswordParameterPreferredOverEnvironment()
+    {
         $client = new Client('username', 'password', null, null, null, array(
             Client::ENV_AUTH_TOKEN => 'environmentPassword',
         ));
@@ -74,7 +82,8 @@ class ClientTest extends UnitTest {
         $this->assertEquals('password', $client->getPassword());
     }
 
-    public function testUsernameAndPasswordParametersPreferredOverEnvironment() {
+    public function testUsernameAndPasswordParametersPreferredOverEnvironment()
+    {
         $client = new Client('username', 'password', null, null, null, array(
             Client::ENV_ACCOUNT_SID => 'environmentUsername',
             Client::ENV_AUTH_TOKEN => 'environmentPassword',
@@ -84,17 +93,20 @@ class ClientTest extends UnitTest {
         $this->assertEquals('password', $client->getPassword());
     }
 
-    public function testAccountSidDefaultsToUsername() {
+    public function testAccountSidDefaultsToUsername()
+    {
         $client = new Client('username', 'password');
         $this->assertEquals('username', $client->getAccountSid());
     }
 
-    public function testAccountSidPreferredOverUsername() {
+    public function testAccountSidPreferredOverUsername()
+    {
         $client = new Client('username', 'password', 'accountSid');
         $this->assertEquals('accountSid', $client->getAccountSid());
     }
 
-    public function testRegionDefaultsToEmpty() {
+    public function testRegionDefaultsToEmpty()
+    {
         $network = new Holodeck();
         $client = new Client('username', 'password', null, null, $network);
         $client->request('POST', 'https://test.twilio.com/v1/Resources');
@@ -102,12 +114,12 @@ class ClientTest extends UnitTest {
         $this->assertTrue($network->hasRequest($expected));
     }
 
-    public function testRegionInjectedWhenSet() {
+    public function testRegionInjectedWhenSet()
+    {
         $network = new Holodeck();
         $client = new Client('username', 'password', null, 'ie1', $network);
         $client->request('POST', 'https://test.twilio.com/v1/Resources');
         $expected = new Request('POST', 'https://test.ie1.twilio.com/v1/Resources');
         $this->assertTrue($network->hasRequest($expected));
     }
-
 }

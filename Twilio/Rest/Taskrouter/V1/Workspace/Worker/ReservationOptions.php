@@ -12,12 +12,14 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ReservationOptions {
+abstract class ReservationOptions
+{
     /**
      * @param string $reservationStatus The reservation_status
      * @return ReadReservationOptions Options builder
      */
-    public static function read($reservationStatus = Values::NONE) {
+    public static function read($reservationStatus = Values::NONE)
+    {
         return new ReadReservationOptions($reservationStatus);
     }
 
@@ -43,36 +45,41 @@ abstract class ReservationOptions {
      * @param string $redirectUrl The redirect_url
      * @return UpdateReservationOptions Options builder
      */
-    public static function update($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE) {
+    public static function update($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE)
+    {
         return new UpdateReservationOptions($reservationStatus, $workerActivitySid, $instruction, $dequeuePostWorkActivitySid, $dequeueFrom, $dequeueRecord, $dequeueTimeout, $dequeueTo, $dequeueStatusCallbackUrl, $callFrom, $callRecord, $callTimeout, $callTo, $callUrl, $callStatusCallbackUrl, $callAccept, $redirectCallSid, $redirectAccept, $redirectUrl);
     }
 }
 
-class ReadReservationOptions extends Options {
+class ReadReservationOptions extends Options
+{
     /**
      * @param string $reservationStatus The reservation_status
      */
-    public function __construct($reservationStatus = Values::NONE) {
+    public function __construct($reservationStatus = Values::NONE)
+    {
         $this->options['reservationStatus'] = $reservationStatus;
     }
 
     /**
      * The reservation_status
-     * 
+     *
      * @param string $reservationStatus The reservation_status
      * @return $this Fluent Builder
      */
-    public function setReservationStatus($reservationStatus) {
+    public function setReservationStatus($reservationStatus)
+    {
         $this->options['reservationStatus'] = $reservationStatus;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -83,7 +90,8 @@ class ReadReservationOptions extends Options {
     }
 }
 
-class UpdateReservationOptions extends Options {
+class UpdateReservationOptions extends Options
+{
     /**
      * @param string $reservationStatus The reservation_status
      * @param string $workerActivitySid The worker_activity_sid
@@ -105,7 +113,8 @@ class UpdateReservationOptions extends Options {
      * @param boolean $redirectAccept The redirect_accept
      * @param string $redirectUrl The redirect_url
      */
-    public function __construct($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE) {
+    public function __construct($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE)
+    {
         $this->options['reservationStatus'] = $reservationStatus;
         $this->options['workerActivitySid'] = $workerActivitySid;
         $this->options['instruction'] = $instruction;
@@ -129,219 +138,239 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The reservation_status
-     * 
+     *
      * @param string $reservationStatus The reservation_status
      * @return $this Fluent Builder
      */
-    public function setReservationStatus($reservationStatus) {
+    public function setReservationStatus($reservationStatus)
+    {
         $this->options['reservationStatus'] = $reservationStatus;
         return $this;
     }
 
     /**
      * The worker_activity_sid
-     * 
+     *
      * @param string $workerActivitySid The worker_activity_sid
      * @return $this Fluent Builder
      */
-    public function setWorkerActivitySid($workerActivitySid) {
+    public function setWorkerActivitySid($workerActivitySid)
+    {
         $this->options['workerActivitySid'] = $workerActivitySid;
         return $this;
     }
 
     /**
      * The instruction
-     * 
+     *
      * @param string $instruction The instruction
      * @return $this Fluent Builder
      */
-    public function setInstruction($instruction) {
+    public function setInstruction($instruction)
+    {
         $this->options['instruction'] = $instruction;
         return $this;
     }
 
     /**
      * The dequeue_post_work_activity_sid
-     * 
+     *
      * @param string $dequeuePostWorkActivitySid The dequeue_post_work_activity_sid
      * @return $this Fluent Builder
      */
-    public function setDequeuePostWorkActivitySid($dequeuePostWorkActivitySid) {
+    public function setDequeuePostWorkActivitySid($dequeuePostWorkActivitySid)
+    {
         $this->options['dequeuePostWorkActivitySid'] = $dequeuePostWorkActivitySid;
         return $this;
     }
 
     /**
      * The dequeue_from
-     * 
+     *
      * @param string $dequeueFrom The dequeue_from
      * @return $this Fluent Builder
      */
-    public function setDequeueFrom($dequeueFrom) {
+    public function setDequeueFrom($dequeueFrom)
+    {
         $this->options['dequeueFrom'] = $dequeueFrom;
         return $this;
     }
 
     /**
      * The dequeue_record
-     * 
+     *
      * @param string $dequeueRecord The dequeue_record
      * @return $this Fluent Builder
      */
-    public function setDequeueRecord($dequeueRecord) {
+    public function setDequeueRecord($dequeueRecord)
+    {
         $this->options['dequeueRecord'] = $dequeueRecord;
         return $this;
     }
 
     /**
      * The dequeue_timeout
-     * 
+     *
      * @param integer $dequeueTimeout The dequeue_timeout
      * @return $this Fluent Builder
      */
-    public function setDequeueTimeout($dequeueTimeout) {
+    public function setDequeueTimeout($dequeueTimeout)
+    {
         $this->options['dequeueTimeout'] = $dequeueTimeout;
         return $this;
     }
 
     /**
      * The dequeue_to
-     * 
+     *
      * @param string $dequeueTo The dequeue_to
      * @return $this Fluent Builder
      */
-    public function setDequeueTo($dequeueTo) {
+    public function setDequeueTo($dequeueTo)
+    {
         $this->options['dequeueTo'] = $dequeueTo;
         return $this;
     }
 
     /**
      * The dequeue_status_callback_url
-     * 
+     *
      * @param string $dequeueStatusCallbackUrl The dequeue_status_callback_url
      * @return $this Fluent Builder
      */
-    public function setDequeueStatusCallbackUrl($dequeueStatusCallbackUrl) {
+    public function setDequeueStatusCallbackUrl($dequeueStatusCallbackUrl)
+    {
         $this->options['dequeueStatusCallbackUrl'] = $dequeueStatusCallbackUrl;
         return $this;
     }
 
     /**
      * The call_from
-     * 
+     *
      * @param string $callFrom The call_from
      * @return $this Fluent Builder
      */
-    public function setCallFrom($callFrom) {
+    public function setCallFrom($callFrom)
+    {
         $this->options['callFrom'] = $callFrom;
         return $this;
     }
 
     /**
      * The call_record
-     * 
+     *
      * @param string $callRecord The call_record
      * @return $this Fluent Builder
      */
-    public function setCallRecord($callRecord) {
+    public function setCallRecord($callRecord)
+    {
         $this->options['callRecord'] = $callRecord;
         return $this;
     }
 
     /**
      * The call_timeout
-     * 
+     *
      * @param integer $callTimeout The call_timeout
      * @return $this Fluent Builder
      */
-    public function setCallTimeout($callTimeout) {
+    public function setCallTimeout($callTimeout)
+    {
         $this->options['callTimeout'] = $callTimeout;
         return $this;
     }
 
     /**
      * The call_to
-     * 
+     *
      * @param string $callTo The call_to
      * @return $this Fluent Builder
      */
-    public function setCallTo($callTo) {
+    public function setCallTo($callTo)
+    {
         $this->options['callTo'] = $callTo;
         return $this;
     }
 
     /**
      * The call_url
-     * 
+     *
      * @param string $callUrl The call_url
      * @return $this Fluent Builder
      */
-    public function setCallUrl($callUrl) {
+    public function setCallUrl($callUrl)
+    {
         $this->options['callUrl'] = $callUrl;
         return $this;
     }
 
     /**
      * The call_status_callback_url
-     * 
+     *
      * @param string $callStatusCallbackUrl The call_status_callback_url
      * @return $this Fluent Builder
      */
-    public function setCallStatusCallbackUrl($callStatusCallbackUrl) {
+    public function setCallStatusCallbackUrl($callStatusCallbackUrl)
+    {
         $this->options['callStatusCallbackUrl'] = $callStatusCallbackUrl;
         return $this;
     }
 
     /**
      * The call_accept
-     * 
+     *
      * @param boolean $callAccept The call_accept
      * @return $this Fluent Builder
      */
-    public function setCallAccept($callAccept) {
+    public function setCallAccept($callAccept)
+    {
         $this->options['callAccept'] = $callAccept;
         return $this;
     }
 
     /**
      * The redirect_call_sid
-     * 
+     *
      * @param string $redirectCallSid The redirect_call_sid
      * @return $this Fluent Builder
      */
-    public function setRedirectCallSid($redirectCallSid) {
+    public function setRedirectCallSid($redirectCallSid)
+    {
         $this->options['redirectCallSid'] = $redirectCallSid;
         return $this;
     }
 
     /**
      * The redirect_accept
-     * 
+     *
      * @param boolean $redirectAccept The redirect_accept
      * @return $this Fluent Builder
      */
-    public function setRedirectAccept($redirectAccept) {
+    public function setRedirectAccept($redirectAccept)
+    {
         $this->options['redirectAccept'] = $redirectAccept;
         return $this;
     }
 
     /**
      * The redirect_url
-     * 
+     *
      * @param string $redirectUrl The redirect_url
      * @return $this Fluent Builder
      */
-    public function setRedirectUrl($redirectUrl) {
+    public function setRedirectUrl($redirectUrl)
+    {
         $this->options['redirectUrl'] = $redirectUrl;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

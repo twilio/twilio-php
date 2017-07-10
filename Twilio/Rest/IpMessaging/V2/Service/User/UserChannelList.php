@@ -13,16 +13,18 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class UserChannelList extends ListResource {
+class UserChannelList extends ListResource
+{
     /**
      * Construct the UserChannelList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $userSid The sid
-     * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserChannelList 
+     * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserChannelList
      */
-    public function __construct(Version $version, $serviceSid, $userSid) {
+    public function __construct(Version $version, $serviceSid, $userSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +43,7 @@ class UserChannelList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -52,7 +54,8 @@ class UserChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null)
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -64,7 +67,7 @@ class UserChannelList extends ListResource {
      * Reads UserChannelInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -75,20 +78,22 @@ class UserChannelList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return UserChannelInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null)
+    {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
      * Retrieve a single page of UserChannelInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return \Twilio\Page Page of UserChannelInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE)
+    {
         $params = Values::of(array(
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
@@ -107,11 +112,12 @@ class UserChannelList extends ListResource {
     /**
      * Retrieve a specific page of UserChannelInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of UserChannelInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl)
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -122,10 +128,11 @@ class UserChannelList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.IpMessaging.V2.UserChannelList]';
     }
 }

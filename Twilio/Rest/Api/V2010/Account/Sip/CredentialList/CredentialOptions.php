@@ -12,41 +12,47 @@ namespace Twilio\Rest\Api\V2010\Account\Sip\CredentialList;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class CredentialOptions {
+abstract class CredentialOptions
+{
     /**
      * @param string $password The password
      * @return UpdateCredentialOptions Options builder
      */
-    public static function update($password = Values::NONE) {
+    public static function update($password = Values::NONE)
+    {
         return new UpdateCredentialOptions($password);
     }
 }
 
-class UpdateCredentialOptions extends Options {
+class UpdateCredentialOptions extends Options
+{
     /**
      * @param string $password The password
      */
-    public function __construct($password = Values::NONE) {
+    public function __construct($password = Values::NONE)
+    {
         $this->options['password'] = $password;
     }
 
     /**
      * The password
-     * 
+     *
      * @param string $password The password
      * @return $this Fluent Builder
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->options['password'] = $password;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

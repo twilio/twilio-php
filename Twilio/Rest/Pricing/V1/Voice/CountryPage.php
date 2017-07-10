@@ -11,15 +11,18 @@ namespace Twilio\Rest\Pricing\V1\Voice;
 
 use Twilio\Page;
 
-class CountryPage extends Page {
-    public function __construct($version, $response, $solution) {
+class CountryPage extends Page
+{
+    public function __construct($version, $response, $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload)
+    {
         return new CountryInstance(
             $this->version,
             $payload
@@ -28,10 +31,11 @@ class CountryPage extends Page {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Pricing.V1.CountryPage]';
     }
 }

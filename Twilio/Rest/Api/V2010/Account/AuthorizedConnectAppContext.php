@@ -13,16 +13,18 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class AuthorizedConnectAppContext extends InstanceContext {
+class AuthorizedConnectAppContext extends InstanceContext
+{
     /**
      * Initialize the AuthorizedConnectAppContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $connectAppSid The connect_app_sid
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext
      */
-    public function __construct(Version $version, $accountSid, $connectAppSid) {
+    public function __construct(Version $version, $accountSid, $connectAppSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -36,10 +38,11 @@ class AuthorizedConnectAppContext extends InstanceContext {
 
     /**
      * Fetch a AuthorizedConnectAppInstance
-     * 
+     *
      * @return AuthorizedConnectAppInstance Fetched AuthorizedConnectAppInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -58,10 +61,11 @@ class AuthorizedConnectAppContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

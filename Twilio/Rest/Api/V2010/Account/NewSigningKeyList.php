@@ -14,16 +14,18 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class NewSigningKeyList extends ListResource {
+class NewSigningKeyList extends ListResource
+{
     /**
      * Construct the NewSigningKeyList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, $accountSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -36,11 +38,12 @@ class NewSigningKeyList extends ListResource {
 
     /**
      * Create a new NewSigningKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return NewSigningKeyInstance Newly created NewSigningKeyInstance
      */
-    public function create($options = array()) {
+    public function create($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -63,10 +66,11 @@ class NewSigningKeyList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.NewSigningKeyList]';
     }
 }

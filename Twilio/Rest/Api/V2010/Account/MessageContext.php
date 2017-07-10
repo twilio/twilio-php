@@ -21,19 +21,21 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\Message\FeedbackList feedback
  * @method \Twilio\Rest\Api\V2010\Account\Message\MediaContext media(string $sid)
  */
-class MessageContext extends InstanceContext {
+class MessageContext extends InstanceContext
+{
     protected $_media = null;
     protected $_feedback = null;
 
     /**
      * Initialize the MessageContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique message Sid
-     * @return \Twilio\Rest\Api\V2010\Account\MessageContext 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageContext
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $accountSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -47,19 +49,21 @@ class MessageContext extends InstanceContext {
 
     /**
      * Deletes the MessageInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Fetch a MessageInstance
-     * 
+     *
      * @return MessageInstance Fetched MessageInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -78,11 +82,12 @@ class MessageContext extends InstanceContext {
 
     /**
      * Update the MessageInstance
-     * 
+     *
      * @param string $body The body
      * @return MessageInstance Updated MessageInstance
      */
-    public function update($body) {
+    public function update($body)
+    {
         $data = Values::of(array(
             'Body' => $body,
         ));
@@ -104,10 +109,11 @@ class MessageContext extends InstanceContext {
 
     /**
      * Access the media
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList
      */
-    protected function getMedia() {
+    protected function getMedia()
+    {
         if (!$this->_media) {
             $this->_media = new MediaList(
                 $this->version,
@@ -121,10 +127,11 @@ class MessageContext extends InstanceContext {
 
     /**
      * Access the feedback
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList
      */
-    protected function getFeedback() {
+    protected function getFeedback()
+    {
         if (!$this->_feedback) {
             $this->_feedback = new FeedbackList(
                 $this->version,
@@ -138,12 +145,13 @@ class MessageContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -154,13 +162,14 @@ class MessageContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -171,10 +180,11 @@ class MessageContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -12,7 +12,8 @@ namespace Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TollFreeOptions {
+abstract class TollFreeOptions
+{
     /**
      * @param boolean $beta The beta
      * @param string $friendlyName The friendly_name
@@ -20,7 +21,8 @@ abstract class TollFreeOptions {
      * @param string $origin The origin
      * @return ReadTollFreeOptions Options builder
      */
-    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
+    public static function read($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE)
+    {
         return new ReadTollFreeOptions($beta, $friendlyName, $phoneNumber, $origin);
     }
 
@@ -42,19 +44,22 @@ abstract class TollFreeOptions {
      * @param string $voiceUrl The voice_url
      * @return CreateTollFreeOptions Options builder
      */
-    public static function create($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
+    public static function create($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE)
+    {
         return new CreateTollFreeOptions($apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl);
     }
 }
 
-class ReadTollFreeOptions extends Options {
+class ReadTollFreeOptions extends Options
+{
     /**
      * @param boolean $beta The beta
      * @param string $friendlyName The friendly_name
      * @param string $phoneNumber The phone_number
      * @param string $origin The origin
      */
-    public function __construct($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE) {
+    public function __construct($beta = Values::NONE, $friendlyName = Values::NONE, $phoneNumber = Values::NONE, $origin = Values::NONE)
+    {
         $this->options['beta'] = $beta;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['phoneNumber'] = $phoneNumber;
@@ -63,54 +68,59 @@ class ReadTollFreeOptions extends Options {
 
     /**
      * The beta
-     * 
+     *
      * @param boolean $beta The beta
      * @return $this Fluent Builder
      */
-    public function setBeta($beta) {
+    public function setBeta($beta)
+    {
         $this->options['beta'] = $beta;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The phone_number
-     * 
+     *
      * @param string $phoneNumber The phone_number
      * @return $this Fluent Builder
      */
-    public function setPhoneNumber($phoneNumber) {
+    public function setPhoneNumber($phoneNumber)
+    {
         $this->options['phoneNumber'] = $phoneNumber;
         return $this;
     }
 
     /**
      * The origin
-     * 
+     *
      * @param string $origin The origin
      * @return $this Fluent Builder
      */
-    public function setOrigin($origin) {
+    public function setOrigin($origin)
+    {
         $this->options['origin'] = $origin;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -121,7 +131,8 @@ class ReadTollFreeOptions extends Options {
     }
 }
 
-class CreateTollFreeOptions extends Options {
+class CreateTollFreeOptions extends Options
+{
     /**
      * @param string $apiVersion The api_version
      * @param string $friendlyName The friendly_name
@@ -139,7 +150,8 @@ class CreateTollFreeOptions extends Options {
      * @param string $voiceMethod The voice_method
      * @param string $voiceUrl The voice_url
      */
-    public function __construct($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
+    public function __construct($apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE)
+    {
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['smsApplicationSid'] = $smsApplicationSid;
@@ -159,175 +171,191 @@ class CreateTollFreeOptions extends Options {
 
     /**
      * The api_version
-     * 
+     *
      * @param string $apiVersion The api_version
      * @return $this Fluent Builder
      */
-    public function setApiVersion($apiVersion) {
+    public function setApiVersion($apiVersion)
+    {
         $this->options['apiVersion'] = $apiVersion;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The sms_application_sid
-     * 
+     *
      * @param string $smsApplicationSid The sms_application_sid
      * @return $this Fluent Builder
      */
-    public function setSmsApplicationSid($smsApplicationSid) {
+    public function setSmsApplicationSid($smsApplicationSid)
+    {
         $this->options['smsApplicationSid'] = $smsApplicationSid;
         return $this;
     }
 
     /**
      * The sms_fallback_method
-     * 
+     *
      * @param string $smsFallbackMethod The sms_fallback_method
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackMethod($smsFallbackMethod) {
+    public function setSmsFallbackMethod($smsFallbackMethod)
+    {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
         return $this;
     }
 
     /**
      * The sms_fallback_url
-     * 
+     *
      * @param string $smsFallbackUrl The sms_fallback_url
      * @return $this Fluent Builder
      */
-    public function setSmsFallbackUrl($smsFallbackUrl) {
+    public function setSmsFallbackUrl($smsFallbackUrl)
+    {
         $this->options['smsFallbackUrl'] = $smsFallbackUrl;
         return $this;
     }
 
     /**
      * The sms_method
-     * 
+     *
      * @param string $smsMethod The sms_method
      * @return $this Fluent Builder
      */
-    public function setSmsMethod($smsMethod) {
+    public function setSmsMethod($smsMethod)
+    {
         $this->options['smsMethod'] = $smsMethod;
         return $this;
     }
 
     /**
      * The sms_url
-     * 
+     *
      * @param string $smsUrl The sms_url
      * @return $this Fluent Builder
      */
-    public function setSmsUrl($smsUrl) {
+    public function setSmsUrl($smsUrl)
+    {
         $this->options['smsUrl'] = $smsUrl;
         return $this;
     }
 
     /**
      * The status_callback
-     * 
+     *
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
-    public function setStatusCallback($statusCallback) {
+    public function setStatusCallback($statusCallback)
+    {
         $this->options['statusCallback'] = $statusCallback;
         return $this;
     }
 
     /**
      * The status_callback_method
-     * 
+     *
      * @param string $statusCallbackMethod The status_callback_method
      * @return $this Fluent Builder
      */
-    public function setStatusCallbackMethod($statusCallbackMethod) {
+    public function setStatusCallbackMethod($statusCallbackMethod)
+    {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
 
     /**
      * The voice_application_sid
-     * 
+     *
      * @param string $voiceApplicationSid The voice_application_sid
      * @return $this Fluent Builder
      */
-    public function setVoiceApplicationSid($voiceApplicationSid) {
+    public function setVoiceApplicationSid($voiceApplicationSid)
+    {
         $this->options['voiceApplicationSid'] = $voiceApplicationSid;
         return $this;
     }
 
     /**
      * The voice_caller_id_lookup
-     * 
+     *
      * @param boolean $voiceCallerIdLookup The voice_caller_id_lookup
      * @return $this Fluent Builder
      */
-    public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
+    public function setVoiceCallerIdLookup($voiceCallerIdLookup)
+    {
         $this->options['voiceCallerIdLookup'] = $voiceCallerIdLookup;
         return $this;
     }
 
     /**
      * The voice_fallback_method
-     * 
+     *
      * @param string $voiceFallbackMethod The voice_fallback_method
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackMethod($voiceFallbackMethod) {
+    public function setVoiceFallbackMethod($voiceFallbackMethod)
+    {
         $this->options['voiceFallbackMethod'] = $voiceFallbackMethod;
         return $this;
     }
 
     /**
      * The voice_fallback_url
-     * 
+     *
      * @param string $voiceFallbackUrl The voice_fallback_url
      * @return $this Fluent Builder
      */
-    public function setVoiceFallbackUrl($voiceFallbackUrl) {
+    public function setVoiceFallbackUrl($voiceFallbackUrl)
+    {
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         return $this;
     }
 
     /**
      * The voice_method
-     * 
+     *
      * @param string $voiceMethod The voice_method
      * @return $this Fluent Builder
      */
-    public function setVoiceMethod($voiceMethod) {
+    public function setVoiceMethod($voiceMethod)
+    {
         $this->options['voiceMethod'] = $voiceMethod;
         return $this;
     }
 
     /**
      * The voice_url
-     * 
+     *
      * @param string $voiceUrl The voice_url
      * @return $this Fluent Builder
      */
-    public function setVoiceUrl($voiceUrl) {
+    public function setVoiceUrl($voiceUrl)
+    {
         $this->options['voiceUrl'] = $voiceUrl;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

@@ -14,16 +14,18 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class DomainList extends ListResource {
+class DomainList extends ListResource
+{
     /**
      * Construct the DomainList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainList
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, $accountSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +43,7 @@ class DomainList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -52,7 +54,8 @@ class DomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null)
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -64,7 +67,7 @@ class DomainList extends ListResource {
      * Reads DomainInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -75,20 +78,22 @@ class DomainList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return DomainInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null)
+    {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
      * Retrieve a single page of DomainInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return \Twilio\Page Page of DomainInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE)
+    {
         $params = Values::of(array(
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
@@ -107,11 +112,12 @@ class DomainList extends ListResource {
     /**
      * Retrieve a specific page of DomainInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of DomainInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl)
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -122,12 +128,13 @@ class DomainList extends ListResource {
 
     /**
      * Create a new DomainInstance
-     * 
+     *
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @param array|Options $options Optional Arguments
      * @return DomainInstance Newly created DomainInstance
      */
-    public function create($domainName, $options = array()) {
+    public function create($domainName, $options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -158,11 +165,12 @@ class DomainList extends ListResource {
 
     /**
      * Constructs a DomainContext
-     * 
+     *
      * @param string $sid Fetch by unique Domain Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext
      */
-    public function getContext($sid) {
+    public function getContext($sid)
+    {
         return new DomainContext(
             $this->version,
             $this->solution['accountSid'],
@@ -172,10 +180,11 @@ class DomainList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.DomainList]';
     }
 }

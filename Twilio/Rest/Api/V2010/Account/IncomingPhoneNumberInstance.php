@@ -46,17 +46,19 @@ use Twilio\Version;
  * @property string emergencyStatus
  * @property string emergencyAddressSid
  */
-class IncomingPhoneNumberInstance extends InstanceResource {
+class IncomingPhoneNumberInstance extends InstanceResource
+{
     /**
      * Initialize the IncomingPhoneNumberInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique sid that identifies this account
      * @param string $sid Fetch by unique incoming-phone-number Sid
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -100,12 +102,13 @@ class IncomingPhoneNumberInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext Context
      *                                                                   for this
      *                                                                   IncomingPhoneNumberInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new IncomingPhoneNumberContext(
                 $this->version,
@@ -119,11 +122,12 @@ class IncomingPhoneNumberInstance extends InstanceResource {
 
     /**
      * Update the IncomingPhoneNumberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -131,30 +135,33 @@ class IncomingPhoneNumberInstance extends InstanceResource {
 
     /**
      * Fetch a IncomingPhoneNumberInstance
-     * 
+     *
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the IncomingPhoneNumberInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -169,10 +176,11 @@ class IncomingPhoneNumberInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

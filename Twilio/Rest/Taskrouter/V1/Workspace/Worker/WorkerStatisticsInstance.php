@@ -22,17 +22,19 @@ use Twilio\Version;
  * @property string workspaceSid
  * @property string url
  */
-class WorkerStatisticsInstance extends InstanceResource {
+class WorkerStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkerStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsInstance
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -53,10 +55,11 @@ class WorkerStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext Context for this WorkerStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new WorkerStatisticsContext(
                 $this->version,
@@ -70,11 +73,12 @@ class WorkerStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkerStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
      */
-    public function fetch($options = array()) {
+    public function fetch($options = array())
+    {
         return $this->proxy()->fetch(
             $options
         );
@@ -82,12 +86,13 @@ class WorkerStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -102,10 +107,11 @@ class WorkerStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

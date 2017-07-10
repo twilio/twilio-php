@@ -23,17 +23,19 @@ use Twilio\Version;
  * @property string workspaceSid
  * @property string url
  */
-class WorkflowStatisticsInstance extends InstanceResource {
+class WorkflowStatisticsInstance extends InstanceResource
+{
     /**
      * Initialize the WorkflowStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $workflowSid The workflow_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsInstance
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $workflowSid) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $workflowSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -55,11 +57,12 @@ class WorkflowStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsContext Context for this
      *                                                                                 WorkflowStatisticsInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new WorkflowStatisticsContext(
                 $this->version,
@@ -73,11 +76,12 @@ class WorkflowStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkflowStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
      */
-    public function fetch($options = array()) {
+    public function fetch($options = array())
+    {
         return $this->proxy()->fetch(
             $options
         );
@@ -85,12 +89,13 @@ class WorkflowStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -105,10 +110,11 @@ class WorkflowStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

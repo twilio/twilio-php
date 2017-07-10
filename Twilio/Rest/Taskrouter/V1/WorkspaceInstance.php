@@ -33,7 +33,8 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class WorkspaceInstance extends InstanceResource {
+class WorkspaceInstance extends InstanceResource
+{
     protected $_activities = null;
     protected $_events = null;
     protected $_tasks = null;
@@ -45,13 +46,14 @@ class WorkspaceInstance extends InstanceResource {
 
     /**
      * Initialize the WorkspaceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -81,11 +83,12 @@ class WorkspaceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext Context for this
      *                                                     WorkspaceInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new WorkspaceContext(
                 $this->version,
@@ -98,20 +101,22 @@ class WorkspaceInstance extends InstanceResource {
 
     /**
      * Fetch a WorkspaceInstance
-     * 
+     *
      * @return WorkspaceInstance Fetched WorkspaceInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the WorkspaceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -119,93 +124,103 @@ class WorkspaceInstance extends InstanceResource {
 
     /**
      * Deletes the WorkspaceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the activities
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList
      */
-    protected function getActivities() {
+    protected function getActivities()
+    {
         return $this->proxy()->activities;
     }
 
     /**
      * Access the events
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList
      */
-    protected function getEvents() {
+    protected function getEvents()
+    {
         return $this->proxy()->events;
     }
 
     /**
      * Access the tasks
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList
      */
-    protected function getTasks() {
+    protected function getTasks()
+    {
         return $this->proxy()->tasks;
     }
 
     /**
      * Access the taskQueues
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList
      */
-    protected function getTaskQueues() {
+    protected function getTaskQueues()
+    {
         return $this->proxy()->taskQueues;
     }
 
     /**
      * Access the workers
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList
      */
-    protected function getWorkers() {
+    protected function getWorkers()
+    {
         return $this->proxy()->workers;
     }
 
     /**
      * Access the workflows
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList
      */
-    protected function getWorkflows() {
+    protected function getWorkflows()
+    {
         return $this->proxy()->workflows;
     }
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList
      */
-    protected function getStatistics() {
+    protected function getStatistics()
+    {
         return $this->proxy()->statistics;
     }
 
     /**
      * Access the taskChannels
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList
      */
-    protected function getTaskChannels() {
+    protected function getTaskChannels()
+    {
         return $this->proxy()->taskChannels;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -220,10 +235,11 @@ class WorkspaceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

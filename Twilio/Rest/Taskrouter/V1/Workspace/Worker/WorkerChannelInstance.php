@@ -32,18 +32,20 @@ use Twilio\Version;
  * @property array links
  * @property string url
  */
-class WorkerChannelInstance extends InstanceResource {
+class WorkerChannelInstance extends InstanceResource
+{
     /**
      * Initialize the WorkerChannelInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,10 +76,11 @@ class WorkerChannelInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext Context for this WorkerChannelInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new WorkerChannelContext(
                 $this->version,
@@ -92,20 +95,22 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Fetch a WorkerChannelInstance
-     * 
+     *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the WorkerChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerChannelInstance Updated WorkerChannelInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -113,12 +118,13 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -133,10 +139,11 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

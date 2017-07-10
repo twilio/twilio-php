@@ -15,16 +15,18 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class ApplicationContext extends InstanceContext {
+class ApplicationContext extends InstanceContext
+{
     /**
      * Initialize the ApplicationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique Application Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $accountSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -38,19 +40,21 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Deletes the ApplicationInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Fetch a ApplicationInstance
-     * 
+     *
      * @return ApplicationInstance Fetched ApplicationInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -69,11 +73,12 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Update the ApplicationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -111,10 +116,11 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

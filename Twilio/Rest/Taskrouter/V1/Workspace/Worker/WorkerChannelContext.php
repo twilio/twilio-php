@@ -15,17 +15,19 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class WorkerChannelContext extends InstanceContext {
+class WorkerChannelContext extends InstanceContext
+{
     /**
      * Initialize the WorkerChannelContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext
      */
-    public function __construct(Version $version, $workspaceSid, $workerSid, $sid) {
+    public function __construct(Version $version, $workspaceSid, $workerSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -40,10 +42,11 @@ class WorkerChannelContext extends InstanceContext {
 
     /**
      * Fetch a WorkerChannelInstance
-     * 
+     *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -63,11 +66,12 @@ class WorkerChannelContext extends InstanceContext {
 
     /**
      * Update the WorkerChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerChannelInstance Updated WorkerChannelInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -93,10 +97,11 @@ class WorkerChannelContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

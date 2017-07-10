@@ -32,19 +32,21 @@ use Twilio\Version;
  * @property boolean emergencyEnabled
  * @property boolean validated
  */
-class AddressInstance extends InstanceResource {
+class AddressInstance extends InstanceResource
+{
     protected $_dependentPhoneNumbers = null;
 
     /**
      * Initialize the AddressInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The account_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\AddressInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,11 +76,12 @@ class AddressInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\AddressContext Context for this
      *                                                       AddressInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new AddressContext(
                 $this->version,
@@ -92,29 +95,32 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Deletes the AddressInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Fetch a AddressInstance
-     * 
+     *
      * @return AddressInstance Fetched AddressInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the AddressInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AddressInstance Updated AddressInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -122,21 +128,23 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Access the dependentPhoneNumbers
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList
      */
-    protected function getDependentPhoneNumbers() {
+    protected function getDependentPhoneNumbers()
+    {
         return $this->proxy()->dependentPhoneNumbers;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -151,10 +159,11 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

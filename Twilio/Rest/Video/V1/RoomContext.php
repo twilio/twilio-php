@@ -19,17 +19,19 @@ use Twilio\Version;
  * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList recordings
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
  */
-class RoomContext extends InstanceContext {
+class RoomContext extends InstanceContext
+{
     protected $_recordings = null;
 
     /**
      * Initialize the RoomContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\RoomContext 
+     * @return \Twilio\Rest\Video\V1\RoomContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -42,10 +44,11 @@ class RoomContext extends InstanceContext {
 
     /**
      * Fetch a RoomInstance
-     * 
+     *
      * @return RoomInstance Fetched RoomInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -63,11 +66,12 @@ class RoomContext extends InstanceContext {
 
     /**
      * Update the RoomInstance
-     * 
+     *
      * @param string $status The status
      * @return RoomInstance Updated RoomInstance
      */
-    public function update($status) {
+    public function update($status)
+    {
         $data = Values::of(array(
             'Status' => $status,
         ));
@@ -88,10 +92,11 @@ class RoomContext extends InstanceContext {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings()
+    {
         if (!$this->_recordings) {
             $this->_recordings = new RoomRecordingList(
                 $this->version,
@@ -104,12 +109,13 @@ class RoomContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -120,13 +126,14 @@ class RoomContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -137,10 +144,11 @@ class RoomContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

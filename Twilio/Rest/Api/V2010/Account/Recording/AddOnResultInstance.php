@@ -27,20 +27,22 @@ use Twilio\Version;
  * @property string referenceSid
  * @property array subresourceUris
  */
-class AddOnResultInstance extends InstanceResource {
+class AddOnResultInstance extends InstanceResource
+{
     protected $_payloads = null;
 
     /**
      * Initialize the AddOnResultInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique sid that identifies this account
      * @param string $referenceSid A string that uniquely identifies the recording.
      * @param string $sid Fetch by unique result Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,12 +69,13 @@ class AddOnResultInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext Context
      *                                                                     for this
      *                                                                     AddOnResultInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new AddOnResultContext(
                 $this->version,
@@ -87,39 +90,43 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Fetch a AddOnResultInstance
-     * 
+     *
      * @return AddOnResultInstance Fetched AddOnResultInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the AddOnResultInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the payloads
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList
      */
-    protected function getPayloads() {
+    protected function getPayloads()
+    {
         return $this->proxy()->payloads;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -134,10 +141,11 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -13,16 +13,18 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class NotificationContext extends InstanceContext {
+class NotificationContext extends InstanceContext
+{
     /**
      * Initialize the NotificationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique notification Sid
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $accountSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -36,10 +38,11 @@ class NotificationContext extends InstanceContext {
 
     /**
      * Fetch a NotificationInstance
-     * 
+     *
      * @return NotificationInstance Fetched NotificationInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -58,19 +61,21 @@ class NotificationContext extends InstanceContext {
 
     /**
      * Deletes the NotificationInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

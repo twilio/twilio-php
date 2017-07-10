@@ -3,8 +3,8 @@
 
 namespace Twilio\Jwt\Grants;
 
-
-class IpMessagingGrant implements Grant {
+class IpMessagingGrant implements Grant
+{
     private $serviceSid;
     private $endpointId;
     private $deploymentRoleSid;
@@ -15,7 +15,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return string the service sid
      */
-    public function getServiceSid() {
+    public function getServiceSid()
+    {
         return $this->serviceSid;
     }
 
@@ -26,7 +27,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setServiceSid($serviceSid) {
+    public function setServiceSid($serviceSid)
+    {
         $this->serviceSid = $serviceSid;
         return $this;
     }
@@ -36,7 +38,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return string the endpoint id
      */
-    public function getEndpointId() {
+    public function getEndpointId()
+    {
         return $this->endpointId;
     }
 
@@ -47,7 +50,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setEndpointId($endpointId) {
+    public function setEndpointId($endpointId)
+    {
         $this->endpointId = $endpointId;
         return $this;
     }
@@ -57,7 +61,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return string the deployment role sid
      */
-    public function getDeploymentRoleSid() {
+    public function getDeploymentRoleSid()
+    {
         return $this->deploymentRoleSid;
     }
 
@@ -68,7 +73,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setDeploymentRoleSid($deploymentRoleSid) {
+    public function setDeploymentRoleSid($deploymentRoleSid)
+    {
         $this->deploymentRoleSid = $deploymentRoleSid;
         return $this;
     }
@@ -78,7 +84,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return string the push credential sid
      */
-    public function getPushCredentialSid() {
+    public function getPushCredentialSid()
+    {
         return $this->pushCredentialSid;
     }
 
@@ -89,7 +96,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setPushCredentialSid($pushCredentialSid) {
+    public function setPushCredentialSid($pushCredentialSid)
+    {
         $this->pushCredentialSid = $pushCredentialSid;
         return $this;
     }
@@ -99,7 +107,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return string type of the grant
      */
-    public function getGrantKey() {
+    public function getGrantKey()
+    {
         return "ip_messaging";
     }
 
@@ -108,7 +117,8 @@ class IpMessagingGrant implements Grant {
      *
      * @return array data of the grant
      */
-    public function getPayload() {
+    public function getPayload()
+    {
         $payload = array();
         if ($this->serviceSid) {
             $payload['service_sid'] = $this->serviceSid;

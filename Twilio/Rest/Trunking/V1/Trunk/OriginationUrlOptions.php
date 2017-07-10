@@ -12,7 +12,8 @@ namespace Twilio\Rest\Trunking\V1\Trunk;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class OriginationUrlOptions {
+abstract class OriginationUrlOptions
+{
     /**
      * @param integer $weight The weight
      * @param integer $priority The priority
@@ -21,12 +22,14 @@ abstract class OriginationUrlOptions {
      * @param string $sipUrl The sip_url
      * @return UpdateOriginationUrlOptions Options builder
      */
-    public static function update($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE) {
+    public static function update($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE)
+    {
         return new UpdateOriginationUrlOptions($weight, $priority, $enabled, $friendlyName, $sipUrl);
     }
 }
 
-class UpdateOriginationUrlOptions extends Options {
+class UpdateOriginationUrlOptions extends Options
+{
     /**
      * @param integer $weight The weight
      * @param integer $priority The priority
@@ -34,7 +37,8 @@ class UpdateOriginationUrlOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @param string $sipUrl The sip_url
      */
-    public function __construct($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE) {
+    public function __construct($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE)
+    {
         $this->options['weight'] = $weight;
         $this->options['priority'] = $priority;
         $this->options['enabled'] = $enabled;
@@ -44,65 +48,71 @@ class UpdateOriginationUrlOptions extends Options {
 
     /**
      * The weight
-     * 
+     *
      * @param integer $weight The weight
      * @return $this Fluent Builder
      */
-    public function setWeight($weight) {
+    public function setWeight($weight)
+    {
         $this->options['weight'] = $weight;
         return $this;
     }
 
     /**
      * The priority
-     * 
+     *
      * @param integer $priority The priority
      * @return $this Fluent Builder
      */
-    public function setPriority($priority) {
+    public function setPriority($priority)
+    {
         $this->options['priority'] = $priority;
         return $this;
     }
 
     /**
      * The enabled
-     * 
+     *
      * @param boolean $enabled The enabled
      * @return $this Fluent Builder
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled)
+    {
         $this->options['enabled'] = $enabled;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The sip_url
-     * 
+     *
      * @param string $sipUrl The sip_url
      * @return $this Fluent Builder
      */
-    public function setSipUrl($sipUrl) {
+    public function setSipUrl($sipUrl)
+    {
         $this->options['sipUrl'] = $sipUrl;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

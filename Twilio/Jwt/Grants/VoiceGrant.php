@@ -3,9 +3,8 @@
 
 namespace Twilio\Jwt\Grants;
 
-
-class VoiceGrant implements Grant {
-
+class VoiceGrant implements Grant
+{
     private $outgoingApplicationSid;
     private $outgoingApplicationParams;
     private $pushCredentialSid;
@@ -52,7 +51,8 @@ class VoiceGrant implements Grant {
      *
      * @return $this updated grant
      */
-    public function setOutgoingApplication($sid, $params) {
+    public function setOutgoingApplication($sid, $params)
+    {
         $this->outgoingApplicationSid = $sid;
         $this->outgoingApplicationParams = $params;
         return $this;
@@ -143,6 +143,4 @@ class VoiceGrant implements Grant {
 
         return $payload;
     }
-
-
 }

@@ -29,17 +29,19 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  */
-class OriginationUrlInstance extends InstanceResource {
+class OriginationUrlInstance extends InstanceResource
+{
     /**
      * Initialize the OriginationUrlInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $trunkSid The trunk_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlInstance 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlInstance
      */
-    public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $trunkSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -66,12 +68,13 @@ class OriginationUrlInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext Context for
      *                                                              this
      *                                                              OriginationUrlInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new OriginationUrlContext(
                 $this->version,
@@ -85,29 +88,32 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Fetch a OriginationUrlInstance
-     * 
+     *
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the OriginationUrlInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Update the OriginationUrlInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -115,12 +121,13 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -135,10 +142,11 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -43,16 +43,18 @@ use Twilio\Version;
  * @property string voiceMethod
  * @property string voiceUrl
  */
-class LocalInstance extends InstanceResource {
+class LocalInstance extends InstanceResource
+{
     /**
      * Initialize the LocalInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique sid that identifies this account
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid) {
+    public function __construct(Version $version, array $payload, $accountSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -92,12 +94,13 @@ class LocalInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -112,10 +115,11 @@ class LocalInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.LocalInstance]';
     }
 }

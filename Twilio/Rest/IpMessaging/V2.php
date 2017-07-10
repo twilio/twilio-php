@@ -21,25 +21,28 @@ use Twilio\Version;
  * @method \Twilio\Rest\IpMessaging\V2\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\ServiceContext services(string $sid)
  */
-class V2 extends Version {
+class V2 extends Version
+{
     protected $_credentials = null;
     protected $_services = null;
 
     /**
      * Construct the V2 version of IpMessaging
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\IpMessaging\V2 V2 version of IpMessaging
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v2';
     }
 
     /**
-     * @return \Twilio\Rest\IpMessaging\V2\CredentialList 
+     * @return \Twilio\Rest\IpMessaging\V2\CredentialList
      */
-    protected function getCredentials() {
+    protected function getCredentials()
+    {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
@@ -47,9 +50,10 @@ class V2 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\IpMessaging\V2\ServiceList 
+     * @return \Twilio\Rest\IpMessaging\V2\ServiceList
      */
-    protected function getServices() {
+    protected function getServices()
+    {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
@@ -58,12 +62,13 @@ class V2 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -74,13 +79,14 @@ class V2 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -91,10 +97,11 @@ class V2 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.IpMessaging.V2]';
     }
 }

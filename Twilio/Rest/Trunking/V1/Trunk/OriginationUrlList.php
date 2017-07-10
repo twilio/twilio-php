@@ -14,15 +14,17 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class OriginationUrlList extends ListResource {
+class OriginationUrlList extends ListResource
+{
     /**
      * Construct the OriginationUrlList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $trunkSid The trunk_sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList
      */
-    public function __construct(Version $version, $trunkSid) {
+    public function __construct(Version $version, $trunkSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -35,7 +37,7 @@ class OriginationUrlList extends ListResource {
 
     /**
      * Create a new OriginationUrlInstance
-     * 
+     *
      * @param integer $weight The weight
      * @param integer $priority The priority
      * @param boolean $enabled The enabled
@@ -43,7 +45,8 @@ class OriginationUrlList extends ListResource {
      * @param string $sipUrl The sip_url
      * @return OriginationUrlInstance Newly created OriginationUrlInstance
      */
-    public function create($weight, $priority, $enabled, $friendlyName, $sipUrl) {
+    public function create($weight, $priority, $enabled, $friendlyName, $sipUrl)
+    {
         $data = Values::of(array(
             'Weight' => $weight,
             'Priority' => $priority,
@@ -73,7 +76,7 @@ class OriginationUrlList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -84,7 +87,8 @@ class OriginationUrlList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null)
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -96,7 +100,7 @@ class OriginationUrlList extends ListResource {
      * Reads OriginationUrlInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -107,20 +111,22 @@ class OriginationUrlList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return OriginationUrlInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null)
+    {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
      * Retrieve a single page of OriginationUrlInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return \Twilio\Page Page of OriginationUrlInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE)
+    {
         $params = Values::of(array(
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
@@ -139,11 +145,12 @@ class OriginationUrlList extends ListResource {
     /**
      * Retrieve a specific page of OriginationUrlInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of OriginationUrlInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl)
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -154,11 +161,12 @@ class OriginationUrlList extends ListResource {
 
     /**
      * Constructs a OriginationUrlContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext
      */
-    public function getContext($sid) {
+    public function getContext($sid)
+    {
         return new OriginationUrlContext(
             $this->version,
             $this->solution['trunkSid'],
@@ -168,10 +176,11 @@ class OriginationUrlList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Trunking.V1.OriginationUrlList]';
     }
 }
