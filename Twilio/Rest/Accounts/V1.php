@@ -17,24 +17,27 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Accounts\V1\CredentialList credentials
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_credentials = null;
 
     /**
      * Construct the V1 version of Accounts
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Accounts\V1 V1 version of Accounts
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
     /**
-     * @return \Twilio\Rest\Accounts\V1\CredentialList 
+     * @return \Twilio\Rest\Accounts\V1\CredentialList
      */
-    protected function getCredentials() {
+    protected function getCredentials()
+    {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
@@ -43,12 +46,13 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -59,13 +63,14 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -76,10 +81,11 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Accounts.V1]';
     }
 }

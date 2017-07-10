@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class PhoneNumberTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class PhoneNumberTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->trunking->v1->trunks("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                        ->phoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -31,7 +34,8 @@ class PhoneNumberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -78,14 +82,16 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->trunking->v1->trunks("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                        ->phoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -93,7 +99,8 @@ class PhoneNumberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -105,14 +112,16 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->trunking->v1->trunks("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                        ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'PhoneNumberSid' => "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -126,7 +135,8 @@ class PhoneNumberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -173,14 +183,16 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->trunking->v1->trunks("TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                        ->phoneNumbers->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -188,7 +200,8 @@ class PhoneNumberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -248,7 +261,8 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '

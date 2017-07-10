@@ -12,7 +12,8 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class TaskQueuesStatisticsOptions {
+abstract class TaskQueuesStatisticsOptions
+{
     /**
      * @param \DateTime $endDate The end_date
      * @param string $friendlyName The friendly_name
@@ -20,19 +21,22 @@ abstract class TaskQueuesStatisticsOptions {
      * @param \DateTime $startDate The start_date
      * @return ReadTaskQueuesStatisticsOptions Options builder
      */
-    public static function read($endDate = Values::NONE, $friendlyName = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE) {
+    public static function read($endDate = Values::NONE, $friendlyName = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE)
+    {
         return new ReadTaskQueuesStatisticsOptions($endDate, $friendlyName, $minutes, $startDate);
     }
 }
 
-class ReadTaskQueuesStatisticsOptions extends Options {
+class ReadTaskQueuesStatisticsOptions extends Options
+{
     /**
      * @param \DateTime $endDate The end_date
      * @param string $friendlyName The friendly_name
      * @param integer $minutes The minutes
      * @param \DateTime $startDate The start_date
      */
-    public function __construct($endDate = Values::NONE, $friendlyName = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE) {
+    public function __construct($endDate = Values::NONE, $friendlyName = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE)
+    {
         $this->options['endDate'] = $endDate;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['minutes'] = $minutes;
@@ -41,54 +45,59 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * The end_date
-     * 
+     *
      * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate)
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The minutes
-     * 
+     *
      * @param integer $minutes The minutes
      * @return $this Fluent Builder
      */
-    public function setMinutes($minutes) {
+    public function setMinutes($minutes)
+    {
         $this->options['minutes'] = $minutes;
         return $this;
     }
 
     /**
      * The start_date
-     * 
+     *
      * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate)
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

@@ -15,14 +15,17 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class PhoneNumberTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class PhoneNumberTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->lookups->v1->phoneNumbers("+987654321")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -30,7 +33,8 @@ class PhoneNumberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '

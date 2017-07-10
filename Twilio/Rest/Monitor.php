@@ -20,17 +20,19 @@ use Twilio\Rest\Monitor\V1;
  * @method \Twilio\Rest\Monitor\V1\AlertContext alerts(string $sid)
  * @method \Twilio\Rest\Monitor\V1\EventContext events(string $sid)
  */
-class Monitor extends Domain {
+class Monitor extends Domain
+{
     protected $_v1 = null;
 
     /**
      * Construct the Monitor Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Monitor Domain for Monitor
      */
-    public function __construct(Client $client) {
+    public function __construct(Client $client)
+    {
         parent::__construct($client);
 
         $this->baseUrl = 'https://monitor.twilio.com';
@@ -39,7 +41,8 @@ class Monitor extends Domain {
     /**
      * @return \Twilio\Rest\Monitor\V1 Version v1 of monitor
      */
-    protected function getV1() {
+    protected function getV1()
+    {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -48,12 +51,13 @@ class Monitor extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -64,13 +68,14 @@ class Monitor extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $method = 'context' . ucfirst($name);
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
@@ -80,41 +85,46 @@ class Monitor extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList
      */
-    protected function getAlerts() {
+    protected function getAlerts()
+    {
         return $this->v1->alerts;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Monitor\V1\AlertContext 
+     * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
-    protected function contextAlerts($sid) {
+    protected function contextAlerts($sid)
+    {
         return $this->v1->alerts($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\EventList 
+     * @return \Twilio\Rest\Monitor\V1\EventList
      */
-    protected function getEvents() {
+    protected function getEvents()
+    {
         return $this->v1->events;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Monitor\V1\EventContext 
+     * @return \Twilio\Rest\Monitor\V1\EventContext
      */
-    protected function contextEvents($sid) {
+    protected function contextEvents($sid)
+    {
         return $this->v1->events($sid);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Monitor]';
     }
 }

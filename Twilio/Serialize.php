@@ -2,9 +2,10 @@
 
 namespace Twilio;
 
-class Serialize {
-
-    private static function flatten($map, $result = array(), $previous = array()) {
+class Serialize
+{
+    private static function flatten($map, $result = array(), $previous = array())
+    {
         foreach ($map as $key => $value) {
             if (is_array($value)) {
                 $result = self::flatten($value, $result, array_merge($previous, array($key)));
@@ -16,7 +17,8 @@ class Serialize {
         return $result;
     }
 
-    public static function prefixedCollapsibleMap($map, $prefix) {
+    public static function prefixedCollapsibleMap($map, $prefix)
+    {
         if (is_null($map) || $map == \Twilio\Values::NONE) {
             return array();
         }
@@ -30,7 +32,8 @@ class Serialize {
         return $result;
     }
 
-    public static function iso8601Date($dateTime) {
+    public static function iso8601Date($dateTime)
+    {
         if (is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
         }
@@ -44,7 +47,8 @@ class Serialize {
         return $utcDate->format('Y-m-d');
     }
 
-    public static function iso8601DateTime($dateTime) {
+    public static function iso8601DateTime($dateTime)
+    {
         if (is_null($dateTime) || $dateTime == \Twilio\Values::NONE) {
             return \Twilio\Values::NONE;
         }
@@ -58,7 +62,8 @@ class Serialize {
         return $utcDate->format('Y-m-d\TH:i:s\Z');
     }
 
-    public static function booleanToString($boolOrStr) {
+    public static function booleanToString($boolOrStr)
+    {
         if (is_null($boolOrStr) || is_string($boolOrStr)) {
             return $boolOrStr;
         }
@@ -66,11 +71,11 @@ class Serialize {
         return $boolOrStr ? 'True' : 'False';
     }
 
-    public static function json_object($object) {
+    public static function json_object($object)
+    {
         if (is_array($object)) {
             return json_encode($object);
         }
         return $object;
     }
-
 }

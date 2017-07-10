@@ -24,16 +24,18 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  */
-class PublicKeyInstance extends InstanceResource {
+class PublicKeyInstance extends InstanceResource
+{
     /**
      * Initialize the PublicKeyInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid Fetch by unique Credential Sid
-     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyInstance 
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -54,12 +56,13 @@ class PublicKeyInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext Context for
      *                                                              this
      *                                                              PublicKeyInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new PublicKeyContext(
                 $this->version,
@@ -72,20 +75,22 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Fetch a PublicKeyInstance
-     * 
+     *
      * @return PublicKeyInstance Fetched PublicKeyInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the PublicKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return PublicKeyInstance Updated PublicKeyInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -93,21 +98,23 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Deletes the PublicKeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -122,10 +129,11 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

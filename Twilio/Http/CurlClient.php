@@ -3,22 +3,24 @@
 
 namespace Twilio\Http;
 
-
 use Twilio\Exceptions\EnvironmentException;
 
-class CurlClient implements Client {
+class CurlClient implements Client
+{
     const DEFAULT_TIMEOUT = 60;
     protected $curlOptions = array();
     protected $debugHttp = false;
 
-    public function __construct(array $options = array()) {
+    public function __construct(array $options = array())
+    {
         $this->curlOptions = $options;
         $this->debugHttp = getenv('DEBUG_HTTP_TRAFFIC') === 'true';
     }
 
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
-                            $timeout = null) {
+                            $timeout = null)
+    {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
@@ -43,7 +45,7 @@ class CurlClient implements Client {
             if ($this->debugHttp) {
                 $u = parse_url($url);
                 $hdrLine = $method . ' ' . $u['path'];
-                if (isset($u['query']) && strlen($u['query']) > 0 ) {
+                if (isset($u['query']) && strlen($u['query']) > 0) {
                     $hdrLine = $hdrLine . '?' . $u['query'];
                 }
                 error_log($hdrLine);
@@ -93,8 +95,8 @@ class CurlClient implements Client {
 
     public function options($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
-                            $timeout = null) {
-
+                            $timeout = null)
+    {
         $timeout = is_null($timeout)
             ? self::DEFAULT_TIMEOUT
             : $timeout;
@@ -153,7 +155,8 @@ class CurlClient implements Client {
         return $options;
     }
 
-    public function buildQuery($params) {
+    public function buildQuery($params)
+    {
         $parts = array();
 
         if (is_string($params)) {

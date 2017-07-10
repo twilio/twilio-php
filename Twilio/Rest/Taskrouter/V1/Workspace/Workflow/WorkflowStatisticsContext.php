@@ -15,16 +15,18 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class WorkflowStatisticsContext extends InstanceContext {
+class WorkflowStatisticsContext extends InstanceContext
+{
     /**
      * Initialize the WorkflowStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $workflowSid The workflow_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsContext
      */
-    public function __construct(Version $version, $workspaceSid, $workflowSid) {
+    public function __construct(Version $version, $workspaceSid, $workflowSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -38,11 +40,12 @@ class WorkflowStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a WorkflowStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
      */
-    public function fetch($options = array()) {
+    public function fetch($options = array())
+    {
         $options = new Values($options);
 
         $params = Values::of(array(
@@ -67,10 +70,11 @@ class WorkflowStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

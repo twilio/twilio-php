@@ -12,25 +12,29 @@ namespace Twilio\Rest\Api\V2010\Account\Usage\Record;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class YesterdayOptions {
+abstract class YesterdayOptions
+{
     /**
      * @param string $category The category
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      * @return ReadYesterdayOptions Options builder
      */
-    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE)
+    {
         return new ReadYesterdayOptions($category, $startDate, $endDate);
     }
 }
 
-class ReadYesterdayOptions extends Options {
+class ReadYesterdayOptions extends Options
+{
     /**
      * @param string $category The category
      * @param \DateTime $startDate The start_date
      * @param \DateTime $endDate The end_date
      */
-    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE)
+    {
         $this->options['category'] = $category;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
@@ -38,43 +42,47 @@ class ReadYesterdayOptions extends Options {
 
     /**
      * The category
-     * 
+     *
      * @param string $category The category
      * @return $this Fluent Builder
      */
-    public function setCategory($category) {
+    public function setCategory($category)
+    {
         $this->options['category'] = $category;
         return $this;
     }
 
     /**
      * The start_date
-     * 
+     *
      * @param \DateTime $startDate The start_date
      * @return $this Fluent Builder
      */
-    public function setStartDate($startDate) {
+    public function setStartDate($startDate)
+    {
         $this->options['startDate'] = $startDate;
         return $this;
     }
 
     /**
      * The end_date
-     * 
+     *
      * @param \DateTime $endDate The end_date
      * @return $this Fluent Builder
      */
-    public function setEndDate($endDate) {
+    public function setEndDate($endDate)
+    {
         $this->options['endDate'] = $endDate;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

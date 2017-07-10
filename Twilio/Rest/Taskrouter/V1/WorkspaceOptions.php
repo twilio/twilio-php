@@ -12,7 +12,8 @@ namespace Twilio\Rest\Taskrouter\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WorkspaceOptions {
+abstract class WorkspaceOptions
+{
     /**
      * @param string $defaultActivitySid The default_activity_sid
      * @param string $eventCallbackUrl The event_callback_url
@@ -23,7 +24,8 @@ abstract class WorkspaceOptions {
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return UpdateWorkspaceOptions Options builder
      */
-    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+    public static function update($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE)
+    {
         return new UpdateWorkspaceOptions($defaultActivitySid, $eventCallbackUrl, $eventsFilter, $friendlyName, $multiTaskEnabled, $timeoutActivitySid, $prioritizeQueueOrder);
     }
 
@@ -31,7 +33,8 @@ abstract class WorkspaceOptions {
      * @param string $friendlyName The friendly_name
      * @return ReadWorkspaceOptions Options builder
      */
-    public static function read($friendlyName = Values::NONE) {
+    public static function read($friendlyName = Values::NONE)
+    {
         return new ReadWorkspaceOptions($friendlyName);
     }
 
@@ -43,12 +46,14 @@ abstract class WorkspaceOptions {
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return CreateWorkspaceOptions Options builder
      */
-    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+    public static function create($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE)
+    {
         return new CreateWorkspaceOptions($eventCallbackUrl, $eventsFilter, $multiTaskEnabled, $template, $prioritizeQueueOrder);
     }
 }
 
-class UpdateWorkspaceOptions extends Options {
+class UpdateWorkspaceOptions extends Options
+{
     /**
      * @param string $defaultActivitySid The default_activity_sid
      * @param string $eventCallbackUrl The event_callback_url
@@ -58,7 +63,8 @@ class UpdateWorkspaceOptions extends Options {
      * @param string $timeoutActivitySid The timeout_activity_sid
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      */
-    public function __construct($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+    public function __construct($defaultActivitySid = Values::NONE, $eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $friendlyName = Values::NONE, $multiTaskEnabled = Values::NONE, $timeoutActivitySid = Values::NONE, $prioritizeQueueOrder = Values::NONE)
+    {
         $this->options['defaultActivitySid'] = $defaultActivitySid;
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         $this->options['eventsFilter'] = $eventsFilter;
@@ -70,87 +76,95 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * The default_activity_sid
-     * 
+     *
      * @param string $defaultActivitySid The default_activity_sid
      * @return $this Fluent Builder
      */
-    public function setDefaultActivitySid($defaultActivitySid) {
+    public function setDefaultActivitySid($defaultActivitySid)
+    {
         $this->options['defaultActivitySid'] = $defaultActivitySid;
         return $this;
     }
 
     /**
      * The event_callback_url
-     * 
+     *
      * @param string $eventCallbackUrl The event_callback_url
      * @return $this Fluent Builder
      */
-    public function setEventCallbackUrl($eventCallbackUrl) {
+    public function setEventCallbackUrl($eventCallbackUrl)
+    {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         return $this;
     }
 
     /**
      * The events_filter
-     * 
+     *
      * @param string $eventsFilter The events_filter
      * @return $this Fluent Builder
      */
-    public function setEventsFilter($eventsFilter) {
+    public function setEventsFilter($eventsFilter)
+    {
         $this->options['eventsFilter'] = $eventsFilter;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The multi_task_enabled
-     * 
+     *
      * @param boolean $multiTaskEnabled The multi_task_enabled
      * @return $this Fluent Builder
      */
-    public function setMultiTaskEnabled($multiTaskEnabled) {
+    public function setMultiTaskEnabled($multiTaskEnabled)
+    {
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         return $this;
     }
 
     /**
      * The timeout_activity_sid
-     * 
+     *
      * @param string $timeoutActivitySid The timeout_activity_sid
      * @return $this Fluent Builder
      */
-    public function setTimeoutActivitySid($timeoutActivitySid) {
+    public function setTimeoutActivitySid($timeoutActivitySid)
+    {
         $this->options['timeoutActivitySid'] = $timeoutActivitySid;
         return $this;
     }
 
     /**
      * The prioritize_queue_order
-     * 
+     *
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return $this Fluent Builder
      */
-    public function setPrioritizeQueueOrder($prioritizeQueueOrder) {
+    public function setPrioritizeQueueOrder($prioritizeQueueOrder)
+    {
         $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -161,31 +175,35 @@ class UpdateWorkspaceOptions extends Options {
     }
 }
 
-class ReadWorkspaceOptions extends Options {
+class ReadWorkspaceOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -196,7 +214,8 @@ class ReadWorkspaceOptions extends Options {
     }
 }
 
-class CreateWorkspaceOptions extends Options {
+class CreateWorkspaceOptions extends Options
+{
     /**
      * @param string $eventCallbackUrl The event_callback_url
      * @param string $eventsFilter The events_filter
@@ -204,7 +223,8 @@ class CreateWorkspaceOptions extends Options {
      * @param string $template The template
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      */
-    public function __construct($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE) {
+    public function __construct($eventCallbackUrl = Values::NONE, $eventsFilter = Values::NONE, $multiTaskEnabled = Values::NONE, $template = Values::NONE, $prioritizeQueueOrder = Values::NONE)
+    {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         $this->options['eventsFilter'] = $eventsFilter;
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
@@ -214,65 +234,71 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * The event_callback_url
-     * 
+     *
      * @param string $eventCallbackUrl The event_callback_url
      * @return $this Fluent Builder
      */
-    public function setEventCallbackUrl($eventCallbackUrl) {
+    public function setEventCallbackUrl($eventCallbackUrl)
+    {
         $this->options['eventCallbackUrl'] = $eventCallbackUrl;
         return $this;
     }
 
     /**
      * The events_filter
-     * 
+     *
      * @param string $eventsFilter The events_filter
      * @return $this Fluent Builder
      */
-    public function setEventsFilter($eventsFilter) {
+    public function setEventsFilter($eventsFilter)
+    {
         $this->options['eventsFilter'] = $eventsFilter;
         return $this;
     }
 
     /**
      * The multi_task_enabled
-     * 
+     *
      * @param boolean $multiTaskEnabled The multi_task_enabled
      * @return $this Fluent Builder
      */
-    public function setMultiTaskEnabled($multiTaskEnabled) {
+    public function setMultiTaskEnabled($multiTaskEnabled)
+    {
         $this->options['multiTaskEnabled'] = $multiTaskEnabled;
         return $this;
     }
 
     /**
      * The template
-     * 
+     *
      * @param string $template The template
      * @return $this Fluent Builder
      */
-    public function setTemplate($template) {
+    public function setTemplate($template)
+    {
         $this->options['template'] = $template;
         return $this;
     }
 
     /**
      * The prioritize_queue_order
-     * 
+     *
      * @param string $prioritizeQueueOrder The prioritize_queue_order
      * @return $this Fluent Builder
      */
-    public function setPrioritizeQueueOrder($prioritizeQueueOrder) {
+    public function setPrioritizeQueueOrder($prioritizeQueueOrder)
+    {
         $this->options['prioritizeQueueOrder'] = $prioritizeQueueOrder;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

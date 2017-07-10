@@ -13,17 +13,19 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class MediaContext extends InstanceContext {
+class MediaContext extends InstanceContext
+{
     /**
      * Initialize the MediaContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $messageSid The message_sid
      * @param string $sid Fetch by unique media Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext
      */
-    public function __construct(Version $version, $accountSid, $messageSid, $sid) {
+    public function __construct(Version $version, $accountSid, $messageSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -38,19 +40,21 @@ class MediaContext extends InstanceContext {
 
     /**
      * Deletes the MediaInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Fetch a MediaInstance
-     * 
+     *
      * @return MediaInstance Fetched MediaInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -70,10 +74,11 @@ class MediaContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

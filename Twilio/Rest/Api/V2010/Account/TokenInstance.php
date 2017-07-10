@@ -24,16 +24,18 @@ use Twilio\Version;
  * @property string ttl
  * @property string username
  */
-class TokenInstance extends InstanceResource {
+class TokenInstance extends InstanceResource
+{
     /**
      * Initialize the TokenInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique sid that identifies this account
-     * @return \Twilio\Rest\Api\V2010\Account\TokenInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\TokenInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid) {
+    public function __construct(Version $version, array $payload, $accountSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -54,12 +56,13 @@ class TokenInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -74,10 +77,11 @@ class TokenInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.TokenInstance]';
     }
 }

@@ -14,16 +14,18 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class ConnectAppContext extends InstanceContext {
+class ConnectAppContext extends InstanceContext
+{
     /**
      * Initialize the ConnectAppContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique connect-app Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $accountSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -37,10 +39,11 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Fetch a ConnectAppInstance
-     * 
+     *
      * @return ConnectAppInstance Fetched ConnectAppInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -59,11 +62,12 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Update the ConnectAppInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -94,10 +98,11 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

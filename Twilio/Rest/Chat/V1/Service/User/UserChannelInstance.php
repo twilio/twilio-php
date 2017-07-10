@@ -24,17 +24,19 @@ use Twilio\Version;
  * @property integer unreadMessagesCount
  * @property array links
  */
-class UserChannelInstance extends InstanceResource {
+class UserChannelInstance extends InstanceResource
+{
     /**
      * Initialize the UserChannelInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $userSid The sid
-     * @return \Twilio\Rest\Chat\V1\Service\User\UserChannelInstance 
+     * @return \Twilio\Rest\Chat\V1\Service\User\UserChannelInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $userSid) {
+    public function __construct(Version $version, array $payload, $serviceSid, $userSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -57,12 +59,13 @@ class UserChannelInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -77,10 +80,11 @@ class UserChannelInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Chat.V1.UserChannelInstance]';
     }
 }

@@ -29,18 +29,20 @@ use Twilio\Version;
  * @property boolean beta
  * @property string capabilities
  */
-class TollFreeInstance extends InstanceResource {
+class TollFreeInstance extends InstanceResource
+{
     /**
      * Initialize the TollFreeInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The 34 character string that uniquely identifies
      *                           your account.
      * @param string $countryCode The ISO Country code to lookup phone numbers for.
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
+    public function __construct(Version $version, array $payload, $accountSid, $countryCode)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,12 +70,13 @@ class TollFreeInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -88,10 +91,11 @@ class TollFreeInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.TollFreeInstance]';
     }
 }

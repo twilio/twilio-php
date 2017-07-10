@@ -20,17 +20,19 @@ use Twilio\Rest\Video\V1;
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
-class Video extends Domain {
+class Video extends Domain
+{
     protected $_v1 = null;
 
     /**
      * Construct the Video Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Video Domain for Video
      */
-    public function __construct(Client $client) {
+    public function __construct(Client $client)
+    {
         parent::__construct($client);
 
         $this->baseUrl = 'https://video.twilio.com';
@@ -39,7 +41,8 @@ class Video extends Domain {
     /**
      * @return \Twilio\Rest\Video\V1 Version v1 of video
      */
-    protected function getV1() {
+    protected function getV1()
+    {
         if (!$this->_v1) {
             $this->_v1 = new V1($this);
         }
@@ -48,12 +51,13 @@ class Video extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -64,13 +68,14 @@ class Video extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $method = 'context' . ucfirst($name);
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
@@ -80,41 +85,46 @@ class Video extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RecordingList 
+     * @return \Twilio\Rest\Video\V1\RecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings()
+    {
         return $this->v1->recordings;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\RecordingContext 
+     * @return \Twilio\Rest\Video\V1\RecordingContext
      */
-    protected function contextRecordings($sid) {
+    protected function contextRecordings($sid)
+    {
         return $this->v1->recordings($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RoomList 
+     * @return \Twilio\Rest\Video\V1\RoomList
      */
-    protected function getRooms() {
+    protected function getRooms()
+    {
         return $this->v1->rooms;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\RoomContext 
+     * @return \Twilio\Rest\Video\V1\RoomContext
      */
-    protected function contextRooms($sid) {
+    protected function contextRooms($sid)
+    {
         return $this->v1->rooms($sid);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Video]';
     }
 }

@@ -38,19 +38,21 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class TaskInstance extends InstanceResource {
+class TaskInstance extends InstanceResource
+{
     protected $_reservations = null;
 
     /**
      * Initialize the TaskInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -86,11 +88,12 @@ class TaskInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext Context for this
      *                                                          TaskInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new TaskContext(
                 $this->version,
@@ -104,20 +107,22 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Fetch a TaskInstance
-     * 
+     *
      * @return TaskInstance Fetched TaskInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the TaskInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -125,30 +130,33 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Deletes the TaskInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the reservations
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList
      */
-    protected function getReservations() {
+    protected function getReservations()
+    {
         return $this->proxy()->reservations;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -163,10 +171,11 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

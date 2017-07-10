@@ -3,16 +3,17 @@
 
 namespace Twilio\Tests\Unit;
 
-
 use Twilio\Twiml;
 
-class TwimlTest extends UnitTest {
-
-    public function twiml($body) {
+class TwimlTest extends UnitTest
+{
+    public function twiml($body)
+    {
         return '<?xml version="1.0" encoding="UTF-8"?>' . "\n$body\n";
     }
 
-    public function testEmpty() {
+    public function testEmpty()
+    {
         $twiml = new Twiml();
         $actual = (string)$twiml;
         $this->assertTrue(
@@ -21,7 +22,8 @@ class TwimlTest extends UnitTest {
         );
     }
 
-    public function testSingle() {
+    public function testSingle()
+    {
         $twiml = new Twiml();
         $twiml->Example();
         $actual = (string)$twiml;
@@ -31,14 +33,16 @@ class TwimlTest extends UnitTest {
         );
     }
 
-    public function testSingleWithBody() {
+    public function testSingleWithBody()
+    {
         $twiml = new Twiml();
         $twiml->Example('body');
         $actual = (string)$twiml;
         $this->assertEquals($this->twiml('<Response><Example>body</Example></Response>'), $actual);
     }
 
-    public function testSingleWithAttributes() {
+    public function testSingleWithAttributes()
+    {
         $twiml = new Twiml();
         $twiml->Example(array('attr1' => 'val1', 'attr2' => 'val2'));
         $actual = (string)$twiml;
@@ -48,14 +52,16 @@ class TwimlTest extends UnitTest {
         );
     }
 
-    public function testSingleWithBodyAndAttributes() {
+    public function testSingleWithBodyAndAttributes()
+    {
         $twiml = new Twiml();
         $twiml->Example('body', array('attr1' => 'val1', 'attr2' => 'val2'));
         $actual = (string)$twiml;
         $this->assertEquals($this->twiml('<Response><Example attr1="val1" attr2="val2">body</Example></Response>'), $actual);
     }
 
-    public function testNested() {
+    public function testNested()
+    {
         $twiml = new Twiml();
         $twiml->Parent()->Child();
         $actual = (string)$twiml;
@@ -69,7 +75,8 @@ class TwimlTest extends UnitTest {
      * This behavior is almost certainly incorrect.  Writing a test case just to
      * capture it and warn if we break backwards compatibility
      */
-    public function testNestedWithParentBody() {
+    public function testNestedWithParentBody()
+    {
         $twiml = new Twiml();
         $twiml->Parent('body')->Child();
         $actual = (string)$twiml;
@@ -79,7 +86,8 @@ class TwimlTest extends UnitTest {
         );
     }
 
-    public function testNestedWithChildBody() {
+    public function testNestedWithChildBody()
+    {
         $twiml = new Twiml();
         $twiml->Parent()->Child('body');
         $actual = (string)$twiml;
@@ -90,14 +98,16 @@ class TwimlTest extends UnitTest {
      * This behavior is almost certainly incorrect.  Writing a test case just to
      * capture it and warn if we break backwards compatibility
      */
-    public function testNestedWithParentAndChildBody() {
+    public function testNestedWithParentAndChildBody()
+    {
         $twiml = new Twiml();
         $twiml->Parent('parent-body')->Child('child-body');
         $actual = (string)$twiml;
         $this->assertEquals($this->twiml('<Response><Parent>parent-body<Child>child-body</Child></Parent></Response>'), $actual);
     }
 
-    public function testNestedWithAttributes() {
+    public function testNestedWithAttributes()
+    {
         $twiml = new Twiml();
         $twiml->Parent(array('attr1' => 'val1'))->Child(array('attr2' => 'val2'));
         $actual = (string)$twiml;
@@ -111,7 +121,8 @@ class TwimlTest extends UnitTest {
      * This behavior is almost certainly incorrect.  Writing a test case just to
      * capture it and warn if we break backwards compatibility
      */
-    public function testNestedWithAttributesAndParentBody() {
+    public function testNestedWithAttributesAndParentBody()
+    {
         $twiml = new Twiml();
         $twiml->Parent('body', array('attr1' => 'val1'))->Child(array('attr2' => 'val2'));
         $actual = (string)$twiml;
@@ -121,7 +132,8 @@ class TwimlTest extends UnitTest {
         );
     }
 
-    public function testNestedWithAttributesAndChildBody() {
+    public function testNestedWithAttributesAndChildBody()
+    {
         $twiml = new Twiml();
         $twiml->Parent(array('attr1' => 'val1'))->Child('body', array('attr2' => 'val2'));
         $actual = (string)$twiml;
@@ -132,7 +144,8 @@ class TwimlTest extends UnitTest {
      * This behavior is almost certainly incorrect.  Writing a test case just to
      * capture it and warn if we break backwards compatibility
      */
-    public function testNestedWithAttributesAndParentAndChildBody() {
+    public function testNestedWithAttributesAndParentAndChildBody()
+    {
         $twiml = new Twiml();
         $twiml->Parent('parent-body', array('attr1' => 'val1'))->Child('child-body', array('attr2' => 'val2'));
         $actual = (string)$twiml;
@@ -144,14 +157,16 @@ class TwimlTest extends UnitTest {
      *                     Example tag
      * @dataProvider printingFalseyProvider
      */
-    public function testPrintingFalseyBody($value) {
+    public function testPrintingFalseyBody($value)
+    {
         $twiml = new Twiml();
         $twiml->Example($value);
         $actual = (string)$twiml;
         $this->assertEquals($this->twiml('<Response><Example>' . $value . '</Example></Response>'), $actual);
     }
 
-    public function printingFalseyProvider() {
+    public function printingFalseyProvider()
+    {
         return array(
             array(0),
             array('0'),
@@ -164,7 +179,8 @@ class TwimlTest extends UnitTest {
      *                     generator
      * @dataProvider silentFalseyProvider
      */
-    public function testSilentFalseyBody($value) {
+    public function testSilentFalseyBody($value)
+    {
         $twiml = new Twiml();
         $twiml->Example($value);
         $actual = (string)$twiml;
@@ -174,7 +190,8 @@ class TwimlTest extends UnitTest {
         );
     }
 
-    public function silentFalseyProvider() {
+    public function silentFalseyProvider()
+    {
         return array(
             array(''),
             array(false),

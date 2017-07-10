@@ -19,15 +19,17 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class MessagingInstance extends InstanceResource {
+class MessagingInstance extends InstanceResource
+{
     /**
      * Initialize the MessagingInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Pricing\V1\MessagingInstance 
+     * @return \Twilio\Rest\Pricing\V1\MessagingInstance
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -42,12 +44,13 @@ class MessagingInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -62,10 +65,11 @@ class MessagingInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Pricing.V1.MessagingInstance]';
     }
 }

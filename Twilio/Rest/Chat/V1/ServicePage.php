@@ -11,15 +11,18 @@ namespace Twilio\Rest\Chat\V1;
 
 use Twilio\Page;
 
-class ServicePage extends Page {
-    public function __construct($version, $response, $solution) {
+class ServicePage extends Page
+{
+    public function __construct($version, $response, $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload)
+    {
         return new ServiceInstance(
             $this->version,
             $payload
@@ -28,10 +31,11 @@ class ServicePage extends Page {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Chat.V1.ServicePage]';
     }
 }

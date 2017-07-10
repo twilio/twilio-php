@@ -24,20 +24,22 @@ use Twilio\Version;
  * @method \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext ipAccessControlLists(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext credentialLists(string $sid)
  */
-class SipList extends ListResource {
+class SipList extends ListResource
+{
     protected $_domains = null;
     protected $_ipAccessControlLists = null;
     protected $_credentialLists = null;
 
     /**
      * Construct the SipList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\SipList 
+     * @return \Twilio\Rest\Api\V2010\Account\SipList
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version, $accountSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -49,7 +51,8 @@ class SipList extends ListResource {
     /**
      * Access the domains
      */
-    protected function getDomains() {
+    protected function getDomains()
+    {
         if (!$this->_domains) {
             $this->_domains = new DomainList(
                 $this->version,
@@ -63,7 +66,8 @@ class SipList extends ListResource {
     /**
      * Access the ipAccessControlLists
      */
-    protected function getIpAccessControlLists() {
+    protected function getIpAccessControlLists()
+    {
         if (!$this->_ipAccessControlLists) {
             $this->_ipAccessControlLists = new IpAccessControlListList(
                 $this->version,
@@ -77,7 +81,8 @@ class SipList extends ListResource {
     /**
      * Access the credentialLists
      */
-    protected function getCredentialLists() {
+    protected function getCredentialLists()
+    {
         if (!$this->_credentialLists) {
             $this->_credentialLists = new CredentialListList(
                 $this->version,
@@ -90,12 +95,13 @@ class SipList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -106,13 +112,14 @@ class SipList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -123,10 +130,11 @@ class SipList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.SipList]';
     }
 }

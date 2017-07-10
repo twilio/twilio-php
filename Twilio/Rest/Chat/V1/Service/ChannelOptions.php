@@ -12,7 +12,8 @@ namespace Twilio\Rest\Chat\V1\Service;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class ChannelOptions {
+abstract class ChannelOptions
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $uniqueName The unique_name
@@ -20,7 +21,8 @@ abstract class ChannelOptions {
      * @param string $type The type
      * @return CreateChannelOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE)
+    {
         return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type);
     }
 
@@ -28,7 +30,8 @@ abstract class ChannelOptions {
      * @param string $type The type
      * @return ReadChannelOptions Options builder
      */
-    public static function read($type = Values::NONE) {
+    public static function read($type = Values::NONE)
+    {
         return new ReadChannelOptions($type);
     }
 
@@ -38,19 +41,22 @@ abstract class ChannelOptions {
      * @param string $attributes The attributes
      * @return UpdateChannelOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE)
+    {
         return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes);
     }
 }
 
-class CreateChannelOptions extends Options {
+class CreateChannelOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $uniqueName The unique_name
      * @param string $attributes The attributes
      * @param string $type The type
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -59,54 +65,59 @@ class CreateChannelOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName)
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
     /**
      * The attributes
-     * 
+     *
      * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes)
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
 
     /**
      * The type
-     * 
+     *
      * @param string $type The type
      * @return $this Fluent Builder
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->options['type'] = $type;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -117,31 +128,35 @@ class CreateChannelOptions extends Options {
     }
 }
 
-class ReadChannelOptions extends Options {
+class ReadChannelOptions extends Options
+{
     /**
      * @param string $type The type
      */
-    public function __construct($type = Values::NONE) {
+    public function __construct($type = Values::NONE)
+    {
         $this->options['type'] = $type;
     }
 
     /**
      * The type
-     * 
+     *
      * @param string $type The type
      * @return $this Fluent Builder
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->options['type'] = $type;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -152,13 +167,15 @@ class ReadChannelOptions extends Options {
     }
 }
 
-class UpdateChannelOptions extends Options {
+class UpdateChannelOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $uniqueName The unique_name
      * @param string $attributes The attributes
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
@@ -166,43 +183,47 @@ class UpdateChannelOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName)
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
     /**
      * The attributes
-     * 
+     *
      * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes)
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

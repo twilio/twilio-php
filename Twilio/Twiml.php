@@ -7,8 +7,8 @@ use Twilio\Exceptions\TwimlException;
 /**
  * Twiml response generator.
  */
-class Twiml {
-
+class Twiml
+{
     protected $element;
 
     /**
@@ -22,7 +22,8 @@ class Twiml {
      *   - attributes to add to the element
      *   - if null, initialize an empty element named 'Response'
      */
-    public function __construct($arg = null) {
+    public function __construct($arg = null)
+    {
         switch (true) {
             case $arg instanceof \SimpleXMLElement:
                 $this->element = $arg;
@@ -77,7 +78,8 @@ class Twiml {
      * :return: A SimpleXmlElement
      * :rtype: SimpleXmlElement
      */
-    public function __call($verb, array $args) {
+    public function __call($verb, array $args)
+    {
         list($noun, $attrs) = $args + array('', array());
         if (is_array($noun)) {
             list($attrs, $noun) = array($noun, '');
@@ -131,7 +133,8 @@ class Twiml {
      * :return: The response as an XML string
      * :rtype: string
      */
-    public function __toString() {
+    public function __toString()
+    {
         $xml = $this->element->asXML();
         return (string)str_replace(
             '<?xml version="1.0"?>',

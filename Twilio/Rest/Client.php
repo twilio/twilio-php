@@ -17,7 +17,7 @@ use Twilio\VersionInfo;
 
 /**
  * A client for accessing the Twilio API.
- * 
+ *
  * @property \Twilio\Rest\Accounts accounts
  * @property \Twilio\Rest\Api api
  * @property \Twilio\Rest\Chat chat
@@ -71,7 +71,8 @@ use Twilio\VersionInfo;
  * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
  */
-class Client {
+class Client
+{
     const ENV_ACCOUNT_SID = "TWILIO_ACCOUNT_SID";
     const ENV_AUTH_TOKEN = "TWILIO_AUTH_TOKEN";
 
@@ -94,7 +95,7 @@ class Client {
 
     /**
      * Initializes the Twilio Client
-     * 
+     *
      * @param string $username Username to authenticate with
      * @param string $password Password to authenticate with
      * @param string $accountSid Account Sid to authenticate with, defaults to
@@ -107,7 +108,8 @@ class Client {
      * @return \Twilio\Rest\Client Twilio Client
      * @throws ConfigurationException If valid authentication is not present
      */
-    public function __construct($username = null, $password = null, $accountSid = null, $region = null, HttpClient $httpClient = null, $environment = null) {
+    public function __construct($username = null, $password = null, $accountSid = null, $region = null, HttpClient $httpClient = null, $environment = null)
+    {
         if (is_null($environment)) {
             $environment = $_ENV;
         }
@@ -145,7 +147,7 @@ class Client {
     /**
      * Makes a request to the Twilio API using the configured http client
      * Authentication information is automatically added if none is provided
-     * 
+     *
      * @param string $method HTTP Method
      * @param string $uri Fully qualified url
      * @param string[] $params Query string parameters
@@ -156,7 +158,8 @@ class Client {
      * @param int $timeout Timeout in seconds
      * @return \Twilio\Http\Response Response from the Twilio API
      */
-    public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null) {
+    public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null)
+    {
         $username = $username ? $username : $this->username;
         $password = $password ? $password : $this->password;
 
@@ -194,64 +197,71 @@ class Client {
 
     /**
      * Retrieve the Username
-     * 
+     *
      * @return string Current Username
      */
-    public function getUsername() {
+    public function getUsername()
+    {
         return $this->username;
     }
 
     /**
      * Retrieve the Password
-     * 
+     *
      * @return string Current Password
      */
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
     /**
      * Retrieve the AccountSid
-     * 
+     *
      * @return string Current AccountSid
      */
-    public function getAccountSid() {
+    public function getAccountSid()
+    {
         return $this->accountSid;
     }
 
     /**
      * Retrieve the Region
-     * 
+     *
      * @return string Current Region
      */
-    public function getRegion() {
+    public function getRegion()
+    {
         return $this->region;
     }
 
     /**
      * Retrieve the HttpClient
-     * 
+     *
      * @return \Twilio\Http\Client Current HttpClient
      */
-    public function getHttpClient() {
+    public function getHttpClient()
+    {
         return $this->httpClient;
     }
 
     /**
      * Set the HttpClient
-     * 
+     *
      * @param \Twilio\Http\Client $httpClient HttpClient to use
      */
-    public function setHttpClient(HttpClient $httpClient) {
+    public function setHttpClient(HttpClient $httpClient)
+    {
         $this->httpClient = $httpClient;
     }
 
     /**
      * Access the Accounts Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Accounts Accounts Twilio Domain
      */
-    protected function getAccounts() {
+    protected function getAccounts()
+    {
         if (!$this->_accounts) {
             $this->_accounts = new Accounts($this);
         }
@@ -260,10 +270,11 @@ class Client {
 
     /**
      * Access the Api Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Api Api Twilio Domain
      */
-    protected function getApi() {
+    protected function getApi()
+    {
         if (!$this->_api) {
             $this->_api = new Api($this);
         }
@@ -274,313 +285,355 @@ class Client {
      * @return \Twilio\Rest\Api\V2010\AccountContext Account provided as the
      *                                               authenticating account
      */
-    public function getAccount() {
+    public function getAccount()
+    {
         return $this->api->v2010->account;
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\AddressList 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressList
      */
-    protected function getAddresses() {
+    protected function getAddresses()
+    {
         return $this->api->v2010->account->addresses;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\AddressContext 
+     * @return \Twilio\Rest\Api\V2010\Account\AddressContext
      */
-    protected function contextAddresses($sid) {
+    protected function contextAddresses($sid)
+    {
         return $this->api->v2010->account->addresses($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList
      */
-    protected function getApplications() {
+    protected function getApplications()
+    {
         return $this->api->v2010->account->applications;
     }
 
     /**
      * @param string $sid Fetch by unique Application Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext
      */
-    protected function contextApplications($sid) {
+    protected function contextApplications($sid)
+    {
         return $this->api->v2010->account->applications($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList
      */
-    protected function getAuthorizedConnectApps() {
+    protected function getAuthorizedConnectApps()
+    {
         return $this->api->v2010->account->authorizedConnectApps;
     }
 
     /**
      * @param string $connectAppSid The connect_app_sid
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext
      */
-    protected function contextAuthorizedConnectApps($connectAppSid) {
+    protected function contextAuthorizedConnectApps($connectAppSid)
+    {
         return $this->api->v2010->account->authorizedConnectApps($connectAppSid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList
      */
-    protected function getAvailablePhoneNumbers() {
+    protected function getAvailablePhoneNumbers()
+    {
         return $this->api->v2010->account->availablePhoneNumbers;
     }
 
     /**
      * @param string $countryCode The country_code
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext
      */
-    protected function contextAvailablePhoneNumbers($countryCode) {
+    protected function contextAvailablePhoneNumbers($countryCode)
+    {
         return $this->api->v2010->account->availablePhoneNumbers($countryCode);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\CallList 
+     * @return \Twilio\Rest\Api\V2010\Account\CallList
      */
-    protected function getCalls() {
+    protected function getCalls()
+    {
         return $this->api->v2010->account->calls;
     }
 
     /**
      * @param string $sid Call Sid that uniquely identifies the Call to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\CallContext 
+     * @return \Twilio\Rest\Api\V2010\Account\CallContext
      */
-    protected function contextCalls($sid) {
+    protected function contextCalls($sid)
+    {
         return $this->api->v2010->account->calls($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList
      */
-    protected function getConferences() {
+    protected function getConferences()
+    {
         return $this->api->v2010->account->conferences;
     }
 
     /**
      * @param string $sid Fetch by unique conference Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext
      */
-    protected function contextConferences($sid) {
+    protected function contextConferences($sid)
+    {
         return $this->api->v2010->account->conferences($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList
      */
-    protected function getConnectApps() {
+    protected function getConnectApps()
+    {
         return $this->api->v2010->account->connectApps;
     }
 
     /**
      * @param string $sid Fetch by unique connect-app Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext
      */
-    protected function contextConnectApps($sid) {
+    protected function contextConnectApps($sid)
+    {
         return $this->api->v2010->account->connectApps($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList
      */
-    protected function getIncomingPhoneNumbers() {
+    protected function getIncomingPhoneNumbers()
+    {
         return $this->api->v2010->account->incomingPhoneNumbers;
     }
 
     /**
      * @param string $sid Fetch by unique incoming-phone-number Sid
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext
      */
-    protected function contextIncomingPhoneNumbers($sid) {
+    protected function contextIncomingPhoneNumbers($sid)
+    {
         return $this->api->v2010->account->incomingPhoneNumbers($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\KeyList 
+     * @return \Twilio\Rest\Api\V2010\Account\KeyList
      */
-    protected function getKeys() {
+    protected function getKeys()
+    {
         return $this->api->v2010->account->keys;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\KeyContext 
+     * @return \Twilio\Rest\Api\V2010\Account\KeyContext
      */
-    protected function contextKeys($sid) {
+    protected function contextKeys($sid)
+    {
         return $this->api->v2010->account->keys($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList
      */
-    protected function getMessages() {
+    protected function getMessages()
+    {
         return $this->api->v2010->account->messages;
     }
 
     /**
      * @param string $sid Fetch by unique message Sid
-     * @return \Twilio\Rest\Api\V2010\Account\MessageContext 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageContext
      */
-    protected function contextMessages($sid) {
+    protected function contextMessages($sid)
+    {
         return $this->api->v2010->account->messages($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList 
+     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList
      */
-    protected function getNewKeys() {
+    protected function getNewKeys()
+    {
         return $this->api->v2010->account->newKeys;
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList
      */
-    protected function getNewSigningKeys() {
+    protected function getNewSigningKeys()
+    {
         return $this->api->v2010->account->newSigningKeys;
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList
      */
-    protected function getNotifications() {
+    protected function getNotifications()
+    {
         return $this->api->v2010->account->notifications;
     }
 
     /**
      * @param string $sid Fetch by unique notification Sid
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationContext
      */
-    protected function contextNotifications($sid) {
+    protected function contextNotifications($sid)
+    {
         return $this->api->v2010->account->notifications($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList
      */
-    protected function getOutgoingCallerIds() {
+    protected function getOutgoingCallerIds()
+    {
         return $this->api->v2010->account->outgoingCallerIds;
     }
 
     /**
      * @param string $sid Fetch by unique outgoing-caller-id Sid
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext 
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext
      */
-    protected function contextOutgoingCallerIds($sid) {
+    protected function contextOutgoingCallerIds($sid)
+    {
         return $this->api->v2010->account->outgoingCallerIds($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\QueueList 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueList
      */
-    protected function getQueues() {
+    protected function getQueues()
+    {
         return $this->api->v2010->account->queues;
     }
 
     /**
      * @param string $sid Fetch by unique queue Sid
-     * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueContext
      */
-    protected function contextQueues($sid) {
+    protected function contextQueues($sid)
+    {
         return $this->api->v2010->account->queues($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingList 
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings()
+    {
         return $this->api->v2010->account->recordings;
     }
 
     /**
      * @param string $sid Fetch by unique recording Sid
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingContext 
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingContext
      */
-    protected function contextRecordings($sid) {
+    protected function contextRecordings($sid)
+    {
         return $this->api->v2010->account->recordings($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList
      */
-    protected function getSigningKeys() {
+    protected function getSigningKeys()
+    {
         return $this->api->v2010->account->signingKeys;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyContext 
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyContext
      */
-    protected function contextSigningKeys($sid) {
+    protected function contextSigningKeys($sid)
+    {
         return $this->api->v2010->account->signingKeys($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\SipList 
+     * @return \Twilio\Rest\Api\V2010\Account\SipList
      */
-    protected function getSip() {
+    protected function getSip()
+    {
         return $this->api->v2010->account->sip;
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList
      */
-    protected function getShortCodes() {
+    protected function getShortCodes()
+    {
         return $this->api->v2010->account->shortCodes;
     }
 
     /**
      * @param string $sid Fetch by unique short-code Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext
      */
-    protected function contextShortCodes($sid) {
+    protected function contextShortCodes($sid)
+    {
         return $this->api->v2010->account->shortCodes($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\TokenList 
+     * @return \Twilio\Rest\Api\V2010\Account\TokenList
      */
-    protected function getTokens() {
+    protected function getTokens()
+    {
         return $this->api->v2010->account->tokens;
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList
      */
-    protected function getTranscriptions() {
+    protected function getTranscriptions()
+    {
         return $this->api->v2010->account->transcriptions;
     }
 
     /**
      * @param string $sid Fetch by unique transcription Sid
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext
      */
-    protected function contextTranscriptions($sid) {
+    protected function contextTranscriptions($sid)
+    {
         return $this->api->v2010->account->transcriptions($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList
      */
-    protected function getUsage() {
+    protected function getUsage()
+    {
         return $this->api->v2010->account->usage;
     }
 
     /**
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList
      */
-    protected function getValidationRequests() {
+    protected function getValidationRequests()
+    {
         return $this->api->v2010->account->validationRequests;
     }
 
     /**
      * Access the Chat Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Chat Chat Twilio Domain
      */
-    protected function getChat() {
+    protected function getChat()
+    {
         if (!$this->_chat) {
             $this->_chat = new Chat($this);
         }
@@ -589,10 +642,11 @@ class Client {
 
     /**
      * Access the IpMessaging Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
      */
-    protected function getIpMessaging() {
+    protected function getIpMessaging()
+    {
         if (!$this->_ipMessaging) {
             $this->_ipMessaging = new IpMessaging($this);
         }
@@ -601,10 +655,11 @@ class Client {
 
     /**
      * Access the Lookups Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Lookups Lookups Twilio Domain
      */
-    protected function getLookups() {
+    protected function getLookups()
+    {
         if (!$this->_lookups) {
             $this->_lookups = new Lookups($this);
         }
@@ -613,10 +668,11 @@ class Client {
 
     /**
      * Access the Monitor Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Monitor Monitor Twilio Domain
      */
-    protected function getMonitor() {
+    protected function getMonitor()
+    {
         if (!$this->_monitor) {
             $this->_monitor = new Monitor($this);
         }
@@ -625,10 +681,11 @@ class Client {
 
     /**
      * Access the Pricing Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Pricing Pricing Twilio Domain
      */
-    protected function getPricing() {
+    protected function getPricing()
+    {
         if (!$this->_pricing) {
             $this->_pricing = new Pricing($this);
         }
@@ -637,10 +694,11 @@ class Client {
 
     /**
      * Access the Taskrouter Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter Taskrouter Twilio Domain
      */
-    protected function getTaskrouter() {
+    protected function getTaskrouter()
+    {
         if (!$this->_taskrouter) {
             $this->_taskrouter = new Taskrouter($this);
         }
@@ -649,10 +707,11 @@ class Client {
 
     /**
      * Access the Trunking Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Trunking Trunking Twilio Domain
      */
-    protected function getTrunking() {
+    protected function getTrunking()
+    {
         if (!$this->_trunking) {
             $this->_trunking = new Trunking($this);
         }
@@ -661,10 +720,11 @@ class Client {
 
     /**
      * Access the Video Twilio Domain
-     * 
+     *
      * @return \Twilio\Rest\Video Video Twilio Domain
      */
-    protected function getVideo() {
+    protected function getVideo()
+    {
         if (!$this->_video) {
             $this->_video = new Video($this);
         }
@@ -673,12 +733,13 @@ class Client {
 
     /**
      * Magic getter to lazy load domains
-     * 
+     *
      * @param string $name Domain to return
      * @return \Twilio\Domain The requested domain
      * @throws TwilioException For unknown domains
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -689,13 +750,14 @@ class Client {
 
     /**
      * Magic call to lazy load contexts
-     * 
+     *
      * @param string $name Context to return
      * @param mixed[] $arguments Context to return
      * @return \Twilio\InstanceContext The requested context
      * @throws TwilioException For unknown contexts
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $method = 'context' . ucfirst($name);
         if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
@@ -706,10 +768,11 @@ class Client {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Client ' . $this->getAccountSid() . ']';
     }
 }

@@ -12,41 +12,47 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class NewKeyOptions {
+abstract class NewKeyOptions
+{
     /**
      * @param string $friendlyName The friendly_name
      * @return CreateNewKeyOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE) {
+    public static function create($friendlyName = Values::NONE)
+    {
         return new CreateNewKeyOptions($friendlyName);
     }
 }
 
-class CreateNewKeyOptions extends Options {
+class CreateNewKeyOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

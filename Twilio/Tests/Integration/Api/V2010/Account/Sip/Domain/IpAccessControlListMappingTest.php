@@ -15,8 +15,10 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class IpAccessControlListMappingTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class IpAccessControlListMappingTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -24,8 +26,9 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
                                      ->sip
                                      ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->ipAccessControlListMappings("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -33,7 +36,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -59,7 +63,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -67,8 +72,9 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
                                      ->sip
                                      ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->ipAccessControlListMappings->create("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'IpAccessControlListSid' => "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -82,7 +88,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -108,7 +115,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -116,8 +124,9 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
                                      ->sip
                                      ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->ipAccessControlListMappings->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -125,7 +134,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -166,7 +176,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -195,7 +206,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
@@ -203,8 +215,9 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
                                      ->sip
                                      ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->ipAccessControlListMappings("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -212,7 +225,8 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null

@@ -26,17 +26,19 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  */
-class RoleInstance extends InstanceResource {
+class RoleInstance extends InstanceResource
+{
     /**
      * Initialize the RoleInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\IpMessaging\V2\Service\RoleInstance 
+     * @return \Twilio\Rest\IpMessaging\V2\Service\RoleInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $serviceSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,11 +63,12 @@ class RoleInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\IpMessaging\V2\Service\RoleContext Context for this
      *                                                         RoleInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new RoleContext(
                 $this->version,
@@ -79,29 +82,32 @@ class RoleInstance extends InstanceResource {
 
     /**
      * Fetch a RoleInstance
-     * 
+     *
      * @return RoleInstance Fetched RoleInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the RoleInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Update the RoleInstance
-     * 
+     *
      * @param string $permission The permission
      * @return RoleInstance Updated RoleInstance
      */
-    public function update($permission) {
+    public function update($permission)
+    {
         return $this->proxy()->update(
             $permission
         );
@@ -109,12 +115,13 @@ class RoleInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -129,10 +136,11 @@ class RoleInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

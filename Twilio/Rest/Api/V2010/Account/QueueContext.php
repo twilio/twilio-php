@@ -20,18 +20,20 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\Queue\MemberList members
  * @method \Twilio\Rest\Api\V2010\Account\Queue\MemberContext members(string $callSid)
  */
-class QueueContext extends InstanceContext {
+class QueueContext extends InstanceContext
+{
     protected $_members = null;
 
     /**
      * Initialize the QueueContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique queue Sid
-     * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueContext
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $accountSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -45,10 +47,11 @@ class QueueContext extends InstanceContext {
 
     /**
      * Fetch a QueueInstance
-     * 
+     *
      * @return QueueInstance Fetched QueueInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -67,11 +70,12 @@ class QueueContext extends InstanceContext {
 
     /**
      * Update the QueueInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -96,19 +100,21 @@ class QueueContext extends InstanceContext {
 
     /**
      * Deletes the QueueInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the members
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList
      */
-    protected function getMembers() {
+    protected function getMembers()
+    {
         if (!$this->_members) {
             $this->_members = new MemberList(
                 $this->version,
@@ -122,12 +128,13 @@ class QueueContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -138,13 +145,14 @@ class QueueContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -155,10 +163,11 @@ class QueueContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

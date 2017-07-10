@@ -14,15 +14,17 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class PublicKeyContext extends InstanceContext {
+class PublicKeyContext extends InstanceContext
+{
     /**
      * Initialize the PublicKeyContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid Fetch by unique Credential Sid
-     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext 
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -35,10 +37,11 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Fetch a PublicKeyInstance
-     * 
+     *
      * @return PublicKeyInstance Fetched PublicKeyInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -56,11 +59,12 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Update the PublicKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return PublicKeyInstance Updated PublicKeyInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -83,19 +87,21 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Deletes the PublicKeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

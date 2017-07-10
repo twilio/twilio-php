@@ -13,15 +13,17 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class AlertContext extends InstanceContext {
+class AlertContext extends InstanceContext
+{
     /**
      * Initialize the AlertContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Monitor\V1\AlertContext 
+     * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -34,10 +36,11 @@ class AlertContext extends InstanceContext {
 
     /**
      * Fetch a AlertInstance
-     * 
+     *
      * @return AlertInstance Fetched AlertInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -55,19 +58,21 @@ class AlertContext extends InstanceContext {
 
     /**
      * Deletes the AlertInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -11,15 +11,18 @@ namespace Twilio\Rest\Chat\V2\Service\Channel;
 
 use Twilio\Page;
 
-class InvitePage extends Page {
-    public function __construct($version, $response, $solution) {
+class InvitePage extends Page
+{
+    public function __construct($version, $response, $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload)
+    {
         return new InviteInstance(
             $this->version,
             $payload,
@@ -30,10 +33,11 @@ class InvitePage extends Page {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Chat.V2.InvitePage]';
     }
 }

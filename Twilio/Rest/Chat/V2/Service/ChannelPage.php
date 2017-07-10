@@ -11,15 +11,18 @@ namespace Twilio\Rest\Chat\V2\Service;
 
 use Twilio\Page;
 
-class ChannelPage extends Page {
-    public function __construct($version, $response, $solution) {
+class ChannelPage extends Page
+{
+    public function __construct($version, $response, $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload)
+    {
         return new ChannelInstance(
             $this->version,
             $payload,
@@ -29,10 +32,11 @@ class ChannelPage extends Page {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Chat.V2.ChannelPage]';
     }
 }

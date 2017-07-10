@@ -29,18 +29,20 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class ReservationInstance extends InstanceResource {
+class ReservationInstance extends InstanceResource
+{
     /**
      * Initialize the ReservationInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationInstance
      */
-    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -68,10 +70,11 @@ class ReservationInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext Context for this ReservationInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new ReservationContext(
                 $this->version,
@@ -86,20 +89,22 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Fetch a ReservationInstance
-     * 
+     *
      * @return ReservationInstance Fetched ReservationInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the ReservationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -107,12 +112,13 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -127,10 +133,11 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

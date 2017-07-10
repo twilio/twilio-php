@@ -27,19 +27,21 @@ use Twilio\Version;
  * @property string sid
  * @property string uri
  */
-class QueueInstance extends InstanceResource {
+class QueueInstance extends InstanceResource
+{
     protected $_members = null;
 
     /**
      * Initialize the QueueInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique queue Sid
-     * @return \Twilio\Rest\Api\V2010\Account\QueueInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\QueueInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -64,11 +66,12 @@ class QueueInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\QueueContext Context for this
      *                                                     QueueInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new QueueContext(
                 $this->version,
@@ -82,20 +85,22 @@ class QueueInstance extends InstanceResource {
 
     /**
      * Fetch a QueueInstance
-     * 
+     *
      * @return QueueInstance Fetched QueueInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the QueueInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -103,30 +108,33 @@ class QueueInstance extends InstanceResource {
 
     /**
      * Deletes the QueueInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the members
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList
      */
-    protected function getMembers() {
+    protected function getMembers()
+    {
         return $this->proxy()->members;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -141,10 +149,11 @@ class QueueInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -15,14 +15,17 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class AlertTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class AlertTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->monitor->v1->alerts("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -30,7 +33,8 @@ class AlertTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -61,13 +65,15 @@ class AlertTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->monitor->v1->alerts("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -75,7 +81,8 @@ class AlertTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
@@ -86,13 +93,15 @@ class AlertTest extends HolodeckTestCase {
         $this->assertTrue($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->monitor->v1->alerts->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -100,7 +109,8 @@ class AlertTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -124,7 +134,8 @@ class AlertTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '

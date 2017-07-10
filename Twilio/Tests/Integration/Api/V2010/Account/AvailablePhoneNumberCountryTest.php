@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class AvailablePhoneNumberCountryTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class AvailablePhoneNumberCountryTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->availablePhoneNumbers->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -31,7 +34,8 @@ class AvailablePhoneNumberCountryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -68,7 +72,8 @@ class AvailablePhoneNumberCountryTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -95,14 +100,16 @@ class AvailablePhoneNumberCountryTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->availablePhoneNumbers("US")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -110,7 +117,8 @@ class AvailablePhoneNumberCountryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '

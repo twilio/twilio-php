@@ -11,15 +11,18 @@ namespace Twilio\Rest\Api\V2010\Account\Recording\AddOnResult;
 
 use Twilio\Page;
 
-class PayloadPage extends Page {
-    public function __construct($version, $response, $solution) {
+class PayloadPage extends Page
+{
+    public function __construct($version, $response, $solution)
+    {
         parent::__construct($version, $response);
 
         // Path Solution
         $this->solution = $solution;
     }
 
-    public function buildInstance(array $payload) {
+    public function buildInstance(array $payload)
+    {
         return new PayloadInstance(
             $this->version,
             $payload,
@@ -31,10 +34,11 @@ class PayloadPage extends Page {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.PayloadPage]';
     }
 }

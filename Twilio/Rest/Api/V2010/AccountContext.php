@@ -80,7 +80,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Api\V2010\Account\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\TranscriptionContext transcriptions(string $sid)
  */
-class AccountContext extends InstanceContext {
+class AccountContext extends InstanceContext
+{
     protected $_addresses = null;
     protected $_applications = null;
     protected $_authorizedConnectApps = null;
@@ -107,12 +108,13 @@ class AccountContext extends InstanceContext {
 
     /**
      * Initialize the AccountContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid Fetch by unique Account Sid
-     * @return \Twilio\Rest\Api\V2010\AccountContext 
+     * @return \Twilio\Rest\Api\V2010\AccountContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -125,10 +127,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Fetch a AccountInstance
-     * 
+     *
      * @return AccountInstance Fetched AccountInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -146,11 +149,12 @@ class AccountContext extends InstanceContext {
 
     /**
      * Update the AccountInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AccountInstance Updated AccountInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -174,10 +178,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the addresses
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AddressList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AddressList
      */
-    protected function getAddresses() {
+    protected function getAddresses()
+    {
         if (!$this->_addresses) {
             $this->_addresses = new AddressList(
                 $this->version,
@@ -190,10 +195,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the applications
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList
      */
-    protected function getApplications() {
+    protected function getApplications()
+    {
         if (!$this->_applications) {
             $this->_applications = new ApplicationList(
                 $this->version,
@@ -206,10 +212,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the authorizedConnectApps
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList
      */
-    protected function getAuthorizedConnectApps() {
+    protected function getAuthorizedConnectApps()
+    {
         if (!$this->_authorizedConnectApps) {
             $this->_authorizedConnectApps = new AuthorizedConnectAppList(
                 $this->version,
@@ -222,10 +229,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the availablePhoneNumbers
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList
      */
-    protected function getAvailablePhoneNumbers() {
+    protected function getAvailablePhoneNumbers()
+    {
         if (!$this->_availablePhoneNumbers) {
             $this->_availablePhoneNumbers = new AvailablePhoneNumberCountryList(
                 $this->version,
@@ -238,10 +246,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the calls
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\CallList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\CallList
      */
-    protected function getCalls() {
+    protected function getCalls()
+    {
         if (!$this->_calls) {
             $this->_calls = new CallList(
                 $this->version,
@@ -254,10 +263,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the conferences
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList
      */
-    protected function getConferences() {
+    protected function getConferences()
+    {
         if (!$this->_conferences) {
             $this->_conferences = new ConferenceList(
                 $this->version,
@@ -270,10 +280,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the connectApps
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList
      */
-    protected function getConnectApps() {
+    protected function getConnectApps()
+    {
         if (!$this->_connectApps) {
             $this->_connectApps = new ConnectAppList(
                 $this->version,
@@ -286,10 +297,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the incomingPhoneNumbers
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList
      */
-    protected function getIncomingPhoneNumbers() {
+    protected function getIncomingPhoneNumbers()
+    {
         if (!$this->_incomingPhoneNumbers) {
             $this->_incomingPhoneNumbers = new IncomingPhoneNumberList(
                 $this->version,
@@ -302,10 +314,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the keys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\KeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\KeyList
      */
-    protected function getKeys() {
+    protected function getKeys()
+    {
         if (!$this->_keys) {
             $this->_keys = new KeyList(
                 $this->version,
@@ -318,10 +331,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the messages
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList
      */
-    protected function getMessages() {
+    protected function getMessages()
+    {
         if (!$this->_messages) {
             $this->_messages = new MessageList(
                 $this->version,
@@ -334,10 +348,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the newKeys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList
      */
-    protected function getNewKeys() {
+    protected function getNewKeys()
+    {
         if (!$this->_newKeys) {
             $this->_newKeys = new NewKeyList(
                 $this->version,
@@ -350,10 +365,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the newSigningKeys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList
      */
-    protected function getNewSigningKeys() {
+    protected function getNewSigningKeys()
+    {
         if (!$this->_newSigningKeys) {
             $this->_newSigningKeys = new NewSigningKeyList(
                 $this->version,
@@ -366,10 +382,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the notifications
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList
      */
-    protected function getNotifications() {
+    protected function getNotifications()
+    {
         if (!$this->_notifications) {
             $this->_notifications = new NotificationList(
                 $this->version,
@@ -382,10 +399,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the outgoingCallerIds
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList
      */
-    protected function getOutgoingCallerIds() {
+    protected function getOutgoingCallerIds()
+    {
         if (!$this->_outgoingCallerIds) {
             $this->_outgoingCallerIds = new OutgoingCallerIdList(
                 $this->version,
@@ -398,10 +416,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the queues
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\QueueList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\QueueList
      */
-    protected function getQueues() {
+    protected function getQueues()
+    {
         if (!$this->_queues) {
             $this->_queues = new QueueList(
                 $this->version,
@@ -414,10 +433,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingList
      */
-    protected function getRecordings() {
+    protected function getRecordings()
+    {
         if (!$this->_recordings) {
             $this->_recordings = new RecordingList(
                 $this->version,
@@ -430,10 +450,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the signingKeys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList
      */
-    protected function getSigningKeys() {
+    protected function getSigningKeys()
+    {
         if (!$this->_signingKeys) {
             $this->_signingKeys = new SigningKeyList(
                 $this->version,
@@ -446,10 +467,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the sip
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\SipList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\SipList
      */
-    protected function getSip() {
+    protected function getSip()
+    {
         if (!$this->_sip) {
             $this->_sip = new SipList(
                 $this->version,
@@ -462,10 +484,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the shortCodes
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList
      */
-    protected function getShortCodes() {
+    protected function getShortCodes()
+    {
         if (!$this->_shortCodes) {
             $this->_shortCodes = new ShortCodeList(
                 $this->version,
@@ -478,10 +501,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the tokens
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\TokenList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\TokenList
      */
-    protected function getTokens() {
+    protected function getTokens()
+    {
         if (!$this->_tokens) {
             $this->_tokens = new TokenList(
                 $this->version,
@@ -494,10 +518,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the transcriptions
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList
      */
-    protected function getTranscriptions() {
+    protected function getTranscriptions()
+    {
         if (!$this->_transcriptions) {
             $this->_transcriptions = new TranscriptionList(
                 $this->version,
@@ -510,10 +535,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the usage
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList
      */
-    protected function getUsage() {
+    protected function getUsage()
+    {
         if (!$this->_usage) {
             $this->_usage = new UsageList(
                 $this->version,
@@ -526,10 +552,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the validationRequests
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList
      */
-    protected function getValidationRequests() {
+    protected function getValidationRequests()
+    {
         if (!$this->_validationRequests) {
             $this->_validationRequests = new ValidationRequestList(
                 $this->version,
@@ -542,12 +569,13 @@ class AccountContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -558,13 +586,14 @@ class AccountContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -575,10 +604,11 @@ class AccountContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

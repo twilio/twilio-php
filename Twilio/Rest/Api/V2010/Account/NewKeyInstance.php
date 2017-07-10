@@ -22,17 +22,19 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string secret
  */
-class NewKeyInstance extends InstanceResource {
+class NewKeyInstance extends InstanceResource
+{
     /**
      * Initialize the NewKeyInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\NewKeyInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\NewKeyInstance
      */
-    public function __construct(Version $version, array $payload, $accountSid) {
+    public function __construct(Version $version, array $payload, $accountSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -51,12 +53,13 @@ class NewKeyInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -71,10 +74,11 @@ class NewKeyInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Api.V2010.NewKeyInstance]';
     }
 }

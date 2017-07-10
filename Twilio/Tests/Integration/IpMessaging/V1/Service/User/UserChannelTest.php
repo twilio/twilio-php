@@ -15,16 +15,19 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class UserChannelTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class UserChannelTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                           ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                           ->userChannels->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -32,7 +35,8 @@ class UserChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -72,7 +76,8 @@ class UserChannelTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '

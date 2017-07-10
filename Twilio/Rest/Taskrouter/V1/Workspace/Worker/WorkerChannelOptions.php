@@ -12,55 +12,62 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\Worker;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class WorkerChannelOptions {
+abstract class WorkerChannelOptions
+{
     /**
      * @param integer $capacity The capacity
      * @param boolean $available The available
      * @return UpdateWorkerChannelOptions Options builder
      */
-    public static function update($capacity = Values::NONE, $available = Values::NONE) {
+    public static function update($capacity = Values::NONE, $available = Values::NONE)
+    {
         return new UpdateWorkerChannelOptions($capacity, $available);
     }
 }
 
-class UpdateWorkerChannelOptions extends Options {
+class UpdateWorkerChannelOptions extends Options
+{
     /**
      * @param integer $capacity The capacity
      * @param boolean $available The available
      */
-    public function __construct($capacity = Values::NONE, $available = Values::NONE) {
+    public function __construct($capacity = Values::NONE, $available = Values::NONE)
+    {
         $this->options['capacity'] = $capacity;
         $this->options['available'] = $available;
     }
 
     /**
      * The capacity
-     * 
+     *
      * @param integer $capacity The capacity
      * @return $this Fluent Builder
      */
-    public function setCapacity($capacity) {
+    public function setCapacity($capacity)
+    {
         $this->options['capacity'] = $capacity;
         return $this;
     }
 
     /**
      * The available
-     * 
+     *
      * @param boolean $available The available
      * @return $this Fluent Builder
      */
-    public function setAvailable($available) {
+    public function setAvailable($available)
+    {
         $this->options['available'] = $available;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

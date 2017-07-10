@@ -12,13 +12,15 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class AddressOptions {
+abstract class AddressOptions
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param boolean $emergencyEnabled The emergency_enabled
      * @return CreateAddressOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE) {
+    public static function create($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE)
+    {
         return new CreateAddressOptions($friendlyName, $emergencyEnabled);
     }
 
@@ -32,7 +34,8 @@ abstract class AddressOptions {
      * @param boolean $emergencyEnabled The emergency_enabled
      * @return UpdateAddressOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE) {
+    public static function update($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE)
+    {
         return new UpdateAddressOptions($friendlyName, $customerName, $street, $city, $region, $postalCode, $emergencyEnabled);
     }
 
@@ -42,49 +45,55 @@ abstract class AddressOptions {
      * @param string $isoCountry The iso_country
      * @return ReadAddressOptions Options builder
      */
-    public static function read($customerName = Values::NONE, $friendlyName = Values::NONE, $isoCountry = Values::NONE) {
+    public static function read($customerName = Values::NONE, $friendlyName = Values::NONE, $isoCountry = Values::NONE)
+    {
         return new ReadAddressOptions($customerName, $friendlyName, $isoCountry);
     }
 }
 
-class CreateAddressOptions extends Options {
+class CreateAddressOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param boolean $emergencyEnabled The emergency_enabled
      */
-    public function __construct($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $emergencyEnabled = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['emergencyEnabled'] = $emergencyEnabled;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The emergency_enabled
-     * 
+     *
      * @param boolean $emergencyEnabled The emergency_enabled
      * @return $this Fluent Builder
      */
-    public function setEmergencyEnabled($emergencyEnabled) {
+    public function setEmergencyEnabled($emergencyEnabled)
+    {
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -95,7 +104,8 @@ class CreateAddressOptions extends Options {
     }
 }
 
-class UpdateAddressOptions extends Options {
+class UpdateAddressOptions extends Options
+{
     /**
      * @param string $friendlyName The friendly_name
      * @param string $customerName The customer_name
@@ -105,7 +115,8 @@ class UpdateAddressOptions extends Options {
      * @param string $postalCode The postal_code
      * @param boolean $emergencyEnabled The emergency_enabled
      */
-    public function __construct($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $customerName = Values::NONE, $street = Values::NONE, $city = Values::NONE, $region = Values::NONE, $postalCode = Values::NONE, $emergencyEnabled = Values::NONE)
+    {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['customerName'] = $customerName;
         $this->options['street'] = $street;
@@ -117,87 +128,95 @@ class UpdateAddressOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The customer_name
-     * 
+     *
      * @param string $customerName The customer_name
      * @return $this Fluent Builder
      */
-    public function setCustomerName($customerName) {
+    public function setCustomerName($customerName)
+    {
         $this->options['customerName'] = $customerName;
         return $this;
     }
 
     /**
      * The street
-     * 
+     *
      * @param string $street The street
      * @return $this Fluent Builder
      */
-    public function setStreet($street) {
+    public function setStreet($street)
+    {
         $this->options['street'] = $street;
         return $this;
     }
 
     /**
      * The city
-     * 
+     *
      * @param string $city The city
      * @return $this Fluent Builder
      */
-    public function setCity($city) {
+    public function setCity($city)
+    {
         $this->options['city'] = $city;
         return $this;
     }
 
     /**
      * The region
-     * 
+     *
      * @param string $region The region
      * @return $this Fluent Builder
      */
-    public function setRegion($region) {
+    public function setRegion($region)
+    {
         $this->options['region'] = $region;
         return $this;
     }
 
     /**
      * The postal_code
-     * 
+     *
      * @param string $postalCode The postal_code
      * @return $this Fluent Builder
      */
-    public function setPostalCode($postalCode) {
+    public function setPostalCode($postalCode)
+    {
         $this->options['postalCode'] = $postalCode;
         return $this;
     }
 
     /**
      * The emergency_enabled
-     * 
+     *
      * @param boolean $emergencyEnabled The emergency_enabled
      * @return $this Fluent Builder
      */
-    public function setEmergencyEnabled($emergencyEnabled) {
+    public function setEmergencyEnabled($emergencyEnabled)
+    {
         $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -208,13 +227,15 @@ class UpdateAddressOptions extends Options {
     }
 }
 
-class ReadAddressOptions extends Options {
+class ReadAddressOptions extends Options
+{
     /**
      * @param string $customerName The customer_name
      * @param string $friendlyName The friendly_name
      * @param string $isoCountry The iso_country
      */
-    public function __construct($customerName = Values::NONE, $friendlyName = Values::NONE, $isoCountry = Values::NONE) {
+    public function __construct($customerName = Values::NONE, $friendlyName = Values::NONE, $isoCountry = Values::NONE)
+    {
         $this->options['customerName'] = $customerName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['isoCountry'] = $isoCountry;
@@ -222,43 +243,47 @@ class ReadAddressOptions extends Options {
 
     /**
      * The customer_name
-     * 
+     *
      * @param string $customerName The customer_name
      * @return $this Fluent Builder
      */
-    public function setCustomerName($customerName) {
+    public function setCustomerName($customerName)
+    {
         $this->options['customerName'] = $customerName;
         return $this;
     }
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
+    public function setFriendlyName($friendlyName)
+    {
         $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
     /**
      * The iso_country
-     * 
+     *
      * @param string $isoCountry The iso_country
      * @return $this Fluent Builder
      */
-    public function setIsoCountry($isoCountry) {
+    public function setIsoCountry($isoCountry)
+    {
         $this->options['isoCountry'] = $isoCountry;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

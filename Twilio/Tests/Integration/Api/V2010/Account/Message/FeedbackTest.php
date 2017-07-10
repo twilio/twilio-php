@@ -15,16 +15,19 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class FeedbackTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+class FeedbackTest extends HolodeckTestCase
+{
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->messages("MMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->feedback->create();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'post',
@@ -32,7 +35,8 @@ class FeedbackTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '

@@ -21,25 +21,28 @@ use Twilio\Version;
  * @method \Twilio\Rest\Monitor\V1\AlertContext alerts(string $sid)
  * @method \Twilio\Rest\Monitor\V1\EventContext events(string $sid)
  */
-class V1 extends Version {
+class V1 extends Version
+{
     protected $_alerts = null;
     protected $_events = null;
 
     /**
      * Construct the V1 version of Monitor
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Monitor\V1 V1 version of Monitor
      */
-    public function __construct(Domain $domain) {
+    public function __construct(Domain $domain)
+    {
         parent::__construct($domain);
         $this->version = 'v1';
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList
      */
-    protected function getAlerts() {
+    protected function getAlerts()
+    {
         if (!$this->_alerts) {
             $this->_alerts = new AlertList($this);
         }
@@ -47,9 +50,10 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\EventList 
+     * @return \Twilio\Rest\Monitor\V1\EventList
      */
-    protected function getEvents() {
+    protected function getEvents()
+    {
         if (!$this->_events) {
             $this->_events = new EventList($this);
         }
@@ -58,12 +62,13 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -74,13 +79,14 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -91,10 +97,11 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Monitor.V1]';
     }
 }

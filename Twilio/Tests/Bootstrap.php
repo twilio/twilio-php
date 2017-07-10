@@ -21,4 +21,3 @@ if (file_exists($vendorFilename)) {
 require_once 'Client.php';
 
 unset($root, $library, $tests, $path);
-

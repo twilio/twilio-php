@@ -3,13 +3,13 @@
 
 namespace Twilio\Tests\Unit\Http;
 
-
 use Twilio\Http\CurlClient;
 use Twilio\Tests\Unit\UnitTest;
 
-class CurlClientTest extends UnitTest {
-
-    public function testPreemptiveAuthorization() {
+class CurlClientTest extends UnitTest
+{
+    public function testPreemptiveAuthorization()
+    {
         $client = new CurlClient();
 
         $options = $client->options(
@@ -52,13 +52,15 @@ class CurlClientTest extends UnitTest {
      * @param string $expected Expected query string
      * @dataProvider buildQueryProvider
      */
-    public function testBuildQuery($message, $params, $expected) {
+    public function testBuildQuery($message, $params, $expected)
+    {
         $client = new CurlClient();
         $actual = $client->buildQuery($params);
         $this->assertEquals($expected, $actual, $message);
     }
 
-    public function buildQueryProvider() {
+    public function buildQueryProvider()
+    {
         return array(
             array(
                 'Null Params',
@@ -132,7 +134,8 @@ class CurlClientTest extends UnitTest {
      * @dataProvider queryStringProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testQueryString($method, $params, $expected) {
+    public function testQueryString($method, $params, $expected)
+    {
         $client = new CurlClient();
 
         $actual = $client->options($method, 'url', $params);
@@ -140,7 +143,8 @@ class CurlClientTest extends UnitTest {
         $this->assertEquals($expected, $actual[CURLOPT_URL]);
     }
 
-    public function queryStringProvider() {
+    public function queryStringProvider()
+    {
         $methods = array('GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'CUSTOM');
         $cases = array();
 
@@ -172,7 +176,8 @@ class CurlClientTest extends UnitTest {
      * @dataProvider postFieldsProvider
      * @throws \Twilio\Exceptions\EnvironmentException
      */
-    public function testPostFields($params, $data, $expected) {
+    public function testPostFields($params, $data, $expected)
+    {
         $client = new CurlClient();
 
         $actual = $client->options('POST', 'url', $params, $data);
@@ -180,7 +185,8 @@ class CurlClientTest extends UnitTest {
         $this->assertEquals($expected, $actual[CURLOPT_POSTFIELDS]);
     }
 
-    public function postFieldsProvider() {
+    public function postFieldsProvider()
+    {
         return array(
             array(
                 array(),
@@ -228,7 +234,8 @@ class CurlClientTest extends UnitTest {
         );
     }
 
-    public function testPutFile() {
+    public function testPutFile()
+    {
         $client = new CurlClient();
         $actual = $client->options('PUT', 'url', array(), array('a' => 1, 'b' => 2));
         $this->assertNotNull($actual[CURLOPT_INFILE]);
@@ -242,7 +249,8 @@ class CurlClientTest extends UnitTest {
      * @param mixed[] $expected Partial array to expect
      * @dataProvider userInjectedOptionsProvider
      */
-    public function testUserInjectedOptions($message, $options, $expected) {
+    public function testUserInjectedOptions($message, $options, $expected)
+    {
         $client = new CurlClient($options);
         $actual = $client->options(
             'GET',
@@ -259,7 +267,8 @@ class CurlClientTest extends UnitTest {
         }
     }
 
-    public function userInjectedOptionsProvider() {
+    public function userInjectedOptionsProvider()
+    {
         return array(
             array(
                 'No Conflict Options',
@@ -314,5 +323,4 @@ class CurlClientTest extends UnitTest {
             ),
         );
     }
-
 }

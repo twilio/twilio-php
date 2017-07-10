@@ -13,16 +13,18 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-class EventContext extends InstanceContext {
+class EventContext extends InstanceContext
+{
     /**
      * Initialize the EventContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventContext
      */
-    public function __construct(Version $version, $workspaceSid, $sid) {
+    public function __construct(Version $version, $workspaceSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -36,10 +38,11 @@ class EventContext extends InstanceContext {
 
     /**
      * Fetch a EventInstance
-     * 
+     *
      * @return EventInstance Fetched EventInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -58,10 +61,11 @@ class EventContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
