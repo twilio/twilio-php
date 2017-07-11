@@ -12,6 +12,7 @@ clean:
 	@rm -rf venv vendor
 
 install:
+	@composer --version || (echo "Composer is not installed, please install Composer"; exit 1);
 	# Composer: http://getcomposer.org/download/
 	$(COMPOSER) install
 
