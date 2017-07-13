@@ -118,22 +118,6 @@ class EventList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of EventInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of EventInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new EventPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a EventContext
      * 
      * @param string $sid The sid

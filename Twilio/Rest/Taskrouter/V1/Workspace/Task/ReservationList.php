@@ -111,22 +111,6 @@ class ReservationList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of ReservationInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ReservationInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new ReservationPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a ReservationContext
      * 
      * @param string $sid The sid

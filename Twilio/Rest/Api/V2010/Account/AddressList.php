@@ -152,22 +152,6 @@ class AddressList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of AddressInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AddressInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new AddressPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a AddressContext
      * 
      * @param string $sid The sid

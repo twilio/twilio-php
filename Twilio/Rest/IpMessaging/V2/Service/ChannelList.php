@@ -139,22 +139,6 @@ class ChannelList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of ChannelInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ChannelInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new ChannelPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a ChannelContext
      * 
      * @param string $sid The sid

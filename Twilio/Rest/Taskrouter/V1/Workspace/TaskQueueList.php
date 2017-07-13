@@ -111,22 +111,6 @@ class TaskQueueList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of TaskQueueInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of TaskQueueInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new TaskQueuePage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Create a new TaskQueueInstance
      * 
      * @param string $friendlyName The friendly_name

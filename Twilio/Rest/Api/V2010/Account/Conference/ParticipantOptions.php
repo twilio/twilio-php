@@ -19,11 +19,11 @@ abstract class ParticipantOptions {
      * @param string $holdUrl The hold_url
      * @param string $holdMethod The hold_method
      * @param string $announceUrl The announce_url
-     * @param string $announceUrlMethod The announce_url_method
+     * @param string $announceMethod The announce_method
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE, $announceUrl = Values::NONE, $announceUrlMethod = Values::NONE) {
-        return new UpdateParticipantOptions($muted, $hold, $holdUrl, $holdMethod, $announceUrl, $announceUrlMethod);
+    public static function update($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
+        return new UpdateParticipantOptions($muted, $hold, $holdUrl, $holdMethod, $announceUrl, $announceMethod);
     }
 
     /**
@@ -81,15 +81,15 @@ class UpdateParticipantOptions extends Options {
      * @param string $holdUrl The hold_url
      * @param string $holdMethod The hold_method
      * @param string $announceUrl The announce_url
-     * @param string $announceUrlMethod The announce_url_method
+     * @param string $announceMethod The announce_method
      */
-    public function __construct($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE, $announceUrl = Values::NONE, $announceUrlMethod = Values::NONE) {
+    public function __construct($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
         $this->options['muted'] = $muted;
         $this->options['hold'] = $hold;
         $this->options['holdUrl'] = $holdUrl;
         $this->options['holdMethod'] = $holdMethod;
         $this->options['announceUrl'] = $announceUrl;
-        $this->options['announceUrlMethod'] = $announceUrlMethod;
+        $this->options['announceMethod'] = $announceMethod;
     }
 
     /**
@@ -148,13 +148,13 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The announce_url_method
+     * The announce_method
      * 
-     * @param string $announceUrlMethod The announce_url_method
+     * @param string $announceMethod The announce_method
      * @return $this Fluent Builder
      */
-    public function setAnnounceUrlMethod($announceUrlMethod) {
-        $this->options['announceUrlMethod'] = $announceUrlMethod;
+    public function setAnnounceMethod($announceMethod) {
+        $this->options['announceMethod'] = $announceMethod;
         return $this;
     }
 

@@ -177,22 +177,6 @@ class CallList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of CallInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of CallInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new CallPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Access the feedbackSummaries
      */
     protected function getFeedbackSummaries() {

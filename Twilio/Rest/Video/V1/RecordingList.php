@@ -11,6 +11,7 @@ namespace Twilio\Rest\Video\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -93,6 +94,8 @@ class RecordingList extends ListResource {
             'Status' => $options['status'],
             'SourceSid' => $options['sourceSid'],
             'GroupingSid' => $options['groupingSid'],
+            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -102,22 +105,6 @@ class RecordingList extends ListResource {
             'GET',
             $this->uri,
             $params
-        );
-
-        return new RecordingPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Retrieve a specific page of RecordingInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of RecordingInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
         );
 
         return new RecordingPage($this->version, $response, $this->solution);

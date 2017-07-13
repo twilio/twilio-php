@@ -104,23 +104,6 @@ class AuthorizedConnectAppList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of AuthorizedConnectAppInstance records from the
-     * API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AuthorizedConnectAppInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new AuthorizedConnectAppPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a AuthorizedConnectAppContext
      * 
      * @param string $connectAppSid The connect_app_sid

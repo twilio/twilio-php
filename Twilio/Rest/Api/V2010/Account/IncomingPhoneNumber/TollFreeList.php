@@ -113,22 +113,6 @@ class TollFreeList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of TollFreeInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of TollFreeInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new TollFreePage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Create a new TollFreeInstance
      * 
      * @param string $phoneNumber The phone_number

@@ -105,22 +105,6 @@ class WorkerChannelList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of WorkerChannelInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of WorkerChannelInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new WorkerChannelPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a WorkerChannelContext
      * 
      * @param string $sid The sid

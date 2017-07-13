@@ -114,23 +114,6 @@ class TaskQueuesStatisticsList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of TaskQueuesStatisticsInstance records from the
-     * API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of TaskQueuesStatisticsInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new TaskQueuesStatisticsPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

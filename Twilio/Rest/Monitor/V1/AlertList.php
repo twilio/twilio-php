@@ -109,22 +109,6 @@ class AlertList extends ListResource {
     }
 
     /**
-     * Retrieve a specific page of AlertInstance records from the API.
-     * Request is executed immediately
-     * 
-     * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AlertInstance
-     */
-    public function getPage($targetUrl) {
-        $response = $this->version->getDomain()->getClient()->request(
-            'GET',
-            $targetUrl
-        );
-
-        return new AlertPage($this->version, $response, $this->solution);
-    }
-
-    /**
      * Constructs a AlertContext
      * 
      * @param string $sid The sid

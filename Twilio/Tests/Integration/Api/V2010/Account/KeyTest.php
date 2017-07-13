@@ -140,7 +140,7 @@ class KeyTest extends HolodeckTestCase {
                     }
                 ],
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
-                "end": 3,
+                "end": 0,
                 "previous_page_uri": null,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
                 "page_size": 50,
@@ -164,7 +164,7 @@ class KeyTest extends HolodeckTestCase {
             {
                 "keys": [],
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
-                "end": 3,
+                "end": 0,
                 "previous_page_uri": null,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
                 "page_size": 50,
