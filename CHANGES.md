@@ -4,6 +4,8 @@ twilio-php Changelog
 
 [2017-07-13] Version 5.12.1
 ---------------------------
+- This release drops official support for PHP 5.3 and PHP 5.4, which were EOL'd
+  in 2014 and 2015 respectively.
 - Reinstate `getPage` functionality.
 
 
