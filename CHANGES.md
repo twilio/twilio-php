@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+
+[2017-07-13] Version 5.12.1
+---------------------------
+- Reinstate `getPage` functionality.
+
+
 [2017-07-13] Version 5.12.0
 ----------------------------
 **Api**
