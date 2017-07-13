@@ -105,6 +105,22 @@ class DomainList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of DomainInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of DomainInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new DomainPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new DomainInstance
      * 
      * @param string $domainName The unique address on Twilio to route SIP traffic

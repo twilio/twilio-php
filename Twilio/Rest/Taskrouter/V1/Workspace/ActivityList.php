@@ -111,6 +111,22 @@ class ActivityList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of ActivityInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of ActivityInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new ActivityPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new ActivityInstance
      * 
      * @param string $friendlyName The friendly_name

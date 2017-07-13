@@ -129,6 +129,22 @@ class MobileList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of MobileInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of MobileInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new MobilePage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

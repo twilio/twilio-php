@@ -129,6 +129,22 @@ class IpAccessControlListList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of IpAccessControlListInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of IpAccessControlListInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new IpAccessControlListPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a IpAccessControlListContext
      * 
      * @param string $sid The sid

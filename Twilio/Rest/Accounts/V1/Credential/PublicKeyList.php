@@ -101,6 +101,22 @@ class PublicKeyList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of PublicKeyInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of PublicKeyInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new PublicKeyPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Create a new PublicKeyInstance
      * 
      * @param string $publicKey URL encoded representation of the public key

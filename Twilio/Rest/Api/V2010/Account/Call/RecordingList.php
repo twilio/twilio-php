@@ -114,6 +114,22 @@ class RecordingList extends ListResource {
     }
 
     /**
+     * Retrieve a specific page of RecordingInstance records from the API.
+     * Request is executed immediately
+     * 
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return \Twilio\Page Page of RecordingInstance
+     */
+    public function getPage($targetUrl) {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new RecordingPage($this->version, $response, $this->solution);
+    }
+
+    /**
      * Constructs a RecordingContext
      * 
      * @param string $sid The sid
