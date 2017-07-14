@@ -11,7 +11,7 @@ php:
 script: "make test"
 before_install: "composer install --dev"
 matrix:
-  fast_finish: true
-  allow_failures:
-    php:
-      - nightly
+    fast_finish: true
+    allow_failures:
+        - php:
+            - nightly
