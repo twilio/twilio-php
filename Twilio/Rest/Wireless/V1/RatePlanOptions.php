@@ -23,10 +23,13 @@ abstract class RatePlanOptions {
      * @param boolean $voiceEnabled The voice_enabled
      * @param boolean $nationalRoamingEnabled The national_roaming_enabled
      * @param string $internationalRoaming The international_roaming
+     * @param integer $nationalRoamingDataLimit The national_roaming_data_limit
+     * @param integer $internationalRoamingDataLimit The
+     *                                               international_roaming_data_limit
      * @return CreateRatePlanOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE) {
-        return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $nationalRoamingEnabled, $internationalRoaming);
+    public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE, $nationalRoamingDataLimit = Values::NONE, $internationalRoamingDataLimit = Values::NONE) {
+        return new CreateRatePlanOptions($uniqueName, $friendlyName, $dataEnabled, $dataLimit, $dataMetering, $messagingEnabled, $voiceEnabled, $nationalRoamingEnabled, $internationalRoaming, $nationalRoamingDataLimit, $internationalRoamingDataLimit);
     }
 
     /**
@@ -50,8 +53,11 @@ class CreateRatePlanOptions extends Options {
      * @param boolean $voiceEnabled The voice_enabled
      * @param boolean $nationalRoamingEnabled The national_roaming_enabled
      * @param string $internationalRoaming The international_roaming
+     * @param integer $nationalRoamingDataLimit The national_roaming_data_limit
+     * @param integer $internationalRoamingDataLimit The
+     *                                               international_roaming_data_limit
      */
-    public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE, $nationalRoamingDataLimit = Values::NONE, $internationalRoamingDataLimit = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dataEnabled'] = $dataEnabled;
@@ -61,6 +67,8 @@ class CreateRatePlanOptions extends Options {
         $this->options['voiceEnabled'] = $voiceEnabled;
         $this->options['nationalRoamingEnabled'] = $nationalRoamingEnabled;
         $this->options['internationalRoaming'] = $internationalRoaming;
+        $this->options['nationalRoamingDataLimit'] = $nationalRoamingDataLimit;
+        $this->options['internationalRoamingDataLimit'] = $internationalRoamingDataLimit;
     }
 
     /**
@@ -159,6 +167,29 @@ class CreateRatePlanOptions extends Options {
      */
     public function setInternationalRoaming($internationalRoaming) {
         $this->options['internationalRoaming'] = $internationalRoaming;
+        return $this;
+    }
+
+    /**
+     * The national_roaming_data_limit
+     * 
+     * @param integer $nationalRoamingDataLimit The national_roaming_data_limit
+     * @return $this Fluent Builder
+     */
+    public function setNationalRoamingDataLimit($nationalRoamingDataLimit) {
+        $this->options['nationalRoamingDataLimit'] = $nationalRoamingDataLimit;
+        return $this;
+    }
+
+    /**
+     * The international_roaming_data_limit
+     * 
+     * @param integer $internationalRoamingDataLimit The
+     *                                               international_roaming_data_limit
+     * @return $this Fluent Builder
+     */
+    public function setInternationalRoamingDataLimit($internationalRoamingDataLimit) {
+        $this->options['internationalRoamingDataLimit'] = $internationalRoamingDataLimit;
         return $this;
     }
 

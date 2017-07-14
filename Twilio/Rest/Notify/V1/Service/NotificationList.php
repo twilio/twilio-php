@@ -60,6 +60,7 @@ class NotificationList extends ListResource {
             'Fcm' => $options['fcm'],
             'Segment' => $options['segment'],
             'Alexa' => $options['alexa'],
+            'ToBinding' => $options['toBinding'],
         ));
 
         $payload = $this->version->create(

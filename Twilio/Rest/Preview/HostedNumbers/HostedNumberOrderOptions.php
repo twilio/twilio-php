@@ -20,10 +20,11 @@ abstract class HostedNumberOrderOptions {
      * @param string $email Email.
      * @param string $ccEmails A list of emails.
      * @param string $status The Status of this HostedNumberOrder.
+     * @param string $verificationCode A verification code.
      * @return UpdateHostedNumberOrderOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE) {
-        return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status);
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE) {
+        return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode);
     }
 
     /**
@@ -49,10 +50,12 @@ abstract class HostedNumberOrderOptions {
      * @param string $smsMethod SMS Method.
      * @param string $smsFallbackUrl SMS Fallback URL.
      * @param string $smsFallbackMethod SMS Fallback Method.
+     * @param string $statusCallbackUrl Status Callback URL.
+     * @param string $statusCallbackMethod Status Callback Method.
      * @return CreateHostedNumberOrderOptions Options builder
      */
-    public static function create($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE) {
-        return new CreateHostedNumberOrderOptions($accountSid, $friendlyName, $uniqueName, $ccEmails, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod);
+    public static function create($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE) {
+        return new CreateHostedNumberOrderOptions($accountSid, $friendlyName, $uniqueName, $ccEmails, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $statusCallbackUrl, $statusCallbackMethod);
     }
 }
 
@@ -64,13 +67,15 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $email Email.
      * @param string $ccEmails A list of emails.
      * @param string $status The Status of this HostedNumberOrder.
+     * @param string $verificationCode A verification code.
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['email'] = $email;
         $this->options['ccEmails'] = $ccEmails;
         $this->options['status'] = $status;
+        $this->options['verificationCode'] = $verificationCode;
     }
 
     /**
@@ -119,13 +124,24 @@ class UpdateHostedNumberOrderOptions extends Options {
     }
 
     /**
-     * The Status of this HostedNumberOrder. User can only update this to `pending-loa`.
+     * The Status of this HostedNumberOrder. User can only update this to `pending-loa` or `pending-verification`.
      * 
      * @param string $status The Status of this HostedNumberOrder.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
         $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * A verification code that is given to the user via a phone call to the phone number that is being hosted.
+     * 
+     * @param string $verificationCode A verification code.
+     * @return $this Fluent Builder
+     */
+    public function setVerificationCode($verificationCode) {
+        $this->options['verificationCode'] = $verificationCode;
         return $this;
     }
 
@@ -163,7 +179,7 @@ class ReadHostedNumberOrderOptions extends Options {
     }
 
     /**
-     * The Status of this HostedNumberOrder. One of `received`, `pending-loa`, `carrier-processing`, `testing`, `completed`, `failed`, or `action-required`.
+     * The Status of this HostedNumberOrder. One of `received`, `pending-verification`, `verified`, `pending-loa`, `carrier-processing`, `testing`, `completed`, `failed`, or `action-required`.
      * 
      * @param string $status The Status of this HostedNumberOrder.
      * @return $this Fluent Builder
@@ -245,8 +261,10 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsMethod SMS Method.
      * @param string $smsFallbackUrl SMS Fallback URL.
      * @param string $smsFallbackMethod SMS Fallback Method.
+     * @param string $statusCallbackUrl Status Callback URL.
+     * @param string $statusCallbackMethod Status Callback Method.
      */
-    public function __construct($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE) {
+    public function __construct($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
@@ -255,6 +273,8 @@ class CreateHostedNumberOrderOptions extends Options {
         $this->options['smsMethod'] = $smsMethod;
         $this->options['smsFallbackUrl'] = $smsFallbackUrl;
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
+        $this->options['statusCallbackUrl'] = $statusCallbackUrl;
+        $this->options['statusCallbackMethod'] = $statusCallbackMethod;
     }
 
     /**
@@ -343,6 +363,28 @@ class CreateHostedNumberOrderOptions extends Options {
      */
     public function setSmsFallbackMethod($smsFallbackMethod) {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
+        return $this;
+    }
+
+    /**
+     * Optional. The Status Callback URL attached to the IncomingPhoneNumber resource.
+     * 
+     * @param string $statusCallbackUrl Status Callback URL.
+     * @return $this Fluent Builder
+     */
+    public function setStatusCallbackUrl($statusCallbackUrl) {
+        $this->options['statusCallbackUrl'] = $statusCallbackUrl;
+        return $this;
+    }
+
+    /**
+     * Optional. The Status Callback Method attached to the IncomingPhoneNumber resource.
+     * 
+     * @param string $statusCallbackMethod Status Callback Method.
+     * @return $this Fluent Builder
+     */
+    public function setStatusCallbackMethod($statusCallbackMethod) {
+        $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         return $this;
     }
 

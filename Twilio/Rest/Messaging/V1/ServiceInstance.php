@@ -33,6 +33,7 @@ use Twilio\Version;
  * @property string scanMessageContent
  * @property boolean fallbackToLongCode
  * @property boolean areaCodeGeomatch
+ * @property boolean synchronousValidation
  * @property integer validityPeriod
  * @property string url
  * @property array links
@@ -71,6 +72,7 @@ class ServiceInstance extends InstanceResource {
             'scanMessageContent' => Values::array_get($payload, 'scan_message_content'),
             'fallbackToLongCode' => Values::array_get($payload, 'fallback_to_long_code'),
             'areaCodeGeomatch' => Values::array_get($payload, 'area_code_geomatch'),
+            'synchronousValidation' => Values::array_get($payload, 'synchronous_validation'),
             'validityPeriod' => Values::array_get($payload, 'validity_period'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),

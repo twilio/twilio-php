@@ -11,6 +11,7 @@ namespace Twilio\Rest\Video\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -93,6 +94,8 @@ class RecordingList extends ListResource {
             'Status' => $options['status'],
             'SourceSid' => $options['sourceSid'],
             'GroupingSid' => $options['groupingSid'],
+            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -77,7 +77,7 @@ class ParticipantContext extends InstanceContext {
             'HoldUrl' => $options['holdUrl'],
             'HoldMethod' => $options['holdMethod'],
             'AnnounceUrl' => $options['announceUrl'],
-            'AnnounceUrlMethod' => $options['announceUrlMethod'],
+            'AnnounceMethod' => $options['announceMethod'],
         ));
 
         $payload = $this->version->update(

@@ -78,6 +78,7 @@ class HostedNumberOrderContext extends InstanceContext {
             'Email' => $options['email'],
             'CcEmails' => $options['ccEmails'],
             'Status' => $options['status'],
+            'VerificationCode' => $options['verificationCode'],
         ));
 
         $payload = $this->version->update(

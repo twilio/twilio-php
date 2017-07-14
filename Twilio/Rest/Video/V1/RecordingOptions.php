@@ -17,10 +17,12 @@ abstract class RecordingOptions {
      * @param string $status The status
      * @param string $sourceSid The source_sid
      * @param string $groupingSid The grouping_sid
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedBefore The date_created_before
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE) {
-        return new ReadRecordingOptions($status, $sourceSid, $groupingSid);
+    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+        return new ReadRecordingOptions($status, $sourceSid, $groupingSid, $dateCreatedAfter, $dateCreatedBefore);
     }
 }
 
@@ -29,11 +31,15 @@ class ReadRecordingOptions extends Options {
      * @param string $status The status
      * @param string $sourceSid The source_sid
      * @param string $groupingSid The grouping_sid
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedBefore The date_created_before
      */
-    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE) {
+    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['groupingSid'] = $groupingSid;
+        $this->options['dateCreatedAfter'] = $dateCreatedAfter;
+        $this->options['dateCreatedBefore'] = $dateCreatedBefore;
     }
 
     /**
@@ -66,6 +72,28 @@ class ReadRecordingOptions extends Options {
      */
     public function setGroupingSid($groupingSid) {
         $this->options['groupingSid'] = $groupingSid;
+        return $this;
+    }
+
+    /**
+     * The date_created_after
+     * 
+     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @return $this Fluent Builder
+     */
+    public function setDateCreatedAfter($dateCreatedAfter) {
+        $this->options['dateCreatedAfter'] = $dateCreatedAfter;
+        return $this;
+    }
+
+    /**
+     * The date_created_before
+     * 
+     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @return $this Fluent Builder
+     */
+    public function setDateCreatedBefore($dateCreatedBefore) {
+        $this->options['dateCreatedBefore'] = $dateCreatedBefore;
         return $this;
     }
 

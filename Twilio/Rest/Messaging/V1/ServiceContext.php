@@ -73,6 +73,7 @@ class ServiceContext extends InstanceContext {
             'FallbackToLongCode' => Serialize::booleanToString($options['fallbackToLongCode']),
             'AreaCodeGeomatch' => Serialize::booleanToString($options['areaCodeGeomatch']),
             'ValidityPeriod' => $options['validityPeriod'],
+            'SynchronousValidation' => Serialize::booleanToString($options['synchronousValidation']),
         ));
 
         $payload = $this->version->update(

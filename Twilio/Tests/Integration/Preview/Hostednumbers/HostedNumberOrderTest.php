@@ -56,7 +56,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "signing_document_sid": "PX11111111111111111111111111111111",
                 "status": "received",
                 "unique_name": "foobar",
-                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 0
             }
             '
         ));
@@ -130,7 +131,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "signing_document_sid": "PX11111111111111111111111111111111",
                 "status": "pending-loa",
                 "unique_name": "new unique name",
-                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 1
             }
             '
         ));
@@ -214,7 +216,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                         "signing_document_sid": "PX11111111111111111111111111111111",
                         "status": "received",
                         "unique_name": "foobar",
-                        "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "verification_attempts": 0
                     }
                 ]
             }
@@ -272,7 +275,8 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "signing_document_sid": null,
                 "status": "received",
                 "unique_name": null,
-                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 0
             }
             '
         ));

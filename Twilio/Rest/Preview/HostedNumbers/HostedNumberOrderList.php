@@ -154,6 +154,8 @@ class HostedNumberOrderList extends ListResource {
             'SmsMethod' => $options['smsMethod'],
             'SmsFallbackUrl' => $options['smsFallbackUrl'],
             'SmsFallbackMethod' => $options['smsFallbackMethod'],
+            'StatusCallbackUrl' => $options['statusCallbackUrl'],
+            'StatusCallbackMethod' => $options['statusCallbackMethod'],
         ));
 
         $payload = $this->version->create(

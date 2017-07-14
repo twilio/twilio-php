@@ -31,10 +31,11 @@ abstract class FaxOptions {
      * @param string $from Twilio number from which to originate the fax
      * @param string $sipAuthUsername Username for SIP authentication
      * @param string $sipAuthPassword Password for SIP authentication
+     * @param boolean $storeMedia Whether or not to store media
      * @return CreateFaxOptions Options builder
      */
-    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE) {
-        return new CreateFaxOptions($quality, $statusCallback, $from, $sipAuthUsername, $sipAuthPassword);
+    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE) {
+        return new CreateFaxOptions($quality, $statusCallback, $from, $sipAuthUsername, $sipAuthPassword, $storeMedia);
     }
 
     /**
@@ -129,13 +130,15 @@ class CreateFaxOptions extends Options {
      * @param string $from Twilio number from which to originate the fax
      * @param string $sipAuthUsername Username for SIP authentication
      * @param string $sipAuthPassword Password for SIP authentication
+     * @param boolean $storeMedia Whether or not to store media
      */
-    public function __construct($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE) {
+    public function __construct($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE) {
         $this->options['quality'] = $quality;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['from'] = $from;
         $this->options['sipAuthUsername'] = $sipAuthUsername;
         $this->options['sipAuthPassword'] = $sipAuthPassword;
+        $this->options['storeMedia'] = $storeMedia;
     }
 
     /**
@@ -172,7 +175,7 @@ class CreateFaxOptions extends Options {
     }
 
     /**
-     * The username to use for authentication when sending to a SIP address. Allowed characters are alphanumeric characters, plus `-`, `&`, `=`, `+`, `$`, `,`, `;`, `:`, `?`, `/`, `_`, `.`, `!`, `~`, `*`, `'`, `(`, and `)`.
+     * The username to use for authentication when sending to a SIP address.
      * 
      * @param string $sipAuthUsername Username for SIP authentication
      * @return $this Fluent Builder
@@ -183,13 +186,24 @@ class CreateFaxOptions extends Options {
     }
 
     /**
-     * The password to use for authentication when sending to a SIP address. Allowed characters are alphanumeric characters, plus `-`, `&`, `=`, `+`, `$`, `_`, `.`, `!`, `~`, `*`, `'`, `(`, and `)`.
+     * The password to use for authentication when sending to a SIP address.
      * 
      * @param string $sipAuthPassword Password for SIP authentication
      * @return $this Fluent Builder
      */
     public function setSipAuthPassword($sipAuthPassword) {
         $this->options['sipAuthPassword'] = $sipAuthPassword;
+        return $this;
+    }
+
+    /**
+     * Whether or not to store a copy of the sent media on Twilio's servers for later retrieval (defaults to `true`)
+     * 
+     * @param boolean $storeMedia Whether or not to store media
+     * @return $this Fluent Builder
+     */
+    public function setStoreMedia($storeMedia) {
+        $this->options['storeMedia'] = $storeMedia;
         return $this;
     }
 

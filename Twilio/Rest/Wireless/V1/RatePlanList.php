@@ -136,6 +136,8 @@ class RatePlanList extends ListResource {
             'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
             'NationalRoamingEnabled' => Serialize::booleanToString($options['nationalRoamingEnabled']),
             'InternationalRoaming' => $options['internationalRoaming'],
+            'NationalRoamingDataLimit' => $options['nationalRoamingDataLimit'],
+            'InternationalRoamingDataLimit' => $options['internationalRoamingDataLimit'],
         ));
 
         $payload = $this->version->create(

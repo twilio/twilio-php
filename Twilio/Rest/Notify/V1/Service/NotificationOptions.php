@@ -30,10 +30,11 @@ abstract class NotificationOptions {
      * @param string $fcm The fcm
      * @param string $segment The segment
      * @param string $alexa The alexa
+     * @param string $toBinding The to_binding
      * @return CreateNotificationOptions Options builder
      */
-    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE) {
-        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa);
+    public static function create($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE) {
+        return new CreateNotificationOptions($identity, $tag, $body, $priority, $ttl, $title, $sound, $action, $data, $apn, $gcm, $sms, $facebookMessenger, $fcm, $segment, $alexa, $toBinding);
     }
 }
 
@@ -55,8 +56,9 @@ class CreateNotificationOptions extends Options {
      * @param string $fcm The fcm
      * @param string $segment The segment
      * @param string $alexa The alexa
+     * @param string $toBinding The to_binding
      */
-    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE) {
+    public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['tag'] = $tag;
         $this->options['body'] = $body;
@@ -73,6 +75,7 @@ class CreateNotificationOptions extends Options {
         $this->options['fcm'] = $fcm;
         $this->options['segment'] = $segment;
         $this->options['alexa'] = $alexa;
+        $this->options['toBinding'] = $toBinding;
     }
 
     /**
@@ -248,6 +251,17 @@ class CreateNotificationOptions extends Options {
      */
     public function setAlexa($alexa) {
         $this->options['alexa'] = $alexa;
+        return $this;
+    }
+
+    /**
+     * The to_binding
+     * 
+     * @param string $toBinding The to_binding
+     * @return $this Fluent Builder
+     */
+    public function setToBinding($toBinding) {
+        $this->options['toBinding'] = $toBinding;
         return $this;
     }
 

@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string status
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
+ * @property integer verificationAttempts
  * @property string email
  * @property string ccEmails
  * @property string url
@@ -59,6 +60,7 @@ class HostedNumberOrderInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'verificationAttempts' => Values::array_get($payload, 'verification_attempts'),
             'email' => Values::array_get($payload, 'email'),
             'ccEmails' => Values::array_get($payload, 'cc_emails'),
             'url' => Values::array_get($payload, 'url'),

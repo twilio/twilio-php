@@ -26,10 +26,11 @@ abstract class ServiceOptions {
      * @param boolean $fallbackToLongCode The fallback_to_long_code
      * @param boolean $areaCodeGeomatch The area_code_geomatch
      * @param integer $validityPeriod The validity_period
+     * @param boolean $synchronousValidation The synchronous_validation
      * @return CreateServiceOptions Options builder
      */
-    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
-        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod);
+    public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
+        return new CreateServiceOptions($inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation);
     }
 
     /**
@@ -46,10 +47,11 @@ abstract class ServiceOptions {
      * @param boolean $fallbackToLongCode The fallback_to_long_code
      * @param boolean $areaCodeGeomatch The area_code_geomatch
      * @param integer $validityPeriod The validity_period
+     * @param boolean $synchronousValidation The synchronous_validation
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod);
+    public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $inboundRequestUrl, $inboundMethod, $fallbackUrl, $fallbackMethod, $statusCallback, $stickySender, $mmsConverter, $smartEncoding, $scanMessageContent, $fallbackToLongCode, $areaCodeGeomatch, $validityPeriod, $synchronousValidation);
     }
 }
 
@@ -67,8 +69,9 @@ class CreateServiceOptions extends Options {
      * @param boolean $fallbackToLongCode The fallback_to_long_code
      * @param boolean $areaCodeGeomatch The area_code_geomatch
      * @param integer $validityPeriod The validity_period
+     * @param boolean $synchronousValidation The synchronous_validation
      */
-    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
+    public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
         $this->options['fallbackUrl'] = $fallbackUrl;
@@ -81,6 +84,7 @@ class CreateServiceOptions extends Options {
         $this->options['fallbackToLongCode'] = $fallbackToLongCode;
         $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
         $this->options['validityPeriod'] = $validityPeriod;
+        $this->options['synchronousValidation'] = $synchronousValidation;
     }
 
     /**
@@ -216,6 +220,17 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * The synchronous_validation
+     * 
+     * @param boolean $synchronousValidation The synchronous_validation
+     * @return $this Fluent Builder
+     */
+    public function setSynchronousValidation($synchronousValidation) {
+        $this->options['synchronousValidation'] = $synchronousValidation;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -246,8 +261,9 @@ class UpdateServiceOptions extends Options {
      * @param boolean $fallbackToLongCode The fallback_to_long_code
      * @param boolean $areaCodeGeomatch The area_code_geomatch
      * @param integer $validityPeriod The validity_period
+     * @param boolean $synchronousValidation The synchronous_validation
      */
-    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
         $this->options['inboundMethod'] = $inboundMethod;
@@ -261,6 +277,7 @@ class UpdateServiceOptions extends Options {
         $this->options['fallbackToLongCode'] = $fallbackToLongCode;
         $this->options['areaCodeGeomatch'] = $areaCodeGeomatch;
         $this->options['validityPeriod'] = $validityPeriod;
+        $this->options['synchronousValidation'] = $synchronousValidation;
     }
 
     /**
@@ -403,6 +420,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setValidityPeriod($validityPeriod) {
         $this->options['validityPeriod'] = $validityPeriod;
+        return $this;
+    }
+
+    /**
+     * The synchronous_validation
+     * 
+     * @param boolean $synchronousValidation The synchronous_validation
+     * @return $this Fluent Builder
+     */
+    public function setSynchronousValidation($synchronousValidation) {
+        $this->options['synchronousValidation'] = $synchronousValidation;
         return $this;
     }
 

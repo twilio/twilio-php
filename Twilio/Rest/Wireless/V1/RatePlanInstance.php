@@ -27,7 +27,9 @@ use Twilio\Version;
  * @property boolean messagingEnabled
  * @property boolean voiceEnabled
  * @property boolean nationalRoamingEnabled
+ * @property integer nationalRoamingDataLimit
  * @property string internationalRoaming
+ * @property integer internationalRoamingDataLimit
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -56,7 +58,9 @@ class RatePlanInstance extends InstanceResource {
             'messagingEnabled' => Values::array_get($payload, 'messaging_enabled'),
             'voiceEnabled' => Values::array_get($payload, 'voice_enabled'),
             'nationalRoamingEnabled' => Values::array_get($payload, 'national_roaming_enabled'),
+            'nationalRoamingDataLimit' => Values::array_get($payload, 'national_roaming_data_limit'),
             'internationalRoaming' => Values::array_get($payload, 'international_roaming'),
+            'internationalRoamingDataLimit' => Values::array_get($payload, 'international_roaming_data_limit'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

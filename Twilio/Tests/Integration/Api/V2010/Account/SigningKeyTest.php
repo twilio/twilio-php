@@ -139,10 +139,10 @@ class SigningKeyTest extends HolodeckTestCase {
                         "date_updated": "Mon, 13 Jun 2016 22:50:08 +0000"
                     }
                 ],
-                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
-                "end": 3,
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SigningKeys.json?PageSize=50&Page=0",
+                "end": 0,
                 "previous_page_uri": null,
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SigningKeys.json?PageSize=50&Page=0",
                 "page_size": 50,
                 "start": 0,
                 "next_page_uri": null,
@@ -163,10 +163,10 @@ class SigningKeyTest extends HolodeckTestCase {
             '
             {
                 "signing_keys": [],
-                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
-                "end": 3,
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SigningKeys.json?PageSize=50&Page=0",
+                "end": 0,
                 "previous_page_uri": null,
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys.json?PageSize=50&Page=0",
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SigningKeys.json?PageSize=50&Page=0",
                 "page_size": 50,
                 "start": 0,
                 "next_page_uri": null,

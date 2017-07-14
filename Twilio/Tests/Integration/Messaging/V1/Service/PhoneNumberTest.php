@@ -61,6 +61,34 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testCreateWithCapabilitiesResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:12:31Z",
+                "date_updated": "2015-07-30T20:12:33Z",
+                "phone_number": "+987654321",
+                "country_code": "US",
+                "capabilities": [
+                    "MMS",
+                    "SMS",
+                    "Voice"
+                ],
+                "url": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                              ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest() {
         $this->holodeck->mock(new Response(500, ''));
 

@@ -58,6 +58,7 @@ class ServiceTest extends HolodeckTestCase {
                 "scan_message_content": "inherit",
                 "area_code_geomatch": true,
                 "validity_period": 600,
+                "synchronous_validation": true,
                 "links": {
                     "phone_numbers": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers",
                     "short_codes": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes",
@@ -102,6 +103,7 @@ class ServiceTest extends HolodeckTestCase {
                 "smart_encoding": false,
                 "fallback_to_long_code": true,
                 "scan_message_content": "inherit",
+                "synchronous_validation": true,
                 "area_code_geomatch": true,
                 "validity_period": 600,
                 "inbound_request_url": "https://www.example.com",
@@ -166,6 +168,7 @@ class ServiceTest extends HolodeckTestCase {
                         "area_code_geomatch": true,
                         "validity_period": 600,
                         "scan_message_content": "inherit",
+                        "synchronous_validation": true,
                         "inbound_request_url": "https://www.example.com/",
                         "inbound_method": "POST",
                         "fallback_url": null,
@@ -224,6 +227,7 @@ class ServiceTest extends HolodeckTestCase {
                 "area_code_geomatch": true,
                 "validity_period": 600,
                 "scan_message_content": "inherit",
+                "synchronous_validation": true,
                 "links": {
                     "phone_numbers": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers",
                     "short_codes": "https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes",
