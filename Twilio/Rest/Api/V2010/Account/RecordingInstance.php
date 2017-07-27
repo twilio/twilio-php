@@ -29,7 +29,6 @@ use Twilio\Version;
  * @property integer channels
  * @property string source
  * @property string uri
- * @property string encryptionType
  * @property array encryptionDetails
  */
 class RecordingInstance extends InstanceResource {
@@ -63,7 +62,6 @@ class RecordingInstance extends InstanceResource {
             'channels' => Values::array_get($payload, 'channels'),
             'source' => Values::array_get($payload, 'source'),
             'uri' => Values::array_get($payload, 'uri'),
-            'encryptionType' => Values::array_get($payload, 'encryption_type'),
             'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
         );
 

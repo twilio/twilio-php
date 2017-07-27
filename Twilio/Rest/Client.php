@@ -21,13 +21,19 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Accounts accounts
  * @property \Twilio\Rest\Api api
  * @property \Twilio\Rest\Chat chat
+ * @property \Twilio\Rest\Fax fax
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
+ * @property \Twilio\Rest\Notify notify
+ * @property \Twilio\Rest\Preview preview
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Video video
+ * @property \Twilio\Rest\Messaging messaging
+ * @property \Twilio\Rest\Wireless wireless
+ * @property \Twilio\Rest\Sync sync
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -84,13 +90,19 @@ class Client {
     protected $_accounts = null;
     protected $_api = null;
     protected $_chat = null;
+    protected $_fax = null;
     protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
+    protected $_notify = null;
+    protected $_preview = null;
     protected $_pricing = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
     protected $_video = null;
+    protected $_messaging = null;
+    protected $_wireless = null;
+    protected $_sync = null;
 
     /**
      * Initializes the Twilio Client
@@ -588,6 +600,18 @@ class Client {
     }
 
     /**
+     * Access the Fax Twilio Domain
+     * 
+     * @return \Twilio\Rest\Fax Fax Twilio Domain
+     */
+    protected function getFax() {
+        if (!$this->_fax) {
+            $this->_fax = new Fax($this);
+        }
+        return $this->_fax;
+    }
+
+    /**
      * Access the IpMessaging Twilio Domain
      * 
      * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
@@ -621,6 +645,30 @@ class Client {
             $this->_monitor = new Monitor($this);
         }
         return $this->_monitor;
+    }
+
+    /**
+     * Access the Notify Twilio Domain
+     * 
+     * @return \Twilio\Rest\Notify Notify Twilio Domain
+     */
+    protected function getNotify() {
+        if (!$this->_notify) {
+            $this->_notify = new Notify($this);
+        }
+        return $this->_notify;
+    }
+
+    /**
+     * Access the Preview Twilio Domain
+     * 
+     * @return \Twilio\Rest\Preview Preview Twilio Domain
+     */
+    protected function getPreview() {
+        if (!$this->_preview) {
+            $this->_preview = new Preview($this);
+        }
+        return $this->_preview;
     }
 
     /**
@@ -669,6 +717,42 @@ class Client {
             $this->_video = new Video($this);
         }
         return $this->_video;
+    }
+
+    /**
+     * Access the Messaging Twilio Domain
+     * 
+     * @return \Twilio\Rest\Messaging Messaging Twilio Domain
+     */
+    protected function getMessaging() {
+        if (!$this->_messaging) {
+            $this->_messaging = new Messaging($this);
+        }
+        return $this->_messaging;
+    }
+
+    /**
+     * Access the Wireless Twilio Domain
+     * 
+     * @return \Twilio\Rest\Wireless Wireless Twilio Domain
+     */
+    protected function getWireless() {
+        if (!$this->_wireless) {
+            $this->_wireless = new Wireless($this);
+        }
+        return $this->_wireless;
+    }
+
+    /**
+     * Access the Sync Twilio Domain
+     * 
+     * @return \Twilio\Rest\Sync Sync Twilio Domain
+     */
+    protected function getSync() {
+        if (!$this->_sync) {
+            $this->_sync = new Sync($this);
+        }
+        return $this->_sync;
     }
 
     /**

@@ -23,10 +23,15 @@ abstract class MessageOptions {
      * @param string $maxPrice The max_price
      * @param boolean $provideFeedback The provide_feedback
      * @param integer $validityPeriod The validity_period
+     * @param string $maxRate The max_rate
+     * @param boolean $forceDelivery The force_delivery
+     * @param string $providerSid The provider_sid
+     * @param string $contentRetention The content_retention
+     * @param string $addressRetention The address_retention
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention);
     }
 
     /**
@@ -53,8 +58,13 @@ class CreateMessageOptions extends Options {
      * @param string $maxPrice The max_price
      * @param boolean $provideFeedback The provide_feedback
      * @param integer $validityPeriod The validity_period
+     * @param string $maxRate The max_rate
+     * @param boolean $forceDelivery The force_delivery
+     * @param string $providerSid The provider_sid
+     * @param string $contentRetention The content_retention
+     * @param string $addressRetention The address_retention
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -64,6 +74,11 @@ class CreateMessageOptions extends Options {
         $this->options['maxPrice'] = $maxPrice;
         $this->options['provideFeedback'] = $provideFeedback;
         $this->options['validityPeriod'] = $validityPeriod;
+        $this->options['maxRate'] = $maxRate;
+        $this->options['forceDelivery'] = $forceDelivery;
+        $this->options['providerSid'] = $providerSid;
+        $this->options['contentRetention'] = $contentRetention;
+        $this->options['addressRetention'] = $addressRetention;
     }
 
     /**
@@ -162,6 +177,61 @@ class CreateMessageOptions extends Options {
      */
     public function setValidityPeriod($validityPeriod) {
         $this->options['validityPeriod'] = $validityPeriod;
+        return $this;
+    }
+
+    /**
+     * The max_rate
+     * 
+     * @param string $maxRate The max_rate
+     * @return $this Fluent Builder
+     */
+    public function setMaxRate($maxRate) {
+        $this->options['maxRate'] = $maxRate;
+        return $this;
+    }
+
+    /**
+     * The force_delivery
+     * 
+     * @param boolean $forceDelivery The force_delivery
+     * @return $this Fluent Builder
+     */
+    public function setForceDelivery($forceDelivery) {
+        $this->options['forceDelivery'] = $forceDelivery;
+        return $this;
+    }
+
+    /**
+     * The provider_sid
+     * 
+     * @param string $providerSid The provider_sid
+     * @return $this Fluent Builder
+     */
+    public function setProviderSid($providerSid) {
+        $this->options['providerSid'] = $providerSid;
+        return $this;
+    }
+
+    /**
+     * The content_retention
+     * 
+     * @param string $contentRetention The content_retention
+     * @return $this Fluent Builder
+     */
+    public function setContentRetention($contentRetention) {
+        $this->options['contentRetention'] = $contentRetention;
+        return $this;
+    }
+
+    /**
+     * The address_retention
+     * 
+     * @param string $addressRetention The address_retention
+     * @return $this Fluent Builder
+     */
+    public function setAddressRetention($addressRetention) {
+        $this->options['addressRetention'] = $addressRetention;
         return $this;
     }
 

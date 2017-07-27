@@ -55,6 +55,11 @@ class MessageList extends ListResource {
             'MaxPrice' => $options['maxPrice'],
             'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
             'ValidityPeriod' => $options['validityPeriod'],
+            'MaxRate' => $options['maxRate'],
+            'ForceDelivery' => Serialize::booleanToString($options['forceDelivery']),
+            'ProviderSid' => $options['providerSid'],
+            'ContentRetention' => $options['contentRetention'],
+            'AddressRetention' => $options['addressRetention'],
         ));
 
         $payload = $this->version->create(

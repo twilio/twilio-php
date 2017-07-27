@@ -9,13 +9,21 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList assignedAddOns
+ * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnContext assignedAddOns(string $sid)
+ */
 class IncomingPhoneNumberContext extends InstanceContext {
+    protected $_assignedAddOns = null;
+
     /**
      * Initialize the IncomingPhoneNumberContext
      * 
@@ -111,6 +119,56 @@ class IncomingPhoneNumberContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Access the assignedAddOns
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList 
+     */
+    protected function getAssignedAddOns() {
+        if (!$this->_assignedAddOns) {
+            $this->_assignedAddOns = new AssignedAddOnList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_assignedAddOns;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     * 
+     * @param string $name Subresource to return
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
+     */
+    public function __get($name) {
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
+        }
+
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**
