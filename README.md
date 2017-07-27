@@ -1,6 +1,23 @@
+# twilio-php
+
 [![Build Status](https://secure.travis-ci.org/twilio/twilio-php.png?branch=master)](http://travis-ci.org/twilio/twilio-php)
 [![Packagist](https://img.shields.io/packagist/v/twilio/sdk.svg)](https://packagist.org/packages/twilio/sdk)
 [![Packagist](https://img.shields.io/packagist/dt/twilio/sdk.svg)](https://packagist.org/packages/twilio/sdk)
+
+## Recent Update
+
+As of release 5.13.0, Beta and Developer Preview products are now exposed via
+the main `twilio-php` artifact. Releases of the `alpha` branch have been
+discontinued.
+
+If you were using the `alpha` release line, you should be able to switch back
+to the normal release line without issue.
+
+If you were using the normal release line, you should now see several new
+product lines that were historically hidden from you due to their Beta or
+Developer Preview status. Such products are explicitly documented as
+Beta/Developer Preview both in the Twilio docs and console, as well as through
+in-line code documentation here in the library.
 
 ## Installation
 
