@@ -104,9 +104,6 @@ class Client {
     protected $_wireless = null;
     protected $_sync = null;
 
-    public $last_request;
-    public $last_response;
-
     /**
      * Initializes the Twilio Client
      *
