@@ -4,15 +4,11 @@
 namespace Twilio\Jwt\Grants;
 
 
-class IpMessagingGrant implements Grant {
+class ChatGrant implements Grant {
     private $serviceSid;
     private $endpointId;
     private $deploymentRoleSid;
     private $pushCredentialSid;
-
-    public function __construct() {
-        trigger_error("IpMessagingGrant is deprecated, please use ChatGrant", E_USER_NOTICE);
-    }
 
     /**
      * Returns the service sid
@@ -104,7 +100,7 @@ class IpMessagingGrant implements Grant {
      * @return string type of the grant
      */
     public function getGrantKey() {
-        return "ip_messaging";
+        return "chat";
     }
 
     /**

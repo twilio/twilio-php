@@ -2,6 +2,7 @@
 
 namespace Twilio\Tests\Unit\Jwt;
 
+use Twilio\Jwt\Grants\ChatGrant;
 use Twilio\Jwt\Grants\ConversationsGrant;
 use Twilio\Jwt\Grants\IpMessagingGrant;
 use Twilio\Jwt\Grants\VideoGrant;
@@ -58,7 +59,7 @@ class AccessTokenTest extends UnitTest {
 
     function testIpMessagingGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
-        $grant = new IpMessagingGrant();
+        @$grant = new IpMessagingGrant();
         $grant->setEndpointId("EP123");
         $grant->setServiceSid("IS123");
         $scat->addGrant($grant);
@@ -73,6 +74,32 @@ class AccessTokenTest extends UnitTest {
         $this->assertArrayHasKey("ip_messaging", $grants);
         $this->assertEquals("EP123", $grants['ip_messaging']['endpoint_id']);
         $this->assertEquals("IS123", $grants['ip_messaging']['service_sid']);
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error
+     */
+    function testIpMessagingGrantTriggersWarning() {
+        new IpMessagingGrant();
+    }
+
+    function testChatGrant() {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $grant = new ChatGrant();
+        $grant->setEndpointId("EP123");
+        $grant->setServiceSid("IS123");
+        $scat->addGrant($grant);
+
+        $token = $scat->toJWT();
+        $this->assertNotNull($token);
+        $payload = JWT::decode($token, 'secret');
+        $this->validateClaims($payload);
+
+        $grants = json_decode(json_encode($payload->grants), true);
+        $this->assertEquals(1, count($grants));
+        $this->assertArrayHasKey("chat", $grants);
+        $this->assertEquals("EP123", $grants['chat']['endpoint_id']);
+        $this->assertEquals("IS123", $grants['chat']['service_sid']);
     }
 
     function testSyncGrant()
@@ -116,7 +143,7 @@ class AccessTokenTest extends UnitTest {
     function testGrants() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $scat->setIdentity('test identity');
-        $scat->addGrant(new IpMessagingGrant());
+        @$scat->addGrant(new IpMessagingGrant());
         $scat->addGrant(new VideoGrant());
         $scat->addGrant(new TaskRouterGrant());
 
