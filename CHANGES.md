@@ -7,11 +7,11 @@ twilio-php Changelog
 **Api**
 - Add New wireless usage keys added
 - Add `auto_correct_address` param for Addresses create and update
+- Add ChatGrant to Grants and deprecate IpMessagingGrant
 
 **Video**
 - Add `video_codec` enum and `video_codecs` parameter, which can be set to either `VP8` or `H264` during room creation.
 - Restrict recordings page size to 100
-- Add query parameters `SourceSid`, `Status`, `DateCreatedAfter` and `DateCreatedBefore` to the convenience method for retrieving Room recordings.
 
 
 [2017-07-27] Version 5.13.0
