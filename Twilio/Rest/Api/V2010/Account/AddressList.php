@@ -58,6 +58,7 @@ class AddressList extends ListResource {
             'IsoCountry' => $isoCountry,
             'FriendlyName' => $options['friendlyName'],
             'EmergencyEnabled' => Serialize::booleanToString($options['emergencyEnabled']),
+            'AutoCorrectAddress' => Serialize::booleanToString($options['autoCorrectAddress']),
         ));
 
         $payload = $this->version->create(

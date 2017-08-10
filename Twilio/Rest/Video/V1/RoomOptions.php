@@ -22,10 +22,11 @@ abstract class RoomOptions {
      * @param integer $maxParticipants The max_participants
      * @param boolean $recordParticipantsOnConnect The
      *                                             record_participants_on_connect
+     * @param string $videoCodecs The video_codecs
      * @return CreateRoomOptions Options builder
      */
-    public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE) {
-        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect);
+    public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE, $videoCodecs = Values::NONE) {
+        return new CreateRoomOptions($enableTurn, $type, $uniqueName, $statusCallback, $statusCallbackMethod, $maxParticipants, $recordParticipantsOnConnect, $videoCodecs);
     }
 
     /**
@@ -50,8 +51,9 @@ class CreateRoomOptions extends Options {
      * @param integer $maxParticipants The max_participants
      * @param boolean $recordParticipantsOnConnect The
      *                                             record_participants_on_connect
+     * @param string $videoCodecs The video_codecs
      */
-    public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE) {
+    public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE, $videoCodecs = Values::NONE) {
         $this->options['enableTurn'] = $enableTurn;
         $this->options['type'] = $type;
         $this->options['uniqueName'] = $uniqueName;
@@ -59,6 +61,7 @@ class CreateRoomOptions extends Options {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['maxParticipants'] = $maxParticipants;
         $this->options['recordParticipantsOnConnect'] = $recordParticipantsOnConnect;
+        $this->options['videoCodecs'] = $videoCodecs;
     }
 
     /**
@@ -136,6 +139,17 @@ class CreateRoomOptions extends Options {
      */
     public function setRecordParticipantsOnConnect($recordParticipantsOnConnect) {
         $this->options['recordParticipantsOnConnect'] = $recordParticipantsOnConnect;
+        return $this;
+    }
+
+    /**
+     * The video_codecs
+     * 
+     * @param string $videoCodecs The video_codecs
+     * @return $this Fluent Builder
+     */
+    public function setVideoCodecs($videoCodecs) {
+        $this->options['videoCodecs'] = $videoCodecs;
         return $this;
     }
 

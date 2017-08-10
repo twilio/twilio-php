@@ -48,6 +48,7 @@ class RoomList extends ListResource {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'MaxParticipants' => $options['maxParticipants'],
             'RecordParticipantsOnConnect' => Serialize::booleanToString($options['recordParticipantsOnConnect']),
+            'VideoCodecs' => $options['videoCodecs'],
         ));
 
         $payload = $this->version->create(
