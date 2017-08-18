@@ -20,6 +20,7 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
  * @property string sid
+ * @property string uniqueName
  * @property string accountSid
  * @property string friendlyName
  * @property \DateTime dateCreated
@@ -49,6 +50,7 @@ class ServiceInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

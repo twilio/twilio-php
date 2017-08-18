@@ -35,6 +35,7 @@ use Twilio\Version;
  * @property string webhookMethod
  * @property string webhookFilters
  * @property array notifications
+ * @property array media
  * @property string url
  * @property array links
  */
@@ -74,6 +75,7 @@ class ServiceInstance extends InstanceResource {
             'webhookMethod' => Values::array_get($payload, 'webhook_method'),
             'webhookFilters' => Values::array_get($payload, 'webhook_filters'),
             'notifications' => Values::array_get($payload, 'notifications'),
+            'media' => Values::array_get($payload, 'media'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );

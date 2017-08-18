@@ -21,7 +21,6 @@ use Twilio\Version;
  * @property boolean enabled
  * @property string webhookUrl
  * @property string webhookMethod
- * @property string email
  * @property string resourceType
  * @property string url
  */
@@ -42,7 +41,6 @@ class ExportConfigurationInstance extends InstanceResource {
             'enabled' => Values::array_get($payload, 'enabled'),
             'webhookUrl' => Values::array_get($payload, 'webhook_url'),
             'webhookMethod' => Values::array_get($payload, 'webhook_method'),
-            'email' => Values::array_get($payload, 'email'),
             'resourceType' => Values::array_get($payload, 'resource_type'),
             'url' => Values::array_get($payload, 'url'),
         );

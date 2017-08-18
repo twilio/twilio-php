@@ -2,6 +2,23 @@ twilio-php Changelog
 ====================
 
 
+[2017-08-18] Version 5.13.2
+----------------------------
+**Api**
+- Add VoiceReceiveMode {'voice', 'fax'} option to IncomingPhoneNumber UPDATE requests
+
+**Chat**
+- Add channel message media information
+- Add service instance message media information
+
+**Preview**
+- Removed 'email' from bulk_exports configuration api [bi]. No migration plan needed because api has not been used yet.
+- Add AvailableNumbers resource.
+
+**Sync**
+- Add support for Service Instance unique names
+
+
 [2017-08-10] Version 5.13.1
 ----------------------------
 **Api**

@@ -29,6 +29,8 @@ use Twilio\Version;
  * @property string from
  * @property string body
  * @property integer index
+ * @property string type
+ * @property array media
  * @property string url
  */
 class MessageInstance extends InstanceResource {
@@ -59,6 +61,8 @@ class MessageInstance extends InstanceResource {
             'from' => Values::array_get($payload, 'from'),
             'body' => Values::array_get($payload, 'body'),
             'index' => Values::array_get($payload, 'index'),
+            'type' => Values::array_get($payload, 'type'),
+            'media' => Values::array_get($payload, 'media'),
             'url' => Values::array_get($payload, 'url'),
         );
 

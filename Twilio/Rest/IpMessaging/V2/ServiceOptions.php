@@ -55,10 +55,11 @@ abstract class ServiceOptions {
      * @param string $webhookFilters The webhook_filters
      * @param integer $limitsChannelMembers The limits.channel_members
      * @param integer $limitsUserChannels The limits.user_channels
+     * @param string $mediaCompatibilityMessage The media.compatibility_message
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsNewMessageSound = Values::NONE, $notificationsNewMessageBadgeCountEnabled = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsAddedToChannelSound = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsRemovedFromChannelSound = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $notificationsInvitedToChannelSound = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $reachabilityEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $notificationsNewMessageEnabled, $notificationsNewMessageTemplate, $notificationsNewMessageSound, $notificationsNewMessageBadgeCountEnabled, $notificationsAddedToChannelEnabled, $notificationsAddedToChannelTemplate, $notificationsAddedToChannelSound, $notificationsRemovedFromChannelEnabled, $notificationsRemovedFromChannelTemplate, $notificationsRemovedFromChannelSound, $notificationsInvitedToChannelEnabled, $notificationsInvitedToChannelTemplate, $notificationsInvitedToChannelSound, $preWebhookUrl, $postWebhookUrl, $webhookMethod, $webhookFilters, $limitsChannelMembers, $limitsUserChannels);
+    public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsNewMessageSound = Values::NONE, $notificationsNewMessageBadgeCountEnabled = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsAddedToChannelSound = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsRemovedFromChannelSound = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $notificationsInvitedToChannelSound = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE, $mediaCompatibilityMessage = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $reachabilityEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $notificationsNewMessageEnabled, $notificationsNewMessageTemplate, $notificationsNewMessageSound, $notificationsNewMessageBadgeCountEnabled, $notificationsAddedToChannelEnabled, $notificationsAddedToChannelTemplate, $notificationsAddedToChannelSound, $notificationsRemovedFromChannelEnabled, $notificationsRemovedFromChannelTemplate, $notificationsRemovedFromChannelSound, $notificationsInvitedToChannelEnabled, $notificationsInvitedToChannelTemplate, $notificationsInvitedToChannelSound, $preWebhookUrl, $postWebhookUrl, $webhookMethod, $webhookFilters, $limitsChannelMembers, $limitsUserChannels, $mediaCompatibilityMessage);
     }
 }
 
@@ -105,8 +106,9 @@ class UpdateServiceOptions extends Options {
      * @param string $webhookFilters The webhook_filters
      * @param integer $limitsChannelMembers The limits.channel_members
      * @param integer $limitsUserChannels The limits.user_channels
+     * @param string $mediaCompatibilityMessage The media.compatibility_message
      */
-    public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsNewMessageSound = Values::NONE, $notificationsNewMessageBadgeCountEnabled = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsAddedToChannelSound = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsRemovedFromChannelSound = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $notificationsInvitedToChannelSound = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsNewMessageSound = Values::NONE, $notificationsNewMessageBadgeCountEnabled = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsAddedToChannelSound = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsRemovedFromChannelSound = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $notificationsInvitedToChannelSound = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE, $mediaCompatibilityMessage = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;
@@ -134,6 +136,7 @@ class UpdateServiceOptions extends Options {
         $this->options['webhookFilters'] = $webhookFilters;
         $this->options['limitsChannelMembers'] = $limitsChannelMembers;
         $this->options['limitsUserChannels'] = $limitsUserChannels;
+        $this->options['mediaCompatibilityMessage'] = $mediaCompatibilityMessage;
     }
 
     /**
@@ -444,6 +447,17 @@ class UpdateServiceOptions extends Options {
      */
     public function setLimitsUserChannels($limitsUserChannels) {
         $this->options['limitsUserChannels'] = $limitsUserChannels;
+        return $this;
+    }
+
+    /**
+     * The media.compatibility_message
+     * 
+     * @param string $mediaCompatibilityMessage The media.compatibility_message
+     * @return $this Fluent Builder
+     */
+    public function setMediaCompatibilityMessage($mediaCompatibilityMessage) {
+        $this->options['mediaCompatibilityMessage'] = $mediaCompatibilityMessage;
         return $this;
     }
 

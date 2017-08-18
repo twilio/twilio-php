@@ -71,7 +71,6 @@ class ExportConfigurationContext extends InstanceContext {
             'Enabled' => Serialize::booleanToString($options['enabled']),
             'WebhookUrl' => $options['webhookUrl'],
             'WebhookMethod' => $options['webhookMethod'],
-            'Email' => $options['email'],
         ));
 
         $payload = $this->version->update(

@@ -117,6 +117,7 @@ class ServiceContext extends InstanceContext {
             'WebhookFilters' => $options['webhookFilters'],
             'Limits.ChannelMembers' => $options['limitsChannelMembers'],
             'Limits.UserChannels' => $options['limitsUserChannels'],
+            'Media.CompatibilityMessage' => $options['mediaCompatibilityMessage'],
         ));
 
         $payload = $this->version->update(

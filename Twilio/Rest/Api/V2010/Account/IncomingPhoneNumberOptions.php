@@ -38,10 +38,11 @@ abstract class IncomingPhoneNumberOptions {
      * @param string $emergencyStatus The emergency_status
      * @param string $emergencyAddressSid The emergency_address_sid
      * @param string $trunkSid Unique string to identify the trunk
+     * @param string $voiceReceiveMode The voice_receive_mode
      * @return UpdateIncomingPhoneNumberOptions Options builder
      */
-    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE) {
-        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid);
+    public static function update($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
+        return new UpdateIncomingPhoneNumberOptions($accountSid, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $voiceReceiveMode);
     }
 
     /**
@@ -114,8 +115,9 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      * @param string $emergencyStatus The emergency_status
      * @param string $emergencyAddressSid The emergency_address_sid
      * @param string $trunkSid Unique string to identify the trunk
+     * @param string $voiceReceiveMode The voice_receive_mode
      */
-    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE) {
+    public function __construct($accountSid = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['apiVersion'] = $apiVersion;
         $this->options['friendlyName'] = $friendlyName;
@@ -135,6 +137,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
         $this->options['emergencyStatus'] = $emergencyStatus;
         $this->options['emergencyAddressSid'] = $emergencyAddressSid;
         $this->options['trunkSid'] = $trunkSid;
+        $this->options['voiceReceiveMode'] = $voiceReceiveMode;
     }
 
     /**
@@ -348,6 +351,17 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      */
     public function setTrunkSid($trunkSid) {
         $this->options['trunkSid'] = $trunkSid;
+        return $this;
+    }
+
+    /**
+     * The voice_receive_mode
+     * 
+     * @param string $voiceReceiveMode The voice_receive_mode
+     * @return $this Fluent Builder
+     */
+    public function setVoiceReceiveMode($voiceReceiveMode) {
+        $this->options['voiceReceiveMode'] = $voiceReceiveMode;
         return $this;
     }
 

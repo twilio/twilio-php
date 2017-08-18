@@ -12,6 +12,7 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Preview\BulkExports;
+use Twilio\Rest\Preview\DeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers;
 use Twilio\Rest\Preview\Marketplace;
 use Twilio\Rest\Preview\Proxy;
@@ -21,6 +22,7 @@ use Twilio\Rest\Preview\Wireless;
 /**
  * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Wireless wireless
+ * @property \Twilio\Rest\Preview\DeployedDevices deployedDevices
  * @property \Twilio\Rest\Preview\Marketplace marketplace
  * @property \Twilio\Rest\Preview\BulkExports bulkExports
  * @property \Twilio\Rest\Preview\Proxy proxy
@@ -29,6 +31,7 @@ use Twilio\Rest\Preview\Wireless;
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList sims
+ * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
  * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
  * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
@@ -38,6 +41,7 @@ use Twilio\Rest\Preview\Wireless;
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
+ * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
@@ -47,6 +51,7 @@ use Twilio\Rest\Preview\Wireless;
 class Preview extends Domain {
     protected $_sync = null;
     protected $_wireless = null;
+    protected $_deployedDevices = null;
     protected $_marketplace = null;
     protected $_bulkExports = null;
     protected $_proxy = null;
@@ -83,6 +88,17 @@ class Preview extends Domain {
             $this->_wireless = new Wireless($this);
         }
         return $this->_wireless;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\DeployedDevices Version deployedDevices of
+     *                                              preview
+     */
+    protected function getDeployedDevices() {
+        if (!$this->_deployedDevices) {
+            $this->_deployedDevices = new DeployedDevices($this);
+        }
+        return $this->_deployedDevices;
     }
 
     /**
@@ -216,6 +232,21 @@ class Preview extends Domain {
      */
     protected function contextSims($sid) {
         return $this->wireless->sims($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList 
+     */
+    protected function getFleets() {
+        return $this->deployedDevices->fleets;
+    }
+
+    /**
+     * @param string $sid A string that uniquely identifies the Fleet.
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetContext 
+     */
+    protected function contextFleets($sid) {
+        return $this->deployedDevices->fleets($sid);
     }
 
     /**

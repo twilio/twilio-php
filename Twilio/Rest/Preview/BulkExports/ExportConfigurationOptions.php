@@ -20,11 +20,10 @@ abstract class ExportConfigurationOptions {
      * @param boolean $enabled The enabled
      * @param string $webhookUrl The webhook_url
      * @param string $webhookMethod The webhook_method
-     * @param string $email The email
      * @return UpdateExportConfigurationOptions Options builder
      */
-    public static function update($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE, $email = Values::NONE) {
-        return new UpdateExportConfigurationOptions($enabled, $webhookUrl, $webhookMethod, $email);
+    public static function update($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE) {
+        return new UpdateExportConfigurationOptions($enabled, $webhookUrl, $webhookMethod);
     }
 }
 
@@ -33,13 +32,11 @@ class UpdateExportConfigurationOptions extends Options {
      * @param boolean $enabled The enabled
      * @param string $webhookUrl The webhook_url
      * @param string $webhookMethod The webhook_method
-     * @param string $email The email
      */
-    public function __construct($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE, $email = Values::NONE) {
+    public function __construct($enabled = Values::NONE, $webhookUrl = Values::NONE, $webhookMethod = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['webhookMethod'] = $webhookMethod;
-        $this->options['email'] = $email;
     }
 
     /**
@@ -72,17 +69,6 @@ class UpdateExportConfigurationOptions extends Options {
      */
     public function setWebhookMethod($webhookMethod) {
         $this->options['webhookMethod'] = $webhookMethod;
-        return $this;
-    }
-
-    /**
-     * The email
-     * 
-     * @param string $email The email
-     * @return $this Fluent Builder
-     */
-    public function setEmail($email) {
-        $this->options['email'] = $email;
         return $this;
     }
 
