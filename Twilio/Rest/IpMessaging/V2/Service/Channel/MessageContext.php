@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V2\Service\Channel;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -81,6 +82,9 @@ class MessageContext extends InstanceContext {
         $data = Values::of(array(
             'Body' => $options['body'],
             'Attributes' => $options['attributes'],
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'LastUpdatedBy' => $options['lastUpdatedBy'],
         ));
 
         $payload = $this->version->update(

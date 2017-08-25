@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property string price
  * @property string uri
  * @property array encryptionDetails
+ * @property integer errorCode
  */
 class RecordingInstance extends InstanceResource {
     /**
@@ -53,6 +54,7 @@ class RecordingInstance extends InstanceResource {
             'price' => Values::array_get($payload, 'price'),
             'uri' => Values::array_get($payload, 'uri'),
             'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
         );
 
         $this->solution = array(

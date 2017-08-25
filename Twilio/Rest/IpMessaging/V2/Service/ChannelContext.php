@@ -15,6 +15,7 @@ use Twilio\Options;
 use Twilio\Rest\IpMessaging\V2\Service\Channel\InviteList;
 use Twilio\Rest\IpMessaging\V2\Service\Channel\MemberList;
 use Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -95,6 +96,9 @@ class ChannelContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
             'Attributes' => $options['attributes'],
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'CreatedBy' => $options['createdBy'],
         ));
 
         $payload = $this->version->update(

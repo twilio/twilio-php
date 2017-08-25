@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string source
  * @property string uri
  * @property array encryptionDetails
+ * @property integer errorCode
  */
 class RecordingInstance extends InstanceResource {
     protected $_transcriptions = null;
@@ -63,6 +64,7 @@ class RecordingInstance extends InstanceResource {
             'source' => Values::array_get($payload, 'source'),
             'uri' => Values::array_get($payload, 'uri'),
             'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
         );
 
         $this->solution = array(

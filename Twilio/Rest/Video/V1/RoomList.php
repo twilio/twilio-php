@@ -49,6 +49,7 @@ class RoomList extends ListResource {
             'MaxParticipants' => $options['maxParticipants'],
             'RecordParticipantsOnConnect' => Serialize::booleanToString($options['recordParticipantsOnConnect']),
             'VideoCodecs' => $options['videoCodecs'],
+            'MediaRegion' => $options['mediaRegion'],
         ));
 
         $payload = $this->version->create(

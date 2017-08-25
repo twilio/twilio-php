@@ -18,10 +18,13 @@ abstract class ChannelOptions {
      * @param string $uniqueName The unique_name
      * @param string $attributes The attributes
      * @param string $type The type
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $createdBy The created_by
      * @return CreateChannelOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE) {
-        return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type);
+    public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+        return new CreateChannelOptions($friendlyName, $uniqueName, $attributes, $type, $dateCreated, $dateUpdated, $createdBy);
     }
 
     /**
@@ -36,10 +39,13 @@ abstract class ChannelOptions {
      * @param string $friendlyName The friendly_name
      * @param string $uniqueName The unique_name
      * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $createdBy The created_by
      * @return UpdateChannelOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE) {
-        return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes);
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+        return new UpdateChannelOptions($friendlyName, $uniqueName, $attributes, $dateCreated, $dateUpdated, $createdBy);
     }
 }
 
@@ -49,12 +55,18 @@ class CreateChannelOptions extends Options {
      * @param string $uniqueName The unique_name
      * @param string $attributes The attributes
      * @param string $type The type
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $createdBy The created_by
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
         $this->options['type'] = $type;
+        $this->options['dateCreated'] = $dateCreated;
+        $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['createdBy'] = $createdBy;
     }
 
     /**
@@ -98,6 +110,39 @@ class CreateChannelOptions extends Options {
      */
     public function setType($type) {
         $this->options['type'] = $type;
+        return $this;
+    }
+
+    /**
+     * The date_created
+     * 
+     * @param \DateTime $dateCreated The date_created
+     * @return $this Fluent Builder
+     */
+    public function setDateCreated($dateCreated) {
+        $this->options['dateCreated'] = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * The date_updated
+     * 
+     * @param \DateTime $dateUpdated The date_updated
+     * @return $this Fluent Builder
+     */
+    public function setDateUpdated($dateUpdated) {
+        $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * The created_by
+     * 
+     * @param string $createdBy The created_by
+     * @return $this Fluent Builder
+     */
+    public function setCreatedBy($createdBy) {
+        $this->options['createdBy'] = $createdBy;
         return $this;
     }
 
@@ -157,11 +202,17 @@ class UpdateChannelOptions extends Options {
      * @param string $friendlyName The friendly_name
      * @param string $uniqueName The unique_name
      * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $createdBy The created_by
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['attributes'] = $attributes;
+        $this->options['dateCreated'] = $dateCreated;
+        $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['createdBy'] = $createdBy;
     }
 
     /**
@@ -194,6 +245,39 @@ class UpdateChannelOptions extends Options {
      */
     public function setAttributes($attributes) {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The date_created
+     * 
+     * @param \DateTime $dateCreated The date_created
+     * @return $this Fluent Builder
+     */
+    public function setDateCreated($dateCreated) {
+        $this->options['dateCreated'] = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * The date_updated
+     * 
+     * @param \DateTime $dateUpdated The date_updated
+     * @return $this Fluent Builder
+     */
+    public function setDateUpdated($dateUpdated) {
+        $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * The created_by
+     * 
+     * @param string $createdBy The created_by
+     * @return $this Fluent Builder
+     */
+    public function setCreatedBy($createdBy) {
+        $this->options['createdBy'] = $createdBy;
         return $this;
     }
 

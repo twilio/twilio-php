@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V2\Service\Channel;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -49,6 +50,9 @@ class MessageList extends ListResource {
             'Body' => $body,
             'From' => $options['from'],
             'Attributes' => $options['attributes'],
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'LastUpdatedBy' => $options['lastUpdatedBy'],
         ));
 
         $payload = $this->version->create(

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Chat\V2\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -47,6 +48,9 @@ class ChannelList extends ListResource {
             'UniqueName' => $options['uniqueName'],
             'Attributes' => $options['attributes'],
             'Type' => $options['type'],
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'CreatedBy' => $options['createdBy'],
         ));
 
         $payload = $this->version->create(

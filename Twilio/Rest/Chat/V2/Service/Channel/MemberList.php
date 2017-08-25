@@ -11,6 +11,7 @@ namespace Twilio\Rest\Chat\V2\Service\Channel;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -48,6 +49,10 @@ class MemberList extends ListResource {
         $data = Values::of(array(
             'Identity' => $identity,
             'RoleSid' => $options['roleSid'],
+            'LastConsumedMessageIndex' => $options['lastConsumedMessageIndex'],
+            'LastConsumptionTimestamp' => Serialize::iso8601DateTime($options['lastConsumptionTimestamp']),
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
         ));
 
         $payload = $this->version->create(

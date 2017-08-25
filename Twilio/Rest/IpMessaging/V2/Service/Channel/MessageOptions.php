@@ -16,10 +16,13 @@ abstract class MessageOptions {
     /**
      * @param string $from The from
      * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $attributes = Values::NONE) {
-        return new CreateMessageOptions($from, $attributes);
+    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+        return new CreateMessageOptions($from, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy);
     }
 
     /**
@@ -33,10 +36,13 @@ abstract class MessageOptions {
     /**
      * @param string $body The body
      * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($body = Values::NONE, $attributes = Values::NONE) {
-        return new UpdateMessageOptions($body, $attributes);
+    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+        return new UpdateMessageOptions($body, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy);
     }
 }
 
@@ -44,10 +50,16 @@ class CreateMessageOptions extends Options {
     /**
      * @param string $from The from
      * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
      */
-    public function __construct($from = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['attributes'] = $attributes;
+        $this->options['dateCreated'] = $dateCreated;
+        $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['lastUpdatedBy'] = $lastUpdatedBy;
     }
 
     /**
@@ -69,6 +81,39 @@ class CreateMessageOptions extends Options {
      */
     public function setAttributes($attributes) {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The date_created
+     * 
+     * @param \DateTime $dateCreated The date_created
+     * @return $this Fluent Builder
+     */
+    public function setDateCreated($dateCreated) {
+        $this->options['dateCreated'] = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * The date_updated
+     * 
+     * @param \DateTime $dateUpdated The date_updated
+     * @return $this Fluent Builder
+     */
+    public function setDateUpdated($dateUpdated) {
+        $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * The last_updated_by
+     * 
+     * @param string $lastUpdatedBy The last_updated_by
+     * @return $this Fluent Builder
+     */
+    public function setLastUpdatedBy($lastUpdatedBy) {
+        $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
 
@@ -127,10 +172,16 @@ class UpdateMessageOptions extends Options {
     /**
      * @param string $body The body
      * @param string $attributes The attributes
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
+     * @param string $lastUpdatedBy The last_updated_by
      */
-    public function __construct($body = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
         $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
+        $this->options['dateCreated'] = $dateCreated;
+        $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['lastUpdatedBy'] = $lastUpdatedBy;
     }
 
     /**
@@ -152,6 +203,39 @@ class UpdateMessageOptions extends Options {
      */
     public function setAttributes($attributes) {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The date_created
+     * 
+     * @param \DateTime $dateCreated The date_created
+     * @return $this Fluent Builder
+     */
+    public function setDateCreated($dateCreated) {
+        $this->options['dateCreated'] = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * The date_updated
+     * 
+     * @param \DateTime $dateUpdated The date_updated
+     * @return $this Fluent Builder
+     */
+    public function setDateUpdated($dateUpdated) {
+        $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * The last_updated_by
+     * 
+     * @param string $lastUpdatedBy The last_updated_by
+     * @return $this Fluent Builder
+     */
+    public function setLastUpdatedBy($lastUpdatedBy) {
+        $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
 

@@ -15,10 +15,14 @@ use Twilio\Values;
 abstract class MemberOptions {
     /**
      * @param string $roleSid The role_sid
+     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
      * @return CreateMemberOptions Options builder
      */
-    public static function create($roleSid = Values::NONE) {
-        return new CreateMemberOptions($roleSid);
+    public static function create($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+        return new CreateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated);
     }
 
     /**
@@ -32,19 +36,30 @@ abstract class MemberOptions {
     /**
      * @param string $roleSid The role_sid
      * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
      * @return UpdateMemberOptions Options builder
      */
-    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
-        return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex);
+    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+        return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated);
     }
 }
 
 class CreateMemberOptions extends Options {
     /**
      * @param string $roleSid The role_sid
+     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
      */
-    public function __construct($roleSid = Values::NONE) {
+    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
+        $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
+        $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
+        $this->options['dateCreated'] = $dateCreated;
+        $this->options['dateUpdated'] = $dateUpdated;
     }
 
     /**
@@ -55,6 +70,50 @@ class CreateMemberOptions extends Options {
      */
     public function setRoleSid($roleSid) {
         $this->options['roleSid'] = $roleSid;
+        return $this;
+    }
+
+    /**
+     * The last_consumed_message_index
+     * 
+     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @return $this Fluent Builder
+     */
+    public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
+        $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
+        return $this;
+    }
+
+    /**
+     * The last_consumption_timestamp
+     * 
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @return $this Fluent Builder
+     */
+    public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
+        $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
+        return $this;
+    }
+
+    /**
+     * The date_created
+     * 
+     * @param \DateTime $dateCreated The date_created
+     * @return $this Fluent Builder
+     */
+    public function setDateCreated($dateCreated) {
+        $this->options['dateCreated'] = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * The date_updated
+     * 
+     * @param \DateTime $dateUpdated The date_updated
+     * @return $this Fluent Builder
+     */
+    public function setDateUpdated($dateUpdated) {
+        $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
 
@@ -113,10 +172,16 @@ class UpdateMemberOptions extends Options {
     /**
      * @param string $roleSid The role_sid
      * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateUpdated The date_updated
      */
-    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
+    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
+        $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
+        $this->options['dateCreated'] = $dateCreated;
+        $this->options['dateUpdated'] = $dateUpdated;
     }
 
     /**
@@ -138,6 +203,39 @@ class UpdateMemberOptions extends Options {
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
+        return $this;
+    }
+
+    /**
+     * The last_consumption_timestamp
+     * 
+     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @return $this Fluent Builder
+     */
+    public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
+        $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
+        return $this;
+    }
+
+    /**
+     * The date_created
+     * 
+     * @param \DateTime $dateCreated The date_created
+     * @return $this Fluent Builder
+     */
+    public function setDateCreated($dateCreated) {
+        $this->options['dateCreated'] = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * The date_updated
+     * 
+     * @param \DateTime $dateUpdated The date_updated
+     * @return $this Fluent Builder
+     */
+    public function setDateUpdated($dateUpdated) {
+        $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
 
