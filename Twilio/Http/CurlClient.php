@@ -11,6 +11,9 @@ class CurlClient implements Client {
     protected $curlOptions = array();
     protected $debugHttp = false;
 
+    public $lastRequest = null;
+    public $lastResponse = null;
+
     public function __construct(array $options = array()) {
         $this->curlOptions = $options;
         $this->debugHttp = getenv('DEBUG_HTTP_TRAFFIC') === 'true';
@@ -21,6 +24,9 @@ class CurlClient implements Client {
                             $timeout = null) {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
+
+        $this->lastRequest = $options;
+        $this->lastResponse = null;
 
         try {
             if (!$curl = curl_init()) {
@@ -77,7 +83,10 @@ class CurlClient implements Client {
                 }
                 error_log("\n$body");
             }
-            return new Response($statusCode, $body, $responseHeaders);
+
+            $this->lastResponse = new Response($statusCode, $body, $responseHeaders);
+
+            return $this->lastResponse;
         } catch (\ErrorException $e) {
             if (isset($curl) && is_resource($curl)) {
                 curl_close($curl);
