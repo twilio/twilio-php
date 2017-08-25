@@ -85,7 +85,7 @@ class CurlClient implements Client {
 
             $this->lastResponse = new Response($statusCode, $body, $responseHeaders);
 
-            return $this->last_response;
+            return $this->lastResponse;
         } catch (\ErrorException $e) {
             if (isset($curl) && is_resource($curl)) {
                 curl_close($curl);
