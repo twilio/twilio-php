@@ -26,6 +26,7 @@ class CurlClient implements Client {
                                   $user, $password, $timeout);
 
         $this->lastRequest = $options;
+        $this->lastResponse = null;
 
         try {
             if (!$curl = curl_init()) {
