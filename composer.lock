@@ -178,6 +178,7 @@
             ],
             "description": "Twitter Bootstrap theme for ApiGen",
             "homepage": "http://apigen.org/",
+            "abandoned": "apigen/apigen",
             "time": "2015-10-11T14:52:50+00:00"
         },
         {
@@ -226,6 +227,7 @@
             ],
             "description": "Default theme for ApiGen",
             "homepage": "http://apigen.org/",
+            "abandoned": "apigen/apigen",
             "time": "2015-10-11T14:55:30+00:00"
         },
         {
