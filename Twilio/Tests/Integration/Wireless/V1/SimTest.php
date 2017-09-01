@@ -51,6 +51,7 @@ class SimTest extends HolodeckTestCase {
                 "voice_method": "http_method",
                 "voice_url": "http://www.example.com",
                 "links": {
+                    "data_sessions": "https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions",
                     "rate_plan": "https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "usage_records": "https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UsageRecords"
                 },
@@ -122,6 +123,7 @@ class SimTest extends HolodeckTestCase {
                         "date_updated": "2015-07-30T20:00:00Z",
                         "friendly_name": "friendly_name",
                         "links": {
+                            "data_sessions": "https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions",
                             "rate_plan": "https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                             "usage_records": "https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UsageRecords"
                         },
@@ -186,6 +188,7 @@ class SimTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
                 "links": {
+                    "data_sessions": "https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions",
                     "rate_plan": "https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "usage_records": "https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UsageRecords"
                 },

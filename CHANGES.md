@@ -2,6 +2,15 @@ twilio-php Changelog
 ====================
 
 
+[2017-09-01] Version 5.13.4
+----------------------------
+**Sync**
+- Add support for Streams
+
+**Wireless**
+- Added DataSessions sub-resource to Sims.
+
+
 [2017-08-25] Version 5.13.3
 ----------------------------
 **Library**

@@ -15,6 +15,7 @@ use Twilio\Options;
 use Twilio\Rest\Sync\V1\Service\DocumentList;
 use Twilio\Rest\Sync\V1\Service\SyncListList;
 use Twilio\Rest\Sync\V1\Service\SyncMapList;
+use Twilio\Rest\Sync\V1\Service\SyncStreamList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -25,14 +26,17 @@ use Twilio\Version;
  * @property \Twilio\Rest\Sync\V1\Service\DocumentList documents
  * @property \Twilio\Rest\Sync\V1\Service\SyncListList syncLists
  * @property \Twilio\Rest\Sync\V1\Service\SyncMapList syncMaps
+ * @property \Twilio\Rest\Sync\V1\Service\SyncStreamList syncStreams
  * @method \Twilio\Rest\Sync\V1\Service\DocumentContext documents(string $sid)
  * @method \Twilio\Rest\Sync\V1\Service\SyncListContext syncLists(string $sid)
  * @method \Twilio\Rest\Sync\V1\Service\SyncMapContext syncMaps(string $sid)
+ * @method \Twilio\Rest\Sync\V1\Service\SyncStreamContext syncStreams(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_documents = null;
     protected $_syncLists = null;
     protected $_syncMaps = null;
+    protected $_syncStreams = null;
 
     /**
      * Initialize the ServiceContext
@@ -158,6 +162,22 @@ class ServiceContext extends InstanceContext {
         }
 
         return $this->_syncMaps;
+    }
+
+    /**
+     * Access the syncStreams
+     * 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamList 
+     */
+    protected function getSyncStreams() {
+        if (!$this->_syncStreams) {
+            $this->_syncStreams = new SyncStreamList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_syncStreams;
     }
 
     /**

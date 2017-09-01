@@ -12,6 +12,7 @@ namespace Twilio\Rest\Wireless\V1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Wireless\V1\Sim\DataSessionList;
 use Twilio\Rest\Wireless\V1\Sim\UsageRecordList;
 use Twilio\Values;
 use Twilio\Version;
@@ -20,9 +21,11 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
  * @property \Twilio\Rest\Wireless\V1\Sim\UsageRecordList usageRecords
+ * @property \Twilio\Rest\Wireless\V1\Sim\DataSessionList dataSessions
  */
 class SimContext extends InstanceContext {
     protected $_usageRecords = null;
+    protected $_dataSessions = null;
 
     /**
      * Initialize the SimContext
@@ -119,6 +122,22 @@ class SimContext extends InstanceContext {
         }
 
         return $this->_usageRecords;
+    }
+
+    /**
+     * Access the dataSessions
+     * 
+     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList 
+     */
+    protected function getDataSessions() {
+        if (!$this->_dataSessions) {
+            $this->_dataSessions = new DataSessionList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_dataSessions;
     }
 
     /**

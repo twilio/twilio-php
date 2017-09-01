@@ -35,6 +35,7 @@ class ServiceInstance extends InstanceResource {
     protected $_documents = null;
     protected $_syncLists = null;
     protected $_syncMaps = null;
+    protected $_syncStreams = null;
 
     /**
      * Initialize the ServiceInstance
@@ -139,6 +140,15 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getSyncMaps() {
         return $this->proxy()->syncMaps;
+    }
+
+    /**
+     * Access the syncStreams
+     * 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamList 
+     */
+    protected function getSyncStreams() {
+        return $this->proxy()->syncStreams;
     }
 
     /**

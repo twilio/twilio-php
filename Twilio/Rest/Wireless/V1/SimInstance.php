@@ -44,6 +44,7 @@ use Twilio\Version;
  */
 class SimInstance extends InstanceResource {
     protected $_usageRecords = null;
+    protected $_dataSessions = null;
 
     /**
      * Initialize the SimInstance
@@ -132,6 +133,15 @@ class SimInstance extends InstanceResource {
      */
     protected function getUsageRecords() {
         return $this->proxy()->usageRecords;
+    }
+
+    /**
+     * Access the dataSessions
+     * 
+     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList 
+     */
+    protected function getDataSessions() {
+        return $this->proxy()->dataSessions;
     }
 
     /**
