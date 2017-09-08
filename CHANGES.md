@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2017-09-01] Version 5.14.0
+----------------------------
+**TwiML**
+- Add classes for all TwiML verbs.
 
 [2017-09-01] Version 5.13.4
 ----------------------------
