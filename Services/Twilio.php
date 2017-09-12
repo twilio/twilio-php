@@ -5,7 +5,7 @@ abstract class Obsolete_Service_Twilio {
 
     public function __construct($sid, $token, $version = null, $http = null, $retryAttempts = 1) {
         $name = get_class($this);
-        trigger_error($name . ' has been removed from this version of the library. Please refer to https://www.twilio.com/docs/libraries/php for more information.', E_USER_ERROR);
+        trigger_error($name . ' has been removed from this version of the library. Please refer to https://www.twilio.com/docs/libraries/php for more information.', E_USER_WARNING);
     }
 
 }

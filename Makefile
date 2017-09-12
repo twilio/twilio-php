@@ -21,6 +21,7 @@ vendor: install
 # if these fail, you may need to install the helper library
 test: install
 	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
+	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors Services/Tests/TwilioTest.php
 
 docs-install:
 	composer require --dev apigen/apigen
