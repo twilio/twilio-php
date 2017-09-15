@@ -20,42 +20,42 @@ use Twilio\Rest\Preview\Sync;
 use Twilio\Rest\Preview\Wireless;
 
 /**
+ * @property \Twilio\Rest\Preview\BulkExports bulkExports
+ * @property \Twilio\Rest\Preview\DeployedDevices deployedDevices
+ * @property \Twilio\Rest\Preview\HostedNumbers hostedNumbers
+ * @property \Twilio\Rest\Preview\Marketplace marketplace
+ * @property \Twilio\Rest\Preview\Proxy proxy
  * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Wireless wireless
- * @property \Twilio\Rest\Preview\DeployedDevices deployedDevices
- * @property \Twilio\Rest\Preview\Marketplace marketplace
- * @property \Twilio\Rest\Preview\BulkExports bulkExports
- * @property \Twilio\Rest\Preview\Proxy proxy
- * @property \Twilio\Rest\Preview\HostedNumbers hostedNumbers
- * @property \Twilio\Rest\Preview\Proxy\ServiceList services
+ * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
+ * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
+ * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
+ * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
+ * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
+ * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
+ * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList sims
- * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
- * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
- * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
- * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
- * @method \Twilio\Rest\Preview\Proxy\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
+ * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
+ * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
+ * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
+ * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
+ * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
+ * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
- * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
- * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
- * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
- * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
- * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
- * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */
 class Preview extends Domain {
+    protected $_bulkExports = null;
+    protected $_deployedDevices = null;
+    protected $_hostedNumbers = null;
+    protected $_marketplace = null;
+    protected $_proxy = null;
     protected $_sync = null;
     protected $_wireless = null;
-    protected $_deployedDevices = null;
-    protected $_marketplace = null;
-    protected $_bulkExports = null;
-    protected $_proxy = null;
-    protected $_hostedNumbers = null;
 
     /**
      * Construct the Preview Domain
@@ -68,6 +68,57 @@ class Preview extends Domain {
         parent::__construct($client);
 
         $this->baseUrl = 'https://preview.twilio.com';
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\BulkExports Version bulkExports of preview
+     */
+    protected function getBulkExports() {
+        if (!$this->_bulkExports) {
+            $this->_bulkExports = new BulkExports($this);
+        }
+        return $this->_bulkExports;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\DeployedDevices Version deployedDevices of
+     *                                              preview
+     */
+    protected function getDeployedDevices() {
+        if (!$this->_deployedDevices) {
+            $this->_deployedDevices = new DeployedDevices($this);
+        }
+        return $this->_deployedDevices;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\HostedNumbers Version hostedNumbers of preview
+     */
+    protected function getHostedNumbers() {
+        if (!$this->_hostedNumbers) {
+            $this->_hostedNumbers = new HostedNumbers($this);
+        }
+        return $this->_hostedNumbers;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace Version marketplace of preview
+     */
+    protected function getMarketplace() {
+        if (!$this->_marketplace) {
+            $this->_marketplace = new Marketplace($this);
+        }
+        return $this->_marketplace;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Proxy Version proxy of preview
+     */
+    protected function getProxy() {
+        if (!$this->_proxy) {
+            $this->_proxy = new Proxy($this);
+        }
+        return $this->_proxy;
     }
 
     /**
@@ -88,57 +139,6 @@ class Preview extends Domain {
             $this->_wireless = new Wireless($this);
         }
         return $this->_wireless;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\DeployedDevices Version deployedDevices of
-     *                                              preview
-     */
-    protected function getDeployedDevices() {
-        if (!$this->_deployedDevices) {
-            $this->_deployedDevices = new DeployedDevices($this);
-        }
-        return $this->_deployedDevices;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace Version marketplace of preview
-     */
-    protected function getMarketplace() {
-        if (!$this->_marketplace) {
-            $this->_marketplace = new Marketplace($this);
-        }
-        return $this->_marketplace;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\BulkExports Version bulkExports of preview
-     */
-    protected function getBulkExports() {
-        if (!$this->_bulkExports) {
-            $this->_bulkExports = new BulkExports($this);
-        }
-        return $this->_bulkExports;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Proxy Version proxy of preview
-     */
-    protected function getProxy() {
-        if (!$this->_proxy) {
-            $this->_proxy = new Proxy($this);
-        }
-        return $this->_proxy;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\HostedNumbers Version hostedNumbers of preview
-     */
-    protected function getHostedNumbers() {
-        if (!$this->_hostedNumbers) {
-            $this->_hostedNumbers = new HostedNumbers($this);
-        }
-        return $this->_hostedNumbers;
     }
 
     /**
@@ -175,18 +175,108 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Proxy\ServiceList 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportList 
      */
-    protected function getServices() {
-        return $this->proxy->services;
+    protected function getExports() {
+        return $this->bulkExports->exports;
     }
 
     /**
-     * @param string $sid A string that uniquely identifies this Service.
-     * @return \Twilio\Rest\Preview\Proxy\ServiceContext 
+     * @param string $resourceType The resource_type
+     * @return \Twilio\Rest\Preview\BulkExports\ExportContext 
+     */
+    protected function contextExports($resourceType) {
+        return $this->bulkExports->exports($resourceType);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationList 
+     */
+    protected function getExportConfiguration() {
+        return $this->bulkExports->exportConfiguration;
+    }
+
+    /**
+     * @param string $resourceType The resource_type
+     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext 
+     */
+    protected function contextExportConfiguration($resourceType) {
+        return $this->bulkExports->exportConfiguration($resourceType);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList 
+     */
+    protected function getFleets() {
+        return $this->deployedDevices->fleets;
+    }
+
+    /**
+     * @param string $sid A string that uniquely identifies the Fleet.
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetContext 
+     */
+    protected function contextFleets($sid) {
+        return $this->deployedDevices->fleets($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList 
+     */
+    protected function getHostedNumberOrders() {
+        return $this->hostedNumbers->hostedNumberOrders;
+    }
+
+    /**
+     * @param string $sid HostedNumberOrder sid.
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext 
+     */
+    protected function contextHostedNumberOrders($sid) {
+        return $this->hostedNumbers->hostedNumberOrders($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
+     */
+    protected function getAvailableAddOns() {
+        return $this->marketplace->availableAddOns;
+    }
+
+    /**
+     * @param string $sid The unique Available Add-on Sid
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext 
+     */
+    protected function contextAvailableAddOns($sid) {
+        return $this->marketplace->availableAddOns($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
+     */
+    protected function getInstalledAddOns() {
+        return $this->marketplace->installedAddOns;
+    }
+
+    /**
+     * @param string $sid The unique Installed Add-on Sid
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
+     */
+    protected function contextInstalledAddOns($sid) {
+        return $this->marketplace->installedAddOns($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Sync\ServiceList 
+     */
+    protected function getServices() {
+        return $this->sync->services;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Sync\ServiceContext 
      */
     protected function contextServices($sid) {
-        return $this->proxy->services($sid);
+        return $this->sync->services($sid);
     }
 
     /**
@@ -232,96 +322,6 @@ class Preview extends Domain {
      */
     protected function contextSims($sid) {
         return $this->wireless->sims($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList 
-     */
-    protected function getFleets() {
-        return $this->deployedDevices->fleets;
-    }
-
-    /**
-     * @param string $sid A string that uniquely identifies the Fleet.
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetContext 
-     */
-    protected function contextFleets($sid) {
-        return $this->deployedDevices->fleets($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
-     */
-    protected function getAvailableAddOns() {
-        return $this->marketplace->availableAddOns;
-    }
-
-    /**
-     * @param string $sid The unique Available Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext 
-     */
-    protected function contextAvailableAddOns($sid) {
-        return $this->marketplace->availableAddOns($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
-     */
-    protected function getInstalledAddOns() {
-        return $this->marketplace->installedAddOns;
-    }
-
-    /**
-     * @param string $sid The unique Installed Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
-     */
-    protected function contextInstalledAddOns($sid) {
-        return $this->marketplace->installedAddOns($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\BulkExports\ExportList 
-     */
-    protected function getExports() {
-        return $this->bulkExports->exports;
-    }
-
-    /**
-     * @param string $resourceType The resource_type
-     * @return \Twilio\Rest\Preview\BulkExports\ExportContext 
-     */
-    protected function contextExports($resourceType) {
-        return $this->bulkExports->exports($resourceType);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationList 
-     */
-    protected function getExportConfiguration() {
-        return $this->bulkExports->exportConfiguration;
-    }
-
-    /**
-     * @param string $resourceType The resource_type
-     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext 
-     */
-    protected function contextExportConfiguration($resourceType) {
-        return $this->bulkExports->exportConfiguration($resourceType);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList 
-     */
-    protected function getHostedNumberOrders() {
-        return $this->hostedNumbers->hostedNumberOrders;
-    }
-
-    /**
-     * @param string $sid HostedNumberOrder sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext 
-     */
-    protected function contextHostedNumberOrders($sid) {
-        return $this->hostedNumbers->hostedNumberOrders($sid);
     }
 
     /**

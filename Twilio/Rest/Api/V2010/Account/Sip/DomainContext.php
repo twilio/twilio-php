@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList;
 use Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -87,6 +88,7 @@ class DomainContext extends InstanceContext {
             'VoiceStatusCallbackMethod' => $options['voiceStatusCallbackMethod'],
             'VoiceStatusCallbackUrl' => $options['voiceStatusCallbackUrl'],
             'VoiceUrl' => $options['voiceUrl'],
+            'SipRegistration' => Serialize::booleanToString($options['sipRegistration']),
         ));
 
         $payload = $this->version->update(

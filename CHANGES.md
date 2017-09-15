@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2017-09-15] Version 5.14.1
+----------------------------
+**Api**
+- Add `sip_registration` property on SIP Domains
+- Add new video and market usage category keys
+
+
 [2017-09-01] Version 5.14.0
 ----------------------------
 **TwiML**

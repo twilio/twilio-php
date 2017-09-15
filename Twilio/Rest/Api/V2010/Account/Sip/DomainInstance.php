@@ -33,6 +33,7 @@ use Twilio\Version;
  * @property string voiceStatusCallbackUrl
  * @property string voiceUrl
  * @property array subresourceUris
+ * @property boolean sipRegistration
  */
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings = null;
@@ -69,6 +70,7 @@ class DomainInstance extends InstanceResource {
             'voiceStatusCallbackUrl' => Values::array_get($payload, 'voice_status_callback_url'),
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
+            'sipRegistration' => Values::array_get($payload, 'sip_registration'),
         );
 
         $this->solution = array(
