@@ -13,6 +13,31 @@ class RequestValidator {
     }
 
     public function computeSignature($url, $data = array()) {
+        // username and password from HTTP URLs and username, password and 
+        // port from HTTPS URLs must be dropped before the calculation,
+        // see https://www.twilio.com/docs/api/security#notes
+        $parsed_url = parse_url($url);
+        unset($parsed_url['user'], $parsed_url['pass']);
+
+        if(isset($_SERVER['HTTPS'])) {
+            if ($_SERVER['HTTPS'] != "") {
+                unset($parsed_url['port']);
+            }
+        }
+
+        // unparse URL for people without http_build_url()
+        // see http://php.net/manual/en/function.parse-url.php#106731
+        $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : ''; 
+        $host     = isset($parsed_url['host']) ? $parsed_url['host'] : ''; 
+        $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : ''; 
+        $user     = isset($parsed_url['user']) ? $parsed_url['user'] : ''; 
+        $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : ''; 
+        $pass     = ($user || $pass) ? "$pass@" : ''; 
+        $path     = isset($parsed_url['path']) ? $parsed_url['path'] : ''; 
+        $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : ''; 
+        $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : ''; 
+        $url = "$scheme$user$pass$host$port$path$query$fragment"; 
+
         // sort the array by keys
         ksort($data);
 
