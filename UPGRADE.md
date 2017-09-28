@@ -3,6 +3,35 @@
 _After `5.1.1` all `MINOR` and `MAJOR` version bumps will have upgrade notes
 posted here._
 
+[2017-09-28] 5.1x.x to 5.15.x
+---------------------------
+
+### CHANGED - `Body` parameter on Chat `Message` creation is no longer required.
+
+#### Rationale
+This was changed to add support for sending media in Chat messages, users can now either provide a `body` or a `media_sid`.
+
+#### 5.1x.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->v2->service('IS123')->channel('CH123')->message->create("this is the body");
+```
+
+#### 5.15.x
+```php
+<?php
+
+use Twilio\Rest\Client;
+
+$client = new Client();
+$client->chat->v2->service('IS123')->channel('CH123')->message->create(array("body"=>"this is the body"));
+```
+
+
 [2017-05-22] 5.9.x to 5.10.x
 ---------------------------
 

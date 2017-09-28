@@ -3,8 +3,8 @@ twilio-php Changelog
 
 [2017-09-28] Version 5.15.0
 ----------------------------
-**Api**
-- [omit] Added hidden fields for SMS experimentation
+**Library**
+- Add warnings when trying to import/use objects from legacy versions of the library.
 
 **Chat**
 - Make member accessible through identity
@@ -12,9 +12,10 @@ twilio-php Changelog
 - Set get list 'max_page_size' parameter to 100
 - Add service instance webhook retry configuration
 - Add media message capability
+- Make `body` an optional parameter on Message creation. *(breaking change)*
 
 **Notify**
-- `data`, `apn`, `gcm`, `fcm`, `sms` parameters in `Notifications` create resource are objects instead of strings. *(breaking change)*
+- `data`, `apn`, `gcm`, `fcm`, `sms` parameters in `Notifications` create resource now accept objects instead of strings. Passing manually stringified json objects will continue to work.
 
 **Taskrouter**
 - Add new query ability by TaskChannelSid or TaskChannelUniqueName
