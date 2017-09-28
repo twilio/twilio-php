@@ -99,6 +99,8 @@ class TaskQueuesStatisticsList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
+            'TaskChannel' => $options['taskChannel'],
+            'SplitByWaitTime' => $options['splitByWaitTime'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

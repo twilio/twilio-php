@@ -49,6 +49,8 @@ class TaskQueueStatisticsContext extends InstanceContext {
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
+            'TaskChannel' => $options['taskChannel'],
+            'SplitByWaitTime' => $options['splitByWaitTime'],
         ));
 
         $payload = $this->version->fetch(

@@ -19,10 +19,12 @@ abstract class MessageOptions {
      * @param \DateTime $dateCreated The date_created
      * @param \DateTime $dateUpdated The date_updated
      * @param string $lastUpdatedBy The last_updated_by
+     * @param string $body The body
+     * @param string $mediaSid The media_sid
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
-        return new CreateMessageOptions($from, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy);
+    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
+        return new CreateMessageOptions($from, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy, $body, $mediaSid);
     }
 
     /**
@@ -53,13 +55,17 @@ class CreateMessageOptions extends Options {
      * @param \DateTime $dateCreated The date_created
      * @param \DateTime $dateUpdated The date_updated
      * @param string $lastUpdatedBy The last_updated_by
+     * @param string $body The body
+     * @param string $mediaSid The media_sid
      */
-    public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+    public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
+        $this->options['body'] = $body;
+        $this->options['mediaSid'] = $mediaSid;
     }
 
     /**
@@ -114,6 +120,28 @@ class CreateMessageOptions extends Options {
      */
     public function setLastUpdatedBy($lastUpdatedBy) {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
+        return $this;
+    }
+
+    /**
+     * The body
+     * 
+     * @param string $body The body
+     * @return $this Fluent Builder
+     */
+    public function setBody($body) {
+        $this->options['body'] = $body;
+        return $this;
+    }
+
+    /**
+     * The media_sid
+     * 
+     * @param string $mediaSid The media_sid
+     * @return $this Fluent Builder
+     */
+    public function setMediaSid($mediaSid) {
+        $this->options['mediaSid'] = $mediaSid;
         return $this;
     }
 

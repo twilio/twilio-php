@@ -1,6 +1,31 @@
 twilio-php Changelog
 ====================
 
+[2017-09-28] Version 5.15.0
+----------------------------
+**Api**
+- [omit] Added hidden fields for SMS experimentation
+
+**Chat**
+- Make member accessible through identity
+- Make channel subresources accessible by channel unique name
+- Set get list 'max_page_size' parameter to 100
+- Add service instance webhook retry configuration
+- Add media message capability
+
+**Notify**
+- `data`, `apn`, `gcm`, `fcm`, `sms` parameters in `Notifications` create resource are objects instead of strings. *(breaking change)*
+
+**Taskrouter**
+- Add new query ability by TaskChannelSid or TaskChannelUniqueName
+- Move Events, Worker, Workers endpoint over to CPR
+- Add new RealTime and Cumulative Statistics endpoints
+
+**Video**
+- Create should allow an array of video_codecs.
+- Add video_codecs as a property of room to make it externally visible.
+
+
 [2017-09-15] Version 5.14.1
 ----------------------------
 **Api**

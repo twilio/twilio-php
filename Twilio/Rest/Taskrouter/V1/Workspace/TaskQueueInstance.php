@@ -36,6 +36,8 @@ use Twilio\Version;
 class TaskQueueInstance extends InstanceResource {
     protected $_taskQueuesStatistics = null;
     protected $_taskQueueStatistics = null;
+    protected $_taskQueueRealTimeStatistics = null;
+    protected $_taskQueueCumulativeStatistics = null;
 
     /**
      * Initialize the TaskQueueInstance
@@ -140,6 +142,24 @@ class TaskQueueInstance extends InstanceResource {
      */
     protected function getTaskQueueStatistics() {
         return $this->proxy()->taskQueueStatistics;
+    }
+
+    /**
+     * Access the taskQueueRealTimeStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList 
+     */
+    protected function getTaskQueueRealTimeStatistics() {
+        return $this->proxy()->taskQueueRealTimeStatistics;
+    }
+
+    /**
+     * Access the taskQueueCumulativeStatistics
+     * 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList 
+     */
+    protected function getTaskQueueCumulativeStatistics() {
+        return $this->proxy()->taskQueueCumulativeStatistics;
     }
 
     /**

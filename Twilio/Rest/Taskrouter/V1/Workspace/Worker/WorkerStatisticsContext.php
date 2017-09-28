@@ -49,6 +49,7 @@ class WorkerStatisticsContext extends InstanceContext {
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
+            'TaskChannel' => $options['taskChannel'],
         ));
 
         $payload = $this->version->fetch(

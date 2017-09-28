@@ -20,10 +20,11 @@ abstract class WorkersStatisticsOptions {
      * @param string $taskQueueSid The task_queue_sid
      * @param string $taskQueueName The task_queue_name
      * @param string $friendlyName The friendly_name
+     * @param string $taskChannel The task_channel
      * @return FetchWorkersStatisticsOptions Options builder
      */
-    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $friendlyName = Values::NONE) {
-        return new FetchWorkersStatisticsOptions($minutes, $startDate, $endDate, $taskQueueSid, $taskQueueName, $friendlyName);
+    public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $friendlyName = Values::NONE, $taskChannel = Values::NONE) {
+        return new FetchWorkersStatisticsOptions($minutes, $startDate, $endDate, $taskQueueSid, $taskQueueName, $friendlyName, $taskChannel);
     }
 }
 
@@ -35,14 +36,16 @@ class FetchWorkersStatisticsOptions extends Options {
      * @param string $taskQueueSid The task_queue_sid
      * @param string $taskQueueName The task_queue_name
      * @param string $friendlyName The friendly_name
+     * @param string $taskChannel The task_channel
      */
-    public function __construct($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $friendlyName = Values::NONE) {
+    public function __construct($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $friendlyName = Values::NONE, $taskChannel = Values::NONE) {
         $this->options['minutes'] = $minutes;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
         $this->options['taskQueueSid'] = $taskQueueSid;
         $this->options['taskQueueName'] = $taskQueueName;
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['taskChannel'] = $taskChannel;
     }
 
     /**
@@ -108,6 +111,17 @@ class FetchWorkersStatisticsOptions extends Options {
      */
     public function setFriendlyName($friendlyName) {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The task_channel
+     * 
+     * @param string $taskChannel The task_channel
+     * @return $this Fluent Builder
+     */
+    public function setTaskChannel($taskChannel) {
+        $this->options['taskChannel'] = $taskChannel;
         return $this;
     }
 

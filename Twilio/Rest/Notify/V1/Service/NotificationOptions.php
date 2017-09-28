@@ -25,14 +25,14 @@ abstract class NotificationOptions {
      * @param string $title The title
      * @param string $sound The sound
      * @param string $action The action
-     * @param string $data The data
-     * @param string $apn The apn
-     * @param string $gcm The gcm
-     * @param string $sms The sms
+     * @param array $data The data
+     * @param array $apn The apn
+     * @param array $gcm The gcm
+     * @param array $sms The sms
      * @param array $facebookMessenger The facebook_messenger
-     * @param string $fcm The fcm
+     * @param array $fcm The fcm
      * @param string $segment The segment
-     * @param string $alexa The alexa
+     * @param array $alexa The alexa
      * @param string $toBinding The to_binding
      * @return CreateNotificationOptions Options builder
      */
@@ -51,14 +51,14 @@ class CreateNotificationOptions extends Options {
      * @param string $title The title
      * @param string $sound The sound
      * @param string $action The action
-     * @param string $data The data
-     * @param string $apn The apn
-     * @param string $gcm The gcm
-     * @param string $sms The sms
+     * @param array $data The data
+     * @param array $apn The apn
+     * @param array $gcm The gcm
+     * @param array $sms The sms
      * @param array $facebookMessenger The facebook_messenger
-     * @param string $fcm The fcm
+     * @param array $fcm The fcm
      * @param string $segment The segment
-     * @param string $alexa The alexa
+     * @param array $alexa The alexa
      * @param string $toBinding The to_binding
      */
     public function __construct($identity = Values::NONE, $tag = Values::NONE, $body = Values::NONE, $priority = Values::NONE, $ttl = Values::NONE, $title = Values::NONE, $sound = Values::NONE, $action = Values::NONE, $data = Values::NONE, $apn = Values::NONE, $gcm = Values::NONE, $sms = Values::NONE, $facebookMessenger = Values::NONE, $fcm = Values::NONE, $segment = Values::NONE, $alexa = Values::NONE, $toBinding = Values::NONE) {
@@ -172,7 +172,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The data
      * 
-     * @param string $data The data
+     * @param array $data The data
      * @return $this Fluent Builder
      */
     public function setData($data) {
@@ -183,7 +183,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The apn
      * 
-     * @param string $apn The apn
+     * @param array $apn The apn
      * @return $this Fluent Builder
      */
     public function setApn($apn) {
@@ -194,7 +194,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The gcm
      * 
-     * @param string $gcm The gcm
+     * @param array $gcm The gcm
      * @return $this Fluent Builder
      */
     public function setGcm($gcm) {
@@ -205,7 +205,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The sms
      * 
-     * @param string $sms The sms
+     * @param array $sms The sms
      * @return $this Fluent Builder
      */
     public function setSms($sms) {
@@ -227,7 +227,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The fcm
      * 
-     * @param string $fcm The fcm
+     * @param array $fcm The fcm
      * @return $this Fluent Builder
      */
     public function setFcm($fcm) {
@@ -249,7 +249,7 @@ class CreateNotificationOptions extends Options {
     /**
      * The alexa
      * 
-     * @param string $alexa The alexa
+     * @param array $alexa The alexa
      * @return $this Fluent Builder
      */
     public function setAlexa($alexa) {

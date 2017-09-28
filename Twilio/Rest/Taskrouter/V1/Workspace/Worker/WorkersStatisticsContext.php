@@ -50,6 +50,7 @@ class WorkersStatisticsContext extends InstanceContext {
             'TaskQueueSid' => $options['taskQueueSid'],
             'TaskQueueName' => $options['taskQueueName'],
             'FriendlyName' => $options['friendlyName'],
+            'TaskChannel' => $options['taskChannel'],
         ));
 
         $payload = $this->version->fetch(

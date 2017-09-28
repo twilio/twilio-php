@@ -107,19 +107,13 @@ class MessageTest extends HolodeckTestCase {
         try {
             $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                           ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->messages->create("body");
+                                          ->messages->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Body' => "body",
-        );
-
         $this->assertRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages',
-            null,
-            $values
+            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages'
         ));
     }
 
@@ -150,7 +144,7 @@ class MessageTest extends HolodeckTestCase {
 
         $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                 ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->messages->create("body");
+                                                ->messages->create();
 
         $this->assertNotNull($actual);
     }
@@ -182,7 +176,44 @@ class MessageTest extends HolodeckTestCase {
 
         $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                 ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->messages->create("body");
+                                                ->messages->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateMediaResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "sid": "IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "attributes": null,
+                "date_created": "2016-03-24T20:37:57Z",
+                "date_updated": "2016-03-24T20:37:57Z",
+                "last_updated_by": "system",
+                "was_edited": false,
+                "from": "system",
+                "body": "Hello",
+                "index": 0,
+                "type": "text",
+                "media": {
+                    "sid": "MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "size": 99999999999999,
+                    "content_type": "application/pdf",
+                    "filename": "hello.pdf"
+                },
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/IMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                                ->messages->create();
 
         $this->assertNotNull($actual);
     }

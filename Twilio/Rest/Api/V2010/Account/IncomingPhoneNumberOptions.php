@@ -141,7 +141,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The unique id of the Account to which you wish to transfer this phnoe number
+     * The unique id of the Account to which you wish to transfer this phone number
      * 
      * @param string $accountSid The new owner of the phone number
      * @return $this Fluent Builder

@@ -47,6 +47,8 @@ class WorkspaceStatisticsContext extends InstanceContext {
             'Minutes' => $options['minutes'],
             'StartDate' => Serialize::iso8601DateTime($options['startDate']),
             'EndDate' => Serialize::iso8601DateTime($options['endDate']),
+            'TaskChannel' => $options['taskChannel'],
+            'SplitByWaitTime' => $options['splitByWaitTime'],
         ));
 
         $payload = $this->version->fetch(
