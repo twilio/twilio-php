@@ -114,6 +114,6 @@ If you need help installing or using the library, please contact Twilio Support 
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-[apidocs]: https://twilio.com/api/docs
+[apidocs]: https://www.twilio.com/docs/api
 [documentation]: https://twilio.github.io/twilio-php/
 [versioning]: https://github.com/twilio/twilio-php/blob/master/VERSIONS.md
