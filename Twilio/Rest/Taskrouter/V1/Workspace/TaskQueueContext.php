@@ -15,24 +15,21 @@ use Twilio\Options;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList;
-use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList taskQueuesStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList taskQueueStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList taskQueueRealTimeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList taskQueueCumulativeStatistics
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext taskQueueStatistics()
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsContext taskQueueRealTimeStatistics()
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsContext taskQueueCumulativeStatistics()
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList realTimeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList cumulativeStatistics
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext statistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsContext realTimeStatistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsContext cumulativeStatistics()
  */
 class TaskQueueContext extends InstanceContext {
-    protected $_taskQueuesStatistics = null;
-    protected $_taskQueueStatistics = null;
-    protected $_taskQueueRealTimeStatistics = null;
-    protected $_taskQueueCumulativeStatistics = null;
+    protected $_statistics = null;
+    protected $_realTimeStatistics = null;
+    protected $_cumulativeStatistics = null;
 
     /**
      * Initialize the TaskQueueContext
@@ -119,70 +116,54 @@ class TaskQueueContext extends InstanceContext {
     }
 
     /**
-     * Access the taskQueuesStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
-     */
-    protected function getTaskQueuesStatistics() {
-        if (!$this->_taskQueuesStatistics) {
-            $this->_taskQueuesStatistics = new TaskQueuesStatisticsList(
-                $this->version,
-                $this->solution['workspaceSid']
-            );
-        }
-
-        return $this->_taskQueuesStatistics;
-    }
-
-    /**
-     * Access the taskQueueStatistics
+     * Access the statistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
-    protected function getTaskQueueStatistics() {
-        if (!$this->_taskQueueStatistics) {
-            $this->_taskQueueStatistics = new TaskQueueStatisticsList(
+    protected function getStatistics() {
+        if (!$this->_statistics) {
+            $this->_statistics = new TaskQueueStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
                 $this->solution['sid']
             );
         }
 
-        return $this->_taskQueueStatistics;
+        return $this->_statistics;
     }
 
     /**
-     * Access the taskQueueRealTimeStatistics
+     * Access the realTimeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList 
      */
-    protected function getTaskQueueRealTimeStatistics() {
-        if (!$this->_taskQueueRealTimeStatistics) {
-            $this->_taskQueueRealTimeStatistics = new TaskQueueRealTimeStatisticsList(
+    protected function getRealTimeStatistics() {
+        if (!$this->_realTimeStatistics) {
+            $this->_realTimeStatistics = new TaskQueueRealTimeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
                 $this->solution['sid']
             );
         }
 
-        return $this->_taskQueueRealTimeStatistics;
+        return $this->_realTimeStatistics;
     }
 
     /**
-     * Access the taskQueueCumulativeStatistics
+     * Access the cumulativeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList 
      */
-    protected function getTaskQueueCumulativeStatistics() {
-        if (!$this->_taskQueueCumulativeStatistics) {
-            $this->_taskQueueCumulativeStatistics = new TaskQueueCumulativeStatisticsList(
+    protected function getCumulativeStatistics() {
+        if (!$this->_cumulativeStatistics) {
+            $this->_cumulativeStatistics = new TaskQueueCumulativeStatisticsList(
                 $this->version,
                 $this->solution['workspaceSid'],
                 $this->solution['sid']
             );
         }
 
-        return $this->_taskQueueCumulativeStatistics;
+        return $this->_cumulativeStatistics;
     }
 
     /**

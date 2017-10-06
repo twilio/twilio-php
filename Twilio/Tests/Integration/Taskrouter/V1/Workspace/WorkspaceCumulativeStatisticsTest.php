@@ -21,7 +21,7 @@ class WorkspaceCumulativeStatisticsTest extends HolodeckTestCase {
 
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->workspaceCumulativeStatistics()->fetch();
+                                         ->cumulativeStatistics()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -93,7 +93,7 @@ class WorkspaceCumulativeStatisticsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->workspaceCumulativeStatistics()->fetch();
+                                               ->cumulativeStatistics()->fetch();
 
         $this->assertNotNull($actual);
     }

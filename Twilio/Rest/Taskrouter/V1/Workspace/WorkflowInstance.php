@@ -33,8 +33,8 @@ use Twilio\Version;
  */
 class WorkflowInstance extends InstanceResource {
     protected $_statistics = null;
-    protected $_workflowRealTimeStatistics = null;
-    protected $_workflowCumulativeStatistics = null;
+    protected $_realTimeStatistics = null;
+    protected $_cumulativeStatistics = null;
 
     /**
      * Initialize the WorkflowInstance
@@ -131,21 +131,21 @@ class WorkflowInstance extends InstanceResource {
     }
 
     /**
-     * Access the workflowRealTimeStatistics
+     * Access the realTimeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList 
      */
-    protected function getWorkflowRealTimeStatistics() {
-        return $this->proxy()->workflowRealTimeStatistics;
+    protected function getRealTimeStatistics() {
+        return $this->proxy()->realTimeStatistics;
     }
 
     /**
-     * Access the workflowCumulativeStatistics
+     * Access the cumulativeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList 
      */
-    protected function getWorkflowCumulativeStatistics() {
-        return $this->proxy()->workflowCumulativeStatistics;
+    protected function getCumulativeStatistics() {
+        return $this->proxy()->cumulativeStatistics;
     }
 
     /**

@@ -34,8 +34,8 @@ use Twilio\Version;
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList workers
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList workflows
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList statistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList workspaceRealTimeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList workspaceCumulativeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList realTimeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList cumulativeStatistics
  * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList taskChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
@@ -44,8 +44,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext workers(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext workflows(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsContext statistics()
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsContext workspaceRealTimeStatistics()
- * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsContext workspaceCumulativeStatistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsContext realTimeStatistics()
+ * @method \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsContext cumulativeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext taskChannels(string $sid)
  */
 class WorkspaceContext extends InstanceContext {
@@ -56,8 +56,8 @@ class WorkspaceContext extends InstanceContext {
     protected $_workers = null;
     protected $_workflows = null;
     protected $_statistics = null;
-    protected $_workspaceRealTimeStatistics = null;
-    protected $_workspaceCumulativeStatistics = null;
+    protected $_realTimeStatistics = null;
+    protected $_cumulativeStatistics = null;
     protected $_taskChannels = null;
 
     /**
@@ -254,35 +254,35 @@ class WorkspaceContext extends InstanceContext {
     }
 
     /**
-     * Access the workspaceRealTimeStatistics
+     * Access the realTimeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList 
      */
-    protected function getWorkspaceRealTimeStatistics() {
-        if (!$this->_workspaceRealTimeStatistics) {
-            $this->_workspaceRealTimeStatistics = new WorkspaceRealTimeStatisticsList(
+    protected function getRealTimeStatistics() {
+        if (!$this->_realTimeStatistics) {
+            $this->_realTimeStatistics = new WorkspaceRealTimeStatisticsList(
                 $this->version,
                 $this->solution['sid']
             );
         }
 
-        return $this->_workspaceRealTimeStatistics;
+        return $this->_realTimeStatistics;
     }
 
     /**
-     * Access the workspaceCumulativeStatistics
+     * Access the cumulativeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList 
      */
-    protected function getWorkspaceCumulativeStatistics() {
-        if (!$this->_workspaceCumulativeStatistics) {
-            $this->_workspaceCumulativeStatistics = new WorkspaceCumulativeStatisticsList(
+    protected function getCumulativeStatistics() {
+        if (!$this->_cumulativeStatistics) {
+            $this->_cumulativeStatistics = new WorkspaceCumulativeStatisticsList(
                 $this->version,
                 $this->solution['sid']
             );
         }
 
-        return $this->_workspaceCumulativeStatistics;
+        return $this->_cumulativeStatistics;
     }
 
     /**

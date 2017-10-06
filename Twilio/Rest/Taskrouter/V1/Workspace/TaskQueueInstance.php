@@ -34,10 +34,9 @@ use Twilio\Version;
  * @property array links
  */
 class TaskQueueInstance extends InstanceResource {
-    protected $_taskQueuesStatistics = null;
-    protected $_taskQueueStatistics = null;
-    protected $_taskQueueRealTimeStatistics = null;
-    protected $_taskQueueCumulativeStatistics = null;
+    protected $_statistics = null;
+    protected $_realTimeStatistics = null;
+    protected $_cumulativeStatistics = null;
 
     /**
      * Initialize the TaskQueueInstance
@@ -127,39 +126,30 @@ class TaskQueueInstance extends InstanceResource {
     }
 
     /**
-     * Access the taskQueuesStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList 
-     */
-    protected function getTaskQueuesStatistics() {
-        return $this->proxy()->taskQueuesStatistics;
-    }
-
-    /**
-     * Access the taskQueueStatistics
+     * Access the statistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
      */
-    protected function getTaskQueueStatistics() {
-        return $this->proxy()->taskQueueStatistics;
+    protected function getStatistics() {
+        return $this->proxy()->statistics;
     }
 
     /**
-     * Access the taskQueueRealTimeStatistics
+     * Access the realTimeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList 
      */
-    protected function getTaskQueueRealTimeStatistics() {
-        return $this->proxy()->taskQueueRealTimeStatistics;
+    protected function getRealTimeStatistics() {
+        return $this->proxy()->realTimeStatistics;
     }
 
     /**
-     * Access the taskQueueCumulativeStatistics
+     * Access the cumulativeStatistics
      * 
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList 
      */
-    protected function getTaskQueueCumulativeStatistics() {
-        return $this->proxy()->taskQueueCumulativeStatistics;
+    protected function getCumulativeStatistics() {
+        return $this->proxy()->cumulativeStatistics;
     }
 
     /**

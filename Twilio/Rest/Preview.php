@@ -11,6 +11,7 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Preview\AccSecurity;
 use Twilio\Rest\Preview\BulkExports;
 use Twilio\Rest\Preview\DeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers;
@@ -25,6 +26,7 @@ use Twilio\Rest\Preview\Wireless;
  * @property \Twilio\Rest\Preview\HostedNumbers hostedNumbers
  * @property \Twilio\Rest\Preview\Marketplace marketplace
  * @property \Twilio\Rest\Preview\Proxy proxy
+ * @property \Twilio\Rest\Preview\AccSecurity accSecurity
  * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Wireless wireless
  * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
@@ -54,6 +56,7 @@ class Preview extends Domain {
     protected $_hostedNumbers = null;
     protected $_marketplace = null;
     protected $_proxy = null;
+    protected $_accSecurity = null;
     protected $_sync = null;
     protected $_wireless = null;
 
@@ -119,6 +122,16 @@ class Preview extends Domain {
             $this->_proxy = new Proxy($this);
         }
         return $this->_proxy;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\AccSecurity Version accSecurity of preview
+     */
+    protected function getAccSecurity() {
+        if (!$this->_accSecurity) {
+            $this->_accSecurity = new AccSecurity($this);
+        }
+        return $this->_accSecurity;
     }
 
     /**

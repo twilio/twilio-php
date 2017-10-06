@@ -22,7 +22,7 @@ class WorkersRealTimeStatisticsTest extends HolodeckTestCase {
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->workers("WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->workersRealTimeStatistics()->fetch();
+                                         ->realTimeStatistics()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -69,7 +69,7 @@ class WorkersRealTimeStatisticsTest extends HolodeckTestCase {
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                                ->workers("WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->workersRealTimeStatistics()->fetch();
+                                               ->realTimeStatistics()->fetch();
 
         $this->assertNotNull($actual);
     }
