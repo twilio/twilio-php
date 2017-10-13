@@ -1,6 +1,23 @@
 twilio-php Changelog
 ====================
 
+[2017-10-13] Version 5.15.2
+----------------------------
+**Api**
+- Add `smart_encoded` param for Messages
+- Add `identity_sid` param to IncomingPhoneNumbers create and update
+
+**Preview**
+- Make 'address_sid' and 'email' optional fields when creating a HostedNumberOrder
+- Add AuthorizationDocuments preview API.
+
+**Proxy**
+- Initial Release
+
+**Wireless**
+- Added `ip_address` to sim resource
+
+
 [2017-10-06] Version 5.15.1
 ----------------------------
 **Preview**

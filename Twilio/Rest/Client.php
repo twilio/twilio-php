@@ -28,6 +28,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Notify notify
  * @property \Twilio\Rest\Preview preview
  * @property \Twilio\Rest\Pricing pricing
+ * @property \Twilio\Rest\Proxy proxy
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
  * @property \Twilio\Rest\Video video
@@ -97,6 +98,7 @@ class Client {
     protected $_notify = null;
     protected $_preview = null;
     protected $_pricing = null;
+    protected $_proxy = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
     protected $_video = null;
@@ -681,6 +683,18 @@ class Client {
             $this->_pricing = new Pricing($this);
         }
         return $this->_pricing;
+    }
+
+    /**
+     * Access the Proxy Twilio Domain
+     * 
+     * @return \Twilio\Rest\Proxy Proxy Twilio Domain
+     */
+    protected function getProxy() {
+        if (!$this->_proxy) {
+            $this->_proxy = new Proxy($this);
+        }
+        return $this->_proxy;
     }
 
     /**

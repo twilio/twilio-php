@@ -41,6 +41,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  * @property array links
+ * @property string ipAddress
  */
 class SimInstance extends InstanceResource {
     protected $_usageRecords = null;
@@ -81,6 +82,7 @@ class SimInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'ipAddress' => Values::array_get($payload, 'ip_address'),
         );
 
         $this->solution = array(

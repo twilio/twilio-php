@@ -47,12 +47,12 @@ class Dial extends TwiML {
     /**
      * Add Number child.
      * 
-     * @param phoneNumber $number Phone Number to dial
+     * @param phoneNumber $phoneNumber Phone Number to dial
      * @param array $attributes Optional attributes
      * @return TwiML Child element.
      */
-    public function number($number, $attributes = array()) {
-        return $this->nest(new Voice\Number($number, $attributes));
+    public function number($phoneNumber, $attributes = array()) {
+        return $this->nest(new Voice\Number($phoneNumber, $attributes));
     }
 
     /**
@@ -186,5 +186,28 @@ class Dial extends TwiML {
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
         return $this->setAttribute('recordingStatusCallbackMethod', $recordingStatusCallbackMethod);
+    }
+
+    /**
+     * Add AnswerOnBridge attribute.
+     * 
+     * @param boolean $answerOnBridge Preserve the ringing behavior of the inbound
+     *                                call until the Dialed call picks up
+     * @return TwiML $this.
+     */
+    public function setAnswerOnBridge($answerOnBridge) {
+        return $this->setAttribute('answerOnBridge', $answerOnBridge);
+    }
+
+    /**
+     * Add RingTone attribute.
+     * 
+     * @param enum:RingTone $ringTone Ringtone allows you to override the ringback
+     *                                tone that Twilio will play back to the caller
+     *                                while executing the Dial
+     * @return TwiML $this.
+     */
+    public function setRingTone($ringTone) {
+        return $this->setAttribute('ringTone', $ringTone);
     }
 }

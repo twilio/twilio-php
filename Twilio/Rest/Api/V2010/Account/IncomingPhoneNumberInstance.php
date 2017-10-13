@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
+ * @property string identitySid
  * @property string phoneNumber
  * @property string origin
  * @property string sid
@@ -71,6 +72,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'identitySid' => Values::array_get($payload, 'identity_sid'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'origin' => Values::array_get($payload, 'origin'),
             'sid' => Values::array_get($payload, 'sid'),

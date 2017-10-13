@@ -32,6 +32,7 @@ use Twilio\Rest\Preview\Wireless;
  * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
  * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
+ * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList authorizationDocuments
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
  * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
@@ -42,6 +43,7 @@ use Twilio\Rest\Preview\Wireless;
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
+ * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
@@ -230,6 +232,21 @@ class Preview extends Domain {
      */
     protected function contextFleets($sid) {
         return $this->deployedDevices->fleets($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList 
+     */
+    protected function getAuthorizationDocuments() {
+        return $this->hostedNumbers->authorizationDocuments;
+    }
+
+    /**
+     * @param string $sid AuthorizationDocument sid.
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext 
+     */
+    protected function contextAuthorizationDocuments($sid) {
+        return $this->hostedNumbers->authorizationDocuments($sid);
     }
 
     /**

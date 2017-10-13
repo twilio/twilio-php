@@ -28,10 +28,11 @@ abstract class MessageOptions {
      * @param string $providerSid The provider_sid
      * @param string $contentRetention The content_retention
      * @param string $addressRetention The address_retention
+     * @param boolean $smartEncoded The smart_encoded
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention, $smartEncoded);
     }
 
     /**
@@ -63,8 +64,9 @@ class CreateMessageOptions extends Options {
      * @param string $providerSid The provider_sid
      * @param string $contentRetention The content_retention
      * @param string $addressRetention The address_retention
+     * @param boolean $smartEncoded The smart_encoded
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -79,6 +81,7 @@ class CreateMessageOptions extends Options {
         $this->options['providerSid'] = $providerSid;
         $this->options['contentRetention'] = $contentRetention;
         $this->options['addressRetention'] = $addressRetention;
+        $this->options['smartEncoded'] = $smartEncoded;
     }
 
     /**
@@ -232,6 +235,17 @@ class CreateMessageOptions extends Options {
      */
     public function setAddressRetention($addressRetention) {
         $this->options['addressRetention'] = $addressRetention;
+        return $this;
+    }
+
+    /**
+     * The smart_encoded
+     * 
+     * @param boolean $smartEncoded The smart_encoded
+     * @return $this Fluent Builder
+     */
+    public function setSmartEncoded($smartEncoded) {
+        $this->options['smartEncoded'] = $smartEncoded;
         return $this;
     }
 

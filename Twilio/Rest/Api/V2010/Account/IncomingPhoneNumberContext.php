@@ -74,6 +74,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
             'EmergencyAddressSid' => $options['emergencyAddressSid'],
             'TrunkSid' => $options['trunkSid'],
             'VoiceReceiveMode' => $options['voiceReceiveMode'],
+            'IdentitySid' => $options['identitySid'],
         ));
 
         $payload = $this->version->update(

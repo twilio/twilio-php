@@ -11,14 +11,18 @@ namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList;
 use Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList authorizationDocuments
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
+ * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */
 class HostedNumbers extends Version {
+    protected $_authorizationDocuments = null;
     protected $_hostedNumberOrders = null;
 
     /**
@@ -30,6 +34,16 @@ class HostedNumbers extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'HostedNumbers';
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList 
+     */
+    protected function getAuthorizationDocuments() {
+        if (!$this->_authorizationDocuments) {
+            $this->_authorizationDocuments = new AuthorizationDocumentList($this);
+        }
+        return $this->_authorizationDocuments;
     }
 
     /**

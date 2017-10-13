@@ -233,16 +233,14 @@ class HostedNumberOrderTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "isoCountry", True, "email");
+            $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+987654321", "isoCountry", True);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'AddressSid' => "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             'PhoneNumber' => "+987654321",
             'IsoCountry' => "isoCountry",
             'SmsCapability' => Serialize::booleanToString(True),
-            'Email' => "email",
         );
 
         $this->assertRequest(new Request(
@@ -281,7 +279,40 @@ class HostedNumberOrderTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "+987654321", "isoCountry", True, "email");
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+987654321", "isoCountry", True);
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithoutOptionalLoaFieldsResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "address_sid": null,
+                "capabilities": {
+                    "sms": true,
+                    "voice": false
+                },
+                "cc_emails": [],
+                "date_created": "2017-03-28T20:06:39Z",
+                "date_updated": "2017-03-28T20:06:39Z",
+                "email": null,
+                "friendly_name": null,
+                "incoming_phone_number_sid": "PN11111111111111111111111111111111",
+                "phone_number": "+14153608311",
+                "sid": "HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "signing_document_sid": null,
+                "status": "received",
+                "unique_name": null,
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 0
+            }
+            '
+        ));
+
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+987654321", "isoCountry", True);
 
         $this->assertNotNull($actual);
     }

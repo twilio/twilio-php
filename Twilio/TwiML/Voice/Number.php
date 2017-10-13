@@ -15,11 +15,11 @@ class Number extends TwiML {
     /**
      * Number constructor.
      * 
-     * @param phoneNumber $number Phone Number to dial
+     * @param phoneNumber $phoneNumber Phone Number to dial
      * @param array $attributes Optional attributes
      */
-    public function __construct($number, $attributes = array()) {
-        parent::__construct('Number', $number, $attributes);
+    public function __construct($phoneNumber, $attributes = array()) {
+        parent::__construct('Number', $phoneNumber, $attributes);
     }
 
     /**

@@ -132,23 +132,19 @@ class HostedNumberOrderList extends ListResource {
     /**
      * Create a new HostedNumberOrderInstance
      * 
-     * @param string $addressSid Address sid.
      * @param string $phoneNumber An E164 formatted phone number.
      * @param string $isoCountry ISO country code.
      * @param boolean $smsCapability Specify SMS capability to host.
-     * @param string $email Email.
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
      */
-    public function create($addressSid, $phoneNumber, $isoCountry, $smsCapability, $email, $options = array()) {
+    public function create($phoneNumber, $isoCountry, $smsCapability, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'AddressSid' => $addressSid,
             'PhoneNumber' => $phoneNumber,
             'IsoCountry' => $isoCountry,
             'SmsCapability' => Serialize::booleanToString($smsCapability),
-            'Email' => $email,
             'AccountSid' => $options['accountSid'],
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
@@ -160,6 +156,8 @@ class HostedNumberOrderList extends ListResource {
             'StatusCallbackUrl' => $options['statusCallbackUrl'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SmsApplicationSid' => $options['smsApplicationSid'],
+            'AddressSid' => $options['addressSid'],
+            'Email' => $options['email'],
         ));
 
         $payload = $this->version->create(
