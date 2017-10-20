@@ -156,6 +156,7 @@ class MobileList extends ListResource {
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
             'IdentitySid' => $options['identitySid'],
+            'AddressSid' => $options['addressSid'],
         ));
 
         $payload = $this->version->create(

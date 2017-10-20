@@ -33,10 +33,11 @@ abstract class TollFreeOptions {
      * @param string $inRateCenter The in_rate_center
      * @param string $inLata The in_lata
      * @param string $inLocality The in_locality
+     * @param boolean $faxEnabled The fax_enabled
      * @return ReadTollFreeOptions Options builder
      */
-    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE) {
-        return new ReadTollFreeOptions($areaCode, $contains, $smsEnabled, $mmsEnabled, $voiceEnabled, $excludeAllAddressRequired, $excludeLocalAddressRequired, $excludeForeignAddressRequired, $beta, $nearNumber, $nearLatLong, $distance, $inPostalCode, $inRegion, $inRateCenter, $inLata, $inLocality);
+    public static function read($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE, $faxEnabled = Values::NONE) {
+        return new ReadTollFreeOptions($areaCode, $contains, $smsEnabled, $mmsEnabled, $voiceEnabled, $excludeAllAddressRequired, $excludeLocalAddressRequired, $excludeForeignAddressRequired, $beta, $nearNumber, $nearLatLong, $distance, $inPostalCode, $inRegion, $inRateCenter, $inLata, $inLocality, $faxEnabled);
     }
 }
 
@@ -61,8 +62,9 @@ class ReadTollFreeOptions extends Options {
      * @param string $inRateCenter The in_rate_center
      * @param string $inLata The in_lata
      * @param string $inLocality The in_locality
+     * @param boolean $faxEnabled The fax_enabled
      */
-    public function __construct($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE) {
+    public function __construct($areaCode = Values::NONE, $contains = Values::NONE, $smsEnabled = Values::NONE, $mmsEnabled = Values::NONE, $voiceEnabled = Values::NONE, $excludeAllAddressRequired = Values::NONE, $excludeLocalAddressRequired = Values::NONE, $excludeForeignAddressRequired = Values::NONE, $beta = Values::NONE, $nearNumber = Values::NONE, $nearLatLong = Values::NONE, $distance = Values::NONE, $inPostalCode = Values::NONE, $inRegion = Values::NONE, $inRateCenter = Values::NONE, $inLata = Values::NONE, $inLocality = Values::NONE, $faxEnabled = Values::NONE) {
         $this->options['areaCode'] = $areaCode;
         $this->options['contains'] = $contains;
         $this->options['smsEnabled'] = $smsEnabled;
@@ -80,6 +82,7 @@ class ReadTollFreeOptions extends Options {
         $this->options['inRateCenter'] = $inRateCenter;
         $this->options['inLata'] = $inLata;
         $this->options['inLocality'] = $inLocality;
+        $this->options['faxEnabled'] = $faxEnabled;
     }
 
     /**
@@ -268,6 +271,17 @@ class ReadTollFreeOptions extends Options {
      */
     public function setInLocality($inLocality) {
         $this->options['inLocality'] = $inLocality;
+        return $this;
+    }
+
+    /**
+     * The fax_enabled
+     * 
+     * @param boolean $faxEnabled The fax_enabled
+     * @return $this Fluent Builder
+     */
+    public function setFaxEnabled($faxEnabled) {
+        $this->options['faxEnabled'] = $faxEnabled;
         return $this;
     }
 

@@ -43,6 +43,7 @@ class LocalTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "address_requirements": "none",
+                        "address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "api_version": "2010-04-01",
                         "beta": null,
                         "capabilities": {
@@ -151,6 +152,7 @@ class LocalTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "address_requirements": "none",
+                "address_sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "beta": false,
                 "capabilities": {

@@ -114,6 +114,7 @@ class MobileList extends ListResource {
             'InRateCenter' => $options['inRateCenter'],
             'InLata' => $options['inLata'],
             'InLocality' => $options['inLocality'],
+            'FaxEnabled' => Serialize::booleanToString($options['faxEnabled']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

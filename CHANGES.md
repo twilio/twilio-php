@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2017-10-20] Version 5.15.3
+----------------------------
+**Api**
+- Add `address_sid` param to IncomingPhoneNumbers create and update
+- Add 'fax_enabled' option for Phone Number Search
+
+
 [2017-10-13] Version 5.15.2
 ----------------------------
 **Api**

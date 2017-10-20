@@ -18,6 +18,7 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
+ * @property string addressSid
  * @property string addressRequirements
  * @property string apiVersion
  * @property boolean beta
@@ -65,6 +66,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'accountSid' => Values::array_get($payload, 'account_sid'),
+            'addressSid' => Values::array_get($payload, 'address_sid'),
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'beta' => Values::array_get($payload, 'beta'),
