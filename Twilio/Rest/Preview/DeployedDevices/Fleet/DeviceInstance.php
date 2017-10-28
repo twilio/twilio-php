@@ -61,10 +61,7 @@ class DeviceInstance extends InstanceResource {
             'dateAuthenticated' => Deserialize::dateTime(Values::array_get($payload, 'date_authenticated')),
         );
 
-        $this->solution = array(
-            'fleetSid' => $fleetSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -112,9 +109,7 @@ class DeviceInstance extends InstanceResource {
      * @return DeviceInstance Updated DeviceInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

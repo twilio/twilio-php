@@ -57,10 +57,7 @@ class OriginationUrlInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'trunkSid' => $trunkSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -108,9 +105,7 @@ class OriginationUrlInstance extends InstanceResource {
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

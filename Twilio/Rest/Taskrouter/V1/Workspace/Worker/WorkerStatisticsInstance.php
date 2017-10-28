@@ -44,10 +44,7 @@ class WorkerStatisticsInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'workerSid' => $workerSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid,);
     }
 
     /**
@@ -75,9 +72,7 @@ class WorkerStatisticsInstance extends InstanceResource {
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**

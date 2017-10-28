@@ -40,9 +40,7 @@ class IncomingPhoneNumberList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers.json';
     }
@@ -183,11 +181,7 @@ class IncomingPhoneNumberList extends ListResource {
             $data
         );
 
-        return new IncomingPhoneNumberInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new IncomingPhoneNumberInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -195,10 +189,7 @@ class IncomingPhoneNumberList extends ListResource {
      */
     protected function getLocal() {
         if (!$this->_local) {
-            $this->_local = new LocalList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_local = new LocalList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_local;
@@ -209,10 +200,7 @@ class IncomingPhoneNumberList extends ListResource {
      */
     protected function getMobile() {
         if (!$this->_mobile) {
-            $this->_mobile = new MobileList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_mobile = new MobileList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_mobile;
@@ -223,10 +211,7 @@ class IncomingPhoneNumberList extends ListResource {
      */
     protected function getTollFree() {
         if (!$this->_tollFree) {
-            $this->_tollFree = new TollFreeList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_tollFree = new TollFreeList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_tollFree;
@@ -239,11 +224,7 @@ class IncomingPhoneNumberList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
      */
     public function getContext($sid) {
-        return new IncomingPhoneNumberContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new IncomingPhoneNumberContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

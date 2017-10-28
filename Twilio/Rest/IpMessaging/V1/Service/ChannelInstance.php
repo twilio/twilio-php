@@ -67,10 +67,7 @@ class ChannelInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -117,9 +114,7 @@ class ChannelInstance extends InstanceResource {
      * @return ChannelInstance Updated ChannelInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

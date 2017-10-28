@@ -23,10 +23,7 @@ class SimPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SimInstance(
-            $this->version,
-            $payload
-        );
+        return new SimInstance($this->version, $payload);
     }
 
     /**

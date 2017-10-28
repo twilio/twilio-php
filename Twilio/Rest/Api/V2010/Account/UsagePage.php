@@ -20,11 +20,7 @@ class UsagePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new UsageInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new UsageInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

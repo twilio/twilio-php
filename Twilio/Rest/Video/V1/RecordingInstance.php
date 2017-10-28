@@ -59,9 +59,7 @@ class RecordingInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -73,10 +71,7 @@ class RecordingInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new RecordingContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new RecordingContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;

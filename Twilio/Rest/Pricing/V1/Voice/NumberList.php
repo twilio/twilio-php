@@ -33,10 +33,7 @@ class NumberList extends ListResource {
      * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext 
      */
     public function getContext($number) {
-        return new NumberContext(
-            $this->version,
-            $number
-        );
+        return new NumberContext($this->version, $number);
     }
 
     /**

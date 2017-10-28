@@ -20,11 +20,7 @@ class QueuePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new QueueInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new QueueInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

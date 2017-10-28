@@ -77,10 +77,7 @@ class MessageInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -127,9 +124,7 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      */
     public function update($body) {
-        return $this->proxy()->update(
-            $body
-        );
+        return $this->proxy()->update($body);
     }
 
     /**

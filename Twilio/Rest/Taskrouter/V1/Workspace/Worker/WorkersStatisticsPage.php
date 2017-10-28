@@ -20,11 +20,7 @@ class WorkersStatisticsPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new WorkersStatisticsInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new WorkersStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

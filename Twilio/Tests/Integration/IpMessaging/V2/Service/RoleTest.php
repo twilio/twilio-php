@@ -230,9 +230,7 @@ class RoleTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Permission' => array('permission'),
-        );
+        $values = array('Permission' => array('permission'),);
 
         $this->assertRequest(new Request(
             'post',

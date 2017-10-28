@@ -20,11 +20,7 @@ class OutgoingCallerIdPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new OutgoingCallerIdInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new OutgoingCallerIdInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

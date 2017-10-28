@@ -12,6 +12,7 @@ namespace Twilio\Rest\Chat\V2;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Chat\V2\Service\BindingList;
 use Twilio\Rest\Chat\V2\Service\ChannelList;
 use Twilio\Rest\Chat\V2\Service\RoleList;
 use Twilio\Rest\Chat\V2\Service\UserList;
@@ -23,14 +24,17 @@ use Twilio\Version;
  * @property \Twilio\Rest\Chat\V2\Service\ChannelList channels
  * @property \Twilio\Rest\Chat\V2\Service\RoleList roles
  * @property \Twilio\Rest\Chat\V2\Service\UserList users
+ * @property \Twilio\Rest\Chat\V2\Service\BindingList bindings
  * @method \Twilio\Rest\Chat\V2\Service\ChannelContext channels(string $sid)
  * @method \Twilio\Rest\Chat\V2\Service\RoleContext roles(string $sid)
  * @method \Twilio\Rest\Chat\V2\Service\UserContext users(string $sid)
+ * @method \Twilio\Rest\Chat\V2\Service\BindingContext bindings(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_channels = null;
     protected $_roles = null;
     protected $_users = null;
+    protected $_bindings = null;
 
     /**
      * Initialize the ServiceContext
@@ -43,9 +47,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -64,11 +66,7 @@ class ServiceContext extends InstanceContext {
             $params
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -129,11 +127,7 @@ class ServiceContext extends InstanceContext {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -143,10 +137,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getChannels() {
         if (!$this->_channels) {
-            $this->_channels = new ChannelList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_channels = new ChannelList($this->version, $this->solution['sid']);
         }
 
         return $this->_channels;
@@ -159,10 +150,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getRoles() {
         if (!$this->_roles) {
-            $this->_roles = new RoleList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_roles = new RoleList($this->version, $this->solution['sid']);
         }
 
         return $this->_roles;
@@ -175,13 +163,23 @@ class ServiceContext extends InstanceContext {
      */
     protected function getUsers() {
         if (!$this->_users) {
-            $this->_users = new UserList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_users = new UserList($this->version, $this->solution['sid']);
         }
 
         return $this->_users;
+    }
+
+    /**
+     * Access the bindings
+     * 
+     * @return \Twilio\Rest\Chat\V2\Service\BindingList 
+     */
+    protected function getBindings() {
+        if (!$this->_bindings) {
+            $this->_bindings = new BindingList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_bindings;
     }
 
     /**

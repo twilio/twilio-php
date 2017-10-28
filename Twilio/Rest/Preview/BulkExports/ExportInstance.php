@@ -42,9 +42,7 @@ class ExportInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'resourceType' => $resourceType ?: $this->properties['resourceType'],
-        );
+        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType'],);
     }
 
     /**
@@ -56,10 +54,7 @@ class ExportInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ExportContext(
-                $this->version,
-                $this->solution['resourceType']
-            );
+            $this->context = new ExportContext($this->version, $this->solution['resourceType']);
         }
 
         return $this->context;

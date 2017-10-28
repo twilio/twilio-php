@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2017-10-27] Version 5.15.4
+----------------------------
+**Chat**
+- Add Binding resource
+- Add UserBinding resource
+
+
 [2017-10-20] Version 5.15.3
 ----------------------------
 **Api**

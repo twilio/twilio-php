@@ -23,10 +23,7 @@ class HostedNumberOrderPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new HostedNumberOrderInstance(
-            $this->version,
-            $payload
-        );
+        return new HostedNumberOrderInstance($this->version, $payload);
     }
 
     /**

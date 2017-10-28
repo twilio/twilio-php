@@ -20,10 +20,7 @@ class NumberPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new NumberInstance(
-            $this->version,
-            $payload
-        );
+        return new NumberInstance($this->version, $payload);
     }
 
     /**

@@ -20,10 +20,7 @@ class AlertPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AlertInstance(
-            $this->version,
-            $payload
-        );
+        return new AlertInstance($this->version, $payload);
     }
 
     /**

@@ -27,10 +27,7 @@ class FeedbackContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'callSid' => $callSid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Feedback.json';
     }
@@ -45,10 +42,7 @@ class FeedbackContext extends InstanceContext {
     public function create($qualityScore, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'QualityScore' => $qualityScore,
-            'Issue' => $options['issue'],
-        ));
+        $data = Values::of(array('QualityScore' => $qualityScore, 'Issue' => $options['issue'],));
 
         $payload = $this->version->create(
             'POST',
@@ -97,10 +91,7 @@ class FeedbackContext extends InstanceContext {
     public function update($qualityScore, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'QualityScore' => $qualityScore,
-            'Issue' => $options['issue'],
-        ));
+        $data = Values::of(array('QualityScore' => $qualityScore, 'Issue' => $options['issue'],));
 
         $payload = $this->version->update(
             'POST',

@@ -20,10 +20,7 @@ class CredentialPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CredentialInstance(
-            $this->version,
-            $payload
-        );
+        return new CredentialInstance($this->version, $payload);
     }
 
     /**

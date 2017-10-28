@@ -41,9 +41,7 @@ class SipList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
     }
 
     /**
@@ -51,10 +49,7 @@ class SipList extends ListResource {
      */
     protected function getDomains() {
         if (!$this->_domains) {
-            $this->_domains = new DomainList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_domains = new DomainList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_domains;
@@ -79,10 +74,7 @@ class SipList extends ListResource {
      */
     protected function getCredentialLists() {
         if (!$this->_credentialLists) {
-            $this->_credentialLists = new CredentialListList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_credentialLists = new CredentialListList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_credentialLists;

@@ -59,10 +59,7 @@ class RoomList extends ListResource {
             $data
         );
 
-        return new RoomInstance(
-            $this->version,
-            $payload
-        );
+        return new RoomInstance($this->version, $payload);
     }
 
     /**
@@ -166,10 +163,7 @@ class RoomList extends ListResource {
      * @return \Twilio\Rest\Video\V1\RoomContext 
      */
     public function getContext($sid) {
-        return new RoomContext(
-            $this->version,
-            $sid
-        );
+        return new RoomContext($this->version, $sid);
     }
 
     /**

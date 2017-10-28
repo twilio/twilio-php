@@ -25,9 +25,7 @@ class TaskChannelList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskChannels';
     }
@@ -125,11 +123,7 @@ class TaskChannelList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext 
      */
     public function getContext($sid) {
-        return new TaskChannelContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new TaskChannelContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

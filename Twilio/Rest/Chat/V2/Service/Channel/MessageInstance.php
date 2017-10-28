@@ -120,9 +120,7 @@ class MessageInstance extends InstanceResource {
      * @return MessageInstance Updated MessageInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

@@ -20,10 +20,7 @@ class WorkspacePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new WorkspaceInstance(
-            $this->version,
-            $payload
-        );
+        return new WorkspaceInstance($this->version, $payload);
     }
 
     /**

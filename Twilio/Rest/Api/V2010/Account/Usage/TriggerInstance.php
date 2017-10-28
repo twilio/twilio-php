@@ -68,10 +68,7 @@ class TriggerInstance extends InstanceResource {
             'usageRecordUri' => Values::array_get($payload, 'usage_record_uri'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -109,9 +106,7 @@ class TriggerInstance extends InstanceResource {
      * @return TriggerInstance Updated TriggerInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

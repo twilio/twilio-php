@@ -68,9 +68,7 @@ class RatePlanInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -82,10 +80,7 @@ class RatePlanInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new RatePlanContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new RatePlanContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -107,9 +102,7 @@ class RatePlanInstance extends InstanceResource {
      * @return RatePlanInstance Updated RatePlanInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

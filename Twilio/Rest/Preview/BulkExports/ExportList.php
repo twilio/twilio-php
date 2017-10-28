@@ -36,10 +36,7 @@ class ExportList extends ListResource {
      * @return \Twilio\Rest\Preview\BulkExports\ExportContext 
      */
     public function getContext($resourceType) {
-        return new ExportContext(
-            $this->version,
-            $resourceType
-        );
+        return new ExportContext($this->version, $resourceType);
     }
 
     /**

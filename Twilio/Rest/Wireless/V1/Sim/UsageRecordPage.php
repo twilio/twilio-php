@@ -23,11 +23,7 @@ class UsageRecordPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new UsageRecordInstance(
-            $this->version,
-            $payload,
-            $this->solution['simSid']
-        );
+        return new UsageRecordInstance($this->version, $payload, $this->solution['simSid']);
     }
 
     /**

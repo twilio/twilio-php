@@ -148,10 +148,7 @@ class WorkspaceList extends ListResource {
             $data
         );
 
-        return new WorkspaceInstance(
-            $this->version,
-            $payload
-        );
+        return new WorkspaceInstance($this->version, $payload);
     }
 
     /**
@@ -161,10 +158,7 @@ class WorkspaceList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext 
      */
     public function getContext($sid) {
-        return new WorkspaceContext(
-            $this->version,
-            $sid
-        );
+        return new WorkspaceContext($this->version, $sid);
     }
 
     /**

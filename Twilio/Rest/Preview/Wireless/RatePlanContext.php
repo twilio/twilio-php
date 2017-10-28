@@ -29,9 +29,7 @@ class RatePlanContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/RatePlans/' . rawurlencode($sid) . '';
     }
@@ -50,11 +48,7 @@ class RatePlanContext extends InstanceContext {
             $params
         );
 
-        return new RatePlanInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new RatePlanInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -78,11 +72,7 @@ class RatePlanContext extends InstanceContext {
             $data
         );
 
-        return new RatePlanInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new RatePlanInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

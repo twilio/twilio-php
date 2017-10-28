@@ -29,9 +29,7 @@ class VerificationList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Verifications';
     }
@@ -60,11 +58,7 @@ class VerificationList extends ListResource {
             $data
         );
 
-        return new VerificationInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new VerificationInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

@@ -99,9 +99,7 @@ class PublicKeyTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'PublicKey' => "publickey",
-        );
+        $values = array('PublicKey' => "publickey",);
 
         $this->assertRequest(new Request(
             'post',

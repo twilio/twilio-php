@@ -25,9 +25,7 @@ class CountryContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'isoCountry' => $isoCountry,
-        );
+        $this->solution = array('isoCountry' => $isoCountry,);
 
         $this->uri = '/Messaging/Countries/' . rawurlencode($isoCountry) . '';
     }
@@ -46,11 +44,7 @@ class CountryContext extends InstanceContext {
             $params
         );
 
-        return new CountryInstance(
-            $this->version,
-            $payload,
-            $this->solution['isoCountry']
-        );
+        return new CountryInstance($this->version, $payload, $this->solution['isoCountry']);
     }
 
     /**

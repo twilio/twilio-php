@@ -26,9 +26,7 @@ class CredentialListList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/CredentialLists.json';
     }
@@ -126,9 +124,7 @@ class CredentialListList extends ListResource {
      * @return CredentialListInstance Newly created CredentialListInstance
      */
     public function create($friendlyName) {
-        $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-        ));
+        $data = Values::of(array('FriendlyName' => $friendlyName,));
 
         $payload = $this->version->create(
             'POST',
@@ -137,11 +133,7 @@ class CredentialListList extends ListResource {
             $data
         );
 
-        return new CredentialListInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new CredentialListInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -151,11 +143,7 @@ class CredentialListList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext 
      */
     public function getContext($sid) {
-        return new CredentialListContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new CredentialListContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

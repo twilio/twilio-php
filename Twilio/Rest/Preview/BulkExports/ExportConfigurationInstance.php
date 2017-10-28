@@ -45,9 +45,7 @@ class ExportConfigurationInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'resourceType' => $resourceType ?: $this->properties['resourceType'],
-        );
+        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType'],);
     }
 
     /**
@@ -60,10 +58,7 @@ class ExportConfigurationInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new ExportConfigurationContext(
-                $this->version,
-                $this->solution['resourceType']
-            );
+            $this->context = new ExportConfigurationContext($this->version, $this->solution['resourceType']);
         }
 
         return $this->context;
@@ -85,9 +80,7 @@ class ExportConfigurationInstance extends InstanceResource {
      * @return ExportConfigurationInstance Updated ExportConfigurationInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

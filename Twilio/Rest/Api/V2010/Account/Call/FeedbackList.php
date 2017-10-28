@@ -26,10 +26,7 @@ class FeedbackList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'callSid' => $callSid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid,);
     }
 
     /**
@@ -38,11 +35,7 @@ class FeedbackList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext 
      */
     public function getContext() {
-        return new FeedbackContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $this->solution['callSid']
-        );
+        return new FeedbackContext($this->version, $this->solution['accountSid'], $this->solution['callSid']);
     }
 
     /**

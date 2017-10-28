@@ -20,11 +20,7 @@ class TaskQueuesStatisticsPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TaskQueuesStatisticsInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new TaskQueuesStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

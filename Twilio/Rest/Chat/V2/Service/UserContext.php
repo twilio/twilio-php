@@ -12,15 +12,19 @@ namespace Twilio\Rest\Chat\V2\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Chat\V2\Service\User\UserBindingList;
 use Twilio\Rest\Chat\V2\Service\User\UserChannelList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Chat\V2\Service\User\UserChannelList userChannels
+ * @property \Twilio\Rest\Chat\V2\Service\User\UserBindingList userBindings
+ * @method \Twilio\Rest\Chat\V2\Service\User\UserBindingContext userBindings(string $sid)
  */
 class UserContext extends InstanceContext {
     protected $_userChannels = null;
+    protected $_userBindings = null;
 
     /**
      * Initialize the UserContext
@@ -34,10 +38,7 @@ class UserContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($sid) . '';
     }
@@ -118,6 +119,23 @@ class UserContext extends InstanceContext {
         }
 
         return $this->_userChannels;
+    }
+
+    /**
+     * Access the userBindings
+     * 
+     * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingList 
+     */
+    protected function getUserBindings() {
+        if (!$this->_userBindings) {
+            $this->_userBindings = new UserBindingList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_userBindings;
     }
 
     /**

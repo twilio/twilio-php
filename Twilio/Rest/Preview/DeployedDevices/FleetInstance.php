@@ -59,9 +59,7 @@ class FleetInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -73,10 +71,7 @@ class FleetInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new FleetContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new FleetContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -107,9 +102,7 @@ class FleetInstance extends InstanceResource {
      * @return FleetInstance Updated FleetInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

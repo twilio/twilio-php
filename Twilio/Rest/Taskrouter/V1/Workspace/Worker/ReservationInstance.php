@@ -100,9 +100,7 @@ class ReservationInstance extends InstanceResource {
      * @return ReservationInstance Updated ReservationInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

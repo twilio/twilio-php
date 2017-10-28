@@ -34,9 +34,7 @@ class WorkerList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers';
     }
@@ -161,11 +159,7 @@ class WorkerList extends ListResource {
             $data
         );
 
-        return new WorkerInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new WorkerInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**
@@ -173,10 +167,7 @@ class WorkerList extends ListResource {
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
-            $this->_statistics = new WorkersStatisticsList(
-                $this->version,
-                $this->solution['workspaceSid']
-            );
+            $this->_statistics = new WorkersStatisticsList($this->version, $this->solution['workspaceSid']);
         }
 
         return $this->_statistics;
@@ -189,11 +180,7 @@ class WorkerList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext 
      */
     public function getContext($sid) {
-        return new WorkerContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new WorkerContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

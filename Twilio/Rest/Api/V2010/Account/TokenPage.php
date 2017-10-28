@@ -20,11 +20,7 @@ class TokenPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TokenInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new TokenInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

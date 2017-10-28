@@ -61,10 +61,7 @@ class InstalledAddOnList extends ListResource {
             $data
         );
 
-        return new InstalledAddOnInstance(
-            $this->version,
-            $payload
-        );
+        return new InstalledAddOnInstance($this->version, $payload);
     }
 
     /**
@@ -160,10 +157,7 @@ class InstalledAddOnList extends ListResource {
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
      */
     public function getContext($sid) {
-        return new InstalledAddOnContext(
-            $this->version,
-            $sid
-        );
+        return new InstalledAddOnContext($this->version, $sid);
     }
 
     /**

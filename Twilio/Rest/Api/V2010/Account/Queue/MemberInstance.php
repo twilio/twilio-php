@@ -89,10 +89,7 @@ class MemberInstance extends InstanceResource {
      * @return MemberInstance Updated MemberInstance
      */
     public function update($url, $method) {
-        return $this->proxy()->update(
-            $url,
-            $method
-        );
+        return $this->proxy()->update($url, $method);
     }
 
     /**

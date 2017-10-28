@@ -28,9 +28,7 @@ class AvailableAddOnExtensionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'availableAddOnSid' => $availableAddOnSid,
-        );
+        $this->solution = array('availableAddOnSid' => $availableAddOnSid,);
 
         $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions';
     }
@@ -131,11 +129,7 @@ class AvailableAddOnExtensionList extends ListResource {
      * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext 
      */
     public function getContext($sid) {
-        return new AvailableAddOnExtensionContext(
-            $this->version,
-            $this->solution['availableAddOnSid'],
-            $sid
-        );
+        return new AvailableAddOnExtensionContext($this->version, $this->solution['availableAddOnSid'], $sid);
     }
 
     /**

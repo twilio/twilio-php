@@ -47,9 +47,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -77,11 +75,7 @@ class ServiceContext extends InstanceContext {
             $params
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -115,11 +109,7 @@ class ServiceContext extends InstanceContext {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -129,10 +119,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getBindings() {
         if (!$this->_bindings) {
-            $this->_bindings = new BindingList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_bindings = new BindingList($this->version, $this->solution['sid']);
         }
 
         return $this->_bindings;
@@ -145,10 +132,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getNotifications() {
         if (!$this->_notifications) {
-            $this->_notifications = new NotificationList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_notifications = new NotificationList($this->version, $this->solution['sid']);
         }
 
         return $this->_notifications;
@@ -161,10 +145,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getUsers() {
         if (!$this->_users) {
-            $this->_users = new UserList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_users = new UserList($this->version, $this->solution['sid']);
         }
 
         return $this->_users;
@@ -177,10 +158,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getSegments() {
         if (!$this->_segments) {
-            $this->_segments = new SegmentList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_segments = new SegmentList($this->version, $this->solution['sid']);
         }
 
         return $this->_segments;

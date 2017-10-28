@@ -43,10 +43,7 @@ class ServiceList extends ListResource {
     public function create($name, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Name' => $name,
-            'CodeLength' => $options['codeLength'],
-        ));
+        $data = Values::of(array('Name' => $name, 'CodeLength' => $options['codeLength'],));
 
         $payload = $this->version->create(
             'POST',
@@ -55,10 +52,7 @@ class ServiceList extends ListResource {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload
-        );
+        return new ServiceInstance($this->version, $payload);
     }
 
     /**
@@ -154,10 +148,7 @@ class ServiceList extends ListResource {
      * @return \Twilio\Rest\Preview\AccSecurity\ServiceContext 
      */
     public function getContext($sid) {
-        return new ServiceContext(
-            $this->version,
-            $sid
-        );
+        return new ServiceContext($this->version, $sid);
     }
 
     /**

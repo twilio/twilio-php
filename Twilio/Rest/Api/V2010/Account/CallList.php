@@ -36,9 +36,7 @@ class CallList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls.json';
     }
@@ -85,11 +83,7 @@ class CallList extends ListResource {
             $data
         );
 
-        return new CallInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new CallInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -197,10 +191,7 @@ class CallList extends ListResource {
      */
     protected function getFeedbackSummaries() {
         if (!$this->_feedbackSummaries) {
-            $this->_feedbackSummaries = new FeedbackSummaryList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_feedbackSummaries = new FeedbackSummaryList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_feedbackSummaries;
@@ -213,11 +204,7 @@ class CallList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     public function getContext($sid) {
-        return new CallContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new CallContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

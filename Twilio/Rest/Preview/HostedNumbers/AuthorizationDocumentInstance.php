@@ -52,9 +52,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -65,10 +63,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new AuthorizationDocumentContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new AuthorizationDocumentContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -90,9 +85,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      * @return AuthorizationDocumentInstance Updated AuthorizationDocumentInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

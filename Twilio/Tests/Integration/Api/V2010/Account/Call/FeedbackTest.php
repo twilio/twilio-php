@@ -26,9 +26,7 @@ class FeedbackTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'QualityScore' => 1,
-        );
+        $values = array('QualityScore' => 1,);
 
         $this->assertRequest(new Request(
             'post',
@@ -114,9 +112,7 @@ class FeedbackTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'QualityScore' => 1,
-        );
+        $values = array('QualityScore' => 1,);
 
         $this->assertRequest(new Request(
             'post',

@@ -28,9 +28,7 @@ class ShortCodeList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/ShortCodes';
     }
@@ -42,9 +40,7 @@ class ShortCodeList extends ListResource {
      * @return ShortCodeInstance Newly created ShortCodeInstance
      */
     public function create($sid) {
-        $data = Values::of(array(
-            'Sid' => $sid,
-        ));
+        $data = Values::of(array('Sid' => $sid,));
 
         $payload = $this->version->create(
             'POST',
@@ -53,11 +49,7 @@ class ShortCodeList extends ListResource {
             $data
         );
 
-        return new ShortCodeInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new ShortCodeInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -153,11 +145,7 @@ class ShortCodeList extends ListResource {
      * @return \Twilio\Rest\Proxy\V1\Service\ShortCodeContext 
      */
     public function getContext($sid) {
-        return new ShortCodeContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new ShortCodeContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

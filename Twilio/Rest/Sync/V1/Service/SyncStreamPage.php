@@ -23,11 +23,7 @@ class SyncStreamPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SyncStreamInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new SyncStreamInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

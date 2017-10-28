@@ -20,11 +20,7 @@ class MessagePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new MessageInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new MessageInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

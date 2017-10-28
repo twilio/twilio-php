@@ -65,10 +65,7 @@ class UserInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -115,9 +112,7 @@ class UserInstance extends InstanceResource {
      * @return UserInstance Updated UserInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

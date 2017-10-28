@@ -20,11 +20,7 @@ class LocalPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new LocalInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new LocalInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

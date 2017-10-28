@@ -20,11 +20,7 @@ class CallPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CallInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new CallInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

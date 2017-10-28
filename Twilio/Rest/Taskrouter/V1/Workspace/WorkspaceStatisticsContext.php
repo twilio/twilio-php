@@ -27,9 +27,7 @@ class WorkspaceStatisticsContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Statistics';
     }
@@ -57,11 +55,7 @@ class WorkspaceStatisticsContext extends InstanceContext {
             $params
         );
 
-        return new WorkspaceStatisticsInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new WorkspaceStatisticsInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

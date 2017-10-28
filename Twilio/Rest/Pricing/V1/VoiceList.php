@@ -43,9 +43,7 @@ class VoiceList extends ListResource {
      */
     protected function getNumbers() {
         if (!$this->_numbers) {
-            $this->_numbers = new NumberList(
-                $this->version
-            );
+            $this->_numbers = new NumberList($this->version);
         }
 
         return $this->_numbers;
@@ -56,9 +54,7 @@ class VoiceList extends ListResource {
      */
     protected function getCountries() {
         if (!$this->_countries) {
-            $this->_countries = new CountryList(
-                $this->version
-            );
+            $this->_countries = new CountryList($this->version);
         }
 
         return $this->_countries;

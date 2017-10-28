@@ -144,10 +144,7 @@ class CredentialList extends ListResource {
             $data
         );
 
-        return new CredentialInstance(
-            $this->version,
-            $payload
-        );
+        return new CredentialInstance($this->version, $payload);
     }
 
     /**
@@ -157,10 +154,7 @@ class CredentialList extends ListResource {
      * @return \Twilio\Rest\Chat\V2\CredentialContext 
      */
     public function getContext($sid) {
-        return new CredentialContext(
-            $this->version,
-            $sid
-        );
+        return new CredentialContext($this->version, $sid);
     }
 
     /**

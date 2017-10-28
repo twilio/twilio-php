@@ -50,9 +50,7 @@ class AvailableAddOnInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -65,10 +63,7 @@ class AvailableAddOnInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new AvailableAddOnContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new AvailableAddOnContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;

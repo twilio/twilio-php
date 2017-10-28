@@ -23,11 +23,7 @@ class CertificatePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CertificateInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid']
-        );
+        return new CertificateInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
     /**

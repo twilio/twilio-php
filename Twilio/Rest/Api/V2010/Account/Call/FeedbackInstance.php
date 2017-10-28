@@ -48,10 +48,7 @@ class FeedbackInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'callSid' => $callSid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid,);
     }
 
     /**
@@ -81,10 +78,7 @@ class FeedbackInstance extends InstanceResource {
      * @return FeedbackInstance Newly created FeedbackInstance
      */
     public function create($qualityScore, $options = array()) {
-        return $this->proxy()->create(
-            $qualityScore,
-            $options
-        );
+        return $this->proxy()->create($qualityScore, $options);
     }
 
     /**
@@ -104,10 +98,7 @@ class FeedbackInstance extends InstanceResource {
      * @return FeedbackInstance Updated FeedbackInstance
      */
     public function update($qualityScore, $options = array()) {
-        return $this->proxy()->update(
-            $qualityScore,
-            $options
-        );
+        return $this->proxy()->update($qualityScore, $options);
     }
 
     /**

@@ -58,9 +58,7 @@ class InstalledAddOnInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -73,10 +71,7 @@ class InstalledAddOnInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new InstalledAddOnContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new InstalledAddOnContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -107,9 +102,7 @@ class InstalledAddOnInstance extends InstanceResource {
      * @return InstalledAddOnInstance Updated InstalledAddOnInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

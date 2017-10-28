@@ -42,9 +42,7 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
     }
 
     /**

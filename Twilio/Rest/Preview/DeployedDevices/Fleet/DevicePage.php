@@ -23,11 +23,7 @@ class DevicePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DeviceInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid']
-        );
+        return new DeviceInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
     /**

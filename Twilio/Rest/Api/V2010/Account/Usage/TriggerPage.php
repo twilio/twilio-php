@@ -20,11 +20,7 @@ class TriggerPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TriggerInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new TriggerInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

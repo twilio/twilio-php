@@ -20,10 +20,7 @@ class MessagingPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new MessagingInstance(
-            $this->version,
-            $payload
-        );
+        return new MessagingInstance($this->version, $payload);
     }
 
     /**

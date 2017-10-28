@@ -20,11 +20,7 @@ class RolePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RoleInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new RoleInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

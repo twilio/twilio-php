@@ -27,9 +27,7 @@ class PhoneNumberContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'phoneNumber' => $phoneNumber,
-        );
+        $this->solution = array('phoneNumber' => $phoneNumber,);
 
         $this->uri = '/PhoneNumbers/' . rawurlencode($phoneNumber) . '';
     }
@@ -56,11 +54,7 @@ class PhoneNumberContext extends InstanceContext {
             $params
         );
 
-        return new PhoneNumberInstance(
-            $this->version,
-            $payload,
-            $this->solution['phoneNumber']
-        );
+        return new PhoneNumberInstance($this->version, $payload, $this->solution['phoneNumber']);
     }
 
     /**

@@ -25,9 +25,7 @@ class EventContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Events/' . rawurlencode($sid) . '';
     }
@@ -46,11 +44,7 @@ class EventContext extends InstanceContext {
             $params
         );
 
-        return new EventInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new EventInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

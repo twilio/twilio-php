@@ -23,11 +23,7 @@ class SyncMapPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SyncMapInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new SyncMapInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

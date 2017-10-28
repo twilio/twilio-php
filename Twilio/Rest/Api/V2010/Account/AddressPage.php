@@ -20,11 +20,7 @@ class AddressPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AddressInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new AddressInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

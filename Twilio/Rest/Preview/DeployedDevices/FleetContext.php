@@ -48,9 +48,7 @@ class FleetContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Fleets/' . rawurlencode($sid) . '';
     }
@@ -69,11 +67,7 @@ class FleetContext extends InstanceContext {
             $params
         );
 
-        return new FleetInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new FleetInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -106,11 +100,7 @@ class FleetContext extends InstanceContext {
             $data
         );
 
-        return new FleetInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new FleetInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -120,10 +110,7 @@ class FleetContext extends InstanceContext {
      */
     protected function getDevices() {
         if (!$this->_devices) {
-            $this->_devices = new DeviceList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_devices = new DeviceList($this->version, $this->solution['sid']);
         }
 
         return $this->_devices;
@@ -136,10 +123,7 @@ class FleetContext extends InstanceContext {
      */
     protected function getDeployments() {
         if (!$this->_deployments) {
-            $this->_deployments = new DeploymentList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_deployments = new DeploymentList($this->version, $this->solution['sid']);
         }
 
         return $this->_deployments;
@@ -152,10 +136,7 @@ class FleetContext extends InstanceContext {
      */
     protected function getCertificates() {
         if (!$this->_certificates) {
-            $this->_certificates = new CertificateList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_certificates = new CertificateList($this->version, $this->solution['sid']);
         }
 
         return $this->_certificates;
@@ -168,10 +149,7 @@ class FleetContext extends InstanceContext {
      */
     protected function getKeys() {
         if (!$this->_keys) {
-            $this->_keys = new KeyList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_keys = new KeyList($this->version, $this->solution['sid']);
         }
 
         return $this->_keys;

@@ -27,9 +27,7 @@ class ConferenceList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences.json';
     }
@@ -139,11 +137,7 @@ class ConferenceList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext 
      */
     public function getContext($sid) {
-        return new ConferenceContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new ConferenceContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

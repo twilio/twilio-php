@@ -30,9 +30,7 @@ class DocumentList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents';
     }
@@ -58,11 +56,7 @@ class DocumentList extends ListResource {
             $data
         );
 
-        return new DocumentInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new DocumentInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -158,11 +152,7 @@ class DocumentList extends ListResource {
      * @return \Twilio\Rest\Sync\V1\Service\DocumentContext 
      */
     public function getContext($sid) {
-        return new DocumentContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new DocumentContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

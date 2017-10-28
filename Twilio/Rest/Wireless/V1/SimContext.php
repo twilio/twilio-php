@@ -38,9 +38,7 @@ class SimContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Sims/' . rawurlencode($sid) . '';
     }
@@ -59,11 +57,7 @@ class SimContext extends InstanceContext {
             $params
         );
 
-        return new SimInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new SimInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -101,11 +95,7 @@ class SimContext extends InstanceContext {
             $data
         );
 
-        return new SimInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new SimInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -115,10 +105,7 @@ class SimContext extends InstanceContext {
      */
     protected function getUsageRecords() {
         if (!$this->_usageRecords) {
-            $this->_usageRecords = new UsageRecordList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_usageRecords = new UsageRecordList($this->version, $this->solution['sid']);
         }
 
         return $this->_usageRecords;
@@ -131,10 +118,7 @@ class SimContext extends InstanceContext {
      */
     protected function getDataSessions() {
         if (!$this->_dataSessions) {
-            $this->_dataSessions = new DataSessionList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_dataSessions = new DataSessionList($this->version, $this->solution['sid']);
         }
 
         return $this->_dataSessions;

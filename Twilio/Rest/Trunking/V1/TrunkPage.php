@@ -20,10 +20,7 @@ class TrunkPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TrunkInstance(
-            $this->version,
-            $payload
-        );
+        return new TrunkInstance($this->version, $payload);
     }
 
     /**

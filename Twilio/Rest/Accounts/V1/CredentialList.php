@@ -39,9 +39,7 @@ class CredentialList extends ListResource {
      */
     protected function getPublicKey() {
         if (!$this->_publicKey) {
-            $this->_publicKey = new PublicKeyList(
-                $this->version
-            );
+            $this->_publicKey = new PublicKeyList($this->version);
         }
 
         return $this->_publicKey;

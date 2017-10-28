@@ -56,10 +56,7 @@ class ConnectAppInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -97,9 +94,7 @@ class ConnectAppInstance extends InstanceResource {
      * @return ConnectAppInstance Updated ConnectAppInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

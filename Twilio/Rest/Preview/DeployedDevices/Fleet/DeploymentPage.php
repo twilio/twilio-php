@@ -23,11 +23,7 @@ class DeploymentPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DeploymentInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid']
-        );
+        return new DeploymentInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
     /**

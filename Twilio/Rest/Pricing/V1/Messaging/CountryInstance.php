@@ -44,9 +44,7 @@ class CountryInstance extends InstanceResource {
             'priceUnit' => Values::array_get($payload, 'price_unit'),
         );
 
-        $this->solution = array(
-            'isoCountry' => $isoCountry ?: $this->properties['isoCountry'],
-        );
+        $this->solution = array('isoCountry' => $isoCountry ?: $this->properties['isoCountry'],);
     }
 
     /**
@@ -58,10 +56,7 @@ class CountryInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new CountryContext(
-                $this->version,
-                $this->solution['isoCountry']
-            );
+            $this->context = new CountryContext($this->version, $this->solution['isoCountry']);
         }
 
         return $this->context;

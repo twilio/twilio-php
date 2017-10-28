@@ -26,9 +26,7 @@ class SegmentMembershipTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Segment' => "segment",
-        );
+        $values = array('Segment' => "segment",);
 
         $this->assertRequest(new Request(
             'post',

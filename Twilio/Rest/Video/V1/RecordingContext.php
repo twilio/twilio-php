@@ -25,9 +25,7 @@ class RecordingContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Recordings/' . rawurlencode($sid) . '';
     }
@@ -46,11 +44,7 @@ class RecordingContext extends InstanceContext {
             $params
         );
 
-        return new RecordingInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new RecordingInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

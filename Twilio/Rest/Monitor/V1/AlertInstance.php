@@ -67,9 +67,7 @@ class AlertInstance extends InstanceResource {
             'responseHeaders' => Values::array_get($payload, 'response_headers'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -80,10 +78,7 @@ class AlertInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new AlertContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new AlertContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;

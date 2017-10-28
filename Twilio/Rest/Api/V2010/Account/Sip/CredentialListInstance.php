@@ -51,10 +51,7 @@ class CredentialListInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -93,9 +90,7 @@ class CredentialListInstance extends InstanceResource {
      * @return CredentialListInstance Updated CredentialListInstance
      */
     public function update($friendlyName) {
-        return $this->proxy()->update(
-            $friendlyName
-        );
+        return $this->proxy()->update($friendlyName);
     }
 
     /**

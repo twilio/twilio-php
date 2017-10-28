@@ -57,10 +57,7 @@ class ConferenceInstance extends InstanceResource {
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -98,9 +95,7 @@ class ConferenceInstance extends InstanceResource {
      * @return ConferenceInstance Updated ConferenceInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

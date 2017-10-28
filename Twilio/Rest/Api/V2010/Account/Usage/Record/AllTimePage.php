@@ -20,11 +20,7 @@ class AllTimePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AllTimeInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new AllTimeInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

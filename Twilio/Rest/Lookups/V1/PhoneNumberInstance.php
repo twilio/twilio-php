@@ -47,9 +47,7 @@ class PhoneNumberInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'phoneNumber' => $phoneNumber ?: $this->properties['phoneNumber'],
-        );
+        $this->solution = array('phoneNumber' => $phoneNumber ?: $this->properties['phoneNumber'],);
     }
 
     /**
@@ -61,10 +59,7 @@ class PhoneNumberInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new PhoneNumberContext(
-                $this->version,
-                $this->solution['phoneNumber']
-            );
+            $this->context = new PhoneNumberContext($this->version, $this->solution['phoneNumber']);
         }
 
         return $this->context;
@@ -77,9 +72,7 @@ class PhoneNumberInstance extends InstanceResource {
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**

@@ -20,11 +20,7 @@ class RoomRecordingPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RoomRecordingInstance(
-            $this->version,
-            $payload,
-            $this->solution['roomSid']
-        );
+        return new RoomRecordingInstance($this->version, $payload, $this->solution['roomSid']);
     }
 
     /**

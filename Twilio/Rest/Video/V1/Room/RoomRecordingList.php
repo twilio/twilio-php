@@ -27,9 +27,7 @@ class RoomRecordingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'roomSid' => $roomSid,
-        );
+        $this->solution = array('roomSid' => $roomSid,);
 
         $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Recordings';
     }
@@ -135,11 +133,7 @@ class RoomRecordingList extends ListResource {
      * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext 
      */
     public function getContext($sid) {
-        return new RoomRecordingContext(
-            $this->version,
-            $this->solution['roomSid'],
-            $sid
-        );
+        return new RoomRecordingContext($this->version, $this->solution['roomSid'], $sid);
     }
 
     /**

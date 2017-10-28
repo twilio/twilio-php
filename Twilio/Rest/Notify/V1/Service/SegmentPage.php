@@ -23,11 +23,7 @@ class SegmentPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SegmentInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new SegmentInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

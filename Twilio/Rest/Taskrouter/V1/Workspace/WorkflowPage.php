@@ -20,11 +20,7 @@ class WorkflowPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new WorkflowInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new WorkflowInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

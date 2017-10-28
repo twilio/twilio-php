@@ -152,10 +152,7 @@ class CommandList extends ListResource {
             $data
         );
 
-        return new CommandInstance(
-            $this->version,
-            $payload
-        );
+        return new CommandInstance($this->version, $payload);
     }
 
     /**
@@ -165,10 +162,7 @@ class CommandList extends ListResource {
      * @return \Twilio\Rest\Wireless\V1\CommandContext 
      */
     public function getContext($sid) {
-        return new CommandContext(
-            $this->version,
-            $sid
-        );
+        return new CommandContext($this->version, $sid);
     }
 
     /**

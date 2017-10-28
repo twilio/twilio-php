@@ -23,10 +23,7 @@ class InstalledAddOnPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new InstalledAddOnInstance(
-            $this->version,
-            $payload
-        );
+        return new InstalledAddOnInstance($this->version, $payload);
     }
 
     /**

@@ -20,10 +20,7 @@ class RoomPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RoomInstance(
-            $this->version,
-            $payload
-        );
+        return new RoomInstance($this->version, $payload);
     }
 
     /**

@@ -29,9 +29,7 @@ class KeyList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'fleetSid' => $fleetSid,
-        );
+        $this->solution = array('fleetSid' => $fleetSid,);
 
         $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Keys';
     }
@@ -57,11 +55,7 @@ class KeyList extends ListResource {
             $data
         );
 
-        return new KeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid']
-        );
+        return new KeyInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
     /**
@@ -162,11 +156,7 @@ class KeyList extends ListResource {
      * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyContext 
      */
     public function getContext($sid) {
-        return new KeyContext(
-            $this->version,
-            $this->solution['fleetSid'],
-            $sid
-        );
+        return new KeyContext($this->version, $this->solution['fleetSid'], $sid);
     }
 
     /**

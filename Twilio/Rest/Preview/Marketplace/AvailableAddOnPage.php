@@ -23,10 +23,7 @@ class AvailableAddOnPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AvailableAddOnInstance(
-            $this->version,
-            $payload
-        );
+        return new AvailableAddOnInstance($this->version, $payload);
     }
 
     /**

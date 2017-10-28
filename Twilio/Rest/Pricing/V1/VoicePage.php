@@ -20,10 +20,7 @@ class VoicePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new VoiceInstance(
-            $this->version,
-            $payload
-        );
+        return new VoiceInstance($this->version, $payload);
     }
 
     /**

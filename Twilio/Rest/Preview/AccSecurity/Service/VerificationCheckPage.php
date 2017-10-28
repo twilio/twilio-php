@@ -23,11 +23,7 @@ class VerificationCheckPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new VerificationCheckInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new VerificationCheckInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

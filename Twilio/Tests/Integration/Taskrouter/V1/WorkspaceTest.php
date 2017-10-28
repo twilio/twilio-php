@@ -223,9 +223,7 @@ class WorkspaceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'FriendlyName' => "friendlyName",
-        );
+        $values = array('FriendlyName' => "friendlyName",);
 
         $this->assertRequest(new Request(
             'post',

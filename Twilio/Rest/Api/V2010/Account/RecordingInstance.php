@@ -67,10 +67,7 @@ class RecordingInstance extends InstanceResource {
             'errorCode' => Values::array_get($payload, 'error_code'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**

@@ -20,11 +20,7 @@ class PhoneNumberPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new PhoneNumberInstance(
-            $this->version,
-            $payload,
-            $this->solution['trunkSid']
-        );
+        return new PhoneNumberInstance($this->version, $payload, $this->solution['trunkSid']);
     }
 
     /**

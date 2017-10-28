@@ -24,9 +24,7 @@ class WorkersRealTimeStatisticsList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
     }
 
     /**
@@ -35,10 +33,7 @@ class WorkersRealTimeStatisticsList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext 
      */
     public function getContext() {
-        return new WorkersRealTimeStatisticsContext(
-            $this->version,
-            $this->solution['workspaceSid']
-        );
+        return new WorkersRealTimeStatisticsContext($this->version, $this->solution['workspaceSid']);
     }
 
     /**

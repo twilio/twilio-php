@@ -20,11 +20,7 @@ class NewKeyPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new NewKeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new NewKeyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

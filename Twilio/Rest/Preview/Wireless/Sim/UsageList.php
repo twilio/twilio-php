@@ -27,9 +27,7 @@ class UsageList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'simSid' => $simSid,
-        );
+        $this->solution = array('simSid' => $simSid,);
     }
 
     /**
@@ -38,10 +36,7 @@ class UsageList extends ListResource {
      * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext 
      */
     public function getContext() {
-        return new UsageContext(
-            $this->version,
-            $this->solution['simSid']
-        );
+        return new UsageContext($this->version, $this->solution['simSid']);
     }
 
     /**

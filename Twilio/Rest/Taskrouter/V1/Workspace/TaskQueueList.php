@@ -33,9 +33,7 @@ class TaskQueueList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskQueues';
     }
@@ -161,11 +159,7 @@ class TaskQueueList extends ListResource {
             $data
         );
 
-        return new TaskQueueInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new TaskQueueInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**
@@ -173,10 +167,7 @@ class TaskQueueList extends ListResource {
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
-            $this->_statistics = new TaskQueuesStatisticsList(
-                $this->version,
-                $this->solution['workspaceSid']
-            );
+            $this->_statistics = new TaskQueuesStatisticsList($this->version, $this->solution['workspaceSid']);
         }
 
         return $this->_statistics;
@@ -189,11 +180,7 @@ class TaskQueueList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext 
      */
     public function getContext($sid) {
-        return new TaskQueueContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new TaskQueueContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

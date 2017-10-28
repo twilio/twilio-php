@@ -23,11 +23,7 @@ class PhoneNumberPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new PhoneNumberInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new PhoneNumberInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

@@ -26,9 +26,7 @@ class SigningKeyList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SigningKeys.json';
     }
@@ -126,11 +124,7 @@ class SigningKeyList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\SigningKeyContext 
      */
     public function getContext($sid) {
-        return new SigningKeyContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new SigningKeyContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

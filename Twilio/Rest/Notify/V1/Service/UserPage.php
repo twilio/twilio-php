@@ -23,11 +23,7 @@ class UserPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new UserInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new UserInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

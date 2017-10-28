@@ -97,10 +97,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -130,9 +127,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

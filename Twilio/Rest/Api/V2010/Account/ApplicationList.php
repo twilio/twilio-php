@@ -27,9 +27,7 @@ class ApplicationList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Applications.json';
     }
@@ -69,11 +67,7 @@ class ApplicationList extends ListResource {
             $data
         );
 
-        return new ApplicationInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ApplicationInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -174,11 +168,7 @@ class ApplicationList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
      */
     public function getContext($sid) {
-        return new ApplicationContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new ApplicationContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

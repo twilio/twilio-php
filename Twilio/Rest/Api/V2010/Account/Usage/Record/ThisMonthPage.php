@@ -20,11 +20,7 @@ class ThisMonthPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ThisMonthInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ThisMonthInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

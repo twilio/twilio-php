@@ -20,11 +20,7 @@ class ApplicationPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ApplicationInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ApplicationInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

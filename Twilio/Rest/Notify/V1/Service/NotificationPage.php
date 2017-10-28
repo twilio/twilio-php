@@ -23,11 +23,7 @@ class NotificationPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new NotificationInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new NotificationInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

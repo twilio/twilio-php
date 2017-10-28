@@ -20,11 +20,7 @@ class RecordingPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RecordingInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new RecordingInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

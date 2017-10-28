@@ -92,9 +92,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      *                                         InstalledAddOnExtensionInstance
      */
     public function update($enabled) {
-        return $this->proxy()->update(
-            $enabled
-        );
+        return $this->proxy()->update($enabled);
     }
 
     /**

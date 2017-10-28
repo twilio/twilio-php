@@ -25,9 +25,7 @@ class ConnectAppList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/ConnectApps.json';
     }
@@ -125,11 +123,7 @@ class ConnectAppList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
      */
     public function getContext($sid) {
-        return new ConnectAppContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new ConnectAppContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

@@ -23,10 +23,7 @@ class FaxPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new FaxInstance(
-            $this->version,
-            $payload
-        );
+        return new FaxInstance($this->version, $payload);
     }
 
     /**

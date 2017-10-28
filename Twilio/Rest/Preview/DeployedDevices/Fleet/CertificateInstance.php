@@ -55,10 +55,7 @@ class CertificateInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
         );
 
-        $this->solution = array(
-            'fleetSid' => $fleetSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -104,9 +101,7 @@ class CertificateInstance extends InstanceResource {
      * @return CertificateInstance Updated CertificateInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

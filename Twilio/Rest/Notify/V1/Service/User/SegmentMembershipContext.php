@@ -30,11 +30,7 @@ class SegmentMembershipContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'identity' => $identity,
-            'segment' => $segment,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'identity' => $identity, 'segment' => $segment,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($identity) . '/SegmentMemberships/' . rawurlencode($segment) . '';
     }

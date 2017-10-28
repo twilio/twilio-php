@@ -36,9 +36,7 @@ class UsageList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
     }
 
     /**
@@ -46,10 +44,7 @@ class UsageList extends ListResource {
      */
     protected function getRecords() {
         if (!$this->_records) {
-            $this->_records = new RecordList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_records = new RecordList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_records;
@@ -60,10 +55,7 @@ class UsageList extends ListResource {
      */
     protected function getTriggers() {
         if (!$this->_triggers) {
-            $this->_triggers = new TriggerList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_triggers = new TriggerList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_triggers;

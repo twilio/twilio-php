@@ -20,10 +20,7 @@ class PublicKeyPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new PublicKeyInstance(
-            $this->version,
-            $payload
-        );
+        return new PublicKeyInstance($this->version, $payload);
     }
 
     /**
