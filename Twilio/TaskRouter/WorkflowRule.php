@@ -8,7 +8,7 @@ namespace Twilio\TaskRouter;
  * @author Justin Witz <jwitz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class WorkflowRule implements JsonSerializable {
+class WorkflowRule implements \JsonSerializable {
     public $expression;
     public $friendly_name;
     public $targets;
