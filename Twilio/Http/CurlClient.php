@@ -111,7 +111,7 @@ class CurlClient implements Client {
             CURLOPT_URL => $url,
             CURLOPT_HEADER => true,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_INFILESIZE => -1,
+            CURLOPT_INFILESIZE => Null,
             CURLOPT_HTTPHEADER => array(),
             CURLOPT_TIMEOUT => $timeout,
         );
