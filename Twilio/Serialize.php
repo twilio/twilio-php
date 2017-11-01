@@ -66,11 +66,18 @@ class Serialize {
         return $boolOrStr ? 'True' : 'False';
     }
 
-    public static function json_object($object) {
+    public static function jsonObject($object) {
         if (is_array($object)) {
             return json_encode($object);
         }
         return $object;
+    }
+
+    public static function map($map_func, $values) {
+        if (!is_array($values)) {
+            return $values;
+        }
+        return array_map($map_func, $values);
     }
 
 }
