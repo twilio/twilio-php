@@ -145,18 +145,18 @@ class SerializeTest extends UnitTest {
     }
 
     public function testMapAppliesFunctionToArray() {
-        $actual = Serialize::map(function($e) { return $e * 2; }, array(1, 2, 3));
+        $actual = Serialize::map(array(1, 2, 3), function($e) { return $e * 2; });
         $this->assertEquals(array(2, 4, 6), $actual);
     }
 
     public function testMapPassThroughOtherVals() {
-        $actual = Serialize::map(function($e) { return $e*2; }, "abc");
+        $actual = Serialize::map("abc", function($e) { return $e*2; });
         $this->assertEquals("abc", $actual);
 
-        $actual = Serialize::map(function($e) { return $e*2; }, Values::NONE);
+        $actual = Serialize::map(Values::NONE, function($e) { return $e*2; });
         $this->assertEquals(Values::NONE, $actual);
 
-        $actual = Serialize::map(function($e) { return $e*2; }, 10);
+        $actual = Serialize::map(10, function($e) { return $e*2; });
         $this->assertEquals(10, $actual);
     }
 }

@@ -78,7 +78,7 @@ class Serialize {
         return $object;
     }
 
-    public static function map($map_func, $values) {
+    public static function map($values, $map_func) {
         if (!is_array($values)) {
             return $values;
         }
