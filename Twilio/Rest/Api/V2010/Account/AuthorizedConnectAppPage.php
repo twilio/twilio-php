@@ -20,11 +20,7 @@ class AuthorizedConnectAppPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AuthorizedConnectAppInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new AuthorizedConnectAppInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

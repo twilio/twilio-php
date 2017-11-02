@@ -33,9 +33,7 @@ class RoomContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Rooms/' . rawurlencode($sid) . '';
     }
@@ -54,11 +52,7 @@ class RoomContext extends InstanceContext {
             $params
         );
 
-        return new RoomInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new RoomInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -68,9 +62,7 @@ class RoomContext extends InstanceContext {
      * @return RoomInstance Updated RoomInstance
      */
     public function update($status) {
-        $data = Values::of(array(
-            'Status' => $status,
-        ));
+        $data = Values::of(array('Status' => $status,));
 
         $payload = $this->version->update(
             'POST',
@@ -79,11 +71,7 @@ class RoomContext extends InstanceContext {
             $data
         );
 
-        return new RoomInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new RoomInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -93,10 +81,7 @@ class RoomContext extends InstanceContext {
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
-            $this->_recordings = new RoomRecordingList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_recordings = new RoomRecordingList($this->version, $this->solution['sid']);
         }
 
         return $this->_recordings;

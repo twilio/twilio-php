@@ -20,11 +20,7 @@ class YearlyPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new YearlyInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new YearlyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

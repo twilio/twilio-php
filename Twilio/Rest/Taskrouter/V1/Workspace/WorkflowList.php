@@ -26,9 +26,7 @@ class WorkflowList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows';
     }
@@ -150,11 +148,7 @@ class WorkflowList extends ListResource {
             $data
         );
 
-        return new WorkflowInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new WorkflowInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**
@@ -164,11 +158,7 @@ class WorkflowList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext 
      */
     public function getContext($sid) {
-        return new WorkflowContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new WorkflowContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

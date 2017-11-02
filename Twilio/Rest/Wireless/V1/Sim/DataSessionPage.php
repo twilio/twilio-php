@@ -23,11 +23,7 @@ class DataSessionPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DataSessionInstance(
-            $this->version,
-            $payload,
-            $this->solution['simSid']
-        );
+        return new DataSessionInstance($this->version, $payload, $this->solution['simSid']);
     }
 
     /**

@@ -30,9 +30,7 @@ class DeviceList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'fleetSid' => $fleetSid,
-        );
+        $this->solution = array('fleetSid' => $fleetSid,);
 
         $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Devices';
     }
@@ -61,11 +59,7 @@ class DeviceList extends ListResource {
             $data
         );
 
-        return new DeviceInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid']
-        );
+        return new DeviceInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
     /**
@@ -166,11 +160,7 @@ class DeviceList extends ListResource {
      * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceContext 
      */
     public function getContext($sid) {
-        return new DeviceContext(
-            $this->version,
-            $this->solution['fleetSid'],
-            $sid
-        );
+        return new DeviceContext($this->version, $this->solution['fleetSid'], $sid);
     }
 
     /**

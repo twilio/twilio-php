@@ -29,9 +29,7 @@ class UserList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users';
     }
@@ -46,10 +44,7 @@ class UserList extends ListResource {
     public function create($identity, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Identity' => $identity,
-            'Segment' => $options['segment'],
-        ));
+        $data = Values::of(array('Identity' => $identity, 'Segment' => $options['segment'],));
 
         $payload = $this->version->create(
             'POST',
@@ -58,11 +53,7 @@ class UserList extends ListResource {
             $data
         );
 
-        return new UserInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new UserInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -164,11 +155,7 @@ class UserList extends ListResource {
      * @return \Twilio\Rest\Notify\V1\Service\UserContext 
      */
     public function getContext($identity) {
-        return new UserContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $identity
-        );
+        return new UserContext($this->version, $this->solution['serviceSid'], $identity);
     }
 
     /**

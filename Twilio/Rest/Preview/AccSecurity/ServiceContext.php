@@ -38,9 +38,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -59,11 +57,7 @@ class ServiceContext extends InstanceContext {
             $params
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -75,10 +69,7 @@ class ServiceContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Name' => $options['name'],
-            'CodeLength' => $options['codeLength'],
-        ));
+        $data = Values::of(array('Name' => $options['name'], 'CodeLength' => $options['codeLength'],));
 
         $payload = $this->version->update(
             'POST',
@@ -87,11 +78,7 @@ class ServiceContext extends InstanceContext {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -101,10 +88,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getVerifications() {
         if (!$this->_verifications) {
-            $this->_verifications = new VerificationList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_verifications = new VerificationList($this->version, $this->solution['sid']);
         }
 
         return $this->_verifications;
@@ -117,10 +101,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getVerificationChecks() {
         if (!$this->_verificationChecks) {
-            $this->_verificationChecks = new VerificationCheckList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_verificationChecks = new VerificationCheckList($this->version, $this->solution['sid']);
         }
 
         return $this->_verificationChecks;

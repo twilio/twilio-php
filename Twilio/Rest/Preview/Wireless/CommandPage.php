@@ -23,10 +23,7 @@ class CommandPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CommandInstance(
-            $this->version,
-            $payload
-        );
+        return new CommandInstance($this->version, $payload);
     }
 
     /**

@@ -20,10 +20,7 @@ class AccountPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AccountInstance(
-            $this->version,
-            $payload
-        );
+        return new AccountInstance($this->version, $payload);
     }
 
     /**

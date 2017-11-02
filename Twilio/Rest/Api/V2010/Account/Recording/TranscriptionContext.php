@@ -27,11 +27,7 @@ class TranscriptionContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'recordingSid' => $recordingSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'recordingSid' => $recordingSid, 'sid' => $sid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($recordingSid) . '/Transcriptions/' . rawurlencode($sid) . '.json';
     }

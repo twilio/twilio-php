@@ -71,9 +71,7 @@ class MessageTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Body' => "body",
-        );
+        $values = array('Body' => "body",);
 
         $this->assertRequest(new Request(
             'post',

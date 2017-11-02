@@ -20,11 +20,7 @@ class ChannelPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new ChannelInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

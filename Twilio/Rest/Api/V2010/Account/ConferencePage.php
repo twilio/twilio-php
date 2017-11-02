@@ -20,11 +20,7 @@ class ConferencePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ConferenceInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ConferenceInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

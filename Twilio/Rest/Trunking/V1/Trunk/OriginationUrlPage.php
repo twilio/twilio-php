@@ -20,11 +20,7 @@ class OriginationUrlPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new OriginationUrlInstance(
-            $this->version,
-            $payload,
-            $this->solution['trunkSid']
-        );
+        return new OriginationUrlInstance($this->version, $payload, $this->solution['trunkSid']);
     }
 
     /**

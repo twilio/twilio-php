@@ -20,11 +20,7 @@ class TaskPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TaskInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new TaskInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

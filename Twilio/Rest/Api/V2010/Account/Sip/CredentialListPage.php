@@ -20,11 +20,7 @@ class CredentialListPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CredentialListInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new CredentialListInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

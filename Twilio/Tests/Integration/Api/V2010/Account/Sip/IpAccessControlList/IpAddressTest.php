@@ -113,10 +113,7 @@ class IpAddressTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'FriendlyName' => "friendlyName",
-            'IpAddress' => "ipAddress",
-        );
+        $values = array('FriendlyName' => "friendlyName", 'IpAddress' => "ipAddress",);
 
         $this->assertRequest(new Request(
             'post',

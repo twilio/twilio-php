@@ -125,10 +125,7 @@ class AvailableAddOnList extends ListResource {
      * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext 
      */
     public function getContext($sid) {
-        return new AvailableAddOnContext(
-            $this->version,
-            $sid
-        );
+        return new AvailableAddOnContext($this->version, $sid);
     }
 
     /**

@@ -27,9 +27,7 @@ class TriggerList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Triggers.json';
     }
@@ -63,11 +61,7 @@ class TriggerList extends ListResource {
             $data
         );
 
-        return new TriggerInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new TriggerInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -170,11 +164,7 @@ class TriggerList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext 
      */
     public function getContext($sid) {
-        return new TriggerContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new TriggerContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

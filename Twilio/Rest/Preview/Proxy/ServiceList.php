@@ -142,10 +142,7 @@ class ServiceList extends ListResource {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload
-        );
+        return new ServiceInstance($this->version, $payload);
     }
 
     /**
@@ -155,10 +152,7 @@ class ServiceList extends ListResource {
      * @return \Twilio\Rest\Preview\Proxy\ServiceContext 
      */
     public function getContext($sid) {
-        return new ServiceContext(
-            $this->version,
-            $sid
-        );
+        return new ServiceContext($this->version, $sid);
     }
 
     /**

@@ -131,10 +131,7 @@ class AlertList extends ListResource {
      * @return \Twilio\Rest\Monitor\V1\AlertContext 
      */
     public function getContext($sid) {
-        return new AlertContext(
-            $this->version,
-            $sid
-        );
+        return new AlertContext($this->version, $sid);
     }
 
     /**

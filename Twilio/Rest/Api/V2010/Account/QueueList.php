@@ -26,9 +26,7 @@ class QueueList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues.json';
     }
@@ -130,10 +128,7 @@ class QueueList extends ListResource {
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-            'MaxSize' => $options['maxSize'],
-        ));
+        $data = Values::of(array('FriendlyName' => $friendlyName, 'MaxSize' => $options['maxSize'],));
 
         $payload = $this->version->create(
             'POST',
@@ -142,11 +137,7 @@ class QueueList extends ListResource {
             $data
         );
 
-        return new QueueInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new QueueInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -156,11 +147,7 @@ class QueueList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
      */
     public function getContext($sid) {
-        return new QueueContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new QueueContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

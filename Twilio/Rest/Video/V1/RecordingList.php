@@ -133,10 +133,7 @@ class RecordingList extends ListResource {
      * @return \Twilio\Rest\Video\V1\RecordingContext 
      */
     public function getContext($sid) {
-        return new RecordingContext(
-            $this->version,
-            $sid
-        );
+        return new RecordingContext($this->version, $sid);
     }
 
     /**

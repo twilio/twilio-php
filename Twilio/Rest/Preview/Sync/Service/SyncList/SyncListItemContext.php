@@ -31,11 +31,7 @@ class SyncListItemContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'listSid' => $listSid,
-            'index' => $index,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, 'index' => $index,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Items/' . rawurlencode($index) . '';
     }
@@ -79,9 +75,7 @@ class SyncListItemContext extends InstanceContext {
      * @return SyncListItemInstance Updated SyncListItemInstance
      */
     public function update($data) {
-        $data = Values::of(array(
-            'Data' => Serialize::json_object($data),
-        ));
+        $data = Values::of(array('Data' => Serialize::json_object($data),));
 
         $payload = $this->version->update(
             'POST',

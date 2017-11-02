@@ -106,11 +106,7 @@ class SyncListPermissionInstance extends InstanceResource {
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
      */
     public function update($read, $write, $manage) {
-        return $this->proxy()->update(
-            $read,
-            $write,
-            $manage
-        );
+        return $this->proxy()->update($read, $write, $manage);
     }
 
     /**

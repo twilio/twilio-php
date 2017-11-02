@@ -150,10 +150,7 @@ class RatePlanList extends ListResource {
             $data
         );
 
-        return new RatePlanInstance(
-            $this->version,
-            $payload
-        );
+        return new RatePlanInstance($this->version, $payload);
     }
 
     /**
@@ -163,10 +160,7 @@ class RatePlanList extends ListResource {
      * @return \Twilio\Rest\Wireless\V1\RatePlanContext 
      */
     public function getContext($sid) {
-        return new RatePlanContext(
-            $this->version,
-            $sid
-        );
+        return new RatePlanContext($this->version, $sid);
     }
 
     /**

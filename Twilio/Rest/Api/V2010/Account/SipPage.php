@@ -20,11 +20,7 @@ class SipPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SipInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new SipInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

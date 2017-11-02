@@ -26,9 +26,7 @@ class PublicKeyContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Credentials/PublicKeys/' . rawurlencode($sid) . '';
     }
@@ -47,11 +45,7 @@ class PublicKeyContext extends InstanceContext {
             $params
         );
 
-        return new PublicKeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new PublicKeyInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -63,9 +57,7 @@ class PublicKeyContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
-        ));
+        $data = Values::of(array('FriendlyName' => $options['friendlyName'],));
 
         $payload = $this->version->update(
             'POST',
@@ -74,11 +66,7 @@ class PublicKeyContext extends InstanceContext {
             $data
         );
 
-        return new PublicKeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new PublicKeyInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

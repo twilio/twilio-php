@@ -20,11 +20,7 @@ class MobilePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new MobileInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new MobileInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

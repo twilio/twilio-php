@@ -20,11 +20,7 @@ class SigningKeyPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SigningKeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new SigningKeyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

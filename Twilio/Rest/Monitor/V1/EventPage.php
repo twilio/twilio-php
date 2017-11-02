@@ -20,10 +20,7 @@ class EventPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new EventInstance(
-            $this->version,
-            $payload
-        );
+        return new EventInstance($this->version, $payload);
     }
 
     /**

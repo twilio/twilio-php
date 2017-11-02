@@ -23,11 +23,7 @@ class KeyPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new KeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid']
-        );
+        return new KeyInstance($this->version, $payload, $this->solution['fleetSid']);
     }
 
     /**

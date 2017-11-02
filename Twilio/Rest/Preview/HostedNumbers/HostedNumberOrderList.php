@@ -167,10 +167,7 @@ class HostedNumberOrderList extends ListResource {
             $data
         );
 
-        return new HostedNumberOrderInstance(
-            $this->version,
-            $payload
-        );
+        return new HostedNumberOrderInstance($this->version, $payload);
     }
 
     /**
@@ -180,10 +177,7 @@ class HostedNumberOrderList extends ListResource {
      * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext 
      */
     public function getContext($sid) {
-        return new HostedNumberOrderContext(
-            $this->version,
-            $sid
-        );
+        return new HostedNumberOrderContext($this->version, $sid);
     }
 
     /**

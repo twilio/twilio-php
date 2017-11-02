@@ -29,9 +29,7 @@ class HostedNumberOrderContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/HostedNumberOrders/' . rawurlencode($sid) . '';
     }
@@ -50,11 +48,7 @@ class HostedNumberOrderContext extends InstanceContext {
             $params
         );
 
-        return new HostedNumberOrderInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new HostedNumberOrderInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -91,11 +85,7 @@ class HostedNumberOrderContext extends InstanceContext {
             $data
         );
 
-        return new HostedNumberOrderInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new HostedNumberOrderInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

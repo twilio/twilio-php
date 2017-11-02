@@ -111,9 +111,7 @@ class SyncMapItemInstance extends InstanceResource {
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      */
     public function update($data) {
-        return $this->proxy()->update(
-            $data
-        );
+        return $this->proxy()->update($data);
     }
 
     /**

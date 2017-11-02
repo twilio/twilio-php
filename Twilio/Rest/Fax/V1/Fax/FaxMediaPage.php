@@ -23,11 +23,7 @@ class FaxMediaPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new FaxMediaInstance(
-            $this->version,
-            $payload,
-            $this->solution['faxSid']
-        );
+        return new FaxMediaInstance($this->version, $payload, $this->solution['faxSid']);
     }
 
     /**

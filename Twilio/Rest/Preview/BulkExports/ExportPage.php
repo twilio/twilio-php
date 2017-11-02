@@ -23,10 +23,7 @@ class ExportPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ExportInstance(
-            $this->version,
-            $payload
-        );
+        return new ExportInstance($this->version, $payload);
     }
 
     /**

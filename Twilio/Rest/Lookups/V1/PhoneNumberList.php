@@ -33,10 +33,7 @@ class PhoneNumberList extends ListResource {
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
      */
     public function getContext($phoneNumber) {
-        return new PhoneNumberContext(
-            $this->version,
-            $phoneNumber
-        );
+        return new PhoneNumberContext($this->version, $phoneNumber);
     }
 
     /**

@@ -50,10 +50,7 @@ class WorkflowRealTimeStatisticsInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'workflowSid' => $workflowSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid,);
     }
 
     /**
@@ -83,9 +80,7 @@ class WorkflowRealTimeStatisticsInstance extends InstanceResource {
      *                                            WorkflowRealTimeStatisticsInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**

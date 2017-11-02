@@ -53,9 +53,7 @@ class UsageInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'simSid' => $simSid,
-        );
+        $this->solution = array('simSid' => $simSid,);
     }
 
     /**
@@ -67,10 +65,7 @@ class UsageInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new UsageContext(
-                $this->version,
-                $this->solution['simSid']
-            );
+            $this->context = new UsageContext($this->version, $this->solution['simSid']);
         }
 
         return $this->context;
@@ -83,9 +78,7 @@ class UsageInstance extends InstanceResource {
      * @return UsageInstance Fetched UsageInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**

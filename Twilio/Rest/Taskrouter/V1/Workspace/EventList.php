@@ -27,9 +27,7 @@ class EventList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Events';
     }
@@ -140,11 +138,7 @@ class EventList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventContext 
      */
     public function getContext($sid) {
-        return new EventContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new EventContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

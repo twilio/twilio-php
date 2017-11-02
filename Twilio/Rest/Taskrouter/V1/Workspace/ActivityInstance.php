@@ -51,10 +51,7 @@ class ActivityInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -93,9 +90,7 @@ class ActivityInstance extends InstanceResource {
      * @return ActivityInstance Updated ActivityInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

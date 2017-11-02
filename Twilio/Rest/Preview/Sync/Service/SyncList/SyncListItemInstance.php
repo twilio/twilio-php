@@ -108,9 +108,7 @@ class SyncListItemInstance extends InstanceResource {
      * @return SyncListItemInstance Updated SyncListItemInstance
      */
     public function update($data) {
-        return $this->proxy()->update(
-            $data
-        );
+        return $this->proxy()->update($data);
     }
 
     /**

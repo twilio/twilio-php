@@ -47,9 +47,7 @@ class SegmentInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
         );
 
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
     }
 
     /**

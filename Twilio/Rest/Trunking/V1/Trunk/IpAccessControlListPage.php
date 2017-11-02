@@ -20,11 +20,7 @@ class IpAccessControlListPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new IpAccessControlListInstance(
-            $this->version,
-            $payload,
-            $this->solution['trunkSid']
-        );
+        return new IpAccessControlListInstance($this->version, $payload, $this->solution['trunkSid']);
     }
 
     /**

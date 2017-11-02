@@ -27,9 +27,7 @@ class CredentialContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Credentials/' . rawurlencode($sid) . '';
     }
@@ -48,11 +46,7 @@ class CredentialContext extends InstanceContext {
             $params
         );
 
-        return new CredentialInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new CredentialInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -80,11 +74,7 @@ class CredentialContext extends InstanceContext {
             $data
         );
 
-        return new CredentialInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new CredentialInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

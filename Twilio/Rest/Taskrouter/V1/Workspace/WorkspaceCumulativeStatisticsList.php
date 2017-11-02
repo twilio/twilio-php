@@ -24,9 +24,7 @@ class WorkspaceCumulativeStatisticsList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
     }
 
     /**
@@ -35,10 +33,7 @@ class WorkspaceCumulativeStatisticsList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsContext 
      */
     public function getContext() {
-        return new WorkspaceCumulativeStatisticsContext(
-            $this->version,
-            $this->solution['workspaceSid']
-        );
+        return new WorkspaceCumulativeStatisticsContext($this->version, $this->solution['workspaceSid']);
     }
 
     /**

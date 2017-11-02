@@ -30,9 +30,7 @@ class BindingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Bindings';
     }
@@ -66,11 +64,7 @@ class BindingList extends ListResource {
             $data
         );
 
-        return new BindingInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new BindingInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -174,11 +168,7 @@ class BindingList extends ListResource {
      * @return \Twilio\Rest\Notify\V1\Service\BindingContext 
      */
     public function getContext($sid) {
-        return new BindingContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new BindingContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

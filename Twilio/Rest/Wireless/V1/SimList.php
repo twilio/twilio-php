@@ -135,10 +135,7 @@ class SimList extends ListResource {
      * @return \Twilio\Rest\Wireless\V1\SimContext 
      */
     public function getContext($sid) {
-        return new SimContext(
-            $this->version,
-            $sid
-        );
+        return new SimContext($this->version, $sid);
     }
 
     /**

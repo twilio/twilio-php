@@ -23,11 +23,7 @@ class SessionPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new SessionInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new SessionInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

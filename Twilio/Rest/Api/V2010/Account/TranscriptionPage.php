@@ -20,11 +20,7 @@ class TranscriptionPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TranscriptionInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new TranscriptionInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

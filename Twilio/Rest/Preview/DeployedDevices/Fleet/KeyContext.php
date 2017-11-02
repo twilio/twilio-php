@@ -30,10 +30,7 @@ class KeyContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'fleetSid' => $fleetSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid,);
 
         $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Keys/' . rawurlencode($sid) . '';
     }
@@ -52,12 +49,7 @@ class KeyContext extends InstanceContext {
             $params
         );
 
-        return new KeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid'],
-            $this->solution['sid']
-        );
+        return new KeyInstance($this->version, $payload, $this->solution['fleetSid'], $this->solution['sid']);
     }
 
     /**
@@ -90,12 +82,7 @@ class KeyContext extends InstanceContext {
             $data
         );
 
-        return new KeyInstance(
-            $this->version,
-            $payload,
-            $this->solution['fleetSid'],
-            $this->solution['sid']
-        );
+        return new KeyInstance($this->version, $payload, $this->solution['fleetSid'], $this->solution['sid']);
     }
 
     /**

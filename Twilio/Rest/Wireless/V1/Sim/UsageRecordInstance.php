@@ -44,9 +44,7 @@ class UsageRecordInstance extends InstanceResource {
             'data' => Values::array_get($payload, 'data'),
         );
 
-        $this->solution = array(
-            'simSid' => $simSid,
-        );
+        $this->solution = array('simSid' => $simSid,);
     }
 
     /**

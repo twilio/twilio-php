@@ -104,9 +104,7 @@ class ParticipantInstance extends InstanceResource {
      * @return ParticipantInstance Updated ParticipantInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

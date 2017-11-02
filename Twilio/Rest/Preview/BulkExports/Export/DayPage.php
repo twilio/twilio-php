@@ -23,11 +23,7 @@ class DayPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DayInstance(
-            $this->version,
-            $payload,
-            $this->solution['resourceType']
-        );
+        return new DayInstance($this->version, $payload, $this->solution['resourceType']);
     }
 
     /**

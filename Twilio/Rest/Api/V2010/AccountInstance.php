@@ -78,9 +78,7 @@ class AccountInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -92,10 +90,7 @@ class AccountInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new AccountContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new AccountContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -117,9 +112,7 @@ class AccountInstance extends InstanceResource {
      * @return AccountInstance Updated AccountInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

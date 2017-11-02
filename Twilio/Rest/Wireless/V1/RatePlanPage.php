@@ -23,10 +23,7 @@ class RatePlanPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new RatePlanInstance(
-            $this->version,
-            $payload
-        );
+        return new RatePlanInstance($this->version, $payload);
     }
 
     /**

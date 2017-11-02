@@ -20,11 +20,7 @@ class ShortCodePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ShortCodeInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ShortCodeInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

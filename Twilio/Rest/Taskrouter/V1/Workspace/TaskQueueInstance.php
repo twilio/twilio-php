@@ -69,10 +69,7 @@ class TaskQueueInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -111,9 +108,7 @@ class TaskQueueInstance extends InstanceResource {
      * @return TaskQueueInstance Updated TaskQueueInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

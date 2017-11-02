@@ -139,10 +139,7 @@ class PublicKeyList extends ListResource {
             $data
         );
 
-        return new PublicKeyInstance(
-            $this->version,
-            $payload
-        );
+        return new PublicKeyInstance($this->version, $payload);
     }
 
     /**
@@ -152,10 +149,7 @@ class PublicKeyList extends ListResource {
      * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext 
      */
     public function getContext($sid) {
-        return new PublicKeyContext(
-            $this->version,
-            $sid
-        );
+        return new PublicKeyContext($this->version, $sid);
     }
 
     /**

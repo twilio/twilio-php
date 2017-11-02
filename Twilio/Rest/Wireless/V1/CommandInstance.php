@@ -55,9 +55,7 @@ class CommandInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -69,10 +67,7 @@ class CommandInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new CommandContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new CommandContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;

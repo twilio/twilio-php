@@ -95,9 +95,7 @@ class IpAddressInstance extends InstanceResource {
      * @return IpAddressInstance Updated IpAddressInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

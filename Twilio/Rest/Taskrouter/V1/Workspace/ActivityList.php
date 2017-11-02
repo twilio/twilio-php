@@ -27,9 +27,7 @@ class ActivityList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Activities';
     }
@@ -148,11 +146,7 @@ class ActivityList extends ListResource {
             $data
         );
 
-        return new ActivityInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new ActivityInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**
@@ -162,11 +156,7 @@ class ActivityList extends ListResource {
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext 
      */
     public function getContext($sid) {
-        return new ActivityContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $sid
-        );
+        return new ActivityContext($this->version, $this->solution['workspaceSid'], $sid);
     }
 
     /**

@@ -26,9 +26,7 @@ class KeyList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Keys.json';
     }
@@ -126,11 +124,7 @@ class KeyList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\KeyContext 
      */
     public function getContext($sid) {
-        return new KeyContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new KeyContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

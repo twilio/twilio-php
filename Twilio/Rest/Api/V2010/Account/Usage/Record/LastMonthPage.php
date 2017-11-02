@@ -20,11 +20,7 @@ class LastMonthPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new LastMonthInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new LastMonthInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

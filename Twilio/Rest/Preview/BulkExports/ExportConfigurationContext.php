@@ -30,9 +30,7 @@ class ExportConfigurationContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'resourceType' => $resourceType,
-        );
+        $this->solution = array('resourceType' => $resourceType,);
 
         $this->uri = '/Exports/' . rawurlencode($resourceType) . '/Configuration';
     }
@@ -51,11 +49,7 @@ class ExportConfigurationContext extends InstanceContext {
             $params
         );
 
-        return new ExportConfigurationInstance(
-            $this->version,
-            $payload,
-            $this->solution['resourceType']
-        );
+        return new ExportConfigurationInstance($this->version, $payload, $this->solution['resourceType']);
     }
 
     /**
@@ -80,11 +74,7 @@ class ExportConfigurationContext extends InstanceContext {
             $data
         );
 
-        return new ExportConfigurationInstance(
-            $this->version,
-            $payload,
-            $this->solution['resourceType']
-        );
+        return new ExportConfigurationInstance($this->version, $payload, $this->solution['resourceType']);
     }
 
     /**

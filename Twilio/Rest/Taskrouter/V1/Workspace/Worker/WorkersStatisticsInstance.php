@@ -43,9 +43,7 @@ class WorkersStatisticsInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid,);
     }
 
     /**
@@ -56,10 +54,7 @@ class WorkersStatisticsInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new WorkersStatisticsContext(
-                $this->version,
-                $this->solution['workspaceSid']
-            );
+            $this->context = new WorkersStatisticsContext($this->version, $this->solution['workspaceSid']);
         }
 
         return $this->context;
@@ -72,9 +67,7 @@ class WorkersStatisticsInstance extends InstanceResource {
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**

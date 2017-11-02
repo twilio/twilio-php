@@ -36,9 +36,7 @@ class ServiceList extends ListResource {
      * @return ServiceInstance Newly created ServiceInstance
      */
     public function create($friendlyName) {
-        $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-        ));
+        $data = Values::of(array('FriendlyName' => $friendlyName,));
 
         $payload = $this->version->create(
             'POST',
@@ -47,10 +45,7 @@ class ServiceList extends ListResource {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload
-        );
+        return new ServiceInstance($this->version, $payload);
     }
 
     /**
@@ -146,10 +141,7 @@ class ServiceList extends ListResource {
      * @return \Twilio\Rest\IpMessaging\V1\ServiceContext 
      */
     public function getContext($sid) {
-        return new ServiceContext(
-            $this->version,
-            $sid
-        );
+        return new ServiceContext($this->version, $sid);
     }
 
     /**

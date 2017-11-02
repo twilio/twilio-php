@@ -20,11 +20,7 @@ class ConnectAppPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ConnectAppInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ConnectAppInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

@@ -157,10 +157,7 @@ class FaxList extends ListResource {
             $data
         );
 
-        return new FaxInstance(
-            $this->version,
-            $payload
-        );
+        return new FaxInstance($this->version, $payload);
     }
 
     /**
@@ -170,10 +167,7 @@ class FaxList extends ListResource {
      * @return \Twilio\Rest\Fax\V1\FaxContext 
      */
     public function getContext($sid) {
-        return new FaxContext(
-            $this->version,
-            $sid
-        );
+        return new FaxContext($this->version, $sid);
     }
 
     /**

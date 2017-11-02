@@ -30,9 +30,7 @@ class NotificationList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Notifications';
     }
@@ -73,11 +71,7 @@ class NotificationList extends ListResource {
             $data
         );
 
-        return new NotificationInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new NotificationInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

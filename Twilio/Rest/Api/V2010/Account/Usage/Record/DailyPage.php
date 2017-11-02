@@ -20,11 +20,7 @@ class DailyPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DailyInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new DailyInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

@@ -20,11 +20,7 @@ class TaskQueuePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TaskQueueInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new TaskQueueInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

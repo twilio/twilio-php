@@ -23,11 +23,7 @@ class DocumentPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DocumentInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new DocumentInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

@@ -23,11 +23,7 @@ class AlphaSenderPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AlphaSenderInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new AlphaSenderInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

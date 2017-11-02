@@ -26,9 +26,7 @@ class ChannelList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels';
     }
@@ -56,11 +54,7 @@ class ChannelList extends ListResource {
             $data
         );
 
-        return new ChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new ChannelInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -161,11 +155,7 @@ class ChannelList extends ListResource {
      * @return \Twilio\Rest\Chat\V1\Service\ChannelContext 
      */
     public function getContext($sid) {
-        return new ChannelContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new ChannelContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

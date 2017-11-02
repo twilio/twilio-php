@@ -50,9 +50,7 @@ class CredentialInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -64,10 +62,7 @@ class CredentialInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new CredentialContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new CredentialContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -89,9 +84,7 @@ class CredentialInstance extends InstanceResource {
      * @return CredentialInstance Updated CredentialInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

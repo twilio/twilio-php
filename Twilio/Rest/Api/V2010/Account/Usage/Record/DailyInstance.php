@@ -62,9 +62,7 @@ class DailyInstance extends InstanceResource {
             'usageUnit' => Values::array_get($payload, 'usage_unit'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
     }
 
     /**

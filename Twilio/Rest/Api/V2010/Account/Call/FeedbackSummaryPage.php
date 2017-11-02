@@ -20,11 +20,7 @@ class FeedbackSummaryPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new FeedbackSummaryInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new FeedbackSummaryInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

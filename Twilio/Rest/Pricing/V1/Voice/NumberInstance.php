@@ -46,9 +46,7 @@ class NumberInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'number' => $number ?: $this->properties['number'],
-        );
+        $this->solution = array('number' => $number ?: $this->properties['number'],);
     }
 
     /**
@@ -60,10 +58,7 @@ class NumberInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new NumberContext(
-                $this->version,
-                $this->solution['number']
-            );
+            $this->context = new NumberContext($this->version, $this->solution['number']);
         }
 
         return $this->context;

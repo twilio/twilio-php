@@ -92,9 +92,7 @@ class CredentialInstance extends InstanceResource {
      * @return CredentialInstance Updated CredentialInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

@@ -43,9 +43,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -64,11 +62,7 @@ class ServiceContext extends InstanceContext {
             $params
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -169,11 +163,7 @@ class ServiceContext extends InstanceContext {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -183,10 +173,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getChannels() {
         if (!$this->_channels) {
-            $this->_channels = new ChannelList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_channels = new ChannelList($this->version, $this->solution['sid']);
         }
 
         return $this->_channels;
@@ -199,10 +186,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getRoles() {
         if (!$this->_roles) {
-            $this->_roles = new RoleList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_roles = new RoleList($this->version, $this->solution['sid']);
         }
 
         return $this->_roles;
@@ -215,10 +199,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getUsers() {
         if (!$this->_users) {
-            $this->_users = new UserList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_users = new UserList($this->version, $this->solution['sid']);
         }
 
         return $this->_users;

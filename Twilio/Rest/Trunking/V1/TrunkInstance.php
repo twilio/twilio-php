@@ -67,9 +67,7 @@ class TrunkInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -80,10 +78,7 @@ class TrunkInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new TrunkContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new TrunkContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -114,9 +109,7 @@ class TrunkInstance extends InstanceResource {
      * @return TrunkInstance Updated TrunkInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

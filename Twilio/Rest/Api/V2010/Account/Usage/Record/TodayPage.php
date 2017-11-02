@@ -20,11 +20,7 @@ class TodayPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TodayInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new TodayInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

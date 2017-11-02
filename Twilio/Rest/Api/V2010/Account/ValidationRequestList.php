@@ -26,9 +26,7 @@ class ValidationRequestList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/OutgoingCallerIds.json';
     }
@@ -59,11 +57,7 @@ class ValidationRequestList extends ListResource {
             $data
         );
 
-        return new ValidationRequestInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new ValidationRequestInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

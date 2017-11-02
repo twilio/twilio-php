@@ -23,10 +23,7 @@ class AuthorizationDocumentPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new AuthorizationDocumentInstance(
-            $this->version,
-            $payload
-        );
+        return new AuthorizationDocumentInstance($this->version, $payload);
     }
 
     /**

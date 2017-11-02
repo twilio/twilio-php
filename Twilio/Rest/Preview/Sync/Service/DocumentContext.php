@@ -37,10 +37,7 @@ class DocumentContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-            'sid' => $sid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents/' . rawurlencode($sid) . '';
     }
@@ -83,9 +80,7 @@ class DocumentContext extends InstanceContext {
      * @return DocumentInstance Updated DocumentInstance
      */
     public function update($data) {
-        $data = Values::of(array(
-            'Data' => Serialize::json_object($data),
-        ));
+        $data = Values::of(array('Data' => Serialize::json_object($data),));
 
         $payload = $this->version->update(
             'POST',

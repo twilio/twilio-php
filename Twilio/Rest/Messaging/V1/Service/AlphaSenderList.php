@@ -28,9 +28,7 @@ class AlphaSenderList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/AlphaSenders';
     }
@@ -42,9 +40,7 @@ class AlphaSenderList extends ListResource {
      * @return AlphaSenderInstance Newly created AlphaSenderInstance
      */
     public function create($alphaSender) {
-        $data = Values::of(array(
-            'AlphaSender' => $alphaSender,
-        ));
+        $data = Values::of(array('AlphaSender' => $alphaSender,));
 
         $payload = $this->version->create(
             'POST',
@@ -53,11 +49,7 @@ class AlphaSenderList extends ListResource {
             $data
         );
 
-        return new AlphaSenderInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new AlphaSenderInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
@@ -153,11 +145,7 @@ class AlphaSenderList extends ListResource {
      * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext 
      */
     public function getContext($sid) {
-        return new AlphaSenderContext(
-            $this->version,
-            $this->solution['serviceSid'],
-            $sid
-        );
+        return new AlphaSenderContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**

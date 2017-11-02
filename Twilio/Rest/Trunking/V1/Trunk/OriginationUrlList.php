@@ -26,9 +26,7 @@ class OriginationUrlList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'trunkSid' => $trunkSid,
-        );
+        $this->solution = array('trunkSid' => $trunkSid,);
 
         $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/OriginationUrls';
     }
@@ -59,11 +57,7 @@ class OriginationUrlList extends ListResource {
             $data
         );
 
-        return new OriginationUrlInstance(
-            $this->version,
-            $payload,
-            $this->solution['trunkSid']
-        );
+        return new OriginationUrlInstance($this->version, $payload, $this->solution['trunkSid']);
     }
 
     /**
@@ -159,11 +153,7 @@ class OriginationUrlList extends ListResource {
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext 
      */
     public function getContext($sid) {
-        return new OriginationUrlContext(
-            $this->version,
-            $this->solution['trunkSid'],
-            $sid
-        );
+        return new OriginationUrlContext($this->version, $this->solution['trunkSid'], $sid);
     }
 
     /**

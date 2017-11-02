@@ -137,9 +137,7 @@ class CommandTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Command' => "command",
-        );
+        $values = array('Command' => "command",);
 
         $this->assertRequest(new Request(
             'post',

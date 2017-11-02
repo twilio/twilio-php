@@ -56,10 +56,7 @@ class TrunkList extends ListResource {
             $data
         );
 
-        return new TrunkInstance(
-            $this->version,
-            $payload
-        );
+        return new TrunkInstance($this->version, $payload);
     }
 
     /**
@@ -155,10 +152,7 @@ class TrunkList extends ListResource {
      * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     public function getContext($sid) {
-        return new TrunkContext(
-            $this->version,
-            $sid
-        );
+        return new TrunkContext($this->version, $sid);
     }
 
     /**

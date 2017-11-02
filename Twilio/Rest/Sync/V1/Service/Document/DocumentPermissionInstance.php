@@ -106,11 +106,7 @@ class DocumentPermissionInstance extends InstanceResource {
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      */
     public function update($read, $write, $manage) {
-        return $this->proxy()->update(
-            $read,
-            $write,
-            $manage
-        );
+        return $this->proxy()->update($read, $write, $manage);
     }
 
     /**

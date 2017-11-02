@@ -68,9 +68,7 @@ class HostedNumberOrderInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -83,10 +81,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new HostedNumberOrderContext(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->context = new HostedNumberOrderContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
@@ -117,9 +112,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

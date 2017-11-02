@@ -26,9 +26,7 @@ class ShortCodeList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SMS/ShortCodes.json';
     }
@@ -132,11 +130,7 @@ class ShortCodeList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
      */
     public function getContext($sid) {
-        return new ShortCodeContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new ShortCodeContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

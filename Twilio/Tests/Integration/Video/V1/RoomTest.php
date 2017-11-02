@@ -208,9 +208,7 @@ class RoomTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Status' => "in-progress",
-        );
+        $values = array('Status' => "in-progress",);
 
         $this->assertRequest(new Request(
             'post',

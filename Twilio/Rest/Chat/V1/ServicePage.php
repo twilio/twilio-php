@@ -20,10 +20,7 @@ class ServicePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ServiceInstance(
-            $this->version,
-            $payload
-        );
+        return new ServiceInstance($this->version, $payload);
     }
 
     /**

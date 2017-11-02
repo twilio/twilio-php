@@ -134,10 +134,7 @@ class EventList extends ListResource {
      * @return \Twilio\Rest\Monitor\V1\EventContext 
      */
     public function getContext($sid) {
-        return new EventContext(
-            $this->version,
-            $sid
-        );
+        return new EventContext($this->version, $sid);
     }
 
     /**

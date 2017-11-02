@@ -20,11 +20,7 @@ class IncomingPhoneNumberPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new IncomingPhoneNumberInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new IncomingPhoneNumberInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

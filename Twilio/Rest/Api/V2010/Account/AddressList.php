@@ -27,9 +27,7 @@ class AddressList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses.json';
     }
@@ -68,11 +66,7 @@ class AddressList extends ListResource {
             $data
         );
 
-        return new AddressInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new AddressInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -175,11 +169,7 @@ class AddressList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\AddressContext 
      */
     public function getContext($sid) {
-        return new AddressContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new AddressContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

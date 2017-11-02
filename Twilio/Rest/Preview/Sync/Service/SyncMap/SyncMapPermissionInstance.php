@@ -106,11 +106,7 @@ class SyncMapPermissionInstance extends InstanceResource {
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
      */
     public function update($read, $write, $manage) {
-        return $this->proxy()->update(
-            $read,
-            $write,
-            $manage
-        );
+        return $this->proxy()->update($read, $write, $manage);
     }
 
     /**

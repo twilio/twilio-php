@@ -29,9 +29,7 @@ class VerificationCheckList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'serviceSid' => $serviceSid,
-        );
+        $this->solution = array('serviceSid' => $serviceSid,);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/VerificationCheck';
     }
@@ -46,10 +44,7 @@ class VerificationCheckList extends ListResource {
     public function create($code, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Code' => $code,
-            'To' => $options['to'],
-        ));
+        $data = Values::of(array('Code' => $code, 'To' => $options['to'],));
 
         $payload = $this->version->create(
             'POST',
@@ -58,11 +53,7 @@ class VerificationCheckList extends ListResource {
             $data
         );
 
-        return new VerificationCheckInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid']
-        );
+        return new VerificationCheckInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**

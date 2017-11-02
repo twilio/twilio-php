@@ -65,10 +65,7 @@ class WorkflowInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -107,9 +104,7 @@ class WorkflowInstance extends InstanceResource {
      * @return WorkflowInstance Updated WorkflowInstance
      */
     public function update($options = array()) {
-        return $this->proxy()->update(
-            $options
-        );
+        return $this->proxy()->update($options);
     }
 
     /**

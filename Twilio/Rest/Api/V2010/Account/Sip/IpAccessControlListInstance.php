@@ -51,10 +51,7 @@ class IpAccessControlListInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'],);
     }
 
     /**
@@ -91,9 +88,7 @@ class IpAccessControlListInstance extends InstanceResource {
      * @return IpAccessControlListInstance Updated IpAccessControlListInstance
      */
     public function update($friendlyName) {
-        return $this->proxy()->update(
-            $friendlyName
-        );
+        return $this->proxy()->update($friendlyName);
     }
 
     /**

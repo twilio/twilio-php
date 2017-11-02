@@ -25,9 +25,7 @@ class AuthorizedConnectAppList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps.json';
     }
@@ -127,11 +125,7 @@ class AuthorizedConnectAppList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
      */
     public function getContext($connectAppSid) {
-        return new AuthorizedConnectAppContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $connectAppSid
-        );
+        return new AuthorizedConnectAppContext($this->version, $this->solution['accountSid'], $connectAppSid);
     }
 
     /**

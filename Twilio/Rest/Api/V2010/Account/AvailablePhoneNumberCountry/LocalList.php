@@ -29,10 +29,7 @@ class LocalList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'countryCode' => $countryCode,
-        );
+        $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . rawurlencode($countryCode) . '/Local.json';
     }
@@ -114,6 +111,7 @@ class LocalList extends ListResource {
             'InRateCenter' => $options['inRateCenter'],
             'InLata' => $options['inLata'],
             'InLocality' => $options['inLocality'],
+            'FaxEnabled' => Serialize::booleanToString($options['faxEnabled']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

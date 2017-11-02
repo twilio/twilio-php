@@ -28,9 +28,7 @@ class FaxMediaList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'faxSid' => $faxSid,
-        );
+        $this->solution = array('faxSid' => $faxSid,);
 
         $this->uri = '/Faxes/' . rawurlencode($faxSid) . '/Media';
     }
@@ -128,11 +126,7 @@ class FaxMediaList extends ListResource {
      * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaContext 
      */
     public function getContext($sid) {
-        return new FaxMediaContext(
-            $this->version,
-            $this->solution['faxSid'],
-            $sid
-        );
+        return new FaxMediaContext($this->version, $this->solution['faxSid'], $sid);
     }
 
     /**

@@ -45,9 +45,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'sid' => $sid,
-        );
+        $this->solution = array('sid' => $sid,);
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -66,11 +64,7 @@ class ServiceContext extends InstanceContext {
             $params
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -105,11 +99,7 @@ class ServiceContext extends InstanceContext {
             $data
         );
 
-        return new ServiceInstance(
-            $this->version,
-            $payload,
-            $this->solution['sid']
-        );
+        return new ServiceInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
@@ -119,10 +109,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getDocuments() {
         if (!$this->_documents) {
-            $this->_documents = new DocumentList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_documents = new DocumentList($this->version, $this->solution['sid']);
         }
 
         return $this->_documents;
@@ -135,10 +122,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getSyncLists() {
         if (!$this->_syncLists) {
-            $this->_syncLists = new SyncListList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_syncLists = new SyncListList($this->version, $this->solution['sid']);
         }
 
         return $this->_syncLists;
@@ -151,10 +135,7 @@ class ServiceContext extends InstanceContext {
      */
     protected function getSyncMaps() {
         if (!$this->_syncMaps) {
-            $this->_syncMaps = new SyncMapList(
-                $this->version,
-                $this->solution['sid']
-            );
+            $this->_syncMaps = new SyncMapList($this->version, $this->solution['sid']);
         }
 
         return $this->_syncMaps;

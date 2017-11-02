@@ -56,9 +56,7 @@ class RecordList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Usage/Records.json';
     }
@@ -161,10 +159,7 @@ class RecordList extends ListResource {
      */
     protected function getAllTime() {
         if (!$this->_allTime) {
-            $this->_allTime = new AllTimeList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_allTime = new AllTimeList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_allTime;
@@ -175,10 +170,7 @@ class RecordList extends ListResource {
      */
     protected function getDaily() {
         if (!$this->_daily) {
-            $this->_daily = new DailyList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_daily = new DailyList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_daily;
@@ -189,10 +181,7 @@ class RecordList extends ListResource {
      */
     protected function getLastMonth() {
         if (!$this->_lastMonth) {
-            $this->_lastMonth = new LastMonthList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_lastMonth = new LastMonthList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_lastMonth;
@@ -203,10 +192,7 @@ class RecordList extends ListResource {
      */
     protected function getMonthly() {
         if (!$this->_monthly) {
-            $this->_monthly = new MonthlyList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_monthly = new MonthlyList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_monthly;
@@ -217,10 +203,7 @@ class RecordList extends ListResource {
      */
     protected function getThisMonth() {
         if (!$this->_thisMonth) {
-            $this->_thisMonth = new ThisMonthList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_thisMonth = new ThisMonthList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_thisMonth;
@@ -231,10 +214,7 @@ class RecordList extends ListResource {
      */
     protected function getToday() {
         if (!$this->_today) {
-            $this->_today = new TodayList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_today = new TodayList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_today;
@@ -245,10 +225,7 @@ class RecordList extends ListResource {
      */
     protected function getYearly() {
         if (!$this->_yearly) {
-            $this->_yearly = new YearlyList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_yearly = new YearlyList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_yearly;
@@ -259,10 +236,7 @@ class RecordList extends ListResource {
      */
     protected function getYesterday() {
         if (!$this->_yesterday) {
-            $this->_yesterday = new YesterdayList(
-                $this->version,
-                $this->solution['accountSid']
-            );
+            $this->_yesterday = new YesterdayList($this->version, $this->solution['accountSid']);
         }
 
         return $this->_yesterday;

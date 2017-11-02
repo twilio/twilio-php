@@ -20,11 +20,7 @@ class DomainPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new DomainInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new DomainInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

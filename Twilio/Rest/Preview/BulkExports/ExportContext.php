@@ -34,9 +34,7 @@ class ExportContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'resourceType' => $resourceType,
-        );
+        $this->solution = array('resourceType' => $resourceType,);
 
         $this->uri = '/Exports/' . rawurlencode($resourceType) . '';
     }
@@ -55,11 +53,7 @@ class ExportContext extends InstanceContext {
             $params
         );
 
-        return new ExportInstance(
-            $this->version,
-            $payload,
-            $this->solution['resourceType']
-        );
+        return new ExportInstance($this->version, $payload, $this->solution['resourceType']);
     }
 
     /**
@@ -69,10 +63,7 @@ class ExportContext extends InstanceContext {
      */
     protected function getDays() {
         if (!$this->_days) {
-            $this->_days = new DayList(
-                $this->version,
-                $this->solution['resourceType']
-            );
+            $this->_days = new DayList($this->version, $this->solution['resourceType']);
         }
 
         return $this->_days;

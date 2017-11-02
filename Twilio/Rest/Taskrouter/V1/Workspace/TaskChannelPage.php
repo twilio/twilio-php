@@ -20,11 +20,7 @@ class TaskChannelPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new TaskChannelInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new TaskChannelInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

@@ -27,9 +27,7 @@ class RecordingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings.json';
     }
@@ -135,11 +133,7 @@ class RecordingList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\RecordingContext 
      */
     public function getContext($sid) {
-        return new RecordingContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $sid
-        );
+        return new RecordingContext($this->version, $this->solution['accountSid'], $sid);
     }
 
     /**

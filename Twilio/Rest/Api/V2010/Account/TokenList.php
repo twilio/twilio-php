@@ -26,9 +26,7 @@ class TokenList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Tokens.json';
     }
@@ -42,9 +40,7 @@ class TokenList extends ListResource {
     public function create($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Ttl' => $options['ttl'],
-        ));
+        $data = Values::of(array('Ttl' => $options['ttl'],));
 
         $payload = $this->version->create(
             'POST',
@@ -53,11 +49,7 @@ class TokenList extends ListResource {
             $data
         );
 
-        return new TokenInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid']
-        );
+        return new TokenInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**

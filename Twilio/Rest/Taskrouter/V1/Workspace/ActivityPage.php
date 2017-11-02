@@ -20,11 +20,7 @@ class ActivityPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ActivityInstance(
-            $this->version,
-            $payload,
-            $this->solution['workspaceSid']
-        );
+        return new ActivityInstance($this->version, $payload, $this->solution['workspaceSid']);
     }
 
     /**

@@ -42,9 +42,7 @@ class ValidationRequestInstance extends InstanceResource {
             'callSid' => Values::array_get($payload, 'call_sid'),
         );
 
-        $this->solution = array(
-            'accountSid' => $accountSid,
-        );
+        $this->solution = array('accountSid' => $accountSid,);
     }
 
     /**

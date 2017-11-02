@@ -20,10 +20,7 @@ class CountryPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CountryInstance(
-            $this->version,
-            $payload
-        );
+        return new CountryInstance($this->version, $payload);
     }
 
     /**

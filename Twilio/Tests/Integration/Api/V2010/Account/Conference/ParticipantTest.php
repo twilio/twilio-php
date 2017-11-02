@@ -112,10 +112,7 @@ class ParticipantTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'From' => "+987654321",
-            'To' => "+123456789",
-        );
+        $values = array('From' => "+987654321", 'To' => "+123456789",);
 
         $this->assertRequest(new Request(
             'post',

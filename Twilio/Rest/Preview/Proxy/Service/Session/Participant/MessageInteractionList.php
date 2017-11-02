@@ -49,10 +49,7 @@ class MessageInteractionList extends ListResource {
     public function create($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'Body' => $options['body'],
-            'MediaUrl' => $options['mediaUrl'],
-        ));
+        $data = Values::of(array('Body' => $options['body'], 'MediaUrl' => $options['mediaUrl'],));
 
         $payload = $this->version->create(
             'POST',

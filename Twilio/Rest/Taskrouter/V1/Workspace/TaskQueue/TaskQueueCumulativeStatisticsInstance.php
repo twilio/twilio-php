@@ -77,10 +77,7 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array(
-            'workspaceSid' => $workspaceSid,
-            'taskQueueSid' => $taskQueueSid,
-        );
+        $this->solution = array('workspaceSid' => $workspaceSid, 'taskQueueSid' => $taskQueueSid,);
     }
 
     /**
@@ -110,9 +107,7 @@ class TaskQueueCumulativeStatisticsInstance extends InstanceResource {
      *                                               TaskQueueCumulativeStatisticsInstance
      */
     public function fetch($options = array()) {
-        return $this->proxy()->fetch(
-            $options
-        );
+        return $this->proxy()->fetch($options);
     }
 
     /**
