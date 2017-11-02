@@ -76,13 +76,6 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals("IS123", $grants['ip_messaging']['service_sid']);
     }
 
-    /**
-     * @expectedException \PHPUnit_Framework_Error
-     */
-    function testIpMessagingGrantTriggersWarning() {
-        new IpMessagingGrant();
-    }
-
     function testChatGrant() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
         $grant = new ChatGrant();
