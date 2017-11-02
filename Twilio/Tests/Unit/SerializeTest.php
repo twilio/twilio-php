@@ -3,6 +3,7 @@
 namespace Twilio\Tests\Unit;
 
 use Twilio\Serialize;
+use Twilio\Values;
 
 class SerializeTest extends UnitTest {
 
@@ -131,15 +132,31 @@ class SerializeTest extends UnitTest {
     }
 
     public function testJsonObjectSerializesArrays() {
-        $actual = Serialize::json_object(array("this", "is", "a", "list"));
+        $actual = Serialize::jsonObject(array("this", "is", "a", "list"));
         $this->assertEquals('["this","is","a","list"]', $actual);
 
-        $actual = Serialize::json_object(array("twilio" => "rocks"));
+        $actual = Serialize::jsonObject(array("twilio" => "rocks"));
         $this->assertEquals('{"twilio":"rocks"}', $actual);
     }
 
     public function testJsonObjectPassThroughOtherVals() {
-        $actual = Serialize::json_object('{"already":"serialized"}');
+        $actual = Serialize::jsonObject('{"already":"serialized"}');
         $this->assertEquals('{"already":"serialized"}', $actual);
+    }
+
+    public function testMapAppliesFunctionToArray() {
+        $actual = Serialize::map(array(1, 2, 3), function($e) { return $e * 2; });
+        $this->assertEquals(array(2, 4, 6), $actual);
+    }
+
+    public function testMapPassThroughOtherVals() {
+        $actual = Serialize::map("abc", function($e) { return $e*2; });
+        $this->assertEquals("abc", $actual);
+
+        $actual = Serialize::map(Values::NONE, function($e) { return $e*2; });
+        $this->assertEquals(Values::NONE, $actual);
+
+        $actual = Serialize::map(10, function($e) { return $e*2; });
+        $this->assertEquals(10, $actual);
     }
 }

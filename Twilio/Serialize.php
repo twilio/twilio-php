@@ -67,10 +67,22 @@ class Serialize {
     }
 
     public static function json_object($object) {
+        trigger_error("Serialize::json_object has been deprecated in favor of Serialize::jsonObject", E_USER_NOTICE);
+        return Serialize::jsonObject($object);
+    }
+
+    public static function jsonObject($object) {
         if (is_array($object)) {
             return json_encode($object);
         }
         return $object;
+    }
+
+    public static function map($values, $map_func) {
+        if (!is_array($values)) {
+            return $values;
+        }
+        return array_map($map_func, $values);
     }
 
 }
