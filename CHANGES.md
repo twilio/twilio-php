@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2017-11-03] Version 5.15.5
+----------------------------
+**Api**
+- Add programmable video keys
+
+**Video**
+- Add `Participants`
+
+
 [2017-10-27] Version 5.15.4
 ----------------------------
 **Chat**

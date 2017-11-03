@@ -42,7 +42,7 @@ class StreamMessageList extends ListResource {
      * @return StreamMessageInstance Newly created StreamMessageInstance
      */
     public function create($data) {
-        $data = Values::of(array('Data' => Serialize::json_object($data),));
+        $data = Values::of(array('Data' => Serialize::jsonObject($data),));
 
         $payload = $this->version->create(
             'POST',

@@ -90,7 +90,7 @@ class ReservationContext extends InstanceContext {
             'From' => $options['from'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'StatusCallbackEvent' => $options['statusCallbackEvent'],
+            'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
             'Timeout' => $options['timeout'],
             'Record' => Serialize::booleanToString($options['record']),
             'Muted' => Serialize::booleanToString($options['muted']),
@@ -103,7 +103,7 @@ class ReservationContext extends InstanceContext {
             'MaxParticipants' => $options['maxParticipants'],
             'ConferenceStatusCallback' => $options['conferenceStatusCallback'],
             'ConferenceStatusCallbackMethod' => $options['conferenceStatusCallbackMethod'],
-            'ConferenceStatusCallbackEvent' => $options['conferenceStatusCallbackEvent'],
+            'ConferenceStatusCallbackEvent' => Serialize::map($options['conferenceStatusCallbackEvent'], function($e) { return $e; }),
             'ConferenceRecord' => $options['conferenceRecord'],
             'ConferenceTrim' => $options['conferenceTrim'],
             'RecordingChannels' => $options['recordingChannels'],
@@ -114,7 +114,7 @@ class ReservationContext extends InstanceContext {
             'Region' => $options['region'],
             'SipAuthUsername' => $options['sipAuthUsername'],
             'SipAuthPassword' => $options['sipAuthPassword'],
-            'DequeueStatusCallbackEvent' => $options['dequeueStatusCallbackEvent'],
+            'DequeueStatusCallbackEvent' => Serialize::map($options['dequeueStatusCallbackEvent'], function($e) { return $e; }),
             'PostWorkActivitySid' => $options['postWorkActivitySid'],
         ));
 

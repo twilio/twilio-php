@@ -12,6 +12,7 @@ namespace Twilio\Tests\Integration\Preview\Hostednumbers;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -179,7 +180,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
           catch (TwilioException $e) {}
 
         $values = array(
-            'HostedNumberOrderSids' => array('hostedNumberOrderSids'),
+            'HostedNumberOrderSids' => Serialize::map(array('hostedNumberOrderSids'), function($e) { return $e; }),
             'AddressSid' => "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             'Email' => "email",
         );

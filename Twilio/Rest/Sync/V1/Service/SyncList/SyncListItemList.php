@@ -43,7 +43,7 @@ class SyncListItemList extends ListResource {
      * @return SyncListItemInstance Newly created SyncListItemInstance
      */
     public function create($data) {
-        $data = Values::of(array('Data' => Serialize::json_object($data),));
+        $data = Values::of(array('Data' => Serialize::jsonObject($data),));
 
         $payload = $this->version->create(
             'POST',

@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Proxy\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -139,7 +140,7 @@ class SessionList extends ListResource {
             'UniqueName' => $options['uniqueName'],
             'Ttl' => $options['ttl'],
             'Status' => $options['status'],
-            'Participants' => $options['participants'],
+            'Participants' => Serialize::map($options['participants'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

@@ -50,7 +50,7 @@ class InstalledAddOnList extends ListResource {
         $data = Values::of(array(
             'AvailableAddOnSid' => $availableAddOnSid,
             'AcceptTermsOfService' => Serialize::booleanToString($acceptTermsOfService),
-            'Configuration' => Serialize::json_object($options['configuration']),
+            'Configuration' => Serialize::jsonObject($options['configuration']),
             'UniqueName' => $options['uniqueName'],
         ));
 

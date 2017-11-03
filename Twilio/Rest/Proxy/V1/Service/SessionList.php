@@ -141,7 +141,7 @@ class SessionList extends ListResource {
             'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
             'Ttl' => $options['ttl'],
             'Status' => $options['status'],
-            'Participants' => $options['participants'],
+            'Participants' => Serialize::map($options['participants'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

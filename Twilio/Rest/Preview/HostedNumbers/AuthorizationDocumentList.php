@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\HostedNumbers;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -135,10 +136,10 @@ class AuthorizationDocumentList extends ListResource {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'HostedNumberOrderSids' => $hostedNumberOrderSids,
+            'HostedNumberOrderSids' => Serialize::map($hostedNumberOrderSids, function($e) { return $e; }),
             'AddressSid' => $addressSid,
             'Email' => $email,
-            'CcEmails' => $options['ccEmails'],
+            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

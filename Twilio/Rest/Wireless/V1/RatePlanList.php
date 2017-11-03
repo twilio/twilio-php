@@ -138,7 +138,7 @@ class RatePlanList extends ListResource {
             'MessagingEnabled' => Serialize::booleanToString($options['messagingEnabled']),
             'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
             'NationalRoamingEnabled' => Serialize::booleanToString($options['nationalRoamingEnabled']),
-            'InternationalRoaming' => $options['internationalRoaming'],
+            'InternationalRoaming' => Serialize::map($options['internationalRoaming'], function($e) { return $e; }),
             'NationalRoamingDataLimit' => $options['nationalRoamingDataLimit'],
             'InternationalRoamingDataLimit' => $options['internationalRoamingDataLimit'],
         ));

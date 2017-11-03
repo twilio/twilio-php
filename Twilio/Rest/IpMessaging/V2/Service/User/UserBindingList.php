@@ -11,6 +11,7 @@ namespace Twilio\Rest\IpMessaging\V2\Service\User;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -92,7 +93,7 @@ class UserBindingList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'BindingType' => $options['bindingType'],
+            'BindingType' => Serialize::map($options['bindingType'], function($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

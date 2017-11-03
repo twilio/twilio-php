@@ -45,23 +45,23 @@ class NotificationList extends ListResource {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Identity' => $options['identity'],
-            'Tag' => $options['tag'],
+            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
+            'Tag' => Serialize::map($options['tag'], function($e) { return $e; }),
             'Body' => $options['body'],
             'Priority' => $options['priority'],
             'Ttl' => $options['ttl'],
             'Title' => $options['title'],
             'Sound' => $options['sound'],
             'Action' => $options['action'],
-            'Data' => Serialize::json_object($options['data']),
-            'Apn' => Serialize::json_object($options['apn']),
-            'Gcm' => Serialize::json_object($options['gcm']),
-            'Sms' => Serialize::json_object($options['sms']),
-            'FacebookMessenger' => Serialize::json_object($options['facebookMessenger']),
-            'Fcm' => Serialize::json_object($options['fcm']),
-            'Segment' => $options['segment'],
-            'Alexa' => Serialize::json_object($options['alexa']),
-            'ToBinding' => $options['toBinding'],
+            'Data' => Serialize::jsonObject($options['data']),
+            'Apn' => Serialize::jsonObject($options['apn']),
+            'Gcm' => Serialize::jsonObject($options['gcm']),
+            'Sms' => Serialize::jsonObject($options['sms']),
+            'FacebookMessenger' => Serialize::jsonObject($options['facebookMessenger']),
+            'Fcm' => Serialize::jsonObject($options['fcm']),
+            'Segment' => Serialize::map($options['segment'], function($e) { return $e; }),
+            'Alexa' => Serialize::jsonObject($options['alexa']),
+            'ToBinding' => Serialize::map($options['toBinding'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

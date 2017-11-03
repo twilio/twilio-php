@@ -93,7 +93,7 @@ class RecordingList extends ListResource {
         $params = Values::of(array(
             'Status' => $options['status'],
             'SourceSid' => $options['sourceSid'],
-            'GroupingSid' => $options['groupingSid'],
+            'GroupingSid' => Serialize::map($options['groupingSid'], function($e) { return $e; }),
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,

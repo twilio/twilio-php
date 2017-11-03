@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\HostedNumbers;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -61,10 +62,10 @@ class AuthorizationDocumentContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'HostedNumberOrderSids' => $options['hostedNumberOrderSids'],
+            'HostedNumberOrderSids' => Serialize::map($options['hostedNumberOrderSids'], function($e) { return $e; }),
             'AddressSid' => $options['addressSid'],
             'Email' => $options['email'],
-            'CcEmails' => $options['ccEmails'],
+            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
             'Status' => $options['status'],
         ));
 

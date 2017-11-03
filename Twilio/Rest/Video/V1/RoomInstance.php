@@ -36,6 +36,7 @@ use Twilio\Version;
  */
 class RoomInstance extends InstanceResource {
     protected $_recordings = null;
+    protected $_participants = null;
 
     /**
      * Initialize the RoomInstance
@@ -112,6 +113,15 @@ class RoomInstance extends InstanceResource {
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;
+    }
+
+    /**
+     * Access the participants
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\RoomParticipantList 
+     */
+    protected function getParticipants() {
+        return $this->proxy()->participants;
     }
 
     /**

@@ -112,7 +112,7 @@ class ServiceContext extends InstanceContext {
             'PreWebhookUrl' => $options['preWebhookUrl'],
             'PostWebhookUrl' => $options['postWebhookUrl'],
             'WebhookMethod' => $options['webhookMethod'],
-            'WebhookFilters' => $options['webhookFilters'],
+            'WebhookFilters' => Serialize::map($options['webhookFilters'], function($e) { return $e; }),
             'Limits.ChannelMembers' => $options['limitsChannelMembers'],
             'Limits.UserChannels' => $options['limitsUserChannels'],
             'Media.CompatibilityMessage' => $options['mediaCompatibilityMessage'],

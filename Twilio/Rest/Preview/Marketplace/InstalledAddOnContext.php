@@ -78,7 +78,7 @@ class InstalledAddOnContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Configuration' => Serialize::json_object($options['configuration']),
+            'Configuration' => Serialize::jsonObject($options['configuration']),
             'UniqueName' => $options['uniqueName'],
         ));
 

@@ -44,7 +44,7 @@ class SyncMapItemList extends ListResource {
      * @return SyncMapItemInstance Newly created SyncMapItemInstance
      */
     public function create($key, $data) {
-        $data = Values::of(array('Key' => $key, 'Data' => Serialize::json_object($data),));
+        $data = Values::of(array('Key' => $key, 'Data' => Serialize::jsonObject($data),));
 
         $payload = $this->version->create(
             'POST',

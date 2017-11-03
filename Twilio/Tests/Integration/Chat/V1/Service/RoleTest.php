@@ -12,6 +12,7 @@ namespace Twilio\Tests\Integration\Chat\V1\Service;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
+use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -99,7 +100,7 @@ class RoleTest extends HolodeckTestCase {
         $values = array(
             'FriendlyName' => "friendlyName",
             'Type' => "channel",
-            'Permission' => array('permission'),
+            'Permission' => Serialize::map(array('permission'), function($e) { return $e; }),
         );
 
         $this->assertRequest(new Request(
@@ -230,7 +231,7 @@ class RoleTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Permission' => array('permission'),);
+        $values = array('Permission' => Serialize::map(array('permission'), function($e) { return $e; }),);
 
         $this->assertRequest(new Request(
             'post',

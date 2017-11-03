@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\HostedNumbers;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -73,7 +74,7 @@ class HostedNumberOrderContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
             'Email' => $options['email'],
-            'CcEmails' => $options['ccEmails'],
+            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
             'Status' => $options['status'],
             'VerificationCode' => $options['verificationCode'],
         ));

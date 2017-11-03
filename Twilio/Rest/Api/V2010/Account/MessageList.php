@@ -47,7 +47,7 @@ class MessageList extends ListResource {
             'From' => $options['from'],
             'MessagingServiceSid' => $options['messagingServiceSid'],
             'Body' => $options['body'],
-            'MediaUrl' => $options['mediaUrl'],
+            'MediaUrl' => Serialize::map($options['mediaUrl'], function($e) { return $e; }),
             'StatusCallback' => $options['statusCallback'],
             'ApplicationSid' => $options['applicationSid'],
             'MaxPrice' => $options['maxPrice'],

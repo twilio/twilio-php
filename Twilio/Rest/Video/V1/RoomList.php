@@ -48,7 +48,7 @@ class RoomList extends ListResource {
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'MaxParticipants' => $options['maxParticipants'],
             'RecordParticipantsOnConnect' => Serialize::booleanToString($options['recordParticipantsOnConnect']),
-            'VideoCodecs' => $options['videoCodecs'],
+            'VideoCodecs' => Serialize::map($options['videoCodecs'], function($e) { return $e; }),
             'MediaRegion' => $options['mediaRegion'],
         ));
 

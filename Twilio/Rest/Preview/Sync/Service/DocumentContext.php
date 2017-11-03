@@ -80,7 +80,7 @@ class DocumentContext extends InstanceContext {
      * @return DocumentInstance Updated DocumentInstance
      */
     public function update($data) {
-        $data = Values::of(array('Data' => Serialize::json_object($data),));
+        $data = Values::of(array('Data' => Serialize::jsonObject($data),));
 
         $payload = $this->version->update(
             'POST',

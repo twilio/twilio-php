@@ -148,7 +148,7 @@ class HostedNumberOrderList extends ListResource {
             'AccountSid' => $options['accountSid'],
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
-            'CcEmails' => $options['ccEmails'],
+            'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
             'SmsUrl' => $options['smsUrl'],
             'SmsMethod' => $options['smsMethod'],
             'SmsFallbackUrl' => $options['smsFallbackUrl'],

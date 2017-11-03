@@ -10,6 +10,7 @@
 namespace Twilio\Rest\IpMessaging\V1\Service;
 
 use Twilio\ListResource;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -42,7 +43,7 @@ class RoleList extends ListResource {
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
             'Type' => $type,
-            'Permission' => $permission,
+            'Permission' => Serialize::map($permission, function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

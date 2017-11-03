@@ -11,6 +11,7 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -42,7 +43,10 @@ class FeedbackContext extends InstanceContext {
     public function create($qualityScore, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('QualityScore' => $qualityScore, 'Issue' => $options['issue'],));
+        $data = Values::of(array(
+            'QualityScore' => $qualityScore,
+            'Issue' => Serialize::map($options['issue'], function($e) { return $e; }),
+        ));
 
         $payload = $this->version->create(
             'POST',
@@ -91,7 +95,10 @@ class FeedbackContext extends InstanceContext {
     public function update($qualityScore, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('QualityScore' => $qualityScore, 'Issue' => $options['issue'],));
+        $data = Values::of(array(
+            'QualityScore' => $qualityScore,
+            'Issue' => Serialize::map($options['issue'], function($e) { return $e; }),
+        ));
 
         $payload = $this->version->update(
             'POST',

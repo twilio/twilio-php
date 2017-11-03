@@ -103,7 +103,7 @@ class ServiceContext extends InstanceContext {
             'PreWebhookUrl' => $options['preWebhookUrl'],
             'PostWebhookUrl' => $options['postWebhookUrl'],
             'WebhookMethod' => $options['webhookMethod'],
-            'WebhookFilters' => $options['webhookFilters'],
+            'WebhookFilters' => Serialize::map($options['webhookFilters'], function($e) { return $e; }),
             'Webhooks.OnMessageSend.Url' => $options['webhooksOnMessageSendUrl'],
             'Webhooks.OnMessageSend.Method' => $options['webhooksOnMessageSendMethod'],
             'Webhooks.OnMessageSend.Format' => $options['webhooksOnMessageSendFormat'],
