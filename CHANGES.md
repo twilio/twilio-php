@@ -3,6 +3,10 @@ twilio-php Changelog
 
 [2017-11-03] Version 5.15.5
 ----------------------------
+**Library**
+- Issue 451: Do not set CURLOPT_INFILESIZE by default
+- PR #454: Fix the JsonSerializable. Thanks @vinu!
+
 **Api**
 - Add programmable video keys
 
