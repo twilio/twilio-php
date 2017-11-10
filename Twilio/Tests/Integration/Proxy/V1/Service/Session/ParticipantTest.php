@@ -41,7 +41,6 @@ class ParticipantTest extends HolodeckTestCase {
                 "session_sid": "KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "participant_type": "message-only",
                 "identifier": "identifier",
                 "proxy_identifier": "proxy_identifier",
                 "proxy_identifier_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -116,7 +115,7 @@ class ParticipantTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Identifier' => "identifier",);
+        $values = array('Identifier' => "identifier");
 
         $this->assertRequest(new Request(
             'post',
@@ -135,7 +134,6 @@ class ParticipantTest extends HolodeckTestCase {
                 "session_sid": "KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "participant_type": "message-only",
                 "identifier": "identifier",
                 "proxy_identifier": "proxy_identifier",
                 "proxy_identifier_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -212,7 +210,6 @@ class ParticipantTest extends HolodeckTestCase {
                 "session_sid": "KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "participant_type": "message-only",
                 "identifier": "identifier",
                 "proxy_identifier": "proxy_identifier",
                 "proxy_identifier_sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

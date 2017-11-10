@@ -132,6 +132,10 @@ class ServiceList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'DefaultTtl' => $options['defaultTtl'],
             'CallbackUrl' => $options['callbackUrl'],
+            'GeoMatchLevel' => $options['geoMatchLevel'],
+            'NumberSelectionBehavior' => $options['numberSelectionBehavior'],
+            'InterceptCallbackUrl' => $options['interceptCallbackUrl'],
+            'OutOfSessionCallbackUrl' => $options['outOfSessionCallbackUrl'],
         ));
 
         $payload = $this->version->create(

@@ -27,7 +27,7 @@ class CredentialListMappingTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('CredentialListSid' => "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",);
+        $values = array('CredentialListSid' => "CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         $this->assertRequest(new Request(
             'post',

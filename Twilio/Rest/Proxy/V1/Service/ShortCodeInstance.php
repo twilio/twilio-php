@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string shortCode
  * @property string isoCountry
- * @property array capabilities
+ * @property string capabilities
  * @property string url
  */
 class ShortCodeInstance extends InstanceResource {
@@ -54,7 +54,7 @@ class ShortCodeInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'],);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid']);
     }
 
     /**

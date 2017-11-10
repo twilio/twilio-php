@@ -27,7 +27,7 @@ class ReservationList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'taskSid' => $taskSid,);
+        $this->solution = array('workspaceSid' => $workspaceSid, 'taskSid' => $taskSid);
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks/' . rawurlencode($taskSid) . '/Reservations';
     }

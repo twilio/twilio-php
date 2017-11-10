@@ -149,7 +149,7 @@ class IntentTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UniqueName' => "uniqueName",);
+        $values = array('UniqueName' => "uniqueName");
 
         $this->assertRequest(new Request(
             'post',

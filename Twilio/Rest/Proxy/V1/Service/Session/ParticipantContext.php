@@ -38,7 +38,7 @@ class ParticipantContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, 'sid' => $sid,);
+        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, 'sid' => $sid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Participants/' . rawurlencode($sid) . '';
     }
@@ -85,7 +85,6 @@ class ParticipantContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'ParticipantType' => $options['participantType'],
             'Identifier' => $options['identifier'],
             'FriendlyName' => $options['friendlyName'],
             'ProxyIdentifier' => $options['proxyIdentifier'],

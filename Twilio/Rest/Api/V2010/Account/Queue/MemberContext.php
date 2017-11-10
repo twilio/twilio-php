@@ -27,7 +27,7 @@ class MemberContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'queueSid' => $queueSid, 'callSid' => $callSid,);
+        $this->solution = array('accountSid' => $accountSid, 'queueSid' => $queueSid, 'callSid' => $callSid);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues/' . rawurlencode($queueSid) . '/Members/' . rawurlencode($callSid) . '.json';
     }
@@ -63,7 +63,7 @@ class MemberContext extends InstanceContext {
      * @return MemberInstance Updated MemberInstance
      */
     public function update($url, $method) {
-        $data = Values::of(array('Url' => $url, 'Method' => $method,));
+        $data = Values::of(array('Url' => $url, 'Method' => $method));
 
         $payload = $this->version->update(
             'POST',

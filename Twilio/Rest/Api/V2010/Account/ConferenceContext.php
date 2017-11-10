@@ -35,7 +35,7 @@ class ConferenceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid,);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($sid) . '.json';
     }
@@ -71,7 +71,7 @@ class ConferenceContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Status' => $options['status'],));
+        $data = Values::of(array('Status' => $options['status']));
 
         $payload = $this->version->update(
             'POST',

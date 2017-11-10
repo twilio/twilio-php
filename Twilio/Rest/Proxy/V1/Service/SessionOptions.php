@@ -29,24 +29,26 @@ abstract class SessionOptions {
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @param \DateTime $dateExpiry The date this Session was expiry
      * @param integer $ttl TTL for a Session, in seconds.
+     * @param string $mode The Mode of this Session
      * @param string $status The Status of this Session
-     * @param string $participants A list of phone numbers to add to this Session.
+     * @param array $participants A list of phone numbers to add to this Session.
      * @return CreateSessionOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
-        return new CreateSessionOptions($uniqueName, $dateExpiry, $ttl, $status, $participants);
+    public static function create($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+        return new CreateSessionOptions($uniqueName, $dateExpiry, $ttl, $mode, $status, $participants);
     }
 
     /**
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @param \DateTime $dateExpiry The date this Session was expiry
      * @param integer $ttl TTL for a Session, in seconds.
+     * @param string $mode The Mode of this Session
      * @param string $status The Status of this Session
-     * @param string $participants A list of phone numbers to add to this Session.
+     * @param array $participants A list of phone numbers to add to this Session.
      * @return UpdateSessionOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
-        return new UpdateSessionOptions($uniqueName, $dateExpiry, $ttl, $status, $participants);
+    public static function update($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+        return new UpdateSessionOptions($uniqueName, $dateExpiry, $ttl, $mode, $status, $participants);
     }
 }
 
@@ -103,13 +105,15 @@ class CreateSessionOptions extends Options {
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @param \DateTime $dateExpiry The date this Session was expiry
      * @param integer $ttl TTL for a Session, in seconds.
+     * @param string $mode The Mode of this Session
      * @param string $status The Status of this Session
-     * @param string $participants A list of phone numbers to add to this Session.
+     * @param array $participants A list of phone numbers to add to this Session.
      */
-    public function __construct($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
+        $this->options['mode'] = $mode;
         $this->options['status'] = $status;
         $this->options['participants'] = $participants;
     }
@@ -148,6 +152,17 @@ class CreateSessionOptions extends Options {
     }
 
     /**
+     * The Mode of this Session. One of `message-only`, `voice-only` or `voice-and-message`.
+     * 
+     * @param string $mode The Mode of this Session
+     * @return $this Fluent Builder
+     */
+    public function setMode($mode) {
+        $this->options['mode'] = $mode;
+        return $this;
+    }
+
+    /**
      * The Status of this Session. One of `in-progess`, `closed`, `failed`, `unknown` or `completed`.
      * 
      * @param string $status The Status of this Session
@@ -161,7 +176,7 @@ class CreateSessionOptions extends Options {
     /**
      * A list of phone numbers to add to this Session.
      * 
-     * @param string $participants A list of phone numbers to add to this Session.
+     * @param array $participants A list of phone numbers to add to this Session.
      * @return $this Fluent Builder
      */
     public function setParticipants($participants) {
@@ -190,13 +205,15 @@ class UpdateSessionOptions extends Options {
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @param \DateTime $dateExpiry The date this Session was expiry
      * @param integer $ttl TTL for a Session, in seconds.
+     * @param string $mode The Mode of this Session
      * @param string $status The Status of this Session
-     * @param string $participants A list of phone numbers to add to this Session.
+     * @param array $participants A list of phone numbers to add to this Session.
      */
-    public function __construct($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
+        $this->options['mode'] = $mode;
         $this->options['status'] = $status;
         $this->options['participants'] = $participants;
     }
@@ -235,6 +252,17 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
+     * The Mode of this Session. One of `message-only`, `voice-only` or `voice-and-message`.
+     * 
+     * @param string $mode The Mode of this Session
+     * @return $this Fluent Builder
+     */
+    public function setMode($mode) {
+        $this->options['mode'] = $mode;
+        return $this;
+    }
+
+    /**
      * The Status of this Session. One of `in-progess`, `closed`, `failed`, `unknown` or `completed`.
      * 
      * @param string $status The Status of this Session
@@ -248,7 +276,7 @@ class UpdateSessionOptions extends Options {
     /**
      * A list of phone numbers to add to this Session.
      * 
-     * @param string $participants A list of phone numbers to add to this Session.
+     * @param array $participants A list of phone numbers to add to this Session.
      * @return $this Fluent Builder
      */
     public function setParticipants($participants) {

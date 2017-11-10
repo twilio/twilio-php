@@ -63,7 +63,7 @@ class MemberTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Url' => "https://example.com", 'Method' => "GET",);
+        $values = array('Url' => "https://example.com", 'Method' => "GET");
 
         $this->assertRequest(new Request(
             'post',

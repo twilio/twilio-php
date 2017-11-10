@@ -28,7 +28,7 @@ class AlphaSenderList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid,);
+        $this->solution = array('serviceSid' => $serviceSid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/AlphaSenders';
     }
@@ -40,7 +40,7 @@ class AlphaSenderList extends ListResource {
      * @return AlphaSenderInstance Newly created AlphaSenderInstance
      */
     public function create($alphaSender) {
-        $data = Values::of(array('AlphaSender' => $alphaSender,));
+        $data = Values::of(array('AlphaSender' => $alphaSender));
 
         $payload = $this->version->create(
             'POST',

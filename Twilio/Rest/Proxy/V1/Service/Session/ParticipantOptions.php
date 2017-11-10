@@ -17,57 +17,41 @@ use Twilio\Values;
  */
 abstract class ParticipantOptions {
     /**
-     * @param string $participantType The participant_type
      * @param string $identifier The identifier
      * @return ReadParticipantOptions Options builder
      */
-    public static function read($participantType = Values::NONE, $identifier = Values::NONE) {
-        return new ReadParticipantOptions($participantType, $identifier);
+    public static function read($identifier = Values::NONE) {
+        return new ReadParticipantOptions($identifier);
     }
 
     /**
      * @param string $friendlyName A human readable description of this resource.
-     * @param string $participantType The Participant Type of this Participant
      * @param string $proxyIdentifier The proxy phone number for this Participant.
      * @param string $proxyIdentifierSid Proxy Identifier Sid.
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $participantType = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
-        return new CreateParticipantOptions($friendlyName, $participantType, $proxyIdentifier, $proxyIdentifierSid);
+    public static function create($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
+        return new CreateParticipantOptions($friendlyName, $proxyIdentifier, $proxyIdentifierSid);
     }
 
     /**
-     * @param string $participantType The Participant Type of this Participant
      * @param string $identifier The phone number of this Participant.
      * @param string $friendlyName A human readable description of this resource.
      * @param string $proxyIdentifier The proxy phone number for this Participant.
      * @param string $proxyIdentifierSid Proxy Identifier Sid.
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($participantType = Values::NONE, $identifier = Values::NONE, $friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
-        return new UpdateParticipantOptions($participantType, $identifier, $friendlyName, $proxyIdentifier, $proxyIdentifierSid);
+    public static function update($identifier = Values::NONE, $friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
+        return new UpdateParticipantOptions($identifier, $friendlyName, $proxyIdentifier, $proxyIdentifierSid);
     }
 }
 
 class ReadParticipantOptions extends Options {
     /**
-     * @param string $participantType The participant_type
      * @param string $identifier The identifier
      */
-    public function __construct($participantType = Values::NONE, $identifier = Values::NONE) {
-        $this->options['participantType'] = $participantType;
+    public function __construct($identifier = Values::NONE) {
         $this->options['identifier'] = $identifier;
-    }
-
-    /**
-     * The participant_type
-     * 
-     * @param string $participantType The participant_type
-     * @return $this Fluent Builder
-     */
-    public function setParticipantType($participantType) {
-        $this->options['participantType'] = $participantType;
-        return $this;
     }
 
     /**
@@ -100,13 +84,11 @@ class ReadParticipantOptions extends Options {
 class CreateParticipantOptions extends Options {
     /**
      * @param string $friendlyName A human readable description of this resource.
-     * @param string $participantType The Participant Type of this Participant
      * @param string $proxyIdentifier The proxy phone number for this Participant.
      * @param string $proxyIdentifierSid Proxy Identifier Sid.
      */
-    public function __construct($friendlyName = Values::NONE, $participantType = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
-        $this->options['participantType'] = $participantType;
         $this->options['proxyIdentifier'] = $proxyIdentifier;
         $this->options['proxyIdentifierSid'] = $proxyIdentifierSid;
     }
@@ -119,17 +101,6 @@ class CreateParticipantOptions extends Options {
      */
     public function setFriendlyName($friendlyName) {
         $this->options['friendlyName'] = $friendlyName;
-        return $this;
-    }
-
-    /**
-     * The Participant Type of this Participant. One of `message-only`, `voice-only` or `voice-and-message`.
-     * 
-     * @param string $participantType The Participant Type of this Participant
-     * @return $this Fluent Builder
-     */
-    public function setParticipantType($participantType) {
-        $this->options['participantType'] = $participantType;
         return $this;
     }
 
@@ -173,29 +144,16 @@ class CreateParticipantOptions extends Options {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param string $participantType The Participant Type of this Participant
      * @param string $identifier The phone number of this Participant.
      * @param string $friendlyName A human readable description of this resource.
      * @param string $proxyIdentifier The proxy phone number for this Participant.
      * @param string $proxyIdentifierSid Proxy Identifier Sid.
      */
-    public function __construct($participantType = Values::NONE, $identifier = Values::NONE, $friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
-        $this->options['participantType'] = $participantType;
+    public function __construct($identifier = Values::NONE, $friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
         $this->options['identifier'] = $identifier;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['proxyIdentifier'] = $proxyIdentifier;
         $this->options['proxyIdentifierSid'] = $proxyIdentifierSid;
-    }
-
-    /**
-     * The Participant Type of this Participant. One of `message-only`, `voice-only` or `voice-and-message`.
-     * 
-     * @param string $participantType The Participant Type of this Participant
-     * @return $this Fluent Builder
-     */
-    public function setParticipantType($participantType) {
-        $this->options['participantType'] = $participantType;
-        return $this;
     }
 
     /**

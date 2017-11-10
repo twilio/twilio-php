@@ -42,7 +42,7 @@ class SessionContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid,);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sid) . '';
     }
@@ -91,8 +91,9 @@ class SessionContext extends InstanceContext {
             'UniqueName' => $options['uniqueName'],
             'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
             'Ttl' => $options['ttl'],
+            'Mode' => $options['mode'],
             'Status' => $options['status'],
-            'Participants' => Serialize::map($options['participants'], function($e) { return $e; }),
+            'Participants' => Serialize::map($options['participants'], function($e) { return Serialize::jsonObject($e); }),
         ));
 
         $payload = $this->version->update(

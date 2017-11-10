@@ -133,17 +133,15 @@ class HostedNumberOrderList extends ListResource {
      * Create a new HostedNumberOrderInstance
      * 
      * @param string $phoneNumber An E164 formatted phone number.
-     * @param string $isoCountry ISO country code.
      * @param boolean $smsCapability Specify SMS capability to host.
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
      */
-    public function create($phoneNumber, $isoCountry, $smsCapability, $options = array()) {
+    public function create($phoneNumber, $smsCapability, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
             'PhoneNumber' => $phoneNumber,
-            'IsoCountry' => $isoCountry,
             'SmsCapability' => Serialize::booleanToString($smsCapability),
             'AccountSid' => $options['accountSid'],
             'FriendlyName' => $options['friendlyName'],

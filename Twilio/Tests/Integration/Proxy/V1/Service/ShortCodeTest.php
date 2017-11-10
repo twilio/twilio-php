@@ -25,7 +25,7 @@ class ShortCodeTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Sid' => "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",);
+        $values = array('Sid' => "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         $this->assertRequest(new Request(
             'post',
@@ -47,7 +47,10 @@ class ShortCodeTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "short_code": "12345",
                 "iso_country": "US",
-                "capabilities": [],
+                "capabilities": {
+                    "sms_outbound": true,
+                    "voice_inbound": false
+                },
                 "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -124,7 +127,10 @@ class ShortCodeTest extends HolodeckTestCase {
                         "date_updated": "2015-07-30T20:00:00Z",
                         "short_code": "12345",
                         "iso_country": "US",
-                        "capabilities": [],
+                        "capabilities": {
+                            "sms_outbound": true,
+                            "voice_inbound": false
+                        },
                         "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ]
@@ -165,7 +171,10 @@ class ShortCodeTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "short_code": "12345",
                 "iso_country": "US",
-                "capabilities": [],
+                "capabilities": {
+                    "sms_outbound": true,
+                    "voice_inbound": false
+                },
                 "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '

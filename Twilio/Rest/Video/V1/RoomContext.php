@@ -37,7 +37,7 @@ class RoomContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid,);
+        $this->solution = array('sid' => $sid);
 
         $this->uri = '/Rooms/' . rawurlencode($sid) . '';
     }
@@ -66,7 +66,7 @@ class RoomContext extends InstanceContext {
      * @return RoomInstance Updated RoomInstance
      */
     public function update($status) {
-        $data = Values::of(array('Status' => $status,));
+        $data = Values::of(array('Status' => $status));
 
         $payload = $this->version->update(
             'POST',

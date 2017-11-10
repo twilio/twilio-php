@@ -30,7 +30,7 @@ class SessionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid,);
+        $this->solution = array('serviceSid' => $serviceSid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions';
     }
@@ -140,8 +140,9 @@ class SessionList extends ListResource {
             'UniqueName' => $options['uniqueName'],
             'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
             'Ttl' => $options['ttl'],
+            'Mode' => $options['mode'],
             'Status' => $options['status'],
-            'Participants' => Serialize::map($options['participants'], function($e) { return $e; }),
+            'Participants' => Serialize::map($options['participants'], function($e) { return Serialize::jsonObject($e); }),
         ));
 
         $payload = $this->version->create(

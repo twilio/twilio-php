@@ -24,7 +24,6 @@ use Twilio\Version;
  * @property string serviceSid
  * @property string accountSid
  * @property string friendlyName
- * @property string participantType
  * @property string identifier
  * @property string proxyIdentifier
  * @property string proxyIdentifierSid
@@ -57,7 +56,6 @@ class ParticipantInstance extends InstanceResource {
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'participantType' => Values::array_get($payload, 'participant_type'),
             'identifier' => Values::array_get($payload, 'identifier'),
             'proxyIdentifier' => Values::array_get($payload, 'proxy_identifier'),
             'proxyIdentifierSid' => Values::array_get($payload, 'proxy_identifier_sid'),

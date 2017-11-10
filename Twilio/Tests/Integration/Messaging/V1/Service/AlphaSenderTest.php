@@ -25,7 +25,7 @@ class AlphaSenderTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('AlphaSender' => "alphaSender",);
+        $values = array('AlphaSender' => "alphaSender");
 
         $this->assertRequest(new Request(
             'post',

@@ -25,7 +25,7 @@ class ValidationRequestTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('PhoneNumber' => "+987654321",);
+        $values = array('PhoneNumber' => "+987654321");
 
         $this->assertRequest(new Request(
             'post',

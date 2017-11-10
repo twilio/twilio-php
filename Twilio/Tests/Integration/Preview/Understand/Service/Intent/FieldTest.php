@@ -147,7 +147,7 @@ class FieldTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FieldType' => "fieldType", 'UniqueName' => "uniqueName",);
+        $values = array('FieldType' => "fieldType", 'UniqueName' => "uniqueName");
 
         $this->assertRequest(new Request(
             'post',

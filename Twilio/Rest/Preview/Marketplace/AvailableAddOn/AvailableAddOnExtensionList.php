@@ -28,7 +28,7 @@ class AvailableAddOnExtensionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('availableAddOnSid' => $availableAddOnSid,);
+        $this->solution = array('availableAddOnSid' => $availableAddOnSid);
 
         $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions';
     }

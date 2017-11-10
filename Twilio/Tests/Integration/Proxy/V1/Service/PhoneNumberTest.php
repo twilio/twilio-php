@@ -21,17 +21,13 @@ class PhoneNumberTest extends HolodeckTestCase {
 
         try {
             $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                    ->phoneNumbers->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Sid' => "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",);
-
         $this->assertRequest(new Request(
             'post',
-            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers',
-            null,
-            $values
+            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers'
         ));
     }
 
@@ -48,14 +44,17 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "phone_number": "+987654321",
                 "friendly_name": "Friendly Name",
                 "iso_country": "US",
-                "capabilities": [],
+                "capabilities": {
+                    "sms_outbound": true,
+                    "voice_inbound": false
+                },
                 "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
         $actual = $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                          ->phoneNumbers->create();
 
         $this->assertNotNull($actual);
     }
@@ -126,7 +125,10 @@ class PhoneNumberTest extends HolodeckTestCase {
                         "phone_number": "+987654321",
                         "friendly_name": "Friendly Name",
                         "iso_country": "US",
-                        "capabilities": [],
+                        "capabilities": {
+                            "sms_outbound": true,
+                            "voice_inbound": false
+                        },
                         "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ]
@@ -168,7 +170,10 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "phone_number": "12345",
                 "friendly_name": "Friendly Name",
                 "iso_country": "US",
-                "capabilities": [],
+                "capabilities": {
+                    "sms_outbound": true,
+                    "voice_inbound": false
+                },
                 "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '

@@ -29,7 +29,7 @@ class FieldList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'intentSid' => $intentSid,);
+        $this->solution = array('serviceSid' => $serviceSid, 'intentSid' => $intentSid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Intents/' . rawurlencode($intentSid) . '/Fields';
     }
@@ -128,7 +128,7 @@ class FieldList extends ListResource {
      * @return FieldInstance Newly created FieldInstance
      */
     public function create($fieldType, $uniqueName) {
-        $data = Values::of(array('FieldType' => $fieldType, 'UniqueName' => $uniqueName,));
+        $data = Values::of(array('FieldType' => $fieldType, 'UniqueName' => $uniqueName));
 
         $payload = $this->version->create(
             'POST',

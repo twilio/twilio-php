@@ -91,7 +91,7 @@ class CertificateTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('CertificateData' => "certificateData",);
+        $values = array('CertificateData' => "certificateData");
 
         $this->assertRequest(new Request(
             'post',

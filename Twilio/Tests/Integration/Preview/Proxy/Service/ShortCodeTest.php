@@ -25,7 +25,7 @@ class ShortCodeTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Sid' => "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",);
+        $values = array('Sid' => "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         $this->assertRequest(new Request(
             'post',

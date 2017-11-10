@@ -61,7 +61,7 @@ class RoomParticipantInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid ?: $this->properties['sid'],);
+        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid ?: $this->properties['sid']);
     }
 
     /**

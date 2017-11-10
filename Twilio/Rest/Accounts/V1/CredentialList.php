@@ -11,15 +11,19 @@ namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Rest\Accounts\V1\Credential\AwsList;
 use Twilio\Rest\Accounts\V1\Credential\PublicKeyList;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Accounts\V1\Credential\PublicKeyList publicKey
+ * @property \Twilio\Rest\Accounts\V1\Credential\AwsList aws
  * @method \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext publicKey(string $sid)
+ * @method \Twilio\Rest\Accounts\V1\Credential\AwsContext aws(string $sid)
  */
 class CredentialList extends ListResource {
     protected $_publicKey = null;
+    protected $_aws = null;
 
     /**
      * Construct the CredentialList
@@ -43,6 +47,17 @@ class CredentialList extends ListResource {
         }
 
         return $this->_publicKey;
+    }
+
+    /**
+     * Access the aws
+     */
+    protected function getAws() {
+        if (!$this->_aws) {
+            $this->_aws = new AwsList($this->version);
+        }
+
+        return $this->_aws;
     }
 
     /**

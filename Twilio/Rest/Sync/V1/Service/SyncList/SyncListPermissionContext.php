@@ -32,7 +32,7 @@ class SyncListPermissionContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, 'identity' => $identity,);
+        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, 'identity' => $identity);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Permissions/' . rawurlencode($identity) . '';
     }

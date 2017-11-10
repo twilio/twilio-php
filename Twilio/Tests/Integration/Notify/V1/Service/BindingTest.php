@@ -100,7 +100,7 @@ class BindingTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Identity' => "identity", 'BindingType' => "apn", 'Address' => "address",);
+        $values = array('Identity' => "identity", 'BindingType' => "apn", 'Address' => "address");
 
         $this->assertRequest(new Request(
             'post',

@@ -147,7 +147,7 @@ class SampleTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Language' => "language", 'TaggedText' => "taggedText",);
+        $values = array('Language' => "language", 'TaggedText' => "taggedText");
 
         $this->assertRequest(new Request(
             'post',

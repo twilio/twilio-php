@@ -30,7 +30,7 @@ class ParticipantList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid,);
+        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Participants';
     }
@@ -95,7 +95,6 @@ class ParticipantList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'ParticipantType' => $options['participantType'],
             'Identifier' => $options['identifier'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
@@ -140,7 +139,6 @@ class ParticipantList extends ListResource {
         $data = Values::of(array(
             'Identifier' => $identifier,
             'FriendlyName' => $options['friendlyName'],
-            'ParticipantType' => $options['participantType'],
             'ProxyIdentifier' => $options['proxyIdentifier'],
             'ProxyIdentifierSid' => $options['proxyIdentifierSid'],
         ));

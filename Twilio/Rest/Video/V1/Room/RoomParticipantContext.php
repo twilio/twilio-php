@@ -35,7 +35,7 @@ class RoomParticipantContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid,);
+        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid);
 
         $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($sid) . '';
     }
@@ -71,7 +71,7 @@ class RoomParticipantContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Status' => $options['status'],));
+        $data = Values::of(array('Status' => $options['status']));
 
         $payload = $this->version->update(
             'POST',
