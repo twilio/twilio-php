@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Sync\V1\Service\SyncList;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -71,11 +72,16 @@ class SyncListItemContext extends InstanceContext {
     /**
      * Update the SyncListItemInstance
      * 
-     * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Updated SyncListItemInstance
      */
-    public function update($data) {
-        $data = Values::of(array('Data' => Serialize::jsonObject($data)));
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'Data' => Serialize::jsonObject($options['data']),
+            'Ttl' => $options['ttl'],
+        ));
 
         $payload = $this->version->update(
             'POST',

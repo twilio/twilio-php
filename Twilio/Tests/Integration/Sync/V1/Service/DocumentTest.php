@@ -12,7 +12,6 @@ namespace Twilio\Tests\Integration\Sync\V1\Service;
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
-use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
@@ -40,6 +39,7 @@ class DocumentTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "revision": "revision",
@@ -110,6 +110,7 @@ class DocumentTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "revision": "revision",
@@ -180,6 +181,7 @@ class DocumentTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "created_by": "created_by",
                         "data": {},
+                        "date_expires": "2015-07-30T21:00:00Z",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "revision": "revision",
@@ -216,17 +218,13 @@ class DocumentTest extends HolodeckTestCase {
 
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("{}");
+                                   ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject("{}"));
-
         $this->assertRequest(new Request(
             'post',
-            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            null,
-            $values
+            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         ));
     }
 
@@ -238,6 +236,7 @@ class DocumentTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "revision": "revision",
@@ -253,7 +252,7 @@ class DocumentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("{}");
+                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
     }

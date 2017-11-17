@@ -7,71 +7,75 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room\RoomParticipant;
+namespace Twilio\Rest\Video\V1\Room;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property string sid
- * @property string participantSid
  * @property string roomSid
- * @property string name
+ * @property string accountSid
+ * @property string status
+ * @property string identity
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property boolean enabled
- * @property string kind
+ * @property \DateTime startTime
+ * @property \DateTime endTime
+ * @property integer duration
  * @property string url
+ * @property array links
  */
-class PublishedTrackInstance extends InstanceResource {
+class ParticipantInstance extends InstanceResource {
+    protected $_publishedTracks = null;
+
     /**
-     * Initialize the PublishedTrackInstance
+     * Initialize the ParticipantInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid The room_sid
-     * @param string $participantSid The participant_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackInstance 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantInstance 
      */
-    public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $roomSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
-            'participantSid' => Values::array_get($payload, 'participant_sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
-            'name' => Values::array_get($payload, 'name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'status' => Values::array_get($payload, 'status'),
+            'identity' => Values::array_get($payload, 'identity'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'enabled' => Values::array_get($payload, 'enabled'),
-            'kind' => Values::array_get($payload, 'kind'),
+            'startTime' => Deserialize::dateTime(Values::array_get($payload, 'start_time')),
+            'endTime' => Deserialize::dateTime(Values::array_get($payload, 'end_time')),
+            'duration' => Values::array_get($payload, 'duration'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array(
-            'roomSid' => $roomSid,
-            'participantSid' => $participantSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid ?: $this->properties['sid']);
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackContext Context for this PublishedTrackInstance
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext Context for this
+     *                                                       ParticipantInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new PublishedTrackContext(
+            $this->context = new ParticipantContext(
                 $this->version,
                 $this->solution['roomSid'],
-                $this->solution['participantSid'],
                 $this->solution['sid']
             );
         }
@@ -80,12 +84,31 @@ class PublishedTrackInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a PublishedTrackInstance
+     * Fetch a ParticipantInstance
      * 
-     * @return PublishedTrackInstance Fetched PublishedTrackInstance
+     * @return ParticipantInstance Fetched ParticipantInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the ParticipantInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return ParticipantInstance Updated ParticipantInstance
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
+    }
+
+    /**
+     * Access the publishedTracks
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList 
+     */
+    protected function getPublishedTracks() {
+        return $this->proxy()->publishedTracks;
     }
 
     /**
@@ -118,6 +141,6 @@ class PublishedTrackInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.PublishedTrackInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.ParticipantInstance ' . implode(' ', $context) . ']';
     }
 }

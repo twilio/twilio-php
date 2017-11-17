@@ -11,16 +11,16 @@ namespace Twilio\Rest\Video\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Video\V1\Room\RoomParticipantList;
+use Twilio\Rest\Video\V1\Room\ParticipantList;
 use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList recordings
- * @property \Twilio\Rest\Video\V1\Room\RoomParticipantList participants
+ * @property \Twilio\Rest\Video\V1\Room\ParticipantList participants
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Video\V1\Room\RoomParticipantContext participants(string $sid)
+ * @method \Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)
  */
 class RoomContext extends InstanceContext {
     protected $_recordings = null;
@@ -94,11 +94,11 @@ class RoomContext extends InstanceContext {
     /**
      * Access the participants
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipantList 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
      */
     protected function getParticipants() {
         if (!$this->_participants) {
-            $this->_participants = new RoomParticipantList($this->version, $this->solution['sid']);
+            $this->_participants = new ParticipantList($this->version, $this->solution['sid']);
         }
 
         return $this->_participants;

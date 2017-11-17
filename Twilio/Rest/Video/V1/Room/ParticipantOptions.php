@@ -12,28 +12,28 @@ namespace Twilio\Rest\Video\V1\Room;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class RoomParticipantOptions {
+abstract class ParticipantOptions {
     /**
      * @param string $status The status
      * @param string $identity The identity
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @param \DateTime $dateCreatedBefore The date_created_before
-     * @return ReadRoomParticipantOptions Options builder
+     * @return ReadParticipantOptions Options builder
      */
     public static function read($status = Values::NONE, $identity = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
-        return new ReadRoomParticipantOptions($status, $identity, $dateCreatedAfter, $dateCreatedBefore);
+        return new ReadParticipantOptions($status, $identity, $dateCreatedAfter, $dateCreatedBefore);
     }
 
     /**
      * @param string $status The status
-     * @return UpdateRoomParticipantOptions Options builder
+     * @return UpdateParticipantOptions Options builder
      */
     public static function update($status = Values::NONE) {
-        return new UpdateRoomParticipantOptions($status);
+        return new UpdateParticipantOptions($status);
     }
 }
 
-class ReadRoomParticipantOptions extends Options {
+class ReadParticipantOptions extends Options {
     /**
      * @param string $status The status
      * @param string $identity The identity
@@ -103,11 +103,11 @@ class ReadRoomParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.ReadRoomParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.ReadParticipantOptions ' . implode(' ', $options) . ']';
     }
 }
 
-class UpdateRoomParticipantOptions extends Options {
+class UpdateParticipantOptions extends Options {
     /**
      * @param string $status The status
      */
@@ -138,6 +138,6 @@ class UpdateRoomParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.UpdateRoomParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.UpdateParticipantOptions ' . implode(' ', $options) . ']';
     }
 }

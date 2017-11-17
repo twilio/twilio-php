@@ -47,6 +47,7 @@ class DocumentList extends ListResource {
         $data = Values::of(array(
             'UniqueName' => $options['uniqueName'],
             'Data' => Serialize::jsonObject($options['data']),
+            'Ttl' => $options['ttl'],
         ));
 
         $payload = $this->version->create(

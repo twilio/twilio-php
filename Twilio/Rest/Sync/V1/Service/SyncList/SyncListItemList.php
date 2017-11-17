@@ -40,10 +40,13 @@ class SyncListItemList extends ListResource {
      * Create a new SyncListItemInstance
      * 
      * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Newly created SyncListItemInstance
      */
-    public function create($data) {
-        $data = Values::of(array('Data' => Serialize::jsonObject($data)));
+    public function create($data, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Data' => Serialize::jsonObject($data), 'Ttl' => $options['ttl']));
 
         $payload = $this->version->create(
             'POST',

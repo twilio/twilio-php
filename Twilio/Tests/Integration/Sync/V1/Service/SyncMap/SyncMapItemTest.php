@@ -41,6 +41,7 @@ class SyncMapItemTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "key": "key",
@@ -116,6 +117,7 @@ class SyncMapItemTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "key": "key",
@@ -186,6 +188,7 @@ class SyncMapItemTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "created_by": "created_by",
                         "data": {},
+                        "date_expires": "2015-07-30T21:00:00Z",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "key": "key",
@@ -221,17 +224,13 @@ class SyncMapItemTest extends HolodeckTestCase {
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->syncMapItems("key")->update("{}");
+                                   ->syncMapItems("key")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject("{}"));
-
         $this->assertRequest(new Request(
             'post',
-            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key',
-            null,
-            $values
+            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key'
         ));
     }
 
@@ -243,6 +242,7 @@ class SyncMapItemTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "key": "key",
@@ -256,7 +256,7 @@ class SyncMapItemTest extends HolodeckTestCase {
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->syncMapItems("key")->update("{}");
+                                         ->syncMapItems("key")->update();
 
         $this->assertNotNull($actual);
     }

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room\RoomParticipant;
+namespace Twilio\Rest\Video\V1\Room\Participant;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
@@ -21,7 +21,7 @@ class PublishedTrackContext extends InstanceContext {
      * @param string $roomSid The room_sid
      * @param string $participantSid The participant_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackContext 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext 
      */
     public function __construct(Version $version, $roomSid, $participantSid, $sid) {
         parent::__construct($version);

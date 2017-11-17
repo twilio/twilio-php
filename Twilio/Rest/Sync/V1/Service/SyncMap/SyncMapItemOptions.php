@@ -17,6 +17,14 @@ use Twilio\Values;
  */
 abstract class SyncMapItemOptions {
     /**
+     * @param integer $ttl The ttl
+     * @return CreateSyncMapItemOptions Options builder
+     */
+    public static function create($ttl = Values::NONE) {
+        return new CreateSyncMapItemOptions($ttl);
+    }
+
+    /**
      * @param string $order The order
      * @param string $from The from
      * @param string $bounds The bounds
@@ -24,6 +32,50 @@ abstract class SyncMapItemOptions {
      */
     public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
         return new ReadSyncMapItemOptions($order, $from, $bounds);
+    }
+
+    /**
+     * @param array $data The data
+     * @param integer $ttl The ttl
+     * @return UpdateSyncMapItemOptions Options builder
+     */
+    public static function update($data = Values::NONE, $ttl = Values::NONE) {
+        return new UpdateSyncMapItemOptions($data, $ttl);
+    }
+}
+
+class CreateSyncMapItemOptions extends Options {
+    /**
+     * @param integer $ttl The ttl
+     */
+    public function __construct($ttl = Values::NONE) {
+        $this->options['ttl'] = $ttl;
+    }
+
+    /**
+     * The ttl
+     * 
+     * @param integer $ttl The ttl
+     * @return $this Fluent Builder
+     */
+    public function setTtl($ttl) {
+        $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Sync.V1.CreateSyncMapItemOptions ' . implode(' ', $options) . ']';
     }
 }
 
@@ -85,5 +137,53 @@ class ReadSyncMapItemOptions extends Options {
             }
         }
         return '[Twilio.Sync.V1.ReadSyncMapItemOptions ' . implode(' ', $options) . ']';
+    }
+}
+
+class UpdateSyncMapItemOptions extends Options {
+    /**
+     * @param array $data The data
+     * @param integer $ttl The ttl
+     */
+    public function __construct($data = Values::NONE, $ttl = Values::NONE) {
+        $this->options['data'] = $data;
+        $this->options['ttl'] = $ttl;
+    }
+
+    /**
+     * The data
+     * 
+     * @param array $data The data
+     * @return $this Fluent Builder
+     */
+    public function setData($data) {
+        $this->options['data'] = $data;
+        return $this;
+    }
+
+    /**
+     * The ttl
+     * 
+     * @param integer $ttl The ttl
+     * @return $this Fluent Builder
+     */
+    public function setTtl($ttl) {
+        $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Sync.V1.UpdateSyncMapItemOptions ' . implode(' ', $options) . ']';
     }
 }

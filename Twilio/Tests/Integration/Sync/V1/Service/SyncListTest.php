@@ -38,6 +38,7 @@ class SyncListTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "links": {
@@ -108,6 +109,7 @@ class SyncListTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "links": {
@@ -125,6 +127,50 @@ class SyncListTest extends HolodeckTestCase {
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->syncLists->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                   ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "created_by": "created_by",
+                "date_expires": "2015-07-30T21:00:00Z",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "links": {
+                    "items": "https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items",
+                    "permissions": "https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions"
+                },
+                "revision": "revision",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "unique_name",
+                "url": "https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                         ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
     }
@@ -178,6 +224,7 @@ class SyncListTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "created_by": "created_by",
+                        "date_expires": "2015-07-30T21:00:00Z",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "links": {

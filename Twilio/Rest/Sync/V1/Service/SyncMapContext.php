@@ -11,6 +11,7 @@ namespace Twilio\Rest\Sync\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemList;
 use Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapPermissionList;
 use Twilio\Values;
@@ -74,6 +75,32 @@ class SyncMapContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Update the SyncMapInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return SyncMapInstance Updated SyncMapInstance
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Ttl' => $options['ttl']));
+
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new SyncMapInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
     }
 
     /**

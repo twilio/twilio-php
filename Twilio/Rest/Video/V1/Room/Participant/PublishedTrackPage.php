@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room\RoomParticipant;
+namespace Twilio\Rest\Video\V1\Room\Participant;
 
 use Twilio\Page;
 

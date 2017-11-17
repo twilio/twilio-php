@@ -41,6 +41,7 @@ class SyncListItemTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "index": 100,
@@ -116,6 +117,7 @@ class SyncListItemTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "index": 100,
@@ -186,6 +188,7 @@ class SyncListItemTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "created_by": "created_by",
                         "data": {},
+                        "date_expires": "2015-07-30T21:00:00Z",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "index": 100,
@@ -221,17 +224,13 @@ class SyncListItemTest extends HolodeckTestCase {
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                    ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->syncListItems(1)->update("{}");
+                                   ->syncListItems(1)->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject("{}"));
-
         $this->assertRequest(new Request(
             'post',
-            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1',
-            null,
-            $values
+            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/1'
         ));
     }
 
@@ -243,6 +242,7 @@ class SyncListItemTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
                 "data": {},
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "index": 100,
@@ -256,7 +256,7 @@ class SyncListItemTest extends HolodeckTestCase {
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->syncListItems(1)->update("{}");
+                                         ->syncListItems(1)->update();
 
         $this->assertNotNull($actual);
     }

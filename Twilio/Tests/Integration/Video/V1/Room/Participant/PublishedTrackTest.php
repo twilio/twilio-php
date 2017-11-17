@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Video\V1\Room\RoomParticipant;
+namespace Twilio\Tests\Integration\Video\V1\Room\Participant;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;

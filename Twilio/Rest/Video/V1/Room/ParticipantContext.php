@@ -12,24 +12,24 @@ namespace Twilio\Rest\Video\V1\Room;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
-use Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackList;
+use Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackList publishedTracks
- * @method \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackContext publishedTracks(string $sid)
+ * @property \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList publishedTracks
+ * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
  */
-class RoomParticipantContext extends InstanceContext {
+class ParticipantContext extends InstanceContext {
     protected $_publishedTracks = null;
 
     /**
-     * Initialize the RoomParticipantContext
+     * Initialize the ParticipantContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $roomSid The room_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipantContext 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
@@ -41,9 +41,9 @@ class RoomParticipantContext extends InstanceContext {
     }
 
     /**
-     * Fetch a RoomParticipantInstance
+     * Fetch a ParticipantInstance
      * 
-     * @return RoomParticipantInstance Fetched RoomParticipantInstance
+     * @return ParticipantInstance Fetched ParticipantInstance
      */
     public function fetch() {
         $params = Values::of(array());
@@ -54,7 +54,7 @@ class RoomParticipantContext extends InstanceContext {
             $params
         );
 
-        return new RoomParticipantInstance(
+        return new ParticipantInstance(
             $this->version,
             $payload,
             $this->solution['roomSid'],
@@ -63,10 +63,10 @@ class RoomParticipantContext extends InstanceContext {
     }
 
     /**
-     * Update the RoomParticipantInstance
+     * Update the ParticipantInstance
      * 
      * @param array|Options $options Optional Arguments
-     * @return RoomParticipantInstance Updated RoomParticipantInstance
+     * @return ParticipantInstance Updated ParticipantInstance
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -80,7 +80,7 @@ class RoomParticipantContext extends InstanceContext {
             $data
         );
 
-        return new RoomParticipantInstance(
+        return new ParticipantInstance(
             $this->version,
             $payload,
             $this->solution['roomSid'],
@@ -91,7 +91,7 @@ class RoomParticipantContext extends InstanceContext {
     /**
      * Access the publishedTracks
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackList 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList 
      */
     protected function getPublishedTracks() {
         if (!$this->_publishedTracks) {
@@ -148,6 +148,6 @@ class RoomParticipantContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.RoomParticipantContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.ParticipantContext ' . implode(' ', $context) . ']';
     }
 }

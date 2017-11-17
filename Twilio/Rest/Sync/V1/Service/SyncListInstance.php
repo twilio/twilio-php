@@ -12,6 +12,7 @@ namespace Twilio\Rest\Sync\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,6 +26,7 @@ use Twilio\Version;
  * @property string url
  * @property array links
  * @property string revision
+ * @property \DateTime dateExpires
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
@@ -54,6 +56,7 @@ class SyncListInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
             'revision' => Values::array_get($payload, 'revision'),
+            'dateExpires' => Deserialize::dateTime(Values::array_get($payload, 'date_expires')),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'createdBy' => Values::array_get($payload, 'created_by'),
@@ -97,6 +100,16 @@ class SyncListInstance extends InstanceResource {
      */
     public function delete() {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Update the SyncListInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return SyncListInstance Updated SyncListInstance
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
     }
 
     /**

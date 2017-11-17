@@ -11,6 +11,7 @@ namespace Twilio\Rest\Sync\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList;
 use Twilio\Values;
 use Twilio\Version;
@@ -69,6 +70,32 @@ class SyncStreamContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
+     * Update the SyncStreamInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return SyncStreamInstance Updated SyncStreamInstance
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Ttl' => $options['ttl']));
+
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new SyncStreamInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
     }
 
     /**

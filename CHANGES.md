@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2017-11-17] Version 5.16.0
+----------------------------
+**Sync**
+- Add TTL support for Sync objects *(breaking change)*
+  - The required `data` parameter on the following actions is now optional: "Update Document", "Update Map Item", "Update List Item"
+  - New actions available for updating TTL of Sync objects: "Update List", "Update Map", "Update Stream"
+
+**Video**
+- [bi] Rename `RoomParticipant` to `Participant`
+- Add Recording Settings resource
+- Expose EncryptionKey and MediaExternalLocation properties in Recording resource
+
+
 [2017-11-10] Version 5.15.6
 ----------------------------
 **Accounts**

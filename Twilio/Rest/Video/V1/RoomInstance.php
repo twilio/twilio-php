@@ -118,7 +118,7 @@ class RoomInstance extends InstanceResource {
     /**
      * Access the participants
      * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipantList 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
      */
     protected function getParticipants() {
         return $this->proxy()->participants;

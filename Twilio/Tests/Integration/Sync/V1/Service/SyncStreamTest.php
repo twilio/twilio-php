@@ -38,6 +38,7 @@ class SyncStreamTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "links": {
@@ -106,6 +107,7 @@ class SyncStreamTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "created_by": "created_by",
+                "date_expires": "2015-07-30T21:00:00Z",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
                 "links": {
@@ -121,6 +123,48 @@ class SyncStreamTest extends HolodeckTestCase {
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                          ->syncStreams->create();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                   ->syncStreams("TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "created_by": "created_by",
+                "date_expires": "2015-07-30T21:00:00Z",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "links": {
+                    "messages": "https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages"
+                },
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "unique_name",
+                "url": "https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                         ->syncStreams("TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
     }
@@ -174,6 +218,7 @@ class SyncStreamTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "created_by": "created_by",
+                        "date_expires": "2015-07-30T21:00:00Z",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
                         "links": {

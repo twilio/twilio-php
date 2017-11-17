@@ -7,38 +7,40 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video\V1\Room\RoomParticipant;
+namespace Twilio\Rest\Video\V1\Room;
 
 use Twilio\ListResource;
+use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class PublishedTrackList extends ListResource {
+class ParticipantList extends ListResource {
     /**
-     * Construct the PublishedTrackList
+     * Construct the ParticipantList
      * 
      * @param Version $version Version that contains the resource
      * @param string $roomSid The room_sid
-     * @param string $participantSid The participant_sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackList 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
      */
-    public function __construct(Version $version, $roomSid, $participantSid) {
+    public function __construct(Version $version, $roomSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid);
+        $this->solution = array('roomSid' => $roomSid);
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/PublishedTracks';
+        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants';
     }
 
     /**
-     * Streams PublishedTrackInstance records from the API as a generator stream.
+     * Streams ParticipantInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      * 
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -49,19 +51,20 @@ class PublishedTrackList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page($options, $limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads PublishedTrackInstance records from the API as a list.
+     * Reads ParticipantInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -70,23 +73,29 @@ class PublishedTrackList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return PublishedTrackInstance[] Array of results
+     * @return ParticipantInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+    public function read($options = array(), $limit = null, $pageSize = null) {
+        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of PublishedTrackInstance records from the API.
+     * Retrieve a single page of ParticipantInstance records from the API.
      * Request is executed immediately
      * 
+     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of PublishedTrackInstance
+     * @return \Twilio\Page Page of ParticipantInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+        $options = new Values($options);
         $params = Values::of(array(
+            'Status' => $options['status'],
+            'Identity' => $options['identity'],
+            'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
+            'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -98,15 +107,15 @@ class PublishedTrackList extends ListResource {
             $params
         );
 
-        return new PublishedTrackPage($this->version, $response, $this->solution);
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of PublishedTrackInstance records from the API.
+     * Retrieve a specific page of ParticipantInstance records from the API.
      * Request is executed immediately
      * 
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of PublishedTrackInstance
+     * @return \Twilio\Page Page of ParticipantInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -114,22 +123,17 @@ class PublishedTrackList extends ListResource {
             $targetUrl
         );
 
-        return new PublishedTrackPage($this->version, $response, $this->solution);
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a PublishedTrackContext
+     * Constructs a ParticipantContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomParticipant\PublishedTrackContext 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
      */
     public function getContext($sid) {
-        return new PublishedTrackContext(
-            $this->version,
-            $this->solution['roomSid'],
-            $this->solution['participantSid'],
-            $sid
-        );
+        return new ParticipantContext($this->version, $this->solution['roomSid'], $sid);
     }
 
     /**
@@ -138,6 +142,6 @@ class PublishedTrackList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Video.V1.PublishedTrackList]';
+        return '[Twilio.Video.V1.ParticipantList]';
     }
 }

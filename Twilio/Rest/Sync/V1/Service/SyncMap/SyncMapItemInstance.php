@@ -12,6 +12,7 @@ namespace Twilio\Rest\Sync\V1\Service\SyncMap;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -25,6 +26,7 @@ use Twilio\Version;
  * @property string url
  * @property string revision
  * @property array data
+ * @property \DateTime dateExpires
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
@@ -52,6 +54,7 @@ class SyncMapItemInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'revision' => Values::array_get($payload, 'revision'),
             'data' => Values::array_get($payload, 'data'),
+            'dateExpires' => Deserialize::dateTime(Values::array_get($payload, 'date_expires')),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'createdBy' => Values::array_get($payload, 'created_by'),
@@ -106,11 +109,11 @@ class SyncMapItemInstance extends InstanceResource {
     /**
      * Update the SyncMapItemInstance
      * 
-     * @param array $data The data
+     * @param array|Options $options Optional Arguments
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      */
-    public function update($data) {
-        return $this->proxy()->update($data);
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
     }
 
     /**
