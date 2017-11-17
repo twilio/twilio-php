@@ -54,7 +54,7 @@ class Services_Twilio_TinyHttp {
       CURLOPT_URL => $url,
       CURLOPT_HEADER => TRUE,
       CURLOPT_RETURNTRANSFER => TRUE,
-      CURLOPT_INFILESIZE => -1,
+      CURLOPT_INFILESIZE => NULL,
       CURLOPT_POSTFIELDS => NULL,
       CURLOPT_TIMEOUT => 60,
     );
