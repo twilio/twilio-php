@@ -22,8 +22,8 @@ use Twilio\Version;
  * @property string simSid
  * @property string accountSid
  * @property string radioLink
- * @property integer operatorMcc
- * @property integer operatorMnc
+ * @property string operatorMcc
+ * @property string operatorMnc
  * @property string operatorCountry
  * @property string operatorName
  * @property string cellId

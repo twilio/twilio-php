@@ -20,7 +20,7 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
  * @property string sid
- * @property string friendlyName
+ * @property string uniqueName
  * @property string accountSid
  * @property string callbackUrl
  * @property integer defaultTtl
@@ -52,7 +52,7 @@ class ServiceInstance extends InstanceResource {
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'callbackUrl' => Values::array_get($payload, 'callback_url'),
             'defaultTtl' => Values::array_get($payload, 'default_ttl'),

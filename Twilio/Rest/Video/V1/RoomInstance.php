@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property integer maxParticipants
  * @property boolean recordParticipantsOnConnect
  * @property string videoCodecs
+ * @property string mediaRegion
  * @property string url
  * @property array links
  */
@@ -66,6 +67,7 @@ class RoomInstance extends InstanceResource {
             'maxParticipants' => Values::array_get($payload, 'max_participants'),
             'recordParticipantsOnConnect' => Values::array_get($payload, 'record_participants_on_connect'),
             'videoCodecs' => Values::array_get($payload, 'video_codecs'),
+            'mediaRegion' => Values::array_get($payload, 'media_region'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );

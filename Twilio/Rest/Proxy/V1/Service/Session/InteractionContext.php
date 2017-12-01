@@ -59,6 +59,15 @@ class InteractionContext extends InstanceContext {
     }
 
     /**
+     * Deletes the InteractionInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

@@ -85,7 +85,7 @@ class ServiceContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
+            'UniqueName' => $options['uniqueName'],
             'DefaultTtl' => $options['defaultTtl'],
             'CallbackUrl' => $options['callbackUrl'],
             'GeoMatchLevel' => $options['geoMatchLevel'],

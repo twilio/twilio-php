@@ -122,14 +122,16 @@ class ServiceList extends ListResource {
     /**
      * Create a new ServiceInstance
      * 
+     * @param string $uniqueName The human-readable string that uniquely identifies
+     *                           this Service.
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
      */
-    public function create($options = array()) {
+    public function create($uniqueName, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
+            'UniqueName' => $uniqueName,
             'DefaultTtl' => $options['defaultTtl'],
             'CallbackUrl' => $options['callbackUrl'],
             'GeoMatchLevel' => $options['geoMatchLevel'],

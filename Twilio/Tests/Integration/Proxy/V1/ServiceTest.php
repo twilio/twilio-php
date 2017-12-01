@@ -37,7 +37,7 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "friendly_name",
+                "unique_name": "unique_name",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",
@@ -103,13 +103,17 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services->create();
+            $this->twilio->proxy->v1->services->create("uniqueName");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $values = array('UniqueName' => "uniqueName");
+
         $this->assertRequest(new Request(
             'post',
-            'https://proxy.twilio.com/v1/Services'
+            'https://proxy.twilio.com/v1/Services',
+            null,
+            $values
         ));
     }
 
@@ -120,7 +124,7 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "friendly_name",
+                "unique_name": "unique_name",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",
@@ -139,7 +143,7 @@ class ServiceTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->proxy->v1->services->create();
+        $actual = $this->twilio->proxy->v1->services->create("uniqueName");
 
         $this->assertNotNull($actual);
     }
@@ -190,7 +194,7 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "friendly_name": "friendly_name",
+                "unique_name": "unique_name",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",

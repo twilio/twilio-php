@@ -113,6 +113,15 @@ class InteractionInstance extends InstanceResource {
     }
 
     /**
+     * Deletes the InteractionInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
      * Magic getter to access properties
      * 
      * @param string $name Property to access

@@ -9,23 +9,39 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Address;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
+ * @property string sid
+ * @property string accountSid
  * @property string friendlyName
  * @property string phoneNumber
- * @property string lata
- * @property string rateCenter
- * @property string latitude
- * @property string longitude
- * @property string region
- * @property string postalCode
- * @property string isoCountry
+ * @property string voiceUrl
+ * @property string voiceMethod
+ * @property string voiceFallbackMethod
+ * @property string voiceFallbackUrl
+ * @property boolean voiceCallerIdLookup
+ * @property \DateTime dateCreated
+ * @property \DateTime dateUpdated
+ * @property string smsFallbackMethod
+ * @property string smsFallbackUrl
+ * @property string smsMethod
+ * @property string smsUrl
  * @property string addressRequirements
- * @property string capabilities
+ * @property array capabilities
+ * @property string statusCallback
+ * @property string statusCallbackMethod
+ * @property string apiVersion
+ * @property string smsApplicationSid
+ * @property string voiceApplicationSid
+ * @property string trunkSid
+ * @property string emergencyStatus
+ * @property string emergencyAddressSid
+ * @property string uri
  */
 class DependentPhoneNumberInstance extends InstanceResource {
     /**
@@ -42,17 +58,32 @@ class DependentPhoneNumberInstance extends InstanceResource {
 
         // Marshaled Properties
         $this->properties = array(
+            'sid' => Values::array_get($payload, 'sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
-            'lata' => Values::array_get($payload, 'lata'),
-            'rateCenter' => Values::array_get($payload, 'rate_center'),
-            'latitude' => Values::array_get($payload, 'latitude'),
-            'longitude' => Values::array_get($payload, 'longitude'),
-            'region' => Values::array_get($payload, 'region'),
-            'postalCode' => Values::array_get($payload, 'postal_code'),
-            'isoCountry' => Values::array_get($payload, 'iso_country'),
+            'voiceUrl' => Values::array_get($payload, 'voice_url'),
+            'voiceMethod' => Values::array_get($payload, 'voice_method'),
+            'voiceFallbackMethod' => Values::array_get($payload, 'voice_fallback_method'),
+            'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
+            'voiceCallerIdLookup' => Values::array_get($payload, 'voice_caller_id_lookup'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),
+            'smsFallbackUrl' => Values::array_get($payload, 'sms_fallback_url'),
+            'smsMethod' => Values::array_get($payload, 'sms_method'),
+            'smsUrl' => Values::array_get($payload, 'sms_url'),
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
             'capabilities' => Values::array_get($payload, 'capabilities'),
+            'statusCallback' => Values::array_get($payload, 'status_callback'),
+            'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
+            'apiVersion' => Values::array_get($payload, 'api_version'),
+            'smsApplicationSid' => Values::array_get($payload, 'sms_application_sid'),
+            'voiceApplicationSid' => Values::array_get($payload, 'voice_application_sid'),
+            'trunkSid' => Values::array_get($payload, 'trunk_sid'),
+            'emergencyStatus' => Values::array_get($payload, 'emergency_status'),
+            'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid);

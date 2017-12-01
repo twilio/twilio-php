@@ -17,7 +17,6 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param string $friendlyName A human readable description of this resource.
      * @param integer $defaultTtl Default TTL for a Session, in seconds.
      * @param string $callbackUrl URL Twilio will send callbacks to
      * @param string $geoMatchLevel Whether to find proxy numbers in the same
@@ -30,12 +29,12 @@ abstract class ServiceOptions {
      *                                        Interaction has no Session.
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl);
+    public static function create($defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
+        return new CreateServiceOptions($defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl);
     }
 
     /**
-     * @param string $friendlyName A human readable description of this resource.
+     * @param string $uniqueName A human readable description of this resource.
      * @param integer $defaultTtl Default TTL for a Session, in seconds.
      * @param string $callbackUrl URL Twilio will send callbacks to
      * @param string $geoMatchLevel Whether to find proxy numbers in the same
@@ -48,14 +47,13 @@ abstract class ServiceOptions {
      *                                        Interaction has no Session.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl);
+    public static function update($uniqueName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
+        return new UpdateServiceOptions($uniqueName, $defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl);
     }
 }
 
 class CreateServiceOptions extends Options {
     /**
-     * @param string $friendlyName A human readable description of this resource.
      * @param integer $defaultTtl Default TTL for a Session, in seconds.
      * @param string $callbackUrl URL Twilio will send callbacks to
      * @param string $geoMatchLevel Whether to find proxy numbers in the same
@@ -67,25 +65,13 @@ class CreateServiceOptions extends Options {
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
      */
-    public function __construct($friendlyName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
-        $this->options['friendlyName'] = $friendlyName;
+    public function __construct($defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['geoMatchLevel'] = $geoMatchLevel;
         $this->options['numberSelectionBehavior'] = $numberSelectionBehavior;
         $this->options['interceptCallbackUrl'] = $interceptCallbackUrl;
         $this->options['outOfSessionCallbackUrl'] = $outOfSessionCallbackUrl;
-    }
-
-    /**
-     * A human readable description of this resource, up to 64 characters.
-     * 
-     * @param string $friendlyName A human readable description of this resource.
-     * @return $this Fluent Builder
-     */
-    public function setFriendlyName($friendlyName) {
-        $this->options['friendlyName'] = $friendlyName;
-        return $this;
     }
 
     /**
@@ -176,7 +162,7 @@ class CreateServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $friendlyName A human readable description of this resource.
+     * @param string $uniqueName A human readable description of this resource.
      * @param integer $defaultTtl Default TTL for a Session, in seconds.
      * @param string $callbackUrl URL Twilio will send callbacks to
      * @param string $geoMatchLevel Whether to find proxy numbers in the same
@@ -188,8 +174,8 @@ class UpdateServiceOptions extends Options {
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
      */
-    public function __construct($friendlyName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
-        $this->options['friendlyName'] = $friendlyName;
+    public function __construct($uniqueName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
+        $this->options['uniqueName'] = $uniqueName;
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['geoMatchLevel'] = $geoMatchLevel;
@@ -201,11 +187,11 @@ class UpdateServiceOptions extends Options {
     /**
      * A human readable description of this resource, up to 64 characters.
      * 
-     * @param string $friendlyName A human readable description of this resource.
+     * @param string $uniqueName A human readable description of this resource.
      * @return $this Fluent Builder
      */
-    public function setFriendlyName($friendlyName) {
-        $this->options['friendlyName'] = $friendlyName;
+    public function setUniqueName($uniqueName) {
+        $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 

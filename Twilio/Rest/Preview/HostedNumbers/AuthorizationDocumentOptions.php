@@ -29,6 +29,15 @@ abstract class AuthorizationDocumentOptions {
     }
 
     /**
+     * @param string $email Email.
+     * @param string $status The Status of this AuthorizationDocument.
+     * @return ReadAuthorizationDocumentOptions Options builder
+     */
+    public static function read($email = Values::NONE, $status = Values::NONE) {
+        return new ReadAuthorizationDocumentOptions($email, $status);
+    }
+
+    /**
      * @param string $ccEmails A list of emails.
      * @return CreateAuthorizationDocumentOptions Options builder
      */
@@ -121,6 +130,54 @@ class UpdateAuthorizationDocumentOptions extends Options {
             }
         }
         return '[Twilio.Preview.HostedNumbers.UpdateAuthorizationDocumentOptions ' . implode(' ', $options) . ']';
+    }
+}
+
+class ReadAuthorizationDocumentOptions extends Options {
+    /**
+     * @param string $email Email.
+     * @param string $status The Status of this AuthorizationDocument.
+     */
+    public function __construct($email = Values::NONE, $status = Values::NONE) {
+        $this->options['email'] = $email;
+        $this->options['status'] = $status;
+    }
+
+    /**
+     * Email that this AuthorizationDocument will be sent to for signing.
+     * 
+     * @param string $email Email.
+     * @return $this Fluent Builder
+     */
+    public function setEmail($email) {
+        $this->options['email'] = $email;
+        return $this;
+    }
+
+    /**
+     * The Status of this AuthorizationDocument. One of `opened`, `signing`, `signed`, `canceled`, or `failed`.
+     * 
+     * @param string $status The Status of this AuthorizationDocument.
+     * @return $this Fluent Builder
+     */
+    public function setStatus($status) {
+        $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Preview.HostedNumbers.ReadAuthorizationDocumentOptions ' . implode(' ', $options) . ']';
     }
 }
 
