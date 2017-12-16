@@ -184,6 +184,17 @@ class Conference extends TwiML {
     }
 
     /**
+     * Add RecordingStatusCallbackEvent attribute.
+     * 
+     * @param enum:RecordingEvent $recordingStatusCallbackEvent Recording status
+     *                                                          callback events
+     * @return TwiML $this.
+     */
+    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
+        return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);
+    }
+
+    /**
      * Add EventCallbackUrl attribute.
      * 
      * @param url $eventCallbackUrl Event callback URL

@@ -77,6 +77,8 @@ class HostedNumberOrderContext extends InstanceContext {
             'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
             'Status' => $options['status'],
             'VerificationCode' => $options['verificationCode'],
+            'VerificationType' => $options['verificationType'],
+            'VerificationDocumentSid' => $options['verificationDocumentSid'],
         ));
 
         $payload = $this->version->update(

@@ -39,22 +39,29 @@ class RecordingTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "date_created": "Wed, 01 Sep 2010 15:15:41 +0000",
-                "date_updated": "Wed, 01 Sep 2010 15:15:41 +0000",
-                "duration": "6",
-                "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "price": "0.04",
-                "price_unit": "USD",
-                "status": "completed",
+                "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "channels": 1,
-                "source": "Trunking",
+                "date_created": "Fri, 14 Oct 2016 21:56:34 +0000",
+                "date_updated": "Fri, 14 Oct 2016 21:56:38 +0000",
+                "start_time": "Fri, 14 Oct 2016 21:56:34 +0000",
+                "end_time": "Fri, 14 Oct 2016 21:56:38 +0000",
+                "price": "-0.00250",
+                "price_unit": "USD",
+                "duration": "4",
+                "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "source": "StartConferenceRecordingAPI",
+                "status": "completed",
+                "error_code": null,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                "subresource_uris": {
+                    "add_on_results": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults.json",
+                    "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Transcriptions.json"
+                },
                 "encryption_details": {
                     "encryption_public_key_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "encryption_cek": "OV4h6zrsxMIW7h0Zfqwfn6TI2GCNl54KALlg8wn8YB8KYZhXt6HlgvBWAmQTlfYVeLWydMiCewY0YkDDT1xmNe5huEo9vjuKBS5OmYK4CZkSx1NVv3XOGrZHpd2Pl/5WJHVhUK//AUO87uh5qnUP2E0KoLh1nyCLeGcEkXU0RfpPn/6nxjof/n6m6OzZOyeIRK4Oed5+rEtjqFDfqT0EVKjs6JAxv+f0DCc1xYRHl2yV8bahUPVKs+bHYdy4PVszFKa76M/Uae4jFA9Lv233JqWcxj+K2UoghuGhAFbV/JQIIswY2CBYI8JlVSifSqNEl9vvsTJ8bkVMm3MKbG2P7Q==",
                     "encryption_iv": "8I2hhNIYNTrwxfHk"
-                },
-                "error_code": null
+                }
             }
             '
         ));
@@ -114,37 +121,41 @@ class RecordingTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=4",
                 "next_page_uri": null,
-                "num_pages": 5,
                 "page": 0,
                 "page_size": 1,
                 "previous_page_uri": null,
                 "recordings": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "api_version": "2008-08-01",
+                        "api_version": "2010-04-01",
                         "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "Wed, 22 Aug 2012 20:58:45 +0000",
-                        "date_updated": "Wed, 22 Aug 2012 20:58:45 +0000",
-                        "duration": null,
-                        "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "conference_sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "channels": 1,
+                        "date_created": "Fri, 14 Oct 2016 21:56:34 +0000",
+                        "date_updated": "Fri, 14 Oct 2016 21:56:38 +0000",
+                        "start_time": "Fri, 14 Oct 2016 21:56:34 +0000",
+                        "end_time": "Fri, 14 Oct 2016 21:56:38 +0000",
                         "price": "0.04",
                         "price_unit": "USD",
+                        "duration": "4",
+                        "sid": "REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "source": "StartConferenceRecordingAPI",
                         "status": "completed",
-                        "channels": 1,
-                        "source": "Trunking",
+                        "error_code": null,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                        "subresource_uris": {
+                            "add_on_results": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults.json",
+                            "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Transcriptions.json"
+                        },
                         "encryption_details": {
                             "encryption_public_key_sid": "CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                             "encryption_cek": "OV4h6zrsxMIW7h0Zfqwfn6TI2GCNl54KALlg8wn8YB8KYZhXt6HlgvBWAmQTlfYVeLWydMiCewY0YkDDT1xmNe5huEo9vjuKBS5OmYK4CZkSx1NVv3XOGrZHpd2Pl/5WJHVhUK//AUO87uh5qnUP2E0KoLh1nyCLeGcEkXU0RfpPn/6nxjof/n6m6OzZOyeIRK4Oed5+rEtjqFDfqT0EVKjs6JAxv+f0DCc1xYRHl2yV8bahUPVKs+bHYdy4PVszFKa76M/Uae4jFA9Lv233JqWcxj+K2UoghuGhAFbV/JQIIswY2CBYI8JlVSifSqNEl9vvsTJ8bkVMm3MKbG2P7Q==",
                             "encryption_iv": "8I2hhNIYNTrwxfHk"
-                        },
-                        "error_code": null
+                        }
                     }
                 ],
                 "start": 0,
-                "total": 5,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0"
             }
             '
@@ -163,15 +174,12 @@ class RecordingTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=4",
                 "next_page_uri": null,
-                "num_pages": 5,
                 "page": 0,
                 "page_size": 1,
                 "previous_page_uri": null,
                 "recordings": [],
                 "start": 0,
-                "total": 5,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json?PageSize=1&Page=0"
             }
             '

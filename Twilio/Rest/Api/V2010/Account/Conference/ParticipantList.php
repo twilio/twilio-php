@@ -74,6 +74,8 @@ class ParticipantList extends ListResource {
             'Region' => $options['region'],
             'ConferenceRecordingStatusCallback' => $options['conferenceRecordingStatusCallback'],
             'ConferenceRecordingStatusCallbackMethod' => $options['conferenceRecordingStatusCallbackMethod'],
+            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
+            'ConferenceRecordingStatusCallbackEvent' => Serialize::map($options['conferenceRecordingStatusCallbackEvent'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

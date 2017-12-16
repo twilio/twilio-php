@@ -57,7 +57,9 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "received",
                 "unique_name": "foobar",
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 0
+                "verification_attempts": 0,
+                "verification_type": "phone-call",
+                "verification_document_sid": null
             }
             '
         ));
@@ -132,7 +134,9 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "pending-loa",
                 "unique_name": "new unique name",
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 1
+                "verification_attempts": 1,
+                "verification_type": "phone-call",
+                "verification_document_sid": null
             }
             '
         ));
@@ -217,7 +221,9 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                         "status": "received",
                         "unique_name": "foobar",
                         "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "verification_attempts": 0
+                        "verification_attempts": 0,
+                        "verification_type": "phone-call",
+                        "verification_document_sid": null
                     }
                 ]
             }
@@ -270,7 +276,9 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "received",
                 "unique_name": null,
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 0
+                "verification_attempts": 0,
+                "verification_type": "phone-call",
+                "verification_document_sid": null
             }
             '
         ));
@@ -303,7 +311,44 @@ class HostedNumberOrderTest extends HolodeckTestCase {
                 "status": "received",
                 "unique_name": null,
                 "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "verification_attempts": 0
+                "verification_attempts": 0,
+                "verification_type": "phone-call",
+                "verification_document_sid": null
+            }
+            '
+        ));
+
+        $actual = $this->twilio->preview->hostedNumbers->hostedNumberOrders->create("+987654321", True);
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateWithPhoneBillVerificationResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "address_sid": null,
+                "capabilities": {
+                    "sms": true,
+                    "voice": false
+                },
+                "cc_emails": [],
+                "date_created": "2017-03-28T20:06:39Z",
+                "date_updated": "2017-03-28T20:06:39Z",
+                "email": null,
+                "friendly_name": null,
+                "incoming_phone_number_sid": "PN11111111111111111111111111111111",
+                "phone_number": "+14153608311",
+                "sid": "HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "signing_document_sid": null,
+                "status": "received",
+                "unique_name": null,
+                "url": "https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "verification_attempts": 0,
+                "verification_type": "phone-bill",
+                "verification_document_sid": "RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));

@@ -150,7 +150,7 @@ class Dial extends TwiML {
     /**
      * Add Record attribute.
      * 
-     * @param enum:Trim $record Record the call
+     * @param enum:Record $record Record the call
      * @return TwiML $this.
      */
     public function setRecord($record) {
@@ -186,6 +186,17 @@ class Dial extends TwiML {
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
         return $this->setAttribute('recordingStatusCallbackMethod', $recordingStatusCallbackMethod);
+    }
+
+    /**
+     * Add RecordingStatusCallbackEvent attribute.
+     * 
+     * @param enum:RecordingEvent $recordingStatusCallbackEvent Recording status
+     *                                                          callback events
+     * @return TwiML $this.
+     */
+    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
+        return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);
     }
 
     /**

@@ -74,6 +74,7 @@ class CallList extends ListResource {
             'SipAuthPassword' => $options['sipAuthPassword'],
             'MachineDetection' => $options['machineDetection'],
             'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
+            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

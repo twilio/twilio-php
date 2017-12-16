@@ -12,8 +12,12 @@ namespace Twilio\Rest\Api\V2010\Account;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList;
 use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList;
 use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList;
+use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -21,11 +25,19 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList local
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList tollFree
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList mobile
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList national
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList voip
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList sharedCost
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList machineToMachine
  */
 class AvailablePhoneNumberCountryContext extends InstanceContext {
     protected $_local = null;
     protected $_tollFree = null;
     protected $_mobile = null;
+    protected $_national = null;
+    protected $_voip = null;
+    protected $_sharedCost = null;
+    protected $_machineToMachine = null;
 
     /**
      * Initialize the AvailablePhoneNumberCountryContext
@@ -116,6 +128,74 @@ class AvailablePhoneNumberCountryContext extends InstanceContext {
         }
 
         return $this->_mobile;
+    }
+
+    /**
+     * Access the national
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList 
+     */
+    protected function getNational() {
+        if (!$this->_national) {
+            $this->_national = new NationalList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
+            );
+        }
+
+        return $this->_national;
+    }
+
+    /**
+     * Access the voip
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList 
+     */
+    protected function getVoip() {
+        if (!$this->_voip) {
+            $this->_voip = new VoipList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
+            );
+        }
+
+        return $this->_voip;
+    }
+
+    /**
+     * Access the sharedCost
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList 
+     */
+    protected function getSharedCost() {
+        if (!$this->_sharedCost) {
+            $this->_sharedCost = new SharedCostList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
+            );
+        }
+
+        return $this->_sharedCost;
+    }
+
+    /**
+     * Access the machineToMachine
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList 
+     */
+    protected function getMachineToMachine() {
+        if (!$this->_machineToMachine) {
+            $this->_machineToMachine = new MachineToMachineList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['countryCode']
+            );
+        }
+
+        return $this->_machineToMachine;
     }
 
     /**

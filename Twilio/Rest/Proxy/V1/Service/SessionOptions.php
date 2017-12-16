@@ -74,7 +74,7 @@ class ReadSessionOptions extends Options {
     }
 
     /**
-     * The Status of this Session. One of `in-progess`, `closed`, `failed`, `unknown` or `completed`.
+     * The Status of this Session. One of `in-progress`, `closed`, `failed`, `unknown` or `completed`.
      * 
      * @param string $status The Status of this Session
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * The Status of this Session. One of `in-progess`, `closed`, `failed`, `unknown` or `completed`.
+     * The Status of this Session. One of `in-progress`, `closed`, `failed`, `unknown` or `completed`.
      * 
      * @param string $status The Status of this Session
      * @return $this Fluent Builder
@@ -263,7 +263,7 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The Status of this Session. One of `in-progess`, `closed`, `failed`, `unknown` or `completed`.
+     * The Status of this Session. One of `in-progress`, `closed`, `failed`, `unknown` or `completed`.
      * 
      * @param string $status The Status of this Session
      * @return $this Fluent Builder

@@ -24,10 +24,12 @@ abstract class HostedNumberOrderOptions {
      * @param string $ccEmails A list of emails.
      * @param string $status The Status of this HostedNumberOrder.
      * @param string $verificationCode A verification code.
+     * @param string $verificationType Verification Type.
+     * @param string $verificationDocumentSid Verification Document Sid
      * @return UpdateHostedNumberOrderOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE) {
-        return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode);
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
+        return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode, $verificationType, $verificationDocumentSid);
     }
 
     /**
@@ -58,10 +60,12 @@ abstract class HostedNumberOrderOptions {
      * @param string $smsApplicationSid SMS Application Sid.
      * @param string $addressSid Address sid.
      * @param string $email Email.
+     * @param string $verificationType Verification Type.
+     * @param string $verificationDocumentSid Verification Document Sid
      * @return CreateHostedNumberOrderOptions Options builder
      */
-    public static function create($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE, $smsApplicationSid = Values::NONE, $addressSid = Values::NONE, $email = Values::NONE) {
-        return new CreateHostedNumberOrderOptions($accountSid, $friendlyName, $uniqueName, $ccEmails, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $statusCallbackUrl, $statusCallbackMethod, $smsApplicationSid, $addressSid, $email);
+    public static function create($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE, $smsApplicationSid = Values::NONE, $addressSid = Values::NONE, $email = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
+        return new CreateHostedNumberOrderOptions($accountSid, $friendlyName, $uniqueName, $ccEmails, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $statusCallbackUrl, $statusCallbackMethod, $smsApplicationSid, $addressSid, $email, $verificationType, $verificationDocumentSid);
     }
 }
 
@@ -74,14 +78,18 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $ccEmails A list of emails.
      * @param string $status The Status of this HostedNumberOrder.
      * @param string $verificationCode A verification code.
+     * @param string $verificationType Verification Type.
+     * @param string $verificationDocumentSid Verification Document Sid
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['email'] = $email;
         $this->options['ccEmails'] = $ccEmails;
         $this->options['status'] = $status;
         $this->options['verificationCode'] = $verificationCode;
+        $this->options['verificationType'] = $verificationType;
+        $this->options['verificationDocumentSid'] = $verificationDocumentSid;
     }
 
     /**
@@ -148,6 +156,28 @@ class UpdateHostedNumberOrderOptions extends Options {
      */
     public function setVerificationCode($verificationCode) {
         $this->options['verificationCode'] = $verificationCode;
+        return $this;
+    }
+
+    /**
+     * Optional. The method used for verifying ownership of the number to be hosted. One of phone-call (default) or phone-bill.
+     * 
+     * @param string $verificationType Verification Type.
+     * @return $this Fluent Builder
+     */
+    public function setVerificationType($verificationType) {
+        $this->options['verificationType'] = $verificationType;
+        return $this;
+    }
+
+    /**
+     * Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill.
+     * 
+     * @param string $verificationDocumentSid Verification Document Sid
+     * @return $this Fluent Builder
+     */
+    public function setVerificationDocumentSid($verificationDocumentSid) {
+        $this->options['verificationDocumentSid'] = $verificationDocumentSid;
         return $this;
     }
 
@@ -272,8 +302,10 @@ class CreateHostedNumberOrderOptions extends Options {
      * @param string $smsApplicationSid SMS Application Sid.
      * @param string $addressSid Address sid.
      * @param string $email Email.
+     * @param string $verificationType Verification Type.
+     * @param string $verificationDocumentSid Verification Document Sid
      */
-    public function __construct($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE, $smsApplicationSid = Values::NONE, $addressSid = Values::NONE, $email = Values::NONE) {
+    public function __construct($accountSid = Values::NONE, $friendlyName = Values::NONE, $uniqueName = Values::NONE, $ccEmails = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $statusCallbackUrl = Values::NONE, $statusCallbackMethod = Values::NONE, $smsApplicationSid = Values::NONE, $addressSid = Values::NONE, $email = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
         $this->options['accountSid'] = $accountSid;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
@@ -287,6 +319,8 @@ class CreateHostedNumberOrderOptions extends Options {
         $this->options['smsApplicationSid'] = $smsApplicationSid;
         $this->options['addressSid'] = $addressSid;
         $this->options['email'] = $email;
+        $this->options['verificationType'] = $verificationType;
+        $this->options['verificationDocumentSid'] = $verificationDocumentSid;
     }
 
     /**
@@ -430,6 +464,28 @@ class CreateHostedNumberOrderOptions extends Options {
      */
     public function setEmail($email) {
         $this->options['email'] = $email;
+        return $this;
+    }
+
+    /**
+     * Optional. The method used for verifying ownership of the number to be hosted. One of phone-call (default) or phone-bill.
+     * 
+     * @param string $verificationType Verification Type.
+     * @return $this Fluent Builder
+     */
+    public function setVerificationType($verificationType) {
+        $this->options['verificationType'] = $verificationType;
+        return $this;
+    }
+
+    /**
+     * Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill.
+     * 
+     * @param string $verificationDocumentSid Verification Document Sid
+     * @return $this Fluent Builder
+     */
+    public function setVerificationDocumentSid($verificationDocumentSid) {
+        $this->options['verificationDocumentSid'] = $verificationDocumentSid;
         return $this;
     }
 

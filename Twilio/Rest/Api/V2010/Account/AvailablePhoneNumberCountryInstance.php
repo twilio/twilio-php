@@ -25,6 +25,10 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     protected $_local = null;
     protected $_tollFree = null;
     protected $_mobile = null;
+    protected $_national = null;
+    protected $_voip = null;
+    protected $_sharedCost = null;
+    protected $_machineToMachine = null;
 
     /**
      * Initialize the AvailablePhoneNumberCountryInstance
@@ -107,6 +111,42 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      */
     protected function getMobile() {
         return $this->proxy()->mobile;
+    }
+
+    /**
+     * Access the national
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList 
+     */
+    protected function getNational() {
+        return $this->proxy()->national;
+    }
+
+    /**
+     * Access the voip
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList 
+     */
+    protected function getVoip() {
+        return $this->proxy()->voip;
+    }
+
+    /**
+     * Access the sharedCost
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList 
+     */
+    protected function getSharedCost() {
+        return $this->proxy()->sharedCost;
+    }
+
+    /**
+     * Access the machineToMachine
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList 
+     */
+    protected function getMachineToMachine() {
+        return $this->proxy()->machineToMachine;
     }
 
     /**

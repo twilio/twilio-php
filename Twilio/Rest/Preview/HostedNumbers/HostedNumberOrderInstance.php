@@ -35,6 +35,8 @@ use Twilio\Version;
  * @property string email
  * @property string ccEmails
  * @property string url
+ * @property string verificationType
+ * @property string verificationDocumentSid
  */
 class HostedNumberOrderInstance extends InstanceResource {
     /**
@@ -66,6 +68,8 @@ class HostedNumberOrderInstance extends InstanceResource {
             'email' => Values::array_get($payload, 'email'),
             'ccEmails' => Values::array_get($payload, 'cc_emails'),
             'url' => Values::array_get($payload, 'url'),
+            'verificationType' => Values::array_get($payload, 'verification_type'),
+            'verificationDocumentSid' => Values::array_get($payload, 'verification_document_sid'),
         );
 
         $this->solution = array('sid' => $sid ?: $this->properties['sid']);

@@ -81,4 +81,15 @@ class Message extends TwiML {
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
     }
+
+    /**
+     * Add StatusCallback attribute.
+     * 
+     * @param url $statusCallback Status callback URL. Deprecated in favor of
+     *                            action.
+     * @return TwiML $this.
+     */
+    public function setStatusCallback($statusCallback) {
+        return $this->setAttribute('statusCallback', $statusCallback);
+    }
 }

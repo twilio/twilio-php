@@ -28,9 +28,10 @@ use Twilio\Version;
  * @property string status
  * @property integer channels
  * @property string source
+ * @property integer errorCode
  * @property string uri
  * @property array encryptionDetails
- * @property integer errorCode
+ * @property array subresourceUris
  */
 class RecordingInstance extends InstanceResource {
     protected $_transcriptions = null;
@@ -62,9 +63,10 @@ class RecordingInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'channels' => Values::array_get($payload, 'channels'),
             'source' => Values::array_get($payload, 'source'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
             'uri' => Values::array_get($payload, 'uri'),
             'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
-            'errorCode' => Values::array_get($payload, 'error_code'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);

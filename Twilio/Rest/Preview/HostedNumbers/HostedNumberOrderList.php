@@ -156,6 +156,8 @@ class HostedNumberOrderList extends ListResource {
             'SmsApplicationSid' => $options['smsApplicationSid'],
             'AddressSid' => $options['addressSid'],
             'Email' => $options['email'],
+            'VerificationType' => $options['verificationType'],
+            'VerificationDocumentSid' => $options['verificationDocumentSid'],
         ));
 
         $payload = $this->version->create(

@@ -26,10 +26,11 @@ class Enqueue extends TwiML {
      * Add Task child.
      * 
      * @param string $body TaskRouter task attributes
+     * @param array $attributes Optional attributes
      * @return TwiML Child element.
      */
-    public function task($body) {
-        return $this->nest(new Voice\Task($body));
+    public function task($body, $attributes = array()) {
+        return $this->nest(new Voice\Task($body, $attributes));
     }
 
     /**
