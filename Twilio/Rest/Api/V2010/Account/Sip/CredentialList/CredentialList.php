@@ -26,7 +26,7 @@ class CredentialList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'credentialListSid' => $credentialListSid);
+        $this->solution = array('accountSid' => $accountSid, 'credentialListSid' => $credentialListSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/CredentialLists/' . rawurlencode($credentialListSid) . '/Credentials.json';
     }
@@ -125,7 +125,7 @@ class CredentialList extends ListResource {
      * @return CredentialInstance Newly created CredentialInstance
      */
     public function create($username, $password) {
-        $data = Values::of(array('Username' => $username, 'Password' => $password));
+        $data = Values::of(array('Username' => $username, 'Password' => $password, ));
 
         $payload = $this->version->create(
             'POST',

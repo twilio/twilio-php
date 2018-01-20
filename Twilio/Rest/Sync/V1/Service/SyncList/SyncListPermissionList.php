@@ -29,7 +29,7 @@ class SyncListPermissionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Permissions';
     }

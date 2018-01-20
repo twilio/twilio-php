@@ -60,7 +60,7 @@ class DocumentInstance extends InstanceResource {
             'createdBy' => Values::array_get($payload, 'created_by'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

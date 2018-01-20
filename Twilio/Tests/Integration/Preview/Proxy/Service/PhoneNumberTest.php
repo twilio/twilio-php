@@ -25,7 +25,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Sid' => "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        $values = array('Sid' => "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", );
 
         $this->assertRequest(new Request(
             'post',

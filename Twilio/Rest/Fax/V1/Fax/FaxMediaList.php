@@ -28,7 +28,7 @@ class FaxMediaList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('faxSid' => $faxSid);
+        $this->solution = array('faxSid' => $faxSid, );
 
         $this->uri = '/Faxes/' . rawurlencode($faxSid) . '/Media';
     }

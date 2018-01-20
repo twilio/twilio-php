@@ -53,7 +53,7 @@ class UsageInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('simSid' => $simSid);
+        $this->solution = array('simSid' => $simSid, );
     }
 
     /**

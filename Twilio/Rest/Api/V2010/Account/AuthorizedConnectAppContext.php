@@ -26,7 +26,7 @@ class AuthorizedConnectAppContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'connectAppSid' => $connectAppSid);
+        $this->solution = array('accountSid' => $accountSid, 'connectAppSid' => $connectAppSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps/' . rawurlencode($connectAppSid) . '.json';
     }

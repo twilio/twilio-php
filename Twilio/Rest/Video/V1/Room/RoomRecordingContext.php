@@ -26,7 +26,7 @@ class RoomRecordingContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid);
+        $this->solution = array('roomSid' => $roomSid, 'sid' => $sid, );
 
         $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Recordings/' . rawurlencode($sid) . '';
     }

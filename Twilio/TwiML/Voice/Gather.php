@@ -56,7 +56,7 @@ class Gather extends TwiML {
     /**
      * Add Input attribute.
      * 
-     * @param enum:Input $input Input type Twilio should accept
+     * @param gather:Enum:Input $input Input type Twilio should accept
      * @return TwiML $this.
      */
     public function setInput($input) {
@@ -168,7 +168,7 @@ class Gather extends TwiML {
     /**
      * Add Language attribute.
      * 
-     * @param enum:Language $language Language to use
+     * @param gather:Enum:Language $language Language to use
      * @return TwiML $this.
      */
     public function setLanguage($language) {

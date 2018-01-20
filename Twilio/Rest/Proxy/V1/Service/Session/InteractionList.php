@@ -30,7 +30,7 @@ class InteractionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Interactions';
     }

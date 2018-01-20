@@ -37,7 +37,7 @@ class AssignedAddOnContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'resourceSid' => $resourceSid, 'sid' => $sid);
+        $this->solution = array('accountSid' => $accountSid, 'resourceSid' => $resourceSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . rawurlencode($resourceSid) . '/AssignedAddOns/' . rawurlencode($sid) . '.json';
     }

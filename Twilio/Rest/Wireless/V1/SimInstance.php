@@ -85,7 +85,7 @@ class SimInstance extends InstanceResource {
             'ipAddress' => Values::array_get($payload, 'ip_address'),
         );
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

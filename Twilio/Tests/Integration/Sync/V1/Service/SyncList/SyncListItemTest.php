@@ -99,7 +99,7 @@ class SyncListItemTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject("{}"));
+        $values = array('Data' => Serialize::jsonObject("{}"), );
 
         $this->assertRequest(new Request(
             'post',

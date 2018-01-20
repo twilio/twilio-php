@@ -41,7 +41,7 @@ class SyncMapContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($sid) . '';
     }
@@ -86,7 +86,7 @@ class SyncMapContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Ttl' => $options['ttl']));
+        $data = Values::of(array('Ttl' => $options['ttl'], ));
 
         $payload = $this->version->update(
             'POST',

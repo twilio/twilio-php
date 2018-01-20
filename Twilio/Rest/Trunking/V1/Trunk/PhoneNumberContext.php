@@ -26,7 +26,7 @@ class PhoneNumberContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid);
+        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid, );
 
         $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/PhoneNumbers/' . rawurlencode($sid) . '';
     }

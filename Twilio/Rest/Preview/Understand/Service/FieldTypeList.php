@@ -29,7 +29,7 @@ class FieldTypeList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid);
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/FieldTypes';
     }
@@ -130,7 +130,7 @@ class FieldTypeList extends ListResource {
     public function create($uniqueName, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $uniqueName, 'FriendlyName' => $options['friendlyName']));
+        $data = Values::of(array('UniqueName' => $uniqueName, 'FriendlyName' => $options['friendlyName'], ));
 
         $payload = $this->version->create(
             'POST',

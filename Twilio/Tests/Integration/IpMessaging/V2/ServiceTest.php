@@ -113,7 +113,7 @@ class ServiceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName");
+        $values = array('FriendlyName' => "friendlyName", );
 
         $this->assertRequest(new Request(
             'post',
@@ -312,6 +312,7 @@ class ServiceTest extends HolodeckTestCase {
                     "bindings": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings"
                 },
                 "notifications": {
+                    "log_enabled": true,
                     "added_to_channel": {
                         "enabled": false,
                         "template": "notifications.added_to_channel.template"

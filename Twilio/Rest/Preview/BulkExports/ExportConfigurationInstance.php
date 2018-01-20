@@ -45,7 +45,7 @@ class ExportConfigurationInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType']);
+        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType'], );
     }
 
     /**

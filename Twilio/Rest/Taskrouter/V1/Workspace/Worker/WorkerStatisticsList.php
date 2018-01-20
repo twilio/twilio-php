@@ -25,7 +25,7 @@ class WorkerStatisticsList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid);
+        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid, );
     }
 
     /**

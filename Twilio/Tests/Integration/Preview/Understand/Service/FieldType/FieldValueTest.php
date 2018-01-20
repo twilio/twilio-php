@@ -147,7 +147,7 @@ class FieldValueTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Language' => "language", 'Value' => "value");
+        $values = array('Language' => "language", 'Value' => "value", );
 
         $this->assertRequest(new Request(
             'post',

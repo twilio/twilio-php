@@ -24,7 +24,7 @@ class ServiceTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Name' => "name");
+        $values = array('Name' => "name", );
 
         $this->assertRequest(new Request(
             'post',

@@ -32,7 +32,7 @@ class SyncMapItemContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'key' => $key);
+        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'key' => $key, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Items/' . rawurlencode($key) . '';
     }

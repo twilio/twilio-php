@@ -28,7 +28,7 @@ class WorkerStatisticsContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid);
+        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid, );
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($workerSid) . '/Statistics';
     }

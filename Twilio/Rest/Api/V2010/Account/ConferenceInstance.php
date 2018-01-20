@@ -57,7 +57,7 @@ class ConferenceInstance extends InstanceResource {
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

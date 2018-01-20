@@ -84,7 +84,7 @@ class Record extends TwiML {
     /**
      * Add Trim attribute.
      * 
-     * @param enum:Trim $trim Trim the recording
+     * @param record:Enum:Trim $trim Trim the recording
      * @return TwiML $this.
      */
     public function setTrim($trim) {

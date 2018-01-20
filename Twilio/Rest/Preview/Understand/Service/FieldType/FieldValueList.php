@@ -30,7 +30,7 @@ class FieldValueList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'fieldTypeSid' => $fieldTypeSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'fieldTypeSid' => $fieldTypeSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/FieldTypes/' . rawurlencode($fieldTypeSid) . '/FieldValues';
     }
@@ -134,7 +134,7 @@ class FieldValueList extends ListResource {
      * @return FieldValueInstance Newly created FieldValueInstance
      */
     public function create($language, $value) {
-        $data = Values::of(array('Language' => $language, 'Value' => $value));
+        $data = Values::of(array('Language' => $language, 'Value' => $value, ));
 
         $payload = $this->version->create(
             'POST',

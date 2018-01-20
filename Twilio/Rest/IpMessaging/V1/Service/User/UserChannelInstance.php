@@ -49,7 +49,7 @@ class UserChannelInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
     }
 
     /**

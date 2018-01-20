@@ -28,7 +28,7 @@ class CommandContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid);
+        $this->solution = array('sid' => $sid, );
 
         $this->uri = '/Commands/' . rawurlencode($sid) . '';
     }

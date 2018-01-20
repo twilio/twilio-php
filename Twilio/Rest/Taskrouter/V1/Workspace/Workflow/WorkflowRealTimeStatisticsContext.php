@@ -27,7 +27,7 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid);
+        $this->solution = array('workspaceSid' => $workspaceSid, 'workflowSid' => $workflowSid, );
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workflows/' . rawurlencode($workflowSid) . '/RealTimeStatistics';
     }
@@ -42,7 +42,7 @@ class WorkflowRealTimeStatisticsContext extends InstanceContext {
     public function fetch($options = array()) {
         $options = new Values($options);
 
-        $params = Values::of(array('TaskChannel' => $options['taskChannel']));
+        $params = Values::of(array('TaskChannel' => $options['taskChannel'], ));
 
         $payload = $this->version->fetch(
             'GET',

@@ -29,7 +29,7 @@ class DocumentPermissionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'documentSid' => $documentSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'documentSid' => $documentSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents/' . rawurlencode($documentSid) . '/Permissions';
     }

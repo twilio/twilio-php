@@ -86,7 +86,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid);
+        $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid, );
     }
 
     /**

@@ -97,7 +97,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
             'emergencyAddressSid' => Values::array_get($payload, 'emergency_address_sid'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

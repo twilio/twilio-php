@@ -29,7 +29,7 @@ class SyncListList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid);
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists';
     }
@@ -43,7 +43,7 @@ class SyncListList extends ListResource {
     public function create($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $options['uniqueName']));
+        $data = Values::of(array('UniqueName' => $options['uniqueName'], ));
 
         $payload = $this->version->create(
             'POST',

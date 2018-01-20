@@ -27,7 +27,7 @@ class RoomRecordingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid);
+        $this->solution = array('roomSid' => $roomSid, );
 
         $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Recordings';
     }

@@ -26,7 +26,7 @@ class TranscriptionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'recordingSid' => $recordingSid);
+        $this->solution = array('accountSid' => $accountSid, 'recordingSid' => $recordingSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($recordingSid) . '/Transcriptions.json';
     }

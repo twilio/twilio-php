@@ -65,7 +65,7 @@ class DataSessionInstance extends InstanceResource {
             'end' => Deserialize::dateTime(Values::array_get($payload, 'end')),
         );
 
-        $this->solution = array('simSid' => $simSid);
+        $this->solution = array('simSid' => $simSid, );
     }
 
     /**

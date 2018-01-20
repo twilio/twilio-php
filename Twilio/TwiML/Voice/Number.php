@@ -55,7 +55,7 @@ class Number extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      * 
-     * @param enum:Event $statusCallbackEvent Events to call status callback
+     * @param number:Enum:Event $statusCallbackEvent Events to call status callback
      * @return TwiML $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {

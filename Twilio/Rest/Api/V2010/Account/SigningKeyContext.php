@@ -27,7 +27,7 @@ class SigningKeyContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SigningKeys/' . rawurlencode($sid) . '.json';
     }
@@ -63,7 +63,7 @@ class SigningKeyContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $options['friendlyName']));
+        $data = Values::of(array('FriendlyName' => $options['friendlyName'], ));
 
         $payload = $this->version->update(
             'POST',

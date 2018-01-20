@@ -28,7 +28,7 @@ class MessageContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages/' . rawurlencode($sid) . '';
     }
@@ -74,7 +74,7 @@ class MessageContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Body' => $options['body'], 'Attributes' => $options['attributes']));
+        $data = Values::of(array('Body' => $options['body'], 'Attributes' => $options['attributes'], ));
 
         $payload = $this->version->update(
             'POST',

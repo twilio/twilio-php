@@ -26,7 +26,7 @@ class DependentPhoneNumberList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid);
+        $this->solution = array('accountSid' => $accountSid, 'addressSid' => $addressSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Addresses/' . rawurlencode($addressSid) . '/DependentPhoneNumbers.json';
     }

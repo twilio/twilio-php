@@ -30,7 +30,7 @@ class QueryContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Queries/' . rawurlencode($sid) . '';
     }
@@ -66,7 +66,7 @@ class QueryContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('SampleSid' => $options['sampleSid'], 'Status' => $options['status']));
+        $data = Values::of(array('SampleSid' => $options['sampleSid'], 'Status' => $options['status'], ));
 
         $payload = $this->version->update(
             'POST',

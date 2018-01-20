@@ -63,7 +63,7 @@ class FeedbackSummaryInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

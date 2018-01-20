@@ -44,7 +44,7 @@ class WorkerStatisticsInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid);
+        $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid, );
     }
 
     /**

@@ -27,7 +27,7 @@ class RoleContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Roles/' . rawurlencode($sid) . '';
     }
@@ -70,7 +70,7 @@ class RoleContext extends InstanceContext {
      * @return RoleInstance Updated RoleInstance
      */
     public function update($permission) {
-        $data = Values::of(array('Permission' => Serialize::map($permission, function($e) { return $e; })));
+        $data = Values::of(array('Permission' => Serialize::map($permission, function($e) { return $e; }), ));
 
         $payload = $this->version->update(
             'POST',

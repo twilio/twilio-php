@@ -42,7 +42,7 @@ class ExportInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType']);
+        $this->solution = array('resourceType' => $resourceType ?: $this->properties['resourceType'], );
     }
 
     /**

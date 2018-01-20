@@ -29,7 +29,7 @@ class NationalList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode);
+        $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . rawurlencode($countryCode) . '/National.json';
     }

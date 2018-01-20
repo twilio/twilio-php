@@ -24,7 +24,7 @@ class Reject extends TwiML {
     /**
      * Add Reason attribute.
      * 
-     * @param enum:Reason $reason Rejection reason
+     * @param reject:Enum:Reason $reason Rejection reason
      * @return TwiML $this.
      */
     public function setReason($reason) {

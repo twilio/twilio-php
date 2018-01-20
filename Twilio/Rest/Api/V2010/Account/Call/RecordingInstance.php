@@ -19,6 +19,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string apiVersion
  * @property string callSid
+ * @property string conferenceSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string duration
@@ -51,6 +52,7 @@ class RecordingInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'callSid' => Values::array_get($payload, 'call_sid'),
+            'conferenceSid' => Values::array_get($payload, 'conference_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'duration' => Values::array_get($payload, 'duration'),

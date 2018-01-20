@@ -26,7 +26,7 @@ class QueueList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues.json';
     }
@@ -128,7 +128,7 @@ class QueueList extends ListResource {
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $friendlyName, 'MaxSize' => $options['maxSize']));
+        $data = Values::of(array('FriendlyName' => $friendlyName, 'MaxSize' => $options['maxSize'], ));
 
         $payload = $this->version->create(
             'POST',

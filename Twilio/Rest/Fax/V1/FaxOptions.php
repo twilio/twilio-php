@@ -35,10 +35,11 @@ abstract class FaxOptions {
      * @param string $sipAuthUsername Username for SIP authentication
      * @param string $sipAuthPassword Password for SIP authentication
      * @param boolean $storeMedia Whether or not to store media
+     * @param integer $ttl How many minutes to attempt a fax
      * @return CreateFaxOptions Options builder
      */
-    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE) {
-        return new CreateFaxOptions($quality, $statusCallback, $from, $sipAuthUsername, $sipAuthPassword, $storeMedia);
+    public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE, $ttl = Values::NONE) {
+        return new CreateFaxOptions($quality, $statusCallback, $from, $sipAuthUsername, $sipAuthPassword, $storeMedia, $ttl);
     }
 
     /**
@@ -134,14 +135,16 @@ class CreateFaxOptions extends Options {
      * @param string $sipAuthUsername Username for SIP authentication
      * @param string $sipAuthPassword Password for SIP authentication
      * @param boolean $storeMedia Whether or not to store media
+     * @param integer $ttl How many minutes to attempt a fax
      */
-    public function __construct($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE) {
+    public function __construct($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE, $ttl = Values::NONE) {
         $this->options['quality'] = $quality;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['from'] = $from;
         $this->options['sipAuthUsername'] = $sipAuthUsername;
         $this->options['sipAuthPassword'] = $sipAuthPassword;
         $this->options['storeMedia'] = $storeMedia;
+        $this->options['ttl'] = $ttl;
     }
 
     /**
@@ -207,6 +210,17 @@ class CreateFaxOptions extends Options {
      */
     public function setStoreMedia($storeMedia) {
         $this->options['storeMedia'] = $storeMedia;
+        return $this;
+    }
+
+    /**
+     * How many minutes from when a fax was initiated should Twilio attempt to send a fax.
+     * 
+     * @param integer $ttl How many minutes to attempt a fax
+     * @return $this Fluent Builder
+     */
+    public function setTtl($ttl) {
+        $this->options['ttl'] = $ttl;
         return $this;
     }
 

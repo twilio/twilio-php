@@ -48,7 +48,7 @@ class FeedbackInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid);
+        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
     }
 
     /**

@@ -45,7 +45,8 @@ class Client extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      * 
-     * @param enum:Event $statusCallbackEvent Events to trigger status callback
+     * @param client:Enum:Event $statusCallbackEvent Events to trigger status
+     *                                               callback
      * @return TwiML $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {

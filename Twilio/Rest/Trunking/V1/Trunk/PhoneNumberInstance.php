@@ -86,7 +86,7 @@ class PhoneNumberInstance extends InstanceResource {
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
         );
 
-        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

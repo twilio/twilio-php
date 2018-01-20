@@ -112,7 +112,7 @@ class CredentialTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Username' => "username", 'Password' => "password");
+        $values = array('Username' => "username", 'Password' => "password", );
 
         $this->assertRequest(new Request(
             'post',

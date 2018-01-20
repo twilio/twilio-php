@@ -28,7 +28,7 @@ class MemberList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members';
     }
@@ -43,7 +43,7 @@ class MemberList extends ListResource {
     public function create($identity, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Identity' => $identity, 'RoleSid' => $options['roleSid']));
+        $data = Values::of(array('Identity' => $identity, 'RoleSid' => $options['roleSid'], ));
 
         $payload = $this->version->create(
             'POST',

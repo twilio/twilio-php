@@ -31,7 +31,7 @@ class SyncMapItemContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'key' => $key);
+        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, 'key' => $key, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Items/' . rawurlencode($key) . '';
     }
@@ -75,7 +75,7 @@ class SyncMapItemContext extends InstanceContext {
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      */
     public function update($data) {
-        $data = Values::of(array('Data' => Serialize::jsonObject($data)));
+        $data = Values::of(array('Data' => Serialize::jsonObject($data), ));
 
         $payload = $this->version->update(
             'POST',

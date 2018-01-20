@@ -30,7 +30,7 @@ class SampleList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'intentSid' => $intentSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'intentSid' => $intentSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Intents/' . rawurlencode($intentSid) . '/Samples';
     }
@@ -134,7 +134,7 @@ class SampleList extends ListResource {
      * @return SampleInstance Newly created SampleInstance
      */
     public function create($language, $taggedText) {
-        $data = Values::of(array('Language' => $language, 'TaggedText' => $taggedText));
+        $data = Values::of(array('Language' => $language, 'TaggedText' => $taggedText, ));
 
         $payload = $this->version->create(
             'POST',

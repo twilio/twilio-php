@@ -108,11 +108,11 @@ class ParticipantTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                      ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->participants->create("+987654321", "+123456789");
+                                     ->participants->create("+15017122661", "+15558675310");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('From' => "+987654321", 'To' => "+123456789");
+        $values = array('From' => "+15017122661", 'To' => "+15558675310", );
 
         $this->assertRequest(new Request(
             'post',
@@ -144,7 +144,7 @@ class ParticipantTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->participants->create("+987654321", "+123456789");
+                                           ->participants->create("+15017122661", "+15558675310");
 
         $this->assertNotNull($actual);
     }
@@ -171,7 +171,7 @@ class ParticipantTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                                            ->conferences("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->participants->create("+987654321", "+123456789");
+                                           ->participants->create("+15017122661", "+15558675310");
 
         $this->assertNotNull($actual);
     }

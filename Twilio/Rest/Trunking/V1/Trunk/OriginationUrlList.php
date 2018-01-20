@@ -26,7 +26,7 @@ class OriginationUrlList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('trunkSid' => $trunkSid);
+        $this->solution = array('trunkSid' => $trunkSid, );
 
         $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/OriginationUrls';
     }

@@ -26,7 +26,7 @@ class PublicKeyContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid);
+        $this->solution = array('sid' => $sid, );
 
         $this->uri = '/Credentials/PublicKeys/' . rawurlencode($sid) . '';
     }
@@ -57,7 +57,7 @@ class PublicKeyContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $options['friendlyName']));
+        $data = Values::of(array('FriendlyName' => $options['friendlyName'], ));
 
         $payload = $this->version->update(
             'POST',

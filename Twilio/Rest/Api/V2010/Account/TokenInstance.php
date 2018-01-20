@@ -47,7 +47,7 @@ class TokenInstance extends InstanceResource {
             'username' => Values::array_get($payload, 'username'),
         );
 
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
     }
 
     /**

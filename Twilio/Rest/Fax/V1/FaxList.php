@@ -148,6 +148,7 @@ class FaxList extends ListResource {
             'SipAuthUsername' => $options['sipAuthUsername'],
             'SipAuthPassword' => $options['sipAuthPassword'],
             'StoreMedia' => Serialize::booleanToString($options['storeMedia']),
+            'Ttl' => $options['ttl'],
         ));
 
         $payload = $this->version->create(

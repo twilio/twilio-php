@@ -26,7 +26,7 @@ class MemberList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'queueSid' => $queueSid);
+        $this->solution = array('accountSid' => $accountSid, 'queueSid' => $queueSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Queues/' . rawurlencode($queueSid) . '/Members.json';
     }

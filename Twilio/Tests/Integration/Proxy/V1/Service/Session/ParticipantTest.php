@@ -115,7 +115,7 @@ class ParticipantTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Identifier' => "identifier");
+        $values = array('Identifier' => "identifier", );
 
         $this->assertRequest(new Request(
             'post',

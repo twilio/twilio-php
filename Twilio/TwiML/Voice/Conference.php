@@ -35,7 +35,7 @@ class Conference extends TwiML {
     /**
      * Add Beep attribute.
      * 
-     * @param enum:Beep $beep Play beep when joining
+     * @param conference:Enum:Beep $beep Play beep when joining
      * @return TwiML $this.
      */
     public function setBeep($beep) {
@@ -95,7 +95,7 @@ class Conference extends TwiML {
     /**
      * Add Record attribute.
      * 
-     * @param enum:Record $record Record the conference
+     * @param conference:Enum:Record $record Record the conference
      * @return TwiML $this.
      */
     public function setRecord($record) {
@@ -105,7 +105,7 @@ class Conference extends TwiML {
     /**
      * Add Region attribute.
      * 
-     * @param enum:Region $region Conference region
+     * @param conference:Enum:Region $region Conference region
      * @return TwiML $this.
      */
     public function setRegion($region) {
@@ -125,7 +125,7 @@ class Conference extends TwiML {
     /**
      * Add Trim attribute.
      * 
-     * @param enum:Trim $trim Trim the conference recording
+     * @param conference:Enum:Trim $trim Trim the conference recording
      * @return TwiML $this.
      */
     public function setTrim($trim) {
@@ -135,7 +135,8 @@ class Conference extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      * 
-     * @param enum:Event $statusCallbackEvent Events to call status callback URL
+     * @param conference:Enum:Event $statusCallbackEvent Events to call status
+     *                                                   callback URL
      * @return TwiML $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
@@ -186,8 +187,7 @@ class Conference extends TwiML {
     /**
      * Add RecordingStatusCallbackEvent attribute.
      * 
-     * @param enum:RecordingEvent $recordingStatusCallbackEvent Recording status
-     *                                                          callback events
+     * @param conference:Enum:RecordingEvent $recordingStatusCallbackEvent Recording status callback events
      * @return TwiML $this.
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {

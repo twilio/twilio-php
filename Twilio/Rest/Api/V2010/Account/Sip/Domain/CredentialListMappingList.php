@@ -26,7 +26,7 @@ class CredentialListMappingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid);
+        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/CredentialListMappings.json';
     }
@@ -39,7 +39,7 @@ class CredentialListMappingList extends ListResource {
      *                                       CredentialListMappingInstance
      */
     public function create($credentialListSid) {
-        $data = Values::of(array('CredentialListSid' => $credentialListSid));
+        $data = Values::of(array('CredentialListSid' => $credentialListSid, ));
 
         $payload = $this->version->create(
             'POST',

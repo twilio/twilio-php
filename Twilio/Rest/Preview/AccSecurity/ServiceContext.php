@@ -38,7 +38,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid);
+        $this->solution = array('sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -69,7 +69,7 @@ class ServiceContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Name' => $options['name'], 'CodeLength' => $options['codeLength']));
+        $data = Values::of(array('Name' => $options['name'], 'CodeLength' => $options['codeLength'], ));
 
         $payload = $this->version->update(
             'POST',

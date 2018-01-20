@@ -25,7 +25,7 @@ class Say extends TwiML {
     /**
      * Add Voice attribute.
      * 
-     * @param enum:Voice $voice Voice to use
+     * @param say:Enum:Voice $voice Voice to use
      * @return TwiML $this.
      */
     public function setVoice($voice) {
@@ -45,7 +45,7 @@ class Say extends TwiML {
     /**
      * Add Language attribute.
      * 
-     * @param enum:Language $language Message langauge
+     * @param say:Enum:Language $language Message langauge
      * @return TwiML $this.
      */
     public function setLanguage($language) {

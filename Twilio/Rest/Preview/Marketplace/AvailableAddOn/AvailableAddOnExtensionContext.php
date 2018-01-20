@@ -29,7 +29,7 @@ class AvailableAddOnExtensionContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('availableAddOnSid' => $availableAddOnSid, 'sid' => $sid);
+        $this->solution = array('availableAddOnSid' => $availableAddOnSid, 'sid' => $sid, );
 
         $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions/' . rawurlencode($sid) . '';
     }

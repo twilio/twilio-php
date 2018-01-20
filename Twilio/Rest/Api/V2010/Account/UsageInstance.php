@@ -27,7 +27,7 @@ class UsageInstance extends InstanceResource {
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
 
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
     }
 
     /**

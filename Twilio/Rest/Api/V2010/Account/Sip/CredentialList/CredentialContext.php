@@ -69,7 +69,7 @@ class CredentialContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Password' => $options['password']));
+        $data = Values::of(array('Password' => $options['password'], ));
 
         $payload = $this->version->update(
             'POST',

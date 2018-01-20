@@ -30,7 +30,7 @@ class FieldValueContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'fieldTypeSid' => $fieldTypeSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'fieldTypeSid' => $fieldTypeSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/FieldTypes/' . rawurlencode($fieldTypeSid) . '/FieldValues/' . rawurlencode($sid) . '';
     }

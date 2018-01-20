@@ -27,7 +27,7 @@ class RecordingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings.json';
     }
@@ -96,6 +96,7 @@ class RecordingList extends ListResource {
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateCreated>' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'CallSid' => $options['callSid'],
+            'ConferenceSid' => $options['conferenceSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

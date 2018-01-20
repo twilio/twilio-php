@@ -29,7 +29,7 @@ class PhoneNumberList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid);
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/PhoneNumbers';
     }
@@ -43,7 +43,7 @@ class PhoneNumberList extends ListResource {
     public function create($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Sid' => $options['sid'], 'PhoneNumber' => $options['phoneNumber']));
+        $data = Values::of(array('Sid' => $options['sid'], 'PhoneNumber' => $options['phoneNumber'], ));
 
         $payload = $this->version->create(
             'POST',

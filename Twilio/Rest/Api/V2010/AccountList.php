@@ -39,7 +39,7 @@ class AccountList extends ListResource {
     public function create($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $options['friendlyName']));
+        $data = Values::of(array('FriendlyName' => $options['friendlyName'], ));
 
         $payload = $this->version->create(
             'POST',

@@ -26,7 +26,7 @@ class IpAccessControlListList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists.json';
     }
@@ -125,7 +125,7 @@ class IpAccessControlListList extends ListResource {
      * @return IpAccessControlListInstance Newly created IpAccessControlListInstance
      */
     public function create($friendlyName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName));
+        $data = Values::of(array('FriendlyName' => $friendlyName, ));
 
         $payload = $this->version->create(
             'POST',

@@ -42,7 +42,7 @@ class CountryInstance extends InstanceResource {
             'priceUnit' => Values::array_get($payload, 'price_unit'),
         );
 
-        $this->solution = array('isoCountry' => $isoCountry ?: $this->properties['isoCountry']);
+        $this->solution = array('isoCountry' => $isoCountry ?: $this->properties['isoCountry'], );
     }
 
     /**

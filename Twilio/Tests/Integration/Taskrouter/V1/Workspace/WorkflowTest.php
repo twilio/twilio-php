@@ -233,7 +233,7 @@ class WorkflowTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", 'Configuration' => "configuration");
+        $values = array('FriendlyName' => "friendlyName", 'Configuration' => "configuration", );
 
         $this->assertRequest(new Request(
             'post',

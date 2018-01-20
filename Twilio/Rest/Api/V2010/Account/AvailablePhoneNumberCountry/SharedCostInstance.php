@@ -60,7 +60,7 @@ class SharedCostInstance extends InstanceResource {
             'capabilities' => Values::array_get($payload, 'capabilities'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode);
+        $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode, );
     }
 
     /**

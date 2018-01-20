@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string uniqueName
  * @property string status
+ * @property string failureReason
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property integer verificationAttempts
@@ -37,6 +38,10 @@ use Twilio\Version;
  * @property string url
  * @property string verificationType
  * @property string verificationDocumentSid
+ * @property string extension
+ * @property integer callDelay
+ * @property string verificationCode
+ * @property string verificationCallSids
  */
 class HostedNumberOrderInstance extends InstanceResource {
     /**
@@ -62,6 +67,7 @@ class HostedNumberOrderInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'status' => Values::array_get($payload, 'status'),
+            'failureReason' => Values::array_get($payload, 'failure_reason'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'verificationAttempts' => Values::array_get($payload, 'verification_attempts'),
@@ -70,9 +76,13 @@ class HostedNumberOrderInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
             'verificationType' => Values::array_get($payload, 'verification_type'),
             'verificationDocumentSid' => Values::array_get($payload, 'verification_document_sid'),
+            'extension' => Values::array_get($payload, 'extension'),
+            'callDelay' => Values::array_get($payload, 'call_delay'),
+            'verificationCode' => Values::array_get($payload, 'verification_code'),
+            'verificationCallSids' => Values::array_get($payload, 'verification_call_sids'),
         );
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

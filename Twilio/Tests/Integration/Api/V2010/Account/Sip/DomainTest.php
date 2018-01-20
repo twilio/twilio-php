@@ -111,7 +111,7 @@ class DomainTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('DomainName' => "domainName");
+        $values = array('DomainName' => "domainName", );
 
         $this->assertRequest(new Request(
             'post',

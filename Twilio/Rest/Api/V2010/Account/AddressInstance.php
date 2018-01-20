@@ -65,7 +65,7 @@ class AddressInstance extends InstanceResource {
             'validated' => Values::array_get($payload, 'validated'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

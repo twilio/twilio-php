@@ -47,7 +47,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid);
+        $this->solution = array('sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -118,6 +118,7 @@ class ServiceContext extends InstanceContext {
             'Media.CompatibilityMessage' => $options['mediaCompatibilityMessage'],
             'PreWebhookRetryCount' => $options['preWebhookRetryCount'],
             'PostWebhookRetryCount' => $options['postWebhookRetryCount'],
+            'Notifications.LogEnabled' => Serialize::booleanToString($options['notificationsLogEnabled']),
         ));
 
         $payload = $this->version->update(

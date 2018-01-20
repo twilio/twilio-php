@@ -29,7 +29,6 @@ use Twilio\Version;
  * @property string taskChannelUniqueName
  * @property string workerSid
  * @property string workspaceSid
- * @property array links
  * @property string url
  */
 class WorkerChannelInstance extends InstanceResource {
@@ -60,7 +59,6 @@ class WorkerChannelInstance extends InstanceResource {
             'taskChannelUniqueName' => Values::array_get($payload, 'task_channel_unique_name'),
             'workerSid' => Values::array_get($payload, 'worker_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
-            'links' => Values::array_get($payload, 'links'),
             'url' => Values::array_get($payload, 'url'),
         );
 

@@ -67,7 +67,7 @@ class AlertInstance extends InstanceResource {
             'responseHeaders' => Values::array_get($payload, 'response_headers'),
         );
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

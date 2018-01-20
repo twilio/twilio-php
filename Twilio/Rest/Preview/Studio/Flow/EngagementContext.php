@@ -36,7 +36,7 @@ class EngagementContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid);
+        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid, );
 
         $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements/' . rawurlencode($sid) . '';
     }

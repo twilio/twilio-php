@@ -29,7 +29,7 @@ class SyncMapPermissionList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Permissions';
     }

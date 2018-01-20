@@ -26,7 +26,7 @@ class PublishedTrackList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid);
+        $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, );
 
         $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/PublishedTracks';
     }

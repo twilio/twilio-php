@@ -68,7 +68,7 @@ class NotificationInstance extends InstanceResource {
             'responseHeaders' => Values::array_get($payload, 'response_headers'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

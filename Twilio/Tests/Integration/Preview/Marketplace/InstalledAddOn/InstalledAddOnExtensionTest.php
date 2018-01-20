@@ -63,7 +63,7 @@ class InstalledAddOnExtensionTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Enabled' => Serialize::booleanToString(True));
+        $values = array('Enabled' => Serialize::booleanToString(True), );
 
         $this->assertRequest(new Request(
             'post',

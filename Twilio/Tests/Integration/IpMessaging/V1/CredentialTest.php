@@ -97,7 +97,7 @@ class CredentialTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Type' => "gcm");
+        $values = array('Type' => "gcm", );
 
         $this->assertRequest(new Request(
             'post',

@@ -26,7 +26,7 @@ class AddOnResultList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'referenceSid' => $referenceSid);
+        $this->solution = array('accountSid' => $accountSid, 'referenceSid' => $referenceSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults.json';
     }

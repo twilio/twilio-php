@@ -34,7 +34,7 @@ class CredentialListContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/CredentialLists/' . rawurlencode($sid) . '.json';
     }
@@ -68,7 +68,7 @@ class CredentialListContext extends InstanceContext {
      * @return CredentialListInstance Updated CredentialListInstance
      */
     public function update($friendlyName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName));
+        $data = Values::of(array('FriendlyName' => $friendlyName, ));
 
         $payload = $this->version->update(
             'POST',

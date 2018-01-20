@@ -27,7 +27,7 @@ class MessageList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages';
     }

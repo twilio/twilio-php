@@ -44,7 +44,7 @@ class NewKeyInstance extends InstanceResource {
             'secret' => Values::array_get($payload, 'secret'),
         );
 
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
     }
 
     /**

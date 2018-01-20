@@ -29,7 +29,7 @@ class FaxMediaContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('faxSid' => $faxSid, 'sid' => $sid);
+        $this->solution = array('faxSid' => $faxSid, 'sid' => $sid, );
 
         $this->uri = '/Faxes/' . rawurlencode($faxSid) . '/Media/' . rawurlencode($sid) . '';
     }

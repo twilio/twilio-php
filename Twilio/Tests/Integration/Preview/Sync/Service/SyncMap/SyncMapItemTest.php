@@ -98,7 +98,7 @@ class SyncMapItemTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Key' => "key", 'Data' => Serialize::jsonObject("{}"));
+        $values = array('Key' => "key", 'Data' => Serialize::jsonObject("{}"), );
 
         $this->assertRequest(new Request(
             'post',
@@ -225,7 +225,7 @@ class SyncMapItemTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject("{}"));
+        $values = array('Data' => Serialize::jsonObject("{}"), );
 
         $this->assertRequest(new Request(
             'post',

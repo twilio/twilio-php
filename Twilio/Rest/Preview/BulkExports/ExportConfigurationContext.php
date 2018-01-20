@@ -30,7 +30,7 @@ class ExportConfigurationContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('resourceType' => $resourceType);
+        $this->solution = array('resourceType' => $resourceType, );
 
         $this->uri = '/Exports/' . rawurlencode($resourceType) . '/Configuration';
     }

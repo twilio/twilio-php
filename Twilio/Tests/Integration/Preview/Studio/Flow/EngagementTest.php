@@ -104,11 +104,11 @@ class EngagementTest extends HolodeckTestCase {
 
         try {
             $this->twilio->preview->studio->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->engagements->create("+123456789", "+987654321");
+                                          ->engagements->create("+15558675310", "+15017122661");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('To' => "+123456789", 'From' => "+987654321");
+        $values = array('To' => "+15558675310", 'From' => "+15017122661", );
 
         $this->assertRequest(new Request(
             'post',
@@ -145,7 +145,7 @@ class EngagementTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->studio->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->engagements->create("+123456789", "+987654321");
+                                                ->engagements->create("+15558675310", "+15017122661");
 
         $this->assertNotNull($actual);
     }

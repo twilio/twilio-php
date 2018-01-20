@@ -27,7 +27,7 @@ class PublishedTrackContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, 'sid' => $sid);
+        $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, 'sid' => $sid, );
 
         $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/PublishedTracks/' . rawurlencode($sid) . '';
     }

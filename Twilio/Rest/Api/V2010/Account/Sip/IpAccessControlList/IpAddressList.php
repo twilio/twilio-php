@@ -128,7 +128,7 @@ class IpAddressList extends ListResource {
      * @return IpAddressInstance Newly created IpAddressInstance
      */
     public function create($friendlyName, $ipAddress) {
-        $data = Values::of(array('FriendlyName' => $friendlyName, 'IpAddress' => $ipAddress));
+        $data = Values::of(array('FriendlyName' => $friendlyName, 'IpAddress' => $ipAddress, ));
 
         $payload = $this->version->create(
             'POST',

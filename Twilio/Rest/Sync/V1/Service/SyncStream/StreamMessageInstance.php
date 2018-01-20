@@ -39,7 +39,7 @@ class StreamMessageInstance extends InstanceResource {
             'data' => Values::array_get($payload, 'data'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'streamSid' => $streamSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'streamSid' => $streamSid, );
     }
 
     /**

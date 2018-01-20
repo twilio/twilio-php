@@ -35,7 +35,7 @@ class AddOnResultContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'referenceSid' => $referenceSid, 'sid' => $sid);
+        $this->solution = array('accountSid' => $accountSid, 'referenceSid' => $referenceSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults/' . rawurlencode($sid) . '.json';
     }

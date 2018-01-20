@@ -173,7 +173,7 @@ class QueryTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Language' => "language", 'Query' => "query");
+        $values = array('Language' => "language", 'Query' => "query", );
 
         $this->assertRequest(new Request(
             'post',

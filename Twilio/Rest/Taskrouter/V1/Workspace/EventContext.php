@@ -26,7 +26,7 @@ class EventContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid);
+        $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid, );
 
         $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Events/' . rawurlencode($sid) . '';
     }

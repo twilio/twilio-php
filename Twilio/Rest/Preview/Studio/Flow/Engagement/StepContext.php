@@ -30,7 +30,7 @@ class StepContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, 'sid' => $sid);
+        $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, 'sid' => $sid, );
 
         $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements/' . rawurlencode($engagementSid) . '/Steps/' . rawurlencode($sid) . '';
     }

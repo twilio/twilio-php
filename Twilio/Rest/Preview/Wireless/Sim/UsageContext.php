@@ -29,7 +29,7 @@ class UsageContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('simSid' => $simSid);
+        $this->solution = array('simSid' => $simSid, );
 
         $this->uri = '/Sims/' . rawurlencode($simSid) . '/Usage';
     }
@@ -43,7 +43,7 @@ class UsageContext extends InstanceContext {
     public function fetch($options = array()) {
         $options = new Values($options);
 
-        $params = Values::of(array('End' => $options['end'], 'Start' => $options['start']));
+        $params = Values::of(array('End' => $options['end'], 'Start' => $options['start'], ));
 
         $payload = $this->version->fetch(
             'GET',

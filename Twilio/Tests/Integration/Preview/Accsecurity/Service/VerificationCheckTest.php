@@ -25,7 +25,7 @@ class VerificationCheckTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Code' => "code");
+        $values = array('Code' => "code", );
 
         $this->assertRequest(new Request(
             'post',

@@ -30,7 +30,7 @@ class UsageRecordList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('simSid' => $simSid);
+        $this->solution = array('simSid' => $simSid, );
 
         $this->uri = '/Sims/' . rawurlencode($simSid) . '/UsageRecords';
     }

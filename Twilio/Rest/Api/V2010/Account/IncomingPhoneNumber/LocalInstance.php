@@ -89,7 +89,7 @@ class LocalInstance extends InstanceResource {
             'voiceUrl' => Values::array_get($payload, 'voice_url'),
         );
 
-        $this->solution = array('accountSid' => $accountSid);
+        $this->solution = array('accountSid' => $accountSid, );
     }
 
     /**

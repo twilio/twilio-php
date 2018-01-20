@@ -26,10 +26,12 @@ abstract class HostedNumberOrderOptions {
      * @param string $verificationCode A verification code.
      * @param string $verificationType Verification Type.
      * @param string $verificationDocumentSid Verification Document Sid
+     * @param string $extension The extension
+     * @param integer $callDelay The call_delay
      * @return UpdateHostedNumberOrderOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
-        return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode, $verificationType, $verificationDocumentSid);
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE, $extension = Values::NONE, $callDelay = Values::NONE) {
+        return new UpdateHostedNumberOrderOptions($friendlyName, $uniqueName, $email, $ccEmails, $status, $verificationCode, $verificationType, $verificationDocumentSid, $extension, $callDelay);
     }
 
     /**
@@ -80,8 +82,10 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $verificationCode A verification code.
      * @param string $verificationType Verification Type.
      * @param string $verificationDocumentSid Verification Document Sid
+     * @param string $extension The extension
+     * @param integer $callDelay The call_delay
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE, $extension = Values::NONE, $callDelay = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['email'] = $email;
@@ -90,6 +94,8 @@ class UpdateHostedNumberOrderOptions extends Options {
         $this->options['verificationCode'] = $verificationCode;
         $this->options['verificationType'] = $verificationType;
         $this->options['verificationDocumentSid'] = $verificationDocumentSid;
+        $this->options['extension'] = $extension;
+        $this->options['callDelay'] = $callDelay;
     }
 
     /**
@@ -178,6 +184,28 @@ class UpdateHostedNumberOrderOptions extends Options {
      */
     public function setVerificationDocumentSid($verificationDocumentSid) {
         $this->options['verificationDocumentSid'] = $verificationDocumentSid;
+        return $this;
+    }
+
+    /**
+     * The extension
+     * 
+     * @param string $extension The extension
+     * @return $this Fluent Builder
+     */
+    public function setExtension($extension) {
+        $this->options['extension'] = $extension;
+        return $this;
+    }
+
+    /**
+     * The call_delay
+     * 
+     * @param integer $callDelay The call_delay
+     * @return $this Fluent Builder
+     */
+    public function setCallDelay($callDelay) {
+        $this->options['callDelay'] = $callDelay;
         return $this;
     }
 
@@ -358,7 +386,7 @@ class CreateHostedNumberOrderOptions extends Options {
     }
 
     /**
-     * Optional. A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
+     * Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.
      * 
      * @param string $ccEmails A list of emails.
      * @return $this Fluent Builder

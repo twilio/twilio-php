@@ -73,7 +73,7 @@ class DomainInstance extends InstanceResource {
             'sipRegistration' => Values::array_get($payload, 'sip_registration'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

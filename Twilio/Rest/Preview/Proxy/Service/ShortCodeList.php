@@ -28,7 +28,7 @@ class ShortCodeList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid);
+        $this->solution = array('serviceSid' => $serviceSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/ShortCodes';
     }
@@ -40,7 +40,7 @@ class ShortCodeList extends ListResource {
      * @return ShortCodeInstance Newly created ShortCodeInstance
      */
     public function create($sid) {
-        $data = Values::of(array('Sid' => $sid));
+        $data = Values::of(array('Sid' => $sid, ));
 
         $payload = $this->version->create(
             'POST',

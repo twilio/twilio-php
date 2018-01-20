@@ -29,7 +29,7 @@ class EngagementList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid);
+        $this->solution = array('flowSid' => $flowSid, );
 
         $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements';
     }
@@ -131,7 +131,7 @@ class EngagementList extends ListResource {
     public function create($to, $from, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('To' => $to, 'From' => $from, 'Parameters' => $options['parameters']));
+        $data = Values::of(array('To' => $to, 'From' => $from, 'Parameters' => $options['parameters'], ));
 
         $payload = $this->version->create(
             'POST',

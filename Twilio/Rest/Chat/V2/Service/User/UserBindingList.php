@@ -28,7 +28,7 @@ class UserBindingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Bindings';
     }

@@ -50,7 +50,7 @@ class FaxMediaInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('faxSid' => $faxSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('faxSid' => $faxSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

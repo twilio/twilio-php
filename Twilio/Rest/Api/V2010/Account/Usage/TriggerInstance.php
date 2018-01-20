@@ -68,7 +68,7 @@ class TriggerInstance extends InstanceResource {
             'usageRecordUri' => Values::array_get($payload, 'usage_record_uri'),
         );
 
-        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

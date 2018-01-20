@@ -69,7 +69,7 @@ class MemberTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Identity' => "identity");
+        $values = array('Identity' => "identity", );
 
         $this->assertRequest(new Request(
             'post',

@@ -61,7 +61,7 @@ class DeviceInstance extends InstanceResource {
             'dateAuthenticated' => Deserialize::dateTime(Values::array_get($payload, 'date_authenticated')),
         );
 
-        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

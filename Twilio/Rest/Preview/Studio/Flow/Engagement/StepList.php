@@ -29,7 +29,7 @@ class StepList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid);
+        $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, );
 
         $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements/' . rawurlencode($engagementSid) . '/Steps';
     }

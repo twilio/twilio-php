@@ -60,7 +60,7 @@ class EngagementInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid']);
+        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**

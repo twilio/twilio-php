@@ -65,7 +65,7 @@ class Sip extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      * 
-     * @param enum:Event $statusCallbackEvent Status callback events
+     * @param sip:Enum:Event $statusCallbackEvent Status callback events
      * @return TwiML $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {

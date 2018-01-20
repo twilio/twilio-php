@@ -27,7 +27,7 @@ class MediaContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'messageSid' => $messageSid, 'sid' => $sid);
+        $this->solution = array('accountSid' => $accountSid, 'messageSid' => $messageSid, 'sid' => $sid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Media/' . rawurlencode($sid) . '.json';
     }

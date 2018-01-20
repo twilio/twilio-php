@@ -75,7 +75,7 @@ class NotificationInstance extends InstanceResource {
             'alexa' => Values::array_get($payload, 'alexa'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid);
+        $this->solution = array('serviceSid' => $serviceSid, );
     }
 
     /**

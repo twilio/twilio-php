@@ -31,7 +31,7 @@ class SyncMapItemList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'mapSid' => $mapSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Maps/' . rawurlencode($mapSid) . '/Items';
     }
@@ -44,7 +44,7 @@ class SyncMapItemList extends ListResource {
      * @return SyncMapItemInstance Newly created SyncMapItemInstance
      */
     public function create($key, $data) {
-        $data = Values::of(array('Key' => $key, 'Data' => Serialize::jsonObject($data)));
+        $data = Values::of(array('Key' => $key, 'Data' => Serialize::jsonObject($data), ));
 
         $payload = $this->version->create(
             'POST',

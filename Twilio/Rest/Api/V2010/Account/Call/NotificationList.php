@@ -28,7 +28,7 @@ class NotificationList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid);
+        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Notifications.json';
     }

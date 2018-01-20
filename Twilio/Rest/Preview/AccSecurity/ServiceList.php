@@ -43,7 +43,7 @@ class ServiceList extends ListResource {
     public function create($name, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Name' => $name, 'CodeLength' => $options['codeLength']));
+        $data = Values::of(array('Name' => $name, 'CodeLength' => $options['codeLength'], ));
 
         $payload = $this->version->create(
             'POST',

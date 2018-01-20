@@ -46,7 +46,7 @@ class NumberInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('number' => $number ?: $this->properties['number']);
+        $this->solution = array('number' => $number ?: $this->properties['number'], );
     }
 
     /**

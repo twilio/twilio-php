@@ -27,7 +27,7 @@ class UserBindingContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Bindings/' . rawurlencode($sid) . '';
     }

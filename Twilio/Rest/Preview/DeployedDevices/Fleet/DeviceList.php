@@ -30,7 +30,7 @@ class DeviceList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('fleetSid' => $fleetSid);
+        $this->solution = array('fleetSid' => $fleetSid, );
 
         $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Devices';
     }

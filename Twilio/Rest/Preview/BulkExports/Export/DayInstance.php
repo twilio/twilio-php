@@ -42,7 +42,7 @@ class DayInstance extends InstanceResource {
             'resourceType' => Values::array_get($payload, 'resource_type'),
         );
 
-        $this->solution = array('resourceType' => $resourceType);
+        $this->solution = array('resourceType' => $resourceType, );
     }
 
     /**

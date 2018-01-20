@@ -29,7 +29,7 @@ class ParticipantList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'conferenceSid' => $conferenceSid);
+        $this->solution = array('accountSid' => $accountSid, 'conferenceSid' => $conferenceSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants.json';
     }

@@ -30,7 +30,7 @@ class FieldContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'intentSid' => $intentSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'intentSid' => $intentSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Intents/' . rawurlencode($intentSid) . '/Fields/' . rawurlencode($sid) . '';
     }

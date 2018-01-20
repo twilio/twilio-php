@@ -31,7 +31,7 @@ class DeviceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid);
+        $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid, );
 
         $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Devices/' . rawurlencode($sid) . '';
     }

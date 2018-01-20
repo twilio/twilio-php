@@ -26,7 +26,7 @@ class IpAccessControlListMappingList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid);
+        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/IpAccessControlListMappings.json';
     }
@@ -39,7 +39,7 @@ class IpAccessControlListMappingList extends ListResource {
      *                                            IpAccessControlListMappingInstance
      */
     public function create($ipAccessControlListSid) {
-        $data = Values::of(array('IpAccessControlListSid' => $ipAccessControlListSid));
+        $data = Values::of(array('IpAccessControlListSid' => $ipAccessControlListSid, ));
 
         $payload = $this->version->create(
             'POST',

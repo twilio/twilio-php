@@ -47,7 +47,7 @@ class PhoneNumberInstance extends InstanceResource {
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('phoneNumber' => $phoneNumber ?: $this->properties['phoneNumber']);
+        $this->solution = array('phoneNumber' => $phoneNumber ?: $this->properties['phoneNumber'], );
     }
 
     /**

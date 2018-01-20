@@ -31,7 +31,7 @@ class SyncListItemList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid);
+        $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Items';
     }
@@ -46,7 +46,7 @@ class SyncListItemList extends ListResource {
     public function create($data, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Data' => Serialize::jsonObject($data), 'Ttl' => $options['ttl']));
+        $data = Values::of(array('Data' => Serialize::jsonObject($data), 'Ttl' => $options['ttl'], ));
 
         $payload = $this->version->create(
             'POST',

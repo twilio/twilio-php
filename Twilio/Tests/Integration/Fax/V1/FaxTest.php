@@ -157,7 +157,7 @@ class FaxTest extends HolodeckTestCase {
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('To' => "to", 'MediaUrl' => "https://example.com");
+        $values = array('To' => "to", 'MediaUrl' => "https://example.com", );
 
         $this->assertRequest(new Request(
             'post',

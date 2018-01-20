@@ -30,7 +30,7 @@ class ModelBuildContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid);
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/ModelBuilds/' . rawurlencode($sid) . '';
     }
@@ -66,7 +66,7 @@ class ModelBuildContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $options['uniqueName']));
+        $data = Values::of(array('UniqueName' => $options['uniqueName'], ));
 
         $payload = $this->version->update(
             'POST',

@@ -29,7 +29,7 @@ class AssignedAddOnList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'resourceSid' => $resourceSid);
+        $this->solution = array('accountSid' => $accountSid, 'resourceSid' => $resourceSid, );
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers/' . rawurlencode($resourceSid) . '/AssignedAddOns.json';
     }
@@ -128,7 +128,7 @@ class AssignedAddOnList extends ListResource {
      * @return AssignedAddOnInstance Newly created AssignedAddOnInstance
      */
     public function create($installedAddOnSid) {
-        $data = Values::of(array('InstalledAddOnSid' => $installedAddOnSid));
+        $data = Values::of(array('InstalledAddOnSid' => $installedAddOnSid, ));
 
         $payload = $this->version->create(
             'POST',
