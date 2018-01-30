@@ -8,7 +8,8 @@ AUTHORS.md export-ignore
 CHANGES.md export-ignore
 CONTRIBUTING.md export-ignore
 docs-update.sh export-ignore
-ISSUE-TEMPLATE.md export-ignore
+Makefile export-ignore
+ISSUE_TEMPLATE.md export-ignore
 LICENSE.md export-ignore
 README.md export-ignore
 UPGRADE.md export-ignore
