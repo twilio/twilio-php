@@ -32,6 +32,7 @@ use Twilio\Version;
  */
 class ParticipantInstance extends InstanceResource {
     protected $_publishedTracks = null;
+    protected $_subscribedTracks = null;
 
     /**
      * Initialize the ParticipantInstance
@@ -109,6 +110,15 @@ class ParticipantInstance extends InstanceResource {
      */
     protected function getPublishedTracks() {
         return $this->proxy()->publishedTracks;
+    }
+
+    /**
+     * Access the subscribedTracks
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList 
+     */
+    protected function getSubscribedTracks() {
+        return $this->proxy()->subscribedTracks;
     }
 
     /**

@@ -11,35 +11,31 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Video\V1;
+use Twilio\Rest\Studio\V1;
 
 /**
- * @property \Twilio\Rest\Video\V1 v1
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
- * @property \Twilio\Rest\Video\V1\RecordingList recordings
- * @property \Twilio\Rest\Video\V1\RoomList rooms
- * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
- * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
+ * @property \Twilio\Rest\Studio\V1 v1
+ * @property \Twilio\Rest\Studio\V1\FlowList flows
+ * @method \Twilio\Rest\Studio\V1\FlowContext flows(string $sid)
  */
-class Video extends Domain {
+class Studio extends Domain {
     protected $_v1 = null;
 
     /**
-     * Construct the Video Domain
+     * Construct the Studio Domain
      * 
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
-     * @return \Twilio\Rest\Video Domain for Video
+     * @return \Twilio\Rest\Studio Domain for Studio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://video.twilio.com';
+        $this->baseUrl = 'https://studio.twilio.com';
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1 Version v1 of video
+     * @return \Twilio\Rest\Studio\V1 Version v1 of studio
      */
     protected function getV1() {
         if (!$this->_v1) {
@@ -82,48 +78,18 @@ class Video extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList 
+     * @return \Twilio\Rest\Studio\V1\FlowList 
      */
-    protected function getCompositions() {
-        return $this->v1->compositions;
+    protected function getFlows() {
+        return $this->v1->flows;
     }
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\CompositionContext 
+     * @return \Twilio\Rest\Studio\V1\FlowContext 
      */
-    protected function contextCompositions($sid) {
-        return $this->v1->compositions($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Video\V1\RecordingList 
-     */
-    protected function getRecordings() {
-        return $this->v1->recordings;
-    }
-
-    /**
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\RecordingContext 
-     */
-    protected function contextRecordings($sid) {
-        return $this->v1->recordings($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Video\V1\RoomList 
-     */
-    protected function getRooms() {
-        return $this->v1->rooms;
-    }
-
-    /**
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\RoomContext 
-     */
-    protected function contextRooms($sid) {
-        return $this->v1->rooms($sid);
+    protected function contextFlows($sid) {
+        return $this->v1->flows($sid);
     }
 
     /**
@@ -132,6 +98,6 @@ class Video extends Domain {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Video]';
+        return '[Twilio.Studio]';
     }
 }

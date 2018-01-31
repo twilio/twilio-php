@@ -35,6 +35,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Messaging messaging
  * @property \Twilio\Rest\Wireless wireless
  * @property \Twilio\Rest\Sync sync
+ * @property \Twilio\Rest\Studio studio
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -105,6 +106,7 @@ class Client {
     protected $_messaging = null;
     protected $_wireless = null;
     protected $_sync = null;
+    protected $_studio = null;
 
     /**
      * Initializes the Twilio Client
@@ -767,6 +769,18 @@ class Client {
             $this->_sync = new Sync($this);
         }
         return $this->_sync;
+    }
+
+    /**
+     * Access the Studio Twilio Domain
+     * 
+     * @return \Twilio\Rest\Studio Studio Twilio Domain
+     */
+    protected function getStudio() {
+        if (!$this->_studio) {
+            $this->_studio = new Studio($this);
+        }
+        return $this->_studio;
     }
 
     /**

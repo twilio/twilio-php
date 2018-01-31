@@ -7,33 +7,25 @@
  * /       /
  */
 
-namespace Twilio\Rest\Video;
+namespace Twilio\Rest\Studio;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Video\V1\CompositionList;
-use Twilio\Rest\Video\V1\RecordingList;
-use Twilio\Rest\Video\V1\RoomList;
+use Twilio\Rest\Studio\V1\FlowList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
- * @property \Twilio\Rest\Video\V1\RecordingList recordings
- * @property \Twilio\Rest\Video\V1\RoomList rooms
- * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
- * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
- * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
+ * @property \Twilio\Rest\Studio\V1\FlowList flows
+ * @method \Twilio\Rest\Studio\V1\FlowContext flows(string $sid)
  */
 class V1 extends Version {
-    protected $_compositions = null;
-    protected $_recordings = null;
-    protected $_rooms = null;
+    protected $_flows = null;
 
     /**
-     * Construct the V1 version of Video
+     * Construct the V1 version of Studio
      * 
      * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Video\V1 V1 version of Video
+     * @return \Twilio\Rest\Studio\V1 V1 version of Studio
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
@@ -41,33 +33,13 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList 
+     * @return \Twilio\Rest\Studio\V1\FlowList 
      */
-    protected function getCompositions() {
-        if (!$this->_compositions) {
-            $this->_compositions = new CompositionList($this);
+    protected function getFlows() {
+        if (!$this->_flows) {
+            $this->_flows = new FlowList($this);
         }
-        return $this->_compositions;
-    }
-
-    /**
-     * @return \Twilio\Rest\Video\V1\RecordingList 
-     */
-    protected function getRecordings() {
-        if (!$this->_recordings) {
-            $this->_recordings = new RecordingList($this);
-        }
-        return $this->_recordings;
-    }
-
-    /**
-     * @return \Twilio\Rest\Video\V1\RoomList 
-     */
-    protected function getRooms() {
-        if (!$this->_rooms) {
-            $this->_rooms = new RoomList($this);
-        }
-        return $this->_rooms;
+        return $this->_flows;
     }
 
     /**
@@ -109,6 +81,6 @@ class V1 extends Version {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Video.V1]';
+        return '[Twilio.Studio.V1]';
     }
 }

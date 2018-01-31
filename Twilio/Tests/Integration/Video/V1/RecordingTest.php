@@ -46,6 +46,7 @@ class RecordingTest extends HolodeckTestCase {
                 "duration": 0,
                 "container_format": "mka",
                 "codec": "OPUS",
+                "track_name": "A name",
                 "grouping_sids": {
                     "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 },
@@ -118,6 +119,7 @@ class RecordingTest extends HolodeckTestCase {
                         "duration": 10,
                         "container_format": "mka",
                         "codec": "OPUS",
+                        "track_name": "A name",
                         "grouping_sids": {
                             "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                             "participant_sid": "PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"

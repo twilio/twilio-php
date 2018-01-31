@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Studio\Flow;
+namespace Twilio\Rest\Video\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -18,86 +18,89 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  * 
- * @property string sid
  * @property string accountSid
- * @property string flowSid
- * @property string contactSid
- * @property string contactChannelAddress
  * @property string status
- * @property array context
  * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
+ * @property string dateCompleted
+ * @property string dateDeleted
+ * @property string sid
+ * @property string audioSources
+ * @property string videoSources
+ * @property string videoLayout
+ * @property string resolution
+ * @property string format
+ * @property integer bitrate
+ * @property integer size
+ * @property integer duration
  * @property string url
  * @property array links
  */
-class EngagementInstance extends InstanceResource {
-    protected $_steps = null;
-
+class CompositionInstance extends InstanceResource {
     /**
-     * Initialize the EngagementInstance
+     * Initialize the CompositionInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid Flow Sid.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Studio\Flow\EngagementInstance 
+     * @return \Twilio\Rest\Video\V1\CompositionInstance 
      */
-    public function __construct(Version $version, array $payload, $flowSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'flowSid' => Values::array_get($payload, 'flow_sid'),
-            'contactSid' => Values::array_get($payload, 'contact_sid'),
-            'contactChannelAddress' => Values::array_get($payload, 'contact_channel_address'),
             'status' => Values::array_get($payload, 'status'),
-            'context' => Values::array_get($payload, 'context'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'dateCompleted' => Values::array_get($payload, 'date_completed'),
+            'dateDeleted' => Values::array_get($payload, 'date_deleted'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'audioSources' => Values::array_get($payload, 'audio_sources'),
+            'videoSources' => Values::array_get($payload, 'video_sources'),
+            'videoLayout' => Values::array_get($payload, 'video_layout'),
+            'resolution' => Values::array_get($payload, 'resolution'),
+            'format' => Values::array_get($payload, 'format'),
+            'bitrate' => Values::array_get($payload, 'bitrate'),
+            'size' => Values::array_get($payload, 'size'),
+            'duration' => Values::array_get($payload, 'duration'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Preview\Studio\Flow\EngagementContext Context for this
-     *                                                            EngagementInstance
+     * @return \Twilio\Rest\Video\V1\CompositionContext Context for this
+     *                                                  CompositionInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new EngagementContext(
-                $this->version,
-                $this->solution['flowSid'],
-                $this->solution['sid']
-            );
+            $this->context = new CompositionContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a EngagementInstance
+     * Fetch a CompositionInstance
      * 
-     * @return EngagementInstance Fetched EngagementInstance
+     * @return CompositionInstance Fetched CompositionInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Access the steps
+     * Deletes the CompositionInstance
      * 
-     * @return \Twilio\Rest\Preview\Studio\Flow\Engagement\StepList 
+     * @return boolean True if delete succeeds, false otherwise
      */
-    protected function getSteps() {
-        return $this->proxy()->steps;
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**
@@ -130,6 +133,6 @@ class EngagementInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Studio.EngagementInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.CompositionInstance ' . implode(' ', $context) . ']';
     }
 }

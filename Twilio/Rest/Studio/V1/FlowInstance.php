@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Studio\Flow;
+namespace Twilio\Rest\Studio\V1;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -16,88 +16,87 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
  * @property string sid
  * @property string accountSid
- * @property string flowSid
- * @property string contactSid
- * @property string contactChannelAddress
+ * @property string friendlyName
  * @property string status
- * @property array context
+ * @property integer version
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
  * @property array links
  */
-class EngagementInstance extends InstanceResource {
-    protected $_steps = null;
+class FlowInstance extends InstanceResource {
+    protected $_engagements = null;
 
     /**
-     * Initialize the EngagementInstance
+     * Initialize the FlowInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid Flow Sid.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Studio\Flow\EngagementInstance 
+     * @return \Twilio\Rest\Studio\V1\FlowInstance 
      */
-    public function __construct(Version $version, array $payload, $flowSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'flowSid' => Values::array_get($payload, 'flow_sid'),
-            'contactSid' => Values::array_get($payload, 'contact_sid'),
-            'contactChannelAddress' => Values::array_get($payload, 'contact_channel_address'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'status' => Values::array_get($payload, 'status'),
-            'context' => Values::array_get($payload, 'context'),
+            'version' => Values::array_get($payload, 'version'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Preview\Studio\Flow\EngagementContext Context for this
-     *                                                            EngagementInstance
+     * @return \Twilio\Rest\Studio\V1\FlowContext Context for this FlowInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new EngagementContext(
-                $this->version,
-                $this->solution['flowSid'],
-                $this->solution['sid']
-            );
+            $this->context = new FlowContext($this->version, $this->solution['sid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a EngagementInstance
+     * Fetch a FlowInstance
      * 
-     * @return EngagementInstance Fetched EngagementInstance
+     * @return FlowInstance Fetched FlowInstance
      */
     public function fetch() {
         return $this->proxy()->fetch();
     }
 
     /**
-     * Access the steps
+     * Deletes the FlowInstance
      * 
-     * @return \Twilio\Rest\Preview\Studio\Flow\Engagement\StepList 
+     * @return boolean True if delete succeeds, false otherwise
      */
-    protected function getSteps() {
-        return $this->proxy()->steps;
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
+     * Access the engagements
+     * 
+     * @return \Twilio\Rest\Studio\V1\Flow\EngagementList 
+     */
+    protected function getEngagements() {
+        return $this->proxy()->engagements;
     }
 
     /**
@@ -130,6 +129,6 @@ class EngagementInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Studio.EngagementInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.FlowInstance ' . implode(' ', $context) . ']';
     }
 }

@@ -7,19 +7,19 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Studio\Flow;
+namespace Twilio\Rest\Studio\V1\Flow;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Preview\Studio\Flow\Engagement\StepList;
+use Twilio\Rest\Studio\V1\Flow\Engagement\StepList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
- * @property \Twilio\Rest\Preview\Studio\Flow\Engagement\StepList steps
- * @method \Twilio\Rest\Preview\Studio\Flow\Engagement\StepContext steps(string $sid)
+ * @property \Twilio\Rest\Studio\V1\Flow\Engagement\StepList steps
+ * @method \Twilio\Rest\Studio\V1\Flow\Engagement\StepContext steps(string $sid)
  */
 class EngagementContext extends InstanceContext {
     protected $_steps = null;
@@ -30,7 +30,7 @@ class EngagementContext extends InstanceContext {
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $flowSid The flow_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Studio\Flow\EngagementContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\EngagementContext 
      */
     public function __construct(Version $version, $flowSid, $sid) {
         parent::__construct($version);
@@ -66,7 +66,7 @@ class EngagementContext extends InstanceContext {
     /**
      * Access the steps
      * 
-     * @return \Twilio\Rest\Preview\Studio\Flow\Engagement\StepList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepList 
      */
     protected function getSteps() {
         if (!$this->_steps) {
@@ -119,6 +119,6 @@ class EngagementContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Studio.EngagementContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.EngagementContext ' . implode(' ', $context) . ']';
     }
 }
