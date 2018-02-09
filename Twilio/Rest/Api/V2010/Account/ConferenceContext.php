@@ -71,7 +71,11 @@ class ConferenceContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Status' => $options['status'], ));
+        $data = Values::of(array(
+            'Status' => $options['status'],
+            'AnnounceUrl' => $options['announceUrl'],
+            'AnnounceMethod' => $options['announceMethod'],
+        ));
 
         $payload = $this->version->update(
             'POST',
