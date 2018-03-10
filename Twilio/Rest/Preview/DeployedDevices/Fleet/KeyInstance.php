@@ -68,7 +68,11 @@ class KeyInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new KeyContext($this->version, $this->solution['fleetSid'], $this->solution['sid']);
+            $this->context = new KeyContext(
+                $this->version,
+                $this->solution['fleetSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;

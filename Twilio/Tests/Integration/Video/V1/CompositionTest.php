@@ -53,6 +53,7 @@ class CompositionTest extends HolodeckTestCase {
                 "bitrate": 64,
                 "size": 4,
                 "duration": 6,
+                "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "media": "https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"
@@ -128,6 +129,7 @@ class CompositionTest extends HolodeckTestCase {
                         "bitrate": 16,
                         "size": 55,
                         "duration": 10,
+                        "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "url": "https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "links": {
                             "media": "https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"
@@ -213,6 +215,7 @@ class CompositionTest extends HolodeckTestCase {
                 "bitrate": 0,
                 "size": 0,
                 "duration": 1,
+                "room_sid": "RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "media": "https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media"

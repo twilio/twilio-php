@@ -11,16 +11,16 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\AccSecurity;
-use Twilio\Rest\Preview\BulkExports;
-use Twilio\Rest\Preview\DeployedDevices;
-use Twilio\Rest\Preview\HostedNumbers;
-use Twilio\Rest\Preview\Marketplace;
-use Twilio\Rest\Preview\Proxy;
-use Twilio\Rest\Preview\Studio;
-use Twilio\Rest\Preview\Sync;
-use Twilio\Rest\Preview\Understand;
-use Twilio\Rest\Preview\Wireless;
+use Twilio\Rest\Preview\AccSecurity as PreviewAccSecurity;
+use Twilio\Rest\Preview\BulkExports as PreviewBulkExports;
+use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
+use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
+use Twilio\Rest\Preview\Marketplace as PreviewMarketplace;
+use Twilio\Rest\Preview\Proxy as PreviewProxy;
+use Twilio\Rest\Preview\Studio as PreviewStudio;
+use Twilio\Rest\Preview\Sync as PreviewSync;
+use Twilio\Rest\Preview\Understand as PreviewUnderstand;
+use Twilio\Rest\Preview\Wireless as PreviewWireless;
 
 /**
  * @property \Twilio\Rest\Preview\BulkExports bulkExports
@@ -88,7 +88,7 @@ class Preview extends Domain {
      */
     protected function getBulkExports() {
         if (!$this->_bulkExports) {
-            $this->_bulkExports = new BulkExports($this);
+            $this->_bulkExports = new PreviewBulkExports($this);
         }
         return $this->_bulkExports;
     }
@@ -99,7 +99,7 @@ class Preview extends Domain {
      */
     protected function getDeployedDevices() {
         if (!$this->_deployedDevices) {
-            $this->_deployedDevices = new DeployedDevices($this);
+            $this->_deployedDevices = new PreviewDeployedDevices($this);
         }
         return $this->_deployedDevices;
     }
@@ -109,7 +109,7 @@ class Preview extends Domain {
      */
     protected function getHostedNumbers() {
         if (!$this->_hostedNumbers) {
-            $this->_hostedNumbers = new HostedNumbers($this);
+            $this->_hostedNumbers = new PreviewHostedNumbers($this);
         }
         return $this->_hostedNumbers;
     }
@@ -119,7 +119,7 @@ class Preview extends Domain {
      */
     protected function getMarketplace() {
         if (!$this->_marketplace) {
-            $this->_marketplace = new Marketplace($this);
+            $this->_marketplace = new PreviewMarketplace($this);
         }
         return $this->_marketplace;
     }
@@ -129,7 +129,7 @@ class Preview extends Domain {
      */
     protected function getProxy() {
         if (!$this->_proxy) {
-            $this->_proxy = new Proxy($this);
+            $this->_proxy = new PreviewProxy($this);
         }
         return $this->_proxy;
     }
@@ -139,7 +139,7 @@ class Preview extends Domain {
      */
     protected function getStudio() {
         if (!$this->_studio) {
-            $this->_studio = new Studio($this);
+            $this->_studio = new PreviewStudio($this);
         }
         return $this->_studio;
     }
@@ -149,7 +149,7 @@ class Preview extends Domain {
      */
     protected function getAccSecurity() {
         if (!$this->_accSecurity) {
-            $this->_accSecurity = new AccSecurity($this);
+            $this->_accSecurity = new PreviewAccSecurity($this);
         }
         return $this->_accSecurity;
     }
@@ -159,7 +159,7 @@ class Preview extends Domain {
      */
     protected function getSync() {
         if (!$this->_sync) {
-            $this->_sync = new Sync($this);
+            $this->_sync = new PreviewSync($this);
         }
         return $this->_sync;
     }
@@ -169,7 +169,7 @@ class Preview extends Domain {
      */
     protected function getUnderstand() {
         if (!$this->_understand) {
-            $this->_understand = new Understand($this);
+            $this->_understand = new PreviewUnderstand($this);
         }
         return $this->_understand;
     }
@@ -179,7 +179,7 @@ class Preview extends Domain {
      */
     protected function getWireless() {
         if (!$this->_wireless) {
-            $this->_wireless = new Wireless($this);
+            $this->_wireless = new PreviewWireless($this);
         }
         return $this->_wireless;
     }

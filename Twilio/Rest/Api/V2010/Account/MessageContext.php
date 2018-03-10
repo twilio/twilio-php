@@ -104,7 +104,11 @@ class MessageContext extends InstanceContext {
      */
     protected function getMedia() {
         if (!$this->_media) {
-            $this->_media = new MediaList($this->version, $this->solution['accountSid'], $this->solution['sid']);
+            $this->_media = new MediaList(
+                $this->version,
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->_media;

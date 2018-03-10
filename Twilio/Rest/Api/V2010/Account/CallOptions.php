@@ -39,10 +39,16 @@ abstract class CallOptions {
      *                                         machine detection
      * @param string $recordingStatusCallbackEvent The
      *                                             recording_status_callback_event
+     * @param string $trim Set this parameter to control trimming of silence on the
+     *                     recording.
+     * @param string $callerId The phone number, SIP address or Client identifier
+     *                         that made this Call. Phone numbers are in E.164
+     *                         format (e.g. +16175551212). SIP addresses are
+     *                         formatted as `name@company.com`.
      * @return CreateCallOptions Options builder
      */
-    public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE) {
-        return new CreateCallOptions($url, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $ifMachine, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent);
+    public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE) {
+        return new CreateCallOptions($url, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $ifMachine, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId);
     }
 
     /**
@@ -104,8 +110,14 @@ class CreateCallOptions extends Options {
      *                                         machine detection
      * @param string $recordingStatusCallbackEvent The
      *                                             recording_status_callback_event
+     * @param string $trim Set this parameter to control trimming of silence on the
+     *                     recording.
+     * @param string $callerId The phone number, SIP address or Client identifier
+     *                         that made this Call. Phone numbers are in E.164
+     *                         format (e.g. +16175551212). SIP addresses are
+     *                         formatted as `name@company.com`.
      */
-    public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE) {
+    public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE) {
         $this->options['url'] = $url;
         $this->options['applicationSid'] = $applicationSid;
         $this->options['method'] = $method;
@@ -126,6 +138,8 @@ class CreateCallOptions extends Options {
         $this->options['machineDetection'] = $machineDetection;
         $this->options['machineDetectionTimeout'] = $machineDetectionTimeout;
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
+        $this->options['trim'] = $trim;
+        $this->options['callerId'] = $callerId;
     }
 
     /**
@@ -350,6 +364,32 @@ class CreateCallOptions extends Options {
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
+        return $this;
+    }
+
+    /**
+     * Set this parameter to control trimming of silence on the recording.  Possible values are `trim-silence` or `do-not-trim`. Defaults to `trim-silence`.
+     * 
+     * @param string $trim Set this parameter to control trimming of silence on the
+     *                     recording.
+     * @return $this Fluent Builder
+     */
+    public function setTrim($trim) {
+        $this->options['trim'] = $trim;
+        return $this;
+    }
+
+    /**
+     * The phone number, SIP address or Client identifier that made this Call. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`.
+     * 
+     * @param string $callerId The phone number, SIP address or Client identifier
+     *                         that made this Call. Phone numbers are in E.164
+     *                         format (e.g. +16175551212). SIP addresses are
+     *                         formatted as `name@company.com`.
+     * @return $this Fluent Builder
+     */
+    public function setCallerId($callerId) {
+        $this->options['callerId'] = $callerId;
         return $this;
     }
 

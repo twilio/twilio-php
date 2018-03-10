@@ -35,7 +35,11 @@ class FeedbackList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext 
      */
     public function getContext() {
-        return new FeedbackContext($this->version, $this->solution['accountSid'], $this->solution['callSid']);
+        return new FeedbackContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $this->solution['callSid']
+        );
     }
 
     /**

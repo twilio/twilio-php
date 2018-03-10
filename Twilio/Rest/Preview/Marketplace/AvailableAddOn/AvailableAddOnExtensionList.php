@@ -129,7 +129,11 @@ class AvailableAddOnExtensionList extends ListResource {
      * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext 
      */
     public function getContext($sid) {
-        return new AvailableAddOnExtensionContext($this->version, $this->solution['availableAddOnSid'], $sid);
+        return new AvailableAddOnExtensionContext(
+            $this->version,
+            $this->solution['availableAddOnSid'],
+            $sid
+        );
     }
 
     /**

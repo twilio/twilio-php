@@ -21,6 +21,7 @@ use Twilio\Version;
  * @property string phoneNumber
  * @property string nationalFormat
  * @property string carrier
+ * @property string fraud
  * @property array addOns
  * @property string url
  */
@@ -43,6 +44,7 @@ class PhoneNumberInstance extends InstanceResource {
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
             'nationalFormat' => Values::array_get($payload, 'national_format'),
             'carrier' => Values::array_get($payload, 'carrier'),
+            'fraud' => Values::array_get($payload, 'fraud'),
             'addOns' => Values::array_get($payload, 'add_ons'),
             'url' => Values::array_get($payload, 'url'),
         );

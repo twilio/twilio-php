@@ -1,6 +1,27 @@
 twilio-php Changelog
 ====================
 
+[2018-03-09] Version 5.16.6
+----------------------------
+**Api**
+- Add `caller_id` param to Outbound Calls API
+- Release `trim` recording Outbound Calls API functionality in helper libraries
+- Add `trim` param to Outbound Calls API
+
+**Lookups**
+- Add support for `fraud` lookup type
+
+**Numbers**
+- Initial Release
+
+**Video**
+- [composer] Add `room_sid` to Composition resource.
+- [composer] Add `SEQUENCE` value to available layouts, and `trim` and `reuse` params.
+
+**Twiml**
+- Adds support for passing in multiple input type enums when setting `input` on `Gather`
+
+
 [2018-02-09] Version 5.16.5
 ----------------------------
 **Api**

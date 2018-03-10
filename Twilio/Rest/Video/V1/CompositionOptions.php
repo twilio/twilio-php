@@ -20,10 +20,11 @@ abstract class CompositionOptions {
      * @param string $status The status
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $roomSid The room_sid
      * @return ReadCompositionOptions Options builder
      */
-    public static function read($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
-        return new ReadCompositionOptions($status, $dateCreatedAfter, $dateCreatedBefore);
+    public static function read($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
+        return new ReadCompositionOptions($status, $dateCreatedAfter, $dateCreatedBefore, $roomSid);
     }
 
     /**
@@ -36,10 +37,12 @@ abstract class CompositionOptions {
      * @param integer $desiredMaxDuration The desired_max_duration
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
+     * @param boolean $trim The trim
+     * @param boolean $reuse The reuse
      * @return CreateCompositionOptions Options builder
      */
-    public static function create($audioSources = Values::NONE, $videoSources = Values::NONE, $videoLayout = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $desiredBitrate = Values::NONE, $desiredMaxDuration = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
-        return new CreateCompositionOptions($audioSources, $videoSources, $videoLayout, $resolution, $format, $desiredBitrate, $desiredMaxDuration, $statusCallback, $statusCallbackMethod);
+    public static function create($audioSources = Values::NONE, $videoSources = Values::NONE, $videoLayout = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $desiredBitrate = Values::NONE, $desiredMaxDuration = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE, $reuse = Values::NONE) {
+        return new CreateCompositionOptions($audioSources, $videoSources, $videoLayout, $resolution, $format, $desiredBitrate, $desiredMaxDuration, $statusCallback, $statusCallbackMethod, $trim, $reuse);
     }
 }
 
@@ -48,11 +51,13 @@ class ReadCompositionOptions extends Options {
      * @param string $status The status
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $roomSid The room_sid
      */
-    public function __construct($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public function __construct($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
+        $this->options['roomSid'] = $roomSid;
     }
 
     /**
@@ -89,6 +94,17 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
+     * The room_sid
+     * 
+     * @param string $roomSid The room_sid
+     * @return $this Fluent Builder
+     */
+    public function setRoomSid($roomSid) {
+        $this->options['roomSid'] = $roomSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -115,8 +131,10 @@ class CreateCompositionOptions extends Options {
      * @param integer $desiredMaxDuration The desired_max_duration
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
+     * @param boolean $trim The trim
+     * @param boolean $reuse The reuse
      */
-    public function __construct($audioSources = Values::NONE, $videoSources = Values::NONE, $videoLayout = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $desiredBitrate = Values::NONE, $desiredMaxDuration = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
+    public function __construct($audioSources = Values::NONE, $videoSources = Values::NONE, $videoLayout = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $desiredBitrate = Values::NONE, $desiredMaxDuration = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE, $reuse = Values::NONE) {
         $this->options['audioSources'] = $audioSources;
         $this->options['videoSources'] = $videoSources;
         $this->options['videoLayout'] = $videoLayout;
@@ -126,6 +144,8 @@ class CreateCompositionOptions extends Options {
         $this->options['desiredMaxDuration'] = $desiredMaxDuration;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        $this->options['trim'] = $trim;
+        $this->options['reuse'] = $reuse;
     }
 
     /**
@@ -224,6 +244,28 @@ class CreateCompositionOptions extends Options {
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        return $this;
+    }
+
+    /**
+     * The trim
+     * 
+     * @param boolean $trim The trim
+     * @return $this Fluent Builder
+     */
+    public function setTrim($trim) {
+        $this->options['trim'] = $trim;
+        return $this;
+    }
+
+    /**
+     * The reuse
+     * 
+     * @param boolean $reuse The reuse
+     * @return $this Fluent Builder
+     */
+    public function setReuse($reuse) {
+        $this->options['reuse'] = $reuse;
         return $this;
     }
 

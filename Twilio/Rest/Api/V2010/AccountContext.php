@@ -195,7 +195,10 @@ class AccountContext extends InstanceContext {
      */
     protected function getAuthorizedConnectApps() {
         if (!$this->_authorizedConnectApps) {
-            $this->_authorizedConnectApps = new AuthorizedConnectAppList($this->version, $this->solution['sid']);
+            $this->_authorizedConnectApps = new AuthorizedConnectAppList(
+                $this->version,
+                $this->solution['sid']
+            );
         }
 
         return $this->_authorizedConnectApps;

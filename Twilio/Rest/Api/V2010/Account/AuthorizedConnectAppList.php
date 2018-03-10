@@ -125,7 +125,11 @@ class AuthorizedConnectAppList extends ListResource {
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
      */
     public function getContext($connectAppSid) {
-        return new AuthorizedConnectAppContext($this->version, $this->solution['accountSid'], $connectAppSid);
+        return new AuthorizedConnectAppContext(
+            $this->version,
+            $this->solution['accountSid'],
+            $connectAppSid
+        );
     }
 
     /**

@@ -49,7 +49,12 @@ class KeyContext extends InstanceContext {
             $params
         );
 
-        return new KeyInstance($this->version, $payload, $this->solution['fleetSid'], $this->solution['sid']);
+        return new KeyInstance(
+            $this->version,
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid']
+        );
     }
 
     /**
@@ -82,7 +87,12 @@ class KeyContext extends InstanceContext {
             $data
         );
 
-        return new KeyInstance($this->version, $payload, $this->solution['fleetSid'], $this->solution['sid']);
+        return new KeyInstance(
+            $this->version,
+            $payload,
+            $this->solution['fleetSid'],
+            $this->solution['sid']
+        );
     }
 
     /**

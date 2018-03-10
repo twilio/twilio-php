@@ -33,6 +33,7 @@ use Twilio\Version;
  * @property integer size
  * @property integer duration
  * @property string url
+ * @property string roomSid
  * @property array links
  */
 class CompositionInstance extends InstanceResource {
@@ -64,6 +65,7 @@ class CompositionInstance extends InstanceResource {
             'size' => Values::array_get($payload, 'size'),
             'duration' => Values::array_get($payload, 'duration'),
             'url' => Values::array_get($payload, 'url'),
+            'roomSid' => Values::array_get($payload, 'room_sid'),
             'links' => Values::array_get($payload, 'links'),
         );
 

@@ -75,6 +75,8 @@ class CallList extends ListResource {
             'MachineDetection' => $options['machineDetection'],
             'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
             'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
+            'Trim' => $options['trim'],
+            'CallerId' => $options['callerId'],
         ));
 
         $payload = $this->version->create(

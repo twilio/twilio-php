@@ -113,7 +113,11 @@ class IntentContext extends InstanceContext {
      */
     protected function getFields() {
         if (!$this->_fields) {
-            $this->_fields = new FieldList($this->version, $this->solution['serviceSid'], $this->solution['sid']);
+            $this->_fields = new FieldList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->_fields;

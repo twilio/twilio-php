@@ -97,6 +97,7 @@ class CompositionList extends ListResource {
             'Status' => $options['status'],
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'RoomSid' => $options['roomSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -146,6 +147,8 @@ class CompositionList extends ListResource {
             'DesiredMaxDuration' => $options['desiredMaxDuration'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'Trim' => Serialize::booleanToString($options['trim']),
+            'Reuse' => Serialize::booleanToString($options['reuse']),
         ));
 
         $payload = $this->version->create(
