@@ -27,6 +27,8 @@ use Twilio\Version;
  * @property string status
  * @property string uniqueName
  * @property string url
+ * @property integer buildDuration
+ * @property integer errorCode
  */
 class ModelBuildInstance extends InstanceResource {
     /**
@@ -51,6 +53,8 @@ class ModelBuildInstance extends InstanceResource {
             'status' => Values::array_get($payload, 'status'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),
+            'buildDuration' => Values::array_get($payload, 'build_duration'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
         );
 
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );

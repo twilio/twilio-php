@@ -7,72 +7,72 @@
  * /       /
  */
 
-namespace Twilio\Rest\Lookups\V1;
+namespace Twilio\Rest\Studio\V1\Flow\Engagement;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string callerName
- * @property string countryCode
- * @property string phoneNumber
- * @property string nationalFormat
- * @property string carrier
- * @property array addOns
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * 
+ * @property string accountSid
+ * @property array context
+ * @property string engagementSid
+ * @property string flowSid
  * @property string url
  */
-class PhoneNumberInstance extends InstanceResource {
+class EngagementContextInstance extends InstanceResource {
     /**
-     * Initialize the PhoneNumberInstance
+     * Initialize the EngagementContextInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $phoneNumber The phone_number
-     * @return \Twilio\Rest\Lookups\V1\PhoneNumberInstance 
+     * @param string $flowSid The flow_sid
+     * @param string $engagementSid The engagement_sid
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextInstance 
      */
-    public function __construct(Version $version, array $payload, $phoneNumber = null) {
+    public function __construct(Version $version, array $payload, $flowSid, $engagementSid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'callerName' => Values::array_get($payload, 'caller_name'),
-            'countryCode' => Values::array_get($payload, 'country_code'),
-            'phoneNumber' => Values::array_get($payload, 'phone_number'),
-            'nationalFormat' => Values::array_get($payload, 'national_format'),
-            'carrier' => Values::array_get($payload, 'carrier'),
-            'addOns' => Values::array_get($payload, 'add_ons'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'context' => Values::array_get($payload, 'context'),
+            'engagementSid' => Values::array_get($payload, 'engagement_sid'),
+            'flowSid' => Values::array_get($payload, 'flow_sid'),
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('phoneNumber' => $phoneNumber ?: $this->properties['phoneNumber'], );
+        $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext Context for this
-     *                                                    PhoneNumberInstance
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext Context for this EngagementContextInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new PhoneNumberContext($this->version, $this->solution['phoneNumber']);
+            $this->context = new EngagementContextContext(
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['engagementSid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a PhoneNumberInstance
+     * Fetch a EngagementContextInstance
      * 
-     * @param array|Options $options Optional Arguments
-     * @return PhoneNumberInstance Fetched PhoneNumberInstance
+     * @return EngagementContextInstance Fetched EngagementContextInstance
      */
-    public function fetch($options = array()) {
-        return $this->proxy()->fetch($options);
+    public function fetch() {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -105,6 +105,6 @@ class PhoneNumberInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Lookups.V1.PhoneNumberInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.EngagementContextInstance ' . implode(' ', $context) . ']';
     }
 }

@@ -29,8 +29,11 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
+ * @property array links
  */
 class StepInstance extends InstanceResource {
+    protected $_stepContext = null;
+
     /**
      * Initialize the StepInstance
      * 
@@ -57,6 +60,7 @@ class StepInstance extends InstanceResource {
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array(
@@ -93,6 +97,15 @@ class StepInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Access the stepContext
+     * 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList 
+     */
+    protected function getStepContext() {
+        return $this->proxy()->stepContext;
     }
 
     /**

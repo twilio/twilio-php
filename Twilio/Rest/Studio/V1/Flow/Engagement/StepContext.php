@@ -9,14 +9,21 @@
 
 namespace Twilio\Rest\Studio\V1\Flow\Engagement;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * 
+ * @property \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList stepContext
+ * @method \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext stepContext()
  */
 class StepContext extends InstanceContext {
+    protected $_stepContext = null;
+
     /**
      * Initialize the StepContext
      * 
@@ -56,6 +63,57 @@ class StepContext extends InstanceContext {
             $this->solution['engagementSid'],
             $this->solution['sid']
         );
+    }
+
+    /**
+     * Access the stepContext
+     * 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList 
+     */
+    protected function getStepContext() {
+        if (!$this->_stepContext) {
+            $this->_stepContext = new StepContextList(
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['engagementSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_stepContext;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     * 
+     * @param string $name Subresource to return
+     * @return \Twilio\ListResource The requested subresource
+     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
+     */
+    public function __get($name) {
+        if (property_exists($this, '_' . $name)) {
+            $method = 'get' . ucfirst($name);
+            return $this->$method();
+        }
+
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     * 
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return \Twilio\InstanceContext The requested resource context
+     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     */
+    public function __call($name, $arguments) {
+        $property = $this->$name;
+        if (method_exists($property, 'getContext')) {
+            return call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+
+        throw new TwilioException('Resource does not have a context');
     }
 
     /**
