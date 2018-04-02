@@ -13,6 +13,8 @@ class ClientToken {
     public $authToken;
     /** @var ScopeURI[] $scopes */
     public $scopes;
+    /** @var string[] $customClaims */
+    private $customClaims;
 
     /**
      * Create a new TwilioCapability with zero permissions. Next steps are to
@@ -29,6 +31,7 @@ class ClientToken {
         $this->authToken = $authToken;
         $this->scopes = array();
         $this->clientName = false;
+        $this->customClaims = array();
     }
 
     /**
@@ -83,6 +86,16 @@ class ClientToken {
     }
 
     /**
+     * Allows to set custom claims, which then will be encoded into JWT payload.
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function addClaim($name, $value) {
+        $this->customClaims[$name] = $value;
+    }
+
+    /**
      * Generates a new token based on the credentials and permissions that
      * previously has been granted to this token.
      *
@@ -92,11 +105,11 @@ class ClientToken {
      *         seconds
      */
     public function generateToken($ttl = 3600) {
-        $payload = array(
+        $payload = array_merge($this->customClaims, array(
             'scope' => array(),
             'iss' => $this->accountSid,
             'exp' => time() + $ttl,
-        );
+        ));
         $scopeStrings = array();
 
         foreach ($this->scopes as $scope) {

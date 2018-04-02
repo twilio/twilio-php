@@ -62,6 +62,13 @@ class ClientTokenTest extends UnitTest {
         $this->assertEquals($payload->scope, $event_uri);
     }
 
+    public function testCustomClaims() {
+        $token = new ClientToken('AC123', 'foo');
+        $token->addClaim('find', 'me');
+        $payload = JWT::decode($token->generateToken(), 'foo');
+        $this->assertEquals('me', $payload->find);
+    }
+
 
     public function testDecode() {
         $token = new ClientToken('AC123', 'foo');
