@@ -14,6 +14,8 @@ class AccessToken {
     private $nbf;
     /** @var Grant[] $grants */
     private $grants;
+    /** @var string[] $customClaims */
+    private $customClaims;
 
     public function __construct($accountSid, $signingKeySid, $secret, $ttl = 3600, $identity = null) {
         $this->signingKeySid = $signingKeySid;
@@ -26,6 +28,7 @@ class AccessToken {
         }
 
         $this->grants = array();
+        $this->customClaims = array();
     }
 
     /**
@@ -82,6 +85,15 @@ class AccessToken {
         return $this;
     }
 
+    /**
+     * Allows to set custom claims, which then will be encoded into JWT payload.
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function addClaim($name, $value) {
+        $this->customClaims[$name] = $value;
+    }
 
     public function toJWT($algorithm = 'HS256') {
         $header = array(
@@ -109,13 +121,13 @@ class AccessToken {
             $grants = json_decode('{}');
         }
 
-        $payload = array(
+        $payload = array_merge($this->customClaims, array(
             'jti' => $this->signingKeySid . '-' . $now,
             'iss' => $this->signingKeySid,
             'sub' => $this->accountSid,
             'exp' => $now + $this->ttl,
             'grants' => $grants
-        );
+        ));
 
         if (!is_null($this->nbf)) {
             $payload['nbf'] = $this->nbf;

@@ -202,4 +202,13 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals("worker", $grants['task_router']['role']);
     }
 
+    public function testCustomClaims() {
+        $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
+        $scat->addClaim('find', 'me');
+        $scat->addClaim('sub', 'redefined');
+        $payload = JWT::decode($scat->toJWT(), 'secret');
+        $this->assertSame('me', $payload->find);
+        $this->assertNotSame('redefined', $payload->sub);
+    }
+
 }
