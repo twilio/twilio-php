@@ -20,13 +20,13 @@ class EventTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->monitor->v1->events("AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->monitor->v1->events("AEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://monitor.twilio.com/v1/Events/AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://monitor.twilio.com/v1/Events/AEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -61,7 +61,7 @@ class EventTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->monitor->v1->events("AEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->monitor->v1->events("AEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }

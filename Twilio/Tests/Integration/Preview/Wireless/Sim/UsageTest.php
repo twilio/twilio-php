@@ -20,14 +20,14 @@ class UsageTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->wireless->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->wireless->sims("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                             ->usage()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Usage'
+            'https://preview.twilio.com/wireless/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Usage'
         ));
     }
 
@@ -49,7 +49,7 @@ class UsageTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->wireless->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->wireless->sims("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                   ->usage()->fetch();
 
         $this->assertNotNull($actual);

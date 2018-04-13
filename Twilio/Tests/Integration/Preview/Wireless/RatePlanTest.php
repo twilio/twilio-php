@@ -103,13 +103,13 @@ class RatePlanTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->preview->wireless->ratePlans("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -140,7 +140,7 @@ class RatePlanTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->preview->wireless->ratePlans("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -195,13 +195,13 @@ class RatePlanTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            $this->twilio->preview->wireless->ratePlans("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -232,7 +232,7 @@ class RatePlanTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        $actual = $this->twilio->preview->wireless->ratePlans("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }
@@ -241,13 +241,13 @@ class RatePlanTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->preview->wireless->ratePlans("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/wireless/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/wireless/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -257,7 +257,7 @@ class RatePlanTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->preview->wireless->ratePlans("WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->preview->wireless->ratePlans("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

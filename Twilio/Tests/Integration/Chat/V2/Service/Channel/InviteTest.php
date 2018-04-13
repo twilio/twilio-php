@@ -20,15 +20,15 @@ class InviteTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->invites("INaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->invites("INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Invites/INaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites/INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -51,9 +51,9 @@ class InviteTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->invites("INaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->invites("INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -62,8 +62,8 @@ class InviteTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                    ->invites->create("identity");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -72,7 +72,7 @@ class InviteTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Invites',
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites',
             null,
             $values
         ));
@@ -97,8 +97,8 @@ class InviteTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->invites->create("identity");
 
         $this->assertNotNull($actual);
@@ -108,15 +108,15 @@ class InviteTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                    ->invites->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Invites'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites'
         ));
     }
 
@@ -139,8 +139,8 @@ class InviteTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->invites->read();
 
         $this->assertNotNull($actual);
@@ -178,8 +178,8 @@ class InviteTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->invites->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -189,15 +189,15 @@ class InviteTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->invites("INaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->invites("INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Invites/INaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://chat.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Invites/INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -207,9 +207,9 @@ class InviteTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->chat->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->invites("INaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->chat->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->invites("INXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

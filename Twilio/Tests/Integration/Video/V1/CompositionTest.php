@@ -20,13 +20,13 @@ class CompositionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->compositions("CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->video->v1->compositions("CJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://video.twilio.com/v1/Compositions/CJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -62,7 +62,7 @@ class CompositionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->compositions("CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->video->v1->compositions("CJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -158,13 +158,13 @@ class CompositionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->compositions("CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->video->v1->compositions("CJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://video.twilio.com/v1/Compositions/CJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -174,7 +174,7 @@ class CompositionTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->video->v1->compositions("CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->video->v1->compositions("CJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

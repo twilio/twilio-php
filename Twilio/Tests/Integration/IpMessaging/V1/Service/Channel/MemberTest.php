@@ -20,15 +20,15 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -52,9 +52,9 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -63,8 +63,8 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->members->create("identity");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -73,7 +73,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members',
+            'https://ip-messaging.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members',
             null,
             $values
         ));
@@ -99,8 +99,8 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->members->create("identity");
 
         $this->assertNotNull($actual);
@@ -110,15 +110,15 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->members->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members'
+            'https://ip-messaging.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members'
         ));
     }
 
@@ -155,8 +155,8 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->members->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -181,8 +181,8 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->members->read();
 
         $this->assertNotNull($actual);
@@ -192,15 +192,15 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -210,9 +210,9 @@ class MemberTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -221,15 +221,15 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members/MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -253,9 +253,9 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }
@@ -280,9 +280,9 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->channels("CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->members("MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->members("MBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

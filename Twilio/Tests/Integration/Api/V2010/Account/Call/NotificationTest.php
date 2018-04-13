@@ -20,15 +20,15 @@ class NotificationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->notifications("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Notifications/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -58,9 +58,9 @@ class NotificationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->notifications("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -69,15 +69,15 @@ class NotificationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->notifications("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Notifications/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -87,9 +87,9 @@ class NotificationTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->notifications("NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -98,15 +98,15 @@ class NotificationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->notifications->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Notifications.json'
         ));
     }
 
@@ -148,8 +148,8 @@ class NotificationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->notifications->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -176,8 +176,8 @@ class NotificationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->notifications->read();
 
         $this->assertNotNull($actual);

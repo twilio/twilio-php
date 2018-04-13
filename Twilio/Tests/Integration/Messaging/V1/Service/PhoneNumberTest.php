@@ -20,16 +20,16 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                        ->phoneNumbers->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('PhoneNumberSid' => "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", );
+        $values = array('PhoneNumberSid' => "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", );
 
         $this->assertRequest(new Request(
             'post',
-            'https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers',
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PhoneNumbers',
             null,
             $values
         ));
@@ -53,8 +53,8 @@ class PhoneNumberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                              ->phoneNumbers->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }
@@ -81,8 +81,8 @@ class PhoneNumberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->phoneNumbers->create("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                              ->phoneNumbers->create("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }
@@ -91,14 +91,14 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->phoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                        ->phoneNumbers("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PhoneNumbers/PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -108,8 +108,8 @@ class PhoneNumberTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->phoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                              ->phoneNumbers("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -118,14 +118,14 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->phoneNumbers->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PhoneNumbers'
         ));
     }
 
@@ -160,7 +160,7 @@ class PhoneNumberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->phoneNumbers->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -170,14 +170,14 @@ class PhoneNumberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->phoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                        ->phoneNumbers("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://messaging.twilio.com/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PhoneNumbers/PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -199,8 +199,8 @@ class PhoneNumberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->messaging->v1->services("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->phoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                              ->phoneNumbers("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }

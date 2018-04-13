@@ -20,14 +20,14 @@ class KeyTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->keys("KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                   ->keys("KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/DeployedDevices/Fleets/FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys/KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/DeployedDevices/Fleets/FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Keys/KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -49,8 +49,8 @@ class KeyTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->keys("KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                         ->keys("KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -59,14 +59,14 @@ class KeyTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->keys("KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                   ->keys("KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/DeployedDevices/Fleets/FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys/KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/DeployedDevices/Fleets/FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Keys/KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -76,8 +76,8 @@ class KeyTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->keys("KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                         ->keys("KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -86,14 +86,14 @@ class KeyTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                    ->keys->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/DeployedDevices/Fleets/FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys'
+            'https://preview.twilio.com/DeployedDevices/Fleets/FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Keys'
         ));
     }
 
@@ -115,7 +115,7 @@ class KeyTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                          ->keys->create();
 
         $this->assertNotNull($actual);
@@ -125,14 +125,14 @@ class KeyTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                    ->keys->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/DeployedDevices/Fleets/FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys'
+            'https://preview.twilio.com/DeployedDevices/Fleets/FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Keys'
         ));
     }
 
@@ -155,7 +155,7 @@ class KeyTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                          ->keys->read();
 
         $this->assertNotNull($actual);
@@ -192,7 +192,7 @@ class KeyTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                          ->keys->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -202,14 +202,14 @@ class KeyTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->keys("KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                   ->keys("KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/DeployedDevices/Fleets/FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Keys/KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/DeployedDevices/Fleets/FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Keys/KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -231,8 +231,8 @@ class KeyTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->keys("KYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                         ->keys("KYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

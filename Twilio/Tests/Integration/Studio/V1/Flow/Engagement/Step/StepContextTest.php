@@ -20,16 +20,16 @@ class StepContextTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->studio->v1->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->engagements("FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->steps("FTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->studio->v1->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->steps("FTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->stepContext()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://studio.twilio.com/v1/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Engagements/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Steps/FTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Context'
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Steps/FTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Context'
         ));
     }
 
@@ -50,9 +50,9 @@ class StepContextTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->studio->v1->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->engagements("FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->steps("FTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->studio->v1->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->steps("FTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->stepContext()->fetch();
 
         $this->assertNotNull($actual);

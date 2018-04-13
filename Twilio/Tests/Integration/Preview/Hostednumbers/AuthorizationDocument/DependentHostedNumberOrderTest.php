@@ -20,14 +20,14 @@ class DependentHostedNumberOrderTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->hostedNumbers->authorizationDocuments("PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->hostedNumbers->authorizationDocuments("PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                  ->dependentHostedNumberOrders->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DependentHostedNumberOrders'
+            'https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/DependentHostedNumberOrders'
         ));
     }
 
@@ -50,7 +50,7 @@ class DependentHostedNumberOrderTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments("PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments("PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                        ->dependentHostedNumberOrders->read();
 
         $this->assertNotNull($actual);
@@ -109,7 +109,7 @@ class DependentHostedNumberOrderTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments("PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments("PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                        ->dependentHostedNumberOrders->read();
 
         $this->assertGreaterThan(0, count($actual));

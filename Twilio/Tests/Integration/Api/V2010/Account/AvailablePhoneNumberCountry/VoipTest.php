@@ -20,7 +20,7 @@ class VoipTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->availablePhoneNumbers("US")
                                      ->voip->read();
         } catch (DeserializeException $e) {}
@@ -28,7 +28,7 @@ class VoipTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AvailablePhoneNumbers/US/Voip.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AvailablePhoneNumbers/US/Voip.json'
         ));
     }
 
@@ -73,7 +73,7 @@ class VoipTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->availablePhoneNumbers("US")
                                            ->voip->read();
 
@@ -100,7 +100,7 @@ class VoipTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->availablePhoneNumbers("US")
                                            ->voip->read();
 

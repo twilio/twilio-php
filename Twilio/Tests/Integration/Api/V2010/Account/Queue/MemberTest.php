@@ -20,15 +20,15 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Queues/QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -46,9 +46,9 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -57,9 +57,9 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("https://example.com", "GET");
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -67,7 +67,7 @@ class MemberTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json',
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Queues/QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json',
             null,
             $values
         ));
@@ -87,9 +87,9 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("https://example.com", "GET");
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
 
         $this->assertNotNull($actual);
     }
@@ -98,15 +98,15 @@ class MemberTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->members->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Queues/QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Members.json'
         ));
     }
 
@@ -139,8 +139,8 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->members->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -167,8 +167,8 @@ class MemberTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->members->read();
 
         $this->assertNotNull($actual);

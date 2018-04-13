@@ -20,16 +20,16 @@ class PayloadTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->payloads("XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->payloads("XHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads/XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings/REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AddOnResults/XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payloads/XHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -55,10 +55,10 @@ class PayloadTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->payloads("XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->payloads("XHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -67,16 +67,16 @@ class PayloadTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->payloads->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings/REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AddOnResults/XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payloads.json'
         ));
     }
 
@@ -114,9 +114,9 @@ class PayloadTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->payloads->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -140,9 +140,9 @@ class PayloadTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->payloads->read();
 
         $this->assertNotNull($actual);
@@ -152,16 +152,16 @@ class PayloadTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->payloads("XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->payloads("XHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads/XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings/REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AddOnResults/XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Payloads/XHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -171,10 +171,10 @@ class PayloadTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->recordings("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->addOnResults("XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->payloads("XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->recordings("REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->payloads("XHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

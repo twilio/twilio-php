@@ -20,15 +20,15 @@ class PublishedTrackTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->rooms("RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->participants("PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->publishedTracks("MTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->video->v1->rooms("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->participants("PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->publishedTracks("MTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PublishedTracks/MTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PublishedTracks/MTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -50,9 +50,9 @@ class PublishedTrackTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->rooms("RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->participants("PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->publishedTracks("MTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->video->v1->rooms("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->participants("PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->publishedTracks("MTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -61,15 +61,15 @@ class PublishedTrackTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->rooms("RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->participants("PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->video->v1->rooms("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->participants("PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                     ->publishedTracks->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Rooms/RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PublishedTracks'
+            'https://video.twilio.com/v1/Rooms/RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PublishedTracks'
         ));
     }
 
@@ -92,8 +92,8 @@ class PublishedTrackTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->rooms("RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->participants("PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->video->v1->rooms("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->participants("PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->publishedTracks->read();
 
         $this->assertNotNull($actual);

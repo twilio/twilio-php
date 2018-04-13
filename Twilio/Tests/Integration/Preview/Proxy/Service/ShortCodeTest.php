@@ -20,16 +20,16 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->shortCodes->create("SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->shortCodes->create("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Sid' => "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", );
+        $values = array('Sid' => "SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", );
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes',
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes',
             null,
             $values
         ));
@@ -53,8 +53,8 @@ class ShortCodeTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->shortCodes->create("SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->shortCodes->create("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }
@@ -63,14 +63,14 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->shortCodes("SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -80,8 +80,8 @@ class ShortCodeTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->shortCodes("SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -90,14 +90,14 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->shortCodes->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes'
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes'
         ));
     }
 
@@ -132,7 +132,7 @@ class ShortCodeTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->shortCodes->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -142,14 +142,14 @@ class ShortCodeTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->shortCodes("SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -171,8 +171,8 @@ class ShortCodeTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->shortCodes("SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }

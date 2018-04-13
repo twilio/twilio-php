@@ -20,16 +20,16 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->ipAccessControlListMappings("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+                                     ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->ipAccessControlListMappings("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlListMappings/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -51,10 +51,10 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->ipAccessControlListMappings("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+                                           ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->ipAccessControlListMappings("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -63,18 +63,18 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->ipAccessControlListMappings->create("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                     ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->ipAccessControlListMappings->create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('IpAccessControlListSid' => "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", );
+        $values = array('IpAccessControlListSid' => "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", );
 
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings.json',
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlListMappings.json',
             null,
             $values
         ));
@@ -98,10 +98,10 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->ipAccessControlListMappings->create("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                           ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->ipAccessControlListMappings->create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }
@@ -110,16 +110,16 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->ipAccessControlListMappings->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlListMappings.json'
         ));
     }
 
@@ -156,9 +156,9 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->ipAccessControlListMappings->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -185,9 +185,9 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->ipAccessControlListMappings->read();
 
         $this->assertNotNull($actual);
@@ -197,16 +197,16 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->ipAccessControlListMappings("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+                                     ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->ipAccessControlListMappings("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlListMappings/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/Domains/SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlListMappings/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -216,10 +216,10 @@ class IpAccessControlListMappingTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->domains("SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->ipAccessControlListMappings("ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+                                           ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->ipAccessControlListMappings("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

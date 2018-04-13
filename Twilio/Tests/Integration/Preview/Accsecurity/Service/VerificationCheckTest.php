@@ -20,7 +20,7 @@ class VerificationCheckTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->accSecurity->services("VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->accSecurity->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->verificationChecks->create("code");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -29,7 +29,7 @@ class VerificationCheckTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/Verification/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/VerificationCheck',
+            'https://preview.twilio.com/Verification/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/VerificationCheck',
             null,
             $values
         ));
@@ -53,7 +53,7 @@ class VerificationCheckTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->accSecurity->services("VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->accSecurity->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                      ->verificationChecks->create("code");
 
         $this->assertNotNull($actual);

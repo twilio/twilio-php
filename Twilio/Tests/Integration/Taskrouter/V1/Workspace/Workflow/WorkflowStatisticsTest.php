@@ -20,15 +20,15 @@ class WorkflowStatisticsTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->workflows("WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->workflows("WWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->statistics()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Statistics'
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Workflows/WWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Statistics'
         ));
     }
 
@@ -68,8 +68,8 @@ class WorkflowStatisticsTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->workflows("WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->workflows("WWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->statistics()->fetch();
 
         $this->assertNotNull($actual);

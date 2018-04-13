@@ -20,15 +20,15 @@ class StepTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->studio->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->engagements("FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->studio->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->steps->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Studio/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Engagements/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Steps'
+            'https://preview.twilio.com/Studio/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Steps'
         ));
     }
 
@@ -51,8 +51,8 @@ class StepTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->studio->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->engagements("FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->studio->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->steps->read();
 
         $this->assertNotNull($actual);
@@ -62,15 +62,15 @@ class StepTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->studio->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->engagements("FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->steps("FTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->preview->studio->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->steps("FTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Studio/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Engagements/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Steps/FTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/Studio/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Steps/FTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -94,9 +94,9 @@ class StepTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->studio->flows("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->engagements("FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->steps("FTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->preview->studio->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->steps("FTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }

@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2018-04-13] Version 5.17.0
+----------------------------
+**Library**
+- PR #468: Add incoming.allow to AccessToken VoiceGrant. Thanks to @ryan-rowland!
+
+**Preview**
+- Support for Understand V2 APIs - renames various resources and adds new fields
+
+**Studio**
+- Change parameters type from string to object in engagement resource
+
+**Video**
+- [Recordings] Change `size` type to `long`. **(breaking change)**
+
+
 [2018-03-22] Version 5.16.7
 ----------------------------
 **Lookups**

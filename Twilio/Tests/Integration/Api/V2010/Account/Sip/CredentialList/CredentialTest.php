@@ -20,16 +20,16 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->credentials->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Credentials.json'
         ));
     }
 
@@ -64,9 +64,9 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->credentials->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -93,9 +93,9 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->credentials->read();
 
         $this->assertNotNull($actual);
@@ -105,9 +105,9 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                     ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->credentials->create("username", "password");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -116,7 +116,7 @@ class CredentialTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials.json',
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Credentials.json',
             null,
             $values
         ));
@@ -138,9 +138,9 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                           ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->credentials->create("username", "password");
 
         $this->assertNotNull($actual);
@@ -150,16 +150,16 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+                                     ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->credentials("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -179,10 +179,10 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+                                           ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->credentials("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -191,16 +191,16 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+                                     ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->credentials("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -220,10 +220,10 @@ class CredentialTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+                                           ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->credentials("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }
@@ -232,16 +232,16 @@ class CredentialTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+                                     ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->credentials("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'
+            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Credentials/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
         ));
     }
 
@@ -251,10 +251,10 @@ class CredentialTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+                                           ->credentialLists("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->credentials("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

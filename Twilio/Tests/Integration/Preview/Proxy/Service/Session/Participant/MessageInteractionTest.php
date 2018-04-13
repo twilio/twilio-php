@@ -20,16 +20,16 @@ class MessageInteractionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->messageInteractions->create();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/MessageInteractions'
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessageInteractions'
         ));
     }
 
@@ -62,9 +62,9 @@ class MessageInteractionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->messageInteractions->create();
 
         $this->assertNotNull($actual);
@@ -74,16 +74,16 @@ class MessageInteractionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->messageInteractions("KIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->messageInteractions("KIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/MessageInteractions/KIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessageInteractions/KIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -116,10 +116,10 @@ class MessageInteractionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->messageInteractions("KIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->messageInteractions("KIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -128,16 +128,16 @@ class MessageInteractionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->messageInteractions->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/Proxy/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/MessageInteractions'
+            'https://preview.twilio.com/Proxy/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/MessageInteractions'
         ));
     }
 
@@ -160,9 +160,9 @@ class MessageInteractionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->proxy->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->preview->proxy->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->messageInteractions->read();
 
         $this->assertNotNull($actual);

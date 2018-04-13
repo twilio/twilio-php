@@ -21,17 +21,17 @@ class StreamMessageTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->syncStreams("TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->streamMessages->create("{}");
+            $this->twilio->sync->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->syncStreams("TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                   ->streamMessages->create(array());
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Data' => Serialize::jsonObject("{}"), );
+        $values = array('Data' => Serialize::jsonObject(array()), );
 
         $this->assertRequest(new Request(
             'post',
-            'https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages',
+            'https://sync.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams/TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages',
             null,
             $values
         ));
@@ -48,9 +48,9 @@ class StreamMessageTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->syncStreams("TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->streamMessages->create("{}");
+        $actual = $this->twilio->sync->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->syncStreams("TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->streamMessages->create(array());
 
         $this->assertNotNull($actual);
     }

@@ -11,15 +11,15 @@ namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\Understand\ServiceList;
+use Twilio\Rest\Preview\Understand\AssistantList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Understand\ServiceList services
- * @method \Twilio\Rest\Preview\Understand\ServiceContext services(string $sid)
+ * @property \Twilio\Rest\Preview\Understand\AssistantList assistants
+ * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
  */
 class Understand extends Version {
-    protected $_services = null;
+    protected $_assistants = null;
 
     /**
      * Construct the Understand version of Preview
@@ -33,13 +33,13 @@ class Understand extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Understand\ServiceList 
+     * @return \Twilio\Rest\Preview\Understand\AssistantList 
      */
-    protected function getServices() {
-        if (!$this->_services) {
-            $this->_services = new ServiceList($this);
+    protected function getAssistants() {
+        if (!$this->_assistants) {
+            $this->_assistants = new AssistantList($this);
         }
-        return $this->_services;
+        return $this->_assistants;
     }
 
     /**

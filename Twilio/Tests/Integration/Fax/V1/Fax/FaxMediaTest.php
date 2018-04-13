@@ -20,14 +20,14 @@ class FaxMediaTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                  ->media("MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->fax->v1->faxes("FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                  ->media("MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media/MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Media/MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -47,8 +47,8 @@ class FaxMediaTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->media("MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->fax->v1->faxes("FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                        ->media("MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -57,14 +57,14 @@ class FaxMediaTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->fax->v1->faxes("FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                   ->media->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media'
+            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Media'
         ));
     }
 
@@ -97,7 +97,7 @@ class FaxMediaTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->fax->v1->faxes("FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->media->read();
 
         $this->assertNotNull($actual);
@@ -107,14 +107,14 @@ class FaxMediaTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                  ->media("MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->fax->v1->faxes("FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                  ->media("MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media/MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://fax.twilio.com/v1/Faxes/FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Media/MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -124,8 +124,8 @@ class FaxMediaTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->fax->v1->faxes("FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->media("MEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->fax->v1->faxes("FXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                        ->media("MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

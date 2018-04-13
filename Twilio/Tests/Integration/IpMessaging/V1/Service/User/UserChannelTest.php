@@ -20,15 +20,15 @@ class UserChannelTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->userChannels->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip-messaging.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels'
+            'https://ip-messaging.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels'
         ));
     }
 
@@ -65,8 +65,8 @@ class UserChannelTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->userChannels->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -91,8 +91,8 @@ class UserChannelTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->users("USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->userChannels->read();
 
         $this->assertNotNull($actual);

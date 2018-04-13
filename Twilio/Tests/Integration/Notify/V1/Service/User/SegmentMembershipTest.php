@@ -20,8 +20,8 @@ class SegmentMembershipTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->segmentMemberships->create("segment");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -30,7 +30,7 @@ class SegmentMembershipTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SegmentMemberships',
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SegmentMemberships',
             null,
             $values
         ));
@@ -50,8 +50,8 @@ class SegmentMembershipTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->segmentMemberships->create("segment");
 
         $this->assertNotNull($actual);
@@ -61,15 +61,15 @@ class SegmentMembershipTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->segmentMemberships("segment")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SegmentMemberships/segment'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SegmentMemberships/segment'
         ));
     }
 
@@ -79,8 +79,8 @@ class SegmentMembershipTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->segmentMemberships("segment")->delete();
 
         $this->assertTrue($actual);
@@ -90,15 +90,15 @@ class SegmentMembershipTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->segmentMemberships("segment")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SegmentMemberships/segment'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SegmentMemberships/segment'
         ));
     }
 
@@ -116,8 +116,8 @@ class SegmentMembershipTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->segmentMemberships("segment")->fetch();
 
         $this->assertNotNull($actual);

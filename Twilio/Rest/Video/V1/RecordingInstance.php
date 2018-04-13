@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property string sid
  * @property string sourceSid
- * @property integer size
+ * @property string size
  * @property string url
  * @property string type
  * @property integer duration

@@ -20,15 +20,15 @@ class ParticipantTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -56,9 +56,9 @@ class ParticipantTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -67,15 +67,15 @@ class ParticipantTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                     ->participants->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants'
         ));
     }
 
@@ -98,8 +98,8 @@ class ParticipantTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->participants->read();
 
         $this->assertNotNull($actual);
@@ -109,8 +109,8 @@ class ParticipantTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                     ->participants->create("identifier");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -119,7 +119,7 @@ class ParticipantTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants',
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants',
             null,
             $values
         ));
@@ -149,8 +149,8 @@ class ParticipantTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->participants->create("identifier");
 
         $this->assertNotNull($actual);
@@ -160,15 +160,15 @@ class ParticipantTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -178,9 +178,9 @@ class ParticipantTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -189,15 +189,15 @@ class ParticipantTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                    ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sessions/KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Participants/KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -225,9 +225,9 @@ class ParticipantTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->proxy->v1->services("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->sessions("KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->participants("KPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->sessions("KCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->participants("KPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

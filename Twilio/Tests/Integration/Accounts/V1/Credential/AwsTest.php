@@ -135,13 +135,13 @@ class AwsTest extends HolodeckTestCase {
 
         try {
             $this->twilio->accounts->v1->credentials
-                                       ->aws("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+                                       ->aws("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://accounts.twilio.com/v1/Credentials/AWS/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -161,7 +161,7 @@ class AwsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->accounts->v1->credentials
-                                             ->aws("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+                                             ->aws("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -171,13 +171,13 @@ class AwsTest extends HolodeckTestCase {
 
         try {
             $this->twilio->accounts->v1->credentials
-                                       ->aws("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+                                       ->aws("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://accounts.twilio.com/v1/Credentials/AWS/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -197,7 +197,7 @@ class AwsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->accounts->v1->credentials
-                                             ->aws("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+                                             ->aws("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }
@@ -207,13 +207,13 @@ class AwsTest extends HolodeckTestCase {
 
         try {
             $this->twilio->accounts->v1->credentials
-                                       ->aws("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+                                       ->aws("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://accounts.twilio.com/v1/Credentials/AWS/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://accounts.twilio.com/v1/Credentials/AWS/CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -224,7 +224,7 @@ class AwsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->accounts->v1->credentials
-                                             ->aws("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+                                             ->aws("CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

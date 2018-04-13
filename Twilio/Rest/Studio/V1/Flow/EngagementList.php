@@ -11,6 +11,7 @@ namespace Twilio\Rest\Studio\V1\Flow;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -131,7 +132,11 @@ class EngagementList extends ListResource {
     public function create($to, $from, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('To' => $to, 'From' => $from, 'Parameters' => $options['parameters'], ));
+        $data = Values::of(array(
+            'To' => $to,
+            'From' => $from,
+            'Parameters' => Serialize::jsonObject($options['parameters']),
+        ));
 
         $payload = $this->version->create(
             'POST',

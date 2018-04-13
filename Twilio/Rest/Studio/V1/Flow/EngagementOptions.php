@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class EngagementOptions {
     /**
-     * @param string $parameters The parameters
+     * @param array $parameters The parameters
      * @return CreateEngagementOptions Options builder
      */
     public static function create($parameters = Values::NONE) {
@@ -27,7 +27,7 @@ abstract class EngagementOptions {
 
 class CreateEngagementOptions extends Options {
     /**
-     * @param string $parameters The parameters
+     * @param array $parameters The parameters
      */
     public function __construct($parameters = Values::NONE) {
         $this->options['parameters'] = $parameters;
@@ -36,7 +36,7 @@ class CreateEngagementOptions extends Options {
     /**
      * The parameters
      * 
-     * @param string $parameters The parameters
+     * @param array $parameters The parameters
      * @return $this Fluent Builder
      */
     public function setParameters($parameters) {

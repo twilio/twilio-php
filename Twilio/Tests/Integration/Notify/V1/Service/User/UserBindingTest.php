@@ -20,15 +20,15 @@ class UserBindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -59,9 +59,9 @@ class UserBindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -70,15 +70,15 @@ class UserBindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -88,9 +88,9 @@ class UserBindingTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
@@ -99,8 +99,8 @@ class UserBindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->bindings->create("apn", "address");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
@@ -109,7 +109,7 @@ class UserBindingTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings',
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings',
             null,
             $values
         ));
@@ -142,8 +142,8 @@ class UserBindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->bindings->create("apn", "address");
 
         $this->assertNotNull($actual);
@@ -176,8 +176,8 @@ class UserBindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->bindings->create("apn", "address");
 
         $this->assertNotNull($actual);
@@ -187,15 +187,15 @@ class UserBindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->bindings->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings'
+            'https://notify.twilio.com/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings'
         ));
     }
 
@@ -218,8 +218,8 @@ class UserBindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->bindings->read();
 
         $this->assertNotNull($actual);
@@ -265,8 +265,8 @@ class UserBindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->users("NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->notify->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->users("NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->bindings->read();
 
         $this->assertGreaterThan(0, count($actual));

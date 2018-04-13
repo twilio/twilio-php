@@ -20,13 +20,13 @@ class RecordingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->recordings("RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->video->v1->recordings("RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://video.twilio.com/v1/Recordings/RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://video.twilio.com/v1/Recordings/RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -38,6 +38,8 @@ class RecordingTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "processing",
                 "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T21:00:00Z",
+                "date_deleted": "2015-07-30T22:00:00Z",
                 "sid": "RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "source_sid": "MTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "size": 0,
@@ -59,7 +61,7 @@ class RecordingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->recordings("RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->video->v1->recordings("RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -112,6 +114,8 @@ class RecordingTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "completed",
                         "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T21:00:00Z",
+                        "date_deleted": "2015-07-30T22:00:00Z",
                         "sid": "RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "source_sid": "MTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "size": 23,
@@ -154,13 +158,13 @@ class RecordingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->recordings("RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->video->v1->recordings("RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://video.twilio.com/v1/Recordings/RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://video.twilio.com/v1/Recordings/RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -170,7 +174,7 @@ class RecordingTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->video->v1->recordings("RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->video->v1->recordings("RTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }

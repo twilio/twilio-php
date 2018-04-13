@@ -20,14 +20,14 @@ class DataSessionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->wireless->v1->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->wireless->v1->sims("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                        ->dataSessions->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions'
+            'https://wireless.twilio.com/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/DataSessions'
         ));
     }
 
@@ -85,7 +85,7 @@ class DataSessionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->wireless->v1->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->wireless->v1->sims("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->dataSessions->read();
 
         $this->assertNotNull($actual);

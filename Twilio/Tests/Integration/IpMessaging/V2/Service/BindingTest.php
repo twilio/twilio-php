@@ -20,14 +20,14 @@ class BindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->bindings->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings'
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings'
         ));
     }
 
@@ -72,7 +72,7 @@ class BindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->bindings->read();
 
         $this->assertGreaterThan(0, count($actual));
@@ -97,7 +97,7 @@ class BindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->bindings->read();
 
         $this->assertNotNull($actual);
@@ -107,14 +107,14 @@ class BindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -146,8 +146,8 @@ class BindingTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -156,14 +156,14 @@ class BindingTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                          ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'delete',
-            'https://ip-messaging.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings/BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         ));
     }
 
@@ -173,8 +173,8 @@ class BindingTest extends HolodeckTestCase {
             null
         ));
 
-        $actual = $this->twilio->ipMessaging->v2->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                ->bindings("BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->bindings("BSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
 
         $this->assertTrue($actual);
     }
