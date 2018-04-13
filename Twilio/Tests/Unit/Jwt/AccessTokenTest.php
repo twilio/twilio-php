@@ -159,6 +159,7 @@ class AccessTokenTest extends UnitTest {
         $scat->setIdentity('test identity');
 
         $pvg = new VoiceGrant();
+        $pvg->setIncomingAllow(true);
         $pvg->setOutgoingApplication('AP123', array('foo' => 'bar'));
 
         $scat->addGrant($pvg);
@@ -174,6 +175,9 @@ class AccessTokenTest extends UnitTest {
         $this->assertEquals('test identity', $payload->grants->identity);
 
         $decodedGrant = $grants['voice'];
+        $incoming = $decodedGrant['incoming'];
+        $this->assertEquals(true, $incoming['allow']);
+
         $outgoing = $decodedGrant['outgoing'];
         $this->assertEquals('AP123', $outgoing['application_sid']);
 

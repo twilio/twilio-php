@@ -6,10 +6,34 @@ namespace Twilio\Jwt\Grants;
 
 class VoiceGrant implements Grant {
 
+    private $incomingAllow;
     private $outgoingApplicationSid;
     private $outgoingApplicationParams;
     private $pushCredentialSid;
     private $endpointId;
+
+    /**
+     * Returns whether incoming is allowed
+     *
+     * @return boolean whether incoming is allowed
+     */
+    public function getIncomingAllow()
+    {
+        return $this->incomingAllow;
+    }
+
+    /**
+     * Set whether incoming is allowed
+     *
+     * @param boolean $incomingAllow whether incoming is allowed
+     *
+     * @return $this updated grant
+     */
+    public function setIncomingAllow($incomingAllow)
+    {
+        $this->incomingAllow = $incomingAllow;
+        return $this;
+    }
 
     /**
      * Returns the outgoing application sid
@@ -122,6 +146,12 @@ class VoiceGrant implements Grant {
     public function getPayload()
     {
         $payload = array();
+        if ($this->incomingAllow == true) {
+            $incoming = array();
+            $incoming['allow'] = true;
+            $payload['incoming'] = $incoming;
+        }
+
         if ($this->outgoingApplicationSid) {
             $outgoing = array();
             $outgoing['application_sid'] = $this->outgoingApplicationSid;
