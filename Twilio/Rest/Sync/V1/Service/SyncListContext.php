@@ -50,6 +50,7 @@ class SyncListContext extends InstanceContext {
      * Fetch a SyncListInstance
      * 
      * @return SyncListInstance Fetched SyncListInstance
+     * @throws TwilioException
      */
     public function fetch() {
         $params = Values::of(array());
@@ -72,6 +73,7 @@ class SyncListContext extends InstanceContext {
      * Deletes the SyncListInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -82,6 +84,7 @@ class SyncListContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncListInstance Updated SyncListInstance
+     * @throws TwilioException
      */
     public function update($options = array()) {
         $options = new Values($options);

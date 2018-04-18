@@ -35,7 +35,7 @@ class SyncMapContext extends InstanceContext {
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Sync\V1\Service\SyncMapContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncMapContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -48,8 +48,9 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Fetch a SyncMapInstance
-     * 
+     *
      * @return SyncMapInstance Fetched SyncMapInstance
+     * @throws TwilioException
      */
     public function fetch() {
         $params = Values::of(array());
@@ -72,6 +73,7 @@ class SyncMapContext extends InstanceContext {
      * Deletes the SyncMapInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -82,6 +84,7 @@ class SyncMapContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncMapInstance Updated SyncMapInstance
+     * @throws TwilioException
      */
     public function update($options = array()) {
         $options = new Values($options);

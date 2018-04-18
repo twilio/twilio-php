@@ -47,6 +47,7 @@ class DocumentContext extends InstanceContext {
      * Fetch a DocumentInstance
      * 
      * @return DocumentInstance Fetched DocumentInstance
+     * @throws TwilioException
      */
     public function fetch() {
         $params = Values::of(array());
@@ -69,6 +70,7 @@ class DocumentContext extends InstanceContext {
      * Deletes the DocumentInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -79,6 +81,7 @@ class DocumentContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return DocumentInstance Updated DocumentInstance
+     * @throws TwilioException
      */
     public function update($options = array()) {
         $options = new Values($options);
