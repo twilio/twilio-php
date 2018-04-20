@@ -37,7 +37,7 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage of a given category
+     * Only include usage of this [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
      * 
      * @param string $category Only include usage of a given category
      * @return $this Fluent Builder
@@ -48,7 +48,7 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, StartDate=-30days, which will make StartDate 30 days before today
+     * Only include usage that has occurred on or after this date.  Format is YYYY-MM-DD.  All dates are in GMT.  As a convenience, you can also specify offsets to today.  For example, `StartDate=-30days` will make `StartDate` be 30 days before today.
      * 
      * @param \DateTime $startDate Filter by start date
      * @return $this Fluent Builder
@@ -59,7 +59,7 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date. Format is YYYY-MM-DD in GTM. As a convenience, you can also specify offsets to today, for example, EndDate=+30days, which will make EndDate 30 days from today
+     * Only include usage that has occurred on or before this date.  Format is YYYY-MM-DD.  All dates are in GMT.  As a convenience, you can also specify offsets to today.  For example, `EndDate=+30days` will make `EndDate` be 30 days from today.
      * 
      * @param \DateTime $endDate Filter by end date
      * @return $this Fluent Builder

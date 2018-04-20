@@ -19,7 +19,8 @@ class OriginationUrlList extends ListResource {
      * Construct the OriginationUrlList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid The trunk_sid
+     * @param string $trunkSid The unique ID of the Trunk that owns this
+     *                         Origination URL.
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
      */
     public function __construct(Version $version, $trunkSid) {
@@ -34,11 +35,15 @@ class OriginationUrlList extends ListResource {
     /**
      * Create a new OriginationUrlInstance
      * 
-     * @param integer $weight The weight
-     * @param integer $priority The priority
-     * @param boolean $enabled The enabled
-     * @param string $friendlyName The friendly_name
-     * @param string $sipUrl The sip_url
+     * @param integer $weight Weight is used to determine the share of load when
+     *                        more than one URI has the same priority.
+     * @param integer $priority Priority ranks the importance of the URI.
+     * @param boolean $enabled A boolean value indicating whether the URL is
+     *                         enabled or disabled.
+     * @param string $friendlyName A human readable descriptive text, up to 64
+     *                             characters long.
+     * @param string $sipUrl The SIP address you want Twilio to route your
+     *                       Origination calls to.
      * @return OriginationUrlInstance Newly created OriginationUrlInstance
      */
     public function create($weight, $priority, $enabled, $friendlyName, $sipUrl) {

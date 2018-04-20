@@ -14,12 +14,16 @@ use Twilio\Values;
 
 abstract class TrunkOptions {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $domainName The domain_name
-     * @param string $disasterRecoveryUrl The disaster_recovery_url
-     * @param string $disasterRecoveryMethod The disaster_recovery_method
-     * @param string $recording The recording
-     * @param boolean $secure The secure
+     * @param string $friendlyName A human-readable name for the Trunk.
+     * @param string $domainName The unique address you reserve on Twilio to which
+     *                           you route your SIP traffic.
+     * @param string $disasterRecoveryUrl The HTTP URL that Twilio will request if
+     *                                    an error occurs while sending SIP traffic
+     *                                    towards your configured Origination URL.
+     * @param string $disasterRecoveryMethod The HTTP method Twilio will use when
+     *                                       requesting the DisasterRecoveryUrl.
+     * @param string $recording The recording settings for this trunk.
+     * @param boolean $secure The Secure Trunking  settings for this trunk.
      * @return CreateTrunkOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
@@ -27,12 +31,16 @@ abstract class TrunkOptions {
     }
 
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $domainName The domain_name
-     * @param string $disasterRecoveryUrl The disaster_recovery_url
-     * @param string $disasterRecoveryMethod The disaster_recovery_method
-     * @param string $recording The recording
-     * @param boolean $secure The secure
+     * @param string $friendlyName A human-readable name for the Trunk.
+     * @param string $domainName The unique address you reserve on Twilio to which
+     *                           you route your SIP traffic.
+     * @param string $disasterRecoveryUrl The HTTP URL that Twilio will request if
+     *                                    an error occurs while sending SIP traffic
+     *                                    towards your configured Origination URL.
+     * @param string $disasterRecoveryMethod The HTTP method Twilio will use when
+     *                                       requesting the DisasterRecoveryUrl.
+     * @param string $recording The recording settings for this trunk.
+     * @param boolean $secure The Secure Trunking  settings for this trunk.
      * @return UpdateTrunkOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
@@ -42,12 +50,16 @@ abstract class TrunkOptions {
 
 class CreateTrunkOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $domainName The domain_name
-     * @param string $disasterRecoveryUrl The disaster_recovery_url
-     * @param string $disasterRecoveryMethod The disaster_recovery_method
-     * @param string $recording The recording
-     * @param boolean $secure The secure
+     * @param string $friendlyName A human-readable name for the Trunk.
+     * @param string $domainName The unique address you reserve on Twilio to which
+     *                           you route your SIP traffic.
+     * @param string $disasterRecoveryUrl The HTTP URL that Twilio will request if
+     *                                    an error occurs while sending SIP traffic
+     *                                    towards your configured Origination URL.
+     * @param string $disasterRecoveryMethod The HTTP method Twilio will use when
+     *                                       requesting the DisasterRecoveryUrl.
+     * @param string $recording The recording settings for this trunk.
+     * @param boolean $secure The Secure Trunking  settings for this trunk.
      */
     public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -59,9 +71,9 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A human-readable name for the Trunk.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Trunk.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -70,9 +82,10 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
-     * The domain_name
+     * The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must always end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking/getting-started#termination) for more information.
      * 
-     * @param string $domainName The domain_name
+     * @param string $domainName The unique address you reserve on Twilio to which
+     *                           you route your SIP traffic.
      * @return $this Fluent Builder
      */
     public function setDomainName($domainName) {
@@ -81,9 +94,11 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
-     * The disaster_recovery_url
+     * The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL. Twilio will retrieve TwiML from this URL and execute those instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking/getting-started#disaster-recovery) for more information.
      * 
-     * @param string $disasterRecoveryUrl The disaster_recovery_url
+     * @param string $disasterRecoveryUrl The HTTP URL that Twilio will request if
+     *                                    an error occurs while sending SIP traffic
+     *                                    towards your configured Origination URL.
      * @return $this Fluent Builder
      */
     public function setDisasterRecoveryUrl($disasterRecoveryUrl) {
@@ -92,9 +107,10 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
-     * The disaster_recovery_method
+     * The HTTP method Twilio will use when requesting the `DisasterRecoveryUrl`. Either `GET` or `POST`.
      * 
-     * @param string $disasterRecoveryMethod The disaster_recovery_method
+     * @param string $disasterRecoveryMethod The HTTP method Twilio will use when
+     *                                       requesting the DisasterRecoveryUrl.
      * @return $this Fluent Builder
      */
     public function setDisasterRecoveryMethod($disasterRecoveryMethod) {
@@ -103,9 +119,9 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
-     * The recording
+     * The recording settings for this trunk. If turned on, all calls going through this trunk will be recorded and the recording can either start when the call is ringing or when the call is answered. See [Recording](https://www.twilio.com/docs/sip-trunking/getting-started#recording) for more information.
      * 
-     * @param string $recording The recording
+     * @param string $recording The recording settings for this trunk.
      * @return $this Fluent Builder
      */
     public function setRecording($recording) {
@@ -114,9 +130,9 @@ class CreateTrunkOptions extends Options {
     }
 
     /**
-     * The secure
+     * The Secure Trunking  settings for this trunk. If turned on, all calls going through this trunk will be secure using SRTP for media and TLS for signalling. If turned off, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking/getting-started#securetrunking) for more information.
      * 
-     * @param boolean $secure The secure
+     * @param boolean $secure The Secure Trunking  settings for this trunk.
      * @return $this Fluent Builder
      */
     public function setSecure($secure) {
@@ -142,12 +158,16 @@ class CreateTrunkOptions extends Options {
 
 class UpdateTrunkOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $domainName The domain_name
-     * @param string $disasterRecoveryUrl The disaster_recovery_url
-     * @param string $disasterRecoveryMethod The disaster_recovery_method
-     * @param string $recording The recording
-     * @param boolean $secure The secure
+     * @param string $friendlyName A human-readable name for the Trunk.
+     * @param string $domainName The unique address you reserve on Twilio to which
+     *                           you route your SIP traffic.
+     * @param string $disasterRecoveryUrl The HTTP URL that Twilio will request if
+     *                                    an error occurs while sending SIP traffic
+     *                                    towards your configured Origination URL.
+     * @param string $disasterRecoveryMethod The HTTP method Twilio will use when
+     *                                       requesting the DisasterRecoveryUrl.
+     * @param string $recording The recording settings for this trunk.
+     * @param boolean $secure The Secure Trunking  settings for this trunk.
      */
     public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -159,9 +179,9 @@ class UpdateTrunkOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A human-readable name for the Trunk.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Trunk.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -170,9 +190,10 @@ class UpdateTrunkOptions extends Options {
     }
 
     /**
-     * The domain_name
+     * The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must always end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking/getting-started#termination) for more information.
      * 
-     * @param string $domainName The domain_name
+     * @param string $domainName The unique address you reserve on Twilio to which
+     *                           you route your SIP traffic.
      * @return $this Fluent Builder
      */
     public function setDomainName($domainName) {
@@ -181,9 +202,11 @@ class UpdateTrunkOptions extends Options {
     }
 
     /**
-     * The disaster_recovery_url
+     * The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL. Twilio will retrieve TwiML from this URL and execute those instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking/getting-started#disaster-recovery) for more information.
      * 
-     * @param string $disasterRecoveryUrl The disaster_recovery_url
+     * @param string $disasterRecoveryUrl The HTTP URL that Twilio will request if
+     *                                    an error occurs while sending SIP traffic
+     *                                    towards your configured Origination URL.
      * @return $this Fluent Builder
      */
     public function setDisasterRecoveryUrl($disasterRecoveryUrl) {
@@ -192,9 +215,10 @@ class UpdateTrunkOptions extends Options {
     }
 
     /**
-     * The disaster_recovery_method
+     * The HTTP method Twilio will use when requesting the `DisasterRecoveryUrl`. Either `GET` or `POST`.
      * 
-     * @param string $disasterRecoveryMethod The disaster_recovery_method
+     * @param string $disasterRecoveryMethod The HTTP method Twilio will use when
+     *                                       requesting the DisasterRecoveryUrl.
      * @return $this Fluent Builder
      */
     public function setDisasterRecoveryMethod($disasterRecoveryMethod) {
@@ -203,9 +227,9 @@ class UpdateTrunkOptions extends Options {
     }
 
     /**
-     * The recording
+     * The recording settings for this trunk. If turned on, all calls going through this trunk will be recorded and the recording can either start when the call is ringing or when the call is answered. See [Recording](https://www.twilio.com/docs/sip-trunking/getting-started#recording) for more information.
      * 
-     * @param string $recording The recording
+     * @param string $recording The recording settings for this trunk.
      * @return $this Fluent Builder
      */
     public function setRecording($recording) {
@@ -214,9 +238,9 @@ class UpdateTrunkOptions extends Options {
     }
 
     /**
-     * The secure
+     * The Secure Trunking  settings for this trunk. If turned on, all calls going through this trunk will be secure using SRTP for media and TLS for signalling. If turned off, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking/getting-started#securetrunking) for more information.
      * 
-     * @param boolean $secure The secure
+     * @param boolean $secure The Secure Trunking  settings for this trunk.
      * @return $this Fluent Builder
      */
     public function setSecure($secure) {

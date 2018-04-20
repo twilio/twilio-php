@@ -14,7 +14,8 @@ use Twilio\Values;
 
 abstract class NewKeyOptions {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A descriptive string for this resource, chosen
+     *                             by your application, up to 64 characters long.
      * @return CreateNewKeyOptions Options builder
      */
     public static function create($friendlyName = Values::NONE) {
@@ -24,16 +25,18 @@ abstract class NewKeyOptions {
 
 class CreateNewKeyOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A descriptive string for this resource, chosen
+     *                             by your application, up to 64 characters long.
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * The friendly_name
+     * A descriptive string for this resource, chosen by your application, up to 64 characters long.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A descriptive string for this resource, chosen
+     *                             by your application, up to 64 characters long.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

@@ -18,7 +18,8 @@ class CredentialList extends ListResource {
      * Construct the CredentialList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique id of the Account that responsible for
+     *                           this resource.
      * @param string $credentialListSid The credential_list_sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList 
      */
@@ -120,8 +121,8 @@ class CredentialList extends ListResource {
     /**
      * Create a new CredentialInstance
      * 
-     * @param string $username The username
-     * @param string $password The password
+     * @param string $username The username for this credential.
+     * @param string $password The password will not be returned in the response.
      * @return CredentialInstance Newly created CredentialInstance
      */
     public function create($username, $password) {

@@ -61,7 +61,7 @@ class UpdateTriggerOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when making a request to the CallbackUrl.  GET or POST.
+     * The HTTP method Twilio will use when making a request to the CallbackUrl.  `GET` or `POST`.
      * 
      * @param string $callbackMethod HTTP method to use with callback_url
      * @return $this Fluent Builder
@@ -126,7 +126,7 @@ class CreateTriggerOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when making a request to the CallbackUrl.  GET or POST.
+     * Twilio will use this HTTP method when making a request to the CallbackUrl.  `GET` or `POST`.  The default is `POST`.
      * 
      * @param string $callbackMethod HTTP method to use with callback_url
      * @return $this Fluent Builder
@@ -137,7 +137,7 @@ class CreateTriggerOptions extends Options {
     }
 
     /**
-     * A user-specified, human-readable name for the trigger.
+     * A human readable description of the new trigger.  Maximum 64 characters.
      * 
      * @param string $friendlyName A user-specified, human-readable name for the
      *                             trigger.
@@ -160,7 +160,7 @@ class CreateTriggerOptions extends Options {
     }
 
     /**
-     * The field in the UsageRecord that fires the trigger. One of `count`, `usage`, or `price`
+     * The field in the [UsageRecord](https://www.twilio.com/docs/api/rest/usage-records) that will fire the trigger.  One of `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).  The default is `usage`.
      * 
      * @param string $triggerBy The field in the UsageRecord that fires the trigger
      * @return $this Fluent Builder
@@ -199,7 +199,7 @@ class ReadTriggerOptions extends Options {
     }
 
     /**
-     * Only show UsageTriggers that count over this interval. One of daily, monthly, or yearly
+     * Only show UsageTriggers that count over this interval.  One of `daily`, `monthly`, or `yearly`.  To retrieve non-recurring triggers, leave this empty or use `alltime`.
      * 
      * @param string $recurring Filter by recurring
      * @return $this Fluent Builder
@@ -210,7 +210,7 @@ class ReadTriggerOptions extends Options {
     }
 
     /**
-     * Only show UsageTriggers that trigger by this field in the UsagRecord
+     * Only show UsageTriggers that trigger by this field in the UsageRecord.  Must be one of: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).
      * 
      * @param string $triggerBy Filter by trigger by
      * @return $this Fluent Builder
@@ -221,7 +221,7 @@ class ReadTriggerOptions extends Options {
     }
 
     /**
-     * Only show UsageTriggers that watch this usage category
+     * Only show UsageTriggers that watch this usage category.  Must be one of the supported [usage categories](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
      * 
      * @param string $usageCategory Filter by Usage Category
      * @return $this Fluent Builder

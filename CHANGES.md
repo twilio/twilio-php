@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2018-04-20] Version 5.17.1
+----------------------------
+**Twiml**
+- Gather input Enum: remove unnecessary "dtmf speech" value as you can now specify multiple enum values for this parameter and both "dtmf" and "speech" are already available.
+
+
 [2018-04-13] Version 5.17.0
 ----------------------------
 **Library**

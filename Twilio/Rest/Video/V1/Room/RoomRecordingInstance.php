@@ -21,14 +21,15 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property string sid
  * @property string sourceSid
- * @property integer size
+ * @property string size
+ * @property string url
  * @property string type
  * @property integer duration
  * @property string containerFormat
  * @property string codec
  * @property array groupingSids
+ * @property string trackName
  * @property string roomSid
- * @property string url
  * @property array links
  */
 class RoomRecordingInstance extends InstanceResource {
@@ -52,13 +53,14 @@ class RoomRecordingInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'sourceSid' => Values::array_get($payload, 'source_sid'),
             'size' => Values::array_get($payload, 'size'),
+            'url' => Values::array_get($payload, 'url'),
             'type' => Values::array_get($payload, 'type'),
             'duration' => Values::array_get($payload, 'duration'),
             'containerFormat' => Values::array_get($payload, 'container_format'),
             'codec' => Values::array_get($payload, 'codec'),
             'groupingSids' => Values::array_get($payload, 'grouping_sids'),
+            'trackName' => Values::array_get($payload, 'track_name'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
-            'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
 

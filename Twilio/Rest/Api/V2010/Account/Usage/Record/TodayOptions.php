@@ -14,9 +14,11 @@ use Twilio\Values;
 
 abstract class TodayOptions {
     /**
-     * @param string $category The category
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
+     * @param string $category Only include usage of this usage category.
+     * @param \DateTime $startDate Only include usage that has occurred on or after
+     *                             this date.
+     * @param \DateTime $endDate Only include usage that has occurred on or before
+     *                           this date.
      * @return ReadTodayOptions Options builder
      */
     public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -26,9 +28,11 @@ abstract class TodayOptions {
 
 class ReadTodayOptions extends Options {
     /**
-     * @param string $category The category
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
+     * @param string $category Only include usage of this usage category.
+     * @param \DateTime $startDate Only include usage that has occurred on or after
+     *                             this date.
+     * @param \DateTime $endDate Only include usage that has occurred on or before
+     *                           this date.
      */
     public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['category'] = $category;
@@ -37,9 +41,9 @@ class ReadTodayOptions extends Options {
     }
 
     /**
-     * The category
+     * Only include usage of this [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
      * 
-     * @param string $category The category
+     * @param string $category Only include usage of this usage category.
      * @return $this Fluent Builder
      */
     public function setCategory($category) {
@@ -48,9 +52,10 @@ class ReadTodayOptions extends Options {
     }
 
     /**
-     * The start_date
+     * Only include usage that has occurred on or after this date.  Format is YYYY-MM-DD.  All dates are in GMT.  As a convenience, you can also specify offsets to today.  For example, `StartDate=-30days` will make `StartDate` be 30 days before today.
      * 
-     * @param \DateTime $startDate The start_date
+     * @param \DateTime $startDate Only include usage that has occurred on or after
+     *                             this date.
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -59,9 +64,10 @@ class ReadTodayOptions extends Options {
     }
 
     /**
-     * The end_date
+     * Only include usage that has occurred on or before this date.  Format is YYYY-MM-DD.  All dates are in GMT.  As a convenience, you can also specify offsets to today.  For example, `EndDate=+30days` will make `EndDate` be 30 days from today.
      * 
-     * @param \DateTime $endDate The end_date
+     * @param \DateTime $endDate Only include usage that has occurred on or before
+     *                           this date.
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

@@ -33,7 +33,8 @@ class PhoneNumberList extends ListResource {
     /**
      * Create a new PhoneNumberInstance
      * 
-     * @param string $phoneNumberSid The phone_number_sid
+     * @param string $phoneNumberSid The SID of the Incoming Phone Number that you
+     *                               want to associate with this trunk.
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
      */
     public function create($phoneNumberSid) {
