@@ -37,8 +37,10 @@ class SyncListItemInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
-     * @param string $listSid The list_sid
+     * @param string $serviceSid The unique SID identifier of the Service Instance
+     *                           that hosts this List object.
+     * @param string $listSid The unique 34-character SID identifier of the List
+     *                        containing this Item.
      * @param integer $index The index
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemInstance 
      */

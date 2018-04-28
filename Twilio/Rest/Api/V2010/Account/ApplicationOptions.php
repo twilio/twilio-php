@@ -109,7 +109,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Requests to this application will start a new TwiML session with this API version.
+     * Requests to this application's URLs will start a new TwiML session with this API version. Either `2010-04-01` or `2008-08-01`. Defaults to your account's default API version.
      * 
      * @param string $apiVersion The API version to use
      * @return $this Fluent Builder
@@ -120,7 +120,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL Twilio will request when a phone number assigned to this application receives a call.
+     * The URL that Twilio should request when somebody dials a phone number assigned to this application.
      * 
      * @param string $voiceUrl URL Twilio will make requests to when relieving a
      *                         call
@@ -132,7 +132,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`.
+     * The HTTP method that should be used to request the `VoiceUrl`. Must be either `GET` or `POST`. Defaults to `POST`.
      * 
      * @param string $voiceMethod HTTP method to use with the URL
      * @return $this Fluent Builder
@@ -154,7 +154,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the `VoiceFallbackUrl`. Either `GET` or `POST`.
+     * The HTTP method that should be used to request the `VoiceFallbackUrl`. Either `GET` or `POST`. Defaults to `POST`.
      * 
      * @param string $voiceFallbackMethod HTTP method to use with the fallback url
      * @return $this Fluent Builder
@@ -176,7 +176,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use to make requests to the `StatusCallback` URL. Either `GET` or `POST`.
+     * The HTTP method Twilio will use to make requests to the `StatusCallback` URL. Either `GET` or `POST`. Defaults to `POST`.
      * 
      * @param string $statusCallbackMethod HTTP method to use with the status
      *                                     callback
@@ -188,7 +188,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Look up the caller's caller-ID name from the CNAM database (additional charges apply). Either `true` or `false`.
+     * Do a lookup of a caller's name from the CNAM database and post it to your app. Either `true` or `false`. Defaults to `false`.
      * 
      * @param boolean $voiceCallerIdLookup True or False
      * @return $this Fluent Builder
@@ -210,7 +210,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when making requests to the `SmsUrl`. Either `GET` or `POST`.
+     * The HTTP method that should be used to request the `SmsUrl`. Must be either `GET` or `POST`. Defaults to `POST`.
      * 
      * @param string $smsMethod HTTP method to use with sms_url
      * @return $this Fluent Builder
@@ -221,7 +221,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
+     * A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by `SmsUrl`.
      * 
      * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
      * @return $this Fluent Builder
@@ -232,7 +232,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
+     * The HTTP method that should be used to request the `SmsFallbackUrl`. Must be either `GET` or `POST`. Defaults to `POST`.
      * 
      * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
      * @return $this Fluent Builder
@@ -243,7 +243,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will `POST` to when a message is sent via the `/SMS/Messages` endpoint if you specify the `Sid` of this application on an outgoing SMS request.
+     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you specify this application's `Sid` as the `ApplicationSid` on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
      * 
      * @param string $smsStatusCallback URL Twilio with request with status updates
      * @return $this Fluent Builder
@@ -254,7 +254,7 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid` on an outgoing SMS request.
+     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid` on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
      * 
      * @param string $messageStatusCallback URL to make requests to with status
      *                                      updates
@@ -356,7 +356,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * A human readable descriptive text for this resource, up to 64 characters long.
+     * A human readable description of the application, with maximum length 64 characters.
      * 
      * @param string $friendlyName Human readable description of this resource
      * @return $this Fluent Builder
@@ -367,7 +367,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * Requests to this application will start a new TwiML session with this API version.
+     * Requests to this application's URLs will start a new TwiML session with this API version. Either `2010-04-01` or `2008-08-01`.
      * 
      * @param string $apiVersion The API version to use
      * @return $this Fluent Builder
@@ -378,7 +378,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL Twilio will request when a phone number assigned to this application receives a call.
+     * The URL that Twilio should request when somebody dials a phone number assigned to this application.
      * 
      * @param string $voiceUrl URL Twilio will make requests to when relieving a
      *                         call
@@ -401,7 +401,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `Url`.
+     * A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by `VoiceUrl`.
      * 
      * @param string $voiceFallbackUrl Fallback URL
      * @return $this Fluent Builder
@@ -479,7 +479,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML from `SmsUrl`.
+     * A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by `SmsUrl`.
      * 
      * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
      * @return $this Fluent Builder
@@ -490,7 +490,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
+     * The HTTP method that should be used to request the `SmsFallbackUrl`. Either `GET` or `POST`.
      * 
      * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
      * @return $this Fluent Builder
@@ -501,7 +501,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will `POST` to when a message is sent via the `/SMS/Messages` endpoint if you specify the `Sid` of this application on an outgoing SMS request.
+     * The URL that Twilio will `POST` to when a message is sent via the `/SMS/Messages` endpoint if you specify the `Sid` of this application on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
      * 
      * @param string $smsStatusCallback URL Twilio with request with status updates
      * @return $this Fluent Builder
@@ -512,7 +512,7 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid` on an outgoing SMS request.
+     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid` on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
      * 
      * @param string $messageStatusCallback URL to make requests to with status
      *                                      updates

@@ -138,17 +138,15 @@ class CompositionList extends ListResource {
         $options = new Values($options);
 
         $data = Values::of(array(
+            'RoomSid' => $options['roomSid'],
+            'VideoLayout' => Serialize::jsonObject($options['videoLayout']),
             'AudioSources' => Serialize::map($options['audioSources'], function($e) { return $e; }),
-            'VideoSources' => Serialize::map($options['videoSources'], function($e) { return $e; }),
-            'VideoLayout' => $options['videoLayout'],
+            'AudioSourcesExcluded' => Serialize::map($options['audioSourcesExcluded'], function($e) { return $e; }),
             'Resolution' => $options['resolution'],
             'Format' => $options['format'],
-            'DesiredBitrate' => $options['desiredBitrate'],
-            'DesiredMaxDuration' => $options['desiredMaxDuration'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'Trim' => Serialize::booleanToString($options['trim']),
-            'Reuse' => Serialize::booleanToString($options['reuse']),
         ));
 
         $payload = $this->version->create(

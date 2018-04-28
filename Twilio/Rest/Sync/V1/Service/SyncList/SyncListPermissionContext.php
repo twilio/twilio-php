@@ -22,7 +22,7 @@ class SyncListPermissionContext extends InstanceContext {
      * Initialize the SyncListPermissionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid Sync Service Instance SID or unique name.
      * @param string $listSid Sync List SID or unique name.
      * @param string $identity Identity of the user to whom the Sync List
      *                         Permission applies.

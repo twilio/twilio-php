@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2018-04-28] Version 5.18.0
+----------------------------
+**Video**
+- Redesign API by adding custom `VideoLayout` object. **(breaking change)**
+
+
 [2018-04-20] Version 5.17.1
 ----------------------------
 **Twiml**

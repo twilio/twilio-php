@@ -37,8 +37,8 @@ class ParticipantList extends ListResource {
     /**
      * Create a new ParticipantInstance
      * 
-     * @param string $from The from
-     * @param string $to The to
+     * @param string $from number, client id
+     * @param string $to number, client id, sip address
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Newly created ParticipantInstance
      */

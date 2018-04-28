@@ -20,7 +20,8 @@ class ParticipantList extends ListResource {
      * Construct the ParticipantList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
+     * @param string $roomSid A system-generated 34-character string that uniquely
+     *                        identifies.
      * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
      */
     public function __construct(Version $version, $roomSid) {

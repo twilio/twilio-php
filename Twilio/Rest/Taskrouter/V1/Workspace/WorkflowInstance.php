@@ -41,7 +41,8 @@ class WorkflowInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The ID of the Workspace that contains this
+     *                             Workflow
      * @param string $sid The sid
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowInstance 
      */

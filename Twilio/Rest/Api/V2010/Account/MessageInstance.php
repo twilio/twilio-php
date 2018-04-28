@@ -120,7 +120,8 @@ class MessageInstance extends InstanceResource {
     /**
      * Update the MessageInstance
      * 
-     * @param string $body The body
+     * @param string $body The text of the message you want to send, limited to
+     *                     1600 characters.
      * @return MessageInstance Updated MessageInstance
      */
     public function update($body) {

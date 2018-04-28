@@ -14,7 +14,8 @@ use Twilio\Values;
 
 abstract class ActivityOptions {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Activity, such as
+     *                             'on-call', 'break', 'email', etc.
      * @return UpdateActivityOptions Options builder
      */
     public static function update($friendlyName = Values::NONE) {
@@ -22,8 +23,9 @@ abstract class ActivityOptions {
     }
 
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $available The available
+     * @param string $friendlyName Filter by an Activity's friendly name
+     * @param string $available Filter by activities that are available or
+     *                          unavailable.
      * @return ReadActivityOptions Options builder
      */
     public static function read($friendlyName = Values::NONE, $available = Values::NONE) {
@@ -31,7 +33,9 @@ abstract class ActivityOptions {
     }
 
     /**
-     * @param boolean $available The available
+     * @param boolean $available Boolean value indicating whether the worker should
+     *                           be eligible to receive a Task when they occupy
+     *                           this Activity.
      * @return CreateActivityOptions Options builder
      */
     public static function create($available = Values::NONE) {
@@ -41,16 +45,18 @@ abstract class ActivityOptions {
 
 class UpdateActivityOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Activity, such as
+     *                             'on-call', 'break', 'email', etc.
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * The friendly_name
+     * A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc. These names will be used to calculate and expose statistics about workers, and give you visibility into the state of each of your workers.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Activity, such as
+     *                             'on-call', 'break', 'email', etc.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -76,8 +82,9 @@ class UpdateActivityOptions extends Options {
 
 class ReadActivityOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $available The available
+     * @param string $friendlyName Filter by an Activity's friendly name
+     * @param string $available Filter by activities that are available or
+     *                          unavailable.
      */
     public function __construct($friendlyName = Values::NONE, $available = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -85,9 +92,9 @@ class ReadActivityOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * Filter by an Activity's friendly name
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Filter by an Activity's friendly name
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -96,9 +103,10 @@ class ReadActivityOptions extends Options {
     }
 
     /**
-     * The available
+     * Filter by activities that are available or unavailable. (Note: This can be 'true', '1'' or 'yes' to indicate a true value. All other values will represent false)
      * 
-     * @param string $available The available
+     * @param string $available Filter by activities that are available or
+     *                          unavailable.
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {
@@ -124,16 +132,20 @@ class ReadActivityOptions extends Options {
 
 class CreateActivityOptions extends Options {
     /**
-     * @param boolean $available The available
+     * @param boolean $available Boolean value indicating whether the worker should
+     *                           be eligible to receive a Task when they occupy
+     *                           this Activity.
      */
     public function __construct($available = Values::NONE) {
         $this->options['available'] = $available;
     }
 
     /**
-     * The available
+     * Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity. For example, a call center might have an activity named 'On Call' with an availability set to 'false'. Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false. Defaults to false.
      * 
-     * @param boolean $available The available
+     * @param boolean $available Boolean value indicating whether the worker should
+     *                           be eligible to receive a Task when they occupy
+     *                           this Activity.
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {

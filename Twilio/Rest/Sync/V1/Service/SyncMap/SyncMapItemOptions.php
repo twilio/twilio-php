@@ -17,7 +17,8 @@ use Twilio\Values;
  */
 abstract class SyncMapItemOptions {
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
+     *                     expiration.
      * @return CreateSyncMapItemOptions Options builder
      */
     public static function create($ttl = Values::NONE) {
@@ -35,8 +36,9 @@ abstract class SyncMapItemOptions {
     }
 
     /**
-     * @param array $data The data
-     * @param integer $ttl The ttl
+     * @param array $data Contains an arbitrary JSON object to be stored in this
+     *                    Map Item.
+     * @param integer $ttl New time-to-live of this Map in seconds.
      * @return UpdateSyncMapItemOptions Options builder
      */
     public static function update($data = Values::NONE, $ttl = Values::NONE) {
@@ -46,16 +48,18 @@ abstract class SyncMapItemOptions {
 
 class CreateSyncMapItemOptions extends Options {
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
+     *                     expiration.
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * The ttl
+     * (optional) Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -142,8 +146,9 @@ class ReadSyncMapItemOptions extends Options {
 
 class UpdateSyncMapItemOptions extends Options {
     /**
-     * @param array $data The data
-     * @param integer $ttl The ttl
+     * @param array $data Contains an arbitrary JSON object to be stored in this
+     *                    Map Item.
+     * @param integer $ttl New time-to-live of this Map in seconds.
      */
     public function __construct($data = Values::NONE, $ttl = Values::NONE) {
         $this->options['data'] = $data;
@@ -151,9 +156,10 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * The data
+     * (optional) Contains an arbitrary JSON object to be stored in this Map Item. Serialized to string to respect HTTP form input, up to 16KB.
      * 
-     * @param array $data The data
+     * @param array $data Contains an arbitrary JSON object to be stored in this
+     *                    Map Item.
      * @return $this Fluent Builder
      */
     public function setData($data) {
@@ -162,9 +168,9 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * The ttl
+     * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl New time-to-live of this Map in seconds.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

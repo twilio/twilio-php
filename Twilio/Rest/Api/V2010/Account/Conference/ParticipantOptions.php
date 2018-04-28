@@ -15,9 +15,11 @@ use Twilio\Values;
 abstract class ParticipantOptions {
     /**
      * @param boolean $muted Indicates if the participant should be muted
-     * @param boolean $hold The hold
-     * @param string $holdUrl The hold_url
-     * @param string $holdMethod The hold_method
+     * @param boolean $hold Specifying true will hold the participant, while false
+     *                      will un-hold.
+     * @param string $holdUrl The 'HoldUrl' attribute lets you specify a URL for
+     *                        music that plays when a participant is held.
+     * @param string $holdMethod Specify GET or POST, defaults to GET
      * @param string $announceUrl The announce_url
      * @param string $announceMethod The announce_method
      * @return UpdateParticipantOptions Options builder
@@ -27,37 +29,33 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param string $statusCallback The status_callback
-     * @param string $statusCallbackMethod The status_callback_method
-     * @param string $statusCallbackEvent The status_callback_event
-     * @param integer $timeout The timeout
-     * @param boolean $record The record
-     * @param boolean $muted The muted
-     * @param string $beep The beep
-     * @param boolean $startConferenceOnEnter The start_conference_on_enter
-     * @param boolean $endConferenceOnExit The end_conference_on_exit
-     * @param string $waitUrl The wait_url
-     * @param string $waitMethod The wait_method
-     * @param boolean $earlyMedia The early_media
-     * @param integer $maxParticipants The max_participants
-     * @param string $conferenceRecord The conference_record
-     * @param string $conferenceTrim The conference_trim
-     * @param string $conferenceStatusCallback The conference_status_callback
-     * @param string $conferenceStatusCallbackMethod The
-     *                                               conference_status_callback_method
-     * @param string $conferenceStatusCallbackEvent The
-     *                                              conference_status_callback_event
-     * @param string $recordingChannels The recording_channels
-     * @param string $recordingStatusCallback The recording_status_callback
-     * @param string $recordingStatusCallbackMethod The
-     *                                              recording_status_callback_method
-     * @param string $sipAuthUsername The sip_auth_username
-     * @param string $sipAuthPassword The sip_auth_password
-     * @param string $region The region
-     * @param string $conferenceRecordingStatusCallback The
-     *                                                  conference_recording_status_callback
-     * @param string $conferenceRecordingStatusCallbackMethod The
-     *                                                        conference_recording_status_callback_method
+     * @param string $statusCallback absolute url
+     * @param string $statusCallbackMethod GET, POST
+     * @param string $statusCallbackEvent initiated, ringing, answered, completed
+     * @param integer $timeout 5-600
+     * @param boolean $record true, false
+     * @param boolean $muted true, false
+     * @param string $beep true, false, onEnter, onExit
+     * @param boolean $startConferenceOnEnter true, false
+     * @param boolean $endConferenceOnExit true, false
+     * @param string $waitUrl absolute url
+     * @param string $waitMethod GET, POST
+     * @param boolean $earlyMedia true, false
+     * @param integer $maxParticipants 2-10
+     * @param string $conferenceRecord true, false, record-from-start, do-not-record
+     * @param string $conferenceTrim trim-silence or do-not-trim
+     * @param string $conferenceStatusCallback absolute url
+     * @param string $conferenceStatusCallbackMethod GET, POST
+     * @param string $conferenceStatusCallbackEvent start end join leave mute hold
+     *                                              speaker
+     * @param string $recordingChannels mono, dual
+     * @param string $recordingStatusCallback absolute url
+     * @param string $recordingStatusCallbackMethod GET, POST
+     * @param string $sipAuthUsername sip username
+     * @param string $sipAuthPassword sip password
+     * @param string $region us1, ie1, de1, sg1, br1, au1, jp1
+     * @param string $conferenceRecordingStatusCallback absolute url
+     * @param string $conferenceRecordingStatusCallbackMethod GET, POST
      * @param string $recordingStatusCallbackEvent The
      *                                             recording_status_callback_event
      * @param string $conferenceRecordingStatusCallbackEvent The
@@ -70,7 +68,7 @@ abstract class ParticipantOptions {
 
     /**
      * @param boolean $muted Filter by muted participants
-     * @param boolean $hold The hold
+     * @param boolean $hold Only show participants that are held or unheld.
      * @return ReadParticipantOptions Options builder
      */
     public static function read($muted = Values::NONE, $hold = Values::NONE) {
@@ -81,9 +79,11 @@ abstract class ParticipantOptions {
 class UpdateParticipantOptions extends Options {
     /**
      * @param boolean $muted Indicates if the participant should be muted
-     * @param boolean $hold The hold
-     * @param string $holdUrl The hold_url
-     * @param string $holdMethod The hold_method
+     * @param boolean $hold Specifying true will hold the participant, while false
+     *                      will un-hold.
+     * @param string $holdUrl The 'HoldUrl' attribute lets you specify a URL for
+     *                        music that plays when a participant is held.
+     * @param string $holdMethod Specify GET or POST, defaults to GET
      * @param string $announceUrl The announce_url
      * @param string $announceMethod The announce_method
      */
@@ -97,7 +97,7 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * Indicates if the participant should be muted
+     * Specifying `true` will mute the participant, while `false` will un-mute. Anything other than `true` or `false` is interpreted as `false`.
      * 
      * @param boolean $muted Indicates if the participant should be muted
      * @return $this Fluent Builder
@@ -108,9 +108,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The hold
+     * Specifying `true` will hold the participant, while `false` will un-hold.
      * 
-     * @param boolean $hold The hold
+     * @param boolean $hold Specifying true will hold the participant, while false
+     *                      will un-hold.
      * @return $this Fluent Builder
      */
     public function setHold($hold) {
@@ -119,9 +120,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The hold_url
+     * The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is held. The URL may be an MP3, a WAV or a TwiML document that uses &lt;Play&gt; &lt;Say&gt; or &lt;Redirect&gt;.
      * 
-     * @param string $holdUrl The hold_url
+     * @param string $holdUrl The 'HoldUrl' attribute lets you specify a URL for
+     *                        music that plays when a participant is held.
      * @return $this Fluent Builder
      */
     public function setHoldUrl($holdUrl) {
@@ -130,9 +132,9 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The hold_method
+     * Specify GET or POST, defaults to GET
      * 
-     * @param string $holdMethod The hold_method
+     * @param string $holdMethod Specify GET or POST, defaults to GET
      * @return $this Fluent Builder
      */
     public function setHoldMethod($holdMethod) {
@@ -180,37 +182,33 @@ class UpdateParticipantOptions extends Options {
 
 class CreateParticipantOptions extends Options {
     /**
-     * @param string $statusCallback The status_callback
-     * @param string $statusCallbackMethod The status_callback_method
-     * @param string $statusCallbackEvent The status_callback_event
-     * @param integer $timeout The timeout
-     * @param boolean $record The record
-     * @param boolean $muted The muted
-     * @param string $beep The beep
-     * @param boolean $startConferenceOnEnter The start_conference_on_enter
-     * @param boolean $endConferenceOnExit The end_conference_on_exit
-     * @param string $waitUrl The wait_url
-     * @param string $waitMethod The wait_method
-     * @param boolean $earlyMedia The early_media
-     * @param integer $maxParticipants The max_participants
-     * @param string $conferenceRecord The conference_record
-     * @param string $conferenceTrim The conference_trim
-     * @param string $conferenceStatusCallback The conference_status_callback
-     * @param string $conferenceStatusCallbackMethod The
-     *                                               conference_status_callback_method
-     * @param string $conferenceStatusCallbackEvent The
-     *                                              conference_status_callback_event
-     * @param string $recordingChannels The recording_channels
-     * @param string $recordingStatusCallback The recording_status_callback
-     * @param string $recordingStatusCallbackMethod The
-     *                                              recording_status_callback_method
-     * @param string $sipAuthUsername The sip_auth_username
-     * @param string $sipAuthPassword The sip_auth_password
-     * @param string $region The region
-     * @param string $conferenceRecordingStatusCallback The
-     *                                                  conference_recording_status_callback
-     * @param string $conferenceRecordingStatusCallbackMethod The
-     *                                                        conference_recording_status_callback_method
+     * @param string $statusCallback absolute url
+     * @param string $statusCallbackMethod GET, POST
+     * @param string $statusCallbackEvent initiated, ringing, answered, completed
+     * @param integer $timeout 5-600
+     * @param boolean $record true, false
+     * @param boolean $muted true, false
+     * @param string $beep true, false, onEnter, onExit
+     * @param boolean $startConferenceOnEnter true, false
+     * @param boolean $endConferenceOnExit true, false
+     * @param string $waitUrl absolute url
+     * @param string $waitMethod GET, POST
+     * @param boolean $earlyMedia true, false
+     * @param integer $maxParticipants 2-10
+     * @param string $conferenceRecord true, false, record-from-start, do-not-record
+     * @param string $conferenceTrim trim-silence or do-not-trim
+     * @param string $conferenceStatusCallback absolute url
+     * @param string $conferenceStatusCallbackMethod GET, POST
+     * @param string $conferenceStatusCallbackEvent start end join leave mute hold
+     *                                              speaker
+     * @param string $recordingChannels mono, dual
+     * @param string $recordingStatusCallback absolute url
+     * @param string $recordingStatusCallbackMethod GET, POST
+     * @param string $sipAuthUsername sip username
+     * @param string $sipAuthPassword sip password
+     * @param string $region us1, ie1, de1, sg1, br1, au1, jp1
+     * @param string $conferenceRecordingStatusCallback absolute url
+     * @param string $conferenceRecordingStatusCallbackMethod GET, POST
      * @param string $recordingStatusCallbackEvent The
      *                                             recording_status_callback_event
      * @param string $conferenceRecordingStatusCallbackEvent The
@@ -248,9 +246,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The status_callback
+     * absolute url
      * 
-     * @param string $statusCallback The status_callback
+     * @param string $statusCallback absolute url
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -259,9 +257,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The status_callback_method
+     * GET, POST
      * 
-     * @param string $statusCallbackMethod The status_callback_method
+     * @param string $statusCallbackMethod GET, POST
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
@@ -270,9 +268,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The status_callback_event
+     * initiated, ringing, answered, completed
      * 
-     * @param string $statusCallbackEvent The status_callback_event
+     * @param string $statusCallbackEvent initiated, ringing, answered, completed
      * @return $this Fluent Builder
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
@@ -281,9 +279,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The timeout
+     * 5-600
      * 
-     * @param integer $timeout The timeout
+     * @param integer $timeout 5-600
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -292,9 +290,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The record
+     * true, false
      * 
-     * @param boolean $record The record
+     * @param boolean $record true, false
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -303,9 +301,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The muted
+     * true, false
      * 
-     * @param boolean $muted The muted
+     * @param boolean $muted true, false
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -314,9 +312,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The beep
+     * true, false, onEnter, onExit
      * 
-     * @param string $beep The beep
+     * @param string $beep true, false, onEnter, onExit
      * @return $this Fluent Builder
      */
     public function setBeep($beep) {
@@ -325,9 +323,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The start_conference_on_enter
+     * true, false
      * 
-     * @param boolean $startConferenceOnEnter The start_conference_on_enter
+     * @param boolean $startConferenceOnEnter true, false
      * @return $this Fluent Builder
      */
     public function setStartConferenceOnEnter($startConferenceOnEnter) {
@@ -336,9 +334,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The end_conference_on_exit
+     * true, false
      * 
-     * @param boolean $endConferenceOnExit The end_conference_on_exit
+     * @param boolean $endConferenceOnExit true, false
      * @return $this Fluent Builder
      */
     public function setEndConferenceOnExit($endConferenceOnExit) {
@@ -347,9 +345,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The wait_url
+     * absolute url
      * 
-     * @param string $waitUrl The wait_url
+     * @param string $waitUrl absolute url
      * @return $this Fluent Builder
      */
     public function setWaitUrl($waitUrl) {
@@ -358,9 +356,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The wait_method
+     * GET, POST
      * 
-     * @param string $waitMethod The wait_method
+     * @param string $waitMethod GET, POST
      * @return $this Fluent Builder
      */
     public function setWaitMethod($waitMethod) {
@@ -369,9 +367,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The early_media
+     * true, false
      * 
-     * @param boolean $earlyMedia The early_media
+     * @param boolean $earlyMedia true, false
      * @return $this Fluent Builder
      */
     public function setEarlyMedia($earlyMedia) {
@@ -380,9 +378,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The max_participants
+     * 2-10
      * 
-     * @param integer $maxParticipants The max_participants
+     * @param integer $maxParticipants 2-10
      * @return $this Fluent Builder
      */
     public function setMaxParticipants($maxParticipants) {
@@ -391,9 +389,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_record
+     * true, false, record-from-start, do-not-record
      * 
-     * @param string $conferenceRecord The conference_record
+     * @param string $conferenceRecord true, false, record-from-start, do-not-record
      * @return $this Fluent Builder
      */
     public function setConferenceRecord($conferenceRecord) {
@@ -402,9 +400,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_trim
+     * trim-silence or do-not-trim
      * 
-     * @param string $conferenceTrim The conference_trim
+     * @param string $conferenceTrim trim-silence or do-not-trim
      * @return $this Fluent Builder
      */
     public function setConferenceTrim($conferenceTrim) {
@@ -413,9 +411,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_status_callback
+     * absolute url
      * 
-     * @param string $conferenceStatusCallback The conference_status_callback
+     * @param string $conferenceStatusCallback absolute url
      * @return $this Fluent Builder
      */
     public function setConferenceStatusCallback($conferenceStatusCallback) {
@@ -424,10 +422,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_status_callback_method
+     * GET, POST
      * 
-     * @param string $conferenceStatusCallbackMethod The
-     *                                               conference_status_callback_method
+     * @param string $conferenceStatusCallbackMethod GET, POST
      * @return $this Fluent Builder
      */
     public function setConferenceStatusCallbackMethod($conferenceStatusCallbackMethod) {
@@ -436,10 +433,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_status_callback_event
+     * start end join leave mute hold speaker
      * 
-     * @param string $conferenceStatusCallbackEvent The
-     *                                              conference_status_callback_event
+     * @param string $conferenceStatusCallbackEvent start end join leave mute hold
+     *                                              speaker
      * @return $this Fluent Builder
      */
     public function setConferenceStatusCallbackEvent($conferenceStatusCallbackEvent) {
@@ -448,9 +445,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The recording_channels
+     * mono, dual
      * 
-     * @param string $recordingChannels The recording_channels
+     * @param string $recordingChannels mono, dual
      * @return $this Fluent Builder
      */
     public function setRecordingChannels($recordingChannels) {
@@ -459,9 +456,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The recording_status_callback
+     * absolute url
      * 
-     * @param string $recordingStatusCallback The recording_status_callback
+     * @param string $recordingStatusCallback absolute url
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallback($recordingStatusCallback) {
@@ -470,10 +467,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The recording_status_callback_method
+     * GET, POST
      * 
-     * @param string $recordingStatusCallbackMethod The
-     *                                              recording_status_callback_method
+     * @param string $recordingStatusCallbackMethod GET, POST
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -482,9 +478,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The sip_auth_username
+     * sip username
      * 
-     * @param string $sipAuthUsername The sip_auth_username
+     * @param string $sipAuthUsername sip username
      * @return $this Fluent Builder
      */
     public function setSipAuthUsername($sipAuthUsername) {
@@ -493,9 +489,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The sip_auth_password
+     * sip password
      * 
-     * @param string $sipAuthPassword The sip_auth_password
+     * @param string $sipAuthPassword sip password
      * @return $this Fluent Builder
      */
     public function setSipAuthPassword($sipAuthPassword) {
@@ -504,9 +500,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The region
+     * us1, ie1, de1, sg1, br1, au1, jp1
      * 
-     * @param string $region The region
+     * @param string $region us1, ie1, de1, sg1, br1, au1, jp1
      * @return $this Fluent Builder
      */
     public function setRegion($region) {
@@ -515,10 +511,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_recording_status_callback
+     * absolute url
      * 
-     * @param string $conferenceRecordingStatusCallback The
-     *                                                  conference_recording_status_callback
+     * @param string $conferenceRecordingStatusCallback absolute url
      * @return $this Fluent Builder
      */
     public function setConferenceRecordingStatusCallback($conferenceRecordingStatusCallback) {
@@ -527,10 +522,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_recording_status_callback_method
+     * GET, POST
      * 
-     * @param string $conferenceRecordingStatusCallbackMethod The
-     *                                                        conference_recording_status_callback_method
+     * @param string $conferenceRecordingStatusCallbackMethod GET, POST
      * @return $this Fluent Builder
      */
     public function setConferenceRecordingStatusCallbackMethod($conferenceRecordingStatusCallbackMethod) {
@@ -581,7 +575,7 @@ class CreateParticipantOptions extends Options {
 class ReadParticipantOptions extends Options {
     /**
      * @param boolean $muted Filter by muted participants
-     * @param boolean $hold The hold
+     * @param boolean $hold Only show participants that are held or unheld.
      */
     public function __construct($muted = Values::NONE, $hold = Values::NONE) {
         $this->options['muted'] = $muted;
@@ -589,7 +583,7 @@ class ReadParticipantOptions extends Options {
     }
 
     /**
-     * Only show participants that are muted or unmuted
+     * Only show participants that are muted or unmuted. Either `true` or `false`.
      * 
      * @param boolean $muted Filter by muted participants
      * @return $this Fluent Builder
@@ -600,9 +594,9 @@ class ReadParticipantOptions extends Options {
     }
 
     /**
-     * The hold
+     * Only show participants that are held or unheld. Either `true` or `false`.
      * 
-     * @param boolean $hold The hold
+     * @param boolean $hold Only show participants that are held or unheld.
      * @return $this Fluent Builder
      */
     public function setHold($hold) {

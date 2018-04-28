@@ -14,10 +14,14 @@ use Twilio\Values;
 
 abstract class TaskOptions {
     /**
-     * @param string $attributes The attributes
-     * @param string $assignmentStatus The assignment_status
-     * @param string $reason The reason
-     * @param integer $priority The priority
+     * @param string $attributes The user-defined JSON data describing the custom
+     *                           attributes of this task.
+     * @param string $assignmentStatus A 'pending' or 'reserved' Task may be
+     *                                 canceled by posting
+     *                                 AssignmentStatus='canceled'.
+     * @param string $reason This is only required if the Task is canceled or
+     *                       completed.
+     * @param integer $priority Override priority for the Task.
      * @param string $taskChannel The task_channel
      * @return UpdateTaskOptions Options builder
      */
@@ -26,14 +30,28 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param integer $priority The priority
-     * @param string $assignmentStatus The assignment_status
-     * @param string $workflowSid The workflow_sid
-     * @param string $workflowName The workflow_name
-     * @param string $taskQueueSid The task_queue_sid
-     * @param string $taskQueueName The task_queue_name
-     * @param string $evaluateTaskAttributes The evaluate_task_attributes
-     * @param string $ordering The ordering
+     * @param integer $priority Retrieve the list of all Tasks in the workspace
+     *                          with the specified priority.
+     * @param string $assignmentStatus Returns the list of all Tasks in the
+     *                                 workspace with the specified
+     *                                 AssignmentStatus.
+     * @param string $workflowSid Returns the list of Tasks that are being
+     *                            controlled by the Workflow with the specified Sid
+     *                            value.
+     * @param string $workflowName Returns the list of Tasks that are being
+     *                             controlled by the Workflow with the specified
+     *                             FriendlyName value.
+     * @param string $taskQueueSid Returns the list of Tasks that are currently
+     *                             waiting in the TaskQueue identified by the Sid
+     *                             specified.
+     * @param string $taskQueueName Returns the list of Tasks that are currently
+     *                              waiting in the TaskQueue identified by the
+     *                              FriendlyName specified.
+     * @param string $evaluateTaskAttributes Provide a task attributes expression,
+     *                                       and this will return tasks which match
+     *                                       the attributes.
+     * @param string $ordering Use this parameter to control the order of the Tasks
+     *                         returned.
      * @param boolean $hasAddons The has_addons
      * @return ReadTaskOptions Options builder
      */
@@ -42,11 +60,16 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param integer $timeout The timeout
-     * @param integer $priority The priority
-     * @param string $taskChannel The task_channel
-     * @param string $workflowSid The workflow_sid
-     * @param string $attributes The attributes
+     * @param integer $timeout The amount of time in seconds the task is allowed to
+     *                         live up to a maximum of 2 weeks.
+     * @param integer $priority Override priority for the Task.
+     * @param string $taskChannel When MultiTasking is enabled specify the type of
+     *                            the task by passing either TaskChannel Unique
+     *                            Name or Task Channel Sid.
+     * @param string $workflowSid The WorkflowSid for the Workflow that you would
+     *                            like to handle routing for this Task.
+     * @param string $attributes Url-encoded JSON string describing the attributes
+     *                           of this task.
      * @return CreateTaskOptions Options builder
      */
     public static function create($timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE, $workflowSid = Values::NONE, $attributes = Values::NONE) {
@@ -56,10 +79,14 @@ abstract class TaskOptions {
 
 class UpdateTaskOptions extends Options {
     /**
-     * @param string $attributes The attributes
-     * @param string $assignmentStatus The assignment_status
-     * @param string $reason The reason
-     * @param integer $priority The priority
+     * @param string $attributes The user-defined JSON data describing the custom
+     *                           attributes of this task.
+     * @param string $assignmentStatus A 'pending' or 'reserved' Task may be
+     *                                 canceled by posting
+     *                                 AssignmentStatus='canceled'.
+     * @param string $reason This is only required if the Task is canceled or
+     *                       completed.
+     * @param integer $priority Override priority for the Task.
      * @param string $taskChannel The task_channel
      */
     public function __construct($attributes = Values::NONE, $assignmentStatus = Values::NONE, $reason = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE) {
@@ -71,9 +98,10 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The attributes
+     * The user-defined JSON data describing the custom attributes of this task.
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes The user-defined JSON data describing the custom
+     *                           attributes of this task.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -82,9 +110,11 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The assignment_status
+     * A 'pending' or 'reserved' Task may be canceled by posting AssignmentStatus='canceled'. Post AssignmentStatus='wrapping' to move Task to 'wrapup' state and AssignmentStatus='completed' to move a Task to 'completed' state.
      * 
-     * @param string $assignmentStatus The assignment_status
+     * @param string $assignmentStatus A 'pending' or 'reserved' Task may be
+     *                                 canceled by posting
+     *                                 AssignmentStatus='canceled'.
      * @return $this Fluent Builder
      */
     public function setAssignmentStatus($assignmentStatus) {
@@ -93,9 +123,10 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The reason
+     * This is only required if the Task is canceled or completed. This logs the reason the task was either canceled or completed and queues the task for deletion after 5 minutes.
      * 
-     * @param string $reason The reason
+     * @param string $reason This is only required if the Task is canceled or
+     *                       completed.
      * @return $this Fluent Builder
      */
     public function setReason($reason) {
@@ -104,9 +135,9 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The priority
+     * Override priority for the Task. When supplied, the Task will take on the given priority unless it matches a Workflow Target with a Priority set.
      * 
-     * @param integer $priority The priority
+     * @param integer $priority Override priority for the Task.
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -143,14 +174,28 @@ class UpdateTaskOptions extends Options {
 
 class ReadTaskOptions extends Options {
     /**
-     * @param integer $priority The priority
-     * @param string $assignmentStatus The assignment_status
-     * @param string $workflowSid The workflow_sid
-     * @param string $workflowName The workflow_name
-     * @param string $taskQueueSid The task_queue_sid
-     * @param string $taskQueueName The task_queue_name
-     * @param string $evaluateTaskAttributes The evaluate_task_attributes
-     * @param string $ordering The ordering
+     * @param integer $priority Retrieve the list of all Tasks in the workspace
+     *                          with the specified priority.
+     * @param string $assignmentStatus Returns the list of all Tasks in the
+     *                                 workspace with the specified
+     *                                 AssignmentStatus.
+     * @param string $workflowSid Returns the list of Tasks that are being
+     *                            controlled by the Workflow with the specified Sid
+     *                            value.
+     * @param string $workflowName Returns the list of Tasks that are being
+     *                             controlled by the Workflow with the specified
+     *                             FriendlyName value.
+     * @param string $taskQueueSid Returns the list of Tasks that are currently
+     *                             waiting in the TaskQueue identified by the Sid
+     *                             specified.
+     * @param string $taskQueueName Returns the list of Tasks that are currently
+     *                              waiting in the TaskQueue identified by the
+     *                              FriendlyName specified.
+     * @param string $evaluateTaskAttributes Provide a task attributes expression,
+     *                                       and this will return tasks which match
+     *                                       the attributes.
+     * @param string $ordering Use this parameter to control the order of the Tasks
+     *                         returned.
      * @param boolean $hasAddons The has_addons
      */
     public function __construct($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE) {
@@ -166,9 +211,10 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The priority
+     * Retrieve the list of all Tasks in the workspace with the specified priority.
      * 
-     * @param integer $priority The priority
+     * @param integer $priority Retrieve the list of all Tasks in the workspace
+     *                          with the specified priority.
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -177,9 +223,11 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The assignment_status
+     * Returns the list of all Tasks in the workspace with the specified AssignmentStatus. Allowed AssignmentStatus values are pending, reserved, assigned, canceled, and completed.
      * 
-     * @param string $assignmentStatus The assignment_status
+     * @param string $assignmentStatus Returns the list of all Tasks in the
+     *                                 workspace with the specified
+     *                                 AssignmentStatus.
      * @return $this Fluent Builder
      */
     public function setAssignmentStatus($assignmentStatus) {
@@ -188,9 +236,11 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The workflow_sid
+     * Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
      * 
-     * @param string $workflowSid The workflow_sid
+     * @param string $workflowSid Returns the list of Tasks that are being
+     *                            controlled by the Workflow with the specified Sid
+     *                            value.
      * @return $this Fluent Builder
      */
     public function setWorkflowSid($workflowSid) {
@@ -199,9 +249,11 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The workflow_name
+     * Returns the list of Tasks that are being controlled by the Workflow with the specified FriendlyName value.
      * 
-     * @param string $workflowName The workflow_name
+     * @param string $workflowName Returns the list of Tasks that are being
+     *                             controlled by the Workflow with the specified
+     *                             FriendlyName value.
      * @return $this Fluent Builder
      */
     public function setWorkflowName($workflowName) {
@@ -210,9 +262,11 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The task_queue_sid
+     * Returns the list of Tasks that are currently waiting in the TaskQueue identified by the Sid specified.
      * 
-     * @param string $taskQueueSid The task_queue_sid
+     * @param string $taskQueueSid Returns the list of Tasks that are currently
+     *                             waiting in the TaskQueue identified by the Sid
+     *                             specified.
      * @return $this Fluent Builder
      */
     public function setTaskQueueSid($taskQueueSid) {
@@ -221,9 +275,11 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The task_queue_name
+     * Returns the list of Tasks that are currently waiting in the TaskQueue identified by the FriendlyName specified.
      * 
-     * @param string $taskQueueName The task_queue_name
+     * @param string $taskQueueName Returns the list of Tasks that are currently
+     *                              waiting in the TaskQueue identified by the
+     *                              FriendlyName specified.
      * @return $this Fluent Builder
      */
     public function setTaskQueueName($taskQueueName) {
@@ -232,9 +288,11 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The evaluate_task_attributes
+     * Provide a task attributes expression, and this will return tasks which match the attributes.
      * 
-     * @param string $evaluateTaskAttributes The evaluate_task_attributes
+     * @param string $evaluateTaskAttributes Provide a task attributes expression,
+     *                                       and this will return tasks which match
+     *                                       the attributes.
      * @return $this Fluent Builder
      */
     public function setEvaluateTaskAttributes($evaluateTaskAttributes) {
@@ -243,9 +301,10 @@ class ReadTaskOptions extends Options {
     }
 
     /**
-     * The ordering
+     * Use this parameter to control the order of the Tasks returned. The value should be passed in `Attribute:Order` format, where Attribute can be either `Priority` or `DateCreated` and Order can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered by Priority in descending order. To sort the Tasks by Priority and DateCreated pass `Priority:desc,DateCreated:asc`. By Default Tasks are returned sorted by DateCreated in ascending order.
      * 
-     * @param string $ordering The ordering
+     * @param string $ordering Use this parameter to control the order of the Tasks
+     *                         returned.
      * @return $this Fluent Builder
      */
     public function setOrdering($ordering) {
@@ -282,11 +341,16 @@ class ReadTaskOptions extends Options {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param integer $timeout The timeout
-     * @param integer $priority The priority
-     * @param string $taskChannel The task_channel
-     * @param string $workflowSid The workflow_sid
-     * @param string $attributes The attributes
+     * @param integer $timeout The amount of time in seconds the task is allowed to
+     *                         live up to a maximum of 2 weeks.
+     * @param integer $priority Override priority for the Task.
+     * @param string $taskChannel When MultiTasking is enabled specify the type of
+     *                            the task by passing either TaskChannel Unique
+     *                            Name or Task Channel Sid.
+     * @param string $workflowSid The WorkflowSid for the Workflow that you would
+     *                            like to handle routing for this Task.
+     * @param string $attributes Url-encoded JSON string describing the attributes
+     *                           of this task.
      */
     public function __construct($timeout = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE, $workflowSid = Values::NONE, $attributes = Values::NONE) {
         $this->options['timeout'] = $timeout;
@@ -297,9 +361,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The timeout
+     * The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks. Defaults to 24 hours. On timeout, `task.canceled` event will fire with description "Task TTL Exceeded".
      * 
-     * @param integer $timeout The timeout
+     * @param integer $timeout The amount of time in seconds the task is allowed to
+     *                         live up to a maximum of 2 weeks.
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -308,9 +373,9 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The priority
+     * Override priority for the Task. When supplied, the Task will take on the given priority unless it matches a Workflow Target with a Priority set. When not supplied, the Task will take on the priority of the matching Workflow Target.
      * 
-     * @param integer $priority The priority
+     * @param integer $priority Override priority for the Task.
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -319,9 +384,11 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The task_channel
+     * When MultiTasking is enabled specify the type of the task by passing either TaskChannel Unique Name or Task Channel Sid. Default value is "default"
      * 
-     * @param string $taskChannel The task_channel
+     * @param string $taskChannel When MultiTasking is enabled specify the type of
+     *                            the task by passing either TaskChannel Unique
+     *                            Name or Task Channel Sid.
      * @return $this Fluent Builder
      */
     public function setTaskChannel($taskChannel) {
@@ -330,9 +397,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The workflow_sid
+     * The WorkflowSid for the Workflow that you would like to handle routing for this Task. If there is only one Workflow defined for the Workspace that you are posting a task to, then this is an optional parameter, and that single workflow will be used.
      * 
-     * @param string $workflowSid The workflow_sid
+     * @param string $workflowSid The WorkflowSid for the Workflow that you would
+     *                            like to handle routing for this Task.
      * @return $this Fluent Builder
      */
     public function setWorkflowSid($workflowSid) {
@@ -341,9 +409,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The attributes
+     * Url-encoded JSON string describing the attributes of this task. This data will be passed back to the Workflow's AssignmentCallbackURL when the Task is assigned to a Worker. An example task: `{ "task_type": "call", "twilio_call_sid": "CAxxx", "customer_ticket_number": "12345" }`
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes Url-encoded JSON string describing the attributes
+     *                           of this task.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {

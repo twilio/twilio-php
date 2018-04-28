@@ -129,7 +129,7 @@ class LocalList extends ListResource {
     /**
      * Create a new LocalInstance
      * 
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number you want to purchase.
      * @param array|Options $options Optional Arguments
      * @return LocalInstance Newly created LocalInstance
      */

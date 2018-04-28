@@ -27,7 +27,8 @@ class WorkerList extends ListResource {
      * Construct the WorkerList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The ID of the Workflow this worker is associated
+     *                             with
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
      */
     public function __construct(Version $version, $workspaceSid) {
@@ -139,7 +140,8 @@ class WorkerList extends ListResource {
     /**
      * Create a new WorkerInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName String representing user-friendly name for the
+     *                             Worker.
      * @param array|Options $options Optional Arguments
      * @return WorkerInstance Newly created WorkerInstance
      */

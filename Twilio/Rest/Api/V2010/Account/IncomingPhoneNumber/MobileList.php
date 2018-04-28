@@ -129,7 +129,7 @@ class MobileList extends ListResource {
     /**
      * Create a new MobileInstance
      * 
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number you want to purchase.
      * @param array|Options $options Optional Arguments
      * @return MobileInstance Newly created MobileInstance
      */

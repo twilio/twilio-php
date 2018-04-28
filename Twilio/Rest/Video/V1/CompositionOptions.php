@@ -28,21 +28,19 @@ abstract class CompositionOptions {
     }
 
     /**
+     * @param string $roomSid The room_sid
+     * @param array $videoLayout The video_layout
      * @param string $audioSources The audio_sources
-     * @param string $videoSources The video_sources
-     * @param string $videoLayout The video_layout
+     * @param string $audioSourcesExcluded The audio_sources_excluded
      * @param string $resolution The resolution
      * @param string $format The format
-     * @param integer $desiredBitrate The desired_bitrate
-     * @param integer $desiredMaxDuration The desired_max_duration
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param boolean $trim The trim
-     * @param boolean $reuse The reuse
      * @return CreateCompositionOptions Options builder
      */
-    public static function create($audioSources = Values::NONE, $videoSources = Values::NONE, $videoLayout = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $desiredBitrate = Values::NONE, $desiredMaxDuration = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE, $reuse = Values::NONE) {
-        return new CreateCompositionOptions($audioSources, $videoSources, $videoLayout, $resolution, $format, $desiredBitrate, $desiredMaxDuration, $statusCallback, $statusCallbackMethod, $trim, $reuse);
+    public static function create($roomSid = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
+        return new CreateCompositionOptions($roomSid, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 }
 
@@ -122,30 +120,48 @@ class ReadCompositionOptions extends Options {
 
 class CreateCompositionOptions extends Options {
     /**
+     * @param string $roomSid The room_sid
+     * @param array $videoLayout The video_layout
      * @param string $audioSources The audio_sources
-     * @param string $videoSources The video_sources
-     * @param string $videoLayout The video_layout
+     * @param string $audioSourcesExcluded The audio_sources_excluded
      * @param string $resolution The resolution
      * @param string $format The format
-     * @param integer $desiredBitrate The desired_bitrate
-     * @param integer $desiredMaxDuration The desired_max_duration
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param boolean $trim The trim
-     * @param boolean $reuse The reuse
      */
-    public function __construct($audioSources = Values::NONE, $videoSources = Values::NONE, $videoLayout = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $desiredBitrate = Values::NONE, $desiredMaxDuration = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE, $reuse = Values::NONE) {
-        $this->options['audioSources'] = $audioSources;
-        $this->options['videoSources'] = $videoSources;
+    public function __construct($roomSid = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
+        $this->options['roomSid'] = $roomSid;
         $this->options['videoLayout'] = $videoLayout;
+        $this->options['audioSources'] = $audioSources;
+        $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         $this->options['resolution'] = $resolution;
         $this->options['format'] = $format;
-        $this->options['desiredBitrate'] = $desiredBitrate;
-        $this->options['desiredMaxDuration'] = $desiredMaxDuration;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['trim'] = $trim;
-        $this->options['reuse'] = $reuse;
+    }
+
+    /**
+     * The room_sid
+     * 
+     * @param string $roomSid The room_sid
+     * @return $this Fluent Builder
+     */
+    public function setRoomSid($roomSid) {
+        $this->options['roomSid'] = $roomSid;
+        return $this;
+    }
+
+    /**
+     * The video_layout
+     * 
+     * @param array $videoLayout The video_layout
+     * @return $this Fluent Builder
+     */
+    public function setVideoLayout($videoLayout) {
+        $this->options['videoLayout'] = $videoLayout;
+        return $this;
     }
 
     /**
@@ -160,24 +176,13 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * The video_sources
+     * The audio_sources_excluded
      * 
-     * @param string $videoSources The video_sources
+     * @param string $audioSourcesExcluded The audio_sources_excluded
      * @return $this Fluent Builder
      */
-    public function setVideoSources($videoSources) {
-        $this->options['videoSources'] = $videoSources;
-        return $this;
-    }
-
-    /**
-     * The video_layout
-     * 
-     * @param string $videoLayout The video_layout
-     * @return $this Fluent Builder
-     */
-    public function setVideoLayout($videoLayout) {
-        $this->options['videoLayout'] = $videoLayout;
+    public function setAudioSourcesExcluded($audioSourcesExcluded) {
+        $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
         return $this;
     }
 
@@ -200,28 +205,6 @@ class CreateCompositionOptions extends Options {
      */
     public function setFormat($format) {
         $this->options['format'] = $format;
-        return $this;
-    }
-
-    /**
-     * The desired_bitrate
-     * 
-     * @param integer $desiredBitrate The desired_bitrate
-     * @return $this Fluent Builder
-     */
-    public function setDesiredBitrate($desiredBitrate) {
-        $this->options['desiredBitrate'] = $desiredBitrate;
-        return $this;
-    }
-
-    /**
-     * The desired_max_duration
-     * 
-     * @param integer $desiredMaxDuration The desired_max_duration
-     * @return $this Fluent Builder
-     */
-    public function setDesiredMaxDuration($desiredMaxDuration) {
-        $this->options['desiredMaxDuration'] = $desiredMaxDuration;
         return $this;
     }
 
@@ -255,17 +238,6 @@ class CreateCompositionOptions extends Options {
      */
     public function setTrim($trim) {
         $this->options['trim'] = $trim;
-        return $this;
-    }
-
-    /**
-     * The reuse
-     * 
-     * @param boolean $reuse The reuse
-     * @return $this Fluent Builder
-     */
-    public function setReuse($reuse) {
-        $this->options['reuse'] = $reuse;
         return $this;
     }
 

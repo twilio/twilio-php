@@ -14,11 +14,15 @@ use Twilio\Values;
 
 abstract class WorkflowStatisticsOptions {
     /**
-     * @param integer $minutes The minutes
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
-     * @param string $taskChannel The task_channel
-     * @param string $splitByWaitTime The split_by_wait_time
+     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     *                         the past.
+     * @param \DateTime $startDate Filter cumulative statistics by a start date.
+     * @param \DateTime $endDate Filter cumulative statistics by an end date.
+     * @param string $taskChannel Filter real-time and cumulative statistics by
+     *                            TaskChannel.
+     * @param string $splitByWaitTime A comma separated values for viewing splits
+     *                                of tasks canceled and accepted above the
+     *                                given threshold in seconds.
      * @return FetchWorkflowStatisticsOptions Options builder
      */
     public static function fetch($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskChannel = Values::NONE, $splitByWaitTime = Values::NONE) {
@@ -28,11 +32,15 @@ abstract class WorkflowStatisticsOptions {
 
 class FetchWorkflowStatisticsOptions extends Options {
     /**
-     * @param integer $minutes The minutes
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
-     * @param string $taskChannel The task_channel
-     * @param string $splitByWaitTime The split_by_wait_time
+     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     *                         the past.
+     * @param \DateTime $startDate Filter cumulative statistics by a start date.
+     * @param \DateTime $endDate Filter cumulative statistics by an end date.
+     * @param string $taskChannel Filter real-time and cumulative statistics by
+     *                            TaskChannel.
+     * @param string $splitByWaitTime A comma separated values for viewing splits
+     *                                of tasks canceled and accepted above the
+     *                                given threshold in seconds.
      */
     public function __construct($minutes = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $taskChannel = Values::NONE, $splitByWaitTime = Values::NONE) {
         $this->options['minutes'] = $minutes;
@@ -43,9 +51,10 @@ class FetchWorkflowStatisticsOptions extends Options {
     }
 
     /**
-     * The minutes
+     * Filter cumulative statistics by up to ‘x’ minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
      * 
-     * @param integer $minutes The minutes
+     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     *                         the past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -54,9 +63,9 @@ class FetchWorkflowStatisticsOptions extends Options {
     }
 
     /**
-     * The start_date
+     * Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp
      * 
-     * @param \DateTime $startDate The start_date
+     * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -65,9 +74,9 @@ class FetchWorkflowStatisticsOptions extends Options {
     }
 
     /**
-     * The end_date
+     * Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp
      * 
-     * @param \DateTime $endDate The end_date
+     * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
@@ -76,9 +85,10 @@ class FetchWorkflowStatisticsOptions extends Options {
     }
 
     /**
-     * The task_channel
+     * Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
      * 
-     * @param string $taskChannel The task_channel
+     * @param string $taskChannel Filter real-time and cumulative statistics by
+     *                            TaskChannel.
      * @return $this Fluent Builder
      */
     public function setTaskChannel($taskChannel) {
@@ -87,9 +97,11 @@ class FetchWorkflowStatisticsOptions extends Options {
     }
 
     /**
-     * The split_by_wait_time
+     * A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: "5,30" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.
      * 
-     * @param string $splitByWaitTime The split_by_wait_time
+     * @param string $splitByWaitTime A comma separated values for viewing splits
+     *                                of tasks canceled and accepted above the
+     *                                given threshold in seconds.
      * @return $this Fluent Builder
      */
     public function setSplitByWaitTime($splitByWaitTime) {

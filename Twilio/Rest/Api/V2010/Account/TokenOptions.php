@@ -31,7 +31,7 @@ class CreateTokenOptions extends Options {
     }
 
     /**
-     * The duration in seconds for which the generated credentials are valid
+     * The duration in seconds for which the generated credentials are valid, the default value is 86400 (24 hours).
      * 
      * @param integer $ttl The duration in seconds the credentials are valid
      * @return $this Fluent Builder

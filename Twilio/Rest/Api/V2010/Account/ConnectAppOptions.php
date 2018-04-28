@@ -83,7 +83,7 @@ class UpdateConnectAppOptions extends Options {
     }
 
     /**
-     * The HTTP method to be used when making a request to the `DeauthorizeCallbackUrl`.
+     * The HTTP method to be used when making a request to the `DeauthorizeCallbackUrl`. Either `GET` or `POST`.
      * 
      * @param string $deauthorizeCallbackMethod HTTP method Twilio WIll use making
      *                                          requests to the url
@@ -118,7 +118,7 @@ class UpdateConnectAppOptions extends Options {
     }
 
     /**
-     * A human readable name for the Connect App.
+     * A human readable description of the Connect App, with maximum length 64 characters.
      * 
      * @param string $friendlyName A human readable name for the Connect App.
      * @return $this Fluent Builder
@@ -140,7 +140,7 @@ class UpdateConnectAppOptions extends Options {
     }
 
     /**
-     * The set of permissions that your ConnectApp requests.
+     * A comma-separated list of permssions you will request from users of this ConnectApp.  Valid permssions are `get-all` or `post-all`.
      * 
      * @param string $permissions The set of permissions that your ConnectApp
      *                            requests.

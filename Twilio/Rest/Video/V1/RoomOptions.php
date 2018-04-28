@@ -14,16 +14,19 @@ use Twilio\Values;
 
 abstract class RoomOptions {
     /**
-     * @param boolean $enableTurn The enable_turn
-     * @param string $type The type
-     * @param string $uniqueName The unique_name
-     * @param string $statusCallback The status_callback
-     * @param string $statusCallbackMethod The status_callback_method
-     * @param integer $maxParticipants The max_participants
-     * @param boolean $recordParticipantsOnConnect The
-     *                                             record_participants_on_connect
-     * @param string $videoCodecs The video_codecs
-     * @param string $mediaRegion The media_region
+     * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
+     * @param string $type Type of room, either peer-to-peer or group.
+     * @param string $uniqueName Name of the Room.
+     * @param string $statusCallback A URL that Twilio sends asynchronous webhook
+     *                               requests to on every room event.
+     * @param string $statusCallbackMethod HTTP method Twilio should use when
+     *                                     requesting the above URL.
+     * @param integer $maxParticipants Maximum number of Participants in the Room.
+     * @param boolean $recordParticipantsOnConnect Start Participant recording when
+     *                                             connected.
+     * @param string $videoCodecs An array of video codecs supported when
+     *                            publishing a Track in the Room.
+     * @param string $mediaRegion Region for the media server in Group Rooms.
      * @return CreateRoomOptions Options builder
      */
     public static function create($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE, $videoCodecs = Values::NONE, $mediaRegion = Values::NONE) {
@@ -31,10 +34,12 @@ abstract class RoomOptions {
     }
 
     /**
-     * @param string $status The status
-     * @param string $uniqueName The unique_name
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $status Only show Rooms with the given status.
+     * @param string $uniqueName Only show Rooms with the provided Name.
+     * @param \DateTime $dateCreatedAfter Only show Rooms that started on or after
+     *                                    this date, given as YYYY-MM-DD.
+     * @param \DateTime $dateCreatedBefore Only show Rooms that started before this
+     *                                     date, given as YYYY-MM-DD.
      * @return ReadRoomOptions Options builder
      */
     public static function read($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
@@ -44,16 +49,19 @@ abstract class RoomOptions {
 
 class CreateRoomOptions extends Options {
     /**
-     * @param boolean $enableTurn The enable_turn
-     * @param string $type The type
-     * @param string $uniqueName The unique_name
-     * @param string $statusCallback The status_callback
-     * @param string $statusCallbackMethod The status_callback_method
-     * @param integer $maxParticipants The max_participants
-     * @param boolean $recordParticipantsOnConnect The
-     *                                             record_participants_on_connect
-     * @param string $videoCodecs The video_codecs
-     * @param string $mediaRegion The media_region
+     * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
+     * @param string $type Type of room, either peer-to-peer or group.
+     * @param string $uniqueName Name of the Room.
+     * @param string $statusCallback A URL that Twilio sends asynchronous webhook
+     *                               requests to on every room event.
+     * @param string $statusCallbackMethod HTTP method Twilio should use when
+     *                                     requesting the above URL.
+     * @param integer $maxParticipants Maximum number of Participants in the Room.
+     * @param boolean $recordParticipantsOnConnect Start Participant recording when
+     *                                             connected.
+     * @param string $videoCodecs An array of video codecs supported when
+     *                            publishing a Track in the Room.
+     * @param string $mediaRegion Region for the media server in Group Rooms.
      */
     public function __construct($enableTurn = Values::NONE, $type = Values::NONE, $uniqueName = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $maxParticipants = Values::NONE, $recordParticipantsOnConnect = Values::NONE, $videoCodecs = Values::NONE, $mediaRegion = Values::NONE) {
         $this->options['enableTurn'] = $enableTurn;
@@ -68,9 +76,9 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The enable_turn
+     * Use Twilio Network Traversal for TURN service. Defaults to true. Only applicable to Rooms with type `peer-to-peer`.
      * 
-     * @param boolean $enableTurn The enable_turn
+     * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
      * @return $this Fluent Builder
      */
     public function setEnableTurn($enableTurn) {
@@ -79,9 +87,9 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The type
+     * Type of room, either `peer-to-peer` or `group`. Will be `group` by default.
      * 
-     * @param string $type The type
+     * @param string $type Type of room, either peer-to-peer or group.
      * @return $this Fluent Builder
      */
     public function setType($type) {
@@ -90,9 +98,9 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * Name of the Room.  This is unique for `in-progress` rooms. If not provided, Room name will be set to the Room Sid.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName Name of the Room.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -101,9 +109,10 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The status_callback
+     * A URL that Twilio sends asynchronous webhook requests to on every room event. If not provided, status callback events will not be dispatched.
      * 
-     * @param string $statusCallback The status_callback
+     * @param string $statusCallback A URL that Twilio sends asynchronous webhook
+     *                               requests to on every room event.
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -112,9 +121,10 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The status_callback_method
+     * HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.
      * 
-     * @param string $statusCallbackMethod The status_callback_method
+     * @param string $statusCallbackMethod HTTP method Twilio should use when
+     *                                     requesting the above URL.
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
@@ -123,9 +133,9 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The max_participants
+     * Maximum number of Participants in the Room. peer-to-peer rooms can have a maximum of 10 Participants.
      * 
-     * @param integer $maxParticipants The max_participants
+     * @param integer $maxParticipants Maximum number of Participants in the Room.
      * @return $this Fluent Builder
      */
     public function setMaxParticipants($maxParticipants) {
@@ -134,10 +144,10 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The record_participants_on_connect
+     * Start Participant recording when connected. ***This feature is not available in `peer-to-peer` rooms.***
      * 
-     * @param boolean $recordParticipantsOnConnect The
-     *                                             record_participants_on_connect
+     * @param boolean $recordParticipantsOnConnect Start Participant recording when
+     *                                             connected.
      * @return $this Fluent Builder
      */
     public function setRecordParticipantsOnConnect($recordParticipantsOnConnect) {
@@ -146,9 +156,10 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The video_codecs
+     * An array of video codecs supported when publishing a Track in the Room.  `VP8` and `H264` codecs are supported.  ***This feature is not available in `peer-to-peer` rooms***
      * 
-     * @param string $videoCodecs The video_codecs
+     * @param string $videoCodecs An array of video codecs supported when
+     *                            publishing a Track in the Room.
      * @return $this Fluent Builder
      */
     public function setVideoCodecs($videoCodecs) {
@@ -157,9 +168,9 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * The media_region
+     * Region for the media server in Group Rooms.  Default region is `us1`.  See the list of [available Media Regions.](https://www.twilio.com/docs/api/video/ip-address-whitelisting#group-rooms-media-servers)***This feature is not available in `peer-to-peer` rooms.***
      * 
-     * @param string $mediaRegion The media_region
+     * @param string $mediaRegion Region for the media server in Group Rooms.
      * @return $this Fluent Builder
      */
     public function setMediaRegion($mediaRegion) {
@@ -185,10 +196,12 @@ class CreateRoomOptions extends Options {
 
 class ReadRoomOptions extends Options {
     /**
-     * @param string $status The status
-     * @param string $uniqueName The unique_name
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $status Only show Rooms with the given status.
+     * @param string $uniqueName Only show Rooms with the provided Name.
+     * @param \DateTime $dateCreatedAfter Only show Rooms that started on or after
+     *                                    this date, given as YYYY-MM-DD.
+     * @param \DateTime $dateCreatedBefore Only show Rooms that started before this
+     *                                     date, given as YYYY-MM-DD.
      */
     public function __construct($status = Values::NONE, $uniqueName = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
         $this->options['status'] = $status;
@@ -198,9 +211,9 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The status
+     * Only show Rooms with the given status.
      * 
-     * @param string $status The status
+     * @param string $status Only show Rooms with the given status.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -209,9 +222,9 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * Only show Rooms with the provided Name.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName Only show Rooms with the provided Name.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -220,9 +233,10 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The date_created_after
+     * Only show Rooms that started on or after this date, given as `YYYY-MM-DD`.
      * 
-     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedAfter Only show Rooms that started on or after
+     *                                    this date, given as YYYY-MM-DD.
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -231,9 +245,10 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * The date_created_before
+     * Only show Rooms that started before this date, given as `YYYY-MM-DD`.
      * 
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param \DateTime $dateCreatedBefore Only show Rooms that started before this
+     *                                     date, given as YYYY-MM-DD.
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {

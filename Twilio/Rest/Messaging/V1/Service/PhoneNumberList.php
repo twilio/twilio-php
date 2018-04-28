@@ -21,7 +21,7 @@ class PhoneNumberList extends ListResource {
      * Construct the PhoneNumberList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The 34 character unique sid of the Service.
      * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -36,7 +36,8 @@ class PhoneNumberList extends ListResource {
     /**
      * Create a new PhoneNumberInstance
      * 
-     * @param string $phoneNumberSid The phone_number_sid
+     * @param string $phoneNumberSid Phone Number SID for the Phone Number being
+     *                               added to the Service.
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
      */
     public function create($phoneNumberSid) {

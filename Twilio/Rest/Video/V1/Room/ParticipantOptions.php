@@ -14,8 +14,9 @@ use Twilio\Values;
 
 abstract class ParticipantOptions {
     /**
-     * @param string $status The status
-     * @param string $identity The identity
+     * @param string $status Only show Participants with the given Status.
+     * @param string $identity Only show Participants that connected to the Room
+     *                         using the provided Identity.
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @param \DateTime $dateCreatedBefore The date_created_before
      * @return ReadParticipantOptions Options builder
@@ -25,7 +26,7 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param string $status The status
+     * @param string $status Set to disconnected to remove participant.
      * @return UpdateParticipantOptions Options builder
      */
     public static function update($status = Values::NONE) {
@@ -35,8 +36,9 @@ abstract class ParticipantOptions {
 
 class ReadParticipantOptions extends Options {
     /**
-     * @param string $status The status
-     * @param string $identity The identity
+     * @param string $status Only show Participants with the given Status.
+     * @param string $identity Only show Participants that connected to the Room
+     *                         using the provided Identity.
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @param \DateTime $dateCreatedBefore The date_created_before
      */
@@ -48,9 +50,9 @@ class ReadParticipantOptions extends Options {
     }
 
     /**
-     * The status
+     * Only show Participants with the given Status.  For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.
      * 
-     * @param string $status The status
+     * @param string $status Only show Participants with the given Status.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -59,9 +61,10 @@ class ReadParticipantOptions extends Options {
     }
 
     /**
-     * The identity
+     * Only show Participants that connected to the Room using the provided Identity.
      * 
-     * @param string $identity The identity
+     * @param string $identity Only show Participants that connected to the Room
+     *                         using the provided Identity.
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -109,16 +112,16 @@ class ReadParticipantOptions extends Options {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param string $status The status
+     * @param string $status Set to disconnected to remove participant.
      */
     public function __construct($status = Values::NONE) {
         $this->options['status'] = $status;
     }
 
     /**
-     * The status
+     * Set to `disconnected` to remove participant.
      * 
-     * @param string $status The status
+     * @param string $status Set to disconnected to remove participant.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {

@@ -37,8 +37,10 @@ class WorkerChannelInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workerSid The worker_sid
+     * @param string $workspaceSid The unique ID of the Workspace that this
+     *                             WorkerChannel belongs to.
+     * @param string $workerSid The unique ID of the Worker that this WorkerChannel
+     *                          belongs to.
      * @param string $sid The sid
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance 
      */

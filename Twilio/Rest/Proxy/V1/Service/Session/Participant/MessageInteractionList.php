@@ -161,8 +161,7 @@ class MessageInteractionList extends ListResource {
     /**
      * Constructs a MessageInteractionContext
      * 
-     * @param string $sid A string that uniquely identifies this Message
-     *                    Interaction.
+     * @param string $sid The sid
      * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext 
      */
     public function getContext($sid) {

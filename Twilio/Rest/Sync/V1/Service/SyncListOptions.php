@@ -17,8 +17,9 @@ use Twilio\Values;
  */
 abstract class SyncListOptions {
     /**
-     * @param string $uniqueName The unique_name
-     * @param integer $ttl The ttl
+     * @param string $uniqueName Human-readable name for this list
+     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
+     *                     expiration.
      * @return CreateSyncListOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
@@ -36,8 +37,9 @@ abstract class SyncListOptions {
 
 class CreateSyncListOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
-     * @param integer $ttl The ttl
+     * @param string $uniqueName Human-readable name for this list
+     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
+     *                     expiration.
      */
     public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -45,9 +47,9 @@ class CreateSyncListOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * (optional) Human-readable name for this list
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName Human-readable name for this list
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -56,9 +58,10 @@ class CreateSyncListOptions extends Options {
     }
 
     /**
-     * The ttl
+     * (optional) Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

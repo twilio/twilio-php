@@ -40,7 +40,7 @@ class UpdateOutgoingCallerIdOptions extends Options {
     }
 
     /**
-     * A human readable description of the caller ID
+     * A human readable description of a Caller ID, with maximum length of 64 characters. Defaults to a nicely formatted version of the phone number.
      * 
      * @param string $friendlyName A human readable description of the caller ID
      * @return $this Fluent Builder
@@ -77,7 +77,7 @@ class ReadOutgoingCallerIdOptions extends Options {
     }
 
     /**
-     * Only show the caller id resource that exactly matches this phone number
+     * Only show the caller id resource that exactly matches this phone number.
      * 
      * @param string $phoneNumber Filter by phone number
      * @return $this Fluent Builder
@@ -88,7 +88,7 @@ class ReadOutgoingCallerIdOptions extends Options {
     }
 
     /**
-     * Only show the caller id resource that exactly matches this name
+     * Only show the caller id resource that exactly matches this name.
      * 
      * @param string $friendlyName Filter by friendly name
      * @return $this Fluent Builder

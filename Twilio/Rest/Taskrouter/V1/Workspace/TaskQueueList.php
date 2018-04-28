@@ -26,7 +26,7 @@ class TaskQueueList extends ListResource {
      * Construct the TaskQueueList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The ID of the Workspace that owns this TaskQueue
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList 
      */
     public function __construct(Version $version, $workspaceSid) {
@@ -134,9 +134,11 @@ class TaskQueueList extends ListResource {
     /**
      * Create a new TaskQueueInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $reservationActivitySid The reservation_activity_sid
-     * @param string $assignmentActivitySid The assignment_activity_sid
+     * @param string $friendlyName Human readable description of this TaskQueue
+     * @param string $reservationActivitySid ActivitySID to assign workers once a
+     *                                       task is reserved for them
+     * @param string $assignmentActivitySid ActivitySID to assign workers once a
+     *                                      task is assigned for them
      * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Newly created TaskQueueInstance
      */

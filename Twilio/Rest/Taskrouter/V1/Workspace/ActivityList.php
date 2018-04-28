@@ -20,7 +20,8 @@ class ActivityList extends ListResource {
      * Construct the ActivityList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The unique ID of the Workspace that this
+     *                             Activity belongs to.
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList 
      */
     public function __construct(Version $version, $workspaceSid) {
@@ -127,7 +128,8 @@ class ActivityList extends ListResource {
     /**
      * Create a new ActivityInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Activity, such as
+     *                             'On Call', 'Break', 'Email', etc.
      * @param array|Options $options Optional Arguments
      * @return ActivityInstance Newly created ActivityInstance
      */

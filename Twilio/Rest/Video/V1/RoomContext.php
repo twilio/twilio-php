@@ -62,7 +62,7 @@ class RoomContext extends InstanceContext {
     /**
      * Update the RoomInstance
      * 
-     * @param string $status The status
+     * @param string $status Set to completed to end the Room.
      * @return RoomInstance Updated RoomInstance
      */
     public function update($status) {

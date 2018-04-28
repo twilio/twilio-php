@@ -14,9 +14,9 @@ use Twilio\Values;
 
 abstract class AlertOptions {
     /**
-     * @param string $logLevel The log_level
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
+     * @param string $logLevel Only show alerts for this log-level.
+     * @param \DateTime $startDate Only show Alerts on or after this date.
+     * @param \DateTime $endDate Only show Alerts on or before this date.
      * @return ReadAlertOptions Options builder
      */
     public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -26,9 +26,9 @@ abstract class AlertOptions {
 
 class ReadAlertOptions extends Options {
     /**
-     * @param string $logLevel The log_level
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
+     * @param string $logLevel Only show alerts for this log-level.
+     * @param \DateTime $startDate Only show Alerts on or after this date.
+     * @param \DateTime $endDate Only show Alerts on or before this date.
      */
     public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['logLevel'] = $logLevel;
@@ -37,9 +37,9 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * The log_level
+     * Only show alerts for this log-level.  One of 'error', 'warning', 'notice', or 'debug'.
      * 
-     * @param string $logLevel The log_level
+     * @param string $logLevel Only show alerts for this log-level.
      * @return $this Fluent Builder
      */
     public function setLogLevel($logLevel) {
@@ -48,9 +48,9 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * The start_date
+     * Only show Alerts on or after this date.  Useful in combination with `EndDate` to define a date-range of Alerts.  Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter. Queries for Alerts older than 30 days are not supported.
      * 
-     * @param \DateTime $startDate The start_date
+     * @param \DateTime $startDate Only show Alerts on or after this date.
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -59,9 +59,9 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * The end_date
+     * Only show Alerts on or before this date.  Useful in combination with `StartDate` to define a date-range of Alerts.  Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter. Queries for Alerts older than 30 days are not supported.
      * 
-     * @param \DateTime $endDate The end_date
+     * @param \DateTime $endDate Only show Alerts on or before this date.
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

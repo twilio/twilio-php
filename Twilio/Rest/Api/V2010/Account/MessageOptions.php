@@ -15,14 +15,24 @@ use Twilio\Values;
 abstract class MessageOptions {
     /**
      * @param string $from The phone number that initiated the message
-     * @param string $messagingServiceSid The messaging_service_sid
-     * @param string $body The body
-     * @param string $mediaUrl The media_url
+     * @param string $messagingServiceSid The 34 character unique id of the
+     *                                    Messaging Service you want to associate
+     *                                    with this Message.
+     * @param string $body The text of the message you want to send, limited to
+     *                     1600 characters.
+     * @param string $mediaUrl The URL of the media you wish to send out with the
+     *                         message.
      * @param string $statusCallback URL Twilio will request when the status changes
      * @param string $applicationSid The application to use for callbacks
-     * @param string $maxPrice The max_price
-     * @param boolean $provideFeedback The provide_feedback
-     * @param integer $validityPeriod The validity_period
+     * @param string $maxPrice The total maximum price up to the fourth decimal in
+     *                         US dollars acceptable for the message to be
+     *                         delivered.
+     * @param boolean $provideFeedback Set this value to true if you are sending
+     *                                 messages that have a trackable user action
+     *                                 and you intend to confirm delivery of the
+     *                                 message using the Message Feedback API.
+     * @param integer $validityPeriod The number of seconds that the message can
+     *                                remain in a Twilio queue.
      * @param string $maxRate The max_rate
      * @param boolean $forceDelivery The force_delivery
      * @param string $providerSid The provider_sid
@@ -51,14 +61,24 @@ abstract class MessageOptions {
 class CreateMessageOptions extends Options {
     /**
      * @param string $from The phone number that initiated the message
-     * @param string $messagingServiceSid The messaging_service_sid
-     * @param string $body The body
-     * @param string $mediaUrl The media_url
+     * @param string $messagingServiceSid The 34 character unique id of the
+     *                                    Messaging Service you want to associate
+     *                                    with this Message.
+     * @param string $body The text of the message you want to send, limited to
+     *                     1600 characters.
+     * @param string $mediaUrl The URL of the media you wish to send out with the
+     *                         message.
      * @param string $statusCallback URL Twilio will request when the status changes
      * @param string $applicationSid The application to use for callbacks
-     * @param string $maxPrice The max_price
-     * @param boolean $provideFeedback The provide_feedback
-     * @param integer $validityPeriod The validity_period
+     * @param string $maxPrice The total maximum price up to the fourth decimal in
+     *                         US dollars acceptable for the message to be
+     *                         delivered.
+     * @param boolean $provideFeedback Set this value to true if you are sending
+     *                                 messages that have a trackable user action
+     *                                 and you intend to confirm delivery of the
+     *                                 message using the Message Feedback API.
+     * @param integer $validityPeriod The number of seconds that the message can
+     *                                remain in a Twilio queue.
      * @param string $maxRate The max_rate
      * @param boolean $forceDelivery The force_delivery
      * @param string $providerSid The provider_sid
@@ -85,7 +105,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * A Twilio phone number or alphanumeric sender ID enabled for the type of message you wish to send.
+     * A Twilio phone number (in [E.164](http://en.wikipedia.org/wiki/E.164) format),  [alphanumeric sender ID](https://www.twilio.com/docs/api/messaging/send-messages#alpha-sender-id) or a [Channel Endpoint address](https://www.twilio.com/docs/api/channels#channel-addresses) enabled for the type of message you wish to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-codes) purchased from Twilio work here. You cannot (for example) spoof messages from your own cell phone number.
      * 
      * @param string $from The phone number that initiated the message
      * @return $this Fluent Builder
@@ -96,9 +116,11 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The messaging_service_sid
+     * The 34 character unique id of the [Messaging Service](https://www.twilio.com/docs/api/messaging/send-messages#messaging-services) you want to associate with this Message. Set this parameter to use the Messaging Service Settings and [Copilot Features](https://www.twilio.com/docs/api/messaging/send-messages-copilot) you have configured. When only this parameter is set, Twilio will use your enabled Copilot Features to select the From phone number for delivery.
      * 
-     * @param string $messagingServiceSid The messaging_service_sid
+     * @param string $messagingServiceSid The 34 character unique id of the
+     *                                    Messaging Service you want to associate
+     *                                    with this Message.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid($messagingServiceSid) {
@@ -107,9 +129,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The body
+     * The text of the message you want to send, limited to 1600 characters.
      * 
-     * @param string $body The body
+     * @param string $body The text of the message you want to send, limited to
+     *                     1600 characters.
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -118,9 +141,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The media_url
+     * The URL of the media you wish to send out with the message. `gif` , `png` and `jpeg` content is currently supported and will be formatted correctly on the recipient's device. [Other types](https://www.twilio.com/docs/api/messaging/accepted-mime-types) are also accepted by the API. The media size limit is 5MB. If you wish to send more than one image in the message body, please provide multiple MediaUrls values in the POST request. You may include up to 10 MediaUrls per message.
      * 
-     * @param string $mediaUrl The media_url
+     * @param string $mediaUrl The URL of the media you wish to send out with the
+     *                         message.
      * @return $this Fluent Builder
      */
     public function setMediaUrl($mediaUrl) {
@@ -129,7 +153,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will POST to each time your message status changes
+     * A URL where Twilio will POST each time your message status changes to one of the following: `queued`, `failed`, `sent`, `delivered`, or `undelivered`. Twilio will POST the `MessageSid` along with the other [standard request parameters](https://www.twilio.com/docs/api/twiml/sms/twilio_request#request-parameters) as well as `MessageStatus` and `ErrorCode`. If this parameter passed in addition to a `MessagingServiceSid`, Twilio will override the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/api/messaging/send-messages#messaging-services). URLs must contain a valid hostname (underscores are not allowed).
      * 
      * @param string $statusCallback URL Twilio will request when the status changes
      * @return $this Fluent Builder
@@ -140,7 +164,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * Twilio the POST MessageSid as well as MessageStatus to the URL in the MessageStatusCallback property of this Application
+     * Twilio will POST `MessageSid` as well as `MessageStatus=sent` or `MessageStatus=failed` to the URL in the `MessageStatusCallback` property of this [Application](https://www.twilio.com/docs/api/rest/applications). If the `StatusCallback` parameter above is also passed, the Application's `MessageStatusCallback` parameter will take precedence.
      * 
      * @param string $applicationSid The application to use for callbacks
      * @return $this Fluent Builder
@@ -151,9 +175,11 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The max_price
+     * The total maximum price up to the fourth decimal (0.0001) in US dollars acceptable for the message to be delivered. All messages regardless of the price point will be queued for delivery. A POST request will later be made to your Status Callback URL with a status change of 'Sent' or 'Failed'. When the price of the message is above this value the message will fail and not be sent. When MaxPrice is not set, all prices for the message is accepted.
      * 
-     * @param string $maxPrice The max_price
+     * @param string $maxPrice The total maximum price up to the fourth decimal in
+     *                         US dollars acceptable for the message to be
+     *                         delivered.
      * @return $this Fluent Builder
      */
     public function setMaxPrice($maxPrice) {
@@ -162,9 +188,12 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The provide_feedback
+     * Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/api/messaging/message-feedback). This parameter is set to `false` by default.
      * 
-     * @param boolean $provideFeedback The provide_feedback
+     * @param boolean $provideFeedback Set this value to true if you are sending
+     *                                 messages that have a trackable user action
+     *                                 and you intend to confirm delivery of the
+     *                                 message using the Message Feedback API.
      * @return $this Fluent Builder
      */
     public function setProvideFeedback($provideFeedback) {
@@ -173,9 +202,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The validity_period
+     * The number of seconds that the message can remain in a Twilio queue. After exceeding this time limit, the message will fail and a POST request will later be made to your Status Callback URL. Valid values are between 1 and 14400 seconds (the default). Please note that Twilio cannot guarantee that a message will not be queued by the carrier after they accept the message. We do not recommend setting validity periods of less than 5 seconds.
      * 
-     * @param integer $validityPeriod The validity_period
+     * @param integer $validityPeriod The number of seconds that the message can
+     *                                remain in a Twilio queue.
      * @return $this Fluent Builder
      */
     public function setValidityPeriod($validityPeriod) {
@@ -282,7 +312,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Filter by messages to this number
+     * Only show messages to this phone number.
      * 
      * @param string $to Filter by messages to this number
      * @return $this Fluent Builder
@@ -293,7 +323,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Only show messages from this phone number
+     * Only show messages from this phone number or alphanumeric sender ID.
      * 
      * @param string $from Filter by from number
      * @return $this Fluent Builder
@@ -304,7 +334,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Filter messages sent by this date
+     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent&lt;=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent&gt;=YYYY-MM-DD` for messages sent on or after midnight on a date.
      * 
      * @param string $dateSentBefore Filter by date sent
      * @return $this Fluent Builder
@@ -315,7 +345,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Filter messages sent by this date
+     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent&lt;=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent&gt;=YYYY-MM-DD` for messages sent on or after midnight on a date.
      * 
      * @param string $dateSent Filter by date sent
      * @return $this Fluent Builder
@@ -326,7 +356,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Filter messages sent by this date
+     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent&lt;=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent&gt;=YYYY-MM-DD` for messages sent on or after midnight on a date.
      * 
      * @param string $dateSentAfter Filter by date sent
      * @return $this Fluent Builder

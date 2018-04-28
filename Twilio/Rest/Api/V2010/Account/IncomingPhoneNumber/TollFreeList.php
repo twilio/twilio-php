@@ -129,7 +129,7 @@ class TollFreeList extends ListResource {
     /**
      * Create a new TollFreeInstance
      * 
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number you want to purchase.
      * @param array|Options $options Optional Arguments
      * @return TollFreeInstance Newly created TollFreeInstance
      */

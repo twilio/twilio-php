@@ -21,7 +21,8 @@ class AlphaSenderList extends ListResource {
      * Construct the AlphaSenderList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The 34 character unique sid of the Messaging
+     *                           Service.
      * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -36,7 +37,8 @@ class AlphaSenderList extends ListResource {
     /**
      * Create a new AlphaSenderInstance
      * 
-     * @param string $alphaSender The alpha_sender
+     * @param string $alphaSender An Alphanumeric Sender ID string, up to 11
+     *                            characters.
      * @return AlphaSenderInstance Newly created AlphaSenderInstance
      */
     public function create($alphaSender) {

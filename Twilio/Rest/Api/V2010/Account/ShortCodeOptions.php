@@ -70,7 +70,7 @@ class UpdateShortCodeOptions extends Options {
     }
 
     /**
-     * SMSs to this short code will start a new TwiML session with this API version.
+     * SMSs to this short code will start a new TwiML session with this API version. Either `2010-04-01` or `2008-08-01`.
      * 
      * @param string $apiVersion The API version to use
      * @return $this Fluent Builder
@@ -115,7 +115,7 @@ class UpdateShortCodeOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above URL. Either `GET` or `POST`.
+     * The HTTP method that should be used to request the `SmsFallbackUrl`. Either `GET` or `POST`.
      * 
      * @param string $smsFallbackMethod HTTP method Twilio will use with sms
      *                                  fallback url
@@ -153,7 +153,7 @@ class ReadShortCodeOptions extends Options {
     }
 
     /**
-     * Only show the ShortCode resources with friendly names that exactly match this name
+     * Only show the ShortCode resources with friendly names that exactly match this name.
      * 
      * @param string $friendlyName Filter by friendly name
      * @return $this Fluent Builder
@@ -164,7 +164,7 @@ class ReadShortCodeOptions extends Options {
     }
 
     /**
-     * Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit
+     * Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.
      * 
      * @param string $shortCode Filter by ShortCode
      * @return $this Fluent Builder

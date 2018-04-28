@@ -28,7 +28,7 @@ class SyncStreamContext extends InstanceContext {
      * Initialize the SyncStreamContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid Service Instance SID or unique name.
      * @param string $sid Stream SID or unique name.
      * @return \Twilio\Rest\Sync\V1\Service\SyncStreamContext 
      */

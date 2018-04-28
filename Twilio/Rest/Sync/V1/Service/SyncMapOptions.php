@@ -17,8 +17,9 @@ use Twilio\Values;
  */
 abstract class SyncMapOptions {
     /**
-     * @param string $uniqueName The unique_name
-     * @param integer $ttl The ttl
+     * @param string $uniqueName Human-readable name for this map
+     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
+     *                     expiration.
      * @return CreateSyncMapOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
@@ -26,7 +27,7 @@ abstract class SyncMapOptions {
     }
 
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl New time-to-live of this Map in seconds.
      * @return UpdateSyncMapOptions Options builder
      */
     public static function update($ttl = Values::NONE) {
@@ -36,8 +37,9 @@ abstract class SyncMapOptions {
 
 class CreateSyncMapOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
-     * @param integer $ttl The ttl
+     * @param string $uniqueName Human-readable name for this map
+     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
+     *                     expiration.
      */
     public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -45,9 +47,9 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * (optional) Human-readable name for this map
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName Human-readable name for this map
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -56,9 +58,10 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * The ttl
+     * (optional) Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -84,16 +87,16 @@ class CreateSyncMapOptions extends Options {
 
 class UpdateSyncMapOptions extends Options {
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl New time-to-live of this Map in seconds.
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * The ttl
+     * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl New time-to-live of this Map in seconds.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

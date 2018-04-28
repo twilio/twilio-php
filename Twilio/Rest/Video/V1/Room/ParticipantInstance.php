@@ -39,7 +39,8 @@ class ParticipantInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid The room_sid
+     * @param string $roomSid A system-generated 34-character string that uniquely
+     *                        identifies.
      * @param string $sid The sid
      * @return \Twilio\Rest\Video\V1\Room\ParticipantInstance 
      */

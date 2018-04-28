@@ -14,14 +14,17 @@ use Twilio\Values;
 
 abstract class EventOptions {
     /**
-     * @param \DateTime $endDate The end_date
-     * @param string $eventType The event_type
-     * @param integer $minutes The minutes
-     * @param string $reservationSid The reservation_sid
-     * @param \DateTime $startDate The start_date
-     * @param string $taskQueueSid The task_queue_sid
-     * @param string $taskSid The task_sid
-     * @param string $workerSid The worker_sid
+     * @param \DateTime $endDate Filter events by an end date.
+     * @param string $eventType Filter events by those of a certain event type
+     * @param integer $minutes Filter events by up to ‘x’ minutes in the past.
+     * @param string $reservationSid Filter events by those pertaining to a
+     *                               particular reservation
+     * @param \DateTime $startDate Filter events by a start date.
+     * @param string $taskQueueSid Filter events by those pertaining to a
+     *                             particular queue
+     * @param string $taskSid Filter events by those pertaining to a particular task
+     * @param string $workerSid Filter events by those pertaining to a particular
+     *                          worker
      * @param string $workflowSid The workflow_sid
      * @return ReadEventOptions Options builder
      */
@@ -32,14 +35,17 @@ abstract class EventOptions {
 
 class ReadEventOptions extends Options {
     /**
-     * @param \DateTime $endDate The end_date
-     * @param string $eventType The event_type
-     * @param integer $minutes The minutes
-     * @param string $reservationSid The reservation_sid
-     * @param \DateTime $startDate The start_date
-     * @param string $taskQueueSid The task_queue_sid
-     * @param string $taskSid The task_sid
-     * @param string $workerSid The worker_sid
+     * @param \DateTime $endDate Filter events by an end date.
+     * @param string $eventType Filter events by those of a certain event type
+     * @param integer $minutes Filter events by up to ‘x’ minutes in the past.
+     * @param string $reservationSid Filter events by those pertaining to a
+     *                               particular reservation
+     * @param \DateTime $startDate Filter events by a start date.
+     * @param string $taskQueueSid Filter events by those pertaining to a
+     *                             particular queue
+     * @param string $taskSid Filter events by those pertaining to a particular task
+     * @param string $workerSid Filter events by those pertaining to a particular
+     *                          worker
      * @param string $workflowSid The workflow_sid
      */
     public function __construct($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE) {
@@ -55,9 +61,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The end_date
+     * Filter events by an end date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.
      * 
-     * @param \DateTime $endDate The end_date
+     * @param \DateTime $endDate Filter events by an end date.
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
@@ -66,9 +72,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The event_type
+     * Filter events by those of a certain event type
      * 
-     * @param string $eventType The event_type
+     * @param string $eventType Filter events by those of a certain event type
      * @return $this Fluent Builder
      */
     public function setEventType($eventType) {
@@ -77,9 +83,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The minutes
+     * Filter events by up to ‘x’ minutes in the past. This is helpful for events for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
      * 
-     * @param integer $minutes The minutes
+     * @param integer $minutes Filter events by up to ‘x’ minutes in the past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -88,9 +94,10 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The reservation_sid
+     * Filter events by those pertaining to a particular reservation
      * 
-     * @param string $reservationSid The reservation_sid
+     * @param string $reservationSid Filter events by those pertaining to a
+     *                               particular reservation
      * @return $this Fluent Builder
      */
     public function setReservationSid($reservationSid) {
@@ -99,9 +106,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The start_date
+     * Filter events by a start date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.
      * 
-     * @param \DateTime $startDate The start_date
+     * @param \DateTime $startDate Filter events by a start date.
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -110,9 +117,10 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The task_queue_sid
+     * Filter events by those pertaining to a particular queue
      * 
-     * @param string $taskQueueSid The task_queue_sid
+     * @param string $taskQueueSid Filter events by those pertaining to a
+     *                             particular queue
      * @return $this Fluent Builder
      */
     public function setTaskQueueSid($taskQueueSid) {
@@ -121,9 +129,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The task_sid
+     * Filter events by those pertaining to a particular task
      * 
-     * @param string $taskSid The task_sid
+     * @param string $taskSid Filter events by those pertaining to a particular task
      * @return $this Fluent Builder
      */
     public function setTaskSid($taskSid) {
@@ -132,9 +140,10 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The worker_sid
+     * Filter events by those pertaining to a particular worker
      * 
-     * @param string $workerSid The worker_sid
+     * @param string $workerSid Filter events by those pertaining to a particular
+     *                          worker
      * @return $this Fluent Builder
      */
     public function setWorkerSid($workerSid) {

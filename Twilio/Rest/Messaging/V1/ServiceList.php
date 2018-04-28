@@ -37,7 +37,8 @@ class ServiceList extends ListResource {
     /**
      * Create a new ServiceInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human readable descriptive text for this
+     *                             resource, up to 64 characters.
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
      */

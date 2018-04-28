@@ -17,10 +17,16 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $webhookUrl The webhook_url
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param string $friendlyName Human-readable name for this service instance
+     * @param string $webhookUrl A URL that will receive event updates when objects
+     *                           are manipulated.
+     * @param boolean $reachabilityWebhooksEnabled true or false - controls whether
+     *                                             this instance fires webhooks
+     *                                             when client endpoints connect to
+     *                                             Sync
+     * @param boolean $aclEnabled true or false - determines whether token
+     *                            identities must be granted access to Sync objects
+     *                            via the Permissions API in this Service.
      * @return CreateServiceOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
@@ -28,10 +34,16 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param string $webhookUrl The webhook_url
-     * @param string $friendlyName The friendly_name
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param string $webhookUrl A URL that will receive event updates when objects
+     *                           are manipulated.
+     * @param string $friendlyName Human-readable name for this service instance
+     * @param boolean $reachabilityWebhooksEnabled True or false - controls whether
+     *                                             this instance fires webhooks
+     *                                             when client endpoints connect to
+     *                                             Sync
+     * @param boolean $aclEnabled true or false - determines whether token
+     *                            identities must be granted access to Sync objects
+     *                            via the Permissions API in this Service.
      * @return UpdateServiceOptions Options builder
      */
     public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
@@ -41,10 +53,16 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $webhookUrl The webhook_url
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param string $friendlyName Human-readable name for this service instance
+     * @param string $webhookUrl A URL that will receive event updates when objects
+     *                           are manipulated.
+     * @param boolean $reachabilityWebhooksEnabled true or false - controls whether
+     *                                             this instance fires webhooks
+     *                                             when client endpoints connect to
+     *                                             Sync
+     * @param boolean $aclEnabled true or false - determines whether token
+     *                            identities must be granted access to Sync objects
+     *                            via the Permissions API in this Service.
      */
     public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -54,9 +72,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * (optional) Human-readable name for this service instance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Human-readable name for this service instance
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -65,9 +83,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The webhook_url
+     * (optional) A URL that will receive event updates when objects are manipulated.
      * 
-     * @param string $webhookUrl The webhook_url
+     * @param string $webhookUrl A URL that will receive event updates when objects
+     *                           are manipulated.
      * @return $this Fluent Builder
      */
     public function setWebhookUrl($webhookUrl) {
@@ -76,9 +95,12 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The reachability_webhooks_enabled
+     * (optional) `true` or `false` - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.
      * 
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled true or false - controls whether
+     *                                             this instance fires webhooks
+     *                                             when client endpoints connect to
+     *                                             Sync
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
@@ -87,9 +109,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The acl_enabled
+     * (optional) `true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.
      * 
-     * @param boolean $aclEnabled The acl_enabled
+     * @param boolean $aclEnabled true or false - determines whether token
+     *                            identities must be granted access to Sync objects
+     *                            via the Permissions API in this Service.
      * @return $this Fluent Builder
      */
     public function setAclEnabled($aclEnabled) {
@@ -115,10 +139,16 @@ class CreateServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $webhookUrl The webhook_url
-     * @param string $friendlyName The friendly_name
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param string $webhookUrl A URL that will receive event updates when objects
+     *                           are manipulated.
+     * @param string $friendlyName Human-readable name for this service instance
+     * @param boolean $reachabilityWebhooksEnabled True or false - controls whether
+     *                                             this instance fires webhooks
+     *                                             when client endpoints connect to
+     *                                             Sync
+     * @param boolean $aclEnabled true or false - determines whether token
+     *                            identities must be granted access to Sync objects
+     *                            via the Permissions API in this Service.
      */
     public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
         $this->options['webhookUrl'] = $webhookUrl;
@@ -128,9 +158,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhook_url
+     * (optional) A URL that will receive event updates when objects are manipulated.
      * 
-     * @param string $webhookUrl The webhook_url
+     * @param string $webhookUrl A URL that will receive event updates when objects
+     *                           are manipulated.
      * @return $this Fluent Builder
      */
     public function setWebhookUrl($webhookUrl) {
@@ -139,9 +170,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * (optional) Human-readable name for this service instance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Human-readable name for this service instance
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -150,9 +181,12 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The reachability_webhooks_enabled
+     * (optional) True or false - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.
      * 
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param boolean $reachabilityWebhooksEnabled True or false - controls whether
+     *                                             this instance fires webhooks
+     *                                             when client endpoints connect to
+     *                                             Sync
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
@@ -161,9 +195,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The acl_enabled
+     * (optional) `true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.
      * 
-     * @param boolean $aclEnabled The acl_enabled
+     * @param boolean $aclEnabled true or false - determines whether token
+     *                            identities must be granted access to Sync objects
+     *                            via the Permissions API in this Service.
      * @return $this Fluent Builder
      */
     public function setAclEnabled($aclEnabled) {

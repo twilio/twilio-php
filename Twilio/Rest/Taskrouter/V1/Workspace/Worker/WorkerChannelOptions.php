@@ -14,8 +14,9 @@ use Twilio\Values;
 
 abstract class WorkerChannelOptions {
     /**
-     * @param integer $capacity The capacity
-     * @param boolean $available The available
+     * @param integer $capacity The total number of Tasks worker should handle for
+     *                          this TaskChannel type.
+     * @param boolean $available Toggle the availability of the WorkerChannel.
      * @return UpdateWorkerChannelOptions Options builder
      */
     public static function update($capacity = Values::NONE, $available = Values::NONE) {
@@ -25,8 +26,9 @@ abstract class WorkerChannelOptions {
 
 class UpdateWorkerChannelOptions extends Options {
     /**
-     * @param integer $capacity The capacity
-     * @param boolean $available The available
+     * @param integer $capacity The total number of Tasks worker should handle for
+     *                          this TaskChannel type.
+     * @param boolean $available Toggle the availability of the WorkerChannel.
      */
     public function __construct($capacity = Values::NONE, $available = Values::NONE) {
         $this->options['capacity'] = $capacity;
@@ -34,9 +36,10 @@ class UpdateWorkerChannelOptions extends Options {
     }
 
     /**
-     * The capacity
+     * The total number of Tasks worker should handle for this TaskChannel type. TaskRouter will only create reservations for Tasks of this TaskChannel type up to the capacity configured. If the capacity is 0, no new reservations will be created
      * 
-     * @param integer $capacity The capacity
+     * @param integer $capacity The total number of Tasks worker should handle for
+     *                          this TaskChannel type.
      * @return $this Fluent Builder
      */
     public function setCapacity($capacity) {
@@ -45,9 +48,9 @@ class UpdateWorkerChannelOptions extends Options {
     }
 
     /**
-     * The available
+     * Toggle the availability of the WorkerChannel. Set this to 'False' to make worker unavailable to receive any new Tasks of this TaskChannel type.
      * 
-     * @param boolean $available The available
+     * @param boolean $available Toggle the availability of the WorkerChannel.
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {

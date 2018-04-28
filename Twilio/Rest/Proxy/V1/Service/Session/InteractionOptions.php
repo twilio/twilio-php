@@ -17,10 +17,8 @@ use Twilio\Values;
  */
 abstract class InteractionOptions {
     /**
-     * @param string $inboundParticipantStatus The Inbound Participant Status of
-     *                                         this Interaction
-     * @param string $outboundParticipantStatus The Outbound Participant Status of
-     *                                          this Interaction
+     * @param string $inboundParticipantStatus The inbound_participant_status
+     * @param string $outboundParticipantStatus The outbound_participant_status
      * @return ReadInteractionOptions Options builder
      */
     public static function read($inboundParticipantStatus = Values::NONE, $outboundParticipantStatus = Values::NONE) {
@@ -30,10 +28,8 @@ abstract class InteractionOptions {
 
 class ReadInteractionOptions extends Options {
     /**
-     * @param string $inboundParticipantStatus The Inbound Participant Status of
-     *                                         this Interaction
-     * @param string $outboundParticipantStatus The Outbound Participant Status of
-     *                                          this Interaction
+     * @param string $inboundParticipantStatus The inbound_participant_status
+     * @param string $outboundParticipantStatus The outbound_participant_status
      */
     public function __construct($inboundParticipantStatus = Values::NONE, $outboundParticipantStatus = Values::NONE) {
         $this->options['inboundParticipantStatus'] = $inboundParticipantStatus;
@@ -41,10 +37,9 @@ class ReadInteractionOptions extends Options {
     }
 
     /**
-     * The Inbound Participant Status of this Interaction. One of `accepted`, `answered`, `busy`, `canceled`, `completed`, `deleted`, `delivered`, `delivery-unknown`, `failed`, `in-progress`, `initiated`, `no-answer`, `queued`, `received`, `receiving`, `ringing`, `scheduled`, `sending`, `sent`, `undelivered` or `unknown`.
+     * The inbound_participant_status
      * 
-     * @param string $inboundParticipantStatus The Inbound Participant Status of
-     *                                         this Interaction
+     * @param string $inboundParticipantStatus The inbound_participant_status
      * @return $this Fluent Builder
      */
     public function setInboundParticipantStatus($inboundParticipantStatus) {
@@ -53,10 +48,9 @@ class ReadInteractionOptions extends Options {
     }
 
     /**
-     * The Outbound Participant Status of this Interaction. One of `accepted`, `answered`, `busy`, `canceled`, `completed`, `deleted`, `delivered`, `delivery-unknown`, `failed`, `in-progress`, `initiated`, `no-answer`, `queued`, `received`, `receiving`, `ringing`, `scheduled`, `sending`, `sent`, `undelivered` or `unknown`.
+     * The outbound_participant_status
      * 
-     * @param string $outboundParticipantStatus The Outbound Participant Status of
-     *                                          this Interaction
+     * @param string $outboundParticipantStatus The outbound_participant_status
      * @return $this Fluent Builder
      */
     public function setOutboundParticipantStatus($outboundParticipantStatus) {

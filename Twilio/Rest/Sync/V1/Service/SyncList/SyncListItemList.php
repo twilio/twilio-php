@@ -23,8 +23,10 @@ class SyncListItemList extends ListResource {
      * Construct the SyncListItemList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $listSid The list_sid
+     * @param string $serviceSid The unique SID identifier of the Service Instance
+     *                           that hosts this List object.
+     * @param string $listSid The unique 34-character SID identifier of the List
+     *                        containing this Item.
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemList 
      */
     public function __construct(Version $version, $serviceSid, $listSid) {

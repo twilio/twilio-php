@@ -22,7 +22,7 @@ class DocumentPermissionContext extends InstanceContext {
      * Initialize the DocumentPermissionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid Sync Service Instance SID or unique name.
      * @param string $documentSid Sync Document SID or unique name.
      * @param string $identity Identity of the user to whom the Sync Document
      *                         Permission applies.

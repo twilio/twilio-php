@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class ReservationOptions {
     /**
-     * @param string $reservationStatus The reservation_status
+     * @param string $reservationStatus Filter by a worker’s reservation status
      * @return ReadReservationOptions Options builder
      */
     public static function read($reservationStatus = Values::NONE) {
@@ -22,22 +22,22 @@ abstract class ReservationOptions {
     }
 
     /**
-     * @param string $reservationStatus The reservation_status
-     * @param string $workerActivitySid The worker_activity_sid
-     * @param string $instruction The instruction
-     * @param string $dequeuePostWorkActivitySid The dequeue_post_work_activity_sid
-     * @param string $dequeueFrom The dequeue_from
+     * @param string $reservationStatus Yes
+     * @param string $workerActivitySid No
+     * @param string $instruction Yes
+     * @param string $dequeuePostWorkActivitySid No
+     * @param string $dequeueFrom Yes
      * @param string $dequeueRecord The dequeue_record
      * @param integer $dequeueTimeout The dequeue_timeout
      * @param string $dequeueTo The dequeue_to
      * @param string $dequeueStatusCallbackUrl The dequeue_status_callback_url
-     * @param string $callFrom The call_from
+     * @param string $callFrom Yes
      * @param string $callRecord The call_record
      * @param integer $callTimeout The call_timeout
      * @param string $callTo The call_to
-     * @param string $callUrl The call_url
-     * @param string $callStatusCallbackUrl The call_status_callback_url
-     * @param boolean $callAccept The call_accept
+     * @param string $callUrl Yes
+     * @param string $callStatusCallbackUrl No
+     * @param boolean $callAccept No
      * @param string $redirectCallSid The redirect_call_sid
      * @param boolean $redirectAccept The redirect_accept
      * @param string $redirectUrl The redirect_url
@@ -85,16 +85,16 @@ abstract class ReservationOptions {
 
 class ReadReservationOptions extends Options {
     /**
-     * @param string $reservationStatus The reservation_status
+     * @param string $reservationStatus Filter by a worker’s reservation status
      */
     public function __construct($reservationStatus = Values::NONE) {
         $this->options['reservationStatus'] = $reservationStatus;
     }
 
     /**
-     * The reservation_status
+     * Filter by a worker’s reservation status (pending, accepted, rejected, timeout, canceled, rescinded)
      * 
-     * @param string $reservationStatus The reservation_status
+     * @param string $reservationStatus Filter by a worker’s reservation status
      * @return $this Fluent Builder
      */
     public function setReservationStatus($reservationStatus) {
@@ -120,22 +120,22 @@ class ReadReservationOptions extends Options {
 
 class UpdateReservationOptions extends Options {
     /**
-     * @param string $reservationStatus The reservation_status
-     * @param string $workerActivitySid The worker_activity_sid
-     * @param string $instruction The instruction
-     * @param string $dequeuePostWorkActivitySid The dequeue_post_work_activity_sid
-     * @param string $dequeueFrom The dequeue_from
+     * @param string $reservationStatus Yes
+     * @param string $workerActivitySid No
+     * @param string $instruction Yes
+     * @param string $dequeuePostWorkActivitySid No
+     * @param string $dequeueFrom Yes
      * @param string $dequeueRecord The dequeue_record
      * @param integer $dequeueTimeout The dequeue_timeout
      * @param string $dequeueTo The dequeue_to
      * @param string $dequeueStatusCallbackUrl The dequeue_status_callback_url
-     * @param string $callFrom The call_from
+     * @param string $callFrom Yes
      * @param string $callRecord The call_record
      * @param integer $callTimeout The call_timeout
      * @param string $callTo The call_to
-     * @param string $callUrl The call_url
-     * @param string $callStatusCallbackUrl The call_status_callback_url
-     * @param boolean $callAccept The call_accept
+     * @param string $callUrl Yes
+     * @param string $callStatusCallbackUrl No
+     * @param boolean $callAccept No
      * @param string $redirectCallSid The redirect_call_sid
      * @param boolean $redirectAccept The redirect_accept
      * @param string $redirectUrl The redirect_url
@@ -228,9 +228,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The reservation_status
+     * Yes
      * 
-     * @param string $reservationStatus The reservation_status
+     * @param string $reservationStatus Yes
      * @return $this Fluent Builder
      */
     public function setReservationStatus($reservationStatus) {
@@ -239,9 +239,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The worker_activity_sid
+     * No
      * 
-     * @param string $workerActivitySid The worker_activity_sid
+     * @param string $workerActivitySid No
      * @return $this Fluent Builder
      */
     public function setWorkerActivitySid($workerActivitySid) {
@@ -250,9 +250,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The instruction
+     * Yes
      * 
-     * @param string $instruction The instruction
+     * @param string $instruction Yes
      * @return $this Fluent Builder
      */
     public function setInstruction($instruction) {
@@ -261,9 +261,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The dequeue_post_work_activity_sid
+     * No
      * 
-     * @param string $dequeuePostWorkActivitySid The dequeue_post_work_activity_sid
+     * @param string $dequeuePostWorkActivitySid No
      * @return $this Fluent Builder
      */
     public function setDequeuePostWorkActivitySid($dequeuePostWorkActivitySid) {
@@ -272,9 +272,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The dequeue_from
+     * Yes
      * 
-     * @param string $dequeueFrom The dequeue_from
+     * @param string $dequeueFrom Yes
      * @return $this Fluent Builder
      */
     public function setDequeueFrom($dequeueFrom) {
@@ -327,9 +327,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The call_from
+     * Yes
      * 
-     * @param string $callFrom The call_from
+     * @param string $callFrom Yes
      * @return $this Fluent Builder
      */
     public function setCallFrom($callFrom) {
@@ -371,9 +371,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The call_url
+     * Yes
      * 
-     * @param string $callUrl The call_url
+     * @param string $callUrl Yes
      * @return $this Fluent Builder
      */
     public function setCallUrl($callUrl) {
@@ -382,9 +382,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The call_status_callback_url
+     * No
      * 
-     * @param string $callStatusCallbackUrl The call_status_callback_url
+     * @param string $callStatusCallbackUrl No
      * @return $this Fluent Builder
      */
     public function setCallStatusCallbackUrl($callStatusCallbackUrl) {
@@ -393,9 +393,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * The call_accept
+     * No
      * 
-     * @param boolean $callAccept The call_accept
+     * @param boolean $callAccept No
      * @return $this Fluent Builder
      */
     public function setCallAccept($callAccept) {

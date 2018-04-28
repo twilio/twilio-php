@@ -22,7 +22,7 @@ class SyncMapPermissionContext extends InstanceContext {
      * Initialize the SyncMapPermissionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid Sync Service Instance SID or unique name.
      * @param string $mapSid Sync Map SID or unique name.
      * @param string $identity Identity of the user to whom the Sync Map Permission
      *                         applies.

@@ -14,7 +14,8 @@ use Twilio\Values;
 
 abstract class WorkspaceRealTimeStatisticsOptions {
     /**
-     * @param string $taskChannel The task_channel
+     * @param string $taskChannel Filter real-time and cumulative statistics by
+     *                            TaskChannel.
      * @return FetchWorkspaceRealTimeStatisticsOptions Options builder
      */
     public static function fetch($taskChannel = Values::NONE) {
@@ -24,16 +25,18 @@ abstract class WorkspaceRealTimeStatisticsOptions {
 
 class FetchWorkspaceRealTimeStatisticsOptions extends Options {
     /**
-     * @param string $taskChannel The task_channel
+     * @param string $taskChannel Filter real-time and cumulative statistics by
+     *                            TaskChannel.
      */
     public function __construct($taskChannel = Values::NONE) {
         $this->options['taskChannel'] = $taskChannel;
     }
 
     /**
-     * The task_channel
+     * Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
      * 
-     * @param string $taskChannel The task_channel
+     * @param string $taskChannel Filter real-time and cumulative statistics by
+     *                            TaskChannel.
      * @return $this Fluent Builder
      */
     public function setTaskChannel($taskChannel) {

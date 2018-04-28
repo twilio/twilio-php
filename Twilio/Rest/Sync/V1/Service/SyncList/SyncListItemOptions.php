@@ -17,7 +17,8 @@ use Twilio\Values;
  */
 abstract class SyncListItemOptions {
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return CreateSyncListItemOptions Options builder
      */
     public static function create($ttl = Values::NONE) {
@@ -25,8 +26,8 @@ abstract class SyncListItemOptions {
     }
 
     /**
-     * @param string $order The order
-     * @param string $from The from
+     * @param string $order A string; asc or desc
+     * @param string $from An integer representing Item index offset.
      * @param string $bounds The bounds
      * @return ReadSyncListItemOptions Options builder
      */
@@ -46,16 +47,18 @@ abstract class SyncListItemOptions {
 
 class CreateSyncListItemOptions extends Options {
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * The ttl
+     * (optional) Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -81,8 +84,8 @@ class CreateSyncListItemOptions extends Options {
 
 class ReadSyncListItemOptions extends Options {
     /**
-     * @param string $order The order
-     * @param string $from The from
+     * @param string $order A string; asc or desc
+     * @param string $from An integer representing Item index offset.
      * @param string $bounds The bounds
      */
     public function __construct($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
@@ -92,9 +95,9 @@ class ReadSyncListItemOptions extends Options {
     }
 
     /**
-     * The order
+     * (optional) A string; `asc` or `desc`
      * 
-     * @param string $order The order
+     * @param string $order A string; asc or desc
      * @return $this Fluent Builder
      */
     public function setOrder($order) {
@@ -103,9 +106,9 @@ class ReadSyncListItemOptions extends Options {
     }
 
     /**
-     * The from
+     * (optional) An integer representing Item index offset (inclusive). If not present, query is performed from the start or end, depending on the Order query parameter.
      * 
-     * @param string $from The from
+     * @param string $from An integer representing Item index offset.
      * @return $this Fluent Builder
      */
     public function setFrom($from) {

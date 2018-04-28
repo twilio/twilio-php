@@ -48,8 +48,7 @@ class MessageInteractionInstance extends InstanceResource {
      * @param string $serviceSid Service Sid.
      * @param string $sessionSid Session Sid.
      * @param string $participantSid Participant Sid.
-     * @param string $sid A string that uniquely identifies this Message
-     *                    Interaction.
+     * @param string $sid The sid
      * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sessionSid, $participantSid, $sid = null) {
