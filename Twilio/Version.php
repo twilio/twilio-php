@@ -88,6 +88,9 @@ abstract class Version {
         }
     }
 
+    /**
+     * @throws TwilioException
+     */
     public function fetch($method, $uri, $params = array(), $data = array(),
                           $headers = array(), $username = null,
                           $password = null, $timeout = null) {
@@ -109,6 +112,9 @@ abstract class Version {
         return $response->getContent();
     }
 
+    /**
+     * @throws TwilioException
+     */
     public function update($method, $uri, $params = array(), $data = array(),
                            $headers = array(), $username = null,
                            $password = null, $timeout = null) {
@@ -130,6 +136,9 @@ abstract class Version {
         return $response->getContent();
     }
 
+    /**
+     * @throws TwilioException
+     */
     public function delete($method, $uri, $params = array(), $data = array(),
                            $headers = array(), $username = null,
                            $password = null, $timeout = null) {
@@ -189,6 +198,9 @@ abstract class Version {
         return new Stream($page, $limit, $pageLimit);
     }
 
+    /**
+     * @throws TwilioException
+     */
     public function create($method, $uri, $params = array(), $data = array(),
                            $headers = array(), $username = null,
                            $password = null, $timeout = null) {
