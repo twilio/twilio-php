@@ -38,6 +38,7 @@ class PhoneNumberList extends ListResource {
      * 
      * @param string $sid Delete by unique phone-number Sid
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($sid) {
         $data = Values::of(array('Sid' => $sid, ));

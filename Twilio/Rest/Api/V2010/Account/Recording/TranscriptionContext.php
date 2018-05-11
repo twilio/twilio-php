@@ -40,6 +40,7 @@ class TranscriptionContext extends InstanceContext {
      * Fetch a TranscriptionInstance
      * 
      * @return TranscriptionInstance Fetched TranscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -63,6 +64,7 @@ class TranscriptionContext extends InstanceContext {
      * Deletes the TranscriptionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

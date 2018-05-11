@@ -86,6 +86,7 @@ class PublishedTrackInstance extends InstanceResource {
      * Fetch a PublishedTrackInstance
      * 
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

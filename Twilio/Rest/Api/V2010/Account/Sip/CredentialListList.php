@@ -120,8 +120,9 @@ class CredentialListList extends ListResource {
     /**
      * Create a new CredentialListInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Human readable descriptive text
      * @return CredentialListInstance Newly created CredentialListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName) {
         $data = Values::of(array('FriendlyName' => $friendlyName, ));
@@ -139,7 +140,7 @@ class CredentialListList extends ListResource {
     /**
      * Constructs a CredentialListContext
      * 
-     * @param string $sid Fetch by unique credential Sid
+     * @param string $sid Fetch by unique credential list Sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext 
      */
     public function getContext($sid) {

@@ -92,6 +92,7 @@ class AddressInstance extends InstanceResource {
      * Deletes the AddressInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -101,6 +102,7 @@ class AddressInstance extends InstanceResource {
      * Fetch a AddressInstance
      * 
      * @return AddressInstance Fetched AddressInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -111,6 +113,7 @@ class AddressInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return AddressInstance Updated AddressInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

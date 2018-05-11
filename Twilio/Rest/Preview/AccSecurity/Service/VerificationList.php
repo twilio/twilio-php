@@ -41,6 +41,7 @@ class VerificationList extends ListResource {
      * @param string $channel sms or call
      * @param array|Options $options Optional Arguments
      * @return VerificationInstance Newly created VerificationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($to, $channel, $options = array()) {
         $options = new Values($options);

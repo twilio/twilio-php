@@ -43,6 +43,7 @@ class SegmentMembershipContext extends InstanceContext {
      * Deletes the SegmentMembershipInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -52,6 +53,7 @@ class SegmentMembershipContext extends InstanceContext {
      * Fetch a SegmentMembershipInstance
      * 
      * @return SegmentMembershipInstance Fetched SegmentMembershipInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

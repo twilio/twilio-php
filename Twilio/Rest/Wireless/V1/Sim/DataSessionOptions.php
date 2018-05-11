@@ -12,9 +12,6 @@ namespace Twilio\Rest\Wireless\V1\Sim;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class DataSessionOptions {
     /**
      * @param \DateTime $end The end

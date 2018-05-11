@@ -15,9 +15,6 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class RatePlanList extends ListResource {
     /**
      * Construct the RatePlanList
@@ -125,6 +122,7 @@ class RatePlanList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return RatePlanInstance Newly created RatePlanInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

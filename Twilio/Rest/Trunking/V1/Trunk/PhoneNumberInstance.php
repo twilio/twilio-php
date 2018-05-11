@@ -112,6 +112,7 @@ class PhoneNumberInstance extends InstanceResource {
      * Fetch a PhoneNumberInstance
      * 
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -121,6 +122,7 @@ class PhoneNumberInstance extends InstanceResource {
      * Deletes the PhoneNumberInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

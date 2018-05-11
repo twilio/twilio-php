@@ -103,6 +103,7 @@ class MessageInstance extends InstanceResource {
      * Deletes the MessageInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -112,6 +113,7 @@ class MessageInstance extends InstanceResource {
      * Fetch a MessageInstance
      * 
      * @return MessageInstance Fetched MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -123,6 +125,7 @@ class MessageInstance extends InstanceResource {
      * @param string $body The text of the message you want to send, limited to
      *                     1600 characters.
      * @return MessageInstance Updated MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($body) {
         return $this->proxy()->update($body);

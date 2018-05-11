@@ -81,6 +81,7 @@ class InstalledAddOnInstance extends InstanceResource {
      * Deletes the InstalledAddOnInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -90,6 +91,7 @@ class InstalledAddOnInstance extends InstanceResource {
      * Fetch a InstalledAddOnInstance
      * 
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -100,6 +102,7 @@ class InstalledAddOnInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Updated InstalledAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

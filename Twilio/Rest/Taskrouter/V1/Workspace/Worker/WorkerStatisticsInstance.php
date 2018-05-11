@@ -70,6 +70,7 @@ class WorkerStatisticsInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return WorkerStatisticsInstance Fetched WorkerStatisticsInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch($options = array()) {
         return $this->proxy()->fetch($options);

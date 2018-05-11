@@ -135,6 +135,7 @@ class FaxList extends ListResource {
      * @param string $mediaUrl URL that points to the fax media
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Newly created FaxInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($to, $mediaUrl, $options = array()) {
         $options = new Values($options);

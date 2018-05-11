@@ -125,6 +125,7 @@ class AssistantList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return AssistantInstance Newly created AssistantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

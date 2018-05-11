@@ -45,6 +45,7 @@ class MessageInteractionContext extends InstanceContext {
      * Fetch a MessageInteractionInstance
      * 
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

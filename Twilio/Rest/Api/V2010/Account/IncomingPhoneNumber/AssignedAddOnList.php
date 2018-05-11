@@ -126,6 +126,7 @@ class AssignedAddOnList extends ListResource {
      * @param string $installedAddOnSid A string that uniquely identifies the
      *                                  Add-on installation
      * @return AssignedAddOnInstance Newly created AssignedAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($installedAddOnSid) {
         $data = Values::of(array('InstalledAddOnSid' => $installedAddOnSid, ));

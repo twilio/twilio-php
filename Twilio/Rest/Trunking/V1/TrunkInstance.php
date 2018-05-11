@@ -88,6 +88,7 @@ class TrunkInstance extends InstanceResource {
      * Fetch a TrunkInstance
      * 
      * @return TrunkInstance Fetched TrunkInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -97,6 +98,7 @@ class TrunkInstance extends InstanceResource {
      * Deletes the TrunkInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -107,6 +109,7 @@ class TrunkInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

@@ -17,8 +17,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
  * @property string sid
  * @property string uniqueName
  * @property string accountSid
@@ -106,6 +104,7 @@ class SimInstance extends InstanceResource {
      * Fetch a SimInstance
      * 
      * @return SimInstance Fetched SimInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -116,6 +115,7 @@ class SimInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SimInstance Updated SimInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

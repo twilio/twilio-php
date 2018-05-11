@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class FeedbackOptions {
     /**
-     * @param string $issue The issue
+     * @param string $issue Issues experienced during the call
      * @return CreateFeedbackOptions Options builder
      */
     public static function create($issue = Values::NONE) {
@@ -32,16 +32,16 @@ abstract class FeedbackOptions {
 
 class CreateFeedbackOptions extends Options {
     /**
-     * @param string $issue The issue
+     * @param string $issue Issues experienced during the call
      */
     public function __construct($issue = Values::NONE) {
         $this->options['issue'] = $issue;
     }
 
     /**
-     * The issue
+     * One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, or `one-way-audio`.
      * 
-     * @param string $issue The issue
+     * @param string $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
     public function setIssue($issue) {

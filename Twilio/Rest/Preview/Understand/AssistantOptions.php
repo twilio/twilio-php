@@ -17,11 +17,20 @@ use Twilio\Values;
  */
 abstract class AssistantOptions {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param boolean $logQueries The log_queries
+     * @param string $friendlyName A text description for the Assistant. It is
+     *                             non-unique and can up to 255 characters long.
+     * @param boolean $logQueries A boolean that specifies whether queries should
+     *                            be logged for 30 days further training. If false,
+     *                            no queries will be stored, if true, queries will
+     *                            be stored for 30 days and deleted thereafter.
+     *                            Defaults to true if no value is provided.
      * @param integer $ttl The ttl
-     * @param string $uniqueName The unique_name
-     * @param string $responseUrl The response_url
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
+     * @param string $responseUrl The webhook URL called to fetch the response to
+     *                            an incoming communication expressed in Assistant
+     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
      * @return CreateAssistantOptions Options builder
@@ -31,11 +40,20 @@ abstract class AssistantOptions {
     }
 
     /**
-     * @param string $friendlyName The friendly_name
-     * @param boolean $logQueries The log_queries
+     * @param string $friendlyName A text description for the Assistant. It is
+     *                             non-unique and can up to 255 characters long.
+     * @param boolean $logQueries A boolean that specifies whether queries should
+     *                            be logged for 30 days further training. If false,
+     *                            no queries will be stored, if true, queries will
+     *                            be stored for 30 days and deleted thereafter.
+     *                            Defaults to true if no value is provided.
      * @param integer $ttl The ttl
-     * @param string $uniqueName The unique_name
-     * @param string $responseUrl The response_url
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
+     * @param string $responseUrl The webhook URL called to fetch the response to
+     *                            an incoming communication expressed in Assistant
+     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
      * @return UpdateAssistantOptions Options builder
@@ -47,11 +65,20 @@ abstract class AssistantOptions {
 
 class CreateAssistantOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param boolean $logQueries The log_queries
+     * @param string $friendlyName A text description for the Assistant. It is
+     *                             non-unique and can up to 255 characters long.
+     * @param boolean $logQueries A boolean that specifies whether queries should
+     *                            be logged for 30 days further training. If false,
+     *                            no queries will be stored, if true, queries will
+     *                            be stored for 30 days and deleted thereafter.
+     *                            Defaults to true if no value is provided.
      * @param integer $ttl The ttl
-     * @param string $uniqueName The unique_name
-     * @param string $responseUrl The response_url
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
+     * @param string $responseUrl The webhook URL called to fetch the response to
+     *                            an incoming communication expressed in Assistant
+     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
      */
@@ -66,9 +93,10 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A text description for the Assistant. It is non-unique and can up to 255 characters long.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A text description for the Assistant. It is
+     *                             non-unique and can up to 255 characters long.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -77,9 +105,13 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The log_queries
+     * A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
      * 
-     * @param boolean $logQueries The log_queries
+     * @param boolean $logQueries A boolean that specifies whether queries should
+     *                            be logged for 30 days further training. If false,
+     *                            no queries will be stored, if true, queries will
+     *                            be stored for 30 days and deleted thereafter.
+     *                            Defaults to true if no value is provided.
      * @return $this Fluent Builder
      */
     public function setLogQueries($logQueries) {
@@ -99,9 +131,11 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -110,9 +144,11 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The response_url
+     * The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
      * 
-     * @param string $responseUrl The response_url
+     * @param string $responseUrl The webhook URL called to fetch the response to
+     *                            an incoming communication expressed in Assistant
+     *                            TwiML.
      * @return $this Fluent Builder
      */
     public function setResponseUrl($responseUrl) {
@@ -160,11 +196,20 @@ class CreateAssistantOptions extends Options {
 
 class UpdateAssistantOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param boolean $logQueries The log_queries
+     * @param string $friendlyName A text description for the Assistant. It is
+     *                             non-unique and can up to 255 characters long.
+     * @param boolean $logQueries A boolean that specifies whether queries should
+     *                            be logged for 30 days further training. If false,
+     *                            no queries will be stored, if true, queries will
+     *                            be stored for 30 days and deleted thereafter.
+     *                            Defaults to true if no value is provided.
      * @param integer $ttl The ttl
-     * @param string $uniqueName The unique_name
-     * @param string $responseUrl The response_url
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
+     * @param string $responseUrl The webhook URL called to fetch the response to
+     *                            an incoming communication expressed in Assistant
+     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
      */
@@ -179,9 +224,10 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A text description for the Assistant. It is non-unique and can up to 255 characters long.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A text description for the Assistant. It is
+     *                             non-unique and can up to 255 characters long.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -190,9 +236,13 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The log_queries
+     * A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
      * 
-     * @param boolean $logQueries The log_queries
+     * @param boolean $logQueries A boolean that specifies whether queries should
+     *                            be logged for 30 days further training. If false,
+     *                            no queries will be stored, if true, queries will
+     *                            be stored for 30 days and deleted thereafter.
+     *                            Defaults to true if no value is provided.
      * @return $this Fluent Builder
      */
     public function setLogQueries($logQueries) {
@@ -212,9 +262,11 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -223,9 +275,11 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The response_url
+     * The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
      * 
-     * @param string $responseUrl The response_url
+     * @param string $responseUrl The webhook URL called to fetch the response to
+     *                            an incoming communication expressed in Assistant
+     *                            TwiML.
      * @return $this Fluent Builder
      */
     public function setResponseUrl($responseUrl) {

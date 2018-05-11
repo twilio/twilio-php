@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2018-05-11] Version 5.19.0
+----------------------------
+**Library**
+- PR #472: Added @throws PHPDoc tags to Sync API Context and Version classes. Thanks to @lamungu!
+
+**Chat**
+- Add Channel Webhooks resource
+
+**Monitor**
+- Update event filtering to support date/time **(breaking change)**
+
+**Wireless**
+- Updated `maturity` to `ga` for all wireless apis
+
+
 [2018-04-28] Version 5.18.0
 ----------------------------
 **Video**

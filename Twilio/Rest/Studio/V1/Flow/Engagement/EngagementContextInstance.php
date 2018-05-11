@@ -70,6 +70,7 @@ class EngagementContextInstance extends InstanceResource {
      * Fetch a EngagementContextInstance
      * 
      * @return EngagementContextInstance Fetched EngagementContextInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

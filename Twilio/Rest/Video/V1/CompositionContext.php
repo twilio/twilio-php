@@ -37,6 +37,7 @@ class CompositionContext extends InstanceContext {
      * Fetch a CompositionInstance
      * 
      * @return CompositionInstance Fetched CompositionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -54,6 +55,7 @@ class CompositionContext extends InstanceContext {
      * Deletes the CompositionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

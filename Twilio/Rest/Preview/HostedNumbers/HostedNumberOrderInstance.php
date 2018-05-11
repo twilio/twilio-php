@@ -105,6 +105,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * Fetch a HostedNumberOrderInstance
      * 
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -114,6 +115,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * Deletes the HostedNumberOrderInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -124,6 +126,7 @@ class HostedNumberOrderInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

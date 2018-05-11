@@ -39,6 +39,7 @@ class SyncStreamList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncStreamInstance Newly created SyncStreamInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

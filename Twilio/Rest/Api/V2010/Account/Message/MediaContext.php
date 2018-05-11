@@ -36,6 +36,7 @@ class MediaContext extends InstanceContext {
      * Deletes the MediaInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -45,6 +46,7 @@ class MediaContext extends InstanceContext {
      * Fetch a MediaInstance
      * 
      * @return MediaInstance Fetched MediaInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

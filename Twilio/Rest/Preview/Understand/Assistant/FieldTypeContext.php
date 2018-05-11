@@ -46,6 +46,7 @@ class FieldTypeContext extends InstanceContext {
      * Fetch a FieldTypeInstance
      * 
      * @return FieldTypeInstance Fetched FieldTypeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -69,6 +70,7 @@ class FieldTypeContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return FieldTypeInstance Updated FieldTypeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -97,6 +99,7 @@ class FieldTypeContext extends InstanceContext {
      * Deletes the FieldTypeInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

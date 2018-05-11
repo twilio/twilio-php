@@ -35,6 +35,7 @@ class EventContext extends InstanceContext {
      * Fetch a EventInstance
      * 
      * @return EventInstance Fetched EventInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

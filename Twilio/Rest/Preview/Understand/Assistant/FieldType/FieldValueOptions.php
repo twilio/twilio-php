@@ -17,7 +17,8 @@ use Twilio\Values;
  */
 abstract class FieldValueOptions {
     /**
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the value. For
+     *                         example: en-US
      * @return ReadFieldValueOptions Options builder
      */
     public static function read($language = Values::NONE) {
@@ -35,16 +36,18 @@ abstract class FieldValueOptions {
 
 class ReadFieldValueOptions extends Options {
     /**
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the value. For
+     *                         example: en-US
      */
     public function __construct($language = Values::NONE) {
         $this->options['language'] = $language;
     }
 
     /**
-     * The language
+     * An ISO language-country string of the value. For example: *en-US*
      * 
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the value. For
+     *                         example: en-US
      * @return $this Fluent Builder
      */
     public function setLanguage($language) {

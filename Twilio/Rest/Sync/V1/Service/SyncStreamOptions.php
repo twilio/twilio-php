@@ -56,7 +56,7 @@ class CreateSyncStreamOptions extends Options {
     }
 
     /**
-     * (optional) Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
      * @param integer $ttl Stream TTL.
      * @return $this Fluent Builder

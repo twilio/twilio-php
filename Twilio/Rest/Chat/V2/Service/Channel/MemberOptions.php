@@ -34,11 +34,19 @@ abstract class MemberOptions {
     }
 
     /**
-     * @param string $roleSid The role_sid
-     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
-     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
+     * @param string $roleSid The role to be assigned to this member.
+     * @param integer $lastConsumedMessageIndex Optional field used to specify the
+     *                                          last consumed Message index for the
+     *                                          Channel for this Member.
+     * @param \DateTime $lastConsumptionTimestamp Optional ISO8601 time indicating
+     *                                            the last datetime the Member
+     *                                            consumed a Message in the Channel.
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Members should be set as being
+     *                               created.
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Member should be set as having
+     *                               been last updated.
      * @return UpdateMemberOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
@@ -170,11 +178,19 @@ class ReadMemberOptions extends Options {
 
 class UpdateMemberOptions extends Options {
     /**
-     * @param string $roleSid The role_sid
-     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
-     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
+     * @param string $roleSid The role to be assigned to this member.
+     * @param integer $lastConsumedMessageIndex Optional field used to specify the
+     *                                          last consumed Message index for the
+     *                                          Channel for this Member.
+     * @param \DateTime $lastConsumptionTimestamp Optional ISO8601 time indicating
+     *                                            the last datetime the Member
+     *                                            consumed a Message in the Channel.
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Members should be set as being
+     *                               created.
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Member should be set as having
+     *                               been last updated.
      */
     public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -185,9 +201,9 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The role_sid
+     * The role to be assigned to this member. Defaults to the roles specified on the [Service](https://www.twilio.com/docs/api/chat/rest/services).
      * 
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The role to be assigned to this member.
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -196,9 +212,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The last_consumed_message_index
+     * Optional field used to specify the last consumed Message index for the Channel for this Member.
      * 
-     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @param integer $lastConsumedMessageIndex Optional field used to specify the
+     *                                          last consumed Message index for the
+     *                                          Channel for this Member.
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
@@ -207,9 +225,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The last_consumption_timestamp
+     * Optional ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.
      * 
-     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @param \DateTime $lastConsumptionTimestamp Optional ISO8601 time indicating
+     *                                            the last datetime the Member
+     *                                            consumed a Message in the Channel.
      * @return $this Fluent Builder
      */
     public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
@@ -218,9 +238,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The date_created
+     * The optional ISO8601 time specifying the datetime the Members should be set as being created.
      * 
-     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Members should be set as being
+     *                               created.
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -229,9 +251,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The date_updated
+     * The optional ISO8601 time specifying the datetime the Member should be set as having been last updated.
      * 
-     * @param \DateTime $dateUpdated The date_updated
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Member should be set as having
+     *                               been last updated.
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {

@@ -14,15 +14,24 @@ use Twilio\Values;
 
 abstract class ServiceOptions {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Human-readable name for this service instance
      * @param string $defaultServiceRoleSid The default_service_role_sid
-     * @param string $defaultChannelRoleSid The default_channel_role_sid
-     * @param string $defaultChannelCreatorRoleSid The
-     *                                             default_channel_creator_role_sid
-     * @param boolean $readStatusEnabled The read_status_enabled
-     * @param boolean $reachabilityEnabled The reachability_enabled
-     * @param integer $typingIndicatorTimeout The typing_indicator_timeout
-     * @param integer $consumptionReportInterval The consumption_report_interval
+     * @param string $defaultChannelRoleSid Channel role assigned on channel join
+     * @param string $defaultChannelCreatorRoleSid Channel role assigned to creator
+     *                                             of channel when joining for
+     *                                             first time
+     * @param boolean $readStatusEnabled true if the member read status feature is
+     *                                   enabled, false if not.
+     * @param boolean $reachabilityEnabled true if the reachability feature should
+     *                                     be enabled.
+     * @param integer $typingIndicatorTimeout ISO 8601 duration indicating the
+     *                                        timeout after "started typing" event
+     *                                        when client should assume that user
+     *                                        is not typing anymore even if no
+     *                                        "ended typing" message received
+     * @param integer $consumptionReportInterval ISO 8601 duration indicating the
+     *                                           interval between consumption
+     *                                           reports sent from client endpoints.
      * @param boolean $notificationsNewMessageEnabled The
      *                                                notifications.new_message.enabled
      * @param string $notificationsNewMessageTemplate The
@@ -39,10 +48,11 @@ abstract class ServiceOptions {
      *                                                      notifications.invited_to_channel.enabled
      * @param string $notificationsInvitedToChannelTemplate The
      *                                                      notifications.invited_to_channel.template
-     * @param string $preWebhookUrl The pre_webhook_url
-     * @param string $postWebhookUrl The post_webhook_url
-     * @param string $webhookMethod The webhook_method
-     * @param string $webhookFilters The webhook_filters
+     * @param string $preWebhookUrl The webhook URL for PRE-Event webhooks.
+     * @param string $postWebhookUrl The webhook URL for POST-Event webhooks.
+     * @param string $webhookMethod The webhook request format to use.
+     * @param string $webhookFilters The list of WebHook events that are enabled
+     *                               for this Service instance.
      * @param string $webhooksOnMessageSendUrl The webhooks.on_message_send.url
      * @param string $webhooksOnMessageSendMethod The
      *                                            webhooks.on_message_send.method
@@ -135,15 +145,24 @@ abstract class ServiceOptions {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Human-readable name for this service instance
      * @param string $defaultServiceRoleSid The default_service_role_sid
-     * @param string $defaultChannelRoleSid The default_channel_role_sid
-     * @param string $defaultChannelCreatorRoleSid The
-     *                                             default_channel_creator_role_sid
-     * @param boolean $readStatusEnabled The read_status_enabled
-     * @param boolean $reachabilityEnabled The reachability_enabled
-     * @param integer $typingIndicatorTimeout The typing_indicator_timeout
-     * @param integer $consumptionReportInterval The consumption_report_interval
+     * @param string $defaultChannelRoleSid Channel role assigned on channel join
+     * @param string $defaultChannelCreatorRoleSid Channel role assigned to creator
+     *                                             of channel when joining for
+     *                                             first time
+     * @param boolean $readStatusEnabled true if the member read status feature is
+     *                                   enabled, false if not.
+     * @param boolean $reachabilityEnabled true if the reachability feature should
+     *                                     be enabled.
+     * @param integer $typingIndicatorTimeout ISO 8601 duration indicating the
+     *                                        timeout after "started typing" event
+     *                                        when client should assume that user
+     *                                        is not typing anymore even if no
+     *                                        "ended typing" message received
+     * @param integer $consumptionReportInterval ISO 8601 duration indicating the
+     *                                           interval between consumption
+     *                                           reports sent from client endpoints.
      * @param boolean $notificationsNewMessageEnabled The
      *                                                notifications.new_message.enabled
      * @param string $notificationsNewMessageTemplate The
@@ -160,10 +179,11 @@ class UpdateServiceOptions extends Options {
      *                                                      notifications.invited_to_channel.enabled
      * @param string $notificationsInvitedToChannelTemplate The
      *                                                      notifications.invited_to_channel.template
-     * @param string $preWebhookUrl The pre_webhook_url
-     * @param string $postWebhookUrl The post_webhook_url
-     * @param string $webhookMethod The webhook_method
-     * @param string $webhookFilters The webhook_filters
+     * @param string $preWebhookUrl The webhook URL for PRE-Event webhooks.
+     * @param string $postWebhookUrl The webhook URL for POST-Event webhooks.
+     * @param string $webhookMethod The webhook request format to use.
+     * @param string $webhookFilters The list of WebHook events that are enabled
+     *                               for this Service instance.
      * @param string $webhooksOnMessageSendUrl The webhooks.on_message_send.url
      * @param string $webhooksOnMessageSendMethod The
      *                                            webhooks.on_message_send.method
@@ -322,9 +342,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * Human-readable name for this service instance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName Human-readable name for this service instance
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -344,9 +364,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The default_channel_role_sid
+     * Channel role assigned on channel join (see [Roles](https://www.twilio.com/docs/api/chat/rest/v1/roles) data model for the details)
      * 
-     * @param string $defaultChannelRoleSid The default_channel_role_sid
+     * @param string $defaultChannelRoleSid Channel role assigned on channel join
      * @return $this Fluent Builder
      */
     public function setDefaultChannelRoleSid($defaultChannelRoleSid) {
@@ -355,10 +375,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The default_channel_creator_role_sid
+     * Channel role assigned to creator of channel when joining for first time
      * 
-     * @param string $defaultChannelCreatorRoleSid The
-     *                                             default_channel_creator_role_sid
+     * @param string $defaultChannelCreatorRoleSid Channel role assigned to creator
+     *                                             of channel when joining for
+     *                                             first time
      * @return $this Fluent Builder
      */
     public function setDefaultChannelCreatorRoleSid($defaultChannelCreatorRoleSid) {
@@ -367,9 +388,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The read_status_enabled
+     * `true` if the member read status feature is enabled, `false` if not.  Defaults to `true`.
      * 
-     * @param boolean $readStatusEnabled The read_status_enabled
+     * @param boolean $readStatusEnabled true if the member read status feature is
+     *                                   enabled, false if not.
      * @return $this Fluent Builder
      */
     public function setReadStatusEnabled($readStatusEnabled) {
@@ -378,9 +400,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The reachability_enabled
+     * `true` if the reachability feature should be enabled.  Defaults to `false`
      * 
-     * @param boolean $reachabilityEnabled The reachability_enabled
+     * @param boolean $reachabilityEnabled true if the reachability feature should
+     *                                     be enabled.
      * @return $this Fluent Builder
      */
     public function setReachabilityEnabled($reachabilityEnabled) {
@@ -389,9 +412,13 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The typing_indicator_timeout
+     * ISO 8601 duration indicating the timeout after "started typing" event when client should assume that user is not typing anymore even if no "ended typing" message received
      * 
-     * @param integer $typingIndicatorTimeout The typing_indicator_timeout
+     * @param integer $typingIndicatorTimeout ISO 8601 duration indicating the
+     *                                        timeout after "started typing" event
+     *                                        when client should assume that user
+     *                                        is not typing anymore even if no
+     *                                        "ended typing" message received
      * @return $this Fluent Builder
      */
     public function setTypingIndicatorTimeout($typingIndicatorTimeout) {
@@ -400,9 +427,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The consumption_report_interval
+     * ISO 8601 duration indicating the interval between consumption reports sent from client endpoints.
      * 
-     * @param integer $consumptionReportInterval The consumption_report_interval
+     * @param integer $consumptionReportInterval ISO 8601 duration indicating the
+     *                                           interval between consumption
+     *                                           reports sent from client endpoints.
      * @return $this Fluent Builder
      */
     public function setConsumptionReportInterval($consumptionReportInterval) {
@@ -507,9 +536,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The pre_webhook_url
+     * The webhook URL for PRE-Event webhooks. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
      * 
-     * @param string $preWebhookUrl The pre_webhook_url
+     * @param string $preWebhookUrl The webhook URL for PRE-Event webhooks.
      * @return $this Fluent Builder
      */
     public function setPreWebhookUrl($preWebhookUrl) {
@@ -518,9 +547,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The post_webhook_url
+     * The webhook URL for POST-Event webhooks. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
      * 
-     * @param string $postWebhookUrl The post_webhook_url
+     * @param string $postWebhookUrl The webhook URL for POST-Event webhooks.
      * @return $this Fluent Builder
      */
     public function setPostWebhookUrl($postWebhookUrl) {
@@ -529,9 +558,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhook_method
+     * The webhook request format to use.  Must be POST or GET. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
      * 
-     * @param string $webhookMethod The webhook_method
+     * @param string $webhookMethod The webhook request format to use.
      * @return $this Fluent Builder
      */
     public function setWebhookMethod($webhookMethod) {
@@ -540,9 +569,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhook_filters
+     * The list of WebHook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
      * 
-     * @param string $webhookFilters The webhook_filters
+     * @param string $webhookFilters The list of WebHook events that are enabled
+     *                               for this Service instance.
      * @return $this Fluent Builder
      */
     public function setWebhookFilters($webhookFilters) {

@@ -93,6 +93,7 @@ class CompositionInstance extends InstanceResource {
      * Fetch a CompositionInstance
      * 
      * @return CompositionInstance Fetched CompositionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -102,6 +103,7 @@ class CompositionInstance extends InstanceResource {
      * Deletes the CompositionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

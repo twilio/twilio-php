@@ -34,6 +34,7 @@ class NumberContext extends InstanceContext {
      * Fetch a NumberInstance
      * 
      * @return NumberInstance Fetched NumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

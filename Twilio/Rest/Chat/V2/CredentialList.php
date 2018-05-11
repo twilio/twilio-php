@@ -120,9 +120,10 @@ class CredentialList extends ListResource {
     /**
      * Create a new CredentialInstance
      * 
-     * @param string $type The type
+     * @param string $type Credential type, one of "gcm", "fcm", or "apn"
      * @param array|Options $options Optional Arguments
      * @return CredentialInstance Newly created CredentialInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($type, $options = array()) {
         $options = new Values($options);

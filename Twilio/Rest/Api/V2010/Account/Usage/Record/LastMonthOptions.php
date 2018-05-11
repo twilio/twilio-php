@@ -41,7 +41,7 @@ class ReadLastMonthOptions extends Options {
     }
 
     /**
-     * Only include usage of this [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
+     * The category of usage.  See [Usage Categories](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) below.
      * 
      * @param string $category Only include usage of this usage category.
      * @return $this Fluent Builder

@@ -20,7 +20,8 @@ class ChannelList extends ListResource {
      * Construct the ChannelList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The unique id of the [Service][service] this
+     *                           channel belongs to.
      * @return \Twilio\Rest\Chat\V1\Service\ChannelList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -37,6 +38,7 @@ class ChannelList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ChannelInstance Newly created ChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

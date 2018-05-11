@@ -97,6 +97,7 @@ class WorkspaceInstance extends InstanceResource {
      * Fetch a WorkspaceInstance
      * 
      * @return WorkspaceInstance Fetched WorkspaceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -107,6 +108,7 @@ class WorkspaceInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -116,6 +118,7 @@ class WorkspaceInstance extends InstanceResource {
      * Deletes the WorkspaceInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

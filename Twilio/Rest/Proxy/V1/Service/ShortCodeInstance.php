@@ -80,6 +80,7 @@ class ShortCodeInstance extends InstanceResource {
      * Deletes the ShortCodeInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -89,6 +90,7 @@ class ShortCodeInstance extends InstanceResource {
      * Fetch a ShortCodeInstance
      * 
      * @return ShortCodeInstance Fetched ShortCodeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

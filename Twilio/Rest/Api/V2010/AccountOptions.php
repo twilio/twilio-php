@@ -145,7 +145,7 @@ class UpdateAccountOptions extends Options {
     }
 
     /**
-     * Alter the status of this account with a given Status
+     * Alter the status of this account: use `closed` to irreversibly close this account, `suspended` to temporarily suspend it, or `active` to reactivate it.
      * 
      * @param string $status Status to update the Account with
      * @return $this Fluent Builder

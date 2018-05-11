@@ -80,6 +80,7 @@ class AlphaSenderInstance extends InstanceResource {
      * Fetch a AlphaSenderInstance
      * 
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -89,6 +90,7 @@ class AlphaSenderInstance extends InstanceResource {
      * Deletes the AlphaSenderInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

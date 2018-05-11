@@ -90,6 +90,7 @@ class RoomRecordingInstance extends InstanceResource {
      * Fetch a RoomRecordingInstance
      * 
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

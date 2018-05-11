@@ -103,6 +103,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
      * @param array|Options $options Optional Arguments
      * @return WorkspaceCumulativeStatisticsInstance Fetched
      *                                               WorkspaceCumulativeStatisticsInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch($options = array()) {
         return $this->proxy()->fetch($options);

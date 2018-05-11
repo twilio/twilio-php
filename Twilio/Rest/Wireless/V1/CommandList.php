@@ -14,9 +14,6 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class CommandList extends ListResource {
     /**
      * Construct the CommandList
@@ -129,9 +126,11 @@ class CommandList extends ListResource {
     /**
      * Create a new CommandInstance
      * 
-     * @param string $command The command
+     * @param string $command The message body of the Command or a Base64 encoded
+     *                        byte string in binary mode.
      * @param array|Options $options Optional Arguments
      * @return CommandInstance Newly created CommandInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($command, $options = array()) {
         $options = new Values($options);

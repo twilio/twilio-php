@@ -43,6 +43,7 @@ class InstalledAddOnList extends ListResource {
      *                                      the Terms of Service
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Newly created InstalledAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($availableAddOnSid, $acceptTermsOfService, $options = array()) {
         $options = new Values($options);

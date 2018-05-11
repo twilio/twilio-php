@@ -35,8 +35,9 @@ class FieldValueInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
-     * @param string $fieldTypeSid The field_type_sid
+     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $fieldTypeSid The unique ID of the Field Type associated with
+     *                             this Field Value.
      * @param string $sid The sid
      * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueInstance 
      */
@@ -88,6 +89,7 @@ class FieldValueInstance extends InstanceResource {
      * Fetch a FieldValueInstance
      * 
      * @return FieldValueInstance Fetched FieldValueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -97,6 +99,7 @@ class FieldValueInstance extends InstanceResource {
      * Deletes the FieldValueInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

@@ -14,13 +14,19 @@ use Twilio\Values;
 
 abstract class ChannelOptions {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $uniqueName The unique_name
-     * @param string $attributes The attributes
-     * @param string $type The type
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
-     * @param string $createdBy The created_by
+     * @param string $friendlyName A human-readable name for the Channel.
+     * @param string $uniqueName A unique, addressable name for the Channel.
+     * @param string $attributes An optional metadata field you can use to store
+     *                           any data you wish.
+     * @param string $type The visibility of the channel - public or private.
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as being
+     *                               created.
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as having
+     *                               been last updated.
+     * @param string $createdBy Optional field to specify the Identity of the User
+     *                          that created the Channel.
      * @return CreateChannelOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
@@ -36,12 +42,18 @@ abstract class ChannelOptions {
     }
 
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $uniqueName The unique_name
-     * @param string $attributes The attributes
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
-     * @param string $createdBy The created_by
+     * @param string $friendlyName A human-readable name for the Channel.
+     * @param string $uniqueName A unique, addressable name for the Channel.
+     * @param string $attributes An optional metadata field you can use to store
+     *                           any data you wish.
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as being
+     *                               created.
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as having
+     *                               been last updated.
+     * @param string $createdBy Optional field to specify the Identity of the User
+     *                          that created the Channel.
      * @return UpdateChannelOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
@@ -51,13 +63,19 @@ abstract class ChannelOptions {
 
 class CreateChannelOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $uniqueName The unique_name
-     * @param string $attributes The attributes
-     * @param string $type The type
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
-     * @param string $createdBy The created_by
+     * @param string $friendlyName A human-readable name for the Channel.
+     * @param string $uniqueName A unique, addressable name for the Channel.
+     * @param string $attributes An optional metadata field you can use to store
+     *                           any data you wish.
+     * @param string $type The visibility of the channel - public or private.
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as being
+     *                               created.
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as having
+     *                               been last updated.
+     * @param string $createdBy Optional field to specify the Identity of the User
+     *                          that created the Channel.
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -70,9 +88,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A human-readable name for the Channel. Optional.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Channel.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -81,9 +99,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * A unique, addressable name for the Channel.  Optional.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A unique, addressable name for the Channel.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -92,9 +110,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The attributes
+     * An optional metadata field you can use to store any data you wish. No processing or validation is done on this field.
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes An optional metadata field you can use to store
+     *                           any data you wish.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -103,9 +122,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The type
+     * The visibility of the channel - `public` or `private`. Defaults to `public`.
      * 
-     * @param string $type The type
+     * @param string $type The visibility of the channel - public or private.
      * @return $this Fluent Builder
      */
     public function setType($type) {
@@ -114,9 +133,11 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The date_created
+     * The optional ISO8601 time specifying the datetime the Channel should be set as being created.  Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a a Channel is being recreated from a backup/separate source
      * 
-     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as being
+     *                               created.
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -125,9 +146,11 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The date_updated
+     * The optional ISO8601 time specifying the datetime the Channel should be set as having been last updated.  Will be set to the `null` by the Chat service if not specified.  Note that this should only be used in cases where a Channel is being recreated from a backup/separate source  and where a Message was previously updated.
      * 
-     * @param \DateTime $dateUpdated The date_updated
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as having
+     *                               been last updated.
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -136,9 +159,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The created_by
+     * Optional field to specify the Identity of the User that created the Channel.  Will be set to "system" if not specified.
      * 
-     * @param string $createdBy The created_by
+     * @param string $createdBy Optional field to specify the Identity of the User
+     *                          that created the Channel.
      * @return $this Fluent Builder
      */
     public function setCreatedBy($createdBy) {
@@ -199,12 +223,18 @@ class ReadChannelOptions extends Options {
 
 class UpdateChannelOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $uniqueName The unique_name
-     * @param string $attributes The attributes
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
-     * @param string $createdBy The created_by
+     * @param string $friendlyName A human-readable name for the Channel.
+     * @param string $uniqueName A unique, addressable name for the Channel.
+     * @param string $attributes An optional metadata field you can use to store
+     *                           any data you wish.
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as being
+     *                               created.
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as having
+     *                               been last updated.
+     * @param string $createdBy Optional field to specify the Identity of the User
+     *                          that created the Channel.
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -216,9 +246,9 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A human-readable name for the Channel. Optional.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable name for the Channel.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -227,9 +257,9 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * A unique, addressable name for the Channel.  Optional.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A unique, addressable name for the Channel.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -238,9 +268,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The attributes
+     * An optional metadata field you can use to store any data you wish. No processing or validation is done on this field.
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes An optional metadata field you can use to store
+     *                           any data you wish.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -249,9 +280,11 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The date_created
+     * The optional ISO8601 time specifying the datetime the Channel should be set as being created.
      * 
-     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as being
+     *                               created.
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -260,9 +293,11 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The date_updated
+     * The optional ISO8601 time specifying the datetime the Channel should be set as having been last updated.
      * 
-     * @param \DateTime $dateUpdated The date_updated
+     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
+     *                               datetime the Channel should be set as having
+     *                               been last updated.
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -271,9 +306,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The created_by
+     * Optional field to specify the Identity of the User that created the Channel.
      * 
-     * @param string $createdBy The created_by
+     * @param string $createdBy Optional field to specify the Identity of the User
+     *                          that created the Channel.
      * @return $this Fluent Builder
      */
     public function setCreatedBy($createdBy) {

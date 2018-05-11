@@ -122,6 +122,7 @@ class AwsList extends ListResource {
      * @param string $credentials The credentials
      * @param array|Options $options Optional Arguments
      * @return AwsInstance Newly created AwsInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($credentials, $options = array()) {
         $options = new Values($options);

@@ -46,6 +46,7 @@ class RoomContext extends InstanceContext {
      * Fetch a RoomInstance
      * 
      * @return RoomInstance Fetched RoomInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -64,6 +65,7 @@ class RoomContext extends InstanceContext {
      * 
      * @param string $status Set to completed to end the Room.
      * @return RoomInstance Updated RoomInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($status) {
         $data = Values::of(array('Status' => $status, ));

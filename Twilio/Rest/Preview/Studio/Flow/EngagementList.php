@@ -127,6 +127,7 @@ class EngagementList extends ListResource {
      * @param string $from The from
      * @param array|Options $options Optional Arguments
      * @return EngagementInstance Newly created EngagementInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($to, $from, $options = array()) {
         $options = new Values($options);

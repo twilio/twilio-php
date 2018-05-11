@@ -27,7 +27,8 @@ abstract class SyncListOptions {
     }
 
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
+     *                     expiration.
      * @return UpdateSyncListOptions Options builder
      */
     public static function update($ttl = Values::NONE) {
@@ -47,7 +48,7 @@ class CreateSyncListOptions extends Options {
     }
 
     /**
-     * (optional) Human-readable name for this list
+     * Human-readable name for this list
      * 
      * @param string $uniqueName Human-readable name for this list
      * @return $this Fluent Builder
@@ -58,7 +59,7 @@ class CreateSyncListOptions extends Options {
     }
 
     /**
-     * (optional) Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
      * @param integer $ttl Time-to-live of this List in seconds, defaults to no
      *                     expiration.
@@ -87,16 +88,18 @@ class CreateSyncListOptions extends Options {
 
 class UpdateSyncListOptions extends Options {
     /**
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
+     *                     expiration.
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * The ttl
+     * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

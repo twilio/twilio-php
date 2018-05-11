@@ -89,6 +89,7 @@ class SyncMapInstance extends InstanceResource {
      * Fetch a SyncMapInstance
      * 
      * @return SyncMapInstance Fetched SyncMapInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -98,6 +99,7 @@ class SyncMapInstance extends InstanceResource {
      * Deletes the SyncMapInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -108,6 +110,7 @@ class SyncMapInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncMapInstance Updated SyncMapInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

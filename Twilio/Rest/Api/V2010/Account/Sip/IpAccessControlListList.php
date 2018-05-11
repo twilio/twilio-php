@@ -123,6 +123,7 @@ class IpAccessControlListList extends ListResource {
      * 
      * @param string $friendlyName A human readable description of this resource
      * @return IpAccessControlListInstance Newly created IpAccessControlListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName) {
         $data = Values::of(array('FriendlyName' => $friendlyName, ));

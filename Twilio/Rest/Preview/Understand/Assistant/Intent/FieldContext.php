@@ -39,6 +39,7 @@ class FieldContext extends InstanceContext {
      * Fetch a FieldInstance
      * 
      * @return FieldInstance Fetched FieldInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -62,6 +63,7 @@ class FieldContext extends InstanceContext {
      * Deletes the FieldInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

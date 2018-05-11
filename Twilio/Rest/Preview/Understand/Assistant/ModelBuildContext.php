@@ -39,6 +39,7 @@ class ModelBuildContext extends InstanceContext {
      * Fetch a ModelBuildInstance
      * 
      * @return ModelBuildInstance Fetched ModelBuildInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -62,6 +63,7 @@ class ModelBuildContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return ModelBuildInstance Updated ModelBuildInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -87,6 +89,7 @@ class ModelBuildContext extends InstanceContext {
      * Deletes the ModelBuildInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

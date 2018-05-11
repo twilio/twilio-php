@@ -76,6 +76,7 @@ class FlowInstance extends InstanceResource {
      * Fetch a FlowInstance
      * 
      * @return FlowInstance Fetched FlowInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -85,6 +86,7 @@ class FlowInstance extends InstanceResource {
      * Deletes the FlowInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

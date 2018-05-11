@@ -15,15 +15,13 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class DataSessionList extends ListResource {
     /**
      * Construct the DataSessionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $simSid The sim_sid
+     * @param string $simSid The unique id of the SIM resource that this Data
+     *                       Session is for.
      * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList 
      */
     public function __construct(Version $version, $simSid) {

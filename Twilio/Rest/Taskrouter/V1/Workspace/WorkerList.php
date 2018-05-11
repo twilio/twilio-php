@@ -144,6 +144,7 @@ class WorkerList extends ListResource {
      *                             Worker.
      * @param array|Options $options Optional Arguments
      * @return WorkerInstance Newly created WorkerInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);

@@ -133,6 +133,7 @@ class CommandList extends ListResource {
      * @param string $command The command
      * @param array|Options $options Optional Arguments
      * @return CommandInstance Newly created CommandInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($command, $options = array()) {
         $options = new Values($options);

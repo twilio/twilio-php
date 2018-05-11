@@ -40,6 +40,7 @@ class TriggerList extends ListResource {
      * @param string $usageCategory The usage category the trigger watches
      * @param array|Options $options Optional Arguments
      * @return TriggerInstance Newly created TriggerInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($callbackUrl, $triggerValue, $usageCategory, $options = array()) {
         $options = new Values($options);

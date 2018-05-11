@@ -18,7 +18,8 @@ class CredentialListMappingList extends ListResource {
      * Construct the CredentialListMappingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique id of the Account that responsible for
+     *                           this resource.
      * @param string $domainSid A string that uniquely identifies the SIP Domain
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList 
      */
@@ -37,6 +38,7 @@ class CredentialListMappingList extends ListResource {
      * @param string $credentialListSid The credential_list_sid
      * @return CredentialListMappingInstance Newly created
      *                                       CredentialListMappingInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($credentialListSid) {
         $data = Values::of(array('CredentialListSid' => $credentialListSid, ));

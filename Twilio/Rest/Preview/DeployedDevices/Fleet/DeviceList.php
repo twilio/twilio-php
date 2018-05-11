@@ -40,6 +40,7 @@ class DeviceList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return DeviceInstance Newly created DeviceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

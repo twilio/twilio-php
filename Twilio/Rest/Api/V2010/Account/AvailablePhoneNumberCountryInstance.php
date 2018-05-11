@@ -81,6 +81,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      * 
      * @return AvailablePhoneNumberCountryInstance Fetched
      *                                             AvailablePhoneNumberCountryInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

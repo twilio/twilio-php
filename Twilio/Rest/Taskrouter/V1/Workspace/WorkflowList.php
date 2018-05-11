@@ -132,6 +132,7 @@ class WorkflowList extends ListResource {
      *                              Workflow.
      * @param array|Options $options Optional Arguments
      * @return WorkflowInstance Newly created WorkflowInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName, $configuration, $options = array()) {
         $options = new Values($options);

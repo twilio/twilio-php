@@ -46,6 +46,7 @@ class MessageInteractionList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return MessageInteractionInstance Newly created MessageInteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

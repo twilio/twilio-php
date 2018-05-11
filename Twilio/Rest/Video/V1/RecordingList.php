@@ -129,7 +129,8 @@ class RecordingList extends ListResource {
     /**
      * Constructs a RecordingContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The Recording Sid that uniquely identifies the Recording
+     *                    to fetch.
      * @return \Twilio\Rest\Video\V1\RecordingContext 
      */
     public function getContext($sid) {

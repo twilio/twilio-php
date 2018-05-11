@@ -52,7 +52,7 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * (optional) Human-readable name for this document
+     * Human-readable name for this document
      * 
      * @param string $uniqueName Human-readable name for this document
      * @return $this Fluent Builder
@@ -63,7 +63,7 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * (optional) JSON data to be stored in this document
+     * JSON data to be stored in this document
      * 
      * @param array $data JSON data to be stored in this document
      * @return $this Fluent Builder
@@ -74,7 +74,7 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * (optional) Time-to-live of this Document in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Time-to-live of this Document in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
      * @param integer $ttl Time-to-live of this Document in seconds, defaults to no
      *                     expiration.
@@ -113,7 +113,7 @@ class UpdateDocumentOptions extends Options {
     }
 
     /**
-     * (optional) Contains an arbitrary JSON object to be stored in this Document. Serialized to string to respect HTTP form input, up to 16KB.
+     * Contains an arbitrary JSON object to be stored in this Document. Serialized to string to respect HTTP form input, up to 16KB.
      * 
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Document.
@@ -125,7 +125,7 @@ class UpdateDocumentOptions extends Options {
     }
 
     /**
-     * (optional) New time-to-live of this Document in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * New time-to-live of this Document in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
      * @param integer $ttl New time-to-live of this Document in seconds.
      * @return $this Fluent Builder

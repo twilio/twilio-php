@@ -124,6 +124,7 @@ class CredentialList extends ListResource {
      * @param string $username The username for this credential.
      * @param string $password The password will not be returned in the response.
      * @return CredentialInstance Newly created CredentialInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($username, $password) {
         $data = Values::of(array('Username' => $username, 'Password' => $password, ));

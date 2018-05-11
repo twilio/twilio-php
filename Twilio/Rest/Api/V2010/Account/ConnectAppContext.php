@@ -37,6 +37,7 @@ class ConnectAppContext extends InstanceContext {
      * Fetch a ConnectAppInstance
      * 
      * @return ConnectAppInstance Fetched ConnectAppInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -60,6 +61,7 @@ class ConnectAppContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

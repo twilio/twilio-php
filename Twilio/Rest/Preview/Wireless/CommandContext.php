@@ -37,6 +37,7 @@ class CommandContext extends InstanceContext {
      * Fetch a CommandInstance
      * 
      * @return CommandInstance Fetched CommandInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

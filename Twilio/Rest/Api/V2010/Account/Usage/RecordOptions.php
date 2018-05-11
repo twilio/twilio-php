@@ -17,10 +17,11 @@ abstract class RecordOptions {
      * @param string $category Only include usage of a given category
      * @param \DateTime $startDate Filter by start date
      * @param \DateTime $endDate Filter by end date
+     * @param boolean $includeSubaccounts The include_subaccounts
      * @return ReadRecordOptions Options builder
      */
-    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
-        return new ReadRecordOptions($category, $startDate, $endDate);
+    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
+        return new ReadRecordOptions($category, $startDate, $endDate, $includeSubaccounts);
     }
 }
 
@@ -29,11 +30,13 @@ class ReadRecordOptions extends Options {
      * @param string $category Only include usage of a given category
      * @param \DateTime $startDate Filter by start date
      * @param \DateTime $endDate Filter by end date
+     * @param boolean $includeSubaccounts The include_subaccounts
      */
-    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
         $this->options['category'] = $category;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
+        $this->options['includeSubaccounts'] = $includeSubaccounts;
     }
 
     /**
@@ -66,6 +69,17 @@ class ReadRecordOptions extends Options {
      */
     public function setEndDate($endDate) {
         $this->options['endDate'] = $endDate;
+        return $this;
+    }
+
+    /**
+     * The include_subaccounts
+     * 
+     * @param boolean $includeSubaccounts The include_subaccounts
+     * @return $this Fluent Builder
+     */
+    public function setIncludeSubaccounts($includeSubaccounts) {
+        $this->options['includeSubaccounts'] = $includeSubaccounts;
         return $this;
     }
 

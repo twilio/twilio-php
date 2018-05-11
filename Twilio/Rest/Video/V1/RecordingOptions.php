@@ -14,11 +14,13 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
-     * @param string $status The status
-     * @param string $sourceSid The source_sid
-     * @param string $groupingSid The grouping_sid
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $status Only show Recordings with the given status.
+     * @param string $sourceSid Only show the Recordings with the given source Sid.
+     * @param string $groupingSid Only show Recordings that have this GroupingSid.
+     * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
+     *                                    after this ISO8601 date-time.
+     * @param \DateTime $dateCreatedBefore Only show Recordings that started before
+     *                                     this this ISO8601 date-time.
      * @return ReadRecordingOptions Options builder
      */
     public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
@@ -28,11 +30,13 @@ abstract class RecordingOptions {
 
 class ReadRecordingOptions extends Options {
     /**
-     * @param string $status The status
-     * @param string $sourceSid The source_sid
-     * @param string $groupingSid The grouping_sid
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $status Only show Recordings with the given status.
+     * @param string $sourceSid Only show the Recordings with the given source Sid.
+     * @param string $groupingSid Only show Recordings that have this GroupingSid.
+     * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
+     *                                    after this ISO8601 date-time.
+     * @param \DateTime $dateCreatedBefore Only show Recordings that started before
+     *                                     this this ISO8601 date-time.
      */
     public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
         $this->options['status'] = $status;
@@ -43,9 +47,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The status
+     * Only show Recordings with the given status.
      * 
-     * @param string $status The status
+     * @param string $status Only show Recordings with the given status.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -54,9 +58,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The source_sid
+     * Only show the Recordings with the given source Sid (you can use this to filter Recordings by `TrackSid` for Video Room Recordings.
      * 
-     * @param string $sourceSid The source_sid
+     * @param string $sourceSid Only show the Recordings with the given source Sid.
      * @return $this Fluent Builder
      */
     public function setSourceSid($sourceSid) {
@@ -65,9 +69,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The grouping_sid
+     * Only show Recordings that have this GroupingSid, which may include a ParticipantSid and/or a RoomSid.
      * 
-     * @param string $groupingSid The grouping_sid
+     * @param string $groupingSid Only show Recordings that have this GroupingSid.
      * @return $this Fluent Builder
      */
     public function setGroupingSid($groupingSid) {
@@ -76,9 +80,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The date_created_after
+     * Only show Recordings that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * 
-     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
+     *                                    after this ISO8601 date-time.
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -87,9 +92,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The date_created_before
+     * Only show Recordings that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * 
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param \DateTime $dateCreatedBefore Only show Recordings that started before
+     *                                     this this ISO8601 date-time.
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {

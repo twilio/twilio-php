@@ -35,6 +35,7 @@ class CredentialListList extends ListResource {
      * 
      * @param string $credentialListSid The credential_list_sid
      * @return CredentialListInstance Newly created CredentialListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($credentialListSid) {
         $data = Values::of(array('CredentialListSid' => $credentialListSid, ));

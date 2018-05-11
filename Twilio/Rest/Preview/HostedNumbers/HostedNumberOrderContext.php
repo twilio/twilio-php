@@ -39,6 +39,7 @@ class HostedNumberOrderContext extends InstanceContext {
      * Fetch a HostedNumberOrderInstance
      * 
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -56,6 +57,7 @@ class HostedNumberOrderContext extends InstanceContext {
      * Deletes the HostedNumberOrderInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -66,6 +68,7 @@ class HostedNumberOrderContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

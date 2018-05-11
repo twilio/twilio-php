@@ -21,8 +21,9 @@ class FieldList extends ListResource {
      * Construct the FieldList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $intentSid The intent_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $intentSid The unique ID of the Intent associated with this
+     *                          Field.
      * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\FieldList 
      */
     public function __construct(Version $version, $assistantSid, $intentSid) {
@@ -123,9 +124,12 @@ class FieldList extends ListResource {
     /**
      * Create a new FieldInstance
      * 
-     * @param string $fieldType The field_type
-     * @param string $uniqueName The unique_name
+     * @param string $fieldType The unique name or sid of the FieldType
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
      * @return FieldInstance Newly created FieldInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($fieldType, $uniqueName) {
         $data = Values::of(array('FieldType' => $fieldType, 'UniqueName' => $uniqueName, ));

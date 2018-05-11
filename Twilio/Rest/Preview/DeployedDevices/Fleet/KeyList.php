@@ -39,6 +39,7 @@ class KeyList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return KeyInstance Newly created KeyInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

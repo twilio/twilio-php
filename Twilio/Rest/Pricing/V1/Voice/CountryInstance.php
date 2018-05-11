@@ -66,6 +66,7 @@ class CountryInstance extends InstanceResource {
      * Fetch a CountryInstance
      * 
      * @return CountryInstance Fetched CountryInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

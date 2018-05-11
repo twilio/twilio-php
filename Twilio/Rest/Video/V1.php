@@ -17,16 +17,16 @@ use Twilio\Rest\Video\V1\RoomList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
  * @property \Twilio\Rest\Video\V1\RecordingList recordings
+ * @property \Twilio\Rest\Video\V1\CompositionList compositions
  * @property \Twilio\Rest\Video\V1\RoomList rooms
- * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
+ * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
 class V1 extends Version {
-    protected $_compositions = null;
     protected $_recordings = null;
+    protected $_compositions = null;
     protected $_rooms = null;
 
     /**
@@ -41,16 +41,6 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList 
-     */
-    protected function getCompositions() {
-        if (!$this->_compositions) {
-            $this->_compositions = new CompositionList($this);
-        }
-        return $this->_compositions;
-    }
-
-    /**
      * @return \Twilio\Rest\Video\V1\RecordingList 
      */
     protected function getRecordings() {
@@ -58,6 +48,16 @@ class V1 extends Version {
             $this->_recordings = new RecordingList($this);
         }
         return $this->_recordings;
+    }
+
+    /**
+     * @return \Twilio\Rest\Video\V1\CompositionList 
+     */
+    protected function getCompositions() {
+        if (!$this->_compositions) {
+            $this->_compositions = new CompositionList($this);
+        }
+        return $this->_compositions;
     }
 
     /**

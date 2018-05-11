@@ -38,6 +38,7 @@ class ShortCodeContext extends InstanceContext {
      * Deletes the ShortCodeInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -47,6 +48,7 @@ class ShortCodeContext extends InstanceContext {
      * Fetch a ShortCodeInstance
      * 
      * @return ShortCodeInstance Fetched ShortCodeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

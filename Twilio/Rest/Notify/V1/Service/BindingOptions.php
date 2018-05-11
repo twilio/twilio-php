@@ -17,10 +17,13 @@ use Twilio\Values;
  */
 abstract class BindingOptions {
     /**
-     * @param string $tag The tag
-     * @param string $notificationProtocolVersion The notification_protocol_version
-     * @param string $credentialSid The credential_sid
-     * @param string $endpoint The endpoint
+     * @param string $tag The list of tags associated with this Binding.
+     * @param string $notificationProtocolVersion The version of the protocol used
+     *                                            to send the notification.
+     * @param string $credentialSid The unique identifier of the Credential
+     *                              resource to be used to send notifications to
+     *                              this Binding.
+     * @param string $endpoint DEPRECATED*
      * @return CreateBindingOptions Options builder
      */
     public static function create($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE, $endpoint = Values::NONE) {
@@ -28,10 +31,13 @@ abstract class BindingOptions {
     }
 
     /**
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
-     * @param string $identity The identity
-     * @param string $tag The tag
+     * @param \DateTime $startDate Only list Bindings created on or after the given
+     *                             date.
+     * @param \DateTime $endDate Only list Bindings created on or before the given
+     *                           date.
+     * @param string $identity Only list Bindings that have any of the specified
+     *                         Identities.
+     * @param string $tag Only list Bindings that have all of the specified Tags.
      * @return ReadBindingOptions Options builder
      */
     public static function read($startDate = Values::NONE, $endDate = Values::NONE, $identity = Values::NONE, $tag = Values::NONE) {
@@ -41,10 +47,13 @@ abstract class BindingOptions {
 
 class CreateBindingOptions extends Options {
     /**
-     * @param string $tag The tag
-     * @param string $notificationProtocolVersion The notification_protocol_version
-     * @param string $credentialSid The credential_sid
-     * @param string $endpoint The endpoint
+     * @param string $tag The list of tags associated with this Binding.
+     * @param string $notificationProtocolVersion The version of the protocol used
+     *                                            to send the notification.
+     * @param string $credentialSid The unique identifier of the Credential
+     *                              resource to be used to send notifications to
+     *                              this Binding.
+     * @param string $endpoint DEPRECATED*
      */
     public function __construct($tag = Values::NONE, $notificationProtocolVersion = Values::NONE, $credentialSid = Values::NONE, $endpoint = Values::NONE) {
         $this->options['tag'] = $tag;
@@ -54,9 +63,9 @@ class CreateBindingOptions extends Options {
     }
 
     /**
-     * The tag
+     * The list of tags associated with this Binding. Tags can be used to select the Bindings to use when sending a notification. Maximum 20 tags are allowed.
      * 
-     * @param string $tag The tag
+     * @param string $tag The list of tags associated with this Binding.
      * @return $this Fluent Builder
      */
     public function setTag($tag) {
@@ -65,9 +74,10 @@ class CreateBindingOptions extends Options {
     }
 
     /**
-     * The notification_protocol_version
+     * The version of the protocol (data format) used to send the notification. This defaults to the value of DefaultXXXNotificationProtocolVersion in the [Service](https://www.twilio.com/docs/api/notify/rest/services). The current version is `"3"` for `apn`, `fcm`, and `gcm` type Bindings. The parameter is not applicable to `sms` and `facebook-messenger` type Bindings as the data format is fixed.
      * 
-     * @param string $notificationProtocolVersion The notification_protocol_version
+     * @param string $notificationProtocolVersion The version of the protocol used
+     *                                            to send the notification.
      * @return $this Fluent Builder
      */
     public function setNotificationProtocolVersion($notificationProtocolVersion) {
@@ -76,9 +86,11 @@ class CreateBindingOptions extends Options {
     }
 
     /**
-     * The credential_sid
+     * The unique identifier (SID) of the Credential resource to be used to send notifications to this Binding. If present, this overrides the Credential specified in the Service resource. Applicable only to `apn`, `fcm`, and `gcm` type Bindings.
      * 
-     * @param string $credentialSid The credential_sid
+     * @param string $credentialSid The unique identifier of the Credential
+     *                              resource to be used to send notifications to
+     *                              this Binding.
      * @return $this Fluent Builder
      */
     public function setCredentialSid($credentialSid) {
@@ -87,9 +99,9 @@ class CreateBindingOptions extends Options {
     }
 
     /**
-     * The endpoint
+     * DEPRECATED*
      * 
-     * @param string $endpoint The endpoint
+     * @param string $endpoint DEPRECATED*
      * @return $this Fluent Builder
      */
     public function setEndpoint($endpoint) {
@@ -115,10 +127,13 @@ class CreateBindingOptions extends Options {
 
 class ReadBindingOptions extends Options {
     /**
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
-     * @param string $identity The identity
-     * @param string $tag The tag
+     * @param \DateTime $startDate Only list Bindings created on or after the given
+     *                             date.
+     * @param \DateTime $endDate Only list Bindings created on or before the given
+     *                           date.
+     * @param string $identity Only list Bindings that have any of the specified
+     *                         Identities.
+     * @param string $tag Only list Bindings that have all of the specified Tags.
      */
     public function __construct($startDate = Values::NONE, $endDate = Values::NONE, $identity = Values::NONE, $tag = Values::NONE) {
         $this->options['startDate'] = $startDate;
@@ -128,9 +143,10 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The start_date
+     * Only list Bindings created on or after the given date. Should be formatted as YYYY-MM-DD. All dates considered in UTC.
      * 
-     * @param \DateTime $startDate The start_date
+     * @param \DateTime $startDate Only list Bindings created on or after the given
+     *                             date.
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -139,9 +155,10 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The end_date
+     * Only list Bindings created on or before the given date. Should be formatted as YYYY-MM-DD. All dates considered in UTC.
      * 
-     * @param \DateTime $endDate The end_date
+     * @param \DateTime $endDate Only list Bindings created on or before the given
+     *                           date.
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
@@ -150,9 +167,10 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The identity
+     * Only list Bindings that have any of the specified Identities.
      * 
-     * @param string $identity The identity
+     * @param string $identity Only list Bindings that have any of the specified
+     *                         Identities.
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -161,9 +179,9 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The tag
+     * Only list Bindings that have all of the specified Tags. The following implicit tags are available: all, apn, fcm, gcm, sms, facebook-messenger. Maximum 5 tags are allowed.
      * 
-     * @param string $tag The tag
+     * @param string $tag Only list Bindings that have all of the specified Tags.
      * @return $this Fluent Builder
      */
     public function setTag($tag) {

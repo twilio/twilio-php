@@ -45,6 +45,7 @@ class DocumentPermissionContext extends InstanceContext {
      * Fetch a DocumentPermissionInstance
      * 
      * @return DocumentPermissionInstance Fetched DocumentPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -68,6 +69,7 @@ class DocumentPermissionContext extends InstanceContext {
      * Deletes the DocumentPermissionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -80,6 +82,7 @@ class DocumentPermissionContext extends InstanceContext {
      * @param boolean $write Write access.
      * @param boolean $manage Manage access.
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($read, $write, $manage) {
         $data = Values::of(array(

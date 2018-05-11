@@ -37,7 +37,7 @@ class ReadMediaOptions extends Options {
     }
 
     /**
-     * Only show media created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated&lt;=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated&gt;=YYYY-MM-DD` for media generated at or after midnight on a date.
+     * Only show media created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
      * 
      * @param string $dateCreatedBefore Filter by date created
      * @return $this Fluent Builder
@@ -48,7 +48,7 @@ class ReadMediaOptions extends Options {
     }
 
     /**
-     * Only show media created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated&lt;=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated&gt;=YYYY-MM-DD` for media generated at or after midnight on a date.
+     * Only show media created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
      * 
      * @param string $dateCreated Filter by date created
      * @return $this Fluent Builder
@@ -59,7 +59,7 @@ class ReadMediaOptions extends Options {
     }
 
     /**
-     * Only show media created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated&lt;=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated&gt;=YYYY-MM-DD` for media generated at or after midnight on a date.
+     * Only show media created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
      * 
      * @param string $dateCreatedAfter Filter by date created
      * @return $this Fluent Builder

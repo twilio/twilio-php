@@ -37,6 +37,7 @@ class IpAccessControlListMappingContext extends InstanceContext {
      * 
      * @return IpAccessControlListMappingInstance Fetched
      *                                            IpAccessControlListMappingInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -60,6 +61,7 @@ class IpAccessControlListMappingContext extends InstanceContext {
      * Deletes the IpAccessControlListMappingInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

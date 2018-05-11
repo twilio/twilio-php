@@ -36,6 +36,7 @@ class TrunkList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return TrunkInstance Newly created TrunkInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

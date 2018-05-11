@@ -46,6 +46,7 @@ class DocumentContext extends InstanceContext {
      * Fetch a DocumentInstance
      * 
      * @return DocumentInstance Fetched DocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -68,6 +69,7 @@ class DocumentContext extends InstanceContext {
      * Deletes the DocumentInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -78,6 +80,7 @@ class DocumentContext extends InstanceContext {
      * 
      * @param array $data The data
      * @return DocumentInstance Updated DocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($data) {
         $data = Values::of(array('Data' => Serialize::jsonObject($data), ));

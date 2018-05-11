@@ -42,6 +42,7 @@ class PayloadContext extends InstanceContext {
      * Fetch a PayloadInstance
      * 
      * @return PayloadInstance Fetched PayloadInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -66,6 +67,7 @@ class PayloadContext extends InstanceContext {
      * Deletes the PayloadInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

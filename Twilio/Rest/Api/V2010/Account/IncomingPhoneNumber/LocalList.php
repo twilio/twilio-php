@@ -132,6 +132,7 @@ class LocalList extends ListResource {
      * @param string $phoneNumber The phone number you want to purchase.
      * @param array|Options $options Optional Arguments
      * @return LocalInstance Newly created LocalInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($phoneNumber, $options = array()) {
         $options = new Values($options);

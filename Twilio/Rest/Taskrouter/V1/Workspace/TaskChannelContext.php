@@ -35,6 +35,7 @@ class TaskChannelContext extends InstanceContext {
      * Fetch a TaskChannelInstance
      * 
      * @return TaskChannelInstance Fetched TaskChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

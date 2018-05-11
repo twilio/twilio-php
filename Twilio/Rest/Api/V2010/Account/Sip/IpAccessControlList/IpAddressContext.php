@@ -41,6 +41,7 @@ class IpAddressContext extends InstanceContext {
      * Fetch a IpAddressInstance
      * 
      * @return IpAddressInstance Fetched IpAddressInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -65,6 +66,7 @@ class IpAddressContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return IpAddressInstance Updated IpAddressInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -94,6 +96,7 @@ class IpAddressContext extends InstanceContext {
      * Deletes the IpAddressInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

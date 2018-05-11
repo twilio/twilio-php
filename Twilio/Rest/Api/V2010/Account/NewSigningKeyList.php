@@ -37,6 +37,7 @@ class NewSigningKeyList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return NewSigningKeyInstance Newly created NewSigningKeyInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

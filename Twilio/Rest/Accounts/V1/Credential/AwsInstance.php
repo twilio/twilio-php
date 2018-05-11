@@ -68,6 +68,7 @@ class AwsInstance extends InstanceResource {
      * Fetch a AwsInstance
      * 
      * @return AwsInstance Fetched AwsInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -78,6 +79,7 @@ class AwsInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return AwsInstance Updated AwsInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -87,6 +89,7 @@ class AwsInstance extends InstanceResource {
      * Deletes the AwsInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

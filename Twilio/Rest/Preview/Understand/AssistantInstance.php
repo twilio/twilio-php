@@ -91,6 +91,7 @@ class AssistantInstance extends InstanceResource {
      * Fetch a AssistantInstance
      * 
      * @return AssistantInstance Fetched AssistantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -101,6 +102,7 @@ class AssistantInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return AssistantInstance Updated AssistantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -110,6 +112,7 @@ class AssistantInstance extends InstanceResource {
      * Deletes the AssistantInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

@@ -41,6 +41,7 @@ class SyncMapPermissionContext extends InstanceContext {
      * Fetch a SyncMapPermissionInstance
      * 
      * @return SyncMapPermissionInstance Fetched SyncMapPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -64,6 +65,7 @@ class SyncMapPermissionContext extends InstanceContext {
      * Deletes the SyncMapPermissionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -76,6 +78,7 @@ class SyncMapPermissionContext extends InstanceContext {
      * @param boolean $write Write access.
      * @param boolean $manage Manage access.
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($read, $write, $manage) {
         $data = Values::of(array(

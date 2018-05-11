@@ -79,6 +79,7 @@ class ActivityInstance extends InstanceResource {
      * Fetch a ActivityInstance
      * 
      * @return ActivityInstance Fetched ActivityInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -89,6 +90,7 @@ class ActivityInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ActivityInstance Updated ActivityInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -98,6 +100,7 @@ class ActivityInstance extends InstanceResource {
      * Deletes the ActivityInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

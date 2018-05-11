@@ -22,8 +22,9 @@ class FieldValueList extends ListResource {
      * Construct the FieldValueList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $fieldTypeSid The field_type_sid
+     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $fieldTypeSid The unique ID of the Field Type associated with
+     *                             this Field Value.
      * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueList 
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid) {
@@ -129,10 +130,13 @@ class FieldValueList extends ListResource {
     /**
      * Create a new FieldValueInstance
      * 
-     * @param string $language The language
-     * @param string $value The value
+     * @param string $language An ISO language-country string of the value.
+     * @param string $value A user-provided string that uniquely identifies this
+     *                      resource as an alternative to the sid. Unique up to 64
+     *                      characters long.
      * @param array|Options $options Optional Arguments
      * @return FieldValueInstance Newly created FieldValueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($language, $value, $options = array()) {
         $options = new Values($options);

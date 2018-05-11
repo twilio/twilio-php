@@ -41,6 +41,7 @@ class SyncListItemList extends ListResource {
      * 
      * @param array $data The data
      * @return SyncListItemInstance Newly created SyncListItemInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($data) {
         $data = Values::of(array('Data' => Serialize::jsonObject($data), ));

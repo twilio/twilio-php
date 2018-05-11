@@ -35,6 +35,7 @@ class CredentialListContext extends InstanceContext {
      * Fetch a CredentialListInstance
      * 
      * @return CredentialListInstance Fetched CredentialListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -57,6 +58,7 @@ class CredentialListContext extends InstanceContext {
      * Deletes the CredentialListInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

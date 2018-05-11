@@ -39,6 +39,7 @@ class SyncMapList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncMapInstance Newly created SyncMapInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

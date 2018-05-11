@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class SampleOptions {
     /**
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the sample.
      * @return ReadSampleOptions Options builder
      */
     public static function read($language = Values::NONE) {
@@ -25,7 +25,10 @@ abstract class SampleOptions {
     }
 
     /**
-     * @param string $sourceChannel The source_channel
+     * @param string $sourceChannel The communication channel the sample was
+     *                              captured. It can be: voice, sms, chat, alexa,
+     *                              google-assistant, or slack. If not included the
+     *                              value will be null
      * @return CreateSampleOptions Options builder
      */
     public static function create($sourceChannel = Values::NONE) {
@@ -33,9 +36,13 @@ abstract class SampleOptions {
     }
 
     /**
-     * @param string $language The language
-     * @param string $taggedText The tagged_text
-     * @param string $sourceChannel The source_channel
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $taggedText The text example of how end-users may express this
+     *                           intent. The sample may contain Field tag blocks.
+     * @param string $sourceChannel The communication channel the sample was
+     *                              captured. It can be: voice, sms, chat, alexa,
+     *                              google-assistant, or slack. If not included the
+     *                              value will be null
      * @return UpdateSampleOptions Options builder
      */
     public static function update($language = Values::NONE, $taggedText = Values::NONE, $sourceChannel = Values::NONE) {
@@ -45,16 +52,16 @@ abstract class SampleOptions {
 
 class ReadSampleOptions extends Options {
     /**
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the sample.
      */
     public function __construct($language = Values::NONE) {
         $this->options['language'] = $language;
     }
 
     /**
-     * The language
+     * An ISO language-country string of the sample.
      * 
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
     public function setLanguage($language) {
@@ -80,16 +87,22 @@ class ReadSampleOptions extends Options {
 
 class CreateSampleOptions extends Options {
     /**
-     * @param string $sourceChannel The source_channel
+     * @param string $sourceChannel The communication channel the sample was
+     *                              captured. It can be: voice, sms, chat, alexa,
+     *                              google-assistant, or slack. If not included the
+     *                              value will be null
      */
     public function __construct($sourceChannel = Values::NONE) {
         $this->options['sourceChannel'] = $sourceChannel;
     }
 
     /**
-     * The source_channel
+     * The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null
      * 
-     * @param string $sourceChannel The source_channel
+     * @param string $sourceChannel The communication channel the sample was
+     *                              captured. It can be: voice, sms, chat, alexa,
+     *                              google-assistant, or slack. If not included the
+     *                              value will be null
      * @return $this Fluent Builder
      */
     public function setSourceChannel($sourceChannel) {
@@ -115,9 +128,13 @@ class CreateSampleOptions extends Options {
 
 class UpdateSampleOptions extends Options {
     /**
-     * @param string $language The language
-     * @param string $taggedText The tagged_text
-     * @param string $sourceChannel The source_channel
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $taggedText The text example of how end-users may express this
+     *                           intent. The sample may contain Field tag blocks.
+     * @param string $sourceChannel The communication channel the sample was
+     *                              captured. It can be: voice, sms, chat, alexa,
+     *                              google-assistant, or slack. If not included the
+     *                              value will be null
      */
     public function __construct($language = Values::NONE, $taggedText = Values::NONE, $sourceChannel = Values::NONE) {
         $this->options['language'] = $language;
@@ -126,9 +143,9 @@ class UpdateSampleOptions extends Options {
     }
 
     /**
-     * The language
+     * An ISO language-country string of the sample.
      * 
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
     public function setLanguage($language) {
@@ -137,9 +154,10 @@ class UpdateSampleOptions extends Options {
     }
 
     /**
-     * The tagged_text
+     * The text example of how end-users may express this intent. The sample may contain Field tag blocks.
      * 
-     * @param string $taggedText The tagged_text
+     * @param string $taggedText The text example of how end-users may express this
+     *                           intent. The sample may contain Field tag blocks.
      * @return $this Fluent Builder
      */
     public function setTaggedText($taggedText) {
@@ -148,9 +166,12 @@ class UpdateSampleOptions extends Options {
     }
 
     /**
-     * The source_channel
+     * The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null
      * 
-     * @param string $sourceChannel The source_channel
+     * @param string $sourceChannel The communication channel the sample was
+     *                              captured. It can be: voice, sms, chat, alexa,
+     *                              google-assistant, or slack. If not included the
+     *                              value will be null
      * @return $this Fluent Builder
      */
     public function setSourceChannel($sourceChannel) {

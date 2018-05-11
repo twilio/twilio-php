@@ -34,6 +34,7 @@ class AlertContext extends InstanceContext {
      * Fetch a AlertInstance
      * 
      * @return AlertInstance Fetched AlertInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -51,6 +52,7 @@ class AlertContext extends InstanceContext {
      * Deletes the AlertInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

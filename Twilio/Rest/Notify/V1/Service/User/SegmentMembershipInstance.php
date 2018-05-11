@@ -79,6 +79,7 @@ class SegmentMembershipInstance extends InstanceResource {
      * Deletes the SegmentMembershipInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -88,6 +89,7 @@ class SegmentMembershipInstance extends InstanceResource {
      * Fetch a SegmentMembershipInstance
      * 
      * @return SegmentMembershipInstance Fetched SegmentMembershipInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

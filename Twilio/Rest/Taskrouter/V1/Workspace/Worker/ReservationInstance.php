@@ -88,6 +88,7 @@ class ReservationInstance extends InstanceResource {
      * Fetch a ReservationInstance
      * 
      * @return ReservationInstance Fetched ReservationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -98,6 +99,7 @@ class ReservationInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

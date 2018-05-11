@@ -98,6 +98,7 @@ class ParticipantInstance extends InstanceResource {
      * Fetch a ParticipantInstance
      * 
      * @return ParticipantInstance Fetched ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -107,6 +108,7 @@ class ParticipantInstance extends InstanceResource {
      * Deletes the ParticipantInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -117,6 +119,7 @@ class ParticipantInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

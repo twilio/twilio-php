@@ -40,6 +40,7 @@ class VerificationCheckList extends ListResource {
      * @param string $code The verification string
      * @param array|Options $options Optional Arguments
      * @return VerificationCheckInstance Newly created VerificationCheckInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($code, $options = array()) {
         $options = new Values($options);

@@ -76,6 +76,7 @@ class FaxMediaInstance extends InstanceResource {
      * Fetch a FaxMediaInstance
      * 
      * @return FaxMediaInstance Fetched FaxMediaInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -85,6 +86,7 @@ class FaxMediaInstance extends InstanceResource {
      * Deletes the FaxMediaInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

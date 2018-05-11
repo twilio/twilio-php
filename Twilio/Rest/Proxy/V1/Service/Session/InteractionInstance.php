@@ -107,6 +107,7 @@ class InteractionInstance extends InstanceResource {
      * Fetch a InteractionInstance
      * 
      * @return InteractionInstance Fetched InteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -116,6 +117,7 @@ class InteractionInstance extends InstanceResource {
      * Deletes the InteractionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

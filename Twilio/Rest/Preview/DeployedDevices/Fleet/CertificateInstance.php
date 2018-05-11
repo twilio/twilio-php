@@ -80,6 +80,7 @@ class CertificateInstance extends InstanceResource {
      * Fetch a CertificateInstance
      * 
      * @return CertificateInstance Fetched CertificateInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -89,6 +90,7 @@ class CertificateInstance extends InstanceResource {
      * Deletes the CertificateInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -99,6 +101,7 @@ class CertificateInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return CertificateInstance Updated CertificateInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

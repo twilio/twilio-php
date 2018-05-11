@@ -89,6 +89,7 @@ class SyncListInstance extends InstanceResource {
      * Fetch a SyncListInstance
      * 
      * @return SyncListInstance Fetched SyncListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -98,6 +99,7 @@ class SyncListInstance extends InstanceResource {
      * Deletes the SyncListInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -108,6 +110,7 @@ class SyncListInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncListInstance Updated SyncListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

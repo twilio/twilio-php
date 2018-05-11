@@ -124,6 +124,7 @@ class QueueList extends ListResource {
      *                             queue.
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Newly created QueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);

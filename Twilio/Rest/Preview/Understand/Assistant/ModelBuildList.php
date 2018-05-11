@@ -22,7 +22,7 @@ class ModelBuildList extends ListResource {
      * Construct the ModelBuildList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
      * @return \Twilio\Rest\Preview\Understand\Assistant\ModelBuildList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -125,6 +125,7 @@ class ModelBuildList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ModelBuildInstance Newly created ModelBuildInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

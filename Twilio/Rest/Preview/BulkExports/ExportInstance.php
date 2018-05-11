@@ -64,6 +64,7 @@ class ExportInstance extends InstanceResource {
      * Fetch a ExportInstance
      * 
      * @return ExportInstance Fetched ExportInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

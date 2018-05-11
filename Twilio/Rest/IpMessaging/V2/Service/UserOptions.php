@@ -14,9 +14,11 @@ use Twilio\Values;
 
 abstract class UserOptions {
     /**
-     * @param string $roleSid The role_sid
-     * @param string $attributes The attributes
-     * @param string $friendlyName The friendly_name
+     * @param string $roleSid The unique id of the Role assigned to this user.
+     * @param string $attributes An optional string used to contain any metadata or
+     *                           other information for the User.
+     * @param string $friendlyName An optional human readable string representing
+     *                             the user.
      * @return CreateUserOptions Options builder
      */
     public static function create($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
@@ -24,9 +26,12 @@ abstract class UserOptions {
     }
 
     /**
-     * @param string $roleSid The role_sid
-     * @param string $attributes The attributes
-     * @param string $friendlyName The friendly_name
+     * @param string $roleSid The unique id of the [Role][role] assigned to this
+     *                        user.
+     * @param string $attributes An optional string used to contain any metadata or
+     *                           other information for the User.
+     * @param string $friendlyName An optional human readable string representing
+     *                             the user.
      * @return UpdateUserOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
@@ -36,9 +41,11 @@ abstract class UserOptions {
 
 class CreateUserOptions extends Options {
     /**
-     * @param string $roleSid The role_sid
-     * @param string $attributes The attributes
-     * @param string $friendlyName The friendly_name
+     * @param string $roleSid The unique id of the Role assigned to this user.
+     * @param string $attributes An optional string used to contain any metadata or
+     *                           other information for the User.
+     * @param string $friendlyName An optional human readable string representing
+     *                             the user.
      */
     public function __construct($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -47,9 +54,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The role_sid
+     * The unique id of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user.
      * 
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The unique id of the Role assigned to this user.
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -58,9 +65,10 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The attributes
+     * An optional string used to contain any metadata or other information for the User.  The string must contain structurally valid JSON if specified.
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes An optional string used to contain any metadata or
+     *                           other information for the User.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -69,9 +77,10 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * An optional human readable string representing the user.  Often used for display purposes.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName An optional human readable string representing
+     *                             the user.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -97,9 +106,12 @@ class CreateUserOptions extends Options {
 
 class UpdateUserOptions extends Options {
     /**
-     * @param string $roleSid The role_sid
-     * @param string $attributes The attributes
-     * @param string $friendlyName The friendly_name
+     * @param string $roleSid The unique id of the [Role][role] assigned to this
+     *                        user.
+     * @param string $attributes An optional string used to contain any metadata or
+     *                           other information for the User.
+     * @param string $friendlyName An optional human readable string representing
+     *                             the user.
      */
     public function __construct($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -108,9 +120,10 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The role_sid
+     * The unique id of the [Role][role] assigned to this user.
      * 
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The unique id of the [Role][role] assigned to this
+     *                        user.
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -119,9 +132,10 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The attributes
+     * An optional string used to contain any metadata or other information for the User.  The string must contain structurally valid JSON if specified.
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes An optional string used to contain any metadata or
+     *                           other information for the User.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -130,9 +144,10 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * An optional human readable string representing the user.  Often used for display purposes.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName An optional human readable string representing
+     *                             the user.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

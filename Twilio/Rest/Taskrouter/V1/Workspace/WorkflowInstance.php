@@ -93,6 +93,7 @@ class WorkflowInstance extends InstanceResource {
      * Fetch a WorkflowInstance
      * 
      * @return WorkflowInstance Fetched WorkflowInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -103,6 +104,7 @@ class WorkflowInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return WorkflowInstance Updated WorkflowInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -112,6 +114,7 @@ class WorkflowInstance extends InstanceResource {
      * Deletes the WorkflowInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

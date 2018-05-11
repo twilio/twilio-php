@@ -31,8 +31,9 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $body The body
-     * @param string $attributes The attributes
+     * @param string $body The new message body string.
+     * @param string $attributes The new attributes metadata field you can use to
+     *                           store any data you wish.
      * @return UpdateMessageOptions Options builder
      */
     public static function update($body = Values::NONE, $attributes = Values::NONE) {
@@ -125,8 +126,9 @@ class ReadMessageOptions extends Options {
 
 class UpdateMessageOptions extends Options {
     /**
-     * @param string $body The body
-     * @param string $attributes The attributes
+     * @param string $body The new message body string.
+     * @param string $attributes The new attributes metadata field you can use to
+     *                           store any data you wish.
      */
     public function __construct($body = Values::NONE, $attributes = Values::NONE) {
         $this->options['body'] = $body;
@@ -134,9 +136,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The body
+     * The new message body string. You can also send structured data by serializing it into a string.
      * 
-     * @param string $body The body
+     * @param string $body The new message body string.
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -145,9 +147,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The attributes
+     * The new attributes metadata field you can use to store any data you wish.  The string value must contain structurally valid JSON if specified.
      * 
-     * @param string $attributes The attributes
+     * @param string $attributes The new attributes metadata field you can use to
+     *                           store any data you wish.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {

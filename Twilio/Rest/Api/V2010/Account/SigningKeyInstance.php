@@ -70,6 +70,7 @@ class SigningKeyInstance extends InstanceResource {
      * Fetch a SigningKeyInstance
      * 
      * @return SigningKeyInstance Fetched SigningKeyInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -80,6 +81,7 @@ class SigningKeyInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SigningKeyInstance Updated SigningKeyInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -89,6 +91,7 @@ class SigningKeyInstance extends InstanceResource {
      * Deletes the SigningKeyInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

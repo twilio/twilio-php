@@ -41,10 +41,13 @@ class SyncMapItemList extends ListResource {
     /**
      * Create a new SyncMapItemInstance
      * 
-     * @param string $key The key
-     * @param array $data The data
+     * @param string $key The unique user-defined key of this Map Item.
+     * @param array $data Contains arbitrary user-defined, schema-less data that
+     *                    this Map Item stores, represented by a JSON object, up to
+     *                    16KB.
      * @param array|Options $options Optional Arguments
      * @return SyncMapItemInstance Newly created SyncMapItemInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($key, $data, $options = array()) {
         $options = new Values($options);

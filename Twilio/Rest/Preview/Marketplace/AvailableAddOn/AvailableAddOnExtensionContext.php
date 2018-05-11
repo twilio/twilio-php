@@ -39,6 +39,7 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      * 
      * @return AvailableAddOnExtensionInstance Fetched
      *                                         AvailableAddOnExtensionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

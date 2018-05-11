@@ -37,6 +37,7 @@ class PhoneNumberContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch($options = array()) {
         $options = new Values($options);

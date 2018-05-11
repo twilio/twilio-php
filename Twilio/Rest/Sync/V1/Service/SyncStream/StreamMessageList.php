@@ -40,6 +40,7 @@ class StreamMessageList extends ListResource {
      * 
      * @param array $data Stream Message body.
      * @return StreamMessageInstance Newly created StreamMessageInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($data) {
         $data = Values::of(array('Data' => Serialize::jsonObject($data), ));

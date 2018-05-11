@@ -94,6 +94,7 @@ class TriggerInstance extends InstanceResource {
      * Fetch a TriggerInstance
      * 
      * @return TriggerInstance Fetched TriggerInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -104,6 +105,7 @@ class TriggerInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return TriggerInstance Updated TriggerInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -113,6 +115,7 @@ class TriggerInstance extends InstanceResource {
      * Deletes the TriggerInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

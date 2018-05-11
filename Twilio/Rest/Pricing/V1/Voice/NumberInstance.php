@@ -68,6 +68,7 @@ class NumberInstance extends InstanceResource {
      * Fetch a NumberInstance
      * 
      * @return NumberInstance Fetched NumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

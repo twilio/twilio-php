@@ -134,6 +134,7 @@ class ParticipantList extends ListResource {
      *                           phone number.
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Newly created ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($identifier, $options = array()) {
         $options = new Values($options);

@@ -41,6 +41,7 @@ class SyncListItemContext extends InstanceContext {
      * Fetch a SyncListItemInstance
      * 
      * @return SyncListItemInstance Fetched SyncListItemInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -64,6 +65,7 @@ class SyncListItemContext extends InstanceContext {
      * Deletes the SyncListItemInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -74,6 +76,7 @@ class SyncListItemContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Updated SyncListItemInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

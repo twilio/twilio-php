@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class InviteOptions {
     /**
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The Role assigned to this member.
      * @return CreateInviteOptions Options builder
      */
     public static function create($roleSid = Values::NONE) {
@@ -22,7 +22,8 @@ abstract class InviteOptions {
     }
 
     /**
-     * @param string $identity The identity
+     * @param string $identity A unique string identifier for this User in this
+     *                         Service.
      * @return ReadInviteOptions Options builder
      */
     public static function read($identity = Values::NONE) {
@@ -32,16 +33,16 @@ abstract class InviteOptions {
 
 class CreateInviteOptions extends Options {
     /**
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The Role assigned to this member.
      */
     public function __construct($roleSid = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
     }
 
     /**
-     * The role_sid
+     * The [Role](https://www.twilio.com/docs/api/chat/rest/v1/role) assigned to this member.
      * 
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The Role assigned to this member.
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -67,16 +68,18 @@ class CreateInviteOptions extends Options {
 
 class ReadInviteOptions extends Options {
     /**
-     * @param string $identity The identity
+     * @param string $identity A unique string identifier for this User in this
+     *                         Service.
      */
     public function __construct($identity = Values::NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
-     * The identity
+     * A unique string identifier for this [User](https://www.twilio.com/docs/api/chat/rest/v1/user) in this [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). See the [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens)[/docs/api/chat/guides/create-tokens] docs for more details.
      * 
-     * @param string $identity The identity
+     * @param string $identity A unique string identifier for this User in this
+     *                         Service.
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {

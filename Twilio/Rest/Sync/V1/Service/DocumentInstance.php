@@ -90,6 +90,7 @@ class DocumentInstance extends InstanceResource {
      * Fetch a DocumentInstance
      * 
      * @return DocumentInstance Fetched DocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -99,6 +100,7 @@ class DocumentInstance extends InstanceResource {
      * Deletes the DocumentInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -109,6 +111,7 @@ class DocumentInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return DocumentInstance Updated DocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

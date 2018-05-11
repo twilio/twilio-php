@@ -26,8 +26,9 @@ abstract class SyncMapItemOptions {
     }
 
     /**
-     * @param string $order The order
-     * @param string $from The from
+     * @param string $order A string; asc or desc. Map Items are ordered
+     *                      lexicographically by Item key.
+     * @param string $from The Item key offset (including the specified key).
      * @param string $bounds The bounds
      * @return ReadSyncMapItemOptions Options builder
      */
@@ -56,7 +57,7 @@ class CreateSyncMapItemOptions extends Options {
     }
 
     /**
-     * (optional) Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
      * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
      *                     expiration.
@@ -85,8 +86,9 @@ class CreateSyncMapItemOptions extends Options {
 
 class ReadSyncMapItemOptions extends Options {
     /**
-     * @param string $order The order
-     * @param string $from The from
+     * @param string $order A string; asc or desc. Map Items are ordered
+     *                      lexicographically by Item key.
+     * @param string $from The Item key offset (including the specified key).
      * @param string $bounds The bounds
      */
     public function __construct($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
@@ -96,9 +98,10 @@ class ReadSyncMapItemOptions extends Options {
     }
 
     /**
-     * The order
+     * A string; asc or desc. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.
      * 
-     * @param string $order The order
+     * @param string $order A string; asc or desc. Map Items are ordered
+     *                      lexicographically by Item key.
      * @return $this Fluent Builder
      */
     public function setOrder($order) {
@@ -107,9 +110,9 @@ class ReadSyncMapItemOptions extends Options {
     }
 
     /**
-     * The from
+     * The Item key offset (including the specified key). If not present, query is performed from the start or end, depending on the Order query parameter.
      * 
-     * @param string $from The from
+     * @param string $from The Item key offset (including the specified key).
      * @return $this Fluent Builder
      */
     public function setFrom($from) {
@@ -156,7 +159,7 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * (optional) Contains an arbitrary JSON object to be stored in this Map Item. Serialized to string to respect HTTP form input, up to 16KB.
+     * Contains an arbitrary JSON object to be stored in this Map Item. Serialized to string to respect HTTP form input, up to 16KB.
      * 
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Map Item.

@@ -38,7 +38,7 @@ class IntentInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The unique ID of the Assistant.
      * @param string $sid The sid
      * @return \Twilio\Rest\Preview\Understand\Assistant\IntentInstance 
      */
@@ -85,6 +85,7 @@ class IntentInstance extends InstanceResource {
      * Fetch a IntentInstance
      * 
      * @return IntentInstance Fetched IntentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -95,6 +96,7 @@ class IntentInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return IntentInstance Updated IntentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -104,6 +106,7 @@ class IntentInstance extends InstanceResource {
      * Deletes the IntentInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

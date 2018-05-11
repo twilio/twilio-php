@@ -40,6 +40,7 @@ class AlphaSenderList extends ListResource {
      * @param string $alphaSender An Alphanumeric Sender ID string, up to 11
      *                            characters.
      * @return AlphaSenderInstance Newly created AlphaSenderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($alphaSender) {
         $data = Values::of(array('AlphaSender' => $alphaSender, ));

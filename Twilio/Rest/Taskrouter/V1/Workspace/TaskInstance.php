@@ -103,6 +103,7 @@ class TaskInstance extends InstanceResource {
      * Fetch a TaskInstance
      * 
      * @return TaskInstance Fetched TaskInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -113,6 +114,7 @@ class TaskInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -122,6 +124,7 @@ class TaskInstance extends InstanceResource {
      * Deletes the TaskInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

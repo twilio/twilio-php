@@ -43,6 +43,7 @@ class IpAccessControlListContext extends InstanceContext {
      * Fetch a IpAccessControlListInstance
      * 
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -66,6 +67,7 @@ class IpAccessControlListContext extends InstanceContext {
      * 
      * @param string $friendlyName A human readable description of this resource
      * @return IpAccessControlListInstance Updated IpAccessControlListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($friendlyName) {
         $data = Values::of(array('FriendlyName' => $friendlyName, ));
@@ -89,6 +91,7 @@ class IpAccessControlListContext extends InstanceContext {
      * Deletes the IpAccessControlListInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

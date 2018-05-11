@@ -36,9 +36,10 @@ class FeedbackContext extends InstanceContext {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param integer $qualityScore The quality_score
+     * @param integer $qualityScore An integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($qualityScore, $options = array()) {
         $options = new Values($options);
@@ -67,6 +68,7 @@ class FeedbackContext extends InstanceContext {
      * Fetch a FeedbackInstance
      * 
      * @return FeedbackInstance Fetched FeedbackInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -91,6 +93,7 @@ class FeedbackContext extends InstanceContext {
      * @param integer $qualityScore An integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($qualityScore, $options = array()) {
         $options = new Values($options);

@@ -80,6 +80,7 @@ class WorkspaceContext extends InstanceContext {
      * Fetch a WorkspaceInstance
      * 
      * @return WorkspaceInstance Fetched WorkspaceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -98,6 +99,7 @@ class WorkspaceContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -126,6 +128,7 @@ class WorkspaceContext extends InstanceContext {
      * Deletes the WorkspaceInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

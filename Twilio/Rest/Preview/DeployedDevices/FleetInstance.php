@@ -81,6 +81,7 @@ class FleetInstance extends InstanceResource {
      * Fetch a FleetInstance
      * 
      * @return FleetInstance Fetched FleetInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -90,6 +91,7 @@ class FleetInstance extends InstanceResource {
      * Deletes the FleetInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -100,6 +102,7 @@ class FleetInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return FleetInstance Updated FleetInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

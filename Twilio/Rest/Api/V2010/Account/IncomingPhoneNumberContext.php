@@ -46,6 +46,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -94,6 +95,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * Fetch a IncomingPhoneNumberInstance
      * 
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -116,6 +118,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * Deletes the IncomingPhoneNumberInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

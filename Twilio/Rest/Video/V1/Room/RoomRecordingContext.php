@@ -35,6 +35,7 @@ class RoomRecordingContext extends InstanceContext {
      * Fetch a RoomRecordingInstance
      * 
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

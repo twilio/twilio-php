@@ -36,6 +36,7 @@ class InviteContext extends InstanceContext {
      * Fetch a InviteInstance
      * 
      * @return InviteInstance Fetched InviteInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -59,6 +60,7 @@ class InviteContext extends InstanceContext {
      * Deletes the InviteInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

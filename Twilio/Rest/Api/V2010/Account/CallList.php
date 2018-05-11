@@ -48,6 +48,7 @@ class CallList extends ListResource {
      * @param string $from Twilio number from which to originate the call
      * @param array|Options $options Optional Arguments
      * @return CallInstance Newly created CallInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($to, $from, $options = array()) {
         $options = new Values($options);

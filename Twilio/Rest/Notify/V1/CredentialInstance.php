@@ -74,6 +74,7 @@ class CredentialInstance extends InstanceResource {
      * Fetch a CredentialInstance
      * 
      * @return CredentialInstance Fetched CredentialInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -84,6 +85,7 @@ class CredentialInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -93,6 +95,7 @@ class CredentialInstance extends InstanceResource {
      * Deletes the CredentialInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

@@ -82,6 +82,7 @@ class EventInstance extends InstanceResource {
      * Fetch a EventInstance
      * 
      * @return EventInstance Fetched EventInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

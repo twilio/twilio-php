@@ -36,6 +36,7 @@ class RoleContext extends InstanceContext {
      * Fetch a RoleInstance
      * 
      * @return RoleInstance Fetched RoleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -58,6 +59,7 @@ class RoleContext extends InstanceContext {
      * Deletes the RoleInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -66,8 +68,9 @@ class RoleContext extends InstanceContext {
     /**
      * Update the RoleInstance
      * 
-     * @param string $permission The permission
+     * @param string $permission A permission this role should have.
      * @return RoleInstance Updated RoleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($permission) {
         $data = Values::of(array('Permission' => Serialize::map($permission, function($e) { return $e; }), ));

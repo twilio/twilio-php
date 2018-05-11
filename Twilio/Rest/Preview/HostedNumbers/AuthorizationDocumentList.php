@@ -137,6 +137,7 @@ class AuthorizationDocumentList extends ListResource {
      * @param array|Options $options Optional Arguments
      * @return AuthorizationDocumentInstance Newly created
      *                                       AuthorizationDocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($hostedNumberOrderSids, $addressSid, $email, $options = array()) {
         $options = new Values($options);

@@ -12,21 +12,33 @@ namespace Twilio\Rest\Wireless\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class RatePlanOptions {
     /**
-     * @param string $uniqueName The unique_name
-     * @param string $friendlyName The friendly_name
-     * @param boolean $dataEnabled The data_enabled
-     * @param integer $dataLimit The data_limit
-     * @param string $dataMetering The data_metering
-     * @param boolean $messagingEnabled The messaging_enabled
-     * @param boolean $voiceEnabled The voice_enabled
-     * @param boolean $nationalRoamingEnabled The national_roaming_enabled
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
+     * @param boolean $dataEnabled Defines whether SIMs are capable of using
+     *                             GPRS/3G/LTE data connectivity.
+     * @param integer $dataLimit Network-enforced limit specifying the total
+     *                           Megabytes of data usage allowed during one month
+     *                           on the home network.
+     * @param string $dataMetering The model by which to meter data usage, in
+     *                             accordance with the two available data metering
+     *                             models.
+     * @param boolean $messagingEnabled Defines whether SIMs are capable of making
+     *                                  and sending and receiving SMS messages via
+     *                                  either Commands or Programmable SMS APIs.
+     * @param boolean $voiceEnabled Defines whether SIMs are capable of making and
+     *                              receiving voice calls.
+     * @param boolean $nationalRoamingEnabled Defines whether SIMs can roam onto
+     *                                        other networks in the SIM's home
+     *                                        country.
      * @param string $internationalRoaming The international_roaming
-     * @param integer $nationalRoamingDataLimit The national_roaming_data_limit
+     * @param integer $nationalRoamingDataLimit Network-enforced limit specifying
+     *                                          the total Megabytes of national
+     *                                          roaming data usage allowed during
+     *                                          one month.
      * @param integer $internationalRoamingDataLimit The
      *                                               international_roaming_data_limit
      * @return CreateRatePlanOptions Options builder
@@ -36,8 +48,10 @@ abstract class RatePlanOptions {
     }
 
     /**
-     * @param string $uniqueName The unique_name
-     * @param string $friendlyName The friendly_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
      * @return UpdateRatePlanOptions Options builder
      */
     public static function update($uniqueName = Values::NONE, $friendlyName = Values::NONE) {
@@ -47,16 +61,31 @@ abstract class RatePlanOptions {
 
 class CreateRatePlanOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
-     * @param string $friendlyName The friendly_name
-     * @param boolean $dataEnabled The data_enabled
-     * @param integer $dataLimit The data_limit
-     * @param string $dataMetering The data_metering
-     * @param boolean $messagingEnabled The messaging_enabled
-     * @param boolean $voiceEnabled The voice_enabled
-     * @param boolean $nationalRoamingEnabled The national_roaming_enabled
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
+     * @param boolean $dataEnabled Defines whether SIMs are capable of using
+     *                             GPRS/3G/LTE data connectivity.
+     * @param integer $dataLimit Network-enforced limit specifying the total
+     *                           Megabytes of data usage allowed during one month
+     *                           on the home network.
+     * @param string $dataMetering The model by which to meter data usage, in
+     *                             accordance with the two available data metering
+     *                             models.
+     * @param boolean $messagingEnabled Defines whether SIMs are capable of making
+     *                                  and sending and receiving SMS messages via
+     *                                  either Commands or Programmable SMS APIs.
+     * @param boolean $voiceEnabled Defines whether SIMs are capable of making and
+     *                              receiving voice calls.
+     * @param boolean $nationalRoamingEnabled Defines whether SIMs can roam onto
+     *                                        other networks in the SIM's home
+     *                                        country.
      * @param string $internationalRoaming The international_roaming
-     * @param integer $nationalRoamingDataLimit The national_roaming_data_limit
+     * @param integer $nationalRoamingDataLimit Network-enforced limit specifying
+     *                                          the total Megabytes of national
+     *                                          roaming data usage allowed during
+     *                                          one month.
      * @param integer $internationalRoamingDataLimit The
      *                                               international_roaming_data_limit
      */
@@ -75,9 +104,10 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * A user-provided string that uniquely identifies this resource as an alternative to the Sid.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -86,9 +116,10 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A user-provided string that identifies this resource. Non-unique.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -97,9 +128,10 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The data_enabled
+     * Defines whether SIMs are capable of using GPRS/3G/LTE data connectivity.
      * 
-     * @param boolean $dataEnabled The data_enabled
+     * @param boolean $dataEnabled Defines whether SIMs are capable of using
+     *                             GPRS/3G/LTE data connectivity.
      * @return $this Fluent Builder
      */
     public function setDataEnabled($dataEnabled) {
@@ -108,9 +140,11 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The data_limit
+     * Network-enforced limit specifying the total Megabytes of data usage (download and upload combined) allowed during one month on the home network. Metering begins on the day of activation and ends on the same day of the following month.  Max value is 2TB.
      * 
-     * @param integer $dataLimit The data_limit
+     * @param integer $dataLimit Network-enforced limit specifying the total
+     *                           Megabytes of data usage allowed during one month
+     *                           on the home network.
      * @return $this Fluent Builder
      */
     public function setDataLimit($dataLimit) {
@@ -119,9 +153,11 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The data_metering
+     * The model by which to meter data usage, in accordance with the two available [data metering models](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#explanation-of-pooled-vs-individual). Valid options are `pooled` and `individual`.
      * 
-     * @param string $dataMetering The data_metering
+     * @param string $dataMetering The model by which to meter data usage, in
+     *                             accordance with the two available data metering
+     *                             models.
      * @return $this Fluent Builder
      */
     public function setDataMetering($dataMetering) {
@@ -130,9 +166,11 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The messaging_enabled
+     * Defines whether SIMs are capable of making and sending and receiving SMS messages via either [Commands](https://www.twilio.com/docs/wireless/api/commands) or Programmable SMS APIs.
      * 
-     * @param boolean $messagingEnabled The messaging_enabled
+     * @param boolean $messagingEnabled Defines whether SIMs are capable of making
+     *                                  and sending and receiving SMS messages via
+     *                                  either Commands or Programmable SMS APIs.
      * @return $this Fluent Builder
      */
     public function setMessagingEnabled($messagingEnabled) {
@@ -141,9 +179,10 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The voice_enabled
+     * Defines whether SIMs are capable of making and receiving voice calls.
      * 
-     * @param boolean $voiceEnabled The voice_enabled
+     * @param boolean $voiceEnabled Defines whether SIMs are capable of making and
+     *                              receiving voice calls.
      * @return $this Fluent Builder
      */
     public function setVoiceEnabled($voiceEnabled) {
@@ -152,9 +191,11 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The national_roaming_enabled
+     * Defines whether SIMs can roam onto other networks in the SIM's home country. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming).
      * 
-     * @param boolean $nationalRoamingEnabled The national_roaming_enabled
+     * @param boolean $nationalRoamingEnabled Defines whether SIMs can roam onto
+     *                                        other networks in the SIM's home
+     *                                        country.
      * @return $this Fluent Builder
      */
     public function setNationalRoamingEnabled($nationalRoamingEnabled) {
@@ -174,9 +215,12 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The national_roaming_data_limit
+     * Network-enforced limit specifying the total Megabytes of national roaming data usage (download and upload combined) allowed during one month.  Max value is 2TB. If unspecified, the default value is the lesser of `DataLimit` and 1000MB.
      * 
-     * @param integer $nationalRoamingDataLimit The national_roaming_data_limit
+     * @param integer $nationalRoamingDataLimit Network-enforced limit specifying
+     *                                          the total Megabytes of national
+     *                                          roaming data usage allowed during
+     *                                          one month.
      * @return $this Fluent Builder
      */
     public function setNationalRoamingDataLimit($nationalRoamingDataLimit) {
@@ -214,8 +258,10 @@ class CreateRatePlanOptions extends Options {
 
 class UpdateRatePlanOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
-     * @param string $friendlyName The friendly_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
      */
     public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -223,9 +269,10 @@ class UpdateRatePlanOptions extends Options {
     }
 
     /**
-     * The unique_name
+     * A user-provided string that uniquely identifies this resource as an alternative to the Sid.
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -234,9 +281,10 @@ class UpdateRatePlanOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A user-provided string that identifies this resource. Non-unique.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

@@ -47,7 +47,7 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * (optional) Human-readable name for this map
+     * Human-readable name for this map
      * 
      * @param string $uniqueName Human-readable name for this map
      * @return $this Fluent Builder
@@ -58,7 +58,7 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * (optional) Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
      * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
      *                     expiration.

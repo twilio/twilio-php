@@ -40,6 +40,7 @@ class SampleContext extends InstanceContext {
      * Fetch a SampleInstance
      * 
      * @return SampleInstance Fetched SampleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -64,6 +65,7 @@ class SampleContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SampleInstance Updated SampleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -94,6 +96,7 @@ class SampleContext extends InstanceContext {
      * Deletes the SampleInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

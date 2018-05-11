@@ -18,7 +18,8 @@ class IpAddressList extends ListResource {
      * Construct the IpAddressList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique id of the Account that responsible for
+     *                           this resource.
      * @param string $ipAccessControlListSid The ip_access_control_list_sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList 
      */
@@ -126,6 +127,7 @@ class IpAddressList extends ListResource {
      * @param string $friendlyName The friendly_name
      * @param string $ipAddress The ip_address
      * @return IpAddressInstance Newly created IpAddressInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName, $ipAddress) {
         $data = Values::of(array('FriendlyName' => $friendlyName, 'IpAddress' => $ipAddress, ));

@@ -18,8 +18,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
  * @property \Twilio\Rest\Wireless\V1\Sim\UsageRecordList usageRecords
  * @property \Twilio\Rest\Wireless\V1\Sim\DataSessionList dataSessions
  */
@@ -47,6 +45,7 @@ class SimContext extends InstanceContext {
      * Fetch a SimInstance
      * 
      * @return SimInstance Fetched SimInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -65,6 +64,7 @@ class SimContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SimInstance Updated SimInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

@@ -38,6 +38,7 @@ class ShortCodeList extends ListResource {
      * 
      * @param string $sid A string that uniquely identifies this Short Code.
      * @return ShortCodeInstance Newly created ShortCodeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($sid) {
         $data = Values::of(array('Sid' => $sid, ));

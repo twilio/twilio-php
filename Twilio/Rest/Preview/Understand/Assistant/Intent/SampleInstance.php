@@ -36,8 +36,9 @@ class SampleInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
-     * @param string $intentSid The intent_sid
+     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $intentSid The unique ID of the Intent associated with this
+     *                          Sample.
      * @param string $sid The sid
      * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\SampleInstance 
      */
@@ -88,6 +89,7 @@ class SampleInstance extends InstanceResource {
      * Fetch a SampleInstance
      * 
      * @return SampleInstance Fetched SampleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -98,6 +100,7 @@ class SampleInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SampleInstance Updated SampleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -107,6 +110,7 @@ class SampleInstance extends InstanceResource {
      * Deletes the SampleInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

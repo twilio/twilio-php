@@ -20,7 +20,8 @@ class MessageList extends ListResource {
      * Construct the MessageList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The unique id of the Service this message belongs
+     *                           to.
      * @param string $channelSid The channel_sid
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList 
      */
@@ -38,6 +39,7 @@ class MessageList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

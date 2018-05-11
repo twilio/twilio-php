@@ -46,6 +46,7 @@ class StepContext extends InstanceContext {
      * Fetch a StepInstance
      * 
      * @return StepInstance Fetched StepInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

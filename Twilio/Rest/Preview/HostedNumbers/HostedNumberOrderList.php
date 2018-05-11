@@ -136,6 +136,7 @@ class HostedNumberOrderList extends ListResource {
      * @param boolean $smsCapability Specify SMS capability to host.
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($phoneNumber, $smsCapability, $options = array()) {
         $options = new Values($options);

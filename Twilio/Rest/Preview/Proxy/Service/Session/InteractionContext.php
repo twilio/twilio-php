@@ -39,6 +39,7 @@ class InteractionContext extends InstanceContext {
      * Fetch a InteractionInstance
      * 
      * @return InteractionInstance Fetched InteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

@@ -79,6 +79,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      * 
      * @return InstalledAddOnExtensionInstance Fetched
      *                                         InstalledAddOnExtensionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -90,6 +91,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
      * @param boolean $enabled A Boolean indicating if the Extension will be invoked
      * @return InstalledAddOnExtensionInstance Updated
      *                                         InstalledAddOnExtensionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($enabled) {
         return $this->proxy()->update($enabled);

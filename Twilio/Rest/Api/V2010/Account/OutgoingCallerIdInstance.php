@@ -76,6 +76,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * Fetch a OutgoingCallerIdInstance
      * 
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -86,6 +87,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -95,6 +97,7 @@ class OutgoingCallerIdInstance extends InstanceResource {
      * Deletes the OutgoingCallerIdInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

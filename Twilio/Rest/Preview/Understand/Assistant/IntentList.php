@@ -22,7 +22,7 @@ class IntentList extends ListResource {
      * Construct the IntentList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The unique ID of the Assistant.
      * @return \Twilio\Rest\Preview\Understand\Assistant\IntentList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -123,9 +123,12 @@ class IntentList extends ListResource {
     /**
      * Create a new IntentInstance
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the sid. Unique
+     *                           up to 64 characters long.
      * @param array|Options $options Optional Arguments
      * @return IntentInstance Newly created IntentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($uniqueName, $options = array()) {
         $options = new Values($options);

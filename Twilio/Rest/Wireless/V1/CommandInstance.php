@@ -16,8 +16,6 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
  * @property string sid
  * @property string accountSid
  * @property string simSid
@@ -77,6 +75,7 @@ class CommandInstance extends InstanceResource {
      * Fetch a CommandInstance
      * 
      * @return CommandInstance Fetched CommandInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

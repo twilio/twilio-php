@@ -36,6 +36,7 @@ class PublishedTrackContext extends InstanceContext {
      * Fetch a PublishedTrackInstance
      * 
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

@@ -33,20 +33,23 @@ abstract class LocalOptions {
      *                                               require a foreign Address.
      * @param boolean $beta Include phone numbers new to the Twilio platform.
      * @param string $nearNumber Given a phone number, find a geographically close
-     *                           number within Distance miles.
+     *                           number within Distance miles. (US/Canada only)
      * @param string $nearLatLong Given a latitude/longitude pair lat,long find
      *                            geographically close numbers within Distance
-     *                            miles.
+     *                            miles. (US/Canada only)
      * @param integer $distance Specifies the search radius for a Near- query in
-     *                          miles.
+     *                          miles. (US/Canada only)
      * @param string $inPostalCode Limit results to a particular postal code.
-     * @param string $inRegion Limit results to a particular region.
+     *                             (US/Canada only)
+     * @param string $inRegion Limit results to a particular region. (US/Canada
+     *                         only)
      * @param string $inRateCenter Limit results to a specific rate center, or
      *                             given a phone number search within the same rate
-     *                             center as that number.
+     *                             center as that number. (US/Canada only)
      * @param string $inLata Limit results to a specific Local access and transport
-     *                       area.
-     * @param string $inLocality Limit results to a particular locality.
+     *                       area. (US/Canada only)
+     * @param string $inLocality Limit results to a particular locality. (US/Canada
+     *                           only)
      * @param boolean $faxEnabled This indicates whether the phone numbers can
      *                            receive faxes.
      * @return ReadLocalOptions Options builder
@@ -77,20 +80,23 @@ class ReadLocalOptions extends Options {
      *                                               require a foreign Address.
      * @param boolean $beta Include phone numbers new to the Twilio platform.
      * @param string $nearNumber Given a phone number, find a geographically close
-     *                           number within Distance miles.
+     *                           number within Distance miles. (US/Canada only)
      * @param string $nearLatLong Given a latitude/longitude pair lat,long find
      *                            geographically close numbers within Distance
-     *                            miles.
+     *                            miles. (US/Canada only)
      * @param integer $distance Specifies the search radius for a Near- query in
-     *                          miles.
+     *                          miles. (US/Canada only)
      * @param string $inPostalCode Limit results to a particular postal code.
-     * @param string $inRegion Limit results to a particular region.
+     *                             (US/Canada only)
+     * @param string $inRegion Limit results to a particular region. (US/Canada
+     *                         only)
      * @param string $inRateCenter Limit results to a specific rate center, or
      *                             given a phone number search within the same rate
-     *                             center as that number.
+     *                             center as that number. (US/Canada only)
      * @param string $inLata Limit results to a specific Local access and transport
-     *                       area.
-     * @param string $inLocality Limit results to a particular locality.
+     *                       area. (US/Canada only)
+     * @param string $inLocality Limit results to a particular locality. (US/Canada
+     *                           only)
      * @param boolean $faxEnabled This indicates whether the phone numbers can
      *                            receive faxes.
      */
@@ -224,10 +230,10 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Given a phone number, find a geographically close number within `Distance` miles. Distance defaults to 25 miles.
+     * Given a phone number, find a geographically close number within `Distance` miles. Distance defaults to 25 miles. *Limited to US and Canadian phone numbers.*
      * 
      * @param string $nearNumber Given a phone number, find a geographically close
-     *                           number within Distance miles.
+     *                           number within Distance miles. (US/Canada only)
      * @return $this Fluent Builder
      */
     public function setNearNumber($nearNumber) {
@@ -236,11 +242,11 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Given a latitude/longitude pair `lat,long` find geographically close numbers within `Distance` miles.
+     * Given a latitude/longitude pair `lat,long` find geographically close numbers within `Distance` miles. *Limited to US and Canadian phone numbers.*
      * 
      * @param string $nearLatLong Given a latitude/longitude pair lat,long find
      *                            geographically close numbers within Distance
-     *                            miles.
+     *                            miles. (US/Canada only)
      * @return $this Fluent Builder
      */
     public function setNearLatLong($nearLatLong) {
@@ -249,10 +255,10 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Specifies the search radius for a `Near-` query in miles. If not specified this defaults to 25 miles. Maximum searchable distance is 500 miles.
+     * Specifies the search radius for a `Near-` query in miles. If not specified this defaults to 25 miles. Maximum searchable distance is 500 miles. *Limited to US and Canadian phone numbers.*
      * 
      * @param integer $distance Specifies the search radius for a Near- query in
-     *                          miles.
+     *                          miles. (US/Canada only)
      * @return $this Fluent Builder
      */
     public function setDistance($distance) {
@@ -261,9 +267,10 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Limit results to a particular postal code. Given a phone number, search within the same postal code as that number.
+     * Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. *Limited to US and Canadian phone numbers.*
      * 
      * @param string $inPostalCode Limit results to a particular postal code.
+     *                             (US/Canada only)
      * @return $this Fluent Builder
      */
     public function setInPostalCode($inPostalCode) {
@@ -272,9 +279,10 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Limit results to a particular region (i.e.  State/Province). Given a phone number, search within the same Region as that number.
+     * Limit results to a particular region (i.e.  State/Province). Given a phone number, search within the same Region as that number. *Limited to US and Canadian phone numbers.*
      * 
-     * @param string $inRegion Limit results to a particular region.
+     * @param string $inRegion Limit results to a particular region. (US/Canada
+     *                         only)
      * @return $this Fluent Builder
      */
     public function setInRegion($inRegion) {
@@ -283,11 +291,11 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires InLata to be set as well.
+     * Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires InLata to be set as well. *Limited to US and Canadian phone numbers.*
      * 
      * @param string $inRateCenter Limit results to a specific rate center, or
      *                             given a phone number search within the same rate
-     *                             center as that number.
+     *                             center as that number. (US/Canada only)
      * @return $this Fluent Builder
      */
     public function setInRateCenter($inRateCenter) {
@@ -296,10 +304,10 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Limit results to a specific Local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number.
+     * Limit results to a specific Local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. *Limited to US and Canadian phone numbers.*
      * 
      * @param string $inLata Limit results to a specific Local access and transport
-     *                       area.
+     *                       area. (US/Canada only)
      * @return $this Fluent Builder
      */
     public function setInLata($inLata) {
@@ -308,9 +316,10 @@ class ReadLocalOptions extends Options {
     }
 
     /**
-     * Limit results to a particular locality (i.e.  City). Given a phone number, search within the same Locality as that number.
+     * Limit results to a particular locality (i.e.  City). Given a phone number, search within the same Locality as that number. *Limited to US and Canadian phone numbers.*
      * 
-     * @param string $inLocality Limit results to a particular locality.
+     * @param string $inLocality Limit results to a particular locality. (US/Canada
+     *                           only)
      * @return $this Fluent Builder
      */
     public function setInLocality($inLocality) {

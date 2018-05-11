@@ -46,6 +46,7 @@ class InstalledAddOnContext extends InstanceContext {
      * Deletes the InstalledAddOnInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -55,6 +56,7 @@ class InstalledAddOnContext extends InstanceContext {
      * Fetch a InstalledAddOnInstance
      * 
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -73,6 +75,7 @@ class InstalledAddOnContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Updated InstalledAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

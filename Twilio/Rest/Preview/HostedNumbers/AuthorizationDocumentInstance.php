@@ -77,6 +77,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      * Fetch a AuthorizationDocumentInstance
      * 
      * @return AuthorizationDocumentInstance Fetched AuthorizationDocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -87,6 +88,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return AuthorizationDocumentInstance Updated AuthorizationDocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

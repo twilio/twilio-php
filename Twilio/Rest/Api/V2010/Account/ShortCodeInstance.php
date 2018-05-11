@@ -85,6 +85,7 @@ class ShortCodeInstance extends InstanceResource {
      * Fetch a ShortCodeInstance
      * 
      * @return ShortCodeInstance Fetched ShortCodeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -95,6 +96,7 @@ class ShortCodeInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ShortCodeInstance Updated ShortCodeInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

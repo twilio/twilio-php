@@ -125,6 +125,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -134,6 +135,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * Fetch a IncomingPhoneNumberInstance
      * 
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -143,6 +145,7 @@ class IncomingPhoneNumberInstance extends InstanceResource {
      * Deletes the IncomingPhoneNumberInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

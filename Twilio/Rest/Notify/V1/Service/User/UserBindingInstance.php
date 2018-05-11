@@ -97,6 +97,7 @@ class UserBindingInstance extends InstanceResource {
      * Fetch a UserBindingInstance
      * 
      * @return UserBindingInstance Fetched UserBindingInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -106,6 +107,7 @@ class UserBindingInstance extends InstanceResource {
      * Deletes the UserBindingInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

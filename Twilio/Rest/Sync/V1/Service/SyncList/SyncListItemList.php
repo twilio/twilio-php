@@ -41,9 +41,12 @@ class SyncListItemList extends ListResource {
     /**
      * Create a new SyncListItemInstance
      * 
-     * @param array $data The data
+     * @param array $data Contains arbitrary user-defined, schema-less data that
+     *                    this List Item stores, represented by a JSON object, up
+     *                    to 16KB.
      * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Newly created SyncListItemInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($data, $options = array()) {
         $options = new Values($options);

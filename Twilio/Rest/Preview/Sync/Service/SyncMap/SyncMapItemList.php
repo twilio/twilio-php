@@ -42,6 +42,7 @@ class SyncMapItemList extends ListResource {
      * @param string $key The key
      * @param array $data The data
      * @return SyncMapItemInstance Newly created SyncMapItemInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($key, $data) {
         $data = Values::of(array('Key' => $key, 'Data' => Serialize::jsonObject($data), ));

@@ -36,7 +36,7 @@ class ModelBuildInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $sid The sid
      * @return \Twilio\Rest\Preview\Understand\Assistant\ModelBuildInstance 
      */
@@ -84,6 +84,7 @@ class ModelBuildInstance extends InstanceResource {
      * Fetch a ModelBuildInstance
      * 
      * @return ModelBuildInstance Fetched ModelBuildInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -94,6 +95,7 @@ class ModelBuildInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ModelBuildInstance Updated ModelBuildInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -103,6 +105,7 @@ class ModelBuildInstance extends InstanceResource {
      * Deletes the ModelBuildInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

@@ -35,6 +35,7 @@ class AuthorizedConnectAppContext extends InstanceContext {
      * Fetch a AuthorizedConnectAppInstance
      * 
      * @return AuthorizedConnectAppInstance Fetched AuthorizedConnectAppInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

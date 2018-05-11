@@ -132,6 +132,7 @@ class ActivityList extends ListResource {
      *                             'On Call', 'Break', 'Email', etc.
      * @param array|Options $options Optional Arguments
      * @return ActivityInstance Newly created ActivityInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);

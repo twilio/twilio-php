@@ -41,6 +41,7 @@ class UserList extends ListResource {
      * @param string $identity The identity
      * @param array|Options $options Optional Arguments
      * @return UserInstance Newly created UserInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($identity, $options = array()) {
         $options = new Values($options);

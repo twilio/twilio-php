@@ -125,6 +125,7 @@ class DomainList extends ListResource {
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @param array|Options $options Optional Arguments
      * @return DomainInstance Newly created DomainInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($domainName, $options = array()) {
         $options = new Values($options);

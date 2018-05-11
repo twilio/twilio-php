@@ -82,6 +82,7 @@ class ConnectAppInstance extends InstanceResource {
      * Fetch a ConnectAppInstance
      * 
      * @return ConnectAppInstance Fetched ConnectAppInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -92,6 +93,7 @@ class ConnectAppInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

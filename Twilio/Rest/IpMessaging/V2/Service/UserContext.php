@@ -47,6 +47,7 @@ class UserContext extends InstanceContext {
      * Fetch a UserInstance
      * 
      * @return UserInstance Fetched UserInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -69,6 +70,7 @@ class UserContext extends InstanceContext {
      * Deletes the UserInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -79,6 +81,7 @@ class UserContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return UserInstance Updated UserInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

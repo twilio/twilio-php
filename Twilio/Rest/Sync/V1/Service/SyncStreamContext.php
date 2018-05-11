@@ -45,7 +45,7 @@ class SyncStreamContext extends InstanceContext {
      * Fetch a SyncStreamInstance
      * 
      * @return SyncStreamInstance Fetched SyncStreamInstance
-     * @throws TwilioException
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -68,7 +68,7 @@ class SyncStreamContext extends InstanceContext {
      * Deletes the SyncStreamInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -79,7 +79,7 @@ class SyncStreamContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncStreamInstance Updated SyncStreamInstance
-     * @throws TwilioException
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

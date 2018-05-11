@@ -40,6 +40,7 @@ class CertificateList extends ListResource {
      * @param string $certificateData The public certificate data.
      * @param array|Options $options Optional Arguments
      * @return CertificateInstance Newly created CertificateInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($certificateData, $options = array()) {
         $options = new Values($options);

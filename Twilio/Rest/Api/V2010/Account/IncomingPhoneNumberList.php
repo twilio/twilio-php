@@ -145,6 +145,7 @@ class IncomingPhoneNumberList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Newly created IncomingPhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($options = array()) {
         $options = new Values($options);

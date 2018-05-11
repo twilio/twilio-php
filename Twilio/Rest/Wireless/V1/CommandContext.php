@@ -13,9 +13,6 @@ use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class CommandContext extends InstanceContext {
     /**
      * Initialize the CommandContext
@@ -37,6 +34,7 @@ class CommandContext extends InstanceContext {
      * Fetch a CommandInstance
      * 
      * @return CommandInstance Fetched CommandInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

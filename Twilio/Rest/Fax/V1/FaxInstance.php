@@ -95,6 +95,7 @@ class FaxInstance extends InstanceResource {
      * Fetch a FaxInstance
      * 
      * @return FaxInstance Fetched FaxInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -105,6 +106,7 @@ class FaxInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Updated FaxInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -114,6 +116,7 @@ class FaxInstance extends InstanceResource {
      * Deletes the FaxInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

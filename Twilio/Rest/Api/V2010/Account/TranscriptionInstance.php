@@ -86,6 +86,7 @@ class TranscriptionInstance extends InstanceResource {
      * Fetch a TranscriptionInstance
      * 
      * @return TranscriptionInstance Fetched TranscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -95,6 +96,7 @@ class TranscriptionInstance extends InstanceResource {
      * Deletes the TranscriptionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

@@ -34,6 +34,7 @@ class CountryContext extends InstanceContext {
      * Fetch a CountryInstance
      * 
      * @return CountryInstance Fetched CountryInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

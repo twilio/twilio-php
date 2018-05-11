@@ -11,9 +11,6 @@ namespace Twilio\Rest\Wireless\V1;
 
 use Twilio\Page;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class CommandPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);

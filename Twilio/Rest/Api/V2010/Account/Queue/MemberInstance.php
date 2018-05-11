@@ -76,6 +76,7 @@ class MemberInstance extends InstanceResource {
      * Fetch a MemberInstance
      * 
      * @return MemberInstance Fetched MemberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -87,6 +88,7 @@ class MemberInstance extends InstanceResource {
      * @param string $url The url
      * @param string $method The method
      * @return MemberInstance Updated MemberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($url, $method) {
         return $this->proxy()->update($url, $method);

@@ -38,6 +38,7 @@ class ValidationRequestList extends ListResource {
      * @param string $phoneNumber The phone number to verify.
      * @param array|Options $options Optional Arguments
      * @return ValidationRequestInstance Newly created ValidationRequestInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($phoneNumber, $options = array()) {
         $options = new Values($options);

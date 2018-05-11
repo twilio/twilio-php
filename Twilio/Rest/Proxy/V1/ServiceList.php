@@ -126,6 +126,7 @@ class ServiceList extends ListResource {
      *                           this Service.
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($uniqueName, $options = array()) {
         $options = new Values($options);

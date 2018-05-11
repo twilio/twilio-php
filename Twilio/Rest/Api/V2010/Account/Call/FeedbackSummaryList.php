@@ -42,6 +42,7 @@ class FeedbackSummaryList extends ListResource {
      *                           this date.
      * @param array|Options $options Optional Arguments
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($startDate, $endDate, $options = array()) {
         $options = new Values($options);

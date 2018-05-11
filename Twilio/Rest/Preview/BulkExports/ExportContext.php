@@ -43,6 +43,7 @@ class ExportContext extends InstanceContext {
      * Fetch a ExportInstance
      * 
      * @return ExportInstance Fetched ExportInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());

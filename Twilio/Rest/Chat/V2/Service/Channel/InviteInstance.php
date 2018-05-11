@@ -33,8 +33,9 @@ class InviteInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
-     * @param string $channelSid The channel_sid
+     * @param string $serviceSid The unique id of the Service this member belongs
+     *                           to.
+     * @param string $channelSid The unique id of the Channel for this member.
      * @param string $sid The sid
      * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteInstance 
      */
@@ -86,6 +87,7 @@ class InviteInstance extends InstanceResource {
      * Fetch a InviteInstance
      * 
      * @return InviteInstance Fetched InviteInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -95,6 +97,7 @@ class InviteInstance extends InstanceResource {
      * Deletes the InviteInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

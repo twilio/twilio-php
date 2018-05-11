@@ -22,7 +22,7 @@ class QueryList extends ListResource {
      * Construct the QueryList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
      * @return \Twilio\Rest\Preview\Understand\Assistant\QueryList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -130,10 +130,13 @@ class QueryList extends ListResource {
     /**
      * Create a new QueryInstance
      * 
-     * @param string $language The language
-     * @param string $query The query
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $query A user-provided string that uniquely identifies this
+     *                      resource as an alternative to the sid. It can be up to
+     *                      2048 characters long.
      * @param array|Options $options Optional Arguments
      * @return QueryInstance Newly created QueryInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($language, $query, $options = array()) {
         $options = new Values($options);

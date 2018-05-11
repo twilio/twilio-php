@@ -35,6 +35,7 @@ class FeedbackSummaryContext extends InstanceContext {
      * Fetch a FeedbackSummaryInstance
      * 
      * @return FeedbackSummaryInstance Fetched FeedbackSummaryInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -57,6 +58,7 @@ class FeedbackSummaryContext extends InstanceContext {
      * Deletes the FeedbackSummaryInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

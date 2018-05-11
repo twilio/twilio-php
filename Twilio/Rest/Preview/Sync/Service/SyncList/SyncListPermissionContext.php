@@ -45,6 +45,7 @@ class SyncListPermissionContext extends InstanceContext {
      * Fetch a SyncListPermissionInstance
      * 
      * @return SyncListPermissionInstance Fetched SyncListPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -68,6 +69,7 @@ class SyncListPermissionContext extends InstanceContext {
      * Deletes the SyncListPermissionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -80,6 +82,7 @@ class SyncListPermissionContext extends InstanceContext {
      * @param boolean $write Write access.
      * @param boolean $manage Manage access.
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($read, $write, $manage) {
         $data = Values::of(array(

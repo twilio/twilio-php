@@ -88,6 +88,7 @@ class DeviceInstance extends InstanceResource {
      * Fetch a DeviceInstance
      * 
      * @return DeviceInstance Fetched DeviceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -97,6 +98,7 @@ class DeviceInstance extends InstanceResource {
      * Deletes the DeviceInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -107,6 +109,7 @@ class DeviceInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return DeviceInstance Updated DeviceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

@@ -504,7 +504,7 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime&lt;=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime&gt;=YYYY-MM-DD` for calls that started at or after midnight on a date.
+     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime<=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime>=YYYY-MM-DD` for calls that started at or after midnight on a date.
      * 
      * @param string $startTimeBefore StartTime to filter on
      * @return $this Fluent Builder
@@ -515,7 +515,7 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime&lt;=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime&gt;=YYYY-MM-DD` for calls that started at or after midnight on a date.
+     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime<=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime>=YYYY-MM-DD` for calls that started at or after midnight on a date.
      * 
      * @param string $startTime StartTime to filter on
      * @return $this Fluent Builder
@@ -526,7 +526,7 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime&lt;=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime&gt;=YYYY-MM-DD` for calls that started at or after midnight on a date.
+     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime<=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime>=YYYY-MM-DD` for calls that started at or after midnight on a date.
      * 
      * @param string $startTimeAfter StartTime to filter on
      * @return $this Fluent Builder

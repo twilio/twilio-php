@@ -83,6 +83,7 @@ class SyncListPermissionInstance extends InstanceResource {
      * Fetch a SyncListPermissionInstance
      * 
      * @return SyncListPermissionInstance Fetched SyncListPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -92,6 +93,7 @@ class SyncListPermissionInstance extends InstanceResource {
      * Deletes the SyncListPermissionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -104,6 +106,7 @@ class SyncListPermissionInstance extends InstanceResource {
      * @param boolean $write Write access.
      * @param boolean $manage Manage access.
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($read, $write, $manage) {
         return $this->proxy()->update($read, $write, $manage);

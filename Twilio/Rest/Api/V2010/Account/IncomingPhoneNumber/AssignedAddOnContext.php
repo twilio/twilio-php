@@ -46,6 +46,7 @@ class AssignedAddOnContext extends InstanceContext {
      * Fetch a AssignedAddOnInstance
      * 
      * @return AssignedAddOnInstance Fetched AssignedAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -69,6 +70,7 @@ class AssignedAddOnContext extends InstanceContext {
      * Deletes the AssignedAddOnInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

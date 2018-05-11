@@ -111,6 +111,7 @@ class MessageInteractionInstance extends InstanceResource {
      * Fetch a MessageInteractionInstance
      * 
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

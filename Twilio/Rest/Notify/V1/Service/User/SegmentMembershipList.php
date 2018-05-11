@@ -39,6 +39,7 @@ class SegmentMembershipList extends ListResource {
      * 
      * @param string $segment The segment
      * @return SegmentMembershipInstance Newly created SegmentMembershipInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($segment) {
         $data = Values::of(array('Segment' => $segment, ));

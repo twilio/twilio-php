@@ -15,6 +15,7 @@ use Twilio\Options;
 use Twilio\Rest\IpMessaging\V2\Service\Channel\InviteList;
 use Twilio\Rest\IpMessaging\V2\Service\Channel\MemberList;
 use Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList;
+use Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -23,14 +24,17 @@ use Twilio\Version;
  * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberList members
  * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList messages
  * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteList invites
+ * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookList webhooks
  * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext members(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageContext messages(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteContext invites(string $sid)
+ * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookContext webhooks(string $sid)
  */
 class ChannelContext extends InstanceContext {
     protected $_members = null;
     protected $_messages = null;
     protected $_invites = null;
+    protected $_webhooks = null;
 
     /**
      * Initialize the ChannelContext
@@ -53,6 +57,7 @@ class ChannelContext extends InstanceContext {
      * Fetch a ChannelInstance
      * 
      * @return ChannelInstance Fetched ChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -75,6 +80,7 @@ class ChannelContext extends InstanceContext {
      * Deletes the ChannelInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -85,6 +91,7 @@ class ChannelContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return ChannelInstance Updated ChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -162,6 +169,23 @@ class ChannelContext extends InstanceContext {
         }
 
         return $this->_invites;
+    }
+
+    /**
+     * Access the webhooks
+     * 
+     * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookList 
+     */
+    protected function getWebhooks() {
+        if (!$this->_webhooks) {
+            $this->_webhooks = new WebhookList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_webhooks;
     }
 
     /**

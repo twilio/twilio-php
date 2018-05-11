@@ -44,6 +44,7 @@ class QueueContext extends InstanceContext {
      * Fetch a QueueInstance
      * 
      * @return QueueInstance Fetched QueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -67,6 +68,7 @@ class QueueContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -95,6 +97,7 @@ class QueueContext extends InstanceContext {
      * Deletes the QueueInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

@@ -17,9 +17,11 @@ use Twilio\Values;
  */
 abstract class QueryOptions {
     /**
-     * @param string $language The language
-     * @param string $modelBuild The model_build
-     * @param string $status The status
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $modelBuild The Model Build Sid or unique name of the Model
+     *                           Build to be queried.
+     * @param string $status A string that described the query status. The values
+     *                       can be: to_review, reviewed, discarded
      * @return ReadQueryOptions Options builder
      */
     public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
@@ -27,9 +29,16 @@ abstract class QueryOptions {
     }
 
     /**
-     * @param string $intents The intents
-     * @param string $modelBuild The model_build
-     * @param string $field The field
+     * @param string $intents Constraints the query to a set of intents. Useful
+     *                        when you need to constrain the paths the user can
+     *                        take. Intents should be comma separated
+     *                        intent-unique-name-1, intent-unique-name-2
+     * @param string $modelBuild The Model Build Sid or unique name of the Model
+     *                           Build to be queried.
+     * @param string $field Constraints the query to a given Field with an intent.
+     *                      Useful when you know the Field you are expecting. It
+     *                      accepts one field in the format
+     *                      intent-unique-name-1:field-unique-name
      * @return CreateQueryOptions Options builder
      */
     public static function create($intents = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
@@ -38,7 +47,8 @@ abstract class QueryOptions {
 
     /**
      * @param string $sampleSid The sample_sid
-     * @param string $status The status
+     * @param string $status A string that described the query status. The values
+     *                       can be: to_review, reviewed, discarded
      * @return UpdateQueryOptions Options builder
      */
     public static function update($sampleSid = Values::NONE, $status = Values::NONE) {
@@ -48,9 +58,11 @@ abstract class QueryOptions {
 
 class ReadQueryOptions extends Options {
     /**
-     * @param string $language The language
-     * @param string $modelBuild The model_build
-     * @param string $status The status
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $modelBuild The Model Build Sid or unique name of the Model
+     *                           Build to be queried.
+     * @param string $status A string that described the query status. The values
+     *                       can be: to_review, reviewed, discarded
      */
     public function __construct($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
         $this->options['language'] = $language;
@@ -59,9 +71,9 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * The language
+     * An ISO language-country string of the sample.
      * 
-     * @param string $language The language
+     * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
     public function setLanguage($language) {
@@ -70,9 +82,10 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * The model_build
+     * The Model Build Sid or unique name of the Model Build to be queried.
      * 
-     * @param string $modelBuild The model_build
+     * @param string $modelBuild The Model Build Sid or unique name of the Model
+     *                           Build to be queried.
      * @return $this Fluent Builder
      */
     public function setModelBuild($modelBuild) {
@@ -81,9 +94,10 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * The status
+     * A string that described the query status. The values can be: to_review, reviewed, discarded
      * 
-     * @param string $status The status
+     * @param string $status A string that described the query status. The values
+     *                       can be: to_review, reviewed, discarded
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -109,9 +123,16 @@ class ReadQueryOptions extends Options {
 
 class CreateQueryOptions extends Options {
     /**
-     * @param string $intents The intents
-     * @param string $modelBuild The model_build
-     * @param string $field The field
+     * @param string $intents Constraints the query to a set of intents. Useful
+     *                        when you need to constrain the paths the user can
+     *                        take. Intents should be comma separated
+     *                        intent-unique-name-1, intent-unique-name-2
+     * @param string $modelBuild The Model Build Sid or unique name of the Model
+     *                           Build to be queried.
+     * @param string $field Constraints the query to a given Field with an intent.
+     *                      Useful when you know the Field you are expecting. It
+     *                      accepts one field in the format
+     *                      intent-unique-name-1:field-unique-name
      */
     public function __construct($intents = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
         $this->options['intents'] = $intents;
@@ -120,9 +141,12 @@ class CreateQueryOptions extends Options {
     }
 
     /**
-     * The intents
+     * Constraints the query to a set of intents. Useful when you need to constrain the paths the user can take. Intents should be comma separated *intent-unique-name-1*, *intent-unique-name-2*
      * 
-     * @param string $intents The intents
+     * @param string $intents Constraints the query to a set of intents. Useful
+     *                        when you need to constrain the paths the user can
+     *                        take. Intents should be comma separated
+     *                        intent-unique-name-1, intent-unique-name-2
      * @return $this Fluent Builder
      */
     public function setIntents($intents) {
@@ -131,9 +155,10 @@ class CreateQueryOptions extends Options {
     }
 
     /**
-     * The model_build
+     * The Model Build Sid or unique name of the Model Build to be queried.
      * 
-     * @param string $modelBuild The model_build
+     * @param string $modelBuild The Model Build Sid or unique name of the Model
+     *                           Build to be queried.
      * @return $this Fluent Builder
      */
     public function setModelBuild($modelBuild) {
@@ -142,9 +167,12 @@ class CreateQueryOptions extends Options {
     }
 
     /**
-     * The field
+     * Constraints the query to a given Field with an intent. Useful when you know the Field you are expecting. It accepts one field in the format *intent-unique-name-1*:*field-unique-name*
      * 
-     * @param string $field The field
+     * @param string $field Constraints the query to a given Field with an intent.
+     *                      Useful when you know the Field you are expecting. It
+     *                      accepts one field in the format
+     *                      intent-unique-name-1:field-unique-name
      * @return $this Fluent Builder
      */
     public function setField($field) {
@@ -171,7 +199,8 @@ class CreateQueryOptions extends Options {
 class UpdateQueryOptions extends Options {
     /**
      * @param string $sampleSid The sample_sid
-     * @param string $status The status
+     * @param string $status A string that described the query status. The values
+     *                       can be: to_review, reviewed, discarded
      */
     public function __construct($sampleSid = Values::NONE, $status = Values::NONE) {
         $this->options['sampleSid'] = $sampleSid;
@@ -190,9 +219,10 @@ class UpdateQueryOptions extends Options {
     }
 
     /**
-     * The status
+     * A string that described the query status. The values can be: to_review, reviewed, discarded
      * 
-     * @param string $status The status
+     * @param string $status A string that described the query status. The values
+     *                       can be: to_review, reviewed, discarded
      * @return $this Fluent Builder
      */
     public function setStatus($status) {

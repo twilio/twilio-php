@@ -133,6 +133,7 @@ class SubscribedTrackList extends ListResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SubscribedTrackInstance Updated SubscribedTrackInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

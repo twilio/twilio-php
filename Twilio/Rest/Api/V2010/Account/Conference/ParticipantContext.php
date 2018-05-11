@@ -43,6 +43,7 @@ class ParticipantContext extends InstanceContext {
      * Fetch a ParticipantInstance
      * 
      * @return ParticipantInstance Fetched ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -67,6 +68,7 @@ class ParticipantContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -100,6 +102,7 @@ class ParticipantContext extends InstanceContext {
      * Deletes the ParticipantInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

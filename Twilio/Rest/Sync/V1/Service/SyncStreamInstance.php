@@ -85,6 +85,7 @@ class SyncStreamInstance extends InstanceResource {
      * Fetch a SyncStreamInstance
      * 
      * @return SyncStreamInstance Fetched SyncStreamInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -94,6 +95,7 @@ class SyncStreamInstance extends InstanceResource {
      * Deletes the SyncStreamInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -104,6 +106,7 @@ class SyncStreamInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncStreamInstance Updated SyncStreamInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

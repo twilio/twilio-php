@@ -92,6 +92,7 @@ class AssignedAddOnInstance extends InstanceResource {
      * Fetch a AssignedAddOnInstance
      * 
      * @return AssignedAddOnInstance Fetched AssignedAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -101,6 +102,7 @@ class AssignedAddOnInstance extends InstanceResource {
      * Deletes the AssignedAddOnInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

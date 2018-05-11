@@ -38,6 +38,7 @@ class RatePlanContext extends InstanceContext {
      * Fetch a RatePlanInstance
      * 
      * @return RatePlanInstance Fetched RatePlanInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -56,6 +57,7 @@ class RatePlanContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return RatePlanInstance Updated RatePlanInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -79,6 +81,7 @@ class RatePlanContext extends InstanceContext {
      * Deletes the RatePlanInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

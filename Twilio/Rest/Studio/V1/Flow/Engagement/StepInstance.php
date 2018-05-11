@@ -94,6 +94,7 @@ class StepInstance extends InstanceResource {
      * Fetch a StepInstance
      * 
      * @return StepInstance Fetched StepInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

@@ -40,6 +40,7 @@ class DeviceContext extends InstanceContext {
      * Fetch a DeviceInstance
      * 
      * @return DeviceInstance Fetched DeviceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -62,6 +63,7 @@ class DeviceContext extends InstanceContext {
      * Deletes the DeviceInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -72,6 +74,7 @@ class DeviceContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return DeviceInstance Updated DeviceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

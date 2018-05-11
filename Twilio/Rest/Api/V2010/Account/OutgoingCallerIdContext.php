@@ -36,6 +36,7 @@ class OutgoingCallerIdContext extends InstanceContext {
      * Fetch a OutgoingCallerIdInstance
      * 
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -59,6 +60,7 @@ class OutgoingCallerIdContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -84,6 +86,7 @@ class OutgoingCallerIdContext extends InstanceContext {
      * Deletes the OutgoingCallerIdInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

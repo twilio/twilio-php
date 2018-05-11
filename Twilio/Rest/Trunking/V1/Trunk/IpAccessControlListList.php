@@ -35,6 +35,7 @@ class IpAccessControlListList extends ListResource {
      * 
      * @param string $ipAccessControlListSid The ip_access_control_list_sid
      * @return IpAccessControlListInstance Newly created IpAccessControlListInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($ipAccessControlListSid) {
         $data = Values::of(array('IpAccessControlListSid' => $ipAccessControlListSid, ));

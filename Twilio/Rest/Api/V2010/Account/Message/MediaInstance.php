@@ -80,6 +80,7 @@ class MediaInstance extends InstanceResource {
      * Deletes the MediaInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -89,6 +90,7 @@ class MediaInstance extends InstanceResource {
      * Fetch a MediaInstance
      * 
      * @return MediaInstance Fetched MediaInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

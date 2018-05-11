@@ -39,6 +39,7 @@ class CertificateContext extends InstanceContext {
      * Fetch a CertificateInstance
      * 
      * @return CertificateInstance Fetched CertificateInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -61,6 +62,7 @@ class CertificateContext extends InstanceContext {
      * Deletes the CertificateInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -71,6 +73,7 @@ class CertificateContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return CertificateInstance Updated CertificateInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

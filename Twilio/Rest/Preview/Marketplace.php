@@ -16,14 +16,14 @@ use Twilio\Rest\Preview\Marketplace\InstalledAddOnList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
- * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
+ * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
+ * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  */
 class Marketplace extends Version {
-    protected $_availableAddOns = null;
     protected $_installedAddOns = null;
+    protected $_availableAddOns = null;
 
     /**
      * Construct the Marketplace version of Preview
@@ -37,16 +37,6 @@ class Marketplace extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
-     */
-    protected function getAvailableAddOns() {
-        if (!$this->_availableAddOns) {
-            $this->_availableAddOns = new AvailableAddOnList($this);
-        }
-        return $this->_availableAddOns;
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
      */
     protected function getInstalledAddOns() {
@@ -54,6 +44,16 @@ class Marketplace extends Version {
             $this->_installedAddOns = new InstalledAddOnList($this);
         }
         return $this->_installedAddOns;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
+     */
+    protected function getAvailableAddOns() {
+        if (!$this->_availableAddOns) {
+            $this->_availableAddOns = new AvailableAddOnList($this);
+        }
+        return $this->_availableAddOns;
     }
 
     /**

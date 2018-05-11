@@ -36,8 +36,11 @@ abstract class SyncListItemOptions {
     }
 
     /**
-     * @param array $data The data
-     * @param integer $ttl The ttl
+     * @param array $data Contains arbitrary user-defined, schema-less data that
+     *                    this List Item stores, represented by a JSON object, up
+     *                    to 16KB.
+     * @param integer $ttl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return UpdateSyncListItemOptions Options builder
      */
     public static function update($data = Values::NONE, $ttl = Values::NONE) {
@@ -55,7 +58,7 @@ class CreateSyncListItemOptions extends Options {
     }
 
     /**
-     * (optional) Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
+     * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
      * 
      * @param integer $ttl Time-to-live of this item in seconds, defaults to no
      *                     expiration.
@@ -95,7 +98,7 @@ class ReadSyncListItemOptions extends Options {
     }
 
     /**
-     * (optional) A string; `asc` or `desc`
+     * A string; `asc` or `desc`
      * 
      * @param string $order A string; asc or desc
      * @return $this Fluent Builder
@@ -106,7 +109,7 @@ class ReadSyncListItemOptions extends Options {
     }
 
     /**
-     * (optional) An integer representing Item index offset (inclusive). If not present, query is performed from the start or end, depending on the Order query parameter.
+     * An integer representing Item index offset (inclusive). If not present, query is performed from the start or end, depending on the Order query parameter.
      * 
      * @param string $from An integer representing Item index offset.
      * @return $this Fluent Builder
@@ -145,8 +148,11 @@ class ReadSyncListItemOptions extends Options {
 
 class UpdateSyncListItemOptions extends Options {
     /**
-     * @param array $data The data
-     * @param integer $ttl The ttl
+     * @param array $data Contains arbitrary user-defined, schema-less data that
+     *                    this List Item stores, represented by a JSON object, up
+     *                    to 16KB.
+     * @param integer $ttl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      */
     public function __construct($data = Values::NONE, $ttl = Values::NONE) {
         $this->options['data'] = $data;
@@ -154,9 +160,11 @@ class UpdateSyncListItemOptions extends Options {
     }
 
     /**
-     * The data
+     * Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
      * 
-     * @param array $data The data
+     * @param array $data Contains arbitrary user-defined, schema-less data that
+     *                    this List Item stores, represented by a JSON object, up
+     *                    to 16KB.
      * @return $this Fluent Builder
      */
     public function setData($data) {
@@ -165,9 +173,10 @@ class UpdateSyncListItemOptions extends Options {
     }
 
     /**
-     * The ttl
+     * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
      * 
-     * @param integer $ttl The ttl
+     * @param integer $ttl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

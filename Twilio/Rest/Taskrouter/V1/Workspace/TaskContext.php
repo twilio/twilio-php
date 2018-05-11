@@ -44,6 +44,7 @@ class TaskContext extends InstanceContext {
      * Fetch a TaskInstance
      * 
      * @return TaskInstance Fetched TaskInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -67,6 +68,7 @@ class TaskContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -98,6 +100,7 @@ class TaskContext extends InstanceContext {
      * Deletes the TaskInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

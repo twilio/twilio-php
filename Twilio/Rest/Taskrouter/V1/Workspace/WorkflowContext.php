@@ -52,6 +52,7 @@ class WorkflowContext extends InstanceContext {
      * Fetch a WorkflowInstance
      * 
      * @return WorkflowInstance Fetched WorkflowInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -75,6 +76,7 @@ class WorkflowContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return WorkflowInstance Updated WorkflowInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -106,6 +108,7 @@ class WorkflowContext extends InstanceContext {
      * Deletes the WorkflowInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

@@ -34,8 +34,9 @@ class FieldInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
-     * @param string $intentSid The intent_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $intentSid The unique ID of the Intent associated with this
+     *                          Field.
      * @param string $sid The sid
      * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\FieldInstance 
      */
@@ -85,6 +86,7 @@ class FieldInstance extends InstanceResource {
      * Fetch a FieldInstance
      * 
      * @return FieldInstance Fetched FieldInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -94,6 +96,7 @@ class FieldInstance extends InstanceResource {
      * Deletes the FieldInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

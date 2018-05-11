@@ -52,6 +52,7 @@ class TaskQueueContext extends InstanceContext {
      * Fetch a TaskQueueInstance
      * 
      * @return TaskQueueInstance Fetched TaskQueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -75,6 +76,7 @@ class TaskQueueContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Updated TaskQueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -107,6 +109,7 @@ class TaskQueueContext extends InstanceContext {
      * Deletes the TaskQueueInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

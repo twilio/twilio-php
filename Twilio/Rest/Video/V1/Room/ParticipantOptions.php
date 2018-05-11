@@ -17,8 +17,12 @@ abstract class ParticipantOptions {
      * @param string $status Only show Participants with the given Status.
      * @param string $identity Only show Participants that connected to the Room
      *                         using the provided Identity.
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param \DateTime $dateCreatedAfter Only show Participants that started after
+     *                                    this date, given as an UTC ISO 8601
+     *                                    Timestamp.
+     * @param \DateTime $dateCreatedBefore Only show Participants that started
+     *                                     before this date, given as an UTC ISO
+     *                                     8601 Timestamp.
      * @return ReadParticipantOptions Options builder
      */
     public static function read($status = Values::NONE, $identity = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
@@ -39,8 +43,12 @@ class ReadParticipantOptions extends Options {
      * @param string $status Only show Participants with the given Status.
      * @param string $identity Only show Participants that connected to the Room
      *                         using the provided Identity.
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param \DateTime $dateCreatedAfter Only show Participants that started after
+     *                                    this date, given as an UTC ISO 8601
+     *                                    Timestamp.
+     * @param \DateTime $dateCreatedBefore Only show Participants that started
+     *                                     before this date, given as an UTC ISO
+     *                                     8601 Timestamp.
      */
     public function __construct($status = Values::NONE, $identity = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
         $this->options['status'] = $status;
@@ -73,9 +81,11 @@ class ReadParticipantOptions extends Options {
     }
 
     /**
-     * The date_created_after
+     * Only show Participants that started after this date, given as an [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC).
      * 
-     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedAfter Only show Participants that started after
+     *                                    this date, given as an UTC ISO 8601
+     *                                    Timestamp.
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -84,9 +94,11 @@ class ReadParticipantOptions extends Options {
     }
 
     /**
-     * The date_created_before
+     * Only show Participants that started before this date, given as an [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC).
      * 
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param \DateTime $dateCreatedBefore Only show Participants that started
+     *                                     before this date, given as an UTC ISO
+     *                                     8601 Timestamp.
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {

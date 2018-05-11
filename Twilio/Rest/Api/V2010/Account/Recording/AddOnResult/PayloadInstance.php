@@ -90,6 +90,7 @@ class PayloadInstance extends InstanceResource {
      * Fetch a PayloadInstance
      * 
      * @return PayloadInstance Fetched PayloadInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -99,6 +100,7 @@ class PayloadInstance extends InstanceResource {
      * Deletes the PayloadInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

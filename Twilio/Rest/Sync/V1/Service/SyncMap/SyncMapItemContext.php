@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Sync\V1\Service\SyncMap;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -42,7 +41,7 @@ class SyncMapItemContext extends InstanceContext {
      * Fetch a SyncMapItemInstance
      * 
      * @return SyncMapItemInstance Fetched SyncMapItemInstance
-     * @throws TwilioException
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -66,7 +65,7 @@ class SyncMapItemContext extends InstanceContext {
      * Deletes the SyncMapItemInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -77,7 +76,7 @@ class SyncMapItemContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return SyncMapItemInstance Updated SyncMapItemInstance
-     * @throws TwilioException
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

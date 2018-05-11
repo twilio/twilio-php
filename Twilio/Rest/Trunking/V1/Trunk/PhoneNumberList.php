@@ -36,6 +36,7 @@ class PhoneNumberList extends ListResource {
      * @param string $phoneNumberSid The SID of the Incoming Phone Number that you
      *                               want to associate with this trunk.
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($phoneNumberSid) {
         $data = Values::of(array('PhoneNumberSid' => $phoneNumberSid, ));

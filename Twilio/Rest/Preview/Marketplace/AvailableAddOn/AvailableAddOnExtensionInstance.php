@@ -77,6 +77,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
      * 
      * @return AvailableAddOnExtensionInstance Fetched
      *                                         AvailableAddOnExtensionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

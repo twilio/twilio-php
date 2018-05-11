@@ -101,6 +101,7 @@ class ApplicationInstance extends InstanceResource {
      * Deletes the ApplicationInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -110,6 +111,7 @@ class ApplicationInstance extends InstanceResource {
      * Fetch a ApplicationInstance
      * 
      * @return ApplicationInstance Fetched ApplicationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -120,6 +122,7 @@ class ApplicationInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

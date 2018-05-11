@@ -77,6 +77,7 @@ class TaskChannelInstance extends InstanceResource {
      * Fetch a TaskChannelInstance
      * 
      * @return TaskChannelInstance Fetched TaskChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();

@@ -19,7 +19,8 @@ class UserChannelList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
-     * @param string $userSid The sid
+     * @param string $userSid A 34 character string that uniquely identifies this
+     *                        resource.
      * @return \Twilio\Rest\IpMessaging\V1\Service\User\UserChannelList 
      */
     public function __construct(Version $version, $serviceSid, $userSid) {

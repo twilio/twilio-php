@@ -22,8 +22,9 @@ class SampleList extends ListResource {
      * Construct the SampleList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $intentSid The intent_sid
+     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $intentSid The unique ID of the Intent associated with this
+     *                          Sample.
      * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\SampleList 
      */
     public function __construct(Version $version, $assistantSid, $intentSid) {
@@ -129,10 +130,12 @@ class SampleList extends ListResource {
     /**
      * Create a new SampleInstance
      * 
-     * @param string $language The language
-     * @param string $taggedText The tagged_text
+     * @param string $language An ISO language-country string of the sample.
+     * @param string $taggedText The text example of how end-users may express this
+     *                           intent. The sample may contain Field tag blocks.
      * @param array|Options $options Optional Arguments
      * @return SampleInstance Newly created SampleInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($language, $taggedText, $options = array()) {
         $options = new Values($options);

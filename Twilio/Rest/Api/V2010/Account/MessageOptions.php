@@ -105,7 +105,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * A Twilio phone number (in [E.164](http://en.wikipedia.org/wiki/E.164) format),  [alphanumeric sender ID](https://www.twilio.com/docs/api/messaging/send-messages#alpha-sender-id) or a [Channel Endpoint address](https://www.twilio.com/docs/api/channels#channel-addresses) enabled for the type of message you wish to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-codes) purchased from Twilio work here. You cannot (for example) spoof messages from your own cell phone number.
+     * A Twilio phone number (in [E.164](https://www.twilio.com/docs/glossary/what-e164) format),  [alphanumeric sender ID](https://www.twilio.com/docs/api/messaging/send-messages#alpha-sender-id) or a [Channel Endpoint address](https://www.twilio.com/docs/api/channels#channel-addresses) enabled for the type of message you wish to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-codes) purchased from Twilio work here. You cannot (for example) spoof messages from your own cell phone number. *Should not be passed if you are using MessagingServiceSid.*
      * 
      * @param string $from The phone number that initiated the message
      * @return $this Fluent Builder
@@ -116,7 +116,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The 34 character unique id of the [Messaging Service](https://www.twilio.com/docs/api/messaging/send-messages#messaging-services) you want to associate with this Message. Set this parameter to use the Messaging Service Settings and [Copilot Features](https://www.twilio.com/docs/api/messaging/send-messages-copilot) you have configured. When only this parameter is set, Twilio will use your enabled Copilot Features to select the From phone number for delivery.
+     * The 34 character unique id of the [Messaging Service](https://www.twilio.com/docs/api/messaging/send-messages#messaging-services) you want to associate with this Message. Set this parameter to use the Messaging Service Settings and [Copilot Features](https://www.twilio.com/docs/api/messaging/send-messages-copilot) you have configured. When only this parameter is set, Twilio will use your enabled Copilot Features to select the From phone number for delivery. *Should not be passed if you are using From.*
      * 
      * @param string $messagingServiceSid The 34 character unique id of the
      *                                    Messaging Service you want to associate
@@ -334,7 +334,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent&lt;=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent&gt;=YYYY-MM-DD` for messages sent on or after midnight on a date.
+     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent<=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` for messages sent on or after midnight on a date.
      * 
      * @param string $dateSentBefore Filter by date sent
      * @return $this Fluent Builder
@@ -345,7 +345,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent&lt;=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent&gt;=YYYY-MM-DD` for messages sent on or after midnight on a date.
+     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent<=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` for messages sent on or after midnight on a date.
      * 
      * @param string $dateSent Filter by date sent
      * @return $this Fluent Builder
@@ -356,7 +356,7 @@ class ReadMessageOptions extends Options {
     }
 
     /**
-     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent&lt;=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent&gt;=YYYY-MM-DD` for messages sent on or after midnight on a date.
+     * Only show messages sent on this date (in [GMT](https://en.wikipedia.org/wiki/Greenwich_Mean_Time) format), given as `YYYY-MM-DD`. Example: `DateSent=2009-07-06`. You can also specify inequality, such as `DateSent<=YYYY-MM-DD` for messages that were sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` for messages sent on or after midnight on a date.
      * 
      * @param string $dateSentAfter Filter by date sent
      * @return $this Fluent Builder

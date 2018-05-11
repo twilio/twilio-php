@@ -98,6 +98,7 @@ class SessionInstance extends InstanceResource {
      * Fetch a SessionInstance
      * 
      * @return SessionInstance Fetched SessionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -107,6 +108,7 @@ class SessionInstance extends InstanceResource {
      * Deletes the SessionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -117,6 +119,7 @@ class SessionInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return SessionInstance Updated SessionInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

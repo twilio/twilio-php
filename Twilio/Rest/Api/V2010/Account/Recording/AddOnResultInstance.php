@@ -89,6 +89,7 @@ class AddOnResultInstance extends InstanceResource {
      * Fetch a AddOnResultInstance
      * 
      * @return AddOnResultInstance Fetched AddOnResultInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -98,6 +99,7 @@ class AddOnResultInstance extends InstanceResource {
      * Deletes the AddOnResultInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

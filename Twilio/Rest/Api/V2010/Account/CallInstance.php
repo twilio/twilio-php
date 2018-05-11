@@ -116,6 +116,7 @@ class CallInstance extends InstanceResource {
      * Deletes the CallInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
@@ -125,6 +126,7 @@ class CallInstance extends InstanceResource {
      * Fetch a CallInstance
      * 
      * @return CallInstance Fetched CallInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -135,6 +137,7 @@ class CallInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return CallInstance Updated CallInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);

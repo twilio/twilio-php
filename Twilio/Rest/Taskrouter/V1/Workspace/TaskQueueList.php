@@ -141,6 +141,7 @@ class TaskQueueList extends ListResource {
      *                                      task is assigned for them
      * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Newly created TaskQueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($friendlyName, $reservationActivitySid, $assignmentActivitySid, $options = array()) {
         $options = new Values($options);

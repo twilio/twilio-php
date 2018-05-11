@@ -101,6 +101,7 @@ class NotificationInstance extends InstanceResource {
      * Fetch a NotificationInstance
      * 
      * @return NotificationInstance Fetched NotificationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -110,6 +111,7 @@ class NotificationInstance extends InstanceResource {
      * Deletes the NotificationInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

@@ -39,6 +39,7 @@ class ExportConfigurationContext extends InstanceContext {
      * Fetch a ExportConfigurationInstance
      * 
      * @return ExportConfigurationInstance Fetched ExportConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -57,6 +58,7 @@ class ExportConfigurationContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return ExportConfigurationInstance Updated ExportConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

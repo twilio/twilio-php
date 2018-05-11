@@ -38,6 +38,7 @@ class MessageContext extends InstanceContext {
      * Fetch a MessageInstance
      * 
      * @return MessageInstance Fetched MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -61,6 +62,7 @@ class MessageContext extends InstanceContext {
      * Deletes the MessageInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
@@ -71,6 +73,7 @@ class MessageContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

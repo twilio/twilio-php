@@ -49,6 +49,7 @@ class AddressList extends ListResource {
      *                           address.
      * @param array|Options $options Optional Arguments
      * @return AddressInstance Newly created AddressInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($customerName, $street, $city, $region, $postalCode, $isoCountry, $options = array()) {
         $options = new Values($options);

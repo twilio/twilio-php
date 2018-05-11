@@ -39,6 +39,7 @@ class PhoneNumberList extends ListResource {
      * @param string $phoneNumberSid Phone Number SID for the Phone Number being
      *                               added to the Service.
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($phoneNumberSid) {
         $data = Values::of(array('PhoneNumberSid' => $phoneNumberSid, ));

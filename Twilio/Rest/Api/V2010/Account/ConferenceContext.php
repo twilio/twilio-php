@@ -44,6 +44,7 @@ class ConferenceContext extends InstanceContext {
      * Fetch a ConferenceInstance
      * 
      * @return ConferenceInstance Fetched ConferenceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -67,6 +68,7 @@ class ConferenceContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return ConferenceInstance Updated ConferenceInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);

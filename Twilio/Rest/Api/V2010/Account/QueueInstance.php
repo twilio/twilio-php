@@ -81,6 +81,7 @@ class QueueInstance extends InstanceResource {
      * Fetch a QueueInstance
      * 
      * @return QueueInstance Fetched QueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
@@ -91,6 +92,7 @@ class QueueInstance extends InstanceResource {
      * 
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Updated QueueInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
@@ -100,6 +102,7 @@ class QueueInstance extends InstanceResource {
      * Deletes the QueueInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();

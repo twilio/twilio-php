@@ -40,6 +40,7 @@ class MemberContext extends InstanceContext {
      * Fetch a MemberInstance
      * 
      * @return MemberInstance Fetched MemberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -65,6 +66,7 @@ class MemberContext extends InstanceContext {
      * @param string $url The url
      * @param string $method The method
      * @return MemberInstance Updated MemberInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($url, $method) {
         $data = Values::of(array('Url' => $url, 'Method' => $method, ));

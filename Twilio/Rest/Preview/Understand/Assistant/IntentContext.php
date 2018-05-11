@@ -50,6 +50,7 @@ class IntentContext extends InstanceContext {
      * Fetch a IntentInstance
      * 
      * @return IntentInstance Fetched IntentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         $params = Values::of(array());
@@ -73,6 +74,7 @@ class IntentContext extends InstanceContext {
      * 
      * @param array|Options $options Optional Arguments
      * @return IntentInstance Updated IntentInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
@@ -101,6 +103,7 @@ class IntentContext extends InstanceContext {
      * Deletes the IntentInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);

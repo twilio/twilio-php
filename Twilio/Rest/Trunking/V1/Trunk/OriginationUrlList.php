@@ -45,6 +45,7 @@ class OriginationUrlList extends ListResource {
      * @param string $sipUrl The SIP address you want Twilio to route your
      *                       Origination calls to.
      * @return OriginationUrlInstance Newly created OriginationUrlInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($weight, $priority, $enabled, $friendlyName, $sipUrl) {
         $data = Values::of(array(
