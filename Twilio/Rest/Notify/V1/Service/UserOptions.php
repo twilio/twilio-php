@@ -17,7 +17,9 @@ use Twilio\Values;
  */
 abstract class UserOptions {
     /**
-     * @param string $segment The segment
+     * @param string $segment The list of segments this User belongs to. Segments
+     *                        can be used to select recipients of a notification.
+     *                        Maximum 20 Segments per User allowed.
      * @return CreateUserOptions Options builder
      */
     public static function create($segment = Values::NONE) {
@@ -25,8 +27,11 @@ abstract class UserOptions {
     }
 
     /**
-     * @param string $identity The identity
-     * @param string $segment The segment
+     * @param string $identity The identifier of the User, defined by your
+     *                         application.
+     * @param string $segment The list of segments this User belongs to. Segments
+     *                        can be used to select recipients of a notification.
+     *                        Maximum 20 Segments per User allowed.
      * @return ReadUserOptions Options builder
      */
     public static function read($identity = Values::NONE, $segment = Values::NONE) {
@@ -36,16 +41,20 @@ abstract class UserOptions {
 
 class CreateUserOptions extends Options {
     /**
-     * @param string $segment The segment
+     * @param string $segment The list of segments this User belongs to. Segments
+     *                        can be used to select recipients of a notification.
+     *                        Maximum 20 Segments per User allowed.
      */
     public function __construct($segment = Values::NONE) {
         $this->options['segment'] = $segment;
     }
 
     /**
-     * The segment
+     * The list of segments this User belongs to. Segments can be used to select recipients of a notification. Maximum 20 Segments per User allowed.
      * 
-     * @param string $segment The segment
+     * @param string $segment The list of segments this User belongs to. Segments
+     *                        can be used to select recipients of a notification.
+     *                        Maximum 20 Segments per User allowed.
      * @return $this Fluent Builder
      */
     public function setSegment($segment) {
@@ -71,8 +80,11 @@ class CreateUserOptions extends Options {
 
 class ReadUserOptions extends Options {
     /**
-     * @param string $identity The identity
-     * @param string $segment The segment
+     * @param string $identity The identifier of the User, defined by your
+     *                         application.
+     * @param string $segment The list of segments this User belongs to. Segments
+     *                        can be used to select recipients of a notification.
+     *                        Maximum 20 Segments per User allowed.
      */
     public function __construct($identity = Values::NONE, $segment = Values::NONE) {
         $this->options['identity'] = $identity;
@@ -80,9 +92,10 @@ class ReadUserOptions extends Options {
     }
 
     /**
-     * The identity
+     * The identifier of the User, defined by your application.
      * 
-     * @param string $identity The identity
+     * @param string $identity The identifier of the User, defined by your
+     *                         application.
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -91,9 +104,11 @@ class ReadUserOptions extends Options {
     }
 
     /**
-     * The segment
+     * The list of segments this User belongs to. Segments can be used to select recipients of a notification. Maximum 20 Segments per User allowed.
      * 
-     * @param string $segment The segment
+     * @param string $segment The list of segments this User belongs to. Segments
+     *                        can be used to select recipients of a notification.
+     *                        Maximum 20 Segments per User allowed.
      * @return $this Fluent Builder
      */
     public function setSegment($segment) {

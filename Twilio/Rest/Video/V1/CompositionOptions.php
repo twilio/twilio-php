@@ -17,9 +17,11 @@ use Twilio\Values;
  */
 abstract class CompositionOptions {
     /**
-     * @param string $status The status
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $status Only show Compositions with the given status.
+     * @param \DateTime $dateCreatedAfter Only show Compositions that started on or
+     *                                    after this ISO8601 date-time.
+     * @param \DateTime $dateCreatedBefore Only show Compositions that started
+     *                                     before this this ISO8601 date-time.
      * @param string $roomSid The room_sid
      * @return ReadCompositionOptions Options builder
      */
@@ -46,9 +48,11 @@ abstract class CompositionOptions {
 
 class ReadCompositionOptions extends Options {
     /**
-     * @param string $status The status
-     * @param \DateTime $dateCreatedAfter The date_created_after
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param string $status Only show Compositions with the given status.
+     * @param \DateTime $dateCreatedAfter Only show Compositions that started on or
+     *                                    after this ISO8601 date-time.
+     * @param \DateTime $dateCreatedBefore Only show Compositions that started
+     *                                     before this this ISO8601 date-time.
      * @param string $roomSid The room_sid
      */
     public function __construct($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
@@ -59,9 +63,9 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
-     * The status
+     * Only show Compositions with the given status.
      * 
-     * @param string $status The status
+     * @param string $status Only show Compositions with the given status.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -70,9 +74,10 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
-     * The date_created_after
+     * Only show Compositions that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * 
-     * @param \DateTime $dateCreatedAfter The date_created_after
+     * @param \DateTime $dateCreatedAfter Only show Compositions that started on or
+     *                                    after this ISO8601 date-time.
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -81,9 +86,10 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
-     * The date_created_before
+     * Only show Compositions that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      * 
-     * @param \DateTime $dateCreatedBefore The date_created_before
+     * @param \DateTime $dateCreatedBefore Only show Compositions that started
+     *                                     before this this ISO8601 date-time.
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {

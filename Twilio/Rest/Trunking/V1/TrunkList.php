@@ -48,6 +48,7 @@ class TrunkList extends ListResource {
             'DisasterRecoveryMethod' => $options['disasterRecoveryMethod'],
             'Recording' => $options['recording'],
             'Secure' => Serialize::booleanToString($options['secure']),
+            'CnamLookupEnabled' => Serialize::booleanToString($options['cnamLookupEnabled']),
         ));
 
         $payload = $this->version->create(

@@ -96,6 +96,7 @@ class MonthlyList extends ListResource {
             'Category' => $options['category'],
             'StartDate' => Serialize::iso8601Date($options['startDate']),
             'EndDate' => Serialize::iso8601Date($options['endDate']),
+            'IncludeSubaccounts' => Serialize::booleanToString($options['includeSubaccounts']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -37,12 +37,12 @@ class IpAccessControlListTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "date_created": "2015-07-30T20:00:00Z",
-                "date_updated": "2015-07-30T20:00:00Z",
+                "date_created": "2018-05-02T17:29:34Z",
+                "date_updated": "2018-05-02T17:29:34Z",
                 "friendly_name": "friendly_name",
                 "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "url": "http://www.example.com"
+                "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -105,12 +105,12 @@ class IpAccessControlListTest extends HolodeckTestCase {
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "date_created": "2015-07-30T20:00:00Z",
-                "date_updated": "2015-07-30T20:00:00Z",
+                "date_created": "2018-04-30T20:59:06Z",
+                "date_updated": "2018-04-30T20:59:06Z",
                 "friendly_name": "friendly_name",
                 "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "url": "http://www.example.com"
+                "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -143,13 +143,13 @@ class IpAccessControlListTest extends HolodeckTestCase {
             {
                 "ip_access_control_lists": [],
                 "meta": {
-                    "first_page_url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?Page=0&PageSize=50",
+                    "first_page_url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0",
                     "key": "ip_access_control_lists",
                     "next_page_url": null,
                     "page": 0,
-                    "page_size": 0,
+                    "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists"
+                    "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0"
                 }
             }
             '
@@ -169,22 +169,22 @@ class IpAccessControlListTest extends HolodeckTestCase {
                 "ip_access_control_lists": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "2015-07-30T20:00:00Z",
-                        "date_updated": "2015-07-30T20:00:00Z",
+                        "date_created": "2018-05-02T17:29:34Z",
+                        "date_updated": "2018-05-02T17:29:34Z",
                         "friendly_name": "friendly_name",
                         "sid": "ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "url": "http://www.example.com"
+                        "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
                 "meta": {
-                    "first_page_url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?Page=0&PageSize=50",
+                    "first_page_url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0",
                     "key": "ip_access_control_lists",
                     "next_page_url": null,
                     "page": 0,
-                    "page_size": 1,
+                    "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists"
+                    "url": "https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0"
                 }
             }
             '

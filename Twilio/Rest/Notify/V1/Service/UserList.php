@@ -38,7 +38,8 @@ class UserList extends ListResource {
     /**
      * Create a new UserInstance
      * 
-     * @param string $identity The identity
+     * @param string $identity The identifier of the User, defined by your
+     *                         application.
      * @param array|Options $options Optional Arguments
      * @return UserInstance Newly created UserInstance
      * @throws TwilioException When an HTTP error occurs.

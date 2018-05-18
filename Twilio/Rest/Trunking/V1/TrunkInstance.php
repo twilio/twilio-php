@@ -24,6 +24,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property boolean secure
  * @property array recording
+ * @property boolean cnamLookupEnabled
  * @property string authType
  * @property string authTypeSet
  * @property \DateTime dateCreated
@@ -58,6 +59,7 @@ class TrunkInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'secure' => Values::array_get($payload, 'secure'),
             'recording' => Values::array_get($payload, 'recording'),
+            'cnamLookupEnabled' => Values::array_get($payload, 'cnam_lookup_enabled'),
             'authType' => Values::array_get($payload, 'auth_type'),
             'authTypeSet' => Values::array_get($payload, 'auth_type_set'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

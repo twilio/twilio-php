@@ -21,7 +21,8 @@ class CompositionContext extends InstanceContext {
      * Initialize the CompositionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid The Composition Sid that uniquely identifies the
+     *                    Composition to fetch.
      * @return \Twilio\Rest\Video\V1\CompositionContext 
      */
     public function __construct(Version $version, $sid) {

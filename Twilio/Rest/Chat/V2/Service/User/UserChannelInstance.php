@@ -30,7 +30,8 @@ class UserChannelInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The unique id of the Service this channel belongs
+     *                           to.
      * @param string $userSid A 34 character string that uniquely identifies this
      *                        resource.
      * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelInstance 

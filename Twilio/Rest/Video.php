@@ -105,7 +105,8 @@ class Video extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The Composition Sid that uniquely identifies the
+     *                    Composition to fetch.
      * @return \Twilio\Rest\Video\V1\CompositionContext 
      */
     protected function contextCompositions($sid) {

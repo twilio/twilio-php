@@ -16,8 +16,8 @@ abstract class MessageOptions {
     /**
      * @param string $from The identity of the message's author. Defaults to system
      *                     if not specified.
-     * @param string $attributes The optional attributes metadata field you can use
-     *                           to store any data you wish.
+     * @param string $attributes The attributes metadata field you can use to store
+     *                           any data you wish.
      * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
      *                               Message should be set as being created.
      * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
@@ -25,7 +25,7 @@ abstract class MessageOptions {
      *                               updated.
      * @param string $lastUpdatedBy Specify the Identity of the User that last
      *                              updated the Message
-     * @param string $body The optional message body string.
+     * @param string $body The message body string.
      * @param string $mediaSid The Media Sid to be attached to this Message.
      * @return CreateMessageOptions Options builder
      */
@@ -64,8 +64,8 @@ class CreateMessageOptions extends Options {
     /**
      * @param string $from The identity of the message's author. Defaults to system
      *                     if not specified.
-     * @param string $attributes The optional attributes metadata field you can use
-     *                           to store any data you wish.
+     * @param string $attributes The attributes metadata field you can use to store
+     *                           any data you wish.
      * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
      *                               Message should be set as being created.
      * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
@@ -73,7 +73,7 @@ class CreateMessageOptions extends Options {
      *                               updated.
      * @param string $lastUpdatedBy Specify the Identity of the User that last
      *                              updated the Message
-     * @param string $body The optional message body string.
+     * @param string $body The message body string.
      * @param string $mediaSid The Media Sid to be attached to this Message.
      */
     public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
@@ -87,7 +87,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system` if not specified.
+     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.
      * 
      * @param string $from The identity of the message's author. Defaults to system
      *                     if not specified.
@@ -99,10 +99,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * A metadata field you can use to store any data you wish.  The string value must contain structurally valid JSON if specified.
+     * An string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified. **Note** that this will always be null for resources returned via LIST GET operations, but will be present for single GET operations.
      * 
-     * @param string $attributes The optional attributes metadata field you can use
-     *                           to store any data you wish.
+     * @param string $attributes The attributes metadata field you can use to store
+     *                           any data you wish.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -150,7 +150,7 @@ class CreateMessageOptions extends Options {
     /**
      * A string message to send to this channel. You can also send structured data by serializing it into a string. May be empty string or `null`, will be set as empty string as a result in this cases.
      * 
-     * @param string $body The optional message body string.
+     * @param string $body The message body string.
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -255,7 +255,7 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The attributes metadata field you can use to store any data you wish.  The string value must contain structurally valid JSON if specified.
+     * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified. **Note** that this will always be null for resources returned via LIST GET operations, but will be present for single GET operations.
      * 
      * @param string $attributes The attributes metadata field you can use to store
      *                           any data you wish.

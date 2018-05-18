@@ -14,11 +14,33 @@ use Twilio\Values;
 
 abstract class MemberOptions {
     /**
-     * @param string $roleSid The role_sid
-     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
-     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
+     * @param string $roleSid The role to be assigned to this member. Defaults to
+     *                        the roles specified on the Service.
+     * @param integer $lastConsumedMessageIndex Field used to specify the last
+     *                                          consumed Message index for the
+     *                                          Channel for this Member.  Should
+     *                                          only be used when recreating a
+     *                                          Member from a backup/separate
+     *                                          source.
+     * @param \DateTime $lastConsumptionTimestamp ISO8601 time indicating the last
+     *                                            datetime the Member consumed a
+     *                                            Message in the Channel.  Should
+     *                                            only be used when recreating a
+     *                                            Member from a backup/separate
+     *                                            source
+     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
+     *                               Members should be set as being created.  Will
+     *                               be set to the current time by the Chat service
+     *                               if not specified.  Note that this should only
+     *                               be used in cases where a Member is being
+     *                               recreated from a backup/separate source
+     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
+     *                               Member should be set as having been last
+     *                               updated.  Will be set to the null by the Chat
+     *                               service if not specified.  Note that this
+     *                               should only be used in cases where a Member is
+     *                               being recreated from a backup/separate source 
+     *                               and where a Member was previously updated.
      * @return CreateMemberOptions Options builder
      */
     public static function create($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
@@ -26,7 +48,9 @@ abstract class MemberOptions {
     }
 
     /**
-     * @param string $identity The identity
+     * @param string $identity A unique string identifier for this User in this
+     *                         Service. See the access tokens docs for more
+     *                         details. (📇 PII MTL: 120 days)
      * @return ReadMemberOptions Options builder
      */
     public static function read($identity = Values::NONE) {
@@ -35,18 +59,17 @@ abstract class MemberOptions {
 
     /**
      * @param string $roleSid The role to be assigned to this member.
-     * @param integer $lastConsumedMessageIndex Optional field used to specify the
-     *                                          last consumed Message index for the
+     * @param integer $lastConsumedMessageIndex Field used to specify the last
+     *                                          consumed Message index for the
      *                                          Channel for this Member.
-     * @param \DateTime $lastConsumptionTimestamp Optional ISO8601 time indicating
-     *                                            the last datetime the Member
-     *                                            consumed a Message in the Channel.
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Members should be set as being
-     *                               created.
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Member should be set as having
-     *                               been last updated.
+     * @param \DateTime $lastConsumptionTimestamp ISO8601 time indicating the last
+     *                                            datetime the Member consumed a
+     *                                            Message in the Channel.
+     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
+     *                               Members should be set as being created.
+     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
+     *                               Member should be set as having been last
+     *                               updated.
      * @return UpdateMemberOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
@@ -56,11 +79,33 @@ abstract class MemberOptions {
 
 class CreateMemberOptions extends Options {
     /**
-     * @param string $roleSid The role_sid
-     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
-     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
-     * @param \DateTime $dateCreated The date_created
-     * @param \DateTime $dateUpdated The date_updated
+     * @param string $roleSid The role to be assigned to this member. Defaults to
+     *                        the roles specified on the Service.
+     * @param integer $lastConsumedMessageIndex Field used to specify the last
+     *                                          consumed Message index for the
+     *                                          Channel for this Member.  Should
+     *                                          only be used when recreating a
+     *                                          Member from a backup/separate
+     *                                          source.
+     * @param \DateTime $lastConsumptionTimestamp ISO8601 time indicating the last
+     *                                            datetime the Member consumed a
+     *                                            Message in the Channel.  Should
+     *                                            only be used when recreating a
+     *                                            Member from a backup/separate
+     *                                            source
+     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
+     *                               Members should be set as being created.  Will
+     *                               be set to the current time by the Chat service
+     *                               if not specified.  Note that this should only
+     *                               be used in cases where a Member is being
+     *                               recreated from a backup/separate source
+     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
+     *                               Member should be set as having been last
+     *                               updated.  Will be set to the null by the Chat
+     *                               service if not specified.  Note that this
+     *                               should only be used in cases where a Member is
+     *                               being recreated from a backup/separate source 
+     *                               and where a Member was previously updated.
      */
     public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -71,9 +116,10 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The role_sid
+     * The role to be assigned to this member. Defaults to the roles specified on the [Service](https://www.twilio.com/docs/chat/api/services).
      * 
-     * @param string $roleSid The role_sid
+     * @param string $roleSid The role to be assigned to this member. Defaults to
+     *                        the roles specified on the Service.
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -82,9 +128,14 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The last_consumed_message_index
+     * Field used to specify the last consumed Message index for the Channel for this Member.  Should only be used when recreating a Member from a backup/separate source.
      * 
-     * @param integer $lastConsumedMessageIndex The last_consumed_message_index
+     * @param integer $lastConsumedMessageIndex Field used to specify the last
+     *                                          consumed Message index for the
+     *                                          Channel for this Member.  Should
+     *                                          only be used when recreating a
+     *                                          Member from a backup/separate
+     *                                          source.
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
@@ -93,9 +144,14 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The last_consumption_timestamp
+     * ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.  Should only be used when recreating a Member from a backup/separate source
      * 
-     * @param \DateTime $lastConsumptionTimestamp The last_consumption_timestamp
+     * @param \DateTime $lastConsumptionTimestamp ISO8601 time indicating the last
+     *                                            datetime the Member consumed a
+     *                                            Message in the Channel.  Should
+     *                                            only be used when recreating a
+     *                                            Member from a backup/separate
+     *                                            source
      * @return $this Fluent Builder
      */
     public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
@@ -104,9 +160,14 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The date_created
+     * The ISO8601 time specifying the datetime the Members should be set as being created.  Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source
      * 
-     * @param \DateTime $dateCreated The date_created
+     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
+     *                               Members should be set as being created.  Will
+     *                               be set to the current time by the Chat service
+     *                               if not specified.  Note that this should only
+     *                               be used in cases where a Member is being
+     *                               recreated from a backup/separate source
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -115,9 +176,15 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The date_updated
+     * The ISO8601 time specifying the datetime the Member should be set as having been last updated.  Will be set to the `null` by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source  and where a Member was previously updated.
      * 
-     * @param \DateTime $dateUpdated The date_updated
+     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
+     *                               Member should be set as having been last
+     *                               updated.  Will be set to the null by the Chat
+     *                               service if not specified.  Note that this
+     *                               should only be used in cases where a Member is
+     *                               being recreated from a backup/separate source 
+     *                               and where a Member was previously updated.
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -143,16 +210,20 @@ class CreateMemberOptions extends Options {
 
 class ReadMemberOptions extends Options {
     /**
-     * @param string $identity The identity
+     * @param string $identity A unique string identifier for this User in this
+     *                         Service. See the access tokens docs for more
+     *                         details. (📇 PII MTL: 120 days)
      */
     public function __construct($identity = Values::NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
-     * The identity
+     * A unique string identifier for this [User](https://www.twilio.com/docs/api/chat/rest/users) in this [Service](https://www.twilio.com/docs/api/chat/rest/services). See the [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) docs for more details.
      * 
-     * @param string $identity The identity
+     * @param string $identity A unique string identifier for this User in this
+     *                         Service. See the access tokens docs for more
+     *                         details. (📇 PII MTL: 120 days)
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -179,18 +250,17 @@ class ReadMemberOptions extends Options {
 class UpdateMemberOptions extends Options {
     /**
      * @param string $roleSid The role to be assigned to this member.
-     * @param integer $lastConsumedMessageIndex Optional field used to specify the
-     *                                          last consumed Message index for the
+     * @param integer $lastConsumedMessageIndex Field used to specify the last
+     *                                          consumed Message index for the
      *                                          Channel for this Member.
-     * @param \DateTime $lastConsumptionTimestamp Optional ISO8601 time indicating
-     *                                            the last datetime the Member
-     *                                            consumed a Message in the Channel.
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Members should be set as being
-     *                               created.
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Member should be set as having
-     *                               been last updated.
+     * @param \DateTime $lastConsumptionTimestamp ISO8601 time indicating the last
+     *                                            datetime the Member consumed a
+     *                                            Message in the Channel.
+     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
+     *                               Members should be set as being created.
+     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
+     *                               Member should be set as having been last
+     *                               updated.
      */
     public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -201,7 +271,7 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The role to be assigned to this member. Defaults to the roles specified on the [Service](https://www.twilio.com/docs/api/chat/rest/services).
+     * The role to be assigned to this member. Defaults to the roles specified on the [Service](https://www.twilio.com/docs/chat/api/services).
      * 
      * @param string $roleSid The role to be assigned to this member.
      * @return $this Fluent Builder
@@ -212,10 +282,10 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * Optional field used to specify the last consumed Message index for the Channel for this Member.
+     * Field used to specify the last consumed Message index for the Channel for this Member.  Should only be used when recreating a Member from a backup/separate source.
      * 
-     * @param integer $lastConsumedMessageIndex Optional field used to specify the
-     *                                          last consumed Message index for the
+     * @param integer $lastConsumedMessageIndex Field used to specify the last
+     *                                          consumed Message index for the
      *                                          Channel for this Member.
      * @return $this Fluent Builder
      */
@@ -225,11 +295,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * Optional ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.
+     * ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.  Should only be used when recreating a Member from a backup/separate source
      * 
-     * @param \DateTime $lastConsumptionTimestamp Optional ISO8601 time indicating
-     *                                            the last datetime the Member
-     *                                            consumed a Message in the Channel.
+     * @param \DateTime $lastConsumptionTimestamp ISO8601 time indicating the last
+     *                                            datetime the Member consumed a
+     *                                            Message in the Channel.
      * @return $this Fluent Builder
      */
     public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
@@ -238,11 +308,10 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The optional ISO8601 time specifying the datetime the Members should be set as being created.
+     * The ISO8601 time specifying the datetime the Members should be set as being created.  Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source
      * 
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Members should be set as being
-     *                               created.
+     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
+     *                               Members should be set as being created.
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -251,11 +320,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The optional ISO8601 time specifying the datetime the Member should be set as having been last updated.
+     * The ISO8601 time specifying the datetime the Member should be set as having been last updated.  Will be set to the `null` by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source  and where a Member was previously updated.
      * 
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Member should be set as having
-     *                               been last updated.
+     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
+     *                               Member should be set as having been last
+     *                               updated.
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {

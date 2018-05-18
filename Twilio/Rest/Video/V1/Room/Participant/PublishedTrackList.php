@@ -18,8 +18,9 @@ class PublishedTrackList extends ListResource {
      * Construct the PublishedTrackList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
-     * @param string $participantSid The participant_sid
+     * @param string $roomSid Unique Room identifier where this Track is published.
+     * @param string $participantSid Unique Participant identifier that publishes
+     *                               this Track.
      * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList 
      */
     public function __construct(Version $version, $roomSid, $participantSid) {
@@ -120,7 +121,8 @@ class PublishedTrackList extends ListResource {
     /**
      * Constructs a PublishedTrackContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext 
      */
     public function getContext($sid) {

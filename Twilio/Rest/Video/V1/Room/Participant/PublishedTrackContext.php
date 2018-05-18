@@ -18,9 +18,11 @@ class PublishedTrackContext extends InstanceContext {
      * Initialize the PublishedTrackContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
-     * @param string $participantSid The participant_sid
-     * @param string $sid The sid
+     * @param string $roomSid Unique Room identifier where this Track is published.
+     * @param string $participantSid Unique Participant identifier that publishes
+     *                               this Track.
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext 
      */
     public function __construct(Version $version, $roomSid, $participantSid, $sid) {

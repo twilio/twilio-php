@@ -19,10 +19,11 @@ abstract class YesterdayOptions {
      *                             this date.
      * @param \DateTime $endDate Only include usage that has occurred on or before
      *                           this date.
+     * @param boolean $includeSubaccounts The include_subaccounts
      * @return ReadYesterdayOptions Options builder
      */
-    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
-        return new ReadYesterdayOptions($category, $startDate, $endDate);
+    public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
+        return new ReadYesterdayOptions($category, $startDate, $endDate, $includeSubaccounts);
     }
 }
 
@@ -33,11 +34,13 @@ class ReadYesterdayOptions extends Options {
      *                             this date.
      * @param \DateTime $endDate Only include usage that has occurred on or before
      *                           this date.
+     * @param boolean $includeSubaccounts The include_subaccounts
      */
-    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
+    public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
         $this->options['category'] = $category;
         $this->options['startDate'] = $startDate;
         $this->options['endDate'] = $endDate;
+        $this->options['includeSubaccounts'] = $includeSubaccounts;
     }
 
     /**
@@ -72,6 +75,17 @@ class ReadYesterdayOptions extends Options {
      */
     public function setEndDate($endDate) {
         $this->options['endDate'] = $endDate;
+        return $this;
+    }
+
+    /**
+     * The include_subaccounts
+     * 
+     * @param boolean $includeSubaccounts The include_subaccounts
+     * @return $this Fluent Builder
+     */
+    public function setIncludeSubaccounts($includeSubaccounts) {
+        $this->options['includeSubaccounts'] = $includeSubaccounts;
         return $this;
     }
 
