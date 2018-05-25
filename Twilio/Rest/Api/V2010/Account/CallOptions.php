@@ -25,7 +25,7 @@ abstract class CallOptions {
      *                                    send webhooks on.
      * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
      * @param string $sendDigits Digits to send
-     * @param string $ifMachine Action to take if a machine has answered the call
+     * @param string $ifMachine The if_machine
      * @param integer $timeout Number of seconds to wait for an answer
      * @param boolean $record Whether or not to record the Call
      * @param string $recordingChannels mono or dualSet this parameter to specify
@@ -104,7 +104,7 @@ class CreateCallOptions extends Options {
      *                                    send webhooks on.
      * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
      * @param string $sendDigits Digits to send
-     * @param string $ifMachine Action to take if a machine has answered the call
+     * @param string $ifMachine The if_machine
      * @param integer $timeout Number of seconds to wait for an answer
      * @param boolean $record Whether or not to record the Call
      * @param string $recordingChannels mono or dualSet this parameter to specify
@@ -260,9 +260,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * Tell Twilio to try and determine if a machine (like voicemail) or a human has answered the call. Possible value are `Continue` and `Hangup`.
+     * The if_machine
      * 
-     * @param string $ifMachine Action to take if a machine has answered the call
+     * @param string $ifMachine The if_machine
      * @return $this Fluent Builder
      */
     public function setIfMachine($ifMachine) {

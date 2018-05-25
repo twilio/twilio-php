@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2018-05-25] Version 5.19.2
+----------------------------
+**Studio**
+- Add endpoint to delete engagements
+
+
 [2018-05-18] Version 5.19.1
 ----------------------------
 **Api**

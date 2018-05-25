@@ -69,6 +69,16 @@ class EngagementContext extends InstanceContext {
     }
 
     /**
+     * Deletes the EngagementInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
      * Access the steps
      * 
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepList 

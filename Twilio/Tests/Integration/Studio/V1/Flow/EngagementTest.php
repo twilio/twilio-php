@@ -147,4 +147,31 @@ class EngagementTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testDeleteRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->studio->v1->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://studio.twilio.com/v1/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Engagements/FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->studio->v1->flows("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->engagements("FNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
+    }
 }
