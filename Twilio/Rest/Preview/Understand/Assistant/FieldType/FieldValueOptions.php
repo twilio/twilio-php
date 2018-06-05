@@ -26,7 +26,8 @@ abstract class FieldValueOptions {
     }
 
     /**
-     * @param string $synonymOf The synonym_of
+     * @param string $synonymOf A value that indicates this field value is a
+     *                          synonym of. Empty if the value is not a synonym.
      * @return CreateFieldValueOptions Options builder
      */
     public static function create($synonymOf = Values::NONE) {
@@ -73,16 +74,18 @@ class ReadFieldValueOptions extends Options {
 
 class CreateFieldValueOptions extends Options {
     /**
-     * @param string $synonymOf The synonym_of
+     * @param string $synonymOf A value that indicates this field value is a
+     *                          synonym of. Empty if the value is not a synonym.
      */
     public function __construct($synonymOf = Values::NONE) {
         $this->options['synonymOf'] = $synonymOf;
     }
 
     /**
-     * The synonym_of
+     * A value that indicates this field value is a synonym of. Empty if the value is not a synonym.
      * 
-     * @param string $synonymOf The synonym_of
+     * @param string $synonymOf A value that indicates this field value is a
+     *                          synonym of. Empty if the value is not a synonym.
      * @return $this Fluent Builder
      */
     public function setSynonymOf($synonymOf) {

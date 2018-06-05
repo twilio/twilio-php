@@ -20,7 +20,8 @@ class BindingList extends ListResource {
      * Construct the BindingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The unique id of the Service this binding belongs
+     *                           to.
      * @return \Twilio\Rest\Chat\V2\Service\BindingList 
      */
     public function __construct(Version $version, $serviceSid) {

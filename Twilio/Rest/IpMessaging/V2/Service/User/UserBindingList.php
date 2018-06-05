@@ -20,8 +20,9 @@ class UserBindingList extends ListResource {
      * Construct the UserBindingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $userSid The user_sid
+     * @param string $serviceSid The unique id of the Service this binding belongs
+     *                           to.
+     * @param string $userSid The unique id of the User for this binding.
      * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingList 
      */
     public function __construct(Version $version, $serviceSid, $userSid) {

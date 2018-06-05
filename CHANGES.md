@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2018-06-04] Version 5.19.3
+----------------------------
+**Chat**
+- Add Binding and UserBinding documentation
+
+**Lookups**
+- Add back support for `fraud` lookup type
+
+
 [2018-05-25] Version 5.19.2
 ----------------------------
 **Studio**

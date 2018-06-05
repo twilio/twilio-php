@@ -14,7 +14,8 @@ use Twilio\Values;
 
 abstract class BindingOptions {
     /**
-     * @param string $bindingType The binding_type
+     * @param string $bindingType The push technology used for the bindings
+     *                            returned.
      * @param string $identity The identity
      * @return ReadBindingOptions Options builder
      */
@@ -25,7 +26,8 @@ abstract class BindingOptions {
 
 class ReadBindingOptions extends Options {
     /**
-     * @param string $bindingType The binding_type
+     * @param string $bindingType The push technology used for the bindings
+     *                            returned.
      * @param string $identity The identity
      */
     public function __construct($bindingType = Values::NONE, $identity = Values::NONE) {
@@ -34,9 +36,10 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The binding_type
+     * The push technology used for the returned Bindings.  Supported values are apn, gcm and fcm.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more information.
      * 
-     * @param string $bindingType The binding_type
+     * @param string $bindingType The push technology used for the bindings
+     *                            returned.
      * @return $this Fluent Builder
      */
     public function setBindingType($bindingType) {

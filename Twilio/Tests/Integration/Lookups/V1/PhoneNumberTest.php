@@ -47,6 +47,15 @@ class PhoneNumberTest extends HolodeckTestCase {
                     "name": "verizon",
                     "type": "mobile"
                 },
+                "fraud": {
+                    "error_code": null,
+                    "mobile_country_code": "310",
+                    "mobile_network_code": "456",
+                    "advanced_line_type": "voip",
+                    "caller_name": "Delicious Cheese Cake",
+                    "is_ported": false,
+                    "last_ported_date": "2018-05-01 04:05:11"
+                },
                 "country_code": "US",
                 "national_format": "(510) 867-5309",
                 "phone_number": "+15108675309",

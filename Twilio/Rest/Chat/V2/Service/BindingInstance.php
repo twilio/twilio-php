@@ -35,7 +35,8 @@ class BindingInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The unique id of the Service this binding belongs
+     *                           to.
      * @param string $sid The sid
      * @return \Twilio\Rest\Chat\V2\Service\BindingInstance 
      */

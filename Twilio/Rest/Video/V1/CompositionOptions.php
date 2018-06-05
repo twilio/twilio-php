@@ -22,7 +22,7 @@ abstract class CompositionOptions {
      *                                    after this ISO8601 date-time.
      * @param \DateTime $dateCreatedBefore Only show Compositions that started
      *                                     before this this ISO8601 date-time.
-     * @param string $roomSid The room_sid
+     * @param string $roomSid Only show Compositions with the given Room SID.
      * @return ReadCompositionOptions Options builder
      */
     public static function read($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
@@ -37,7 +37,7 @@ abstract class CompositionOptions {
      * @param string $audioSourcesExcluded A list of audio sources excluded related
      *                                     to this Composition.
      * @param string $resolution Pixel resolution of the composed video.
-     * @param string $format ontainer format of the Composition media file. Any of
+     * @param string $format Container format of the Composition media file. Any of
      *                       the following: `mp4`, `webm`.
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every composition event.
@@ -58,7 +58,7 @@ class ReadCompositionOptions extends Options {
      *                                    after this ISO8601 date-time.
      * @param \DateTime $dateCreatedBefore Only show Compositions that started
      *                                     before this this ISO8601 date-time.
-     * @param string $roomSid The room_sid
+     * @param string $roomSid Only show Compositions with the given Room SID.
      */
     public function __construct($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
         $this->options['status'] = $status;
@@ -103,9 +103,9 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
-     * The room_sid
+     * Only show Compositions with the given Room SID.
      * 
-     * @param string $roomSid The room_sid
+     * @param string $roomSid Only show Compositions with the given Room SID.
      * @return $this Fluent Builder
      */
     public function setRoomSid($roomSid) {
@@ -138,7 +138,7 @@ class CreateCompositionOptions extends Options {
      * @param string $audioSourcesExcluded A list of audio sources excluded related
      *                                     to this Composition.
      * @param string $resolution Pixel resolution of the composed video.
-     * @param string $format ontainer format of the Composition media file. Any of
+     * @param string $format Container format of the Composition media file. Any of
      *                       the following: `mp4`, `webm`.
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every composition event.
@@ -181,7 +181,11 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include:<ul><li>Zero or more `RecordingTrackSid`</li><li>Zero or more `MediaTrackSid`</li><li>Zero or more `ParticipantSid`</li><li>Zero or more Track names. These can be specified using wildcards (e.g. `student*`)</li></ul>
+     * An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include: 
+    * Zero or more `RecordingTrackSid`
+    * Zero or more `MediaTrackSid`
+    * Zero or more `ParticipantSid`
+    * Zero or more Track names. These can be specified using wildcards (e.g. `student*`)
      * 
      * @param string $audioSources A list of audio sources related to this
      *                             Composition.
@@ -193,7 +197,11 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * An array of audio sources to exclude from the Composition. Any new Composition shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include:<ul><li>Zero or more `RecordingTrackSid`</li><li>Zero or more `MediaTrackSid`</li><li>Zero or more `ParticipantSid`</li><li>Zero or more Track names. These can be specified using wildcards (e.g. `student*`)</li></ul>
+     * An array of audio sources to exclude from the Composition. Any new Composition shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include: 
+    * Zero or more `RecordingTrackSid`
+    * Zero or more `MediaTrackSid`
+    * Zero or more `ParticipantSid`
+    * Zero or more Track names. These can be specified using wildcards (e.g. `student*`)
      * 
      * @param string $audioSourcesExcluded A list of audio sources excluded related
      *                                     to this Composition.
@@ -205,7 +213,16 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * A string representing the numbers of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints:<ul><li>`width >= 16 && width <= 1280`</li><li>`height >= 16 && height <= 1280`</li><li>`width * height <= 921,600`</li></ul>Typical values are:<ul><li>HD = `1280x720`</li><li>PAL = `1024x576`</li><li>VGA = `640x480`</li><li>CIF = `320x240`</li></ul>Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `640x480`.
+     * A string representing the numbers of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: 
+    * `width >= 16 && width <= 1280`
+    * `height >= 16 && height <= 1280`
+    * `width * height <= 921,600`
+    Typical values are: 
+    * HD = `1280x720`
+    * PAL = `1024x576`
+    * VGA = `640x480`
+    * CIF = `320x240`
+    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `640x480`.
      * 
      * @param string $resolution Pixel resolution of the composed video.
      * @return $this Fluent Builder
@@ -218,7 +235,7 @@ class CreateCompositionOptions extends Options {
     /**
      * Container format of the Composition media file. Can be any of the following: `mp4`, `webm`. The use of `mp4` or `webm` makes mandatory the specification of `AudioSources` and/or one `VideoLayout` element containing a valid `video_sources` list, otherwise an error is fired. Defaults to `webm`.
      * 
-     * @param string $format ontainer format of the Composition media file. Any of
+     * @param string $format Container format of the Composition media file. Any of
      *                       the following: `mp4`, `webm`.
      * @return $this Fluent Builder
      */
