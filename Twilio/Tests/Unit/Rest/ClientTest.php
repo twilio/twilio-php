@@ -121,14 +121,14 @@ class ClientTest extends UnitTest {
 	}
 
 	/**
-	 * @expectedException \Twilio\Exceptions\RestException
+	 * @expectedException \Twilio\Exceptions\TwilioException
 	 */
 	public function testValidationSslCertificateError() {
 		$client = new Client('username', 'password');
 		$curlClient = $this->getMock(CurlClient::class);
 		$curlClient->method('request')
 			->willReturn(new Response(504, ''));
-
+		
 		$client->validateSslCertificate($curlClient);
 	}
 

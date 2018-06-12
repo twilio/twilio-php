@@ -10,7 +10,6 @@
 namespace Twilio\Rest;
 
 use Twilio\Exceptions\ConfigurationException;
-use Twilio\Exceptions\RestException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
 use Twilio\Http\CurlClient;
@@ -830,12 +829,13 @@ class Client {
 	  * Validates connection to new SSL certificate endpoint
 	  *
 	  * @param CurlClient $client
-	  * @throws RestException if request fails
+	  * @throws TwilioException if request fails
 	  */
 	public function validateSslCertificate($client) {
 		$response = $client->request('GET', 'https://api.twilio.com:8443');
+
 		if ($response->getStatusCode() < 200 || $response->getStatusCode() > 300) {
-			throw new RestException("Failed to validate SSL certificate", $response->getStatusCode(), $response->getStatusCode());
+			throw new TwilioException("Failed to validate SSL certificate");
 		}
 	}
 
