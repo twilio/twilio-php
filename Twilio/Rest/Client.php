@@ -825,7 +825,7 @@ class Client {
         return '[Client ' . $this->getAccountSid() . ']';
     }
 
-     /**
+	 /**
 	  * Validates connection to new SSL certificate endpoint
 	  *
 	  * @param CurlClient $client
