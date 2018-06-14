@@ -3,7 +3,8 @@
 
 namespace Twilio\Tests\Unit\Rest;
 
-
+use Twilio\Http\CurlClient;
+use Twilio\Http\Response;
 use Twilio\Rest\Client;
 use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
@@ -109,5 +110,26 @@ class ClientTest extends UnitTest {
         $expected = new Request('POST', 'https://test.ie1.twilio.com/v1/Resources');
         $this->assertTrue($network->hasRequest($expected));
     }
+
+	public function testValidationSslCertificateSuccess() {
+		$client = new Client('username', 'password');
+		$curlClient = $this->getMock(CurlClient::class);
+		$curlClient->method('request')
+			->willReturn(new Response(200, ''));
+
+		$client->validateSslCertificate($curlClient);
+	}
+
+	/**
+	 * @expectedException \Twilio\Exceptions\TwilioException
+	 */
+	public function testValidationSslCertificateError() {
+		$client = new Client('username', 'password');
+		$curlClient = $this->getMock(CurlClient::class);
+		$curlClient->method('request')
+			->willReturn(new Response(504, ''));
+		
+		$client->validateSslCertificate($curlClient);
+	}
 
 }
