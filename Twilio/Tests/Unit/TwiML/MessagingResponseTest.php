@@ -3,7 +3,6 @@
 namespace Twilio\Tests\Unit\TwiML;
 
 use DOMDocument;
-use SimpleXMLElement;
 use Twilio\Tests\Unit\UnitTest;
 use Twilio\TwiML\MessagingResponse;
 

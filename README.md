@@ -105,7 +105,7 @@ The PHP library documentation can be found [here][documentation].
 
 ## Prerequisites
 
-* PHP >= 5.3
+* PHP >= 5.5
 * The PHP JSON extension
 
 # Getting help
