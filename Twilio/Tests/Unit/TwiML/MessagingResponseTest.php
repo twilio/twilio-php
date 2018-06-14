@@ -8,36 +8,36 @@ use Twilio\TwiML\MessagingResponse;
 
 class MessagingResponseTest extends UnitTest {
 
-	public function compareXml($expected, $result) {
-		$expectedDom = new DOMDocument();
-		$expectedDom->loadXML($expected);
+    public function compareXml($expected, $result) {
+        $expectedDom = new DOMDocument();
+        $expectedDom->loadXML($expected);
 
-		$resultDom = new DOMDocument();
-		$resultDom->loadXML($result);
+        $resultDom = new DOMDocument();
+        $resultDom->loadXML($result);
 
-		$this->assertEquals($expectedDom, $resultDom);
-	}
+        $this->assertEquals($expectedDom, $resultDom);
+    }
 
-	public function testTextNode() {
-		$response = new MessagingResponse();
-		$response->append('Hey no tags!');
+    public function testTextNode() {
+        $response = new MessagingResponse();
+        $response->append('Hey no tags!');
 
-		$this->compareXml('<Response>Hey no tags!</Response>', $response);
-	}
+        $this->compareXml('<Response>Hey no tags!</Response>', $response);
+    }
 
-	public function testMixedText() {
-		$response = new MessagingResponse();
-		$response->append('before');
+    public function testMixedText() {
+        $response = new MessagingResponse();
+        $response->append('before');
 
-		$response->message('Content')
-			->setAttribute('key', 'value');
+        $response->message('Content')
+            ->setAttribute('key', 'value');
 
-		$response->append('after');
+        $response->append('after');
 
-		$this->compareXml('<Response>before<Message key="value">Content</Message>after</Response>', $response);
-	}
+        $this->compareXml('<Response>before<Message key="value">Content</Message>after</Response>', $response);
+    }
 
-	public function testEmptyResponse() {
-		$this->compareXml('<Response/>', new MessagingResponse());
-	}
+    public function testEmptyResponse() {
+        $this->compareXml('<Response/>', new MessagingResponse());
+    }
 }
