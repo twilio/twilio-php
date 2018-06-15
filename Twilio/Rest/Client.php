@@ -825,18 +825,17 @@ class Client {
         return '[Client ' . $this->getAccountSid() . ']';
     }
 
-	 /**
-	  * Validates connection to new SSL certificate endpoint
-	  *
-	  * @param CurlClient $client
-	  * @throws TwilioException if request fails
-	  */
-	public function validateSslCertificate($client) {
-		$response = $client->request('GET', 'https://api.twilio.com:8443');
+    /**
+     * Validates connection to new SSL certificate endpoint
+     * 
+     * @param CurlClient $client 
+     * @throws TwilioException if request fails
+     */
+    public function validateSslCertificate($client) {
+        $response = $client->request('GET', 'https://api.twilio.com:8443');
 
-		if ($response->getStatusCode() < 200 || $response->getStatusCode() > 300) {
-			throw new TwilioException("Failed to validate SSL certificate");
-		}
-	}
-
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() > 300) {
+            throw new TwilioException("Failed to validate SSL certificate");
+        }
+    }
 }

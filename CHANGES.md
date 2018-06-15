@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+[2018-06-15] Version 5.19.4
+----------------------------
+**Library**
+- PR #480: Allow adding mixed content in TwiML nodes. Thanks to @ekarson!
+- PR #481: Add method to validate ssl certificate. Thanks to @yannieyip!
+- PR #469: Ability to specify custom claims when creating ClientToken. Thanks to @erickskrauch!
+
+**Twiml**
+- Add methods to helper libraries to inject arbitrary text under a TwiML node
+
+
 [2018-06-04] Version 5.19.3
 ----------------------------
 **Chat**

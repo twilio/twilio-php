@@ -40,7 +40,7 @@ abstract class SessionOptions {
 
     /**
      * @param string $uniqueName The unique_name
-     * @param \DateTime $dateExpiry The date this Session should ge expired
+     * @param \DateTime $dateExpiry The date this Session should expire
      * @param integer $ttl TTL for a Session, in seconds.
      * @param string $mode The mode
      * @param string $status The Status of this Session
@@ -119,7 +119,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * Your identifier for this Session such as a Job ID or conversation ID.
+     * Your unique identifier for this Session such as a Job ID or conversation ID. Should not contain PII.
      * 
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @return $this Fluent Builder
@@ -130,7 +130,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * An absolute time at which this Session should close. If this is populated, it takes precedence over TTL values.
+     * An absolute time (ISO 8601) at which this Session should close. If this is populated, it takes precedence over TTL values.
      * 
      * @param \DateTime $dateExpiry The date this Session should expire
      * @return $this Fluent Builder
@@ -141,7 +141,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * The Time To Live for this Session. The amount of time, specified in seconds, that this Session should live for before closing. Keys off the last interaction or session creation time.
+     * The time, in seconds, after the latest of Session create time or the Session's last Interaction time at which the session will expire.
      * 
      * @param integer $ttl TTL for a Session, in seconds.
      * @return $this Fluent Builder
@@ -152,7 +152,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * The type of communications mediums allowed on a Session. Defaults to voice-and-message, other options are voice-only OR message-only.
+     * The type of communications mediums allowed on a Session. Defaults to `voice-and-message`. Other options are `voice-only` or `message-only`.
      * 
      * @param string $mode The Mode of this Session
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * Set this value to 'closed' to close the session. A Session can be re-opened by posting to a closed session with the value 'in-progress.'  This will be 'open' by default on create.
+     * Set this value to `closed` to close the session. A Session can be re-opened by posting to a closed session with the value `in-progress`.  This will be `open` by default on create.
      * 
      * @param string $status Session status
      * @return $this Fluent Builder
@@ -203,7 +203,7 @@ class CreateSessionOptions extends Options {
 class UpdateSessionOptions extends Options {
     /**
      * @param string $uniqueName The unique_name
-     * @param \DateTime $dateExpiry The date this Session should ge expired
+     * @param \DateTime $dateExpiry The date this Session should expire
      * @param integer $ttl TTL for a Session, in seconds.
      * @param string $mode The mode
      * @param string $status The Status of this Session
@@ -230,9 +230,9 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The date that this Session should be expired, given in ISO 8601 format.
+     * The date that this Session should expire, given in ISO 8601 format.
      * 
-     * @param \DateTime $dateExpiry The date this Session should ge expired
+     * @param \DateTime $dateExpiry The date this Session should expire
      * @return $this Fluent Builder
      */
     public function setDateExpiry($dateExpiry) {
@@ -241,7 +241,7 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The time delay, in seconds, after which a session will be expired.  Keyed off of last interaction time.
+     * The time, in seconds, after the latest of Session create time or the Session's last Interaction time at which the session will expire.
      * 
      * @param integer $ttl TTL for a Session, in seconds.
      * @return $this Fluent Builder
@@ -263,7 +263,7 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The Status of this Session. Set `in-progress` to re-open a session, `closed` to close a session.
+     * The Status of this Session. Set to `in-progress` to re-open a session or `closed` to close a session.
      * 
      * @param string $status The Status of this Session
      * @return $this Fluent Builder
