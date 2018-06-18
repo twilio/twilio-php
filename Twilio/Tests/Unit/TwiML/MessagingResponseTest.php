@@ -40,4 +40,20 @@ class MessagingResponseTest extends UnitTest {
     public function testEmptyResponse() {
         $this->compareXml('<Response/>', new MessagingResponse());
     }
+
+	public function testAllowGenericChildNodes() {
+		$response = new MessagingResponse();
+		$response->addChild('generic-node', 'Generic Node', ['tag' => true]);
+
+		$this->compareXml('<Response><generic-node tag="true">Generic Node</generic-node></Response>', $response);
+	}
+
+	public function testAllowGenericChildrenOfChildNodes() {
+		$response = new MessagingResponse();
+		$response->message('Content')
+			->setAttribute('key', 'value')
+			->addChild('generic-node', 'Generic Node', ['tag' => true]);
+
+		$this->compareXml('<Response><Message key="value">Content<generic-node tag="true">Generic Node</generic-node></Message></Response>', $response);
+	}
 }

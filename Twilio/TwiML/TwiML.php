@@ -67,6 +67,19 @@ abstract class TwiML {
         return $this;
     }
 
+	/**
+	 * @param string $name XML element name
+	 * @param string $value XML value
+	 * @param array $attributes XML attributes
+	 */
+	public function addChild($name, $value = null, $attributes) {
+		$this->nest(new GenericNode($name, $value, $attributes));
+	}
+
+	public function addText($text) {
+		return $this->value = $text;
+	}
+
     /**
      * Convert TwiML to XML string.
      * 
@@ -90,6 +103,7 @@ abstract class TwiML {
      * 
      * @param TwiML $twiml TwiML element to convert to XML
      * @param DOMDocument $document XML document for the element
+     * @return DOMElement $element
      */
     private function buildElement($twiml, $document) {
     	$element = $document->createElement($twiml->name);
@@ -122,4 +136,5 @@ abstract class TwiML {
     	$document->appendChild($this->buildElement($this, $document));
     	return $document;
     }
+
 }
