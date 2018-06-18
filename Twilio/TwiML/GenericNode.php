@@ -11,7 +11,7 @@ class GenericNode extends TwiML {
 	 * @param string $value XML value
 	 * @param array $attributes XML attributes
 	 */
-	public function __construct($name, $value = null, $attributes = array()) {
+	public function __construct($name, $value, $attributes) {
 		parent::__construct($name, $value, $attributes);
 		$this->name = $name;
 		$this->value = $value;
