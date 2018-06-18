@@ -73,7 +73,7 @@ abstract class TwiML {
 	 * @param array $attributes XML attributes
 	 */
 	public function addChild($name, $value = null, $attributes) {
-		$this->nest(new GenericNode($name, $value, $attributes));
+		$this->append(new GenericNode($name, $value, $attributes));
 	}
 
 	public function addText($text) {
