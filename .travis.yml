@@ -14,3 +14,8 @@ matrix:
     fast_finish: true
     allow_failures:
         - php: nightly
+deploy:
+  script:
+    - make docker-build
+    - make docker-push
+  on: tags
