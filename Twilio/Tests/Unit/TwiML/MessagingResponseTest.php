@@ -56,4 +56,14 @@ class MessagingResponseTest extends UnitTest {
 
 		$this->compareXml('<Response><Message key="value">Content<generic-node tag="true">Generic Node</generic-node></Message></Response>', $response);
 	}
+
+	public function testGenericMixedText() {
+        $response = new MessagingResponse();
+        $response->append('before')
+            ->addChild('Child')->append('content');
+
+        $response->append('after');
+
+        $this->compareXml('<Response>before<Child>content</Child>after</Response>', $response);
+    }
 }
