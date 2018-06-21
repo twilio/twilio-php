@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class ReservationOptions {
     /**
-     * @param string $reservationStatus Filter by a worker’s reservation status
+     * @param string $reservationStatus Filter by a worker's reservation status
      * @return ReadReservationOptions Options builder
      */
     public static function read($reservationStatus = Values::NONE) {
@@ -85,16 +85,16 @@ abstract class ReservationOptions {
 
 class ReadReservationOptions extends Options {
     /**
-     * @param string $reservationStatus Filter by a worker’s reservation status
+     * @param string $reservationStatus Filter by a worker's reservation status
      */
     public function __construct($reservationStatus = Values::NONE) {
         $this->options['reservationStatus'] = $reservationStatus;
     }
 
     /**
-     * Filter by a worker’s reservation status (pending, accepted, rejected, timeout, canceled, rescinded)
+     * Filter by a worker's reservation status (pending, accepted, rejected, timeout, canceled, rescinded)
      * 
-     * @param string $reservationStatus Filter by a worker’s reservation status
+     * @param string $reservationStatus Filter by a worker's reservation status
      * @return $this Fluent Builder
      */
     public function setReservationStatus($reservationStatus) {

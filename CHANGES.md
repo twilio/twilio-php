@@ -1,6 +1,20 @@
 twilio-php Changelog
 ====================
 
+[2018-06-21] Version 5.19.5
+----------------------------
+**Library**
+- PR #484: Fixes for adding child nodes / text. Thanks to @ekarson!
+- PR #482: Allow adding TwiML children with generic tag names. Thanks to @yannieyip!
+
+**Api**
+- Add Fraud Lookups category to usage records
+
+**Video**
+- Allow user to set `ContentDisposition` when obtaining media URLs for Room Recordings and Compositions
+- Add Composition Settings resource
+
+
 [2018-06-15] Version 5.19.4
 ----------------------------
 **Library**

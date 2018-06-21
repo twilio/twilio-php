@@ -20,8 +20,9 @@ abstract class ParticipantOptions {
      * @param string $holdUrl The 'HoldUrl' attribute lets you specify a URL for
      *                        music that plays when a participant is held.
      * @param string $holdMethod Specify GET or POST, defaults to GET
-     * @param string $announceUrl The announce_url
-     * @param string $announceMethod The announce_method
+     * @param string $announceUrl The 'AnnounceUrl' attribute lets you specify a
+     *                            URL for announcing something to the participant.
+     * @param string $announceMethod Specify GET or POST, defaults to POST
      * @return UpdateParticipantOptions Options builder
      */
     public static function update($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
@@ -84,8 +85,9 @@ class UpdateParticipantOptions extends Options {
      * @param string $holdUrl The 'HoldUrl' attribute lets you specify a URL for
      *                        music that plays when a participant is held.
      * @param string $holdMethod Specify GET or POST, defaults to GET
-     * @param string $announceUrl The announce_url
-     * @param string $announceMethod The announce_method
+     * @param string $announceUrl The 'AnnounceUrl' attribute lets you specify a
+     *                            URL for announcing something to the participant.
+     * @param string $announceMethod Specify GET or POST, defaults to POST
      */
     public function __construct($muted = Values::NONE, $hold = Values::NONE, $holdUrl = Values::NONE, $holdMethod = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
         $this->options['muted'] = $muted;
@@ -143,9 +145,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The announce_url
+     * The 'AnnounceUrl' attribute lets you specify a URL for announcing something to the participant. The URL may return an MP3, a WAV or a TwiML document with `<Play>` or `<Say>`.
      * 
-     * @param string $announceUrl The announce_url
+     * @param string $announceUrl The 'AnnounceUrl' attribute lets you specify a
+     *                            URL for announcing something to the participant.
      * @return $this Fluent Builder
      */
     public function setAnnounceUrl($announceUrl) {
@@ -154,9 +157,9 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The announce_method
+     * Specify GET or POST, defaults to POST
      * 
-     * @param string $announceMethod The announce_method
+     * @param string $announceMethod Specify GET or POST, defaults to POST
      * @return $this Fluent Builder
      */
     public function setAnnounceMethod($announceMethod) {

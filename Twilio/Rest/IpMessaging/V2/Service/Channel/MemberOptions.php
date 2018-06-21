@@ -49,8 +49,7 @@ abstract class MemberOptions {
 
     /**
      * @param string $identity A unique string identifier for this User in this
-     *                         Service. See the access tokens docs for more
-     *                         details. (📇 PII MTL: 120 days)
+     *                         Service. See the access tokens docs for more details.
      * @return ReadMemberOptions Options builder
      */
     public static function read($identity = Values::NONE) {
@@ -211,8 +210,7 @@ class CreateMemberOptions extends Options {
 class ReadMemberOptions extends Options {
     /**
      * @param string $identity A unique string identifier for this User in this
-     *                         Service. See the access tokens docs for more
-     *                         details. (📇 PII MTL: 120 days)
+     *                         Service. See the access tokens docs for more details.
      */
     public function __construct($identity = Values::NONE) {
         $this->options['identity'] = $identity;
@@ -222,8 +220,7 @@ class ReadMemberOptions extends Options {
      * A unique string identifier for this [User](https://www.twilio.com/docs/api/chat/rest/users) in this [Service](https://www.twilio.com/docs/api/chat/rest/services). See the [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) docs for more details.
      * 
      * @param string $identity A unique string identifier for this User in this
-     *                         Service. See the access tokens docs for more
-     *                         details. (📇 PII MTL: 120 days)
+     *                         Service. See the access tokens docs for more details.
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {

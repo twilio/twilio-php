@@ -19,7 +19,7 @@ abstract class WorkerOptions {
      * @param string $activitySid Filter by workers that are in a particular
      *                            Activity by SID
      * @param string $available Filter by workers that are available or unavailable.
-     * @param string $friendlyName Filter by a worker’s friendly name
+     * @param string $friendlyName Filter by a worker's friendly name
      * @param string $targetWorkersExpression Filter by workers that would match an
      *                                        expression on a TaskQueue.
      * @param string $taskQueueName Filter by workers that are eligible for a
@@ -60,7 +60,7 @@ class ReadWorkerOptions extends Options {
      * @param string $activitySid Filter by workers that are in a particular
      *                            Activity by SID
      * @param string $available Filter by workers that are available or unavailable.
-     * @param string $friendlyName Filter by a worker’s friendly name
+     * @param string $friendlyName Filter by a worker's friendly name
      * @param string $targetWorkersExpression Filter by workers that would match an
      *                                        expression on a TaskQueue.
      * @param string $taskQueueName Filter by workers that are eligible for a
@@ -103,7 +103,7 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that are available or unavailable. (Note: This can be ‘true’, ‘1’’ or ‘yes’ to indicate a true value. All other values will represent false)
+     * Filter by workers that are available or unavailable. (Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false)
      * 
      * @param string $available Filter by workers that are available or unavailable.
      * @return $this Fluent Builder
@@ -114,9 +114,9 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by a worker’s friendly name
+     * Filter by a worker's friendly name
      * 
-     * @param string $friendlyName Filter by a worker’s friendly name
+     * @param string $friendlyName Filter by a worker's friendly name
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

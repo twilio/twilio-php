@@ -31,8 +31,9 @@ abstract class ConferenceOptions {
     /**
      * @param string $status Specifying completed will end the conference and kick
      *                       all participants
-     * @param string $announceUrl The announce_url
-     * @param string $announceMethod The announce_method
+     * @param string $announceUrl The 'AnnounceUrl' attribute lets you specify a
+     *                            URL for announcing something into a conference.
+     * @param string $announceMethod Specify GET or POST, defaults to POST
      * @return UpdateConferenceOptions Options builder
      */
     public static function update($status = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
@@ -170,8 +171,9 @@ class UpdateConferenceOptions extends Options {
     /**
      * @param string $status Specifying completed will end the conference and kick
      *                       all participants
-     * @param string $announceUrl The announce_url
-     * @param string $announceMethod The announce_method
+     * @param string $announceUrl The 'AnnounceUrl' attribute lets you specify a
+     *                            URL for announcing something into a conference.
+     * @param string $announceMethod Specify GET or POST, defaults to POST
      */
     public function __construct($status = Values::NONE, $announceUrl = Values::NONE, $announceMethod = Values::NONE) {
         $this->options['status'] = $status;
@@ -192,9 +194,10 @@ class UpdateConferenceOptions extends Options {
     }
 
     /**
-     * The announce_url
+     * The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a conference. The URL may return an MP3, a WAV or a TwiML document with `<Play>` or `<Say>`.
      * 
-     * @param string $announceUrl The announce_url
+     * @param string $announceUrl The 'AnnounceUrl' attribute lets you specify a
+     *                            URL for announcing something into a conference.
      * @return $this Fluent Builder
      */
     public function setAnnounceUrl($announceUrl) {
@@ -203,9 +206,9 @@ class UpdateConferenceOptions extends Options {
     }
 
     /**
-     * The announce_method
+     * Specify GET or POST, defaults to POST
      * 
-     * @param string $announceMethod The announce_method
+     * @param string $announceMethod Specify GET or POST, defaults to POST
      * @return $this Fluent Builder
      */
     public function setAnnounceMethod($announceMethod) {

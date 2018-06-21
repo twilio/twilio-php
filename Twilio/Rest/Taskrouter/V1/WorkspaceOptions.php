@@ -39,7 +39,7 @@ abstract class WorkspaceOptions {
     }
 
     /**
-     * @param string $friendlyName Filter by a workspace’s friendly name.
+     * @param string $friendlyName Filter by a workspace's friendly name.
      * @return ReadWorkspaceOptions Options builder
      */
     public static function read($friendlyName = Values::NONE) {
@@ -203,16 +203,16 @@ class UpdateWorkspaceOptions extends Options {
 
 class ReadWorkspaceOptions extends Options {
     /**
-     * @param string $friendlyName Filter by a workspace’s friendly name.
+     * @param string $friendlyName Filter by a workspace's friendly name.
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * Filter by a workspace’s friendly name. This is a human readable description of this Workspace (for example "Customer Support" or "2014 Election Campaign")
+     * Filter by a workspace's friendly name. This is a human readable description of this Workspace (for example "Customer Support" or "2014 Election Campaign")
      * 
-     * @param string $friendlyName Filter by a workspace’s friendly name.
+     * @param string $friendlyName Filter by a workspace's friendly name.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

@@ -15,7 +15,7 @@ use Twilio\Values;
 abstract class TaskQueueCumulativeStatisticsOptions {
     /**
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
-     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
      *                         the past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
@@ -33,7 +33,7 @@ abstract class TaskQueueCumulativeStatisticsOptions {
 class FetchTaskQueueCumulativeStatisticsOptions extends Options {
     /**
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
-     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
      *                         the past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
@@ -62,9 +62,9 @@ class FetchTaskQueueCumulativeStatisticsOptions extends Options {
     }
 
     /**
-     * Filter cumulative statistics by up to ‘x’ minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
+     * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
      * 
-     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
      *                         the past.
      * @return $this Fluent Builder
      */

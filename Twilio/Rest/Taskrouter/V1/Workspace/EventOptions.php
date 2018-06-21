@@ -16,7 +16,7 @@ abstract class EventOptions {
     /**
      * @param \DateTime $endDate Filter events by an end date.
      * @param string $eventType Filter events by those of a certain event type
-     * @param integer $minutes Filter events by up to ‘x’ minutes in the past.
+     * @param integer $minutes Filter events by up to 'x' minutes in the past.
      * @param string $reservationSid Filter events by those pertaining to a
      *                               particular reservation
      * @param \DateTime $startDate Filter events by a start date.
@@ -37,7 +37,7 @@ class ReadEventOptions extends Options {
     /**
      * @param \DateTime $endDate Filter events by an end date.
      * @param string $eventType Filter events by those of a certain event type
-     * @param integer $minutes Filter events by up to ‘x’ minutes in the past.
+     * @param integer $minutes Filter events by up to 'x' minutes in the past.
      * @param string $reservationSid Filter events by those pertaining to a
      *                               particular reservation
      * @param \DateTime $startDate Filter events by a start date.
@@ -83,9 +83,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by up to ‘x’ minutes in the past. This is helpful for events for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
+     * Filter events by up to 'x' minutes in the past. This is helpful for events for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
      * 
-     * @param integer $minutes Filter events by up to ‘x’ minutes in the past.
+     * @param integer $minutes Filter events by up to 'x' minutes in the past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {

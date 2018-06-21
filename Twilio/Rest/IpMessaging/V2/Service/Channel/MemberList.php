@@ -38,8 +38,7 @@ class MemberList extends ListResource {
      * Create a new MemberInstance
      * 
      * @param string $identity A unique string identifier for this User in this
-     *                         Service. See the access tokens docs for more
-     *                         details. (📇 PII MTL: 120 days)
+     *                         Service. See the access tokens docs for more details.
      * @param array|Options $options Optional Arguments
      * @return MemberInstance Newly created MemberInstance
      * @throws TwilioException When an HTTP error occurs.

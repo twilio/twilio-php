@@ -16,8 +16,8 @@ abstract class TaskQueuesStatisticsOptions {
     /**
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @param string $friendlyName Filter the TaskQueue stats based on a
-     *                             TaskQueue’s name
-     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     *                             TaskQueue's name
+     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
      *                         the past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
@@ -36,8 +36,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
     /**
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @param string $friendlyName Filter the TaskQueue stats based on a
-     *                             TaskQueue’s name
-     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     *                             TaskQueue's name
+     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
      *                         the past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
@@ -67,10 +67,10 @@ class ReadTaskQueuesStatisticsOptions extends Options {
     }
 
     /**
-     * Filter the TaskQueue stats based on a TaskQueue’s name (only for list resource)
+     * Filter the TaskQueue stats based on a TaskQueue's name (only for list resource)
      * 
      * @param string $friendlyName Filter the TaskQueue stats based on a
-     *                             TaskQueue’s name
+     *                             TaskQueue's name
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -79,9 +79,9 @@ class ReadTaskQueuesStatisticsOptions extends Options {
     }
 
     /**
-     * Filter cumulative statistics by up to ‘x’ minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
+     * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
      * 
-     * @param integer $minutes Filter cumulative statistics by up to ‘x’ minutes in
+     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
      *                         the past.
      * @return $this Fluent Builder
      */

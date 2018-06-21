@@ -30,7 +30,7 @@ abstract class NotificationOptions {
      * @param string $action Specifies the actions to be displayed for the
      *                       notification.
      * @param array $data This parameter specifies the custom key-value pairs of
-     *                    the notification’s payload.
+     *                    the notification's payload.
      * @param array $apn APNS specific payload that overrides corresponding
      *                   attributes in a generic payload for Bindings with the apn
      *                   BindingType.
@@ -72,7 +72,7 @@ class CreateNotificationOptions extends Options {
      * @param string $action Specifies the actions to be displayed for the
      *                       notification.
      * @param array $data This parameter specifies the custom key-value pairs of
-     *                    the notification’s payload.
+     *                    the notification's payload.
      * @param array $apn APNS specific payload that overrides corresponding
      *                   attributes in a generic payload for Bindings with the apn
      *                   BindingType.
@@ -206,10 +206,10 @@ class CreateNotificationOptions extends Options {
     }
 
     /**
-     * This parameter specifies the custom key-value pairs of the notification’s payload. Translates to `data` dictionary in FCM and GCM payload. FCM and GCM [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used for those channels. For APNS, attributes of `Data` will be inserted into the APNS payload as custom properties outside of the `aps` dictionary. For Alexa they are added to `request.message.data`. For all channels, the `twi_` prefix is reserved for Twilio for future use. Requests including custom data with keys starting with `twi_` will be rejected as 400 Bad request and no delivery will be attempted.  This parameter is not supported by SMS and Facebook Messenger and is omitted from deliveries via those channels.
+     * This parameter specifies the custom key-value pairs of the notification's payload. Translates to `data` dictionary in FCM and GCM payload. FCM and GCM [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used for those channels. For APNS, attributes of `Data` will be inserted into the APNS payload as custom properties outside of the `aps` dictionary. For Alexa they are added to `request.message.data`. For all channels, the `twi_` prefix is reserved for Twilio for future use. Requests including custom data with keys starting with `twi_` will be rejected as 400 Bad request and no delivery will be attempted.  This parameter is not supported by SMS and Facebook Messenger and is omitted from deliveries via those channels.
      * 
      * @param array $data This parameter specifies the custom key-value pairs of
-     *                    the notification’s payload.
+     *                    the notification's payload.
      * @return $this Fluent Builder
      */
     public function setData($data) {
