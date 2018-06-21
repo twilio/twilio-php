@@ -37,11 +37,11 @@ API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cu
 docker-build:
 	docker build -t twilio/twilio-php .
 	docker tag twilio/twilio-php twilio/twilio-php:${TRAVIS_TAG}
-	docker tag twilio/twilio-php twilio/twilio-php:${API_DEFINITIONS_SHA}
+	docker tag twilio/twilio-php twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 
 docker-push:
 	docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 	docker push twilio/twilio-php:${TRAVIS_TAG}
-	docker push twilio/twilio-php:${API_DEFINITIONS_TAG}
+	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_TAG}
 
 .PHONY: all clean test docs docs-install test-install authors
