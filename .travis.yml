@@ -8,6 +8,8 @@ php:
     - '7.1'
     - hhvm # on Trusty only
     - nightly
+services:
+  - docker
 script: "make test"
 before_install: "composer install --dev"
 matrix:
@@ -15,7 +17,9 @@ matrix:
     allow_failures:
         - php: nightly
 deploy:
-  script:
-    - make docker-build
-    - make docker-push
-  on: tags
+  provider: script
+  script: make docker-build && make docker-push
+  skip_cleanup: true
+  on:
+    tags: true
+    php: "5.6"

@@ -40,8 +40,8 @@ docker-build:
 	docker tag twilio/twilio-php twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 
 docker-push:
-	docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+	echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
 	docker push twilio/twilio-php:${TRAVIS_TAG}
-	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_TAG}
+	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 
 .PHONY: all clean test docs docs-install test-install authors
