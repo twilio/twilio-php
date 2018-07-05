@@ -33,4 +33,15 @@ authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
 	git log --raw | grep "^Author: " | cut -d ' ' -f2- | cut -d '<' -f1 | sed 's/^/- /' | sort | uniq >> AUTHORS.md
 
+API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
+docker-build:
+	docker build -t twilio/twilio-php .
+	docker tag twilio/twilio-php twilio/twilio-php:${TRAVIS_TAG}
+	docker tag twilio/twilio-php twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
+
+docker-push:
+	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+	docker push twilio/twilio-php:${TRAVIS_TAG}
+	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
+
 .PHONY: all clean test docs docs-install test-install authors
