@@ -21,7 +21,7 @@ abstract class QueryOptions {
      * @param string $modelBuild The Model Build Sid or unique name of the Model
      *                           Build to be queried.
      * @param string $status A string that described the query status. The values
-     *                       can be: to_review, reviewed, discarded
+     *                       can be: pending_review, reviewed, discarded
      * @return ReadQueryOptions Options builder
      */
     public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
@@ -48,7 +48,7 @@ abstract class QueryOptions {
     /**
      * @param string $sampleSid The sample_sid
      * @param string $status A string that described the query status. The values
-     *                       can be: to_review, reviewed, discarded
+     *                       can be: pending_review, reviewed, discarded
      * @return UpdateQueryOptions Options builder
      */
     public static function update($sampleSid = Values::NONE, $status = Values::NONE) {
@@ -62,7 +62,7 @@ class ReadQueryOptions extends Options {
      * @param string $modelBuild The Model Build Sid or unique name of the Model
      *                           Build to be queried.
      * @param string $status A string that described the query status. The values
-     *                       can be: to_review, reviewed, discarded
+     *                       can be: pending_review, reviewed, discarded
      */
     public function __construct($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
         $this->options['language'] = $language;
@@ -94,10 +94,10 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * A string that described the query status. The values can be: to_review, reviewed, discarded
+     * A string that described the query status. The values can be: pending_review, reviewed, discarded
      * 
      * @param string $status A string that described the query status. The values
-     *                       can be: to_review, reviewed, discarded
+     *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -200,7 +200,7 @@ class UpdateQueryOptions extends Options {
     /**
      * @param string $sampleSid The sample_sid
      * @param string $status A string that described the query status. The values
-     *                       can be: to_review, reviewed, discarded
+     *                       can be: pending_review, reviewed, discarded
      */
     public function __construct($sampleSid = Values::NONE, $status = Values::NONE) {
         $this->options['sampleSid'] = $sampleSid;
@@ -219,10 +219,10 @@ class UpdateQueryOptions extends Options {
     }
 
     /**
-     * A string that described the query status. The values can be: to_review, reviewed, discarded
+     * A string that described the query status. The values can be: pending_review, reviewed, discarded
      * 
      * @param string $status A string that described the query status. The values
-     *                       can be: to_review, reviewed, discarded
+     *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
      */
     public function setStatus($status) {

@@ -64,7 +64,7 @@ class ReadConferenceOptions extends Options {
     }
 
     /**
-     * Only show conferences that started on this date, given as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for conferences that started at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for conferences that started at or after midnight on a date.
+     * Only show conferences that started on this date, given as `YYYY-MM-DD`. You can also specify inequality – for conferences that started at or before midnight on a date use  `DateCreated<=YYYY-MM-DD`, or specify  conferences that started at or after midnight on a date with `DateCreated>=YYYY-MM-DD`.
      * 
      * @param string $dateCreatedBefore Filter by date created
      * @return $this Fluent Builder
@@ -75,7 +75,7 @@ class ReadConferenceOptions extends Options {
     }
 
     /**
-     * Only show conferences that started on this date, given as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for conferences that started at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for conferences that started at or after midnight on a date.
+     * Only show conferences that started on this date, given as `YYYY-MM-DD`. You can also specify inequality – for conferences that started at or before midnight on a date use  `DateCreated<=YYYY-MM-DD`, or specify  conferences that started at or after midnight on a date with `DateCreated>=YYYY-MM-DD`.
      * 
      * @param string $dateCreated Filter by date created
      * @return $this Fluent Builder
@@ -86,7 +86,7 @@ class ReadConferenceOptions extends Options {
     }
 
     /**
-     * Only show conferences that started on this date, given as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for conferences that started at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for conferences that started at or after midnight on a date.
+     * Only show conferences that started on this date, given as `YYYY-MM-DD`. You can also specify inequality – for conferences that started at or before midnight on a date use  `DateCreated<=YYYY-MM-DD`, or specify  conferences that started at or after midnight on a date with `DateCreated>=YYYY-MM-DD`.
      * 
      * @param string $dateCreatedAfter Filter by date created
      * @return $this Fluent Builder
@@ -97,7 +97,7 @@ class ReadConferenceOptions extends Options {
     }
 
     /**
-     * Only show conferences that were last updated on this date, given as `YYYY-MM-DD`. You can also specify inequality, such as `DateUpdated<=YYYY-MM-DD` for conferences that were last updated at or before midnight on a date, and `DateUpdated>=YYYY-MM-DD` for conferences that were updated at or after midnight on a date.
+     * Only show conferences that were last updated on this date, given as `YYYY-MM-DD`. You can also specify inequality – for conferences that were last updated at or before midnight on a date use `DateUpdated<=YYYY-MM-DD`, or specify conferences updated at or after midnight on a given date with   `DateUpdated>=YYYY-MM-DD`.
      * 
      * @param string $dateUpdatedBefore Filter by date updated
      * @return $this Fluent Builder
@@ -108,7 +108,7 @@ class ReadConferenceOptions extends Options {
     }
 
     /**
-     * Only show conferences that were last updated on this date, given as `YYYY-MM-DD`. You can also specify inequality, such as `DateUpdated<=YYYY-MM-DD` for conferences that were last updated at or before midnight on a date, and `DateUpdated>=YYYY-MM-DD` for conferences that were updated at or after midnight on a date.
+     * Only show conferences that were last updated on this date, given as `YYYY-MM-DD`. You can also specify inequality – for conferences that were last updated at or before midnight on a date use `DateUpdated<=YYYY-MM-DD`, or specify conferences updated at or after midnight on a given date with   `DateUpdated>=YYYY-MM-DD`.
      * 
      * @param string $dateUpdated Filter by date updated
      * @return $this Fluent Builder
@@ -119,7 +119,7 @@ class ReadConferenceOptions extends Options {
     }
 
     /**
-     * Only show conferences that were last updated on this date, given as `YYYY-MM-DD`. You can also specify inequality, such as `DateUpdated<=YYYY-MM-DD` for conferences that were last updated at or before midnight on a date, and `DateUpdated>=YYYY-MM-DD` for conferences that were updated at or after midnight on a date.
+     * Only show conferences that were last updated on this date, given as `YYYY-MM-DD`. You can also specify inequality – for conferences that were last updated at or before midnight on a date use `DateUpdated<=YYYY-MM-DD`, or specify conferences updated at or after midnight on a given date with   `DateUpdated>=YYYY-MM-DD`.
      * 
      * @param string $dateUpdatedAfter Filter by date updated
      * @return $this Fluent Builder

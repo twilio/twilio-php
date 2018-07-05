@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string conferenceSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
+ * @property \DateTime startTime
  * @property string duration
  * @property string sid
  * @property string price
@@ -58,6 +59,7 @@ class RecordingInstance extends InstanceResource {
             'conferenceSid' => Values::array_get($payload, 'conference_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'startTime' => Deserialize::dateTime(Values::array_get($payload, 'start_time')),
             'duration' => Values::array_get($payload, 'duration'),
             'sid' => Values::array_get($payload, 'sid'),
             'price' => Values::array_get($payload, 'price'),

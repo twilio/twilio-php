@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Call;
+namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
@@ -19,17 +19,21 @@ class RecordingContext extends InstanceContext {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @param string $callSid Fetch by unique call Sid for the recording
+     * @param string $conferenceSid Fetch by unique conference Sid for the recording
      * @param string $sid Fetch by unique recording Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext 
      */
-    public function __construct(Version $version, $accountSid, $callSid, $sid) {
+    public function __construct(Version $version, $accountSid, $conferenceSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, 'sid' => $sid, );
+        $this->solution = array(
+            'accountSid' => $accountSid,
+            'conferenceSid' => $conferenceSid,
+            'sid' => $sid,
+        );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Recordings/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Recordings/' . rawurlencode($sid) . '.json';
     }
 
     /**
@@ -53,7 +57,7 @@ class RecordingContext extends InstanceContext {
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['callSid'],
+            $this->solution['conferenceSid'],
             $this->solution['sid']
         );
     }
@@ -77,7 +81,7 @@ class RecordingContext extends InstanceContext {
             $this->version,
             $payload,
             $this->solution['accountSid'],
-            $this->solution['callSid'],
+            $this->solution['conferenceSid'],
             $this->solution['sid']
         );
     }

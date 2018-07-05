@@ -38,8 +38,8 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
  * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList authorizationDocuments
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
+ * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
  * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @property \Twilio\Rest\Preview\Studio\FlowList flows
  * @property \Twilio\Rest\Preview\Understand\AssistantList assistants
@@ -51,8 +51,8 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
- * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
+ * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\Studio\FlowContext flows(string $sid)
  * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
@@ -295,21 +295,6 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
-     */
-    protected function getAvailableAddOns() {
-        return $this->marketplace->availableAddOns;
-    }
-
-    /**
-     * @param string $sid The unique Available Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext 
-     */
-    protected function contextAvailableAddOns($sid) {
-        return $this->marketplace->availableAddOns($sid);
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
      */
     protected function getInstalledAddOns() {
@@ -322,6 +307,21 @@ class Preview extends Domain {
      */
     protected function contextInstalledAddOns($sid) {
         return $this->marketplace->installedAddOns($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
+     */
+    protected function getAvailableAddOns() {
+        return $this->marketplace->availableAddOns;
+    }
+
+    /**
+     * @param string $sid The unique Available Add-on Sid
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext 
+     */
+    protected function contextAvailableAddOns($sid) {
+        return $this->marketplace->availableAddOns($sid);
     }
 
     /**

@@ -37,8 +37,9 @@ class ParticipantList extends ListResource {
     /**
      * Create a new ParticipantInstance
      * 
-     * @param string $from number, client id
-     * @param string $to number, client id, sip address
+     * @param string $from The `from` phone number used to invite a participant.
+     * @param string $to The number, client id, or sip address of the new
+     *                   participant.
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Newly created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -189,7 +190,7 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      * 
-     * @param string $callSid The call_sid
+     * @param string $callSid Fetch by unique participant Call SID
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
      */
     public function getContext($callSid) {

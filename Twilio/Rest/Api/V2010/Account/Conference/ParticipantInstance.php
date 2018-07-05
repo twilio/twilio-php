@@ -38,7 +38,7 @@ class ParticipantInstance extends InstanceResource {
      * @param string $accountSid The unique sid that identifies this account
      * @param string $conferenceSid A string that uniquely identifies this
      *                              conference
-     * @param string $callSid The call_sid
+     * @param string $callSid Fetch by unique participant Call SID
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $callSid = null) {

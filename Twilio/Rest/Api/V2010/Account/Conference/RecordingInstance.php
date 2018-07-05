@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Call;
+namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -26,13 +26,13 @@ use Twilio\Version;
  * @property string duration
  * @property string sid
  * @property string price
- * @property string uri
- * @property array encryptionDetails
  * @property string priceUnit
  * @property string status
  * @property integer channels
  * @property string source
  * @property integer errorCode
+ * @property array encryptionDetails
+ * @property string uri
  */
 class RecordingInstance extends InstanceResource {
     /**
@@ -41,12 +41,12 @@ class RecordingInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique sid that identifies this account
-     * @param string $callSid The unique id for the call leg that corresponds to
-     *                        the recording.
+     * @param string $conferenceSid The unique id for the conference associated
+     *                              with the recording.
      * @param string $sid Fetch by unique recording Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingInstance 
      */
-    public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,18 +61,18 @@ class RecordingInstance extends InstanceResource {
             'duration' => Values::array_get($payload, 'duration'),
             'sid' => Values::array_get($payload, 'sid'),
             'price' => Values::array_get($payload, 'price'),
-            'uri' => Values::array_get($payload, 'uri'),
-            'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
             'priceUnit' => Values::array_get($payload, 'price_unit'),
             'status' => Values::array_get($payload, 'status'),
             'channels' => Values::array_get($payload, 'channels'),
             'source' => Values::array_get($payload, 'source'),
             'errorCode' => Values::array_get($payload, 'error_code'),
+            'encryptionDetails' => Values::array_get($payload, 'encryption_details'),
+            'uri' => Values::array_get($payload, 'uri'),
         );
 
         $this->solution = array(
             'accountSid' => $accountSid,
-            'callSid' => $callSid,
+            'conferenceSid' => $conferenceSid,
             'sid' => $sid ?: $this->properties['sid'],
         );
     }
@@ -81,16 +81,16 @@ class RecordingInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext Context for
-     *                                                              this
-     *                                                              RecordingInstance
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext Context
+     *                                                                    for this
+     *                                                                    RecordingInstance
      */
     protected function proxy() {
         if (!$this->context) {
             $this->context = new RecordingContext(
                 $this->version,
                 $this->solution['accountSid'],
-                $this->solution['callSid'],
+                $this->solution['conferenceSid'],
                 $this->solution['sid']
             );
         }

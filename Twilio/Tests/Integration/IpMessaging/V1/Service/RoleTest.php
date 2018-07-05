@@ -93,14 +93,14 @@ class RoleTest extends HolodeckTestCase {
 
         try {
             $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                          ->roles->create("friendlyName", "channel", array('permission'));
+                                          ->roles->create("friendlyName", "channel", array("permission"));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
             'FriendlyName' => "friendlyName",
             'Type' => "channel",
-            'Permission' => Serialize::map(array('permission'), function($e) { return $e; }),
+            'Permission' => Serialize::map(array("permission"), function($e) { return $e; }),
         );
 
         $this->assertRequest(new Request(
@@ -135,7 +135,7 @@ class RoleTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                ->roles->create("friendlyName", "channel", array('permission'));
+                                                ->roles->create("friendlyName", "channel", array("permission"));
 
         $this->assertNotNull($actual);
     }
@@ -227,11 +227,11 @@ class RoleTest extends HolodeckTestCase {
 
         try {
             $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                          ->roles("RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update(array('permission'));
+                                          ->roles("RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update(array("permission"));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Permission' => Serialize::map(array('permission'), function($e) { return $e; }), );
+        $values = array('Permission' => Serialize::map(array("permission"), function($e) { return $e; }), );
 
         $this->assertRequest(new Request(
             'post',
@@ -265,7 +265,7 @@ class RoleTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->ipMessaging->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                ->roles("RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update(array('permission'));
+                                                ->roles("RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update(array("permission"));
 
         $this->assertNotNull($actual);
     }

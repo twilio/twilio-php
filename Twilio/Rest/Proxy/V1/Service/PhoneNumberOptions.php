@@ -17,8 +17,9 @@ use Twilio\Values;
  */
 abstract class PhoneNumberOptions {
     /**
-     * @param string $sid A string that uniquely identifies this Phone Number.
-     * @param string $phoneNumber The phone_number
+     * @param string $sid Phone Number Sid of Twilio Number to assign to your Proxy
+     *                    Service
+     * @param string $phoneNumber Twilio Number to assign to your Proxy Service
      * @return CreatePhoneNumberOptions Options builder
      */
     public static function create($sid = Values::NONE, $phoneNumber = Values::NONE) {
@@ -28,8 +29,9 @@ abstract class PhoneNumberOptions {
 
 class CreatePhoneNumberOptions extends Options {
     /**
-     * @param string $sid A string that uniquely identifies this Phone Number.
-     * @param string $phoneNumber The phone_number
+     * @param string $sid Phone Number Sid of Twilio Number to assign to your Proxy
+     *                    Service
+     * @param string $phoneNumber Twilio Number to assign to your Proxy Service
      */
     public function __construct($sid = Values::NONE, $phoneNumber = Values::NONE) {
         $this->options['sid'] = $sid;
@@ -37,9 +39,10 @@ class CreatePhoneNumberOptions extends Options {
     }
 
     /**
-     * A 34 character string that uniquely identifies this Phone Number.
+     * A Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incoming-phone-numbers) Sid that represents the Twilio Number you would like to assign to your Proxy Service (e.g. `PN1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d`).
      * 
-     * @param string $sid A string that uniquely identifies this Phone Number.
+     * @param string $sid Phone Number Sid of Twilio Number to assign to your Proxy
+     *                    Service
      * @return $this Fluent Builder
      */
     public function setSid($sid) {
@@ -48,9 +51,9 @@ class CreatePhoneNumberOptions extends Options {
     }
 
     /**
-     * The phone_number
+     * A string that represents the Twilio Number you would like to assign to your Proxy Service. Provide number in [E.164](https://en.wikipedia.org/wiki/E.164) format (e.g. `+16175551212`).
      * 
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber Twilio Number to assign to your Proxy Service
      * @return $this Fluent Builder
      */
     public function setPhoneNumber($phoneNumber) {

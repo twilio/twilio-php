@@ -30,6 +30,7 @@ use Twilio\Version;
  */
 class ConferenceInstance extends InstanceResource {
     protected $_participants = null;
+    protected $_recordings = null;
 
     /**
      * Initialize the ConferenceInstance
@@ -107,6 +108,15 @@ class ConferenceInstance extends InstanceResource {
      */
     protected function getParticipants() {
         return $this->proxy()->participants;
+    }
+
+    /**
+     * Access the recordings
+     * 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList 
+     */
+    protected function getRecordings() {
+        return $this->proxy()->recordings;
     }
 
     /**

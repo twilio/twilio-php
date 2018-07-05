@@ -23,7 +23,7 @@ class ParticipantContext extends InstanceContext {
      * @param string $accountSid The account_sid
      * @param string $conferenceSid The string that uniquely identifies this
      *                              conference
-     * @param string $callSid The call_sid
+     * @param string $callSid Fetch by unique participant Call SID
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
      */
     public function __construct(Version $version, $accountSid, $conferenceSid, $callSid) {

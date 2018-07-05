@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2018-07-05] Version 5.19.6
+----------------------------
+**Library**
+- PR #483: Add Dockerfile and related changes to build the Docker image. Thanks to @jonatasbaldin!
+
+**Api**
+- Release `Call Recording Controls` feature support in helper libraries
+- Add Voice Insights sub-category keys to usage records
+
+
 [2018-06-21] Version 5.19.5
 ----------------------------
 **Library**

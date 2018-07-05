@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Call;
+namespace Twilio\Rest\Api\V2010\Account\Conference;
 
 use Twilio\ListResource;
 use Twilio\Options;
@@ -21,51 +21,17 @@ class RecordingList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
-     * @param string $callSid The unique id for the call leg that corresponds to
-     *                        the recording.
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingList 
+     * @param string $conferenceSid The unique id for the conference associated
+     *                              with the recording.
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList 
      */
-    public function __construct(Version $version, $accountSid, $callSid) {
+    public function __construct(Version $version, $accountSid, $conferenceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
+        $this->solution = array('accountSid' => $accountSid, 'conferenceSid' => $conferenceSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Recordings.json';
-    }
-
-    /**
-     * Create a new RecordingInstance
-     * 
-     * @param array|Options $options Optional Arguments
-     * @return RecordingInstance Newly created RecordingInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
-            'RecordingStatusCallback' => $options['recordingStatusCallback'],
-            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
-            'Trim' => $options['trim'],
-            'RecordingChannels' => $options['recordingChannels'],
-            'PlayBeep' => Serialize::booleanToString($options['playBeep']),
-        ));
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new RecordingInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['callSid']
-        );
+        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Recordings.json';
     }
 
     /**
@@ -165,13 +131,13 @@ class RecordingList extends ListResource {
      * Constructs a RecordingContext
      * 
      * @param string $sid Fetch by unique recording Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext 
      */
     public function getContext($sid) {
         return new RecordingContext(
             $this->version,
             $this->solution['accountSid'],
-            $this->solution['callSid'],
+            $this->solution['conferenceSid'],
             $sid
         );
     }

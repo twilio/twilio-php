@@ -119,7 +119,7 @@ class TranscriptionList extends ListResource {
     /**
      * Constructs a TranscriptionContext
      * 
-     * @param string $sid Fetch by unique transcription Sid
+     * @param string $sid Fetch by unique transcription SID
      * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
      */
     public function getContext($sid) {

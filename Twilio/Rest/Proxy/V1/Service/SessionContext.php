@@ -91,7 +91,6 @@ class SessionContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'UniqueName' => $options['uniqueName'],
             'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
             'Ttl' => $options['ttl'],
             'Mode' => $options['mode'],

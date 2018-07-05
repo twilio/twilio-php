@@ -39,7 +39,6 @@ abstract class SessionOptions {
     }
 
     /**
-     * @param string $uniqueName The unique_name
      * @param \DateTime $dateExpiry The date this Session should expire
      * @param integer $ttl TTL for a Session, in seconds.
      * @param string $mode The mode
@@ -47,8 +46,8 @@ abstract class SessionOptions {
      * @param array $participants The participants
      * @return UpdateSessionOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
-        return new UpdateSessionOptions($uniqueName, $dateExpiry, $ttl, $mode, $status, $participants);
+    public static function update($dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+        return new UpdateSessionOptions($dateExpiry, $ttl, $mode, $status, $participants);
     }
 }
 
@@ -119,7 +118,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * Your unique identifier for this Session such as a Job ID or conversation ID. Should not contain PII.
+     * Your unique identifier for this Session such as a Job ID or conversation ID. *Should not contain PII.*
      * 
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @return $this Fluent Builder
@@ -202,31 +201,18 @@ class CreateSessionOptions extends Options {
 
 class UpdateSessionOptions extends Options {
     /**
-     * @param string $uniqueName The unique_name
      * @param \DateTime $dateExpiry The date this Session should expire
      * @param integer $ttl TTL for a Session, in seconds.
      * @param string $mode The mode
      * @param string $status The Status of this Session
      * @param array $participants The participants
      */
-    public function __construct($uniqueName = Values::NONE, $dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
-        $this->options['uniqueName'] = $uniqueName;
+    public function __construct($dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
         $this->options['mode'] = $mode;
         $this->options['status'] = $status;
         $this->options['participants'] = $participants;
-    }
-
-    /**
-     * The unique_name
-     * 
-     * @param string $uniqueName The unique_name
-     * @return $this Fluent Builder
-     */
-    public function setUniqueName($uniqueName) {
-        $this->options['uniqueName'] = $uniqueName;
-        return $this;
     }
 
     /**

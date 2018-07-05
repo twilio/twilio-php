@@ -11,7 +11,6 @@ namespace Twilio\Rest\Proxy\V1\Service\Session;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Options;
 use Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList;
 use Twilio\Values;
 use Twilio\Version;
@@ -75,39 +74,6 @@ class ParticipantContext extends InstanceContext {
      */
     public function delete() {
         return $this->version->delete('delete', $this->uri);
-    }
-
-    /**
-     * Update the ParticipantInstance
-     * 
-     * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Updated ParticipantInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'Identifier' => $options['identifier'],
-            'FriendlyName' => $options['friendlyName'],
-            'ProxyIdentifier' => $options['proxyIdentifier'],
-            'ProxyIdentifierSid' => $options['proxyIdentifierSid'],
-        ));
-
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new ParticipantInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['sessionSid'],
-            $this->solution['sid']
-        );
     }
 
     /**

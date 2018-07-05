@@ -124,7 +124,9 @@ class FieldList extends ListResource {
     /**
      * Create a new FieldInstance
      * 
-     * @param string $fieldType The unique name or sid of the FieldType
+     * @param string $fieldType The unique name or sid of the FieldType. It can be
+     *                          any Built-in Field Type or the unique_name or sid
+     *                          of a custom Field Type.
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.

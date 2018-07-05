@@ -34,7 +34,7 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param string $uniqueName A human readable description of this resource.
+     * @param string $uniqueName A human-readable description of this resource.
      * @param integer $defaultTtl Default TTL for Sessions in Service, in seconds.
      * @param string $callbackUrl URL Twilio will send callbacks to
      * @param string $geoMatchLevel Whether proxy number selected must be in the
@@ -75,7 +75,7 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The default time delay in seconds after the latest of Session create time or the Session's last Interaction time, after which a session will expire.  Used for sessions where ttl is not specified.
+     * The default time delay in seconds after the latest of Session create time or the Session's last Interaction time, after which a session will expire.  Used for sessions where TTL is not specified.
      * 
      * @param integer $defaultTtl Default TTL for Sessions in Service, in seconds.
      * @return $this Fluent Builder
@@ -162,7 +162,7 @@ class CreateServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $uniqueName A human readable description of this resource.
+     * @param string $uniqueName A human-readable description of this resource.
      * @param integer $defaultTtl Default TTL for Sessions in Service, in seconds.
      * @param string $callbackUrl URL Twilio will send callbacks to
      * @param string $geoMatchLevel Whether proxy number selected must be in the
@@ -185,9 +185,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * A human readable description of this resource, up to 64 characters.
+     * A human-readable description of this resource, up to 64 characters. *Should not contain PII.*
      * 
-     * @param string $uniqueName A human readable description of this resource.
+     * @param string $uniqueName A human-readable description of this resource.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -196,7 +196,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The default time delay in seconds after the latest of Session create time or the Session's last Interaction time, after which a session will expire.  Used for sessions where ttl is not specified.
+     * The default time delay in seconds after the latest of Session create time or the Session's last Interaction time, after which a session will expire.  Used for sessions where TTL is not specified.
      * 
      * @param integer $defaultTtl Default TTL for Sessions in Service, in seconds.
      * @return $this Fluent Builder
