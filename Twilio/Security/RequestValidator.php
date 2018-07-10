@@ -24,7 +24,7 @@ class RequestValidator {
         return base64_encode(hash_hmac("sha1", $url, $this->authToken, true));
     }
 
-    public function computeBodyHash($url, $data = '') {
+    public function computeBodyHash($data = '') {
         return base64_encode(hash("sha256", $data, true));
     }
 
@@ -43,7 +43,7 @@ class RequestValidator {
                 $this->computeSignature($url),
                 $expectedSignature
             ) && self::compare(
-                $this->computeBodyHash($url, $data),
+                $this->computeBodyHash($data),
                 $params['bodySHA256']
             );
         }

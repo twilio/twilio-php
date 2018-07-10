@@ -36,7 +36,7 @@ class RequestValidatorTest extends UnitTest {
     }
 
     public function testValidateBody() {
-        $hash = $this->validator->computeBodyHash($this->url, $this->body);
+        $hash = $this->validator->computeBodyHash($this->body);
         $this->assertEquals($this->bodyHash, $hash);
     }
 
