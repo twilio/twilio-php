@@ -75,6 +75,8 @@ class AuthorizationDocumentContext extends InstanceContext {
             'Email' => $options['email'],
             'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
             'Status' => $options['status'],
+            'ContactTitle' => $options['contactTitle'],
+            'ContactPhoneNumber' => $options['contactPhoneNumber'],
         ));
 
         $payload = $this->version->update(

@@ -43,7 +43,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * Only show recordings created on the given date. Should be formatted `YYYY-MM-DD`. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
      * @param string $dateCreatedBefore Filter by date created
      * @return $this Fluent Builder
@@ -54,7 +54,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * Only show recordings created on the given date. Should be formatted `YYYY-MM-DD`. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
      * @param string $dateCreated Filter by date created
      * @return $this Fluent Builder
@@ -65,7 +65,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * Only show recordings created on the given date. Should be formatted `YYYY-MM-DD`. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
      * @param string $dateCreatedAfter Filter by date created
      * @return $this Fluent Builder
@@ -76,7 +76,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings made during the call given by the indicated sid
+     * Only show recordings made during the call indicated by this call SID
      * 
      * @param string $callSid Filter by call_sid
      * @return $this Fluent Builder

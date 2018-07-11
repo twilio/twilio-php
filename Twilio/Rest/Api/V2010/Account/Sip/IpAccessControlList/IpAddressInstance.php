@@ -21,6 +21,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string friendlyName
  * @property string ipAddress
+ * @property integer cidrPrefixLength
  * @property string ipAccessControlListSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -47,6 +48,7 @@ class IpAddressInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'ipAddress' => Values::array_get($payload, 'ip_address'),
+            'cidrPrefixLength' => Values::array_get($payload, 'cidr_prefix_length'),
             'ipAccessControlListSid' => Values::array_get($payload, 'ip_access_control_list_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),

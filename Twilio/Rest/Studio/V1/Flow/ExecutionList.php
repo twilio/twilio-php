@@ -7,37 +7,36 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList;
+namespace Twilio\Rest\Studio\V1\Flow;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class IpAddressList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ */
+class ExecutionList extends ListResource {
     /**
-     * Construct the IpAddressList
+     * Construct the ExecutionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the Account that responsible for
-     *                           this resource.
-     * @param string $ipAccessControlListSid The ip_access_control_list_sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList 
+     * @param string $flowSid The flow_sid
+     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionList 
      */
-    public function __construct(Version $version, $accountSid, $ipAccessControlListSid) {
+    public function __construct(Version $version, $flowSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array(
-            'accountSid' => $accountSid,
-            'ipAccessControlListSid' => $ipAccessControlListSid,
-        );
+        $this->solution = array('flowSid' => $flowSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . rawurlencode($ipAccessControlListSid) . '/IpAddresses.json';
+        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Executions';
     }
 
     /**
-     * Streams IpAddressInstance records from the API as a generator stream.
+     * Streams ExecutionInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -63,7 +62,7 @@ class IpAddressList extends ListResource {
     }
 
     /**
-     * Reads IpAddressInstance records from the API as a list.
+     * Reads ExecutionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      * 
@@ -75,20 +74,20 @@ class IpAddressList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return IpAddressInstance[] Array of results
+     * @return ExecutionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of IpAddressInstance records from the API.
+     * Retrieve a single page of ExecutionInstance records from the API.
      * Request is executed immediately
      * 
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of IpAddressInstance
+     * @return \Twilio\Page Page of ExecutionInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -103,15 +102,15 @@ class IpAddressList extends ListResource {
             $params
         );
 
-        return new IpAddressPage($this->version, $response, $this->solution);
+        return new ExecutionPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of IpAddressInstance records from the API.
+     * Retrieve a specific page of ExecutionInstance records from the API.
      * Request is executed immediately
      * 
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of IpAddressInstance
+     * @return \Twilio\Page Page of ExecutionInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -119,25 +118,25 @@ class IpAddressList extends ListResource {
             $targetUrl
         );
 
-        return new IpAddressPage($this->version, $response, $this->solution);
+        return new ExecutionPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create a new IpAddressInstance
+     * Create a new ExecutionInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $ipAddress The ip_address
+     * @param string $to The to
+     * @param string $from The from
      * @param array|Options $options Optional Arguments
-     * @return IpAddressInstance Newly created IpAddressInstance
+     * @return ExecutionInstance Newly created ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $ipAddress, $options = array()) {
+    public function create($to, $from, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'FriendlyName' => $friendlyName,
-            'IpAddress' => $ipAddress,
-            'CidrPrefixLength' => $options['cidrPrefixLength'],
+            'To' => $to,
+            'From' => $from,
+            'Parameters' => Serialize::jsonObject($options['parameters']),
         ));
 
         $payload = $this->version->create(
@@ -147,27 +146,17 @@ class IpAddressList extends ListResource {
             $data
         );
 
-        return new IpAddressInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['ipAccessControlListSid']
-        );
+        return new ExecutionInstance($this->version, $payload, $this->solution['flowSid']);
     }
 
     /**
-     * Constructs a IpAddressContext
+     * Constructs a ExecutionContext
      * 
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionContext 
      */
     public function getContext($sid) {
-        return new IpAddressContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $this->solution['ipAccessControlListSid'],
-            $sid
-        );
+        return new ExecutionContext($this->version, $this->solution['flowSid'], $sid);
     }
 
     /**
@@ -176,6 +165,6 @@ class IpAddressList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.IpAddressList]';
+        return '[Twilio.Studio.V1.ExecutionList]';
     }
 }

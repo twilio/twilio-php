@@ -134,18 +134,23 @@ class AuthorizationDocumentList extends ListResource {
      * @param string $hostedNumberOrderSids A list of HostedNumberOrder sids.
      * @param string $addressSid Address sid.
      * @param string $email Email.
+     * @param string $contactTitle Title of signee of this Authorization Document.
+     * @param string $contactPhoneNumber Authorization Document's signee's phone
+     *                                   number.
      * @param array|Options $options Optional Arguments
      * @return AuthorizationDocumentInstance Newly created
      *                                       AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($hostedNumberOrderSids, $addressSid, $email, $options = array()) {
+    public function create($hostedNumberOrderSids, $addressSid, $email, $contactTitle, $contactPhoneNumber, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
             'HostedNumberOrderSids' => Serialize::map($hostedNumberOrderSids, function($e) { return $e; }),
             'AddressSid' => $addressSid,
             'Email' => $email,
+            'ContactTitle' => $contactTitle,
+            'ContactPhoneNumber' => $contactPhoneNumber,
             'CcEmails' => Serialize::map($options['ccEmails'], function($e) { return $e; }),
         ));
 

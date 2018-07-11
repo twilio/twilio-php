@@ -74,6 +74,7 @@ class IpAddressContext extends InstanceContext {
         $data = Values::of(array(
             'IpAddress' => $options['ipAddress'],
             'FriendlyName' => $options['friendlyName'],
+            'CidrPrefixLength' => $options['cidrPrefixLength'],
         ));
 
         $payload = $this->version->update(

@@ -184,7 +184,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->hostedNumbers->authorizationDocuments->create(array("hostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email");
+            $this->twilio->preview->hostedNumbers->authorizationDocuments->create(array("hostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email", "contactTitle", "contactPhoneNumber");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -192,6 +192,8 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
             'HostedNumberOrderSids' => Serialize::map(array("hostedNumberOrderSids"), function($e) { return $e; }),
             'AddressSid' => "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             'Email' => "email",
+            'ContactTitle' => "contactTitle",
+            'ContactPhoneNumber' => "contactPhoneNumber",
         );
 
         $this->assertRequest(new Request(
@@ -225,7 +227,7 @@ class AuthorizationDocumentTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments->create(array("hostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email");
+        $actual = $this->twilio->preview->hostedNumbers->authorizationDocuments->create(array("hostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "email", "contactTitle", "contactPhoneNumber");
 
         $this->assertNotNull($actual);
     }

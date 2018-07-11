@@ -7,47 +7,45 @@
  * /       /
  */
 
-namespace Twilio\Rest\Studio\V1;
+namespace Twilio\Rest\Studio\V1\Flow\Execution;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Studio\V1\Flow\EngagementList;
-use Twilio\Rest\Studio\V1\Flow\ExecutionList;
+use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
- * @property \Twilio\Rest\Studio\V1\Flow\EngagementList engagements
- * @property \Twilio\Rest\Studio\V1\Flow\ExecutionList executions
- * @method \Twilio\Rest\Studio\V1\Flow\EngagementContext engagements(string $sid)
- * @method \Twilio\Rest\Studio\V1\Flow\ExecutionContext executions(string $sid)
+ * @property \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList stepContext
+ * @method \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextContext stepContext()
  */
-class FlowContext extends InstanceContext {
-    protected $_engagements = null;
-    protected $_executions = null;
+class ExecutionStepContext extends InstanceContext {
+    protected $_stepContext = null;
 
     /**
-     * Initialize the FlowContext
+     * Initialize the ExecutionStepContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
+     * @param string $flowSid The flow_sid
+     * @param string $executionSid The execution_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Studio\V1\FlowContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext 
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $flowSid, $executionSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = array('flowSid' => $flowSid, 'executionSid' => $executionSid, 'sid' => $sid, );
 
-        $this->uri = '/Flows/' . rawurlencode($sid) . '';
+        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Executions/' . rawurlencode($executionSid) . '/Steps/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch a FlowInstance
+     * Fetch a ExecutionStepInstance
      * 
-     * @return FlowInstance Fetched FlowInstance
+     * @return ExecutionStepInstance Fetched ExecutionStepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -59,43 +57,31 @@ class FlowContext extends InstanceContext {
             $params
         );
 
-        return new FlowInstance($this->version, $payload, $this->solution['sid']);
+        return new ExecutionStepInstance(
+            $this->version,
+            $payload,
+            $this->solution['flowSid'],
+            $this->solution['executionSid'],
+            $this->solution['sid']
+        );
     }
 
     /**
-     * Deletes the FlowInstance
+     * Access the stepContext
      * 
-     * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList 
      */
-    public function delete() {
-        return $this->version->delete('delete', $this->uri);
-    }
-
-    /**
-     * Access the engagements
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\EngagementList 
-     */
-    protected function getEngagements() {
-        if (!$this->_engagements) {
-            $this->_engagements = new EngagementList($this->version, $this->solution['sid']);
+    protected function getStepContext() {
+        if (!$this->_stepContext) {
+            $this->_stepContext = new ExecutionStepContextList(
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['executionSid'],
+                $this->solution['sid']
+            );
         }
 
-        return $this->_engagements;
-    }
-
-    /**
-     * Access the executions
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionList 
-     */
-    protected function getExecutions() {
-        if (!$this->_executions) {
-            $this->_executions = new ExecutionList($this->version, $this->solution['sid']);
-        }
-
-        return $this->_executions;
+        return $this->_stepContext;
     }
 
     /**
@@ -141,6 +127,6 @@ class FlowContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.FlowContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.ExecutionStepContext ' . implode(' ', $context) . ']';
     }
 }

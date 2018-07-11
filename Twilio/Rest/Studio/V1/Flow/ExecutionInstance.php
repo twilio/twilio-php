@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Studio\V1;
+namespace Twilio\Rest\Studio\V1\Flow;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -20,63 +20,73 @@ use Twilio\Version;
  * 
  * @property string sid
  * @property string accountSid
- * @property string friendlyName
+ * @property string flowSid
+ * @property string contactSid
+ * @property string contactChannelAddress
+ * @property array context
  * @property string status
- * @property integer version
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
  * @property array links
  */
-class FlowInstance extends InstanceResource {
-    protected $_engagements = null;
-    protected $_executions = null;
+class ExecutionInstance extends InstanceResource {
+    protected $_steps = null;
+    protected $_executionContext = null;
 
     /**
-     * Initialize the FlowInstance
+     * Initialize the ExecutionInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $flowSid The flow_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Studio\V1\FlowInstance 
+     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionInstance 
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $flowSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'flowSid' => Values::array_get($payload, 'flow_sid'),
+            'contactSid' => Values::array_get($payload, 'contact_sid'),
+            'contactChannelAddress' => Values::array_get($payload, 'contact_channel_address'),
+            'context' => Values::array_get($payload, 'context'),
             'status' => Values::array_get($payload, 'status'),
-            'version' => Values::array_get($payload, 'version'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = array('flowSid' => $flowSid, 'sid' => $sid ?: $this->properties['sid'], );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Studio\V1\FlowContext Context for this FlowInstance
+     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionContext Context for this
+     *                                                      ExecutionInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new FlowContext($this->version, $this->solution['sid']);
+            $this->context = new ExecutionContext(
+                $this->version,
+                $this->solution['flowSid'],
+                $this->solution['sid']
+            );
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a FlowInstance
+     * Fetch a ExecutionInstance
      * 
-     * @return FlowInstance Fetched FlowInstance
+     * @return ExecutionInstance Fetched ExecutionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -84,7 +94,7 @@ class FlowInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the FlowInstance
+     * Deletes the ExecutionInstance
      * 
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -94,21 +104,21 @@ class FlowInstance extends InstanceResource {
     }
 
     /**
-     * Access the engagements
+     * Access the steps
      * 
-     * @return \Twilio\Rest\Studio\V1\Flow\EngagementList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList 
      */
-    protected function getEngagements() {
-        return $this->proxy()->engagements;
+    protected function getSteps() {
+        return $this->proxy()->steps;
     }
 
     /**
-     * Access the executions
+     * Access the executionContext
      * 
-     * @return \Twilio\Rest\Studio\V1\Flow\ExecutionList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList 
      */
-    protected function getExecutions() {
-        return $this->proxy()->executions;
+    protected function getExecutionContext() {
+        return $this->proxy()->executionContext;
     }
 
     /**
@@ -141,6 +151,6 @@ class FlowInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.FlowInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.ExecutionInstance ' . implode(' ', $context) . ']';
     }
 }
