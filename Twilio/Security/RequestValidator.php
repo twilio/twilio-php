@@ -21,18 +21,32 @@ class RequestValidator {
         foreach ($data as $key => $value)
             $url .= "$key$value";
 
-        // This function calculates the HMAC hash of the data with the key
-        // passed in
-        // Note: hash_hmac requires PHP 5 >= 5.1.2 or PECL hash:1.1-1.5
-        // Or http://pear.php.net/package/Crypt_HMAC/
         return base64_encode(hash_hmac("sha1", $url, $this->authToken, true));
     }
 
+    public function computeBodyHash($data = '') {
+        return base64_encode(hash("sha256", $data, true));
+    }
+
     public function validate($expectedSignature, $url, $data = array()) {
-        return self::compare(
-            $this->computeSignature($url, $data),
-            $expectedSignature
-        );
+        if (is_array($data)) {
+            return self::compare(
+                $this->computeSignature($url, $data),
+                $expectedSignature
+            );
+        } else {
+            $queryString = explode('?', $url);
+            $queryString = $queryString[1];
+            parse_str($queryString, $params);
+
+            return self::compare(
+                $this->computeSignature($url),
+                $expectedSignature
+            ) && self::compare(
+                $this->computeBodyHash($data),
+                $params['bodySHA256']
+            );
+        }
     }
 
     /**
