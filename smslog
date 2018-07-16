@@ -1,0 +1,46 @@
+<?php 
+/**
+* Download the library from: https://github.com/twilio/twilio-php 
+* Copy the 'Twilio' folder into a directory containing this file. 
+*/ 
+
+require __DIR__ . '/Twilio/autoload.php';
+
+use Twilio\Rest\Client;
+
+/* Your Twilio account sid and auth token */
+$account_sid = "ACXXXXXXXXX"; 
+$auth_token = "YYYYYYYYYYYY"; 
+
+/* Download data from Twilio API */
+$client = new Client($account_sid, $auth_token);
+$messages = $client->messages->stream(
+  array( 
+  'dateSentAfter' => '2015-03-01', 
+  'dateSentBefore' => '2015-05-31'
+  )
+);
+
+/* Browser magic */
+$filename = $account_sid."_sms.csv"; 
+header("Content-Type: application/csv");
+header("Content-Disposition: attachment; filename={$filename}");
+
+/* Write headers */
+$fields = array( 'SMS Message SID', 'From', 'To', 'Date Sent', 'Status', 'Direction', 'Price', 'Body' );
+echo '"'.implode('","', $fields).'"'."\n";
+
+/* Write rows */
+foreach ($messages as $sms) { 
+  $row = array(
+    $sms->sid,
+    $sms->from,
+    $sms->to,
+    $sms->dateSent->format('Y-m-d H:i:s'),
+    $sms->status,
+    $sms->direction,
+    $sms->price,
+    $sms->body
+  );
+
+  echo '"'.implode('","', $row).'"'."\n";
