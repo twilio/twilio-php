@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2018-07-16] Version 5.20.0
+----------------------------
+**Library**
+- PR #489: Add a request body validator. Thanks to @cjcodes!
+
+**Twiml**
+- Add support for SSML on Say verb, the message body is changed to be optional **(breaking change)**
+
+
 [2018-07-11] Version 5.19.7
 ----------------------------
 **Api**

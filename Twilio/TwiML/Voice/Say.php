@@ -23,6 +23,102 @@ class Say extends TwiML {
     }
 
     /**
+     * Add Break child.
+     * 
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function break_($attributes = array()) {
+        return $this->nest(new Voice\SsmlBreak($attributes));
+    }
+
+    /**
+     * Add Emphasis child.
+     * 
+     * @param string $words Words to emphasize
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function emphasis($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlEmphasis($words, $attributes));
+    }
+
+    /**
+     * Add P child.
+     * 
+     * @param string $words Words to speak
+     * @return TwiML Child element.
+     */
+    public function p($words) {
+        return $this->nest(new Voice\SsmlP($words));
+    }
+
+    /**
+     * Add Phoneme child.
+     * 
+     * @param string $words Words to speak
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function phoneme($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlPhoneme($words, $attributes));
+    }
+
+    /**
+     * Add Prosody child.
+     * 
+     * @param string $words Words to speak
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function prosody($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlProsody($words, $attributes));
+    }
+
+    /**
+     * Add S child.
+     * 
+     * @param string $words Words to speak
+     * @return TwiML Child element.
+     */
+    public function s($words) {
+        return $this->nest(new Voice\SsmlS($words));
+    }
+
+    /**
+     * Add Say-As child.
+     * 
+     * @param string $words Words to be interpreted
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function say_As($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlSayAs($words, $attributes));
+    }
+
+    /**
+     * Add Sub child.
+     * 
+     * @param string $words Words to be substituted
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function sub($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlSub($words, $attributes));
+    }
+
+    /**
+     * Add W child.
+     * 
+     * @param string $words Words to speak
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function w($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlW($words, $attributes));
+    }
+
+    /**
      * Add Voice attribute.
      * 
      * @param say:Enum:Voice $voice Voice to use

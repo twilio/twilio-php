@@ -32,7 +32,7 @@ class FlowContext extends InstanceContext {
      * Initialize the FlowContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Flow.
      * @return \Twilio\Rest\Studio\V1\FlowContext 
      */
     public function __construct(Version $version, $sid) {

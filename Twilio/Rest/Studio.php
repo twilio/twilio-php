@@ -85,7 +85,7 @@ class Studio extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this Flow.
      * @return \Twilio\Rest\Studio\V1\FlowContext 
      */
     protected function contextFlows($sid) {

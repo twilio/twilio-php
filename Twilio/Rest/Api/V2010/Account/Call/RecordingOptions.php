@@ -21,11 +21,10 @@ abstract class RecordingOptions {
      *                                              recording_status_callback_method
      * @param string $trim Whether to trim the silence in the recording
      * @param string $recordingChannels The recording_channels
-     * @param boolean $playBeep Whether to play beeps for recording status changes
      * @return CreateRecordingOptions Options builder
      */
-    public static function create($recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $trim = Values::NONE, $recordingChannels = Values::NONE, $playBeep = Values::NONE) {
-        return new CreateRecordingOptions($recordingStatusCallbackEvent, $recordingStatusCallback, $recordingStatusCallbackMethod, $trim, $recordingChannels, $playBeep);
+    public static function create($recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $trim = Values::NONE, $recordingChannels = Values::NONE) {
+        return new CreateRecordingOptions($recordingStatusCallbackEvent, $recordingStatusCallback, $recordingStatusCallbackMethod, $trim, $recordingChannels);
     }
 
     /**
@@ -48,15 +47,13 @@ class CreateRecordingOptions extends Options {
      *                                              recording_status_callback_method
      * @param string $trim Whether to trim the silence in the recording
      * @param string $recordingChannels The recording_channels
-     * @param boolean $playBeep Whether to play beeps for recording status changes
      */
-    public function __construct($recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $trim = Values::NONE, $recordingChannels = Values::NONE, $playBeep = Values::NONE) {
+    public function __construct($recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $trim = Values::NONE, $recordingChannels = Values::NONE) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         $this->options['recordingStatusCallback'] = $recordingStatusCallback;
         $this->options['recordingStatusCallbackMethod'] = $recordingStatusCallbackMethod;
         $this->options['trim'] = $trim;
         $this->options['recordingChannels'] = $recordingChannels;
-        $this->options['playBeep'] = $playBeep;
     }
 
     /**
@@ -113,17 +110,6 @@ class CreateRecordingOptions extends Options {
      */
     public function setRecordingChannels($recordingChannels) {
         $this->options['recordingChannels'] = $recordingChannels;
-        return $this;
-    }
-
-    /**
-     * Possible values : true or false.  true will play a double beep before the recording is paused or stopped or a single beep after the recording is resumed. Defaults to false
-     * 
-     * @param boolean $playBeep Whether to play beeps for recording status changes
-     * @return $this Fluent Builder
-     */
-    public function setPlayBeep($playBeep) {
-        $this->options['playBeep'] = $playBeep;
         return $this;
     }
 

@@ -50,7 +50,6 @@ class RecordingList extends ListResource {
             'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
             'Trim' => $options['trim'],
             'RecordingChannels' => $options['recordingChannels'],
-            'PlayBeep' => Serialize::booleanToString($options['playBeep']),
         ));
 
         $payload = $this->version->create(

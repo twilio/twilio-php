@@ -29,8 +29,8 @@ class EngagementContextInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid The flow_sid
-     * @param string $engagementSid The engagement_sid
+     * @param string $flowSid Flow Sid.
+     * @param string $engagementSid Engagement Sid.
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextInstance 
      */
     public function __construct(Version $version, array $payload, $flowSid, $engagementSid) {

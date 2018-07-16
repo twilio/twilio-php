@@ -14,12 +14,13 @@ use Twilio\Values;
 
 abstract class EventOptions {
     /**
-     * @param string $actorSid The actor_sid
-     * @param string $eventType The event_type
-     * @param string $resourceSid The resource_sid
-     * @param string $sourceIpAddress The source_ip_address
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
+     * @param string $actorSid Only include Events initiated by this Actor
+     * @param string $eventType Only include Events of this EventType
+     * @param string $resourceSid Only include Events referring to this resource
+     * @param string $sourceIpAddress Only include Events that originated from this
+     *                                IP address
+     * @param \DateTime $startDate Only show events on or after this date
+     * @param \DateTime $endDate Only show events on or before this date
      * @return ReadEventOptions Options builder
      */
     public static function read($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -29,12 +30,13 @@ abstract class EventOptions {
 
 class ReadEventOptions extends Options {
     /**
-     * @param string $actorSid The actor_sid
-     * @param string $eventType The event_type
-     * @param string $resourceSid The resource_sid
-     * @param string $sourceIpAddress The source_ip_address
-     * @param \DateTime $startDate The start_date
-     * @param \DateTime $endDate The end_date
+     * @param string $actorSid Only include Events initiated by this Actor
+     * @param string $eventType Only include Events of this EventType
+     * @param string $resourceSid Only include Events referring to this resource
+     * @param string $sourceIpAddress Only include Events that originated from this
+     *                                IP address
+     * @param \DateTime $startDate Only show events on or after this date
+     * @param \DateTime $endDate Only show events on or before this date
      */
     public function __construct($actorSid = Values::NONE, $eventType = Values::NONE, $resourceSid = Values::NONE, $sourceIpAddress = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['actorSid'] = $actorSid;
@@ -46,9 +48,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The actor_sid
+     * Only include Events initiated by this Actor. Useful for auditing actions taken by specific users or API credentials.
      * 
-     * @param string $actorSid The actor_sid
+     * @param string $actorSid Only include Events initiated by this Actor
      * @return $this Fluent Builder
      */
     public function setActorSid($actorSid) {
@@ -57,9 +59,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The event_type
+     * Only include Events of this EventType.
      * 
-     * @param string $eventType The event_type
+     * @param string $eventType Only include Events of this EventType
      * @return $this Fluent Builder
      */
     public function setEventType($eventType) {
@@ -68,9 +70,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The resource_sid
+     * Only include Events referring to this resource. Useful for discovering the history of a specific resource.
      * 
-     * @param string $resourceSid The resource_sid
+     * @param string $resourceSid Only include Events referring to this resource
      * @return $this Fluent Builder
      */
     public function setResourceSid($resourceSid) {
@@ -79,9 +81,10 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The source_ip_address
+     * Only include Events that originated from this IP address. Useful for tracking suspicious activity originating from the API or the Twilio Console.
      * 
-     * @param string $sourceIpAddress The source_ip_address
+     * @param string $sourceIpAddress Only include Events that originated from this
+     *                                IP address
      * @return $this Fluent Builder
      */
     public function setSourceIpAddress($sourceIpAddress) {
@@ -90,9 +93,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The start_date
+     * Only show events on or after this date. Useful in combination with `EndDate` to define a date-range of events. Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter.
      * 
-     * @param \DateTime $startDate The start_date
+     * @param \DateTime $startDate Only show events on or after this date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -101,9 +104,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The end_date
+     * Only show events on or before this date. Useful in combination with `StartDate` to define a date-range of events. Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter.
      * 
-     * @param \DateTime $endDate The end_date
+     * @param \DateTime $endDate Only show events on or before this date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
