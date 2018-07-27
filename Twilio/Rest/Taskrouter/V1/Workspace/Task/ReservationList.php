@@ -93,6 +93,7 @@ class ReservationList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
+            'WorkerSid' => $options['workerSid'],
             'ReservationStatus' => $options['reservationStatus'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
