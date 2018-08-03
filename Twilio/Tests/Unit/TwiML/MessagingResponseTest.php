@@ -2,21 +2,9 @@
 
 namespace Twilio\Tests\Unit\TwiML;
 
-use DOMDocument;
-use Twilio\Tests\Unit\UnitTest;
 use Twilio\TwiML\MessagingResponse;
 
-class MessagingResponseTest extends UnitTest {
-
-    public function compareXml($expected, $result) {
-        $expectedDom = new DOMDocument();
-        $expectedDom->loadXML($expected);
-
-        $resultDom = new DOMDocument();
-        $resultDom->loadXML($result);
-
-        $this->assertEquals($expectedDom, $resultDom);
-    }
+class MessagingResponseTest extends TwiMLTest {
 
     public function testTextNode() {
         $response = new MessagingResponse();
