@@ -42,7 +42,6 @@ class AssistantTest extends HolodeckTestCase {
                 "latest_model_build_sid": null,
                 "log_queries": true,
                 "sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "ttl": 3600,
                 "unique_name": "so-so-unique",
                 "links": {
                     "field_types": "https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes",
@@ -115,7 +114,6 @@ class AssistantTest extends HolodeckTestCase {
                         "latest_model_build_sid": null,
                         "log_queries": true,
                         "sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "ttl": 3600,
                         "unique_name": "so-so-unique",
                         "links": {
                             "field_types": "https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes",
@@ -173,7 +171,6 @@ class AssistantTest extends HolodeckTestCase {
                 "latest_model_build_sid": null,
                 "log_queries": true,
                 "sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "ttl": 3600,
                 "unique_name": "so-so-unique",
                 "links": {
                     "field_types": "https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes",
@@ -220,7 +217,6 @@ class AssistantTest extends HolodeckTestCase {
                 "latest_model_build_sid": null,
                 "log_queries": true,
                 "sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "ttl": 3600,
                 "unique_name": "so-so-unique",
                 "links": {
                     "field_types": "https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes",

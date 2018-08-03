@@ -53,10 +53,11 @@ abstract class MessageOptions {
      *                               updated.
      * @param string $lastUpdatedBy Specify the Identity of the User that last
      *                              updated the Message
+     * @param string $from The identity of the message's author.
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
-        return new UpdateMessageOptions($body, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy);
+    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
+        return new UpdateMessageOptions($body, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy, $from);
     }
 }
 
@@ -234,13 +235,15 @@ class UpdateMessageOptions extends Options {
      *                               updated.
      * @param string $lastUpdatedBy Specify the Identity of the User that last
      *                              updated the Message
+     * @param string $from The identity of the message's author.
      */
-    public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+    public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
         $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
+        $this->options['from'] = $from;
     }
 
     /**
@@ -300,6 +303,17 @@ class UpdateMessageOptions extends Options {
      */
     public function setLastUpdatedBy($lastUpdatedBy) {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
+        return $this;
+    }
+
+    /**
+     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author.
+     * 
+     * @param string $from The identity of the message's author.
+     * @return $this Fluent Builder
+     */
+    public function setFrom($from) {
+        $this->options['from'] = $from;
         return $this;
     }
 

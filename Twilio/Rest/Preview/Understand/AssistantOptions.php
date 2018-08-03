@@ -24,7 +24,6 @@ abstract class AssistantOptions {
      *                            no queries will be stored, if true, queries will
      *                            be stored for 30 days and deleted thereafter.
      *                            Defaults to true if no value is provided.
-     * @param integer $ttl The ttl
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -35,8 +34,8 @@ abstract class AssistantOptions {
      * @param string $callbackEvents The callback_events
      * @return CreateAssistantOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $ttl = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
-        return new CreateAssistantOptions($friendlyName, $logQueries, $ttl, $uniqueName, $responseUrl, $callbackUrl, $callbackEvents);
+    public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
+        return new CreateAssistantOptions($friendlyName, $logQueries, $uniqueName, $responseUrl, $callbackUrl, $callbackEvents);
     }
 
     /**
@@ -47,7 +46,6 @@ abstract class AssistantOptions {
      *                            no queries will be stored, if true, queries will
      *                            be stored for 30 days and deleted thereafter.
      *                            Defaults to true if no value is provided.
-     * @param integer $ttl The ttl
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -58,8 +56,8 @@ abstract class AssistantOptions {
      * @param string $callbackEvents The callback_events
      * @return UpdateAssistantOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $ttl = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
-        return new UpdateAssistantOptions($friendlyName, $logQueries, $ttl, $uniqueName, $responseUrl, $callbackUrl, $callbackEvents);
+    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
+        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $responseUrl, $callbackUrl, $callbackEvents);
     }
 }
 
@@ -72,7 +70,6 @@ class CreateAssistantOptions extends Options {
      *                            no queries will be stored, if true, queries will
      *                            be stored for 30 days and deleted thereafter.
      *                            Defaults to true if no value is provided.
-     * @param integer $ttl The ttl
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -82,10 +79,9 @@ class CreateAssistantOptions extends Options {
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $ttl = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
-        $this->options['ttl'] = $ttl;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['responseUrl'] = $responseUrl;
         $this->options['callbackUrl'] = $callbackUrl;
@@ -116,17 +112,6 @@ class CreateAssistantOptions extends Options {
      */
     public function setLogQueries($logQueries) {
         $this->options['logQueries'] = $logQueries;
-        return $this;
-    }
-
-    /**
-     * The ttl
-     * 
-     * @param integer $ttl The ttl
-     * @return $this Fluent Builder
-     */
-    public function setTtl($ttl) {
-        $this->options['ttl'] = $ttl;
         return $this;
     }
 
@@ -203,7 +188,6 @@ class UpdateAssistantOptions extends Options {
      *                            no queries will be stored, if true, queries will
      *                            be stored for 30 days and deleted thereafter.
      *                            Defaults to true if no value is provided.
-     * @param integer $ttl The ttl
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -213,10 +197,9 @@ class UpdateAssistantOptions extends Options {
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $ttl = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
-        $this->options['ttl'] = $ttl;
         $this->options['uniqueName'] = $uniqueName;
         $this->options['responseUrl'] = $responseUrl;
         $this->options['callbackUrl'] = $callbackUrl;
@@ -247,17 +230,6 @@ class UpdateAssistantOptions extends Options {
      */
     public function setLogQueries($logQueries) {
         $this->options['logQueries'] = $logQueries;
-        return $this;
-    }
-
-    /**
-     * The ttl
-     * 
-     * @param integer $ttl The ttl
-     * @return $this Fluent Builder
-     */
-    public function setTtl($ttl) {
-        $this->options['ttl'] = $ttl;
         return $this;
     }
 

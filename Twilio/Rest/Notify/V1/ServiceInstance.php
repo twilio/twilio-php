@@ -41,8 +41,6 @@ use Twilio\Version;
 class ServiceInstance extends InstanceResource {
     protected $_bindings = null;
     protected $_notifications = null;
-    protected $_users = null;
-    protected $_segments = null;
 
     /**
      * Initialize the ServiceInstance
@@ -142,24 +140,6 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getNotifications() {
         return $this->proxy()->notifications;
-    }
-
-    /**
-     * Access the users
-     * 
-     * @return \Twilio\Rest\Notify\V1\Service\UserList 
-     */
-    protected function getUsers() {
-        return $this->proxy()->users;
-    }
-
-    /**
-     * Access the segments
-     * 
-     * @return \Twilio\Rest\Notify\V1\Service\SegmentList 
-     */
-    protected function getSegments() {
-        return $this->proxy()->segments;
     }
 
     /**

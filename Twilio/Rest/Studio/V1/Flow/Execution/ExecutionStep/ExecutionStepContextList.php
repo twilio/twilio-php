@@ -20,9 +20,9 @@ class ExecutionStepContextList extends ListResource {
      * Construct the ExecutionStepContextList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $executionSid The execution_sid
-     * @param string $stepSid The step_sid
+     * @param string $flowSid Flow Sid.
+     * @param string $executionSid Execution Sid.
+     * @param string $stepSid Step Sid.
      * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList 
      */
     public function __construct(Version $version, $flowSid, $executionSid, $stepSid) {

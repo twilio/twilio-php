@@ -163,7 +163,7 @@ class MessageList extends ListResource {
     /**
      * Constructs a MessageContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Key that uniquely defines the message to fetch.
      * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageContext 
      */
     public function getContext($sid) {

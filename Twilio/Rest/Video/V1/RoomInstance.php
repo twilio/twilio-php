@@ -44,7 +44,8 @@ class RoomInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid The Room Sid or name that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Video\V1\RoomInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

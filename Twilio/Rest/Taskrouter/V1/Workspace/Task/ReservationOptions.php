@@ -23,31 +23,52 @@ abstract class ReservationOptions {
     }
 
     /**
-     * @param string $reservationStatus Yes
-     * @param string $workerActivitySid No
-     * @param string $instruction Yes
-     * @param string $dequeuePostWorkActivitySid No
-     * @param string $dequeueFrom Yes
-     * @param string $dequeueRecord No
-     * @param integer $dequeueTimeout No
-     * @param string $dequeueTo No
-     * @param string $dequeueStatusCallbackUrl No
-     * @param string $callFrom Yes
-     * @param string $callRecord No
-     * @param integer $callTimeout No
-     * @param string $callTo No
-     * @param string $callUrl Yes
-     * @param string $callStatusCallbackUrl No
-     * @param boolean $callAccept No
-     * @param string $redirectCallSid Yes
-     * @param boolean $redirectAccept No
-     * @param string $redirectUrl Yes
-     * @param string $to No
-     * @param string $from No
+     * @param string $reservationStatus New reservation status
+     * @param string $workerActivitySid New worker activity sid if rejecting a
+     *                                  reservation
+     * @param string $instruction Assignment instruction for reservation
+     * @param string $dequeuePostWorkActivitySid New worker activity sid after
+     *                                           executing a Dequeue instruction
+     * @param string $dequeueFrom Caller ID for the call to the worker when
+     *                            executing a Dequeue instruction
+     * @param string $dequeueRecord Attribute to record both legs of a call when
+     *                              executing a Dequeue instruction
+     * @param integer $dequeueTimeout Timeout for call when executing a Dequeue
+     *                                instruction
+     * @param string $dequeueTo Contact URI of the worker when executing a Dequeue
+     *                          instruction
+     * @param string $dequeueStatusCallbackUrl Callback URL for completed call
+     *                                         event when executing a Dequeue
+     *                                         instruction
+     * @param string $callFrom Caller ID for the outbound call when executing a
+     *                         Call instruction
+     * @param string $callRecord Attribute to record both legs of a call when
+     *                           executing a Call instruction
+     * @param integer $callTimeout Timeout for call when executing a Call
+     *                             instruction
+     * @param string $callTo Contact URI of the worker when executing a Call
+     *                       instruction
+     * @param string $callUrl TwiML URI executed on answering the worker's leg as a
+     *                        result of the Call instruction
+     * @param string $callStatusCallbackUrl Callback URL for completed call event
+     *                                      when executing a Call instruction
+     * @param boolean $callAccept Flag to determine if reservation should be
+     *                            accepted when executing a Call instruction
+     * @param string $redirectCallSid Call sid of the call parked in the queue when
+     *                                executing a Redirect instruction
+     * @param boolean $redirectAccept Flag to determine if reservation should be
+     *                                accepted when executing a Redirect instruction
+     * @param string $redirectUrl TwiML URI to redirect the call to when executing
+     *                            the Redirect instruction
+     * @param string $to Contact URI of the worker when executing a Conference
+     *                   instruction
+     * @param string $from Caller ID for the call to the worker when executing a
+     *                     Conference instruction
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $statusCallbackEvent The status_callback_event
-     * @param integer $timeout No
+     * @param integer $timeout Timeout for call when executing a Conference
+     *                         instruction
      * @param boolean $record The record
      * @param boolean $muted The muted
      * @param string $beep The beep
@@ -75,12 +96,19 @@ abstract class ReservationOptions {
      * @param string $region The region
      * @param string $sipAuthUsername The sip_auth_username
      * @param string $sipAuthPassword The sip_auth_password
-     * @param string $dequeueStatusCallbackEvent No
-     * @param string $postWorkActivitySid No
+     * @param string $dequeueStatusCallbackEvent Call progress events sent via
+     *                                           webhooks as a result of a Dequeue
+     *                                           instruction
+     * @param string $postWorkActivitySid New worker activity sid after executing a
+     *                                    Conference instruction
+     * @param string $supervisorMode Supervisor mode when executing the Supervise
+     *                               instruction
+     * @param string $supervisor Supervisor sid/uri when executing the Supervise
+     *                           instruction
      * @return UpdateReservationOptions Options builder
      */
-    public static function update($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE, $to = Values::NONE, $from = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $region = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $dequeueStatusCallbackEvent = Values::NONE, $postWorkActivitySid = Values::NONE) {
-        return new UpdateReservationOptions($reservationStatus, $workerActivitySid, $instruction, $dequeuePostWorkActivitySid, $dequeueFrom, $dequeueRecord, $dequeueTimeout, $dequeueTo, $dequeueStatusCallbackUrl, $callFrom, $callRecord, $callTimeout, $callTo, $callUrl, $callStatusCallbackUrl, $callAccept, $redirectCallSid, $redirectAccept, $redirectUrl, $to, $from, $statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $conferenceRecord, $conferenceTrim, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $region, $sipAuthUsername, $sipAuthPassword, $dequeueStatusCallbackEvent, $postWorkActivitySid);
+    public static function update($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE, $to = Values::NONE, $from = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $region = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $dequeueStatusCallbackEvent = Values::NONE, $postWorkActivitySid = Values::NONE, $supervisorMode = Values::NONE, $supervisor = Values::NONE) {
+        return new UpdateReservationOptions($reservationStatus, $workerActivitySid, $instruction, $dequeuePostWorkActivitySid, $dequeueFrom, $dequeueRecord, $dequeueTimeout, $dequeueTo, $dequeueStatusCallbackUrl, $callFrom, $callRecord, $callTimeout, $callTo, $callUrl, $callStatusCallbackUrl, $callAccept, $redirectCallSid, $redirectAccept, $redirectUrl, $to, $from, $statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $conferenceRecord, $conferenceTrim, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $region, $sipAuthUsername, $sipAuthPassword, $dequeueStatusCallbackEvent, $postWorkActivitySid, $supervisorMode, $supervisor);
     }
 }
 
@@ -123,31 +151,52 @@ class ReadReservationOptions extends Options {
 
 class UpdateReservationOptions extends Options {
     /**
-     * @param string $reservationStatus Yes
-     * @param string $workerActivitySid No
-     * @param string $instruction Yes
-     * @param string $dequeuePostWorkActivitySid No
-     * @param string $dequeueFrom Yes
-     * @param string $dequeueRecord No
-     * @param integer $dequeueTimeout No
-     * @param string $dequeueTo No
-     * @param string $dequeueStatusCallbackUrl No
-     * @param string $callFrom Yes
-     * @param string $callRecord No
-     * @param integer $callTimeout No
-     * @param string $callTo No
-     * @param string $callUrl Yes
-     * @param string $callStatusCallbackUrl No
-     * @param boolean $callAccept No
-     * @param string $redirectCallSid Yes
-     * @param boolean $redirectAccept No
-     * @param string $redirectUrl Yes
-     * @param string $to No
-     * @param string $from No
+     * @param string $reservationStatus New reservation status
+     * @param string $workerActivitySid New worker activity sid if rejecting a
+     *                                  reservation
+     * @param string $instruction Assignment instruction for reservation
+     * @param string $dequeuePostWorkActivitySid New worker activity sid after
+     *                                           executing a Dequeue instruction
+     * @param string $dequeueFrom Caller ID for the call to the worker when
+     *                            executing a Dequeue instruction
+     * @param string $dequeueRecord Attribute to record both legs of a call when
+     *                              executing a Dequeue instruction
+     * @param integer $dequeueTimeout Timeout for call when executing a Dequeue
+     *                                instruction
+     * @param string $dequeueTo Contact URI of the worker when executing a Dequeue
+     *                          instruction
+     * @param string $dequeueStatusCallbackUrl Callback URL for completed call
+     *                                         event when executing a Dequeue
+     *                                         instruction
+     * @param string $callFrom Caller ID for the outbound call when executing a
+     *                         Call instruction
+     * @param string $callRecord Attribute to record both legs of a call when
+     *                           executing a Call instruction
+     * @param integer $callTimeout Timeout for call when executing a Call
+     *                             instruction
+     * @param string $callTo Contact URI of the worker when executing a Call
+     *                       instruction
+     * @param string $callUrl TwiML URI executed on answering the worker's leg as a
+     *                        result of the Call instruction
+     * @param string $callStatusCallbackUrl Callback URL for completed call event
+     *                                      when executing a Call instruction
+     * @param boolean $callAccept Flag to determine if reservation should be
+     *                            accepted when executing a Call instruction
+     * @param string $redirectCallSid Call sid of the call parked in the queue when
+     *                                executing a Redirect instruction
+     * @param boolean $redirectAccept Flag to determine if reservation should be
+     *                                accepted when executing a Redirect instruction
+     * @param string $redirectUrl TwiML URI to redirect the call to when executing
+     *                            the Redirect instruction
+     * @param string $to Contact URI of the worker when executing a Conference
+     *                   instruction
+     * @param string $from Caller ID for the call to the worker when executing a
+     *                     Conference instruction
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $statusCallbackEvent The status_callback_event
-     * @param integer $timeout No
+     * @param integer $timeout Timeout for call when executing a Conference
+     *                         instruction
      * @param boolean $record The record
      * @param boolean $muted The muted
      * @param string $beep The beep
@@ -175,10 +224,17 @@ class UpdateReservationOptions extends Options {
      * @param string $region The region
      * @param string $sipAuthUsername The sip_auth_username
      * @param string $sipAuthPassword The sip_auth_password
-     * @param string $dequeueStatusCallbackEvent No
-     * @param string $postWorkActivitySid No
+     * @param string $dequeueStatusCallbackEvent Call progress events sent via
+     *                                           webhooks as a result of a Dequeue
+     *                                           instruction
+     * @param string $postWorkActivitySid New worker activity sid after executing a
+     *                                    Conference instruction
+     * @param string $supervisorMode Supervisor mode when executing the Supervise
+     *                               instruction
+     * @param string $supervisor Supervisor sid/uri when executing the Supervise
+     *                           instruction
      */
-    public function __construct($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE, $to = Values::NONE, $from = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $region = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $dequeueStatusCallbackEvent = Values::NONE, $postWorkActivitySid = Values::NONE) {
+    public function __construct($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE, $to = Values::NONE, $from = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $region = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $dequeueStatusCallbackEvent = Values::NONE, $postWorkActivitySid = Values::NONE, $supervisorMode = Values::NONE, $supervisor = Values::NONE) {
         $this->options['reservationStatus'] = $reservationStatus;
         $this->options['workerActivitySid'] = $workerActivitySid;
         $this->options['instruction'] = $instruction;
@@ -228,12 +284,14 @@ class UpdateReservationOptions extends Options {
         $this->options['sipAuthPassword'] = $sipAuthPassword;
         $this->options['dequeueStatusCallbackEvent'] = $dequeueStatusCallbackEvent;
         $this->options['postWorkActivitySid'] = $postWorkActivitySid;
+        $this->options['supervisorMode'] = $supervisorMode;
+        $this->options['supervisor'] = $supervisor;
     }
 
     /**
-     * Yes
+     * New reservation status
      * 
-     * @param string $reservationStatus Yes
+     * @param string $reservationStatus New reservation status
      * @return $this Fluent Builder
      */
     public function setReservationStatus($reservationStatus) {
@@ -242,9 +300,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * New worker activity sid if rejecting a reservation
      * 
-     * @param string $workerActivitySid No
+     * @param string $workerActivitySid New worker activity sid if rejecting a
+     *                                  reservation
      * @return $this Fluent Builder
      */
     public function setWorkerActivitySid($workerActivitySid) {
@@ -253,9 +312,9 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * Yes
+     * Assignment instruction for reservation
      * 
-     * @param string $instruction Yes
+     * @param string $instruction Assignment instruction for reservation
      * @return $this Fluent Builder
      */
     public function setInstruction($instruction) {
@@ -264,9 +323,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * New worker activity sid after executing a Dequeue instruction
      * 
-     * @param string $dequeuePostWorkActivitySid No
+     * @param string $dequeuePostWorkActivitySid New worker activity sid after
+     *                                           executing a Dequeue instruction
      * @return $this Fluent Builder
      */
     public function setDequeuePostWorkActivitySid($dequeuePostWorkActivitySid) {
@@ -275,9 +335,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * Yes
+     * Caller ID for the call to the worker when executing a Dequeue instruction
      * 
-     * @param string $dequeueFrom Yes
+     * @param string $dequeueFrom Caller ID for the call to the worker when
+     *                            executing a Dequeue instruction
      * @return $this Fluent Builder
      */
     public function setDequeueFrom($dequeueFrom) {
@@ -286,9 +347,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Attribute to record both legs of a call when executing a Dequeue instruction
      * 
-     * @param string $dequeueRecord No
+     * @param string $dequeueRecord Attribute to record both legs of a call when
+     *                              executing a Dequeue instruction
      * @return $this Fluent Builder
      */
     public function setDequeueRecord($dequeueRecord) {
@@ -297,9 +359,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Timeout for call when executing a Dequeue instruction
      * 
-     * @param integer $dequeueTimeout No
+     * @param integer $dequeueTimeout Timeout for call when executing a Dequeue
+     *                                instruction
      * @return $this Fluent Builder
      */
     public function setDequeueTimeout($dequeueTimeout) {
@@ -308,9 +371,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Contact URI of the worker when executing a Dequeue instruction
      * 
-     * @param string $dequeueTo No
+     * @param string $dequeueTo Contact URI of the worker when executing a Dequeue
+     *                          instruction
      * @return $this Fluent Builder
      */
     public function setDequeueTo($dequeueTo) {
@@ -319,9 +383,11 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Callback URL for completed call event when executing a Dequeue instruction
      * 
-     * @param string $dequeueStatusCallbackUrl No
+     * @param string $dequeueStatusCallbackUrl Callback URL for completed call
+     *                                         event when executing a Dequeue
+     *                                         instruction
      * @return $this Fluent Builder
      */
     public function setDequeueStatusCallbackUrl($dequeueStatusCallbackUrl) {
@@ -330,9 +396,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * Yes
+     * Caller ID for the outbound call when executing a Call instruction
      * 
-     * @param string $callFrom Yes
+     * @param string $callFrom Caller ID for the outbound call when executing a
+     *                         Call instruction
      * @return $this Fluent Builder
      */
     public function setCallFrom($callFrom) {
@@ -341,9 +408,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Attribute to record both legs of a call when executing a Call instruction
      * 
-     * @param string $callRecord No
+     * @param string $callRecord Attribute to record both legs of a call when
+     *                           executing a Call instruction
      * @return $this Fluent Builder
      */
     public function setCallRecord($callRecord) {
@@ -352,9 +420,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Timeout for call when executing a Call instruction
      * 
-     * @param integer $callTimeout No
+     * @param integer $callTimeout Timeout for call when executing a Call
+     *                             instruction
      * @return $this Fluent Builder
      */
     public function setCallTimeout($callTimeout) {
@@ -363,9 +432,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Contact URI of the worker when executing a Call instruction
      * 
-     * @param string $callTo No
+     * @param string $callTo Contact URI of the worker when executing a Call
+     *                       instruction
      * @return $this Fluent Builder
      */
     public function setCallTo($callTo) {
@@ -374,9 +444,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * Yes
+     * TwiML URI executed on answering the worker's leg as a result of the Call instruction
      * 
-     * @param string $callUrl Yes
+     * @param string $callUrl TwiML URI executed on answering the worker's leg as a
+     *                        result of the Call instruction
      * @return $this Fluent Builder
      */
     public function setCallUrl($callUrl) {
@@ -385,9 +456,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Callback URL for completed call event when executing a Call instruction
      * 
-     * @param string $callStatusCallbackUrl No
+     * @param string $callStatusCallbackUrl Callback URL for completed call event
+     *                                      when executing a Call instruction
      * @return $this Fluent Builder
      */
     public function setCallStatusCallbackUrl($callStatusCallbackUrl) {
@@ -396,9 +468,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Flag to determine if reservation should be accepted when executing a Call instruction
      * 
-     * @param boolean $callAccept No
+     * @param boolean $callAccept Flag to determine if reservation should be
+     *                            accepted when executing a Call instruction
      * @return $this Fluent Builder
      */
     public function setCallAccept($callAccept) {
@@ -407,9 +480,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * Yes
+     * Call sid of the call parked in the queue when executing a Redirect instruction
      * 
-     * @param string $redirectCallSid Yes
+     * @param string $redirectCallSid Call sid of the call parked in the queue when
+     *                                executing a Redirect instruction
      * @return $this Fluent Builder
      */
     public function setRedirectCallSid($redirectCallSid) {
@@ -418,9 +492,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Flag to determine if reservation should be accepted when executing a Redirect instruction
      * 
-     * @param boolean $redirectAccept No
+     * @param boolean $redirectAccept Flag to determine if reservation should be
+     *                                accepted when executing a Redirect instruction
      * @return $this Fluent Builder
      */
     public function setRedirectAccept($redirectAccept) {
@@ -429,9 +504,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * Yes
+     * TwiML URI to redirect the call to when executing the Redirect instruction
      * 
-     * @param string $redirectUrl Yes
+     * @param string $redirectUrl TwiML URI to redirect the call to when executing
+     *                            the Redirect instruction
      * @return $this Fluent Builder
      */
     public function setRedirectUrl($redirectUrl) {
@@ -440,9 +516,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Contact URI of the worker when executing a Conference instruction
      * 
-     * @param string $to No
+     * @param string $to Contact URI of the worker when executing a Conference
+     *                   instruction
      * @return $this Fluent Builder
      */
     public function setTo($to) {
@@ -451,9 +528,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Caller ID for the call to the worker when executing a Conference instruction
      * 
-     * @param string $from No
+     * @param string $from Caller ID for the call to the worker when executing a
+     *                     Conference instruction
      * @return $this Fluent Builder
      */
     public function setFrom($from) {
@@ -495,9 +573,10 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Timeout for call when executing a Conference instruction
      * 
-     * @param integer $timeout No
+     * @param integer $timeout Timeout for call when executing a Conference
+     *                         instruction
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -753,9 +832,11 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * Call progress events sent via webhooks as a result of a Dequeue instruction
      * 
-     * @param string $dequeueStatusCallbackEvent No
+     * @param string $dequeueStatusCallbackEvent Call progress events sent via
+     *                                           webhooks as a result of a Dequeue
+     *                                           instruction
      * @return $this Fluent Builder
      */
     public function setDequeueStatusCallbackEvent($dequeueStatusCallbackEvent) {
@@ -764,13 +845,38 @@ class UpdateReservationOptions extends Options {
     }
 
     /**
-     * No
+     * New worker activity sid after executing a Conference instruction
      * 
-     * @param string $postWorkActivitySid No
+     * @param string $postWorkActivitySid New worker activity sid after executing a
+     *                                    Conference instruction
      * @return $this Fluent Builder
      */
     public function setPostWorkActivitySid($postWorkActivitySid) {
         $this->options['postWorkActivitySid'] = $postWorkActivitySid;
+        return $this;
+    }
+
+    /**
+     * Supervisor mode when executing the Supervise instruction
+     * 
+     * @param string $supervisorMode Supervisor mode when executing the Supervise
+     *                               instruction
+     * @return $this Fluent Builder
+     */
+    public function setSupervisorMode($supervisorMode) {
+        $this->options['supervisorMode'] = $supervisorMode;
+        return $this;
+    }
+
+    /**
+     * Supervisor sid/uri when executing the Supervise instruction
+     * 
+     * @param string $supervisor Supervisor sid/uri when executing the Supervise
+     *                           instruction
+     * @return $this Fluent Builder
+     */
+    public function setSupervisor($supervisor) {
+        $this->options['supervisor'] = $supervisor;
         return $this;
     }
 

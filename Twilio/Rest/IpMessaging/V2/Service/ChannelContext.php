@@ -40,8 +40,8 @@ class ChannelContext extends InstanceContext {
      * Initialize the ChannelContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Sid of the Service this channel belongs to.
+     * @param string $sid Key that uniquely defines the channel to fetch.
      * @return \Twilio\Rest\IpMessaging\V2\Service\ChannelContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {

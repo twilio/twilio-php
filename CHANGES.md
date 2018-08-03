@@ -1,6 +1,36 @@
 twilio-php Changelog
 ====================
 
+[2018-08-03] Version 5.21.0
+----------------------------
+**Library**
+- PR #492: Tag and push Docker latest image when deploying with TravisCI. Thanks to @jonatasbaldin!
+
+**Api**
+- Add support for sip domains to map credential lists for registrations
+
+**Chat**
+- Make message From field updatable
+- Add REST API webhooks
+
+**Notify**
+- Removing deprecated `segments`, `users`, `segment_memberships`, `user_bindings` classes from helper libraries. **(breaking change)**
+
+**Preview**
+- Add new Intent Statistics endpoint
+- Remove `ttl` from Assistants
+
+**Proxy**
+- Enable setting a proxy number as reserved
+
+**Video**
+- Add `group-small` room type
+
+**Twiml**
+- Add `Connect` and `Room` for Programmable Video Rooms
+- Add support for SSML lang tag on Say verb
+
+
 [2018-07-16] Version 5.20.0
 ----------------------------
 **Library**

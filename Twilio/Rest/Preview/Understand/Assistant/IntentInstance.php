@@ -32,6 +32,7 @@ use Twilio\Version;
 class IntentInstance extends InstanceResource {
     protected $_fields = null;
     protected $_samples = null;
+    protected $_statistics = null;
 
     /**
      * Initialize the IntentInstance
@@ -128,6 +129,15 @@ class IntentInstance extends InstanceResource {
      */
     protected function getSamples() {
         return $this->proxy()->samples;
+    }
+
+    /**
+     * Access the statistics
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsList 
+     */
+    protected function getStatistics() {
+        return $this->proxy()->statistics;
     }
 
     /**

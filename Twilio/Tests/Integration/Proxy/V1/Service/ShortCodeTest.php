@@ -51,7 +51,8 @@ class ShortCodeTest extends HolodeckTestCase {
                     "sms_outbound": true,
                     "voice_inbound": false
                 },
-                "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "is_reserved": false
             }
             '
         ));
@@ -131,7 +132,8 @@ class ShortCodeTest extends HolodeckTestCase {
                             "sms_outbound": true,
                             "voice_inbound": false
                         },
-                        "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "is_reserved": false
                     }
                 ]
             }
@@ -175,13 +177,57 @@ class ShortCodeTest extends HolodeckTestCase {
                     "sms_outbound": true,
                     "voice_inbound": false
                 },
-                "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "is_reserved": false
             }
             '
         ));
 
         $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                    ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://proxy.twilio.com/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "short_code": "12345",
+                "iso_country": "US",
+                "capabilities": {
+                    "sms_outbound": true,
+                    "voice_inbound": false
+                },
+                "url": "https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "is_reserved": true
+            }
+            '
+        ));
+
+        $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->shortCodes("SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
 
         $this->assertNotNull($actual);
     }

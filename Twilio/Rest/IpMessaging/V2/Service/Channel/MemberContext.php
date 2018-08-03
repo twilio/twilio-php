@@ -20,9 +20,10 @@ class MemberContext extends InstanceContext {
      * Initialize the MemberContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $channelSid The channel_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Sid of the Service this member belongs to.
+     * @param string $channelSid Key that uniquely defines the channel this member
+     *                           belongs to.
+     * @param string $sid Key that uniquely defines the member to fetch.
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext 
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {

@@ -10,6 +10,8 @@
 namespace Twilio\Rest\Proxy\V1\Service;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -57,6 +59,33 @@ class PhoneNumberContext extends InstanceContext {
             'GET',
             $this->uri,
             $params
+        );
+
+        return new PhoneNumberInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
+    }
+
+    /**
+     * Update the PhoneNumberInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return PhoneNumberInstance Updated PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('IsReserved' => Serialize::booleanToString($options['isReserved']), ));
+
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
         );
 
         return new PhoneNumberInstance(

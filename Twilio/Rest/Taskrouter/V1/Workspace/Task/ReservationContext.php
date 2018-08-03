@@ -118,6 +118,8 @@ class ReservationContext extends InstanceContext {
             'SipAuthPassword' => $options['sipAuthPassword'],
             'DequeueStatusCallbackEvent' => Serialize::map($options['dequeueStatusCallbackEvent'], function($e) { return $e; }),
             'PostWorkActivitySid' => $options['postWorkActivitySid'],
+            'SupervisorMode' => $options['supervisorMode'],
+            'Supervisor' => $options['supervisor'],
         ));
 
         $payload = $this->version->update(

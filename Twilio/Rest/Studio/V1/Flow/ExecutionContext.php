@@ -32,8 +32,8 @@ class ExecutionContext extends InstanceContext {
      * Initialize the ExecutionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $flowSid The flow_sid
-     * @param string $sid The sid
+     * @param string $flowSid Flow Sid.
+     * @param string $sid Execution Sid.
      * @return \Twilio\Rest\Studio\V1\Flow\ExecutionContext 
      */
     public function __construct(Version $version, $flowSid, $sid) {

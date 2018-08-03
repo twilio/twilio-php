@@ -164,7 +164,7 @@ class MemberList extends ListResource {
     /**
      * Constructs a MemberContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Key that uniquely defines the member to fetch.
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext 
      */
     public function getContext($sid) {

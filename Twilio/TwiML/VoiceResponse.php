@@ -18,6 +18,16 @@ class VoiceResponse extends TwiML {
     }
 
     /**
+     * Add Connect child.
+     * 
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function connect($attributes = array()) {
+        return $this->nest(new Voice\Connect($attributes));
+    }
+
+    /**
      * Add Dial child.
      * 
      * @param string $number Phone number to dial

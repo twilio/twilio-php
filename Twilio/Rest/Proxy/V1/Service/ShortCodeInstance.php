@@ -12,6 +12,7 @@ namespace Twilio\Rest\Proxy\V1\Service;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -27,6 +28,7 @@ use Twilio\Version;
  * @property string isoCountry
  * @property string capabilities
  * @property string url
+ * @property boolean isReserved
  */
 class ShortCodeInstance extends InstanceResource {
     /**
@@ -52,6 +54,7 @@ class ShortCodeInstance extends InstanceResource {
             'isoCountry' => Values::array_get($payload, 'iso_country'),
             'capabilities' => Values::array_get($payload, 'capabilities'),
             'url' => Values::array_get($payload, 'url'),
+            'isReserved' => Values::array_get($payload, 'is_reserved'),
         );
 
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
@@ -94,6 +97,17 @@ class ShortCodeInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the ShortCodeInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return ShortCodeInstance Updated ShortCodeInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
     }
 
     /**

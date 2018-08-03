@@ -157,7 +157,7 @@ class ChannelList extends ListResource {
     /**
      * Constructs a ChannelContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Key that uniquely defines the channel to fetch.
      * @return \Twilio\Rest\Chat\V2\Service\ChannelContext 
      */
     public function getContext($sid) {

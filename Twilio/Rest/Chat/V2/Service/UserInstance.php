@@ -42,7 +42,7 @@ class UserInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique id of the Service this user belongs to.
-     * @param string $sid The sid
+     * @param string $sid Key that uniquely defines the user to fetch.
      * @return \Twilio\Rest\Chat\V2\Service\UserInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

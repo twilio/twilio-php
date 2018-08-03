@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Preview\Understand\Assistant\Intent\FieldList;
+use Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsList;
 use Twilio\Rest\Preview\Understand\Assistant\Intent\SampleList;
 use Twilio\Values;
 use Twilio\Version;
@@ -22,12 +23,15 @@ use Twilio\Version;
  * 
  * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\FieldList fields
  * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\SampleList samples
+ * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsList statistics
  * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\FieldContext fields(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\SampleContext samples(string $sid)
+ * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsContext statistics()
  */
 class IntentContext extends InstanceContext {
     protected $_fields = null;
     protected $_samples = null;
+    protected $_statistics = null;
 
     /**
      * Initialize the IntentContext
@@ -141,6 +145,23 @@ class IntentContext extends InstanceContext {
         }
 
         return $this->_samples;
+    }
+
+    /**
+     * Access the statistics
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsList 
+     */
+    protected function getStatistics() {
+        if (!$this->_statistics) {
+            $this->_statistics = new IntentStatisticsList(
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_statistics;
     }
 
     /**

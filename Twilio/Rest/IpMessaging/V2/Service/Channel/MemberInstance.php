@@ -38,7 +38,7 @@ class MemberInstance extends InstanceResource {
      * @param string $serviceSid The unique id of the Service this member belongs
      *                           to.
      * @param string $channelSid The unique id of the Channel for this member.
-     * @param string $sid The sid
+     * @param string $sid Key that uniquely defines the member to fetch.
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {

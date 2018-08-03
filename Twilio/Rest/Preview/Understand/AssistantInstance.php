@@ -27,7 +27,6 @@ use Twilio\Version;
  * @property array links
  * @property boolean logQueries
  * @property string sid
- * @property integer ttl
  * @property string uniqueName
  * @property string url
  * @property string responseUrl
@@ -61,7 +60,6 @@ class AssistantInstance extends InstanceResource {
             'links' => Values::array_get($payload, 'links'),
             'logQueries' => Values::array_get($payload, 'log_queries'),
             'sid' => Values::array_get($payload, 'sid'),
-            'ttl' => Values::array_get($payload, 'ttl'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),
             'responseUrl' => Values::array_get($payload, 'response_url'),

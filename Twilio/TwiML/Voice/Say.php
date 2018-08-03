@@ -44,6 +44,17 @@ class Say extends TwiML {
     }
 
     /**
+     * Add Lang child.
+     * 
+     * @param string $words Words to speak
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function lang($words, $attributes = array()) {
+        return $this->nest(new Voice\SsmlLang($words, $attributes));
+    }
+
+    /**
      * Add P child.
      * 
      * @param string $words Words to speak

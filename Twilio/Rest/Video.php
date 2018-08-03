@@ -153,7 +153,8 @@ class Video extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The Room Sid or name that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Video\V1\RoomContext 
      */
     protected function contextRooms($sid) {

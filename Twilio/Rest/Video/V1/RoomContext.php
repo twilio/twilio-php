@@ -30,7 +30,8 @@ class RoomContext extends InstanceContext {
      * Initialize the RoomContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid The Room Sid or name that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Video\V1\RoomContext 
      */
     public function __construct(Version $version, $sid) {

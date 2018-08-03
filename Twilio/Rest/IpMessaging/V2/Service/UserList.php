@@ -149,7 +149,7 @@ class UserList extends ListResource {
     /**
      * Constructs a UserContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Key that uniquely defines the user to fetch.
      * @return \Twilio\Rest\IpMessaging\V2\Service\UserContext 
      */
     public function getContext($sid) {

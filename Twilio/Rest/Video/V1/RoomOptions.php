@@ -15,7 +15,7 @@ use Twilio\Values;
 abstract class RoomOptions {
     /**
      * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
-     * @param string $type Type of room, either peer-to-peer or group.
+     * @param string $type Type of room, either peer-to-peer, group-small or group.
      * @param string $uniqueName Name of the Room.
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every room event.
@@ -50,7 +50,7 @@ abstract class RoomOptions {
 class CreateRoomOptions extends Options {
     /**
      * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
-     * @param string $type Type of room, either peer-to-peer or group.
+     * @param string $type Type of room, either peer-to-peer, group-small or group.
      * @param string $uniqueName Name of the Room.
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every room event.
@@ -87,9 +87,9 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * Type of room, either `peer-to-peer` or `group`. Will be `group` by default.
+     * Type of room, either `peer-to-peer`, `group-small` or `group`. Will be `group` by default.
      * 
-     * @param string $type Type of room, either peer-to-peer or group.
+     * @param string $type Type of room, either peer-to-peer, group-small or group.
      * @return $this Fluent Builder
      */
     public function setType($type) {
@@ -133,7 +133,7 @@ class CreateRoomOptions extends Options {
     }
 
     /**
-     * Maximum number of Participants in the Room. peer-to-peer rooms can have a maximum of 10 Participants.
+     * Maximum number of Participants in the Room. Peer-to-peer rooms can have a maximum of 10 Participants. Small Group rooms can have a max of 4 Participants. Group rooms can have a max of 50 Participants
      * 
      * @param integer $maxParticipants Maximum number of Participants in the Room.
      * @return $this Fluent Builder

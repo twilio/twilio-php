@@ -34,7 +34,7 @@ abstract class ChannelOptions {
     }
 
     /**
-     * @param string $type The type
+     * @param string $type The visibility of the channel - public or private.
      * @return ReadChannelOptions Options builder
      */
     public static function read($type = Values::NONE) {
@@ -188,16 +188,16 @@ class CreateChannelOptions extends Options {
 
 class ReadChannelOptions extends Options {
     /**
-     * @param string $type The type
+     * @param string $type The visibility of the channel - public or private.
      */
     public function __construct($type = Values::NONE) {
         $this->options['type'] = $type;
     }
 
     /**
-     * The type
+     * The visibility of the channel - `public` or `private`. Defaults to `public`.
      * 
-     * @param string $type The type
+     * @param string $type The visibility of the channel - public or private.
      * @return $this Fluent Builder
      */
     public function setType($type) {
