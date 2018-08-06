@@ -18,7 +18,7 @@ class Connect extends TwiML {
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('Connect', $attributes);
+        parent::__construct('Connect', null, $attributes);
     }
 
     /**

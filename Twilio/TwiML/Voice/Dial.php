@@ -30,7 +30,7 @@ class Dial extends TwiML {
      * @return TwiML Child element.
      */
     public function client($name, $attributes = array()) {
-        return $this->nest(new Voice\Client($name, $attributes));
+        return $this->nest(new Client($name, $attributes));
     }
 
     /**
@@ -41,7 +41,7 @@ class Dial extends TwiML {
      * @return TwiML Child element.
      */
     public function conference($name, $attributes = array()) {
-        return $this->nest(new Voice\Conference($name, $attributes));
+        return $this->nest(new Conference($name, $attributes));
     }
 
     /**
@@ -52,7 +52,7 @@ class Dial extends TwiML {
      * @return TwiML Child element.
      */
     public function number($phoneNumber, $attributes = array()) {
-        return $this->nest(new Voice\Number($phoneNumber, $attributes));
+        return $this->nest(new Number($phoneNumber, $attributes));
     }
 
     /**
@@ -63,7 +63,7 @@ class Dial extends TwiML {
      * @return TwiML Child element.
      */
     public function queue($name, $attributes = array()) {
-        return $this->nest(new Voice\Queue($name, $attributes));
+        return $this->nest(new Queue($name, $attributes));
     }
 
     /**
@@ -73,7 +73,7 @@ class Dial extends TwiML {
      * @return TwiML Child element.
      */
     public function sim($simSid) {
-        return $this->nest(new Voice\Sim($simSid));
+        return $this->nest(new Sim($simSid));
     }
 
     /**
@@ -84,7 +84,7 @@ class Dial extends TwiML {
      * @return TwiML Child element.
      */
     public function sip($sipUrl, $attributes = array()) {
-        return $this->nest(new Voice\Sip($sipUrl, $attributes));
+        return $this->nest(new Sip($sipUrl, $attributes));
     }
 
     /**

@@ -29,7 +29,7 @@ class Message extends TwiML {
      * @return TwiML Child element.
      */
     public function body($message) {
-        return $this->nest(new Messaging\Body($message));
+        return $this->nest(new Body($message));
     }
 
     /**
@@ -39,7 +39,7 @@ class Message extends TwiML {
      * @return TwiML Child element.
      */
     public function media($url) {
-        return $this->nest(new Messaging\Media($url));
+        return $this->nest(new Media($url));
     }
 
     /**

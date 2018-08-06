@@ -18,7 +18,7 @@ class Record extends TwiML {
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('Record', $attributes);
+        parent::__construct('Record', null, $attributes);
     }
 
     /**

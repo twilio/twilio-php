@@ -2,21 +2,9 @@
 
 namespace Twilio\Tests\Unit\TwiML;
 
-use DOMDocument;
-use Twilio\Tests\Unit\UnitTest;
 use Twilio\TwiML\FaxResponse;
 
-class FaxResponseTest extends UnitTest {
-
-	public function compareXml($expected, $result) {
-		$expectedDom = new DOMDocument();
-		$expectedDom->loadXML($expected);
-
-		$resultDom = new DOMDocument();
-		$resultDom->loadXML($result);
-
-		$this->assertEquals($expectedDom, $resultDom);
-	}
+class FaxResponseTest extends TwiMLTest {
 
 	public function testTextNode() {
 		$response = new FaxResponse();
@@ -29,12 +17,13 @@ class FaxResponseTest extends UnitTest {
 		$response = new FaxResponse();
 		$response->append('before');
 
-		$response->receive('Content')
-			->setAttribute('key', 'value');
+		$response->receive(['key1' => 'value1'])
+            ->append('Content')
+			->setAttribute('key2', 'value2');
 
 		$response->append('after');
 
-		$this->compareXml('<Response>before<Receive key="value">Content</Receive>after</Response>', $response);
+		$this->compareXml('<Response>before<Receive key1="value1" key2="value2">Content</Receive>after</Response>', $response);
 	}
 
 	public function testEmptyResponse() {
@@ -50,8 +39,9 @@ class FaxResponseTest extends UnitTest {
 
 	public function testAllowGenericChildrenOfChildNodes() {
 		$response = new FaxResponse();
-		$response->receive('Content')
+		$response->receive()
 			->setAttribute('key', 'value')
+            ->append('Content')
 			->addChild('generic-node', 'Generic Node', ['tag' => true]);
 
 		$this->compareXml('<Response><Receive key="value">Content<generic-node tag="true">Generic Node</generic-node></Receive></Response>', $response);

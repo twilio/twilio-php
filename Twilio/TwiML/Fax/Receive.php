@@ -18,7 +18,7 @@ class Receive extends TwiML {
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('Receive', $attributes);
+        parent::__construct('Receive', null, $attributes);
     }
 
     /**

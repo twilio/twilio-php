@@ -14,7 +14,7 @@ class FaxResponse extends TwiML {
      * FaxResponse constructor.
      */
     public function __construct() {
-        parent::__construct('Response');
+        parent::__construct('Response', null);
     }
 
     /**

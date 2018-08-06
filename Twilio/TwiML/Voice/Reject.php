@@ -18,7 +18,7 @@ class Reject extends TwiML {
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('Reject', $attributes);
+        parent::__construct('Reject', null, $attributes);
     }
 
     /**

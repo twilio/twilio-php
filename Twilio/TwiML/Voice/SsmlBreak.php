@@ -18,7 +18,7 @@ class SsmlBreak extends TwiML {
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('break', $attributes);
+        parent::__construct('break', null, $attributes);
     }
 
     /**

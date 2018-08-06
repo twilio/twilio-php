@@ -18,7 +18,7 @@ class Pause extends TwiML {
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('Pause', $attributes);
+        parent::__construct('Pause', null, $attributes);
     }
 
     /**

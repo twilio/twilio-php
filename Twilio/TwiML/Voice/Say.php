@@ -29,7 +29,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function break_($attributes = array()) {
-        return $this->nest(new Voice\SsmlBreak($attributes));
+        return $this->nest(new SsmlBreak($attributes));
     }
 
     /**
@@ -40,7 +40,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function emphasis($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlEmphasis($words, $attributes));
+        return $this->nest(new SsmlEmphasis($words, $attributes));
     }
 
     /**
@@ -51,7 +51,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function lang($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlLang($words, $attributes));
+        return $this->nest(new SsmlLang($words, $attributes));
     }
 
     /**
@@ -61,7 +61,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function p($words) {
-        return $this->nest(new Voice\SsmlP($words));
+        return $this->nest(new SsmlP($words));
     }
 
     /**
@@ -72,7 +72,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function phoneme($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlPhoneme($words, $attributes));
+        return $this->nest(new SsmlPhoneme($words, $attributes));
     }
 
     /**
@@ -83,7 +83,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function prosody($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlProsody($words, $attributes));
+        return $this->nest(new SsmlProsody($words, $attributes));
     }
 
     /**
@@ -93,7 +93,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function s($words) {
-        return $this->nest(new Voice\SsmlS($words));
+        return $this->nest(new SsmlS($words));
     }
 
     /**
@@ -104,7 +104,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function say_As($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlSayAs($words, $attributes));
+        return $this->nest(new SsmlSayAs($words, $attributes));
     }
 
     /**
@@ -115,7 +115,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function sub($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlSub($words, $attributes));
+        return $this->nest(new SsmlSub($words, $attributes));
     }
 
     /**
@@ -126,7 +126,7 @@ class Say extends TwiML {
      * @return TwiML Child element.
      */
     public function w($words, $attributes = array()) {
-        return $this->nest(new Voice\SsmlW($words, $attributes));
+        return $this->nest(new SsmlW($words, $attributes));
     }
 
     /**
