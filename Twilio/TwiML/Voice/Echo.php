@@ -16,6 +16,6 @@ class Echo_ extends TwiML {
      * Echo constructor.
      */
     public function __construct() {
-        parent::__construct('Echo');
+        parent::__construct('Echo', null);
     }
 }

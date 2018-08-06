@@ -30,7 +30,7 @@ class Enqueue extends TwiML {
      * @return TwiML Child element.
      */
     public function task($body, $attributes = array()) {
-        return $this->nest(new Voice\Task($body, $attributes));
+        return $this->nest(new Task($body, $attributes));
     }
 
     /**

@@ -16,6 +16,6 @@ class Hangup extends TwiML {
      * Hangup constructor.
      */
     public function __construct() {
-        parent::__construct('Hangup');
+        parent::__construct('Hangup', null);
     }
 }

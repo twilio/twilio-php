@@ -14,7 +14,7 @@ class VoiceResponse extends TwiML {
      * VoiceResponse constructor.
      */
     public function __construct() {
-        parent::__construct('Response');
+        parent::__construct('Response', null);
     }
 
     /**

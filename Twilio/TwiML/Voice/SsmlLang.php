@@ -28,7 +28,7 @@ class SsmlLang extends TwiML {
      * @param ssmlLang:Enum:XmlLang $xml:Lang Specify the language
      * @return TwiML $this.
      */
-    public function setXmlLang($xmlLang) {
-        return $this->setAttribute('xml:Lang', $xmlLang);
+    public function setXml:Lang($xml:Lang) {
+        return $this->setAttribute('xml:Lang', $xml:Lang);
     }
 }

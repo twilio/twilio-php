@@ -12,13 +12,13 @@ use DOMElement;
  * @property $children TwiML[] nested TwiML elements
  */
 abstract class TwiML {
-    private $name;
-    private $attributes;
-    private $children;
+    protected $name;
+    protected $attributes;
+    protected $children;
 
     /**
      * TwiML constructor.
-     * 
+     *
      * @param string $name XML element name
      * @param string $value XML value
      * @param array $attributes XML attributes
@@ -35,7 +35,7 @@ abstract class TwiML {
 
     /**
      * Add a TwiML element.
-     * 
+     *
      * @param TwiML|string $twiml TwiML element to add
      * @return TwiML $this
      */
@@ -46,7 +46,7 @@ abstract class TwiML {
 
     /**
      * Add a TwiML element.
-     * 
+     *
      * @param TwiML $twiml TwiML element to add
      * @return TwiML added TwiML element
      */
@@ -57,7 +57,7 @@ abstract class TwiML {
 
     /**
      * Set TwiML attribute.
-     * 
+     *
      * @param string $key name of attribute
      * @param string $value value of attribute
      * @return TwiML $this
@@ -78,7 +78,7 @@ abstract class TwiML {
 
     /**
      * Convert TwiML to XML string.
-     * 
+     *
      * @return string TwiML XML representation
      */
     public function asXML() {
@@ -87,7 +87,7 @@ abstract class TwiML {
 
     /**
      * Convert TwiML to XML string.
-     * 
+     *
      * @return string TwiML XML representation
      */
     public function __toString() {
@@ -96,7 +96,7 @@ abstract class TwiML {
 
     /**
      * Build TwiML element.
-     * 
+     *
      * @param TwiML $twiml TwiML element to convert to XML
      * @param DOMDocument $document XML document for the element
      * @return DOMElement $element
@@ -124,7 +124,7 @@ abstract class TwiML {
 
     /**
      * Build XML element.
-     * 
+     *
      * @return DOMDocument Build TwiML element
      */
     private function xml() {
