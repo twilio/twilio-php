@@ -17,12 +17,13 @@ class FaxResponseTest extends TwiMLTest {
 		$response = new FaxResponse();
 		$response->append('before');
 
-		$response->receive('Content')
-			->setAttribute('key', 'value');
+		$response->receive(['key1' => 'value1'])
+            ->append('Content')
+			->setAttribute('key2', 'value2');
 
 		$response->append('after');
 
-		$this->compareXml('<Response>before<Receive key="value">Content</Receive>after</Response>', $response);
+		$this->compareXml('<Response>before<Receive key1="value1" key2="value2">Content</Receive>after</Response>', $response);
 	}
 
 	public function testEmptyResponse() {
@@ -38,8 +39,9 @@ class FaxResponseTest extends TwiMLTest {
 
 	public function testAllowGenericChildrenOfChildNodes() {
 		$response = new FaxResponse();
-		$response->receive('Content')
+		$response->receive()
 			->setAttribute('key', 'value')
+            ->append('Content')
 			->addChild('generic-node', 'Generic Node', ['tag' => true]);
 
 		$this->compareXml('<Response><Receive key="value">Content<generic-node tag="true">Generic Node</generic-node></Receive></Response>', $response);
