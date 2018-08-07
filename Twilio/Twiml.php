@@ -6,6 +6,7 @@ use Twilio\Exceptions\TwimlException;
 
 /**
  * Twiml response generator.
+ * @deprecated Use the generated types in the Twilio\TwiML namespace instead
  */
 class Twiml {
 
