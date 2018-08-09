@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2018-08-09] Version 5.21.1
+----------------------------
+**Library**
+- PR #498: Add deprecation warning to the old Twiml class. Thanks to @ekarson!
+- PR #497: Add tests for namespacing and twiml constructors. Thanks to @cjcodes!
+
+**Studio**
+- Studio is now GA
+
+
 [2018-08-03] Version 5.21.0
 ----------------------------
 **Library**

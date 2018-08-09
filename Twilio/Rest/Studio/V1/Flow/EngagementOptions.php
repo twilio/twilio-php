@@ -12,9 +12,6 @@ namespace Twilio\Rest\Studio\V1\Flow;
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 abstract class EngagementOptions {
     /**
      * @param array $parameters JSON data that will be added to your flow's context

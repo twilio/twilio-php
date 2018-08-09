@@ -11,9 +11,6 @@ namespace Twilio\Rest\Studio\V1\Flow;
 
 use Twilio\Page;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
 class EngagementPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
