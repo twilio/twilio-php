@@ -60,7 +60,7 @@ abstract class TwiML {
      *
      * @param string $key name of attribute
      * @param string $value value of attribute
-     * @return TwiML $this
+     * @return static $this
      */
     public function setAttribute($key, $value) {
         $this->attributes[$key] = $value;

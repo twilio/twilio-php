@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class Client extends TwiML {
     /**
      * Client constructor.
-     * 
+     *
      * @param string $identity Client identity
      * @param array $attributes Optional attributes
      */
@@ -24,7 +24,7 @@ class Client extends TwiML {
 
     /**
      * Add Identity child.
-     * 
+     *
      * @param string $clientIdentity Identity of the client to dial
      * @return TwiML Child element.
      */
@@ -34,7 +34,7 @@ class Client extends TwiML {
 
     /**
      * Add Parameter child.
-     * 
+     *
      * @param array $attributes Optional attributes
      * @return TwiML Child element.
      */
@@ -44,9 +44,9 @@ class Client extends TwiML {
 
     /**
      * Add Url attribute.
-     * 
+     *
      * @param url $url Client URL
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setUrl($url) {
         return $this->setAttribute('url', $url);
@@ -54,9 +54,9 @@ class Client extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
+     *
      * @param httpMethod $method Client URL Method
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -64,10 +64,10 @@ class Client extends TwiML {
 
     /**
      * Add StatusCallbackEvent attribute.
-     * 
+     *
      * @param client:Enum:Event $statusCallbackEvent Events to trigger status
      *                                               callback
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);
@@ -75,9 +75,9 @@ class Client extends TwiML {
 
     /**
      * Add StatusCallback attribute.
-     * 
+     *
      * @param url $statusCallback Status Callback URL
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setStatusCallback($statusCallback) {
         return $this->setAttribute('statusCallback', $statusCallback);
@@ -85,9 +85,9 @@ class Client extends TwiML {
 
     /**
      * Add StatusCallbackMethod attribute.
-     * 
+     *
      * @param httpMethod $statusCallbackMethod Status Callback URL Method
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
