@@ -7,27 +7,37 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes;
+namespace Twilio\Rest\Pricing\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 
-class AuthTypeCallsInstance extends InstanceResource {
+/**
+ * @property string name
+ * @property string url
+ * @property array links
+ */
+class VoiceInstance extends InstanceResource {
     /**
-     * Initialize the AuthTypeCallsInstance
+     * Initialize the VoiceInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique id of the account that sent the call
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsInstance 
+     * @return \Twilio\Rest\Pricing\V2\VoiceInstance 
      */
-    public function __construct(Version $version, array $payload, $accountSid, $domainSid) {
+    public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
+        // Marshaled Properties
+        $this->properties = array(
+            'name' => Values::array_get($payload, 'name'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
+        );
+
+        $this->solution = array();
     }
 
     /**
@@ -56,6 +66,6 @@ class AuthTypeCallsInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.AuthTypeCallsInstance]';
+        return '[Twilio.Pricing.V2.VoiceInstance]';
     }
 }

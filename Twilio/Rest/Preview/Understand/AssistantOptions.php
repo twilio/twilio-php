@@ -27,15 +27,14 @@ abstract class AssistantOptions {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $responseUrl The webhook URL called to fetch the response to
-     *                            an incoming communication expressed in Assistant
-     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
+     * @param array $fallbackActions The fallback_actions
+     * @param array $initiationActions The initiation_actions
      * @return CreateAssistantOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
-        return new CreateAssistantOptions($friendlyName, $logQueries, $uniqueName, $responseUrl, $callbackUrl, $callbackEvents);
+    public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
+        return new CreateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions);
     }
 
     /**
@@ -49,15 +48,14 @@ abstract class AssistantOptions {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $responseUrl The webhook URL called to fetch the response to
-     *                            an incoming communication expressed in Assistant
-     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
+     * @param array $fallbackActions The fallback_actions
+     * @param array $initiationActions The initiation_actions
      * @return UpdateAssistantOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
-        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $responseUrl, $callbackUrl, $callbackEvents);
+    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
+        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions);
     }
 }
 
@@ -73,19 +71,19 @@ class CreateAssistantOptions extends Options {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $responseUrl The webhook URL called to fetch the response to
-     *                            an incoming communication expressed in Assistant
-     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
+     * @param array $fallbackActions The fallback_actions
+     * @param array $initiationActions The initiation_actions
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
-        $this->options['responseUrl'] = $responseUrl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['callbackEvents'] = $callbackEvents;
+        $this->options['fallbackActions'] = $fallbackActions;
+        $this->options['initiationActions'] = $initiationActions;
     }
 
     /**
@@ -129,19 +127,6 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
-     * 
-     * @param string $responseUrl The webhook URL called to fetch the response to
-     *                            an incoming communication expressed in Assistant
-     *                            TwiML.
-     * @return $this Fluent Builder
-     */
-    public function setResponseUrl($responseUrl) {
-        $this->options['responseUrl'] = $responseUrl;
-        return $this;
-    }
-
-    /**
      * The callback_url
      * 
      * @param string $callbackUrl The callback_url
@@ -160,6 +145,28 @@ class CreateAssistantOptions extends Options {
      */
     public function setCallbackEvents($callbackEvents) {
         $this->options['callbackEvents'] = $callbackEvents;
+        return $this;
+    }
+
+    /**
+     * The fallback_actions
+     * 
+     * @param array $fallbackActions The fallback_actions
+     * @return $this Fluent Builder
+     */
+    public function setFallbackActions($fallbackActions) {
+        $this->options['fallbackActions'] = $fallbackActions;
+        return $this;
+    }
+
+    /**
+     * The initiation_actions
+     * 
+     * @param array $initiationActions The initiation_actions
+     * @return $this Fluent Builder
+     */
+    public function setInitiationActions($initiationActions) {
+        $this->options['initiationActions'] = $initiationActions;
         return $this;
     }
 
@@ -191,19 +198,19 @@ class UpdateAssistantOptions extends Options {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $responseUrl The webhook URL called to fetch the response to
-     *                            an incoming communication expressed in Assistant
-     *                            TwiML.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
+     * @param array $fallbackActions The fallback_actions
+     * @param array $initiationActions The initiation_actions
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $responseUrl = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
-        $this->options['responseUrl'] = $responseUrl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['callbackEvents'] = $callbackEvents;
+        $this->options['fallbackActions'] = $fallbackActions;
+        $this->options['initiationActions'] = $initiationActions;
     }
 
     /**
@@ -247,19 +254,6 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
-     * 
-     * @param string $responseUrl The webhook URL called to fetch the response to
-     *                            an incoming communication expressed in Assistant
-     *                            TwiML.
-     * @return $this Fluent Builder
-     */
-    public function setResponseUrl($responseUrl) {
-        $this->options['responseUrl'] = $responseUrl;
-        return $this;
-    }
-
-    /**
      * The callback_url
      * 
      * @param string $callbackUrl The callback_url
@@ -278,6 +272,28 @@ class UpdateAssistantOptions extends Options {
      */
     public function setCallbackEvents($callbackEvents) {
         $this->options['callbackEvents'] = $callbackEvents;
+        return $this;
+    }
+
+    /**
+     * The fallback_actions
+     * 
+     * @param array $fallbackActions The fallback_actions
+     * @return $this Fluent Builder
+     */
+    public function setFallbackActions($fallbackActions) {
+        $this->options['fallbackActions'] = $fallbackActions;
+        return $this;
+    }
+
+    /**
+     * The initiation_actions
+     * 
+     * @param array $initiationActions The initiation_actions
+     * @return $this Fluent Builder
+     */
+    public function setInitiationActions($initiationActions) {
+        $this->options['initiationActions'] = $initiationActions;
         return $this;
     }
 

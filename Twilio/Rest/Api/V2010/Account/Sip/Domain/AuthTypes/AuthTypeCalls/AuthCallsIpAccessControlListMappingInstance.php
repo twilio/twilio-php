@@ -28,7 +28,7 @@ class AuthCallsIpAccessControlListMappingInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique id of the account that sent the message
+     * @param string $accountSid The unique id of the account that sent the call
      * @param string $domainSid A string that uniquely identifies the SIP Domain
      * @param string $sid Fetch by unique IP Access Control List Sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsIpAccessControlListMappingInstance 

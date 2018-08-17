@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\Understand\Assistant;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -133,7 +134,11 @@ class IntentList extends ListResource {
     public function create($uniqueName, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $uniqueName, 'FriendlyName' => $options['friendlyName'], ));
+        $data = Values::of(array(
+            'UniqueName' => $uniqueName,
+            'FriendlyName' => $options['friendlyName'],
+            'Actions' => Serialize::jsonObject($options['actions']),
+        ));
 
         $payload = $this->version->create(
             'POST',

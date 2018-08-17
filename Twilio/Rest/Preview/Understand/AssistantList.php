@@ -134,9 +134,10 @@ class AssistantList extends ListResource {
             'FriendlyName' => $options['friendlyName'],
             'LogQueries' => Serialize::booleanToString($options['logQueries']),
             'UniqueName' => $options['uniqueName'],
-            'ResponseUrl' => $options['responseUrl'],
             'CallbackUrl' => $options['callbackUrl'],
             'CallbackEvents' => $options['callbackEvents'],
+            'FallbackActions' => Serialize::jsonObject($options['fallbackActions']),
+            'InitiationActions' => Serialize::jsonObject($options['initiationActions']),
         ));
 
         $payload = $this->version->create(

@@ -7,48 +7,42 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes;
+namespace Twilio\Rest\Pricing\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
-use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingList;
+use Twilio\Rest\Pricing\V2\Voice\CountryList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingList credentialListMappings
- * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingContext credentialListMappings(string $sid)
+ * @property \Twilio\Rest\Pricing\V2\Voice\CountryList countries
+ * @method \Twilio\Rest\Pricing\V2\Voice\CountryContext countries(string $isoCountry)
  */
-class AuthTypeRegistrationsList extends ListResource {
-    protected $_credentialListMappings = null;
+class VoiceList extends ListResource {
+    protected $_countries = null;
 
     /**
-     * Construct the AuthTypeRegistrationsList
+     * Construct the VoiceList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the account that sent the call
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList 
+     * @return \Twilio\Rest\Pricing\V2\VoiceList 
      */
-    public function __construct(Version $version, $accountSid, $domainSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
+        $this->solution = array();
     }
 
     /**
-     * Access the credentialListMappings
+     * Access the countries
      */
-    protected function getCredentialListMappings() {
-        if (!$this->_credentialListMappings) {
-            $this->_credentialListMappings = new AuthRegistrationsCredentialListMappingList(
-                $this->version,
-                $this->solution['accountSid'],
-                $this->solution['domainSid']
-            );
+    protected function getCountries() {
+        if (!$this->_countries) {
+            $this->_countries = new CountryList($this->version);
         }
 
-        return $this->_credentialListMappings;
+        return $this->_countries;
     }
 
     /**
@@ -90,6 +84,6 @@ class AuthTypeRegistrationsList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.AuthTypeRegistrationsList]';
+        return '[Twilio.Pricing.V2.VoiceList]';
     }
 }

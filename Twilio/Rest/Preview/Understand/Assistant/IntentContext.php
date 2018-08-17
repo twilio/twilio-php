@@ -13,8 +13,10 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Preview\Understand\Assistant\Intent\FieldList;
+use Twilio\Rest\Preview\Understand\Assistant\Intent\IntentActionsList;
 use Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsList;
 use Twilio\Rest\Preview\Understand\Assistant\Intent\SampleList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,14 +25,17 @@ use Twilio\Version;
  * 
  * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\FieldList fields
  * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\SampleList samples
+ * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentActionsList intentActions
  * @property \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsList statistics
  * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\FieldContext fields(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\SampleContext samples(string $sid)
+ * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentActionsContext intentActions()
  * @method \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentStatisticsContext statistics()
  */
 class IntentContext extends InstanceContext {
     protected $_fields = null;
     protected $_samples = null;
+    protected $_intentActions = null;
     protected $_statistics = null;
 
     /**
@@ -86,6 +91,7 @@ class IntentContext extends InstanceContext {
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'UniqueName' => $options['uniqueName'],
+            'Actions' => Serialize::jsonObject($options['actions']),
         ));
 
         $payload = $this->version->update(
@@ -145,6 +151,23 @@ class IntentContext extends InstanceContext {
         }
 
         return $this->_samples;
+    }
+
+    /**
+     * Access the intentActions
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentActionsList 
+     */
+    protected function getIntentActions() {
+        if (!$this->_intentActions) {
+            $this->_intentActions = new IntentActionsList(
+                $this->version,
+                $this->solution['assistantSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_intentActions;
     }
 
     /**

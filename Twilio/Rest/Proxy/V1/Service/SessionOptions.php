@@ -73,7 +73,7 @@ class ReadSessionOptions extends Options {
     }
 
     /**
-     * The Status of this Session. One of `in-progress`, `closed`, `failed`, `unknown` or `completed`.
+     * The Status of this Session. One of `in-progress`, `closed`, `failed`, `unknown`.
      * 
      * @param string $status The Status of this Session
      * @return $this Fluent Builder

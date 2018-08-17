@@ -20,10 +20,11 @@ abstract class IntentOptions {
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can up to 255
      *                             characters long.
+     * @param array $actions The actions
      * @return CreateIntentOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE) {
-        return new CreateIntentOptions($friendlyName);
+    public static function create($friendlyName = Values::NONE, $actions = Values::NONE) {
+        return new CreateIntentOptions($friendlyName, $actions);
     }
 
     /**
@@ -33,10 +34,11 @@ abstract class IntentOptions {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
+     * @param array $actions The actions
      * @return UpdateIntentOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE) {
-        return new UpdateIntentOptions($friendlyName, $uniqueName);
+    public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE) {
+        return new UpdateIntentOptions($friendlyName, $uniqueName, $actions);
     }
 }
 
@@ -45,9 +47,11 @@ class CreateIntentOptions extends Options {
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can up to 255
      *                             characters long.
+     * @param array $actions The actions
      */
-    public function __construct($friendlyName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $actions = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['actions'] = $actions;
     }
 
     /**
@@ -60,6 +64,17 @@ class CreateIntentOptions extends Options {
      */
     public function setFriendlyName($friendlyName) {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * The actions
+     * 
+     * @param array $actions The actions
+     * @return $this Fluent Builder
+     */
+    public function setActions($actions) {
+        $this->options['actions'] = $actions;
         return $this;
     }
 
@@ -87,10 +102,12 @@ class UpdateIntentOptions extends Options {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
+     * @param array $actions The actions
      */
-    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['uniqueName'] = $uniqueName;
+        $this->options['actions'] = $actions;
     }
 
     /**
@@ -116,6 +133,17 @@ class UpdateIntentOptions extends Options {
      */
     public function setUniqueName($uniqueName) {
         $this->options['uniqueName'] = $uniqueName;
+        return $this;
+    }
+
+    /**
+     * The actions
+     * 
+     * @param array $actions The actions
+     * @return $this Fluent Builder
+     */
+    public function setActions($actions) {
+        $this->options['actions'] = $actions;
         return $this;
     }
 

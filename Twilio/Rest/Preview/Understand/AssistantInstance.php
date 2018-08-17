@@ -29,7 +29,6 @@ use Twilio\Version;
  * @property string sid
  * @property string uniqueName
  * @property string url
- * @property string responseUrl
  * @property string callbackUrl
  * @property string callbackEvents
  */
@@ -38,6 +37,8 @@ class AssistantInstance extends InstanceResource {
     protected $_intents = null;
     protected $_modelBuilds = null;
     protected $_queries = null;
+    protected $_assistantFallbackActions = null;
+    protected $_assistantInitiationActions = null;
 
     /**
      * Initialize the AssistantInstance
@@ -62,7 +63,6 @@ class AssistantInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),
-            'responseUrl' => Values::array_get($payload, 'response_url'),
             'callbackUrl' => Values::array_get($payload, 'callback_url'),
             'callbackEvents' => Values::array_get($payload, 'callback_events'),
         );
@@ -150,6 +150,24 @@ class AssistantInstance extends InstanceResource {
      */
     protected function getQueries() {
         return $this->proxy()->queries;
+    }
+
+    /**
+     * Access the assistantFallbackActions
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList 
+     */
+    protected function getAssistantFallbackActions() {
+        return $this->proxy()->assistantFallbackActions;
+    }
+
+    /**
+     * Access the assistantInitiationActions
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList 
+     */
+    protected function getAssistantInitiationActions() {
+        return $this->proxy()->assistantInitiationActions;
     }
 
     /**

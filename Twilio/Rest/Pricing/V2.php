@@ -7,53 +7,38 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview;
+namespace Twilio\Rest\Pricing;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\Marketplace\AvailableAddOnList;
-use Twilio\Rest\Preview\Marketplace\InstalledAddOnList;
+use Twilio\Rest\Pricing\V2\VoiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
- * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
- * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
+ * @property \Twilio\Rest\Pricing\V2\VoiceList voice
  */
-class Marketplace extends Version {
-    protected $_availableAddOns = null;
-    protected $_installedAddOns = null;
+class V2 extends Version {
+    protected $_voice = null;
 
     /**
-     * Construct the Marketplace version of Preview
+     * Construct the V2 version of Pricing
      * 
      * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\Marketplace Marketplace version of Preview
+     * @return \Twilio\Rest\Pricing\V2 V2 version of Pricing
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
-        $this->version = 'marketplace';
+        $this->version = 'v2';
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
+     * @return \Twilio\Rest\Pricing\V2\VoiceList 
      */
-    protected function getAvailableAddOns() {
-        if (!$this->_availableAddOns) {
-            $this->_availableAddOns = new AvailableAddOnList($this);
+    protected function getVoice() {
+        if (!$this->_voice) {
+            $this->_voice = new VoiceList($this);
         }
-        return $this->_availableAddOns;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
-     */
-    protected function getInstalledAddOns() {
-        if (!$this->_installedAddOns) {
-            $this->_installedAddOns = new InstalledAddOnList($this);
-        }
-        return $this->_installedAddOns;
+        return $this->_voice;
     }
 
     /**
@@ -95,6 +80,6 @@ class Marketplace extends Version {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Marketplace]';
+        return '[Twilio.Pricing.V2]';
     }
 }

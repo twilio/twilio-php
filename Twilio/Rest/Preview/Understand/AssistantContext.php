@@ -12,6 +12,8 @@ namespace Twilio\Rest\Preview\Understand;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList;
+use Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList;
 use Twilio\Rest\Preview\Understand\Assistant\FieldTypeList;
 use Twilio\Rest\Preview\Understand\Assistant\IntentList;
 use Twilio\Rest\Preview\Understand\Assistant\ModelBuildList;
@@ -27,16 +29,22 @@ use Twilio\Version;
  * @property \Twilio\Rest\Preview\Understand\Assistant\IntentList intents
  * @property \Twilio\Rest\Preview\Understand\Assistant\ModelBuildList modelBuilds
  * @property \Twilio\Rest\Preview\Understand\Assistant\QueryList queries
+ * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList assistantFallbackActions
+ * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList assistantInitiationActions
  * @method \Twilio\Rest\Preview\Understand\Assistant\FieldTypeContext fieldTypes(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\IntentContext intents(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\ModelBuildContext modelBuilds(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\QueryContext queries(string $sid)
+ * @method \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsContext assistantFallbackActions()
+ * @method \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsContext assistantInitiationActions()
  */
 class AssistantContext extends InstanceContext {
     protected $_fieldTypes = null;
     protected $_intents = null;
     protected $_modelBuilds = null;
     protected $_queries = null;
+    protected $_assistantFallbackActions = null;
+    protected $_assistantInitiationActions = null;
 
     /**
      * Initialize the AssistantContext
@@ -86,9 +94,10 @@ class AssistantContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'LogQueries' => Serialize::booleanToString($options['logQueries']),
             'UniqueName' => $options['uniqueName'],
-            'ResponseUrl' => $options['responseUrl'],
             'CallbackUrl' => $options['callbackUrl'],
             'CallbackEvents' => $options['callbackEvents'],
+            'FallbackActions' => Serialize::jsonObject($options['fallbackActions']),
+            'InitiationActions' => Serialize::jsonObject($options['initiationActions']),
         ));
 
         $payload = $this->version->update(
@@ -161,6 +170,38 @@ class AssistantContext extends InstanceContext {
         }
 
         return $this->_queries;
+    }
+
+    /**
+     * Access the assistantFallbackActions
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList 
+     */
+    protected function getAssistantFallbackActions() {
+        if (!$this->_assistantFallbackActions) {
+            $this->_assistantFallbackActions = new AssistantFallbackActionsList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_assistantFallbackActions;
+    }
+
+    /**
+     * Access the assistantInitiationActions
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList 
+     */
+    protected function getAssistantInitiationActions() {
+        if (!$this->_assistantInitiationActions) {
+            $this->_assistantInitiationActions = new AssistantInitiationActionsList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_assistantInitiationActions;
     }
 
     /**

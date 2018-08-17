@@ -12,15 +12,18 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Pricing\V1;
+use Twilio\Rest\Pricing\V2;
 
 /**
  * @property \Twilio\Rest\Pricing\V1 v1
+ * @property \Twilio\Rest\Pricing\V2 v2
  * @property \Twilio\Rest\Pricing\V1\MessagingList messaging
  * @property \Twilio\Rest\Pricing\V1\PhoneNumberList phoneNumbers
- * @property \Twilio\Rest\Pricing\V1\VoiceList voice
+ * @property \Twilio\Rest\Pricing\V2\VoiceList voice
  */
 class Pricing extends Domain {
     protected $_v1 = null;
+    protected $_v2 = null;
 
     /**
      * Construct the Pricing Domain
@@ -43,6 +46,16 @@ class Pricing extends Domain {
             $this->_v1 = new V1($this);
         }
         return $this->_v1;
+    }
+
+    /**
+     * @return \Twilio\Rest\Pricing\V2 Version v2 of pricing
+     */
+    protected function getV2() {
+        if (!$this->_v2) {
+            $this->_v2 = new V2($this);
+        }
+        return $this->_v2;
     }
 
     /**
@@ -93,10 +106,10 @@ class Pricing extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Pricing\V1\VoiceList 
+     * @return \Twilio\Rest\Pricing\V2\VoiceList 
      */
     protected function getVoice() {
-        return $this->v1->voice;
+        return $this->v2->voice;
     }
 
     /**
