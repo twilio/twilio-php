@@ -18,11 +18,14 @@ use Twilio\Version;
  * @property string accountSid
  * @property string serviceSid
  * @property string channelSid
+ * @property string userSid
  * @property string memberSid
  * @property string status
  * @property integer lastConsumedMessageIndex
  * @property integer unreadMessagesCount
  * @property array links
+ * @property string url
+ * @property string notificationLevel
  */
 class UserChannelInstance extends InstanceResource {
     /**
@@ -32,11 +35,11 @@ class UserChannelInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique id of the Service this channel belongs
      *                           to.
-     * @param string $userSid A 34 character string that uniquely identifies this
-     *                        resource.
+     * @param string $userSid The unique id of the User this Channel belongs to.
+     * @param string $channelSid The unique id of a Channel.
      * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelInstance 
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $userSid) {
+    public function __construct(Version $version, array $payload, $serviceSid, $userSid, $channelSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -44,14 +47,64 @@ class UserChannelInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'channelSid' => Values::array_get($payload, 'channel_sid'),
+            'userSid' => Values::array_get($payload, 'user_sid'),
             'memberSid' => Values::array_get($payload, 'member_sid'),
             'status' => Values::array_get($payload, 'status'),
             'lastConsumedMessageIndex' => Values::array_get($payload, 'last_consumed_message_index'),
             'unreadMessagesCount' => Values::array_get($payload, 'unread_messages_count'),
             'links' => Values::array_get($payload, 'links'),
+            'url' => Values::array_get($payload, 'url'),
+            'notificationLevel' => Values::array_get($payload, 'notification_level'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
+        $this->solution = array(
+            'serviceSid' => $serviceSid,
+            'userSid' => $userSid,
+            'channelSid' => $channelSid ?: $this->properties['channelSid'],
+        );
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     * 
+     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelContext Context for
+     *                                                              this
+     *                                                              UserChannelInstance
+     */
+    protected function proxy() {
+        if (!$this->context) {
+            $this->context = new UserChannelContext(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['userSid'],
+                $this->solution['channelSid']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Fetch a UserChannelInstance
+     * 
+     * @return UserChannelInstance Fetched UserChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch() {
+        return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the UserChannelInstance
+     * 
+     * @param string $notificationLevel Push notification level to be assigned to
+     *                                  Channel of the User.
+     * @return UserChannelInstance Updated UserChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($notificationLevel) {
+        return $this->proxy()->update($notificationLevel);
     }
 
     /**
@@ -80,6 +133,10 @@ class UserChannelInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Chat.V2.UserChannelInstance]';
+        $context = array();
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Chat.V2.UserChannelInstance ' . implode(' ', $context) . ']';
     }
 }

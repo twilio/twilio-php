@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2018-08-23] Version 5.21.3
+----------------------------
+**Chat**
+- Add User Channel instance resource
+
+
 [2018-08-17] Version 5.21.2
 ----------------------------
 **Api**

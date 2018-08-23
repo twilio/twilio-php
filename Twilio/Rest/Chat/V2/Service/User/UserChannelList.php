@@ -20,8 +20,7 @@ class UserChannelList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The unique id of the Service this channel belongs
      *                           to.
-     * @param string $userSid A 34 character string that uniquely identifies this
-     *                        resource.
+     * @param string $userSid The unique id of the User this Channel belongs to.
      * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelList 
      */
     public function __construct(Version $version, $serviceSid, $userSid) {
@@ -117,6 +116,21 @@ class UserChannelList extends ListResource {
         );
 
         return new UserChannelPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Constructs a UserChannelContext
+     * 
+     * @param string $channelSid The unique id of a Channel.
+     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelContext 
+     */
+    public function getContext($channelSid) {
+        return new UserChannelContext(
+            $this->version,
+            $this->solution['serviceSid'],
+            $this->solution['userSid'],
+            $channelSid
+        );
     }
 
     /**

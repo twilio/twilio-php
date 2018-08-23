@@ -51,10 +51,13 @@ class UserChannelTest extends HolodeckTestCase {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "user_sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "member_sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "joined",
                         "last_consumed_message_index": 5,
                         "unread_messages_count": 5,
+                        "notification_level": "default",
+                        "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "links": {
                             "channel": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                             "member": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -94,6 +97,102 @@ class UserChannelTest extends HolodeckTestCase {
         $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->userChannels->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testFetchResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "user_sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "member_sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "joined",
+                "last_consumed_message_index": 5,
+                "unread_messages_count": 5,
+                "notification_level": "default",
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "channel": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "member": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                          ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("default");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = array('NotificationLevel' => "default", );
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://ip-messaging.twilio.com/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            null,
+            $values
+        ));
+    }
+
+    public function testUpdateResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "channel_sid": "CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "user_sid": "USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "member_sid": "MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "joined",
+                "last_consumed_message_index": 5,
+                "unread_messages_count": 5,
+                "notification_level": "muted",
+                "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "channel": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "member": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                                ->userChannels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("default");
 
         $this->assertNotNull($actual);
     }

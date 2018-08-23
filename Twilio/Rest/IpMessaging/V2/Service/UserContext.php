@@ -20,6 +20,7 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\IpMessaging\V2\Service\User\UserChannelList userChannels
  * @property \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingList userBindings
+ * @method \Twilio\Rest\IpMessaging\V2\Service\User\UserChannelContext userChannels(string $channelSid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingContext userBindings(string $sid)
  */
 class UserContext extends InstanceContext {
