@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2018-08-31] Version 5.21.4
+----------------------------
+**Api**
+- Add `call_sid_to_coach` parameter to participant create request
+- Add `voice_receive_mode` param to IncomingPhoneNumbers create
+
+**Video**
+- [Recordings] Expose `offset` property in resource
+
+
 [2018-08-23] Version 5.21.3
 ----------------------------
 **Chat**

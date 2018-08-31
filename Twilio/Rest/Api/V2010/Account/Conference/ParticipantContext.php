@@ -20,7 +20,7 @@ class ParticipantContext extends InstanceContext {
      * Initialize the ParticipantContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $conferenceSid The string that uniquely identifies this
      *                              conference
      * @param string $callSid Fetch by unique participant Call SID

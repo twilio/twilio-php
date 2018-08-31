@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList;
 use Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList;
+use Twilio\Rest\Preview\Understand\Assistant\DialogueList;
 use Twilio\Rest\Preview\Understand\Assistant\FieldTypeList;
 use Twilio\Rest\Preview\Understand\Assistant\IntentList;
 use Twilio\Rest\Preview\Understand\Assistant\ModelBuildList;
@@ -31,12 +32,14 @@ use Twilio\Version;
  * @property \Twilio\Rest\Preview\Understand\Assistant\QueryList queries
  * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList assistantFallbackActions
  * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList assistantInitiationActions
+ * @property \Twilio\Rest\Preview\Understand\Assistant\DialogueList dialogues
  * @method \Twilio\Rest\Preview\Understand\Assistant\FieldTypeContext fieldTypes(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\IntentContext intents(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\ModelBuildContext modelBuilds(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\QueryContext queries(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsContext assistantFallbackActions()
  * @method \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsContext assistantInitiationActions()
+ * @method \Twilio\Rest\Preview\Understand\Assistant\DialogueContext dialogues(string $sid)
  */
 class AssistantContext extends InstanceContext {
     protected $_fieldTypes = null;
@@ -45,6 +48,7 @@ class AssistantContext extends InstanceContext {
     protected $_queries = null;
     protected $_assistantFallbackActions = null;
     protected $_assistantInitiationActions = null;
+    protected $_dialogues = null;
 
     /**
      * Initialize the AssistantContext
@@ -202,6 +206,19 @@ class AssistantContext extends InstanceContext {
         }
 
         return $this->_assistantInitiationActions;
+    }
+
+    /**
+     * Access the dialogues
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueList 
+     */
+    protected function getDialogues() {
+        if (!$this->_dialogues) {
+            $this->_dialogues = new DialogueList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_dialogues;
     }
 
     /**

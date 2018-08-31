@@ -39,6 +39,7 @@ class AssistantInstance extends InstanceResource {
     protected $_queries = null;
     protected $_assistantFallbackActions = null;
     protected $_assistantInitiationActions = null;
+    protected $_dialogues = null;
 
     /**
      * Initialize the AssistantInstance
@@ -168,6 +169,15 @@ class AssistantInstance extends InstanceResource {
      */
     protected function getAssistantInitiationActions() {
         return $this->proxy()->assistantInitiationActions;
+    }
+
+    /**
+     * Access the dialogues
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueList 
+     */
+    protected function getDialogues() {
+        return $this->proxy()->dialogues;
     }
 
     /**

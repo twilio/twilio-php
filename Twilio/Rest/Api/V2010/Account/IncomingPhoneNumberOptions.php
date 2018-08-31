@@ -35,10 +35,12 @@ abstract class IncomingPhoneNumberOptions {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param string $emergencyStatus The emergency_status
-     * @param string $emergencyAddressSid The emergency_address_sid
+     * @param string $emergencyStatus Status determining whether the number is
+     *                                enabled for emergency calling
+     * @param string $emergencyAddressSid EmergencyAddress configuration to
+     *                                    leverage emergency calling
      * @param string $trunkSid Unique string to identify the trunk
-     * @param string $voiceReceiveMode The voice_receive_mode
+     * @param string $voiceReceiveMode Incoming call type: `fax` or `voice`
      * @param string $identitySid Unique string that identifies the identity
      *                            associated with number
      * @param string $addressSid Unique string that identifies the address
@@ -84,17 +86,20 @@ abstract class IncomingPhoneNumberOptions {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param string $emergencyStatus The emergency_status
-     * @param string $emergencyAddressSid The emergency_address_sid
+     * @param string $emergencyStatus Status determining whether the number is
+     *                                enabled for emergency calling
+     * @param string $emergencyAddressSid EmergencyAddress configuration to
+     *                                    leverage emergency calling
      * @param string $trunkSid Unique string to identify the trunk
      * @param string $identitySid Unique string that identifies the identity
      *                            associated with number
      * @param string $addressSid Unique string that identifies the address
      *                           associated with number
+     * @param string $voiceReceiveMode Incoming call type: `fax` or `voice`
      * @return CreateIncomingPhoneNumberOptions Options builder
      */
-    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
-        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $identitySid, $addressSid);
+    public static function create($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
+        return new CreateIncomingPhoneNumberOptions($phoneNumber, $areaCode, $apiVersion, $friendlyName, $smsApplicationSid, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $statusCallback, $statusCallbackMethod, $voiceApplicationSid, $voiceCallerIdLookup, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $emergencyStatus, $emergencyAddressSid, $trunkSid, $identitySid, $addressSid, $voiceReceiveMode);
     }
 }
 
@@ -121,10 +126,12 @@ class UpdateIncomingPhoneNumberOptions extends Options {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param string $emergencyStatus The emergency_status
-     * @param string $emergencyAddressSid The emergency_address_sid
+     * @param string $emergencyStatus Status determining whether the number is
+     *                                enabled for emergency calling
+     * @param string $emergencyAddressSid EmergencyAddress configuration to
+     *                                    leverage emergency calling
      * @param string $trunkSid Unique string to identify the trunk
-     * @param string $voiceReceiveMode The voice_receive_mode
+     * @param string $voiceReceiveMode Incoming call type: `fax` or `voice`
      * @param string $identitySid Unique string that identifies the identity
      *                            associated with number
      * @param string $addressSid Unique string that identifies the address
@@ -337,9 +344,10 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The emergency_status
+     * The configuration status parameter determining whether this phone number is enabled for emergency calling
      * 
-     * @param string $emergencyStatus The emergency_status
+     * @param string $emergencyStatus Status determining whether the number is
+     *                                enabled for emergency calling
      * @return $this Fluent Builder
      */
     public function setEmergencyStatus($emergencyStatus) {
@@ -348,9 +356,10 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The emergency_address_sid
+     * The 34 character sid of the EmergencyAddress configuration to leverage emergency calling for this phone number
      * 
-     * @param string $emergencyAddressSid The emergency_address_sid
+     * @param string $emergencyAddressSid EmergencyAddress configuration to
+     *                                    leverage emergency calling
      * @return $this Fluent Builder
      */
     public function setEmergencyAddressSid($emergencyAddressSid) {
@@ -370,9 +379,9 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The voice_receive_mode
+     * The configuration parameter for this phone number to receive incoming voice calls or faxes. Must be either `fax` or `voice`. Defaults to `voice`
      * 
-     * @param string $voiceReceiveMode The voice_receive_mode
+     * @param string $voiceReceiveMode Incoming call type: `fax` or `voice`
      * @return $this Fluent Builder
      */
     public function setVoiceReceiveMode($voiceReceiveMode) {
@@ -520,15 +529,18 @@ class CreateIncomingPhoneNumberOptions extends Options {
      *                                 in TwiML
      * @param string $voiceMethod HTTP method used with the voice url
      * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param string $emergencyStatus The emergency_status
-     * @param string $emergencyAddressSid The emergency_address_sid
+     * @param string $emergencyStatus Status determining whether the number is
+     *                                enabled for emergency calling
+     * @param string $emergencyAddressSid EmergencyAddress configuration to
+     *                                    leverage emergency calling
      * @param string $trunkSid Unique string to identify the trunk
      * @param string $identitySid Unique string that identifies the identity
      *                            associated with number
      * @param string $addressSid Unique string that identifies the address
      *                           associated with number
+     * @param string $voiceReceiveMode Incoming call type: `fax` or `voice`
      */
-    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE) {
+    public function __construct($phoneNumber = Values::NONE, $areaCode = Values::NONE, $apiVersion = Values::NONE, $friendlyName = Values::NONE, $smsApplicationSid = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceApplicationSid = Values::NONE, $voiceCallerIdLookup = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $emergencyStatus = Values::NONE, $emergencyAddressSid = Values::NONE, $trunkSid = Values::NONE, $identitySid = Values::NONE, $addressSid = Values::NONE, $voiceReceiveMode = Values::NONE) {
         $this->options['phoneNumber'] = $phoneNumber;
         $this->options['areaCode'] = $areaCode;
         $this->options['apiVersion'] = $apiVersion;
@@ -551,6 +563,7 @@ class CreateIncomingPhoneNumberOptions extends Options {
         $this->options['trunkSid'] = $trunkSid;
         $this->options['identitySid'] = $identitySid;
         $this->options['addressSid'] = $addressSid;
+        $this->options['voiceReceiveMode'] = $voiceReceiveMode;
     }
 
     /**
@@ -746,9 +759,10 @@ class CreateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The emergency_status
+     * The configuration status parameter determining whether this phone number is enabled for emergency calling
      * 
-     * @param string $emergencyStatus The emergency_status
+     * @param string $emergencyStatus Status determining whether the number is
+     *                                enabled for emergency calling
      * @return $this Fluent Builder
      */
     public function setEmergencyStatus($emergencyStatus) {
@@ -757,9 +771,10 @@ class CreateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The emergency_address_sid
+     * The 34 character sid of the EmergencyAddress configuration to leverage emergency calling for this phone number
      * 
-     * @param string $emergencyAddressSid The emergency_address_sid
+     * @param string $emergencyAddressSid EmergencyAddress configuration to
+     *                                    leverage emergency calling
      * @return $this Fluent Builder
      */
     public function setEmergencyAddressSid($emergencyAddressSid) {
@@ -799,6 +814,17 @@ class CreateIncomingPhoneNumberOptions extends Options {
      */
     public function setAddressSid($addressSid) {
         $this->options['addressSid'] = $addressSid;
+        return $this;
+    }
+
+    /**
+     * The configuration parameter for this phone number to receive incoming voice calls or faxes. Must be either `fax` or `voice`. Defaults to `voice`
+     * 
+     * @param string $voiceReceiveMode Incoming call type: `fax` or `voice`
+     * @return $this Fluent Builder
+     */
+    public function setVoiceReceiveMode($voiceReceiveMode) {
+        $this->options['voiceReceiveMode'] = $voiceReceiveMode;
         return $this;
     }
 

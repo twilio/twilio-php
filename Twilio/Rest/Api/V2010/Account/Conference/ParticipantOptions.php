@@ -70,14 +70,20 @@ abstract class ParticipantOptions {
      * @param string $conferenceRecordingStatusCallbackMethod Method Twilio should
      *                                                        use to request the
      *                                                        `ConferenceRecordingStatusCallback` URL.
-     * @param string $recordingStatusCallbackEvent The
-     *                                             recording_status_callback_event
-     * @param string $conferenceRecordingStatusCallbackEvent The
-     *                                                       conference_recording_status_callback_event
+     * @param string $recordingStatusCallbackEvent Set which recording state
+     *                                             changes should webhook to the
+     *                                             `RecordingStatusCallback`
+     * @param string $conferenceRecordingStatusCallbackEvent Set which conference
+     *                                                       recording state
+     *                                                       changes should webhook
+     *                                                       to the
+     *                                                       `ConferenceRecordingStatusCallback`
+     * @param string $callSidToCoach The string that uniquely identifies the
+     *                               participant that is being `coached`
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $region = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $conferenceRecordingStatusCallbackEvent = Values::NONE) {
-        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent);
+    public static function create($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $region = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $conferenceRecordingStatusCallbackEvent = Values::NONE, $callSidToCoach = Values::NONE) {
+        return new CreateParticipantOptions($statusCallback, $statusCallbackMethod, $statusCallbackEvent, $timeout, $record, $muted, $beep, $startConferenceOnEnter, $endConferenceOnExit, $waitUrl, $waitMethod, $earlyMedia, $maxParticipants, $conferenceRecord, $conferenceTrim, $conferenceStatusCallback, $conferenceStatusCallbackMethod, $conferenceStatusCallbackEvent, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $region, $conferenceRecordingStatusCallback, $conferenceRecordingStatusCallbackMethod, $recordingStatusCallbackEvent, $conferenceRecordingStatusCallbackEvent, $callSidToCoach);
     }
 
     /**
@@ -238,12 +244,18 @@ class CreateParticipantOptions extends Options {
      * @param string $conferenceRecordingStatusCallbackMethod Method Twilio should
      *                                                        use to request the
      *                                                        `ConferenceRecordingStatusCallback` URL.
-     * @param string $recordingStatusCallbackEvent The
-     *                                             recording_status_callback_event
-     * @param string $conferenceRecordingStatusCallbackEvent The
-     *                                                       conference_recording_status_callback_event
+     * @param string $recordingStatusCallbackEvent Set which recording state
+     *                                             changes should webhook to the
+     *                                             `RecordingStatusCallback`
+     * @param string $conferenceRecordingStatusCallbackEvent Set which conference
+     *                                                       recording state
+     *                                                       changes should webhook
+     *                                                       to the
+     *                                                       `ConferenceRecordingStatusCallback`
+     * @param string $callSidToCoach The string that uniquely identifies the
+     *                               participant that is being `coached`
      */
-    public function __construct($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $region = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $conferenceRecordingStatusCallbackEvent = Values::NONE) {
+    public function __construct($statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $region = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $conferenceRecordingStatusCallbackEvent = Values::NONE, $callSidToCoach = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
@@ -272,6 +284,7 @@ class CreateParticipantOptions extends Options {
         $this->options['conferenceRecordingStatusCallbackMethod'] = $conferenceRecordingStatusCallbackMethod;
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
         $this->options['conferenceRecordingStatusCallbackEvent'] = $conferenceRecordingStatusCallbackEvent;
+        $this->options['callSidToCoach'] = $callSidToCoach;
     }
 
     /**
@@ -575,10 +588,11 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The recording_status_callback_event
+     * Specifies which recording state changes should generate a webhook to the URL specified in the `RecordingStatusCallback` attribute. Available values are `in-progress`, `completed`, `failed`. To specify multiple values, separate them with a space. Defaults to `in-progress`, `completed`, `failed`.
      * 
-     * @param string $recordingStatusCallbackEvent The
-     *                                             recording_status_callback_event
+     * @param string $recordingStatusCallbackEvent Set which recording state
+     *                                             changes should webhook to the
+     *                                             `RecordingStatusCallback`
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
@@ -587,14 +601,29 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The conference_recording_status_callback_event
+     * Specifies which conference recording state changes should generate a webhook to the URL specified in the `ConferenceRecordingStatusCallback` attribute. Available values are `in-progress`, `completed`, `failed`. To specify multiple values, separate them with a space. Defaults to `in-progress`, `completed`, `failed`.
      * 
-     * @param string $conferenceRecordingStatusCallbackEvent The
-     *                                                       conference_recording_status_callback_event
+     * @param string $conferenceRecordingStatusCallbackEvent Set which conference
+     *                                                       recording state
+     *                                                       changes should webhook
+     *                                                       to the
+     *                                                       `ConferenceRecordingStatusCallback`
      * @return $this Fluent Builder
      */
     public function setConferenceRecordingStatusCallbackEvent($conferenceRecordingStatusCallbackEvent) {
         $this->options['conferenceRecordingStatusCallbackEvent'] = $conferenceRecordingStatusCallbackEvent;
+        return $this;
+    }
+
+    /**
+     * The string that uniquely identifies the participant that is being `coached`, i.e. the only participant who can hear the participant that is in `coach` mode.
+     * 
+     * @param string $callSidToCoach The string that uniquely identifies the
+     *                               participant that is being `coached`
+     * @return $this Fluent Builder
+     */
+    public function setCallSidToCoach($callSidToCoach) {
+        $this->options['callSidToCoach'] = $callSidToCoach;
         return $this;
     }
 

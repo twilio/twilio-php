@@ -42,7 +42,7 @@ class MessageTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
-                "body": "O Slash: \u00d8, PoP: \ud83d\udca9",
+                "body": "Hello! \ud83d\udc4d",
                 "date_created": "Thu, 30 Jul 2015 20:12:31 +0000",
                 "date_sent": "Thu, 30 Jul 2015 20:12:33 +0000",
                 "date_updated": "Thu, 30 Jul 2015 20:12:33 +0000",
@@ -121,7 +121,7 @@ class MessageTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
-                "body": "O Slash: \u00d8, PoP: \ud83d\udca9",
+                "body": "Hello! \ud83d\udc4d",
                 "date_created": "Thu, 30 Jul 2015 20:12:31 +0000",
                 "date_sent": "Thu, 30 Jul 2015 20:12:33 +0000",
                 "date_updated": "Thu, 30 Jul 2015 20:12:33 +0000",
@@ -176,7 +176,7 @@ class MessageTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "api_version": "2010-04-01",
-                        "body": "O Slash: \u00d8, PoP: \ud83d\udca9",
+                        "body": "Hello! \ud83d\udc4d",
                         "date_created": "Fri, 04 Sep 2015 22:54:39 +0000",
                         "date_sent": "Fri, 04 Sep 2015 22:54:41 +0000",
                         "date_updated": "Fri, 04 Sep 2015 22:54:41 +0000",
@@ -266,7 +266,7 @@ class MessageTest extends HolodeckTestCase {
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
-                "body": "O Slash: \u00d8, PoP: \ud83d\udca9",
+                "body": "Hello! \ud83d\udc4d",
                 "date_created": "Thu, 30 Jul 2015 20:12:31 +0000",
                 "date_sent": "Thu, 30 Jul 2015 20:12:33 +0000",
                 "date_updated": "Thu, 30 Jul 2015 20:12:33 +0000",

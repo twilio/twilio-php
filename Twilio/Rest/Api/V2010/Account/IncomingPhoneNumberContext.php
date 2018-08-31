@@ -28,7 +28,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
      * Initialize the IncomingPhoneNumberContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $sid Fetch by unique incoming-phone-number Sid
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
      */

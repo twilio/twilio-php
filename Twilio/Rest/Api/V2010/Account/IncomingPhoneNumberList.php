@@ -173,6 +173,7 @@ class IncomingPhoneNumberList extends ListResource {
             'TrunkSid' => $options['trunkSid'],
             'IdentitySid' => $options['identitySid'],
             'AddressSid' => $options['addressSid'],
+            'VoiceReceiveMode' => $options['voiceReceiveMode'],
         ));
 
         $payload = $this->version->create(

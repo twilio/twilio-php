@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string codec
  * @property array groupingSids
  * @property string trackName
+ * @property string offset
  * @property array links
  */
 class RecordingInstance extends InstanceResource {
@@ -59,6 +60,7 @@ class RecordingInstance extends InstanceResource {
             'codec' => Values::array_get($payload, 'codec'),
             'groupingSids' => Values::array_get($payload, 'grouping_sids'),
             'trackName' => Values::array_get($payload, 'track_name'),
+            'offset' => Values::array_get($payload, 'offset'),
             'links' => Values::array_get($payload, 'links'),
         );
 
