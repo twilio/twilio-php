@@ -14,17 +14,28 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
-     * @param string $recordingStatusCallbackEvent The
-     *                                             recording_status_callback_event
-     * @param string $recordingStatusCallback The recording_status_callback
-     * @param string $recordingStatusCallbackMethod The
-     *                                              recording_status_callback_method
+     * @param string $recordingStatusCallbackEvent The recording status changes
+     *                                             that should generate a callback
+     * @param string $recordingStatusCallback The callback URL for recording actions
+     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
+     *                                              use when making a request to
+     *                                              the RecordingStatusCallback URL
      * @param string $trim Whether to trim the silence in the recording
-     * @param string $recordingChannels The recording_channels
+     * @param string $recordingChannels The number of channels that the output
+     *                                  recording will be configured with
      * @return CreateRecordingOptions Options builder
      */
     public static function create($recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $trim = Values::NONE, $recordingChannels = Values::NONE) {
         return new CreateRecordingOptions($recordingStatusCallbackEvent, $recordingStatusCallback, $recordingStatusCallbackMethod, $trim, $recordingChannels);
+    }
+
+    /**
+     * @param string $pauseBehavior Whether to record or not during the pause
+     *                              period.
+     * @return UpdateRecordingOptions Options builder
+     */
+    public static function update($pauseBehavior = Values::NONE) {
+        return new UpdateRecordingOptions($pauseBehavior);
     }
 
     /**
@@ -40,13 +51,15 @@ abstract class RecordingOptions {
 
 class CreateRecordingOptions extends Options {
     /**
-     * @param string $recordingStatusCallbackEvent The
-     *                                             recording_status_callback_event
-     * @param string $recordingStatusCallback The recording_status_callback
-     * @param string $recordingStatusCallbackMethod The
-     *                                              recording_status_callback_method
+     * @param string $recordingStatusCallbackEvent The recording status changes
+     *                                             that should generate a callback
+     * @param string $recordingStatusCallback The callback URL for recording actions
+     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
+     *                                              use when making a request to
+     *                                              the RecordingStatusCallback URL
      * @param string $trim Whether to trim the silence in the recording
-     * @param string $recordingChannels The recording_channels
+     * @param string $recordingChannels The number of channels that the output
+     *                                  recording will be configured with
      */
     public function __construct($recordingStatusCallbackEvent = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $trim = Values::NONE, $recordingChannels = Values::NONE) {
         $this->options['recordingStatusCallbackEvent'] = $recordingStatusCallbackEvent;
@@ -57,10 +70,10 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording_status_callback_event
+     * The recording status changes that should generate a request to the URL specified in RecordingStatusCallback. Possible values: `in-progress`, `completed`, `failed`. To specify multiple values separate them with a space. Defaults to `completed`.
      * 
-     * @param string $recordingStatusCallbackEvent The
-     *                                             recording_status_callback_event
+     * @param string $recordingStatusCallbackEvent The recording status changes
+     *                                             that should generate a callback
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
@@ -69,9 +82,9 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording_status_callback
+     * The URL which Twilio will make its GET or POST request to for the recording events specified in parameter RecordingStatusCallbackEvent.
      * 
-     * @param string $recordingStatusCallback The recording_status_callback
+     * @param string $recordingStatusCallback The callback URL for recording actions
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallback($recordingStatusCallback) {
@@ -80,10 +93,11 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording_status_callback_method
+     * The HTTP method Twilio should use when making a request to the RecordingStatusCallback URL. Possible values: `GET`, `POST`. Defaults to `POST`.
      * 
-     * @param string $recordingStatusCallbackMethod The
-     *                                              recording_status_callback_method
+     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
+     *                                              use when making a request to
+     *                                              the RecordingStatusCallback URL
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -92,7 +106,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * Possible values `trim-silence` or `do-not-trim`. `trim-silence` will trim the silence from the beginning and end of the recording. `do-not-trim` will not trim the silence. Defaults to `do-not-trim`
+     * Possible values: `trim-silence` or `do-not-trim`. `trim-silence` will trim the silence from the beginning and end of the recording. `do-not-trim` will not trim the silence. Defaults to `do-not-trim`
      * 
      * @param string $trim Whether to trim the silence in the recording
      * @return $this Fluent Builder
@@ -103,9 +117,10 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording_channels
+     * Possible values: `mono` or `dual`. `mono` records all parties of your call into one channel. `dual` records a 2 party call into separate channels. Defaults to `mono`.
      * 
-     * @param string $recordingChannels The recording_channels
+     * @param string $recordingChannels The number of channels that the output
+     *                                  recording will be configured with
      * @return $this Fluent Builder
      */
     public function setRecordingChannels($recordingChannels) {
@@ -126,6 +141,43 @@ class CreateRecordingOptions extends Options {
             }
         }
         return '[Twilio.Api.V2010.CreateRecordingOptions ' . implode(' ', $options) . ']';
+    }
+}
+
+class UpdateRecordingOptions extends Options {
+    /**
+     * @param string $pauseBehavior Whether to record or not during the pause
+     *                              period.
+     */
+    public function __construct($pauseBehavior = Values::NONE) {
+        $this->options['pauseBehavior'] = $pauseBehavior;
+    }
+
+    /**
+     * Possible values: `skip` or `silence`. `skip` will result in no recording at all during the pause period. `silence` will replace the actual audio of the call with silence during the pause period.  Defaults to `silence`
+     * 
+     * @param string $pauseBehavior Whether to record or not during the pause
+     *                              period.
+     * @return $this Fluent Builder
+     */
+    public function setPauseBehavior($pauseBehavior) {
+        $this->options['pauseBehavior'] = $pauseBehavior;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     * 
+     * @return string Machine friendly representation
+     */
+    public function __toString() {
+        $options = array();
+        foreach ($this->options as $key => $value) {
+            if ($value != Values::NONE) {
+                $options[] = "$key=$value";
+            }
+        }
+        return '[Twilio.Api.V2010.UpdateRecordingOptions ' . implode(' ', $options) . ']';
     }
 }
 

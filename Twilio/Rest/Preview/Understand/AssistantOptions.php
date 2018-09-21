@@ -29,8 +29,12 @@ abstract class AssistantOptions {
      *                           up to 64 characters long.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
-     * @param array $fallbackActions The fallback_actions
-     * @param array $initiationActions The initiation_actions
+     * @param array $fallbackActions The JSON actions to be executed when the
+     *                               user's input is not recognized as matching any
+     *                               Intent.
+     * @param array $initiationActions The JSON actions to be executed on inbound
+     *                                 phone calls when the Assistant has to say
+     *                                 something first.
      * @return CreateAssistantOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
@@ -50,8 +54,12 @@ abstract class AssistantOptions {
      *                           up to 64 characters long.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
-     * @param array $fallbackActions The fallback_actions
-     * @param array $initiationActions The initiation_actions
+     * @param array $fallbackActions The JSON actions to be executed when the
+     *                               user's input is not recognized as matching any
+     *                               Intent.
+     * @param array $initiationActions The JSON actions to be executed on inbound
+     *                                 phone calls when the Assistant has to say
+     *                                 something first.
      * @return UpdateAssistantOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
@@ -73,8 +81,12 @@ class CreateAssistantOptions extends Options {
      *                           up to 64 characters long.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
-     * @param array $fallbackActions The fallback_actions
-     * @param array $initiationActions The initiation_actions
+     * @param array $fallbackActions The JSON actions to be executed when the
+     *                               user's input is not recognized as matching any
+     *                               Intent.
+     * @param array $initiationActions The JSON actions to be executed on inbound
+     *                                 phone calls when the Assistant has to say
+     *                                 something first.
      */
     public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -149,9 +161,11 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The fallback_actions
+     * The JSON actions to be executed when the user's input is not recognized as matching any Intent.
      * 
-     * @param array $fallbackActions The fallback_actions
+     * @param array $fallbackActions The JSON actions to be executed when the
+     *                               user's input is not recognized as matching any
+     *                               Intent.
      * @return $this Fluent Builder
      */
     public function setFallbackActions($fallbackActions) {
@@ -160,9 +174,11 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The initiation_actions
+     * The JSON actions to be executed on inbound phone calls when the Assistant has to say something first.
      * 
-     * @param array $initiationActions The initiation_actions
+     * @param array $initiationActions The JSON actions to be executed on inbound
+     *                                 phone calls when the Assistant has to say
+     *                                 something first.
      * @return $this Fluent Builder
      */
     public function setInitiationActions($initiationActions) {
@@ -200,8 +216,12 @@ class UpdateAssistantOptions extends Options {
      *                           up to 64 characters long.
      * @param string $callbackUrl The callback_url
      * @param string $callbackEvents The callback_events
-     * @param array $fallbackActions The fallback_actions
-     * @param array $initiationActions The initiation_actions
+     * @param array $fallbackActions The JSON actions to be executed when the
+     *                               user's input is not recognized as matching any
+     *                               Intent.
+     * @param array $initiationActions The JSON actions to be executed on inbound
+     *                                 phone calls when the Assistant has to say
+     *                                 something first.
      */
     public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -276,9 +296,11 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The fallback_actions
+     * The JSON actions to be executed when the user's input is not recognized as matching any Intent.
      * 
-     * @param array $fallbackActions The fallback_actions
+     * @param array $fallbackActions The JSON actions to be executed when the
+     *                               user's input is not recognized as matching any
+     *                               Intent.
      * @return $this Fluent Builder
      */
     public function setFallbackActions($fallbackActions) {
@@ -287,9 +309,11 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The initiation_actions
+     * The JSON actions to be executed on inbound phone calls when the Assistant has to say something first.
      * 
-     * @param array $initiationActions The initiation_actions
+     * @param array $initiationActions The JSON actions to be executed on inbound
+     *                                 phone calls when the Assistant has to say
+     *                                 something first.
      * @return $this Fluent Builder
      */
     public function setInitiationActions($initiationActions) {

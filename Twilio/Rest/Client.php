@@ -36,6 +36,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Wireless wireless
  * @property \Twilio\Rest\Sync sync
  * @property \Twilio\Rest\Studio studio
+ * @property \Twilio\Rest\Verify verify
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -107,6 +108,7 @@ class Client {
     protected $_wireless = null;
     protected $_sync = null;
     protected $_studio = null;
+    protected $_verify = null;
 
     /**
      * Initializes the Twilio Client
@@ -781,6 +783,18 @@ class Client {
             $this->_studio = new Studio($this);
         }
         return $this->_studio;
+    }
+
+    /**
+     * Access the Verify Twilio Domain
+     * 
+     * @return \Twilio\Rest\Verify Verify Twilio Domain
+     */
+    protected function getVerify() {
+        if (!$this->_verify) {
+            $this->_verify = new Verify($this);
+        }
+        return $this->_verify;
     }
 
     /**

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Call;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -102,11 +103,12 @@ class RecordingInstance extends InstanceResource {
      * Update the RecordingInstance
      * 
      * @param string $status The status to change the recording to.
+     * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status) {
-        return $this->proxy()->update($status);
+    public function update($status, $options = array()) {
+        return $this->proxy()->update($status, $options);
     }
 
     /**

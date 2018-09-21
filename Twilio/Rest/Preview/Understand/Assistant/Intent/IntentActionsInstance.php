@@ -30,8 +30,8 @@ class IntentActionsInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
-     * @param string $intentSid The intent_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $intentSid The unique ID of the Intent.
      * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentActionsInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $intentSid) {

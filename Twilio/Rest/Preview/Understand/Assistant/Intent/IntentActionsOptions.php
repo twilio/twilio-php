@@ -17,7 +17,8 @@ use Twilio\Values;
  */
 abstract class IntentActionsOptions {
     /**
-     * @param array $actions The actions
+     * @param array $actions The JSON actions that instruct the Assistant how to
+     *                       perform this task.
      * @return UpdateIntentActionsOptions Options builder
      */
     public static function update($actions = Values::NONE) {
@@ -27,16 +28,18 @@ abstract class IntentActionsOptions {
 
 class UpdateIntentActionsOptions extends Options {
     /**
-     * @param array $actions The actions
+     * @param array $actions The JSON actions that instruct the Assistant how to
+     *                       perform this task.
      */
     public function __construct($actions = Values::NONE) {
         $this->options['actions'] = $actions;
     }
 
     /**
-     * The actions
+     * The JSON actions that instruct the Assistant how to perform this task.
      * 
-     * @param array $actions The actions
+     * @param array $actions The JSON actions that instruct the Assistant how to
+     *                       perform this task.
      * @return $this Fluent Builder
      */
     public function setActions($actions) {

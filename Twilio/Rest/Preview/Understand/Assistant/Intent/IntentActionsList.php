@@ -20,8 +20,8 @@ class IntentActionsList extends ListResource {
      * Construct the IntentActionsList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $intentSid The intent_sid
+     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $intentSid The unique ID of the Intent.
      * @return \Twilio\Rest\Preview\Understand\Assistant\Intent\IntentActionsList 
      */
     public function __construct(Version $version, $assistantSid, $intentSid) {

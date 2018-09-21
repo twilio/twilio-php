@@ -12,15 +12,18 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Preview\AccSecurity as PreviewAccSecurity;
+use Twilio\Rest\Preview\Authy as PreviewAuthy;
 use Twilio\Rest\Preview\BulkExports as PreviewBulkExports;
 use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
 use Twilio\Rest\Preview\Marketplace as PreviewMarketplace;
+use Twilio\Rest\Preview\Permissions as PreviewPermissions;
 use Twilio\Rest\Preview\Sync as PreviewSync;
 use Twilio\Rest\Preview\Understand as PreviewUnderstand;
 use Twilio\Rest\Preview\Wireless as PreviewWireless;
 
 /**
+ * @property \Twilio\Rest\Preview\Authy authy
  * @property \Twilio\Rest\Preview\BulkExports bulkExports
  * @property \Twilio\Rest\Preview\DeployedDevices deployedDevices
  * @property \Twilio\Rest\Preview\HostedNumbers hostedNumbers
@@ -29,6 +32,8 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Understand understand
  * @property \Twilio\Rest\Preview\Wireless wireless
+ * @property \Twilio\Rest\Preview\Permissions permissions
+ * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
  * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
@@ -36,11 +41,12 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
  * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
- * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @property \Twilio\Rest\Preview\Understand\AssistantList assistants
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList sims
+ * @property \Twilio\Rest\Preview\Permissions\VoicePermissionList voicePermissions
+ * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
@@ -48,13 +54,13 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
- * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
  */
 class Preview extends Domain {
+    protected $_authy = null;
     protected $_bulkExports = null;
     protected $_deployedDevices = null;
     protected $_hostedNumbers = null;
@@ -63,6 +69,7 @@ class Preview extends Domain {
     protected $_sync = null;
     protected $_understand = null;
     protected $_wireless = null;
+    protected $_permissions = null;
 
     /**
      * Construct the Preview Domain
@@ -75,6 +82,16 @@ class Preview extends Domain {
         parent::__construct($client);
 
         $this->baseUrl = 'https://preview.twilio.com';
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Authy Version authy of preview
+     */
+    protected function getAuthy() {
+        if (!$this->_authy) {
+            $this->_authy = new PreviewAuthy($this);
+        }
+        return $this->_authy;
     }
 
     /**
@@ -159,6 +176,16 @@ class Preview extends Domain {
     }
 
     /**
+     * @return \Twilio\Rest\Preview\Permissions Version permissions of preview
+     */
+    protected function getPermissions() {
+        if (!$this->_permissions) {
+            $this->_permissions = new PreviewPermissions($this);
+        }
+        return $this->_permissions;
+    }
+
+    /**
      * Magic getter to lazy load version
      * 
      * @param string $name Version to return
@@ -189,6 +216,21 @@ class Preview extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Sync\ServiceList 
+     */
+    protected function getServices() {
+        return $this->sync->services;
+    }
+
+    /**
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Preview\Sync\ServiceContext 
+     */
+    protected function contextServices($sid) {
+        return $this->sync->services($sid);
     }
 
     /**
@@ -297,21 +339,6 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Sync\ServiceList 
-     */
-    protected function getServices() {
-        return $this->sync->services;
-    }
-
-    /**
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\ServiceContext 
-     */
-    protected function contextServices($sid) {
-        return $this->sync->services($sid);
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\Understand\AssistantList 
      */
     protected function getAssistants() {
@@ -369,6 +396,13 @@ class Preview extends Domain {
      */
     protected function contextSims($sid) {
         return $this->wireless->sims($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Permissions\VoicePermissionList 
+     */
+    protected function getVoicePermissions() {
+        return $this->permissions->voicePermissions;
     }
 
     /**

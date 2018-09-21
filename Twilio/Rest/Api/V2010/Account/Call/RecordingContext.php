@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,11 +37,14 @@ class RecordingContext extends InstanceContext {
      * Update the RecordingInstance
      * 
      * @param string $status The status to change the recording to.
+     * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($status) {
-        $data = Values::of(array('Status' => $status, ));
+    public function update($status, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Status' => $status, 'PauseBehavior' => $options['pauseBehavior'], ));
 
         $payload = $this->version->update(
             'POST',
