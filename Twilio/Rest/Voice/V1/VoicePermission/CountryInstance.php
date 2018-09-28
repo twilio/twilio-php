@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission;
+namespace Twilio\Rest\Voice\V1\VoicePermission;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -36,7 +36,7 @@ class CountryInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\CountryInstance 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\CountryInstance 
      */
     public function __construct(Version $version, array $payload, $isoCode = null) {
         parent::__construct($version);
@@ -61,7 +61,9 @@ class CountryInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      * 
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\CountryContext Context for this CountryInstance
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\CountryContext Context for
+     *                                                              this
+     *                                                              CountryInstance
      */
     protected function proxy() {
         if (!$this->context) {
@@ -84,7 +86,7 @@ class CountryInstance extends InstanceResource {
     /**
      * Access the highriskSpecialPrefixes
      * 
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\Country\HighriskSpecialPrefixList 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\Country\HighriskSpecialPrefixList 
      */
     protected function getHighriskSpecialPrefixes() {
         return $this->proxy()->highriskSpecialPrefixes;
@@ -120,6 +122,6 @@ class CountryInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Permissions.CountryInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Voice.V1.CountryInstance ' . implode(' ', $context) . ']';
     }
 }

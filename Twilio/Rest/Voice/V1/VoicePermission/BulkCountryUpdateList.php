@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission;
+namespace Twilio\Rest\Voice\V1\VoicePermission;
 
 use Twilio\ListResource;
 use Twilio\Values;
@@ -21,7 +21,7 @@ class BulkCountryUpdateList extends ListResource {
      * Construct the BulkCountryUpdateList
      * 
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\BulkCountryUpdateList 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\BulkCountryUpdateList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -29,13 +29,13 @@ class BulkCountryUpdateList extends ListResource {
         // Path Solution
         $this->solution = array();
 
-        $this->uri = '/VoicePermissions/BulkCountryUpdates';
+        $this->uri = '/DialingPermissions/BulkCountryUpdates';
     }
 
     /**
      * Create a new BulkCountryUpdateInstance
      * 
-     * @param string $updateRequest Json list of update objects
+     * @param string $updateRequest URL encoded JSON array of update objects
      * @return BulkCountryUpdateInstance Newly created BulkCountryUpdateInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -58,6 +58,6 @@ class BulkCountryUpdateList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.BulkCountryUpdateList]';
+        return '[Twilio.Voice.V1.BulkCountryUpdateList]';
     }
 }

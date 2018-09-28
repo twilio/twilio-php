@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission;
+namespace Twilio\Rest\Voice\V1\VoicePermission;
 
 use Twilio\ListResource;
 use Twilio\Options;
@@ -23,7 +23,7 @@ class CountryList extends ListResource {
      * Construct the CountryList
      * 
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\CountryList 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\CountryList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,7 +31,7 @@ class CountryList extends ListResource {
         // Path Solution
         $this->solution = array();
 
-        $this->uri = '/VoicePermissions/Countries';
+        $this->uri = '/DialingPermissions/Countries';
     }
 
     /**
@@ -134,7 +134,7 @@ class CountryList extends ListResource {
      * Constructs a CountryContext
      * 
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\CountryContext 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\CountryContext 
      */
     public function getContext($isoCode) {
         return new CountryContext($this->version, $isoCode);
@@ -146,6 +146,6 @@ class CountryList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.CountryList]';
+        return '[Twilio.Voice.V1.CountryList]';
     }
 }

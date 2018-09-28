@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions;
+namespace Twilio\Rest\Voice\V1;
 
 use Twilio\Page;
 
@@ -32,6 +32,6 @@ class VoicePermissionPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.VoicePermissionPage]';
+        return '[Twilio.Voice.V1.VoicePermissionPage]';
     }
 }

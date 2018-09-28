@@ -1,6 +1,20 @@
 twilio-php Changelog
 ====================
 
+[2018-09-28] Version 5.23.0
+----------------------------
+**Api**
+- Set `call_sid_to_coach` parameter in participant to be `preview`
+
+**Preview**
+- Supported `totp` in Authy preview endpoints
+- Allowed `latest` in Authy Challenges endpoints
+
+**Voice**
+- changed path param name from parent_iso_code to iso_code for highrisk_special_prefixes api **(breaking change)**
+- added geo permissions public api
+
+
 [2018-09-21] Version 5.22.0
 ----------------------------
 **Preview**

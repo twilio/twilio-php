@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission;
+namespace Twilio\Rest\Voice\V1\VoicePermission;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -26,7 +26,7 @@ class BulkCountryUpdateInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\BulkCountryUpdateInstance 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\BulkCountryUpdateInstance 
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -66,6 +66,6 @@ class BulkCountryUpdateInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.BulkCountryUpdateInstance]';
+        return '[Twilio.Voice.V1.BulkCountryUpdateInstance]';
     }
 }

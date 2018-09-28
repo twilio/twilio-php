@@ -7,34 +7,30 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions;
+namespace Twilio\Rest\Voice\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
-use Twilio\Rest\Preview\Permissions\VoicePermission\BulkCountryUpdateList;
-use Twilio\Rest\Preview\Permissions\VoicePermission\CountryList;
-use Twilio\Rest\Preview\Permissions\VoicePermission\SettingsList;
+use Twilio\Rest\Voice\V1\VoicePermission\BulkCountryUpdateList;
+use Twilio\Rest\Voice\V1\VoicePermission\CountryList;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  * 
- * @property \Twilio\Rest\Preview\Permissions\VoicePermission\CountryList countries
- * @property \Twilio\Rest\Preview\Permissions\VoicePermission\SettingsList settings
- * @property \Twilio\Rest\Preview\Permissions\VoicePermission\BulkCountryUpdateList bulkCountryUpdates
- * @method \Twilio\Rest\Preview\Permissions\VoicePermission\CountryContext countries(string $isoCode)
- * @method \Twilio\Rest\Preview\Permissions\VoicePermission\SettingsContext settings()
+ * @property \Twilio\Rest\Voice\V1\VoicePermission\CountryList countries
+ * @property \Twilio\Rest\Voice\V1\VoicePermission\BulkCountryUpdateList bulkCountryUpdates
+ * @method \Twilio\Rest\Voice\V1\VoicePermission\CountryContext countries(string $isoCode)
  */
 class VoicePermissionList extends ListResource {
     protected $_countries = null;
-    protected $_settings = null;
     protected $_bulkCountryUpdates = null;
 
     /**
      * Construct the VoicePermissionList
      * 
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermissionList 
+     * @return \Twilio\Rest\Voice\V1\VoicePermissionList 
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -52,17 +48,6 @@ class VoicePermissionList extends ListResource {
         }
 
         return $this->_countries;
-    }
-
-    /**
-     * Access the settings
-     */
-    protected function getSettings() {
-        if (!$this->_settings) {
-            $this->_settings = new SettingsList($this->version);
-        }
-
-        return $this->_settings;
     }
 
     /**
@@ -115,6 +100,6 @@ class VoicePermissionList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.VoicePermissionList]';
+        return '[Twilio.Voice.V1.VoicePermissionList]';
     }
 }

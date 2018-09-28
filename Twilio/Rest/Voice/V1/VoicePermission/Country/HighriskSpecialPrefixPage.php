@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission\Country;
+namespace Twilio\Rest\Voice\V1\VoicePermission\Country;
 
 use Twilio\Page;
 
@@ -23,11 +23,7 @@ class HighriskSpecialPrefixPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new HighriskSpecialPrefixInstance(
-            $this->version,
-            $payload,
-            $this->solution['parentIsoCode']
-        );
+        return new HighriskSpecialPrefixInstance($this->version, $payload, $this->solution['isoCode']);
     }
 
     /**
@@ -36,6 +32,6 @@ class HighriskSpecialPrefixPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.HighriskSpecialPrefixPage]';
+        return '[Twilio.Voice.V1.HighriskSpecialPrefixPage]';
     }
 }

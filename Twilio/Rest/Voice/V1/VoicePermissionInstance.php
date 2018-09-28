@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission\Country;
+namespace Twilio\Rest\Voice\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -16,25 +16,19 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
- * @property string prefix
  */
-class HighriskSpecialPrefixInstance extends InstanceResource {
+class VoicePermissionInstance extends InstanceResource {
     /**
-     * Initialize the HighriskSpecialPrefixInstance
+     * Initialize the VoicePermissionInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $parentIsoCode The ISO country code
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\Country\HighriskSpecialPrefixInstance 
+     * @return \Twilio\Rest\Voice\V1\VoicePermissionInstance 
      */
-    public function __construct(Version $version, array $payload, $parentIsoCode) {
+    public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
-        // Marshaled Properties
-        $this->properties = array('prefix' => Values::array_get($payload, 'prefix'), );
-
-        $this->solution = array('parentIsoCode' => $parentIsoCode, );
+        $this->solution = array();
     }
 
     /**
@@ -63,6 +57,6 @@ class HighriskSpecialPrefixInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.HighriskSpecialPrefixInstance]';
+        return '[Twilio.Voice.V1.VoicePermissionInstance]';
     }
 }

@@ -37,6 +37,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Sync sync
  * @property \Twilio\Rest\Studio studio
  * @property \Twilio\Rest\Verify verify
+ * @property \Twilio\Rest\Voice voice
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -109,6 +110,7 @@ class Client {
     protected $_sync = null;
     protected $_studio = null;
     protected $_verify = null;
+    protected $_voice = null;
 
     /**
      * Initializes the Twilio Client
@@ -795,6 +797,18 @@ class Client {
             $this->_verify = new Verify($this);
         }
         return $this->_verify;
+    }
+
+    /**
+     * Access the Voice Twilio Domain
+     * 
+     * @return \Twilio\Rest\Voice Voice Twilio Domain
+     */
+    protected function getVoice() {
+        if (!$this->_voice) {
+            $this->_voice = new Voice($this);
+        }
+        return $this->_voice;
     }
 
     /**

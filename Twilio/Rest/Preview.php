@@ -17,7 +17,6 @@ use Twilio\Rest\Preview\BulkExports as PreviewBulkExports;
 use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
 use Twilio\Rest\Preview\Marketplace as PreviewMarketplace;
-use Twilio\Rest\Preview\Permissions as PreviewPermissions;
 use Twilio\Rest\Preview\Sync as PreviewSync;
 use Twilio\Rest\Preview\Understand as PreviewUnderstand;
 use Twilio\Rest\Preview\Wireless as PreviewWireless;
@@ -32,28 +31,26 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Understand understand
  * @property \Twilio\Rest\Preview\Wireless wireless
- * @property \Twilio\Rest\Preview\Permissions permissions
  * @property \Twilio\Rest\Preview\Sync\ServiceList services
  * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
  * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
  * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList authorizationDocuments
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
  * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
+ * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
  * @property \Twilio\Rest\Preview\Understand\AssistantList assistants
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList sims
- * @property \Twilio\Rest\Preview\Permissions\VoicePermissionList voicePermissions
  * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
- * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
+ * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
@@ -69,7 +66,6 @@ class Preview extends Domain {
     protected $_sync = null;
     protected $_understand = null;
     protected $_wireless = null;
-    protected $_permissions = null;
 
     /**
      * Construct the Preview Domain
@@ -173,16 +169,6 @@ class Preview extends Domain {
             $this->_wireless = new PreviewWireless($this);
         }
         return $this->_wireless;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Permissions Version permissions of preview
-     */
-    protected function getPermissions() {
-        if (!$this->_permissions) {
-            $this->_permissions = new PreviewPermissions($this);
-        }
-        return $this->_permissions;
     }
 
     /**
@@ -309,21 +295,6 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
-     */
-    protected function getInstalledAddOns() {
-        return $this->marketplace->installedAddOns;
-    }
-
-    /**
-     * @param string $sid The unique Installed Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
-     */
-    protected function contextInstalledAddOns($sid) {
-        return $this->marketplace->installedAddOns($sid);
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
      */
     protected function getAvailableAddOns() {
@@ -336,6 +307,21 @@ class Preview extends Domain {
      */
     protected function contextAvailableAddOns($sid) {
         return $this->marketplace->availableAddOns($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
+     */
+    protected function getInstalledAddOns() {
+        return $this->marketplace->installedAddOns;
+    }
+
+    /**
+     * @param string $sid The unique Installed Add-on Sid
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
+     */
+    protected function contextInstalledAddOns($sid) {
+        return $this->marketplace->installedAddOns($sid);
     }
 
     /**
@@ -396,13 +382,6 @@ class Preview extends Domain {
      */
     protected function contextSims($sid) {
         return $this->wireless->sims($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermissionList 
-     */
-    protected function getVoicePermissions() {
-        return $this->permissions->voicePermissions;
     }
 
     /**

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission\Country;
+namespace Twilio\Rest\Voice\V1\VoicePermission\Country;
 
 use Twilio\ListResource;
 use Twilio\Values;
@@ -21,16 +21,16 @@ class HighriskSpecialPrefixList extends ListResource {
      * Construct the HighriskSpecialPrefixList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $parentIsoCode The ISO country code
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\Country\HighriskSpecialPrefixList 
+     * @param string $isoCode The ISO country code
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\Country\HighriskSpecialPrefixList 
      */
-    public function __construct(Version $version, $parentIsoCode) {
+    public function __construct(Version $version, $isoCode) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('parentIsoCode' => $parentIsoCode, );
+        $this->solution = array('isoCode' => $isoCode, );
 
-        $this->uri = '/VoicePermissions/Countries/' . rawurlencode($parentIsoCode) . '/HighRiskSpecialPrefixes';
+        $this->uri = '/DialingPermissions/Countries/' . rawurlencode($isoCode) . '/HighRiskSpecialPrefixes';
     }
 
     /**
@@ -127,6 +127,6 @@ class HighriskSpecialPrefixList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.HighriskSpecialPrefixList]';
+        return '[Twilio.Voice.V1.HighriskSpecialPrefixList]';
     }
 }

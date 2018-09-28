@@ -7,18 +7,18 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission;
+namespace Twilio\Rest\Voice\V1\VoicePermission;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Preview\Permissions\VoicePermission\Country\HighriskSpecialPrefixList;
+use Twilio\Rest\Voice\V1\VoicePermission\Country\HighriskSpecialPrefixList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  * 
- * @property \Twilio\Rest\Preview\Permissions\VoicePermission\Country\HighriskSpecialPrefixList highriskSpecialPrefixes
+ * @property \Twilio\Rest\Voice\V1\VoicePermission\Country\HighriskSpecialPrefixList highriskSpecialPrefixes
  */
 class CountryContext extends InstanceContext {
     protected $_highriskSpecialPrefixes = null;
@@ -28,7 +28,7 @@ class CountryContext extends InstanceContext {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\CountryContext 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\CountryContext 
      */
     public function __construct(Version $version, $isoCode) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class CountryContext extends InstanceContext {
         // Path Solution
         $this->solution = array('isoCode' => $isoCode, );
 
-        $this->uri = '/VoicePermissions/Countries/' . rawurlencode($isoCode) . '';
+        $this->uri = '/DialingPermissions/Countries/' . rawurlencode($isoCode) . '';
     }
 
     /**
@@ -60,7 +60,7 @@ class CountryContext extends InstanceContext {
     /**
      * Access the highriskSpecialPrefixes
      * 
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermission\Country\HighriskSpecialPrefixList 
+     * @return \Twilio\Rest\Voice\V1\VoicePermission\Country\HighriskSpecialPrefixList 
      */
     protected function getHighriskSpecialPrefixes() {
         if (!$this->_highriskSpecialPrefixes) {
@@ -116,6 +116,6 @@ class CountryContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Permissions.CountryContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Voice.V1.CountryContext ' . implode(' ', $context) . ']';
     }
 }

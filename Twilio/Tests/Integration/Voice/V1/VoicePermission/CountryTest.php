@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Preview\Permissions\VoicePermission;
+namespace Twilio\Tests\Integration\Voice\V1\VoicePermission;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,14 +20,14 @@ class CountryTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->permissions->voicePermissions
-                                               ->countries("US")->fetch();
+            $this->twilio->voice->v1->voicePermissions
+                                    ->countries("US")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/permissions/VoicePermissions/Countries/US'
+            'https://voice.twilio.com/v1/DialingPermissions/Countries/US'
         ));
     }
 
@@ -45,16 +45,16 @@ class CountryTest extends HolodeckTestCase {
                 "low_risk_numbers_enabled": false,
                 "high_risk_special_numbers_enabled": false,
                 "high_risk_tollfraud_numbers_enabled": false,
-                "url": "https://preview.twilio.com/permissions/VoicePermissions/Countries/US",
+                "url": "https://voice.twilio.com/v1/DialingPermissions/Countries/US",
                 "links": {
-                    "highrisk_special_prefixes": "https://preview.twilio.com/permissions/VoicePermissions/Countries/US/HighRiskSpecialPrefixes"
+                    "highrisk_special_prefixes": "https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes"
                 }
             }
             '
         ));
 
-        $actual = $this->twilio->preview->permissions->voicePermissions
-                                                     ->countries("US")->fetch();
+        $actual = $this->twilio->voice->v1->voicePermissions
+                                          ->countries("US")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -63,14 +63,14 @@ class CountryTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->permissions->voicePermissions
-                                               ->countries->read();
+            $this->twilio->voice->v1->voicePermissions
+                                    ->countries->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/permissions/VoicePermissions/Countries'
+            'https://voice.twilio.com/v1/DialingPermissions/Countries'
         ));
     }
 
@@ -90,27 +90,27 @@ class CountryTest extends HolodeckTestCase {
                         "low_risk_numbers_enabled": false,
                         "high_risk_special_numbers_enabled": false,
                         "high_risk_tollfraud_numbers_enabled": false,
-                        "url": "https://preview.twilio.com/permissions/VoicePermissions/Countries/US",
+                        "url": "https://voice.twilio.com/v1/DialingPermissions/Countries/US",
                         "links": {
-                            "highrisk_special_prefixes": "https://preview.twilio.com/permissions/VoicePermissions/Countries/US/HighRiskSpecialPrefixes"
+                            "highrisk_special_prefixes": "https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes"
                         }
                     }
                 ],
                 "meta": {
-                    "first_page_url": "https://preview.twilio.com/permissions/VoicePermissions/Countries?PageSize=50&Page=0",
+                    "first_page_url": "https://voice.twilio.com/v1/DialingPermissions/Countries?PageSize=50&Page=0",
                     "key": "content",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://preview.twilio.com/permissions/VoicePermissions/Countries?PageSize=50&Page=0"
+                    "url": "https://voice.twilio.com/v1/DialingPermissions/Countries?PageSize=50&Page=0"
                 }
             }
             '
         ));
 
-        $actual = $this->twilio->preview->permissions->voicePermissions
-                                                     ->countries->read();
+        $actual = $this->twilio->voice->v1->voicePermissions
+                                          ->countries->read();
 
         $this->assertNotNull($actual);
     }

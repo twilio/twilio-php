@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Preview\Permissions\VoicePermission;
+namespace Twilio\Tests\Integration\Voice\V1\VoicePermission;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,8 +20,8 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->permissions->voicePermissions
-                                               ->bulkCountryUpdates->create("updateRequest");
+            $this->twilio->voice->v1->voicePermissions
+                                    ->bulkCountryUpdates->create("updateRequest");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -29,7 +29,7 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/permissions/VoicePermissions/BulkCountryUpdates',
+            'https://voice.twilio.com/v1/DialingPermissions/BulkCountryUpdates',
             null,
             $values
         ));
@@ -46,8 +46,8 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->permissions->voicePermissions
-                                                     ->bulkCountryUpdates->create("updateRequest");
+        $actual = $this->twilio->voice->v1->voicePermissions
+                                          ->bulkCountryUpdates->create("updateRequest");
 
         $this->assertNotNull($actual);
     }

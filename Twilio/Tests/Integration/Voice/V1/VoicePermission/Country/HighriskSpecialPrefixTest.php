@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Preview\Permissions\VoicePermission\Country;
+namespace Twilio\Tests\Integration\Voice\V1\VoicePermission\Country;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,15 +20,15 @@ class HighriskSpecialPrefixTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->permissions->voicePermissions
-                                               ->countries("US")
-                                               ->highriskSpecialPrefixes->read();
+            $this->twilio->voice->v1->voicePermissions
+                                    ->countries("US")
+                                    ->highriskSpecialPrefixes->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/permissions/VoicePermissions/Countries/US/HighRiskSpecialPrefixes'
+            'https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes'
         ));
     }
 
@@ -46,21 +46,21 @@ class HighriskSpecialPrefixTest extends HolodeckTestCase {
                     }
                 ],
                 "meta": {
-                    "first_page_url": "https://preview.twilio.com/permissions/VoicePermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0",
+                    "first_page_url": "https://voice.twilio.com/v1/DialingPermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0",
                     "key": "content",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://preview.twilio.com/permissions/VoicePermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0"
+                    "url": "https://voice.twilio.com/v1/DialingPermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0"
                 }
             }
             '
         ));
 
-        $actual = $this->twilio->preview->permissions->voicePermissions
-                                                     ->countries("US")
-                                                     ->highriskSpecialPrefixes->read();
+        $actual = $this->twilio->voice->v1->voicePermissions
+                                          ->countries("US")
+                                          ->highriskSpecialPrefixes->read();
 
         $this->assertNotNull($actual);
     }

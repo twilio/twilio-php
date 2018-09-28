@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Permissions\VoicePermission;
+namespace Twilio\Rest\Voice\V1\VoicePermission;
 
 use Twilio\Page;
 
@@ -32,6 +32,6 @@ class BulkCountryUpdatePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions.BulkCountryUpdatePage]';
+        return '[Twilio.Voice.V1.BulkCountryUpdatePage]';
     }
 }

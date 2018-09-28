@@ -7,32 +7,32 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview;
+namespace Twilio\Rest\Voice;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\Permissions\VoicePermissionList;
+use Twilio\Rest\Voice\V1\VoicePermissionList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Permissions\VoicePermissionList voicePermissions
+ * @property \Twilio\Rest\Voice\V1\VoicePermissionList voicePermissions
  */
-class Permissions extends Version {
+class V1 extends Version {
     protected $_voicePermissions = null;
 
     /**
-     * Construct the Permissions version of Preview
+     * Construct the V1 version of Voice
      * 
      * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\Permissions Permissions version of Preview
+     * @return \Twilio\Rest\Voice\V1 V1 version of Voice
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
-        $this->version = 'permissions';
+        $this->version = 'v1';
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Permissions\VoicePermissionList 
+     * @return \Twilio\Rest\Voice\V1\VoicePermissionList 
      */
     protected function getVoicePermissions() {
         if (!$this->_voicePermissions) {
@@ -80,6 +80,6 @@ class Permissions extends Version {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Permissions]';
+        return '[Twilio.Voice.V1]';
     }
 }
