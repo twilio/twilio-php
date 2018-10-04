@@ -11,6 +11,7 @@ namespace Twilio\Rest\Video;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Video\V1\CompositionHookList;
 use Twilio\Rest\Video\V1\CompositionList;
 use Twilio\Rest\Video\V1\CompositionSettingsList;
 use Twilio\Rest\Video\V1\RecordingList;
@@ -19,20 +20,23 @@ use Twilio\Rest\Video\V1\RoomList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
+ * @property \Twilio\Rest\Video\V1\CompositionHookList compositionHooks
  * @property \Twilio\Rest\Video\V1\CompositionSettingsList compositionSettings
  * @property \Twilio\Rest\Video\V1\RecordingList recordings
  * @property \Twilio\Rest\Video\V1\RecordingSettingsList recordingSettings
+ * @property \Twilio\Rest\Video\V1\CompositionList compositions
  * @property \Twilio\Rest\Video\V1\RoomList rooms
- * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
+ * @method \Twilio\Rest\Video\V1\CompositionHookContext compositionHooks(string $sid)
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
+ * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
 class V1 extends Version {
-    protected $_compositions = null;
+    protected $_compositionHooks = null;
     protected $_compositionSettings = null;
     protected $_recordings = null;
     protected $_recordingSettings = null;
+    protected $_compositions = null;
     protected $_rooms = null;
 
     /**
@@ -47,13 +51,13 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList 
+     * @return \Twilio\Rest\Video\V1\CompositionHookList 
      */
-    protected function getCompositions() {
-        if (!$this->_compositions) {
-            $this->_compositions = new CompositionList($this);
+    protected function getCompositionHooks() {
+        if (!$this->_compositionHooks) {
+            $this->_compositionHooks = new CompositionHookList($this);
         }
-        return $this->_compositions;
+        return $this->_compositionHooks;
     }
 
     /**
@@ -84,6 +88,16 @@ class V1 extends Version {
             $this->_recordingSettings = new RecordingSettingsList($this);
         }
         return $this->_recordingSettings;
+    }
+
+    /**
+     * @return \Twilio\Rest\Video\V1\CompositionList 
+     */
+    protected function getCompositions() {
+        if (!$this->_compositions) {
+            $this->_compositions = new CompositionList($this);
+        }
+        return $this->_compositions;
     }
 
     /**

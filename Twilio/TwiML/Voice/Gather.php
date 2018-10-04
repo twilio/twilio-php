@@ -194,4 +194,14 @@ class Gather extends TwiML {
     public function setBargeIn($bargeIn) {
         return $this->setAttribute('bargeIn', $bargeIn);
     }
+
+    /**
+     * Add Debug attribute.
+     * 
+     * @param boolean $debug Allow debug for gather
+     * @return TwiML $this.
+     */
+    public function setDebug($debug) {
+        return $this->setAttribute('debug', $debug);
+    }
 }

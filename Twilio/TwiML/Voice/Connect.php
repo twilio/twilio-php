@@ -25,10 +25,11 @@ class Connect extends TwiML {
      * Add Room child.
      * 
      * @param string $name Room name
+     * @param array $attributes Optional attributes
      * @return TwiML Child element.
      */
-    public function room($name) {
-        return $this->nest(new Video\Room($name));
+    public function room($name, $attributes = array()) {
+        return $this->nest(new Room($name, $attributes));
     }
 
     /**

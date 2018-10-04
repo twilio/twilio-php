@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2018-10-04] Version 5.23.1
+----------------------------
+**Preview**
+- Renamed response headers for Challenge and Factors Signatures
+
+**Video**
+- [Composer] Add Composition Hook resources
+
+**Twiml**
+- Add `debug` to `Gather`
+- Add `participantIdentity` to `Room`
+
+
 [2018-09-28] Version 5.23.0
 ----------------------------
 **Api**
