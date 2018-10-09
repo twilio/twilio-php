@@ -47,7 +47,7 @@ class Dial extends TwiML {
     /**
      * Add Number child.
      *
-     * @param phoneNumber $phoneNumber Phone Number to dial
+     * @param string $phoneNumber Phone Number to dial
      * @param array $attributes Optional attributes
      * @return Number Child element.
      */
@@ -69,7 +69,7 @@ class Dial extends TwiML {
     /**
      * Add Sim child.
      *
-     * @param sid $simSid SIM SID
+     * @param string $simSid SIM SID
      * @return Sim Child element.
      */
     public function sim($simSid) {
@@ -79,7 +79,7 @@ class Dial extends TwiML {
     /**
      * Add Sip child.
      *
-     * @param url $sipUrl SIP URL
+     * @param string $sipUrl SIP URL
      * @param array $attributes Optional attributes
      * @return Sip Child element.
      */
@@ -90,7 +90,7 @@ class Dial extends TwiML {
     /**
      * Add Action attribute.
      *
-     * @param url $action Action URL
+     * @param string $action Action URL
      * @return static $this.
      */
     public function setAction($action) {
@@ -100,7 +100,7 @@ class Dial extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Action URL method
+     * @param string $method Action URL method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -110,7 +110,7 @@ class Dial extends TwiML {
     /**
      * Add Timeout attribute.
      *
-     * @param integer $timeout Time to wait for answer
+     * @param int $timeout Time to wait for answer
      * @return static $this.
      */
     public function setTimeout($timeout) {
@@ -120,7 +120,7 @@ class Dial extends TwiML {
     /**
      * Add HangupOnStar attribute.
      *
-     * @param boolean $hangupOnStar Hangup call on star press
+     * @param bool $hangupOnStar Hangup call on star press
      * @return static $this.
      */
     public function setHangupOnStar($hangupOnStar) {
@@ -130,7 +130,7 @@ class Dial extends TwiML {
     /**
      * Add TimeLimit attribute.
      *
-     * @param integer $timeLimit Max time length
+     * @param int $timeLimit Max time length
      * @return static $this.
      */
     public function setTimeLimit($timeLimit) {
@@ -150,7 +150,7 @@ class Dial extends TwiML {
     /**
      * Add Record attribute.
      *
-     * @param dial:Enum:Record $record Record the call
+     * @param string $record Record the call
      * @return static $this.
      */
     public function setRecord($record) {
@@ -160,7 +160,7 @@ class Dial extends TwiML {
     /**
      * Add Trim attribute.
      *
-     * @param dial:Enum:Trim $trim Trim the recording
+     * @param bool $trim Trim the recording
      * @return static $this.
      */
     public function setTrim($trim) {
@@ -170,7 +170,7 @@ class Dial extends TwiML {
     /**
      * Add RecordingStatusCallback attribute.
      *
-     * @param url $recordingStatusCallback Recording status callback URL
+     * @param string $recordingStatusCallback Recording status callback URL
      * @return static $this.
      */
     public function setRecordingStatusCallback($recordingStatusCallback) {
@@ -180,8 +180,8 @@ class Dial extends TwiML {
     /**
      * Add RecordingStatusCallbackMethod attribute.
      *
-     * @param httpMethod $recordingStatusCallbackMethod Recording status callback
-     *                                                  URL method
+     * @param string $recordingStatusCallbackMethod Recording status callback
+     *                                              URL method
      * @return static $this.
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -191,9 +191,7 @@ class Dial extends TwiML {
     /**
      * Add RecordingStatusCallbackEvent attribute.
      *
-     * @param dial:Enum:RecordingEvent $recordingStatusCallbackEvent Recording
-     *                                                               status
-     *                                                               callback events
+     * @param string $recordingStatusCallbackEvent Recording status callback events
      * @return static $this.
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
@@ -203,7 +201,7 @@ class Dial extends TwiML {
     /**
      * Add AnswerOnBridge attribute.
      *
-     * @param boolean $answerOnBridge Preserve the ringing behavior of the inbound
+     * @param bool $answerOnBridge Preserve the ringing behavior of the inbound
      *                                call until the Dialed call picks up
      * @return static $this.
      */
@@ -214,9 +212,9 @@ class Dial extends TwiML {
     /**
      * Add RingTone attribute.
      *
-     * @param dial:Enum:RingTone $ringTone Ringtone allows you to override the
-     *                                     ringback tone that Twilio will play back
-     *                                     to the caller while executing the Dial
+     * @param string $ringTone Ringtone allows you to override the
+     *                         ringback tone that Twilio will play back
+     *                         to the caller while executing the Dial
      * @return static $this.
      */
     public function setRingTone($ringTone) {

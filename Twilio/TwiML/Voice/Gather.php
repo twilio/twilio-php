@@ -45,7 +45,7 @@ class Gather extends TwiML {
     /**
      * Add Play child.
      *
-     * @param url $url Media URL
+     * @param string $url Media URL
      * @param array $attributes Optional attributes
      * @return Play Child element.
      */
@@ -56,7 +56,7 @@ class Gather extends TwiML {
     /**
      * Add Input attribute.
      *
-     * @param gather:Enum:Input $input Input type Twilio should accept
+     * @param string $input Input type Twilio should accept
      * @return static $this.
      */
     public function setInput($input) {
@@ -66,7 +66,7 @@ class Gather extends TwiML {
     /**
      * Add Action attribute.
      *
-     * @param url $action Action URL
+     * @param string $action Action URL
      * @return static $this.
      */
     public function setAction($action) {
@@ -76,7 +76,7 @@ class Gather extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Action URL method
+     * @param string $method Action URL method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -86,7 +86,7 @@ class Gather extends TwiML {
     /**
      * Add Timeout attribute.
      *
-     * @param integer $timeout Time to wait to gather input
+     * @param int $timeout Time to wait to gather input
      * @return static $this.
      */
     public function setTimeout($timeout) {
@@ -107,7 +107,7 @@ class Gather extends TwiML {
     /**
      * Add MaxSpeechTime attribute.
      *
-     * @param integer $maxSpeechTime Max allowed time for speech input
+     * @param int $maxSpeechTime Max allowed time for speech input
      * @return static $this.
      */
     public function setMaxSpeechTime($maxSpeechTime) {
@@ -117,7 +117,7 @@ class Gather extends TwiML {
     /**
      * Add ProfanityFilter attribute.
      *
-     * @param boolean $profanityFilter Profanity Filter on speech
+     * @param bool $profanityFilter Profanity Filter on speech
      * @return static $this.
      */
     public function setProfanityFilter($profanityFilter) {
@@ -137,7 +137,7 @@ class Gather extends TwiML {
     /**
      * Add NumDigits attribute.
      *
-     * @param integer $numDigits Number of digits to collect
+     * @param int $numDigits Number of digits to collect
      * @return static $this.
      */
     public function setNumDigits($numDigits) {
@@ -147,7 +147,7 @@ class Gather extends TwiML {
     /**
      * Add PartialResultCallback attribute.
      *
-     * @param url $partialResultCallback Partial result callback URL
+     * @param string $partialResultCallback Partial result callback URL
      * @return static $this.
      */
     public function setPartialResultCallback($partialResultCallback) {
@@ -157,7 +157,7 @@ class Gather extends TwiML {
     /**
      * Add PartialResultCallbackMethod attribute.
      *
-     * @param httpMethod $partialResultCallbackMethod Partial result callback URL
+     * @param string $partialResultCallbackMethod Partial result callback URL
      *                                                method
      * @return static $this.
      */
@@ -168,7 +168,7 @@ class Gather extends TwiML {
     /**
      * Add Language attribute.
      *
-     * @param gather:Enum:Language $language Language to use
+     * @param string $language Language to use
      * @return static $this.
      */
     public function setLanguage($language) {
@@ -188,7 +188,7 @@ class Gather extends TwiML {
     /**
      * Add BargeIn attribute.
      *
-     * @param boolean $bargeIn Stop playing media upon speech
+     * @param bool $bargeIn Stop playing media upon speech
      * @return static $this.
      */
     public function setBargeIn($bargeIn) {
@@ -198,7 +198,7 @@ class Gather extends TwiML {
     /**
      * Add Debug attribute.
      *
-     * @param boolean $debug Allow debug for gather
+     * @param bool $debug Allow debug for gather
      * @return TwiML $this.
      */
     public function setDebug($debug) {

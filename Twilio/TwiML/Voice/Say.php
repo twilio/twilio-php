@@ -132,7 +132,7 @@ class Say extends TwiML {
     /**
      * Add Voice attribute.
      *
-     * @param say:Enum:Voice $voice Voice to use
+     * @param string $voice Voice to use
      * @return static $this.
      */
     public function setVoice($voice) {
@@ -142,7 +142,7 @@ class Say extends TwiML {
     /**
      * Add Loop attribute.
      *
-     * @param integer $loop Times to loop message
+     * @param int $loop Times to loop message
      * @return static $this.
      */
     public function setLoop($loop) {
@@ -152,7 +152,7 @@ class Say extends TwiML {
     /**
      * Add Language attribute.
      *
-     * @param say:Enum:Language $language Message langauge
+     * @param string $language Message langauge
      * @return static $this.
      */
     public function setLanguage($language) {

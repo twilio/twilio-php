@@ -99,7 +99,7 @@ class VoiceResponse extends TwiML {
     /**
      * Add Play child.
      *
-     * @param url $url Media URL
+     * @param string $url Media URL
      * @param array $attributes Optional attributes
      * @return \Twilio\TwiML\Voice\Play Child element.
      */
@@ -131,7 +131,7 @@ class VoiceResponse extends TwiML {
     /**
      * Add Redirect child.
      *
-     * @param url $url Redirect URL
+     * @param string $url Redirect URL
      * @param array $attributes Optional attributes
      * @return \Twilio\TwiML\Voice\Redirect Child element.
      */

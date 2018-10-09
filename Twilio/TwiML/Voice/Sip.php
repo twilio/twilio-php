@@ -15,7 +15,7 @@ class Sip extends TwiML {
     /**
      * Sip constructor.
      *
-     * @param url $sipUrl SIP URL
+     * @param string $sipUrl SIP URL
      * @param array $attributes Optional attributes
      */
     public function __construct($sipUrl, $attributes = array()) {
@@ -45,7 +45,7 @@ class Sip extends TwiML {
     /**
      * Add Url attribute.
      *
-     * @param url $url Action URL
+     * @param string $url Action URL
      * @return static $this.
      */
     public function setUrl($url) {
@@ -55,7 +55,7 @@ class Sip extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Action URL method
+     * @param string $method Action URL method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -65,7 +65,7 @@ class Sip extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param sip:Enum:Event $statusCallbackEvent Status callback events
+     * @param string $statusCallbackEvent Status callback events
      * @return static $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
@@ -75,7 +75,7 @@ class Sip extends TwiML {
     /**
      * Add StatusCallback attribute.
      *
-     * @param url $statusCallback Status callback URL
+     * @param string $statusCallback Status callback URL
      * @return static $this.
      */
     public function setStatusCallback($statusCallback) {
@@ -85,7 +85,7 @@ class Sip extends TwiML {
     /**
      * Add StatusCallbackMethod attribute.
      *
-     * @param httpMethod $statusCallbackMethod Status callback URL method
+     * @param string $statusCallbackMethod Status callback URL method
      * @return static $this.
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {

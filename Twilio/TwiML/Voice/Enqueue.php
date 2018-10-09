@@ -36,7 +36,7 @@ class Enqueue extends TwiML {
     /**
      * Add Action attribute.
      *
-     * @param url $action Action URL
+     * @param string $action Action URL
      * @return static $this.
      */
     public function setAction($action) {
@@ -46,7 +46,7 @@ class Enqueue extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Action URL method
+     * @param string $method Action URL method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -56,7 +56,7 @@ class Enqueue extends TwiML {
     /**
      * Add WaitUrl attribute.
      *
-     * @param url $waitUrl Wait URL
+     * @param string $waitUrl Wait URL
      * @return static $this.
      */
     public function setWaitUrl($waitUrl) {
@@ -66,7 +66,7 @@ class Enqueue extends TwiML {
     /**
      * Add WaitUrlMethod attribute.
      *
-     * @param httpMethod $waitUrlMethod Wait URL method
+     * @param string $waitUrlMethod Wait URL method
      * @return static $this.
      */
     public function setWaitUrlMethod($waitUrlMethod) {

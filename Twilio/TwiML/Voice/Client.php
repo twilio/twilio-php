@@ -45,7 +45,7 @@ class Client extends TwiML {
     /**
      * Add Url attribute.
      *
-     * @param url $url Client URL
+     * @param string $url Client URL
      * @return static $this.
      */
     public function setUrl($url) {
@@ -55,7 +55,7 @@ class Client extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Client URL Method
+     * @param string $method Client URL Method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -65,8 +65,7 @@ class Client extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param client:Enum:Event $statusCallbackEvent Events to trigger status
-     *                                               callback
+     * @param string $statusCallbackEvent Events to trigger status callback
      * @return static $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
@@ -76,7 +75,7 @@ class Client extends TwiML {
     /**
      * Add StatusCallback attribute.
      *
-     * @param url $statusCallback Status Callback URL
+     * @param string $statusCallback Status Callback URL
      * @return static $this.
      */
     public function setStatusCallback($statusCallback) {
@@ -86,7 +85,7 @@ class Client extends TwiML {
     /**
      * Add StatusCallbackMethod attribute.
      *
-     * @param httpMethod $statusCallbackMethod Status Callback URL Method
+     * @param string $statusCallbackMethod Status Callback URL Method
      * @return static $this.
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {

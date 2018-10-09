@@ -31,7 +31,7 @@ class MessagingResponse extends TwiML {
     /**
      * Add Redirect child.
      *
-     * @param url $url Redirect URL
+     * @param string $url Redirect URL
      * @param array $attributes Optional attributes
      * @return \Twilio\TwiML\Messaging\Redirect Child element.
      */

@@ -25,7 +25,7 @@ class SsmlEmphasis extends TwiML {
     /**
      * Add Level attribute.
      *
-     * @param ssmlEmphasis:Enum:Level $level Specify the degree of emphasis
+     * @param string $level Specify the degree of emphasis
      * @return static $this.
      */
     public function setLevel($level) {

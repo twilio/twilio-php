@@ -24,7 +24,7 @@ class Receive extends TwiML {
     /**
      * Add Action attribute.
      *
-     * @param url $action Receive action URL
+     * @param string $action Receive action URL
      * @return static $this.
      */
     public function setAction($action) {
@@ -34,7 +34,7 @@ class Receive extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Receive action URL method
+     * @param string $method Receive action URL method
      * @return static $this.
      */
     public function setMethod($method) {

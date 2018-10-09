@@ -25,7 +25,7 @@ class Queue extends TwiML {
     /**
      * Add Url attribute.
      *
-     * @param url $url Action URL
+     * @param string $url Action URL
      * @return static $this.
      */
     public function setUrl($url) {
@@ -35,7 +35,7 @@ class Queue extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Action URL method
+     * @param string $method Action URL method
      * @return static $this.
      */
     public function setMethod($method) {

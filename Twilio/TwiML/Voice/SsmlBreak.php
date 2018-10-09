@@ -24,7 +24,7 @@ class SsmlBreak extends TwiML {
     /**
      * Add Strength attribute.
      *
-     * @param ssmlBreak:Enum:Strength $strength Set a pause based on strength
+     * @param string $strength Set a pause based on strength
      * @return static $this.
      */
     public function setStrength($strength) {

@@ -25,7 +25,7 @@ class SsmlPhoneme extends TwiML {
     /**
      * Add Alphabet attribute.
      *
-     * @param ssmlPhoneme:Enum:Alphabet $alphabet Specify the phonetic alphabet
+     * @param string $alphabet Specify the phonetic alphabet
      * @return static $this.
      */
     public function setAlphabet($alphabet) {

@@ -35,7 +35,7 @@ class Message extends TwiML {
     /**
      * Add Media child.
      *
-     * @param url $url Media URL
+     * @param string $url Media URL
      * @return Media Child element.
      */
     public function media($url) {
@@ -45,7 +45,7 @@ class Message extends TwiML {
     /**
      * Add To attribute.
      *
-     * @param phoneNumber $to Phone Number to send Message to
+     * @param string $to Phone Number to send Message to
      * @return static $this.
      */
     public function setTo($to) {
@@ -55,7 +55,7 @@ class Message extends TwiML {
     /**
      * Add From attribute.
      *
-     * @param phoneNumber $from Phone Number to send Message from
+     * @param string $from Phone Number to send Message from
      * @return static $this.
      */
     public function setFrom($from) {
@@ -65,7 +65,7 @@ class Message extends TwiML {
     /**
      * Add Action attribute.
      *
-     * @param url $action Action URL
+     * @param string $action Action URL
      * @return static $this.
      */
     public function setAction($action) {
@@ -75,7 +75,7 @@ class Message extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method Action URL Method
+     * @param string $method Action URL Method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -85,8 +85,8 @@ class Message extends TwiML {
     /**
      * Add StatusCallback attribute.
      *
-     * @param url $statusCallback Status callback URL. Deprecated in favor of
-     *                            action.
+     * @param string $statusCallback Status callback URL. Deprecated in favor of
+     *                               action.
      * @return static $this.
      */
     public function setStatusCallback($statusCallback) {

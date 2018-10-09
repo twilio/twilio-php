@@ -24,7 +24,7 @@ class Pause extends TwiML {
     /**
      * Add Length attribute.
      *
-     * @param integer $length Length in seconds to pause
+     * @param int $length Length in seconds to pause
      * @return static $this.
      */
     public function setLength($length) {

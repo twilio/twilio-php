@@ -15,7 +15,7 @@ class Number extends TwiML {
     /**
      * Number constructor.
      *
-     * @param phoneNumber $phoneNumber Phone Number to dial
+     * @param string $phoneNumber Phone Number to dial
      * @param array $attributes Optional attributes
      */
     public function __construct($phoneNumber, $attributes = array()) {
@@ -35,7 +35,7 @@ class Number extends TwiML {
     /**
      * Add Url attribute.
      *
-     * @param url $url TwiML URL
+     * @param string $url TwiML URL
      * @return static $this.
      */
     public function setUrl($url) {
@@ -45,7 +45,7 @@ class Number extends TwiML {
     /**
      * Add Method attribute.
      *
-     * @param httpMethod $method TwiML URL method
+     * @param string $method TwiML URL method
      * @return static $this.
      */
     public function setMethod($method) {
@@ -55,7 +55,7 @@ class Number extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param number:Enum:Event $statusCallbackEvent Events to call status callback
+     * @param string $statusCallbackEvent Events to call status callback
      * @return static $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
@@ -65,7 +65,7 @@ class Number extends TwiML {
     /**
      * Add StatusCallback attribute.
      *
-     * @param url $statusCallback Status callback URL
+     * @param string $statusCallback Status callback URL
      * @return static $this.
      */
     public function setStatusCallback($statusCallback) {
@@ -75,7 +75,7 @@ class Number extends TwiML {
     /**
      * Add StatusCallbackMethod attribute.
      *
-     * @param httpMethod $statusCallbackMethod Status callback URL method
+     * @param string $statusCallbackMethod Status callback URL method
      * @return static $this.
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
