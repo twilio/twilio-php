@@ -40,7 +40,8 @@ class QueryInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the parent Assistant.
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Preview\Understand\Assistant\QueryInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {

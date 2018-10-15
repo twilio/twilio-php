@@ -11,6 +11,7 @@ namespace Twilio\Rest\Wireless\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -93,6 +94,7 @@ class CommandList extends ListResource {
             'Sim' => $options['sim'],
             'Status' => $options['status'],
             'Direction' => $options['direction'],
+            'Transport' => $options['transport'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -142,6 +144,7 @@ class CommandList extends ListResource {
             'CallbackUrl' => $options['callbackUrl'],
             'CommandMode' => $options['commandMode'],
             'IncludeSid' => $options['includeSid'],
+            'DeliveryReceiptRequested' => Serialize::booleanToString($options['deliveryReceiptRequested']),
         ));
 
         $payload = $this->version->create(

@@ -15,11 +15,31 @@ class Client extends TwiML {
     /**
      * Client constructor.
      * 
-     * @param string $name Client name
+     * @param string $identity Client identity
      * @param array $attributes Optional attributes
      */
-    public function __construct($name, $attributes = array()) {
-        parent::__construct('Client', $name, $attributes);
+    public function __construct($identity = null, $attributes = array()) {
+        parent::__construct('Client', $identity, $attributes);
+    }
+
+    /**
+     * Add Identity child.
+     * 
+     * @param string $clientIdentity Identity of the client to dial
+     * @return TwiML Child element.
+     */
+    public function identity($clientIdentity) {
+        return $this->nest(new Identity($clientIdentity));
+    }
+
+    /**
+     * Add Parameter child.
+     * 
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function parameter($attributes = array()) {
+        return $this->nest(new Parameter($attributes));
     }
 
     /**

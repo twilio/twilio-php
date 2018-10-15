@@ -33,6 +33,16 @@ class Connect extends TwiML {
     }
 
     /**
+     * Add Autopilot child.
+     * 
+     * @param string $name Autopilot assistant sid or unique name
+     * @return TwiML Child element.
+     */
+    public function autopilot($name) {
+        return $this->nest(new Autopilot($name));
+    }
+
+    /**
      * Add Action attribute.
      * 
      * @param url $action Action URL

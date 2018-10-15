@@ -21,6 +21,8 @@ use Twilio\Version;
  * @property string simSid
  * @property string command
  * @property string commandMode
+ * @property string transport
+ * @property boolean deliveryReceiptRequested
  * @property string status
  * @property string direction
  * @property \DateTime dateCreated
@@ -46,6 +48,8 @@ class CommandInstance extends InstanceResource {
             'simSid' => Values::array_get($payload, 'sim_sid'),
             'command' => Values::array_get($payload, 'command'),
             'commandMode' => Values::array_get($payload, 'command_mode'),
+            'transport' => Values::array_get($payload, 'transport'),
+            'deliveryReceiptRequested' => Values::array_get($payload, 'delivery_receipt_requested'),
             'status' => Values::array_get($payload, 'status'),
             'direction' => Values::array_get($payload, 'direction'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

@@ -16,8 +16,8 @@ abstract class ChannelOptions {
     /**
      * @param string $friendlyName A human-readable name for the Channel.
      * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @param string $type The visibility of the channel - public or private.
      * @param \DateTime $dateCreated The optional ISO8601 time specifying the
      *                               datetime the Channel should be set as being
@@ -44,8 +44,8 @@ abstract class ChannelOptions {
     /**
      * @param string $friendlyName A human-readable name for the Channel.
      * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @param \DateTime $dateCreated The optional ISO8601 time specifying the
      *                               datetime the Channel should be set as being
      *                               created.
@@ -65,8 +65,8 @@ class CreateChannelOptions extends Options {
     /**
      * @param string $friendlyName A human-readable name for the Channel.
      * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @param string $type The visibility of the channel - public or private.
      * @param \DateTime $dateCreated The optional ISO8601 time specifying the
      *                               datetime the Channel should be set as being
@@ -110,10 +110,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * An optional metadata field you can use to store any data you wish. No processing or validation is done on this field.
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
      * 
-     * @param string $attributes An optional metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -225,8 +225,8 @@ class UpdateChannelOptions extends Options {
     /**
      * @param string $friendlyName A human-readable name for the Channel.
      * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @param \DateTime $dateCreated The optional ISO8601 time specifying the
      *                               datetime the Channel should be set as being
      *                               created.
@@ -268,10 +268,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * An optional metadata field you can use to store any data you wish. No processing or validation is done on this field.
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
      * 
-     * @param string $attributes An optional metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {

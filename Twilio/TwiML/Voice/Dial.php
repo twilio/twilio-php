@@ -25,12 +25,12 @@ class Dial extends TwiML {
     /**
      * Add Client child.
      * 
-     * @param string $name Client name
+     * @param string $identity Client identity
      * @param array $attributes Optional attributes
      * @return TwiML Child element.
      */
-    public function client($name, $attributes = array()) {
-        return $this->nest(new Client($name, $attributes));
+    public function client($identity = null, $attributes = array()) {
+        return $this->nest(new Client($identity, $attributes));
     }
 
     /**

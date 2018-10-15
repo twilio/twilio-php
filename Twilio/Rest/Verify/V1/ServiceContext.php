@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Verify\V1\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V1\Service\VerificationList;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -62,6 +63,16 @@ class ServiceContext extends InstanceContext {
     }
 
     /**
+     * Deletes the ServiceInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
      * Update the ServiceInstance
      * 
      * @param array|Options $options Optional Arguments
@@ -74,6 +85,7 @@ class ServiceContext extends InstanceContext {
         $data = Values::of(array(
             'FriendlyName' => $options['friendlyName'],
             'CodeLength' => $options['codeLength'],
+            'LookupEnabled' => Serialize::booleanToString($options['lookupEnabled']),
         ));
 
         $payload = $this->version->update(

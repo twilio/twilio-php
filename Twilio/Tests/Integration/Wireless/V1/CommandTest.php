@@ -30,7 +30,7 @@ class CommandTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchCommandSmsResponse() {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -40,10 +40,38 @@ class CommandTest extends HolodeckTestCase {
                 "command_mode": "text",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
+                "delivery_receipt_requested": true,
                 "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "direction": "from_sim",
                 "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "queued",
+                "transport": "sms",
+                "url": "https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->wireless->v1->commands("DCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchCommandIpResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "command": "command",
+                "command_mode": "text",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "delivery_receipt_requested": false,
+                "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "direction": "to_sim",
+                "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "queued",
+                "transport": "ip",
                 "url": "https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -104,10 +132,12 @@ class CommandTest extends HolodeckTestCase {
                         "command_mode": "text",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
+                        "delivery_receipt_requested": true,
                         "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "direction": "from_sim",
                         "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "status": "queued",
+                        "transport": "sms",
                         "url": "https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
@@ -129,6 +159,45 @@ class CommandTest extends HolodeckTestCase {
         $this->assertGreaterThan(0, count($actual));
     }
 
+    public function testReadIpResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "commands": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "command": "command",
+                        "command_mode": "not_confirmable",
+                        "date_created": "2015-07-30T20:00:00Z",
+                        "date_updated": "2015-07-30T20:00:00Z",
+                        "delivery_receipt_requested": true,
+                        "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "direction": "to_sim",
+                        "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "status": "queued",
+                        "transport": "ip",
+                        "url": "https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    }
+                ],
+                "meta": {
+                    "first_page_url": "https://wireless.twilio.com/v1/Commands?PageSize=50&Page=0",
+                    "key": "commands",
+                    "next_page_url": null,
+                    "page": 0,
+                    "page_size": 50,
+                    "previous_page_url": null,
+                    "url": "https://wireless.twilio.com/v1/Commands?PageSize=50&Page=0"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->wireless->v1->commands->read();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testCreateRequest() {
         $this->holodeck->mock(new Response(500, ''));
 
@@ -147,7 +216,7 @@ class CommandTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateCommandSmsResponse() {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -157,10 +226,38 @@ class CommandTest extends HolodeckTestCase {
                 "command_mode": "text",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
+                "delivery_receipt_requested": true,
                 "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "direction": "from_sim",
                 "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "queued",
+                "transport": "sms",
+                "url": "https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->wireless->v1->commands->create("command");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testCreateCommandIpResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "command": "command",
+                "command_mode": "binary",
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "delivery_receipt_requested": true,
+                "direction": "to_sim",
+                "sid": "DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sim_sid": "DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "status": "queued",
+                "transport": "ip",
                 "url": "https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '

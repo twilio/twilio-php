@@ -20,6 +20,8 @@ use Twilio\VersionInfo;
  * 
  * @property \Twilio\Rest\Accounts accounts
  * @property \Twilio\Rest\Api api
+ * @property \Twilio\Rest\Authy authy
+ * @property \Twilio\Rest\Autopilot autopilot
  * @property \Twilio\Rest\Chat chat
  * @property \Twilio\Rest\Fax fax
  * @property \Twilio\Rest\IpMessaging ipMessaging
@@ -93,6 +95,8 @@ class Client {
     protected $_account;
     protected $_accounts = null;
     protected $_api = null;
+    protected $_authy = null;
+    protected $_autopilot = null;
     protected $_chat = null;
     protected $_fax = null;
     protected $_ipMessaging = null;
@@ -593,6 +597,30 @@ class Client {
      */
     protected function getValidationRequests() {
         return $this->api->v2010->account->validationRequests;
+    }
+
+    /**
+     * Access the Authy Twilio Domain
+     * 
+     * @return \Twilio\Rest\Authy Authy Twilio Domain
+     */
+    protected function getAuthy() {
+        if (!$this->_authy) {
+            $this->_authy = new Authy($this);
+        }
+        return $this->_authy;
+    }
+
+    /**
+     * Access the Autopilot Twilio Domain
+     * 
+     * @return \Twilio\Rest\Autopilot Autopilot Twilio Domain
+     */
+    protected function getAutopilot() {
+        if (!$this->_autopilot) {
+            $this->_autopilot = new Autopilot($this);
+        }
+        return $this->_autopilot;
     }
 
     /**

@@ -82,7 +82,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The URL which Twilio will make its GET or POST request to for the recording events specified in parameter RecordingStatusCallbackEvent.
+     * The URL which Twilio will make its GET or POST request to for the recording events specified in parameter RecordingStatusCallbackEvent. See [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback) for more details.
      * 
      * @param string $recordingStatusCallback The callback URL for recording actions
      * @return $this Fluent Builder

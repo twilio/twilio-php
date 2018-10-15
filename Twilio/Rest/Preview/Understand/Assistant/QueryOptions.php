@@ -29,24 +29,25 @@ abstract class QueryOptions {
     }
 
     /**
-     * @param string $intents Constraints the query to a set of intents. Useful
-     *                        when you need to constrain the paths the user can
-     *                        take. Intents should be comma separated
-     *                        intent-unique-name-1, intent-unique-name-2
+     * @param string $tasks Constraints the query to a set of tasks. Useful when
+     *                      you need to constrain the paths the user can take.
+     *                      Tasks should be comma separated task-unique-name-1,
+     *                      task-unique-name-2
      * @param string $modelBuild The Model Build Sid or unique name of the Model
      *                           Build to be queried.
-     * @param string $field Constraints the query to a given Field with an intent.
+     * @param string $field Constraints the query to a given Field with an task.
      *                      Useful when you know the Field you are expecting. It
      *                      accepts one field in the format
-     *                      intent-unique-name-1:field-unique-name
+     *                      task-unique-name-1:field-unique-name
      * @return CreateQueryOptions Options builder
      */
-    public static function create($intents = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
-        return new CreateQueryOptions($intents, $modelBuild, $field);
+    public static function create($tasks = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
+        return new CreateQueryOptions($tasks, $modelBuild, $field);
     }
 
     /**
-     * @param string $sampleSid The sample_sid
+     * @param string $sampleSid An optional reference to the Sample created from
+     *                          this query.
      * @param string $status A string that described the query status. The values
      *                       can be: pending_review, reviewed, discarded
      * @return UpdateQueryOptions Options builder
@@ -123,34 +124,34 @@ class ReadQueryOptions extends Options {
 
 class CreateQueryOptions extends Options {
     /**
-     * @param string $intents Constraints the query to a set of intents. Useful
-     *                        when you need to constrain the paths the user can
-     *                        take. Intents should be comma separated
-     *                        intent-unique-name-1, intent-unique-name-2
+     * @param string $tasks Constraints the query to a set of tasks. Useful when
+     *                      you need to constrain the paths the user can take.
+     *                      Tasks should be comma separated task-unique-name-1,
+     *                      task-unique-name-2
      * @param string $modelBuild The Model Build Sid or unique name of the Model
      *                           Build to be queried.
-     * @param string $field Constraints the query to a given Field with an intent.
+     * @param string $field Constraints the query to a given Field with an task.
      *                      Useful when you know the Field you are expecting. It
      *                      accepts one field in the format
-     *                      intent-unique-name-1:field-unique-name
+     *                      task-unique-name-1:field-unique-name
      */
-    public function __construct($intents = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
-        $this->options['intents'] = $intents;
+    public function __construct($tasks = Values::NONE, $modelBuild = Values::NONE, $field = Values::NONE) {
+        $this->options['tasks'] = $tasks;
         $this->options['modelBuild'] = $modelBuild;
         $this->options['field'] = $field;
     }
 
     /**
-     * Constraints the query to a set of intents. Useful when you need to constrain the paths the user can take. Intents should be comma separated *intent-unique-name-1*, *intent-unique-name-2*
+     * Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*
      * 
-     * @param string $intents Constraints the query to a set of intents. Useful
-     *                        when you need to constrain the paths the user can
-     *                        take. Intents should be comma separated
-     *                        intent-unique-name-1, intent-unique-name-2
+     * @param string $tasks Constraints the query to a set of tasks. Useful when
+     *                      you need to constrain the paths the user can take.
+     *                      Tasks should be comma separated task-unique-name-1,
+     *                      task-unique-name-2
      * @return $this Fluent Builder
      */
-    public function setIntents($intents) {
-        $this->options['intents'] = $intents;
+    public function setTasks($tasks) {
+        $this->options['tasks'] = $tasks;
         return $this;
     }
 
@@ -167,12 +168,12 @@ class CreateQueryOptions extends Options {
     }
 
     /**
-     * Constraints the query to a given Field with an intent. Useful when you know the Field you are expecting. It accepts one field in the format *intent-unique-name-1*:*field-unique-name*
+     * Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name*
      * 
-     * @param string $field Constraints the query to a given Field with an intent.
+     * @param string $field Constraints the query to a given Field with an task.
      *                      Useful when you know the Field you are expecting. It
      *                      accepts one field in the format
-     *                      intent-unique-name-1:field-unique-name
+     *                      task-unique-name-1:field-unique-name
      * @return $this Fluent Builder
      */
     public function setField($field) {
@@ -198,7 +199,8 @@ class CreateQueryOptions extends Options {
 
 class UpdateQueryOptions extends Options {
     /**
-     * @param string $sampleSid The sample_sid
+     * @param string $sampleSid An optional reference to the Sample created from
+     *                          this query.
      * @param string $status A string that described the query status. The values
      *                       can be: pending_review, reviewed, discarded
      */
@@ -208,9 +210,10 @@ class UpdateQueryOptions extends Options {
     }
 
     /**
-     * The sample_sid
+     * An optional reference to the Sample created from this query.
      * 
-     * @param string $sampleSid The sample_sid
+     * @param string $sampleSid An optional reference to the Sample created from
+     *                          this query.
      * @return $this Fluent Builder
      */
     public function setSampleSid($sampleSid) {

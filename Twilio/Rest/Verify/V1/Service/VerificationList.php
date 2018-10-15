@@ -50,6 +50,7 @@ class VerificationList extends ListResource {
             'To' => $to,
             'Channel' => $channel,
             'CustomMessage' => $options['customMessage'],
+            'SendDigits' => $options['sendDigits'],
         ));
 
         $payload = $this->version->create(

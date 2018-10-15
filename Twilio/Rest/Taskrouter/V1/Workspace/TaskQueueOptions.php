@@ -59,10 +59,14 @@ abstract class TaskQueueOptions {
      *                                    while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
+     * @param string $reservationActivitySid ActivitySID to assign workers once a
+     *                                       task is reserved for them
+     * @param string $assignmentActivitySid ActivitySID to assign workers once a
+     *                                      task is assigned for them
      * @return CreateTaskQueueOptions Options builder
      */
-    public static function create($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
-        return new CreateTaskQueueOptions($targetWorkers, $maxReservedWorkers, $taskOrder);
+    public static function create($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE) {
+        return new CreateTaskQueueOptions($targetWorkers, $maxReservedWorkers, $taskOrder, $reservationActivitySid, $assignmentActivitySid);
     }
 }
 
@@ -265,11 +269,17 @@ class CreateTaskQueueOptions extends Options {
      *                                    while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
+     * @param string $reservationActivitySid ActivitySID to assign workers once a
+     *                                       task is reserved for them
+     * @param string $assignmentActivitySid ActivitySID to assign workers once a
+     *                                      task is assigned for them
      */
-    public function __construct($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE) {
+    public function __construct($targetWorkers = Values::NONE, $maxReservedWorkers = Values::NONE, $taskOrder = Values::NONE, $reservationActivitySid = Values::NONE, $assignmentActivitySid = Values::NONE) {
         $this->options['targetWorkers'] = $targetWorkers;
         $this->options['maxReservedWorkers'] = $maxReservedWorkers;
         $this->options['taskOrder'] = $taskOrder;
+        $this->options['reservationActivitySid'] = $reservationActivitySid;
+        $this->options['assignmentActivitySid'] = $assignmentActivitySid;
     }
 
     /**
@@ -307,6 +317,30 @@ class CreateTaskQueueOptions extends Options {
      */
     public function setTaskOrder($taskOrder) {
         $this->options['taskOrder'] = $taskOrder;
+        return $this;
+    }
+
+    /**
+     * ActivitySID to assign workers once a task is reserved for them
+     * 
+     * @param string $reservationActivitySid ActivitySID to assign workers once a
+     *                                       task is reserved for them
+     * @return $this Fluent Builder
+     */
+    public function setReservationActivitySid($reservationActivitySid) {
+        $this->options['reservationActivitySid'] = $reservationActivitySid;
+        return $this;
+    }
+
+    /**
+     * ActivitySID to assign workers once a task is assigned for them
+     * 
+     * @param string $assignmentActivitySid ActivitySID to assign workers once a
+     *                                      task is assigned for them
+     * @return $this Fluent Builder
+     */
+    public function setAssignmentActivitySid($assignmentActivitySid) {
+        $this->options['assignmentActivitySid'] = $assignmentActivitySid;
         return $this;
     }
 

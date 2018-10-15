@@ -144,7 +144,7 @@ class QueryList extends ListResource {
         $data = Values::of(array(
             'Language' => $language,
             'Query' => $query,
-            'Intents' => $options['intents'],
+            'Tasks' => $options['tasks'],
             'ModelBuild' => $options['modelBuild'],
             'Field' => $options['field'],
         ));
@@ -162,7 +162,8 @@ class QueryList extends ListResource {
     /**
      * Constructs a QueryContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Preview\Understand\Assistant\QueryContext 
      */
     public function getContext($sid) {

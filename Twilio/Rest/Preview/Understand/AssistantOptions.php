@@ -27,18 +27,21 @@ abstract class AssistantOptions {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $callbackUrl The callback_url
-     * @param string $callbackEvents The callback_events
+     * @param string $callbackUrl A user-provided URL to send event callbacks to.
+     * @param string $callbackEvents Space-separated list of callback events that
+     *                               will trigger callbacks.
      * @param array $fallbackActions The JSON actions to be executed when the
      *                               user's input is not recognized as matching any
-     *                               Intent.
+     *                               Task.
      * @param array $initiationActions The JSON actions to be executed on inbound
      *                                 phone calls when the Assistant has to say
      *                                 something first.
+     * @param array $styleSheet The JSON object that holds the style sheet for the
+     *                          assistant
      * @return CreateAssistantOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
-        return new CreateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions);
+    public static function create($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE, $styleSheet = Values::NONE) {
+        return new CreateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions, $styleSheet);
     }
 
     /**
@@ -52,18 +55,21 @@ abstract class AssistantOptions {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $callbackUrl The callback_url
-     * @param string $callbackEvents The callback_events
+     * @param string $callbackUrl A user-provided URL to send event callbacks to.
+     * @param string $callbackEvents Space-separated list of callback events that
+     *                               will trigger callbacks.
      * @param array $fallbackActions The JSON actions to be executed when the
      *                               user's input is not recognized as matching any
-     *                               Intent.
+     *                               Task.
      * @param array $initiationActions The JSON actions to be executed on inbound
      *                                 phone calls when the Assistant has to say
      *                                 something first.
+     * @param array $styleSheet The JSON object that holds the style sheet for the
+     *                          assistant
      * @return UpdateAssistantOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
-        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions);
+    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE, $styleSheet = Values::NONE) {
+        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $fallbackActions, $initiationActions, $styleSheet);
     }
 }
 
@@ -79,16 +85,19 @@ class CreateAssistantOptions extends Options {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $callbackUrl The callback_url
-     * @param string $callbackEvents The callback_events
+     * @param string $callbackUrl A user-provided URL to send event callbacks to.
+     * @param string $callbackEvents Space-separated list of callback events that
+     *                               will trigger callbacks.
      * @param array $fallbackActions The JSON actions to be executed when the
      *                               user's input is not recognized as matching any
-     *                               Intent.
+     *                               Task.
      * @param array $initiationActions The JSON actions to be executed on inbound
      *                                 phone calls when the Assistant has to say
      *                                 something first.
+     * @param array $styleSheet The JSON object that holds the style sheet for the
+     *                          assistant
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE, $styleSheet = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
@@ -96,6 +105,7 @@ class CreateAssistantOptions extends Options {
         $this->options['callbackEvents'] = $callbackEvents;
         $this->options['fallbackActions'] = $fallbackActions;
         $this->options['initiationActions'] = $initiationActions;
+        $this->options['styleSheet'] = $styleSheet;
     }
 
     /**
@@ -139,9 +149,9 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The callback_url
+     * A user-provided URL to send event callbacks to.
      * 
-     * @param string $callbackUrl The callback_url
+     * @param string $callbackUrl A user-provided URL to send event callbacks to.
      * @return $this Fluent Builder
      */
     public function setCallbackUrl($callbackUrl) {
@@ -150,9 +160,10 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The callback_events
+     * Space-separated list of callback events that will trigger callbacks.
      * 
-     * @param string $callbackEvents The callback_events
+     * @param string $callbackEvents Space-separated list of callback events that
+     *                               will trigger callbacks.
      * @return $this Fluent Builder
      */
     public function setCallbackEvents($callbackEvents) {
@@ -161,11 +172,11 @@ class CreateAssistantOptions extends Options {
     }
 
     /**
-     * The JSON actions to be executed when the user's input is not recognized as matching any Intent.
+     * The JSON actions to be executed when the user's input is not recognized as matching any Task.
      * 
      * @param array $fallbackActions The JSON actions to be executed when the
      *                               user's input is not recognized as matching any
-     *                               Intent.
+     *                               Task.
      * @return $this Fluent Builder
      */
     public function setFallbackActions($fallbackActions) {
@@ -183,6 +194,18 @@ class CreateAssistantOptions extends Options {
      */
     public function setInitiationActions($initiationActions) {
         $this->options['initiationActions'] = $initiationActions;
+        return $this;
+    }
+
+    /**
+     * The JSON object that holds the style sheet for the assistant
+     * 
+     * @param array $styleSheet The JSON object that holds the style sheet for the
+     *                          assistant
+     * @return $this Fluent Builder
+     */
+    public function setStyleSheet($styleSheet) {
+        $this->options['styleSheet'] = $styleSheet;
         return $this;
     }
 
@@ -214,16 +237,19 @@ class UpdateAssistantOptions extends Options {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param string $callbackUrl The callback_url
-     * @param string $callbackEvents The callback_events
+     * @param string $callbackUrl A user-provided URL to send event callbacks to.
+     * @param string $callbackEvents Space-separated list of callback events that
+     *                               will trigger callbacks.
      * @param array $fallbackActions The JSON actions to be executed when the
      *                               user's input is not recognized as matching any
-     *                               Intent.
+     *                               Task.
      * @param array $initiationActions The JSON actions to be executed on inbound
      *                                 phone calls when the Assistant has to say
      *                                 something first.
+     * @param array $styleSheet The JSON object that holds the style sheet for the
+     *                          assistant
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $fallbackActions = Values::NONE, $initiationActions = Values::NONE, $styleSheet = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
@@ -231,6 +257,7 @@ class UpdateAssistantOptions extends Options {
         $this->options['callbackEvents'] = $callbackEvents;
         $this->options['fallbackActions'] = $fallbackActions;
         $this->options['initiationActions'] = $initiationActions;
+        $this->options['styleSheet'] = $styleSheet;
     }
 
     /**
@@ -274,9 +301,9 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The callback_url
+     * A user-provided URL to send event callbacks to.
      * 
-     * @param string $callbackUrl The callback_url
+     * @param string $callbackUrl A user-provided URL to send event callbacks to.
      * @return $this Fluent Builder
      */
     public function setCallbackUrl($callbackUrl) {
@@ -285,9 +312,10 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The callback_events
+     * Space-separated list of callback events that will trigger callbacks.
      * 
-     * @param string $callbackEvents The callback_events
+     * @param string $callbackEvents Space-separated list of callback events that
+     *                               will trigger callbacks.
      * @return $this Fluent Builder
      */
     public function setCallbackEvents($callbackEvents) {
@@ -296,11 +324,11 @@ class UpdateAssistantOptions extends Options {
     }
 
     /**
-     * The JSON actions to be executed when the user's input is not recognized as matching any Intent.
+     * The JSON actions to be executed when the user's input is not recognized as matching any Task.
      * 
      * @param array $fallbackActions The JSON actions to be executed when the
      *                               user's input is not recognized as matching any
-     *                               Intent.
+     *                               Task.
      * @return $this Fluent Builder
      */
     public function setFallbackActions($fallbackActions) {
@@ -318,6 +346,18 @@ class UpdateAssistantOptions extends Options {
      */
     public function setInitiationActions($initiationActions) {
         $this->options['initiationActions'] = $initiationActions;
+        return $this;
+    }
+
+    /**
+     * The JSON object that holds the style sheet for the assistant
+     * 
+     * @param array $styleSheet The JSON object that holds the style sheet for the
+     *                          assistant
+     * @return $this Fluent Builder
+     */
+    public function setStyleSheet($styleSheet) {
+        $this->options['styleSheet'] = $styleSheet;
         return $this;
     }
 

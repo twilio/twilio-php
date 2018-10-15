@@ -218,15 +218,11 @@ class TaskQueueTest extends HolodeckTestCase {
 
         try {
             $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->taskQueues->create("friendlyName", "WAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                         ->taskQueues->create("friendlyName");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'FriendlyName' => "friendlyName",
-            'ReservationActivitySid' => "WAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            'AssignmentActivitySid' => "WAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        );
+        $values = array('FriendlyName' => "friendlyName", );
 
         $this->assertRequest(new Request(
             'post',
@@ -269,7 +265,7 @@ class TaskQueueTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->taskQueues->create("friendlyName", "WAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                                               ->taskQueues->create("friendlyName");
 
         $this->assertNotNull($actual);
     }

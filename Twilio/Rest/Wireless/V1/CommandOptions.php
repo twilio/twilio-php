@@ -17,10 +17,11 @@ abstract class CommandOptions {
      * @param string $sim Only return Commands to or from this SIM.
      * @param string $status Only return Commands with this status value.
      * @param string $direction Only return Commands with this direction value.
+     * @param string $transport The transport
      * @return ReadCommandOptions Options builder
      */
-    public static function read($sim = Values::NONE, $status = Values::NONE, $direction = Values::NONE) {
-        return new ReadCommandOptions($sim, $status, $direction);
+    public static function read($sim = Values::NONE, $status = Values::NONE, $direction = Values::NONE, $transport = Values::NONE) {
+        return new ReadCommandOptions($sim, $status, $direction, $transport);
     }
 
     /**
@@ -36,10 +37,11 @@ abstract class CommandOptions {
      *                           Command in the message body, which could be used
      *                           to ensure that the device does not process the
      *                           same Command more than once.
+     * @param boolean $deliveryReceiptRequested The delivery_receipt_requested
      * @return CreateCommandOptions Options builder
      */
-    public static function create($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
-        return new CreateCommandOptions($sim, $callbackMethod, $callbackUrl, $commandMode, $includeSid);
+    public static function create($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE, $deliveryReceiptRequested = Values::NONE) {
+        return new CreateCommandOptions($sim, $callbackMethod, $callbackUrl, $commandMode, $includeSid, $deliveryReceiptRequested);
     }
 }
 
@@ -48,11 +50,13 @@ class ReadCommandOptions extends Options {
      * @param string $sim Only return Commands to or from this SIM.
      * @param string $status Only return Commands with this status value.
      * @param string $direction Only return Commands with this direction value.
+     * @param string $transport The transport
      */
-    public function __construct($sim = Values::NONE, $status = Values::NONE, $direction = Values::NONE) {
+    public function __construct($sim = Values::NONE, $status = Values::NONE, $direction = Values::NONE, $transport = Values::NONE) {
         $this->options['sim'] = $sim;
         $this->options['status'] = $status;
         $this->options['direction'] = $direction;
+        $this->options['transport'] = $transport;
     }
 
     /**
@@ -89,6 +93,17 @@ class ReadCommandOptions extends Options {
     }
 
     /**
+     * The transport
+     * 
+     * @param string $transport The transport
+     * @return $this Fluent Builder
+     */
+    public function setTransport($transport) {
+        $this->options['transport'] = $transport;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -118,13 +133,15 @@ class CreateCommandOptions extends Options {
      *                           Command in the message body, which could be used
      *                           to ensure that the device does not process the
      *                           same Command more than once.
+     * @param boolean $deliveryReceiptRequested The delivery_receipt_requested
      */
-    public function __construct($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE) {
+    public function __construct($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE, $deliveryReceiptRequested = Values::NONE) {
         $this->options['sim'] = $sim;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['commandMode'] = $commandMode;
         $this->options['includeSid'] = $includeSid;
+        $this->options['deliveryReceiptRequested'] = $deliveryReceiptRequested;
     }
 
     /**
@@ -186,6 +203,17 @@ class CreateCommandOptions extends Options {
      */
     public function setIncludeSid($includeSid) {
         $this->options['includeSid'] = $includeSid;
+        return $this;
+    }
+
+    /**
+     * The delivery_receipt_requested
+     * 
+     * @param boolean $deliveryReceiptRequested The delivery_receipt_requested
+     * @return $this Fluent Builder
+     */
+    public function setDeliveryReceiptRequested($deliveryReceiptRequested) {
+        $this->options['deliveryReceiptRequested'] = $deliveryReceiptRequested;
         return $this;
     }
 

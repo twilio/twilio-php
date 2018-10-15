@@ -135,24 +135,20 @@ class TaskQueueList extends ListResource {
      * Create a new TaskQueueInstance
      * 
      * @param string $friendlyName Human readable description of this TaskQueue
-     * @param string $reservationActivitySid ActivitySID to assign workers once a
-     *                                       task is reserved for them
-     * @param string $assignmentActivitySid ActivitySID to assign workers once a
-     *                                      task is assigned for them
      * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Newly created TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $reservationActivitySid, $assignmentActivitySid, $options = array()) {
+    public function create($friendlyName, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
             'FriendlyName' => $friendlyName,
-            'ReservationActivitySid' => $reservationActivitySid,
-            'AssignmentActivitySid' => $assignmentActivitySid,
             'TargetWorkers' => $options['targetWorkers'],
             'MaxReservedWorkers' => $options['maxReservedWorkers'],
             'TaskOrder' => $options['taskOrder'],
+            'ReservationActivitySid' => $options['reservationActivitySid'],
+            'AssignmentActivitySid' => $options['assignmentActivitySid'],
         ));
 
         $payload = $this->version->create(

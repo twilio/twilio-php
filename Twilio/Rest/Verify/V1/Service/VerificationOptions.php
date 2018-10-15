@@ -18,19 +18,22 @@ use Twilio\Values;
 abstract class VerificationOptions {
     /**
      * @param string $customMessage A custom message for this verification
+     * @param string $sendDigits Digits to send when a phone call is started
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE) {
-        return new CreateVerificationOptions($customMessage);
+    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE) {
+        return new CreateVerificationOptions($customMessage, $sendDigits);
     }
 }
 
 class CreateVerificationOptions extends Options {
     /**
      * @param string $customMessage A custom message for this verification
+     * @param string $sendDigits Digits to send when a phone call is started
      */
-    public function __construct($customMessage = Values::NONE) {
+    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
+        $this->options['sendDigits'] = $sendDigits;
     }
 
     /**
@@ -41,6 +44,17 @@ class CreateVerificationOptions extends Options {
      */
     public function setCustomMessage($customMessage) {
         $this->options['customMessage'] = $customMessage;
+        return $this;
+    }
+
+    /**
+     * Digits to send when a phone call is started, same parameters as in Programmable Voice are supported
+     * 
+     * @param string $sendDigits Digits to send when a phone call is started
+     * @return $this Fluent Builder
+     */
+    public function setSendDigits($sendDigits) {
+        $this->options['sendDigits'] = $sendDigits;
         return $this;
     }
 

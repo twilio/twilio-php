@@ -34,19 +34,21 @@ use Twilio\Version;
  */
 class AssistantInstance extends InstanceResource {
     protected $_fieldTypes = null;
-    protected $_intents = null;
+    protected $_tasks = null;
     protected $_modelBuilds = null;
     protected $_queries = null;
     protected $_assistantFallbackActions = null;
     protected $_assistantInitiationActions = null;
     protected $_dialogues = null;
+    protected $_styleSheet = null;
 
     /**
      * Initialize the AssistantInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Preview\Understand\AssistantInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -127,12 +129,12 @@ class AssistantInstance extends InstanceResource {
     }
 
     /**
-     * Access the intents
+     * Access the tasks
      * 
-     * @return \Twilio\Rest\Preview\Understand\Assistant\IntentList 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\TaskList 
      */
-    protected function getIntents() {
-        return $this->proxy()->intents;
+    protected function getTasks() {
+        return $this->proxy()->tasks;
     }
 
     /**
@@ -178,6 +180,15 @@ class AssistantInstance extends InstanceResource {
      */
     protected function getDialogues() {
         return $this->proxy()->dialogues;
+    }
+
+    /**
+     * Access the styleSheet
+     * 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetList 
+     */
+    protected function getStyleSheet() {
+        return $this->proxy()->styleSheet;
     }
 
     /**

@@ -22,8 +22,9 @@ class QueryContext extends InstanceContext {
      * Initialize the QueryContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $sid The sid
+     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Preview\Understand\Assistant\QueryContext 
      */
     public function __construct(Version $version, $assistantSid, $sid) {

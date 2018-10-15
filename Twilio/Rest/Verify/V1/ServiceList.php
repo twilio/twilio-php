@@ -11,6 +11,7 @@ namespace Twilio\Rest\Verify\V1;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -44,7 +45,11 @@ class ServiceList extends ListResource {
     public function create($friendlyName, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $friendlyName, 'CodeLength' => $options['codeLength'], ));
+        $data = Values::of(array(
+            'FriendlyName' => $friendlyName,
+            'CodeLength' => $options['codeLength'],
+            'LookupEnabled' => Serialize::booleanToString($options['lookupEnabled']),
+        ));
 
         $payload = $this->version->create(
             'POST',

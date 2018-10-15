@@ -23,6 +23,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string friendlyName
  * @property integer codeLength
+ * @property boolean lookupEnabled
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -49,6 +50,7 @@ class ServiceInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'codeLength' => Values::array_get($payload, 'code_length'),
+            'lookupEnabled' => Values::array_get($payload, 'lookup_enabled'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
@@ -81,6 +83,16 @@ class ServiceInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Deletes the ServiceInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**

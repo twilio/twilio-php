@@ -18,28 +18,35 @@ use Twilio\Values;
 abstract class ServiceOptions {
     /**
      * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
+     *                               with each verification started
      * @return CreateServiceOptions Options builder
      */
-    public static function create($codeLength = Values::NONE) {
-        return new CreateServiceOptions($codeLength);
+    public static function create($codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
+        return new CreateServiceOptions($codeLength, $lookupEnabled);
     }
 
     /**
      * @param string $friendlyName Friendly name of the service
      * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
+     *                               with each verification started
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $codeLength);
+    public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled);
     }
 }
 
 class CreateServiceOptions extends Options {
     /**
      * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
+     *                               with each verification started
      */
-    public function __construct($codeLength = Values::NONE) {
+    public function __construct($codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
+        $this->options['lookupEnabled'] = $lookupEnabled;
     }
 
     /**
@@ -50,6 +57,18 @@ class CreateServiceOptions extends Options {
      */
     public function setCodeLength($codeLength) {
         $this->options['codeLength'] = $codeLength;
+        return $this;
+    }
+
+    /**
+     * Boolean value that indicates if a lookup should be performed with each verification started and associated info returned
+     * 
+     * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
+     *                               with each verification started
+     * @return $this Fluent Builder
+     */
+    public function setLookupEnabled($lookupEnabled) {
+        $this->options['lookupEnabled'] = $lookupEnabled;
         return $this;
     }
 
@@ -73,10 +92,13 @@ class UpdateServiceOptions extends Options {
     /**
      * @param string $friendlyName Friendly name of the service
      * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
+     *                               with each verification started
      */
-    public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
+        $this->options['lookupEnabled'] = $lookupEnabled;
     }
 
     /**
@@ -98,6 +120,18 @@ class UpdateServiceOptions extends Options {
      */
     public function setCodeLength($codeLength) {
         $this->options['codeLength'] = $codeLength;
+        return $this;
+    }
+
+    /**
+     * Boolean value that indicates if a lookup should be performed with each verification started and associated info returned
+     * 
+     * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
+     *                               with each verification started
+     * @return $this Fluent Builder
+     */
+    public function setLookupEnabled($lookupEnabled) {
+        $this->options['lookupEnabled'] = $lookupEnabled;
         return $this;
     }
 
