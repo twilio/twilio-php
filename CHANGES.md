@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2018-10-15] Version 5.24.1
+----------------------------
+**Api**
+- Add <Pay> Verb Transactions category to usage records
+
+**Twiml**
+- Add support for `Pay` verb
+
+
 [2018-10-15] Version 5.24.0
 ----------------------------
 **Api**

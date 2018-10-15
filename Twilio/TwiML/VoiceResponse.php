@@ -170,4 +170,24 @@ class VoiceResponse extends TwiML {
     public function sms($message, $attributes = array()) {
         return $this->nest(new Voice\Sms($message, $attributes));
     }
+
+    /**
+     * Add Pay child.
+     * 
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function pay($attributes = array()) {
+        return $this->nest(new Voice\Pay($attributes));
+    }
+
+    /**
+     * Add Prompt child.
+     * 
+     * @param array $attributes Optional attributes
+     * @return TwiML Child element.
+     */
+    public function prompt($attributes = array()) {
+        return $this->nest(new Voice\Prompt($attributes));
+    }
 }
