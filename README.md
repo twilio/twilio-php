@@ -90,7 +90,7 @@ That will output XML that looks like this:
 <Response>
     <Say>Hello</Say>
     <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
-<Response>
+</Response>
 ```
 
 ## Documentation
