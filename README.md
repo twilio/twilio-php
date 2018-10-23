@@ -26,7 +26,11 @@ You can install **twilio-php** via composer or by downloading the source.
 #### Via Composer:
 
 **twilio-php** is available on Packagist as the
-[`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
+[`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package:
+
+```
+composer require twilio/sdk
+```
 
 ## Quickstart
 
