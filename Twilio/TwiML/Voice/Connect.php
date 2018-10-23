@@ -26,7 +26,7 @@ class Connect extends TwiML {
      *
      * @param string $name Room name
      * @param array $attributes Optional attributes
-     * @return \Twilio\TwiML\Video\Room Child element.
+     * @return Room Child element.
      */
     public function room($name, $attributes = array()) {
         return $this->nest(new Room($name, $attributes));
@@ -34,9 +34,9 @@ class Connect extends TwiML {
 
     /**
      * Add Autopilot child.
-     * 
+     *
      * @param string $name Autopilot assistant sid or unique name
-     * @return TwiML Child element.
+     * @return Autopilot Child element.
      */
     public function autopilot($name) {
         return $this->nest(new Autopilot($name));

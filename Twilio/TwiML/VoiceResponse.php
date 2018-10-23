@@ -175,7 +175,7 @@ class VoiceResponse extends TwiML {
      * Add Pay child.
      *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return \Twilio\TwiML\Voice\Pay Child element.
      */
     public function pay($attributes = array()) {
         return $this->nest(new Voice\Pay($attributes));
@@ -185,7 +185,7 @@ class VoiceResponse extends TwiML {
      * Add Prompt child.
      *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return \Twilio\TwiML\Voice\Prompt Child element.
      */
     public function prompt($attributes = array()) {
         return $this->nest(new Voice\Prompt($attributes));

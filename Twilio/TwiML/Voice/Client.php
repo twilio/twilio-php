@@ -26,7 +26,7 @@ class Client extends TwiML {
      * Add Identity child.
      *
      * @param string $clientIdentity Identity of the client to dial
-     * @return TwiML Child element.
+     * @return Identity Child element.
      */
     public function identity($clientIdentity) {
         return $this->nest(new Identity($clientIdentity));
@@ -36,7 +36,7 @@ class Client extends TwiML {
      * Add Parameter child.
      *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Parameter Child element.
      */
     public function parameter($attributes = array()) {
         return $this->nest(new Parameter($attributes));

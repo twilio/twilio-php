@@ -71,6 +71,7 @@ abstract class TwiML {
 	 * @param string $name XML element name
 	 * @param string $value XML value
 	 * @param array $attributes XML attributes
+     * @return TwiML
 	 */
 	public function addChild($name, $value = null, $attributes = []) {
 		return $this->nest(new GenericNode($name, $value, $attributes));

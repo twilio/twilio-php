@@ -199,7 +199,7 @@ class Gather extends TwiML {
      * Add Debug attribute.
      *
      * @param bool $debug Allow debug for gather
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setDebug($debug) {
         return $this->setAttribute('debug', $debug);
