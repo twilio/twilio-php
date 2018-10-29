@@ -27,10 +27,12 @@ abstract class ServiceOptions {
      *                                     Interaction.
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
+     * @param string $chatInstanceSid The Chat Service Instance sid managed by
+     *                                Proxy Service
      * @return CreateServiceOptions Options builder
      */
-    public static function create($defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
-        return new CreateServiceOptions($defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl);
+    public static function create($defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE, $chatInstanceSid = Values::NONE) {
+        return new CreateServiceOptions($defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl, $chatInstanceSid);
     }
 
     /**
@@ -45,10 +47,12 @@ abstract class ServiceOptions {
      *                                     Interaction.
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
+     * @param string $chatInstanceSid The Chat Service Instance sid managed by
+     *                                Proxy Service
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
-        return new UpdateServiceOptions($uniqueName, $defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl);
+    public static function update($uniqueName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE, $chatInstanceSid = Values::NONE) {
+        return new UpdateServiceOptions($uniqueName, $defaultTtl, $callbackUrl, $geoMatchLevel, $numberSelectionBehavior, $interceptCallbackUrl, $outOfSessionCallbackUrl, $chatInstanceSid);
     }
 }
 
@@ -64,14 +68,17 @@ class CreateServiceOptions extends Options {
      *                                     Interaction.
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
+     * @param string $chatInstanceSid The Chat Service Instance sid managed by
+     *                                Proxy Service
      */
-    public function __construct($defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
+    public function __construct($defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE, $chatInstanceSid = Values::NONE) {
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['geoMatchLevel'] = $geoMatchLevel;
         $this->options['numberSelectionBehavior'] = $numberSelectionBehavior;
         $this->options['interceptCallbackUrl'] = $interceptCallbackUrl;
         $this->options['outOfSessionCallbackUrl'] = $outOfSessionCallbackUrl;
+        $this->options['chatInstanceSid'] = $chatInstanceSid;
     }
 
     /**
@@ -145,6 +152,18 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * The Chat Service Instance sid managed by Proxy Service. Enables Proxy to forward sms and channel messages to this chat instance. This is a one-to-one relationship.
+     * 
+     * @param string $chatInstanceSid The Chat Service Instance sid managed by
+     *                                Proxy Service
+     * @return $this Fluent Builder
+     */
+    public function setChatInstanceSid($chatInstanceSid) {
+        $this->options['chatInstanceSid'] = $chatInstanceSid;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -173,8 +192,10 @@ class UpdateServiceOptions extends Options {
      *                                     Interaction.
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
+     * @param string $chatInstanceSid The Chat Service Instance sid managed by
+     *                                Proxy Service
      */
-    public function __construct($uniqueName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $defaultTtl = Values::NONE, $callbackUrl = Values::NONE, $geoMatchLevel = Values::NONE, $numberSelectionBehavior = Values::NONE, $interceptCallbackUrl = Values::NONE, $outOfSessionCallbackUrl = Values::NONE, $chatInstanceSid = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['defaultTtl'] = $defaultTtl;
         $this->options['callbackUrl'] = $callbackUrl;
@@ -182,6 +203,7 @@ class UpdateServiceOptions extends Options {
         $this->options['numberSelectionBehavior'] = $numberSelectionBehavior;
         $this->options['interceptCallbackUrl'] = $interceptCallbackUrl;
         $this->options['outOfSessionCallbackUrl'] = $outOfSessionCallbackUrl;
+        $this->options['chatInstanceSid'] = $chatInstanceSid;
     }
 
     /**
@@ -262,6 +284,18 @@ class UpdateServiceOptions extends Options {
      */
     public function setOutOfSessionCallbackUrl($outOfSessionCallbackUrl) {
         $this->options['outOfSessionCallbackUrl'] = $outOfSessionCallbackUrl;
+        return $this;
+    }
+
+    /**
+     * The Chat Service Instance sid managed by Proxy Service. Enables Proxy to forward sms and channel messages to this chat instance. This is a one-to-one relationship.
+     * 
+     * @param string $chatInstanceSid The Chat Service Instance sid managed by
+     *                                Proxy Service
+     * @return $this Fluent Builder
+     */
+    public function setChatInstanceSid($chatInstanceSid) {
+        $this->options['chatInstanceSid'] = $chatInstanceSid;
         return $this;
     }
 

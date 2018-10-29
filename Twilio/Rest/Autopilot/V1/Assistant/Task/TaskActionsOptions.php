@@ -17,8 +17,8 @@ use Twilio\Values;
  */
 abstract class TaskActionsOptions {
     /**
-     * @param array $actions The JSON actions that instruct the Assistant how to
-     *                       perform this task.
+     * @param array $actions The JSON
+     *                       [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
      * @return UpdateTaskActionsOptions Options builder
      */
     public static function update($actions = Values::NONE) {
@@ -28,18 +28,18 @@ abstract class TaskActionsOptions {
 
 class UpdateTaskActionsOptions extends Options {
     /**
-     * @param array $actions The JSON actions that instruct the Assistant how to
-     *                       perform this task.
+     * @param array $actions The JSON
+     *                       [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
      */
     public function __construct($actions = Values::NONE) {
         $this->options['actions'] = $actions;
     }
 
     /**
-     * The JSON actions that instruct the Assistant how to perform this task.
+     * The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
      * 
-     * @param array $actions The JSON actions that instruct the Assistant how to
-     *                       perform this task.
+     * @param array $actions The JSON
+     *                       [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
      * @return $this Fluent Builder
      */
     public function setActions($actions) {

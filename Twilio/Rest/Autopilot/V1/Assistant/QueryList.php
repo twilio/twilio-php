@@ -130,8 +130,8 @@ class QueryList extends ListResource {
     /**
      * Create a new QueryInstance
      * 
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this query. For example: en-US.
+     * @param string $language An [ISO language-country
+     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
      * @param string $query A user-provided string that uniquely identifies this
      *                      resource as an alternative to the sid. It can be up to
      *                      2048 characters long.
@@ -162,7 +162,8 @@ class QueryList extends ListResource {
     /**
      * Constructs a QueryContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\QueryContext 
      */
     public function getContext($sid) {

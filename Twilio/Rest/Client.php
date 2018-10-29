@@ -45,6 +45,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\BalanceList balance
  * @property \Twilio\Rest\Api\V2010\Account\CallList calls
  * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
  * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
@@ -360,6 +361,13 @@ class Client {
      */
     protected function contextAvailablePhoneNumbers($countryCode) {
         return $this->api->v2010->account->availablePhoneNumbers($countryCode);
+    }
+
+    /**
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceList 
+     */
+    protected function getBalance() {
+        return $this->api->v2010->account->balance;
     }
 
     /**

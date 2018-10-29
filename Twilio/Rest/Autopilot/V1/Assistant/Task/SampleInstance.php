@@ -38,7 +38,8 @@ class SampleInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Sample.
-     * @param string $sid The sid
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $taskSid, $sid = null) {

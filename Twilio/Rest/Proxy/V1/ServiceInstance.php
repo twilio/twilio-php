@@ -22,6 +22,7 @@ use Twilio\Version;
  * @property string sid
  * @property string uniqueName
  * @property string accountSid
+ * @property string chatInstanceSid
  * @property string callbackUrl
  * @property integer defaultTtl
  * @property string numberSelectionBehavior
@@ -54,6 +55,7 @@ class ServiceInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
+            'chatInstanceSid' => Values::array_get($payload, 'chat_instance_sid'),
             'callbackUrl' => Values::array_get($payload, 'callback_url'),
             'defaultTtl' => Values::array_get($payload, 'default_ttl'),
             'numberSelectionBehavior' => Values::array_get($payload, 'number_selection_behavior'),

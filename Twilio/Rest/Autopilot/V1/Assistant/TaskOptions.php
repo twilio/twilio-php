@@ -20,8 +20,11 @@ abstract class TaskOptions {
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can be up to 255
      *                             characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param array $actions A user-provided JSON object encoded as a string to
+     *                       specify the actions for this task. It is optional and
+     *                       non-unique.
+     * @param string $actionsUrl User-provided HTTP endpoint where the assistant
+     *                           can fetch actions.
      * @return CreateTaskOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
@@ -35,8 +38,11 @@ abstract class TaskOptions {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param array $actions A user-provided JSON object encoded as a string to
+     *                       specify the actions for this task. It is optional and
+     *                       non-unique.
+     * @param string $actionsUrl User-provided HTTP endpoint where the assistant
+     *                           can fetch actions.
      * @return UpdateTaskOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
@@ -49,8 +55,11 @@ class CreateTaskOptions extends Options {
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can be up to 255
      *                             characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param array $actions A user-provided JSON object encoded as a string to
+     *                       specify the actions for this task. It is optional and
+     *                       non-unique.
+     * @param string $actionsUrl User-provided HTTP endpoint where the assistant
+     *                           can fetch actions.
      */
     public function __construct($friendlyName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -72,9 +81,11 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The actions
+     * A user-provided JSON object encoded as a string to specify the actions for this task. It is optional and non-unique.
      * 
-     * @param array $actions The actions
+     * @param array $actions A user-provided JSON object encoded as a string to
+     *                       specify the actions for this task. It is optional and
+     *                       non-unique.
      * @return $this Fluent Builder
      */
     public function setActions($actions) {
@@ -83,9 +94,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The actions_url
+     * User-provided HTTP endpoint where the assistant can fetch actions.
      * 
-     * @param string $actionsUrl The actions_url
+     * @param string $actionsUrl User-provided HTTP endpoint where the assistant
+     *                           can fetch actions.
      * @return $this Fluent Builder
      */
     public function setActionsUrl($actionsUrl) {
@@ -117,8 +129,11 @@ class UpdateTaskOptions extends Options {
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param array $actions A user-provided JSON object encoded as a string to
+     *                       specify the actions for this task. It is optional and
+     *                       non-unique.
+     * @param string $actionsUrl User-provided HTTP endpoint where the assistant
+     *                           can fetch actions.
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -141,7 +156,7 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+     * A user-provided string that uniquely identifies this resource as an alternative to the sid. You can use the unique name in the URL path when addressing this resource. Unique up to 64 characters long.
      * 
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
@@ -154,9 +169,11 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The actions
+     * A user-provided JSON object encoded as a string to specify the actions for this task. It is optional and non-unique.
      * 
-     * @param array $actions The actions
+     * @param array $actions A user-provided JSON object encoded as a string to
+     *                       specify the actions for this task. It is optional and
+     *                       non-unique.
      * @return $this Fluent Builder
      */
     public function setActions($actions) {
@@ -165,9 +182,10 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The actions_url
+     * User-provided HTTP endpoint where the assistant can fetch actions.
      * 
-     * @param string $actionsUrl The actions_url
+     * @param string $actionsUrl User-provided HTTP endpoint where the assistant
+     *                           can fetch actions.
      * @return $this Fluent Builder
      */
     public function setActionsUrl($actionsUrl) {

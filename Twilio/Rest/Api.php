@@ -21,6 +21,7 @@ use Twilio\Rest\Api\V2010;
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\BalanceList balance
  * @property \Twilio\Rest\Api\V2010\Account\CallList calls
  * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
  * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
@@ -199,6 +200,13 @@ class Api extends Domain {
      */
     protected function contextAvailablePhoneNumbers($countryCode) {
         return $this->v2010->account->availablePhoneNumbers($countryCode);
+    }
+
+    /**
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceList 
+     */
+    protected function getBalance() {
+        return $this->v2010->account->balance;
     }
 
     /**

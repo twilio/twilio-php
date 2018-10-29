@@ -21,7 +21,7 @@ class FieldList extends ListResource {
      * Construct the FieldList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Field.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList 
      */
@@ -123,9 +123,9 @@ class FieldList extends ListResource {
     /**
      * Create a new FieldInstance
      * 
-     * @param string $fieldType The unique name or sid of the FieldType. It can be
-     *                          any Built-in Field Type or the unique_name or sid
-     *                          of a custom Field Type.
+     * @param string $fieldType The Field Type of this field. It can be either a
+     *                          Built-in Field Type or the unique_name or sid of a
+     *                          custom Field Type.
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -153,7 +153,8 @@ class FieldList extends ListResource {
     /**
      * Constructs a FieldContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldContext 
      */
     public function getContext($sid) {

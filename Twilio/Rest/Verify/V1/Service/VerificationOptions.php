@@ -19,10 +19,11 @@ abstract class VerificationOptions {
     /**
      * @param string $customMessage A custom message for this verification
      * @param string $sendDigits Digits to send when a phone call is started
+     * @param string $locale Locale used in the sms or call.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE) {
-        return new CreateVerificationOptions($customMessage, $sendDigits);
+    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE) {
+        return new CreateVerificationOptions($customMessage, $sendDigits, $locale);
     }
 }
 
@@ -30,10 +31,12 @@ class CreateVerificationOptions extends Options {
     /**
      * @param string $customMessage A custom message for this verification
      * @param string $sendDigits Digits to send when a phone call is started
+     * @param string $locale Locale used in the sms or call.
      */
-    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE) {
+    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
+        $this->options['locale'] = $locale;
     }
 
     /**
@@ -55,6 +58,17 @@ class CreateVerificationOptions extends Options {
      */
     public function setSendDigits($sendDigits) {
         $this->options['sendDigits'] = $sendDigits;
+        return $this;
+    }
+
+    /**
+     * Supported values are af, ar, ca, cs, da, de, el, en, es, fi, fr, he, hi, hr, hu, id, it, ja, ko, ms, nb, nl, pl, pt, pr-BR, ro, ru, sv, th, tl, tr, vi, zh, zh-CN, zh-HK
+     * 
+     * @param string $locale Locale used in the sms or call.
+     * @return $this Fluent Builder
+     */
+    public function setLocale($locale) {
+        $this->options['locale'] = $locale;
         return $this;
     }
 

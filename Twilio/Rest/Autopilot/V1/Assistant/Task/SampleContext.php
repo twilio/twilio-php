@@ -22,9 +22,10 @@ class SampleContext extends InstanceContext {
      * Initialize the SampleContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $taskSid The task_sid
-     * @param string $sid The sid
+     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $taskSid The unique ID of the Task associated with this Sample.
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleContext 
      */
     public function __construct(Version $version, $assistantSid, $taskSid, $sid) {
