@@ -140,7 +140,7 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * A URL for Twilio call when a new Interaction has no [Session](https://www.twilio.com/docs/proxy/api/session).
+     * A URL for Twilio call when a new Interaction has no [Session](https://www.twilio.com/docs/proxy/api/session). See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
      * 
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.
@@ -276,7 +276,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * A URL for Twilio call when a new Interaction has no [Session](https://www.twilio.com/docs/proxy/api/session).
+     * A URL for Twilio call when a new Interaction has no [Session](https://www.twilio.com/docs/proxy/api/session). See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
      * 
      * @param string $outOfSessionCallbackUrl A URL for Twilio call when a new
      *                                        Interaction has no Session.

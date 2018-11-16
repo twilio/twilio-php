@@ -27,7 +27,7 @@ class SsmlW extends TwiML {
      * 
      * @param string $role Customize the pronunciation of words by specifying the
      *                     word’s part of speech or alternate meaning
-     * @return TwiML $this.
+     * @return $this
      */
     public function setRole($role) {
         return $this->setAttribute('role', $role);

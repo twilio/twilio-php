@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2018-11-16] Version 5.25.0
+----------------------------
+**Messaging**
+- Session API
+
+**Twiml**
+- Change `master-card` to `mastercard` as `cardType` for `Pay` and `Prompt`, remove attribute `credential_sid` from `Pay` **(breaking change)**
+
+
 [2018-10-29] Version 5.24.2
 ----------------------------
 **Library**

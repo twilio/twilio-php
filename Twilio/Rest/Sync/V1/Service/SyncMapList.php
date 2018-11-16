@@ -45,7 +45,11 @@ class SyncMapList extends ListResource {
     public function create($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('UniqueName' => $options['uniqueName'], 'Ttl' => $options['ttl'], ));
+        $data = Values::of(array(
+            'UniqueName' => $options['uniqueName'],
+            'Ttl' => $options['ttl'],
+            'CollectionTtl' => $options['collectionTtl'],
+        ));
 
         $payload = $this->version->create(
             'POST',

@@ -57,7 +57,7 @@ class Prompt extends TwiML {
      * Add For_ attribute.
      * 
      * @param prompt:Enum:For $for_ Name of the credit card data element
-     * @return TwiML $this.
+     * @return $this
      */
     public function setFor_($for_) {
         return $this->setAttribute('for_', $for_);
@@ -67,7 +67,7 @@ class Prompt extends TwiML {
      * Add ErrorType attribute.
      * 
      * @param prompt:Enum:ErrorType $errorType Type of error
-     * @return TwiML $this.
+     * @return $this
      */
     public function setErrorType($errorType) {
         return $this->setAttribute('errorType', $errorType);
@@ -77,7 +77,7 @@ class Prompt extends TwiML {
      * Add CardType attribute.
      * 
      * @param prompt:Enum:CardType $cardType Type of the credit card
-     * @return TwiML $this.
+     * @return $this
      */
     public function setCardType($cardType) {
         return $this->setAttribute('cardType', $cardType);
@@ -87,7 +87,7 @@ class Prompt extends TwiML {
      * Add Attempt attribute.
      * 
      * @param integer $attempt Current attempt count
-     * @return TwiML $this.
+     * @return $this
      */
     public function setAttempt($attempt) {
         return $this->setAttribute('attempt', $attempt);

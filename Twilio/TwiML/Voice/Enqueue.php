@@ -37,7 +37,7 @@ class Enqueue extends TwiML {
      * Add Action attribute.
      * 
      * @param url $action Action URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -47,7 +47,7 @@ class Enqueue extends TwiML {
      * Add Method attribute.
      * 
      * @param httpMethod $method Action URL method
-     * @return TwiML $this.
+     * @return $this
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -57,7 +57,7 @@ class Enqueue extends TwiML {
      * Add WaitUrl attribute.
      * 
      * @param url $waitUrl Wait URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setWaitUrl($waitUrl) {
         return $this->setAttribute('waitUrl', $waitUrl);
@@ -67,7 +67,7 @@ class Enqueue extends TwiML {
      * Add WaitUrlMethod attribute.
      * 
      * @param httpMethod $waitUrlMethod Wait URL method
-     * @return TwiML $this.
+     * @return $this
      */
     public function setWaitUrlMethod($waitUrlMethod) {
         return $this->setAttribute('waitUrlMethod', $waitUrlMethod);
@@ -77,7 +77,7 @@ class Enqueue extends TwiML {
      * Add WorkflowSid attribute.
      * 
      * @param string $workflowSid TaskRouter Workflow SID
-     * @return TwiML $this.
+     * @return $this
      */
     public function setWorkflowSid($workflowSid) {
         return $this->setAttribute('workflowSid', $workflowSid);

@@ -26,7 +26,7 @@ class Sms extends TwiML {
      * Add To attribute.
      * 
      * @param phoneNumber $to Number to send message to
-     * @return TwiML $this.
+     * @return $this
      */
     public function setTo($to) {
         return $this->setAttribute('to', $to);
@@ -36,7 +36,7 @@ class Sms extends TwiML {
      * Add From attribute.
      * 
      * @param phoneNumber $from Number to send message from
-     * @return TwiML $this.
+     * @return $this
      */
     public function setFrom($from) {
         return $this->setAttribute('from', $from);
@@ -46,7 +46,7 @@ class Sms extends TwiML {
      * Add Action attribute.
      * 
      * @param url $action Action URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -56,7 +56,7 @@ class Sms extends TwiML {
      * Add Method attribute.
      * 
      * @param httpMethod $method Action URL method
-     * @return TwiML $this.
+     * @return $this
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -66,7 +66,7 @@ class Sms extends TwiML {
      * Add StatusCallback attribute.
      * 
      * @param url $statusCallback Status callback URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setStatusCallback($statusCallback) {
         return $this->setAttribute('statusCallback', $statusCallback);

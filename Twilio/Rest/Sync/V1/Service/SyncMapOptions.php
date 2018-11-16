@@ -18,32 +18,36 @@ use Twilio\Values;
 abstract class SyncMapOptions {
     /**
      * @param string $uniqueName Human-readable name for this map
-     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl Time-to-live of this Map in seconds, defaults
+     *                               to no expiration.
      * @return CreateSyncMapOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
-        return new CreateSyncMapOptions($uniqueName, $ttl);
+    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
+        return new CreateSyncMapOptions($uniqueName, $ttl, $collectionTtl);
     }
 
     /**
-     * @param integer $ttl New time-to-live of this Map in seconds.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl New time-to-live of this Map in seconds.
      * @return UpdateSyncMapOptions Options builder
      */
-    public static function update($ttl = Values::NONE) {
-        return new UpdateSyncMapOptions($ttl);
+    public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE) {
+        return new UpdateSyncMapOptions($ttl, $collectionTtl);
     }
 }
 
 class CreateSyncMapOptions extends Options {
     /**
      * @param string $uniqueName Human-readable name for this map
-     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl Time-to-live of this Map in seconds, defaults
+     *                               to no expiration.
      */
-    public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
+        $this->options['collectionTtl'] = $collectionTtl;
     }
 
     /**
@@ -58,14 +62,25 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Alias for collection_ttl. If both are provided, this value is ignored.
      * 
-     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
         $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * 
+     * @param integer $collectionTtl Time-to-live of this Map in seconds, defaults
+     *                               to no expiration.
+     * @return $this Fluent Builder
+     */
+    public function setCollectionTtl($collectionTtl) {
+        $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
 
@@ -87,20 +102,33 @@ class CreateSyncMapOptions extends Options {
 
 class UpdateSyncMapOptions extends Options {
     /**
-     * @param integer $ttl New time-to-live of this Map in seconds.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl New time-to-live of this Map in seconds.
      */
-    public function __construct($ttl = Values::NONE) {
+    public function __construct($ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
+        $this->options['collectionTtl'] = $collectionTtl;
+    }
+
+    /**
+     * Alias for collection_ttl. If both are provided, this value is ignored.
+     * 
+     * @param integer $ttl Alias for collection_ttl
+     * @return $this Fluent Builder
+     */
+    public function setTtl($ttl) {
+        $this->options['ttl'] = $ttl;
+        return $this;
     }
 
     /**
      * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl New time-to-live of this Map in seconds.
+     * @param integer $collectionTtl New time-to-live of this Map in seconds.
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
-        $this->options['ttl'] = $ttl;
+    public function setCollectionTtl($collectionTtl) {
+        $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
 

@@ -26,7 +26,7 @@ class Play extends TwiML {
      * Add Loop attribute.
      * 
      * @param integer $loop Times to loop media
-     * @return TwiML $this.
+     * @return $this
      */
     public function setLoop($loop) {
         return $this->setAttribute('loop', $loop);
@@ -36,7 +36,7 @@ class Play extends TwiML {
      * Add Digits attribute.
      * 
      * @param string $digits Play DTMF tones for digits
-     * @return TwiML $this.
+     * @return $this
      */
     public function setDigits($digits) {
         return $this->setAttribute('digits', $digits);
