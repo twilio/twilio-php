@@ -41,10 +41,12 @@ abstract class MemberOptions {
      *                               should only be used in cases where a Member is
      *                               being recreated from a backup/separate source 
      *                               and where a Member was previously updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return CreateMemberOptions Options builder
      */
-    public static function create($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
-        return new CreateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated);
+    public static function create($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+        return new CreateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes);
     }
 
     /**
@@ -69,10 +71,12 @@ abstract class MemberOptions {
      * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
      *                               Member should be set as having been last
      *                               updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return UpdateMemberOptions Options builder
      */
-    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
-        return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated);
+    public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+        return new UpdateMemberOptions($roleSid, $lastConsumedMessageIndex, $lastConsumptionTimestamp, $dateCreated, $dateUpdated, $attributes);
     }
 }
 
@@ -105,13 +109,16 @@ class CreateMemberOptions extends Options {
      *                               should only be used in cases where a Member is
      *                               being recreated from a backup/separate source 
      *                               and where a Member was previously updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      */
-    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -188,6 +195,18 @@ class CreateMemberOptions extends Options {
      */
     public function setDateUpdated($dateUpdated) {
         $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * 
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
         return $this;
     }
 
@@ -258,13 +277,16 @@ class UpdateMemberOptions extends Options {
      * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
      *                               Member should be set as having been last
      *                               updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      */
-    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE, $lastConsumptionTimestamp = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
         $this->options['lastConsumedMessageIndex'] = $lastConsumedMessageIndex;
         $this->options['lastConsumptionTimestamp'] = $lastConsumptionTimestamp;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -326,6 +348,18 @@ class UpdateMemberOptions extends Options {
      */
     public function setDateUpdated($dateUpdated) {
         $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * 
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
         return $this;
     }
 

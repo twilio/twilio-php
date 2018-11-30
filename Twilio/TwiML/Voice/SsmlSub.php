@@ -27,7 +27,7 @@ class SsmlSub extends TwiML {
      * 
      * @param string $alias Substitute a different word (or pronunciation) for
      *                      selected text such as an acronym or abbreviation
-     * @return $this
+     * @return TwiML $this.
      */
     public function setAlias($alias) {
         return $this->setAttribute('alias', $alias);

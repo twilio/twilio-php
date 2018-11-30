@@ -17,7 +17,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  * 
- * @property string formType
+ * @property string type
  * @property array forms
  * @property array formMeta
  * @property string url
@@ -28,21 +28,21 @@ class FormInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $formType The Form Type of this Form
+     * @param string $type The Type of this Form
      * @return \Twilio\Rest\Authy\V1\FormInstance 
      */
-    public function __construct(Version $version, array $payload, $formType = null) {
+    public function __construct(Version $version, array $payload, $type = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'formType' => Values::array_get($payload, 'form_type'),
+            'type' => Values::array_get($payload, 'type'),
             'forms' => Values::array_get($payload, 'forms'),
             'formMeta' => Values::array_get($payload, 'form_meta'),
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('formType' => $formType ?: $this->properties['formType'], );
+        $this->solution = array('type' => $type ?: $this->properties['type'], );
     }
 
     /**
@@ -53,7 +53,7 @@ class FormInstance extends InstanceResource {
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new FormContext($this->version, $this->solution['formType']);
+            $this->context = new FormContext($this->version, $this->solution['type']);
         }
 
         return $this->context;

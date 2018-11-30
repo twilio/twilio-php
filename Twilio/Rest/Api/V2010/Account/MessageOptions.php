@@ -39,10 +39,12 @@ abstract class MessageOptions {
      * @param string $contentRetention The content_retention
      * @param string $addressRetention The address_retention
      * @param boolean $smartEncoded The smart_encoded
+     * @param string $interactiveData JSON string representing interactive data
+     *                                message.
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention, $smartEncoded);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention, $smartEncoded, $interactiveData);
     }
 
     /**
@@ -85,8 +87,10 @@ class CreateMessageOptions extends Options {
      * @param string $contentRetention The content_retention
      * @param string $addressRetention The address_retention
      * @param boolean $smartEncoded The smart_encoded
+     * @param string $interactiveData JSON string representing interactive data
+     *                                message.
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -102,6 +106,7 @@ class CreateMessageOptions extends Options {
         $this->options['contentRetention'] = $contentRetention;
         $this->options['addressRetention'] = $addressRetention;
         $this->options['smartEncoded'] = $smartEncoded;
+        $this->options['interactiveData'] = $interactiveData;
     }
 
     /**
@@ -276,6 +281,18 @@ class CreateMessageOptions extends Options {
      */
     public function setSmartEncoded($smartEncoded) {
         $this->options['smartEncoded'] = $smartEncoded;
+        return $this;
+    }
+
+    /**
+     * A JSON string that represents interactive message which is a category of messages including list picker, time picker, and an Apple Pay request.
+     * 
+     * @param string $interactiveData JSON string representing interactive data
+     *                                message.
+     * @return $this Fluent Builder
+     */
+    public function setInteractiveData($interactiveData) {
+        $this->options['interactiveData'] = $interactiveData;
         return $this;
     }
 

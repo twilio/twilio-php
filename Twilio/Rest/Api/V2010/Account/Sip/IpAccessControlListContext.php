@@ -27,7 +27,7 @@ class IpAccessControlListContext extends InstanceContext {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique ip-access-control-list Sid
+     * @param string $sid Fetch by unique IpAccessControlList Sid
      * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {

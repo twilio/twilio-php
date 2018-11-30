@@ -22,15 +22,11 @@ class FactorTest extends HolodeckTestCase {
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                     ->entities("identity")
-                                    ->factors->create("binding", "factorType", "friendlyName");
+                                    ->factors->create("binding", "friendlyName", "app-push");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array(
-            'Binding' => "binding",
-            'FactorType' => "factorType",
-            'FriendlyName' => "friendlyName",
-        );
+        $values = array('Binding' => "binding", 'FriendlyName' => "friendlyName", 'Type' => "app-push", );
 
         $this->assertRequest(new Request(
             'post',
@@ -65,7 +61,7 @@ class FactorTest extends HolodeckTestCase {
 
         $actual = $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->entities("identity")
-                                          ->factors->create("binding", "factorType", "friendlyName");
+                                          ->factors->create("binding", "friendlyName", "app-push");
 
         $this->assertNotNull($actual);
     }

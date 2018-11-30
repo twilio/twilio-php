@@ -26,7 +26,7 @@ class Task extends TwiML {
      * Add Priority attribute.
      * 
      * @param integer $priority Task priority
-     * @return $this
+     * @return TwiML $this.
      */
     public function setPriority($priority) {
         return $this->setAttribute('priority', $priority);
@@ -36,7 +36,7 @@ class Task extends TwiML {
      * Add Timeout attribute.
      * 
      * @param integer $timeout Timeout associated with task
-     * @return $this
+     * @return TwiML $this.
      */
     public function setTimeout($timeout) {
         return $this->setAttribute('timeout', $timeout);

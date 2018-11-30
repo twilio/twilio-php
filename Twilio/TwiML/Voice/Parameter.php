@@ -25,7 +25,7 @@ class Parameter extends TwiML {
      * Add Name attribute.
      * 
      * @param string $name The name of the custom parameter
-     * @return $this
+     * @return TwiML $this.
      */
     public function setName($name) {
         return $this->setAttribute('name', $name);
@@ -35,7 +35,7 @@ class Parameter extends TwiML {
      * Add Value attribute.
      * 
      * @param string $value The value of the custom parameter
-     * @return $this
+     * @return TwiML $this.
      */
     public function setValue($value) {
         return $this->setAttribute('value', $value);

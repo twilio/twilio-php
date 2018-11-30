@@ -35,7 +35,7 @@ class FormTest extends HolodeckTestCase {
             200,
             '
             {
-                "form_type": "form-sms",
+                "type": "form-sms",
                 "forms": {
                     "create_factor": {},
                     "verify_factor": {},
