@@ -25,7 +25,8 @@ class AuthTypeRegistrationsList extends ListResource {
      * Construct the AuthTypeRegistrationsList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the account that sent the call
+     * @param string $accountSid The unique id of the account responsible for this
+     *                           domain
      * @param string $domainSid A string that uniquely identifies the SIP Domain
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList 
      */

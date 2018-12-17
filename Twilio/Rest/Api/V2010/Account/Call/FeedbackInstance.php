@@ -30,7 +30,7 @@ class FeedbackInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid A 34-character string that uniquely identifies the
      *                        Call resource.
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackInstance 
@@ -73,7 +73,8 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param integer $qualityScore An integer from 1 to 5
+     * @param integer $qualityScore The call quality expressed as an integer from 1
+     *                              to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,7 +96,8 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Update the FeedbackInstance
      * 
-     * @param integer $qualityScore An integer from 1 to 5
+     * @param integer $qualityScore The call quality expressed as an integer from 1
+     *                              to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.

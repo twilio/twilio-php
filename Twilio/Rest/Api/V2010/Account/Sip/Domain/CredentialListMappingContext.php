@@ -18,9 +18,10 @@ class CredentialListMappingContext extends InstanceContext {
      * Initialize the CredentialListMappingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $domainSid The domain_sid
-     * @param string $sid The sid
+     * @param string $accountSid The unique sid that identifies this account
+     * @param string $domainSid A string that identifies the SIP Domain that
+     *                          includes the resource to fetch
+     * @param string $sid A string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext 
      */
     public function __construct(Version $version, $accountSid, $domainSid, $sid) {

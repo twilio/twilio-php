@@ -46,7 +46,7 @@ class Connect extends TwiML {
      * Add Action attribute.
      * 
      * @param url $action Action URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -56,7 +56,7 @@ class Connect extends TwiML {
      * Add Method attribute.
      * 
      * @param httpMethod $method Action URL method
-     * @return TwiML $this.
+     * @return $this
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);

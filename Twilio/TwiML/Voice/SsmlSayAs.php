@@ -27,7 +27,7 @@ class SsmlSayAs extends TwiML {
      * 
      * @param ssmlSayAs:Enum:InterpretAs $interpret-As Specify the type of words
      *                                                 are spoken
-     * @return TwiML $this.
+     * @return $this
      */
     public function setInterpretAs($interpretAs) {
         return $this->setAttribute('interpret-as', $interpretAs);
@@ -38,7 +38,7 @@ class SsmlSayAs extends TwiML {
      * 
      * @param ssmlSayAs:Enum:Role $role Specify the format of the date when
      *                                  interpret-as is set to date
-     * @return TwiML $this.
+     * @return $this
      */
     public function setRole($role) {
         return $this->setAttribute('role', $role);

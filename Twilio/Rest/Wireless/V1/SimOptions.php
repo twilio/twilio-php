@@ -17,8 +17,9 @@ abstract class SimOptions {
      * @param string $status Only return Sims with this status.
      * @param string $iccid Return Sims with this Iccid.
      * @param string $ratePlan Only return Sims with this Rate Plan.
-     * @param string $eId The e_id
-     * @param string $simRegistrationCode The sim_registration_code
+     * @param string $eId Only return Sims with this EID.
+     * @param string $simRegistrationCode Only return Sims with this registration
+     *                                    code.
      * @return ReadSimOptions Options builder
      */
     public static function read($status = Values::NONE, $iccid = Values::NONE, $ratePlan = Values::NONE, $eId = Values::NONE, $simRegistrationCode = Values::NONE) {
@@ -72,8 +73,9 @@ class ReadSimOptions extends Options {
      * @param string $status Only return Sims with this status.
      * @param string $iccid Return Sims with this Iccid.
      * @param string $ratePlan Only return Sims with this Rate Plan.
-     * @param string $eId The e_id
-     * @param string $simRegistrationCode The sim_registration_code
+     * @param string $eId Only return Sims with this EID.
+     * @param string $simRegistrationCode Only return Sims with this registration
+     *                                    code.
      */
     public function __construct($status = Values::NONE, $iccid = Values::NONE, $ratePlan = Values::NONE, $eId = Values::NONE, $simRegistrationCode = Values::NONE) {
         $this->options['status'] = $status;
@@ -117,9 +119,9 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * The e_id
+     * Only return Sims with this EID.
      * 
-     * @param string $eId The e_id
+     * @param string $eId Only return Sims with this EID.
      * @return $this Fluent Builder
      */
     public function setEId($eId) {
@@ -128,9 +130,10 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * The sim_registration_code
+     * Only return Sims with this registration code.
      * 
-     * @param string $simRegistrationCode The sim_registration_code
+     * @param string $simRegistrationCode Only return Sims with this registration
+     *                                    code.
      * @return $this Fluent Builder
      */
     public function setSimRegistrationCode($simRegistrationCode) {

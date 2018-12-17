@@ -88,7 +88,7 @@ class CreateQueueOptions extends Options {
     }
 
     /**
-     * The upper limit of calls allowed to be in the queue. The default is 100. The maximum is 1000.
+     * The upper limit of calls allowed to be in the queue. The default is 100. The maximum is 5000.
      * 
      * @param integer $maxSize The max number of calls allowed in the queue
      * @return $this Fluent Builder

@@ -18,7 +18,7 @@ use Twilio\Values;
 abstract class SessionOptions {
     /**
      * @param string $uniqueName The unique_name
-     * @param string $status The Status of this Session
+     * @param string $status The status
      * @return ReadSessionOptions Options builder
      */
     public static function read($uniqueName = Values::NONE, $status = Values::NONE) {
@@ -54,7 +54,7 @@ abstract class SessionOptions {
 class ReadSessionOptions extends Options {
     /**
      * @param string $uniqueName The unique_name
-     * @param string $status The Status of this Session
+     * @param string $status The status
      */
     public function __construct($uniqueName = Values::NONE, $status = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -73,9 +73,9 @@ class ReadSessionOptions extends Options {
     }
 
     /**
-     * The Status of this Session. One of `in-progress`, `closed`, `failed`, `unknown`.
+     * The status
      * 
-     * @param string $status The Status of this Session
+     * @param string $status The status
      * @return $this Fluent Builder
      */
     public function setStatus($status) {

@@ -378,7 +378,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The recording status events that will trigger Twilio to send webhooks on to the URL specified in `RecordingStatusCallback`. The available values are `in-progress`, `completed`, and `failed`. Defaults are `completed` and `failed`. To specify multiple values, separate them with a space. If any values are specified, the defaults are no longer applicable.
+     * The recording status events that will trigger Twilio to send webhooks on to the URL specified in `RecordingStatusCallback`. The available values are `in-progress`, `completed` and `absent`. Defaults to `completed`. To specify multiple values, separate them with a space.
      * 
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that Twilio will send webhooks

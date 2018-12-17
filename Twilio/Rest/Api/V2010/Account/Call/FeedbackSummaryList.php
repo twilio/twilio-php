@@ -36,10 +36,8 @@ class FeedbackSummaryList extends ListResource {
     /**
      * Create a new FeedbackSummaryInstance
      * 
-     * @param \DateTime $startDate Only include usage that has occurred on or after
-     *                             this date.
-     * @param \DateTime $endDate Only include usage that has occurred on or before
-     *                           this date.
+     * @param \DateTime $startDate Only include feedback given on or after this date
+     * @param \DateTime $endDate Only include feedback given on or before this date
      * @param array|Options $options Optional Arguments
      * @return FeedbackSummaryInstance Newly created FeedbackSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -68,7 +66,8 @@ class FeedbackSummaryList extends ListResource {
     /**
      * Constructs a FeedbackSummaryContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this feedback summary
+     *                    resource
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext 
      */
     public function getContext($sid) {

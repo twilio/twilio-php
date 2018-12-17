@@ -89,7 +89,8 @@ class Wireless extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\CommandContext 
      */
     protected function contextCommands($sid) {
@@ -119,7 +120,8 @@ class Wireless extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\SimContext 
      */
     protected function contextSims($sid) {

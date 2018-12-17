@@ -27,7 +27,7 @@ class Room extends TwiML {
      * 
      * @param string $participantidentity Participant identity when connecting to
      *                                    the Room
-     * @return TwiML $this.
+     * @return $this
      */
     public function setParticipantidentity($participantidentity) {
         return $this->setAttribute('participantidentity', $participantidentity);

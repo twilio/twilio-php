@@ -35,7 +35,7 @@ class Pay extends TwiML {
      * Add Input attribute.
      * 
      * @param pay:Enum:Input $input Input type Twilio should accept
-     * @return TwiML $this.
+     * @return $this
      */
     public function setInput($input) {
         return $this->setAttribute('input', $input);
@@ -45,7 +45,7 @@ class Pay extends TwiML {
      * Add Action attribute.
      * 
      * @param url $action Action URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -55,7 +55,7 @@ class Pay extends TwiML {
      * Add StatusCallback attribute.
      * 
      * @param url $statusCallback Status callback URL
-     * @return TwiML $this.
+     * @return $this
      */
     public function setStatusCallback($statusCallback) {
         return $this->setAttribute('statusCallback', $statusCallback);
@@ -66,7 +66,7 @@ class Pay extends TwiML {
      * 
      * @param pay:Enum:StatusCallbackMethod $statusCallbackMethod Status callback
      *                                                            method
-     * @return TwiML $this.
+     * @return $this
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
@@ -76,7 +76,7 @@ class Pay extends TwiML {
      * Add Timeout attribute.
      * 
      * @param integer $timeout Time to wait to gather input
-     * @return TwiML $this.
+     * @return $this
      */
     public function setTimeout($timeout) {
         return $this->setAttribute('timeout', $timeout);
@@ -87,7 +87,7 @@ class Pay extends TwiML {
      * 
      * @param integer $maxAttempts Maximum number of allowed retries when gathering
      *                             input
-     * @return TwiML $this.
+     * @return $this
      */
     public function setMaxAttempts($maxAttempts) {
         return $this->setAttribute('maxAttempts', $maxAttempts);
@@ -97,7 +97,7 @@ class Pay extends TwiML {
      * Add SecurityCode attribute.
      * 
      * @param boolean $securityCode Prompt for security code
-     * @return TwiML $this.
+     * @return $this
      */
     public function setSecurityCode($securityCode) {
         return $this->setAttribute('securityCode', $securityCode);
@@ -108,7 +108,7 @@ class Pay extends TwiML {
      * 
      * @param string $postalCode Prompt for postal code and it should be true/false
      *                           or default postal code
-     * @return TwiML $this.
+     * @return $this
      */
     public function setPostalCode($postalCode) {
         return $this->setAttribute('postalCode', $postalCode);
@@ -118,7 +118,7 @@ class Pay extends TwiML {
      * Add PaymentConnector attribute.
      * 
      * @param string $paymentConnector Unique name for payment connector
-     * @return TwiML $this.
+     * @return $this
      */
     public function setPaymentConnector($paymentConnector) {
         return $this->setAttribute('paymentConnector', $paymentConnector);
@@ -128,7 +128,7 @@ class Pay extends TwiML {
      * Add TokenType attribute.
      * 
      * @param pay:Enum:TokenType $tokenType Type of token
-     * @return TwiML $this.
+     * @return $this
      */
     public function setTokenType($tokenType) {
         return $this->setAttribute('tokenType', $tokenType);
@@ -139,7 +139,7 @@ class Pay extends TwiML {
      * 
      * @param string $chargeAmount Amount to process. If value is greater than 0
      *                             then make the payment else create a payment token
-     * @return TwiML $this.
+     * @return $this
      */
     public function setChargeAmount($chargeAmount) {
         return $this->setAttribute('chargeAmount', $chargeAmount);
@@ -148,8 +148,8 @@ class Pay extends TwiML {
     /**
      * Add Currency attribute.
      * 
-     * @param pay:Enum:Currency $currency Currency of the amount attribute
-     * @return TwiML $this.
+     * @param string $currency Currency of the amount attribute
+     * @return $this
      */
     public function setCurrency($currency) {
         return $this->setAttribute('currency', $currency);
@@ -159,7 +159,7 @@ class Pay extends TwiML {
      * Add Description attribute.
      * 
      * @param string $description Details regarding the payment
-     * @return TwiML $this.
+     * @return $this
      */
     public function setDescription($description) {
         return $this->setAttribute('description', $description);
@@ -170,7 +170,7 @@ class Pay extends TwiML {
      * 
      * @param pay:Enum:ValidCardTypes $validCardTypes Comma separated accepted card
      *                                                types
-     * @return TwiML $this.
+     * @return $this
      */
     public function setValidCardTypes($validCardTypes) {
         return $this->setAttribute('validCardTypes', $validCardTypes);
@@ -180,7 +180,7 @@ class Pay extends TwiML {
      * Add Language attribute.
      * 
      * @param pay:Enum:Language $language Language to use
-     * @return TwiML $this.
+     * @return $this
      */
     public function setLanguage($language) {
         return $this->setAttribute('language', $language);

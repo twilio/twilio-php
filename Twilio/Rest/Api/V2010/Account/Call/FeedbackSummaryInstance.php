@@ -39,7 +39,8 @@ class FeedbackSummaryInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique id of the Account responsible for
      *                           creating this Call
-     * @param string $sid The sid
+     * @param string $sid A string that uniquely identifies this feedback summary
+     *                    resource
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

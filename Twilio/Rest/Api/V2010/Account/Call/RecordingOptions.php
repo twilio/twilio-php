@@ -70,7 +70,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording status changes that should generate a request to the URL specified in RecordingStatusCallback. Possible values: `in-progress`, `completed`, `failed`. To specify multiple values separate them with a space. Defaults to `completed`.
+     * The recording status changes that should generate a request to the URL specified in RecordingStatusCallback. Possible values: `in-progress`, `completed` and `absent`. To specify multiple values separate them with a space. Defaults to `completed`.
      * 
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that should generate a callback

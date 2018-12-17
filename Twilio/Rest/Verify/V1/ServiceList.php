@@ -49,6 +49,9 @@ class ServiceList extends ListResource {
             'FriendlyName' => $friendlyName,
             'CodeLength' => $options['codeLength'],
             'LookupEnabled' => Serialize::booleanToString($options['lookupEnabled']),
+            'SkipSmsToLandlines' => Serialize::booleanToString($options['skipSmsToLandlines']),
+            'DtmfInputRequired' => Serialize::booleanToString($options['dtmfInputRequired']),
+            'TtsName' => $options['ttsName'],
         ));
 
         $payload = $this->version->create(

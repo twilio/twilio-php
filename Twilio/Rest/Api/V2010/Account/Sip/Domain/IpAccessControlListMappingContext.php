@@ -18,9 +18,11 @@ class IpAccessControlListMappingContext extends InstanceContext {
      * Initialize the IpAccessControlListMappingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $domainSid The domain_sid
-     * @param string $sid The sid
+     * @param string $accountSid The unique id of the Account that is responsible
+     *                           for this resource.
+     * @param string $domainSid A string that uniquely identifies the SIP Domain
+     * @param string $sid A 34 character string that uniquely identifies the
+     *                    resource to fetch.
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingContext 
      */
     public function __construct(Version $version, $accountSid, $domainSid, $sid) {

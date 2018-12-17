@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string friendlyName
  * @property string status
- * @property string type
+ * @property string factorType
  * @property string url
  * @property array links
  */
@@ -59,7 +59,7 @@ class FactorInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'status' => Values::array_get($payload, 'status'),
-            'type' => Values::array_get($payload, 'type'),
+            'factorType' => Values::array_get($payload, 'factor_type'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
