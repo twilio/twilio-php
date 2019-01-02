@@ -40,6 +40,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Studio studio
  * @property \Twilio\Rest\Verify verify
  * @property \Twilio\Rest\Voice voice
+ * @property \Twilio\Rest\Insights insights
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
@@ -116,6 +117,7 @@ class Client {
     protected $_studio = null;
     protected $_verify = null;
     protected $_voice = null;
+    protected $_insights = null;
 
     /**
      * Initializes the Twilio Client
@@ -845,6 +847,18 @@ class Client {
             $this->_voice = new Voice($this);
         }
         return $this->_voice;
+    }
+
+    /**
+     * Access the Insights Twilio Domain
+     * 
+     * @return \Twilio\Rest\Insights Insights Twilio Domain
+     */
+    protected function getInsights() {
+        if (!$this->_insights) {
+            $this->_insights = new Insights($this);
+        }
+        return $this->_insights;
     }
 
     /**
