@@ -26,7 +26,7 @@ class Redirect extends TwiML {
      * Add Method attribute.
      * 
      * @param httpMethod $method Redirect URL method
-     * @return $this
+     * @return TwiML $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);

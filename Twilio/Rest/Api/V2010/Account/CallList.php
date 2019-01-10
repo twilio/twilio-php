@@ -28,8 +28,7 @@ class CallList extends ListResource {
      * Construct the CallList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the Account responsible for
-     *                           creating this Call
+     * @param string $accountSid The SID of the Account that created this resource
      * @return \Twilio\Rest\Api\V2010\Account\CallList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -204,7 +203,7 @@ class CallList extends ListResource {
     /**
      * Constructs a CallContext
      * 
-     * @param string $sid Call Sid that uniquely identifies the Call to fetch
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     public function getContext($sid) {

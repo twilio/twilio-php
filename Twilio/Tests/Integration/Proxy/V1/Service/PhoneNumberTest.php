@@ -41,7 +41,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "service_sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_created": "2015-07-30T20:00:00Z",
                 "date_updated": "2015-07-30T20:00:00Z",
-                "phone_number": "+987654321",
+                "phone_number": "+1987654321",
                 "friendly_name": "Friendly Name",
                 "iso_country": "US",
                 "capabilities": {
@@ -123,7 +123,7 @@ class PhoneNumberTest extends HolodeckTestCase {
                         "sid": "PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:00:00Z",
-                        "phone_number": "+987654321",
+                        "phone_number": "+1987654321",
                         "friendly_name": "Friendly Name",
                         "iso_country": "US",
                         "capabilities": {

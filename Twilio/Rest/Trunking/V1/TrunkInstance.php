@@ -44,7 +44,8 @@ class TrunkInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies the SIP
+     *                    Trunk in Twilio.
      * @return \Twilio\Rest\Trunking\V1\TrunkInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

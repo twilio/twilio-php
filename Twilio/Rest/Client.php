@@ -380,7 +380,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Call Sid that uniquely identifies the Call to fetch
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     protected function contextCalls($sid) {
@@ -395,7 +395,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique conference Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext 
      */
     protected function contextConferences($sid) {
@@ -514,7 +514,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique queue Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
      */
     protected function contextQueues($sid) {
@@ -566,7 +566,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique short-code Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
      */
     protected function contextShortCodes($sid) {

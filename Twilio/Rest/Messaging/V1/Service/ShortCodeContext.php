@@ -21,8 +21,8 @@ class ShortCodeContext extends InstanceContext {
      * Initialize the ShortCodeContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {

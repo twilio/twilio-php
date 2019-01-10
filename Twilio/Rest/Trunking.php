@@ -85,7 +85,8 @@ class Trunking extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies the SIP
+     *                    Trunk in Twilio.
      * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     protected function contextTrunks($sid) {

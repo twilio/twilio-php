@@ -58,7 +58,8 @@ class DomainTest extends HolodeckTestCase {
                         "voice_method": "POST",
                         "voice_status_callback_method": "POST",
                         "voice_status_callback_url": null,
-                        "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                        "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                        "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
                 "start": 0,
@@ -149,7 +150,8 @@ class DomainTest extends HolodeckTestCase {
                 "voice_method": "POST",
                 "voice_status_callback_method": "POST",
                 "voice_status_callback_url": null,
-                "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                "trunk_sid": null
             }
             '
         ));
@@ -201,7 +203,8 @@ class DomainTest extends HolodeckTestCase {
                 "voice_method": "POST",
                 "voice_status_callback_method": "POST",
                 "voice_status_callback_url": null,
-                "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -253,7 +256,8 @@ class DomainTest extends HolodeckTestCase {
                 "voice_method": "POST",
                 "voice_status_callback_method": "POST",
                 "voice_status_callback_url": null,
-                "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));

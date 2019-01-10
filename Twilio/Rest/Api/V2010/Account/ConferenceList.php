@@ -20,7 +20,7 @@ class ConferenceList extends ListResource {
      * Construct the ConferenceList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created this resource
      * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -133,7 +133,7 @@ class ConferenceList extends ListResource {
     /**
      * Constructs a ConferenceContext
      * 
-     * @param string $sid Fetch by unique conference Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext 
      */
     public function getContext($sid) {

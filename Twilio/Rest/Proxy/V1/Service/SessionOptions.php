@@ -17,15 +17,6 @@ use Twilio\Values;
  */
 abstract class SessionOptions {
     /**
-     * @param string $uniqueName The unique_name
-     * @param string $status The status
-     * @return ReadSessionOptions Options builder
-     */
-    public static function read($uniqueName = Values::NONE, $status = Values::NONE) {
-        return new ReadSessionOptions($uniqueName, $status);
-    }
-
-    /**
      * @param string $uniqueName A unique, developer assigned name of this Session.
      * @param \DateTime $dateExpiry The date this Session should expire
      * @param integer $ttl TTL for a Session, in seconds.
@@ -48,54 +39,6 @@ abstract class SessionOptions {
      */
     public static function update($dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
         return new UpdateSessionOptions($dateExpiry, $ttl, $mode, $status, $participants);
-    }
-}
-
-class ReadSessionOptions extends Options {
-    /**
-     * @param string $uniqueName The unique_name
-     * @param string $status The status
-     */
-    public function __construct($uniqueName = Values::NONE, $status = Values::NONE) {
-        $this->options['uniqueName'] = $uniqueName;
-        $this->options['status'] = $status;
-    }
-
-    /**
-     * The unique_name
-     * 
-     * @param string $uniqueName The unique_name
-     * @return $this Fluent Builder
-     */
-    public function setUniqueName($uniqueName) {
-        $this->options['uniqueName'] = $uniqueName;
-        return $this;
-    }
-
-    /**
-     * The status
-     * 
-     * @param string $status The status
-     * @return $this Fluent Builder
-     */
-    public function setStatus($status) {
-        $this->options['status'] = $status;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     * 
-     * @return string Machine friendly representation
-     */
-    public function __toString() {
-        $options = array();
-        foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Proxy.V1.ReadSessionOptions ' . implode(' ', $options) . ']';
     }
 }
 

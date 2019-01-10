@@ -18,8 +18,7 @@ class FeedbackList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
-     * @param string $callSid A 34-character string that uniquely identifies the
-     *                        Call resource.
+     * @param string $callSid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList 
      */
     public function __construct(Version $version, $accountSid, $callSid) {

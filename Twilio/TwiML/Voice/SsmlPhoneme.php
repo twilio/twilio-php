@@ -26,7 +26,7 @@ class SsmlPhoneme extends TwiML {
      * Add Alphabet attribute.
      * 
      * @param ssmlPhoneme:Enum:Alphabet $alphabet Specify the phonetic alphabet
-     * @return $this
+     * @return TwiML $this.
      */
     public function setAlphabet($alphabet) {
         return $this->setAttribute('alphabet', $alphabet);
@@ -36,7 +36,7 @@ class SsmlPhoneme extends TwiML {
      * Add Ph attribute.
      * 
      * @param string $ph Specifiy the phonetic symbols for pronunciation
-     * @return $this
+     * @return TwiML $this.
      */
     public function setPh($ph) {
         return $this->setAttribute('ph', $ph);

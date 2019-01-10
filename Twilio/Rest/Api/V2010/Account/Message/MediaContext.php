@@ -18,9 +18,11 @@ class MediaContext extends InstanceContext {
      * Initialize the MediaContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $messageSid The message_sid
-     * @param string $sid Fetch by unique media Sid
+     * @param string $accountSid The SID of the Account that created the
+     *                           resource(s) to fetch
+     * @param string $messageSid The SID of the Message resource that this Media
+     *                           resource belongs to
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext 
      */
     public function __construct(Version $version, $accountSid, $messageSid, $sid) {
