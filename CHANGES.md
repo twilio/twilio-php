@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2019-01-11] Version 5.28.1
+----------------------------
+**Verify**
+- Add `lookup` information in the response when creating a new verification (depends on the LookupEnabled flag being enabled at the service level)
+- Add `VerificationSid` optional parameter on Verification check.
+
+
 [2019-01-10] Version 5.28.0
 ----------------------------
 **Chat**
