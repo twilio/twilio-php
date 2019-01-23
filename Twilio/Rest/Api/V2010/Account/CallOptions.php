@@ -14,43 +14,45 @@ use Twilio\Values;
 
 abstract class CallOptions {
     /**
-     * @param string $url Url from which to fetch TwiML
-     * @param string $applicationSid ApplicationSid that configures from where to
-     *                               fetch TwiML
+     * @param string $url The absolute URL that returns TwiML for this call
+     * @param string $applicationSid The SID of the Application resource that will
+     *                               handle the call
      * @param string $method HTTP method to use to fetch TwiML
      * @param string $fallbackUrl Fallback URL in case of error
-     * @param string $fallbackMethod HTTP Method to use with FallbackUrl
-     * @param string $statusCallback Status Callback URL
-     * @param string $statusCallbackEvent The call progress events that Twilio will
-     *                                    send webhooks on.
-     * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
-     * @param string $sendDigits Digits to send
-     * @param string $ifMachine The if_machine
+     * @param string $fallbackMethod HTTP Method to use with fallback_url
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
+     * @param string $statusCallbackEvent The call progress events that we send to
+     *                                    the `status_callback` URL.
+     * @param string $statusCallbackMethod HTTP Method to use with status_callback
+     * @param string $sendDigits The digits to dial after connecting to the number
+     * @param string $ifMachine The action to take if an answering machine is
+     *                          detected
      * @param integer $timeout Number of seconds to wait for an answer
-     * @param boolean $record Whether or not to record the Call
-     * @param string $recordingChannels mono or dualSet this parameter to specify
-     *                                  the number of channels in the final
-     *                                  recording.
-     * @param string $recordingStatusCallback A URL that Twilio will send a webhook
-     *                                        request to when the recording is
-     *                                        available for access.
-     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
-     *                                              use when requesting the
-     *                                              `RecordingStatusCallback` URL.
-     * @param string $sipAuthUsername The sip_auth_username
-     * @param string $sipAuthPassword The sip_auth_password
+     * @param boolean $record Whether or not to record the call
+     * @param string $recordingChannels The number of channels in the final
+     *                                  recording
+     * @param string $recordingStatusCallback The URL that we call when the
+     *                                        recording is available to be accessed
+     * @param string $recordingStatusCallbackMethod The HTTP method we should use
+     *                                              when calling the
+     *                                              `recording_status_callback` URL
+     * @param string $sipAuthUsername The username used to authenticate the caller
+     *                                making a SIP call
+     * @param string $sipAuthPassword The password required to authenticate the
+     *                                user account specified in `sip_auth_username`.
      * @param string $machineDetection Enable machine detection or end of greeting
      *                                 detection
-     * @param integer $machineDetectionTimeout Number of miliseconds to wait for
+     * @param integer $machineDetectionTimeout Number of milliseconds to wait for
      *                                         machine detection
-     * @param string $recordingStatusCallbackEvent The recording status changes
-     *                                             that Twilio will send webhooks
-     *                                             on to the URL specified in
-     *                                             RecordingStatusCallback.
+     * @param string $recordingStatusCallbackEvent The recording status events that
+     *                                             will trigger calls to the URL
+     *                                             specified in
+     *                                             `recording_status_callback`
      * @param string $trim Set this parameter to control trimming of silence on the
      *                     recording.
      * @param string $callerId The phone number, SIP address, or Client identifier
-     *                         that made this Call. Phone numbers are in E.164
+     *                         that made this call. Phone numbers are in E.164
      *                         format (e.g., +16175551212). SIP addresses are
      *                         formatted as `name@company.com`.
      * @return CreateCallOptions Options builder
@@ -60,16 +62,22 @@ abstract class CallOptions {
     }
 
     /**
-     * @param string $to Phone number or Client identifier to filter `to` on
+     * @param string $to Phone number or Client identifier of calls to include
      * @param string $from Phone number or Client identifier to filter `from` on
-     * @param string $parentCallSid Parent Call Sid to filter on
-     * @param string $status Status to filter on
-     * @param string $startTimeBefore StartTime to filter on
-     * @param string $startTime StartTime to filter on
-     * @param string $startTimeAfter StartTime to filter on
-     * @param string $endTimeBefore EndTime to filter on
-     * @param string $endTime EndTime to filter on
-     * @param string $endTimeAfter EndTime to filter on
+     * @param string $parentCallSid Parent call SID to filter on
+     * @param string $status The status of the resources to read
+     * @param string $startTimeBefore Only include calls that started on or after
+     *                                this date
+     * @param string $startTime Only include calls that started on or after this
+     *                          date
+     * @param string $startTimeAfter Only include calls that started on or after
+     *                               this date
+     * @param string $endTimeBefore Only include usage that occurred on or before
+     *                              this date
+     * @param string $endTime Only include usage that occurred on or before this
+     *                        date
+     * @param string $endTimeAfter Only include usage that occurred on or before
+     *                             this date
      * @return ReadCallOptions Options builder
      */
     public static function read($to = Values::NONE, $from = Values::NONE, $parentCallSid = Values::NONE, $status = Values::NONE, $startTimeBefore = Values::NONE, $startTime = Values::NONE, $startTimeAfter = Values::NONE, $endTimeBefore = Values::NONE, $endTime = Values::NONE, $endTimeAfter = Values::NONE) {
@@ -77,13 +85,15 @@ abstract class CallOptions {
     }
 
     /**
-     * @param string $url URL that returns TwiML
+     * @param string $url The absolute URL that returns TwiML for this call
      * @param string $method HTTP method to use to fetch TwiML
-     * @param string $status Status to update the Call with
+     * @param string $status The new status to update the call with.
      * @param string $fallbackUrl Fallback URL in case of error
-     * @param string $fallbackMethod HTTP Method to use with FallbackUrl
-     * @param string $statusCallback Status Callback URL
-     * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
+     * @param string $fallbackMethod HTTP Method to use with fallback_url
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
+     * @param string $statusCallbackMethod HTTP Method to use to call
+     *                                     status_callback
      * @return UpdateCallOptions Options builder
      */
     public static function update($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
@@ -93,43 +103,45 @@ abstract class CallOptions {
 
 class CreateCallOptions extends Options {
     /**
-     * @param string $url Url from which to fetch TwiML
-     * @param string $applicationSid ApplicationSid that configures from where to
-     *                               fetch TwiML
+     * @param string $url The absolute URL that returns TwiML for this call
+     * @param string $applicationSid The SID of the Application resource that will
+     *                               handle the call
      * @param string $method HTTP method to use to fetch TwiML
      * @param string $fallbackUrl Fallback URL in case of error
-     * @param string $fallbackMethod HTTP Method to use with FallbackUrl
-     * @param string $statusCallback Status Callback URL
-     * @param string $statusCallbackEvent The call progress events that Twilio will
-     *                                    send webhooks on.
-     * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
-     * @param string $sendDigits Digits to send
-     * @param string $ifMachine The if_machine
+     * @param string $fallbackMethod HTTP Method to use with fallback_url
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
+     * @param string $statusCallbackEvent The call progress events that we send to
+     *                                    the `status_callback` URL.
+     * @param string $statusCallbackMethod HTTP Method to use with status_callback
+     * @param string $sendDigits The digits to dial after connecting to the number
+     * @param string $ifMachine The action to take if an answering machine is
+     *                          detected
      * @param integer $timeout Number of seconds to wait for an answer
-     * @param boolean $record Whether or not to record the Call
-     * @param string $recordingChannels mono or dualSet this parameter to specify
-     *                                  the number of channels in the final
-     *                                  recording.
-     * @param string $recordingStatusCallback A URL that Twilio will send a webhook
-     *                                        request to when the recording is
-     *                                        available for access.
-     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
-     *                                              use when requesting the
-     *                                              `RecordingStatusCallback` URL.
-     * @param string $sipAuthUsername The sip_auth_username
-     * @param string $sipAuthPassword The sip_auth_password
+     * @param boolean $record Whether or not to record the call
+     * @param string $recordingChannels The number of channels in the final
+     *                                  recording
+     * @param string $recordingStatusCallback The URL that we call when the
+     *                                        recording is available to be accessed
+     * @param string $recordingStatusCallbackMethod The HTTP method we should use
+     *                                              when calling the
+     *                                              `recording_status_callback` URL
+     * @param string $sipAuthUsername The username used to authenticate the caller
+     *                                making a SIP call
+     * @param string $sipAuthPassword The password required to authenticate the
+     *                                user account specified in `sip_auth_username`.
      * @param string $machineDetection Enable machine detection or end of greeting
      *                                 detection
-     * @param integer $machineDetectionTimeout Number of miliseconds to wait for
+     * @param integer $machineDetectionTimeout Number of milliseconds to wait for
      *                                         machine detection
-     * @param string $recordingStatusCallbackEvent The recording status changes
-     *                                             that Twilio will send webhooks
-     *                                             on to the URL specified in
-     *                                             RecordingStatusCallback.
+     * @param string $recordingStatusCallbackEvent The recording status events that
+     *                                             will trigger calls to the URL
+     *                                             specified in
+     *                                             `recording_status_callback`
      * @param string $trim Set this parameter to control trimming of silence on the
      *                     recording.
      * @param string $callerId The phone number, SIP address, or Client identifier
-     *                         that made this Call. Phone numbers are in E.164
+     *                         that made this call. Phone numbers are in E.164
      *                         format (e.g., +16175551212). SIP addresses are
      *                         formatted as `name@company.com`.
      */
@@ -159,9 +171,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The fully qualified URL that hosts instructions for the call. Twilio will consult this URL when the call connects. See the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) details in [Making Calls](https://www.twilio.com/docs/voice/make-calls) for more details.
+     * The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
      * 
-     * @param string $url Url from which to fetch TwiML
+     * @param string $url The absolute URL that returns TwiML for this call
      * @return $this Fluent Builder
      */
     public function setUrl($url) {
@@ -170,10 +182,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The 34-character SID of the application Twilio should use to handle this phone call. If this parameter is present, Twilio will ignore all of the voice URLs passed and use the URLs set on the application. See the [ApplicationSid Parameter](https://www.twilio.com/docs/voice/make-calls#specify-an-applicationsid-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls) for more details.
+     * The SID of the Application resource that will handle the call, if the call will be handled by an application.
      * 
-     * @param string $applicationSid ApplicationSid that configures from where to
-     *                               fetch TwiML
+     * @param string $applicationSid The SID of the Application resource that will
+     *                               handle the call
      * @return $this Fluent Builder
      */
     public function setApplicationSid($applicationSid) {
@@ -182,7 +194,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when making its request to the `Url` parameter's value. Defaults to `POST`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
      * @param string $method HTTP method to use to fetch TwiML
      * @return $this Fluent Builder
@@ -193,7 +205,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will request if an error occurs requesting or executing the TwiML at `Url`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
      * @param string $fallbackUrl Fallback URL in case of error
      * @return $this Fluent Builder
@@ -204,9 +216,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method that Twilio should use to request the `FallbackUrl`. Must be either `GET` or `POST`. Defaults to `POST`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
-     * @param string $fallbackMethod HTTP Method to use with FallbackUrl
+     * @param string $fallbackMethod HTTP Method to use with fallback_url
      * @return $this Fluent Builder
      */
     public function setFallbackMethod($fallbackMethod) {
@@ -215,9 +227,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will send asynchronous webhook requests to on every call event specified in the `StatusCallbackEvent` parameter. If no event is specified, Twilio will send `completed` by default. If an `ApplicationSid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+     * The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
      * 
-     * @param string $statusCallback Status Callback URL
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -226,10 +239,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The call progress events that will trigger a webhook from Twilio. Available values are `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, defaults to `completed`. If you want to receive multiple events, please provide multiple `StatusCallbackEvent` values as individual parameters in the `POST` request. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call?code-sample=code-create-a-call-and-specify-a-statuscallbackevent). If an `ApplicationSid` is present, this parameter is ignored.
+     * The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call?code-sample=code-create-a-call-and-specify-a-statuscallbackevent). If an `application_sid` is present, this parameter is ignored.
      * 
-     * @param string $statusCallbackEvent The call progress events that Twilio will
-     *                                    send webhooks on.
+     * @param string $statusCallbackEvent The call progress events that we send to
+     *                                    the `status_callback` URL.
      * @return $this Fluent Builder
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
@@ -238,9 +251,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when requesting the `StatusCallback` URL. Defaults to `POST`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
-     * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
+     * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
@@ -249,9 +262,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`' (to insert a half second pause). For example, if you connected to a company phone number and wanted to pause for one second, dial extension 1234, and then the pound key, use `SendDigits=ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored.
+     * A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored.
      * 
-     * @param string $sendDigits Digits to send
+     * @param string $sendDigits The digits to dial after connecting to the number
      * @return $this Fluent Builder
      */
     public function setSendDigits($sendDigits) {
@@ -260,9 +273,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The if_machine
+     * The action to take if an answering machine is detected. Can be: `Continue`, `Hangup`, or `False`. `False` disables the detection of an answering machine.
      * 
-     * @param string $ifMachine The if_machine
+     * @param string $ifMachine The action to take if an answering machine is
+     *                          detected
      * @return $this Fluent Builder
      */
     public function setIfMachine($ifMachine) {
@@ -271,7 +285,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The integer number of seconds that Twilio should allow the phone to ring before assuming there is no answer. Default is `60` seconds, the maximum is `600` seconds. For some call flows, Twilio will add a 5-second buffer to the timeout value provided, so if you enter a timeout value of 10 seconds, you could see actual timeout closer to 15 seconds. Note, you could set this to a low value like `15` to hang up before reaching an answering machine or voicemail.
+     * The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.
      * 
      * @param integer $timeout Number of seconds to wait for an answer
      * @return $this Fluent Builder
@@ -282,9 +296,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * Set this parameter to `true` to record the entirety of a phone call. The `RecordingUrl` will be sent to the `StatusCallback` URL. Defaults to false.
+     * Set this parameter to `true` to record the phone call. The `recording_url` will be sent to the `status_callback` URL. The default is `false`.
      * 
-     * @param boolean $record Whether or not to record the Call
+     * @param boolean $record Whether or not to record the call
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -293,11 +307,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * `mono` or `dual` – defaults to `mono`. Set this parameter to specify the number of channels in the final recording. In a mono-channel recording, both legs of the call are mixed down into a single channel within a single recording file. With dual-channel recording, both legs use separate channels within a single recording file. In dual-channel recordings, the parent call will always be in the first channel, and the child call will always be in the second channel.
+     * The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call.
      * 
-     * @param string $recordingChannels mono or dualSet this parameter to specify
-     *                                  the number of channels in the final
-     *                                  recording.
+     * @param string $recordingChannels The number of channels in the final
+     *                                  recording
      * @return $this Fluent Builder
      */
     public function setRecordingChannels($recordingChannels) {
@@ -306,11 +319,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will send a webhook request to when the recording is available for access.
+     * The URL that we call when the recording is available to be accessed.
      * 
-     * @param string $recordingStatusCallback A URL that Twilio will send a webhook
-     *                                        request to when the recording is
-     *                                        available for access.
+     * @param string $recordingStatusCallback The URL that we call when the
+     *                                        recording is available to be accessed
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallback($recordingStatusCallback) {
@@ -319,11 +331,11 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when requesting the `RecordingStatusCallback` URL. Defaults to `POST`.
+     * The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
      * 
-     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
-     *                                              use when requesting the
-     *                                              `RecordingStatusCallback` URL.
+     * @param string $recordingStatusCallbackMethod The HTTP method we should use
+     *                                              when calling the
+     *                                              `recording_status_callback` URL
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -332,9 +344,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The sip_auth_username
+     * The username used to authenticate the caller making a SIP call.
      * 
-     * @param string $sipAuthUsername The sip_auth_username
+     * @param string $sipAuthUsername The username used to authenticate the caller
+     *                                making a SIP call
      * @return $this Fluent Builder
      */
     public function setSipAuthUsername($sipAuthUsername) {
@@ -343,9 +356,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The sip_auth_password
+     * The password required to authenticate the user account specified in `sip_auth_username`.
      * 
-     * @param string $sipAuthPassword The sip_auth_password
+     * @param string $sipAuthPassword The password required to authenticate the
+     *                                user account specified in `sip_auth_username`.
      * @return $this Fluent Builder
      */
     public function setSipAuthPassword($sipAuthPassword) {
@@ -354,7 +368,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * Detect if a human, answering machine, or fax has picked up the call. Use `Enable` if you would like Twilio to return an `AnsweredBy` value as soon as it identifies the called party. If you would like to leave a message on an answering machine, specify `DetectMessageEnd`. If both `SendDigits` and `MachineDetection` parameters are provided, then MachineDetection will be ignored. [Detailed documentation is here](https://www.twilio.com/docs/voice/answering-machine-detection).
+     * Detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
      * 
      * @param string $machineDetection Enable machine detection or end of greeting
      *                                 detection
@@ -366,9 +380,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The number of seconds that Twilio should attempt to perform answering machine detection before timing out and firing a voice request with `AnsweredBy` of `unknown`. Defaults to 30 seconds.
+     * The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
      * 
-     * @param integer $machineDetectionTimeout Number of miliseconds to wait for
+     * @param integer $machineDetectionTimeout Number of milliseconds to wait for
      *                                         machine detection
      * @return $this Fluent Builder
      */
@@ -378,12 +392,12 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The recording status events that will trigger Twilio to send webhooks on to the URL specified in `RecordingStatusCallback`. The available values are `in-progress`, `completed`, and `failed`. Defaults are `completed` and `failed`. To specify multiple values, separate them with a space. If any values are specified, the defaults are no longer applicable.
+     * The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space.
      * 
-     * @param string $recordingStatusCallbackEvent The recording status changes
-     *                                             that Twilio will send webhooks
-     *                                             on to the URL specified in
-     *                                             RecordingStatusCallback.
+     * @param string $recordingStatusCallbackEvent The recording status events that
+     *                                             will trigger calls to the URL
+     *                                             specified in
+     *                                             `recording_status_callback`
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
@@ -392,7 +406,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * `trim-silence` or `do-not-trim`. Set this parameter to define whether leading and trailing silence is trimmed from the recording.  Defaults to `trim-silence`.
+     * Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
      * 
      * @param string $trim Set this parameter to control trimming of silence on the
      *                     recording.
@@ -404,10 +418,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The phone number, SIP address, or Client identifier that made this Call. Phone numbers are in [E.164 format](https://www.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
+     * The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
      * 
      * @param string $callerId The phone number, SIP address, or Client identifier
-     *                         that made this Call. Phone numbers are in E.164
+     *                         that made this call. Phone numbers are in E.164
      *                         format (e.g., +16175551212). SIP addresses are
      *                         formatted as `name@company.com`.
      * @return $this Fluent Builder
@@ -435,16 +449,22 @@ class CreateCallOptions extends Options {
 
 class ReadCallOptions extends Options {
     /**
-     * @param string $to Phone number or Client identifier to filter `to` on
+     * @param string $to Phone number or Client identifier of calls to include
      * @param string $from Phone number or Client identifier to filter `from` on
-     * @param string $parentCallSid Parent Call Sid to filter on
-     * @param string $status Status to filter on
-     * @param string $startTimeBefore StartTime to filter on
-     * @param string $startTime StartTime to filter on
-     * @param string $startTimeAfter StartTime to filter on
-     * @param string $endTimeBefore EndTime to filter on
-     * @param string $endTime EndTime to filter on
-     * @param string $endTimeAfter EndTime to filter on
+     * @param string $parentCallSid Parent call SID to filter on
+     * @param string $status The status of the resources to read
+     * @param string $startTimeBefore Only include calls that started on or after
+     *                                this date
+     * @param string $startTime Only include calls that started on or after this
+     *                          date
+     * @param string $startTimeAfter Only include calls that started on or after
+     *                               this date
+     * @param string $endTimeBefore Only include usage that occurred on or before
+     *                              this date
+     * @param string $endTime Only include usage that occurred on or before this
+     *                        date
+     * @param string $endTimeAfter Only include usage that occurred on or before
+     *                             this date
      */
     public function __construct($to = Values::NONE, $from = Values::NONE, $parentCallSid = Values::NONE, $status = Values::NONE, $startTimeBefore = Values::NONE, $startTime = Values::NONE, $startTimeAfter = Values::NONE, $endTimeBefore = Values::NONE, $endTime = Values::NONE, $endTimeAfter = Values::NONE) {
         $this->options['to'] = $to;
@@ -462,7 +482,7 @@ class ReadCallOptions extends Options {
     /**
      * Only show calls to this phone number, SIP address, Client identifier or SIM SID.
      * 
-     * @param string $to Phone number or Client identifier to filter `to` on
+     * @param string $to Phone number or Client identifier of calls to include
      * @return $this Fluent Builder
      */
     public function setTo($to) {
@@ -471,7 +491,7 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls from this phone number, SIP address, Client identifier or SIM SID.
+     * Only include calls from this phone number, SIP address, Client identifier or SIM SID.
      * 
      * @param string $from Phone number or Client identifier to filter `from` on
      * @return $this Fluent Builder
@@ -482,9 +502,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls spawned by the Call with this SID.
+     * Only include calls spawned by calls with this SID.
      * 
-     * @param string $parentCallSid Parent Call Sid to filter on
+     * @param string $parentCallSid Parent call SID to filter on
      * @return $this Fluent Builder
      */
     public function setParentCallSid($parentCallSid) {
@@ -493,9 +513,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls currently in the specified status. May be `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`.
+     * The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`.
      * 
-     * @param string $status Status to filter on
+     * @param string $status The status of the resources to read
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -504,9 +524,10 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime<=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime>=YYYY-MM-DD` for calls that started at or after midnight on a date.
+     * Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
      * 
-     * @param string $startTimeBefore StartTime to filter on
+     * @param string $startTimeBefore Only include calls that started on or after
+     *                                this date
      * @return $this Fluent Builder
      */
     public function setStartTimeBefore($startTimeBefore) {
@@ -515,9 +536,10 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime<=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime>=YYYY-MM-DD` for calls that started at or after midnight on a date.
+     * Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
      * 
-     * @param string $startTime StartTime to filter on
+     * @param string $startTime Only include calls that started on or after this
+     *                          date
      * @return $this Fluent Builder
      */
     public function setStartTime($startTime) {
@@ -526,9 +548,10 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that started on this date, given as `YYYY-MM-DD`. Also supports inequalities, such as `StartTime<=YYYY-MM-DD` for calls that started at or before midnight on a date, and `StartTime>=YYYY-MM-DD` for calls that started at or after midnight on a date.
+     * Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
      * 
-     * @param string $startTimeAfter StartTime to filter on
+     * @param string $startTimeAfter Only include calls that started on or after
+     *                               this date
      * @return $this Fluent Builder
      */
     public function setStartTimeAfter($startTimeAfter) {
@@ -537,9 +560,10 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that ended on this date
+     * Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
      * 
-     * @param string $endTimeBefore EndTime to filter on
+     * @param string $endTimeBefore Only include usage that occurred on or before
+     *                              this date
      * @return $this Fluent Builder
      */
     public function setEndTimeBefore($endTimeBefore) {
@@ -548,9 +572,10 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that ended on this date
+     * Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
      * 
-     * @param string $endTime EndTime to filter on
+     * @param string $endTime Only include usage that occurred on or before this
+     *                        date
      * @return $this Fluent Builder
      */
     public function setEndTime($endTime) {
@@ -559,9 +584,10 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls that ended on this date
+     * Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
      * 
-     * @param string $endTimeAfter EndTime to filter on
+     * @param string $endTimeAfter Only include usage that occurred on or before
+     *                             this date
      * @return $this Fluent Builder
      */
     public function setEndTimeAfter($endTimeAfter) {
@@ -587,13 +613,15 @@ class ReadCallOptions extends Options {
 
 class UpdateCallOptions extends Options {
     /**
-     * @param string $url URL that returns TwiML
+     * @param string $url The absolute URL that returns TwiML for this call
      * @param string $method HTTP method to use to fetch TwiML
-     * @param string $status Status to update the Call with
+     * @param string $status The new status to update the call with.
      * @param string $fallbackUrl Fallback URL in case of error
-     * @param string $fallbackMethod HTTP Method to use with FallbackUrl
-     * @param string $statusCallback Status Callback URL
-     * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
+     * @param string $fallbackMethod HTTP Method to use with fallback_url
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
+     * @param string $statusCallbackMethod HTTP Method to use to call
+     *                                     status_callback
      */
     public function __construct($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
         $this->options['url'] = $url;
@@ -606,9 +634,9 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * that hosts instructions for the call. Twilio will consult this URL when the call connects. See the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls) for more details.
+     * The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
      * 
-     * @param string $url URL that returns TwiML
+     * @param string $url The absolute URL that returns TwiML for this call
      * @return $this Fluent Builder
      */
     public function setUrl($url) {
@@ -617,7 +645,7 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when making its request to the `Url` parameter's value. Defaults to `POST`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The HTTP method we should use when calling the `url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
      * @param string $method HTTP method to use to fetch TwiML
      * @return $this Fluent Builder
@@ -628,9 +656,9 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * Either `canceled` or `completed`. Specifying `canceled` will attempt to hang up calls that are queued or ringing, but will not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in progress.
+     * The new status of the resource. Can be: `canceled` or `completed`. Specifying `canceled` will attempt to hang up calls that are queued or ringing; however, it will not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in progress.
      * 
-     * @param string $status Status to update the Call with
+     * @param string $status The new status to update the call with.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -639,7 +667,7 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will request if an error occurs when requesting or executing the TwiML at `Url`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
      * @param string $fallbackUrl Fallback URL in case of error
      * @return $this Fluent Builder
@@ -650,9 +678,9 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method that Twilio should use to request the `FallbackUrl`. Must be either `GET` or `POST`. Defaults to `POST`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
-     * @param string $fallbackMethod HTTP Method to use with FallbackUrl
+     * @param string $fallbackMethod HTTP Method to use with fallback_url
      * @return $this Fluent Builder
      */
     public function setFallbackMethod($fallbackMethod) {
@@ -661,9 +689,10 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will send asynchronous webhook requests to on every call event specified in the `StatusCallbackEvent` parameter. If no event is specified, Twilio will send `completed` by default. If an `ApplicationSid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+     * The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
      * 
-     * @param string $statusCallback Status Callback URL
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -672,9 +701,10 @@ class UpdateCallOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when requesting the `StatusCallback` URL. Defaults to `POST`. If an `ApplicationSid` parameter is present, this parameter is ignored.
+     * The HTTP method we should use when requesting the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
      * 
-     * @param string $statusCallbackMethod HTTP Method to use with StatusCallback
+     * @param string $statusCallbackMethod HTTP Method to use to call
+     *                                     status_callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {

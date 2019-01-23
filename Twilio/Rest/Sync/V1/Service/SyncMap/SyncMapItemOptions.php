@@ -17,12 +17,15 @@ use Twilio\Values;
  */
 abstract class SyncMapItemOptions {
     /**
-     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for item_ttl
+     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                         expiration.
+     * @param integer $collectionTtl Time-to-live of this item's parent Map in
+     *                               seconds, defaults to no expiration.
      * @return CreateSyncMapItemOptions Options builder
      */
-    public static function create($ttl = Values::NONE) {
-        return new CreateSyncMapItemOptions($ttl);
+    public static function create($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
+        return new CreateSyncMapItemOptions($ttl, $itemTtl, $collectionTtl);
     }
 
     /**
@@ -39,32 +42,64 @@ abstract class SyncMapItemOptions {
     /**
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Map Item.
-     * @param integer $ttl New time-to-live of this Map in seconds.
+     * @param integer $ttl Alias for item_ttl
+     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                         expiration.
+     * @param integer $collectionTtl Time-to-live of this item's parent Map in
+     *                               seconds, defaults to no expiration.
      * @return UpdateSyncMapItemOptions Options builder
      */
-    public static function update($data = Values::NONE, $ttl = Values::NONE) {
-        return new UpdateSyncMapItemOptions($data, $ttl);
+    public static function update($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
+        return new UpdateSyncMapItemOptions($data, $ttl, $itemTtl, $collectionTtl);
     }
 }
 
 class CreateSyncMapItemOptions extends Options {
     /**
-     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for item_ttl
+     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                         expiration.
+     * @param integer $collectionTtl Time-to-live of this item's parent Map in
+     *                               seconds, defaults to no expiration.
      */
-    public function __construct($ttl = Values::NONE) {
+    public function __construct($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
+        $this->options['itemTtl'] = $itemTtl;
+        $this->options['collectionTtl'] = $collectionTtl;
     }
 
     /**
-     * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Alias for item_ttl. If both are provided, this value is ignored.
      * 
-     * @param integer $ttl Time-to-live of this Map in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for item_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
         $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
+     * 
+     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                         expiration.
+     * @return $this Fluent Builder
+     */
+    public function setItemTtl($itemTtl) {
+        $this->options['itemTtl'] = $itemTtl;
+        return $this;
+    }
+
+    /**
+     * Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.
+     * 
+     * @param integer $collectionTtl Time-to-live of this item's parent Map in
+     *                               seconds, defaults to no expiration.
+     * @return $this Fluent Builder
+     */
+    public function setCollectionTtl($collectionTtl) {
+        $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
 
@@ -151,11 +186,17 @@ class UpdateSyncMapItemOptions extends Options {
     /**
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Map Item.
-     * @param integer $ttl New time-to-live of this Map in seconds.
+     * @param integer $ttl Alias for item_ttl
+     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                         expiration.
+     * @param integer $collectionTtl Time-to-live of this item's parent Map in
+     *                               seconds, defaults to no expiration.
      */
-    public function __construct($data = Values::NONE, $ttl = Values::NONE) {
+    public function __construct($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
         $this->options['ttl'] = $ttl;
+        $this->options['itemTtl'] = $itemTtl;
+        $this->options['collectionTtl'] = $collectionTtl;
     }
 
     /**
@@ -171,13 +212,37 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Alias for item_ttl. If both are provided, this value is ignored.
      * 
-     * @param integer $ttl New time-to-live of this Map in seconds.
+     * @param integer $ttl Alias for item_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
         $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
+     * 
+     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                         expiration.
+     * @return $this Fluent Builder
+     */
+    public function setItemTtl($itemTtl) {
+        $this->options['itemTtl'] = $itemTtl;
+        return $this;
+    }
+
+    /**
+     * Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.
+     * 
+     * @param integer $collectionTtl Time-to-live of this item's parent Map in
+     *                               seconds, defaults to no expiration.
+     * @return $this Fluent Builder
+     */
+    public function setCollectionTtl($collectionTtl) {
+        $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
 

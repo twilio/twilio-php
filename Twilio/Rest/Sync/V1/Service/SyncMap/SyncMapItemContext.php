@@ -84,6 +84,8 @@ class SyncMapItemContext extends InstanceContext {
         $data = Values::of(array(
             'Data' => Serialize::jsonObject($options['data']),
             'Ttl' => $options['ttl'],
+            'ItemTtl' => $options['itemTtl'],
+            'CollectionTtl' => $options['collectionTtl'],
         ));
 
         $payload = $this->version->update(

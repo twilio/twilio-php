@@ -30,7 +30,7 @@ class TaskStatisticsInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Field.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsInstance 
      */

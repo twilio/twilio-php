@@ -38,7 +38,8 @@ class FieldValueInstance extends InstanceResource {
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $fieldTypeSid The unique ID of the Field Type associated with
      *                             this Field Value.
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $fieldTypeSid, $sid = null) {

@@ -18,9 +18,10 @@ abstract class RecordingOptions {
      * @param string $sourceSid Only show the Recordings with the given source Sid.
      * @param string $groupingSid Only show Recordings that have this GroupingSid.
      * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
-     *                                    after this ISO8601 date-time.
+     *                                    after this ISO8601 date-time with
+     *                                    timezone.
      * @param \DateTime $dateCreatedBefore Only show Recordings that started before
-     *                                     this this ISO8601 date-time.
+     *                                     this ISO8601 date-time with timezone.
      * @return ReadRecordingOptions Options builder
      */
     public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
@@ -34,9 +35,10 @@ class ReadRecordingOptions extends Options {
      * @param string $sourceSid Only show the Recordings with the given source Sid.
      * @param string $groupingSid Only show Recordings that have this GroupingSid.
      * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
-     *                                    after this ISO8601 date-time.
+     *                                    after this ISO8601 date-time with
+     *                                    timezone.
      * @param \DateTime $dateCreatedBefore Only show Recordings that started before
-     *                                     this this ISO8601 date-time.
+     *                                     this ISO8601 date-time with timezone.
      */
     public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
         $this->options['status'] = $status;
@@ -80,10 +82,11 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * Only show Recordings that started on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
      * 
      * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
-     *                                    after this ISO8601 date-time.
+     *                                    after this ISO8601 date-time with
+     *                                    timezone.
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -92,10 +95,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * Only show Recordings that started before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
      * 
      * @param \DateTime $dateCreatedBefore Only show Recordings that started before
-     *                                     this this ISO8601 date-time.
+     *                                     this ISO8601 date-time with timezone.
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {

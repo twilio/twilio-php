@@ -24,6 +24,9 @@ use Twilio\Version;
  * @property string friendlyName
  * @property integer codeLength
  * @property boolean lookupEnabled
+ * @property boolean skipSmsToLandlines
+ * @property boolean dtmfInputRequired
+ * @property string ttsName
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url
@@ -51,6 +54,9 @@ class ServiceInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'codeLength' => Values::array_get($payload, 'code_length'),
             'lookupEnabled' => Values::array_get($payload, 'lookup_enabled'),
+            'skipSmsToLandlines' => Values::array_get($payload, 'skip_sms_to_landlines'),
+            'dtmfInputRequired' => Values::array_get($payload, 'dtmf_input_required'),
+            'ttsName' => Values::array_get($payload, 'tts_name'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

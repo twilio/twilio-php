@@ -17,30 +17,47 @@ use Twilio\Values;
  */
 abstract class VerificationCheckOptions {
     /**
-     * @param string $to To phonenumber
+     * @param string $to To phone number
+     * @param string $verificationSid A SID that uniquely identifies this
+     *                                Verification Check
      * @return CreateVerificationCheckOptions Options builder
      */
-    public static function create($to = Values::NONE) {
-        return new CreateVerificationCheckOptions($to);
+    public static function create($to = Values::NONE, $verificationSid = Values::NONE) {
+        return new CreateVerificationCheckOptions($to, $verificationSid);
     }
 }
 
 class CreateVerificationCheckOptions extends Options {
     /**
-     * @param string $to To phonenumber
+     * @param string $to To phone number
+     * @param string $verificationSid A SID that uniquely identifies this
+     *                                Verification Check
      */
-    public function __construct($to = Values::NONE) {
+    public function __construct($to = Values::NONE, $verificationSid = Values::NONE) {
         $this->options['to'] = $to;
+        $this->options['verificationSid'] = $verificationSid;
     }
 
     /**
-     * The To phonenumber of the phone being verified
+     * The To phone number of the phone being verified
      * 
-     * @param string $to To phonenumber
+     * @param string $to To phone number
      * @return $this Fluent Builder
      */
     public function setTo($to) {
         $this->options['to'] = $to;
+        return $this;
+    }
+
+    /**
+     * A SID that uniquely identifies this Verification Check, either this parameter or the To phone number must be specified
+     * 
+     * @param string $verificationSid A SID that uniquely identifies this
+     *                                Verification Check
+     * @return $this Fluent Builder
+     */
+    public function setVerificationSid($verificationSid) {
+        $this->options['verificationSid'] = $verificationSid;
         return $this;
     }
 

@@ -21,9 +21,11 @@ class FieldValueContext extends InstanceContext {
      * Initialize the FieldValueContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $fieldTypeSid The field_type_sid
-     * @param string $sid The sid
+     * @param string $assistantSid The unique ID of the Assistant
+     * @param string $fieldTypeSid The unique ID of the Field Type associated with
+     *                             this Field Value
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext 
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid, $sid) {

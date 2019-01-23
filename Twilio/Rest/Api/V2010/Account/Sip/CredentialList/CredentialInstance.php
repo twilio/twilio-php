@@ -31,10 +31,12 @@ class CredentialInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique id of the Account that responsible for
-     *                           this resource.
-     * @param string $credentialListSid The credential_list_sid
-     * @param string $sid The sid
+     * @param string $accountSid The unique id of the Account that is responsible
+     *                           for this resource.
+     * @param string $credentialListSid The unique id that identifies the
+     *                                  credential list that includes this
+     *                                  credential
+     * @param string $sid The unique id that identifies the resource to fetch.
      * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $credentialListSid, $sid = null) {

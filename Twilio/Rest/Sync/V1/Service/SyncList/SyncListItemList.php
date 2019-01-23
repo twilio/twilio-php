@@ -51,7 +51,12 @@ class SyncListItemList extends ListResource {
     public function create($data, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Data' => Serialize::jsonObject($data), 'Ttl' => $options['ttl'], ));
+        $data = Values::of(array(
+            'Data' => Serialize::jsonObject($data),
+            'Ttl' => $options['ttl'],
+            'ItemTtl' => $options['itemTtl'],
+            'CollectionTtl' => $options['collectionTtl'],
+        ));
 
         $payload = $this->version->create(
             'POST',

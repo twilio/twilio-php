@@ -17,14 +17,6 @@ use Twilio\Values;
  */
 abstract class ParticipantOptions {
     /**
-     * @param string $identifier The identifier
-     * @return ReadParticipantOptions Options builder
-     */
-    public static function read($identifier = Values::NONE) {
-        return new ReadParticipantOptions($identifier);
-    }
-
-    /**
      * @param string $friendlyName A human-readable description of this resource.
      * @param string $proxyIdentifier The proxy phone number to use for this
      *                                Participant.
@@ -33,41 +25,6 @@ abstract class ParticipantOptions {
      */
     public static function create($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
         return new CreateParticipantOptions($friendlyName, $proxyIdentifier, $proxyIdentifierSid);
-    }
-}
-
-class ReadParticipantOptions extends Options {
-    /**
-     * @param string $identifier The identifier
-     */
-    public function __construct($identifier = Values::NONE) {
-        $this->options['identifier'] = $identifier;
-    }
-
-    /**
-     * The identifier
-     * 
-     * @param string $identifier The identifier
-     * @return $this Fluent Builder
-     */
-    public function setIdentifier($identifier) {
-        $this->options['identifier'] = $identifier;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     * 
-     * @return string Machine friendly representation
-     */
-    public function __toString() {
-        $options = array();
-        foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Proxy.V1.ReadParticipantOptions ' . implode(' ', $options) . ']';
     }
 }
 

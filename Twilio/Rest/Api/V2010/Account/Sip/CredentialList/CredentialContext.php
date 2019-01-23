@@ -19,9 +19,12 @@ class CredentialContext extends InstanceContext {
      * Initialize the CredentialContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $credentialListSid The credential_list_sid
-     * @param string $sid The sid
+     * @param string $accountSid The unique id of the Account that is responsible
+     *                           for this resource.
+     * @param string $credentialListSid The unique id that identifies the
+     *                                  credential list that contains the desired
+     *                                  credential
+     * @param string $sid The unique id that identifies the resource to fetch.
      * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext 
      */
     public function __construct(Version $version, $accountSid, $credentialListSid, $sid) {

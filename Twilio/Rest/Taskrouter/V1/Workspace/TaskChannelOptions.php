@@ -7,36 +7,33 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Authy;
+namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\Options;
 use Twilio\Values;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
-abstract class ServiceOptions {
+abstract class TaskChannelOptions {
     /**
-     * @param string $friendlyName A human readable description of this resource.
-     * @return UpdateServiceOptions Options builder
+     * @param string $friendlyName Toggle the FriendlyName for the TaskChannel
+     * @return UpdateTaskChannelOptions Options builder
      */
     public static function update($friendlyName = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName);
+        return new UpdateTaskChannelOptions($friendlyName);
     }
 }
 
-class UpdateServiceOptions extends Options {
+class UpdateTaskChannelOptions extends Options {
     /**
-     * @param string $friendlyName A human readable description of this resource.
+     * @param string $friendlyName Toggle the FriendlyName for the TaskChannel
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * A human readable description of this resource, up to 64 characters.
+     * Toggle the FriendlyName for the TaskChannel
      * 
-     * @param string $friendlyName A human readable description of this resource.
+     * @param string $friendlyName Toggle the FriendlyName for the TaskChannel
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -56,6 +53,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Authy.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateTaskChannelOptions ' . implode(' ', $options) . ']';
     }
 }

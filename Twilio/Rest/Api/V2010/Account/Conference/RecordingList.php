@@ -20,9 +20,9 @@ class RecordingList extends ListResource {
      * Construct the RecordingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $conferenceSid The unique id for the conference associated
-     *                              with the recording.
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $conferenceSid The Conference SID that identifies the
+     *                              conference associated with the recording
      * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList 
      */
     public function __construct(Version $version, $accountSid, $conferenceSid) {
@@ -130,7 +130,7 @@ class RecordingList extends ListResource {
     /**
      * Constructs a RecordingContext
      * 
-     * @param string $sid Fetch by unique recording Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext 
      */
     public function getContext($sid) {

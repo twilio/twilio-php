@@ -1,6 +1,104 @@
 twilio-php Changelog
 ====================
 
+[2019-01-11] Version 5.28.1
+----------------------------
+**Verify**
+- Add `lookup` information in the response when creating a new verification (depends on the LookupEnabled flag being enabled at the service level)
+- Add `VerificationSid` optional parameter on Verification check.
+
+
+[2019-01-10] Version 5.28.0
+----------------------------
+**Chat**
+- Mark Member attributes as PII
+
+**Proxy**
+- Remove unsupported query parameters **(breaking change)**
+- Remove invalid session statuses in doc
+
+
+[2019-01-02] Version 5.27.1
+----------------------------
+**Insights**
+- Initial revision.
+
+
+[2018-12-17] Version 5.27.0
+----------------------------
+**Authy**
+- Reverted the change to `FactorType` and `FormType`, avoiding conflicts with Helper Libraries reserved words (`type`) **(breaking change)**
+
+**Proxy**
+- Remove incorrect parameter for Session List
+
+**Studio**
+- Support date created filtering on list of executions
+
+**Taskrouter**
+- Adding ability to Create, Modify and Delete Task Channels.
+
+**Verify**
+- Add `SkipSmsToLandlines`, `TtsName`, `DtmfInputRequired` optional parameters on Service resource creation or update.
+
+**Wireless**
+- Added delete action on Command resource.
+- Added delete action on Sim resource.
+
+**Twiml**
+- Change `currency` from enum to string for `Pay` **(breaking change)**
+
+
+[2018-11-30] Version 5.26.0
+----------------------------
+**Api**
+- Add `interactive_data` optional param to Messages create request
+
+**Authy**
+- Required authentication for `/v1/Forms/{type}` endpoint **(breaking change)**
+- Removed `Challenge.reason` to `Challenge.responded_reason`
+- Removed `verification_sid` from Challenge responses
+- Removed `config` param from the Factor creation
+- Replaced all occurrences of `FactorType` and `FormType` in favor of a unified `Type` **(breaking change)**
+
+**Chat**
+- Add Member attributes
+
+**Preview**
+- Removed `Authy` version from `preview` subdomain in favor to `authy` subdomain. **(breaking change)**
+
+**Verify**
+- Add `CustomCode` optional parameter on Verication creation.
+
+
+[2018-11-16] Version 5.25.0
+----------------------------
+**Messaging**
+- Session API
+
+**Twiml**
+- Change `master-card` to `mastercard` as `cardType` for `Pay` and `Prompt`, remove attribute `credential_sid` from `Pay` **(breaking change)**
+
+
+[2018-10-29] Version 5.24.2
+----------------------------
+**Library**
+- PR #511: Include composer require command. Thanks to @cjcodes!
+- PR #503: Fix invalid generated XML in README. Thanks to @giggsey!
+
+**Api**
+- Add new Balance resource:
+    - url: '/v1/Accounts/{account sid}/Balance'
+    - supported methods: GET
+    - returns the balance of the account
+
+**Proxy**
+- Add chat_instance_sid to Service
+
+**Verify**
+- Add `Locale` optional parameter on Verification creation.
+
+
 [2018-10-15] Version 5.24.1
 ----------------------------
 **Api**

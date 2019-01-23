@@ -22,14 +22,14 @@ class FactorTest extends HolodeckTestCase {
         try {
             $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                     ->entities("identity")
-                                    ->factors->create("binding", "factorType", "friendlyName");
+                                    ->factors->create("binding", "friendlyName", "app-push");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
             'Binding' => "binding",
-            'FactorType' => "factorType",
             'FriendlyName' => "friendlyName",
+            'FactorType' => "app-push",
         );
 
         $this->assertRequest(new Request(
@@ -54,7 +54,7 @@ class FactorTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
                 "status": "unverified",
-                "type": "sms",
+                "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "challenges": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges"
@@ -65,7 +65,7 @@ class FactorTest extends HolodeckTestCase {
 
         $actual = $this->twilio->authy->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->entities("identity")
-                                          ->factors->create("binding", "factorType", "friendlyName");
+                                          ->factors->create("binding", "friendlyName", "app-push");
 
         $this->assertNotNull($actual);
     }
@@ -129,7 +129,7 @@ class FactorTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
                 "status": "unverified",
-                "type": "sms",
+                "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "challenges": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges"
@@ -203,7 +203,7 @@ class FactorTest extends HolodeckTestCase {
                         "date_updated": "2015-07-30T20:00:00Z",
                         "friendly_name": "friendly_name",
                         "status": "unverified",
-                        "type": "sms",
+                        "factor_type": "sms",
                         "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "links": {
                             "challenges": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges"
@@ -260,7 +260,7 @@ class FactorTest extends HolodeckTestCase {
                 "date_updated": "2015-07-30T20:00:00Z",
                 "friendly_name": "friendly_name",
                 "status": "verified",
-                "type": "sms",
+                "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "links": {
                     "challenges": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges"

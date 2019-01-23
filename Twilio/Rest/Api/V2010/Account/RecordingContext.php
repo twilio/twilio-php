@@ -30,7 +30,7 @@ class RecordingContext extends InstanceContext {
      * Initialize the RecordingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $sid Fetch by unique recording SID
      * @return \Twilio\Rest\Api\V2010\Account\RecordingContext 
      */

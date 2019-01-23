@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -52,6 +53,43 @@ class TaskChannelContext extends InstanceContext {
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
+    }
+
+    /**
+     * Update the TaskChannelInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return TaskChannelInstance Updated TaskChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('FriendlyName' => $options['friendlyName'], ));
+
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new TaskChannelInstance(
+            $this->version,
+            $payload,
+            $this->solution['workspaceSid'],
+            $this->solution['sid']
+        );
+    }
+
+    /**
+     * Deletes the TaskChannelInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**

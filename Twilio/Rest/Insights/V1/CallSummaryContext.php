@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Authy\Service;
+namespace Twilio\Rest\Insights\V1;
 
 use Twilio\InstanceContext;
 use Twilio\Values;
@@ -16,28 +16,27 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class EntityContext extends InstanceContext {
+class CallSummaryContext extends InstanceContext {
     /**
-     * Initialize the EntityContext
+     * Initialize the CallSummaryContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $identity Unique identity of the Entity
-     * @return \Twilio\Rest\Preview\Authy\Service\EntityContext 
+     * @param string $callSid The call_sid
+     * @return \Twilio\Rest\Insights\V1\CallSummaryContext 
      */
-    public function __construct(Version $version, $serviceSid, $identity) {
+    public function __construct(Version $version, $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'identity' => $identity, );
+        $this->solution = array('callSid' => $callSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Entities/' . rawurlencode($identity) . '';
+        $this->uri = '/Voice/' . rawurlencode($callSid) . '/Summary';
     }
 
     /**
-     * Fetch a EntityInstance
+     * Fetch a CallSummaryInstance
      * 
-     * @return EntityInstance Fetched EntityInstance
+     * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -49,12 +48,7 @@ class EntityContext extends InstanceContext {
             $params
         );
 
-        return new EntityInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['identity']
-        );
+        return new CallSummaryInstance($this->version, $payload, $this->solution['callSid']);
     }
 
     /**
@@ -67,6 +61,6 @@ class EntityContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Authy.EntityContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Insights.V1.CallSummaryContext ' . implode(' ', $context) . ']';
     }
 }

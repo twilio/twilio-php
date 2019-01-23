@@ -37,7 +37,8 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "unique_name": "unique_name",
+                "chat_instance_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "My Service",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",
@@ -124,7 +125,8 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "unique_name": "unique_name",
+                "chat_instance_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "My Service",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",
@@ -194,7 +196,8 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "unique_name": "unique_name",
+                "chat_instance_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "My Service",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",

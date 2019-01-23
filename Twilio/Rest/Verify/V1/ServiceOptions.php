@@ -20,10 +20,17 @@ abstract class ServiceOptions {
      * @param integer $codeLength Length of verification code. Valid values are 4-10
      * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
      *                               with each verification started
+     * @param boolean $skipSmsToLandlines Indicates whether or not to ignore SMS
+     *                                    verifications for landlines
+     * @param boolean $dtmfInputRequired Indicates whether or not to require a
+     *                                   random number input to deliver the verify
+     *                                   code via phone calls
+     * @param string $ttsName Alternative to be used as Service friendly name in
+     *                        phone calls
      * @return CreateServiceOptions Options builder
      */
-    public static function create($codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
-        return new CreateServiceOptions($codeLength, $lookupEnabled);
+    public static function create($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
+        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName);
     }
 
     /**
@@ -31,10 +38,17 @@ abstract class ServiceOptions {
      * @param integer $codeLength Length of verification code. Valid values are 4-10
      * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
      *                               with each verification started
+     * @param boolean $skipSmsToLandlines Indicates whether or not to ignore SMS
+     *                                    verifications for landlines
+     * @param boolean $dtmfInputRequired Indicates whether or not to require a
+     *                                   random number input to deliver the verify
+     *                                   code via phone calls
+     * @param string $ttsName Alternative to be used as Service friendly name in
+     *                        phone calls
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled);
+    public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName);
     }
 }
 
@@ -43,10 +57,20 @@ class CreateServiceOptions extends Options {
      * @param integer $codeLength Length of verification code. Valid values are 4-10
      * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
      *                               with each verification started
+     * @param boolean $skipSmsToLandlines Indicates whether or not to ignore SMS
+     *                                    verifications for landlines
+     * @param boolean $dtmfInputRequired Indicates whether or not to require a
+     *                                   random number input to deliver the verify
+     *                                   code via phone calls
+     * @param string $ttsName Alternative to be used as Service friendly name in
+     *                        phone calls
      */
-    public function __construct($codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
+    public function __construct($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
+        $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
+        $this->options['dtmfInputRequired'] = $dtmfInputRequired;
+        $this->options['ttsName'] = $ttsName;
     }
 
     /**
@@ -73,6 +97,43 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * Boolean value that indicates whether or not to ignore SMS verifications for landlines, depends on lookup_enabled flag
+     * 
+     * @param boolean $skipSmsToLandlines Indicates whether or not to ignore SMS
+     *                                    verifications for landlines
+     * @return $this Fluent Builder
+     */
+    public function setSkipSmsToLandlines($skipSmsToLandlines) {
+        $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
+        return $this;
+    }
+
+    /**
+     * Boolean value that indicates whether or not to require a random number input to deliver the verify code via phone calls
+     * 
+     * @param boolean $dtmfInputRequired Indicates whether or not to require a
+     *                                   random number input to deliver the verify
+     *                                   code via phone calls
+     * @return $this Fluent Builder
+     */
+    public function setDtmfInputRequired($dtmfInputRequired) {
+        $this->options['dtmfInputRequired'] = $dtmfInputRequired;
+        return $this;
+    }
+
+    /**
+     * Alternative to be used as Service friendly name in phone calls, only applies to TTS languages
+     * 
+     * @param string $ttsName Alternative to be used as Service friendly name in
+     *                        phone calls
+     * @return $this Fluent Builder
+     */
+    public function setTtsName($ttsName) {
+        $this->options['ttsName'] = $ttsName;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -94,11 +155,21 @@ class UpdateServiceOptions extends Options {
      * @param integer $codeLength Length of verification code. Valid values are 4-10
      * @param boolean $lookupEnabled Indicates whether or not to perform a lookup
      *                               with each verification started
+     * @param boolean $skipSmsToLandlines Indicates whether or not to ignore SMS
+     *                                    verifications for landlines
+     * @param boolean $dtmfInputRequired Indicates whether or not to require a
+     *                                   random number input to deliver the verify
+     *                                   code via phone calls
+     * @param string $ttsName Alternative to be used as Service friendly name in
+     *                        phone calls
      */
-    public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
+        $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
+        $this->options['dtmfInputRequired'] = $dtmfInputRequired;
+        $this->options['ttsName'] = $ttsName;
     }
 
     /**
@@ -132,6 +203,43 @@ class UpdateServiceOptions extends Options {
      */
     public function setLookupEnabled($lookupEnabled) {
         $this->options['lookupEnabled'] = $lookupEnabled;
+        return $this;
+    }
+
+    /**
+     * Boolean value that indicates whether or not to ignore SMS verifications for landlines, depends on lookup_enabled flag
+     * 
+     * @param boolean $skipSmsToLandlines Indicates whether or not to ignore SMS
+     *                                    verifications for landlines
+     * @return $this Fluent Builder
+     */
+    public function setSkipSmsToLandlines($skipSmsToLandlines) {
+        $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
+        return $this;
+    }
+
+    /**
+     * Boolean value that indicates whether or not to require a random number input to deliver the verify code via phone calls
+     * 
+     * @param boolean $dtmfInputRequired Indicates whether or not to require a
+     *                                   random number input to deliver the verify
+     *                                   code via phone calls
+     * @return $this Fluent Builder
+     */
+    public function setDtmfInputRequired($dtmfInputRequired) {
+        $this->options['dtmfInputRequired'] = $dtmfInputRequired;
+        return $this;
+    }
+
+    /**
+     * Alternative to be used as Service friendly name in phone calls, only applies to TTS languages
+     * 
+     * @param string $ttsName Alternative to be used as Service friendly name in
+     *                        phone calls
+     * @return $this Fluent Builder
+     */
+    public function setTtsName($ttsName) {
+        $this->options['ttsName'] = $ttsName;
         return $this;
     }
 

@@ -7,14 +7,11 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Authy\Service;
+namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Page;
 
-/**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- */
-class EntityPage extends Page {
+class BalancePage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
 
@@ -23,7 +20,7 @@ class EntityPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new EntityInstance($this->version, $payload, $this->solution['serviceSid']);
+        return new BalanceInstance($this->version, $payload, $this->solution['accountSid']);
     }
 
     /**
@@ -32,6 +29,6 @@ class EntityPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Authy.EntityPage]';
+        return '[Twilio.Api.V2010.BalancePage]';
     }
 }

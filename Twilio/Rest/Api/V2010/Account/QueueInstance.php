@@ -35,8 +35,8 @@ class QueueInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique queue Sid
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\QueueInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

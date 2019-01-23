@@ -20,7 +20,7 @@ class TaskStatisticsList extends ListResource {
      * Construct the TaskStatisticsList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $assistantSid The unique ID of the Assistant.
      * @param string $taskSid The unique ID of the Task associated with this Field.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList 
      */

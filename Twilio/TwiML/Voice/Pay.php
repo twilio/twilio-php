@@ -148,22 +148,11 @@ class Pay extends TwiML {
     /**
      * Add Currency attribute.
      * 
-     * @param pay:Enum:Currency $currency Currency of the amount attribute
+     * @param string $currency Currency of the amount attribute
      * @return TwiML $this.
      */
     public function setCurrency($currency) {
         return $this->setAttribute('currency', $currency);
-    }
-
-    /**
-     * Add CredentialSid attribute.
-     * 
-     * @param string $credentialSid SID for API keys to communicate with payment
-     *                              provider
-     * @return TwiML $this.
-     */
-    public function setCredentialSid($credentialSid) {
-        return $this->setAttribute('credentialSid', $credentialSid);
     }
 
     /**

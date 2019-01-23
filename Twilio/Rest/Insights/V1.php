@@ -7,39 +7,39 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview;
+namespace Twilio\Rest\Insights;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Preview\Authy\ServiceList;
+use Twilio\Rest\Insights\V1\CallSummaryList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Authy\ServiceList services
- * @method \Twilio\Rest\Preview\Authy\ServiceContext services(string $sid)
+ * @property \Twilio\Rest\Insights\V1\CallSummaryList summary
+ * @method \Twilio\Rest\Insights\V1\CallSummaryContext summary(string $callSid)
  */
-class Authy extends Version {
-    protected $_services = null;
+class V1 extends Version {
+    protected $_summary = null;
 
     /**
-     * Construct the Authy version of Preview
+     * Construct the V1 version of Insights
      * 
      * @param \Twilio\Domain $domain Domain that contains the version
-     * @return \Twilio\Rest\Preview\Authy Authy version of Preview
+     * @return \Twilio\Rest\Insights\V1 V1 version of Insights
      */
     public function __construct(Domain $domain) {
         parent::__construct($domain);
-        $this->version = 'Authy';
+        $this->version = 'v1';
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Authy\ServiceList 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryList 
      */
-    protected function getServices() {
-        if (!$this->_services) {
-            $this->_services = new ServiceList($this);
+    protected function getSummary() {
+        if (!$this->_summary) {
+            $this->_summary = new CallSummaryList($this);
         }
-        return $this->_services;
+        return $this->_summary;
     }
 
     /**
@@ -81,6 +81,6 @@ class Authy extends Version {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Authy]';
+        return '[Twilio.Insights.V1]';
     }
 }

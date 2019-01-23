@@ -7,14 +7,14 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Authy;
+namespace Twilio\Rest\Insights\V1;
 
 use Twilio\Page;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class ServicePage extends Page {
+class CallSummaryPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
 
@@ -23,7 +23,7 @@ class ServicePage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new ServiceInstance($this->version, $payload);
+        return new CallSummaryInstance($this->version, $payload);
     }
 
     /**
@@ -32,6 +32,6 @@ class ServicePage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Authy.ServicePage]';
+        return '[Twilio.Insights.V1.CallSummaryPage]';
     }
 }

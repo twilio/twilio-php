@@ -89,7 +89,7 @@ class SyncMapContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Ttl' => $options['ttl'], ));
+        $data = Values::of(array('Ttl' => $options['ttl'], 'CollectionTtl' => $options['collectionTtl'], ));
 
         $payload = $this->version->update(
             'POST',

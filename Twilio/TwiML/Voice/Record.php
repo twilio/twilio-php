@@ -112,6 +112,19 @@ class Record extends TwiML {
     }
 
     /**
+     * Add RecordingStatusCallbackEvent attribute.
+     * 
+     * @param record:Enum:RecordingEvent $recordingStatusCallbackEvent Recording
+     *                                                                 status
+     *                                                                 callback
+     *                                                                 events
+     * @return TwiML $this.
+     */
+    public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
+        return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);
+    }
+
+    /**
      * Add Transcribe attribute.
      * 
      * @param boolean $transcribe Transcribe the recording

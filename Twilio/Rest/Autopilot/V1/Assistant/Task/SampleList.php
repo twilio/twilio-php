@@ -129,10 +129,11 @@ class SampleList extends ListResource {
     /**
      * Create a new SampleInstance
      * 
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this sample. For example: en-US.
+     * @param string $language An [ISO language-country
+     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this sample. For example: `en-US`.
      * @param string $taggedText The text example of how end-users may express this
-     *                           task. The sample may contain Field tag blocks.
+     *                           task. The sample may contain [Field tag
+     *                           blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging).
      * @param array|Options $options Optional Arguments
      * @return SampleInstance Newly created SampleInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -164,7 +165,8 @@ class SampleList extends ListResource {
     /**
      * Constructs a SampleContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleContext 
      */
     public function getContext($sid) {

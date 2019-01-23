@@ -41,10 +41,10 @@ class DomainTest extends HolodeckTestCase {
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "api_version": "2010-04-01",
-                        "auth_type": "",
-                        "date_created": "Fri, 06 Sep 2013 18:48:50 -0000",
-                        "date_updated": "Fri, 06 Sep 2013 18:48:50 -0000",
-                        "domain_name": "dunder-mifflin-scranton.api.twilio.com",
+                        "auth_type": "IP_ACL",
+                        "date_created": "Mon, 20 Jul 2015 17:27:10 +0000",
+                        "date_updated": "Mon, 20 Jul 2015 17:27:10 +0000",
+                        "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                         "friendly_name": "Scranton Office",
                         "sip_registration": true,
                         "sid": "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -58,9 +58,12 @@ class DomainTest extends HolodeckTestCase {
                         "voice_method": "POST",
                         "voice_status_callback_method": "POST",
                         "voice_status_callback_url": null,
-                        "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                        "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                        "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
+                "start": 0,
+                "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains.json?PageSize=50&Page=0",
                 "next_page_uri": null,
                 "page": 0,
@@ -84,6 +87,8 @@ class DomainTest extends HolodeckTestCase {
             '
             {
                 "domains": [],
+                "start": 0,
+                "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains.json?PageSize=50&Page=0",
                 "next_page_uri": null,
                 "page": 0,
@@ -129,8 +134,8 @@ class DomainTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "auth_type": "IP_ACL",
-                "date_created": "Fri, 06 Sep 2013 19:18:30 -0000",
-                "date_updated": "Fri, 06 Sep 2013 19:18:30 -0000",
+                "date_created": "Mon, 20 Jul 2015 17:27:10 +0000",
+                "date_updated": "Mon, 20 Jul 2015 17:27:10 +0000",
                 "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                 "friendly_name": "Scranton Office",
                 "sip_registration": true,
@@ -145,7 +150,8 @@ class DomainTest extends HolodeckTestCase {
                 "voice_method": "POST",
                 "voice_status_callback_method": "POST",
                 "voice_status_callback_url": null,
-                "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                "trunk_sid": null
             }
             '
         ));
@@ -181,8 +187,8 @@ class DomainTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "auth_type": "IP_ACL",
-                "date_created": "Fri, 06 Sep 2013 19:18:30 -0000",
-                "date_updated": "Fri, 06 Sep 2013 19:18:30 -0000",
+                "date_created": "Mon, 20 Jul 2015 17:27:10 +0000",
+                "date_updated": "Mon, 20 Jul 2015 17:27:10 +0000",
                 "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                 "friendly_name": "Scranton Office",
                 "sip_registration": true,
@@ -197,7 +203,8 @@ class DomainTest extends HolodeckTestCase {
                 "voice_method": "POST",
                 "voice_status_callback_method": "POST",
                 "voice_status_callback_url": null,
-                "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -233,11 +240,11 @@ class DomainTest extends HolodeckTestCase {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "api_version": "2010-04-01",
                 "auth_type": "IP_ACL",
-                "date_created": "Fri, 06 Sep 2013 19:18:30 -0000",
-                "date_updated": "Fri, 06 Sep 2013 19:18:30 -0000",
+                "date_created": "Mon, 20 Jul 2015 17:27:10 +0000",
+                "date_updated": "Mon, 20 Jul 2015 17:27:10 +0000",
                 "domain_name": "dunder-mifflin-scranton.sip.twilio.com",
                 "friendly_name": "Scranton Office",
-                "sip_registration": false,
+                "sip_registration": true,
                 "sid": "SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "subresource_uris": {
                     "credential_list_mappings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/Domains/SDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialListMappings.json",
@@ -249,7 +256,8 @@ class DomainTest extends HolodeckTestCase {
                 "voice_method": "POST",
                 "voice_status_callback_method": "POST",
                 "voice_status_callback_url": null,
-                "voice_url": "https://dundermifflin.example.com/twilio/app.php"
+                "voice_url": "https://dundermifflin.example.com/twilio/app.php",
+                "trunk_sid": "TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));

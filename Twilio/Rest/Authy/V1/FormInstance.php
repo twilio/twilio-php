@@ -28,7 +28,7 @@ class FormInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $formType The Form Type of this Form
+     * @param string $formType The Type of this Form
      * @return \Twilio\Rest\Authy\V1\FormInstance 
      */
     public function __construct(Version $version, array $payload, $formType = null) {

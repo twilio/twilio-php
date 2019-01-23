@@ -139,6 +139,7 @@ class ServiceList extends ListResource {
             'NumberSelectionBehavior' => $options['numberSelectionBehavior'],
             'InterceptCallbackUrl' => $options['interceptCallbackUrl'],
             'OutOfSessionCallbackUrl' => $options['outOfSessionCallbackUrl'],
+            'ChatInstanceSid' => $options['chatInstanceSid'],
         ));
 
         $payload = $this->version->create(

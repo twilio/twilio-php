@@ -16,10 +16,11 @@ abstract class RecordingOptions {
     /**
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that should generate a callback
-     * @param string $recordingStatusCallback The callback URL for recording actions
-     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
-     *                                              use when making a request to
-     *                                              the RecordingStatusCallback URL
+     * @param string $recordingStatusCallback The callback URL on each selected
+     *                                        recording event
+     * @param string $recordingStatusCallbackMethod The HTTP method we should use
+     *                                              when calling the
+     *                                              recording_status_callback URL
      * @param string $trim Whether to trim the silence in the recording
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
@@ -39,9 +40,11 @@ abstract class RecordingOptions {
     }
 
     /**
-     * @param string $dateCreatedBefore Filter by date created
-     * @param string $dateCreated Filter by date created
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      * @return ReadRecordingOptions Options builder
      */
     public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
@@ -53,10 +56,11 @@ class CreateRecordingOptions extends Options {
     /**
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that should generate a callback
-     * @param string $recordingStatusCallback The callback URL for recording actions
-     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
-     *                                              use when making a request to
-     *                                              the RecordingStatusCallback URL
+     * @param string $recordingStatusCallback The callback URL on each selected
+     *                                        recording event
+     * @param string $recordingStatusCallbackMethod The HTTP method we should use
+     *                                              when calling the
+     *                                              recording_status_callback URL
      * @param string $trim Whether to trim the silence in the recording
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
@@ -70,7 +74,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording status changes that should generate a request to the URL specified in RecordingStatusCallback. Possible values: `in-progress`, `completed`, `failed`. To specify multiple values separate them with a space. Defaults to `completed`.
+     * The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space. 
      * 
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that should generate a callback
@@ -82,9 +86,10 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The URL which Twilio will make its GET or POST request to for the recording events specified in parameter RecordingStatusCallbackEvent. See [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback) for more details.
+     * The URL we call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
      * 
-     * @param string $recordingStatusCallback The callback URL for recording actions
+     * @param string $recordingStatusCallback The callback URL on each selected
+     *                                        recording event
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallback($recordingStatusCallback) {
@@ -93,11 +98,11 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when making a request to the RecordingStatusCallback URL. Possible values: `GET`, `POST`. Defaults to `POST`.
+     * The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET`, `POST` and the default is `POST`.
      * 
-     * @param string $recordingStatusCallbackMethod The HTTP method Twilio should
-     *                                              use when making a request to
-     *                                              the RecordingStatusCallback URL
+     * @param string $recordingStatusCallbackMethod The HTTP method we should use
+     *                                              when calling the
+     *                                              recording_status_callback URL
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -106,7 +111,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * Possible values: `trim-silence` or `do-not-trim`. `trim-silence` will trim the silence from the beginning and end of the recording. `do-not-trim` will not trim the silence. Defaults to `do-not-trim`
+     * Whether to trim any leading and trailing silence in the recording. Can be: `trim-silence` or `do-not-trim` and the default is `do-not-trim`. `trim-silence` trims the silence from the beginning and end of the recording and `do-not-trim` does not.
      * 
      * @param string $trim Whether to trim the silence in the recording
      * @return $this Fluent Builder
@@ -117,7 +122,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * Possible values: `mono` or `dual`. `mono` records all parties of your call into one channel. `dual` records a 2 party call into separate channels. Defaults to `mono`.
+     * The number of channels used in the recording. Can be: `mono` or `dual` and the default is `mono`. `mono` records all parties of the call into one channel. `dual` records each party of a 2-party call into separate channels.
      * 
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
@@ -154,7 +159,7 @@ class UpdateRecordingOptions extends Options {
     }
 
     /**
-     * Only applicable when setting Status parameter to `paused`. Possible values: `skip` or `silence`. `skip` will result in no recording at all during the pause period. `silence` will replace the actual audio of the call with silence during the pause period.  Defaults to `silence`
+     * Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
      * 
      * @param string $pauseBehavior Whether to record or not during the pause
      *                              period.
@@ -183,9 +188,11 @@ class UpdateRecordingOptions extends Options {
 
 class ReadRecordingOptions extends Options {
     /**
-     * @param string $dateCreatedBefore Filter by date created
-     * @param string $dateCreated Filter by date created
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      */
     public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
@@ -194,9 +201,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreatedBefore Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -205,9 +213,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreated Filter by date created
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -216,9 +224,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {

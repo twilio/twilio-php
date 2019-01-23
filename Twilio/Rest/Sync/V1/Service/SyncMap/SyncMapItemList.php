@@ -56,6 +56,8 @@ class SyncMapItemList extends ListResource {
             'Key' => $key,
             'Data' => Serialize::jsonObject($data),
             'Ttl' => $options['ttl'],
+            'ItemTtl' => $options['itemTtl'],
+            'CollectionTtl' => $options['collectionTtl'],
         ));
 
         $payload = $this->version->create(

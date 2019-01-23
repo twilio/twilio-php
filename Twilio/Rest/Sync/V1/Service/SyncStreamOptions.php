@@ -45,7 +45,7 @@ class CreateSyncStreamOptions extends Options {
     }
 
     /**
-     * The unique and addressable name of this Stream. Optional, up to 256 characters long.
+     * The unique and addressable name of this Stream. Optional, up to 320 characters long.
      * 
      * @param string $uniqueName Stream unique name.
      * @return $this Fluent Builder

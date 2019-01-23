@@ -47,6 +47,7 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": null,
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:50Z",
+                "attributes": "{}",
                 "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -94,6 +95,7 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": null,
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:50Z",
+                "attributes": "{}",
                 "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -148,6 +150,7 @@ class MemberTest extends HolodeckTestCase {
                         "last_consumption_timestamp": null,
                         "date_created": "2016-03-24T21:05:50Z",
                         "date_updated": "2016-03-24T21:05:50Z",
+                        "attributes": "{}",
                         "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ]
@@ -248,6 +251,7 @@ class MemberTest extends HolodeckTestCase {
                 "last_consumption_timestamp": "2016-03-24T21:05:52Z",
                 "date_created": "2016-03-24T21:05:50Z",
                 "date_updated": "2016-03-24T21:05:51Z",
+                "attributes": "{}",
                 "url": "https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '

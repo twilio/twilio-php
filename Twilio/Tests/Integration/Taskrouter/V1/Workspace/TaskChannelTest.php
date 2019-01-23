@@ -31,19 +31,48 @@ class TaskChannelTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchSidResponse() {
         $this->holodeck->mock(new Response(
             200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "date_created": "2014-05-14T10:50:02Z",
-                "date_updated": "2014-05-14T23:26:06Z",
+                "date_created": "2016-04-14T17:35:54Z",
+                "date_updated": "2016-04-14T17:35:54Z",
                 "friendly_name": "Default",
                 "sid": "TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "unique_name": "default",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchUniqueNameResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_created": "2016-04-14T17:35:54Z",
+                "date_updated": "2016-04-14T17:35:54Z",
+                "friendly_name": "Default",
+                "sid": "TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "default",
+                "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
             }
             '
         ));
@@ -77,22 +106,24 @@ class TaskChannelTest extends HolodeckTestCase {
                 "channels": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_created": "2014-05-14T10:50:02Z",
-                        "date_updated": "2014-05-14T23:26:06Z",
+                        "date_created": "2016-04-14T17:35:54Z",
+                        "date_updated": "2016-04-14T17:35:54Z",
                         "friendly_name": "Default",
                         "sid": "TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "unique_name": "default",
                         "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "links": {
+                            "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                        }
                     }
                 ],
                 "meta": {
                     "first_page_url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels?PageSize=50&Page=0",
                     "key": "channels",
-                    "last_page_url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels?PageSize=50&Page=0",
                     "next_page_url": null,
                     "page": 0,
-                    "page_size": 1,
+                    "page_size": 50,
                     "previous_page_url": null,
                     "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels?PageSize=50&Page=0"
                 }
@@ -115,7 +146,6 @@ class TaskChannelTest extends HolodeckTestCase {
                 "meta": {
                     "first_page_url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels?PageSize=50&Page=0",
                     "key": "channels",
-                    "last_page_url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels?PageSize=50&Page=0",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
@@ -128,6 +158,157 @@ class TaskChannelTest extends HolodeckTestCase {
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->taskChannels->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TaskChannels/TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testUpdateSidResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "Default",
+                "unique_name": "default",
+                "date_created": "2016-04-14T17:35:54Z",
+                "date_updated": "2016-04-14T17:35:54Z",
+                "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateUniqueNameResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "Default",
+                "unique_name": "default",
+                "date_created": "2016-04-14T17:35:54Z",
+                "date_updated": "2016-04-14T17:35:54Z",
+                "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testDeleteRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TaskChannels/TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testDeleteSidResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
+    }
+
+    public function testDeleteUniqueNameResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->taskChannels("TCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
+    }
+
+    public function testCreateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->taskChannels->create("friendlyName", "uniqueName");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = array('FriendlyName' => "friendlyName", 'UniqueName' => "uniqueName", );
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://taskrouter.twilio.com/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TaskChannels',
+            null,
+            $values
+        ));
+    }
+
+    public function testCreateResponse() {
+        $this->holodeck->mock(new Response(
+            201,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "sid": "TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "friendly_name": "Outbound Voice",
+                "unique_name": "ovoice",
+                "date_created": "2016-04-14T17:35:54Z",
+                "date_updated": "2016-04-14T17:35:54Z",
+                "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "links": {
+                    "workspace": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->taskChannels->create("friendlyName", "uniqueName");
 
         $this->assertNotNull($actual);
     }

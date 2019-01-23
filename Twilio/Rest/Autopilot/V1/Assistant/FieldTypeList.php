@@ -148,7 +148,8 @@ class FieldTypeList extends ListResource {
     /**
      * Constructs a FieldTypeContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext 
      */
     public function getContext($sid) {

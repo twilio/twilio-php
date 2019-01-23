@@ -36,8 +36,8 @@ class ShortCodeInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $sid Fetch by unique short-code Sid
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ShortCodeInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

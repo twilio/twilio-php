@@ -18,8 +18,8 @@ class MemberList extends ListResource {
      * Construct the MemberList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $queueSid A string that uniquely identifies this queue
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $queueSid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList 
      */
     public function __construct(Version $version, $accountSid, $queueSid) {
@@ -120,7 +120,7 @@ class MemberList extends ListResource {
     /**
      * Constructs a MemberContext
      * 
-     * @param string $callSid The call_sid
+     * @param string $callSid The Call SID of the resource(s) to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext 
      */
     public function getContext($callSid) {

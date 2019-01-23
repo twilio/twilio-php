@@ -30,9 +30,9 @@ class MediaInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created this resource
      * @param string $messageSid A string that uniquely identifies this message
-     * @param string $sid Fetch by unique media Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid, $sid = null) {

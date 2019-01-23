@@ -34,7 +34,7 @@ class IpAccessControlListInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @param string $sid Fetch by unique ip-access-control-list Sid
+     * @param string $sid A string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

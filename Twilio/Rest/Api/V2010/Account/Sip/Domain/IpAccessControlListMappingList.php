@@ -18,8 +18,8 @@ class IpAccessControlListMappingList extends ListResource {
      * Construct the IpAccessControlListMappingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the Account that responsible for
-     *                           this resource.
+     * @param string $accountSid The unique id of the Account that is responsible
+     *                           for this resource.
      * @param string $domainSid A string that uniquely identifies the SIP Domain
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList 
      */
@@ -35,7 +35,8 @@ class IpAccessControlListMappingList extends ListResource {
     /**
      * Create a new IpAccessControlListMappingInstance
      * 
-     * @param string $ipAccessControlListSid The ip_access_control_list_sid
+     * @param string $ipAccessControlListSid The unique id of the IP access control
+     *                                       list to map to the SIP domain
      * @return IpAccessControlListMappingInstance Newly created
      *                                            IpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -150,7 +151,8 @@ class IpAccessControlListMappingList extends ListResource {
     /**
      * Constructs a IpAccessControlListMappingContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies the
+     *                    resource to fetch.
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingContext 
      */
     public function getContext($sid) {

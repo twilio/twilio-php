@@ -154,7 +154,8 @@ class TaskList extends ListResource {
     /**
      * Constructs a TaskContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34-character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskContext 
      */
     public function getContext($sid) {

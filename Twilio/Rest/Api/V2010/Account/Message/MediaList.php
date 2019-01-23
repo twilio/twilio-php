@@ -20,7 +20,7 @@ class MediaList extends ListResource {
      * Construct the MediaList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created this resource
      * @param string $messageSid A string that uniquely identifies this message
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList 
      */
@@ -129,7 +129,7 @@ class MediaList extends ListResource {
     /**
      * Constructs a MediaContext
      * 
-     * @param string $sid Fetch by unique media Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext 
      */
     public function getContext($sid) {

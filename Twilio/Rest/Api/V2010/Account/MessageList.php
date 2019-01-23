@@ -60,6 +60,7 @@ class MessageList extends ListResource {
             'ContentRetention' => $options['contentRetention'],
             'AddressRetention' => $options['addressRetention'],
             'SmartEncoded' => Serialize::booleanToString($options['smartEncoded']),
+            'InteractiveData' => $options['interactiveData'],
         ));
 
         $payload = $this->version->create(

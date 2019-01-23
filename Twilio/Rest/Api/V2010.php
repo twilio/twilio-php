@@ -24,6 +24,7 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\BalanceList balance
  * @property \Twilio\Rest\Api\V2010\Account\CallList calls
  * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
  * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
@@ -68,6 +69,7 @@ class V2010 extends Version {
     protected $_applications = null;
     protected $_authorizedConnectApps = null;
     protected $_availablePhoneNumbers = null;
+    protected $_balance = null;
     protected $_calls = null;
     protected $_conferences = null;
     protected $_connectApps = null;
@@ -159,6 +161,13 @@ class V2010 extends Version {
      */
     protected function getAvailablePhoneNumbers() {
         return $this->account->availablePhoneNumbers;
+    }
+
+    /**
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceList 
+     */
+    protected function getBalance() {
+        return $this->account->balance;
     }
 
     /**
