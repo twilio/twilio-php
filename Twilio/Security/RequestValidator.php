@@ -25,7 +25,7 @@ class RequestValidator {
     }
 
     public function computeBodyHash($data = '') {
-        return base64_encode(hash("sha256", $data, true));
+        return bin2hex(hash("sha256", $data, true));
     }
 
     public function validate($expectedSignature, $url, $data = array()) {

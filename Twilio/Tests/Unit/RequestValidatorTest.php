@@ -17,12 +17,10 @@ class RequestValidatorTest extends UnitTest {
     private $url = 'https://mycompany.com/myapp.php?foo=1&bar=2';
     private $signature = 'RSOYDt4T1cUTdK1PDd93/VVr8B8=';
     private $body = '{"property": "value", "boolean": true}';
-    private $bodyHash = 'Ch/3Y02as7ldtcmi3+lBbkFQKyg6gMfPGWMmMvluZiA=';
-    private $bodyHashEncoded;
+    private $bodyHash = '0a1ff7634d9ab3b95db5c9a2dfe9416e41502b283a80c7cf19632632f96e6620';
 
     public function setUp() {
         $this->validator = new RequestValidator('12345');
-        $this->bodyHashEncoded = str_replace('+', '%2B', str_replace('=', '%3D', $this->bodyHash));
     }
 
     public function testValidate() {
@@ -41,8 +39,8 @@ class RequestValidatorTest extends UnitTest {
     }
 
     public function testValidateWithBody() {
-        $url = $this->url . '&bodySHA256=' . $this->bodyHashEncoded;
-        $signatureWithHash = 'afcFvPLPYT8mg/JyIVkdnqQKa2s=';
+        $url = $this->url . '&bodySHA256=' . $this->bodyHash;
+        $signatureWithHash = 'a9nBmqA0ju/hNViExpshrM61xv4=';
 
         $isValid = $this->validator->validate($signatureWithHash, $url, $this->body);
         $this->assertTrue($isValid);
