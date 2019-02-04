@@ -18,7 +18,7 @@ class ConnectAppList extends ListResource {
      * Construct the ConnectAppList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -119,7 +119,7 @@ class ConnectAppList extends ListResource {
     /**
      * Constructs a ConnectAppContext
      * 
-     * @param string $sid Fetch by unique connect-app Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
      */
     public function getContext($sid) {

@@ -14,19 +14,18 @@ use Twilio\Values;
 
 abstract class DomainOptions {
     /**
-     * @param string $friendlyName A user-specified, human-readable name for the
-     *                             domain.
-     * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param string $voiceMethod HTTP method to use with voice_url
-     * @param string $voiceFallbackUrl URL Twilio will request if an error occurs
+     * @param string $friendlyName A string to describe the resource
+     * @param string $voiceUrl The URL we should call when receiving a call
+     * @param string $voiceMethod The HTTP method to use with voice_url
+     * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
-     * @param string $voiceFallbackMethod HTTP method used with voice_fallback_url
-     * @param string $voiceStatusCallbackUrl URL that Twilio will request with
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
+     * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
-     * @param string $voiceStatusCallbackMethod The HTTP method Twilio will use to
-     *                                          make requests to the StatusCallback
-     *                                          URL.
-     * @param boolean $sipRegistration If SIP registration is allowed
+     * @param string $voiceStatusCallbackMethod The HTTP method we should use to
+     *                                          call `voice_status_callback_url`
+     * @param boolean $sipRegistration Whether SIP registration is allowed
      * @return CreateDomainOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $sipRegistration = Values::NONE) {
@@ -34,19 +33,18 @@ abstract class DomainOptions {
     }
 
     /**
-     * @param string $friendlyName A user-specified, human-readable name for the
-     *                             domain.
-     * @param string $voiceFallbackMethod HTTP method used with voice_fallback_url
-     * @param string $voiceFallbackUrl URL Twilio will request if an error occurs
+     * @param string $friendlyName A string to describe the resource
+     * @param string $voiceFallbackMethod The HTTP method used with
+     *                                    voice_fallback_url
+     * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
-     * @param string $voiceMethod HTTP method to use with voice_url
-     * @param string $voiceStatusCallbackMethod The HTTP method Twilio will use to
-     *                                          make requests to the StatusCallback
-     *                                          URL.
-     * @param string $voiceStatusCallbackUrl URL that Twilio will request with
+     * @param string $voiceMethod The HTTP method we should use with voice_url
+     * @param string $voiceStatusCallbackMethod The HTTP method we should use to
+     *                                          call voice_status_callback_url
+     * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
-     * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param boolean $sipRegistration If SIP registration is allowed
+     * @param string $voiceUrl The URL we should call when receiving a call
+     * @param boolean $sipRegistration Whether SIP registration is allowed
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @return UpdateDomainOptions Options builder
      */
@@ -57,19 +55,18 @@ abstract class DomainOptions {
 
 class CreateDomainOptions extends Options {
     /**
-     * @param string $friendlyName A user-specified, human-readable name for the
-     *                             domain.
-     * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param string $voiceMethod HTTP method to use with voice_url
-     * @param string $voiceFallbackUrl URL Twilio will request if an error occurs
+     * @param string $friendlyName A string to describe the resource
+     * @param string $voiceUrl The URL we should call when receiving a call
+     * @param string $voiceMethod The HTTP method to use with voice_url
+     * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
-     * @param string $voiceFallbackMethod HTTP method used with voice_fallback_url
-     * @param string $voiceStatusCallbackUrl URL that Twilio will request with
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
+     * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
-     * @param string $voiceStatusCallbackMethod The HTTP method Twilio will use to
-     *                                          make requests to the StatusCallback
-     *                                          URL.
-     * @param boolean $sipRegistration If SIP registration is allowed
+     * @param string $voiceStatusCallbackMethod The HTTP method we should use to
+     *                                          call `voice_status_callback_url`
+     * @param boolean $sipRegistration Whether SIP registration is allowed
      */
     public function __construct($friendlyName = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $sipRegistration = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -83,10 +80,9 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * A human readable descriptive text, up to 64 characters long.
+     * A descriptive string that you created to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A user-specified, human-readable name for the
-     *                             domain.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -95,9 +91,9 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * The URL Twilio will request when this domain receives a call.
+     * The URL we should when the domain receives a call.
      * 
-     * @param string $voiceUrl URL Twilio will request when receiving a call
+     * @param string $voiceUrl The URL we should call when receiving a call
      * @return $this Fluent Builder
      */
     public function setVoiceUrl($voiceUrl) {
@@ -106,9 +102,9 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above Url. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceMethod HTTP method to use with voice_url
+     * @param string $voiceMethod The HTTP method to use with voice_url
      * @return $this Fluent Builder
      */
     public function setVoiceMethod($voiceMethod) {
@@ -117,9 +113,9 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by VoiceUrl.
+     * The URL that we should call when an error occurs while retrieving or executing the TwiML from `voice_url`.
      * 
-     * @param string $voiceFallbackUrl URL Twilio will request if an error occurs
+     * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
      * @return $this Fluent Builder
      */
@@ -129,9 +125,10 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the VoiceFallbackUrl. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceFallbackMethod HTTP method used with voice_fallback_url
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackMethod($voiceFallbackMethod) {
@@ -140,9 +137,9 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+     * The URL that we should call to pass status parameters (such as call ended) to your application.
      * 
-     * @param string $voiceStatusCallbackUrl URL that Twilio will request with
+     * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
      * @return $this Fluent Builder
      */
@@ -152,11 +149,10 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use to make requests to the StatusCallback URL. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceStatusCallbackMethod The HTTP method Twilio will use to
-     *                                          make requests to the StatusCallback
-     *                                          URL.
+     * @param string $voiceStatusCallbackMethod The HTTP method we should use to
+     *                                          call `voice_status_callback_url`
      * @return $this Fluent Builder
      */
     public function setVoiceStatusCallbackMethod($voiceStatusCallbackMethod) {
@@ -165,9 +161,9 @@ class CreateDomainOptions extends Options {
     }
 
     /**
-     * This boolean can be enabled to allow SIP Endpoints to register with this domain to receive calls.
+     * Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
      * 
-     * @param boolean $sipRegistration If SIP registration is allowed
+     * @param boolean $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
     public function setSipRegistration($sipRegistration) {
@@ -193,19 +189,18 @@ class CreateDomainOptions extends Options {
 
 class UpdateDomainOptions extends Options {
     /**
-     * @param string $friendlyName A user-specified, human-readable name for the
-     *                             domain.
-     * @param string $voiceFallbackMethod HTTP method used with voice_fallback_url
-     * @param string $voiceFallbackUrl URL Twilio will request if an error occurs
+     * @param string $friendlyName A string to describe the resource
+     * @param string $voiceFallbackMethod The HTTP method used with
+     *                                    voice_fallback_url
+     * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
-     * @param string $voiceMethod HTTP method to use with voice_url
-     * @param string $voiceStatusCallbackMethod The HTTP method Twilio will use to
-     *                                          make requests to the StatusCallback
-     *                                          URL.
-     * @param string $voiceStatusCallbackUrl URL that Twilio will request with
+     * @param string $voiceMethod The HTTP method we should use with voice_url
+     * @param string $voiceStatusCallbackMethod The HTTP method we should use to
+     *                                          call voice_status_callback_url
+     * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
-     * @param string $voiceUrl URL Twilio will request when receiving a call
-     * @param boolean $sipRegistration If SIP registration is allowed
+     * @param string $voiceUrl The URL we should call when receiving a call
+     * @param boolean $sipRegistration Whether SIP registration is allowed
      * @param string $domainName The unique address on Twilio to route SIP traffic
      */
     public function __construct($friendlyName = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceUrl = Values::NONE, $sipRegistration = Values::NONE, $domainName = Values::NONE) {
@@ -221,10 +216,9 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * A human readable descriptive text, up to 64 characters long.
+     * A descriptive string that you created to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A user-specified, human-readable name for the
-     *                             domain.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -233,9 +227,10 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the VoiceFallbackUrl. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceFallbackMethod HTTP method used with voice_fallback_url
+     * @param string $voiceFallbackMethod The HTTP method used with
+     *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackMethod($voiceFallbackMethod) {
@@ -244,9 +239,9 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by VoiceUrl.
+     * The URL that we should call when an error occurs while retrieving or executing the TwiML requested by `voice_url`.
      * 
-     * @param string $voiceFallbackUrl URL Twilio will request if an error occurs
+     * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
      * @return $this Fluent Builder
      */
@@ -256,9 +251,9 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * The HTTP method to use with the voice_url
+     * The HTTP method we should use to call `voice_url`
      * 
-     * @param string $voiceMethod HTTP method to use with voice_url
+     * @param string $voiceMethod The HTTP method we should use with voice_url
      * @return $this Fluent Builder
      */
     public function setVoiceMethod($voiceMethod) {
@@ -267,11 +262,10 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use to make requests to the StatusCallback URL. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceStatusCallbackMethod The HTTP method Twilio will use to
-     *                                          make requests to the StatusCallback
-     *                                          URL.
+     * @param string $voiceStatusCallbackMethod The HTTP method we should use to
+     *                                          call voice_status_callback_url
      * @return $this Fluent Builder
      */
     public function setVoiceStatusCallbackMethod($voiceStatusCallbackMethod) {
@@ -280,9 +274,9 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+     * The URL that we should call to pass status parameters (such as call ended) to your application.
      * 
-     * @param string $voiceStatusCallbackUrl URL that Twilio will request with
+     * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
      * @return $this Fluent Builder
      */
@@ -292,9 +286,9 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * The URL Twilio will request when this domain receives a call.
+     * The URL we should call when the domain receives a call.
      * 
-     * @param string $voiceUrl URL Twilio will request when receiving a call
+     * @param string $voiceUrl The URL we should call when receiving a call
      * @return $this Fluent Builder
      */
     public function setVoiceUrl($voiceUrl) {
@@ -303,9 +297,9 @@ class UpdateDomainOptions extends Options {
     }
 
     /**
-     * This boolean can be enabled to allow SIP Endpoints to register with this domain to receive calls.
+     * Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
      * 
-     * @param boolean $sipRegistration If SIP registration is allowed
+     * @param boolean $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
     public function setSipRegistration($sipRegistration) {

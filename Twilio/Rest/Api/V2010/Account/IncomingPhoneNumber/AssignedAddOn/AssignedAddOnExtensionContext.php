@@ -21,10 +21,13 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      * Initialize the AssignedAddOnExtensionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $resourceSid The resource_sid
-     * @param string $assignedAddOnSid The assigned_add_on_sid
-     * @param string $sid The unique Extension Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $resourceSid The SID of the Phone Number to which the Add-on
+     *                            is assigned
+     * @param string $assignedAddOnSid The SID that uniquely identifies the
+     *                                 assigned Add-on installation
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext 
      */
     public function __construct(Version $version, $accountSid, $resourceSid, $assignedAddOnSid, $sid) {

@@ -37,7 +37,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @param string $countryCode The country_code
+     * @param string $countryCode The ISO country code of the country to fetch
+     *                            available phone number information about
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {

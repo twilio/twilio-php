@@ -173,7 +173,7 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * A JSON object defining the video layout of the Composition in terms of regions. See the section [Managing Video Layouts](#managing-video-layouts) below for further information.
+     * A JSON object defining the video layout of the Composition in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) below for further information.
      * 
      * @param array $videoLayout The JSON video layout description.
      * @return $this Fluent Builder
@@ -231,7 +231,7 @@ class CreateCompositionOptions extends Options {
     * VGA = `640x480`
     * CIF = `320x240`
 
-    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `640x480`.
+    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.
      * 
      * @param string $resolution Pixel resolution of the composed video.
      * @return $this Fluent Builder
@@ -278,7 +278,7 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `true`.
+     * When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder

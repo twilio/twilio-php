@@ -18,8 +18,9 @@ class AuthorizedConnectAppContext extends InstanceContext {
      * Initialize the AuthorizedConnectAppContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $connectAppSid The connect_app_sid
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $connectAppSid The SID of the Connect App to fetch
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
      */
     public function __construct(Version $version, $accountSid, $connectAppSid) {

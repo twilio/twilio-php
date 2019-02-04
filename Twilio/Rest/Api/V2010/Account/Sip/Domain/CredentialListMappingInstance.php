@@ -32,7 +32,7 @@ class CredentialListMappingInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
+     * @param string $domainSid The unique string that identifies the resource
      * @param string $sid A string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingInstance 
      */

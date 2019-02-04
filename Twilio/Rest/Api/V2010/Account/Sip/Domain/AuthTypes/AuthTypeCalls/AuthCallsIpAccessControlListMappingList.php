@@ -18,9 +18,8 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      * Construct the AuthCallsIpAccessControlListMappingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the account responsible for this
-     *                           domain
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $domainSid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsIpAccessControlListMappingList 
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
@@ -35,8 +34,8 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
     /**
      * Create a new AuthCallsIpAccessControlListMappingInstance
      * 
-     * @param string $ipAccessControlListSid A string that uniquely identifies IP
-     *                                       Access Control List
+     * @param string $ipAccessControlListSid The SID of the IpAccessControlList
+     *                                       resource to map to the SIP domain
      * @return AuthCallsIpAccessControlListMappingInstance Newly created
      *                                                     AuthCallsIpAccessControlListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -152,7 +151,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
     /**
      * Constructs a AuthCallsIpAccessControlListMappingContext
      * 
-     * @param string $sid Fetch by unique IP Access Control List Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsIpAccessControlListMappingContext 
      */
     public function getContext($sid) {

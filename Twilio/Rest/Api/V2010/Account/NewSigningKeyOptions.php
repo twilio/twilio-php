@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class NewSigningKeyOptions {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A string to describe the resource
      * @return CreateNewSigningKeyOptions Options builder
      */
     public static function create($friendlyName = Values::NONE) {
@@ -24,16 +24,16 @@ abstract class NewSigningKeyOptions {
 
 class CreateNewSigningKeyOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A string to describe the resource
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * The friendly_name
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

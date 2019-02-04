@@ -19,8 +19,7 @@ class DependentPhoneNumberList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The account_sid
-     * @param string $addressSid A 34 character string that uniquely identifies
-     *                           this address.
+     * @param string $addressSid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList 
      */
     public function __construct(Version $version, $accountSid, $addressSid) {

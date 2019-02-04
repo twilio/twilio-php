@@ -35,8 +35,9 @@ class DomainContext extends InstanceContext {
      * Initialize the DomainContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $sid Fetch by unique Domain Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {

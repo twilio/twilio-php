@@ -19,8 +19,9 @@ class FeedbackList extends ListResource {
      * Construct the FeedbackList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $messageSid The message_sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $messageSid The SID of the Message resource for which the
+     *                           feedback was provided
      * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList 
      */
     public function __construct(Version $version, $accountSid, $messageSid) {

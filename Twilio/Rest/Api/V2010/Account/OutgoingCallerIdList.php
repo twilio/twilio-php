@@ -19,7 +19,7 @@ class OutgoingCallerIdList extends ListResource {
      * Construct the OutgoingCallerIdList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -126,7 +126,7 @@ class OutgoingCallerIdList extends ListResource {
     /**
      * Constructs a OutgoingCallerIdContext
      * 
-     * @param string $sid Fetch by unique outgoing-caller-id Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext 
      */
     public function getContext($sid) {

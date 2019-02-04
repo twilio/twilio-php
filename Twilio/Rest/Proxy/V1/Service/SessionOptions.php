@@ -72,7 +72,7 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * An absolute time (ISO 8601) at which this Session should close. If this is populated, it takes precedence over TTL values.
+     * An absolute time (ISO 8601) in the future at which this Session should close. If this is populated, it takes precedence over TTL values.
      * 
      * @param \DateTime $dateExpiry The date this Session should expire
      * @return $this Fluent Builder

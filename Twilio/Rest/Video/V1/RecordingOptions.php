@@ -22,10 +22,11 @@ abstract class RecordingOptions {
      *                                    timezone.
      * @param \DateTime $dateCreatedBefore Only show Recordings that started before
      *                                     this ISO8601 date-time with timezone.
+     * @param string $mediaType Only show Recordings that have this media type.
      * @return ReadRecordingOptions Options builder
      */
-    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
-        return new ReadRecordingOptions($status, $sourceSid, $groupingSid, $dateCreatedAfter, $dateCreatedBefore);
+    public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE) {
+        return new ReadRecordingOptions($status, $sourceSid, $groupingSid, $dateCreatedAfter, $dateCreatedBefore, $mediaType);
     }
 }
 
@@ -39,13 +40,15 @@ class ReadRecordingOptions extends Options {
      *                                    timezone.
      * @param \DateTime $dateCreatedBefore Only show Recordings that started before
      *                                     this ISO8601 date-time with timezone.
+     * @param string $mediaType Only show Recordings that have this media type.
      */
-    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE) {
         $this->options['status'] = $status;
         $this->options['sourceSid'] = $sourceSid;
         $this->options['groupingSid'] = $groupingSid;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
+        $this->options['mediaType'] = $mediaType;
     }
 
     /**
@@ -103,6 +106,17 @@ class ReadRecordingOptions extends Options {
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
+        return $this;
+    }
+
+    /**
+     * Only show Recordings that have this media type. Can be either `audio` or `video`.
+     * 
+     * @param string $mediaType Only show Recordings that have this media type.
+     * @return $this Fluent Builder
+     */
+    public function setMediaType($mediaType) {
+        $this->options['mediaType'] = $mediaType;
         return $this;
     }
 

@@ -20,7 +20,7 @@ class LocalList extends ListResource {
      * Construct the LocalList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -129,7 +129,7 @@ class LocalList extends ListResource {
     /**
      * Create a new LocalInstance
      * 
-     * @param string $phoneNumber The phone number you want to purchase.
+     * @param string $phoneNumber The phone number to purchase in E.164 format
      * @param array|Options $options Optional Arguments
      * @return LocalInstance Newly created LocalInstance
      * @throws TwilioException When an HTTP error occurs.

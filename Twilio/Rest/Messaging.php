@@ -15,8 +15,12 @@ use Twilio\Rest\Messaging\V1;
 
 /**
  * @property \Twilio\Rest\Messaging\V1 v1
+ * @property \Twilio\Rest\Messaging\V1\SessionList sessions
  * @property \Twilio\Rest\Messaging\V1\ServiceList services
+ * @property \Twilio\Rest\Messaging\V1\WebhookList webhooks
+ * @method \Twilio\Rest\Messaging\V1\SessionContext sessions(string $sid)
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\WebhookContext webhooks()
  */
 class Messaging extends Domain {
     protected $_v1 = null;
@@ -78,6 +82,22 @@ class Messaging extends Domain {
     }
 
     /**
+     * @return \Twilio\Rest\Messaging\V1\SessionList 
+     */
+    protected function getSessions() {
+        return $this->v1->sessions;
+    }
+
+    /**
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
+     * @return \Twilio\Rest\Messaging\V1\SessionContext 
+     */
+    protected function contextSessions($sid) {
+        return $this->v1->sessions($sid);
+    }
+
+    /**
      * @return \Twilio\Rest\Messaging\V1\ServiceList 
      */
     protected function getServices() {
@@ -90,6 +110,20 @@ class Messaging extends Domain {
      */
     protected function contextServices($sid) {
         return $this->v1->services($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Messaging\V1\WebhookList 
+     */
+    protected function getWebhooks() {
+        return $this->v1->webhooks;
+    }
+
+    /**
+     * @return \Twilio\Rest\Messaging\V1\WebhookContext 
+     */
+    protected function contextWebhooks() {
+        return $this->v1->webhooks();
     }
 
     /**

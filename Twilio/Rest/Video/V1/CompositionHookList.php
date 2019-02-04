@@ -97,6 +97,7 @@ class CompositionHookList extends ListResource {
             'Enabled' => Serialize::booleanToString($options['enabled']),
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

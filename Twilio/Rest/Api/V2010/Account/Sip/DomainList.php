@@ -155,7 +155,7 @@ class DomainList extends ListResource {
     /**
      * Constructs a DomainContext
      * 
-     * @param string $sid Fetch by unique Domain Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext 
      */
     public function getContext($sid) {

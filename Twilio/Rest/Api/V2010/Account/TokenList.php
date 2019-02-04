@@ -19,7 +19,7 @@ class TokenList extends ListResource {
      * Construct the TokenList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\TokenList 
      */
     public function __construct(Version $version, $accountSid) {

@@ -24,10 +24,12 @@ abstract class CompositionHookOptions {
      * @param \DateTime $dateCreatedBefore Only show Composition Hooks created
      *                                     before this ISO8601 date-time with
      *                                     timezone.
+     * @param string $friendlyName Only show Composition Hooks with friendly name
+     *                             that match this name.
      * @return ReadCompositionHookOptions Options builder
      */
-    public static function read($enabled = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
-        return new ReadCompositionHookOptions($enabled, $dateCreatedAfter, $dateCreatedBefore);
+    public static function read($enabled = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $friendlyName = Values::NONE) {
+        return new ReadCompositionHookOptions($enabled, $dateCreatedAfter, $dateCreatedBefore, $friendlyName);
     }
 
     /**
@@ -84,11 +86,14 @@ class ReadCompositionHookOptions extends Options {
      * @param \DateTime $dateCreatedBefore Only show Composition Hooks created
      *                                     before this ISO8601 date-time with
      *                                     timezone.
+     * @param string $friendlyName Only show Composition Hooks with friendly name
+     *                             that match this name.
      */
-    public function __construct($enabled = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE) {
+    public function __construct($enabled = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['enabled'] = $enabled;
         $this->options['dateCreatedAfter'] = $dateCreatedAfter;
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
+        $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
@@ -125,6 +130,18 @@ class ReadCompositionHookOptions extends Options {
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
+        return $this;
+    }
+
+    /**
+     * Only show Composition Hooks with friendly name that match this case-insensitive string, of up to 100 characters in length. Filtering by partial friendly names is allowed, using wildcards (e.g. `*my*hook*`).
+     * 
+     * @param string $friendlyName Only show Composition Hooks with friendly name
+     *                             that match this name.
+     * @return $this Fluent Builder
+     */
+    public function setFriendlyName($friendlyName) {
+        $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 
@@ -187,7 +204,7 @@ class CreateCompositionHookOptions extends Options {
     }
 
     /**
-     * A JSON object defining the video layout of the Composition Hook in terms of regions. See the section [Managing Video Layouts](#managing-video-layouts) below for further information.
+     * A JSON object defining the video layout of the Composition Hook in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for further information.
      * 
      * @param array $videoLayout The JSON video layout description.
      * @return $this Fluent Builder
@@ -235,7 +252,7 @@ class CreateCompositionHookOptions extends Options {
     * VGA = `640x480`
     * CIF = `320x240`
 
-    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `640x480`.
+    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.
      * 
      * @param string $resolution Pixel resolution of the composed video.
      * @return $this Fluent Builder
@@ -282,7 +299,7 @@ class CreateCompositionHookOptions extends Options {
     }
 
     /**
-     * When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `true`.
+     * When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder
@@ -351,7 +368,7 @@ class UpdateCompositionHookOptions extends Options {
     }
 
     /**
-     * A JSON object defining the video layout of the Composition Hook in terms of regions. See the section [Managing Video Layouts](#managing-video-layouts) below for further information.
+     * A JSON object defining the video layout of the Composition Hook in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for further information.
      * 
      * @param array $videoLayout The JSON video layout description.
      * @return $this Fluent Builder
@@ -386,7 +403,7 @@ class UpdateCompositionHookOptions extends Options {
     }
 
     /**
-     * When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `true`.
+     * When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder
@@ -409,7 +426,7 @@ class UpdateCompositionHookOptions extends Options {
     }
 
     /**
-     * A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: `width >= 16 && width <= 1280`, `height >= 16 && height <= 1280`, `width * height <= 921,600`. Typical values are: HD = `1280x720`, PAL = `1024x576`, VGA = `640x480`, CIF = `320x240`. Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `640x480`.
+     * A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: `width >= 16 && width <= 1280`, `height >= 16 && height <= 1280`, `width * height <= 921,600`. Typical values are: HD = `1280x720`, PAL = `1024x576`, VGA = `640x480`, CIF = `320x240`. Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.
      * 
      * @param string $resolution Pixel resolution of the composed video.
      * @return $this Fluent Builder

@@ -35,8 +35,8 @@ class TriggerList extends ListResource {
     /**
      * Create a new TriggerInstance
      * 
-     * @param string $callbackUrl URL Twilio will request when the trigger fires
-     * @param string $triggerValue the value at which the trigger will fire
+     * @param string $callbackUrl The URL we call when the trigger fires
+     * @param string $triggerValue The usage value at which the trigger should fire
      * @param string $usageCategory The usage category the trigger watches
      * @param array|Options $options Optional Arguments
      * @return TriggerInstance Newly created TriggerInstance
@@ -161,7 +161,7 @@ class TriggerList extends ListResource {
     /**
      * Constructs a TriggerContext
      * 
-     * @param string $sid Fetch by unique usage-trigger Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext 
      */
     public function getContext($sid) {

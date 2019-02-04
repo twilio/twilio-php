@@ -20,7 +20,7 @@ class NotificationList extends ListResource {
      * Construct the NotificationList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -129,7 +129,7 @@ class NotificationList extends ListResource {
     /**
      * Constructs a NotificationContext
      * 
-     * @param string $sid Fetch by unique notification Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\NotificationContext 
      */
     public function getContext($sid) {

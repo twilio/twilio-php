@@ -35,9 +35,8 @@ class SharedCostInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The 34 character string that uniquely identifies
-     *                           your account.
-     * @param string $countryCode The ISO Country code to lookup phone numbers for.
+     * @param string $accountSid The account_sid
+     * @param string $countryCode The ISO-3166-1 country code of the country.
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {

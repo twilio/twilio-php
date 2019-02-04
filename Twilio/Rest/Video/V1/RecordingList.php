@@ -96,6 +96,7 @@ class RecordingList extends ListResource {
             'GroupingSid' => Serialize::map($options['groupingSid'], function($e) { return $e; }),
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'MediaType' => $options['mediaType'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

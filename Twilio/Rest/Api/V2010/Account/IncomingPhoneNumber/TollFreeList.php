@@ -20,7 +20,7 @@ class TollFreeList extends ListResource {
      * Construct the TollFreeList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -129,7 +129,7 @@ class TollFreeList extends ListResource {
     /**
      * Create a new TollFreeInstance
      * 
-     * @param string $phoneNumber The phone number you want to purchase.
+     * @param string $phoneNumber The phone number to purchase in E.164 format
      * @param array|Options $options Optional Arguments
      * @return TollFreeInstance Newly created TollFreeInstance
      * @throws TwilioException When an HTTP error occurs.

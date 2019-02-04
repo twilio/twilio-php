@@ -18,9 +18,8 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
      * Construct the AuthRegistrationsCredentialListMappingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the account responsible for this
-     *                           domain
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $domainSid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingList 
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
@@ -35,8 +34,8 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
     /**
      * Create a new AuthRegistrationsCredentialListMappingInstance
      * 
-     * @param string $credentialListSid A string that uniquely identifies
-     *                                  credential list resource
+     * @param string $credentialListSid The SID of the CredentialList resource to
+     *                                  map to the SIP domain
      * @return AuthRegistrationsCredentialListMappingInstance Newly created
      *                                                        AuthRegistrationsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -152,7 +151,7 @@ class AuthRegistrationsCredentialListMappingList extends ListResource {
     /**
      * Constructs a AuthRegistrationsCredentialListMappingContext
      * 
-     * @param string $sid Fetch by unique credential list Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrations\AuthRegistrationsCredentialListMappingContext 
      */
     public function getContext($sid) {

@@ -18,7 +18,7 @@ class AuthorizedConnectAppList extends ListResource {
      * Construct the AuthorizedConnectAppList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -121,7 +121,7 @@ class AuthorizedConnectAppList extends ListResource {
     /**
      * Constructs a AuthorizedConnectAppContext
      * 
-     * @param string $connectAppSid The connect_app_sid
+     * @param string $connectAppSid The SID of the Connect App to fetch
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
      */
     public function getContext($connectAppSid) {
