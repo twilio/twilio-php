@@ -21,10 +21,12 @@ abstract class VerificationOptions {
      * @param string $sendDigits Digits to send when a phone call is started
      * @param string $locale Locale used in the sms or call.
      * @param string $customCode A pre-generated code
+     * @param string $amount Amount of the associated PSD2 compliant transaction.
+     * @param string $payee Payee of the associated PSD2 compliant transaction.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE) {
-        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode);
+    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
+        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee);
     }
 }
 
@@ -34,12 +36,16 @@ class CreateVerificationOptions extends Options {
      * @param string $sendDigits Digits to send when a phone call is started
      * @param string $locale Locale used in the sms or call.
      * @param string $customCode A pre-generated code
+     * @param string $amount Amount of the associated PSD2 compliant transaction.
+     * @param string $payee Payee of the associated PSD2 compliant transaction.
      */
-    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE) {
+    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
         $this->options['customCode'] = $customCode;
+        $this->options['amount'] = $amount;
+        $this->options['payee'] = $payee;
     }
 
     /**
@@ -83,6 +89,28 @@ class CreateVerificationOptions extends Options {
      */
     public function setCustomCode($customCode) {
         $this->options['customCode'] = $customCode;
+        return $this;
+    }
+
+    /**
+     * Amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * 
+     * @param string $amount Amount of the associated PSD2 compliant transaction.
+     * @return $this Fluent Builder
+     */
+    public function setAmount($amount) {
+        $this->options['amount'] = $amount;
+        return $this;
+    }
+
+    /**
+     * Payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * 
+     * @param string $payee Payee of the associated PSD2 compliant transaction.
+     * @return $this Fluent Builder
+     */
+    public function setPayee($payee) {
+        $this->options['payee'] = $payee;
         return $this;
     }
 

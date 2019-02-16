@@ -57,7 +57,9 @@ class VerificationTest extends HolodeckTestCase {
                         "mobile_network_code": "150",
                         "type": "mobile"
                     }
-                }
+                },
+                "amount": "$29.99",
+                "payee": "Acme"
             }
             '
         ));

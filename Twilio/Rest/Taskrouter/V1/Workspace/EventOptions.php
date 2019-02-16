@@ -25,11 +25,15 @@ abstract class EventOptions {
      * @param string $taskSid Filter events by those pertaining to a particular task
      * @param string $workerSid Filter events by those pertaining to a particular
      *                          worker
-     * @param string $workflowSid The workflow_sid
+     * @param string $workflowSid Filter events by those pertaining to a particular
+     *                            workflow
+     * @param string $taskChannel Filter events by those pertaining to a particular
+     *                            task channel
+     * @param string $sid Filter events by those pertaining to a particular event
      * @return ReadEventOptions Options builder
      */
-    public static function read($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE) {
-        return new ReadEventOptions($endDate, $eventType, $minutes, $reservationSid, $startDate, $taskQueueSid, $taskSid, $workerSid, $workflowSid);
+    public static function read($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE, $taskChannel = Values::NONE, $sid = Values::NONE) {
+        return new ReadEventOptions($endDate, $eventType, $minutes, $reservationSid, $startDate, $taskQueueSid, $taskSid, $workerSid, $workflowSid, $taskChannel, $sid);
     }
 }
 
@@ -46,9 +50,13 @@ class ReadEventOptions extends Options {
      * @param string $taskSid Filter events by those pertaining to a particular task
      * @param string $workerSid Filter events by those pertaining to a particular
      *                          worker
-     * @param string $workflowSid The workflow_sid
+     * @param string $workflowSid Filter events by those pertaining to a particular
+     *                            workflow
+     * @param string $taskChannel Filter events by those pertaining to a particular
+     *                            task channel
+     * @param string $sid Filter events by those pertaining to a particular event
      */
-    public function __construct($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE) {
+    public function __construct($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE, $taskChannel = Values::NONE, $sid = Values::NONE) {
         $this->options['endDate'] = $endDate;
         $this->options['eventType'] = $eventType;
         $this->options['minutes'] = $minutes;
@@ -58,6 +66,8 @@ class ReadEventOptions extends Options {
         $this->options['taskSid'] = $taskSid;
         $this->options['workerSid'] = $workerSid;
         $this->options['workflowSid'] = $workflowSid;
+        $this->options['taskChannel'] = $taskChannel;
+        $this->options['sid'] = $sid;
     }
 
     /**
@@ -152,13 +162,37 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * The workflow_sid
+     * Filter events by those pertaining to a particular workflow
      * 
-     * @param string $workflowSid The workflow_sid
+     * @param string $workflowSid Filter events by those pertaining to a particular
+     *                            workflow
      * @return $this Fluent Builder
      */
     public function setWorkflowSid($workflowSid) {
         $this->options['workflowSid'] = $workflowSid;
+        return $this;
+    }
+
+    /**
+     * Filter events by those pertaining to a particular task channel
+     * 
+     * @param string $taskChannel Filter events by those pertaining to a particular
+     *                            task channel
+     * @return $this Fluent Builder
+     */
+    public function setTaskChannel($taskChannel) {
+        $this->options['taskChannel'] = $taskChannel;
+        return $this;
+    }
+
+    /**
+     * Filter events by those pertaining to a particular event
+     * 
+     * @param string $sid Filter events by those pertaining to a particular event
+     * @return $this Fluent Builder
+     */
+    public function setSid($sid) {
+        $this->options['sid'] = $sid;
         return $this;
     }
 

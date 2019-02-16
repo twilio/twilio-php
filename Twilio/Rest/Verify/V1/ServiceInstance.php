@@ -24,6 +24,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property integer codeLength
  * @property boolean lookupEnabled
+ * @property boolean psd2Enabled
  * @property boolean skipSmsToLandlines
  * @property boolean dtmfInputRequired
  * @property string ttsName
@@ -54,6 +55,7 @@ class ServiceInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'codeLength' => Values::array_get($payload, 'code_length'),
             'lookupEnabled' => Values::array_get($payload, 'lookup_enabled'),
+            'psd2Enabled' => Values::array_get($payload, 'psd2_enabled'),
             'skipSmsToLandlines' => Values::array_get($payload, 'skip_sms_to_landlines'),
             'dtmfInputRequired' => Values::array_get($payload, 'dtmf_input_required'),
             'ttsName' => Values::array_get($payload, 'tts_name'),

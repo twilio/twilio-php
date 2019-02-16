@@ -25,6 +25,8 @@ use Twilio\Version;
  * @property string channel
  * @property string status
  * @property boolean valid
+ * @property string amount
+ * @property string payee
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  */
@@ -49,6 +51,8 @@ class VerificationCheckInstance extends InstanceResource {
             'channel' => Values::array_get($payload, 'channel'),
             'status' => Values::array_get($payload, 'status'),
             'valid' => Values::array_get($payload, 'valid'),
+            'amount' => Values::array_get($payload, 'amount'),
+            'payee' => Values::array_get($payload, 'payee'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
         );
