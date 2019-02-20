@@ -24,6 +24,7 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Autopilot autopilot
  * @property \Twilio\Rest\Chat chat
  * @property \Twilio\Rest\Fax fax
+ * @property \Twilio\Rest\FlexApi flexApi
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
  * @property \Twilio\Rest\Monitor monitor
@@ -101,6 +102,7 @@ class Client {
     protected $_autopilot = null;
     protected $_chat = null;
     protected $_fax = null;
+    protected $_flexApi = null;
     protected $_ipMessaging = null;
     protected $_lookups = null;
     protected $_monitor = null;
@@ -656,6 +658,18 @@ class Client {
             $this->_fax = new Fax($this);
         }
         return $this->_fax;
+    }
+
+    /**
+     * Access the FlexApi Twilio Domain
+     * 
+     * @return \Twilio\Rest\FlexApi FlexApi Twilio Domain
+     */
+    protected function getFlexApi() {
+        if (!$this->_flexApi) {
+            $this->_flexApi = new FlexApi($this);
+        }
+        return $this->_flexApi;
     }
 
     /**

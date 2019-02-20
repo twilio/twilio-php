@@ -52,6 +52,7 @@ class ServiceList extends ListResource {
             'SkipSmsToLandlines' => Serialize::booleanToString($options['skipSmsToLandlines']),
             'DtmfInputRequired' => Serialize::booleanToString($options['dtmfInputRequired']),
             'TtsName' => $options['ttsName'],
+            'Psd2Enabled' => Serialize::booleanToString($options['psd2Enabled']),
         ));
 
         $payload = $this->version->create(

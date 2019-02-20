@@ -41,10 +41,11 @@ abstract class MessageOptions {
      * @param boolean $smartEncoded The smart_encoded
      * @param string $interactiveData JSON string representing interactive data
      *                                message.
+     * @param boolean $forceOptIn Boolean representing force opt in for a message.
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention, $smartEncoded, $interactiveData);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $maxRate, $forceDelivery, $providerSid, $contentRetention, $addressRetention, $smartEncoded, $interactiveData, $forceOptIn);
     }
 
     /**
@@ -89,8 +90,9 @@ class CreateMessageOptions extends Options {
      * @param boolean $smartEncoded The smart_encoded
      * @param string $interactiveData JSON string representing interactive data
      *                                message.
+     * @param boolean $forceOptIn Boolean representing force opt in for a message.
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $maxRate = Values::NONE, $forceDelivery = Values::NONE, $providerSid = Values::NONE, $contentRetention = Values::NONE, $addressRetention = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -107,6 +109,7 @@ class CreateMessageOptions extends Options {
         $this->options['addressRetention'] = $addressRetention;
         $this->options['smartEncoded'] = $smartEncoded;
         $this->options['interactiveData'] = $interactiveData;
+        $this->options['forceOptIn'] = $forceOptIn;
     }
 
     /**
@@ -293,6 +296,17 @@ class CreateMessageOptions extends Options {
      */
     public function setInteractiveData($interactiveData) {
         $this->options['interactiveData'] = $interactiveData;
+        return $this;
+    }
+
+    /**
+     * A boolean that forcefully whitelists a from:to pair when set to true.
+     * 
+     * @param boolean $forceOptIn Boolean representing force opt in for a message.
+     * @return $this Fluent Builder
+     */
+    public function setForceOptIn($forceOptIn) {
+        $this->options['forceOptIn'] = $forceOptIn;
         return $this;
     }
 

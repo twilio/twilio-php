@@ -20,7 +20,7 @@ class EventList extends ListResource {
      * Construct the EventList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The unique ID of the Workspace
+     * @param string $workspaceSid The workspace_sid
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList 
      */
     public function __construct(Version $version, $workspaceSid) {
@@ -101,6 +101,8 @@ class EventList extends ListResource {
             'TaskSid' => $options['taskSid'],
             'WorkerSid' => $options['workerSid'],
             'WorkflowSid' => $options['workflowSid'],
+            'TaskChannel' => $options['taskChannel'],
+            'Sid' => $options['sid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

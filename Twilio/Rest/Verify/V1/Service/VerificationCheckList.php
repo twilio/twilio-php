@@ -49,6 +49,8 @@ class VerificationCheckList extends ListResource {
             'Code' => $code,
             'To' => $options['to'],
             'VerificationSid' => $options['verificationSid'],
+            'Amount' => $options['amount'],
+            'Payee' => $options['payee'],
         ));
 
         $payload = $this->version->create(

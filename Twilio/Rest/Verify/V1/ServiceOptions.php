@@ -27,10 +27,12 @@ abstract class ServiceOptions {
      *                                   code via phone calls
      * @param string $ttsName Alternative to be used as Service friendly name in
      *                        phone calls
+     * @param boolean $psd2Enabled Indicates whether PSD2 parameters are enabled or
+     *                             not
      * @return CreateServiceOptions Options builder
      */
-    public static function create($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
-        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName);
+    public static function create($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
+        return new CreateServiceOptions($codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled);
     }
 
     /**
@@ -45,10 +47,12 @@ abstract class ServiceOptions {
      *                                   code via phone calls
      * @param string $ttsName Alternative to be used as Service friendly name in
      *                        phone calls
+     * @param boolean $psd2Enabled Indicates whether PSD2 parameters are enabled or
+     *                             not
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName);
+    public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $codeLength, $lookupEnabled, $skipSmsToLandlines, $dtmfInputRequired, $ttsName, $psd2Enabled);
     }
 }
 
@@ -64,13 +68,16 @@ class CreateServiceOptions extends Options {
      *                                   code via phone calls
      * @param string $ttsName Alternative to be used as Service friendly name in
      *                        phone calls
+     * @param boolean $psd2Enabled Indicates whether PSD2 parameters are enabled or
+     *                             not
      */
-    public function __construct($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
+    public function __construct($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
         $this->options['dtmfInputRequired'] = $dtmfInputRequired;
         $this->options['ttsName'] = $ttsName;
+        $this->options['psd2Enabled'] = $psd2Enabled;
     }
 
     /**
@@ -134,6 +141,18 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * Boolean value that enables to pass PSD2 transaction parameters when starting a verification
+     * 
+     * @param boolean $psd2Enabled Indicates whether PSD2 parameters are enabled or
+     *                             not
+     * @return $this Fluent Builder
+     */
+    public function setPsd2Enabled($psd2Enabled) {
+        $this->options['psd2Enabled'] = $psd2Enabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation
@@ -162,14 +181,17 @@ class UpdateServiceOptions extends Options {
      *                                   code via phone calls
      * @param string $ttsName Alternative to be used as Service friendly name in
      *                        phone calls
+     * @param boolean $psd2Enabled Indicates whether PSD2 parameters are enabled or
+     *                             not
      */
-    public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['codeLength'] = $codeLength;
         $this->options['lookupEnabled'] = $lookupEnabled;
         $this->options['skipSmsToLandlines'] = $skipSmsToLandlines;
         $this->options['dtmfInputRequired'] = $dtmfInputRequired;
         $this->options['ttsName'] = $ttsName;
+        $this->options['psd2Enabled'] = $psd2Enabled;
     }
 
     /**
@@ -240,6 +262,18 @@ class UpdateServiceOptions extends Options {
      */
     public function setTtsName($ttsName) {
         $this->options['ttsName'] = $ttsName;
+        return $this;
+    }
+
+    /**
+     * Boolean value that enables to pass PSD2 transaction parameters when starting a verification
+     * 
+     * @param boolean $psd2Enabled Indicates whether PSD2 parameters are enabled or
+     *                             not
+     * @return $this Fluent Builder
+     */
+    public function setPsd2Enabled($psd2Enabled) {
+        $this->options['psd2Enabled'] = $psd2Enabled;
         return $this;
     }
 
