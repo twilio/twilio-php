@@ -6,7 +6,7 @@ php:
     - '5.6'
     - '7.0'
     - '7.1'
-    - hhvm # on Trusty only
+    - hhvm-3.18 # on Trusty only
     - nightly
 services:
   - docker
