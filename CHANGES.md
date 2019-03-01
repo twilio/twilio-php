@@ -1,6 +1,28 @@
 twilio-php Changelog
 ====================
 
+[2019-03-01] Version 5.30.0
+----------------------------
+**Api**
+- Make conference participant preview parameters public
+
+**Authy**
+- Added support for FactorType and FactorStrength for Factors and Challenges
+
+**Iam**
+- First public release
+
+**Verify**
+- Add endpoint to update/cancel a Verification **(breaking change)**
+
+**Video**
+- [Composer] Make RoomSid mandatory **(breaking change)**
+- [Composer] Add `enqueued` state to Composition
+
+**Twiml**
+- Update message body to not be required for TwiML `Dial` noun.
+
+
 [2019-02-20] Version 5.29.1
 ----------------------------
 **Library**

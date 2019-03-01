@@ -18,9 +18,12 @@ class PayloadList extends ListResource {
      * Construct the PayloadList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
-     * @param string $addOnResultSid A string that uniquely identifies the result
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource that contains the payload
+     *                             belongs
+     * @param string $addOnResultSid The SID of the AddOnResult to which the
+     *                               payload belongs
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList 
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid) {
@@ -125,7 +128,7 @@ class PayloadList extends ListResource {
     /**
      * Constructs a PayloadContext
      * 
-     * @param string $sid Fetch by unique payload Sid
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext 
      */
     public function getContext($sid) {

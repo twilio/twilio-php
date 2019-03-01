@@ -31,7 +31,6 @@ abstract class CompositionOptions {
     }
 
     /**
-     * @param string $roomSid Twilio Room SID.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition.
@@ -47,8 +46,8 @@ abstract class CompositionOptions {
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      * @return CreateCompositionOptions Options builder
      */
-    public static function create($roomSid = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
-        return new CreateCompositionOptions($roomSid, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
+    public static function create($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
+        return new CreateCompositionOptions($videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 }
 
@@ -134,7 +133,6 @@ class ReadCompositionOptions extends Options {
 
 class CreateCompositionOptions extends Options {
     /**
-     * @param string $roomSid Twilio Room SID.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition.
@@ -149,8 +147,7 @@ class CreateCompositionOptions extends Options {
      *                                     requesting the above URL.
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      */
-    public function __construct($roomSid = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
-        $this->options['roomSid'] = $roomSid;
+    public function __construct($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
@@ -159,17 +156,6 @@ class CreateCompositionOptions extends Options {
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['trim'] = $trim;
-    }
-
-    /**
-     * Group Room SID owning the media tracks to be used as Composition sources.
-     * 
-     * @param string $roomSid Twilio Room SID.
-     * @return $this Fluent Builder
-     */
-    public function setRoomSid($roomSid) {
-        $this->options['roomSid'] = $roomSid;
-        return $this;
     }
 
     /**

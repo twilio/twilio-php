@@ -19,6 +19,8 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property string callSid
+ * @property string callSidToCoach
+ * @property boolean coaching
  * @property string conferenceSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -35,10 +37,9 @@ class ParticipantInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $conferenceSid A string that uniquely identifies this
-     *                              conference
-     * @param string $callSid Fetch by unique participant Call SID
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $conferenceSid The SID of the conference the participant is in
+     * @param string $callSid The Call SID of the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $conferenceSid, $callSid = null) {
@@ -48,6 +49,8 @@ class ParticipantInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'callSid' => Values::array_get($payload, 'call_sid'),
+            'callSidToCoach' => Values::array_get($payload, 'call_sid_to_coach'),
+            'coaching' => Values::array_get($payload, 'coaching'),
             'conferenceSid' => Values::array_get($payload, 'conference_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),

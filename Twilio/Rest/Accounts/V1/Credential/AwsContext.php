@@ -19,7 +19,7 @@ class AwsContext extends InstanceContext {
      * Initialize the AwsContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid Fetch by unique Credential Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Accounts\V1\Credential\AwsContext 
      */
     public function __construct(Version $version, $sid) {

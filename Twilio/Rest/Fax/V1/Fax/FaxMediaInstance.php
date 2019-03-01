@@ -32,8 +32,9 @@ class FaxMediaInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $faxSid Fax SID
-     * @param string $sid A string that uniquely identifies this fax media
+     * @param string $faxSid The SID of the fax the FaxMedia resource is associated
+     *                       with
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaInstance 
      */
     public function __construct(Version $version, array $payload, $faxSid, $sid = null) {

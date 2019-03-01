@@ -21,7 +21,7 @@ class MediaList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created this resource
-     * @param string $messageSid A string that uniquely identifies this message
+     * @param string $messageSid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList 
      */
     public function __construct(Version $version, $accountSid, $messageSid) {

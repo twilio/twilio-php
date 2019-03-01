@@ -18,8 +18,9 @@ class TranscriptionContext extends InstanceContext {
      * Initialize the TranscriptionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique transcription SID
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {

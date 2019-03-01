@@ -68,6 +68,16 @@ class VerificationList extends ListResource {
     }
 
     /**
+     * Constructs a VerificationContext
+     * 
+     * @param string $sid A string that uniquely identifies this Verification.
+     * @return \Twilio\Rest\Verify\V1\Service\VerificationContext 
+     */
+    public function getContext($sid) {
+        return new VerificationContext($this->version, $this->solution['serviceSid'], $sid);
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

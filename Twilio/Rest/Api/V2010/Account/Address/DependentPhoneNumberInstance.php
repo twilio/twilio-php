@@ -49,7 +49,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The SID of the Account that created the resource
      * @param string $addressSid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberInstance 
      */

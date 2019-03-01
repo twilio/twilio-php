@@ -14,10 +14,10 @@ use Twilio\Values;
 
 abstract class NotificationOptions {
     /**
-     * @param integer $log The log
-     * @param string $messageDateBefore The message_date
-     * @param string $messageDate The message_date
-     * @param string $messageDateAfter The message_date
+     * @param integer $log Filter by log level
+     * @param string $messageDateBefore Filter by date
+     * @param string $messageDate Filter by date
+     * @param string $messageDateAfter Filter by date
      * @return ReadNotificationOptions Options builder
      */
     public static function read($log = Values::NONE, $messageDateBefore = Values::NONE, $messageDate = Values::NONE, $messageDateAfter = Values::NONE) {
@@ -27,10 +27,10 @@ abstract class NotificationOptions {
 
 class ReadNotificationOptions extends Options {
     /**
-     * @param integer $log The log
-     * @param string $messageDateBefore The message_date
-     * @param string $messageDate The message_date
-     * @param string $messageDateAfter The message_date
+     * @param integer $log Filter by log level
+     * @param string $messageDateBefore Filter by date
+     * @param string $messageDate Filter by date
+     * @param string $messageDateAfter Filter by date
      */
     public function __construct($log = Values::NONE, $messageDateBefore = Values::NONE, $messageDate = Values::NONE, $messageDateAfter = Values::NONE) {
         $this->options['log'] = $log;
@@ -40,9 +40,9 @@ class ReadNotificationOptions extends Options {
     }
 
     /**
-     * The log
+     * Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
      * 
-     * @param integer $log The log
+     * @param integer $log Filter by log level
      * @return $this Fluent Builder
      */
     public function setLog($log) {
@@ -51,9 +51,9 @@ class ReadNotificationOptions extends Options {
     }
 
     /**
-     * The message_date
+     * Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
      * 
-     * @param string $messageDateBefore The message_date
+     * @param string $messageDateBefore Filter by date
      * @return $this Fluent Builder
      */
     public function setMessageDateBefore($messageDateBefore) {
@@ -62,9 +62,9 @@ class ReadNotificationOptions extends Options {
     }
 
     /**
-     * The message_date
+     * Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
      * 
-     * @param string $messageDate The message_date
+     * @param string $messageDate Filter by date
      * @return $this Fluent Builder
      */
     public function setMessageDate($messageDate) {
@@ -73,9 +73,9 @@ class ReadNotificationOptions extends Options {
     }
 
     /**
-     * The message_date
+     * Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
      * 
-     * @param string $messageDateAfter The message_date
+     * @param string $messageDateAfter Filter by date
      * @return $this Fluent Builder
      */
     public function setMessageDateAfter($messageDateAfter) {

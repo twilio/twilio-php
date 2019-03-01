@@ -26,9 +26,11 @@ class AddOnResultContext extends InstanceContext {
      * Initialize the AddOnResultContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $referenceSid The reference_sid
-     * @param string $sid Fetch by unique result Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $referenceSid The SID of the recording to which the result to
+     *                             fetch belongs
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext 
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $sid) {

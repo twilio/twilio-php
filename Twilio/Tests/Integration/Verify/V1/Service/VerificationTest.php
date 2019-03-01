@@ -59,13 +59,120 @@ class VerificationTest extends HolodeckTestCase {
                     }
                 },
                 "amount": "$29.99",
-                "payee": "Acme"
+                "payee": "Acme",
+                "url": "https://verify.twilio.com/v1/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
 
         $actual = $this->twilio->verify->v1->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->verifications->create("to", "channel");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testUpdateRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->verify->v1->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->verifications("sid")->update("canceled");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = array('Status' => "canceled", );
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://verify.twilio.com/v1/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid',
+            null,
+            $values
+        ));
+    }
+
+    public function testUpdateVerificationResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "+14159373912",
+                "channel": "sms",
+                "status": "canceled",
+                "valid": null,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "lookup": {
+                    "carrier": {
+                        "error_code": null,
+                        "name": "Carrier Name",
+                        "mobile_country_code": "310",
+                        "mobile_network_code": "150",
+                        "type": "mobile"
+                    }
+                },
+                "amount": "$29.99",
+                "payee": "Acme",
+                "url": "https://verify.twilio.com/v1/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v1->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->verifications("sid")->update("canceled");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->verify->v1->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                     ->verifications("sid")->fetch();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://verify.twilio.com/v1/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid'
+        ));
+    }
+
+    public function testFetchVerificationResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "+14159373912",
+                "channel": "sms",
+                "status": "pending",
+                "valid": null,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "lookup": {
+                    "carrier": {
+                        "error_code": null,
+                        "name": "Carrier Name",
+                        "mobile_country_code": "310",
+                        "mobile_network_code": "150",
+                        "type": "mobile"
+                    }
+                },
+                "amount": "$29.99",
+                "payee": "Acme",
+                "url": "https://verify.twilio.com/v1/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v1->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->verifications("sid")->fetch();
 
         $this->assertNotNull($actual);
     }

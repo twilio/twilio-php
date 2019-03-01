@@ -131,15 +131,16 @@ class CompositionList extends ListResource {
     /**
      * Create a new CompositionInstance
      * 
+     * @param string $roomSid Twilio Room SID.
      * @param array|Options $options Optional Arguments
      * @return CompositionInstance Newly created CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($roomSid, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'RoomSid' => $options['roomSid'],
+            'RoomSid' => $roomSid,
             'VideoLayout' => Serialize::jsonObject($options['videoLayout']),
             'AudioSources' => Serialize::map($options['audioSources'], function($e) { return $e; }),
             'AudioSourcesExcluded' => Serialize::map($options['audioSourcesExcluded'], function($e) { return $e; }),

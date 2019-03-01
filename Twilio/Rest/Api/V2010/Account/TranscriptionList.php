@@ -18,7 +18,7 @@ class TranscriptionList extends ListResource {
      * Construct the TranscriptionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -119,7 +119,7 @@ class TranscriptionList extends ListResource {
     /**
      * Constructs a TranscriptionContext
      * 
-     * @param string $sid Fetch by unique transcription SID
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
      */
     public function getContext($sid) {

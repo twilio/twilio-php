@@ -19,8 +19,8 @@ abstract class RecordingOptions {
      * @param string $recordingStatusCallback The callback URL on each selected
      *                                        recording event
      * @param string $recordingStatusCallbackMethod The HTTP method we should use
-     *                                              when calling the
-     *                                              recording_status_callback URL
+     *                                              to call
+     *                                              `recording_status_callback`
      * @param string $trim Whether to trim the silence in the recording
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
@@ -59,8 +59,8 @@ class CreateRecordingOptions extends Options {
      * @param string $recordingStatusCallback The callback URL on each selected
      *                                        recording event
      * @param string $recordingStatusCallbackMethod The HTTP method we should use
-     *                                              when calling the
-     *                                              recording_status_callback URL
+     *                                              to call
+     *                                              `recording_status_callback`
      * @param string $trim Whether to trim the silence in the recording
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
@@ -74,7 +74,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space. 
+     * The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
      * 
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that should generate a callback
@@ -86,7 +86,7 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The URL we call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
+     * The URL we should call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
      * 
      * @param string $recordingStatusCallback The callback URL on each selected
      *                                        recording event
@@ -98,11 +98,11 @@ class CreateRecordingOptions extends Options {
     }
 
     /**
-     * The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET`, `POST` and the default is `POST`.
+     * The HTTP method we should use to call `recording_status_callback`. Can be: `GET` or `POST` and the default is `POST`.
      * 
      * @param string $recordingStatusCallbackMethod The HTTP method we should use
-     *                                              when calling the
-     *                                              recording_status_callback URL
+     *                                              to call
+     *                                              `recording_status_callback`
      * @return $this Fluent Builder
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -201,7 +201,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
      * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
      *                                  read
@@ -213,7 +213,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
@@ -224,7 +224,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
      * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
      *                                 read

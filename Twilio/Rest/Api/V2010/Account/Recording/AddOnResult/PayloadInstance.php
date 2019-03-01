@@ -34,10 +34,13 @@ class PayloadInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
-     * @param string $addOnResultSid A string that uniquely identifies the result
-     * @param string $sid Fetch by unique payload Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource that contains the payload
+     *                             belongs
+     * @param string $addOnResultSid The SID of the AddOnResult to which the
+     *                               payload belongs
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $addOnResultSid, $sid = null) {

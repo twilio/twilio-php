@@ -131,8 +131,9 @@ class FaxList extends ListResource {
     /**
      * Create a new FaxInstance
      * 
-     * @param string $to The phone number or SIP address to send the fax to
-     * @param string $mediaUrl URL that points to the fax media
+     * @param string $to The phone number to receive the fax
+     * @param string $mediaUrl The Twilio-hosted URL of the PDF that contains the
+     *                         fax
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Newly created FaxInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -165,7 +166,7 @@ class FaxList extends ListResource {
     /**
      * Constructs a FaxContext
      * 
-     * @param string $sid A string that uniquely identifies this fax.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Fax\V1\FaxContext 
      */
     public function getContext($sid) {

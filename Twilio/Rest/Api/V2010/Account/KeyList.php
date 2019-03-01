@@ -120,7 +120,7 @@ class KeyList extends ListResource {
     /**
      * Constructs a KeyContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\KeyContext 
      */
     public function getContext($sid) {

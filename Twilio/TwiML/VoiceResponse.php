@@ -34,7 +34,7 @@ class VoiceResponse extends TwiML {
      * @param array $attributes Optional attributes
      * @return TwiML Child element.
      */
-    public function dial($number, $attributes = array()) {
+    public function dial($number = null, $attributes = array()) {
         return $this->nest(new Voice\Dial($number, $attributes));
     }
 

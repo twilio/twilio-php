@@ -21,8 +21,8 @@ class FaxMediaContext extends InstanceContext {
      * Initialize the FaxMediaContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $faxSid Fax SID
-     * @param string $sid A string that uniquely identifies this fax media
+     * @param string $faxSid The SID of the fax with the FaxMedia resource to fetch
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaContext 
      */
     public function __construct(Version $version, $faxSid, $sid) {

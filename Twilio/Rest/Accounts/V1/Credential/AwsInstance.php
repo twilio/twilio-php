@@ -30,7 +30,7 @@ class AwsInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid Fetch by unique Credential Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Accounts\V1\Credential\AwsInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {

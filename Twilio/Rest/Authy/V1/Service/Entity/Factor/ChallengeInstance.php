@@ -34,6 +34,7 @@ use Twilio\Version;
  * @property string details
  * @property string hiddenDetails
  * @property string factorType
+ * @property string factorStrength
  * @property string url
  */
 class ChallengeInstance extends InstanceResource {
@@ -69,6 +70,7 @@ class ChallengeInstance extends InstanceResource {
             'details' => Values::array_get($payload, 'details'),
             'hiddenDetails' => Values::array_get($payload, 'hidden_details'),
             'factorType' => Values::array_get($payload, 'factor_type'),
+            'factorStrength' => Values::array_get($payload, 'factor_strength'),
             'url' => Values::array_get($payload, 'url'),
         );
 

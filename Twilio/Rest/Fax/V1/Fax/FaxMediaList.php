@@ -21,7 +21,8 @@ class FaxMediaList extends ListResource {
      * Construct the FaxMediaList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $faxSid Fax SID
+     * @param string $faxSid The SID of the fax the FaxMedia resource is associated
+     *                       with
      * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList 
      */
     public function __construct(Version $version, $faxSid) {
@@ -122,7 +123,7 @@ class FaxMediaList extends ListResource {
     /**
      * Constructs a FaxMediaContext
      * 
-     * @param string $sid A string that uniquely identifies this fax media
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaContext 
      */
     public function getContext($sid) {

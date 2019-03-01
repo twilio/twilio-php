@@ -23,6 +23,7 @@ use Twilio\Version;
  * 
  * @property \Twilio\Rest\Verify\V1\Service\VerificationList verifications
  * @property \Twilio\Rest\Verify\V1\Service\VerificationCheckList verificationChecks
+ * @method \Twilio\Rest\Verify\V1\Service\VerificationContext verifications(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_verifications = null;

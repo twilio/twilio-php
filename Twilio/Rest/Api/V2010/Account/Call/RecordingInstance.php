@@ -41,9 +41,9 @@ class RecordingInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The SID of the Account that created this resource
-     * @param string $callSid The SID of the Call this resource is associated with
-     * @param string $sid The unique string that identifies this resource
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $callSid The SID of the Call the resource is associated with
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {

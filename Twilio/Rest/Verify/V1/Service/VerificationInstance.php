@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string payee
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
+ * @property string url
  */
 class VerificationInstance extends InstanceResource {
     /**
@@ -38,9 +39,10 @@ class VerificationInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
+     * @param string $sid A string that uniquely identifies this Verification.
      * @return \Twilio\Rest\Verify\V1\Service\VerificationInstance 
      */
-    public function __construct(Version $version, array $payload, $serviceSid) {
+    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -57,9 +59,50 @@ class VerificationInstance extends InstanceResource {
             'payee' => Values::array_get($payload, 'payee'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, );
+        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     * 
+     * @return \Twilio\Rest\Verify\V1\Service\VerificationContext Context for this
+     *                                                            VerificationInstance
+     */
+    protected function proxy() {
+        if (!$this->context) {
+            $this->context = new VerificationContext(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Update the VerificationInstance
+     * 
+     * @param string $status New status to set for the Verification.
+     * @return VerificationInstance Updated VerificationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($status) {
+        return $this->proxy()->update($status);
+    }
+
+    /**
+     * Fetch a VerificationInstance
+     * 
+     * @return VerificationInstance Fetched VerificationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch() {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -88,6 +131,10 @@ class VerificationInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Verify.V1.VerificationInstance]';
+        $context = array();
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Verify.V1.VerificationInstance ' . implode(' ', $context) . ']';
     }
 }

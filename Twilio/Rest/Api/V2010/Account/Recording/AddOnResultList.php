@@ -18,8 +18,9 @@ class AddOnResultList extends ListResource {
      * Construct the AddOnResultList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource belongs
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList 
      */
     public function __construct(Version $version, $accountSid, $referenceSid) {
@@ -120,7 +121,7 @@ class AddOnResultList extends ListResource {
     /**
      * Constructs a AddOnResultContext
      * 
-     * @param string $sid Fetch by unique result Sid
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext 
      */
     public function getContext($sid) {
