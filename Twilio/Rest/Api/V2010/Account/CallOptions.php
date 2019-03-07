@@ -26,8 +26,8 @@ abstract class CallOptions {
      *                                    the `status_callback` URL.
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
-     * @param string $ifMachine The action to take if an answering machine is
-     *                          detected
+     * @param string $ifMachine Deprecated. Action to take if a machine has
+     *                          answered the call
      * @param integer $timeout Number of seconds to wait for an answer
      * @param boolean $record Whether or not to record the call
      * @param string $recordingChannels The number of channels in the final
@@ -115,8 +115,8 @@ class CreateCallOptions extends Options {
      *                                    the `status_callback` URL.
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
-     * @param string $ifMachine The action to take if an answering machine is
-     *                          detected
+     * @param string $ifMachine Deprecated. Action to take if a machine has
+     *                          answered the call
      * @param integer $timeout Number of seconds to wait for an answer
      * @param boolean $record Whether or not to record the call
      * @param string $recordingChannels The number of channels in the final
@@ -273,10 +273,10 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The action to take if an answering machine is detected. Can be: `Continue`, `Hangup`, or `False`. `False` disables the detection of an answering machine.
+     * Deprecated. Tell Twilio to try and determine if a machine (like voicemail) or a human has answered the call. Possible value are `Continue` and `Hangup`.
      * 
-     * @param string $ifMachine The action to take if an answering machine is
-     *                          detected
+     * @param string $ifMachine Deprecated. Action to take if a machine has
+     *                          answered the call
      * @return $this Fluent Builder
      */
     public function setIfMachine($ifMachine) {
