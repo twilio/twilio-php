@@ -15,7 +15,9 @@ use Twilio\Rest\FlexApi\V1;
 
 /**
  * @property \Twilio\Rest\FlexApi\V1 v1
+ * @property \Twilio\Rest\FlexApi\V1\FlexFlowList flexFlow
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList configuration
+ * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  */
 class FlexApi extends Domain {
@@ -75,6 +77,21 @@ class FlexApi extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList 
+     */
+    protected function getFlexFlow() {
+        return $this->v1->flexFlow;
+    }
+
+    /**
+     * @param string $sid The unique ID of the FlexFlow
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext 
+     */
+    protected function contextFlexFlow($sid) {
+        return $this->v1->flexFlow($sid);
     }
 
     /**

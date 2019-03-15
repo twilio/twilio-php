@@ -32,8 +32,9 @@ class RoleInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique id of the Service this role belongs to.
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\RoleInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
@@ -97,7 +98,7 @@ class RoleInstance extends InstanceResource {
     /**
      * Update the RoleInstance
      * 
-     * @param string $permission A permission this role should have.
+     * @param string $permission A permission the role should have
      * @return RoleInstance Updated RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */

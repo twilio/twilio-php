@@ -14,19 +14,17 @@ use Twilio\Values;
 
 abstract class ChannelOptions {
     /**
-     * @param string $friendlyName A human-readable name for the Channel.
-     * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param string $type The visibility of the channel - public or private.
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as being
-     *                               created.
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as having
-     *                               been last updated.
-     * @param string $createdBy Optional field to specify the Identity of the User
-     *                          that created the Channel.
+     * @param string $friendlyName A string to describe the new resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param string $type The visibility of the channel
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The identity of the User that created the Channel
      * @return CreateChannelOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
@@ -34,7 +32,7 @@ abstract class ChannelOptions {
     }
 
     /**
-     * @param string $type The visibility of the channel - public or private.
+     * @param string $type The visibility of the channel to read
      * @return ReadChannelOptions Options builder
      */
     public static function read($type = Values::NONE) {
@@ -42,18 +40,16 @@ abstract class ChannelOptions {
     }
 
     /**
-     * @param string $friendlyName A human-readable name for the Channel.
-     * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as being
-     *                               created.
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as having
-     *                               been last updated.
-     * @param string $createdBy Optional field to specify the Identity of the User
-     *                          that created the Channel.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The identity of the User that created the Channel
      * @return UpdateChannelOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
@@ -63,19 +59,17 @@ abstract class ChannelOptions {
 
 class CreateChannelOptions extends Options {
     /**
-     * @param string $friendlyName A human-readable name for the Channel.
-     * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param string $type The visibility of the channel - public or private.
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as being
-     *                               created.
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as having
-     *                               been last updated.
-     * @param string $createdBy Optional field to specify the Identity of the User
-     *                          that created the Channel.
+     * @param string $friendlyName A string to describe the new resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param string $type The visibility of the channel
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The identity of the User that created the Channel
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $type = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -88,9 +82,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * A human-readable name for the Channel. Optional.
+     * A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A human-readable name for the Channel.
+     * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -99,9 +93,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * A unique, addressable name for the Channel.  Optional.
+     * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
      * 
-     * @param string $uniqueName A unique, addressable name for the Channel.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -110,10 +105,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * A valid JSON string that contains application-specific data.
      * 
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -122,9 +117,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The visibility of the channel - `public` or `private`. Defaults to `public`.
+     * The visibility of the channel. Can be: `public` or `private` and defaults to `public`.
      * 
-     * @param string $type The visibility of the channel - public or private.
+     * @param string $type The visibility of the channel
      * @return $this Fluent Builder
      */
     public function setType($type) {
@@ -133,11 +128,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The optional ISO8601 time specifying the datetime the Channel should be set as being created.  Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a a Channel is being recreated from a backup/separate source
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default is the current time set by the Chat service.  Note that this should only be used in cases where a Channel is being recreated from a backup/separate source.
      * 
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as being
-     *                               created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -146,11 +140,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The optional ISO8601 time specifying the datetime the Channel should be set as having been last updated.  Will be set to the `null` by the Chat service if not specified.  Note that this should only be used in cases where a Channel is being recreated from a backup/separate source  and where a Message was previously updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`.  Note that this should only be used in cases where a Channel is being recreated from a backup/separate source  and where a Message was previously updated.
      * 
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as having
-     *                               been last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -159,10 +152,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * Optional field to specify the Identity of the User that created the Channel.  Will be set to "system" if not specified.
+     * The `identity` of the User that created the channel. Default is: `system`.
      * 
-     * @param string $createdBy Optional field to specify the Identity of the User
-     *                          that created the Channel.
+     * @param string $createdBy The identity of the User that created the Channel
      * @return $this Fluent Builder
      */
     public function setCreatedBy($createdBy) {
@@ -188,16 +180,16 @@ class CreateChannelOptions extends Options {
 
 class ReadChannelOptions extends Options {
     /**
-     * @param string $type The visibility of the channel - public or private.
+     * @param string $type The visibility of the channel to read
      */
     public function __construct($type = Values::NONE) {
         $this->options['type'] = $type;
     }
 
     /**
-     * The visibility of the channel - `public` or `private`. Defaults to `public`.
+     * The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
      * 
-     * @param string $type The visibility of the channel - public or private.
+     * @param string $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
     public function setType($type) {
@@ -223,18 +215,16 @@ class ReadChannelOptions extends Options {
 
 class UpdateChannelOptions extends Options {
     /**
-     * @param string $friendlyName A human-readable name for the Channel.
-     * @param string $uniqueName A unique, addressable name for the Channel.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as being
-     *                               created.
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as having
-     *                               been last updated.
-     * @param string $createdBy Optional field to specify the Identity of the User
-     *                          that created the Channel.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The identity of the User that created the Channel
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -246,9 +236,9 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * A human-readable name for the Channel. Optional.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A human-readable name for the Channel.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -257,9 +247,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * A unique, addressable name for the Channel.  Optional.
+     * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
      * 
-     * @param string $uniqueName A unique, addressable name for the Channel.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -268,10 +259,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * A valid JSON string that contains application-specific data.
      * 
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -280,11 +271,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The optional ISO8601 time specifying the datetime the Channel should be set as being created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
      * 
-     * @param \DateTime $dateCreated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as being
-     *                               created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -293,11 +283,10 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * The optional ISO8601 time specifying the datetime the Channel should be set as having been last updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      * 
-     * @param \DateTime $dateUpdated The optional ISO8601 time specifying the
-     *                               datetime the Channel should be set as having
-     *                               been last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -306,10 +295,9 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * Optional field to specify the Identity of the User that created the Channel.
+     * The `identity` of the User that created the channel. Default is: `system`.
      * 
-     * @param string $createdBy Optional field to specify the Identity of the User
-     *                          that created the Channel.
+     * @param string $createdBy The identity of the User that created the Channel
      * @return $this Fluent Builder
      */
     public function setCreatedBy($createdBy) {

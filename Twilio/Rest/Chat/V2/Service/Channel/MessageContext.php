@@ -20,10 +20,10 @@ class MessageContext extends InstanceContext {
      * Initialize the MessageContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Sid of the Service this message belongs to.
-     * @param string $channelSid Key that uniquely defines the channel this message
-     *                           belongs to.
-     * @param string $sid Key that uniquely defines the message to fetch.
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $channelSid The unique ID of the Channel the message to fetch
+     *                           belongs to
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageContext 
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {

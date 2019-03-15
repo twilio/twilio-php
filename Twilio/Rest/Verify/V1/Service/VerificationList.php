@@ -49,7 +49,6 @@ class VerificationList extends ListResource {
         $data = Values::of(array(
             'To' => $to,
             'Channel' => $channel,
-            'CustomMessage' => $options['customMessage'],
             'SendDigits' => $options['sendDigits'],
             'Locale' => $options['locale'],
             'CustomCode' => $options['customCode'],

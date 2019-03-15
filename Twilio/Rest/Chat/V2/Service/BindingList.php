@@ -20,8 +20,8 @@ class BindingList extends ListResource {
      * Construct the BindingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this binding belongs
-     *                           to.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Chat\V2\Service\BindingList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -128,7 +128,7 @@ class BindingList extends ListResource {
     /**
      * Constructs a BindingContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\BindingContext 
      */
     public function getContext($sid) {

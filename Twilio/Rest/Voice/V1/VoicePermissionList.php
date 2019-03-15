@@ -13,17 +13,21 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Rest\Voice\V1\VoicePermission\BulkCountryUpdateList;
 use Twilio\Rest\Voice\V1\VoicePermission\CountryList;
+use Twilio\Rest\Voice\V1\VoicePermission\SettingsList;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  * 
  * @property \Twilio\Rest\Voice\V1\VoicePermission\CountryList countries
+ * @property \Twilio\Rest\Voice\V1\VoicePermission\SettingsList settings
  * @property \Twilio\Rest\Voice\V1\VoicePermission\BulkCountryUpdateList bulkCountryUpdates
  * @method \Twilio\Rest\Voice\V1\VoicePermission\CountryContext countries(string $isoCode)
+ * @method \Twilio\Rest\Voice\V1\VoicePermission\SettingsContext settings()
  */
 class VoicePermissionList extends ListResource {
     protected $_countries = null;
+    protected $_settings = null;
     protected $_bulkCountryUpdates = null;
 
     /**
@@ -48,6 +52,17 @@ class VoicePermissionList extends ListResource {
         }
 
         return $this->_countries;
+    }
+
+    /**
+     * Access the settings
+     */
+    protected function getSettings() {
+        if (!$this->_settings) {
+            $this->_settings = new SettingsList($this->version);
+        }
+
+        return $this->_settings;
     }
 
     /**

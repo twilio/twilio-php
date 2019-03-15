@@ -19,7 +19,8 @@ class UserList extends ListResource {
      * Construct the UserList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this user belongs to.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Chat\V2\Service\UserList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -34,8 +35,8 @@ class UserList extends ListResource {
     /**
      * Create a new UserInstance
      * 
-     * @param string $identity A unique string that identifies the user within this
-     *                         service - often a username or email address.
+     * @param string $identity The `identity` value that identifies the new
+     *                         resource's User
      * @param array|Options $options Optional Arguments
      * @return UserInstance Newly created UserInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -149,7 +150,7 @@ class UserList extends ListResource {
     /**
      * Constructs a UserContext
      * 
-     * @param string $sid Key that uniquely defines the user to fetch.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\UserContext 
      */
     public function getContext($sid) {

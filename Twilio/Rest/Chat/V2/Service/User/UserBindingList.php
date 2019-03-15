@@ -20,9 +20,9 @@ class UserBindingList extends ListResource {
      * Construct the UserBindingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this binding belongs
-     *                           to.
-     * @param string $userSid The unique id of the User for this binding.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $userSid The SID of the User for the binding
      * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingList 
      */
     public function __construct(Version $version, $serviceSid, $userSid) {
@@ -128,7 +128,7 @@ class UserBindingList extends ListResource {
     /**
      * Constructs a UserBindingContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingContext 
      */
     public function getContext($sid) {

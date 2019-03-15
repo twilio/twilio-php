@@ -17,7 +17,6 @@ use Twilio\Values;
  */
 abstract class VerificationOptions {
     /**
-     * @param string $customMessage A custom message for this verification
      * @param string $sendDigits Digits to send when a phone call is started
      * @param string $locale Locale used in the sms or call.
      * @param string $customCode A pre-generated code
@@ -25,38 +24,25 @@ abstract class VerificationOptions {
      * @param string $payee Payee of the associated PSD2 compliant transaction.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
-        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee);
+    public static function create($sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
+        return new CreateVerificationOptions($sendDigits, $locale, $customCode, $amount, $payee);
     }
 }
 
 class CreateVerificationOptions extends Options {
     /**
-     * @param string $customMessage A custom message for this verification
      * @param string $sendDigits Digits to send when a phone call is started
      * @param string $locale Locale used in the sms or call.
      * @param string $customCode A pre-generated code
      * @param string $amount Amount of the associated PSD2 compliant transaction.
      * @param string $payee Payee of the associated PSD2 compliant transaction.
      */
-    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
-        $this->options['customMessage'] = $customMessage;
+    public function __construct($sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
         $this->options['customCode'] = $customCode;
         $this->options['amount'] = $amount;
         $this->options['payee'] = $payee;
-    }
-
-    /**
-     * A character string containing a custom message for this verification
-     * 
-     * @param string $customMessage A custom message for this verification
-     * @return $this Fluent Builder
-     */
-    public function setCustomMessage($customMessage) {
-        $this->options['customMessage'] = $customMessage;
-        return $this;
     }
 
     /**

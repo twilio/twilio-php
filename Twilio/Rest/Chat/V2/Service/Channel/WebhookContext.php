@@ -20,9 +20,10 @@ class WebhookContext extends InstanceContext {
      * Initialize the WebhookContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $channelSid The channel_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $channelSid The SID of the Channel the resource to fetch
+     *                           belongs to
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookContext 
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {

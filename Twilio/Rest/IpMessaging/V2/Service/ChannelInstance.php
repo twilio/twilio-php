@@ -43,9 +43,9 @@ class ChannelInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique id of the Service this channel belongs
-     *                           to.
-     * @param string $sid Key that uniquely defines the channel to fetch.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\IpMessaging\V2\Service\ChannelInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

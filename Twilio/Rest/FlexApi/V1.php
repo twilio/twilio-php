@@ -12,12 +12,16 @@ namespace Twilio\Rest\FlexApi;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
+use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\FlexApi\V1\FlexFlowList flexFlow
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList configuration
+ * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
  */
 class V1 extends Version {
+    protected $_flexFlow = null;
     protected $_configuration = null;
 
     /**
@@ -29,6 +33,16 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList 
+     */
+    protected function getFlexFlow() {
+        if (!$this->_flexFlow) {
+            $this->_flexFlow = new FlexFlowList($this);
+        }
+        return $this->_flexFlow;
     }
 
     /**
