@@ -61,10 +61,11 @@ abstract class SimOptions {
      *                            the above Url.
      * @param string $voiceUrl The URL Twilio will request when the SIM-connected
      *                         device makes a call.
+     * @param string $resetStatus Initiate a connectivity reset on a Sim.
      * @return UpdateSimOptions Options builder
      */
-    public static function update($uniqueName = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
-        return new UpdateSimOptions($uniqueName, $callbackMethod, $callbackUrl, $friendlyName, $ratePlan, $status, $commandsCallbackMethod, $commandsCallbackUrl, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl);
+    public static function update($uniqueName = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $resetStatus = Values::NONE) {
+        return new UpdateSimOptions($uniqueName, $callbackMethod, $callbackUrl, $friendlyName, $ratePlan, $status, $commandsCallbackMethod, $commandsCallbackUrl, $smsFallbackMethod, $smsFallbackUrl, $smsMethod, $smsUrl, $voiceFallbackMethod, $voiceFallbackUrl, $voiceMethod, $voiceUrl, $resetStatus);
     }
 }
 
@@ -193,8 +194,9 @@ class UpdateSimOptions extends Options {
      *                            the above Url.
      * @param string $voiceUrl The URL Twilio will request when the SIM-connected
      *                         device makes a call.
+     * @param string $resetStatus Initiate a connectivity reset on a Sim.
      */
-    public function __construct($uniqueName = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $resetStatus = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['callbackMethod'] = $callbackMethod;
         $this->options['callbackUrl'] = $callbackUrl;
@@ -211,6 +213,7 @@ class UpdateSimOptions extends Options {
         $this->options['voiceFallbackUrl'] = $voiceFallbackUrl;
         $this->options['voiceMethod'] = $voiceMethod;
         $this->options['voiceUrl'] = $voiceUrl;
+        $this->options['resetStatus'] = $resetStatus;
     }
 
     /**
@@ -404,6 +407,17 @@ class UpdateSimOptions extends Options {
      */
     public function setVoiceUrl($voiceUrl) {
         $this->options['voiceUrl'] = $voiceUrl;
+        return $this;
+    }
+
+    /**
+     * Pass `resetting` to initiate a connectivity reset on a Sim, this is the only valid value for this parameter.
+     * 
+     * @param string $resetStatus Initiate a connectivity reset on a Sim.
+     * @return $this Fluent Builder
+     */
+    public function setResetStatus($resetStatus) {
+        $this->options['resetStatus'] = $resetStatus;
         return $this;
     }
 

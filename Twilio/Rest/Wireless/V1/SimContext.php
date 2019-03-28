@@ -87,6 +87,7 @@ class SimContext extends InstanceContext {
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
+            'ResetStatus' => $options['resetStatus'],
         ));
 
         $payload = $this->version->update(

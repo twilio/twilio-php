@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string iccid
  * @property string eId
  * @property string status
+ * @property string resetStatus
  * @property string commandsCallbackUrl
  * @property string commandsCallbackMethod
  * @property string smsFallbackMethod
@@ -67,6 +68,7 @@ class SimInstance extends InstanceResource {
             'iccid' => Values::array_get($payload, 'iccid'),
             'eId' => Values::array_get($payload, 'e_id'),
             'status' => Values::array_get($payload, 'status'),
+            'resetStatus' => Values::array_get($payload, 'reset_status'),
             'commandsCallbackUrl' => Values::array_get($payload, 'commands_callback_url'),
             'commandsCallbackMethod' => Values::array_get($payload, 'commands_callback_method'),
             'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),

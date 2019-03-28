@@ -44,7 +44,10 @@ class QueueTest extends HolodeckTestCase {
                 "friendly_name": "0.361280134646222",
                 "max_size": 100,
                 "sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                "subresource_uris": {
+                    "members": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json"
+                }
             }
             '
         ));
@@ -83,7 +86,10 @@ class QueueTest extends HolodeckTestCase {
                 "friendly_name": "0.361280134646222",
                 "max_size": 100,
                 "sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                "subresource_uris": {
+                    "members": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json"
+                }
             }
             '
         ));
@@ -143,9 +149,7 @@ class QueueTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json?PageSize=1&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json?PageSize=1&Page=12857",
                 "next_page_uri": null,
-                "num_pages": 12858,
                 "page": 0,
                 "page_size": 1,
                 "previous_page_uri": null,
@@ -159,11 +163,13 @@ class QueueTest extends HolodeckTestCase {
                         "friendly_name": "0.361280134646222",
                         "max_size": 100,
                         "sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                        "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                        "subresource_uris": {
+                            "members": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json"
+                        }
                     }
                 ],
                 "start": 0,
-                "total": 12858,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json?PageSize=1&Page=0"
             }
             '
@@ -182,15 +188,12 @@ class QueueTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json?PageSize=1&Page=0",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json?PageSize=1&Page=12857",
                 "next_page_uri": null,
-                "num_pages": 12858,
                 "page": 0,
                 "page_size": 1,
                 "previous_page_uri": null,
                 "queues": [],
                 "start": 0,
-                "total": 12858,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues.json?PageSize=1&Page=0"
             }
             '
@@ -234,7 +237,10 @@ class QueueTest extends HolodeckTestCase {
                 "friendly_name": "0.361280134646222",
                 "max_size": 100,
                 "sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                "subresource_uris": {
+                    "members": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json"
+                }
             }
             '
         ));

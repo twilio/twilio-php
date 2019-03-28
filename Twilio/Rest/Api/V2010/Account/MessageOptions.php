@@ -28,6 +28,7 @@ abstract class MessageOptions {
      * @param boolean $provideFeedback Whether to confirm delivery of the message
      * @param integer $validityPeriod The number of seconds that the message can
      *                                remain in our outgoing queue.
+     * @param boolean $forceDelivery Reserved
      * @param boolean $smartEncoded Whether to detect Unicode characters that have
      *                              a similar GSM-7 character and replace them
      * @param string $interactiveData A JSON string that represents an interactive
@@ -35,8 +36,8 @@ abstract class MessageOptions {
      * @param boolean $forceOptIn Whether to forcefully whitelist a from:to pair
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $smartEncoded, $interactiveData, $forceOptIn);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $smartEncoded, $interactiveData, $forceOptIn);
     }
 
     /**
@@ -68,13 +69,14 @@ class CreateMessageOptions extends Options {
      * @param boolean $provideFeedback Whether to confirm delivery of the message
      * @param integer $validityPeriod The number of seconds that the message can
      *                                remain in our outgoing queue.
+     * @param boolean $forceDelivery Reserved
      * @param boolean $smartEncoded Whether to detect Unicode characters that have
      *                              a similar GSM-7 character and replace them
      * @param string $interactiveData A JSON string that represents an interactive
      *                                message
      * @param boolean $forceOptIn Whether to forcefully whitelist a from:to pair
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -84,6 +86,7 @@ class CreateMessageOptions extends Options {
         $this->options['maxPrice'] = $maxPrice;
         $this->options['provideFeedback'] = $provideFeedback;
         $this->options['validityPeriod'] = $validityPeriod;
+        $this->options['forceDelivery'] = $forceDelivery;
         $this->options['smartEncoded'] = $smartEncoded;
         $this->options['interactiveData'] = $interactiveData;
         $this->options['forceOptIn'] = $forceOptIn;
@@ -190,6 +193,17 @@ class CreateMessageOptions extends Options {
      */
     public function setValidityPeriod($validityPeriod) {
         $this->options['validityPeriod'] = $validityPeriod;
+        return $this;
+    }
+
+    /**
+     * Reserved
+     * 
+     * @param boolean $forceDelivery Reserved
+     * @return $this Fluent Builder
+     */
+    public function setForceDelivery($forceDelivery) {
+        $this->options['forceDelivery'] = $forceDelivery;
         return $this;
     }
 

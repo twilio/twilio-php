@@ -34,6 +34,7 @@ use Twilio\Version;
 class SessionInstance extends InstanceResource {
     protected $_participants = null;
     protected $_messages = null;
+    protected $_webhooks = null;
 
     /**
      * Initialize the SessionInstance
@@ -127,6 +128,15 @@ class SessionInstance extends InstanceResource {
      */
     protected function getMessages() {
         return $this->proxy()->messages;
+    }
+
+    /**
+     * Access the webhooks
+     * 
+     * @return \Twilio\Rest\Messaging\V1\Session\WebhookList 
+     */
+    protected function getWebhooks() {
+        return $this->proxy()->webhooks;
     }
 
     /**

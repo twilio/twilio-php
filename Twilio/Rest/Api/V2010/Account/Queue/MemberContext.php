@@ -20,7 +20,7 @@ class MemberContext extends InstanceContext {
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the
      *                           resource(s) to fetch
-     * @param string $queueSid The Queue in which to find the members
+     * @param string $queueSid The SID of the Queue in which to find the members
      * @param string $callSid The Call SID of the resource(s) to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext 
      */
@@ -64,7 +64,7 @@ class MemberContext extends InstanceContext {
     /**
      * Update the MemberInstance
      * 
-     * @param string $url The absolute URL of this Queue resource
+     * @param string $url The absolute URL of the Queue resource
      * @param string $method How to pass the update request data
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.

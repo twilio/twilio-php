@@ -12,14 +12,17 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Verify\V1;
+use Twilio\Rest\Verify\V2;
 
 /**
  * @property \Twilio\Rest\Verify\V1 v1
- * @property \Twilio\Rest\Verify\V1\ServiceList services
- * @method \Twilio\Rest\Verify\V1\ServiceContext services(string $sid)
+ * @property \Twilio\Rest\Verify\V2 v2
+ * @property \Twilio\Rest\Verify\V2\ServiceList services
+ * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class Verify extends Domain {
     protected $_v1 = null;
+    protected $_v2 = null;
 
     /**
      * Construct the Verify Domain
@@ -42,6 +45,16 @@ class Verify extends Domain {
             $this->_v1 = new V1($this);
         }
         return $this->_v1;
+    }
+
+    /**
+     * @return \Twilio\Rest\Verify\V2 Version v2 of verify
+     */
+    protected function getV2() {
+        if (!$this->_v2) {
+            $this->_v2 = new V2($this);
+        }
+        return $this->_v2;
     }
 
     /**
@@ -78,18 +91,18 @@ class Verify extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Verify\V1\ServiceList 
+     * @return \Twilio\Rest\Verify\V2\ServiceList 
      */
     protected function getServices() {
-        return $this->v1->services;
+        return $this->v2->services;
     }
 
     /**
      * @param string $sid Verification Service Instance SID.
-     * @return \Twilio\Rest\Verify\V1\ServiceContext 
+     * @return \Twilio\Rest\Verify\V2\ServiceContext 
      */
     protected function contextServices($sid) {
-        return $this->v1->services($sid);
+        return $this->v2->services($sid);
     }
 
     /**

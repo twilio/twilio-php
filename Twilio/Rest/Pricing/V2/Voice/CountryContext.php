@@ -18,7 +18,8 @@ class CountryContext extends InstanceContext {
      * Initialize the CountryContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $isoCountry Fetches voice prices for country
+     * @param string $isoCountry The ISO country code of the pricing information to
+     *                           fetch
      * @return \Twilio\Rest\Pricing\V2\Voice\CountryContext 
      */
     public function __construct(Version $version, $isoCountry) {

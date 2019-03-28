@@ -14,6 +14,7 @@ use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Messaging\V1\Session\MessageList;
 use Twilio\Rest\Messaging\V1\Session\ParticipantList;
+use Twilio\Rest\Messaging\V1\Session\WebhookList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -23,12 +24,15 @@ use Twilio\Version;
  * 
  * @property \Twilio\Rest\Messaging\V1\Session\ParticipantList participants
  * @property \Twilio\Rest\Messaging\V1\Session\MessageList messages
+ * @property \Twilio\Rest\Messaging\V1\Session\WebhookList webhooks
  * @method \Twilio\Rest\Messaging\V1\Session\ParticipantContext participants(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Session\MessageContext messages(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\Session\WebhookContext webhooks(string $sid)
  */
 class SessionContext extends InstanceContext {
     protected $_participants = null;
     protected $_messages = null;
+    protected $_webhooks = null;
 
     /**
      * Initialize the SessionContext
@@ -127,6 +131,19 @@ class SessionContext extends InstanceContext {
         }
 
         return $this->_messages;
+    }
+
+    /**
+     * Access the webhooks
+     * 
+     * @return \Twilio\Rest\Messaging\V1\Session\WebhookList 
+     */
+    protected function getWebhooks() {
+        if (!$this->_webhooks) {
+            $this->_webhooks = new WebhookList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_webhooks;
     }
 
     /**

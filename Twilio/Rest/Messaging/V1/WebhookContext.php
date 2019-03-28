@@ -69,6 +69,7 @@ class WebhookContext extends InstanceContext {
             'PostWebhookUrl' => $options['postWebhookUrl'],
             'PreWebhookRetryCount' => $options['preWebhookRetryCount'],
             'PostWebhookRetryCount' => $options['postWebhookRetryCount'],
+            'Target' => $options['target'],
         ));
 
         $payload = $this->version->update(

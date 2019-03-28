@@ -26,8 +26,6 @@ abstract class CallOptions {
      *                                    the `status_callback` URL.
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
-     * @param string $ifMachine Deprecated. Action to take if a machine has
-     *                          answered the call
      * @param integer $timeout Number of seconds to wait for an answer
      * @param boolean $record Whether or not to record the call
      * @param string $recordingChannels The number of channels in the final
@@ -65,8 +63,8 @@ abstract class CallOptions {
      *                                                initial silence
      * @return CreateCallOptions Options builder
      */
-    public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE) {
-        return new CreateCallOptions($url, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $ifMachine, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout);
+    public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE) {
+        return new CreateCallOptions($url, $applicationSid, $method, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackEvent, $statusCallbackMethod, $sendDigits, $timeout, $record, $recordingChannels, $recordingStatusCallback, $recordingStatusCallbackMethod, $sipAuthUsername, $sipAuthPassword, $machineDetection, $machineDetectionTimeout, $recordingStatusCallbackEvent, $trim, $callerId, $machineDetectionSpeechThreshold, $machineDetectionSpeechEndThreshold, $machineDetectionSilenceTimeout);
     }
 
     /**
@@ -123,8 +121,6 @@ class CreateCallOptions extends Options {
      *                                    the `status_callback` URL.
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
-     * @param string $ifMachine Deprecated. Action to take if a machine has
-     *                          answered the call
      * @param integer $timeout Number of seconds to wait for an answer
      * @param boolean $record Whether or not to record the call
      * @param string $recordingChannels The number of channels in the final
@@ -161,7 +157,7 @@ class CreateCallOptions extends Options {
      * @param integer $machineDetectionSilenceTimeout Number of milliseconds of
      *                                                initial silence
      */
-    public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $ifMachine = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE) {
+    public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE) {
         $this->options['url'] = $url;
         $this->options['applicationSid'] = $applicationSid;
         $this->options['method'] = $method;
@@ -171,7 +167,6 @@ class CreateCallOptions extends Options {
         $this->options['statusCallbackEvent'] = $statusCallbackEvent;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['sendDigits'] = $sendDigits;
-        $this->options['ifMachine'] = $ifMachine;
         $this->options['timeout'] = $timeout;
         $this->options['record'] = $record;
         $this->options['recordingChannels'] = $recordingChannels;
@@ -288,18 +283,6 @@ class CreateCallOptions extends Options {
      */
     public function setSendDigits($sendDigits) {
         $this->options['sendDigits'] = $sendDigits;
-        return $this;
-    }
-
-    /**
-     * Deprecated. Tell Twilio to try and determine if a machine (like voicemail) or a human has answered the call. Possible value are `Continue` and `Hangup`.
-     * 
-     * @param string $ifMachine Deprecated. Action to take if a machine has
-     *                          answered the call
-     * @return $this Fluent Builder
-     */
-    public function setIfMachine($ifMachine) {
-        $this->options['ifMachine'] = $ifMachine;
         return $this;
     }
 
@@ -477,7 +460,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The number of milliseconds of initial silence after which an ‘unknown’ AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
+     * The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
      * 
      * @param integer $machineDetectionSilenceTimeout Number of milliseconds of
      *                                                initial silence

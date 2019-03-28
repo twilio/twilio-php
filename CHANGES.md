@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2019-03-28] Version 5.31.0
+----------------------------
+**Api**
+- Remove optional `if_machine` call create parameter from helper libraries **(breaking change)**
+- Changed `call_sid` path parameter type on QueueMember fetch and update requests **(breaking change)**
+
+**Voice**
+- changed file names to dialing_permissions prefix **(breaking change)**
+
+**Wireless**
+- Added `ResetStatus` property to Sim resource to allow resetting connectivity via the API.
+
+
 [2019-03-15] Version 5.30.2
 ----------------------------
 **Library**

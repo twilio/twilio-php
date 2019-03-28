@@ -118,7 +118,8 @@ class CountryList extends ListResource {
     /**
      * Constructs a CountryContext
      * 
-     * @param string $isoCountry Fetches voice prices for country
+     * @param string $isoCountry The ISO country code of the pricing information to
+     *                           fetch
      * @return \Twilio\Rest\Pricing\V2\Voice\CountryContext 
      */
     public function getContext($isoCountry) {

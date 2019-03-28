@@ -31,7 +31,7 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg “IWasAtSignal2018”)
+     * The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg `IWasAtSignal2018`)
      * 
      * @param string $password The password will not be returned in the response
      * @return $this Fluent Builder

@@ -19,7 +19,7 @@ class MemberList extends ListResource {
      * 
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created this resource
-     * @param string $queueSid The unique string that identifies this resource
+     * @param string $queueSid The SID of the Queue the member is in
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberList 
      */
     public function __construct(Version $version, $accountSid, $queueSid) {

@@ -31,7 +31,8 @@ class NumberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $destinationNumber Fetches voice prices for number
+     * @param string $destinationNumber The destination number for which to fetch
+     *                                  pricing information
      * @return \Twilio\Rest\Pricing\V2\Voice\NumberInstance 
      */
     public function __construct(Version $version, array $payload, $destinationNumber = null) {

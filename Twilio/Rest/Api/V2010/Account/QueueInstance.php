@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property integer maxSize
  * @property string sid
  * @property string uri
+ * @property array subresourceUris
  */
 class QueueInstance extends InstanceResource {
     protected $_members = null;
@@ -53,6 +54,7 @@ class QueueInstance extends InstanceResource {
             'maxSize' => Values::array_get($payload, 'max_size'),
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );

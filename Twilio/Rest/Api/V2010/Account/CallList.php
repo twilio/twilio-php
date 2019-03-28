@@ -64,7 +64,6 @@ class CallList extends ListResource {
             'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SendDigits' => $options['sendDigits'],
-            'IfMachine' => $options['ifMachine'],
             'Timeout' => $options['timeout'],
             'Record' => Serialize::booleanToString($options['record']),
             'RecordingChannels' => $options['recordingChannels'],

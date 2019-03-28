@@ -15,7 +15,7 @@ use Twilio\Rest\Voice\V1;
 
 /**
  * @property \Twilio\Rest\Voice\V1 v1
- * @property \Twilio\Rest\Voice\V1\VoicePermissionList voicePermissions
+ * @property \Twilio\Rest\Voice\V1\DialingPermissionsList dialingPermissions
  */
 class Voice extends Domain {
     protected $_v1 = null;
@@ -77,10 +77,10 @@ class Voice extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Voice\V1\VoicePermissionList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList 
      */
-    protected function getVoicePermissions() {
-        return $this->v1->voicePermissions;
+    protected function getDialingPermissions() {
+        return $this->v1->dialingPermissions;
     }
 
     /**

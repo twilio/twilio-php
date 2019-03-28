@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property string postWebhookUrl
  * @property integer preWebhookRetryCount
  * @property integer postWebhookRetryCount
+ * @property string target
  * @property string url
  */
 class WebhookInstance extends InstanceResource {
@@ -49,6 +50,7 @@ class WebhookInstance extends InstanceResource {
             'postWebhookUrl' => Values::array_get($payload, 'post_webhook_url'),
             'preWebhookRetryCount' => Values::array_get($payload, 'pre_webhook_retry_count'),
             'postWebhookRetryCount' => Values::array_get($payload, 'post_webhook_retry_count'),
+            'target' => Values::array_get($payload, 'target'),
             'url' => Values::array_get($payload, 'url'),
         );
 

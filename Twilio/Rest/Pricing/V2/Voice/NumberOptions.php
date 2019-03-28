@@ -14,7 +14,8 @@ use Twilio\Values;
 
 abstract class NumberOptions {
     /**
-     * @param string $originationNumber The origination_number
+     * @param string $originationNumber The origination number for which to fetch
+     *                                  pricing information
      * @return FetchNumberOptions Options builder
      */
     public static function fetch($originationNumber = Values::NONE) {
@@ -24,16 +25,18 @@ abstract class NumberOptions {
 
 class FetchNumberOptions extends Options {
     /**
-     * @param string $originationNumber The origination_number
+     * @param string $originationNumber The origination number for which to fetch
+     *                                  pricing information
      */
     public function __construct($originationNumber = Values::NONE) {
         $this->options['originationNumber'] = $originationNumber;
     }
 
     /**
-     * The origination_number
+     * The origination phone number, in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, for which to fetch the origin-based voice pricing information. E.164 format consists of a + followed by the country code and subscriber number.
      * 
-     * @param string $originationNumber The origination_number
+     * @param string $originationNumber The origination number for which to fetch
+     *                                  pricing information
      * @return $this Fluent Builder
      */
     public function setOriginationNumber($originationNumber) {

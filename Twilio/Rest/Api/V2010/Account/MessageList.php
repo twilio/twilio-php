@@ -54,6 +54,7 @@ class MessageList extends ListResource {
             'MaxPrice' => $options['maxPrice'],
             'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
             'ValidityPeriod' => $options['validityPeriod'],
+            'ForceDelivery' => Serialize::booleanToString($options['forceDelivery']),
             'SmartEncoded' => Serialize::booleanToString($options['smartEncoded']),
             'InteractiveData' => $options['interactiveData'],
             'ForceOptIn' => Serialize::booleanToString($options['forceOptIn']),

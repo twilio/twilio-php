@@ -18,7 +18,7 @@ class NumberContext extends InstanceContext {
      * Initialize the NumberContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $number The number
+     * @param string $number The phone number to fetch
      * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext 
      */
     public function __construct(Version $version, $number) {
