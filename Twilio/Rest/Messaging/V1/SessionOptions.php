@@ -23,12 +23,10 @@ abstract class SessionOptions {
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $createdBy Identity of the session's creator.
-     * @param string $twilioAddress Twilio address the participant is contacting to.
-     * @param string $userAddress Address the participant is contacting from.
      * @return CreateSessionOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE, $twilioAddress = Values::NONE, $userAddress = Values::NONE) {
-        return new CreateSessionOptions($friendlyName, $attributes, $dateCreated, $dateUpdated, $createdBy, $twilioAddress, $userAddress);
+    public static function create($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
+        return new CreateSessionOptions($friendlyName, $attributes, $dateCreated, $dateUpdated, $createdBy);
     }
 
     /**
@@ -53,17 +51,13 @@ class CreateSessionOptions extends Options {
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $createdBy Identity of the session's creator.
-     * @param string $twilioAddress Twilio address the participant is contacting to.
-     * @param string $userAddress Address the participant is contacting from.
      */
-    public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE, $twilioAddress = Values::NONE, $userAddress = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['createdBy'] = $createdBy;
-        $this->options['twilioAddress'] = $twilioAddress;
-        $this->options['userAddress'] = $userAddress;
     }
 
     /**
@@ -119,28 +113,6 @@ class CreateSessionOptions extends Options {
      */
     public function setCreatedBy($createdBy) {
         $this->options['createdBy'] = $createdBy;
-        return $this;
-    }
-
-    /**
-     * Twilio address the participant is contacting to. Together with User address defines the participant.
-     * 
-     * @param string $twilioAddress Twilio address the participant is contacting to.
-     * @return $this Fluent Builder
-     */
-    public function setTwilioAddress($twilioAddress) {
-        $this->options['twilioAddress'] = $twilioAddress;
-        return $this;
-    }
-
-    /**
-     * Address the participant is contacting from. Together with Twilio address defines the participant.
-     * 
-     * @param string $userAddress Address the participant is contacting from.
-     * @return $this Fluent Builder
-     */
-    public function setUserAddress($userAddress) {
-        $this->options['userAddress'] = $userAddress;
         return $this;
     }
 

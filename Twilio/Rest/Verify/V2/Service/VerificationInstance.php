@@ -38,8 +38,9 @@ class VerificationInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid A string that uniquely identifies this Verification.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Verify\V2\Service\VerificationInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
@@ -87,7 +88,7 @@ class VerificationInstance extends InstanceResource {
     /**
      * Update the VerificationInstance
      * 
-     * @param string $status New status to set for the Verification.
+     * @param string $status The new status of the resource
      * @return VerificationInstance Updated VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */

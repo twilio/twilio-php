@@ -38,6 +38,7 @@ class TrunkInstance extends InstanceResource {
     protected $_credentialsLists = null;
     protected $_ipAccessControlLists = null;
     protected $_phoneNumbers = null;
+    protected $_terminatingSipDomains = null;
 
     /**
      * Initialize the TrunkInstance
@@ -152,6 +153,15 @@ class TrunkInstance extends InstanceResource {
      */
     protected function getPhoneNumbers() {
         return $this->proxy()->phoneNumbers;
+    }
+
+    /**
+     * Access the terminatingSipDomains
+     * 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList 
+     */
+    protected function getTerminatingSipDomains() {
+        return $this->proxy()->terminatingSipDomains;
     }
 
     /**

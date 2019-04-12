@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2019-04-12] Version 5.31.1
+----------------------------
+**Flex**
+- Adding PluginService to Flex Configuration
+
+**Numbers**
+- Add API for Proof of Addresses
+
+**Proxy**
+- Clarify documentation for Service and Session fetch
+
+**Serverless**
+- Serverless scaffolding
+
+
 [2019-03-28] Version 5.31.0
 ----------------------------
 **Api**

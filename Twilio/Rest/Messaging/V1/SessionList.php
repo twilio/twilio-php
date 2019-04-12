@@ -53,8 +53,6 @@ class SessionList extends ListResource {
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'CreatedBy' => $options['createdBy'],
-            'TwilioAddress' => $options['twilioAddress'],
-            'UserAddress' => $options['userAddress'],
         ));
 
         $payload = $this->version->create(

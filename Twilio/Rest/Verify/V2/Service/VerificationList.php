@@ -22,7 +22,8 @@ class VerificationList extends ListResource {
      * Construct the VerificationList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Verify\V2\Service\VerificationList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -37,8 +38,8 @@ class VerificationList extends ListResource {
     /**
      * Create a new VerificationInstance
      * 
-     * @param string $to To phonenumber
-     * @param string $channel sms or call
+     * @param string $to The phone number to verify
+     * @param string $channel The verification method to use
      * @param array|Options $options Optional Arguments
      * @return VerificationInstance Newly created VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -70,7 +71,7 @@ class VerificationList extends ListResource {
     /**
      * Constructs a VerificationContext
      * 
-     * @param string $sid A string that uniquely identifies this Verification.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Verify\V2\Service\VerificationContext 
      */
     public function getContext($sid) {

@@ -11,17 +11,14 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Verify\V1;
 use Twilio\Rest\Verify\V2;
 
 /**
- * @property \Twilio\Rest\Verify\V1 v1
  * @property \Twilio\Rest\Verify\V2 v2
  * @property \Twilio\Rest\Verify\V2\ServiceList services
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class Verify extends Domain {
-    protected $_v1 = null;
     protected $_v2 = null;
 
     /**
@@ -35,16 +32,6 @@ class Verify extends Domain {
         parent::__construct($client);
 
         $this->baseUrl = 'https://verify.twilio.com';
-    }
-
-    /**
-     * @return \Twilio\Rest\Verify\V1 Version v1 of verify
-     */
-    protected function getV1() {
-        if (!$this->_v1) {
-            $this->_v1 = new V1($this);
-        }
-        return $this->_v1;
     }
 
     /**
@@ -98,7 +85,7 @@ class Verify extends Domain {
     }
 
     /**
-     * @param string $sid Verification Service Instance SID.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Verify\V2\ServiceContext 
      */
     protected function contextServices($sid) {

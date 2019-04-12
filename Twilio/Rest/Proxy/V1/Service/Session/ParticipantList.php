@@ -22,8 +22,8 @@ class ParticipantList extends ListResource {
      * Construct the ParticipantList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sessionSid Session Sid.
+     * @param string $serviceSid The SID of the resource's parent Service
+     * @param string $sessionSid The SID of the resource's parent Session
      * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList 
      */
     public function __construct(Version $version, $serviceSid, $sessionSid) {
@@ -124,7 +124,7 @@ class ParticipantList extends ListResource {
     /**
      * Create a new ParticipantInstance
      * 
-     * @param string $identifier The phone number of this Participant.
+     * @param string $identifier The phone number of the Participant
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Newly created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -157,7 +157,7 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      * 
-     * @param string $sid A string that uniquely identifies this Participant.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext 
      */
     public function getContext($sid) {

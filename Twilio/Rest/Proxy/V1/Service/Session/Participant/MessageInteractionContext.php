@@ -21,10 +21,10 @@ class MessageInteractionContext extends InstanceContext {
      * Initialize the MessageInteractionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sessionSid The session_sid
-     * @param string $participantSid The participant_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sessionSid The SID of the parent Session
+     * @param string $participantSid The SID of the Participant resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext 
      */
     public function __construct(Version $version, $serviceSid, $sessionSid, $participantSid, $sid) {

@@ -21,8 +21,8 @@ class InteractionList extends ListResource {
      * Construct the InteractionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sessionSid Session Sid.
+     * @param string $serviceSid The SID of the resource's parent Service
+     * @param string $sessionSid The SID of the resource's parent Session
      * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionList 
      */
     public function __construct(Version $version, $serviceSid, $sessionSid) {
@@ -123,7 +123,7 @@ class InteractionList extends ListResource {
     /**
      * Constructs a InteractionContext
      * 
-     * @param string $sid A string that uniquely identifies this Interaction.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext 
      */
     public function getContext($sid) {

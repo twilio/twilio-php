@@ -22,7 +22,8 @@ class VerificationCheckList extends ListResource {
      * Construct the VerificationCheckList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Verify\V2\Service\VerificationCheckList 
      */
     public function __construct(Version $version, $serviceSid) {

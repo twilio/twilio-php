@@ -36,7 +36,8 @@ class VerificationCheckInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Verify\V2\Service\VerificationCheckInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid) {

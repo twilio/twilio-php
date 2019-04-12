@@ -45,6 +45,8 @@ use Twilio\Version;
  * @property string crmFallbackUrl
  * @property array crmAttributes
  * @property array publicAttributes
+ * @property boolean pluginServiceEnabled
+ * @property array pluginServiceAttributes
  * @property string url
  */
 class ConfigurationInstance extends InstanceResource {
@@ -88,6 +90,8 @@ class ConfigurationInstance extends InstanceResource {
             'crmFallbackUrl' => Values::array_get($payload, 'crm_fallback_url'),
             'crmAttributes' => Values::array_get($payload, 'crm_attributes'),
             'publicAttributes' => Values::array_get($payload, 'public_attributes'),
+            'pluginServiceEnabled' => Values::array_get($payload, 'plugin_service_enabled'),
+            'pluginServiceAttributes' => Values::array_get($payload, 'plugin_service_attributes'),
             'url' => Values::array_get($payload, 'url'),
         );
 

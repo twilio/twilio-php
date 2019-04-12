@@ -23,7 +23,7 @@ class SessionList extends ListResource {
      * Construct the SessionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the resource's parent Service
      * @return \Twilio\Rest\Proxy\V1\Service\SessionList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -153,7 +153,7 @@ class SessionList extends ListResource {
     /**
      * Constructs a SessionContext
      * 
-     * @param string $sid A string that uniquely identifies this Session.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\SessionContext 
      */
     public function getContext($sid) {

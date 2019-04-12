@@ -21,8 +21,9 @@ class VerificationContext extends InstanceContext {
      * Initialize the VerificationContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sid A string that uniquely identifies this Verification.
+     * @param string $serviceSid The SID of the verification Service to fetch the
+     *                           resource from
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Verify\V2\Service\VerificationContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {
@@ -37,7 +38,7 @@ class VerificationContext extends InstanceContext {
     /**
      * Update the VerificationInstance
      * 
-     * @param string $status New status to set for the Verification.
+     * @param string $status The new status of the resource
      * @return VerificationInstance Updated VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */

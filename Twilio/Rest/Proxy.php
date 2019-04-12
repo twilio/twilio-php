@@ -85,7 +85,7 @@ class Proxy extends Domain {
     }
 
     /**
-     * @param string $sid A string that uniquely identifies this Service.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\ServiceContext 
      */
     protected function contextServices($sid) {

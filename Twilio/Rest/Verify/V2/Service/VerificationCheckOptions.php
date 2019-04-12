@@ -17,11 +17,12 @@ use Twilio\Values;
  */
 abstract class VerificationCheckOptions {
     /**
-     * @param string $to To phone number
-     * @param string $verificationSid A SID that uniquely identifies this
+     * @param string $to The phone number to verify
+     * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
-     * @param string $amount Amount of the associated PSD2 compliant transaction.
-     * @param string $payee Payee of the associated PSD2 compliant transaction.
+     * @param string $amount The amount of the associated PSD2 compliant
+     *                       transaction.
+     * @param string $payee The payee of the associated PSD2 compliant transaction
      * @return CreateVerificationCheckOptions Options builder
      */
     public static function create($to = Values::NONE, $verificationSid = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
@@ -31,11 +32,12 @@ abstract class VerificationCheckOptions {
 
 class CreateVerificationCheckOptions extends Options {
     /**
-     * @param string $to To phone number
-     * @param string $verificationSid A SID that uniquely identifies this
+     * @param string $to The phone number to verify
+     * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
-     * @param string $amount Amount of the associated PSD2 compliant transaction.
-     * @param string $payee Payee of the associated PSD2 compliant transaction.
+     * @param string $amount The amount of the associated PSD2 compliant
+     *                       transaction.
+     * @param string $payee The payee of the associated PSD2 compliant transaction
      */
     public function __construct($to = Values::NONE, $verificationSid = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
         $this->options['to'] = $to;
@@ -45,9 +47,9 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * The To phone number of the phone being verified
+     * The phone number to verify. Either this parameter or the `verification_sid` must be specified
      * 
-     * @param string $to To phone number
+     * @param string $to The phone number to verify
      * @return $this Fluent Builder
      */
     public function setTo($to) {
@@ -56,9 +58,9 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * A SID that uniquely identifies this Verification Check, either this parameter or the To phone number must be specified
+     * A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number must be specified.
      * 
-     * @param string $verificationSid A SID that uniquely identifies this
+     * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
      * @return $this Fluent Builder
      */
@@ -68,9 +70,10 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * Amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
      * 
-     * @param string $amount Amount of the associated PSD2 compliant transaction.
+     * @param string $amount The amount of the associated PSD2 compliant
+     *                       transaction.
      * @return $this Fluent Builder
      */
     public function setAmount($amount) {
@@ -79,9 +82,9 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * Payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
      * 
-     * @param string $payee Payee of the associated PSD2 compliant transaction.
+     * @param string $payee The payee of the associated PSD2 compliant transaction
      * @return $this Fluent Builder
      */
     public function setPayee($payee) {

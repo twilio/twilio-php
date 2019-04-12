@@ -17,10 +17,11 @@ use Twilio\Values;
  */
 abstract class ParticipantOptions {
     /**
-     * @param string $friendlyName A human-readable description of this resource.
-     * @param string $proxyIdentifier The proxy phone number to use for this
-     *                                Participant.
-     * @param string $proxyIdentifierSid The proxy_identifier_sid
+     * @param string $friendlyName The string that you assigned to describe the
+     *                             participant
+     * @param string $proxyIdentifier The proxy phone number to use for the
+     *                                Participant
+     * @param string $proxyIdentifierSid The Proxy Identifier Sid
      * @return CreateParticipantOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
@@ -30,10 +31,11 @@ abstract class ParticipantOptions {
 
 class CreateParticipantOptions extends Options {
     /**
-     * @param string $friendlyName A human-readable description of this resource.
-     * @param string $proxyIdentifier The proxy phone number to use for this
-     *                                Participant.
-     * @param string $proxyIdentifierSid The proxy_identifier_sid
+     * @param string $friendlyName The string that you assigned to describe the
+     *                             participant
+     * @param string $proxyIdentifier The proxy phone number to use for the
+     *                                Participant
+     * @param string $proxyIdentifierSid The Proxy Identifier Sid
      */
     public function __construct($friendlyName = Values::NONE, $proxyIdentifier = Values::NONE, $proxyIdentifierSid = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -42,9 +44,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * A human-readable description of this resource, up to 64 characters. Should not include PII.
+     * The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.**
      * 
-     * @param string $friendlyName A human-readable description of this resource.
+     * @param string $friendlyName The string that you assigned to describe the
+     *                             participant
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -53,10 +56,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The proxy phone number to use for this Participant. If not specified, Proxy will select a number from the pool.
+     * The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool.
      * 
-     * @param string $proxyIdentifier The proxy phone number to use for this
-     *                                Participant.
+     * @param string $proxyIdentifier The proxy phone number to use for the
+     *                                Participant
      * @return $this Fluent Builder
      */
     public function setProxyIdentifier($proxyIdentifier) {
@@ -65,9 +68,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The proxy_identifier_sid
+     * The SID of the Proxy Identifier to assign to the Participant.
      * 
-     * @param string $proxyIdentifierSid The proxy_identifier_sid
+     * @param string $proxyIdentifierSid The Proxy Identifier Sid
      * @return $this Fluent Builder
      */
     public function setProxyIdentifierSid($proxyIdentifierSid) {

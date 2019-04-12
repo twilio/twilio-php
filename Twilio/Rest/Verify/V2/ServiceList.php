@@ -37,7 +37,7 @@ class ServiceList extends ListResource {
     /**
      * Create a new ServiceInstance
      * 
-     * @param string $friendlyName Friendly name of the service
+     * @param string $friendlyName A string to describe the verification service
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -154,7 +154,7 @@ class ServiceList extends ListResource {
     /**
      * Constructs a ServiceContext
      * 
-     * @param string $sid Verification Service Instance SID.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Verify\V2\ServiceContext 
      */
     public function getContext($sid) {
