@@ -21,16 +21,16 @@ class AddressTest extends HolodeckTestCase {
 
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->addresses->create("customerName", "street", "city", "region", "postalCode", "US");
+                                     ->addresses->create("customer_name", "street", "city", "region", "postal_code", "US");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'CustomerName' => "customerName",
+            'CustomerName' => "customer_name",
             'Street' => "street",
             'City' => "city",
             'Region' => "region",
-            'PostalCode' => "postalCode",
+            'PostalCode' => "postal_code",
             'IsoCountry' => "US",
         );
 
@@ -60,13 +60,14 @@ class AddressTest extends HolodeckTestCase {
                 "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "street": "4th",
                 "validated": false,
+                "verified": false,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->addresses->create("customerName", "street", "city", "region", "postalCode", "US");
+                                           ->addresses->create("customer_name", "street", "city", "region", "postal_code", "US");
 
         $this->assertNotNull($actual);
     }
@@ -131,6 +132,7 @@ class AddressTest extends HolodeckTestCase {
                 "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "street": "4th",
                 "validated": false,
+                "verified": false,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -175,6 +177,7 @@ class AddressTest extends HolodeckTestCase {
                 "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "street": "4th",
                 "validated": false,
+                "verified": false,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
             }
             '
@@ -221,6 +224,7 @@ class AddressTest extends HolodeckTestCase {
                         "sid": "ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "street": "4th",
                         "validated": false,
+                        "verified": false,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],

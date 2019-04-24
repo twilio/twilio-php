@@ -18,7 +18,7 @@ class IpAccessControlListList extends ListResource {
      * Construct the IpAccessControlListList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid The unique sid that identifies the associated Trunk
+     * @param string $trunkSid The SID of the Trunk the resource is associated with
      * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList 
      */
     public function __construct(Version $version, $trunkSid) {
@@ -34,8 +34,8 @@ class IpAccessControlListList extends ListResource {
      * Create a new IpAccessControlListInstance
      * 
      * @param string $ipAccessControlListSid The SID of the IP Access Control List
-     *                                       that you want to associate with this
-     *                                       trunk.
+     *                                       that you want to associate with the
+     *                                       trunk
      * @return IpAccessControlListInstance Newly created IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -142,7 +142,7 @@ class IpAccessControlListList extends ListResource {
     /**
      * Constructs a IpAccessControlListContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext 
      */
     public function getContext($sid) {

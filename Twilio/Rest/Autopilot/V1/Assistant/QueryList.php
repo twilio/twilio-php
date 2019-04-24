@@ -22,7 +22,8 @@ class QueryList extends ListResource {
      * Construct the QueryList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\QueryList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -130,11 +131,9 @@ class QueryList extends ListResource {
     /**
      * Create a new QueryInstance
      * 
-     * @param string $language An [ISO language-country
-     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
-     * @param string $query A user-provided string that uniquely identifies this
-     *                      resource as an alternative to the sid. It can be up to
-     *                      2048 characters long.
+     * @param string $language The ISO language-country string that specifies the
+     *                         language used for the new query
+     * @param string $query The end-user's natural language input
      * @param array|Options $options Optional Arguments
      * @return QueryInstance Newly created QueryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -162,8 +161,7 @@ class QueryList extends ListResource {
     /**
      * Constructs a QueryContext
      * 
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\QueryContext 
      */
     public function getContext($sid) {

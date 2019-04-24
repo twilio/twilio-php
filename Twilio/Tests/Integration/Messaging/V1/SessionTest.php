@@ -88,11 +88,11 @@ class SessionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->messaging->v1->sessions->create("messagingServiceSid");
+            $this->twilio->messaging->v1->sessions->create("messaging_service_sid");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('MessagingServiceSid' => "messagingServiceSid", );
+        $values = array('MessagingServiceSid' => "messaging_service_sid", );
 
         $this->assertRequest(new Request(
             'post',
@@ -126,7 +126,7 @@ class SessionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->messaging->v1->sessions->create("messagingServiceSid");
+        $actual = $this->twilio->messaging->v1->sessions->create("messaging_service_sid");
 
         $this->assertNotNull($actual);
     }

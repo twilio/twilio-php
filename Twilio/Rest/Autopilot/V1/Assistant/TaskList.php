@@ -23,7 +23,8 @@ class TaskList extends ListResource {
      * Construct the TaskList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -124,9 +125,8 @@ class TaskList extends ListResource {
     /**
      * Create a new TaskInstance
      * 
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Newly created TaskInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -154,8 +154,7 @@ class TaskList extends ListResource {
     /**
      * Constructs a TaskContext
      * 
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskContext 
      */
     public function getContext($sid) {

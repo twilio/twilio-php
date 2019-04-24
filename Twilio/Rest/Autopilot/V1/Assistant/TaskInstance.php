@@ -41,9 +41,9 @@ class TaskInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {

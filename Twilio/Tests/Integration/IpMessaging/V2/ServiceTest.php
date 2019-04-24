@@ -109,11 +109,11 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->ipMessaging->v2->services->create("friendlyName");
+            $this->twilio->ipMessaging->v2->services->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -168,7 +168,7 @@ class ServiceTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->ipMessaging->v2->services->create("friendlyName");
+        $actual = $this->twilio->ipMessaging->v2->services->create("friendly_name");
 
         $this->assertNotNull($actual);
     }

@@ -145,11 +145,11 @@ class SampleTest extends HolodeckTestCase {
         try {
             $this->twilio->autopilot->v1->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->tasks("UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->samples->create("language", "taggedText");
+                                        ->samples->create("language", "tagged_text");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Language' => "language", 'TaggedText' => "taggedText", );
+        $values = array('Language' => "language", 'TaggedText' => "tagged_text", );
 
         $this->assertRequest(new Request(
             'post',
@@ -180,7 +180,7 @@ class SampleTest extends HolodeckTestCase {
 
         $actual = $this->twilio->autopilot->v1->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->tasks("UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                              ->samples->create("language", "taggedText");
+                                              ->samples->create("language", "tagged_text");
 
         $this->assertNotNull($actual);
     }

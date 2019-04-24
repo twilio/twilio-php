@@ -19,8 +19,7 @@ class OriginationUrlList extends ListResource {
      * Construct the OriginationUrlList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid The unique ID of the Trunk that owns this
-     *                         Origination URL.
+     * @param string $trunkSid The SID of the Trunk that owns the Origination URL
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
      */
     public function __construct(Version $version, $trunkSid) {
@@ -35,15 +34,14 @@ class OriginationUrlList extends ListResource {
     /**
      * Create a new OriginationUrlInstance
      * 
-     * @param integer $weight Weight is used to determine the share of load when
-     *                        more than one URI has the same priority.
-     * @param integer $priority Priority ranks the importance of the URI.
-     * @param boolean $enabled A boolean value indicating whether the URL is
-     *                         enabled or disabled.
-     * @param string $friendlyName A human readable descriptive text, up to 64
-     *                             characters long.
+     * @param integer $weight The value that determines the relative load the URI
+     *                        should receive compared to others with the same
+     *                        priority
+     * @param integer $priority The relative importance of the URI
+     * @param boolean $enabled Whether the URL is enabled
+     * @param string $friendlyName A string to describe the resource
      * @param string $sipUrl The SIP address you want Twilio to route your
-     *                       Origination calls to.
+     *                       Origination calls to
      * @return OriginationUrlInstance Newly created OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -155,7 +153,7 @@ class OriginationUrlList extends ListResource {
     /**
      * Constructs a OriginationUrlContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext 
      */
     public function getContext($sid) {

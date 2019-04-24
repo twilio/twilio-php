@@ -21,10 +21,11 @@ class FieldContext extends InstanceContext {
      * Initialize the FieldContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $taskSid The unique ID of the Task associated with this Field.
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the Task associated with the resource to fetch
+     * @param string $taskSid The SID of the
+     *                        [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with the Field resource to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldContext 
      */
     public function __construct(Version $version, $assistantSid, $taskSid, $sid) {

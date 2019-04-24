@@ -20,7 +20,8 @@ class DialogueList extends ListResource {
      * Construct the DialogueList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the parent Assistant.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -33,7 +34,7 @@ class DialogueList extends ListResource {
     /**
      * Constructs a DialogueContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext 
      */
     public function getContext($sid) {

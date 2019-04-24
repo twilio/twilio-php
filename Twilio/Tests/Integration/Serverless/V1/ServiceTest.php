@@ -100,11 +100,11 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->serverless->v1->services->create("uniqueName", "friendlyName");
+            $this->twilio->serverless->v1->services->create("unique_name", "friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UniqueName' => "uniqueName", 'FriendlyName' => "friendlyName", );
+        $values = array('UniqueName' => "unique_name", 'FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -137,7 +137,7 @@ class ServiceTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->serverless->v1->services->create("uniqueName", "friendlyName");
+        $actual = $this->twilio->serverless->v1->services->create("unique_name", "friendly_name");
 
         $this->assertNotNull($actual);
     }

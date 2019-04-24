@@ -143,11 +143,11 @@ class FieldTest extends HolodeckTestCase {
         try {
             $this->twilio->autopilot->v1->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                         ->tasks("UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->fields->create("fieldType", "uniqueName");
+                                        ->fields->create("field_type", "unique_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FieldType' => "fieldType", 'UniqueName' => "uniqueName", );
+        $values = array('FieldType' => "field_type", 'UniqueName' => "unique_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -177,7 +177,7 @@ class FieldTest extends HolodeckTestCase {
 
         $actual = $this->twilio->autopilot->v1->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->tasks("UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                              ->fields->create("fieldType", "uniqueName");
+                                              ->fields->create("field_type", "unique_name");
 
         $this->assertNotNull($actual);
     }

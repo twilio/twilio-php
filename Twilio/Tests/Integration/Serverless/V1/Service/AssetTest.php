@@ -101,11 +101,11 @@ class AssetTest extends HolodeckTestCase {
 
         try {
             $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->assets->create("friendlyName");
+                                         ->assets->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -135,7 +135,7 @@ class AssetTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->assets->create("friendlyName");
+                                               ->assets->create("friendly_name");
 
         $this->assertNotNull($actual);
     }
@@ -145,11 +145,11 @@ class AssetTest extends HolodeckTestCase {
 
         try {
             $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->assets("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+                                         ->assets("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -179,7 +179,7 @@ class AssetTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->assets("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+                                               ->assets("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
 
         $this->assertNotNull($actual);
     }

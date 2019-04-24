@@ -54,8 +54,7 @@ class AssistantContext extends InstanceContext {
      * Initialize the AssistantContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\AssistantContext 
      */
     public function __construct(Version $version, $sid) {

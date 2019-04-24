@@ -21,11 +21,11 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
 
         try {
             $this->twilio->voice->v1->dialingPermissions
-                                    ->bulkCountryUpdates->create("updateRequest");
+                                    ->bulkCountryUpdates->create("update_request");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UpdateRequest' => "updateRequest", );
+        $values = array('UpdateRequest' => "update_request", );
 
         $this->assertRequest(new Request(
             'post',
@@ -47,7 +47,7 @@ class BulkCountryUpdateTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->voice->v1->dialingPermissions
-                                          ->bulkCountryUpdates->create("updateRequest");
+                                          ->bulkCountryUpdates->create("update_request");
 
         $this->assertNotNull($actual);
     }

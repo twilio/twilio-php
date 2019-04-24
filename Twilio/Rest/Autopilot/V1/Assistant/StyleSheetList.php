@@ -20,7 +20,8 @@ class StyleSheetList extends ListResource {
      * Construct the StyleSheetList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList 
      */
     public function __construct(Version $version, $assistantSid) {

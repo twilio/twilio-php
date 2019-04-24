@@ -22,9 +22,10 @@ class FieldValueList extends ListResource {
      * Construct the FieldValueList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $fieldTypeSid The unique ID of the Field Type associated with
-     *                             this Field Value.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the FieldType associated with the resource
+     * @param string $fieldTypeSid The SID of the Field Type associated with the
+     *                             Field Value
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList 
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid) {
@@ -130,12 +131,9 @@ class FieldValueList extends ListResource {
     /**
      * Create a new FieldValueInstance
      * 
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this field value. For example:
-     *                         en-US
-     * @param string $value A user-provided string that uniquely identifies this
-     *                      resource as an alternative to the sid. Unique up to 64
-     *                      characters long.
+     * @param string $language The ISO language-country tag that identifies the
+     *                         language of the value
+     * @param string $value The Field Value data
      * @param array|Options $options Optional Arguments
      * @return FieldValueInstance Newly created FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -167,8 +165,7 @@ class FieldValueList extends ListResource {
     /**
      * Constructs a FieldValueContext
      * 
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext 
      */
     public function getContext($sid) {

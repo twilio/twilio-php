@@ -29,8 +29,9 @@ class DialogueInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The unique ID of the parent Assistant.
-     * @param string $sid The sid
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {

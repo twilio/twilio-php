@@ -93,12 +93,12 @@ class RoleTest extends HolodeckTestCase {
 
         try {
             $this->twilio->chat->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                   ->roles->create("friendlyName", "channel", array("permission"));
+                                   ->roles->create("friendly_name", "channel", array("permission"));
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'FriendlyName' => "friendlyName",
+            'FriendlyName' => "friendly_name",
             'Type' => "channel",
             'Permission' => Serialize::map(array("permission"), function($e) { return $e; }),
         );
@@ -135,7 +135,7 @@ class RoleTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->chat->v1->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->roles->create("friendlyName", "channel", array("permission"));
+                                         ->roles->create("friendly_name", "channel", array("permission"));
 
         $this->assertNotNull($actual);
     }

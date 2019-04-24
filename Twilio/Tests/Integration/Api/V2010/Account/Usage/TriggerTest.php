@@ -147,13 +147,13 @@ class TriggerTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->usage
-                                     ->triggers->create("https://example.com", "triggerValue", "agent-conference");
+                                     ->triggers->create("https://example.com", "trigger_value", "agent-conference");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
             'CallbackUrl' => "https://example.com",
-            'TriggerValue' => "triggerValue",
+            'TriggerValue' => "trigger_value",
             'UsageCategory' => "agent-conference",
         );
 
@@ -192,7 +192,7 @@ class TriggerTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->usage
-                                           ->triggers->create("https://example.com", "triggerValue", "agent-conference");
+                                           ->triggers->create("https://example.com", "trigger_value", "agent-conference");
 
         $this->assertNotNull($actual);
     }

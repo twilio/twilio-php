@@ -17,9 +17,8 @@ use Twilio\Values;
  */
 abstract class FieldValueOptions {
     /**
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this field value. For example:
-     *                         en-US
+     * @param string $language The ISO language-country tag that identifies the
+     *                         language of the value
      * @return ReadFieldValueOptions Options builder
      */
     public static function read($language = Values::NONE) {
@@ -27,8 +26,8 @@ abstract class FieldValueOptions {
     }
 
     /**
-     * @param string $synonymOf A string value that indicates which word this field
-     *                          value is a synonym of.
+     * @param string $synonymOf The string value that indicates which word the
+     *                          field value is a synonym of
      * @return CreateFieldValueOptions Options builder
      */
     public static function create($synonymOf = Values::NONE) {
@@ -38,20 +37,18 @@ abstract class FieldValueOptions {
 
 class ReadFieldValueOptions extends Options {
     /**
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this field value. For example:
-     *                         en-US
+     * @param string $language The ISO language-country tag that identifies the
+     *                         language of the value
      */
     public function __construct($language = Values::NONE) {
         $this->options['language'] = $language;
     }
 
     /**
-     * An ISO language-country string that specifies the language used for this field value. For example: en-US
+     * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`
      * 
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this field value. For example:
-     *                         en-US
+     * @param string $language The ISO language-country tag that identifies the
+     *                         language of the value
      * @return $this Fluent Builder
      */
     public function setLanguage($language) {
@@ -77,18 +74,18 @@ class ReadFieldValueOptions extends Options {
 
 class CreateFieldValueOptions extends Options {
     /**
-     * @param string $synonymOf A string value that indicates which word this field
-     *                          value is a synonym of.
+     * @param string $synonymOf The string value that indicates which word the
+     *                          field value is a synonym of
      */
     public function __construct($synonymOf = Values::NONE) {
         $this->options['synonymOf'] = $synonymOf;
     }
 
     /**
-     * A string value that indicates which word this field value is a synonym of.
+     * The string value that indicates which word the field value is a synonym of.
      * 
-     * @param string $synonymOf A string value that indicates which word this field
-     *                          value is a synonym of.
+     * @param string $synonymOf The string value that indicates which word the
+     *                          field value is a synonym of
      * @return $this Fluent Builder
      */
     public function setSynonymOf($synonymOf) {

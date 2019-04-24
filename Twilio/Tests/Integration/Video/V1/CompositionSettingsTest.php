@@ -56,11 +56,11 @@ class CompositionSettingsTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->compositionSettings()->create("friendlyName");
+            $this->twilio->video->v1->compositionSettings()->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -87,7 +87,7 @@ class CompositionSettingsTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->compositionSettings()->create("friendlyName");
+        $actual = $this->twilio->video->v1->compositionSettings()->create("friendly_name");
 
         $this->assertNotNull($actual);
     }

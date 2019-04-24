@@ -17,33 +17,28 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $apnCredentialSid The SID of the Credential to be used for APN
-     *                                 Bindings.
-     * @param string $gcmCredentialSid The SID of the Credential to be used for GCM
-     *                                 Bindings.
-     * @param string $messagingServiceSid The SID of the Messaging Service to be
-     *                                    used for SMS Bindings.
-     * @param string $facebookMessengerPageId The Page ID to be used to send for
-     *                                        Facebook Messenger Bindings.
-     * @param string $defaultApnNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending APNS
-     *                                                      notifications.
-     * @param string $defaultGcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending GCM
-     *                                                      notifications.
-     * @param string $fcmCredentialSid The SID of the Credential to be used for FCM
-     *                                 Bindings.
-     * @param string $defaultFcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending FCM
-     *                                                      notifications.
-     * @param boolean $logEnabled The log_enabled
-     * @param string $alexaSkillId The alexa_skill_id
-     * @param string $defaultAlexaNotificationProtocolVersion The
-     *                                                        default_alexa_notification_protocol_version
+     * @param string $friendlyName A string to describe the resource
+     * @param string $apnCredentialSid The SID of the Credential to use for APN
+     *                                 Bindings
+     * @param string $gcmCredentialSid The SID of the Credential to use for GCM
+     *                                 Bindings
+     * @param string $messagingServiceSid The SID of the Messaging Service to use
+     *                                    for SMS Bindings
+     * @param string $facebookMessengerPageId Deprecated
+     * @param string $defaultApnNotificationProtocolVersion The protocol version to
+     *                                                      use for sending APNS
+     *                                                      notifications
+     * @param string $defaultGcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending GCM
+     *                                                      notifications
+     * @param string $fcmCredentialSid The SID of the Credential to use for FCM
+     *                                 Bindings
+     * @param string $defaultFcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending FCM
+     *                                                      notifications
+     * @param boolean $logEnabled Whether to log notifications
+     * @param string $alexaSkillId Deprecated
+     * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return CreateServiceOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
@@ -51,7 +46,8 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param string $friendlyName Filter services by FriendlyName
+     * @param string $friendlyName The string that identifies the Service resources
+     *                             to read
      * @return ReadServiceOptions Options builder
      */
     public static function read($friendlyName = Values::NONE) {
@@ -59,33 +55,28 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $apnCredentialSid The SID of the default Credential to be used
-     *                                 for APN Bindings
-     * @param string $gcmCredentialSid The SID of the default Credential to be used
-     *                                 for GCM Bindings
-     * @param string $messagingServiceSid The SID of the Messaging Service to be
-     *                                    used for SMS Bindings.
-     * @param string $facebookMessengerPageId The Page ID to be used to send for
-     *                                        Facebook Messenger Bindings.
-     * @param string $defaultApnNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending APNS
-     *                                                      notifications.
-     * @param string $defaultGcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending GCM
-     *                                                      notifications.
-     * @param string $fcmCredentialSid The SID of the default Credential to be used
-     *                                 for FCM Bindings
-     * @param string $defaultFcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending FCM
-     *                                                      notifications.
-     * @param boolean $logEnabled The log_enabled
-     * @param string $alexaSkillId The alexa_skill_id
-     * @param string $defaultAlexaNotificationProtocolVersion The
-     *                                                        default_alexa_notification_protocol_version
+     * @param string $friendlyName A string to describe the resource
+     * @param string $apnCredentialSid The SID of the Credential to use for APN
+     *                                 Bindings
+     * @param string $gcmCredentialSid The SID of the Credential to use for GCM
+     *                                 Bindings
+     * @param string $messagingServiceSid The SID of the Messaging Service to use
+     *                                    for SMS Bindings
+     * @param string $facebookMessengerPageId Deprecated
+     * @param string $defaultApnNotificationProtocolVersion The protocol version to
+     *                                                      use for sending APNS
+     *                                                      notifications
+     * @param string $defaultGcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending GCM
+     *                                                      notifications
+     * @param string $fcmCredentialSid The SID of the Credential to use for FCM
+     *                                 Bindings
+     * @param string $defaultFcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending FCM
+     *                                                      notifications
+     * @param boolean $logEnabled Whether to log notifications
+     * @param string $alexaSkillId Deprecated
+     * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return UpdateServiceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
@@ -95,33 +86,28 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $apnCredentialSid The SID of the Credential to be used for APN
-     *                                 Bindings.
-     * @param string $gcmCredentialSid The SID of the Credential to be used for GCM
-     *                                 Bindings.
-     * @param string $messagingServiceSid The SID of the Messaging Service to be
-     *                                    used for SMS Bindings.
-     * @param string $facebookMessengerPageId The Page ID to be used to send for
-     *                                        Facebook Messenger Bindings.
-     * @param string $defaultApnNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending APNS
-     *                                                      notifications.
-     * @param string $defaultGcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending GCM
-     *                                                      notifications.
-     * @param string $fcmCredentialSid The SID of the Credential to be used for FCM
-     *                                 Bindings.
-     * @param string $defaultFcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending FCM
-     *                                                      notifications.
-     * @param boolean $logEnabled The log_enabled
-     * @param string $alexaSkillId The alexa_skill_id
-     * @param string $defaultAlexaNotificationProtocolVersion The
-     *                                                        default_alexa_notification_protocol_version
+     * @param string $friendlyName A string to describe the resource
+     * @param string $apnCredentialSid The SID of the Credential to use for APN
+     *                                 Bindings
+     * @param string $gcmCredentialSid The SID of the Credential to use for GCM
+     *                                 Bindings
+     * @param string $messagingServiceSid The SID of the Messaging Service to use
+     *                                    for SMS Bindings
+     * @param string $facebookMessengerPageId Deprecated
+     * @param string $defaultApnNotificationProtocolVersion The protocol version to
+     *                                                      use for sending APNS
+     *                                                      notifications
+     * @param string $defaultGcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending GCM
+     *                                                      notifications
+     * @param string $fcmCredentialSid The SID of the Credential to use for FCM
+     *                                 Bindings
+     * @param string $defaultFcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending FCM
+     *                                                      notifications
+     * @param boolean $logEnabled Whether to log notifications
+     * @param string $alexaSkillId Deprecated
+     * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      */
     public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -139,9 +125,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Human-readable name for this service instance
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName Human-readable name for this service instance
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -150,10 +136,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credentials) to be used for APN Bindings.
+     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings.
      * 
-     * @param string $apnCredentialSid The SID of the Credential to be used for APN
-     *                                 Bindings.
+     * @param string $apnCredentialSid The SID of the Credential to use for APN
+     *                                 Bindings
      * @return $this Fluent Builder
      */
     public function setApnCredentialSid($apnCredentialSid) {
@@ -162,10 +148,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credentials) to be used for GCM Bindings.
+     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings.
      * 
-     * @param string $gcmCredentialSid The SID of the Credential to be used for GCM
-     *                                 Bindings.
+     * @param string $gcmCredentialSid The SID of the Credential to use for GCM
+     *                                 Bindings
      * @return $this Fluent Builder
      */
     public function setGcmCredentialSid($gcmCredentialSid) {
@@ -174,10 +160,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the [Messaging Service](https://www.twilio.com/docs/api/rest/sending-messages#messaging-services) to be used for SMS Bindings. In order to send SMS notifications this parameter has to be set.
+     * The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications.
      * 
-     * @param string $messagingServiceSid The SID of the Messaging Service to be
-     *                                    used for SMS Bindings.
+     * @param string $messagingServiceSid The SID of the Messaging Service to use
+     *                                    for SMS Bindings
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid($messagingServiceSid) {
@@ -186,10 +172,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The Page ID to be used to send for Facebook Messenger Bindings. It has to match the Page ID you configured when you [enabled Facebook Messaging](https://www.twilio.com/console/sms/settings) on your account.
+     * Deprecated.
      * 
-     * @param string $facebookMessengerPageId The Page ID to be used to send for
-     *                                        Facebook Messenger Bindings.
+     * @param string $facebookMessengerPageId Deprecated
      * @return $this Fluent Builder
      */
     public function setFacebookMessengerPageId($facebookMessengerPageId) {
@@ -198,12 +183,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The version of the protocol to be used for sending APNS notifications. Can be overriden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/bindings) resource.
+     * The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
      * 
-     * @param string $defaultApnNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending APNS
-     *                                                      notifications.
+     * @param string $defaultApnNotificationProtocolVersion The protocol version to
+     *                                                      use for sending APNS
+     *                                                      notifications
      * @return $this Fluent Builder
      */
     public function setDefaultApnNotificationProtocolVersion($defaultApnNotificationProtocolVersion) {
@@ -212,12 +196,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The version of the protocol to be used for sending GCM notifications. Can be overriden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/bindings) resource.
+     * The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
      * 
-     * @param string $defaultGcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending GCM
-     *                                                      notifications.
+     * @param string $defaultGcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending GCM
+     *                                                      notifications
      * @return $this Fluent Builder
      */
     public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion) {
@@ -226,10 +209,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credentials) to be used for FCM Bindings.
+     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings.
      * 
-     * @param string $fcmCredentialSid The SID of the Credential to be used for FCM
-     *                                 Bindings.
+     * @param string $fcmCredentialSid The SID of the Credential to use for FCM
+     *                                 Bindings
      * @return $this Fluent Builder
      */
     public function setFcmCredentialSid($fcmCredentialSid) {
@@ -238,12 +221,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The version of the protocol to be used for sending FCM notifications. Can be overriden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/bindings) resource.
+     * The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
      * 
-     * @param string $defaultFcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending FCM
-     *                                                      notifications.
+     * @param string $defaultFcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending FCM
+     *                                                      notifications
      * @return $this Fluent Builder
      */
     public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
@@ -252,9 +234,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The log_enabled
+     * Whether to log notifications. Can be: `true` or `false` and the default is `true`.
      * 
-     * @param boolean $logEnabled The log_enabled
+     * @param boolean $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
     public function setLogEnabled($logEnabled) {
@@ -263,9 +245,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The alexa_skill_id
+     * Deprecated.
      * 
-     * @param string $alexaSkillId The alexa_skill_id
+     * @param string $alexaSkillId Deprecated
      * @return $this Fluent Builder
      */
     public function setAlexaSkillId($alexaSkillId) {
@@ -274,10 +256,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The default_alexa_notification_protocol_version
+     * Deprecated.
      * 
-     * @param string $defaultAlexaNotificationProtocolVersion The
-     *                                                        default_alexa_notification_protocol_version
+     * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return $this Fluent Builder
      */
     public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion) {
@@ -303,16 +284,18 @@ class CreateServiceOptions extends Options {
 
 class ReadServiceOptions extends Options {
     /**
-     * @param string $friendlyName Filter services by FriendlyName
+     * @param string $friendlyName The string that identifies the Service resources
+     *                             to read
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * Filter services by FriendlyName
+     * The string that identifies the Service resources to read.
      * 
-     * @param string $friendlyName Filter services by FriendlyName
+     * @param string $friendlyName The string that identifies the Service resources
+     *                             to read
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -338,33 +321,28 @@ class ReadServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $apnCredentialSid The SID of the default Credential to be used
-     *                                 for APN Bindings
-     * @param string $gcmCredentialSid The SID of the default Credential to be used
-     *                                 for GCM Bindings
-     * @param string $messagingServiceSid The SID of the Messaging Service to be
-     *                                    used for SMS Bindings.
-     * @param string $facebookMessengerPageId The Page ID to be used to send for
-     *                                        Facebook Messenger Bindings.
-     * @param string $defaultApnNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending APNS
-     *                                                      notifications.
-     * @param string $defaultGcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending GCM
-     *                                                      notifications.
-     * @param string $fcmCredentialSid The SID of the default Credential to be used
-     *                                 for FCM Bindings
-     * @param string $defaultFcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending FCM
-     *                                                      notifications.
-     * @param boolean $logEnabled The log_enabled
-     * @param string $alexaSkillId The alexa_skill_id
-     * @param string $defaultAlexaNotificationProtocolVersion The
-     *                                                        default_alexa_notification_protocol_version
+     * @param string $friendlyName A string to describe the resource
+     * @param string $apnCredentialSid The SID of the Credential to use for APN
+     *                                 Bindings
+     * @param string $gcmCredentialSid The SID of the Credential to use for GCM
+     *                                 Bindings
+     * @param string $messagingServiceSid The SID of the Messaging Service to use
+     *                                    for SMS Bindings
+     * @param string $facebookMessengerPageId Deprecated
+     * @param string $defaultApnNotificationProtocolVersion The protocol version to
+     *                                                      use for sending APNS
+     *                                                      notifications
+     * @param string $defaultGcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending GCM
+     *                                                      notifications
+     * @param string $fcmCredentialSid The SID of the Credential to use for FCM
+     *                                 Bindings
+     * @param string $defaultFcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending FCM
+     *                                                      notifications
+     * @param boolean $logEnabled Whether to log notifications
+     * @param string $alexaSkillId Deprecated
+     * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      */
     public function __construct($friendlyName = Values::NONE, $apnCredentialSid = Values::NONE, $gcmCredentialSid = Values::NONE, $messagingServiceSid = Values::NONE, $facebookMessengerPageId = Values::NONE, $defaultApnNotificationProtocolVersion = Values::NONE, $defaultGcmNotificationProtocolVersion = Values::NONE, $fcmCredentialSid = Values::NONE, $defaultFcmNotificationProtocolVersion = Values::NONE, $logEnabled = Values::NONE, $alexaSkillId = Values::NONE, $defaultAlexaNotificationProtocolVersion = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -382,9 +360,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Human-readable name for this service instance
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName Human-readable name for this service instance
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -393,10 +371,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the default Credential to be used for APN Bindings
+     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings.
      * 
-     * @param string $apnCredentialSid The SID of the default Credential to be used
-     *                                 for APN Bindings
+     * @param string $apnCredentialSid The SID of the Credential to use for APN
+     *                                 Bindings
      * @return $this Fluent Builder
      */
     public function setApnCredentialSid($apnCredentialSid) {
@@ -405,10 +383,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the default Credential to be used for GCM Bindings
+     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings.
      * 
-     * @param string $gcmCredentialSid The SID of the default Credential to be used
-     *                                 for GCM Bindings
+     * @param string $gcmCredentialSid The SID of the Credential to use for GCM
+     *                                 Bindings
      * @return $this Fluent Builder
      */
     public function setGcmCredentialSid($gcmCredentialSid) {
@@ -417,10 +395,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the [Messaging Service](https://www.twilio.com/docs/api/rest/sending-messages#messaging-services) to be used for SMS Bindings. In order to send SMS notifications this parameter has to be set.
+     * The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications.
      * 
-     * @param string $messagingServiceSid The SID of the Messaging Service to be
-     *                                    used for SMS Bindings.
+     * @param string $messagingServiceSid The SID of the Messaging Service to use
+     *                                    for SMS Bindings
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid($messagingServiceSid) {
@@ -429,10 +407,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The Page ID to be used to send for Facebook Messenger Bindings. It has to match the Page ID you configured when you [enabled Facebook Messaging](https://www.twilio.com/console/sms/settings) on your account. Facebook Messenger integration is in beta. You need to be in the beta program to be able to enable Facebook Messaging for your account.
+     * Deprecated.
      * 
-     * @param string $facebookMessengerPageId The Page ID to be used to send for
-     *                                        Facebook Messenger Bindings.
+     * @param string $facebookMessengerPageId Deprecated
      * @return $this Fluent Builder
      */
     public function setFacebookMessengerPageId($facebookMessengerPageId) {
@@ -441,12 +418,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The version of the protocol to be used for sending APNS notifications. Can be overriden on a Binding by Binding basis when creating a Binding resource.
+     * The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
      * 
-     * @param string $defaultApnNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending APNS
-     *                                                      notifications.
+     * @param string $defaultApnNotificationProtocolVersion The protocol version to
+     *                                                      use for sending APNS
+     *                                                      notifications
      * @return $this Fluent Builder
      */
     public function setDefaultApnNotificationProtocolVersion($defaultApnNotificationProtocolVersion) {
@@ -455,12 +431,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The version of the protocol to be used for sending GCM notifications. Can be overriden on a Binding by Binding basis when creating a Binding resource.
+     * The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
      * 
-     * @param string $defaultGcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending GCM
-     *                                                      notifications.
+     * @param string $defaultGcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending GCM
+     *                                                      notifications
      * @return $this Fluent Builder
      */
     public function setDefaultGcmNotificationProtocolVersion($defaultGcmNotificationProtocolVersion) {
@@ -469,10 +444,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The SID of the default Credential to be used for FCM Bindings
+     * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings.
      * 
-     * @param string $fcmCredentialSid The SID of the default Credential to be used
-     *                                 for FCM Bindings
+     * @param string $fcmCredentialSid The SID of the Credential to use for FCM
+     *                                 Bindings
      * @return $this Fluent Builder
      */
     public function setFcmCredentialSid($fcmCredentialSid) {
@@ -481,12 +456,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The version of the protocol to be used for sending FCM notifications. Can be overriden on a Binding by Binding basis when creating a Binding resource.
+     * The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
      * 
-     * @param string $defaultFcmNotificationProtocolVersion The version of the
-     *                                                      protocol to be used for
-     *                                                      sending FCM
-     *                                                      notifications.
+     * @param string $defaultFcmNotificationProtocolVersion The protocol version to
+     *                                                      use for sending FCM
+     *                                                      notifications
      * @return $this Fluent Builder
      */
     public function setDefaultFcmNotificationProtocolVersion($defaultFcmNotificationProtocolVersion) {
@@ -495,9 +469,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The log_enabled
+     * Whether to log notifications. Can be: `true` or `false` and the default is `true`.
      * 
-     * @param boolean $logEnabled The log_enabled
+     * @param boolean $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
     public function setLogEnabled($logEnabled) {
@@ -506,9 +480,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The alexa_skill_id
+     * Deprecated.
      * 
-     * @param string $alexaSkillId The alexa_skill_id
+     * @param string $alexaSkillId Deprecated
      * @return $this Fluent Builder
      */
     public function setAlexaSkillId($alexaSkillId) {
@@ -517,10 +491,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The default_alexa_notification_protocol_version
+     * Deprecated.
      * 
-     * @param string $defaultAlexaNotificationProtocolVersion The
-     *                                                        default_alexa_notification_protocol_version
+     * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return $this Fluent Builder
      */
     public function setDefaultAlexaNotificationProtocolVersion($defaultAlexaNotificationProtocolVersion) {

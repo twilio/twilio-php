@@ -202,11 +202,11 @@ class ActivityTest extends HolodeckTestCase {
 
         try {
             $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->activities->create("friendlyName");
+                                         ->activities->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -234,7 +234,7 @@ class ActivityTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->activities->create("friendlyName");
+                                               ->activities->create("friendly_name");
 
         $this->assertNotNull($actual);
     }

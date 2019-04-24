@@ -18,7 +18,8 @@ class PhoneNumberList extends ListResource {
      * Construct the PhoneNumberList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid The trunk_sid
+     * @param string $trunkSid The SID of the Trunk that handles calls to the phone
+     *                         number
      * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList 
      */
     public function __construct(Version $version, $trunkSid) {
@@ -34,7 +35,7 @@ class PhoneNumberList extends ListResource {
      * Create a new PhoneNumberInstance
      * 
      * @param string $phoneNumberSid The SID of the Incoming Phone Number that you
-     *                               want to associate with this trunk.
+     *                               want to associate with the trunk
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -140,7 +141,7 @@ class PhoneNumberList extends ListResource {
     /**
      * Constructs a PhoneNumberContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext 
      */
     public function getContext($sid) {

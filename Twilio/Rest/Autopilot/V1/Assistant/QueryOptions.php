@@ -17,12 +17,11 @@ use Twilio\Values;
  */
 abstract class QueryOptions {
     /**
-     * @param string $language An [ISO language-country
-     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
-     * @param string $modelBuild The Sid or unique name of the [Model
-     *                           Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
-     * @param string $status A string that described the query status. The values
-     *                       can be: `pending_review`, `reviewed`, `discarded`
+     * @param string $language The ISO language-country string that specifies the
+     *                         language used by the Query resources to read
+     * @param string $modelBuild The SID or unique name of the Model Build to be
+     *                           queried
+     * @param string $status The status of the resources to read
      * @return ReadQueryOptions Options builder
      */
     public static function read($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
@@ -30,12 +29,9 @@ abstract class QueryOptions {
     }
 
     /**
-     * @param string $tasks Constraints the query to a set of tasks. Useful when
-     *                      you need to constrain the paths the user can take.
-     *                      Tasks should be comma separated task-unique-name-1,
-     *                      task-unique-name-2
-     * @param string $modelBuild The Sid or unique name of the [Model
-     *                           Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * @param string $tasks The list of tasks to limit the new query to
+     * @param string $modelBuild The SID or unique name of the Model Build to be
+     *                           queried
      * @return CreateQueryOptions Options builder
      */
     public static function create($tasks = Values::NONE, $modelBuild = Values::NONE) {
@@ -43,10 +39,9 @@ abstract class QueryOptions {
     }
 
     /**
-     * @param string $sampleSid An optional reference to the Sample created from
-     *                          this query.
-     * @param string $status A string that described the query status. The values
-     *                       can be: `pending_review`, `reviewed`, `discarded`
+     * @param string $sampleSid The SID of an optional reference to the Sample
+     *                          created from the query
+     * @param string $status The new status of the resource
      * @return UpdateQueryOptions Options builder
      */
     public static function update($sampleSid = Values::NONE, $status = Values::NONE) {
@@ -56,12 +51,11 @@ abstract class QueryOptions {
 
 class ReadQueryOptions extends Options {
     /**
-     * @param string $language An [ISO language-country
-     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
-     * @param string $modelBuild The Sid or unique name of the [Model
-     *                           Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
-     * @param string $status A string that described the query status. The values
-     *                       can be: `pending_review`, `reviewed`, `discarded`
+     * @param string $language The ISO language-country string that specifies the
+     *                         language used by the Query resources to read
+     * @param string $modelBuild The SID or unique name of the Model Build to be
+     *                           queried
+     * @param string $status The status of the resources to read
      */
     public function __construct($language = Values::NONE, $modelBuild = Values::NONE, $status = Values::NONE) {
         $this->options['language'] = $language;
@@ -70,10 +64,10 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * An [ISO language-country string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
+     * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used by the Query resources to read. For example: `en-US`.
      * 
-     * @param string $language An [ISO language-country
-     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
+     * @param string $language The ISO language-country string that specifies the
+     *                         language used by the Query resources to read
      * @return $this Fluent Builder
      */
     public function setLanguage($language) {
@@ -82,10 +76,10 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * The Sid or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      * 
-     * @param string $modelBuild The Sid or unique name of the [Model
-     *                           Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * @param string $modelBuild The SID or unique name of the Model Build to be
+     *                           queried
      * @return $this Fluent Builder
      */
     public function setModelBuild($modelBuild) {
@@ -94,10 +88,9 @@ class ReadQueryOptions extends Options {
     }
 
     /**
-     * A string that described the query status. The values can be: `pending_review`, `reviewed`, `discarded`
+     * The status of the resources to read. Can be: `pending_review`, `reviewed`, or `discarded`
      * 
-     * @param string $status A string that described the query status. The values
-     *                       can be: `pending_review`, `reviewed`, `discarded`
+     * @param string $status The status of the resources to read
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -123,12 +116,9 @@ class ReadQueryOptions extends Options {
 
 class CreateQueryOptions extends Options {
     /**
-     * @param string $tasks Constraints the query to a set of tasks. Useful when
-     *                      you need to constrain the paths the user can take.
-     *                      Tasks should be comma separated task-unique-name-1,
-     *                      task-unique-name-2
-     * @param string $modelBuild The Sid or unique name of the [Model
-     *                           Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * @param string $tasks The list of tasks to limit the new query to
+     * @param string $modelBuild The SID or unique name of the Model Build to be
+     *                           queried
      */
     public function __construct($tasks = Values::NONE, $modelBuild = Values::NONE) {
         $this->options['tasks'] = $tasks;
@@ -136,12 +126,9 @@ class CreateQueryOptions extends Options {
     }
 
     /**
-     * Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*
+     * The list of tasks to limit the new query to. Tasks are expressed as a comma-separated list of task `unique_name` values. For example, `task-unique_name-1, task-unique_name-2`. Listing specific tasks is useful to constrain the paths that a user can take.
      * 
-     * @param string $tasks Constraints the query to a set of tasks. Useful when
-     *                      you need to constrain the paths the user can take.
-     *                      Tasks should be comma separated task-unique-name-1,
-     *                      task-unique-name-2
+     * @param string $tasks The list of tasks to limit the new query to
      * @return $this Fluent Builder
      */
     public function setTasks($tasks) {
@@ -150,10 +137,10 @@ class CreateQueryOptions extends Options {
     }
 
     /**
-     * The Sid or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * The SID or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
      * 
-     * @param string $modelBuild The Sid or unique name of the [Model
-     *                           Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+     * @param string $modelBuild The SID or unique name of the Model Build to be
+     *                           queried
      * @return $this Fluent Builder
      */
     public function setModelBuild($modelBuild) {
@@ -179,10 +166,9 @@ class CreateQueryOptions extends Options {
 
 class UpdateQueryOptions extends Options {
     /**
-     * @param string $sampleSid An optional reference to the Sample created from
-     *                          this query.
-     * @param string $status A string that described the query status. The values
-     *                       can be: `pending_review`, `reviewed`, `discarded`
+     * @param string $sampleSid The SID of an optional reference to the Sample
+     *                          created from the query
+     * @param string $status The new status of the resource
      */
     public function __construct($sampleSid = Values::NONE, $status = Values::NONE) {
         $this->options['sampleSid'] = $sampleSid;
@@ -190,10 +176,10 @@ class UpdateQueryOptions extends Options {
     }
 
     /**
-     * An optional reference to the Sample created from this query.
+     * The SID of an optional reference to the [Sample](https://www.twilio.com/docs/autopilot/api/task-sample) created from the query.
      * 
-     * @param string $sampleSid An optional reference to the Sample created from
-     *                          this query.
+     * @param string $sampleSid The SID of an optional reference to the Sample
+     *                          created from the query
      * @return $this Fluent Builder
      */
     public function setSampleSid($sampleSid) {
@@ -202,10 +188,9 @@ class UpdateQueryOptions extends Options {
     }
 
     /**
-     * A string that described the query status. The values can be: `pending_review`, `reviewed`, `discarded`
+     * The new status of the resource. Can be: `pending_review`, `reviewed`, or `discarded`
      * 
-     * @param string $status A string that described the query status. The values
-     *                       can be: `pending_review`, `reviewed`, `discarded`
+     * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
     public function setStatus($status) {

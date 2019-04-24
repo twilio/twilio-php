@@ -23,7 +23,8 @@ class NotificationList extends ListResource {
      * Construct the NotificationList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Notify\V1\Service\NotificationList 
      */
     public function __construct(Version $version, $serviceSid) {

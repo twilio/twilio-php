@@ -90,7 +90,7 @@ class OriginationUrlTest extends HolodeckTestCase {
 
         try {
             $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                       ->originationUrls->create(1, 1, True, "friendlyName", "https://example.com");
+                                       ->originationUrls->create(1, 1, True, "friendly_name", "https://example.com");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -98,7 +98,7 @@ class OriginationUrlTest extends HolodeckTestCase {
             'Weight' => 1,
             'Priority' => 1,
             'Enabled' => Serialize::booleanToString(True),
-            'FriendlyName' => "friendlyName",
+            'FriendlyName' => "friendly_name",
             'SipUrl' => "https://example.com",
         );
 
@@ -131,7 +131,7 @@ class OriginationUrlTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                             ->originationUrls->create(1, 1, True, "friendlyName", "https://example.com");
+                                             ->originationUrls->create(1, 1, True, "friendly_name", "https://example.com");
 
         $this->assertNotNull($actual);
     }

@@ -18,8 +18,8 @@ class TerminatingSipDomainContext extends InstanceContext {
      * Initialize the TerminatingSipDomainContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $trunkSid The unique sid of the trunk.
-     * @param string $sid The unique sid of the domain.
+     * @param string $trunkSid The SID of the Trunk with the resource to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext 
      */
     public function __construct(Version $version, $trunkSid, $sid) {

@@ -87,7 +87,7 @@ class Notify extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Notify\V1\CredentialContext 
      */
     protected function contextCredentials($sid) {
@@ -102,7 +102,7 @@ class Notify extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Notify\V1\ServiceContext 
      */
     protected function contextServices($sid) {

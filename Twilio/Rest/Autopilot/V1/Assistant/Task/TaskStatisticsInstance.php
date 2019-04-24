@@ -30,8 +30,10 @@ class TaskStatisticsInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $taskSid The unique ID of the Task associated with this Field.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the Task associated with the resource
+     * @param string $taskSid The SID of the Task for which the statistics were
+     *                        collected
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid, $taskSid) {

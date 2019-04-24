@@ -18,7 +18,7 @@ class TerminatingSipDomainList extends ListResource {
      * Construct the TerminatingSipDomainList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid Unique string to identify an associated trunk
+     * @param string $trunkSid The SID of the Trunk to which we should route calls
      * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList 
      */
     public function __construct(Version $version, $trunkSid) {
@@ -33,7 +33,8 @@ class TerminatingSipDomainList extends ListResource {
     /**
      * Create a new TerminatingSipDomainInstance
      * 
-     * @param string $sipDomainSid The SID of the SIP Domain to associate.
+     * @param string $sipDomainSid The SID of the SIP Domain to associate with the
+     *                             trunk
      * @return TerminatingSipDomainInstance Newly created
      *                                      TerminatingSipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -142,7 +143,7 @@ class TerminatingSipDomainList extends ListResource {
     /**
      * Constructs a TerminatingSipDomainContext
      * 
-     * @param string $sid The unique sid of the domain.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext 
      */
     public function getContext($sid) {

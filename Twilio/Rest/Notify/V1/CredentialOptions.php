@@ -17,17 +17,17 @@ use Twilio\Values;
  */
 abstract class CredentialOptions {
     /**
-     * @param string $friendlyName Friendly name for stored credential
-     * @param string $certificate [APN only] URL encoded representation of the
-     *                            certificate.
-     * @param string $privateKey [APN only] URL encoded representation of the
-     *                           private key.
-     * @param boolean $sandbox [APN only] use this credential for sending to
-     *                         production or sandbox APNs
-     * @param string $apiKey [GCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
-     * @param string $secret [FCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $certificate [APN only] The URL-encoded representation of the
+     *                            certificate
+     * @param string $privateKey [APN only] URL-encoded representation of the
+     *                           private key
+     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
+     *                         APNs
+     * @param string $apiKey [GCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
+     * @param string $secret [FCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      * @return CreateCredentialOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
@@ -35,17 +35,17 @@ abstract class CredentialOptions {
     }
 
     /**
-     * @param string $friendlyName Friendly name for stored credential
-     * @param string $certificate [APN only] URL encoded representation of the
-     *                            certificate.
-     * @param string $privateKey [APN only] URL encoded representation of the
-     *                           private key.
-     * @param boolean $sandbox [APN only] use this credential for sending to
-     *                         production or sandbox APNs
-     * @param string $apiKey [GCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
-     * @param string $secret [FCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $certificate [APN only] The URL-encoded representation of the
+     *                            certificate
+     * @param string $privateKey [APN only] URL-encoded representation of the
+     *                           private key
+     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
+     *                         APNs
+     * @param string $apiKey [GCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
+     * @param string $secret [FCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      * @return UpdateCredentialOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
@@ -55,17 +55,17 @@ abstract class CredentialOptions {
 
 class CreateCredentialOptions extends Options {
     /**
-     * @param string $friendlyName Friendly name for stored credential
-     * @param string $certificate [APN only] URL encoded representation of the
-     *                            certificate.
-     * @param string $privateKey [APN only] URL encoded representation of the
-     *                           private key.
-     * @param boolean $sandbox [APN only] use this credential for sending to
-     *                         production or sandbox APNs
-     * @param string $apiKey [GCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
-     * @param string $secret [FCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $certificate [APN only] The URL-encoded representation of the
+     *                            certificate
+     * @param string $privateKey [APN only] URL-encoded representation of the
+     *                           private key
+     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
+     *                         APNs
+     * @param string $apiKey [GCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
+     * @param string $secret [FCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      */
     public function __construct($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -77,9 +77,9 @@ class CreateCredentialOptions extends Options {
     }
 
     /**
-     * Friendly name for stored credential
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName Friendly name for stored credential
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -88,10 +88,10 @@ class CreateCredentialOptions extends Options {
     }
 
     /**
-     * [APN only] URL encoded representation of the certificate. Strip everything outside of the headers, e.g. `-----BEGIN CERTIFICATE-----MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==-----END CERTIFICATE-----`
+     * [APN only] The URL-encoded representation of the certificate. Strip everything outside of the headers, e.g. `-----BEGIN CERTIFICATE-----MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==-----END CERTIFICATE-----`
      * 
-     * @param string $certificate [APN only] URL encoded representation of the
-     *                            certificate.
+     * @param string $certificate [APN only] The URL-encoded representation of the
+     *                            certificate
      * @return $this Fluent Builder
      */
     public function setCertificate($certificate) {
@@ -100,10 +100,10 @@ class CreateCredentialOptions extends Options {
     }
 
     /**
-     * [APN only] URL encoded representation of the private key. Strip everything outside of the headers, e.g. `-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR\n.-----END RSA PRIVATE KEY-----`
+     * [APN only] The URL-encoded representation of the private key. Strip everything outside of the headers, e.g. `-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR\n.-----END RSA PRIVATE KEY-----`
      * 
-     * @param string $privateKey [APN only] URL encoded representation of the
-     *                           private key.
+     * @param string $privateKey [APN only] URL-encoded representation of the
+     *                           private key
      * @return $this Fluent Builder
      */
     public function setPrivateKey($privateKey) {
@@ -112,10 +112,10 @@ class CreateCredentialOptions extends Options {
     }
 
     /**
-     * [APN only] use this credential for sending to production or sandbox APNs (string `true` or `false`)
+     * [APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production.
      * 
-     * @param boolean $sandbox [APN only] use this credential for sending to
-     *                         production or sandbox APNs
+     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
+     *                         APNs
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {
@@ -124,10 +124,10 @@ class CreateCredentialOptions extends Options {
     }
 
     /**
-     * [GCM only] This is the "Server key" of your project from Firebase console under Settings / Cloud messaging. Yes, you can use the server key from the Firebase console for GCM.
+     * [GCM only] The `Server key` of your project from Firebase console under Settings / Cloud messaging.
      * 
-     * @param string $apiKey [GCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $apiKey [GCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
     public function setApiKey($apiKey) {
@@ -136,10 +136,10 @@ class CreateCredentialOptions extends Options {
     }
 
     /**
-     * [FCM only] This is the "Server key" of your project from Firebase console under Settings / Cloud messaging.
+     * [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud messaging.
      * 
-     * @param string $secret [FCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $secret [FCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
     public function setSecret($secret) {
@@ -165,17 +165,17 @@ class CreateCredentialOptions extends Options {
 
 class UpdateCredentialOptions extends Options {
     /**
-     * @param string $friendlyName Friendly name for stored credential
-     * @param string $certificate [APN only] URL encoded representation of the
-     *                            certificate.
-     * @param string $privateKey [APN only] URL encoded representation of the
-     *                           private key.
-     * @param boolean $sandbox [APN only] use this credential for sending to
-     *                         production or sandbox APNs
-     * @param string $apiKey [GCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
-     * @param string $secret [FCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $certificate [APN only] The URL-encoded representation of the
+     *                            certificate
+     * @param string $privateKey [APN only] URL-encoded representation of the
+     *                           private key
+     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
+     *                         APNs
+     * @param string $apiKey [GCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
+     * @param string $secret [FCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      */
     public function __construct($friendlyName = Values::NONE, $certificate = Values::NONE, $privateKey = Values::NONE, $sandbox = Values::NONE, $apiKey = Values::NONE, $secret = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -187,9 +187,9 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * Friendly name for stored credential
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName Friendly name for stored credential
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -198,10 +198,10 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * [APN only] URL encoded representation of the certificate. Strip everything outside of the headers, e.g. `-----BEGIN CERTIFICATE-----MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==-----END CERTIFICATE-----`
+     * [APN only] The URL-encoded representation of the certificate. Strip everything outside of the headers, e.g. `-----BEGIN CERTIFICATE-----MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==-----END CERTIFICATE-----`
      * 
-     * @param string $certificate [APN only] URL encoded representation of the
-     *                            certificate.
+     * @param string $certificate [APN only] The URL-encoded representation of the
+     *                            certificate
      * @return $this Fluent Builder
      */
     public function setCertificate($certificate) {
@@ -210,10 +210,10 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * [APN only] URL encoded representation of the private key. Strip everything outside of the headers, e.g. `-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR\n.-----END RSA PRIVATE KEY-----`
+     * [APN only] The URL-encoded representation of the private key. Strip everything outside of the headers, e.g. `-----BEGIN RSA PRIVATE KEY-----MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR\n.-----END RSA PRIVATE KEY-----`
      * 
-     * @param string $privateKey [APN only] URL encoded representation of the
-     *                           private key.
+     * @param string $privateKey [APN only] URL-encoded representation of the
+     *                           private key
      * @return $this Fluent Builder
      */
     public function setPrivateKey($privateKey) {
@@ -222,10 +222,10 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * [APN only] use this credential for sending to production or sandbox APNs (string `true` or `false`)
+     * [APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production.
      * 
-     * @param boolean $sandbox [APN only] use this credential for sending to
-     *                         production or sandbox APNs
+     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
+     *                         APNs
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {
@@ -234,10 +234,10 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * [GCM only] This is the "Server key" of your project from Firebase console under Settings / Cloud messaging. Yes, you can use the server key from the Firebase console for GCM.
+     * [GCM only] The `Server key` of your project from Firebase console under Settings / Cloud messaging.
      * 
-     * @param string $apiKey [GCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $apiKey [GCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
     public function setApiKey($apiKey) {
@@ -246,10 +246,10 @@ class UpdateCredentialOptions extends Options {
     }
 
     /**
-     * [FCM only] This is the "Server key" of your project from Firebase console under Settings / Cloud messaging.
+     * [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud messaging.
      * 
-     * @param string $secret [FCM only] This is the "Server key" of your project
-     *                       from Firebase console under Settings / Cloud messaging.
+     * @param string $secret [FCM only] The `Server key` of your project from
+     *                       Firebase console under Settings / Cloud messaging
      * @return $this Fluent Builder
      */
     public function setSecret($secret) {

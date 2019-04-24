@@ -21,8 +21,10 @@ class FieldList extends ListResource {
      * Construct the FieldList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $taskSid The unique ID of the Task associated with this Field.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the Task associated with the resource
+     * @param string $taskSid The SID of the
+     *                        [Task](https://www.twilio.com/docs/autopilot/api/task) resource associated with this Field
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList 
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
@@ -123,12 +125,9 @@ class FieldList extends ListResource {
     /**
      * Create a new FieldInstance
      * 
-     * @param string $fieldType The Field Type of this field. It can be either a
-     *                          Built-in Field Type or the unique_name or sid of a
-     *                          custom Field Type.
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $fieldType The Field Type of this field
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the new resource
      * @return FieldInstance Newly created FieldInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -153,8 +152,7 @@ class FieldList extends ListResource {
     /**
      * Constructs a FieldContext
      * 
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldContext 
      */
     public function getContext($sid) {

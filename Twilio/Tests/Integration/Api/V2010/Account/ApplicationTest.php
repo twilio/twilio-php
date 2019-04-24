@@ -21,11 +21,11 @@ class ApplicationTest extends HolodeckTestCase {
 
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->applications->create("friendlyName");
+                                     ->applications->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -65,7 +65,7 @@ class ApplicationTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->applications->create("friendlyName");
+                                           ->applications->create("friendly_name");
 
         $this->assertNotNull($actual);
     }

@@ -219,11 +219,11 @@ class WorkspaceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->taskrouter->v1->workspaces->create("friendlyName");
+            $this->twilio->taskrouter->v1->workspaces->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -268,7 +268,7 @@ class WorkspaceTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->taskrouter->v1->workspaces->create("friendlyName");
+        $actual = $this->twilio->taskrouter->v1->workspaces->create("friendly_name");
 
         $this->assertNotNull($actual);
     }

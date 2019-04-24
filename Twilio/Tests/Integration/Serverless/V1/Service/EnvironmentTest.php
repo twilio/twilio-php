@@ -105,11 +105,11 @@ class EnvironmentTest extends HolodeckTestCase {
 
         try {
             $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->environments->create("uniqueName");
+                                         ->environments->create("unique_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UniqueName' => "uniqueName", );
+        $values = array('UniqueName' => "unique_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -143,7 +143,7 @@ class EnvironmentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->environments->create("uniqueName");
+                                               ->environments->create("unique_name");
 
         $this->assertNotNull($actual);
     }

@@ -87,11 +87,11 @@ class CertificateTest extends HolodeckTestCase {
 
         try {
             $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                   ->certificates->create("certificateData");
+                                                   ->certificates->create("certificate_data");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('CertificateData' => "certificateData", );
+        $values = array('CertificateData' => "certificate_data", );
 
         $this->assertRequest(new Request(
             'post',
@@ -120,7 +120,7 @@ class CertificateTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                         ->certificates->create("certificateData");
+                                                         ->certificates->create("certificate_data");
 
         $this->assertNotNull($actual);
     }

@@ -17,10 +17,10 @@ use Twilio\Values;
  */
 abstract class ModelBuildOptions {
     /**
-     * @param string $statusCallback The status_callback
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long. For example: v0.1
+     * @param string $statusCallback The URL we should call using a POST method to
+     *                               send status information to your application
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the new resource
      * @return CreateModelBuildOptions Options builder
      */
     public static function create($statusCallback = Values::NONE, $uniqueName = Values::NONE) {
@@ -28,9 +28,8 @@ abstract class ModelBuildOptions {
     }
 
     /**
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long. For example: v0.1
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return UpdateModelBuildOptions Options builder
      */
     public static function update($uniqueName = Values::NONE) {
@@ -40,10 +39,10 @@ abstract class ModelBuildOptions {
 
 class CreateModelBuildOptions extends Options {
     /**
-     * @param string $statusCallback The status_callback
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long. For example: v0.1
+     * @param string $statusCallback The URL we should call using a POST method to
+     *                               send status information to your application
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the new resource
      */
     public function __construct($statusCallback = Values::NONE, $uniqueName = Values::NONE) {
         $this->options['statusCallback'] = $statusCallback;
@@ -51,9 +50,10 @@ class CreateModelBuildOptions extends Options {
     }
 
     /**
-     * The status_callback
+     * The URL we should call using a POST method to send status information to your application.
      * 
-     * @param string $statusCallback The status_callback
+     * @param string $statusCallback The URL we should call using a POST method to
+     *                               send status information to your application
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -62,11 +62,10 @@ class CreateModelBuildOptions extends Options {
     }
 
     /**
-     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
+     * An application-defined string that uniquely identifies the new resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.
      * 
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long. For example: v0.1
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the new resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -92,20 +91,18 @@ class CreateModelBuildOptions extends Options {
 
 class UpdateModelBuildOptions extends Options {
     /**
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long. For example: v0.1
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      */
     public function __construct($uniqueName = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
     }
 
     /**
-     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
+     * An application-defined string that uniquely identifies the resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.
      * 
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long. For example: v0.1
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {

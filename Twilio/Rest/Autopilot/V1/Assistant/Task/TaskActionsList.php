@@ -20,8 +20,9 @@ class TaskActionsList extends ListResource {
      * Construct the TaskActionsList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the parent Assistant.
-     * @param string $taskSid The unique ID of the Task.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the Task associated with the resource
+     * @param string $taskSid The SID of the Task associated with the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList 
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {

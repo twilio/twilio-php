@@ -17,7 +17,8 @@ use Twilio\Values;
  */
 abstract class StyleSheetOptions {
     /**
-     * @param array $styleSheet The JSON Style sheet string
+     * @param array $styleSheet The JSON string that describes the style sheet
+     *                          object
      * @return UpdateStyleSheetOptions Options builder
      */
     public static function update($styleSheet = Values::NONE) {
@@ -27,16 +28,18 @@ abstract class StyleSheetOptions {
 
 class UpdateStyleSheetOptions extends Options {
     /**
-     * @param array $styleSheet The JSON Style sheet string
+     * @param array $styleSheet The JSON string that describes the style sheet
+     *                          object
      */
     public function __construct($styleSheet = Values::NONE) {
         $this->options['styleSheet'] = $styleSheet;
     }
 
     /**
-     * The JSON Style sheet string
+     * The JSON string that describes the style sheet object.
      * 
-     * @param array $styleSheet The JSON Style sheet string
+     * @param array $styleSheet The JSON string that describes the style sheet
+     *                          object
      * @return $this Fluent Builder
      */
     public function setStyleSheet($styleSheet) {

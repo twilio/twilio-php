@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string uri
  * @property boolean emergencyEnabled
  * @property boolean validated
+ * @property boolean verified
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;
@@ -64,6 +65,7 @@ class AddressInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
             'emergencyEnabled' => Values::array_get($payload, 'emergency_enabled'),
             'validated' => Values::array_get($payload, 'validated'),
+            'verified' => Values::array_get($payload, 'verified'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );

@@ -150,8 +150,7 @@ class TrunkList extends ListResource {
     /**
      * Constructs a TrunkContext
      * 
-     * @param string $sid A 34 character string that uniquely identifies the SIP
-     *                    Trunk in Twilio.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     public function getContext($sid) {

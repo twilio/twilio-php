@@ -22,8 +22,9 @@ class SampleList extends ListResource {
      * Construct the SampleList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $taskSid The unique ID of the Task associated with this Sample.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the Task associated with the resource
+     * @param string $taskSid The SID of the Task associated with the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleList 
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
@@ -129,11 +130,10 @@ class SampleList extends ListResource {
     /**
      * Create a new SampleInstance
      * 
-     * @param string $language An [ISO language-country
-     *                         string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this sample. For example: `en-US`.
-     * @param string $taggedText The text example of how end-users may express this
-     *                           task. The sample may contain [Field tag
-     *                           blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging).
+     * @param string $language The ISO language-country string that specifies the
+     *                         language used for the new sample
+     * @param string $taggedText The text example of how end users might express
+     *                           the task
      * @param array|Options $options Optional Arguments
      * @return SampleInstance Newly created SampleInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -165,8 +165,7 @@ class SampleList extends ListResource {
     /**
      * Constructs a SampleContext
      * 
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleContext 
      */
     public function getContext($sid) {

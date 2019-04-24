@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2019-04-24] Version 5.31.2
+----------------------------
+**Library**
+- PR #539: Drop all the unused 'read_the_docs' stuff. Thanks to @childish-sambino!
+
+**Api**
+- Add `verified` property to Addresses
+
+**Numbers**
+- Add API for Identites and documents
+
+**Proxy**
+- Add in use count on number instance
+
+
 [2019-04-12] Version 5.31.1
 ----------------------------
 **Flex**

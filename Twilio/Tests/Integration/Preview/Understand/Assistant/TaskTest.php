@@ -149,11 +149,11 @@ class TaskTest extends HolodeckTestCase {
 
         try {
             $this->twilio->preview->understand->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                              ->tasks->create("uniqueName");
+                                              ->tasks->create("unique_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UniqueName' => "uniqueName", );
+        $values = array('UniqueName' => "unique_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -188,7 +188,7 @@ class TaskTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->understand->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                                    ->tasks->create("uniqueName");
+                                                    ->tasks->create("unique_name");
 
         $this->assertNotNull($actual);
     }

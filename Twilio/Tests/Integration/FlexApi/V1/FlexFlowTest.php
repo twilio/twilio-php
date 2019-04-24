@@ -143,12 +143,12 @@ class FlexFlowTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->flexApi->v1->flexFlow->create("friendlyName", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "web");
+            $this->twilio->flexApi->v1->flexFlow->create("friendly_name", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "web");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $values = array(
-            'FriendlyName' => "friendlyName",
+            'FriendlyName' => "friendly_name",
             'ChatServiceSid' => "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             'ChannelType' => "web",
         );
@@ -185,7 +185,7 @@ class FlexFlowTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->flexApi->v1->flexFlow->create("friendlyName", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "web");
+        $actual = $this->twilio->flexApi->v1->flexFlow->create("friendly_name", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "web");
 
         $this->assertNotNull($actual);
     }

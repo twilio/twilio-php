@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string capabilities
  * @property string url
  * @property boolean isReserved
+ * @property integer inUse
  */
 class PhoneNumberInstance extends InstanceResource {
     /**
@@ -58,6 +59,7 @@ class PhoneNumberInstance extends InstanceResource {
             'capabilities' => Values::array_get($payload, 'capabilities'),
             'url' => Values::array_get($payload, 'url'),
             'isReserved' => Values::array_get($payload, 'is_reserved'),
+            'inUse' => Values::array_get($payload, 'in_use'),
         );
 
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );

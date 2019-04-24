@@ -210,11 +210,11 @@ class QueueTest extends HolodeckTestCase {
 
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->queues->create("friendlyName");
+                                     ->queues->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -246,7 +246,7 @@ class QueueTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->queues->create("friendlyName");
+                                           ->queues->create("friendly_name");
 
         $this->assertNotNull($actual);
     }

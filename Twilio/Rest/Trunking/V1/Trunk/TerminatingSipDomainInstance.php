@@ -41,8 +41,8 @@ class TerminatingSipDomainInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $trunkSid Unique string to identify an associated trunk
-     * @param string $sid The unique sid of the domain.
+     * @param string $trunkSid The SID of the Trunk to which we should route calls
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainInstance 
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {

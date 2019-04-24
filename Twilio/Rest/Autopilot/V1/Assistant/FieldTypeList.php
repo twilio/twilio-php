@@ -22,7 +22,8 @@ class FieldTypeList extends ListResource {
      * Construct the FieldTypeList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList 
      */
     public function __construct(Version $version, $assistantSid) {
@@ -123,9 +124,8 @@ class FieldTypeList extends ListResource {
     /**
      * Create a new FieldTypeInstance
      * 
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the new resource
      * @param array|Options $options Optional Arguments
      * @return FieldTypeInstance Newly created FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -148,8 +148,7 @@ class FieldTypeList extends ListResource {
     /**
      * Constructs a FieldTypeContext
      * 
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext 
      */
     public function getContext($sid) {

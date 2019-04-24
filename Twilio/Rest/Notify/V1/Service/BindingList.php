@@ -23,7 +23,8 @@ class BindingList extends ListResource {
      * Construct the BindingList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Notify\V1\Service\BindingList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -38,9 +39,10 @@ class BindingList extends ListResource {
     /**
      * Create a new BindingInstance
      * 
-     * @param string $identity The Identity to which this Binding belongs to.
-     * @param string $bindingType The type of the Binding.
-     * @param string $address The address specific to the channel.
+     * @param string $identity The `identity` value that identifies the new
+     *                         resource's User
+     * @param string $bindingType The type of the Binding
+     * @param string $address The channel-specific address
      * @param array|Options $options Optional Arguments
      * @return BindingInstance Newly created BindingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -165,7 +167,7 @@ class BindingList extends ListResource {
     /**
      * Constructs a BindingContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Notify\V1\Service\BindingContext 
      */
     public function getContext($sid) {
