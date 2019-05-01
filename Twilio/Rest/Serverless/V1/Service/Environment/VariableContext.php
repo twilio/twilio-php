@@ -22,9 +22,9 @@ class VariableContext extends InstanceContext {
      * Initialize the VariableContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $environmentSid The environment_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Service Sid.
+     * @param string $environmentSid Environment Sid.
+     * @param string $sid Variable Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext 
      */
     public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {

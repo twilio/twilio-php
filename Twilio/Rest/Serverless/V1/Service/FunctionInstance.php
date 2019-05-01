@@ -35,8 +35,8 @@ class FunctionInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Service Sid.
+     * @param string $sid Function Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\FunctionInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
@@ -89,7 +89,7 @@ class FunctionInstance extends InstanceResource {
     /**
      * Update the FunctionInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable description of this Function.
      * @return FunctionInstance Updated FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */

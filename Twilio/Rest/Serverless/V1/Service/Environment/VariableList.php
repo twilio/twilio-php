@@ -21,8 +21,8 @@ class VariableList extends ListResource {
      * Construct the VariableList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $environmentSid The environment_sid
+     * @param string $serviceSid Service Sid.
+     * @param string $environmentSid Environment Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList 
      */
     public function __construct(Version $version, $serviceSid, $environmentSid) {
@@ -123,8 +123,9 @@ class VariableList extends ListResource {
     /**
      * Create a new VariableInstance
      * 
-     * @param string $key The key
-     * @param string $value The value
+     * @param string $key A string by which this Variable can be referenced.
+     * @param string $value A string that contains the actual value of this
+     *                      Variable.
      * @return VariableInstance Newly created VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -149,7 +150,7 @@ class VariableList extends ListResource {
     /**
      * Constructs a VariableContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Variable Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext 
      */
     public function getContext($sid) {

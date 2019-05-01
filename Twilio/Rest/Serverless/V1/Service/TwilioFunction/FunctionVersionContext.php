@@ -21,9 +21,9 @@ class FunctionVersionContext extends InstanceContext {
      * Initialize the FunctionVersionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $functionSid The function_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Service Sid.
+     * @param string $functionSid Function Sid.
+     * @param string $sid Function Version Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext 
      */
     public function __construct(Version $version, $serviceSid, $functionSid, $sid) {

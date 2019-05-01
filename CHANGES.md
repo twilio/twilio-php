@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2019-05-01] Version 5.31.3
+----------------------------
+**Serverless**
+- Documentation
+
+**Wireless**
+- Added `imeisv` to Data Session resource.
+
+
 [2019-04-24] Version 5.31.2
 ----------------------------
 **Library**

@@ -21,8 +21,8 @@ class BuildContext extends InstanceContext {
      * Initialize the BuildContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Service Sid.
+     * @param string $sid Build Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\BuildContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {

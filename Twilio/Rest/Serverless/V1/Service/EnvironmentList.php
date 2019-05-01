@@ -22,7 +22,7 @@ class EnvironmentList extends ListResource {
      * Construct the EnvironmentList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid Service Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -123,7 +123,7 @@ class EnvironmentList extends ListResource {
     /**
      * Create a new EnvironmentInstance
      * 
-     * @param string $uniqueName The unique_name
+     * @param string $uniqueName A unique, addressable name of this Environment.
      * @param array|Options $options Optional Arguments
      * @return EnvironmentInstance Newly created EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -146,7 +146,7 @@ class EnvironmentList extends ListResource {
     /**
      * Constructs a EnvironmentContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Environment Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext 
      */
     public function getContext($sid) {

@@ -21,7 +21,7 @@ class AssetList extends ListResource {
      * Construct the AssetList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
+     * @param string $serviceSid Service Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\AssetList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -122,7 +122,7 @@ class AssetList extends ListResource {
     /**
      * Create a new AssetInstance
      * 
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A human-readable description of this Asset.
      * @return AssetInstance Newly created AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -142,7 +142,7 @@ class AssetList extends ListResource {
     /**
      * Constructs a AssetContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Asset Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\AssetContext 
      */
     public function getContext($sid) {

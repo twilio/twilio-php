@@ -21,8 +21,8 @@ class AssetVersionList extends ListResource {
      * Construct the AssetVersionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $assetSid The asset_sid
+     * @param string $serviceSid Service Sid.
+     * @param string $assetSid Asset Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList 
      */
     public function __construct(Version $version, $serviceSid, $assetSid) {
@@ -123,8 +123,10 @@ class AssetVersionList extends ListResource {
     /**
      * Create a new AssetVersionInstance
      * 
-     * @param string $path The path
-     * @param string $visibility The visibility
+     * @param string $path The URL-friendly string by which this Asset Version can
+     *                     be referenced.
+     * @param string $visibility The access control which determines how the Asset
+     *                           Version can be accessed.
      * @return AssetVersionInstance Newly created AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -149,7 +151,7 @@ class AssetVersionList extends ListResource {
     /**
      * Constructs a AssetVersionContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Asset Version Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext 
      */
     public function getContext($sid) {

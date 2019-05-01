@@ -21,9 +21,9 @@ class AssetVersionContext extends InstanceContext {
      * Initialize the AssetVersionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $assetSid The asset_sid
-     * @param string $sid The sid
+     * @param string $serviceSid Service Sid.
+     * @param string $assetSid Asset Sid.
+     * @param string $sid Asset Version Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext 
      */
     public function __construct(Version $version, $serviceSid, $assetSid, $sid) {

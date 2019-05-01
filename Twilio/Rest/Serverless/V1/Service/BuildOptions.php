@@ -17,9 +17,9 @@ use Twilio\Values;
  */
 abstract class BuildOptions {
     /**
-     * @param string $assetVersions The asset_versions
-     * @param string $functionVersions The function_versions
-     * @param string $dependencies The dependencies
+     * @param string $assetVersions List of Asset Version Sids.
+     * @param string $functionVersions List of Function Version Sids.
+     * @param string $dependencies List of Dependencies.
      * @return CreateBuildOptions Options builder
      */
     public static function create($assetVersions = Values::NONE, $functionVersions = Values::NONE, $dependencies = Values::NONE) {
@@ -29,9 +29,9 @@ abstract class BuildOptions {
 
 class CreateBuildOptions extends Options {
     /**
-     * @param string $assetVersions The asset_versions
-     * @param string $functionVersions The function_versions
-     * @param string $dependencies The dependencies
+     * @param string $assetVersions List of Asset Version Sids.
+     * @param string $functionVersions List of Function Version Sids.
+     * @param string $dependencies List of Dependencies.
      */
     public function __construct($assetVersions = Values::NONE, $functionVersions = Values::NONE, $dependencies = Values::NONE) {
         $this->options['assetVersions'] = $assetVersions;
@@ -40,9 +40,9 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * The asset_versions
+     * The list of Asset Version Sids that are included in this Build. Optional.
      * 
-     * @param string $assetVersions The asset_versions
+     * @param string $assetVersions List of Asset Version Sids.
      * @return $this Fluent Builder
      */
     public function setAssetVersions($assetVersions) {
@@ -51,9 +51,9 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * The function_versions
+     * The list of Function Version Sids that are included in this Build. Optional.
      * 
-     * @param string $functionVersions The function_versions
+     * @param string $functionVersions List of Function Version Sids.
      * @return $this Fluent Builder
      */
     public function setFunctionVersions($functionVersions) {
@@ -62,9 +62,9 @@ class CreateBuildOptions extends Options {
     }
 
     /**
-     * The dependencies
+     * The list of Dependencies that are included in this Build, each described by a `name` and a `version` in a JSON object. Optional.
      * 
-     * @param string $dependencies The dependencies
+     * @param string $dependencies List of Dependencies.
      * @return $this Fluent Builder
      */
     public function setDependencies($dependencies) {

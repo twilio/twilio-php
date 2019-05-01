@@ -21,8 +21,8 @@ class FunctionVersionList extends ListResource {
      * Construct the FunctionVersionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $functionSid The function_sid
+     * @param string $serviceSid Service Sid.
+     * @param string $functionSid Function Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList 
      */
     public function __construct(Version $version, $serviceSid, $functionSid) {
@@ -123,8 +123,10 @@ class FunctionVersionList extends ListResource {
     /**
      * Create a new FunctionVersionInstance
      * 
-     * @param string $path The path
-     * @param string $visibility The visibility
+     * @param string $path The URL-friendly string by which this Function Version
+     *                     can be referenced.
+     * @param string $visibility The access control which determines how the
+     *                           Function Version can be accessed.
      * @return FunctionVersionInstance Newly created FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -149,7 +151,7 @@ class FunctionVersionList extends ListResource {
     /**
      * Constructs a FunctionVersionContext
      * 
-     * @param string $sid The sid
+     * @param string $sid Function Version Sid.
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext 
      */
     public function getContext($sid) {
