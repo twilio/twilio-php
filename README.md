@@ -77,11 +77,11 @@ $call = $client->calls->create(
 
 To control phone calls, your application needs to output
 [TwiML](https://www.twilio.com/docs/api/twiml/ "Twilio Markup Language"). Use
-`Twilio\Twiml` to easily create such responses.
+`Twilio\TwiML\(Voice|Messaging|Fax)Response` to easily chain said responses.
 
 ```php
 <?php
-$response = new Twilio\Twiml();
+$response = new Twilio\TwiML\VoiceResponse();
 $response->say('Hello');
 $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
 print $response;
