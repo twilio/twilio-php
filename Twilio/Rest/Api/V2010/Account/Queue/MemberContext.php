@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Queue;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -65,12 +66,14 @@ class MemberContext extends InstanceContext {
      * Update the MemberInstance
      * 
      * @param string $url The absolute URL of the Queue resource
-     * @param string $method How to pass the update request data
+     * @param array|Options $options Optional Arguments
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($url, $method) {
-        $data = Values::of(array('Url' => $url, 'Method' => $method, ));
+    public function update($url, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Url' => $url, 'Method' => $options['method'], ));
 
         $payload = $this->version->update(
             'POST',

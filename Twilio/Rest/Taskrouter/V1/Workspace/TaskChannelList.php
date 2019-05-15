@@ -10,6 +10,8 @@
 namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\ListResource;
+use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -123,11 +125,18 @@ class TaskChannelList extends ListResource {
      * @param string $friendlyName String representing user-friendly name for the
      *                             TaskChannel
      * @param string $uniqueName String representing unique name for the TaskChannel
+     * @param array|Options $options Optional Arguments
      * @return TaskChannelInstance Newly created TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($friendlyName, $uniqueName) {
-        $data = Values::of(array('FriendlyName' => $friendlyName, 'UniqueName' => $uniqueName, ));
+    public function create($friendlyName, $uniqueName, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'FriendlyName' => $friendlyName,
+            'UniqueName' => $uniqueName,
+            'ChannelOptimizedRouting' => Serialize::booleanToString($options['channelOptimizedRouting']),
+        ));
 
         $payload = $this->version->create(
             'POST',
@@ -142,7 +151,7 @@ class TaskChannelList extends ListResource {
     /**
      * Constructs a TaskChannelContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique ID for this TaskChannel.
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext 
      */
     public function getContext($sid) {

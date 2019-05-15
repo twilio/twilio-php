@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList;
+use Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList;
 use Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList;
 use Twilio\Values;
 use Twilio\Version;
@@ -20,18 +21,23 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList publishedTracks
  * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList subscribedTracks
+ * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList subscribeRules
  * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
+ * @method \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext subscribedTracks(string $sid)
  */
 class ParticipantContext extends InstanceContext {
     protected $_publishedTracks = null;
     protected $_subscribedTracks = null;
+    protected $_subscribeRules = null;
 
     /**
      * Initialize the ParticipantContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
-     * @param string $sid The sid
+     * @param string $roomSid A system-generated 34-character string that uniquely
+     *                        identifies a Room.
+     * @param string $sid A system-generated 34-character string that uniquely
+     *                    identifies this Participant.
      * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
      */
     public function __construct(Version $version, $roomSid, $sid) {
@@ -125,6 +131,23 @@ class ParticipantContext extends InstanceContext {
         }
 
         return $this->_subscribedTracks;
+    }
+
+    /**
+     * Access the subscribeRules
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList 
+     */
+    protected function getSubscribeRules() {
+        if (!$this->_subscribeRules) {
+            $this->_subscribeRules = new SubscribeRulesList(
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_subscribeRules;
     }
 
     /**

@@ -50,6 +50,7 @@ class CallSummaryTest extends HolodeckTestCase {
                 "to": {},
                 "carrier_edge": {},
                 "client_edge": {},
+                "sdk_edge": {},
                 "sip_edge": {},
                 "tags": [
                     "tags"

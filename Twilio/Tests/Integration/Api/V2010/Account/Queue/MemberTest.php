@@ -82,11 +82,11 @@ class MemberTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
+                                     ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Url' => "https://example.com", 'Method' => "GET", );
+        $values = array('Url' => "https://example.com", );
 
         $this->assertRequest(new Request(
             'post',
@@ -113,7 +113,7 @@ class MemberTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com");
 
         $this->assertNotNull($actual);
     }
@@ -135,7 +135,7 @@ class MemberTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com");
 
         $this->assertNotNull($actual);
     }

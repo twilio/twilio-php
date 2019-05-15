@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class MemberOptions {
     /**
-     * @param string $roleSid The Role assigned to this member.
+     * @param string $roleSid The SID of the Role to assign to the member
      * @return CreateMemberOptions Options builder
      */
     public static function create($roleSid = Values::NONE) {
@@ -22,8 +22,7 @@ abstract class MemberOptions {
     }
 
     /**
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * @param string $identity The `identity` value of the resources to read
      * @return ReadMemberOptions Options builder
      */
     public static function read($identity = Values::NONE) {
@@ -31,10 +30,10 @@ abstract class MemberOptions {
     }
 
     /**
-     * @param string $roleSid The Role assigned to this member.
-     * @param integer $lastConsumedMessageIndex An Integer representing index of
-     *                                          the last Message this Member has
-     *                                          read within this Channel
+     * @param string $roleSid The SID of the Role to assign to the member
+     * @param integer $lastConsumedMessageIndex The index of the last consumed
+     *                                          Message for the Channel for the
+     *                                          Member
      * @return UpdateMemberOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
@@ -44,16 +43,16 @@ abstract class MemberOptions {
 
 class CreateMemberOptions extends Options {
     /**
-     * @param string $roleSid The Role assigned to this member.
+     * @param string $roleSid The SID of the Role to assign to the member
      */
     public function __construct($roleSid = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
     }
 
     /**
-     * The [Role](https://www.twilio.com/docs/api/chat/rest/v1/roles) assigned to this member.
+     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
      * 
-     * @param string $roleSid The Role assigned to this member.
+     * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -79,18 +78,16 @@ class CreateMemberOptions extends Options {
 
 class ReadMemberOptions extends Options {
     /**
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * @param string $identity The `identity` value of the resources to read
      */
     public function __construct($identity = Values::NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
-     * A unique string identifier for this [User](https://www.twilio.com/docs/api/chat/rest/v1/users) in this [Service](https://www.twilio.com/docs/api/chat/rest/v1/services). See the [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens)[/docs/api/chat/guides/create-tokens] docs for more details.
+     * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
      * 
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -116,10 +113,10 @@ class ReadMemberOptions extends Options {
 
 class UpdateMemberOptions extends Options {
     /**
-     * @param string $roleSid The Role assigned to this member.
-     * @param integer $lastConsumedMessageIndex An Integer representing index of
-     *                                          the last Message this Member has
-     *                                          read within this Channel
+     * @param string $roleSid The SID of the Role to assign to the member
+     * @param integer $lastConsumedMessageIndex The index of the last consumed
+     *                                          Message for the Channel for the
+     *                                          Member
      */
     public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -127,9 +124,9 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The [Role](https://www.twilio.com/docs/api/chat/rest/v1/roles) assigned to this member.
+     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
      * 
-     * @param string $roleSid The Role assigned to this member.
+     * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -138,11 +135,11 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * An Integer representing index of the last [Message](https://www.twilio.com/docs/api/chat/rest/v1/messages) this Member has read within this [Channel](https://www.twilio.com/docs/api/chat/rest/v1/channels)
+     * The index of the last [Message](https://www.twilio.com/docs/api/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/api/chat/rest/channels).
      * 
-     * @param integer $lastConsumedMessageIndex An Integer representing index of
-     *                                          the last Message this Member has
-     *                                          read within this Channel
+     * @param integer $lastConsumedMessageIndex The index of the last consumed
+     *                                          Message for the Channel for the
+     *                                          Member
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {

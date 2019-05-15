@@ -12,6 +12,7 @@ namespace Twilio\Rest\Insights\V1;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -33,6 +34,7 @@ use Twilio\Version;
  * @property array to
  * @property array carrierEdge
  * @property array clientEdge
+ * @property array sdkEdge
  * @property array sipEdge
  * @property string tags
  * @property string url
@@ -66,6 +68,7 @@ class CallSummaryInstance extends InstanceResource {
             'to' => Values::array_get($payload, 'to'),
             'carrierEdge' => Values::array_get($payload, 'carrier_edge'),
             'clientEdge' => Values::array_get($payload, 'client_edge'),
+            'sdkEdge' => Values::array_get($payload, 'sdk_edge'),
             'sipEdge' => Values::array_get($payload, 'sip_edge'),
             'tags' => Values::array_get($payload, 'tags'),
             'url' => Values::array_get($payload, 'url'),
@@ -92,11 +95,12 @@ class CallSummaryInstance extends InstanceResource {
     /**
      * Fetch a CallSummaryInstance
      * 
+     * @param array|Options $options Optional Arguments
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        return $this->proxy()->fetch();
+    public function fetch($options = array()) {
+        return $this->proxy()->fetch($options);
     }
 
     /**

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Api\V2010\Account\Queue;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -88,12 +89,12 @@ class MemberInstance extends InstanceResource {
      * Update the MemberInstance
      * 
      * @param string $url The absolute URL of the Queue resource
-     * @param string $method How to pass the update request data
+     * @param array|Options $options Optional Arguments
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($url, $method) {
-        return $this->proxy()->update($url, $method);
+    public function update($url, $options = array()) {
+        return $this->proxy()->update($url, $options);
     }
 
     /**

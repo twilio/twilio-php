@@ -1,6 +1,36 @@
 twilio-php Changelog
 ====================
 
+[2019-05-15] Version 5.32.0
+----------------------------
+**Library**
+- [PR #540](https://github.com/twilio/twilio-php/pull/540): Update Readme TwiML Documentation. Thanks to [@gjrdiesel](https://github.com/gjrdiesel)!
+
+**Api**
+- Make `method` optional for queue members update
+
+**Chat**
+- Removed `webhook.*.format` update parameters in Service resource from public library visibility in v1 **(breaking change)**
+
+**Insights**
+- Added client metrics as sdk_edge to summary.
+- Added optional query param processing_state.
+
+**Numbers**
+- Add addtional metadata fields on a Document
+- Add status callback fields and parameters
+
+**Taskrouter**
+- Added `channel_optimized_routing` attribute to task-channel endpoint
+
+**Video**
+- [Rooms] Add Video Subscription API
+
+**Wireless**
+- Added `imei` to Data Session resource.
+- Remove `imeisv` from Data Session resource. **(breaking change)**
+
+
 [2019-05-01] Version 5.31.3
 ----------------------------
 **Serverless**

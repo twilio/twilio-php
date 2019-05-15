@@ -24,6 +24,7 @@ use Twilio\Version;
  * @property string sid
  * @property string uniqueName
  * @property string workspaceSid
+ * @property boolean channelOptimizedRouting
  * @property string url
  * @property array links
  */
@@ -35,7 +36,7 @@ class TaskChannelInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The unique ID of the Workspace that this
      *                             TaskChannel belongs to.
-     * @param string $sid The sid
+     * @param string $sid The unique ID for this TaskChannel.
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
@@ -50,6 +51,7 @@ class TaskChannelInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'channelOptimizedRouting' => Values::array_get($payload, 'channel_optimized_routing'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );

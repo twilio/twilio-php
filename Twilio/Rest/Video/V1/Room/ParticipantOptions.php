@@ -30,7 +30,7 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param string $status Set to disconnected to remove participant.
+     * @param string $status Set to `disconnected` to remove participant.
      * @return UpdateParticipantOptions Options builder
      */
     public static function update($status = Values::NONE) {
@@ -124,7 +124,7 @@ class ReadParticipantOptions extends Options {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param string $status Set to disconnected to remove participant.
+     * @param string $status Set to `disconnected` to remove participant.
      */
     public function __construct($status = Values::NONE) {
         $this->options['status'] = $status;
@@ -133,7 +133,7 @@ class UpdateParticipantOptions extends Options {
     /**
      * Set to `disconnected` to remove participant.
      * 
-     * @param string $status Set to disconnected to remove participant.
+     * @param string $status Set to `disconnected` to remove participant.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {

@@ -94,6 +94,16 @@ class ConnectAppContext extends InstanceContext {
     }
 
     /**
+     * Deletes the ConnectAppInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
      * Provide a friendly representation
      * 
      * @return string Machine friendly representation

@@ -10,6 +10,7 @@
 namespace Twilio\Rest\Insights\V1;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,11 +37,14 @@ class CallSummaryContext extends InstanceContext {
     /**
      * Fetch a CallSummaryInstance
      * 
+     * @param array|Options $options Optional Arguments
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        $params = Values::of(array());
+    public function fetch($options = array()) {
+        $options = new Values($options);
+
+        $params = Values::of(array('ProcessingState' => $options['processingState'], ));
 
         $payload = $this->version->fetch(
             'GET',

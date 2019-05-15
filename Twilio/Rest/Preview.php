@@ -17,6 +17,7 @@ use Twilio\Rest\Preview\DeployedDevices as PreviewDeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers as PreviewHostedNumbers;
 use Twilio\Rest\Preview\Marketplace as PreviewMarketplace;
 use Twilio\Rest\Preview\Sync as PreviewSync;
+use Twilio\Rest\Preview\TrustedComms as PreviewTrustedComms;
 use Twilio\Rest\Preview\Understand as PreviewUnderstand;
 use Twilio\Rest\Preview\Wireless as PreviewWireless;
 
@@ -29,6 +30,7 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Sync sync
  * @property \Twilio\Rest\Preview\Understand understand
  * @property \Twilio\Rest\Preview\Wireless wireless
+ * @property \Twilio\Rest\Preview\TrustedComms trustedComms
  * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
  * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
@@ -41,6 +43,9 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\Wireless\CommandList commands
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList sims
+ * @property \Twilio\Rest\Preview\TrustedComms\DeviceList devices
+ * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList phoneCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList currentCalls
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
@@ -53,6 +58,7 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
+ * @method \Twilio\Rest\Preview\TrustedComms\CurrentCallContext currentCalls()
  */
 class Preview extends Domain {
     protected $_bulkExports = null;
@@ -63,6 +69,7 @@ class Preview extends Domain {
     protected $_sync = null;
     protected $_understand = null;
     protected $_wireless = null;
+    protected $_trustedComms = null;
 
     /**
      * Construct the Preview Domain
@@ -156,6 +163,16 @@ class Preview extends Domain {
             $this->_wireless = new PreviewWireless($this);
         }
         return $this->_wireless;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms Version trustedComms of preview
+     */
+    protected function getTrustedComms() {
+        if (!$this->_trustedComms) {
+            $this->_trustedComms = new PreviewTrustedComms($this);
+        }
+        return $this->_trustedComms;
     }
 
     /**
@@ -370,6 +387,34 @@ class Preview extends Domain {
      */
     protected function contextSims($sid) {
         return $this->wireless->sims($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList 
+     */
+    protected function getDevices() {
+        return $this->trustedComms->devices;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList 
+     */
+    protected function getPhoneCalls() {
+        return $this->trustedComms->phoneCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList 
+     */
+    protected function getCurrentCalls() {
+        return $this->trustedComms->currentCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext 
+     */
+    protected function contextCurrentCalls() {
+        return $this->trustedComms->currentCalls();
     }
 
     /**

@@ -31,19 +31,103 @@ class ConferenceTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchValidMixerZoneResponse() {
         $this->holodeck->mock(new Response(
             200,
             '
             {
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "api_version": "2008-08-01",
+                "api_version": "2010-04-01",
                 "date_created": "Fri, 18 Feb 2011 19:26:50 +0000",
                 "date_updated": "Fri, 18 Feb 2011 19:27:33 +0000",
                 "friendly_name": "AHH YEAH",
                 "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "region": "us1",
                 "status": "completed",
+                "subresource_uris": {
+                    "participants": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json",
+                    "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json"
+                },
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchValidRegionInProgressResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "api_version": "2010-04-01",
+                "date_created": "Fri, 18 Feb 2011 19:26:50 +0000",
+                "date_updated": "Fri, 18 Feb 2011 19:27:33 +0000",
+                "friendly_name": "AHH YEAH",
+                "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "region": "au1",
+                "status": "in-progress",
+                "subresource_uris": {
+                    "participants": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json",
+                    "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json"
+                },
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchWithoutMixerZoneIntegerStatusResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "api_version": "2010-04-01",
+                "date_created": "Fri, 18 Feb 2011 19:26:50 +0000",
+                "date_updated": "Fri, 18 Feb 2011 19:27:33 +0000",
+                "friendly_name": "AHH YEAH",
+                "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "region": "us1",
+                "status": "completed",
+                "subresource_uris": {
+                    "participants": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json",
+                    "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json"
+                },
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchUnknownMixerZoneInitIntegerStatusResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "api_version": "2010-04-01",
+                "date_created": "Fri, 18 Feb 2011 19:26:50 +0000",
+                "date_updated": "Fri, 18 Feb 2011 19:27:33 +0000",
+                "friendly_name": "AHH YEAH",
+                "sid": "CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "region": "unknown",
+                "status": "init",
                 "subresource_uris": {
                     "participants": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json",
                     "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json"
