@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string friendlyName
  * @property string status
- * @property integer version
+ * @property int version
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url

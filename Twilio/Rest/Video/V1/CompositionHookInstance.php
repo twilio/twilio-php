@@ -21,7 +21,7 @@ use Twilio\Version;
  * 
  * @property string accountSid
  * @property string friendlyName
- * @property boolean enabled
+ * @property bool enabled
  * @property \DateTime dateCreated
  * @property string dateUpdated
  * @property string sid
@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string audioSourcesExcluded
  * @property array videoLayout
  * @property string resolution
- * @property boolean trim
+ * @property bool trim
  * @property string format
  * @property string statusCallback
  * @property string statusCallbackMethod

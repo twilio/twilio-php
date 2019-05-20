@@ -24,8 +24,8 @@ abstract class WebhookOptions {
      *                                      body
      * @param string $configurationFlowSid The SID of the Studio Flow to call when
      *                                     an event occurs
-     * @param integer $configurationRetryCount The number of times to retry the
-     *                                         webhook if the first attempt fails
+     * @param int $configurationRetryCount The number of times to retry the webhook
+     *                                     if the first attempt fails
      * @return CreateWebhookOptions Options builder
      */
     public static function create($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE) {
@@ -43,8 +43,8 @@ abstract class WebhookOptions {
      *                                      body
      * @param string $configurationFlowSid The SID of the Studio Flow to call when
      *                                     an event occurs
-     * @param integer $configurationRetryCount The number of times to retry the
-     *                                         webhook if the first attempt fails
+     * @param int $configurationRetryCount The number of times to retry the webhook
+     *                                     if the first attempt fails
      * @return UpdateWebhookOptions Options builder
      */
     public static function update($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE) {
@@ -64,8 +64,8 @@ class CreateWebhookOptions extends Options {
      *                                      body
      * @param string $configurationFlowSid The SID of the Studio Flow to call when
      *                                     an event occurs
-     * @param integer $configurationRetryCount The number of times to retry the
-     *                                         webhook if the first attempt fails
+     * @param int $configurationRetryCount The number of times to retry the webhook
+     *                                     if the first attempt fails
      */
     public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
@@ -139,8 +139,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.
      * 
-     * @param integer $configurationRetryCount The number of times to retry the
-     *                                         webhook if the first attempt fails
+     * @param int $configurationRetryCount The number of times to retry the webhook
+     *                                     if the first attempt fails
      * @return $this Fluent Builder
      */
     public function setConfigurationRetryCount($configurationRetryCount) {
@@ -176,8 +176,8 @@ class UpdateWebhookOptions extends Options {
      *                                      body
      * @param string $configurationFlowSid The SID of the Studio Flow to call when
      *                                     an event occurs
-     * @param integer $configurationRetryCount The number of times to retry the
-     *                                         webhook if the first attempt fails
+     * @param int $configurationRetryCount The number of times to retry the webhook
+     *                                     if the first attempt fails
      */
     public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
@@ -251,8 +251,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.
      * 
-     * @param integer $configurationRetryCount The number of times to retry the
-     *                                         webhook if the first attempt fails
+     * @param int $configurationRetryCount The number of times to retry the webhook
+     *                                     if the first attempt fails
      * @return $this Fluent Builder
      */
     public function setConfigurationRetryCount($configurationRetryCount) {

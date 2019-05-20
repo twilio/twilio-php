@@ -21,9 +21,9 @@ use Twilio\Version;
  * @property string name
  * @property string continent
  * @property string countryCodes
- * @property boolean lowRiskNumbersEnabled
- * @property boolean highRiskSpecialNumbersEnabled
- * @property boolean highRiskTollfraudNumbersEnabled
+ * @property bool lowRiskNumbersEnabled
+ * @property bool highRiskSpecialNumbersEnabled
+ * @property bool highRiskTollfraudNumbersEnabled
  * @property string url
  * @property array links
  */

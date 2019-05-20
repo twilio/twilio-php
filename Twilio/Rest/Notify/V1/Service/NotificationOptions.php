@@ -22,7 +22,7 @@ abstract class NotificationOptions {
      * @param string $tag A tag that selects the Bindings to notify
      * @param string $body The notification body text
      * @param string $priority The priority of the notification
-     * @param integer $ttl How long, in seconds, the notification is valid
+     * @param int $ttl How long, in seconds, the notification is valid
      * @param string $title The notification title
      * @param string $sound The name of the sound to be played for the notification
      * @param string $action The actions to display for the notification
@@ -53,7 +53,7 @@ class CreateNotificationOptions extends Options {
      * @param string $tag A tag that selects the Bindings to notify
      * @param string $body The notification body text
      * @param string $priority The priority of the notification
-     * @param integer $ttl How long, in seconds, the notification is valid
+     * @param int $ttl How long, in seconds, the notification is valid
      * @param string $title The notification title
      * @param string $sound The name of the sound to be played for the notification
      * @param string $action The actions to display for the notification
@@ -139,7 +139,7 @@ class CreateNotificationOptions extends Options {
     /**
      * How long, in seconds, the notification is valid. Can be an integer between 0 and 2,419,200, which is 4 weeks, the default and the maximum supported time to live (TTL). Delivery should be attempted if the device is offline until the TTL elapses. Zero means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. SMS does not support this property.
      * 
-     * @param integer $ttl How long, in seconds, the notification is valid
+     * @param int $ttl How long, in seconds, the notification is valid
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property \DateTime startTime
  * @property \DateTime endTime
- * @property integer duration
+ * @property int duration
  * @property string url
  * @property array links
  */

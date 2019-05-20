@@ -31,7 +31,7 @@ use Twilio\Version;
  * @property string voiceStatusCallbackMethod
  * @property string voiceStatusCallbackUrl
  * @property string voiceUrl
- * @property boolean sipRegistration
+ * @property bool sipRegistration
  * @property string trunkSid
  * @property array links
  */

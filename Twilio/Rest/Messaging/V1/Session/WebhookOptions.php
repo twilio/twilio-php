@@ -27,14 +27,13 @@ abstract class WebhookOptions {
      *                                      event for this Session.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
-     * @param integer $configurationRetryCount The number of retries in case of
-     *                                         webhook request failures.
-     * @param integer $configurationReplayAfter The message index for which and
-     *                                          it's successors the webhook will be
-     *                                          replayed.
-     * @param boolean $configurationBufferMessages The flag whether buffering
-     *                                             should be applied to messages.
-     * @param integer $configurationBufferWindow The period of buffering messages.
+     * @param int $configurationRetryCount The number of retries in case of webhook
+     *                                     request failures.
+     * @param int $configurationReplayAfter The message index for which and it's
+     *                                      successors the webhook will be replayed.
+     * @param bool $configurationBufferMessages The flag whether buffering should
+     *                                          be applied to messages.
+     * @param int $configurationBufferWindow The period of buffering messages.
      * @return CreateWebhookOptions Options builder
      */
     public static function create($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationReplayAfter = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE) {
@@ -52,11 +51,11 @@ abstract class WebhookOptions {
      *                                      event for this Session.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
-     * @param integer $configurationRetryCount The number of retries in case of
-     *                                         webhook request failures.
-     * @param boolean $configurationBufferMessages The flag whether buffering
-     *                                             should be applied to messages.
-     * @param integer $configurationBufferWindow The period of buffering messages.
+     * @param int $configurationRetryCount The number of retries in case of webhook
+     *                                     request failures.
+     * @param bool $configurationBufferMessages The flag whether buffering should
+     *                                          be applied to messages.
+     * @param int $configurationBufferWindow The period of buffering messages.
      * @return UpdateWebhookOptions Options builder
      */
     public static function update($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE) {
@@ -76,14 +75,13 @@ class CreateWebhookOptions extends Options {
      *                                      event for this Session.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
-     * @param integer $configurationRetryCount The number of retries in case of
-     *                                         webhook request failures.
-     * @param integer $configurationReplayAfter The message index for which and
-     *                                          it's successors the webhook will be
-     *                                          replayed.
-     * @param boolean $configurationBufferMessages The flag whether buffering
-     *                                             should be applied to messages.
-     * @param integer $configurationBufferWindow The period of buffering messages.
+     * @param int $configurationRetryCount The number of retries in case of webhook
+     *                                     request failures.
+     * @param int $configurationReplayAfter The message index for which and it's
+     *                                      successors the webhook will be replayed.
+     * @param bool $configurationBufferMessages The flag whether buffering should
+     *                                          be applied to messages.
+     * @param int $configurationBufferWindow The period of buffering messages.
      */
     public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationReplayAfter = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
@@ -160,8 +158,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.
      * 
-     * @param integer $configurationRetryCount The number of retries in case of
-     *                                         webhook request failures.
+     * @param int $configurationRetryCount The number of retries in case of webhook
+     *                                     request failures.
      * @return $this Fluent Builder
      */
     public function setConfigurationRetryCount($configurationRetryCount) {
@@ -172,9 +170,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The message index for which and it's successors the webhook will be replayed. Not set by default
      * 
-     * @param integer $configurationReplayAfter The message index for which and
-     *                                          it's successors the webhook will be
-     *                                          replayed.
+     * @param int $configurationReplayAfter The message index for which and it's
+     *                                      successors the webhook will be replayed.
      * @return $this Fluent Builder
      */
     public function setConfigurationReplayAfter($configurationReplayAfter) {
@@ -185,8 +182,8 @@ class CreateWebhookOptions extends Options {
     /**
      * The flag whether buffering should be applied to messages. Not set by default
      * 
-     * @param boolean $configurationBufferMessages The flag whether buffering
-     *                                             should be applied to messages.
+     * @param bool $configurationBufferMessages The flag whether buffering should
+     *                                          be applied to messages.
      * @return $this Fluent Builder
      */
     public function setConfigurationBufferMessages($configurationBufferMessages) {
@@ -197,7 +194,7 @@ class CreateWebhookOptions extends Options {
     /**
      * The period of buffering messages. Default is 3000 ms.
      * 
-     * @param integer $configurationBufferWindow The period of buffering messages.
+     * @param int $configurationBufferWindow The period of buffering messages.
      * @return $this Fluent Builder
      */
     public function setConfigurationBufferWindow($configurationBufferWindow) {
@@ -233,11 +230,11 @@ class UpdateWebhookOptions extends Options {
      *                                      event for this Session.
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
-     * @param integer $configurationRetryCount The number of retries in case of
-     *                                         webhook request failures.
-     * @param boolean $configurationBufferMessages The flag whether buffering
-     *                                             should be applied to messages.
-     * @param integer $configurationBufferWindow The period of buffering messages.
+     * @param int $configurationRetryCount The number of retries in case of webhook
+     *                                     request failures.
+     * @param bool $configurationBufferMessages The flag whether buffering should
+     *                                          be applied to messages.
+     * @param int $configurationBufferWindow The period of buffering messages.
      */
     public function __construct($configurationUrl = Values::NONE, $configurationMethod = Values::NONE, $configurationFilters = Values::NONE, $configurationTriggers = Values::NONE, $configurationFlowSid = Values::NONE, $configurationRetryCount = Values::NONE, $configurationBufferMessages = Values::NONE, $configurationBufferWindow = Values::NONE) {
         $this->options['configurationUrl'] = $configurationUrl;
@@ -313,8 +310,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.
      * 
-     * @param integer $configurationRetryCount The number of retries in case of
-     *                                         webhook request failures.
+     * @param int $configurationRetryCount The number of retries in case of webhook
+     *                                     request failures.
      * @return $this Fluent Builder
      */
     public function setConfigurationRetryCount($configurationRetryCount) {
@@ -325,8 +322,8 @@ class UpdateWebhookOptions extends Options {
     /**
      * The flag whether buffering should be applied to messages. Not set by default
      * 
-     * @param boolean $configurationBufferMessages The flag whether buffering
-     *                                             should be applied to messages.
+     * @param bool $configurationBufferMessages The flag whether buffering should
+     *                                          be applied to messages.
      * @return $this Fluent Builder
      */
     public function setConfigurationBufferMessages($configurationBufferMessages) {
@@ -337,7 +334,7 @@ class UpdateWebhookOptions extends Options {
     /**
      * The period of buffering messages. Default is 3000 ms.
      * 
-     * @param integer $configurationBufferWindow The period of buffering messages.
+     * @param int $configurationBufferWindow The period of buffering messages.
      * @return $this Fluent Builder
      */
     public function setConfigurationBufferWindow($configurationBufferWindow) {

@@ -20,7 +20,7 @@ abstract class SessionOptions {
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
-     * @param integer $ttl When the session will expire
+     * @param int $ttl When the session will expire
      * @param string $mode The Mode of the Session
      * @param string $status Session status
      * @param array $participants The Participant objects to include in the new
@@ -33,7 +33,7 @@ abstract class SessionOptions {
 
     /**
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
-     * @param integer $ttl When the session will expire
+     * @param int $ttl When the session will expire
      * @param string $mode The Mode of the Session
      * @param string $status The new status of the resource
      * @param array $participants The Participant objects to include in the session
@@ -49,7 +49,7 @@ class CreateSessionOptions extends Options {
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
-     * @param integer $ttl When the session will expire
+     * @param int $ttl When the session will expire
      * @param string $mode The Mode of the Session
      * @param string $status Session status
      * @param array $participants The Participant objects to include in the new
@@ -90,7 +90,7 @@ class CreateSessionOptions extends Options {
     /**
      * The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
      * 
-     * @param integer $ttl When the session will expire
+     * @param int $ttl When the session will expire
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -151,7 +151,7 @@ class CreateSessionOptions extends Options {
 class UpdateSessionOptions extends Options {
     /**
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
-     * @param integer $ttl When the session will expire
+     * @param int $ttl When the session will expire
      * @param string $mode The Mode of the Session
      * @param string $status The new status of the resource
      * @param array $participants The Participant objects to include in the session
@@ -178,7 +178,7 @@ class UpdateSessionOptions extends Options {
     /**
      * The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
      * 
-     * @param integer $ttl When the session will expire
+     * @param int $ttl When the session will expire
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

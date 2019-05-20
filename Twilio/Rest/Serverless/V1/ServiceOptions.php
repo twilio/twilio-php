@@ -17,8 +17,8 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param boolean $includeCredentials Whether to inject Account credentials
-     *                                    into a Function invocation context.
+     * @param bool $includeCredentials Whether to inject Account credentials into a
+     *                                 Function invocation context.
      * @return CreateServiceOptions Options builder
      */
     public static function create($includeCredentials = Values::NONE) {
@@ -26,8 +26,8 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param boolean $includeCredentials Whether to inject Account credentials
-     *                                    into a Function invocation context.
+     * @param bool $includeCredentials Whether to inject Account credentials into a
+     *                                 Function invocation context.
      * @param string $friendlyName A human-readable description of this Service.
      * @return UpdateServiceOptions Options builder
      */
@@ -38,8 +38,8 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param boolean $includeCredentials Whether to inject Account credentials
-     *                                    into a Function invocation context.
+     * @param bool $includeCredentials Whether to inject Account credentials into a
+     *                                 Function invocation context.
      */
     public function __construct($includeCredentials = Values::NONE) {
         $this->options['includeCredentials'] = $includeCredentials;
@@ -48,8 +48,8 @@ class CreateServiceOptions extends Options {
     /**
      * A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional, default `false`.
      * 
-     * @param boolean $includeCredentials Whether to inject Account credentials
-     *                                    into a Function invocation context.
+     * @param bool $includeCredentials Whether to inject Account credentials into a
+     *                                 Function invocation context.
      * @return $this Fluent Builder
      */
     public function setIncludeCredentials($includeCredentials) {
@@ -75,8 +75,8 @@ class CreateServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param boolean $includeCredentials Whether to inject Account credentials
-     *                                    into a Function invocation context.
+     * @param bool $includeCredentials Whether to inject Account credentials into a
+     *                                 Function invocation context.
      * @param string $friendlyName A human-readable description of this Service.
      */
     public function __construct($includeCredentials = Values::NONE, $friendlyName = Values::NONE) {
@@ -87,8 +87,8 @@ class UpdateServiceOptions extends Options {
     /**
      * A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional.
      * 
-     * @param boolean $includeCredentials Whether to inject Account credentials
-     *                                    into a Function invocation context.
+     * @param bool $includeCredentials Whether to inject Account credentials into a
+     *                                 Function invocation context.
      * @return $this Fluent Builder
      */
     public function setIncludeCredentials($includeCredentials) {

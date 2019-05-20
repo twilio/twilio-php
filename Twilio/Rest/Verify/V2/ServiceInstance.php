@@ -22,11 +22,11 @@ use Twilio\Version;
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
- * @property integer codeLength
- * @property boolean lookupEnabled
- * @property boolean psd2Enabled
- * @property boolean skipSmsToLandlines
- * @property boolean dtmfInputRequired
+ * @property int codeLength
+ * @property bool lookupEnabled
+ * @property bool psd2Enabled
+ * @property bool skipSmsToLandlines
+ * @property bool dtmfInputRequired
  * @property string ttsName
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated

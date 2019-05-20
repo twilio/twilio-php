@@ -29,8 +29,8 @@ use Twilio\Version;
  * @property string isoCountry
  * @property string capabilities
  * @property string url
- * @property boolean isReserved
- * @property integer inUse
+ * @property bool isReserved
+ * @property int inUse
  */
 class PhoneNumberInstance extends InstanceResource {
     /**

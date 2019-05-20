@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class WorkspaceStatisticsOptions {
     /**
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
@@ -32,8 +32,8 @@ abstract class WorkspaceStatisticsOptions {
 
 class FetchWorkspaceStatisticsOptions extends Options {
     /**
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
@@ -53,8 +53,8 @@ class FetchWorkspaceStatisticsOptions extends Options {
     /**
      * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
      * 
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {

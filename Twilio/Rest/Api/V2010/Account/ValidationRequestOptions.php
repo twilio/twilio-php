@@ -15,8 +15,8 @@ use Twilio\Values;
 abstract class ValidationRequestOptions {
     /**
      * @param string $friendlyName A string to describe the resource
-     * @param integer $callDelay The number of seconds to delay before initiating
-     *                           the verification call
+     * @param int $callDelay The number of seconds to delay before initiating the
+     *                       verification call
      * @param string $extension The digits to dial after connecting the
      *                          verification call
      * @param string $statusCallback The URL we should call to send status
@@ -33,8 +33,8 @@ abstract class ValidationRequestOptions {
 class CreateValidationRequestOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the resource
-     * @param integer $callDelay The number of seconds to delay before initiating
-     *                           the verification call
+     * @param int $callDelay The number of seconds to delay before initiating the
+     *                       verification call
      * @param string $extension The digits to dial after connecting the
      *                          verification call
      * @param string $statusCallback The URL we should call to send status
@@ -64,8 +64,8 @@ class CreateValidationRequestOptions extends Options {
     /**
      * The number of seconds to delay before initiating the verification call. Can be an integer between `0` and `60`, inclusive. The default is `0`.
      * 
-     * @param integer $callDelay The number of seconds to delay before initiating
-     *                           the verification call
+     * @param int $callDelay The number of seconds to delay before initiating the
+     *                       verification call
      * @return $this Fluent Builder
      */
     public function setCallDelay($callDelay) {

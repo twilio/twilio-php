@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string latestModelBuildSid
  * @property array links
- * @property boolean logQueries
+ * @property bool logQueries
  * @property string sid
  * @property string uniqueName
  * @property string url

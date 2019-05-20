@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string uniqueName
  * @property string friendlyName
  * @property string fleetSid
- * @property boolean enabled
+ * @property bool enabled
  * @property string accountSid
  * @property string identity
  * @property string deploymentSid

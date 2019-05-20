@@ -25,10 +25,10 @@ use Twilio\Version;
  * @property string chatServiceSid
  * @property string channelType
  * @property string contactIdentity
- * @property boolean enabled
+ * @property bool enabled
  * @property string integrationType
  * @property array integration
- * @property boolean longLived
+ * @property bool longLived
  * @property string url
  */
 class FlexFlowInstance extends InstanceResource {

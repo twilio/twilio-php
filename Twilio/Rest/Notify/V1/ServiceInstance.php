@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string defaultApnNotificationProtocolVersion
  * @property string defaultGcmNotificationProtocolVersion
  * @property string defaultFcmNotificationProtocolVersion
- * @property boolean logEnabled
+ * @property bool logEnabled
  * @property string url
  * @property array links
  * @property string alexaSkillId

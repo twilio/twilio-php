@@ -22,43 +22,40 @@ abstract class ServiceOptions {
      * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
      *                                             channel creator when they join a
      *                                             new channel
-     * @param boolean $readStatusEnabled Whether to enable the Message Consumption
-     *                                   Horizon feature
-     * @param boolean $reachabilityEnabled Whether to enable the Reachability
-     *                                     Indicator feature for this Service
-     *                                     instance
-     * @param integer $typingIndicatorTimeout How long in seconds to wait before
-     *                                        assuming the user is no longer typing
-     * @param integer $consumptionReportInterval DEPRECATED
-     * @param boolean $notificationsNewMessageEnabled Whether to send a
-     *                                                notification when a new
-     *                                                message is added to a channel
+     * @param bool $readStatusEnabled Whether to enable the Message Consumption
+     *                                Horizon feature
+     * @param bool $reachabilityEnabled Whether to enable the Reachability
+     *                                  Indicator feature for this Service instance
+     * @param int $typingIndicatorTimeout How long in seconds to wait before
+     *                                    assuming the user is no longer typing
+     * @param int $consumptionReportInterval DEPRECATED
+     * @param bool $notificationsNewMessageEnabled Whether to send a notification
+     *                                             when a new message is added to a
+     *                                             channel
      * @param string $notificationsNewMessageTemplate The template to use to create
      *                                                the notification text
      *                                                displayed when a new message
      *                                                is added to a channel
-     * @param boolean $notificationsAddedToChannelEnabled Whether to send a
-     *                                                    notification when a
-     *                                                    member is added to a
-     *                                                    channel
+     * @param bool $notificationsAddedToChannelEnabled Whether to send a
+     *                                                 notification when a member
+     *                                                 is added to a channel
      * @param string $notificationsAddedToChannelTemplate The template to use to
      *                                                    create the notification
      *                                                    text displayed when a
      *                                                    member is added to a
      *                                                    channel
-     * @param boolean $notificationsRemovedFromChannelEnabled Whether to send a
-     *                                                        notification to a
-     *                                                        user when they are
-     *                                                        removed from a channel
+     * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
+     *                                                     notification to a user
+     *                                                     when they are removed
+     *                                                     from a channel
      * @param string $notificationsRemovedFromChannelTemplate The template to use
      *                                                        to create the
      *                                                        notification text
      *                                                        displayed to a user
      *                                                        when they are removed
-     * @param boolean $notificationsInvitedToChannelEnabled Whether to send a
-     *                                                      notification when a
-     *                                                      user is invited to a
-     *                                                      channel
+     * @param bool $notificationsInvitedToChannelEnabled Whether to send a
+     *                                                   notification when a user
+     *                                                   is invited to a channel
      * @param string $notificationsInvitedToChannelTemplate The template to use to
      *                                                      create the notification
      *                                                      text displayed when a
@@ -161,10 +158,10 @@ abstract class ServiceOptions {
      * @param string $webhooksOnMemberRemovedMethod The HTTP method to use when
      *                                              calling the
      *                                              webhooks.on_member_removed.url
-     * @param integer $limitsChannelMembers The maximum number of Members that can
-     *                                      be added to Channels within this Service
-     * @param integer $limitsUserChannels The maximum number of Channels Users can
-     *                                    be a Member of within this Service
+     * @param int $limitsChannelMembers The maximum number of Members that can be
+     *                                  added to Channels within this Service
+     * @param int $limitsUserChannels The maximum number of Channels Users can be a
+     *                                Member of within this Service
      * @return UpdateServiceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooksOnMessageSendUrl = Values::NONE, $webhooksOnMessageSendMethod = Values::NONE, $webhooksOnMessageUpdateUrl = Values::NONE, $webhooksOnMessageUpdateMethod = Values::NONE, $webhooksOnMessageRemoveUrl = Values::NONE, $webhooksOnMessageRemoveMethod = Values::NONE, $webhooksOnChannelAddUrl = Values::NONE, $webhooksOnChannelAddMethod = Values::NONE, $webhooksOnChannelDestroyUrl = Values::NONE, $webhooksOnChannelDestroyMethod = Values::NONE, $webhooksOnChannelUpdateUrl = Values::NONE, $webhooksOnChannelUpdateMethod = Values::NONE, $webhooksOnMemberAddUrl = Values::NONE, $webhooksOnMemberAddMethod = Values::NONE, $webhooksOnMemberRemoveUrl = Values::NONE, $webhooksOnMemberRemoveMethod = Values::NONE, $webhooksOnMessageSentUrl = Values::NONE, $webhooksOnMessageSentMethod = Values::NONE, $webhooksOnMessageUpdatedUrl = Values::NONE, $webhooksOnMessageUpdatedMethod = Values::NONE, $webhooksOnMessageRemovedUrl = Values::NONE, $webhooksOnMessageRemovedMethod = Values::NONE, $webhooksOnChannelAddedUrl = Values::NONE, $webhooksOnChannelAddedMethod = Values::NONE, $webhooksOnChannelDestroyedUrl = Values::NONE, $webhooksOnChannelDestroyedMethod = Values::NONE, $webhooksOnChannelUpdatedUrl = Values::NONE, $webhooksOnChannelUpdatedMethod = Values::NONE, $webhooksOnMemberAddedUrl = Values::NONE, $webhooksOnMemberAddedMethod = Values::NONE, $webhooksOnMemberRemovedUrl = Values::NONE, $webhooksOnMemberRemovedMethod = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
@@ -182,43 +179,40 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
      *                                             channel creator when they join a
      *                                             new channel
-     * @param boolean $readStatusEnabled Whether to enable the Message Consumption
-     *                                   Horizon feature
-     * @param boolean $reachabilityEnabled Whether to enable the Reachability
-     *                                     Indicator feature for this Service
-     *                                     instance
-     * @param integer $typingIndicatorTimeout How long in seconds to wait before
-     *                                        assuming the user is no longer typing
-     * @param integer $consumptionReportInterval DEPRECATED
-     * @param boolean $notificationsNewMessageEnabled Whether to send a
-     *                                                notification when a new
-     *                                                message is added to a channel
+     * @param bool $readStatusEnabled Whether to enable the Message Consumption
+     *                                Horizon feature
+     * @param bool $reachabilityEnabled Whether to enable the Reachability
+     *                                  Indicator feature for this Service instance
+     * @param int $typingIndicatorTimeout How long in seconds to wait before
+     *                                    assuming the user is no longer typing
+     * @param int $consumptionReportInterval DEPRECATED
+     * @param bool $notificationsNewMessageEnabled Whether to send a notification
+     *                                             when a new message is added to a
+     *                                             channel
      * @param string $notificationsNewMessageTemplate The template to use to create
      *                                                the notification text
      *                                                displayed when a new message
      *                                                is added to a channel
-     * @param boolean $notificationsAddedToChannelEnabled Whether to send a
-     *                                                    notification when a
-     *                                                    member is added to a
-     *                                                    channel
+     * @param bool $notificationsAddedToChannelEnabled Whether to send a
+     *                                                 notification when a member
+     *                                                 is added to a channel
      * @param string $notificationsAddedToChannelTemplate The template to use to
      *                                                    create the notification
      *                                                    text displayed when a
      *                                                    member is added to a
      *                                                    channel
-     * @param boolean $notificationsRemovedFromChannelEnabled Whether to send a
-     *                                                        notification to a
-     *                                                        user when they are
-     *                                                        removed from a channel
+     * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
+     *                                                     notification to a user
+     *                                                     when they are removed
+     *                                                     from a channel
      * @param string $notificationsRemovedFromChannelTemplate The template to use
      *                                                        to create the
      *                                                        notification text
      *                                                        displayed to a user
      *                                                        when they are removed
-     * @param boolean $notificationsInvitedToChannelEnabled Whether to send a
-     *                                                      notification when a
-     *                                                      user is invited to a
-     *                                                      channel
+     * @param bool $notificationsInvitedToChannelEnabled Whether to send a
+     *                                                   notification when a user
+     *                                                   is invited to a channel
      * @param string $notificationsInvitedToChannelTemplate The template to use to
      *                                                      create the notification
      *                                                      text displayed when a
@@ -321,10 +315,10 @@ class UpdateServiceOptions extends Options {
      * @param string $webhooksOnMemberRemovedMethod The HTTP method to use when
      *                                              calling the
      *                                              webhooks.on_member_removed.url
-     * @param integer $limitsChannelMembers The maximum number of Members that can
-     *                                      be added to Channels within this Service
-     * @param integer $limitsUserChannels The maximum number of Channels Users can
-     *                                    be a Member of within this Service
+     * @param int $limitsChannelMembers The maximum number of Members that can be
+     *                                  added to Channels within this Service
+     * @param int $limitsUserChannels The maximum number of Channels Users can be a
+     *                                Member of within this Service
      */
     public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooksOnMessageSendUrl = Values::NONE, $webhooksOnMessageSendMethod = Values::NONE, $webhooksOnMessageUpdateUrl = Values::NONE, $webhooksOnMessageUpdateMethod = Values::NONE, $webhooksOnMessageRemoveUrl = Values::NONE, $webhooksOnMessageRemoveMethod = Values::NONE, $webhooksOnChannelAddUrl = Values::NONE, $webhooksOnChannelAddMethod = Values::NONE, $webhooksOnChannelDestroyUrl = Values::NONE, $webhooksOnChannelDestroyMethod = Values::NONE, $webhooksOnChannelUpdateUrl = Values::NONE, $webhooksOnChannelUpdateMethod = Values::NONE, $webhooksOnMemberAddUrl = Values::NONE, $webhooksOnMemberAddMethod = Values::NONE, $webhooksOnMemberRemoveUrl = Values::NONE, $webhooksOnMemberRemoveMethod = Values::NONE, $webhooksOnMessageSentUrl = Values::NONE, $webhooksOnMessageSentMethod = Values::NONE, $webhooksOnMessageUpdatedUrl = Values::NONE, $webhooksOnMessageUpdatedMethod = Values::NONE, $webhooksOnMessageRemovedUrl = Values::NONE, $webhooksOnMessageRemovedMethod = Values::NONE, $webhooksOnChannelAddedUrl = Values::NONE, $webhooksOnChannelAddedMethod = Values::NONE, $webhooksOnChannelDestroyedUrl = Values::NONE, $webhooksOnChannelDestroyedMethod = Values::NONE, $webhooksOnChannelUpdatedUrl = Values::NONE, $webhooksOnChannelUpdatedMethod = Values::NONE, $webhooksOnMemberAddedUrl = Values::NONE, $webhooksOnMemberAddedMethod = Values::NONE, $webhooksOnMemberRemovedUrl = Values::NONE, $webhooksOnMemberRemovedMethod = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -434,8 +428,8 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to enable the [Message Consumption Horizon](https://www.twilio.com/docs/chat/consumption-horizon) feature. The default is `true`.
      * 
-     * @param boolean $readStatusEnabled Whether to enable the Message Consumption
-     *                                   Horizon feature
+     * @param bool $readStatusEnabled Whether to enable the Message Consumption
+     *                                Horizon feature
      * @return $this Fluent Builder
      */
     public function setReadStatusEnabled($readStatusEnabled) {
@@ -446,9 +440,8 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to enable the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) for this Service instance. The default is `false`.
      * 
-     * @param boolean $reachabilityEnabled Whether to enable the Reachability
-     *                                     Indicator feature for this Service
-     *                                     instance
+     * @param bool $reachabilityEnabled Whether to enable the Reachability
+     *                                  Indicator feature for this Service instance
      * @return $this Fluent Builder
      */
     public function setReachabilityEnabled($reachabilityEnabled) {
@@ -459,8 +452,8 @@ class UpdateServiceOptions extends Options {
     /**
      * How long in seconds after a `started typing` event until clients should assume that user is no longer typing, even if no `ended typing` message was received.  The default is 5 seconds.
      * 
-     * @param integer $typingIndicatorTimeout How long in seconds to wait before
-     *                                        assuming the user is no longer typing
+     * @param int $typingIndicatorTimeout How long in seconds to wait before
+     *                                    assuming the user is no longer typing
      * @return $this Fluent Builder
      */
     public function setTypingIndicatorTimeout($typingIndicatorTimeout) {
@@ -471,7 +464,7 @@ class UpdateServiceOptions extends Options {
     /**
      * DEPRECATED. The interval in seconds between consumption reports submission batches from client endpoints.
      * 
-     * @param integer $consumptionReportInterval DEPRECATED
+     * @param int $consumptionReportInterval DEPRECATED
      * @return $this Fluent Builder
      */
     public function setConsumptionReportInterval($consumptionReportInterval) {
@@ -482,9 +475,9 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to send a notification when a new message is added to a channel. Can be: `true` or `false` and the default is `false`.
      * 
-     * @param boolean $notificationsNewMessageEnabled Whether to send a
-     *                                                notification when a new
-     *                                                message is added to a channel
+     * @param bool $notificationsNewMessageEnabled Whether to send a notification
+     *                                             when a new message is added to a
+     *                                             channel
      * @return $this Fluent Builder
      */
     public function setNotificationsNewMessageEnabled($notificationsNewMessageEnabled) {
@@ -509,10 +502,9 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to send a notification when a member is added to a channel. Can be: `true` or `false` and the default is `false`.
      * 
-     * @param boolean $notificationsAddedToChannelEnabled Whether to send a
-     *                                                    notification when a
-     *                                                    member is added to a
-     *                                                    channel
+     * @param bool $notificationsAddedToChannelEnabled Whether to send a
+     *                                                 notification when a member
+     *                                                 is added to a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsAddedToChannelEnabled($notificationsAddedToChannelEnabled) {
@@ -538,10 +530,10 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to send a notification to a user when they are removed from a channel. Can be: `true` or `false` and the default is `false`.
      * 
-     * @param boolean $notificationsRemovedFromChannelEnabled Whether to send a
-     *                                                        notification to a
-     *                                                        user when they are
-     *                                                        removed from a channel
+     * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
+     *                                                     notification to a user
+     *                                                     when they are removed
+     *                                                     from a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsRemovedFromChannelEnabled($notificationsRemovedFromChannelEnabled) {
@@ -567,10 +559,9 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to send a notification when a user is invited to a channel. Can be: `true` or `false` and the default is `false`.
      * 
-     * @param boolean $notificationsInvitedToChannelEnabled Whether to send a
-     *                                                      notification when a
-     *                                                      user is invited to a
-     *                                                      channel
+     * @param bool $notificationsInvitedToChannelEnabled Whether to send a
+     *                                                   notification when a user
+     *                                                   is invited to a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsInvitedToChannelEnabled($notificationsInvitedToChannelEnabled) {
@@ -1053,8 +1044,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The maximum number of Members that can be added to Channels within this Service. Can be up to 1,000.
      * 
-     * @param integer $limitsChannelMembers The maximum number of Members that can
-     *                                      be added to Channels within this Service
+     * @param int $limitsChannelMembers The maximum number of Members that can be
+     *                                  added to Channels within this Service
      * @return $this Fluent Builder
      */
     public function setLimitsChannelMembers($limitsChannelMembers) {
@@ -1065,8 +1056,8 @@ class UpdateServiceOptions extends Options {
     /**
      * The maximum number of Channels Users can be a Member of within this Service. Can be up to 1,000.
      * 
-     * @param integer $limitsUserChannels The maximum number of Channels Users can
-     *                                    be a Member of within this Service
+     * @param int $limitsUserChannels The maximum number of Channels Users can be a
+     *                                Member of within this Service
      * @return $this Fluent Builder
      */
     public function setLimitsUserChannels($limitsUserChannels) {

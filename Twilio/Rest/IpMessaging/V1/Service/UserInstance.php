@@ -24,11 +24,11 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string roleSid
  * @property string identity
- * @property boolean isOnline
- * @property boolean isNotifiable
+ * @property bool isOnline
+ * @property bool isNotifiable
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property integer joinedChannelsCount
+ * @property int joinedChannelsCount
  * @property array links
  * @property string url
  */

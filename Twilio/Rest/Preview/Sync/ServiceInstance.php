@@ -26,8 +26,8 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string url
  * @property string webhookUrl
- * @property boolean reachabilityWebhooksEnabled
- * @property boolean aclEnabled
+ * @property bool reachabilityWebhooksEnabled
+ * @property bool aclEnabled
  * @property array links
  */
 class ServiceInstance extends InstanceResource {

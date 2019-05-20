@@ -18,24 +18,24 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property integer avgTaskAcceptanceTime
+ * @property int avgTaskAcceptanceTime
  * @property \DateTime startTime
  * @property \DateTime endTime
- * @property integer reservationsCreated
- * @property integer reservationsAccepted
- * @property integer reservationsRejected
- * @property integer reservationsTimedOut
- * @property integer reservationsCanceled
- * @property integer reservationsRescinded
+ * @property int reservationsCreated
+ * @property int reservationsAccepted
+ * @property int reservationsRejected
+ * @property int reservationsTimedOut
+ * @property int reservationsCanceled
+ * @property int reservationsRescinded
  * @property array splitByWaitTime
  * @property array waitDurationUntilAccepted
  * @property array waitDurationUntilCanceled
- * @property integer tasksCanceled
- * @property integer tasksCompleted
- * @property integer tasksEntered
- * @property integer tasksDeleted
- * @property integer tasksMoved
- * @property integer tasksTimedOutInWorkflow
+ * @property int tasksCanceled
+ * @property int tasksCompleted
+ * @property int tasksEntered
+ * @property int tasksDeleted
+ * @property int tasksMoved
+ * @property int tasksTimedOutInWorkflow
  * @property string workflowSid
  * @property string workspaceSid
  * @property string url

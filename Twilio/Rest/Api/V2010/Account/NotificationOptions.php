@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class NotificationOptions {
     /**
-     * @param integer $log Filter by log level
+     * @param int $log Filter by log level
      * @param string $messageDateBefore Filter by date
      * @param string $messageDate Filter by date
      * @param string $messageDateAfter Filter by date
@@ -27,7 +27,7 @@ abstract class NotificationOptions {
 
 class ReadNotificationOptions extends Options {
     /**
-     * @param integer $log Filter by log level
+     * @param int $log Filter by log level
      * @param string $messageDateBefore Filter by date
      * @param string $messageDate Filter by date
      * @param string $messageDateAfter Filter by date
@@ -42,7 +42,7 @@ class ReadNotificationOptions extends Options {
     /**
      * Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
      * 
-     * @param integer $log Filter by log level
+     * @param int $log Filter by log level
      * @return $this Fluent Builder
      */
     public function setLog($log) {

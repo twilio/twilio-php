@@ -133,7 +133,7 @@ class HostedNumberOrderList extends ListResource {
      * Create a new HostedNumberOrderInstance
      * 
      * @param string $phoneNumber An E164 formatted phone number.
-     * @param boolean $smsCapability Specify SMS capability to host.
+     * @param bool $smsCapability Specify SMS capability to host.
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Newly created HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.

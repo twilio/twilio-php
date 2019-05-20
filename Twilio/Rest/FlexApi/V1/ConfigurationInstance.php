@@ -37,15 +37,15 @@ use Twilio\Version;
  * @property array uiAttributes
  * @property string uiVersion
  * @property string serviceVersion
- * @property boolean callRecordingEnabled
+ * @property bool callRecordingEnabled
  * @property string callRecordingWebhookUrl
- * @property boolean crmEnabled
+ * @property bool crmEnabled
  * @property string crmType
  * @property string crmCallbackUrl
  * @property string crmFallbackUrl
  * @property array crmAttributes
  * @property array publicAttributes
- * @property boolean pluginServiceEnabled
+ * @property bool pluginServiceEnabled
  * @property array pluginServiceAttributes
  * @property string url
  */

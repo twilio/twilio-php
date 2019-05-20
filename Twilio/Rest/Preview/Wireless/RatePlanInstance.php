@@ -23,12 +23,12 @@ use Twilio\Version;
  * @property string uniqueName
  * @property string accountSid
  * @property string friendlyName
- * @property boolean dataEnabled
+ * @property bool dataEnabled
  * @property string dataMetering
- * @property integer dataLimit
- * @property boolean messagingEnabled
- * @property boolean voiceEnabled
- * @property boolean nationalRoamingEnabled
+ * @property int dataLimit
+ * @property bool messagingEnabled
+ * @property bool voiceEnabled
+ * @property bool nationalRoamingEnabled
  * @property string internationalRoaming
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated

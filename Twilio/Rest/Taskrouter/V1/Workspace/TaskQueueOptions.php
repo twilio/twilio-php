@@ -24,9 +24,9 @@ abstract class TaskQueueOptions {
      * @param string $assignmentActivitySid ActivitySID that will be assigned to
      *                                      Workers when they are assigned a task
      *                                      from this TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @return UpdateTaskQueueOptions Options builder
@@ -54,9 +54,9 @@ abstract class TaskQueueOptions {
      * @param string $targetWorkers A string describing the Worker selection
      *                              criteria for any Tasks that enter this
      *                              TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @param string $reservationActivitySid ActivitySID to assign workers once a
@@ -82,9 +82,9 @@ class UpdateTaskQueueOptions extends Options {
      * @param string $assignmentActivitySid ActivitySID that will be assigned to
      *                                      Workers when they are assigned a task
      *                                      from this TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      */
@@ -150,9 +150,9 @@ class UpdateTaskQueueOptions extends Options {
     /**
      * The maximum amount of workers to create reservations for the assignment of a task while in this queue. Maximum of 50.
      * 
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {
@@ -264,9 +264,9 @@ class CreateTaskQueueOptions extends Options {
      * @param string $targetWorkers A string describing the Worker selection
      *                              criteria for any Tasks that enter this
      *                              TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @param string $reservationActivitySid ActivitySID to assign workers once a
@@ -298,9 +298,9 @@ class CreateTaskQueueOptions extends Options {
     /**
      * The maximum amount of workers to create reservations for the assignment of a task while in this queue. Defaults to 1, with a Maximum of 50.
      * 
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {

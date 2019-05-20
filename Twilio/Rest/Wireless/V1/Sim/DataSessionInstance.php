@@ -26,8 +26,8 @@ use Twilio\Version;
  * @property string operatorName
  * @property string cellId
  * @property array cellLocationEstimate
- * @property integer packetsUploaded
- * @property integer packetsDownloaded
+ * @property int packetsUploaded
+ * @property int packetsDownloaded
  * @property \DateTime lastUpdated
  * @property \DateTime start
  * @property \DateTime end

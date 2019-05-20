@@ -21,15 +21,15 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string accountSid
- * @property boolean enableTurn
+ * @property bool enableTurn
  * @property string uniqueName
  * @property string statusCallback
  * @property string statusCallbackMethod
  * @property \DateTime endTime
- * @property integer duration
+ * @property int duration
  * @property string type
- * @property integer maxParticipants
- * @property boolean recordParticipantsOnConnect
+ * @property int maxParticipants
+ * @property bool recordParticipantsOnConnect
  * @property string videoCodecs
  * @property string mediaRegion
  * @property string url

@@ -23,13 +23,12 @@ abstract class RecordingSettingsOptions {
      *                         recordings should be stored. We only support
      *                         DNS-compliant URLs like
      *                         http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.
-     * @param boolean $awsStorageEnabled true|false When set to true, all
-     *                                   Recordings will be written to the AwsS3Url
-     *                                   specified above. When set to false, all
-     *                                   Recordings will be stored in Twilio's
-     *                                   cloud.
-     * @param boolean $encryptionEnabled true|false When set to true, all
-     *                                   Recordings will be stored encrypted.
+     * @param bool $awsStorageEnabled true|false When set to true, all Recordings
+     *                                will be written to the AwsS3Url specified
+     *                                above. When set to false, all Recordings will
+     *                                be stored in Twilio's cloud.
+     * @param bool $encryptionEnabled true|false When set to true, all Recordings
+     *                                will be stored encrypted.
      * @return CreateRecordingSettingsOptions Options builder
      */
     public static function create($awsCredentialsSid = Values::NONE, $encryptionKeySid = Values::NONE, $awsS3Url = Values::NONE, $awsStorageEnabled = Values::NONE, $encryptionEnabled = Values::NONE) {
@@ -45,13 +44,12 @@ class CreateRecordingSettingsOptions extends Options {
      *                         recordings should be stored. We only support
      *                         DNS-compliant URLs like
      *                         http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.
-     * @param boolean $awsStorageEnabled true|false When set to true, all
-     *                                   Recordings will be written to the AwsS3Url
-     *                                   specified above. When set to false, all
-     *                                   Recordings will be stored in Twilio's
-     *                                   cloud.
-     * @param boolean $encryptionEnabled true|false When set to true, all
-     *                                   Recordings will be stored encrypted.
+     * @param bool $awsStorageEnabled true|false When set to true, all Recordings
+     *                                will be written to the AwsS3Url specified
+     *                                above. When set to false, all Recordings will
+     *                                be stored in Twilio's cloud.
+     * @param bool $encryptionEnabled true|false When set to true, all Recordings
+     *                                will be stored encrypted.
      */
     public function __construct($awsCredentialsSid = Values::NONE, $encryptionKeySid = Values::NONE, $awsS3Url = Values::NONE, $awsStorageEnabled = Values::NONE, $encryptionEnabled = Values::NONE) {
         $this->options['awsCredentialsSid'] = $awsCredentialsSid;
@@ -100,11 +98,10 @@ class CreateRecordingSettingsOptions extends Options {
     /**
      * `true|false` When set to `true`, all Recordings will be written to the `AwsS3Url` specified above. When set to `false`, all Recordings will be stored in Twilio's cloud.
      * 
-     * @param boolean $awsStorageEnabled true|false When set to true, all
-     *                                   Recordings will be written to the AwsS3Url
-     *                                   specified above. When set to false, all
-     *                                   Recordings will be stored in Twilio's
-     *                                   cloud.
+     * @param bool $awsStorageEnabled true|false When set to true, all Recordings
+     *                                will be written to the AwsS3Url specified
+     *                                above. When set to false, all Recordings will
+     *                                be stored in Twilio's cloud.
      * @return $this Fluent Builder
      */
     public function setAwsStorageEnabled($awsStorageEnabled) {
@@ -115,8 +112,8 @@ class CreateRecordingSettingsOptions extends Options {
     /**
      * `true|false` When set to `true`, all Recordings will be stored encrypted. Dafault value is `false`
      * 
-     * @param boolean $encryptionEnabled true|false When set to true, all
-     *                                   Recordings will be stored encrypted.
+     * @param bool $encryptionEnabled true|false When set to true, all Recordings
+     *                                will be stored encrypted.
      * @return $this Fluent Builder
      */
     public function setEncryptionEnabled($encryptionEnabled) {

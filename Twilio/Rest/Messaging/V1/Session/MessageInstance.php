@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string messagingServiceSid
  * @property string sessionSid
  * @property string sid
- * @property integer index
+ * @property int index
  * @property string author
  * @property string body
  * @property string attributes

@@ -21,7 +21,7 @@ abstract class TaskOptions {
      *                                 AssignmentStatus='canceled'.
      * @param string $reason This is only required if the Task is canceled or
      *                       completed.
-     * @param integer $priority Override priority for the Task.
+     * @param int $priority Override priority for the Task.
      * @param string $taskChannel The task_channel
      * @return UpdateTaskOptions Options builder
      */
@@ -30,8 +30,8 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param integer $priority Retrieve the list of all Tasks in the workspace
-     *                          with the specified priority.
+     * @param int $priority Retrieve the list of all Tasks in the workspace with
+     *                      the specified priority.
      * @param string $assignmentStatus Returns the list of all Tasks in the
      *                                 workspace with the specified
      *                                 AssignmentStatus.
@@ -52,7 +52,7 @@ abstract class TaskOptions {
      *                                       the attributes.
      * @param string $ordering Use this parameter to control the order of the Tasks
      *                         returned.
-     * @param boolean $hasAddons The has_addons
+     * @param bool $hasAddons The has_addons
      * @return ReadTaskOptions Options builder
      */
     public static function read($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE) {
@@ -60,9 +60,9 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param integer $timeout The amount of time in seconds the task is allowed to
-     *                         live up to a maximum of 2 weeks.
-     * @param integer $priority Override priority for the Task.
+     * @param int $timeout The amount of time in seconds the task is allowed to
+     *                     live up to a maximum of 2 weeks.
+     * @param int $priority Override priority for the Task.
      * @param string $taskChannel When MultiTasking is enabled specify the type of
      *                            the task by passing either TaskChannel Unique
      *                            Name or Task Channel Sid.
@@ -86,7 +86,7 @@ class UpdateTaskOptions extends Options {
      *                                 AssignmentStatus='canceled'.
      * @param string $reason This is only required if the Task is canceled or
      *                       completed.
-     * @param integer $priority Override priority for the Task.
+     * @param int $priority Override priority for the Task.
      * @param string $taskChannel The task_channel
      */
     public function __construct($attributes = Values::NONE, $assignmentStatus = Values::NONE, $reason = Values::NONE, $priority = Values::NONE, $taskChannel = Values::NONE) {
@@ -137,7 +137,7 @@ class UpdateTaskOptions extends Options {
     /**
      * Override priority for the Task. When supplied, the Task will take on the given priority unless it matches a Workflow Target with a Priority set.
      * 
-     * @param integer $priority Override priority for the Task.
+     * @param int $priority Override priority for the Task.
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -174,8 +174,8 @@ class UpdateTaskOptions extends Options {
 
 class ReadTaskOptions extends Options {
     /**
-     * @param integer $priority Retrieve the list of all Tasks in the workspace
-     *                          with the specified priority.
+     * @param int $priority Retrieve the list of all Tasks in the workspace with
+     *                      the specified priority.
      * @param string $assignmentStatus Returns the list of all Tasks in the
      *                                 workspace with the specified
      *                                 AssignmentStatus.
@@ -196,7 +196,7 @@ class ReadTaskOptions extends Options {
      *                                       the attributes.
      * @param string $ordering Use this parameter to control the order of the Tasks
      *                         returned.
-     * @param boolean $hasAddons The has_addons
+     * @param bool $hasAddons The has_addons
      */
     public function __construct($priority = Values::NONE, $assignmentStatus = Values::NONE, $workflowSid = Values::NONE, $workflowName = Values::NONE, $taskQueueSid = Values::NONE, $taskQueueName = Values::NONE, $evaluateTaskAttributes = Values::NONE, $ordering = Values::NONE, $hasAddons = Values::NONE) {
         $this->options['priority'] = $priority;
@@ -213,8 +213,8 @@ class ReadTaskOptions extends Options {
     /**
      * Retrieve the list of all Tasks in the workspace with the specified priority.
      * 
-     * @param integer $priority Retrieve the list of all Tasks in the workspace
-     *                          with the specified priority.
+     * @param int $priority Retrieve the list of all Tasks in the workspace with
+     *                      the specified priority.
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -315,7 +315,7 @@ class ReadTaskOptions extends Options {
     /**
      * The has_addons
      * 
-     * @param boolean $hasAddons The has_addons
+     * @param bool $hasAddons The has_addons
      * @return $this Fluent Builder
      */
     public function setHasAddons($hasAddons) {
@@ -341,9 +341,9 @@ class ReadTaskOptions extends Options {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param integer $timeout The amount of time in seconds the task is allowed to
-     *                         live up to a maximum of 2 weeks.
-     * @param integer $priority Override priority for the Task.
+     * @param int $timeout The amount of time in seconds the task is allowed to
+     *                     live up to a maximum of 2 weeks.
+     * @param int $priority Override priority for the Task.
      * @param string $taskChannel When MultiTasking is enabled specify the type of
      *                            the task by passing either TaskChannel Unique
      *                            Name or Task Channel Sid.
@@ -363,8 +363,8 @@ class CreateTaskOptions extends Options {
     /**
      * The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks. Defaults to 24 hours. On timeout, `task.canceled` event will fire with description "Task TTL Exceeded".
      * 
-     * @param integer $timeout The amount of time in seconds the task is allowed to
-     *                         live up to a maximum of 2 weeks.
+     * @param int $timeout The amount of time in seconds the task is allowed to
+     *                     live up to a maximum of 2 weeks.
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -375,7 +375,7 @@ class CreateTaskOptions extends Options {
     /**
      * Override priority for the Task. When supplied, the Task will take on the given priority unless it matches a Workflow Target with a Priority set. When not supplied, the Task will take on the priority of the matching Workflow Target.
      * 
-     * @param integer $priority Override priority for the Task.
+     * @param int $priority Override priority for the Task.
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {

@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class ParticipantOptions {
     /**
-     * @param boolean $muted Whether the participant should be muted
-     * @param boolean $hold Whether the participant should be on hold
+     * @param bool $muted Whether the participant should be muted
+     * @param bool $hold Whether the participant should be on hold
      * @param string $holdUrl The URL we call using the `hold_method` for  music
      *                        that plays when the participant is on hold
      * @param string $holdMethod The HTTP method we should use to call hold_url
@@ -25,11 +25,11 @@ abstract class ParticipantOptions {
      *                               announce_url
      * @param string $waitUrl URL that hosts pre-conference hold music
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
-     * @param boolean $beepOnExit Whether to play a notification beep to the
-     *                            conference when the participant exit
-     * @param boolean $endConferenceOnExit Whether to end the conference when the
-     *                                     participant leaves
-     * @param boolean $coaching Indicates if the participant changed to coach
+     * @param bool $beepOnExit Whether to play a notification beep to the
+     *                         conference when the participant exit
+     * @param bool $endConferenceOnExit Whether to end the conference when the
+     *                                  participant leaves
+     * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
      * @return UpdateParticipantOptions Options builder
@@ -45,23 +45,21 @@ abstract class ParticipantOptions {
      *                                     `status_callback`
      * @param string $statusCallbackEvent Set state change events that will trigger
      *                                    a callback
-     * @param integer $timeout he number of seconds that we should wait for an
-     *                         answer
-     * @param boolean $record Whether to record the participant and their
-     *                        conferences
-     * @param boolean $muted Whether to mute the agent
+     * @param int $timeout he number of seconds that we should wait for an answer
+     * @param bool $record Whether to record the participant and their conferences
+     * @param bool $muted Whether to mute the agent
      * @param string $beep Whether to play a notification beep to the conference
      *                     when the participant joins
-     * @param boolean $startConferenceOnEnter Whether the conference starts when
-     *                                        the participant joins the conference
-     * @param boolean $endConferenceOnExit Whether to end the conference when the
-     *                                     participant leaves
+     * @param bool $startConferenceOnEnter Whether the conference starts when the
+     *                                     participant joins the conference
+     * @param bool $endConferenceOnExit Whether to end the conference when the
+     *                                  participant leaves
      * @param string $waitUrl URL that hosts pre-conference hold music
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
-     * @param boolean $earlyMedia Whether agents can hear the state of the outbound
-     *                            call
-     * @param integer $maxParticipants The maximum number of agent conference
-     *                                 participants
+     * @param bool $earlyMedia Whether agents can hear the state of the outbound
+     *                         call
+     * @param int $maxParticipants The maximum number of agent conference
+     *                             participants
      * @param string $conferenceRecord Whether to record the conference the
      *                                 participant is joining
      * @param string $conferenceTrim Whether to trim leading and trailing silence
@@ -98,7 +96,7 @@ abstract class ParticipantOptions {
      *                                                       changes that should
      *                                                       generate a call to
      *                                                       `conference_recording_status_callback`
-     * @param boolean $coaching Indicates if the participant changed to coach
+     * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
      * @return CreateParticipantOptions Options builder
@@ -108,10 +106,10 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param boolean $muted Whether to return only participants that are muted
-     * @param boolean $hold Whether to return only participants that are on hold
-     * @param boolean $coaching Whether to return only participants who are
-     *                          coaching another call
+     * @param bool $muted Whether to return only participants that are muted
+     * @param bool $hold Whether to return only participants that are on hold
+     * @param bool $coaching Whether to return only participants who are coaching
+     *                       another call
      * @return ReadParticipantOptions Options builder
      */
     public static function read($muted = Values::NONE, $hold = Values::NONE, $coaching = Values::NONE) {
@@ -121,8 +119,8 @@ abstract class ParticipantOptions {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param boolean $muted Whether the participant should be muted
-     * @param boolean $hold Whether the participant should be on hold
+     * @param bool $muted Whether the participant should be muted
+     * @param bool $hold Whether the participant should be on hold
      * @param string $holdUrl The URL we call using the `hold_method` for  music
      *                        that plays when the participant is on hold
      * @param string $holdMethod The HTTP method we should use to call hold_url
@@ -132,11 +130,11 @@ class UpdateParticipantOptions extends Options {
      *                               announce_url
      * @param string $waitUrl URL that hosts pre-conference hold music
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
-     * @param boolean $beepOnExit Whether to play a notification beep to the
-     *                            conference when the participant exit
-     * @param boolean $endConferenceOnExit Whether to end the conference when the
-     *                                     participant leaves
-     * @param boolean $coaching Indicates if the participant changed to coach
+     * @param bool $beepOnExit Whether to play a notification beep to the
+     *                         conference when the participant exit
+     * @param bool $endConferenceOnExit Whether to end the conference when the
+     *                                  participant leaves
+     * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
      */
@@ -158,7 +156,7 @@ class UpdateParticipantOptions extends Options {
     /**
      * Whether the participant should be muted. Can be `true` or `false. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
      * 
-     * @param boolean $muted Whether the participant should be muted
+     * @param bool $muted Whether the participant should be muted
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -169,7 +167,7 @@ class UpdateParticipantOptions extends Options {
     /**
      * Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference.
      * 
-     * @param boolean $hold Whether the participant should be on hold
+     * @param bool $hold Whether the participant should be on hold
      * @return $this Fluent Builder
      */
     public function setHold($hold) {
@@ -249,8 +247,8 @@ class UpdateParticipantOptions extends Options {
     /**
      * Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`.
      * 
-     * @param boolean $beepOnExit Whether to play a notification beep to the
-     *                            conference when the participant exit
+     * @param bool $beepOnExit Whether to play a notification beep to the
+     *                         conference when the participant exit
      * @return $this Fluent Builder
      */
     public function setBeepOnExit($beepOnExit) {
@@ -261,8 +259,8 @@ class UpdateParticipantOptions extends Options {
     /**
      * Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
      * 
-     * @param boolean $endConferenceOnExit Whether to end the conference when the
-     *                                     participant leaves
+     * @param bool $endConferenceOnExit Whether to end the conference when the
+     *                                  participant leaves
      * @return $this Fluent Builder
      */
     public function setEndConferenceOnExit($endConferenceOnExit) {
@@ -273,7 +271,7 @@ class UpdateParticipantOptions extends Options {
     /**
      * Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
      * 
-     * @param boolean $coaching Indicates if the participant changed to coach
+     * @param bool $coaching Indicates if the participant changed to coach
      * @return $this Fluent Builder
      */
     public function setCoaching($coaching) {
@@ -317,23 +315,21 @@ class CreateParticipantOptions extends Options {
      *                                     `status_callback`
      * @param string $statusCallbackEvent Set state change events that will trigger
      *                                    a callback
-     * @param integer $timeout he number of seconds that we should wait for an
-     *                         answer
-     * @param boolean $record Whether to record the participant and their
-     *                        conferences
-     * @param boolean $muted Whether to mute the agent
+     * @param int $timeout he number of seconds that we should wait for an answer
+     * @param bool $record Whether to record the participant and their conferences
+     * @param bool $muted Whether to mute the agent
      * @param string $beep Whether to play a notification beep to the conference
      *                     when the participant joins
-     * @param boolean $startConferenceOnEnter Whether the conference starts when
-     *                                        the participant joins the conference
-     * @param boolean $endConferenceOnExit Whether to end the conference when the
-     *                                     participant leaves
+     * @param bool $startConferenceOnEnter Whether the conference starts when the
+     *                                     participant joins the conference
+     * @param bool $endConferenceOnExit Whether to end the conference when the
+     *                                  participant leaves
      * @param string $waitUrl URL that hosts pre-conference hold music
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
-     * @param boolean $earlyMedia Whether agents can hear the state of the outbound
-     *                            call
-     * @param integer $maxParticipants The maximum number of agent conference
-     *                                 participants
+     * @param bool $earlyMedia Whether agents can hear the state of the outbound
+     *                         call
+     * @param int $maxParticipants The maximum number of agent conference
+     *                             participants
      * @param string $conferenceRecord Whether to record the conference the
      *                                 participant is joining
      * @param string $conferenceTrim Whether to trim leading and trailing silence
@@ -370,7 +366,7 @@ class CreateParticipantOptions extends Options {
      *                                                       changes that should
      *                                                       generate a call to
      *                                                       `conference_recording_status_callback`
-     * @param boolean $coaching Indicates if the participant changed to coach
+     * @param bool $coaching Indicates if the participant changed to coach
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
      */
@@ -446,8 +442,7 @@ class CreateParticipantOptions extends Options {
     /**
      * The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds.
      * 
-     * @param integer $timeout he number of seconds that we should wait for an
-     *                         answer
+     * @param int $timeout he number of seconds that we should wait for an answer
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -458,8 +453,7 @@ class CreateParticipantOptions extends Options {
     /**
      * Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.
      * 
-     * @param boolean $record Whether to record the participant and their
-     *                        conferences
+     * @param bool $record Whether to record the participant and their conferences
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -470,7 +464,7 @@ class CreateParticipantOptions extends Options {
     /**
      * Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`.
      * 
-     * @param boolean $muted Whether to mute the agent
+     * @param bool $muted Whether to mute the agent
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -493,8 +487,8 @@ class CreateParticipantOptions extends Options {
     /**
      * Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.
      * 
-     * @param boolean $startConferenceOnEnter Whether the conference starts when
-     *                                        the participant joins the conference
+     * @param bool $startConferenceOnEnter Whether the conference starts when the
+     *                                     participant joins the conference
      * @return $this Fluent Builder
      */
     public function setStartConferenceOnEnter($startConferenceOnEnter) {
@@ -505,8 +499,8 @@ class CreateParticipantOptions extends Options {
     /**
      * Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
      * 
-     * @param boolean $endConferenceOnExit Whether to end the conference when the
-     *                                     participant leaves
+     * @param bool $endConferenceOnExit Whether to end the conference when the
+     *                                  participant leaves
      * @return $this Fluent Builder
      */
     public function setEndConferenceOnExit($endConferenceOnExit) {
@@ -539,8 +533,8 @@ class CreateParticipantOptions extends Options {
     /**
      * Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
      * 
-     * @param boolean $earlyMedia Whether agents can hear the state of the outbound
-     *                            call
+     * @param bool $earlyMedia Whether agents can hear the state of the outbound
+     *                         call
      * @return $this Fluent Builder
      */
     public function setEarlyMedia($earlyMedia) {
@@ -551,8 +545,8 @@ class CreateParticipantOptions extends Options {
     /**
      * The maximum number of participants in the conference. Can be a positive integer from `2` to `10`. The default value is `10`.
      * 
-     * @param integer $maxParticipants The maximum number of agent conference
-     *                                 participants
+     * @param int $maxParticipants The maximum number of agent conference
+     *                             participants
      * @return $this Fluent Builder
      */
     public function setMaxParticipants($maxParticipants) {
@@ -749,7 +743,7 @@ class CreateParticipantOptions extends Options {
     /**
      * Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
      * 
-     * @param boolean $coaching Indicates if the participant changed to coach
+     * @param bool $coaching Indicates if the participant changed to coach
      * @return $this Fluent Builder
      */
     public function setCoaching($coaching) {
@@ -787,10 +781,10 @@ class CreateParticipantOptions extends Options {
 
 class ReadParticipantOptions extends Options {
     /**
-     * @param boolean $muted Whether to return only participants that are muted
-     * @param boolean $hold Whether to return only participants that are on hold
-     * @param boolean $coaching Whether to return only participants who are
-     *                          coaching another call
+     * @param bool $muted Whether to return only participants that are muted
+     * @param bool $hold Whether to return only participants that are on hold
+     * @param bool $coaching Whether to return only participants who are coaching
+     *                       another call
      */
     public function __construct($muted = Values::NONE, $hold = Values::NONE, $coaching = Values::NONE) {
         $this->options['muted'] = $muted;
@@ -801,7 +795,7 @@ class ReadParticipantOptions extends Options {
     /**
      * Whether to return only participants that are muted. Can be: `true` or `false`.
      * 
-     * @param boolean $muted Whether to return only participants that are muted
+     * @param bool $muted Whether to return only participants that are muted
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -812,7 +806,7 @@ class ReadParticipantOptions extends Options {
     /**
      * Whether to return only participants that are on hold. Can be: `true` or `false`.
      * 
-     * @param boolean $hold Whether to return only participants that are on hold
+     * @param bool $hold Whether to return only participants that are on hold
      * @return $this Fluent Builder
      */
     public function setHold($hold) {
@@ -823,8 +817,8 @@ class ReadParticipantOptions extends Options {
     /**
      * Whether to return only participants who are coaching another call. Can be: `true` or `false`.
      * 
-     * @param boolean $coaching Whether to return only participants who are
-     *                          coaching another call
+     * @param bool $coaching Whether to return only participants who are coaching
+     *                       another call
      * @return $this Fluent Builder
      */
     public function setCoaching($coaching) {

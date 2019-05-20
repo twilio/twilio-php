@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string to
  * @property string channel
  * @property string status
- * @property boolean valid
+ * @property bool valid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  */

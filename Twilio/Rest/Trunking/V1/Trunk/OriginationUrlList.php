@@ -34,11 +34,10 @@ class OriginationUrlList extends ListResource {
     /**
      * Create a new OriginationUrlInstance
      * 
-     * @param integer $weight The value that determines the relative load the URI
-     *                        should receive compared to others with the same
-     *                        priority
-     * @param integer $priority The relative importance of the URI
-     * @param boolean $enabled Whether the URL is enabled
+     * @param int $weight The value that determines the relative load the URI
+     *                    should receive compared to others with the same priority
+     * @param int $priority The relative importance of the URI
+     * @param bool $enabled Whether the URL is enabled
      * @param string $friendlyName A string to describe the resource
      * @param string $sipUrl The SIP address you want Twilio to route your
      *                       Origination calls to

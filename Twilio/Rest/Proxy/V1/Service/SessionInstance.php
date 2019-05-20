@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string uniqueName
  * @property string status
  * @property string closedReason
- * @property integer ttl
+ * @property int ttl
  * @property string mode
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated

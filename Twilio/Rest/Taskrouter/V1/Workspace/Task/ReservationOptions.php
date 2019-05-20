@@ -33,8 +33,8 @@ abstract class ReservationOptions {
      *                            executing a Dequeue instruction
      * @param string $dequeueRecord Attribute to record both legs of a call when
      *                              executing a Dequeue instruction
-     * @param integer $dequeueTimeout Timeout for call when executing a Dequeue
-     *                                instruction
+     * @param int $dequeueTimeout Timeout for call when executing a Dequeue
+     *                            instruction
      * @param string $dequeueTo Contact URI of the worker when executing a Dequeue
      *                          instruction
      * @param string $dequeueStatusCallbackUrl Callback URL for completed call
@@ -44,20 +44,19 @@ abstract class ReservationOptions {
      *                         Call instruction
      * @param string $callRecord Attribute to record both legs of a call when
      *                           executing a Call instruction
-     * @param integer $callTimeout Timeout for call when executing a Call
-     *                             instruction
+     * @param int $callTimeout Timeout for call when executing a Call instruction
      * @param string $callTo Contact URI of the worker when executing a Call
      *                       instruction
      * @param string $callUrl TwiML URI executed on answering the worker's leg as a
      *                        result of the Call instruction
      * @param string $callStatusCallbackUrl Callback URL for completed call event
      *                                      when executing a Call instruction
-     * @param boolean $callAccept Flag to determine if reservation should be
-     *                            accepted when executing a Call instruction
+     * @param bool $callAccept Flag to determine if reservation should be accepted
+     *                         when executing a Call instruction
      * @param string $redirectCallSid Call sid of the call parked in the queue when
      *                                executing a Redirect instruction
-     * @param boolean $redirectAccept Flag to determine if reservation should be
-     *                                accepted when executing a Redirect instruction
+     * @param bool $redirectAccept Flag to determine if reservation should be
+     *                             accepted when executing a Redirect instruction
      * @param string $redirectUrl TwiML URI to redirect the call to when executing
      *                            the Redirect instruction
      * @param string $to Contact URI of the worker when executing a Conference
@@ -67,17 +66,16 @@ abstract class ReservationOptions {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $statusCallbackEvent The status_callback_event
-     * @param integer $timeout Timeout for call when executing a Conference
-     *                         instruction
-     * @param boolean $record The record
-     * @param boolean $muted The muted
+     * @param int $timeout Timeout for call when executing a Conference instruction
+     * @param bool $record The record
+     * @param bool $muted The muted
      * @param string $beep The beep
-     * @param boolean $startConferenceOnEnter The start_conference_on_enter
-     * @param boolean $endConferenceOnExit The end_conference_on_exit
+     * @param bool $startConferenceOnEnter The start_conference_on_enter
+     * @param bool $endConferenceOnExit The end_conference_on_exit
      * @param string $waitUrl The wait_url
      * @param string $waitMethod The wait_method
-     * @param boolean $earlyMedia The early_media
-     * @param integer $maxParticipants The max_participants
+     * @param bool $earlyMedia The early_media
+     * @param int $maxParticipants The max_participants
      * @param string $conferenceStatusCallback The conference_status_callback
      * @param string $conferenceStatusCallbackMethod The
      *                                               conference_status_callback_method
@@ -105,9 +103,8 @@ abstract class ReservationOptions {
      *                               instruction
      * @param string $supervisor Supervisor sid/uri when executing the Supervise
      *                           instruction
-     * @param boolean $endConferenceOnCustomerExit The
-     *                                             end_conference_on_customer_exit
-     * @param boolean $beepOnCustomerEntrance The beep_on_customer_entrance
+     * @param bool $endConferenceOnCustomerExit The end_conference_on_customer_exit
+     * @param bool $beepOnCustomerEntrance The beep_on_customer_entrance
      * @return UpdateReservationOptions Options builder
      */
     public static function update($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE, $to = Values::NONE, $from = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $region = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $dequeueStatusCallbackEvent = Values::NONE, $postWorkActivitySid = Values::NONE, $supervisorMode = Values::NONE, $supervisor = Values::NONE, $endConferenceOnCustomerExit = Values::NONE, $beepOnCustomerEntrance = Values::NONE) {
@@ -164,8 +161,8 @@ class UpdateReservationOptions extends Options {
      *                            executing a Dequeue instruction
      * @param string $dequeueRecord Attribute to record both legs of a call when
      *                              executing a Dequeue instruction
-     * @param integer $dequeueTimeout Timeout for call when executing a Dequeue
-     *                                instruction
+     * @param int $dequeueTimeout Timeout for call when executing a Dequeue
+     *                            instruction
      * @param string $dequeueTo Contact URI of the worker when executing a Dequeue
      *                          instruction
      * @param string $dequeueStatusCallbackUrl Callback URL for completed call
@@ -175,20 +172,19 @@ class UpdateReservationOptions extends Options {
      *                         Call instruction
      * @param string $callRecord Attribute to record both legs of a call when
      *                           executing a Call instruction
-     * @param integer $callTimeout Timeout for call when executing a Call
-     *                             instruction
+     * @param int $callTimeout Timeout for call when executing a Call instruction
      * @param string $callTo Contact URI of the worker when executing a Call
      *                       instruction
      * @param string $callUrl TwiML URI executed on answering the worker's leg as a
      *                        result of the Call instruction
      * @param string $callStatusCallbackUrl Callback URL for completed call event
      *                                      when executing a Call instruction
-     * @param boolean $callAccept Flag to determine if reservation should be
-     *                            accepted when executing a Call instruction
+     * @param bool $callAccept Flag to determine if reservation should be accepted
+     *                         when executing a Call instruction
      * @param string $redirectCallSid Call sid of the call parked in the queue when
      *                                executing a Redirect instruction
-     * @param boolean $redirectAccept Flag to determine if reservation should be
-     *                                accepted when executing a Redirect instruction
+     * @param bool $redirectAccept Flag to determine if reservation should be
+     *                             accepted when executing a Redirect instruction
      * @param string $redirectUrl TwiML URI to redirect the call to when executing
      *                            the Redirect instruction
      * @param string $to Contact URI of the worker when executing a Conference
@@ -198,17 +194,16 @@ class UpdateReservationOptions extends Options {
      * @param string $statusCallback The status_callback
      * @param string $statusCallbackMethod The status_callback_method
      * @param string $statusCallbackEvent The status_callback_event
-     * @param integer $timeout Timeout for call when executing a Conference
-     *                         instruction
-     * @param boolean $record The record
-     * @param boolean $muted The muted
+     * @param int $timeout Timeout for call when executing a Conference instruction
+     * @param bool $record The record
+     * @param bool $muted The muted
      * @param string $beep The beep
-     * @param boolean $startConferenceOnEnter The start_conference_on_enter
-     * @param boolean $endConferenceOnExit The end_conference_on_exit
+     * @param bool $startConferenceOnEnter The start_conference_on_enter
+     * @param bool $endConferenceOnExit The end_conference_on_exit
      * @param string $waitUrl The wait_url
      * @param string $waitMethod The wait_method
-     * @param boolean $earlyMedia The early_media
-     * @param integer $maxParticipants The max_participants
+     * @param bool $earlyMedia The early_media
+     * @param int $maxParticipants The max_participants
      * @param string $conferenceStatusCallback The conference_status_callback
      * @param string $conferenceStatusCallbackMethod The
      *                                               conference_status_callback_method
@@ -236,9 +231,8 @@ class UpdateReservationOptions extends Options {
      *                               instruction
      * @param string $supervisor Supervisor sid/uri when executing the Supervise
      *                           instruction
-     * @param boolean $endConferenceOnCustomerExit The
-     *                                             end_conference_on_customer_exit
-     * @param boolean $beepOnCustomerEntrance The beep_on_customer_entrance
+     * @param bool $endConferenceOnCustomerExit The end_conference_on_customer_exit
+     * @param bool $beepOnCustomerEntrance The beep_on_customer_entrance
      */
     public function __construct($reservationStatus = Values::NONE, $workerActivitySid = Values::NONE, $instruction = Values::NONE, $dequeuePostWorkActivitySid = Values::NONE, $dequeueFrom = Values::NONE, $dequeueRecord = Values::NONE, $dequeueTimeout = Values::NONE, $dequeueTo = Values::NONE, $dequeueStatusCallbackUrl = Values::NONE, $callFrom = Values::NONE, $callRecord = Values::NONE, $callTimeout = Values::NONE, $callTo = Values::NONE, $callUrl = Values::NONE, $callStatusCallbackUrl = Values::NONE, $callAccept = Values::NONE, $redirectCallSid = Values::NONE, $redirectAccept = Values::NONE, $redirectUrl = Values::NONE, $to = Values::NONE, $from = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $statusCallbackEvent = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $muted = Values::NONE, $beep = Values::NONE, $startConferenceOnEnter = Values::NONE, $endConferenceOnExit = Values::NONE, $waitUrl = Values::NONE, $waitMethod = Values::NONE, $earlyMedia = Values::NONE, $maxParticipants = Values::NONE, $conferenceStatusCallback = Values::NONE, $conferenceStatusCallbackMethod = Values::NONE, $conferenceStatusCallbackEvent = Values::NONE, $conferenceRecord = Values::NONE, $conferenceTrim = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $conferenceRecordingStatusCallback = Values::NONE, $conferenceRecordingStatusCallbackMethod = Values::NONE, $region = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $dequeueStatusCallbackEvent = Values::NONE, $postWorkActivitySid = Values::NONE, $supervisorMode = Values::NONE, $supervisor = Values::NONE, $endConferenceOnCustomerExit = Values::NONE, $beepOnCustomerEntrance = Values::NONE) {
         $this->options['reservationStatus'] = $reservationStatus;
@@ -369,8 +363,8 @@ class UpdateReservationOptions extends Options {
     /**
      * Timeout for call when executing a Dequeue instruction
      * 
-     * @param integer $dequeueTimeout Timeout for call when executing a Dequeue
-     *                                instruction
+     * @param int $dequeueTimeout Timeout for call when executing a Dequeue
+     *                            instruction
      * @return $this Fluent Builder
      */
     public function setDequeueTimeout($dequeueTimeout) {
@@ -430,8 +424,7 @@ class UpdateReservationOptions extends Options {
     /**
      * Timeout for call when executing a Call instruction
      * 
-     * @param integer $callTimeout Timeout for call when executing a Call
-     *                             instruction
+     * @param int $callTimeout Timeout for call when executing a Call instruction
      * @return $this Fluent Builder
      */
     public function setCallTimeout($callTimeout) {
@@ -478,8 +471,8 @@ class UpdateReservationOptions extends Options {
     /**
      * Flag to determine if reservation should be accepted when executing a Call instruction
      * 
-     * @param boolean $callAccept Flag to determine if reservation should be
-     *                            accepted when executing a Call instruction
+     * @param bool $callAccept Flag to determine if reservation should be accepted
+     *                         when executing a Call instruction
      * @return $this Fluent Builder
      */
     public function setCallAccept($callAccept) {
@@ -502,8 +495,8 @@ class UpdateReservationOptions extends Options {
     /**
      * Flag to determine if reservation should be accepted when executing a Redirect instruction
      * 
-     * @param boolean $redirectAccept Flag to determine if reservation should be
-     *                                accepted when executing a Redirect instruction
+     * @param bool $redirectAccept Flag to determine if reservation should be
+     *                             accepted when executing a Redirect instruction
      * @return $this Fluent Builder
      */
     public function setRedirectAccept($redirectAccept) {
@@ -583,8 +576,7 @@ class UpdateReservationOptions extends Options {
     /**
      * Timeout for call when executing a Conference instruction
      * 
-     * @param integer $timeout Timeout for call when executing a Conference
-     *                         instruction
+     * @param int $timeout Timeout for call when executing a Conference instruction
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -595,7 +587,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The record
      * 
-     * @param boolean $record The record
+     * @param bool $record The record
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -606,7 +598,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The muted
      * 
-     * @param boolean $muted The muted
+     * @param bool $muted The muted
      * @return $this Fluent Builder
      */
     public function setMuted($muted) {
@@ -628,7 +620,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The start_conference_on_enter
      * 
-     * @param boolean $startConferenceOnEnter The start_conference_on_enter
+     * @param bool $startConferenceOnEnter The start_conference_on_enter
      * @return $this Fluent Builder
      */
     public function setStartConferenceOnEnter($startConferenceOnEnter) {
@@ -639,7 +631,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The end_conference_on_exit
      * 
-     * @param boolean $endConferenceOnExit The end_conference_on_exit
+     * @param bool $endConferenceOnExit The end_conference_on_exit
      * @return $this Fluent Builder
      */
     public function setEndConferenceOnExit($endConferenceOnExit) {
@@ -672,7 +664,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The early_media
      * 
-     * @param boolean $earlyMedia The early_media
+     * @param bool $earlyMedia The early_media
      * @return $this Fluent Builder
      */
     public function setEarlyMedia($earlyMedia) {
@@ -683,7 +675,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The max_participants
      * 
-     * @param integer $maxParticipants The max_participants
+     * @param int $maxParticipants The max_participants
      * @return $this Fluent Builder
      */
     public function setMaxParticipants($maxParticipants) {
@@ -891,8 +883,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The end_conference_on_customer_exit
      * 
-     * @param boolean $endConferenceOnCustomerExit The
-     *                                             end_conference_on_customer_exit
+     * @param bool $endConferenceOnCustomerExit The end_conference_on_customer_exit
      * @return $this Fluent Builder
      */
     public function setEndConferenceOnCustomerExit($endConferenceOnCustomerExit) {
@@ -903,7 +894,7 @@ class UpdateReservationOptions extends Options {
     /**
      * The beep_on_customer_entrance
      * 
-     * @param boolean $beepOnCustomerEntrance The beep_on_customer_entrance
+     * @param bool $beepOnCustomerEntrance The beep_on_customer_entrance
      * @return $this Fluent Builder
      */
     public function setBeepOnCustomerEntrance($beepOnCustomerEntrance) {

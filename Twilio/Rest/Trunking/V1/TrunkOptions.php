@@ -23,9 +23,9 @@ abstract class TrunkOptions {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
-     * @param boolean $secure Whether Secure Trunking is enabled for the trunk
-     * @param boolean $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup
-     *                                   should be enabled for the trunk
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
+     *                                be enabled for the trunk
      * @return CreateTrunkOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE) {
@@ -42,9 +42,9 @@ abstract class TrunkOptions {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
-     * @param boolean $secure Whether Secure Trunking is enabled for the trunk
-     * @param boolean $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup
-     *                                   should be enabled for the trunk
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
+     *                                be enabled for the trunk
      * @return UpdateTrunkOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE) {
@@ -63,9 +63,9 @@ class CreateTrunkOptions extends Options {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
-     * @param boolean $secure Whether Secure Trunking is enabled for the trunk
-     * @param boolean $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup
-     *                                   should be enabled for the trunk
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
+     *                                be enabled for the trunk
      */
     public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -139,7 +139,7 @@ class CreateTrunkOptions extends Options {
     /**
      * Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking/getting-started#securetrunking) for more information.
      * 
-     * @param boolean $secure Whether Secure Trunking is enabled for the trunk
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @return $this Fluent Builder
      */
     public function setSecure($secure) {
@@ -150,8 +150,8 @@ class CreateTrunkOptions extends Options {
     /**
      * Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
      * 
-     * @param boolean $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup
-     *                                   should be enabled for the trunk
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
+     *                                be enabled for the trunk
      * @return $this Fluent Builder
      */
     public function setCnamLookupEnabled($cnamLookupEnabled) {
@@ -186,9 +186,9 @@ class UpdateTrunkOptions extends Options {
      * @param string $disasterRecoveryMethod The HTTP method we should use to call
      *                                       the disaster_recovery_url
      * @param string $recording The recording settings for the trunk
-     * @param boolean $secure Whether Secure Trunking is enabled for the trunk
-     * @param boolean $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup
-     *                                   should be enabled for the trunk
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
+     *                                be enabled for the trunk
      */
     public function __construct($friendlyName = Values::NONE, $domainName = Values::NONE, $disasterRecoveryUrl = Values::NONE, $disasterRecoveryMethod = Values::NONE, $recording = Values::NONE, $secure = Values::NONE, $cnamLookupEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -262,7 +262,7 @@ class UpdateTrunkOptions extends Options {
     /**
      * Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking/getting-started#securetrunking) for more information.
      * 
-     * @param boolean $secure Whether Secure Trunking is enabled for the trunk
+     * @param bool $secure Whether Secure Trunking is enabled for the trunk
      * @return $this Fluent Builder
      */
     public function setSecure($secure) {
@@ -273,8 +273,8 @@ class UpdateTrunkOptions extends Options {
     /**
      * Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
      * 
-     * @param boolean $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup
-     *                                   should be enabled for the trunk
+     * @param bool $cnamLookupEnabled Whether Caller ID Name (CNAM) lookup should
+     *                                be enabled for the trunk
      * @return $this Fluent Builder
      */
     public function setCnamLookupEnabled($cnamLookupEnabled) {

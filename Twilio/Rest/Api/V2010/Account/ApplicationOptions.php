@@ -24,7 +24,7 @@ abstract class ApplicationOptions {
      *                               application
      * @param string $statusCallbackMethod The HTTP method to use to call
      *                                     status_callback
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @param string $smsUrl The URL to call when the phone number receives an
      *                       incoming SMS message
      * @param string $smsMethod The HTTP method to use with sms_url
@@ -62,7 +62,7 @@ abstract class ApplicationOptions {
      *                               application
      * @param string $statusCallbackMethod The HTTP method to use to call
      *                                     status_callback
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @param string $smsUrl The URL to call when the phone number receives an
      *                       incoming SMS message
      * @param string $smsMethod The HTTP method to use with sms_url
@@ -92,7 +92,7 @@ class CreateApplicationOptions extends Options {
      *                               application
      * @param string $statusCallbackMethod The HTTP method to use to call
      *                                     status_callback
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @param string $smsUrl The URL to call when the phone number receives an
      *                       incoming SMS message
      * @param string $smsMethod The HTTP method to use with sms_url
@@ -204,7 +204,7 @@ class CreateApplicationOptions extends Options {
     /**
      * Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
      * 
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
@@ -348,7 +348,7 @@ class UpdateApplicationOptions extends Options {
      *                               application
      * @param string $statusCallbackMethod The HTTP method to use to call
      *                                     status_callback
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @param string $smsUrl The URL to call when the phone number receives an
      *                       incoming SMS message
      * @param string $smsMethod The HTTP method to use with sms_url
@@ -472,7 +472,7 @@ class UpdateApplicationOptions extends Options {
     /**
      * Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
      * 
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {

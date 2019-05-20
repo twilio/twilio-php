@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property string tags
  * @property string segments
  * @property string priority
- * @property integer ttl
+ * @property int ttl
  * @property string title
  * @property string body
  * @property string sound

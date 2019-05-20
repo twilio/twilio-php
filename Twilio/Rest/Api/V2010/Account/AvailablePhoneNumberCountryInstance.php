@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string countryCode
  * @property string country
  * @property string uri
- * @property boolean beta
+ * @property bool beta
  * @property array subresourceUris
  */
 class AvailablePhoneNumberCountryInstance extends InstanceResource {

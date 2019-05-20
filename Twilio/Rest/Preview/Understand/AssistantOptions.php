@@ -19,11 +19,11 @@ abstract class AssistantOptions {
     /**
      * @param string $friendlyName A text description for the Assistant. It is
      *                             non-unique and can up to 255 characters long.
-     * @param boolean $logQueries A boolean that specifies whether queries should
-     *                            be logged for 30 days further training. If false,
-     *                            no queries will be stored, if true, queries will
-     *                            be stored for 30 days and deleted thereafter.
-     *                            Defaults to true if no value is provided.
+     * @param bool $logQueries A boolean that specifies whether queries should be
+     *                         logged for 30 days further training. If false, no
+     *                         queries will be stored, if true, queries will be
+     *                         stored for 30 days and deleted thereafter. Defaults
+     *                         to true if no value is provided.
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -47,11 +47,11 @@ abstract class AssistantOptions {
     /**
      * @param string $friendlyName A text description for the Assistant. It is
      *                             non-unique and can up to 255 characters long.
-     * @param boolean $logQueries A boolean that specifies whether queries should
-     *                            be logged for 30 days further training. If false,
-     *                            no queries will be stored, if true, queries will
-     *                            be stored for 30 days and deleted thereafter.
-     *                            Defaults to true if no value is provided.
+     * @param bool $logQueries A boolean that specifies whether queries should be
+     *                         logged for 30 days further training. If false, no
+     *                         queries will be stored, if true, queries will be
+     *                         stored for 30 days and deleted thereafter. Defaults
+     *                         to true if no value is provided.
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -77,11 +77,11 @@ class CreateAssistantOptions extends Options {
     /**
      * @param string $friendlyName A text description for the Assistant. It is
      *                             non-unique and can up to 255 characters long.
-     * @param boolean $logQueries A boolean that specifies whether queries should
-     *                            be logged for 30 days further training. If false,
-     *                            no queries will be stored, if true, queries will
-     *                            be stored for 30 days and deleted thereafter.
-     *                            Defaults to true if no value is provided.
+     * @param bool $logQueries A boolean that specifies whether queries should be
+     *                         logged for 30 days further training. If false, no
+     *                         queries will be stored, if true, queries will be
+     *                         stored for 30 days and deleted thereafter. Defaults
+     *                         to true if no value is provided.
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -123,11 +123,11 @@ class CreateAssistantOptions extends Options {
     /**
      * A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
      * 
-     * @param boolean $logQueries A boolean that specifies whether queries should
-     *                            be logged for 30 days further training. If false,
-     *                            no queries will be stored, if true, queries will
-     *                            be stored for 30 days and deleted thereafter.
-     *                            Defaults to true if no value is provided.
+     * @param bool $logQueries A boolean that specifies whether queries should be
+     *                         logged for 30 days further training. If false, no
+     *                         queries will be stored, if true, queries will be
+     *                         stored for 30 days and deleted thereafter. Defaults
+     *                         to true if no value is provided.
      * @return $this Fluent Builder
      */
     public function setLogQueries($logQueries) {
@@ -229,11 +229,11 @@ class UpdateAssistantOptions extends Options {
     /**
      * @param string $friendlyName A text description for the Assistant. It is
      *                             non-unique and can up to 255 characters long.
-     * @param boolean $logQueries A boolean that specifies whether queries should
-     *                            be logged for 30 days further training. If false,
-     *                            no queries will be stored, if true, queries will
-     *                            be stored for 30 days and deleted thereafter.
-     *                            Defaults to true if no value is provided.
+     * @param bool $logQueries A boolean that specifies whether queries should be
+     *                         logged for 30 days further training. If false, no
+     *                         queries will be stored, if true, queries will be
+     *                         stored for 30 days and deleted thereafter. Defaults
+     *                         to true if no value is provided.
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -275,11 +275,11 @@ class UpdateAssistantOptions extends Options {
     /**
      * A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
      * 
-     * @param boolean $logQueries A boolean that specifies whether queries should
-     *                            be logged for 30 days further training. If false,
-     *                            no queries will be stored, if true, queries will
-     *                            be stored for 30 days and deleted thereafter.
-     *                            Defaults to true if no value is provided.
+     * @param bool $logQueries A boolean that specifies whether queries should be
+     *                         logged for 30 days further training. If false, no
+     *                         queries will be stored, if true, queries will be
+     *                         stored for 30 days and deleted thereafter. Defaults
+     *                         to true if no value is provided.
      * @return $this Fluent Builder
      */
     public function setLogQueries($logQueries) {

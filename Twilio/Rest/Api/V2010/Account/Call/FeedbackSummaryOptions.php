@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class FeedbackSummaryOptions {
     /**
-     * @param boolean $includeSubaccounts `true` includes feedback from the
-     *                                    specified account and its subaccounts
+     * @param bool $includeSubaccounts `true` includes feedback from the specified
+     *                                 account and its subaccounts
      * @param string $statusCallback The URL that we will request when the feedback
      *                               summary is complete
      * @param string $statusCallbackMethod The HTTP method we use to make requests
@@ -29,8 +29,8 @@ abstract class FeedbackSummaryOptions {
 
 class CreateFeedbackSummaryOptions extends Options {
     /**
-     * @param boolean $includeSubaccounts `true` includes feedback from the
-     *                                    specified account and its subaccounts
+     * @param bool $includeSubaccounts `true` includes feedback from the specified
+     *                                 account and its subaccounts
      * @param string $statusCallback The URL that we will request when the feedback
      *                               summary is complete
      * @param string $statusCallbackMethod The HTTP method we use to make requests
@@ -45,8 +45,8 @@ class CreateFeedbackSummaryOptions extends Options {
     /**
      * Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
      * 
-     * @param boolean $includeSubaccounts `true` includes feedback from the
-     *                                    specified account and its subaccounts
+     * @param bool $includeSubaccounts `true` includes feedback from the specified
+     *                                 account and its subaccounts
      * @return $this Fluent Builder
      */
     public function setIncludeSubaccounts($includeSubaccounts) {

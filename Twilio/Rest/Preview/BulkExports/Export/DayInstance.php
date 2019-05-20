@@ -19,7 +19,7 @@ use Twilio\Version;
  * 
  * @property string redirectTo
  * @property string day
- * @property integer size
+ * @property int size
  * @property string resourceType
  */
 class DayInstance extends InstanceResource {

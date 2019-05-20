@@ -20,11 +20,11 @@ use Twilio\Version;
  * @property string accountSid
  * @property string sid
  * @property string trunkSid
- * @property integer weight
- * @property boolean enabled
+ * @property int weight
+ * @property bool enabled
  * @property string sipUrl
  * @property string friendlyName
- * @property integer priority
+ * @property int priority
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string url

@@ -28,8 +28,8 @@ use Twilio\Version;
  * @property string disconnectedBy
  * @property \DateTime startTime
  * @property \DateTime endTime
- * @property integer duration
- * @property integer connectDuration
+ * @property int duration
+ * @property int connectDuration
  * @property array from
  * @property array to
  * @property array carrierEdge

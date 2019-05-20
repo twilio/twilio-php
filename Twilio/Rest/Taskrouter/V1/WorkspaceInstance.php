@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string eventCallbackUrl
  * @property string eventsFilter
  * @property string friendlyName
- * @property boolean multiTaskEnabled
+ * @property bool multiTaskEnabled
  * @property string sid
  * @property string timeoutActivityName
  * @property string timeoutActivitySid

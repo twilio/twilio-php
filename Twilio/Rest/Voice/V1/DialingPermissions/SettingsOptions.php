@@ -17,10 +17,10 @@ use Twilio\Values;
  */
 abstract class SettingsOptions {
     /**
-     * @param boolean $dialingPermissionsInheritance `true` for this sub-account to
-     *                                               inherit voice dialing
-     *                                               permissions from the Master
-     *                                               Project; otherwise `false`
+     * @param bool $dialingPermissionsInheritance `true` for this sub-account to
+     *                                            inherit voice dialing permissions
+     *                                            from the Master Project;
+     *                                            otherwise `false`
      * @return UpdateSettingsOptions Options builder
      */
     public static function update($dialingPermissionsInheritance = Values::NONE) {
@@ -30,10 +30,10 @@ abstract class SettingsOptions {
 
 class UpdateSettingsOptions extends Options {
     /**
-     * @param boolean $dialingPermissionsInheritance `true` for this sub-account to
-     *                                               inherit voice dialing
-     *                                               permissions from the Master
-     *                                               Project; otherwise `false`
+     * @param bool $dialingPermissionsInheritance `true` for this sub-account to
+     *                                            inherit voice dialing permissions
+     *                                            from the Master Project;
+     *                                            otherwise `false`
      */
     public function __construct($dialingPermissionsInheritance = Values::NONE) {
         $this->options['dialingPermissionsInheritance'] = $dialingPermissionsInheritance;
@@ -42,10 +42,10 @@ class UpdateSettingsOptions extends Options {
     /**
      * `true` for this sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.
      * 
-     * @param boolean $dialingPermissionsInheritance `true` for this sub-account to
-     *                                               inherit voice dialing
-     *                                               permissions from the Master
-     *                                               Project; otherwise `false`
+     * @param bool $dialingPermissionsInheritance `true` for this sub-account to
+     *                                            inherit voice dialing permissions
+     *                                            from the Master Project;
+     *                                            otherwise `false`
      * @return $this Fluent Builder
      */
     public function setDialingPermissionsInheritance($dialingPermissionsInheritance) {

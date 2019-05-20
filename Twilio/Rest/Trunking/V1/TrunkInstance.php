@@ -22,9 +22,9 @@ use Twilio\Version;
  * @property string disasterRecoveryMethod
  * @property string disasterRecoveryUrl
  * @property string friendlyName
- * @property boolean secure
+ * @property bool secure
  * @property array recording
- * @property boolean cnamLookupEnabled
+ * @property bool cnamLookupEnabled
  * @property string authType
  * @property string authTypeSet
  * @property \DateTime dateCreated

@@ -26,10 +26,10 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string lastUpdatedBy
- * @property boolean wasEdited
+ * @property bool wasEdited
  * @property string from
  * @property string body
- * @property integer index
+ * @property int index
  * @property string type
  * @property array media
  * @property string url

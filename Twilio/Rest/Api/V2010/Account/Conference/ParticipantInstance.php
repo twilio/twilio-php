@@ -20,14 +20,14 @@ use Twilio\Version;
  * @property string accountSid
  * @property string callSid
  * @property string callSidToCoach
- * @property boolean coaching
+ * @property bool coaching
  * @property string conferenceSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property boolean endConferenceOnExit
- * @property boolean muted
- * @property boolean hold
- * @property boolean startConferenceOnEnter
+ * @property bool endConferenceOnExit
+ * @property bool muted
+ * @property bool hold
+ * @property bool startConferenceOnEnter
  * @property string status
  * @property string uri
  */

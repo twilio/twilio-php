@@ -36,7 +36,7 @@ abstract class ServiceOptions {
      * @param string $defaultFcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending FCM
      *                                                      notifications
-     * @param boolean $logEnabled Whether to log notifications
+     * @param bool $logEnabled Whether to log notifications
      * @param string $alexaSkillId Deprecated
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return CreateServiceOptions Options builder
@@ -74,7 +74,7 @@ abstract class ServiceOptions {
      * @param string $defaultFcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending FCM
      *                                                      notifications
-     * @param boolean $logEnabled Whether to log notifications
+     * @param bool $logEnabled Whether to log notifications
      * @param string $alexaSkillId Deprecated
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return UpdateServiceOptions Options builder
@@ -105,7 +105,7 @@ class CreateServiceOptions extends Options {
      * @param string $defaultFcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending FCM
      *                                                      notifications
-     * @param boolean $logEnabled Whether to log notifications
+     * @param bool $logEnabled Whether to log notifications
      * @param string $alexaSkillId Deprecated
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      */
@@ -236,7 +236,7 @@ class CreateServiceOptions extends Options {
     /**
      * Whether to log notifications. Can be: `true` or `false` and the default is `true`.
      * 
-     * @param boolean $logEnabled Whether to log notifications
+     * @param bool $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
     public function setLogEnabled($logEnabled) {
@@ -340,7 +340,7 @@ class UpdateServiceOptions extends Options {
      * @param string $defaultFcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending FCM
      *                                                      notifications
-     * @param boolean $logEnabled Whether to log notifications
+     * @param bool $logEnabled Whether to log notifications
      * @param string $alexaSkillId Deprecated
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      */
@@ -471,7 +471,7 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to log notifications. Can be: `true` or `false` and the default is `true`.
      * 
-     * @param boolean $logEnabled Whether to log notifications
+     * @param bool $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
     public function setLogEnabled($logEnabled) {

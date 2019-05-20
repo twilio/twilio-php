@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string productName
  * @property string uniqueName
- * @property boolean enabled
+ * @property bool enabled
  * @property string url
  */
 class InstalledAddOnExtensionInstance extends InstanceResource {
@@ -88,7 +88,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource {
     /**
      * Update the InstalledAddOnExtensionInstance
      * 
-     * @param boolean $enabled A Boolean indicating if the Extension will be invoked
+     * @param bool $enabled A Boolean indicating if the Extension will be invoked
      * @return InstalledAddOnExtensionInstance Updated
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.

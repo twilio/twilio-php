@@ -39,8 +39,8 @@ class InstalledAddOnList extends ListResource {
      * 
      * @param string $availableAddOnSid A string that uniquely identifies the
      *                                  Add-on to install
-     * @param boolean $acceptTermsOfService A boolean reflecting your acceptance of
-     *                                      the Terms of Service
+     * @param bool $acceptTermsOfService A boolean reflecting your acceptance of
+     *                                   the Terms of Service
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Newly created InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.

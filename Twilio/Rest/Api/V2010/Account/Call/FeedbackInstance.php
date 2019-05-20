@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string issues
- * @property integer qualityScore
+ * @property int qualityScore
  * @property string sid
  */
 class FeedbackInstance extends InstanceResource {
@@ -72,8 +72,7 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param integer $qualityScore The call quality expressed as an integer from 1
-     *                              to 5
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,8 +94,7 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Update the FeedbackInstance
      * 
-     * @param integer $qualityScore The call quality expressed as an integer from 1
-     *                              to 5
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
