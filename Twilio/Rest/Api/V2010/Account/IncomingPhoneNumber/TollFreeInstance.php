@@ -51,7 +51,7 @@ class TollFreeInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid) {

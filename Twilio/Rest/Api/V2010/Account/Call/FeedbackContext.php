@@ -20,7 +20,7 @@ class FeedbackContext extends InstanceContext {
      * Initialize the FeedbackContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The call sid that uniquely identifies the call
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext 
      */
@@ -36,7 +36,8 @@ class FeedbackContext extends InstanceContext {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param integer $qualityScore An integer from 1 to 5
+     * @param integer $qualityScore The call quality expressed as an integer from 1
+     *                              to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,7 +91,8 @@ class FeedbackContext extends InstanceContext {
     /**
      * Update the FeedbackInstance
      * 
-     * @param integer $qualityScore An integer from 1 to 5
+     * @param integer $qualityScore The call quality expressed as an integer from 1
+     *                              to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.

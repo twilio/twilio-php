@@ -30,6 +30,7 @@ use Twilio\Version;
  * @property string capabilities
  * @property string url
  * @property boolean isReserved
+ * @property integer inUse
  */
 class PhoneNumberInstance extends InstanceResource {
     /**
@@ -37,8 +38,9 @@ class PhoneNumberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid A string that uniquely identifies this Phone Number.
+     * @param string $serviceSid The SID of the PhoneNumber resource's parent
+     *                           Service resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\PhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
@@ -57,6 +59,7 @@ class PhoneNumberInstance extends InstanceResource {
             'capabilities' => Values::array_get($payload, 'capabilities'),
             'url' => Values::array_get($payload, 'url'),
             'isReserved' => Values::array_get($payload, 'is_reserved'),
+            'inUse' => Values::array_get($payload, 'in_use'),
         );
 
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );

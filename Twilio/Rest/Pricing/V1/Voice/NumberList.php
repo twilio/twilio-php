@@ -29,7 +29,7 @@ class NumberList extends ListResource {
     /**
      * Constructs a NumberContext
      * 
-     * @param string $number The number
+     * @param string $number The phone number to fetch
      * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext 
      */
     public function getContext($number) {

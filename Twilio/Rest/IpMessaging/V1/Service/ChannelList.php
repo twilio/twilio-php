@@ -20,8 +20,8 @@ class ChannelList extends ListResource {
      * Construct the ChannelList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the [Service][service] this
-     *                           channel belongs to.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -154,7 +154,7 @@ class ChannelList extends ListResource {
     /**
      * Constructs a ChannelContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelContext 
      */
     public function getContext($sid) {

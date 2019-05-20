@@ -18,9 +18,9 @@ class UserBindingContext extends InstanceContext {
      * Initialize the UserBindingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $userSid The user_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $userSid The SID of the User for the binding
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingContext 
      */
     public function __construct(Version $version, $serviceSid, $userSid, $sid) {

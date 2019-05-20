@@ -34,8 +34,8 @@ class ConnectAppInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $sid Fetch by unique connect-app Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
@@ -97,6 +97,16 @@ class ConnectAppInstance extends InstanceResource {
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Deletes the ConnectAppInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**

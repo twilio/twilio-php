@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property integer maxSize
  * @property string sid
  * @property string uri
+ * @property array subresourceUris
  */
 class QueueInstance extends InstanceResource {
     protected $_members = null;
@@ -35,8 +36,8 @@ class QueueInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique queue Sid
+     * @param string $accountSid The SID of the Account that created this resource
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\QueueInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
@@ -53,6 +54,7 @@ class QueueInstance extends InstanceResource {
             'maxSize' => Values::array_get($payload, 'max_size'),
             'sid' => Values::array_get($payload, 'sid'),
             'uri' => Values::array_get($payload, 'uri'),
+            'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );

@@ -62,6 +62,7 @@ class WorkspaceRealTimeStatisticsTest extends HolodeckTestCase {
                 ],
                 "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "longest_task_waiting_age": 100,
+                "longest_task_waiting_sid": "WTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "total_workers": 100,
                 "total_tasks": 100,
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

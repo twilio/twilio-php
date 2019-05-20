@@ -20,7 +20,8 @@ class DefaultsList extends ListResource {
      * Construct the DefaultsList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList 
      */
     public function __construct(Version $version, $assistantSid) {

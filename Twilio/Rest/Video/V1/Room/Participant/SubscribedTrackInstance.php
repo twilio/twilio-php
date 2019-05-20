@@ -17,14 +17,15 @@ use Twilio\Version;
 
 /**
  * @property string sid
+ * @property string participantSid
+ * @property string publisherSid
  * @property string roomSid
  * @property string name
- * @property string publisherSid
- * @property string subscriberSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property boolean enabled
  * @property string kind
+ * @property string url
  */
 class SubscribedTrackInstance extends InstanceResource {
     /**
@@ -32,27 +33,64 @@ class SubscribedTrackInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid The room_sid
-     * @param string $subscriberSid The subscriber_sid
+     * @param string $roomSid Unique Room identifier where this Track is published.
+     * @param string $participantSid Unique Participant identifier that subscribes
+     *                               to this Track.
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackInstance 
      */
-    public function __construct(Version $version, array $payload, $roomSid, $subscriberSid) {
+    public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
+            'participantSid' => Values::array_get($payload, 'participant_sid'),
+            'publisherSid' => Values::array_get($payload, 'publisher_sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
             'name' => Values::array_get($payload, 'name'),
-            'publisherSid' => Values::array_get($payload, 'publisher_sid'),
-            'subscriberSid' => Values::array_get($payload, 'subscriber_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'enabled' => Values::array_get($payload, 'enabled'),
             'kind' => Values::array_get($payload, 'kind'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('roomSid' => $roomSid, 'subscriberSid' => $subscriberSid, );
+        $this->solution = array(
+            'roomSid' => $roomSid,
+            'participantSid' => $participantSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        );
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext Context for this SubscribedTrackInstance
+     */
+    protected function proxy() {
+        if (!$this->context) {
+            $this->context = new SubscribedTrackContext(
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['participantSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Fetch a SubscribedTrackInstance
+     * 
+     * @return SubscribedTrackInstance Fetched SubscribedTrackInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch() {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -81,6 +119,10 @@ class SubscribedTrackInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Video.V1.SubscribedTrackInstance]';
+        $context = array();
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Video.V1.SubscribedTrackInstance ' . implode(' ', $context) . ']';
     }
 }

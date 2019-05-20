@@ -31,8 +31,8 @@ class UserContext extends InstanceContext {
      * Initialize the UserContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Sid of the Service this user belongs to.
-     * @param string $sid Key that uniquely defines the user to fetch.
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\UserContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {

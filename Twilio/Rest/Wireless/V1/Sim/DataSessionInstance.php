@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property \DateTime lastUpdated
  * @property \DateTime start
  * @property \DateTime end
+ * @property string imei
  */
 class DataSessionInstance extends InstanceResource {
     /**
@@ -62,6 +63,7 @@ class DataSessionInstance extends InstanceResource {
             'lastUpdated' => Deserialize::dateTime(Values::array_get($payload, 'last_updated')),
             'start' => Deserialize::dateTime(Values::array_get($payload, 'start')),
             'end' => Deserialize::dateTime(Values::array_get($payload, 'end')),
+            'imei' => Values::array_get($payload, 'imei'),
         );
 
         $this->solution = array('simSid' => $simSid, );

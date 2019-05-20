@@ -18,7 +18,8 @@ class CommandContext extends InstanceContext {
      * Initialize the CommandContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\CommandContext 
      */
     public function __construct(Version $version, $sid) {
@@ -46,6 +47,16 @@ class CommandContext extends InstanceContext {
         );
 
         return new CommandInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Deletes the CommandInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**

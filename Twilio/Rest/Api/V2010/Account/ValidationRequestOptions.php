@@ -14,17 +14,15 @@ use Twilio\Values;
 
 abstract class ValidationRequestOptions {
     /**
-     * @param string $friendlyName A human readable description for the new caller
-     *                             ID with maximum length 64 characters.
-     * @param integer $callDelay The number of seconds, between 0 and 60, to delay
-     *                           before initiating the verification call.
-     * @param string $extension Digits to dial after connecting the verification
-     *                          call.
-     * @param string $statusCallback A URL that Twilio will request when the
-     *                               verification call ends to notify your app if
-     *                               the verification process was successful or not.
-     * @param string $statusCallbackMethod The HTTP method Twilio should use when
-     *                                     requesting the above URL.
+     * @param string $friendlyName A string to describe the resource
+     * @param integer $callDelay The number of seconds to delay before initiating
+     *                           the verification call
+     * @param string $extension The digits to dial after connecting the
+     *                          verification call
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
+     * @param string $statusCallbackMethod The HTTP method we should use to call
+     *                                     status_callback
      * @return CreateValidationRequestOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $callDelay = Values::NONE, $extension = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
@@ -34,17 +32,15 @@ abstract class ValidationRequestOptions {
 
 class CreateValidationRequestOptions extends Options {
     /**
-     * @param string $friendlyName A human readable description for the new caller
-     *                             ID with maximum length 64 characters.
-     * @param integer $callDelay The number of seconds, between 0 and 60, to delay
-     *                           before initiating the verification call.
-     * @param string $extension Digits to dial after connecting the verification
-     *                          call.
-     * @param string $statusCallback A URL that Twilio will request when the
-     *                               verification call ends to notify your app if
-     *                               the verification process was successful or not.
-     * @param string $statusCallbackMethod The HTTP method Twilio should use when
-     *                                     requesting the above URL.
+     * @param string $friendlyName A string to describe the resource
+     * @param integer $callDelay The number of seconds to delay before initiating
+     *                           the verification call
+     * @param string $extension The digits to dial after connecting the
+     *                          verification call
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
+     * @param string $statusCallbackMethod The HTTP method we should use to call
+     *                                     status_callback
      */
     public function __construct($friendlyName = Values::NONE, $callDelay = Values::NONE, $extension = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -55,10 +51,9 @@ class CreateValidationRequestOptions extends Options {
     }
 
     /**
-     * A human readable description for the new caller ID with maximum length 64 characters. Defaults to a nicely formatted version of the number.
+     * A descriptive string that you create to describe the new caller ID resource. It can be up to 64 characters long. The default value is a formatted version of the phone number.
      * 
-     * @param string $friendlyName A human readable description for the new caller
-     *                             ID with maximum length 64 characters.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -67,10 +62,10 @@ class CreateValidationRequestOptions extends Options {
     }
 
     /**
-     * The number of seconds, between 0 and 60, to delay before initiating the verification call. Defaults to 0.
+     * The number of seconds to delay before initiating the verification call. Can be an integer between `0` and `60`, inclusive. The default is `0`.
      * 
-     * @param integer $callDelay The number of seconds, between 0 and 60, to delay
-     *                           before initiating the verification call.
+     * @param integer $callDelay The number of seconds to delay before initiating
+     *                           the verification call
      * @return $this Fluent Builder
      */
     public function setCallDelay($callDelay) {
@@ -79,10 +74,10 @@ class CreateValidationRequestOptions extends Options {
     }
 
     /**
-     * Digits to dial after connecting the verification call.
+     * The digits to dial after connecting the verification call.
      * 
-     * @param string $extension Digits to dial after connecting the verification
-     *                          call.
+     * @param string $extension The digits to dial after connecting the
+     *                          verification call
      * @return $this Fluent Builder
      */
     public function setExtension($extension) {
@@ -91,11 +86,10 @@ class CreateValidationRequestOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will request when the verification call ends to notify your app if the verification process was successful or not. See [StatusCallback parameter](https://www.twilio.com/docs/api/voice/outgoing-caller-ids#statuscallback-parameter) below.
+     * The URL we should call using the `status_callback_method` to send status information about the verification process to your application.
      * 
-     * @param string $statusCallback A URL that Twilio will request when the
-     *                               verification call ends to notify your app if
-     *                               the verification process was successful or not.
+     * @param string $statusCallback The URL we should call to send status
+     *                               information to your application
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -104,10 +98,10 @@ class CreateValidationRequestOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio should use when requesting the above URL. Defaults to POST.
+     * The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`, and the default is `POST`.
      * 
-     * @param string $statusCallbackMethod The HTTP method Twilio should use when
-     *                                     requesting the above URL.
+     * @param string $statusCallbackMethod The HTTP method we should use to call
+     *                                     status_callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {

@@ -35,9 +35,10 @@ class AddOnResultInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
-     * @param string $sid Fetch by unique result Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource belongs
+     * @param string $sid The unique string that identifies the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $sid = null) {

@@ -102,7 +102,7 @@ class Authy extends Domain {
     }
 
     /**
-     * @param string $formType The Form Type of this Form
+     * @param string $formType The Type of this Form
      * @return \Twilio\Rest\Authy\V1\FormContext 
      */
     protected function contextForms($formType) {

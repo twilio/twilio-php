@@ -12,6 +12,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -23,7 +24,9 @@ use Twilio\Version;
  * @property string sid
  * @property string uniqueName
  * @property string workspaceSid
+ * @property boolean channelOptimizedRouting
  * @property string url
+ * @property array links
  */
 class TaskChannelInstance extends InstanceResource {
     /**
@@ -31,8 +34,9 @@ class TaskChannelInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
-     * @param string $sid The sid
+     * @param string $workspaceSid The unique ID of the Workspace that this
+     *                             TaskChannel belongs to.
+     * @param string $sid The unique ID for this TaskChannel.
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelInstance 
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
@@ -47,7 +51,9 @@ class TaskChannelInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
+            'channelOptimizedRouting' => Values::array_get($payload, 'channel_optimized_routing'),
             'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         );
 
         $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], );
@@ -81,6 +87,27 @@ class TaskChannelInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the TaskChannelInstance
+     * 
+     * @param array|Options $options Optional Arguments
+     * @return TaskChannelInstance Updated TaskChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
+    }
+
+    /**
+     * Deletes the TaskChannelInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**

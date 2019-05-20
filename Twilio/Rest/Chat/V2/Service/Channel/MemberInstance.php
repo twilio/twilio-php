@@ -28,6 +28,7 @@ use Twilio\Version;
  * @property integer lastConsumedMessageIndex
  * @property \DateTime lastConsumptionTimestamp
  * @property string url
+ * @property string attributes
  */
 class MemberInstance extends InstanceResource {
     /**
@@ -35,10 +36,10 @@ class MemberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique id of the Service this member belongs
-     *                           to.
-     * @param string $channelSid The unique id of the Channel for this member.
-     * @param string $sid Key that uniquely defines the member to fetch.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $channelSid The unique ID of the Channel for the member
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\Channel\MemberInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
@@ -57,6 +58,7 @@ class MemberInstance extends InstanceResource {
             'lastConsumedMessageIndex' => Values::array_get($payload, 'last_consumed_message_index'),
             'lastConsumptionTimestamp' => Deserialize::dateTime(Values::array_get($payload, 'last_consumption_timestamp')),
             'url' => Values::array_get($payload, 'url'),
+            'attributes' => Values::array_get($payload, 'attributes'),
         );
 
         $this->solution = array(

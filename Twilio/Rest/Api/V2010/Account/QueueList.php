@@ -19,7 +19,7 @@ class QueueList extends ListResource {
      * Construct the QueueList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
+     * @param string $accountSid The SID of the Account that created this resource
      * @return \Twilio\Rest\Api\V2010\Account\QueueList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -120,8 +120,7 @@ class QueueList extends ListResource {
     /**
      * Create a new QueueInstance
      * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             queue.
+     * @param string $friendlyName A string to describe this resource
      * @param array|Options $options Optional Arguments
      * @return QueueInstance Newly created QueueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -144,7 +143,7 @@ class QueueList extends ListResource {
     /**
      * Constructs a QueueContext
      * 
-     * @param string $sid Fetch by unique queue Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
      */
     public function getContext($sid) {

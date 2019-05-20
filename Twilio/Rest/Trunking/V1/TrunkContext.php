@@ -16,6 +16,7 @@ use Twilio\Rest\Trunking\V1\Trunk\CredentialListList;
 use Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList;
 use Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList;
 use Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList;
+use Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -25,22 +26,25 @@ use Twilio\Version;
  * @property \Twilio\Rest\Trunking\V1\Trunk\CredentialListList credentialsLists
  * @property \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList ipAccessControlLists
  * @property \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList phoneNumbers
+ * @property \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList terminatingSipDomains
  * @method \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext originationUrls(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext credentialsLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext ipAccessControlLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext phoneNumbers(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext terminatingSipDomains(string $sid)
  */
 class TrunkContext extends InstanceContext {
     protected $_originationUrls = null;
     protected $_credentialsLists = null;
     protected $_ipAccessControlLists = null;
     protected $_phoneNumbers = null;
+    protected $_terminatingSipDomains = null;
 
     /**
      * Initialize the TrunkContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     public function __construct(Version $version, $sid) {
@@ -160,6 +164,22 @@ class TrunkContext extends InstanceContext {
         }
 
         return $this->_phoneNumbers;
+    }
+
+    /**
+     * Access the terminatingSipDomains
+     * 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList 
+     */
+    protected function getTerminatingSipDomains() {
+        if (!$this->_terminatingSipDomains) {
+            $this->_terminatingSipDomains = new TerminatingSipDomainList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_terminatingSipDomains;
     }
 
     /**

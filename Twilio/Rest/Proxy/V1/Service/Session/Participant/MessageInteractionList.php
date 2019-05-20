@@ -23,9 +23,9 @@ class MessageInteractionList extends ListResource {
      * Construct the MessageInteractionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sessionSid Session Sid.
-     * @param string $participantSid Participant Sid.
+     * @param string $serviceSid The SID of the resource's parent Service
+     * @param string $sessionSid The SID of the resource's parent Session
+     * @param string $participantSid The SID of the Participant resource
      * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList 
      */
     public function __construct(Version $version, $serviceSid, $sessionSid, $participantSid) {
@@ -162,7 +162,7 @@ class MessageInteractionList extends ListResource {
     /**
      * Constructs a MessageInteractionContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext 
      */
     public function getContext($sid) {

@@ -14,8 +14,7 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
-     * @param string $pauseBehavior Whether to record or not during the pause
-     *                              period.
+     * @param string $pauseBehavior Whether to record during a pause
      * @return UpdateRecordingOptions Options builder
      */
     public static function update($pauseBehavior = Values::NONE) {
@@ -23,9 +22,11 @@ abstract class RecordingOptions {
     }
 
     /**
-     * @param string $dateCreatedBefore Filter by date created
-     * @param string $dateCreated Filter by date created
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      * @return ReadRecordingOptions Options builder
      */
     public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
@@ -35,18 +36,16 @@ abstract class RecordingOptions {
 
 class UpdateRecordingOptions extends Options {
     /**
-     * @param string $pauseBehavior Whether to record or not during the pause
-     *                              period.
+     * @param string $pauseBehavior Whether to record during a pause
      */
     public function __construct($pauseBehavior = Values::NONE) {
         $this->options['pauseBehavior'] = $pauseBehavior;
     }
 
     /**
-     * Only applicable when setting Status parameter to `paused`. Possible values: `skip` or `silence`. `skip` will result in no recording at all during the pause period. `silence` will replace the actual audio of the call with silence during the pause period.  Defaults to `silence`
+     * Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
      * 
-     * @param string $pauseBehavior Whether to record or not during the pause
-     *                              period.
+     * @param string $pauseBehavior Whether to record during a pause
      * @return $this Fluent Builder
      */
     public function setPauseBehavior($pauseBehavior) {
@@ -72,9 +71,11 @@ class UpdateRecordingOptions extends Options {
 
 class ReadRecordingOptions extends Options {
     /**
-     * @param string $dateCreatedBefore Filter by date created
-     * @param string $dateCreated Filter by date created
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      */
     public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
@@ -83,9 +84,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreatedBefore Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -94,9 +96,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreated Filter by date created
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -105,9 +107,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted as `YYYY-MM-DD`. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for recordings generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {

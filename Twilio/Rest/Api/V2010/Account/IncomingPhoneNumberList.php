@@ -33,7 +33,7 @@ class IncomingPhoneNumberList extends ListResource {
      * Construct the IncomingPhoneNumberList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -222,7 +222,7 @@ class IncomingPhoneNumberList extends ListResource {
     /**
      * Constructs a IncomingPhoneNumberContext
      * 
-     * @param string $sid Fetch by unique incoming-phone-number Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
      */
     public function getContext($sid) {

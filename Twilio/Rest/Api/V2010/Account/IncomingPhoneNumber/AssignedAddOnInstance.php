@@ -38,9 +38,10 @@ class AssignedAddOnInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The Account id that has installed this Add-on
-     * @param string $resourceSid The Phone Number id that has installed this Add-on
-     * @param string $sid The unique Installed Add-on Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $resourceSid The SID of the Phone Number that installed this
+     *                            Add-on
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $resourceSid, $sid = null) {

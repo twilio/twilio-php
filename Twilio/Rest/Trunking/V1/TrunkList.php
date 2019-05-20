@@ -150,7 +150,7 @@ class TrunkList extends ListResource {
     /**
      * Constructs a TrunkContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     public function getContext($sid) {

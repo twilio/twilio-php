@@ -204,4 +204,15 @@ class Gather extends TwiML {
     public function setDebug($debug) {
         return $this->setAttribute('debug', $debug);
     }
+
+    /**
+     * Add ActionOnEmptyResult attribute.
+     * 
+     * @param bool $actionOnEmptyResult Force webhook to the action URL event if
+     *                                  there is no input
+     * @return static $this.
+     */
+    public function setActionOnEmptyResult($actionOnEmptyResult) {
+        return $this->setAttribute('actionOnEmptyResult', $actionOnEmptyResult);
+    }
 }

@@ -19,8 +19,8 @@ class RoleContext extends InstanceContext {
      * Initialize the RoleContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\RoleContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {
@@ -68,7 +68,7 @@ class RoleContext extends InstanceContext {
     /**
      * Update the RoleInstance
      * 
-     * @param string $permission A permission this role should have.
+     * @param string $permission A permission the role should have
      * @return RoleInstance Updated RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */

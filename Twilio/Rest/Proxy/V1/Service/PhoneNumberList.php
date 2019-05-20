@@ -23,7 +23,8 @@ class PhoneNumberList extends ListResource {
      * Construct the PhoneNumberList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the PhoneNumber resource's parent
+     *                           Service resource
      * @return \Twilio\Rest\Proxy\V1\Service\PhoneNumberList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -150,7 +151,7 @@ class PhoneNumberList extends ListResource {
     /**
      * Constructs a PhoneNumberContext
      * 
-     * @param string $sid A string that uniquely identifies this Phone Number.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext 
      */
     public function getContext($sid) {

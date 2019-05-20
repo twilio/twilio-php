@@ -30,9 +30,9 @@ class UserChannelInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
-     * @param string $userSid A 34 character string that uniquely identifies this
-     *                        resource.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $userSid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V1\Service\User\UserChannelInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid) {

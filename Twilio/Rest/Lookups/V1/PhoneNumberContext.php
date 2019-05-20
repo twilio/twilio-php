@@ -20,7 +20,7 @@ class PhoneNumberContext extends InstanceContext {
      * Initialize the PhoneNumberContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number to fetch in E.164 format
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
      */
     public function __construct(Version $version, $phoneNumber) {

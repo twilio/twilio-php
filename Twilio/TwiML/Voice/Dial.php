@@ -18,7 +18,7 @@ class Dial extends TwiML {
      * @param string $number Phone number to dial
      * @param array $attributes Optional attributes
      */
-    public function __construct($number, $attributes = array()) {
+    public function __construct($number = null, $attributes = array()) {
         parent::__construct('Dial', $number, $attributes);
     }
 

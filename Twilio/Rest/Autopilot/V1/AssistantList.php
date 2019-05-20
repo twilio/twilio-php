@@ -153,7 +153,7 @@ class AssistantList extends ListResource {
     /**
      * Constructs a AssistantContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\AssistantContext 
      */
     public function getContext($sid) {

@@ -85,7 +85,7 @@ class Lookups extends Domain {
     }
 
     /**
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number to fetch in E.164 format
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
      */
     protected function contextPhoneNumbers($phoneNumber) {

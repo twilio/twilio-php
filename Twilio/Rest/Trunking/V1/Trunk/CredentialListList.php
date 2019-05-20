@@ -18,7 +18,8 @@ class CredentialListList extends ListResource {
      * Construct the CredentialListList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $trunkSid The trunk_sid
+     * @param string $trunkSid The SID of the Trunk the credential list in
+     *                         associated with
      * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList 
      */
     public function __construct(Version $version, $trunkSid) {
@@ -34,10 +35,7 @@ class CredentialListList extends ListResource {
      * Create a new CredentialListInstance
      * 
      * @param string $credentialListSid The SID of the Credential List that you
-     *                                  want to associate with this trunk. Once
-     *                                  associated, Twilio will start
-     *                                  authenticating access to the trunk against
-     *                                  this list.
+     *                                  want to associate with the trunk
      * @return CredentialListInstance Newly created CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -143,7 +141,7 @@ class CredentialListList extends ListResource {
     /**
      * Constructs a CredentialListContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext 
      */
     public function getContext($sid) {

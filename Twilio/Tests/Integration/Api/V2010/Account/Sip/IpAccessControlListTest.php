@@ -106,11 +106,11 @@ class IpAccessControlListTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->ipAccessControlLists->create("friendlyName");
+                                     ->ipAccessControlLists->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -140,7 +140,7 @@ class IpAccessControlListTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->ipAccessControlLists->create("friendlyName");
+                                           ->ipAccessControlLists->create("friendly_name");
 
         $this->assertNotNull($actual);
     }
@@ -192,11 +192,11 @@ class IpAccessControlListTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->ipAccessControlLists("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+                                     ->ipAccessControlLists("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -226,7 +226,7 @@ class IpAccessControlListTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->ipAccessControlLists("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+                                           ->ipAccessControlLists("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
 
         $this->assertNotNull($actual);
     }

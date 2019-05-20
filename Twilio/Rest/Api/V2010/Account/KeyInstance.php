@@ -30,7 +30,7 @@ class KeyInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\KeyInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

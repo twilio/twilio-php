@@ -37,7 +37,7 @@ class ServiceContext extends InstanceContext {
      * Initialize the ServiceContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A string that uniquely identifies this Service.
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\ServiceContext 
      */
     public function __construct(Version $version, $sid) {
@@ -95,6 +95,7 @@ class ServiceContext extends InstanceContext {
             'NumberSelectionBehavior' => $options['numberSelectionBehavior'],
             'InterceptCallbackUrl' => $options['interceptCallbackUrl'],
             'OutOfSessionCallbackUrl' => $options['outOfSessionCallbackUrl'],
+            'ChatInstanceSid' => $options['chatInstanceSid'],
         ));
 
         $payload = $this->version->update(

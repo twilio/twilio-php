@@ -14,11 +14,14 @@ use Twilio\Values;
 
 abstract class RecordOptions {
     /**
-     * @param string $category Only include usage of a given category
-     * @param \DateTime $startDate Filter by start date
-     * @param \DateTime $endDate Filter by end date
-     * @param boolean $includeSubaccounts Include usage from the master account and
-     *                                    all subaccounts
+     * @param string $category The usage category of the UsageRecord resources to
+     *                         read
+     * @param \DateTime $startDate Only include usage that has occurred on or after
+     *                             this date
+     * @param \DateTime $endDate Only include usage that occurred on or before this
+     *                           date
+     * @param boolean $includeSubaccounts Whether to include usage from the master
+     *                                    account and all its subaccounts
      * @return ReadRecordOptions Options builder
      */
     public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
@@ -28,11 +31,14 @@ abstract class RecordOptions {
 
 class ReadRecordOptions extends Options {
     /**
-     * @param string $category Only include usage of a given category
-     * @param \DateTime $startDate Filter by start date
-     * @param \DateTime $endDate Filter by end date
-     * @param boolean $includeSubaccounts Include usage from the master account and
-     *                                    all subaccounts
+     * @param string $category The usage category of the UsageRecord resources to
+     *                         read
+     * @param \DateTime $startDate Only include usage that has occurred on or after
+     *                             this date
+     * @param \DateTime $endDate Only include usage that occurred on or before this
+     *                           date
+     * @param boolean $includeSubaccounts Whether to include usage from the master
+     *                                    account and all its subaccounts
      */
     public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
         $this->options['category'] = $category;
@@ -42,9 +48,10 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage of this [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
+     * The [usage category](https://www.twilio.com/docs/api/rest/usage-records#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
      * 
-     * @param string $category Only include usage of a given category
+     * @param string $category The usage category of the UsageRecord resources to
+     *                         read
      * @return $this Fluent Builder
      */
     public function setCategory($category) {
@@ -53,9 +60,10 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date.  Format is YYYY-MM-DD.  All dates are in GMT.  As a convenience, you can also specify offsets to today.  For example, `StartDate=-30days` will make `StartDate` be 30 days before today.
+     * Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
      * 
-     * @param \DateTime $startDate Filter by start date
+     * @param \DateTime $startDate Only include usage that has occurred on or after
+     *                             this date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -64,9 +72,10 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or before this date.  Format is YYYY-MM-DD.  All dates are in GMT.  As a convenience, you can also specify offsets to today.  For example, `EndDate=+30days` will make `EndDate` be 30 days from today.
+     * Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
      * 
-     * @param \DateTime $endDate Filter by end date
+     * @param \DateTime $endDate Only include usage that occurred on or before this
+     *                           date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
@@ -75,10 +84,10 @@ class ReadRecordOptions extends Options {
     }
 
     /**
-     * `true` to include usage from the master account and all subaccounts. `false` to only retrieve usage from the specified account. `IncludeSubaccounts` is `true` by default.
+     * Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
      * 
-     * @param boolean $includeSubaccounts Include usage from the master account and
-     *                                    all subaccounts
+     * @param boolean $includeSubaccounts Whether to include usage from the master
+     *                                    account and all its subaccounts
      * @return $this Fluent Builder
      */
     public function setIncludeSubaccounts($includeSubaccounts) {

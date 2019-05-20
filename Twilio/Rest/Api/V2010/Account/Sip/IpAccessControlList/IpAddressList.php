@@ -19,9 +19,11 @@ class IpAddressList extends ListResource {
      * Construct the IpAddressList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the Account that responsible for
-     *                           this resource.
-     * @param string $ipAccessControlListSid The ip_access_control_list_sid
+     * @param string $accountSid The unique id of the Account that is responsible
+     *                           for this resource.
+     * @param string $ipAccessControlListSid The unique id of the
+     *                                       IpAccessControlList resource that
+     *                                       includes this resource.
      * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList 
      */
     public function __construct(Version $version, $accountSid, $ipAccessControlListSid) {
@@ -125,8 +127,12 @@ class IpAddressList extends ListResource {
     /**
      * Create a new IpAddressInstance
      * 
-     * @param string $friendlyName The friendly_name
-     * @param string $ipAddress The ip_address
+     * @param string $friendlyName A human readable descriptive text for this
+     *                             resource, up to 64 characters long.
+     * @param string $ipAddress An IP address in dotted decimal notation from which
+     *                          you want to accept traffic. Any SIP requests from
+     *                          this IP address will be allowed by Twilio. IPv4
+     *                          only supported today.
      * @param array|Options $options Optional Arguments
      * @return IpAddressInstance Newly created IpAddressInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -158,7 +164,7 @@ class IpAddressList extends ListResource {
     /**
      * Constructs a IpAddressContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A string that identifies the IpAddress resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext 
      */
     public function getContext($sid) {

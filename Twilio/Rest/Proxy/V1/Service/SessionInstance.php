@@ -45,8 +45,8 @@ class SessionInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid A string that uniquely identifies this Session.
+     * @param string $serviceSid The SID of the resource's parent Service
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\SessionInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

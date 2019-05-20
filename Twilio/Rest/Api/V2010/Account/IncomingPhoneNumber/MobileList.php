@@ -20,7 +20,7 @@ class MobileList extends ListResource {
      * Construct the MobileList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -129,7 +129,7 @@ class MobileList extends ListResource {
     /**
      * Create a new MobileInstance
      * 
-     * @param string $phoneNumber The phone number you want to purchase.
+     * @param string $phoneNumber The phone number to purchase in E.164 format
      * @param array|Options $options Optional Arguments
      * @return MobileInstance Newly created MobileInstance
      * @throws TwilioException When an HTTP error occurs.

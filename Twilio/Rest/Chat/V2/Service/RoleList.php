@@ -19,7 +19,8 @@ class RoleList extends ListResource {
      * Construct the RoleList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this role belongs to.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Chat\V2\Service\RoleList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -34,9 +35,9 @@ class RoleList extends ListResource {
     /**
      * Create a new RoleInstance
      * 
-     * @param string $friendlyName The human-readable name of this role.
-     * @param string $type What kind of role this is.
-     * @param string $permission A permission this role should have.
+     * @param string $friendlyName A string to describe the new resource
+     * @param string $type The type of role
+     * @param string $permission A permission the role should have
      * @return RoleInstance Newly created RoleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -146,7 +147,7 @@ class RoleList extends ListResource {
     /**
      * Constructs a RoleContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\RoleContext 
      */
     public function getContext($sid) {

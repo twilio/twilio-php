@@ -29,7 +29,8 @@ class DefaultsInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
      * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsInstance 
      */
     public function __construct(Version $version, array $payload, $assistantSid) {

@@ -18,9 +18,9 @@ class UserChannelList extends ListResource {
      * Construct the UserChannelList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this channel belongs
-     *                           to.
-     * @param string $userSid The unique id of the User this Channel belongs to.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $userSid The SID of the User the User Channel belongs to
      * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelList 
      */
     public function __construct(Version $version, $serviceSid, $userSid) {
@@ -121,7 +121,8 @@ class UserChannelList extends ListResource {
     /**
      * Constructs a UserChannelContext
      * 
-     * @param string $channelSid The unique id of a Channel.
+     * @param string $channelSid The SID of the Channel that has the User Channel
+     *                           to fetch
      * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelContext 
      */
     public function getContext($channelSid) {

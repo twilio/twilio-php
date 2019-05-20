@@ -47,7 +47,7 @@ class DomainInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @param string $sid Fetch by unique Domain Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {

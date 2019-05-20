@@ -120,6 +120,8 @@ class ReservationContext extends InstanceContext {
             'PostWorkActivitySid' => $options['postWorkActivitySid'],
             'SupervisorMode' => $options['supervisorMode'],
             'Supervisor' => $options['supervisor'],
+            'EndConferenceOnCustomerExit' => Serialize::booleanToString($options['endConferenceOnCustomerExit']),
+            'BeepOnCustomerEntrance' => Serialize::booleanToString($options['beepOnCustomerEntrance']),
         ));
 
         $payload = $this->version->update(

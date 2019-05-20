@@ -160,7 +160,8 @@ class CommandList extends ListResource {
     /**
      * Constructs a CommandContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\CommandContext 
      */
     public function getContext($sid) {

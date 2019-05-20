@@ -14,19 +14,17 @@ use Twilio\Values;
 
 abstract class MessageOptions {
     /**
-     * @param string $from The identity of the message's author. Defaults to system
-     *                     if not specified.
-     * @param string $attributes The attributes metadata field you can use to store
-     *                           any data you wish.
-     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
-     *                               Message should be set as being created.
-     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
-     *                               Message should be set as having been last
-     *                               updated.
-     * @param string $lastUpdatedBy Specify the Identity of the User that last
-     *                              updated the Message
-     * @param string $body The message body string.
-     * @param string $mediaSid The Media Sid to be attached to this Message.
+     * @param string $from The identity of the new message's author
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $lastUpdatedBy The Identity of the User who last updated the
+     *                              Message
+     * @param string $body The message to send to the channel
+     * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return CreateMessageOptions Options builder
      */
     public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
@@ -34,8 +32,7 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $order Specifies sorting order for messages list, possible
-     *                      values are: `asc` or `desc`.
+     * @param string $order The sort order of the returned messages
      * @return ReadMessageOptions Options builder
      */
     public static function read($order = Values::NONE) {
@@ -43,17 +40,16 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $body The message body string.
-     * @param string $attributes The attributes metadata field you can use to store
-     *                           any data you wish.
-     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
-     *                               Message should be set as being created.
-     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
-     *                               Message should be set as having been last
-     *                               updated.
-     * @param string $lastUpdatedBy Specify the Identity of the User that last
-     *                              updated the Message
-     * @param string $from The identity of the message's author.
+     * @param string $body The message to send to the channel
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $lastUpdatedBy The Identity of the User who last updated the
+     *                              Message, if applicable
+     * @param string $from The identity of the message's author
      * @return UpdateMessageOptions Options builder
      */
     public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
@@ -63,19 +59,17 @@ abstract class MessageOptions {
 
 class CreateMessageOptions extends Options {
     /**
-     * @param string $from The identity of the message's author. Defaults to system
-     *                     if not specified.
-     * @param string $attributes The attributes metadata field you can use to store
-     *                           any data you wish.
-     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
-     *                               Message should be set as being created.
-     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
-     *                               Message should be set as having been last
-     *                               updated.
-     * @param string $lastUpdatedBy Specify the Identity of the User that last
-     *                              updated the Message
-     * @param string $body The message body string.
-     * @param string $mediaSid The Media Sid to be attached to this Message.
+     * @param string $from The identity of the new message's author
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $lastUpdatedBy The Identity of the User who last updated the
+     *                              Message
+     * @param string $body The message to send to the channel
+     * @param string $mediaSid The Media Sid to be attached to the new Message
      */
     public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $body = Values::NONE, $mediaSid = Values::NONE) {
         $this->options['from'] = $from;
@@ -88,10 +82,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.
+     * The [identity](https://www.twilio.com/docs/chat/identity) of the new message's author. The default value is `system`.
      * 
-     * @param string $from The identity of the message's author. Defaults to system
-     *                     if not specified.
+     * @param string $from The identity of the new message's author
      * @return $this Fluent Builder
      */
     public function setFrom($from) {
@@ -100,10 +93,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * An string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified. **Note** that this will always be null for resources returned via LIST GET operations, but will be present for single GET operations.
+     * A valid JSON string that contains application-specific data.
      * 
-     * @param string $attributes The attributes metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -112,10 +105,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The ISO8601 time specifying the datetime the Message should be set as being created. Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a Chat's history is being recreated from a backup/separate source.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
      * 
-     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
-     *                               Message should be set as being created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -124,11 +117,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The ISO8601 time specifying the datetime the Message should be set as having been last updated. Will be set to the `null` by the Chat service if not specified.  Note that this should only be used in cases where a Chat's history is being recreated from a backup/separate source  and where a Message was previously updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`. Note that this parameter should only be used when a Chat's history is being recreated from a backup/separate source  and where a Message was previously updated.
      * 
-     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
-     *                               Message should be set as having been last
-     *                               updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -137,10 +129,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * Specify the Identity of the User that last updated the Message (if relevant)
+     * The [identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
      * 
-     * @param string $lastUpdatedBy Specify the Identity of the User that last
-     *                              updated the Message
+     * @param string $lastUpdatedBy The Identity of the User who last updated the
+     *                              Message
      * @return $this Fluent Builder
      */
     public function setLastUpdatedBy($lastUpdatedBy) {
@@ -149,9 +141,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * A string message to send to this channel. You can also send structured data by serializing it into a string. May be empty string or `null`, will be set as empty string as a result in this cases.
+     * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
      * 
-     * @param string $body The message body string.
+     * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -160,9 +152,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [Media](https://www.twilio.com/docs/api/chat/rest/media) Sid to be attached to this Message.
+     * The SID of the [Media](https://www.twilio.com/docs/chat/rest/media) to attach to the new Message.
      * 
-     * @param string $mediaSid The Media Sid to be attached to this Message.
+     * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return $this Fluent Builder
      */
     public function setMediaSid($mediaSid) {
@@ -188,18 +180,16 @@ class CreateMessageOptions extends Options {
 
 class ReadMessageOptions extends Options {
     /**
-     * @param string $order Specifies sorting order for messages list, possible
-     *                      values are: `asc` or `desc`.
+     * @param string $order The sort order of the returned messages
      */
     public function __construct($order = Values::NONE) {
         $this->options['order'] = $order;
     }
 
     /**
-     * Specifies sorting order for messages list, possible values are: `asc` or `desc`. If no value is specified, then `asc` is used as the default.
+     * The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.
      * 
-     * @param string $order Specifies sorting order for messages list, possible
-     *                      values are: `asc` or `desc`.
+     * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
     public function setOrder($order) {
@@ -225,17 +215,16 @@ class ReadMessageOptions extends Options {
 
 class UpdateMessageOptions extends Options {
     /**
-     * @param string $body The message body string.
-     * @param string $attributes The attributes metadata field you can use to store
-     *                           any data you wish.
-     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
-     *                               Message should be set as being created.
-     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
-     *                               Message should be set as having been last
-     *                               updated.
-     * @param string $lastUpdatedBy Specify the Identity of the User that last
-     *                              updated the Message
-     * @param string $from The identity of the message's author.
+     * @param string $body The message to send to the channel
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $lastUpdatedBy The Identity of the User who last updated the
+     *                              Message, if applicable
+     * @param string $from The identity of the message's author
      */
     public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
         $this->options['body'] = $body;
@@ -247,9 +236,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The message body string. You can also send structured data by serializing it into a string. May be updated to empty string or `null`, will be set as empty string as a result in this cases.
+     * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
      * 
-     * @param string $body The message body string.
+     * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -258,10 +247,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified. **Note** that this will always be null for resources returned via LIST GET operations, but will be present for single GET operations.
+     * A valid JSON string that contains application-specific data.
      * 
-     * @param string $attributes The attributes metadata field you can use to store
-     *                           any data you wish.
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -270,10 +259,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The ISO8601 time specifying the datetime the Message should be set as being created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
      * 
-     * @param \DateTime $dateCreated The ISO8601 time specifying the datetime the
-     *                               Message should be set as being created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -282,11 +271,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The ISO8601 time specifying the datetime the Message should be set as having been last updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      * 
-     * @param \DateTime $dateUpdated The ISO8601 time specifying the datetime the
-     *                               Message should be set as having been last
-     *                               updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -295,10 +283,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * Specify the Identity of the User that last updated the Message (if relevant)
+     * The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
      * 
-     * @param string $lastUpdatedBy Specify the Identity of the User that last
-     *                              updated the Message
+     * @param string $lastUpdatedBy The Identity of the User who last updated the
+     *                              Message, if applicable
      * @return $this Fluent Builder
      */
     public function setLastUpdatedBy($lastUpdatedBy) {
@@ -307,9 +295,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author.
+     * The [Identity](https://www.twilio.com/docs/chat/identity) of the message's author.
      * 
-     * @param string $from The identity of the message's author.
+     * @param string $from The identity of the message's author
      * @return $this Fluent Builder
      */
     public function setFrom($from) {

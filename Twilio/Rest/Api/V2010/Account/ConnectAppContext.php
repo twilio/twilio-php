@@ -20,8 +20,9 @@ class ConnectAppContext extends InstanceContext {
      * Initialize the ConnectAppContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique connect-app Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
      */
     public function __construct(Version $version, $accountSid, $sid) {
@@ -90,6 +91,16 @@ class ConnectAppContext extends InstanceContext {
             $this->solution['accountSid'],
             $this->solution['sid']
         );
+    }
+
+    /**
+     * Deletes the ConnectAppInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**

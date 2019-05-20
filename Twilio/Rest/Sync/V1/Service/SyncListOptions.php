@@ -18,33 +18,37 @@ use Twilio\Values;
 abstract class SyncListOptions {
     /**
      * @param string $uniqueName Human-readable name for this list
-     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl Time-to-live of this List in seconds, defaults
+     *                               to no expiration.
      * @return CreateSyncListOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
-        return new CreateSyncListOptions($uniqueName, $ttl);
+    public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
+        return new CreateSyncListOptions($uniqueName, $ttl, $collectionTtl);
     }
 
     /**
-     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl Time-to-live of this List in seconds, defaults
+     *                               to no expiration.
      * @return UpdateSyncListOptions Options builder
      */
-    public static function update($ttl = Values::NONE) {
-        return new UpdateSyncListOptions($ttl);
+    public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE) {
+        return new UpdateSyncListOptions($ttl, $collectionTtl);
     }
 }
 
 class CreateSyncListOptions extends Options {
     /**
      * @param string $uniqueName Human-readable name for this list
-     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl Time-to-live of this List in seconds, defaults
+     *                               to no expiration.
      */
-    public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
         $this->options['ttl'] = $ttl;
+        $this->options['collectionTtl'] = $collectionTtl;
     }
 
     /**
@@ -59,14 +63,25 @@ class CreateSyncListOptions extends Options {
     }
 
     /**
-     * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * Alias for collection_ttl. If both are provided, this value is ignored.
      * 
-     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
         $this->options['ttl'] = $ttl;
+        return $this;
+    }
+
+    /**
+     * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * 
+     * @param integer $collectionTtl Time-to-live of this List in seconds, defaults
+     *                               to no expiration.
+     * @return $this Fluent Builder
+     */
+    public function setCollectionTtl($collectionTtl) {
+        $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
 
@@ -88,22 +103,35 @@ class CreateSyncListOptions extends Options {
 
 class UpdateSyncListOptions extends Options {
     /**
-     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
-     *                     expiration.
+     * @param integer $ttl Alias for collection_ttl
+     * @param integer $collectionTtl Time-to-live of this List in seconds, defaults
+     *                               to no expiration.
      */
-    public function __construct($ttl = Values::NONE) {
+    public function __construct($ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
+        $this->options['collectionTtl'] = $collectionTtl;
+    }
+
+    /**
+     * Alias for collection_ttl. If both are provided, this value is ignored.
+     * 
+     * @param integer $ttl Alias for collection_ttl
+     * @return $this Fluent Builder
+     */
+    public function setTtl($ttl) {
+        $this->options['ttl'] = $ttl;
+        return $this;
     }
 
     /**
      * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $ttl Time-to-live of this List in seconds, defaults to no
-     *                     expiration.
+     * @param integer $collectionTtl Time-to-live of this List in seconds, defaults
+     *                               to no expiration.
      * @return $this Fluent Builder
      */
-    public function setTtl($ttl) {
-        $this->options['ttl'] = $ttl;
+    public function setCollectionTtl($collectionTtl) {
+        $this->options['collectionTtl'] = $collectionTtl;
         return $this;
     }
 

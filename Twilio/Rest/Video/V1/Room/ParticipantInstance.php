@@ -33,6 +33,7 @@ use Twilio\Version;
 class ParticipantInstance extends InstanceResource {
     protected $_publishedTracks = null;
     protected $_subscribedTracks = null;
+    protected $_subscribeRules = null;
 
     /**
      * Initialize the ParticipantInstance
@@ -41,7 +42,8 @@ class ParticipantInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $roomSid A system-generated 34-character string that uniquely
      *                        identifies.
-     * @param string $sid The sid
+     * @param string $sid A system-generated 34-character string that uniquely
+     *                    identifies this Participant.
      * @return \Twilio\Rest\Video\V1\Room\ParticipantInstance 
      */
     public function __construct(Version $version, array $payload, $roomSid, $sid = null) {
@@ -122,6 +124,15 @@ class ParticipantInstance extends InstanceResource {
      */
     protected function getSubscribedTracks() {
         return $this->proxy()->subscribedTracks;
+    }
+
+    /**
+     * Access the subscribeRules
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList 
+     */
+    protected function getSubscribeRules() {
+        return $this->proxy()->subscribeRules;
     }
 
     /**

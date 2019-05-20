@@ -21,9 +21,10 @@ class AssignedAddOnExtensionList extends ListResource {
      * Construct the AssignedAddOnExtensionList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The Account id that has installed this Add-on
-     * @param string $resourceSid The Phone Number id that has installed this Add-on
-     * @param string $assignedAddOnSid A string that uniquely identifies the
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $resourceSid The SID of the Phone Number to which the Add-on
+     *                            is assigned
+     * @param string $assignedAddOnSid The SID that uniquely identifies the
      *                                 assigned Add-on installation
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionList 
      */
@@ -132,7 +133,7 @@ class AssignedAddOnExtensionList extends ListResource {
     /**
      * Constructs a AssignedAddOnExtensionContext
      * 
-     * @param string $sid The unique Extension Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext 
      */
     public function getContext($sid) {

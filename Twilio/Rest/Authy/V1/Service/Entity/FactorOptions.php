@@ -17,55 +17,12 @@ use Twilio\Values;
  */
 abstract class FactorOptions {
     /**
-     * @param string $config Factor configuration
-     * @return CreateFactorOptions Options builder
-     */
-    public static function create($config = Values::NONE) {
-        return new CreateFactorOptions($config);
-    }
-
-    /**
      * @param string $authPayload Optional payload to verify the Factor for the
      *                            first time
      * @return UpdateFactorOptions Options builder
      */
     public static function update($authPayload = Values::NONE) {
         return new UpdateFactorOptions($authPayload);
-    }
-}
-
-class CreateFactorOptions extends Options {
-    /**
-     * @param string $config Factor configuration
-     */
-    public function __construct($config = Values::NONE) {
-        $this->options['config'] = $config;
-    }
-
-    /**
-     * Optional configuration for the Factor
-     * 
-     * @param string $config Factor configuration
-     * @return $this Fluent Builder
-     */
-    public function setConfig($config) {
-        $this->options['config'] = $config;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     * 
-     * @return string Machine friendly representation
-     */
-    public function __toString() {
-        $options = array();
-        foreach ($this->options as $key => $value) {
-            if ($value != Values::NONE) {
-                $options[] = "$key=$value";
-            }
-        }
-        return '[Twilio.Authy.V1.CreateFactorOptions ' . implode(' ', $options) . ']';
     }
 }
 

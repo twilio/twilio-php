@@ -18,8 +18,8 @@ class BindingContext extends InstanceContext {
      * Initialize the BindingContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\IpMessaging\V2\Service\BindingContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {

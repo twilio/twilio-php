@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class DefaultsOptions {
     /**
-     * @param array $defaults The defaults
+     * @param array $defaults A JSON string that describes the default task links.
      * @return UpdateDefaultsOptions Options builder
      */
     public static function update($defaults = Values::NONE) {
@@ -27,16 +27,16 @@ abstract class DefaultsOptions {
 
 class UpdateDefaultsOptions extends Options {
     /**
-     * @param array $defaults The defaults
+     * @param array $defaults A JSON string that describes the default task links.
      */
     public function __construct($defaults = Values::NONE) {
         $this->options['defaults'] = $defaults;
     }
 
     /**
-     * The defaults
+     * A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations.
      * 
-     * @param array $defaults The defaults
+     * @param array $defaults A JSON string that describes the default task links.
      * @return $this Fluent Builder
      */
     public function setDefaults($defaults) {

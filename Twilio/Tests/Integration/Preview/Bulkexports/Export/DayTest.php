@@ -20,14 +20,14 @@ class DayTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->bulkExports->exports("resourceType")
+            $this->twilio->preview->bulkExports->exports("resource_type")
                                                ->days->read();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resourceType/Days'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Days'
         ));
     }
 
@@ -56,7 +56,7 @@ class DayTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->bulkExports->exports("resourceType")
+        $actual = $this->twilio->preview->bulkExports->exports("resource_type")
                                                      ->days->read();
 
         $this->assertNotNull($actual);

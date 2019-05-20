@@ -118,6 +118,30 @@ class CompositionTest extends HolodeckTestCase {
         ));
     }
 
+    public function testReadEnqueuedResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "compositions": [],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://video.twilio.com/v1/Compositions?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://video.twilio.com/v1/Compositions?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "compositions"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->video->v1->compositions->read();
+
+        $this->assertNotNull($actual);
+    }
+
     public function testReadEmptyResponse() {
         $this->holodeck->mock(new Response(
             200,
@@ -254,13 +278,17 @@ class CompositionTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->compositions->create();
+            $this->twilio->video->v1->compositions->create("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
+        $values = array('RoomSid' => "RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", );
+
         $this->assertRequest(new Request(
             'post',
-            'https://video.twilio.com/v1/Compositions'
+            'https://video.twilio.com/v1/Compositions',
+            null,
+            $values
         ));
     }
 
@@ -321,7 +349,7 @@ class CompositionTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->compositions->create();
+        $actual = $this->twilio->video->v1->compositions->create("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         $this->assertNotNull($actual);
     }

@@ -14,15 +14,14 @@ use Twilio\Values;
 
 abstract class OriginationUrlOptions {
     /**
-     * @param integer $weight Weight is used to determine the share of load when
-     *                        more than one URI has the same priority.
-     * @param integer $priority Priority ranks the importance of the URI.
-     * @param boolean $enabled A boolean value indicating whether the URL is
-     *                         enabled or disabled.
-     * @param string $friendlyName A human readable descriptive text, up to 64
-     *                             characters long.
+     * @param integer $weight The value that determines the relative load the URI
+     *                        should receive compared to others with the same
+     *                        priority
+     * @param integer $priority The relative importance of the URI
+     * @param boolean $enabled Whether the URL is enabled
+     * @param string $friendlyName A string to describe the resource
      * @param string $sipUrl The SIP address you want Twilio to route your
-     *                       Origination calls to.
+     *                       Origination calls to
      * @return UpdateOriginationUrlOptions Options builder
      */
     public static function update($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE) {
@@ -32,15 +31,14 @@ abstract class OriginationUrlOptions {
 
 class UpdateOriginationUrlOptions extends Options {
     /**
-     * @param integer $weight Weight is used to determine the share of load when
-     *                        more than one URI has the same priority.
-     * @param integer $priority Priority ranks the importance of the URI.
-     * @param boolean $enabled A boolean value indicating whether the URL is
-     *                         enabled or disabled.
-     * @param string $friendlyName A human readable descriptive text, up to 64
-     *                             characters long.
+     * @param integer $weight The value that determines the relative load the URI
+     *                        should receive compared to others with the same
+     *                        priority
+     * @param integer $priority The relative importance of the URI
+     * @param boolean $enabled Whether the URL is enabled
+     * @param string $friendlyName A string to describe the resource
      * @param string $sipUrl The SIP address you want Twilio to route your
-     *                       Origination calls to.
+     *                       Origination calls to
      */
     public function __construct($weight = Values::NONE, $priority = Values::NONE, $enabled = Values::NONE, $friendlyName = Values::NONE, $sipUrl = Values::NONE) {
         $this->options['weight'] = $weight;
@@ -51,10 +49,11 @@ class UpdateOriginationUrlOptions extends Options {
     }
 
     /**
-     * Weight is used to determine the share of load when more than one URI has the same priority. Its values range from 1 to 65535. The higher the value, the more load a URI is given. Defaults to 10.
+     * The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
      * 
-     * @param integer $weight Weight is used to determine the share of load when
-     *                        more than one URI has the same priority.
+     * @param integer $weight The value that determines the relative load the URI
+     *                        should receive compared to others with the same
+     *                        priority
      * @return $this Fluent Builder
      */
     public function setWeight($weight) {
@@ -63,9 +62,9 @@ class UpdateOriginationUrlOptions extends Options {
     }
 
     /**
-     * Priority ranks the importance of the URI. Values range from 0 to 65535, where the lowest number represents the highest importance. Defaults to 10.
+     * The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
      * 
-     * @param integer $priority Priority ranks the importance of the URI.
+     * @param integer $priority The relative importance of the URI
      * @return $this Fluent Builder
      */
     public function setPriority($priority) {
@@ -74,10 +73,9 @@ class UpdateOriginationUrlOptions extends Options {
     }
 
     /**
-     * A boolean value indicating whether the URL is enabled or disabled. Defaults to true.
+     * Whether the URL is enabled. The default is `true`.
      * 
-     * @param boolean $enabled A boolean value indicating whether the URL is
-     *                         enabled or disabled.
+     * @param boolean $enabled Whether the URL is enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -86,10 +84,9 @@ class UpdateOriginationUrlOptions extends Options {
     }
 
     /**
-     * A human readable descriptive text, up to 64 characters long.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A human readable descriptive text, up to 64
-     *                             characters long.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -98,10 +95,10 @@ class UpdateOriginationUrlOptions extends Options {
     }
 
     /**
-     * The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. `sips` is NOT supported
+     * The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema. `sips` is NOT supported.
      * 
      * @param string $sipUrl The SIP address you want Twilio to route your
-     *                       Origination calls to.
+     *                       Origination calls to
      * @return $this Fluent Builder
      */
     public function setSipUrl($sipUrl) {

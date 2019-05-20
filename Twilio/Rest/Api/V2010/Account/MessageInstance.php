@@ -46,8 +46,8 @@ class MessageInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $sid Fetch by unique message Sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\MessageInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
@@ -122,8 +122,7 @@ class MessageInstance extends InstanceResource {
     /**
      * Update the MessageInstance
      * 
-     * @param string $body The text of the message you want to send, limited to
-     *                     1600 characters.
+     * @param string $body The text of the message you want to send
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */

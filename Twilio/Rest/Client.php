@@ -24,27 +24,31 @@ use Twilio\VersionInfo;
  * @property \Twilio\Rest\Autopilot autopilot
  * @property \Twilio\Rest\Chat chat
  * @property \Twilio\Rest\Fax fax
+ * @property \Twilio\Rest\FlexApi flexApi
+ * @property \Twilio\Rest\Insights insights
  * @property \Twilio\Rest\IpMessaging ipMessaging
  * @property \Twilio\Rest\Lookups lookups
+ * @property \Twilio\Rest\Messaging messaging
  * @property \Twilio\Rest\Monitor monitor
  * @property \Twilio\Rest\Notify notify
  * @property \Twilio\Rest\Preview preview
  * @property \Twilio\Rest\Pricing pricing
  * @property \Twilio\Rest\Proxy proxy
+ * @property \Twilio\Rest\Serverless serverless
+ * @property \Twilio\Rest\Studio studio
+ * @property \Twilio\Rest\Sync sync
  * @property \Twilio\Rest\Taskrouter taskrouter
  * @property \Twilio\Rest\Trunking trunking
- * @property \Twilio\Rest\Video video
- * @property \Twilio\Rest\Messaging messaging
- * @property \Twilio\Rest\Wireless wireless
- * @property \Twilio\Rest\Sync sync
- * @property \Twilio\Rest\Studio studio
  * @property \Twilio\Rest\Verify verify
+ * @property \Twilio\Rest\Video video
  * @property \Twilio\Rest\Voice voice
+ * @property \Twilio\Rest\Wireless wireless
  * @property \Twilio\Rest\Api\V2010\AccountInstance account
  * @property \Twilio\Rest\Api\V2010\Account\AddressList addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList applications
  * @property \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList authorizedConnectApps
  * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList availablePhoneNumbers
+ * @property \Twilio\Rest\Api\V2010\Account\BalanceList balance
  * @property \Twilio\Rest\Api\V2010\Account\CallList calls
  * @property \Twilio\Rest\Api\V2010\Account\ConferenceList conferences
  * @property \Twilio\Rest\Api\V2010\Account\ConnectAppList connectApps
@@ -99,22 +103,25 @@ class Client {
     protected $_autopilot = null;
     protected $_chat = null;
     protected $_fax = null;
+    protected $_flexApi = null;
+    protected $_insights = null;
     protected $_ipMessaging = null;
     protected $_lookups = null;
+    protected $_messaging = null;
     protected $_monitor = null;
     protected $_notify = null;
     protected $_preview = null;
     protected $_pricing = null;
     protected $_proxy = null;
+    protected $_serverless = null;
+    protected $_studio = null;
+    protected $_sync = null;
     protected $_taskrouter = null;
     protected $_trunking = null;
-    protected $_video = null;
-    protected $_messaging = null;
-    protected $_wireless = null;
-    protected $_sync = null;
-    protected $_studio = null;
     protected $_verify = null;
+    protected $_video = null;
     protected $_voice = null;
+    protected $_wireless = null;
 
     /**
      * Initializes the Twilio Client
@@ -310,7 +317,7 @@ class Client {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\AddressContext 
      */
     protected function contextAddresses($sid) {
@@ -325,7 +332,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique Application Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
      */
     protected function contextApplications($sid) {
@@ -340,7 +347,7 @@ class Client {
     }
 
     /**
-     * @param string $connectAppSid The connect_app_sid
+     * @param string $connectAppSid The SID of the Connect App to fetch
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext 
      */
     protected function contextAuthorizedConnectApps($connectAppSid) {
@@ -355,11 +362,19 @@ class Client {
     }
 
     /**
-     * @param string $countryCode The country_code
+     * @param string $countryCode The ISO country code of the country to fetch
+     *                            available phone number information about
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext 
      */
     protected function contextAvailablePhoneNumbers($countryCode) {
         return $this->api->v2010->account->availablePhoneNumbers($countryCode);
+    }
+
+    /**
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceList 
+     */
+    protected function getBalance() {
+        return $this->api->v2010->account->balance;
     }
 
     /**
@@ -370,7 +385,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Call Sid that uniquely identifies the Call to fetch
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     protected function contextCalls($sid) {
@@ -385,7 +400,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique conference Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext 
      */
     protected function contextConferences($sid) {
@@ -400,7 +415,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique connect-app Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
      */
     protected function contextConnectApps($sid) {
@@ -415,7 +430,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique incoming-phone-number Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
      */
     protected function contextIncomingPhoneNumbers($sid) {
@@ -430,7 +445,7 @@ class Client {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\KeyContext 
      */
     protected function contextKeys($sid) {
@@ -445,7 +460,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique message Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\MessageContext 
      */
     protected function contextMessages($sid) {
@@ -474,7 +489,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique notification Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\NotificationContext 
      */
     protected function contextNotifications($sid) {
@@ -489,7 +504,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique outgoing-caller-id Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext 
      */
     protected function contextOutgoingCallerIds($sid) {
@@ -504,7 +519,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique queue Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\QueueContext 
      */
     protected function contextQueues($sid) {
@@ -519,7 +534,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique recording SID
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\RecordingContext 
      */
     protected function contextRecordings($sid) {
@@ -556,7 +571,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique short-code Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
      */
     protected function contextShortCodes($sid) {
@@ -578,7 +593,7 @@ class Client {
     }
 
     /**
-     * @param string $sid Fetch by unique transcription SID
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
      */
     protected function contextTranscriptions($sid) {
@@ -648,6 +663,30 @@ class Client {
     }
 
     /**
+     * Access the FlexApi Twilio Domain
+     * 
+     * @return \Twilio\Rest\FlexApi FlexApi Twilio Domain
+     */
+    protected function getFlexApi() {
+        if (!$this->_flexApi) {
+            $this->_flexApi = new FlexApi($this);
+        }
+        return $this->_flexApi;
+    }
+
+    /**
+     * Access the Insights Twilio Domain
+     * 
+     * @return \Twilio\Rest\Insights Insights Twilio Domain
+     */
+    protected function getInsights() {
+        if (!$this->_insights) {
+            $this->_insights = new Insights($this);
+        }
+        return $this->_insights;
+    }
+
+    /**
      * Access the IpMessaging Twilio Domain
      * 
      * @return \Twilio\Rest\IpMessaging IpMessaging Twilio Domain
@@ -669,6 +708,18 @@ class Client {
             $this->_lookups = new Lookups($this);
         }
         return $this->_lookups;
+    }
+
+    /**
+     * Access the Messaging Twilio Domain
+     * 
+     * @return \Twilio\Rest\Messaging Messaging Twilio Domain
+     */
+    protected function getMessaging() {
+        if (!$this->_messaging) {
+            $this->_messaging = new Messaging($this);
+        }
+        return $this->_messaging;
     }
 
     /**
@@ -732,6 +783,42 @@ class Client {
     }
 
     /**
+     * Access the Serverless Twilio Domain
+     * 
+     * @return \Twilio\Rest\Serverless Serverless Twilio Domain
+     */
+    protected function getServerless() {
+        if (!$this->_serverless) {
+            $this->_serverless = new Serverless($this);
+        }
+        return $this->_serverless;
+    }
+
+    /**
+     * Access the Studio Twilio Domain
+     * 
+     * @return \Twilio\Rest\Studio Studio Twilio Domain
+     */
+    protected function getStudio() {
+        if (!$this->_studio) {
+            $this->_studio = new Studio($this);
+        }
+        return $this->_studio;
+    }
+
+    /**
+     * Access the Sync Twilio Domain
+     * 
+     * @return \Twilio\Rest\Sync Sync Twilio Domain
+     */
+    protected function getSync() {
+        if (!$this->_sync) {
+            $this->_sync = new Sync($this);
+        }
+        return $this->_sync;
+    }
+
+    /**
      * Access the Taskrouter Twilio Domain
      * 
      * @return \Twilio\Rest\Taskrouter Taskrouter Twilio Domain
@@ -756,66 +843,6 @@ class Client {
     }
 
     /**
-     * Access the Video Twilio Domain
-     * 
-     * @return \Twilio\Rest\Video Video Twilio Domain
-     */
-    protected function getVideo() {
-        if (!$this->_video) {
-            $this->_video = new Video($this);
-        }
-        return $this->_video;
-    }
-
-    /**
-     * Access the Messaging Twilio Domain
-     * 
-     * @return \Twilio\Rest\Messaging Messaging Twilio Domain
-     */
-    protected function getMessaging() {
-        if (!$this->_messaging) {
-            $this->_messaging = new Messaging($this);
-        }
-        return $this->_messaging;
-    }
-
-    /**
-     * Access the Wireless Twilio Domain
-     * 
-     * @return \Twilio\Rest\Wireless Wireless Twilio Domain
-     */
-    protected function getWireless() {
-        if (!$this->_wireless) {
-            $this->_wireless = new Wireless($this);
-        }
-        return $this->_wireless;
-    }
-
-    /**
-     * Access the Sync Twilio Domain
-     * 
-     * @return \Twilio\Rest\Sync Sync Twilio Domain
-     */
-    protected function getSync() {
-        if (!$this->_sync) {
-            $this->_sync = new Sync($this);
-        }
-        return $this->_sync;
-    }
-
-    /**
-     * Access the Studio Twilio Domain
-     * 
-     * @return \Twilio\Rest\Studio Studio Twilio Domain
-     */
-    protected function getStudio() {
-        if (!$this->_studio) {
-            $this->_studio = new Studio($this);
-        }
-        return $this->_studio;
-    }
-
-    /**
      * Access the Verify Twilio Domain
      * 
      * @return \Twilio\Rest\Verify Verify Twilio Domain
@@ -828,6 +855,18 @@ class Client {
     }
 
     /**
+     * Access the Video Twilio Domain
+     * 
+     * @return \Twilio\Rest\Video Video Twilio Domain
+     */
+    protected function getVideo() {
+        if (!$this->_video) {
+            $this->_video = new Video($this);
+        }
+        return $this->_video;
+    }
+
+    /**
      * Access the Voice Twilio Domain
      * 
      * @return \Twilio\Rest\Voice Voice Twilio Domain
@@ -837,6 +876,18 @@ class Client {
             $this->_voice = new Voice($this);
         }
         return $this->_voice;
+    }
+
+    /**
+     * Access the Wireless Twilio Domain
+     * 
+     * @return \Twilio\Rest\Wireless Wireless Twilio Domain
+     */
+    protected function getWireless() {
+        if (!$this->_wireless) {
+            $this->_wireless = new Wireless($this);
+        }
+        return $this->_wireless;
     }
 
     /**

@@ -19,7 +19,7 @@ class ShortCodeList extends ListResource {
      * Construct the ShortCodeList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created this resource
      * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -126,7 +126,7 @@ class ShortCodeList extends ListResource {
     /**
      * Constructs a ShortCodeContext
      * 
-     * @param string $sid Fetch by unique short-code Sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\ShortCodeContext 
      */
     public function getContext($sid) {

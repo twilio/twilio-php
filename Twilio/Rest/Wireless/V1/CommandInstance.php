@@ -35,7 +35,8 @@ class CommandInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\CommandInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -83,6 +84,16 @@ class CommandInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Deletes the CommandInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**

@@ -23,7 +23,7 @@ class CredentialContext extends InstanceContext {
      * Initialize the CredentialContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Notify\V1\CredentialContext 
      */
     public function __construct(Version $version, $sid) {

@@ -20,7 +20,7 @@ class MessageList extends ListResource {
      * Construct the MessageList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\MessageList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -35,7 +35,7 @@ class MessageList extends ListResource {
     /**
      * Create a new MessageInstance
      * 
-     * @param string $to The phone number to receive the message
+     * @param string $to The destination phone number
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -54,12 +54,10 @@ class MessageList extends ListResource {
             'MaxPrice' => $options['maxPrice'],
             'ProvideFeedback' => Serialize::booleanToString($options['provideFeedback']),
             'ValidityPeriod' => $options['validityPeriod'],
-            'MaxRate' => $options['maxRate'],
             'ForceDelivery' => Serialize::booleanToString($options['forceDelivery']),
-            'ProviderSid' => $options['providerSid'],
-            'ContentRetention' => $options['contentRetention'],
-            'AddressRetention' => $options['addressRetention'],
             'SmartEncoded' => Serialize::booleanToString($options['smartEncoded']),
+            'InteractiveData' => $options['interactiveData'],
+            'ForceOptIn' => Serialize::booleanToString($options['forceOptIn']),
         ));
 
         $payload = $this->version->create(
@@ -170,7 +168,7 @@ class MessageList extends ListResource {
     /**
      * Constructs a MessageContext
      * 
-     * @param string $sid Fetch by unique message Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\MessageContext 
      */
     public function getContext($sid) {

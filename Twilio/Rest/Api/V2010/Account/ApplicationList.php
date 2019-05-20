@@ -20,7 +20,7 @@ class ApplicationList extends ListResource {
      * Construct the ApplicationList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid A string that uniquely identifies this resource
+     * @param string $accountSid The SID of the Account that created the resource
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -35,7 +35,7 @@ class ApplicationList extends ListResource {
     /**
      * Create a new ApplicationInstance
      * 
-     * @param string $friendlyName A human readable description of the application
+     * @param string $friendlyName A string to describe the new resource
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Newly created ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -165,7 +165,7 @@ class ApplicationList extends ListResource {
     /**
      * Constructs a ApplicationContext
      * 
-     * @param string $sid Fetch by unique Application Sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
      */
     public function getContext($sid) {

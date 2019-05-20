@@ -33,10 +33,11 @@ class UserChannelInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique id of the Service this channel belongs
-     *                           to.
-     * @param string $userSid The unique id of the User this Channel belongs to.
-     * @param string $channelSid The unique id of a Channel.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $userSid The SID of the User the User Channel belongs to
+     * @param string $channelSid The SID of the Channel that has the User Channel
+     *                           to fetch
      * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid, $channelSid = null) {
@@ -98,8 +99,8 @@ class UserChannelInstance extends InstanceResource {
     /**
      * Update the UserChannelInstance
      * 
-     * @param string $notificationLevel Push notification level to be assigned to
-     *                                  Channel of the User.
+     * @param string $notificationLevel The push notification level to assign to
+     *                                  the User Channel
      * @return UserChannelInstance Updated UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */

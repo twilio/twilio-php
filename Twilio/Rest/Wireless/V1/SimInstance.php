@@ -25,6 +25,7 @@ use Twilio\Version;
  * @property string iccid
  * @property string eId
  * @property string status
+ * @property string resetStatus
  * @property string commandsCallbackUrl
  * @property string commandsCallbackMethod
  * @property string smsFallbackMethod
@@ -50,7 +51,8 @@ class SimInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\SimInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -66,6 +68,7 @@ class SimInstance extends InstanceResource {
             'iccid' => Values::array_get($payload, 'iccid'),
             'eId' => Values::array_get($payload, 'e_id'),
             'status' => Values::array_get($payload, 'status'),
+            'resetStatus' => Values::array_get($payload, 'reset_status'),
             'commandsCallbackUrl' => Values::array_get($payload, 'commands_callback_url'),
             'commandsCallbackMethod' => Values::array_get($payload, 'commands_callback_method'),
             'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),
@@ -119,6 +122,16 @@ class SimInstance extends InstanceResource {
      */
     public function update($options = array()) {
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Deletes the SimInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**

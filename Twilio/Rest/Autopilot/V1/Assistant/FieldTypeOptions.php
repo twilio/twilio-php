@@ -17,9 +17,7 @@ use Twilio\Values;
  */
 abstract class FieldTypeOptions {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
+     * @param string $friendlyName A string to describe the new resource
      * @return CreateFieldTypeOptions Options builder
      */
     public static function create($friendlyName = Values::NONE) {
@@ -27,12 +25,9 @@ abstract class FieldTypeOptions {
     }
 
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return UpdateFieldTypeOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE) {
@@ -42,20 +37,16 @@ abstract class FieldTypeOptions {
 
 class CreateFieldTypeOptions extends Options {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
+     * @param string $friendlyName A string to describe the new resource
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * A user-provided string that identifies this resource. It is non-unique and can be up to 255 characters long.
+     * A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.
      * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
+     * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -81,12 +72,9 @@ class CreateFieldTypeOptions extends Options {
 
 class UpdateFieldTypeOptions extends Options {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -94,11 +82,9 @@ class UpdateFieldTypeOptions extends Options {
     }
 
     /**
-     * A user-provided string that identifies this resource. It is non-unique and can be up to 255 characters long.
+     * A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.
      * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -107,11 +93,10 @@ class UpdateFieldTypeOptions extends Options {
     }
 
     /**
-     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+     * An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique.
      * 
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {

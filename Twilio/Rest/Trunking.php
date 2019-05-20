@@ -85,7 +85,7 @@ class Trunking extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\TrunkContext 
      */
     protected function contextTrunks($sid) {

@@ -17,11 +17,11 @@ use Twilio\Values;
  */
 abstract class TaskOptions {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param string $friendlyName descriptive string that you create to describe
+     *                             the new resource
+     * @param array $actions The JSON string that specifies the actions that
+     *                       instruct the Assistant on how to perform the task
+     * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return CreateTaskOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
@@ -29,14 +29,12 @@ abstract class TaskOptions {
     }
 
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param string $friendlyName A string to describe the resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param array $actions The JSON string that specifies the actions that
+     *                       instruct the Assistant on how to perform the task
+     * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return UpdateTaskOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
@@ -46,11 +44,11 @@ abstract class TaskOptions {
 
 class CreateTaskOptions extends Options {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param string $friendlyName descriptive string that you create to describe
+     *                             the new resource
+     * @param array $actions The JSON string that specifies the actions that
+     *                       instruct the Assistant on how to perform the task
+     * @param string $actionsUrl The URL from which the Assistant can fetch actions
      */
     public function __construct($friendlyName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -59,11 +57,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * A user-provided string that identifies this resource. It is non-unique and can be up to 255 characters long.
+     * A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.
      * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
+     * @param string $friendlyName descriptive string that you create to describe
+     *                             the new resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -72,9 +69,10 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The actions
+     * The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task. It is optional and not unique.
      * 
-     * @param array $actions The actions
+     * @param array $actions The JSON string that specifies the actions that
+     *                       instruct the Assistant on how to perform the task
      * @return $this Fluent Builder
      */
     public function setActions($actions) {
@@ -83,9 +81,9 @@ class CreateTaskOptions extends Options {
     }
 
     /**
-     * The actions_url
+     * The URL from which the Assistant can fetch actions.
      * 
-     * @param string $actionsUrl The actions_url
+     * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return $this Fluent Builder
      */
     public function setActionsUrl($actionsUrl) {
@@ -111,14 +109,12 @@ class CreateTaskOptions extends Options {
 
 class UpdateTaskOptions extends Options {
     /**
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
-     * @param array $actions The actions
-     * @param string $actionsUrl The actions_url
+     * @param string $friendlyName A string to describe the resource
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param array $actions The JSON string that specifies the actions that
+     *                       instruct the Assistant on how to perform the task
+     * @param string $actionsUrl The URL from which the Assistant can fetch actions
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $actions = Values::NONE, $actionsUrl = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -128,11 +124,9 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * A user-provided string that identifies this resource. It is non-unique and can be up to 255 characters long.
+     * A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.
      * 
-     * @param string $friendlyName A user-provided string that identifies this
-     *                             resource. It is non-unique and can be up to 255
-     *                             characters long.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -141,11 +135,10 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+     * An application-defined string that uniquely identifies the resource. This value must be 64 characters or less in length and be unique. It can be used as an alternative to the `sid` in the URL path to address the resource.
      * 
-     * @param string $uniqueName A user-provided string that uniquely identifies
-     *                           this resource as an alternative to the sid. Unique
-     *                           up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -154,9 +147,10 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The actions
+     * The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task.
      * 
-     * @param array $actions The actions
+     * @param array $actions The JSON string that specifies the actions that
+     *                       instruct the Assistant on how to perform the task
      * @return $this Fluent Builder
      */
     public function setActions($actions) {
@@ -165,9 +159,9 @@ class UpdateTaskOptions extends Options {
     }
 
     /**
-     * The actions_url
+     * The URL from which the Assistant can fetch actions.
      * 
-     * @param string $actionsUrl The actions_url
+     * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return $this Fluent Builder
      */
     public function setActionsUrl($actionsUrl) {

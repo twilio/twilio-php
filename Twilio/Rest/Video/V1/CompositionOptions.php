@@ -18,10 +18,11 @@ use Twilio\Values;
 abstract class CompositionOptions {
     /**
      * @param string $status Only show Compositions with the given status.
-     * @param \DateTime $dateCreatedAfter Only show Compositions that started on or
-     *                                    after this ISO8601 date-time.
-     * @param \DateTime $dateCreatedBefore Only show Compositions that started
-     *                                     before this this ISO8601 date-time.
+     * @param \DateTime $dateCreatedAfter Only show Compositions created on or
+     *                                    after this ISO8601 date-time with
+     *                                    timezone.
+     * @param \DateTime $dateCreatedBefore Only show Compositions created before
+     *                                     this ISO8601 date-time with timezone.
      * @param string $roomSid Only show Compositions with the given Room SID.
      * @return ReadCompositionOptions Options builder
      */
@@ -30,7 +31,6 @@ abstract class CompositionOptions {
     }
 
     /**
-     * @param string $roomSid Twilio Room SID.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition.
@@ -46,18 +46,19 @@ abstract class CompositionOptions {
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      * @return CreateCompositionOptions Options builder
      */
-    public static function create($roomSid = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
-        return new CreateCompositionOptions($roomSid, $videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
+    public static function create($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
+        return new CreateCompositionOptions($videoLayout, $audioSources, $audioSourcesExcluded, $resolution, $format, $statusCallback, $statusCallbackMethod, $trim);
     }
 }
 
 class ReadCompositionOptions extends Options {
     /**
      * @param string $status Only show Compositions with the given status.
-     * @param \DateTime $dateCreatedAfter Only show Compositions that started on or
-     *                                    after this ISO8601 date-time.
-     * @param \DateTime $dateCreatedBefore Only show Compositions that started
-     *                                     before this this ISO8601 date-time.
+     * @param \DateTime $dateCreatedAfter Only show Compositions created on or
+     *                                    after this ISO8601 date-time with
+     *                                    timezone.
+     * @param \DateTime $dateCreatedBefore Only show Compositions created before
+     *                                     this ISO8601 date-time with timezone.
      * @param string $roomSid Only show Compositions with the given Room SID.
      */
     public function __construct($status = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $roomSid = Values::NONE) {
@@ -79,10 +80,11 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
-     * Only show Compositions that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * Only show Compositions created on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
      * 
-     * @param \DateTime $dateCreatedAfter Only show Compositions that started on or
-     *                                    after this ISO8601 date-time.
+     * @param \DateTime $dateCreatedAfter Only show Compositions created on or
+     *                                    after this ISO8601 date-time with
+     *                                    timezone.
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -91,10 +93,10 @@ class ReadCompositionOptions extends Options {
     }
 
     /**
-     * Only show Compositions that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * Only show Compositions created before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
      * 
-     * @param \DateTime $dateCreatedBefore Only show Compositions that started
-     *                                     before this this ISO8601 date-time.
+     * @param \DateTime $dateCreatedBefore Only show Compositions created before
+     *                                     this ISO8601 date-time with timezone.
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -131,7 +133,6 @@ class ReadCompositionOptions extends Options {
 
 class CreateCompositionOptions extends Options {
     /**
-     * @param string $roomSid Twilio Room SID.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition.
@@ -146,8 +147,7 @@ class CreateCompositionOptions extends Options {
      *                                     requesting the above URL.
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      */
-    public function __construct($roomSid = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
-        $this->options['roomSid'] = $roomSid;
+    public function __construct($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
         $this->options['videoLayout'] = $videoLayout;
         $this->options['audioSources'] = $audioSources;
         $this->options['audioSourcesExcluded'] = $audioSourcesExcluded;
@@ -159,18 +159,7 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * Group Room SID owning the media tracks to be used as Composition sources.
-     * 
-     * @param string $roomSid Twilio Room SID.
-     * @return $this Fluent Builder
-     */
-    public function setRoomSid($roomSid) {
-        $this->options['roomSid'] = $roomSid;
-        return $this;
-    }
-
-    /**
-     * A JSON object defining the video layout of the Composition in terms of regions. See the section [Managing Video Layouts](#managing-video-layouts) below for further information.
+     * A JSON object defining the video layout of the Composition in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) below for further information.
      * 
      * @param array $videoLayout The JSON video layout description.
      * @return $this Fluent Builder
@@ -182,6 +171,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include: 
+
     * Zero or more `RecordingTrackSid`
     * Zero or more `MediaTrackSid`
     * Zero or more `ParticipantSid`
@@ -198,6 +188,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * An array of audio sources to exclude from the Composition. Any new Composition shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include: 
+
     * Zero or more `RecordingTrackSid`
     * Zero or more `MediaTrackSid`
     * Zero or more `ParticipantSid`
@@ -213,16 +204,20 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * A string representing the numbers of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: 
+     * A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: 
+
     * `width >= 16 && width <= 1280`
     * `height >= 16 && height <= 1280`
     * `width * height <= 921,600`
+
     Typical values are: 
+
     * HD = `1280x720`
     * PAL = `1024x576`
     * VGA = `640x480`
     * CIF = `320x240`
-    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `640x480`.
+
+    Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.
      * 
      * @param string $resolution Pixel resolution of the composed video.
      * @return $this Fluent Builder
@@ -269,7 +264,7 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Managing Video Layouts](#managing-video-layouts) section. Defaults to `true`.
+     * When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
      * @param boolean $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder

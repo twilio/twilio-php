@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class PublicKeyOptions {
     /**
-     * @param string $friendlyName A human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      * @param string $accountSid The Subaccount this Credential should be
      *                           associated with.
      * @return CreatePublicKeyOptions Options builder
@@ -24,7 +24,7 @@ abstract class PublicKeyOptions {
     }
 
     /**
-     * @param string $friendlyName A human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      * @return UpdatePublicKeyOptions Options builder
      */
     public static function update($friendlyName = Values::NONE) {
@@ -34,7 +34,7 @@ abstract class PublicKeyOptions {
 
 class CreatePublicKeyOptions extends Options {
     /**
-     * @param string $friendlyName A human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      * @param string $accountSid The Subaccount this Credential should be
      *                           associated with.
      */
@@ -44,9 +44,9 @@ class CreatePublicKeyOptions extends Options {
     }
 
     /**
-     * A human readable description of this resource, up to 64 characters.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -55,7 +55,7 @@ class CreatePublicKeyOptions extends Options {
     }
 
     /**
-     * The Subaccount this Credential should be associated with. Needs to be a valid Subaccount of the account issuing the request
+     * The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request
      * 
      * @param string $accountSid The Subaccount this Credential should be
      *                           associated with.
@@ -84,16 +84,16 @@ class CreatePublicKeyOptions extends Options {
 
 class UpdatePublicKeyOptions extends Options {
     /**
-     * @param string $friendlyName A human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * A human readable description of this resource, up to 64 characters.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName A human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

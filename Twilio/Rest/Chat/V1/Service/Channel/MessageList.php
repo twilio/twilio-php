@@ -19,9 +19,10 @@ class MessageList extends ListResource {
      * Construct the MessageList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this message belongs
-     *                           to.
-     * @param string $channelSid The channel_sid
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $channelSid The unique ID of the Channel the Message resource
+     *                           belongs to
      * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageList 
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
@@ -36,7 +37,7 @@ class MessageList extends ListResource {
     /**
      * Create a new MessageInstance
      * 
-     * @param string $body The body
+     * @param string $body The message to send to the channel
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -159,7 +160,7 @@ class MessageList extends ListResource {
     /**
      * Constructs a MessageContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageContext 
      */
     public function getContext($sid) {

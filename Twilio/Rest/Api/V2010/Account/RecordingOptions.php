@@ -14,11 +14,13 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
-     * @param string $dateCreatedBefore Filter by date created
-     * @param string $dateCreated Filter by date created
-     * @param string $dateCreatedAfter Filter by date created
-     * @param string $callSid Filter by call_sid
-     * @param string $conferenceSid The conference_sid
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
+     * @param string $callSid The Call SID of the resources to read
+     * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return ReadRecordingOptions Options builder
      */
     public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $callSid = Values::NONE, $conferenceSid = Values::NONE) {
@@ -28,11 +30,13 @@ abstract class RecordingOptions {
 
 class ReadRecordingOptions extends Options {
     /**
-     * @param string $dateCreatedBefore Filter by date created
-     * @param string $dateCreated Filter by date created
-     * @param string $dateCreatedAfter Filter by date created
-     * @param string $callSid Filter by call_sid
-     * @param string $conferenceSid The conference_sid
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
+     * @param string $callSid The Call SID of the resources to read
+     * @param string $conferenceSid Read by unique Conference SID for the recording
      */
     public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE, $callSid = Values::NONE, $conferenceSid = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
@@ -43,9 +47,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted `YYYY-MM-DD`. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreatedBefore Filter by date created
+     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
+     *                                  read
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -54,9 +59,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted `YYYY-MM-DD`. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreated Filter by date created
+     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -65,9 +70,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings created on the given date. Should be formatted `YYYY-MM-DD`. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
      * 
-     * @param string $dateCreatedAfter Filter by date created
+     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
+     *                                 read
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -76,9 +82,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show recordings made during the call indicated by this call SID
+     * The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to read.
      * 
-     * @param string $callSid Filter by call_sid
+     * @param string $callSid The Call SID of the resources to read
      * @return $this Fluent Builder
      */
     public function setCallSid($callSid) {
@@ -87,9 +93,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The conference_sid
+     * The Conference SID that identifies the conference associated with the recording to read.
      * 
-     * @param string $conferenceSid The conference_sid
+     * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return $this Fluent Builder
      */
     public function setConferenceSid($conferenceSid) {

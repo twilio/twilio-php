@@ -156,17 +156,6 @@ class Pay extends TwiML {
     }
 
     /**
-     * Add CredentialSid attribute.
-     *
-     * @param string $credentialSid SID for API keys to communicate with payment
-     *                              provider
-     * @return static $this.
-     */
-    public function setCredentialSid($credentialSid) {
-        return $this->setAttribute('credentialSid', $credentialSid);
-    }
-
-    /**
      * Add Description attribute.
      *
      * @param string $description Details regarding the payment

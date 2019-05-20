@@ -35,9 +35,8 @@ class OriginationUrlInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $trunkSid The unique ID of the Trunk that owns this
-     *                         Origination URL.
-     * @param string $sid The sid
+     * @param string $trunkSid The SID of the Trunk that owns the Origination URL
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlInstance 
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {

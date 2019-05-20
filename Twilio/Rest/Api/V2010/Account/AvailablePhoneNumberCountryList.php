@@ -123,7 +123,8 @@ class AvailablePhoneNumberCountryList extends ListResource {
     /**
      * Constructs a AvailablePhoneNumberCountryContext
      * 
-     * @param string $countryCode The country_code
+     * @param string $countryCode The ISO country code of the country to fetch
+     *                            available phone number information about
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext 
      */
     public function getContext($countryCode) {

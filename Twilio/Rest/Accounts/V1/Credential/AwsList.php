@@ -119,7 +119,9 @@ class AwsList extends ListResource {
     /**
      * Create a new AwsInstance
      * 
-     * @param string $credentials The credentials
+     * @param string $credentials A string that contains the AWS access credentials
+     *                            in the format
+     *                            <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
      * @param array|Options $options Optional Arguments
      * @return AwsInstance Newly created AwsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -146,7 +148,7 @@ class AwsList extends ListResource {
     /**
      * Constructs a AwsContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Accounts\V1\Credential\AwsContext 
      */
     public function getContext($sid) {

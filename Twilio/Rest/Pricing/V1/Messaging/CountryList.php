@@ -118,7 +118,7 @@ class CountryList extends ListResource {
     /**
      * Constructs a CountryContext
      * 
-     * @param string $isoCountry The iso_country
+     * @param string $isoCountry The ISO country code
      * @return \Twilio\Rest\Pricing\V1\Messaging\CountryContext 
      */
     public function getContext($isoCountry) {

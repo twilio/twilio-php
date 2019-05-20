@@ -20,9 +20,8 @@ class ParticipantList extends ListResource {
      * Construct the ParticipantList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $conferenceSid A string that uniquely identifies this
-     *                              conference
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $conferenceSid The SID of the conference the participant is in
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList 
      */
     public function __construct(Version $version, $accountSid, $conferenceSid) {
@@ -37,9 +36,9 @@ class ParticipantList extends ListResource {
     /**
      * Create a new ParticipantInstance
      * 
-     * @param string $from The `from` phone number used to invite a participant.
+     * @param string $from The `from` phone number used to invite a participant
      * @param string $to The number, client id, or sip address of the new
-     *                   participant.
+     *                   participant
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Newly created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -78,6 +77,8 @@ class ParticipantList extends ListResource {
             'ConferenceRecordingStatusCallbackMethod' => $options['conferenceRecordingStatusCallbackMethod'],
             'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
             'ConferenceRecordingStatusCallbackEvent' => Serialize::map($options['conferenceRecordingStatusCallbackEvent'], function($e) { return $e; }),
+            'Coaching' => Serialize::booleanToString($options['coaching']),
+            'CallSidToCoach' => $options['callSidToCoach'],
         ));
 
         $payload = $this->version->create(
@@ -157,6 +158,7 @@ class ParticipantList extends ListResource {
         $params = Values::of(array(
             'Muted' => Serialize::booleanToString($options['muted']),
             'Hold' => Serialize::booleanToString($options['hold']),
+            'Coaching' => Serialize::booleanToString($options['coaching']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -190,7 +192,7 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      * 
-     * @param string $callSid Fetch by unique participant Call SID
+     * @param string $callSid The Call SID of the resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
      */
     public function getContext($callSid) {

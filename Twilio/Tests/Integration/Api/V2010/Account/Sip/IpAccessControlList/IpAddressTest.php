@@ -104,11 +104,11 @@ class IpAddressTest extends HolodeckTestCase {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
                                      ->ipAccessControlLists("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->ipAddresses->create("friendlyName", "ipAddress");
+                                     ->ipAddresses->create("friendly_name", "ip_address");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", 'IpAddress' => "ipAddress", );
+        $values = array('FriendlyName' => "friendly_name", 'IpAddress' => "ip_address", );
 
         $this->assertRequest(new Request(
             'post',
@@ -139,7 +139,7 @@ class IpAddressTest extends HolodeckTestCase {
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
                                            ->ipAccessControlLists("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->ipAddresses->create("friendlyName", "ipAddress");
+                                           ->ipAddresses->create("friendly_name", "ip_address");
 
         $this->assertNotNull($actual);
     }

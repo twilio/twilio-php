@@ -32,7 +32,7 @@ class FormList extends ListResource {
     /**
      * Constructs a FormContext
      * 
-     * @param string $formType The Form Type of this Form
+     * @param string $formType The Type of this Form
      * @return \Twilio\Rest\Authy\V1\FormContext 
      */
     public function getContext($formType) {

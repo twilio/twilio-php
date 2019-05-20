@@ -34,8 +34,8 @@ class SessionContext extends InstanceContext {
      * Initialize the SessionContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sid A string that uniquely identifies this Session.
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Proxy\V1\Service\SessionContext 
      */
     public function __construct(Version $version, $serviceSid, $sid) {

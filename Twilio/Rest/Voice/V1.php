@@ -11,14 +11,14 @@ namespace Twilio\Rest\Voice;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Voice\V1\VoicePermissionList;
+use Twilio\Rest\Voice\V1\DialingPermissionsList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Voice\V1\VoicePermissionList voicePermissions
+ * @property \Twilio\Rest\Voice\V1\DialingPermissionsList dialingPermissions
  */
 class V1 extends Version {
-    protected $_voicePermissions = null;
+    protected $_dialingPermissions = null;
 
     /**
      * Construct the V1 version of Voice
@@ -32,13 +32,13 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Voice\V1\VoicePermissionList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList 
      */
-    protected function getVoicePermissions() {
-        if (!$this->_voicePermissions) {
-            $this->_voicePermissions = new VoicePermissionList($this);
+    protected function getDialingPermissions() {
+        if (!$this->_dialingPermissions) {
+            $this->_dialingPermissions = new DialingPermissionsList($this);
         }
-        return $this->_voicePermissions;
+        return $this->_dialingPermissions;
     }
 
     /**

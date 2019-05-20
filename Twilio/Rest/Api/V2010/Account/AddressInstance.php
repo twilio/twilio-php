@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string uri
  * @property boolean emergencyEnabled
  * @property boolean validated
+ * @property boolean verified
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;
@@ -40,9 +41,9 @@ class AddressInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique id of the Account responsible for this
-     *                           address.
-     * @param string $sid The sid
+     * @param string $accountSid The SID of the Account that is responsible for the
+     *                           resource
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\AddressInstance 
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
@@ -64,6 +65,7 @@ class AddressInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
             'emergencyEnabled' => Values::array_get($payload, 'emergency_enabled'),
             'validated' => Values::array_get($payload, 'validated'),
+            'verified' => Values::array_get($payload, 'verified'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );

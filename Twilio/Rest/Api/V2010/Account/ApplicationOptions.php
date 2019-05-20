@@ -14,23 +14,27 @@ use Twilio\Values;
 
 abstract class ApplicationOptions {
     /**
-     * @param string $apiVersion The API version to use
-     * @param string $voiceUrl URL Twilio will make requests to when relieving a
-     *                         call
-     * @param string $voiceMethod HTTP method to use with the URL
-     * @param string $voiceFallbackUrl Fallback URL
-     * @param string $voiceFallbackMethod HTTP method to use with the fallback url
-     * @param string $statusCallback URL to hit with status updates
-     * @param string $statusCallbackMethod HTTP method to use with the status
-     *                                     callback
-     * @param boolean $voiceCallerIdLookup True or False
-     * @param string $smsUrl URL Twilio will request when receiving an SMS
-     * @param string $smsMethod HTTP method to use with sms_url
-     * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
-     * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
-     * @param string $smsStatusCallback URL Twilio with request with status updates
-     * @param string $messageStatusCallback URL to make requests to with status
-     *                                      updates
+     * @param string $apiVersion The API version to use to start a new TwiML session
+     * @param string $voiceUrl The URL to call when the phone number receives a call
+     * @param string $voiceMethod The HTTP method to use with the voice_url
+     * @param string $voiceFallbackUrl The URL to call when a TwiML error occurs
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
+     * @param string $statusCallback The URL to send status information to your
+     *                               application
+     * @param string $statusCallbackMethod The HTTP method to use to call
+     *                                     status_callback
+     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param string $smsUrl The URL to call when the phone number receives an
+     *                       incoming SMS message
+     * @param string $smsMethod The HTTP method to use with sms_url
+     * @param string $smsFallbackUrl The URL to call when an error occurs while
+     *                               retrieving or executing the TwiML
+     * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
+     * @param string $smsStatusCallback The URL to send status information to your
+     *                                  application
+     * @param string $messageStatusCallback The URL to send message status
+     *                                      information to your application
      * @return CreateApplicationOptions Options builder
      */
     public static function create($apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE) {
@@ -38,7 +42,8 @@ abstract class ApplicationOptions {
     }
 
     /**
-     * @param string $friendlyName Filter by friendly name
+     * @param string $friendlyName The string that identifies the Application
+     *                             resources to read
      * @return ReadApplicationOptions Options builder
      */
     public static function read($friendlyName = Values::NONE) {
@@ -46,24 +51,28 @@ abstract class ApplicationOptions {
     }
 
     /**
-     * @param string $friendlyName Human readable description of this resource
-     * @param string $apiVersion The API version to use
-     * @param string $voiceUrl URL Twilio will make requests to when relieving a
-     *                         call
-     * @param string $voiceMethod HTTP method to use with the URL
-     * @param string $voiceFallbackUrl Fallback URL
-     * @param string $voiceFallbackMethod HTTP method to use with the fallback url
-     * @param string $statusCallback URL to hit with status updates
-     * @param string $statusCallbackMethod HTTP method to use with the status
-     *                                     callback
-     * @param boolean $voiceCallerIdLookup True or False
-     * @param string $smsUrl URL Twilio will request when receiving an SMS
-     * @param string $smsMethod HTTP method to use with sms_url
-     * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
-     * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
-     * @param string $smsStatusCallback URL Twilio with request with status updates
-     * @param string $messageStatusCallback URL to make requests to with status
-     *                                      updates
+     * @param string $friendlyName A string to describe the resource
+     * @param string $apiVersion The API version to use to start a new TwiML session
+     * @param string $voiceUrl The URL to call when the phone number receives a call
+     * @param string $voiceMethod The HTTP method to use with the voice_url
+     * @param string $voiceFallbackUrl The URL to call when a TwiML error occurs
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
+     * @param string $statusCallback The URL to send status information to your
+     *                               application
+     * @param string $statusCallbackMethod The HTTP method to use to call
+     *                                     status_callback
+     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param string $smsUrl The URL to call when the phone number receives an
+     *                       incoming SMS message
+     * @param string $smsMethod The HTTP method to use with sms_url
+     * @param string $smsFallbackUrl The URL to call when an error occurs while
+     *                               retrieving or executing the TwiML
+     * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
+     * @param string $smsStatusCallback The URL to send status information to your
+     *                                  application
+     * @param string $messageStatusCallback The URL to send message status
+     *                                      information to your application
      * @return UpdateApplicationOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE) {
@@ -73,23 +82,27 @@ abstract class ApplicationOptions {
 
 class CreateApplicationOptions extends Options {
     /**
-     * @param string $apiVersion The API version to use
-     * @param string $voiceUrl URL Twilio will make requests to when relieving a
-     *                         call
-     * @param string $voiceMethod HTTP method to use with the URL
-     * @param string $voiceFallbackUrl Fallback URL
-     * @param string $voiceFallbackMethod HTTP method to use with the fallback url
-     * @param string $statusCallback URL to hit with status updates
-     * @param string $statusCallbackMethod HTTP method to use with the status
-     *                                     callback
-     * @param boolean $voiceCallerIdLookup True or False
-     * @param string $smsUrl URL Twilio will request when receiving an SMS
-     * @param string $smsMethod HTTP method to use with sms_url
-     * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
-     * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
-     * @param string $smsStatusCallback URL Twilio with request with status updates
-     * @param string $messageStatusCallback URL to make requests to with status
-     *                                      updates
+     * @param string $apiVersion The API version to use to start a new TwiML session
+     * @param string $voiceUrl The URL to call when the phone number receives a call
+     * @param string $voiceMethod The HTTP method to use with the voice_url
+     * @param string $voiceFallbackUrl The URL to call when a TwiML error occurs
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
+     * @param string $statusCallback The URL to send status information to your
+     *                               application
+     * @param string $statusCallbackMethod The HTTP method to use to call
+     *                                     status_callback
+     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param string $smsUrl The URL to call when the phone number receives an
+     *                       incoming SMS message
+     * @param string $smsMethod The HTTP method to use with sms_url
+     * @param string $smsFallbackUrl The URL to call when an error occurs while
+     *                               retrieving or executing the TwiML
+     * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
+     * @param string $smsStatusCallback The URL to send status information to your
+     *                                  application
+     * @param string $messageStatusCallback The URL to send message status
+     *                                      information to your application
      */
     public function __construct($apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE) {
         $this->options['apiVersion'] = $apiVersion;
@@ -109,9 +122,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Requests to this application's URLs will start a new TwiML session with this API version. Either `2010-04-01` or `2008-08-01`. Defaults to your account's default API version.
+     * The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version.
      * 
-     * @param string $apiVersion The API version to use
+     * @param string $apiVersion The API version to use to start a new TwiML session
      * @return $this Fluent Builder
      */
     public function setApiVersion($apiVersion) {
@@ -120,10 +133,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio should request when somebody dials a phone number assigned to this application.
+     * The URL we should call when the phone number assigned to this application receives a call.
      * 
-     * @param string $voiceUrl URL Twilio will make requests to when relieving a
-     *                         call
+     * @param string $voiceUrl The URL to call when the phone number receives a call
      * @return $this Fluent Builder
      */
     public function setVoiceUrl($voiceUrl) {
@@ -132,9 +144,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method that should be used to request the `VoiceUrl`. Must be either `GET` or `POST`. Defaults to `POST`.
+     * The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceMethod HTTP method to use with the URL
+     * @param string $voiceMethod The HTTP method to use with the voice_url
      * @return $this Fluent Builder
      */
     public function setVoiceMethod($voiceMethod) {
@@ -143,9 +155,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `Url`.
+     * The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
      * 
-     * @param string $voiceFallbackUrl Fallback URL
+     * @param string $voiceFallbackUrl The URL to call when a TwiML error occurs
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackUrl($voiceFallbackUrl) {
@@ -154,9 +166,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method that should be used to request the `VoiceFallbackUrl`. Either `GET` or `POST`. Defaults to `POST`.
+     * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceFallbackMethod HTTP method to use with the fallback url
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackMethod($voiceFallbackMethod) {
@@ -165,9 +178,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+     * The URL we should call using the `status_callback_method` to send status information to your application.
      * 
-     * @param string $statusCallback URL to hit with status updates
+     * @param string $statusCallback The URL to send status information to your
+     *                               application
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -176,10 +190,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use to make requests to the `StatusCallback` URL. Either `GET` or `POST`. Defaults to `POST`.
+     * The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
      * 
-     * @param string $statusCallbackMethod HTTP method to use with the status
-     *                                     callback
+     * @param string $statusCallbackMethod The HTTP method to use to call
+     *                                     status_callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
@@ -188,9 +202,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Do a lookup of a caller's name from the CNAM database and post it to your app. Either `true` or `false`. Defaults to `false`.
+     * Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
      * 
-     * @param boolean $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
@@ -199,9 +213,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The URL Twilio will request when a phone number assigned to this application receives an incoming SMS message.
+     * The URL we should call when the phone number receives an incoming SMS message.
      * 
-     * @param string $smsUrl URL Twilio will request when receiving an SMS
+     * @param string $smsUrl The URL to call when the phone number receives an
+     *                       incoming SMS message
      * @return $this Fluent Builder
      */
     public function setSmsUrl($smsUrl) {
@@ -210,9 +225,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method that should be used to request the `SmsUrl`. Must be either `GET` or `POST`. Defaults to `POST`.
+     * The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $smsMethod HTTP method to use with sms_url
+     * @param string $smsMethod The HTTP method to use with sms_url
      * @return $this Fluent Builder
      */
     public function setSmsMethod($smsMethod) {
@@ -221,9 +236,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by `SmsUrl`.
+     * The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
      * 
-     * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
+     * @param string $smsFallbackUrl The URL to call when an error occurs while
+     *                               retrieving or executing the TwiML
      * @return $this Fluent Builder
      */
     public function setSmsFallbackUrl($smsFallbackUrl) {
@@ -232,9 +248,9 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method that should be used to request the `SmsFallbackUrl`. Must be either `GET` or `POST`. Defaults to `POST`.
+     * The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
+     * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
      * @return $this Fluent Builder
      */
     public function setSmsFallbackMethod($smsFallbackMethod) {
@@ -243,9 +259,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you specify this application's `Sid` as the `ApplicationSid` on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
+     * The URL we should call using a POST method to send status information about SMS messages sent by the application.
      * 
-     * @param string $smsStatusCallback URL Twilio with request with status updates
+     * @param string $smsStatusCallback The URL to send status information to your
+     *                                  application
      * @return $this Fluent Builder
      */
     public function setSmsStatusCallback($smsStatusCallback) {
@@ -254,10 +271,10 @@ class CreateApplicationOptions extends Options {
     }
 
     /**
-     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid` on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
+     * The URL we should call using a POST method to send message status information to your application.
      * 
-     * @param string $messageStatusCallback URL to make requests to with status
-     *                                      updates
+     * @param string $messageStatusCallback The URL to send message status
+     *                                      information to your application
      * @return $this Fluent Builder
      */
     public function setMessageStatusCallback($messageStatusCallback) {
@@ -283,16 +300,18 @@ class CreateApplicationOptions extends Options {
 
 class ReadApplicationOptions extends Options {
     /**
-     * @param string $friendlyName Filter by friendly name
+     * @param string $friendlyName The string that identifies the Application
+     *                             resources to read
      */
     public function __construct($friendlyName = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
-     * Only return application resources with friendly names that match exactly with this name
+     * The string that identifies the Application resources to read.
      * 
-     * @param string $friendlyName Filter by friendly name
+     * @param string $friendlyName The string that identifies the Application
+     *                             resources to read
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -318,24 +337,28 @@ class ReadApplicationOptions extends Options {
 
 class UpdateApplicationOptions extends Options {
     /**
-     * @param string $friendlyName Human readable description of this resource
-     * @param string $apiVersion The API version to use
-     * @param string $voiceUrl URL Twilio will make requests to when relieving a
-     *                         call
-     * @param string $voiceMethod HTTP method to use with the URL
-     * @param string $voiceFallbackUrl Fallback URL
-     * @param string $voiceFallbackMethod HTTP method to use with the fallback url
-     * @param string $statusCallback URL to hit with status updates
-     * @param string $statusCallbackMethod HTTP method to use with the status
-     *                                     callback
-     * @param boolean $voiceCallerIdLookup True or False
-     * @param string $smsUrl URL Twilio will request when receiving an SMS
-     * @param string $smsMethod HTTP method to use with sms_url
-     * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
-     * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
-     * @param string $smsStatusCallback URL Twilio with request with status updates
-     * @param string $messageStatusCallback URL to make requests to with status
-     *                                      updates
+     * @param string $friendlyName A string to describe the resource
+     * @param string $apiVersion The API version to use to start a new TwiML session
+     * @param string $voiceUrl The URL to call when the phone number receives a call
+     * @param string $voiceMethod The HTTP method to use with the voice_url
+     * @param string $voiceFallbackUrl The URL to call when a TwiML error occurs
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
+     * @param string $statusCallback The URL to send status information to your
+     *                               application
+     * @param string $statusCallbackMethod The HTTP method to use to call
+     *                                     status_callback
+     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param string $smsUrl The URL to call when the phone number receives an
+     *                       incoming SMS message
+     * @param string $smsMethod The HTTP method to use with sms_url
+     * @param string $smsFallbackUrl The URL to call when an error occurs while
+     *                               retrieving or executing the TwiML
+     * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
+     * @param string $smsStatusCallback The URL to send status information to your
+     *                                  application
+     * @param string $messageStatusCallback The URL to send message status
+     *                                      information to your application
      */
     public function __construct($friendlyName = Values::NONE, $apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -356,9 +379,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * A human readable description of the application, with maximum length 64 characters.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * 
-     * @param string $friendlyName Human readable description of this resource
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -367,9 +390,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * Requests to this application's URLs will start a new TwiML session with this API version. Either `2010-04-01` or `2008-08-01`.
+     * The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is your account's default API version.
      * 
-     * @param string $apiVersion The API version to use
+     * @param string $apiVersion The API version to use to start a new TwiML session
      * @return $this Fluent Builder
      */
     public function setApiVersion($apiVersion) {
@@ -378,10 +401,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio should request when somebody dials a phone number assigned to this application.
+     * The URL we should call when the phone number assigned to this application receives a call.
      * 
-     * @param string $voiceUrl URL Twilio will make requests to when relieving a
-     *                         call
+     * @param string $voiceUrl The URL to call when the phone number receives a call
      * @return $this Fluent Builder
      */
     public function setVoiceUrl($voiceUrl) {
@@ -390,9 +412,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceMethod HTTP method to use with the URL
+     * @param string $voiceMethod The HTTP method to use with the voice_url
      * @return $this Fluent Builder
      */
     public function setVoiceMethod($voiceMethod) {
@@ -401,9 +423,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by `VoiceUrl`.
+     * The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
      * 
-     * @param string $voiceFallbackUrl Fallback URL
+     * @param string $voiceFallbackUrl The URL to call when a TwiML error occurs
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackUrl($voiceFallbackUrl) {
@@ -412,9 +434,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when requesting the `VoiceFallbackUrl`. Either `GET` or `POST`.
+     * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $voiceFallbackMethod HTTP method to use with the fallback url
+     * @param string $voiceFallbackMethod The HTTP method to use with
+     *                                    voice_fallback_url
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackMethod($voiceFallbackMethod) {
@@ -423,9 +446,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will request to pass status parameters (such as call ended) to your application.
+     * The URL we should call using the `status_callback_method` to send status information to your application.
      * 
-     * @param string $statusCallback URL to hit with status updates
+     * @param string $statusCallback The URL to send status information to your
+     *                               application
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -434,10 +458,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use to make requests to the `StatusCallback` URL. Either `GET` or `POST`.
+     * The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
      * 
-     * @param string $statusCallbackMethod HTTP method to use with the status
-     *                                     callback
+     * @param string $statusCallbackMethod The HTTP method to use to call
+     *                                     status_callback
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
@@ -446,9 +470,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * Look up the caller's caller-ID name from the CNAM database (additional charges apply). Either `true` or `false`.
+     * Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
      * 
-     * @param boolean $voiceCallerIdLookup True or False
+     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {
@@ -457,9 +481,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL Twilio will request when a phone number assigned to this application receives an incoming SMS message.
+     * The URL we should call when the phone number receives an incoming SMS message.
      * 
-     * @param string $smsUrl URL Twilio will request when receiving an SMS
+     * @param string $smsUrl The URL to call when the phone number receives an
+     *                       incoming SMS message
      * @return $this Fluent Builder
      */
     public function setSmsUrl($smsUrl) {
@@ -468,9 +493,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method Twilio will use when making requests to the `SmsUrl`. Either `GET` or `POST`.
+     * The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $smsMethod HTTP method to use with sms_url
+     * @param string $smsMethod The HTTP method to use with sms_url
      * @return $this Fluent Builder
      */
     public function setSmsMethod($smsMethod) {
@@ -479,9 +504,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by `SmsUrl`.
+     * The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
      * 
-     * @param string $smsFallbackUrl Fallback URL if there's an error parsing TwiML
+     * @param string $smsFallbackUrl The URL to call when an error occurs while
+     *                               retrieving or executing the TwiML
      * @return $this Fluent Builder
      */
     public function setSmsFallbackUrl($smsFallbackUrl) {
@@ -490,9 +516,9 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The HTTP method that should be used to request the `SmsFallbackUrl`. Either `GET` or `POST`.
+     * The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
      * 
-     * @param string $smsFallbackMethod HTTP method to use with sms_fallback_method
+     * @param string $smsFallbackMethod The HTTP method to use with sms_fallback_url
      * @return $this Fluent Builder
      */
     public function setSmsFallbackMethod($smsFallbackMethod) {
@@ -501,9 +527,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * The URL that Twilio will `POST` to when a message is sent via the `/SMS/Messages` endpoint if you specify the `Sid` of this application on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
+     * The URL we should call using a POST method to send status information about SMS messages sent by the application.
      * 
-     * @param string $smsStatusCallback URL Twilio with request with status updates
+     * @param string $smsStatusCallback The URL to send status information to your
+     *                                  application
      * @return $this Fluent Builder
      */
     public function setSmsStatusCallback($smsStatusCallback) {
@@ -512,10 +539,10 @@ class UpdateApplicationOptions extends Options {
     }
 
     /**
-     * Twilio will make a `POST` request to this URL to pass status parameters (such as sent or failed) to your application if you use the `/Messages` endpoint to send the message and specify this application's `Sid` as the `ApplicationSid` on an [outgoing SMS request](https://www.twilio.com/docs/sms/send-messages).
+     * The URL we should call using a POST method to send message status information to your application.
      * 
-     * @param string $messageStatusCallback URL to make requests to with status
-     *                                      updates
+     * @param string $messageStatusCallback The URL to send message status
+     *                                      information to your application
      * @return $this Fluent Builder
      */
     public function setMessageStatusCallback($messageStatusCallback) {

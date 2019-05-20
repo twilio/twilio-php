@@ -23,7 +23,8 @@ class StyleSheetContext extends InstanceContext {
      * Initialize the StyleSheetContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant
+     * @param string $assistantSid The SID of the Assistant with the StyleSheet
+     *                             resource to fetch
      * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetContext 
      */
     public function __construct(Version $version, $assistantSid) {

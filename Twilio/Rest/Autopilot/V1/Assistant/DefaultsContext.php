@@ -23,7 +23,8 @@ class DefaultsContext extends InstanceContext {
      * Initialize the DefaultsContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource to fetch
      * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext 
      */
     public function __construct(Version $version, $assistantSid) {

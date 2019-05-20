@@ -38,13 +38,14 @@ class TrunkInstance extends InstanceResource {
     protected $_credentialsLists = null;
     protected $_ipAccessControlLists = null;
     protected $_phoneNumbers = null;
+    protected $_terminatingSipDomains = null;
 
     /**
      * Initialize the TrunkInstance
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Trunking\V1\TrunkInstance 
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -151,6 +152,15 @@ class TrunkInstance extends InstanceResource {
      */
     protected function getPhoneNumbers() {
         return $this->proxy()->phoneNumbers;
+    }
+
+    /**
+     * Access the terminatingSipDomains
+     * 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList 
+     */
+    protected function getTerminatingSipDomains() {
+        return $this->proxy()->terminatingSipDomains;
     }
 
     /**

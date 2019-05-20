@@ -85,7 +85,7 @@ class Autopilot extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Autopilot\V1\AssistantContext 
      */
     protected function contextAssistants($sid) {

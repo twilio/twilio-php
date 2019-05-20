@@ -21,7 +21,8 @@ class ShortCodeList extends ListResource {
      * Construct the ShortCodeList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The 34 character unique sid of the Service.
+     * @param string $serviceSid The SID of the Service that this resource is
+     *                           associated with
      * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList 
      */
     public function __construct(Version $version, $serviceSid) {
@@ -36,8 +37,7 @@ class ShortCodeList extends ListResource {
     /**
      * Create a new ShortCodeInstance
      * 
-     * @param string $shortCodeSid ShortCodeSid for the Shortcode being added to
-     *                             the Service.
+     * @param string $shortCodeSid SID of the ShortCode being added to the Service.
      * @return ShortCodeInstance Newly created ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -143,7 +143,7 @@ class ShortCodeList extends ListResource {
     /**
      * Constructs a ShortCodeContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeContext 
      */
     public function getContext($sid) {

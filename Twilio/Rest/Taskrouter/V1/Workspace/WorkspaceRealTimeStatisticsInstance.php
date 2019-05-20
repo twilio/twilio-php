@@ -19,6 +19,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property array activityStatistics
  * @property integer longestTaskWaitingAge
+ * @property string longestTaskWaitingSid
  * @property array tasksByPriority
  * @property array tasksByStatus
  * @property integer totalTasks
@@ -43,6 +44,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'activityStatistics' => Values::array_get($payload, 'activity_statistics'),
             'longestTaskWaitingAge' => Values::array_get($payload, 'longest_task_waiting_age'),
+            'longestTaskWaitingSid' => Values::array_get($payload, 'longest_task_waiting_sid'),
             'tasksByPriority' => Values::array_get($payload, 'tasks_by_priority'),
             'tasksByStatus' => Values::array_get($payload, 'tasks_by_status'),
             'totalTasks' => Values::array_get($payload, 'total_tasks'),

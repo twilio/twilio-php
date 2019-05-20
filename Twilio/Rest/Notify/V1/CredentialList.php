@@ -123,7 +123,7 @@ class CredentialList extends ListResource {
     /**
      * Create a new CredentialInstance
      * 
-     * @param string $type Credential type, one of "gcm", "fcm", or "apn"
+     * @param string $type The Credential type
      * @param array|Options $options Optional Arguments
      * @return CredentialInstance Newly created CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -154,7 +154,7 @@ class CredentialList extends ListResource {
     /**
      * Constructs a CredentialContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Notify\V1\CredentialContext 
      */
     public function getContext($sid) {

@@ -21,8 +21,10 @@ class TaskStatisticsContext extends InstanceContext {
      * Initialize the TaskStatisticsContext
      * 
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @param string $taskSid The task_sid
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource to fetch
+     * @param string $taskSid The SID of the Task that is associated with the
+     *                        resource to fetch
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext 
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {

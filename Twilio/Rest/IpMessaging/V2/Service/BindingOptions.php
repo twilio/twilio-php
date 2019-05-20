@@ -14,9 +14,9 @@ use Twilio\Values;
 
 abstract class BindingOptions {
     /**
-     * @param string $bindingType The push technology used for the bindings
-     *                            returned.
-     * @param string $identity The identity
+     * @param string $bindingType The push technology used by the Binding resources
+     *                            to read
+     * @param string $identity The `identity` value of the resources to read
      * @return ReadBindingOptions Options builder
      */
     public static function read($bindingType = Values::NONE, $identity = Values::NONE) {
@@ -26,9 +26,9 @@ abstract class BindingOptions {
 
 class ReadBindingOptions extends Options {
     /**
-     * @param string $bindingType The push technology used for the bindings
-     *                            returned.
-     * @param string $identity The identity
+     * @param string $bindingType The push technology used by the Binding resources
+     *                            to read
+     * @param string $identity The `identity` value of the resources to read
      */
     public function __construct($bindingType = Values::NONE, $identity = Values::NONE) {
         $this->options['bindingType'] = $bindingType;
@@ -36,10 +36,10 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The push technology used for the returned Bindings.  Supported values are apn, gcm and fcm.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more information.
+     * The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more information.
      * 
-     * @param string $bindingType The push technology used for the bindings
-     *                            returned.
+     * @param string $bindingType The push technology used by the Binding resources
+     *                            to read
      * @return $this Fluent Builder
      */
     public function setBindingType($bindingType) {
@@ -48,9 +48,9 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The identity
+     * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
      * 
-     * @param string $identity The identity
+     * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {

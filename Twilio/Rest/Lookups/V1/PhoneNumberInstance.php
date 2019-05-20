@@ -30,7 +30,7 @@ class PhoneNumberInstance extends InstanceResource {
      * 
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number to fetch in E.164 format
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberInstance 
      */
     public function __construct(Version $version, array $payload, $phoneNumber = null) {

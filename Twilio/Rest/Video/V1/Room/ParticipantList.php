@@ -130,7 +130,8 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      * 
-     * @param string $sid The sid
+     * @param string $sid A system-generated 34-character string that uniquely
+     *                    identifies this Participant.
      * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
      */
     public function getContext($sid) {

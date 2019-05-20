@@ -28,8 +28,7 @@ class CallList extends ListResource {
      * Construct the CallList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the Account responsible for
-     *                           creating this Call
+     * @param string $accountSid The SID of the Account that created this resource
      * @return \Twilio\Rest\Api\V2010\Account\CallList 
      */
     public function __construct(Version $version, $accountSid) {
@@ -65,7 +64,6 @@ class CallList extends ListResource {
             'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SendDigits' => $options['sendDigits'],
-            'IfMachine' => $options['ifMachine'],
             'Timeout' => $options['timeout'],
             'Record' => Serialize::booleanToString($options['record']),
             'RecordingChannels' => $options['recordingChannels'],
@@ -78,6 +76,9 @@ class CallList extends ListResource {
             'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
             'Trim' => $options['trim'],
             'CallerId' => $options['callerId'],
+            'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
+            'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
+            'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
         ));
 
         $payload = $this->version->create(
@@ -204,7 +205,7 @@ class CallList extends ListResource {
     /**
      * Constructs a CallContext
      * 
-     * @param string $sid Call Sid that uniquely identifies the Call to fetch
+     * @param string $sid The unique string that identifies this resource
      * @return \Twilio\Rest\Api\V2010\Account\CallContext 
      */
     public function getContext($sid) {

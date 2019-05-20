@@ -20,8 +20,8 @@ class NotificationList extends ListResource {
      * Construct the NotificationList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $callSid The call_sid
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $callSid The SID of the Call the resource is associated with
      * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationList 
      */
     public function __construct(Version $version, $accountSid, $callSid) {
@@ -130,7 +130,7 @@ class NotificationList extends ListResource {
     /**
      * Constructs a NotificationContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationContext 
      */
     public function getContext($sid) {

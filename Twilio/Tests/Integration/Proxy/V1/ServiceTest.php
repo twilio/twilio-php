@@ -37,7 +37,8 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "unique_name": "unique_name",
+                "chat_instance_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "My Service",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",
@@ -103,11 +104,11 @@ class ServiceTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->proxy->v1->services->create("uniqueName");
+            $this->twilio->proxy->v1->services->create("unique_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('UniqueName' => "uniqueName", );
+        $values = array('UniqueName' => "unique_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -124,7 +125,8 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "unique_name": "unique_name",
+                "chat_instance_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "My Service",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",
@@ -143,7 +145,7 @@ class ServiceTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->proxy->v1->services->create("uniqueName");
+        $actual = $this->twilio->proxy->v1->services->create("unique_name");
 
         $this->assertNotNull($actual);
     }
@@ -194,7 +196,8 @@ class ServiceTest extends HolodeckTestCase {
             {
                 "sid": "KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "unique_name": "unique_name",
+                "chat_instance_sid": "ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "unique_name": "My Service",
                 "default_ttl": 3600,
                 "callback_url": "http://www.example.com",
                 "geo_match_level": "country",

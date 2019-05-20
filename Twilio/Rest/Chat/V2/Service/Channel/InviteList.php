@@ -20,9 +20,9 @@ class InviteList extends ListResource {
      * Construct the InviteList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this member belongs
-     *                           to.
-     * @param string $channelSid The unique id of the Channel for this member.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $channelSid The SID of the Channel the new resource belongs to
      * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteList 
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
@@ -37,8 +37,8 @@ class InviteList extends ListResource {
     /**
      * Create a new InviteInstance
      * 
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * @param string $identity The `identity` value that identifies the new
+     *                         resource's User
      * @param array|Options $options Optional Arguments
      * @return InviteInstance Newly created InviteInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -157,7 +157,7 @@ class InviteList extends ListResource {
     /**
      * Constructs a InviteContext
      * 
-     * @param string $sid The sid
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteContext 
      */
     public function getContext($sid) {

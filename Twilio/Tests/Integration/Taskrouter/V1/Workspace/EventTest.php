@@ -48,10 +48,12 @@ class EventTest extends HolodeckTestCase {
                     "worker_name": "JustinWorker",
                     "worker_sid": "WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "worker_time_in_previous_activity": "26",
+                    "worker_time_in_previous_activity_ms": "26123",
                     "workspace_name": "WorkspaceName",
                     "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 },
                 "event_date": "2015-02-07T00:32:41Z",
+                "event_date_ms": 987654321111,
                 "event_type": "worker.activity",
                 "resource_sid": "WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "resource_type": "worker",
@@ -59,6 +61,7 @@ class EventTest extends HolodeckTestCase {
                 "sid": "EVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "source": "twilio",
                 "source_ip_address": "1.2.3.4",
+                "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Events/EVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
@@ -104,10 +107,12 @@ class EventTest extends HolodeckTestCase {
                             "worker_name": "JustinWorker",
                             "worker_sid": "WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                             "worker_time_in_previous_activity": "26",
+                            "worker_time_in_previous_activity_ms": "26123",
                             "workspace_name": "WorkspaceName",
                             "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                         },
                         "event_date": "2015-02-07T00:32:41Z",
+                        "event_date_ms": 987654321111,
                         "event_type": "worker.activity",
                         "resource_sid": "WKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "resource_type": "worker",
@@ -115,6 +120,7 @@ class EventTest extends HolodeckTestCase {
                         "sid": "EVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "source": "twilio",
                         "source_ip_address": "1.2.3.4",
+                        "workspace_sid": "WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "url": "https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Events/EVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],

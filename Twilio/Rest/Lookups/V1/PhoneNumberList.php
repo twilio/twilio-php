@@ -29,7 +29,7 @@ class PhoneNumberList extends ListResource {
     /**
      * Constructs a PhoneNumberContext
      * 
-     * @param string $phoneNumber The phone_number
+     * @param string $phoneNumber The phone number to fetch in E.164 format
      * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
      */
     public function getContext($phoneNumber) {

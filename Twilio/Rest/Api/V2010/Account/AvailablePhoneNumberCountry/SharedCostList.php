@@ -20,9 +20,8 @@ class SharedCostList extends ListResource {
      * Construct the SharedCostList
      * 
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The 34 character string that uniquely identifies
-     *                           your account.
-     * @param string $countryCode The ISO Country code to lookup phone numbers for.
+     * @param string $accountSid The account_sid
+     * @param string $countryCode The ISO-3166-1 country code of the country.
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList 
      */
     public function __construct(Version $version, $accountSid, $countryCode) {
