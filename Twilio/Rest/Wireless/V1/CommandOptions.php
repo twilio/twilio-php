@@ -37,9 +37,9 @@ abstract class CommandOptions {
      *                           Command in the message body, which could be used
      *                           to ensure that the device does not process the
      *                           same Command more than once.
-     * @param boolean $deliveryReceiptRequested A boolean representing whether to
-     *                                          request delivery receipt from the
-     *                                          recipient.
+     * @param bool $deliveryReceiptRequested A boolean representing whether to
+     *                                       request delivery receipt from the
+     *                                       recipient.
      * @return CreateCommandOptions Options builder
      */
     public static function create($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE, $deliveryReceiptRequested = Values::NONE) {
@@ -135,9 +135,9 @@ class CreateCommandOptions extends Options {
      *                           Command in the message body, which could be used
      *                           to ensure that the device does not process the
      *                           same Command more than once.
-     * @param boolean $deliveryReceiptRequested A boolean representing whether to
-     *                                          request delivery receipt from the
-     *                                          recipient.
+     * @param bool $deliveryReceiptRequested A boolean representing whether to
+     *                                       request delivery receipt from the
+     *                                       recipient.
      */
     public function __construct($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE, $deliveryReceiptRequested = Values::NONE) {
         $this->options['sim'] = $sim;
@@ -213,9 +213,9 @@ class CreateCommandOptions extends Options {
     /**
      * A boolean representing whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. Defaults to true.
      * 
-     * @param boolean $deliveryReceiptRequested A boolean representing whether to
-     *                                          request delivery receipt from the
-     *                                          recipient.
+     * @param bool $deliveryReceiptRequested A boolean representing whether to
+     *                                       request delivery receipt from the
+     *                                       recipient.
      * @return $this Fluent Builder
      */
     public function setDeliveryReceiptRequested($deliveryReceiptRequested) {

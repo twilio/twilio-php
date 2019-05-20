@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property string productName
  * @property string uniqueName
  * @property string uri
- * @property boolean enabled
+ * @property bool enabled
  */
 class AssignedAddOnExtensionInstance extends InstanceResource {
     /**

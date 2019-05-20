@@ -22,7 +22,7 @@ use Twilio\Version;
  * @property string command
  * @property string commandMode
  * @property string transport
- * @property boolean deliveryReceiptRequested
+ * @property bool deliveryReceiptRequested
  * @property string status
  * @property string direction
  * @property \DateTime dateCreated

@@ -22,7 +22,7 @@ use Twilio\Version;
  * 
  * @property \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemList syncListItems
  * @property \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList syncListPermissions
- * @method \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext syncListItems(integer $index)
+ * @method \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext syncListItems(int $index)
  * @method \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext syncListPermissions(string $identity)
  */
 class SyncListContext extends InstanceContext {

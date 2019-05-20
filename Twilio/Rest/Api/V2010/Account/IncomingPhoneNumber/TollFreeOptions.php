@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class TollFreeOptions {
     /**
-     * @param boolean $beta Whether to include new phone numbers
+     * @param bool $beta Whether to include new phone numbers
      * @param string $friendlyName A string that identifies the resources to read
      * @param string $phoneNumber The phone numbers of the resources to read
      * @param string $origin Include phone numbers based on their origin. By
@@ -43,7 +43,7 @@ abstract class TollFreeOptions {
      *                                     status_callback
      * @param string $voiceApplicationSid The SID of the application to handle the
      *                                    new phone number
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @param string $voiceFallbackMethod The HTTP method used with
      *                                    voice_fallback_url
      * @param string $voiceFallbackUrl The URL we will call when an error occurs in
@@ -64,7 +64,7 @@ abstract class TollFreeOptions {
 
 class ReadTollFreeOptions extends Options {
     /**
-     * @param boolean $beta Whether to include new phone numbers
+     * @param bool $beta Whether to include new phone numbers
      * @param string $friendlyName A string that identifies the resources to read
      * @param string $phoneNumber The phone numbers of the resources to read
      * @param string $origin Include phone numbers based on their origin. By
@@ -80,7 +80,7 @@ class ReadTollFreeOptions extends Options {
     /**
      * Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
      * 
-     * @param boolean $beta Whether to include new phone numbers
+     * @param bool $beta Whether to include new phone numbers
      * @return $this Fluent Builder
      */
     public function setBeta($beta) {
@@ -157,7 +157,7 @@ class CreateTollFreeOptions extends Options {
      *                                     status_callback
      * @param string $voiceApplicationSid The SID of the application to handle the
      *                                    new phone number
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @param string $voiceFallbackMethod The HTTP method used with
      *                                    voice_fallback_url
      * @param string $voiceFallbackUrl The URL we will call when an error occurs in
@@ -310,7 +310,7 @@ class CreateTollFreeOptions extends Options {
     /**
      * Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
      * 
-     * @param boolean $voiceCallerIdLookup Whether to lookup the caller's name
+     * @param bool $voiceCallerIdLookup Whether to lookup the caller's name
      * @return $this Fluent Builder
      */
     public function setVoiceCallerIdLookup($voiceCallerIdLookup) {

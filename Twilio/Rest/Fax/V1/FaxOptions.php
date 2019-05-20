@@ -36,8 +36,8 @@ abstract class FaxOptions {
      * @param string $from The number the fax was sent from
      * @param string $sipAuthUsername The username for SIP authentication
      * @param string $sipAuthPassword The password for SIP authentication
-     * @param boolean $storeMedia Whether to store a copy of the sent media
-     * @param integer $ttl How long in minutes to try to send the fax
+     * @param bool $storeMedia Whether to store a copy of the sent media
+     * @param int $ttl How long in minutes to try to send the fax
      * @return CreateFaxOptions Options builder
      */
     public static function create($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE, $ttl = Values::NONE) {
@@ -139,8 +139,8 @@ class CreateFaxOptions extends Options {
      * @param string $from The number the fax was sent from
      * @param string $sipAuthUsername The username for SIP authentication
      * @param string $sipAuthPassword The password for SIP authentication
-     * @param boolean $storeMedia Whether to store a copy of the sent media
-     * @param integer $ttl How long in minutes to try to send the fax
+     * @param bool $storeMedia Whether to store a copy of the sent media
+     * @param int $ttl How long in minutes to try to send the fax
      */
     public function __construct($quality = Values::NONE, $statusCallback = Values::NONE, $from = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $storeMedia = Values::NONE, $ttl = Values::NONE) {
         $this->options['quality'] = $quality;
@@ -211,7 +211,7 @@ class CreateFaxOptions extends Options {
     /**
      * Whether to store a copy of the sent media on our servers for later retrieval. Can be: `true` or `false` and the default is `true`.
      * 
-     * @param boolean $storeMedia Whether to store a copy of the sent media
+     * @param bool $storeMedia Whether to store a copy of the sent media
      * @return $this Fluent Builder
      */
     public function setStoreMedia($storeMedia) {
@@ -222,7 +222,7 @@ class CreateFaxOptions extends Options {
     /**
      * How long in minutes from when the fax is initiated that we should try to send the fax.
      * 
-     * @param integer $ttl How long in minutes to try to send the fax
+     * @param int $ttl How long in minutes to try to send the fax
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

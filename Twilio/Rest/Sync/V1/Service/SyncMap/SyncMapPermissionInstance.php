@@ -21,9 +21,9 @@ use Twilio\Version;
  * @property string serviceSid
  * @property string mapSid
  * @property string identity
- * @property boolean read
- * @property boolean write
- * @property boolean manage
+ * @property bool read
+ * @property bool write
+ * @property bool manage
  * @property string url
  */
 class SyncMapPermissionInstance extends InstanceResource {
@@ -102,9 +102,9 @@ class SyncMapPermissionInstance extends InstanceResource {
     /**
      * Update the SyncMapPermissionInstance
      * 
-     * @param boolean $read Read access.
-     * @param boolean $write Write access.
-     * @param boolean $manage Manage access.
+     * @param bool $read Read access.
+     * @param bool $write Write access.
+     * @param bool $manage Manage access.
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */

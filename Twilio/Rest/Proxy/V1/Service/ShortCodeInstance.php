@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string isoCountry
  * @property string capabilities
  * @property string url
- * @property boolean isReserved
+ * @property bool isReserved
  */
 class ShortCodeInstance extends InstanceResource {
     /**

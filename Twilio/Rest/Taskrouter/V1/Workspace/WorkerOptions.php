@@ -46,7 +46,7 @@ abstract class WorkerOptions {
      * @param string $activitySid The activity_sid
      * @param string $attributes The attributes
      * @param string $friendlyName The friendly_name
-     * @param boolean $rejectPendingReservations The reject_pending_reservations
+     * @param bool $rejectPendingReservations The reject_pending_reservations
      * @return UpdateWorkerOptions Options builder
      */
     public static function update($activitySid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE, $rejectPendingReservations = Values::NONE) {
@@ -232,7 +232,7 @@ class UpdateWorkerOptions extends Options {
      * @param string $activitySid The activity_sid
      * @param string $attributes The attributes
      * @param string $friendlyName The friendly_name
-     * @param boolean $rejectPendingReservations The reject_pending_reservations
+     * @param bool $rejectPendingReservations The reject_pending_reservations
      */
     public function __construct($activitySid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE, $rejectPendingReservations = Values::NONE) {
         $this->options['activitySid'] = $activitySid;
@@ -277,7 +277,7 @@ class UpdateWorkerOptions extends Options {
     /**
      * The reject_pending_reservations
      * 
-     * @param boolean $rejectPendingReservations The reject_pending_reservations
+     * @param bool $rejectPendingReservations The reject_pending_reservations
      * @return $this Fluent Builder
      */
     public function setRejectPendingReservations($rejectPendingReservations) {

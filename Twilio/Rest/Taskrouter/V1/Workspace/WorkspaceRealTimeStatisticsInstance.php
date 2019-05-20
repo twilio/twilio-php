@@ -18,12 +18,12 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property array activityStatistics
- * @property integer longestTaskWaitingAge
+ * @property int longestTaskWaitingAge
  * @property string longestTaskWaitingSid
  * @property array tasksByPriority
  * @property array tasksByStatus
- * @property integer totalTasks
- * @property integer totalWorkers
+ * @property int totalTasks
+ * @property int totalWorkers
  * @property string workspaceSid
  * @property string url
  */

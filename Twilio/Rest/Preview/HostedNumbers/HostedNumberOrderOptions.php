@@ -28,8 +28,8 @@ abstract class HostedNumberOrderOptions {
      * @param string $verificationDocumentSid Verification Document Sid
      * @param string $extension Digits to dial after connecting the verification
      *                          call.
-     * @param integer $callDelay The number of seconds, between 0 and 60, to delay
-     *                           before initiating the verification call.
+     * @param int $callDelay The number of seconds, between 0 and 60, to delay
+     *                       before initiating the verification call.
      * @return UpdateHostedNumberOrderOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE, $extension = Values::NONE, $callDelay = Values::NONE) {
@@ -86,8 +86,8 @@ class UpdateHostedNumberOrderOptions extends Options {
      * @param string $verificationDocumentSid Verification Document Sid
      * @param string $extension Digits to dial after connecting the verification
      *                          call.
-     * @param integer $callDelay The number of seconds, between 0 and 60, to delay
-     *                           before initiating the verification call.
+     * @param int $callDelay The number of seconds, between 0 and 60, to delay
+     *                       before initiating the verification call.
      */
     public function __construct($friendlyName = Values::NONE, $uniqueName = Values::NONE, $email = Values::NONE, $ccEmails = Values::NONE, $status = Values::NONE, $verificationCode = Values::NONE, $verificationType = Values::NONE, $verificationDocumentSid = Values::NONE, $extension = Values::NONE, $callDelay = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -206,8 +206,8 @@ class UpdateHostedNumberOrderOptions extends Options {
     /**
      * The number of seconds, between 0 and 60, to delay before initiating the verification call. Defaults to 0.
      * 
-     * @param integer $callDelay The number of seconds, between 0 and 60, to delay
-     *                           before initiating the verification call.
+     * @param int $callDelay The number of seconds, between 0 and 60, to delay
+     *                       before initiating the verification call.
      * @return $this Fluent Builder
      */
     public function setCallDelay($callDelay) {

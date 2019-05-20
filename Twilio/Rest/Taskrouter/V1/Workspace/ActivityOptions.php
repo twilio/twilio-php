@@ -33,9 +33,9 @@ abstract class ActivityOptions {
     }
 
     /**
-     * @param boolean $available Boolean value indicating whether the worker should
-     *                           be eligible to receive a Task when they occupy
-     *                           this Activity.
+     * @param bool $available Boolean value indicating whether the worker should be
+     *                        eligible to receive a Task when they occupy this
+     *                        Activity.
      * @return CreateActivityOptions Options builder
      */
     public static function create($available = Values::NONE) {
@@ -132,9 +132,9 @@ class ReadActivityOptions extends Options {
 
 class CreateActivityOptions extends Options {
     /**
-     * @param boolean $available Boolean value indicating whether the worker should
-     *                           be eligible to receive a Task when they occupy
-     *                           this Activity.
+     * @param bool $available Boolean value indicating whether the worker should be
+     *                        eligible to receive a Task when they occupy this
+     *                        Activity.
      */
     public function __construct($available = Values::NONE) {
         $this->options['available'] = $available;
@@ -143,9 +143,9 @@ class CreateActivityOptions extends Options {
     /**
      * Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity. For example, a call center might have an activity named 'On Call' with an availability set to 'false'. Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false. Defaults to false.
      * 
-     * @param boolean $available Boolean value indicating whether the worker should
-     *                           be eligible to receive a Task when they occupy
-     *                           this Activity.
+     * @param bool $available Boolean value indicating whether the worker should be
+     *                        eligible to receive a Task when they occupy this
+     *                        Activity.
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {

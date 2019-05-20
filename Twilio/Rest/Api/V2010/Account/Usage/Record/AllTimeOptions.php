@@ -20,8 +20,8 @@ abstract class AllTimeOptions {
      *                             this date
      * @param \DateTime $endDate Only include usage that occurred on or before this
      *                           date
-     * @param boolean $includeSubaccounts Whether to include usage from the master
-     *                                    account and all its subaccounts
+     * @param bool $includeSubaccounts Whether to include usage from the master
+     *                                 account and all its subaccounts
      * @return ReadAllTimeOptions Options builder
      */
     public static function read($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
@@ -37,8 +37,8 @@ class ReadAllTimeOptions extends Options {
      *                             this date
      * @param \DateTime $endDate Only include usage that occurred on or before this
      *                           date
-     * @param boolean $includeSubaccounts Whether to include usage from the master
-     *                                    account and all its subaccounts
+     * @param bool $includeSubaccounts Whether to include usage from the master
+     *                                 account and all its subaccounts
      */
     public function __construct($category = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE, $includeSubaccounts = Values::NONE) {
         $this->options['category'] = $category;
@@ -86,8 +86,8 @@ class ReadAllTimeOptions extends Options {
     /**
      * Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
      * 
-     * @param boolean $includeSubaccounts Whether to include usage from the master
-     *                                    account and all its subaccounts
+     * @param bool $includeSubaccounts Whether to include usage from the master
+     *                                 account and all its subaccounts
      * @return $this Fluent Builder
      */
     public function setIncludeSubaccounts($includeSubaccounts) {

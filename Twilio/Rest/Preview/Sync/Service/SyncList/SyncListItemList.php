@@ -157,7 +157,7 @@ class SyncListItemList extends ListResource {
     /**
      * Constructs a SyncListItemContext
      * 
-     * @param integer $index The index
+     * @param int $index The index
      * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext 
      */
     public function getContext($index) {

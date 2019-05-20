@@ -15,8 +15,8 @@ use Twilio\Values;
 abstract class MemberOptions {
     /**
      * @param string $roleSid The SID of the Role to assign to the member
-     * @param integer $lastConsumedMessageIndex The index of the last Message in
-     *                                          the Channel the Member has read
+     * @param int $lastConsumedMessageIndex The index of the last Message in the
+     *                                      Channel the Member has read
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
      *                                            string representing the date-time
      *                                            of the last Message read event
@@ -43,9 +43,8 @@ abstract class MemberOptions {
 
     /**
      * @param string $roleSid The SID of the Role to assign to the member
-     * @param integer $lastConsumedMessageIndex The index of the last consumed
-     *                                          Message for the Channel for the
-     *                                          Member
+     * @param int $lastConsumedMessageIndex The index of the last consumed Message
+     *                                      for the Channel for the Member
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
      *                                            string representing the date-time
      *                                            of the last Message read event
@@ -66,8 +65,8 @@ abstract class MemberOptions {
 class CreateMemberOptions extends Options {
     /**
      * @param string $roleSid The SID of the Role to assign to the member
-     * @param integer $lastConsumedMessageIndex The index of the last Message in
-     *                                          the Channel the Member has read
+     * @param int $lastConsumedMessageIndex The index of the last Message in the
+     *                                      Channel the Member has read
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
      *                                            string representing the date-time
      *                                            of the last Message read event
@@ -102,8 +101,8 @@ class CreateMemberOptions extends Options {
     /**
      * The index of the last [Message](https://www.twilio.com/docs/chat/rest/messages) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read. This parameter should only be used when recreating a Member from a backup/separate source.
      * 
-     * @param integer $lastConsumedMessageIndex The index of the last Message in
-     *                                          the Channel the Member has read
+     * @param int $lastConsumedMessageIndex The index of the last Message in the
+     *                                      Channel the Member has read
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {
@@ -215,9 +214,8 @@ class ReadMemberOptions extends Options {
 class UpdateMemberOptions extends Options {
     /**
      * @param string $roleSid The SID of the Role to assign to the member
-     * @param integer $lastConsumedMessageIndex The index of the last consumed
-     *                                          Message for the Channel for the
-     *                                          Member
+     * @param int $lastConsumedMessageIndex The index of the last consumed Message
+     *                                      for the Channel for the Member
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
      *                                            string representing the date-time
      *                                            of the last Message read event
@@ -252,9 +250,8 @@ class UpdateMemberOptions extends Options {
     /**
      * The index of the last [Message](https://www.twilio.com/docs/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/chat/channels).
      * 
-     * @param integer $lastConsumedMessageIndex The index of the last consumed
-     *                                          Message for the Channel for the
-     *                                          Member
+     * @param int $lastConsumedMessageIndex The index of the last consumed Message
+     *                                      for the Channel for the Member
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {

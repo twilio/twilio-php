@@ -31,9 +31,8 @@ abstract class MemberOptions {
 
     /**
      * @param string $roleSid The SID of the Role to assign to the member
-     * @param integer $lastConsumedMessageIndex The index of the last consumed
-     *                                          Message for the Channel for the
-     *                                          Member
+     * @param int $lastConsumedMessageIndex The index of the last consumed Message
+     *                                      for the Channel for the Member
      * @return UpdateMemberOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
@@ -114,9 +113,8 @@ class ReadMemberOptions extends Options {
 class UpdateMemberOptions extends Options {
     /**
      * @param string $roleSid The SID of the Role to assign to the member
-     * @param integer $lastConsumedMessageIndex The index of the last consumed
-     *                                          Message for the Channel for the
-     *                                          Member
+     * @param int $lastConsumedMessageIndex The index of the last consumed Message
+     *                                      for the Channel for the Member
      */
     public function __construct($roleSid = Values::NONE, $lastConsumedMessageIndex = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -137,9 +135,8 @@ class UpdateMemberOptions extends Options {
     /**
      * The index of the last [Message](https://www.twilio.com/docs/api/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/api/chat/rest/channels).
      * 
-     * @param integer $lastConsumedMessageIndex The index of the last consumed
-     *                                          Message for the Channel for the
-     *                                          Member
+     * @param int $lastConsumedMessageIndex The index of the last consumed Message
+     *                                      for the Channel for the Member
      * @return $this Fluent Builder
      */
     public function setLastConsumedMessageIndex($lastConsumedMessageIndex) {

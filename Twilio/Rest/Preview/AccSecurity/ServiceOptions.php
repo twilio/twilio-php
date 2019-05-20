@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return CreateServiceOptions Options builder
      */
     public static function create($codeLength = Values::NONE) {
@@ -26,7 +26,7 @@ abstract class ServiceOptions {
 
     /**
      * @param string $name Friendly name of the service
-     * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return UpdateServiceOptions Options builder
      */
     public static function update($name = Values::NONE, $codeLength = Values::NONE) {
@@ -36,7 +36,7 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param int $codeLength Length of verification code. Valid values are 4-10
      */
     public function __construct($codeLength = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
@@ -45,7 +45,7 @@ class CreateServiceOptions extends Options {
     /**
      * The length of the verification code to be generated. Must be an integer value between 4-10
      * 
-     * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return $this Fluent Builder
      */
     public function setCodeLength($codeLength) {
@@ -72,7 +72,7 @@ class CreateServiceOptions extends Options {
 class UpdateServiceOptions extends Options {
     /**
      * @param string $name Friendly name of the service
-     * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param int $codeLength Length of verification code. Valid values are 4-10
      */
     public function __construct($name = Values::NONE, $codeLength = Values::NONE) {
         $this->options['name'] = $name;
@@ -93,7 +93,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The length of the verification code to be generated. Must be an integer value between 4-10
      * 
-     * @param integer $codeLength Length of verification code. Valid values are 4-10
+     * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return $this Fluent Builder
      */
     public function setCodeLength($codeLength) {

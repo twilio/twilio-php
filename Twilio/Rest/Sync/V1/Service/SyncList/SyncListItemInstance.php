@@ -19,7 +19,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  * 
- * @property integer index
+ * @property int index
  * @property string accountSid
  * @property string serviceSid
  * @property string listSid
@@ -41,7 +41,7 @@ class SyncListItemInstance extends InstanceResource {
      *                           that hosts this List object.
      * @param string $listSid The unique 34-character SID identifier of the List
      *                        containing this Item.
-     * @param integer $index The index
+     * @param int $index The index
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemInstance 
      */
     public function __construct(Version $version, array $payload, $serviceSid, $listSid, $index = null) {

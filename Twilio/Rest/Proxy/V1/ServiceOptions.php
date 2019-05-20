@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param integer $defaultTtl Default TTL for a Session, in seconds
+     * @param int $defaultTtl Default TTL for a Session, in seconds
      * @param string $callbackUrl The URL we should call when the interaction
      *                            status changes
      * @param string $geoMatchLevel Where a proxy number must be located relative
@@ -38,7 +38,7 @@ abstract class ServiceOptions {
     /**
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
-     * @param integer $defaultTtl Default TTL for a Session, in seconds
+     * @param int $defaultTtl Default TTL for a Session, in seconds
      * @param string $callbackUrl The URL we should call when the interaction
      *                            status changes
      * @param string $geoMatchLevel Where a proxy number must be located relative
@@ -59,7 +59,7 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param integer $defaultTtl Default TTL for a Session, in seconds
+     * @param int $defaultTtl Default TTL for a Session, in seconds
      * @param string $callbackUrl The URL we should call when the interaction
      *                            status changes
      * @param string $geoMatchLevel Where a proxy number must be located relative
@@ -85,7 +85,7 @@ class CreateServiceOptions extends Options {
     /**
      * The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
      * 
-     * @param integer $defaultTtl Default TTL for a Session, in seconds
+     * @param int $defaultTtl Default TTL for a Session, in seconds
      * @return $this Fluent Builder
      */
     public function setDefaultTtl($defaultTtl) {
@@ -184,7 +184,7 @@ class UpdateServiceOptions extends Options {
     /**
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
-     * @param integer $defaultTtl Default TTL for a Session, in seconds
+     * @param int $defaultTtl Default TTL for a Session, in seconds
      * @param string $callbackUrl The URL we should call when the interaction
      *                            status changes
      * @param string $geoMatchLevel Where a proxy number must be located relative
@@ -223,7 +223,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
      * 
-     * @param integer $defaultTtl Default TTL for a Session, in seconds
+     * @param int $defaultTtl Default TTL for a Session, in seconds
      * @return $this Fluent Builder
      */
     public function setDefaultTtl($defaultTtl) {

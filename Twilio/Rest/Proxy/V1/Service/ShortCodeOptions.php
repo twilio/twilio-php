@@ -17,8 +17,8 @@ use Twilio\Values;
  */
 abstract class ShortCodeOptions {
     /**
-     * @param boolean $isReserved Whether the short code should be reserved for
-     *                            manual assignment to participants only
+     * @param bool $isReserved Whether the short code should be reserved for manual
+     *                         assignment to participants only
      * @return UpdateShortCodeOptions Options builder
      */
     public static function update($isReserved = Values::NONE) {
@@ -28,8 +28,8 @@ abstract class ShortCodeOptions {
 
 class UpdateShortCodeOptions extends Options {
     /**
-     * @param boolean $isReserved Whether the short code should be reserved for
-     *                            manual assignment to participants only
+     * @param bool $isReserved Whether the short code should be reserved for manual
+     *                         assignment to participants only
      */
     public function __construct($isReserved = Values::NONE) {
         $this->options['isReserved'] = $isReserved;
@@ -38,8 +38,8 @@ class UpdateShortCodeOptions extends Options {
     /**
      * Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.
      * 
-     * @param boolean $isReserved Whether the short code should be reserved for
-     *                            manual assignment to participants only
+     * @param bool $isReserved Whether the short code should be reserved for manual
+     *                         assignment to participants only
      * @return $this Fluent Builder
      */
     public function setIsReserved($isReserved) {

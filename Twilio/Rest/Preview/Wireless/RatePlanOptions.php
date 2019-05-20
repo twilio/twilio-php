@@ -19,13 +19,13 @@ abstract class RatePlanOptions {
     /**
      * @param string $uniqueName The unique_name
      * @param string $friendlyName The friendly_name
-     * @param boolean $dataEnabled The data_enabled
-     * @param integer $dataLimit The data_limit
+     * @param bool $dataEnabled The data_enabled
+     * @param int $dataLimit The data_limit
      * @param string $dataMetering The data_metering
-     * @param boolean $messagingEnabled The messaging_enabled
-     * @param boolean $voiceEnabled The voice_enabled
-     * @param boolean $commandsEnabled The commands_enabled
-     * @param boolean $nationalRoamingEnabled The national_roaming_enabled
+     * @param bool $messagingEnabled The messaging_enabled
+     * @param bool $voiceEnabled The voice_enabled
+     * @param bool $commandsEnabled The commands_enabled
+     * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @param string $internationalRoaming The international_roaming
      * @return CreateRatePlanOptions Options builder
      */
@@ -47,13 +47,13 @@ class CreateRatePlanOptions extends Options {
     /**
      * @param string $uniqueName The unique_name
      * @param string $friendlyName The friendly_name
-     * @param boolean $dataEnabled The data_enabled
-     * @param integer $dataLimit The data_limit
+     * @param bool $dataEnabled The data_enabled
+     * @param int $dataLimit The data_limit
      * @param string $dataMetering The data_metering
-     * @param boolean $messagingEnabled The messaging_enabled
-     * @param boolean $voiceEnabled The voice_enabled
-     * @param boolean $commandsEnabled The commands_enabled
-     * @param boolean $nationalRoamingEnabled The national_roaming_enabled
+     * @param bool $messagingEnabled The messaging_enabled
+     * @param bool $voiceEnabled The voice_enabled
+     * @param bool $commandsEnabled The commands_enabled
+     * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @param string $internationalRoaming The international_roaming
      */
     public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE, $dataEnabled = Values::NONE, $dataLimit = Values::NONE, $dataMetering = Values::NONE, $messagingEnabled = Values::NONE, $voiceEnabled = Values::NONE, $commandsEnabled = Values::NONE, $nationalRoamingEnabled = Values::NONE, $internationalRoaming = Values::NONE) {
@@ -94,7 +94,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The data_enabled
      * 
-     * @param boolean $dataEnabled The data_enabled
+     * @param bool $dataEnabled The data_enabled
      * @return $this Fluent Builder
      */
     public function setDataEnabled($dataEnabled) {
@@ -105,7 +105,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The data_limit
      * 
-     * @param integer $dataLimit The data_limit
+     * @param int $dataLimit The data_limit
      * @return $this Fluent Builder
      */
     public function setDataLimit($dataLimit) {
@@ -127,7 +127,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The messaging_enabled
      * 
-     * @param boolean $messagingEnabled The messaging_enabled
+     * @param bool $messagingEnabled The messaging_enabled
      * @return $this Fluent Builder
      */
     public function setMessagingEnabled($messagingEnabled) {
@@ -138,7 +138,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The voice_enabled
      * 
-     * @param boolean $voiceEnabled The voice_enabled
+     * @param bool $voiceEnabled The voice_enabled
      * @return $this Fluent Builder
      */
     public function setVoiceEnabled($voiceEnabled) {
@@ -149,7 +149,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The commands_enabled
      * 
-     * @param boolean $commandsEnabled The commands_enabled
+     * @param bool $commandsEnabled The commands_enabled
      * @return $this Fluent Builder
      */
     public function setCommandsEnabled($commandsEnabled) {
@@ -160,7 +160,7 @@ class CreateRatePlanOptions extends Options {
     /**
      * The national_roaming_enabled
      * 
-     * @param boolean $nationalRoamingEnabled The national_roaming_enabled
+     * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @return $this Fluent Builder
      */
     public function setNationalRoamingEnabled($nationalRoamingEnabled) {

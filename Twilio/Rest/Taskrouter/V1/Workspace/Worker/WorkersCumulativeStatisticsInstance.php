@@ -21,12 +21,12 @@ use Twilio\Version;
  * @property \DateTime startTime
  * @property \DateTime endTime
  * @property array activityDurations
- * @property integer reservationsCreated
- * @property integer reservationsAccepted
- * @property integer reservationsRejected
- * @property integer reservationsTimedOut
- * @property integer reservationsCanceled
- * @property integer reservationsRescinded
+ * @property int reservationsCreated
+ * @property int reservationsAccepted
+ * @property int reservationsRejected
+ * @property int reservationsTimedOut
+ * @property int reservationsCanceled
+ * @property int reservationsRescinded
  * @property string workspaceSid
  * @property string url
  */

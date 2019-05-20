@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property string name
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property boolean enabled
+ * @property bool enabled
  * @property string kind
  * @property string url
  */

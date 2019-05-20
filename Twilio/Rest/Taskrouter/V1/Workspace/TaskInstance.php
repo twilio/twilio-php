@@ -18,20 +18,20 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property integer age
+ * @property int age
  * @property string assignmentStatus
  * @property string attributes
  * @property string addons
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property integer priority
+ * @property int priority
  * @property string reason
  * @property string sid
  * @property string taskQueueSid
  * @property string taskQueueFriendlyName
  * @property string taskChannelSid
  * @property string taskChannelUniqueName
- * @property integer timeout
+ * @property int timeout
  * @property string workflowSid
  * @property string workflowFriendlyName
  * @property string workspaceSid

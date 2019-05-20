@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property string fallbackAssignmentCallbackUrl
  * @property string friendlyName
  * @property string sid
- * @property integer taskReservationTimeout
+ * @property int taskReservationTimeout
  * @property string workspaceSid
  * @property string url
  * @property array links

@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string sid
  * @property string uniqueName
  * @property string workspaceSid
- * @property boolean channelOptimizedRouting
+ * @property bool channelOptimizedRouting
  * @property string url
  * @property array links
  */

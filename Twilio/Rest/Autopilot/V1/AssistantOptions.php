@@ -18,8 +18,8 @@ use Twilio\Values;
 abstract class AssistantOptions {
     /**
      * @param string $friendlyName A string to describe the new resource
-     * @param boolean $logQueries Whether queries should be logged and kept after
-     *                            training
+     * @param bool $logQueries Whether queries should be logged and kept after
+     *                         training
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the new resource
      * @param string $callbackUrl Reserved
@@ -36,8 +36,8 @@ abstract class AssistantOptions {
 
     /**
      * @param string $friendlyName A string to describe the resource
-     * @param boolean $logQueries Whether queries should be logged and kept after
-     *                            training
+     * @param bool $logQueries Whether queries should be logged and kept after
+     *                         training
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @param string $callbackUrl Reserved
@@ -56,8 +56,8 @@ abstract class AssistantOptions {
 class CreateAssistantOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the new resource
-     * @param boolean $logQueries Whether queries should be logged and kept after
-     *                            training
+     * @param bool $logQueries Whether queries should be logged and kept after
+     *                         training
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the new resource
      * @param string $callbackUrl Reserved
@@ -91,8 +91,8 @@ class CreateAssistantOptions extends Options {
     /**
      * Whether queries should be logged and kept after training. Can be: `true` or `false` and defaults to `true`. If `true`, queries are stored for 30 days, and then deleted. If `false`, no queries are stored.
      * 
-     * @param boolean $logQueries Whether queries should be logged and kept after
-     *                            training
+     * @param bool $logQueries Whether queries should be logged and kept after
+     *                         training
      * @return $this Fluent Builder
      */
     public function setLogQueries($logQueries) {
@@ -177,8 +177,8 @@ class CreateAssistantOptions extends Options {
 class UpdateAssistantOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the resource
-     * @param boolean $logQueries Whether queries should be logged and kept after
-     *                            training
+     * @param bool $logQueries Whether queries should be logged and kept after
+     *                         training
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @param string $callbackUrl Reserved
@@ -212,8 +212,8 @@ class UpdateAssistantOptions extends Options {
     /**
      * Whether queries should be logged and kept after training. Can be: `true` or `false` and defaults to `true`. If `true`, queries are stored for 30 days, and then deleted. If `false`, no queries are stored.
      * 
-     * @param boolean $logQueries Whether queries should be logged and kept after
-     *                            training
+     * @param bool $logQueries Whether queries should be logged and kept after
+     *                         training
      * @return $this Fluent Builder
      */
     public function setLogQueries($logQueries) {

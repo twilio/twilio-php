@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class ExportConfigurationOptions {
     /**
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @param string $webhookUrl The webhook_url
      * @param string $webhookMethod The webhook_method
      * @return UpdateExportConfigurationOptions Options builder
@@ -29,7 +29,7 @@ abstract class ExportConfigurationOptions {
 
 class UpdateExportConfigurationOptions extends Options {
     /**
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @param string $webhookUrl The webhook_url
      * @param string $webhookMethod The webhook_method
      */
@@ -42,7 +42,7 @@ class UpdateExportConfigurationOptions extends Options {
     /**
      * The enabled
      * 
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {

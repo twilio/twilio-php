@@ -24,8 +24,8 @@ use Twilio\Version;
  * @property string webhookFilters
  * @property string preWebhookUrl
  * @property string postWebhookUrl
- * @property integer preWebhookRetryCount
- * @property integer postWebhookRetryCount
+ * @property int preWebhookRetryCount
+ * @property int postWebhookRetryCount
  * @property string target
  * @property string url
  */

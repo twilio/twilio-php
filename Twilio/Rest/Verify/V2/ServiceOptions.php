@@ -17,18 +17,17 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param integer $codeLength The length of the verification code to generate
-     * @param boolean $lookupEnabled Whether to perform a lookup with each
-     *                               verification
-     * @param boolean $skipSmsToLandlines Whether to skip sending SMS verifications
-     *                                    to landlines
-     * @param boolean $dtmfInputRequired Whether to ask the user to press a number
-     *                                   before delivering the verify code in a
-     *                                   phone call
+     * @param int $codeLength The length of the verification code to generate
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
+     *                                 landlines
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number
+     *                                before delivering the verify code in a phone
+     *                                call
      * @param string $ttsName The name of an alternative text-to-speech service to
      *                        use in phone calls
-     * @param boolean $psd2Enabled Whether to pass PSD2 transaction parameters when
-     *                             starting a verification
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
+     *                          starting a verification
      * @return CreateServiceOptions Options builder
      */
     public static function create($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
@@ -37,18 +36,17 @@ abstract class ServiceOptions {
 
     /**
      * @param string $friendlyName A string to describe the verification service
-     * @param integer $codeLength The length of the verification code to generate
-     * @param boolean $lookupEnabled Whether to perform a lookup with each
-     *                               verification
-     * @param boolean $skipSmsToLandlines Whether to skip sending SMS verifications
-     *                                    to landlines
-     * @param boolean $dtmfInputRequired Whether to ask the user to press a number
-     *                                   before delivering the verify code in a
-     *                                   phone call
+     * @param int $codeLength The length of the verification code to generate
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
+     *                                 landlines
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number
+     *                                before delivering the verify code in a phone
+     *                                call
      * @param string $ttsName The name of an alternative text-to-speech service to
      *                        use in phone calls
-     * @param boolean $psd2Enabled Whether to pass PSD2 transaction parameters when
-     *                             starting a verification
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
+     *                          starting a verification
      * @return UpdateServiceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
@@ -58,18 +56,17 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param integer $codeLength The length of the verification code to generate
-     * @param boolean $lookupEnabled Whether to perform a lookup with each
-     *                               verification
-     * @param boolean $skipSmsToLandlines Whether to skip sending SMS verifications
-     *                                    to landlines
-     * @param boolean $dtmfInputRequired Whether to ask the user to press a number
-     *                                   before delivering the verify code in a
-     *                                   phone call
+     * @param int $codeLength The length of the verification code to generate
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
+     *                                 landlines
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number
+     *                                before delivering the verify code in a phone
+     *                                call
      * @param string $ttsName The name of an alternative text-to-speech service to
      *                        use in phone calls
-     * @param boolean $psd2Enabled Whether to pass PSD2 transaction parameters when
-     *                             starting a verification
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
+     *                          starting a verification
      */
     public function __construct($codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
         $this->options['codeLength'] = $codeLength;
@@ -83,7 +80,7 @@ class CreateServiceOptions extends Options {
     /**
      * The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * 
-     * @param integer $codeLength The length of the verification code to generate
+     * @param int $codeLength The length of the verification code to generate
      * @return $this Fluent Builder
      */
     public function setCodeLength($codeLength) {
@@ -94,8 +91,7 @@ class CreateServiceOptions extends Options {
     /**
      * Whether to perform a lookup with each verification started and return info about the phone number.
      * 
-     * @param boolean $lookupEnabled Whether to perform a lookup with each
-     *                               verification
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification
      * @return $this Fluent Builder
      */
     public function setLookupEnabled($lookupEnabled) {
@@ -106,8 +102,8 @@ class CreateServiceOptions extends Options {
     /**
      * Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
      * 
-     * @param boolean $skipSmsToLandlines Whether to skip sending SMS verifications
-     *                                    to landlines
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
+     *                                 landlines
      * @return $this Fluent Builder
      */
     public function setSkipSmsToLandlines($skipSmsToLandlines) {
@@ -118,9 +114,9 @@ class CreateServiceOptions extends Options {
     /**
      * Whether to ask the user to press a number before delivering the verify code in a phone call.
      * 
-     * @param boolean $dtmfInputRequired Whether to ask the user to press a number
-     *                                   before delivering the verify code in a
-     *                                   phone call
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number
+     *                                before delivering the verify code in a phone
+     *                                call
      * @return $this Fluent Builder
      */
     public function setDtmfInputRequired($dtmfInputRequired) {
@@ -143,8 +139,8 @@ class CreateServiceOptions extends Options {
     /**
      * Whether to pass PSD2 transaction parameters when starting a verification.
      * 
-     * @param boolean $psd2Enabled Whether to pass PSD2 transaction parameters when
-     *                             starting a verification
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
+     *                          starting a verification
      * @return $this Fluent Builder
      */
     public function setPsd2Enabled($psd2Enabled) {
@@ -171,18 +167,17 @@ class CreateServiceOptions extends Options {
 class UpdateServiceOptions extends Options {
     /**
      * @param string $friendlyName A string to describe the verification service
-     * @param integer $codeLength The length of the verification code to generate
-     * @param boolean $lookupEnabled Whether to perform a lookup with each
-     *                               verification
-     * @param boolean $skipSmsToLandlines Whether to skip sending SMS verifications
-     *                                    to landlines
-     * @param boolean $dtmfInputRequired Whether to ask the user to press a number
-     *                                   before delivering the verify code in a
-     *                                   phone call
+     * @param int $codeLength The length of the verification code to generate
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
+     *                                 landlines
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number
+     *                                before delivering the verify code in a phone
+     *                                call
      * @param string $ttsName The name of an alternative text-to-speech service to
      *                        use in phone calls
-     * @param boolean $psd2Enabled Whether to pass PSD2 transaction parameters when
-     *                             starting a verification
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
+     *                          starting a verification
      */
     public function __construct($friendlyName = Values::NONE, $codeLength = Values::NONE, $lookupEnabled = Values::NONE, $skipSmsToLandlines = Values::NONE, $dtmfInputRequired = Values::NONE, $ttsName = Values::NONE, $psd2Enabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -208,7 +203,7 @@ class UpdateServiceOptions extends Options {
     /**
      * The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * 
-     * @param integer $codeLength The length of the verification code to generate
+     * @param int $codeLength The length of the verification code to generate
      * @return $this Fluent Builder
      */
     public function setCodeLength($codeLength) {
@@ -219,8 +214,7 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to perform a lookup with each verification started and return info about the phone number.
      * 
-     * @param boolean $lookupEnabled Whether to perform a lookup with each
-     *                               verification
+     * @param bool $lookupEnabled Whether to perform a lookup with each verification
      * @return $this Fluent Builder
      */
     public function setLookupEnabled($lookupEnabled) {
@@ -231,8 +225,8 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
      * 
-     * @param boolean $skipSmsToLandlines Whether to skip sending SMS verifications
-     *                                    to landlines
+     * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
+     *                                 landlines
      * @return $this Fluent Builder
      */
     public function setSkipSmsToLandlines($skipSmsToLandlines) {
@@ -243,9 +237,9 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to ask the user to press a number before delivering the verify code in a phone call.
      * 
-     * @param boolean $dtmfInputRequired Whether to ask the user to press a number
-     *                                   before delivering the verify code in a
-     *                                   phone call
+     * @param bool $dtmfInputRequired Whether to ask the user to press a number
+     *                                before delivering the verify code in a phone
+     *                                call
      * @return $this Fluent Builder
      */
     public function setDtmfInputRequired($dtmfInputRequired) {
@@ -268,8 +262,8 @@ class UpdateServiceOptions extends Options {
     /**
      * Whether to pass PSD2 transaction parameters when starting a verification.
      * 
-     * @param boolean $psd2Enabled Whether to pass PSD2 transaction parameters when
-     *                             starting a verification
+     * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
+     *                          starting a verification
      * @return $this Fluent Builder
      */
     public function setPsd2Enabled($psd2Enabled) {

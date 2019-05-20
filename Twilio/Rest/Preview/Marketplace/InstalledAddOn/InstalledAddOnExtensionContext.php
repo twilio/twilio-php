@@ -62,7 +62,7 @@ class InstalledAddOnExtensionContext extends InstanceContext {
     /**
      * Update the InstalledAddOnExtensionInstance
      * 
-     * @param boolean $enabled A Boolean indicating if the Extension will be invoked
+     * @param bool $enabled A Boolean indicating if the Extension will be invoked
      * @return InstalledAddOnExtensionInstance Updated
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -25,7 +25,7 @@ abstract class DomainOptions {
      *                                       status updates
      * @param string $voiceStatusCallbackMethod The HTTP method we should use to
      *                                          call `voice_status_callback_url`
-     * @param boolean $sipRegistration Whether SIP registration is allowed
+     * @param bool $sipRegistration Whether SIP registration is allowed
      * @return CreateDomainOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $sipRegistration = Values::NONE) {
@@ -44,7 +44,7 @@ abstract class DomainOptions {
      * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
      * @param string $voiceUrl The URL we should call when receiving a call
-     * @param boolean $sipRegistration Whether SIP registration is allowed
+     * @param bool $sipRegistration Whether SIP registration is allowed
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @return UpdateDomainOptions Options builder
      */
@@ -66,7 +66,7 @@ class CreateDomainOptions extends Options {
      *                                       status updates
      * @param string $voiceStatusCallbackMethod The HTTP method we should use to
      *                                          call `voice_status_callback_url`
-     * @param boolean $sipRegistration Whether SIP registration is allowed
+     * @param bool $sipRegistration Whether SIP registration is allowed
      */
     public function __construct($friendlyName = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $sipRegistration = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -163,7 +163,7 @@ class CreateDomainOptions extends Options {
     /**
      * Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
      * 
-     * @param boolean $sipRegistration Whether SIP registration is allowed
+     * @param bool $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
     public function setSipRegistration($sipRegistration) {
@@ -200,7 +200,7 @@ class UpdateDomainOptions extends Options {
      * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
      * @param string $voiceUrl The URL we should call when receiving a call
-     * @param boolean $sipRegistration Whether SIP registration is allowed
+     * @param bool $sipRegistration Whether SIP registration is allowed
      * @param string $domainName The unique address on Twilio to route SIP traffic
      */
     public function __construct($friendlyName = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceStatusCallbackMethod = Values::NONE, $voiceStatusCallbackUrl = Values::NONE, $voiceUrl = Values::NONE, $sipRegistration = Values::NONE, $domainName = Values::NONE) {
@@ -299,7 +299,7 @@ class UpdateDomainOptions extends Options {
     /**
      * Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
      * 
-     * @param boolean $sipRegistration Whether SIP registration is allowed
+     * @param bool $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
     public function setSipRegistration($sipRegistration) {

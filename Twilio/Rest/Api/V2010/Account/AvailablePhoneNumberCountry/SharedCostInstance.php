@@ -26,7 +26,7 @@ use Twilio\Version;
  * @property string postalCode
  * @property string isoCountry
  * @property string addressRequirements
- * @property boolean beta
+ * @property bool beta
  * @property string capabilities
  */
 class SharedCostInstance extends InstanceResource {

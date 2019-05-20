@@ -24,11 +24,11 @@ abstract class WorkflowOptions {
      *                                              made to this URL.
      * @param string $configuration JSON document configuring the rules for this
      *                              Workflow.
-     * @param integer $taskReservationTimeout An integer value controlling how long
-     *                                        in seconds TaskRouter will wait for a
-     *                                        confirmation response from your
-     *                                        application after assigning a Task to
-     *                                        a worker.
+     * @param int $taskReservationTimeout An integer value controlling how long in
+     *                                    seconds TaskRouter will wait for a
+     *                                    confirmation response from your
+     *                                    application after assigning a Task to a
+     *                                    worker.
      * @return UpdateWorkflowOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
@@ -50,11 +50,11 @@ abstract class WorkflowOptions {
      *                                              AssignmentCallbackUrl fails,
      *                                              the assignment callback will be
      *                                              made to this URL.
-     * @param integer $taskReservationTimeout An integer value controlling how long
-     *                                        in seconds TaskRouter will wait for a
-     *                                        confirmation response from your
-     *                                        application after assigning a Task to
-     *                                        a worker.
+     * @param int $taskReservationTimeout An integer value controlling how long in
+     *                                    seconds TaskRouter will wait for a
+     *                                    confirmation response from your
+     *                                    application after assigning a Task to a
+     *                                    worker.
      * @return CreateWorkflowOptions Options builder
      */
     public static function create($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
@@ -74,11 +74,11 @@ class UpdateWorkflowOptions extends Options {
      *                                              made to this URL.
      * @param string $configuration JSON document configuring the rules for this
      *                              Workflow.
-     * @param integer $taskReservationTimeout An integer value controlling how long
-     *                                        in seconds TaskRouter will wait for a
-     *                                        confirmation response from your
-     *                                        application after assigning a Task to
-     *                                        a worker.
+     * @param int $taskReservationTimeout An integer value controlling how long in
+     *                                    seconds TaskRouter will wait for a
+     *                                    confirmation response from your
+     *                                    application after assigning a Task to a
+     *                                    worker.
      */
     public function __construct($friendlyName = Values::NONE, $assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $configuration = Values::NONE, $taskReservationTimeout = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -141,11 +141,11 @@ class UpdateWorkflowOptions extends Options {
     /**
      * An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker. Defaults to 120 seconds. Maximum value is 86400 (24 hours)
      * 
-     * @param integer $taskReservationTimeout An integer value controlling how long
-     *                                        in seconds TaskRouter will wait for a
-     *                                        confirmation response from your
-     *                                        application after assigning a Task to
-     *                                        a worker.
+     * @param int $taskReservationTimeout An integer value controlling how long in
+     *                                    seconds TaskRouter will wait for a
+     *                                    confirmation response from your
+     *                                    application after assigning a Task to a
+     *                                    worker.
      * @return $this Fluent Builder
      */
     public function setTaskReservationTimeout($taskReservationTimeout) {
@@ -212,11 +212,11 @@ class CreateWorkflowOptions extends Options {
      *                                              AssignmentCallbackUrl fails,
      *                                              the assignment callback will be
      *                                              made to this URL.
-     * @param integer $taskReservationTimeout An integer value controlling how long
-     *                                        in seconds TaskRouter will wait for a
-     *                                        confirmation response from your
-     *                                        application after assigning a Task to
-     *                                        a worker.
+     * @param int $taskReservationTimeout An integer value controlling how long in
+     *                                    seconds TaskRouter will wait for a
+     *                                    confirmation response from your
+     *                                    application after assigning a Task to a
+     *                                    worker.
      */
     public function __construct($assignmentCallbackUrl = Values::NONE, $fallbackAssignmentCallbackUrl = Values::NONE, $taskReservationTimeout = Values::NONE) {
         $this->options['assignmentCallbackUrl'] = $assignmentCallbackUrl;
@@ -253,11 +253,11 @@ class CreateWorkflowOptions extends Options {
     /**
      * An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker. See Task Assignment Callback for more information. Defaults to 120 seconds. Maximum value is 86400 (24 hours)
      * 
-     * @param integer $taskReservationTimeout An integer value controlling how long
-     *                                        in seconds TaskRouter will wait for a
-     *                                        confirmation response from your
-     *                                        application after assigning a Task to
-     *                                        a worker.
+     * @param int $taskReservationTimeout An integer value controlling how long in
+     *                                    seconds TaskRouter will wait for a
+     *                                    confirmation response from your
+     *                                    application after assigning a Task to a
+     *                                    worker.
      * @return $this Fluent Builder
      */
     public function setTaskReservationTimeout($taskReservationTimeout) {

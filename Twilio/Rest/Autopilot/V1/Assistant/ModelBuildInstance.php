@@ -27,8 +27,8 @@ use Twilio\Version;
  * @property string status
  * @property string uniqueName
  * @property string url
- * @property integer buildDuration
- * @property integer errorCode
+ * @property int buildDuration
+ * @property int errorCode
  */
 class ModelBuildInstance extends InstanceResource {
     /**

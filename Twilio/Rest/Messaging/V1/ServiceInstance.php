@@ -29,14 +29,14 @@ use Twilio\Version;
  * @property string fallbackUrl
  * @property string fallbackMethod
  * @property string statusCallback
- * @property boolean stickySender
- * @property boolean mmsConverter
- * @property boolean smartEncoding
+ * @property bool stickySender
+ * @property bool mmsConverter
+ * @property bool smartEncoding
  * @property string scanMessageContent
- * @property boolean fallbackToLongCode
- * @property boolean areaCodeGeomatch
- * @property boolean synchronousValidation
- * @property integer validityPeriod
+ * @property bool fallbackToLongCode
+ * @property bool areaCodeGeomatch
+ * @property bool synchronousValidation
+ * @property int validityPeriod
  * @property string url
  * @property array links
  */

@@ -36,8 +36,7 @@ class FeedbackContext extends InstanceContext {
     /**
      * Create a new FeedbackInstance
      * 
-     * @param integer $qualityScore The call quality expressed as an integer from 1
-     *                              to 5
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,8 +90,7 @@ class FeedbackContext extends InstanceContext {
     /**
      * Update the FeedbackInstance
      * 
-     * @param integer $qualityScore The call quality expressed as an integer from 1
-     *                              to 5
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.

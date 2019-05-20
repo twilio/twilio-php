@@ -19,8 +19,8 @@ abstract class CredentialOptions {
      *                            certificate
      * @param string $privateKey [APN only] The URL encoded representation of the
      *                           private key
-     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
-     *                         APNs
+     * @param bool $sandbox [APN only] Whether to send the credential to sandbox
+     *                      APNs
      * @param string $apiKey [GCM only] The API key for the project that was
      *                       obtained from the Google Developer console for your
      *                       GCM Service application credential
@@ -38,8 +38,8 @@ abstract class CredentialOptions {
      *                            certificate
      * @param string $privateKey [APN only] The URL encoded representation of the
      *                           private key
-     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
-     *                         APNs
+     * @param bool $sandbox [APN only] Whether to send the credential to sandbox
+     *                      APNs
      * @param string $apiKey [GCM only] The API key for the project that was
      *                       obtained from the Google Developer console for your
      *                       GCM Service application credential
@@ -59,8 +59,8 @@ class CreateCredentialOptions extends Options {
      *                            certificate
      * @param string $privateKey [APN only] The URL encoded representation of the
      *                           private key
-     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
-     *                         APNs
+     * @param bool $sandbox [APN only] Whether to send the credential to sandbox
+     *                      APNs
      * @param string $apiKey [GCM only] The API key for the project that was
      *                       obtained from the Google Developer console for your
      *                       GCM Service application credential
@@ -120,8 +120,8 @@ class CreateCredentialOptions extends Options {
     /**
      * [APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production.
      * 
-     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
-     *                         APNs
+     * @param bool $sandbox [APN only] Whether to send the credential to sandbox
+     *                      APNs
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {
@@ -177,8 +177,8 @@ class UpdateCredentialOptions extends Options {
      *                            certificate
      * @param string $privateKey [APN only] The URL encoded representation of the
      *                           private key
-     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
-     *                         APNs
+     * @param bool $sandbox [APN only] Whether to send the credential to sandbox
+     *                      APNs
      * @param string $apiKey [GCM only] The API key for the project that was
      *                       obtained from the Google Developer console for your
      *                       GCM Service application credential
@@ -238,8 +238,8 @@ class UpdateCredentialOptions extends Options {
     /**
      * [APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production.
      * 
-     * @param boolean $sandbox [APN only] Whether to send the credential to sandbox
-     *                         APNs
+     * @param bool $sandbox [APN only] Whether to send the credential to sandbox
+     *                      APNs
      * @return $this Fluent Builder
      */
     public function setSandbox($sandbox) {

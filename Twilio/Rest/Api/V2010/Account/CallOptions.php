@@ -26,8 +26,8 @@ abstract class CallOptions {
      *                                    the `status_callback` URL.
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
-     * @param integer $timeout Number of seconds to wait for an answer
-     * @param boolean $record Whether or not to record the call
+     * @param int $timeout Number of seconds to wait for an answer
+     * @param bool $record Whether or not to record the call
      * @param string $recordingChannels The number of channels in the final
      *                                  recording
      * @param string $recordingStatusCallback The URL that we call when the
@@ -41,8 +41,8 @@ abstract class CallOptions {
      *                                user account specified in `sip_auth_username`.
      * @param string $machineDetection Enable machine detection or end of greeting
      *                                 detection
-     * @param integer $machineDetectionTimeout Number of seconds to wait for
-     *                                         machine detection
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
      * @param string $recordingStatusCallbackEvent The recording status events that
      *                                             will trigger calls to the URL
      *                                             specified in
@@ -53,14 +53,13 @@ abstract class CallOptions {
      *                         that made this call. Phone numbers are in E.164
      *                         format (e.g., +16175551212). SIP addresses are
      *                         formatted as `name@company.com`.
-     * @param integer $machineDetectionSpeechThreshold Number of milliseconds for
-     *                                                 measuring stick for the
-     *                                                 length of the speech activity
-     * @param integer $machineDetectionSpeechEndThreshold Number of milliseconds of
-     *                                                    silence after speech
-     *                                                    activity
-     * @param integer $machineDetectionSilenceTimeout Number of milliseconds of
-     *                                                initial silence
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
      * @return CreateCallOptions Options builder
      */
     public static function create($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE) {
@@ -121,8 +120,8 @@ class CreateCallOptions extends Options {
      *                                    the `status_callback` URL.
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
-     * @param integer $timeout Number of seconds to wait for an answer
-     * @param boolean $record Whether or not to record the call
+     * @param int $timeout Number of seconds to wait for an answer
+     * @param bool $record Whether or not to record the call
      * @param string $recordingChannels The number of channels in the final
      *                                  recording
      * @param string $recordingStatusCallback The URL that we call when the
@@ -136,8 +135,8 @@ class CreateCallOptions extends Options {
      *                                user account specified in `sip_auth_username`.
      * @param string $machineDetection Enable machine detection or end of greeting
      *                                 detection
-     * @param integer $machineDetectionTimeout Number of seconds to wait for
-     *                                         machine detection
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
      * @param string $recordingStatusCallbackEvent The recording status events that
      *                                             will trigger calls to the URL
      *                                             specified in
@@ -148,14 +147,13 @@ class CreateCallOptions extends Options {
      *                         that made this call. Phone numbers are in E.164
      *                         format (e.g., +16175551212). SIP addresses are
      *                         formatted as `name@company.com`.
-     * @param integer $machineDetectionSpeechThreshold Number of milliseconds for
-     *                                                 measuring stick for the
-     *                                                 length of the speech activity
-     * @param integer $machineDetectionSpeechEndThreshold Number of milliseconds of
-     *                                                    silence after speech
-     *                                                    activity
-     * @param integer $machineDetectionSilenceTimeout Number of milliseconds of
-     *                                                initial silence
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
      */
     public function __construct($url = Values::NONE, $applicationSid = Values::NONE, $method = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackEvent = Values::NONE, $statusCallbackMethod = Values::NONE, $sendDigits = Values::NONE, $timeout = Values::NONE, $record = Values::NONE, $recordingChannels = Values::NONE, $recordingStatusCallback = Values::NONE, $recordingStatusCallbackMethod = Values::NONE, $sipAuthUsername = Values::NONE, $sipAuthPassword = Values::NONE, $machineDetection = Values::NONE, $machineDetectionTimeout = Values::NONE, $recordingStatusCallbackEvent = Values::NONE, $trim = Values::NONE, $callerId = Values::NONE, $machineDetectionSpeechThreshold = Values::NONE, $machineDetectionSpeechEndThreshold = Values::NONE, $machineDetectionSilenceTimeout = Values::NONE) {
         $this->options['url'] = $url;
@@ -289,7 +287,7 @@ class CreateCallOptions extends Options {
     /**
      * The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.
      * 
-     * @param integer $timeout Number of seconds to wait for an answer
+     * @param int $timeout Number of seconds to wait for an answer
      * @return $this Fluent Builder
      */
     public function setTimeout($timeout) {
@@ -300,7 +298,7 @@ class CreateCallOptions extends Options {
     /**
      * Set this parameter to `true` to record the phone call. The `recording_url` will be sent to the `status_callback` URL. The default is `false`.
      * 
-     * @param boolean $record Whether or not to record the call
+     * @param bool $record Whether or not to record the call
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -384,8 +382,8 @@ class CreateCallOptions extends Options {
     /**
      * The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
      * 
-     * @param integer $machineDetectionTimeout Number of seconds to wait for
-     *                                         machine detection
+     * @param int $machineDetectionTimeout Number of seconds to wait for machine
+     *                                     detection
      * @return $this Fluent Builder
      */
     public function setMachineDetectionTimeout($machineDetectionTimeout) {
@@ -436,9 +434,9 @@ class CreateCallOptions extends Options {
     /**
      * The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
      * 
-     * @param integer $machineDetectionSpeechThreshold Number of milliseconds for
-     *                                                 measuring stick for the
-     *                                                 length of the speech activity
+     * @param int $machineDetectionSpeechThreshold Number of milliseconds for
+     *                                             measuring stick for the length
+     *                                             of the speech activity
      * @return $this Fluent Builder
      */
     public function setMachineDetectionSpeechThreshold($machineDetectionSpeechThreshold) {
@@ -449,9 +447,8 @@ class CreateCallOptions extends Options {
     /**
      * The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
      * 
-     * @param integer $machineDetectionSpeechEndThreshold Number of milliseconds of
-     *                                                    silence after speech
-     *                                                    activity
+     * @param int $machineDetectionSpeechEndThreshold Number of milliseconds of
+     *                                                silence after speech activity
      * @return $this Fluent Builder
      */
     public function setMachineDetectionSpeechEndThreshold($machineDetectionSpeechEndThreshold) {
@@ -462,8 +459,8 @@ class CreateCallOptions extends Options {
     /**
      * The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
      * 
-     * @param integer $machineDetectionSilenceTimeout Number of milliseconds of
-     *                                                initial silence
+     * @param int $machineDetectionSilenceTimeout Number of milliseconds of initial
+     *                                            silence
      * @return $this Fluent Builder
      */
     public function setMachineDetectionSilenceTimeout($machineDetectionSilenceTimeout) {

@@ -26,8 +26,8 @@ use Twilio\Version;
  * @property string quality
  * @property string mediaSid
  * @property string mediaUrl
- * @property integer numPages
- * @property integer duration
+ * @property int numPages
+ * @property int duration
  * @property string status
  * @property string direction
  * @property string apiVersion

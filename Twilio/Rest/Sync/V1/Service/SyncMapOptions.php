@@ -18,9 +18,9 @@ use Twilio\Values;
 abstract class SyncMapOptions {
     /**
      * @param string $uniqueName Human-readable name for this map
-     * @param integer $ttl Alias for collection_ttl
-     * @param integer $collectionTtl Time-to-live of this Map in seconds, defaults
-     *                               to no expiration.
+     * @param int $ttl Alias for collection_ttl
+     * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
+     *                           no expiration.
      * @return CreateSyncMapOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -28,8 +28,8 @@ abstract class SyncMapOptions {
     }
 
     /**
-     * @param integer $ttl Alias for collection_ttl
-     * @param integer $collectionTtl New time-to-live of this Map in seconds.
+     * @param int $ttl Alias for collection_ttl
+     * @param int $collectionTtl New time-to-live of this Map in seconds.
      * @return UpdateSyncMapOptions Options builder
      */
     public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -40,9 +40,9 @@ abstract class SyncMapOptions {
 class CreateSyncMapOptions extends Options {
     /**
      * @param string $uniqueName Human-readable name for this map
-     * @param integer $ttl Alias for collection_ttl
-     * @param integer $collectionTtl Time-to-live of this Map in seconds, defaults
-     *                               to no expiration.
+     * @param int $ttl Alias for collection_ttl
+     * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
+     *                           no expiration.
      */
     public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -64,7 +64,7 @@ class CreateSyncMapOptions extends Options {
     /**
      * Alias for collection_ttl. If both are provided, this value is ignored.
      * 
-     * @param integer $ttl Alias for collection_ttl
+     * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -75,8 +75,8 @@ class CreateSyncMapOptions extends Options {
     /**
      * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $collectionTtl Time-to-live of this Map in seconds, defaults
-     *                               to no expiration.
+     * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
+     *                           no expiration.
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {
@@ -102,8 +102,8 @@ class CreateSyncMapOptions extends Options {
 
 class UpdateSyncMapOptions extends Options {
     /**
-     * @param integer $ttl Alias for collection_ttl
-     * @param integer $collectionTtl New time-to-live of this Map in seconds.
+     * @param int $ttl Alias for collection_ttl
+     * @param int $collectionTtl New time-to-live of this Map in seconds.
      */
     public function __construct($ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
@@ -113,7 +113,7 @@ class UpdateSyncMapOptions extends Options {
     /**
      * Alias for collection_ttl. If both are provided, this value is ignored.
      * 
-     * @param integer $ttl Alias for collection_ttl
+     * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -124,7 +124,7 @@ class UpdateSyncMapOptions extends Options {
     /**
      * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
      * 
-     * @param integer $collectionTtl New time-to-live of this Map in seconds.
+     * @param int $collectionTtl New time-to-live of this Map in seconds.
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {

@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string statusCallback
  * @property string statusCallbackMethod
  * @property string uri
- * @property boolean voiceCallerIdLookup
+ * @property bool voiceCallerIdLookup
  * @property string voiceFallbackMethod
  * @property string voiceFallbackUrl
  * @property string voiceMethod

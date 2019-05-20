@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string chatInstanceSid
  * @property string callbackUrl
- * @property integer defaultTtl
+ * @property int defaultTtl
  * @property string numberSelectionBehavior
  * @property string geoMatchLevel
  * @property string interceptCallbackUrl

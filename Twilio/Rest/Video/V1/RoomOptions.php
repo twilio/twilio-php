@@ -14,16 +14,16 @@ use Twilio\Values;
 
 abstract class RoomOptions {
     /**
-     * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
+     * @param bool $enableTurn Use Twilio Network Traversal for TURN service.
      * @param string $type Type of room, either peer-to-peer, group-small or group.
      * @param string $uniqueName Name of the Room.
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every room event.
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
-     * @param integer $maxParticipants Maximum number of Participants in the Room.
-     * @param boolean $recordParticipantsOnConnect Start Participant recording when
-     *                                             connected.
+     * @param int $maxParticipants Maximum number of Participants in the Room.
+     * @param bool $recordParticipantsOnConnect Start Participant recording when
+     *                                          connected.
      * @param string $videoCodecs An array of video codecs supported when
      *                            publishing a Track in the Room.
      * @param string $mediaRegion Region for the media server in Group Rooms.
@@ -49,16 +49,16 @@ abstract class RoomOptions {
 
 class CreateRoomOptions extends Options {
     /**
-     * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
+     * @param bool $enableTurn Use Twilio Network Traversal for TURN service.
      * @param string $type Type of room, either peer-to-peer, group-small or group.
      * @param string $uniqueName Name of the Room.
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every room event.
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
-     * @param integer $maxParticipants Maximum number of Participants in the Room.
-     * @param boolean $recordParticipantsOnConnect Start Participant recording when
-     *                                             connected.
+     * @param int $maxParticipants Maximum number of Participants in the Room.
+     * @param bool $recordParticipantsOnConnect Start Participant recording when
+     *                                          connected.
      * @param string $videoCodecs An array of video codecs supported when
      *                            publishing a Track in the Room.
      * @param string $mediaRegion Region for the media server in Group Rooms.
@@ -78,7 +78,7 @@ class CreateRoomOptions extends Options {
     /**
      * Use Twilio Network Traversal for TURN service. Defaults to true. Only applicable to Rooms with type `peer-to-peer`.
      * 
-     * @param boolean $enableTurn Use Twilio Network Traversal for TURN service.
+     * @param bool $enableTurn Use Twilio Network Traversal for TURN service.
      * @return $this Fluent Builder
      */
     public function setEnableTurn($enableTurn) {
@@ -135,7 +135,7 @@ class CreateRoomOptions extends Options {
     /**
      * Maximum number of Participants in the Room. Peer-to-peer rooms can have a maximum of 10 Participants. Small Group rooms can have a max of 4 Participants. Group rooms can have a max of 50 Participants
      * 
-     * @param integer $maxParticipants Maximum number of Participants in the Room.
+     * @param int $maxParticipants Maximum number of Participants in the Room.
      * @return $this Fluent Builder
      */
     public function setMaxParticipants($maxParticipants) {
@@ -146,8 +146,8 @@ class CreateRoomOptions extends Options {
     /**
      * Start Participant recording when connected. ***This feature is not available in `peer-to-peer` rooms.***
      * 
-     * @param boolean $recordParticipantsOnConnect Start Participant recording when
-     *                                             connected.
+     * @param bool $recordParticipantsOnConnect Start Participant recording when
+     *                                          connected.
      * @return $this Fluent Builder
      */
     public function setRecordParticipantsOnConnect($recordParticipantsOnConnect) {

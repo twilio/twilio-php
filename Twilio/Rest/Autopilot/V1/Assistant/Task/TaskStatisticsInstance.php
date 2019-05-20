@@ -20,8 +20,8 @@ use Twilio\Version;
  * @property string accountSid
  * @property string assistantSid
  * @property string taskSid
- * @property integer samplesCount
- * @property integer fieldsCount
+ * @property int samplesCount
+ * @property int fieldsCount
  * @property string url
  */
 class TaskStatisticsInstance extends InstanceResource {

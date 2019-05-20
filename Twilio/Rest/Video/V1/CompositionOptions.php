@@ -43,7 +43,7 @@ abstract class CompositionOptions {
      *                               requests to on every composition event.
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @return CreateCompositionOptions Options builder
      */
     public static function create($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
@@ -145,7 +145,7 @@ class CreateCompositionOptions extends Options {
      *                               requests to on every composition event.
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      */
     public function __construct($videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
         $this->options['videoLayout'] = $videoLayout;
@@ -266,7 +266,7 @@ class CreateCompositionOptions extends Options {
     /**
      * When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder
      */
     public function setTrim($trim) {

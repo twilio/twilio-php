@@ -21,7 +21,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string friendlyName
  * @property string ipAddress
- * @property integer cidrPrefixLength
+ * @property int cidrPrefixLength
  * @property string ipAccessControlListSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated

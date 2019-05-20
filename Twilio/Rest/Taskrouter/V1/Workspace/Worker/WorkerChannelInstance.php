@@ -18,10 +18,10 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property integer assignedTasks
- * @property boolean available
- * @property integer availableCapacityPercentage
- * @property integer configuredCapacity
+ * @property int assignedTasks
+ * @property bool available
+ * @property int availableCapacityPercentage
+ * @property int configuredCapacity
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string sid

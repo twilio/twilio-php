@@ -23,8 +23,8 @@ abstract class WorkspaceOptions {
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
      * @param string $friendlyName Human readable description of this workspace
-     * @param boolean $multiTaskEnabled Enable or Disable Multitasking by passing
-     *                                  either true or False with the POST request.
+     * @param bool $multiTaskEnabled Enable or Disable Multitasking by passing
+     *                               either true or False with the POST request.
      * @param string $timeoutActivitySid The ID of the Activity that will be
      *                                   assigned to a Worker when a Task
      *                                   reservation times out without a response.
@@ -52,8 +52,8 @@ abstract class WorkspaceOptions {
      * @param string $eventsFilter Use this parameter to receive webhooks on
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
-     * @param boolean $multiTaskEnabled Multi tasking allows workers to handle
-     *                                  multiple tasks simultaneously.
+     * @param bool $multiTaskEnabled Multi tasking allows workers to handle
+     *                               multiple tasks simultaneously.
      * @param string $template One of the available template names.
      * @param string $prioritizeQueueOrder Use this parameter to configure whether
      *                                     to prioritize LIFO or FIFO when workers
@@ -77,8 +77,8 @@ class UpdateWorkspaceOptions extends Options {
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
      * @param string $friendlyName Human readable description of this workspace
-     * @param boolean $multiTaskEnabled Enable or Disable Multitasking by passing
-     *                                  either true or False with the POST request.
+     * @param bool $multiTaskEnabled Enable or Disable Multitasking by passing
+     *                               either true or False with the POST request.
      * @param string $timeoutActivitySid The ID of the Activity that will be
      *                                   assigned to a Worker when a Task
      *                                   reservation times out without a response.
@@ -149,8 +149,8 @@ class UpdateWorkspaceOptions extends Options {
     /**
      * Enable or Disable Multitasking by passing either *true* or *False* with the POST request. Learn more by visiting [Multitasking][/docs/taskrouter/multitasking].
      * 
-     * @param boolean $multiTaskEnabled Enable or Disable Multitasking by passing
-     *                                  either true or False with the POST request.
+     * @param bool $multiTaskEnabled Enable or Disable Multitasking by passing
+     *                               either true or False with the POST request.
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {
@@ -243,8 +243,8 @@ class CreateWorkspaceOptions extends Options {
      * @param string $eventsFilter Use this parameter to receive webhooks on
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
-     * @param boolean $multiTaskEnabled Multi tasking allows workers to handle
-     *                                  multiple tasks simultaneously.
+     * @param bool $multiTaskEnabled Multi tasking allows workers to handle
+     *                               multiple tasks simultaneously.
      * @param string $template One of the available template names.
      * @param string $prioritizeQueueOrder Use this parameter to configure whether
      *                                     to prioritize LIFO or FIFO when workers
@@ -287,8 +287,8 @@ class CreateWorkspaceOptions extends Options {
     /**
      * Multi tasking allows workers to handle multiple tasks simultaneously. When enabled (MultiTaskEnabled=true), each worker will be eligible to receive parallel reservations up to the per-channel maximums defined in the Workers section. Default is disabled (MultiTaskEnabled=false), where each worker will only receive a new reservation when the previous task is completed. Learn more by visiting [Multitasking][/docs/taskrouter/multitasking].
      * 
-     * @param boolean $multiTaskEnabled Multi tasking allows workers to handle
-     *                                  multiple tasks simultaneously.
+     * @param bool $multiTaskEnabled Multi tasking allows workers to handle
+     *                               multiple tasks simultaneously.
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {

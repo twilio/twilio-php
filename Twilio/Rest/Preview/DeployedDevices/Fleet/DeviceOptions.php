@@ -21,7 +21,7 @@ abstract class DeviceOptions {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return CreateDeviceOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
@@ -41,7 +41,7 @@ abstract class DeviceOptions {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return UpdateDeviceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
@@ -55,7 +55,7 @@ class CreateDeviceOptions extends Options {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      */
     public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -112,7 +112,7 @@ class CreateDeviceOptions extends Options {
     /**
      * The enabled
      * 
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -178,7 +178,7 @@ class UpdateDeviceOptions extends Options {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      */
     public function __construct($friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -223,7 +223,7 @@ class UpdateDeviceOptions extends Options {
     /**
      * The enabled
      * 
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {

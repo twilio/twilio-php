@@ -25,7 +25,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string roleSid
- * @property integer lastConsumedMessageIndex
+ * @property int lastConsumedMessageIndex
  * @property \DateTime lastConsumptionTimestamp
  * @property string url
  */

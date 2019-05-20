@@ -18,7 +18,7 @@ use Twilio\Version;
  * @property string accountSid
  * @property string phoneNumber
  * @property string friendlyName
- * @property integer validationCode
+ * @property int validationCode
  * @property string callSid
  */
 class ValidationRequestInstance extends InstanceResource {

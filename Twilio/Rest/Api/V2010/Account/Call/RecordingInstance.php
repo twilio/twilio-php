@@ -31,9 +31,9 @@ use Twilio\Version;
  * @property array encryptionDetails
  * @property string priceUnit
  * @property string status
- * @property integer channels
+ * @property int channels
  * @property string source
- * @property integer errorCode
+ * @property int errorCode
  */
 class RecordingInstance extends InstanceResource {
     /**

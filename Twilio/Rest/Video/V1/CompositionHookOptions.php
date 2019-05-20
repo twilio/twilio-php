@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class CompositionHookOptions {
     /**
-     * @param boolean $enabled Only show Composition Hooks enabled or disabled.
+     * @param bool $enabled Only show Composition Hooks enabled or disabled.
      * @param \DateTime $dateCreatedAfter Only show Composition Hooks created on or
      *                                    after this ISO8601 date-time with
      *                                    timezone.
@@ -33,8 +33,8 @@ abstract class CompositionHookOptions {
     }
 
     /**
-     * @param boolean $enabled Boolean flag indicating if the Composition Hook is
-     *                         active.
+     * @param bool $enabled Boolean flag indicating if the Composition Hook is
+     *                      active.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition Hook.
@@ -47,7 +47,7 @@ abstract class CompositionHookOptions {
      *                               requests to on every composition event.
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @return CreateCompositionHookOptions Options builder
      */
     public static function create($enabled = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
@@ -55,14 +55,14 @@ abstract class CompositionHookOptions {
     }
 
     /**
-     * @param boolean $enabled Boolean flag indicating if the Composition Hook is
-     *                         active.
+     * @param bool $enabled Boolean flag indicating if the Composition Hook is
+     *                      active.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition Hook.
      * @param string $audioSourcesExcluded A list of audio sources excluded related
      *                                     to this Composition Hook.
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @param string $format Container format of the Composition Hook media file.
      *                       Any of the following: `mp4`, `webm`.
      * @param string $resolution Pixel resolution of the composed video.
@@ -79,7 +79,7 @@ abstract class CompositionHookOptions {
 
 class ReadCompositionHookOptions extends Options {
     /**
-     * @param boolean $enabled Only show Composition Hooks enabled or disabled.
+     * @param bool $enabled Only show Composition Hooks enabled or disabled.
      * @param \DateTime $dateCreatedAfter Only show Composition Hooks created on or
      *                                    after this ISO8601 date-time with
      *                                    timezone.
@@ -99,7 +99,7 @@ class ReadCompositionHookOptions extends Options {
     /**
      * Only show Composition Hooks that are enabled or disabled.
      * 
-     * @param boolean $enabled Only show Composition Hooks enabled or disabled.
+     * @param bool $enabled Only show Composition Hooks enabled or disabled.
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -163,8 +163,8 @@ class ReadCompositionHookOptions extends Options {
 
 class CreateCompositionHookOptions extends Options {
     /**
-     * @param boolean $enabled Boolean flag indicating if the Composition Hook is
-     *                         active.
+     * @param bool $enabled Boolean flag indicating if the Composition Hook is
+     *                      active.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition Hook.
@@ -177,7 +177,7 @@ class CreateCompositionHookOptions extends Options {
      *                               requests to on every composition event.
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      */
     public function __construct($enabled = Values::NONE, $videoLayout = Values::NONE, $audioSources = Values::NONE, $audioSourcesExcluded = Values::NONE, $resolution = Values::NONE, $format = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $trim = Values::NONE) {
         $this->options['enabled'] = $enabled;
@@ -194,8 +194,8 @@ class CreateCompositionHookOptions extends Options {
     /**
      * Boolean flag indicating if the Composition Hook is active. Possible values are `true` or `false`. When `true`, the Composition Hook will be triggered for every completed Group Room on this account. When `false`, the Composition Hook never triggers.
      * 
-     * @param boolean $enabled Boolean flag indicating if the Composition Hook is
-     *                         active.
+     * @param bool $enabled Boolean flag indicating if the Composition Hook is
+     *                      active.
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -301,7 +301,7 @@ class CreateCompositionHookOptions extends Options {
     /**
      * When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder
      */
     public function setTrim($trim) {
@@ -327,14 +327,14 @@ class CreateCompositionHookOptions extends Options {
 
 class UpdateCompositionHookOptions extends Options {
     /**
-     * @param boolean $enabled Boolean flag indicating if the Composition Hook is
-     *                         active.
+     * @param bool $enabled Boolean flag indicating if the Composition Hook is
+     *                      active.
      * @param array $videoLayout The JSON video layout description.
      * @param string $audioSources A list of audio sources related to this
      *                             Composition Hook.
      * @param string $audioSourcesExcluded A list of audio sources excluded related
      *                                     to this Composition Hook.
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @param string $format Container format of the Composition Hook media file.
      *                       Any of the following: `mp4`, `webm`.
      * @param string $resolution Pixel resolution of the composed video.
@@ -358,8 +358,8 @@ class UpdateCompositionHookOptions extends Options {
     /**
      * Boolean flag indicating if the Composition Hook is active. Possible values are `true` or `false`. When `true`, the Composition Hook will be triggered for every completed Group Room on this account. When `false`, the Composition Hook never triggers.
      * 
-     * @param boolean $enabled Boolean flag indicating if the Composition Hook is
-     *                         active.
+     * @param bool $enabled Boolean flag indicating if the Composition Hook is
+     *                      active.
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -405,7 +405,7 @@ class UpdateCompositionHookOptions extends Options {
     /**
      * When activated, clips all the intervals where there is no active media in the Compositions triggered by the Composition Hook. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
      * 
-     * @param boolean $trim Boolean flag for clipping intervals that have no media.
+     * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder
      */
     public function setTrim($trim) {

@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string size
  * @property string url
  * @property string type
- * @property integer duration
+ * @property int duration
  * @property string containerFormat
  * @property string codec
  * @property array groupingSids

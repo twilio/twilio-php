@@ -24,7 +24,7 @@ class SyncListItemContext extends InstanceContext {
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $listSid The list_sid
-     * @param integer $index The index
+     * @param int $index The index
      * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext 
      */
     public function __construct(Version $version, $serviceSid, $listSid, $index) {

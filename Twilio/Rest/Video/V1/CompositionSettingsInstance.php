@@ -22,9 +22,9 @@ use Twilio\Version;
  * @property string friendlyName
  * @property string awsCredentialsSid
  * @property string awsS3Url
- * @property boolean awsStorageEnabled
+ * @property bool awsStorageEnabled
  * @property string encryptionKeySid
- * @property boolean encryptionEnabled
+ * @property bool encryptionEnabled
  * @property string url
  */
 class CompositionSettingsInstance extends InstanceResource {

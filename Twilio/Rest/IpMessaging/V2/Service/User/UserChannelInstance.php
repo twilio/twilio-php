@@ -21,8 +21,8 @@ use Twilio\Version;
  * @property string userSid
  * @property string memberSid
  * @property string status
- * @property integer lastConsumedMessageIndex
- * @property integer unreadMessagesCount
+ * @property int lastConsumedMessageIndex
+ * @property int unreadMessagesCount
  * @property array links
  * @property string url
  * @property string notificationLevel

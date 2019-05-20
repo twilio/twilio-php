@@ -32,14 +32,14 @@ use Twilio\Version;
  * @property string failureReason
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property integer verificationAttempts
+ * @property int verificationAttempts
  * @property string email
  * @property string ccEmails
  * @property string url
  * @property string verificationType
  * @property string verificationDocumentSid
  * @property string extension
- * @property integer callDelay
+ * @property int callDelay
  * @property string verificationCode
  * @property string verificationCallSids
  */

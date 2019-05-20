@@ -25,15 +25,15 @@ abstract class MessageOptions {
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The total maximum price up to 4 decimal places in US
      *                         dollars acceptable for the message to be delivered.
-     * @param boolean $provideFeedback Whether to confirm delivery of the message
-     * @param integer $validityPeriod The number of seconds that the message can
-     *                                remain in our outgoing queue.
-     * @param boolean $forceDelivery Reserved
-     * @param boolean $smartEncoded Whether to detect Unicode characters that have
-     *                              a similar GSM-7 character and replace them
+     * @param bool $provideFeedback Whether to confirm delivery of the message
+     * @param int $validityPeriod The number of seconds that the message can remain
+     *                            in our outgoing queue.
+     * @param bool $forceDelivery Reserved
+     * @param bool $smartEncoded Whether to detect Unicode characters that have a
+     *                           similar GSM-7 character and replace them
      * @param string $interactiveData A JSON string that represents an interactive
      *                                message
-     * @param boolean $forceOptIn Whether to forcefully whitelist a from:to pair
+     * @param bool $forceOptIn Whether to forcefully whitelist a from:to pair
      * @return CreateMessageOptions Options builder
      */
     public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
@@ -66,15 +66,15 @@ class CreateMessageOptions extends Options {
      * @param string $applicationSid The application to use for callbacks
      * @param string $maxPrice The total maximum price up to 4 decimal places in US
      *                         dollars acceptable for the message to be delivered.
-     * @param boolean $provideFeedback Whether to confirm delivery of the message
-     * @param integer $validityPeriod The number of seconds that the message can
-     *                                remain in our outgoing queue.
-     * @param boolean $forceDelivery Reserved
-     * @param boolean $smartEncoded Whether to detect Unicode characters that have
-     *                              a similar GSM-7 character and replace them
+     * @param bool $provideFeedback Whether to confirm delivery of the message
+     * @param int $validityPeriod The number of seconds that the message can remain
+     *                            in our outgoing queue.
+     * @param bool $forceDelivery Reserved
+     * @param bool $smartEncoded Whether to detect Unicode characters that have a
+     *                           similar GSM-7 character and replace them
      * @param string $interactiveData A JSON string that represents an interactive
      *                                message
-     * @param boolean $forceOptIn Whether to forcefully whitelist a from:to pair
+     * @param bool $forceOptIn Whether to forcefully whitelist a from:to pair
      */
     public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
         $this->options['from'] = $from;
@@ -176,7 +176,7 @@ class CreateMessageOptions extends Options {
     /**
      * Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback). This parameter is `false` by default.
      * 
-     * @param boolean $provideFeedback Whether to confirm delivery of the message
+     * @param bool $provideFeedback Whether to confirm delivery of the message
      * @return $this Fluent Builder
      */
     public function setProvideFeedback($provideFeedback) {
@@ -187,8 +187,8 @@ class CreateMessageOptions extends Options {
     /**
      * How long in seconds the message can remain in our outgoing message queue. After this period elapses, the message fails and we call your status callback. Can be between 1 and the default value of 14,400 seconds. After a message has been accepted by a carrier, however, we cannot guarantee that the message will not be queued after this period. We recommend that this value be at least 5 seconds.
      * 
-     * @param integer $validityPeriod The number of seconds that the message can
-     *                                remain in our outgoing queue.
+     * @param int $validityPeriod The number of seconds that the message can remain
+     *                            in our outgoing queue.
      * @return $this Fluent Builder
      */
     public function setValidityPeriod($validityPeriod) {
@@ -199,7 +199,7 @@ class CreateMessageOptions extends Options {
     /**
      * Reserved
      * 
-     * @param boolean $forceDelivery Reserved
+     * @param bool $forceDelivery Reserved
      * @return $this Fluent Builder
      */
     public function setForceDelivery($forceDelivery) {
@@ -210,8 +210,8 @@ class CreateMessageOptions extends Options {
     /**
      * Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`.
      * 
-     * @param boolean $smartEncoded Whether to detect Unicode characters that have
-     *                              a similar GSM-7 character and replace them
+     * @param bool $smartEncoded Whether to detect Unicode characters that have a
+     *                           similar GSM-7 character and replace them
      * @return $this Fluent Builder
      */
     public function setSmartEncoded($smartEncoded) {
@@ -234,7 +234,7 @@ class CreateMessageOptions extends Options {
     /**
      * Whether to forcefully whitelist a from:to pair. Can be: `true` or `false`.
      * 
-     * @param boolean $forceOptIn Whether to forcefully whitelist a from:to pair
+     * @param bool $forceOptIn Whether to forcefully whitelist a from:to pair
      * @return $this Fluent Builder
      */
     public function setForceOptIn($forceOptIn) {
