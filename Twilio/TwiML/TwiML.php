@@ -29,8 +29,8 @@ abstract class TwiML {
         $this->children = [];
 
         if ($value !== null) {
-        	$this->children[] = $value;
-		}
+            $this->children[] = $value;
+        }
     }
 
     /**
@@ -67,15 +67,15 @@ abstract class TwiML {
         return $this;
     }
 
-	/**
-	 * @param string $name XML element name
-	 * @param string $value XML value
-	 * @param array $attributes XML attributes
-     * @return TwiML
-	 */
-	public function addChild($name, $value = null, $attributes = []) {
-		return $this->nest(new GenericNode($name, $value, $attributes));
-	}
+    /**
+     * @param string $name XML element name
+     * @param string $value XML value
+     * @param array $attributes XML attributes
+     * @return GenericNode
+     */
+    public function addChild($name, $value = null, $attributes = []) {
+        return $this->nest(new GenericNode($name, $value, $attributes));
+    }
 
     /**
      * Convert TwiML to XML string.
@@ -113,12 +113,12 @@ abstract class TwiML {
         }
 
         foreach ($twiml->children as $child) {
-			if (is_string($child)) {
-				$element->appendChild($document->createTextNode($child));
-			} else {
-				$element->appendChild($this->buildElement($child, $document));
-			}
-		}
+            if (is_string($child)) {
+                $element->appendChild($document->createTextNode($child));
+            } else {
+               $element->appendChild($this->buildElement($child, $document));
+            }
+        }
 
         return $element;
     }
