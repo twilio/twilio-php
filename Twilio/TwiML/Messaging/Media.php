@@ -14,8 +14,8 @@ use Twilio\TwiML\TwiML;
 class Media extends TwiML {
     /**
      * Media constructor.
-     * 
-     * @param url $url Media URL
+     *
+     * @param string $url Media URL
      */
     public function __construct($url) {
         parent::__construct('Media', $url);

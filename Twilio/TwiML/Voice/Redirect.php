@@ -14,8 +14,8 @@ use Twilio\TwiML\TwiML;
 class Redirect extends TwiML {
     /**
      * Redirect constructor.
-     * 
-     * @param url $url Redirect URL
+     *
+     * @param string $url Redirect URL
      * @param array $attributes Optional attributes
      */
     public function __construct($url, $attributes = array()) {
@@ -24,9 +24,9 @@ class Redirect extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
-     * @param httpMethod $method Redirect URL method
-     * @return TwiML $this.
+     *
+     * @param string $method Redirect URL method
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
