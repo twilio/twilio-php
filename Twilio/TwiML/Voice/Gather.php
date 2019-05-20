@@ -157,8 +157,7 @@ class Gather extends TwiML {
     /**
      * Add PartialResultCallbackMethod attribute.
      *
-     * @param string $partialResultCallbackMethod Partial result callback URL
-     *                                                method
+     * @param string $partialResultCallbackMethod Partial result callback URL method
      * @return static $this.
      */
     public function setPartialResultCallbackMethod($partialResultCallbackMethod) {
@@ -207,7 +206,7 @@ class Gather extends TwiML {
 
     /**
      * Add ActionOnEmptyResult attribute.
-     * 
+     *
      * @param bool $actionOnEmptyResult Force webhook to the action URL event if
      *                                  there is no input
      * @return static $this.

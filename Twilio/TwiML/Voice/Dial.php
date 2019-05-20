@@ -160,7 +160,7 @@ class Dial extends TwiML {
     /**
      * Add Trim attribute.
      *
-     * @param bool $trim Trim the recording
+     * @param string $trim Trim the recording
      * @return static $this.
      */
     public function setTrim($trim) {
@@ -180,8 +180,8 @@ class Dial extends TwiML {
     /**
      * Add RecordingStatusCallbackMethod attribute.
      *
-     * @param string $recordingStatusCallbackMethod Recording status callback
-     *                                              URL method
+     * @param string $recordingStatusCallbackMethod Recording status callback URL
+     *                                              method
      * @return static $this.
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
@@ -202,7 +202,7 @@ class Dial extends TwiML {
      * Add AnswerOnBridge attribute.
      *
      * @param bool $answerOnBridge Preserve the ringing behavior of the inbound
-     *                                call until the Dialed call picks up
+     *                             call until the Dialed call picks up
      * @return static $this.
      */
     public function setAnswerOnBridge($answerOnBridge) {
@@ -212,9 +212,9 @@ class Dial extends TwiML {
     /**
      * Add RingTone attribute.
      *
-     * @param string $ringTone Ringtone allows you to override the
-     *                         ringback tone that Twilio will play back
-     *                         to the caller while executing the Dial
+     * @param string $ringTone Ringtone allows you to override the ringback tone
+     *                         that Twilio will play back to the caller while
+     *                         executing the Dial
      * @return static $this.
      */
     public function setRingTone($ringTone) {

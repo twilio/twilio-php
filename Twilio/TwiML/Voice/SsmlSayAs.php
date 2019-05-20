@@ -35,8 +35,8 @@ class SsmlSayAs extends TwiML {
     /**
      * Add Role attribute.
      *
-     * @param string $role Specify the format of the date when interpret-as
-     *                     is set to date
+     * @param string $role Specify the format of the date when interpret-as is set
+     *                     to date
      * @return static $this.
      */
     public function setRole($role) {

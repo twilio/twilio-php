@@ -64,8 +64,7 @@ class Pay extends TwiML {
     /**
      * Add StatusCallbackMethod attribute.
      *
-     * @param string $statusCallbackMethod Status callback
-     *                                                            method
+     * @param string $statusCallbackMethod Status callback method
      * @return static $this.
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
@@ -75,7 +74,7 @@ class Pay extends TwiML {
     /**
      * Add Timeout attribute.
      *
-     * @param integer $timeout Time to wait to gather input
+     * @param int $timeout Time to wait to gather input
      * @return static $this.
      */
     public function setTimeout($timeout) {
@@ -85,8 +84,8 @@ class Pay extends TwiML {
     /**
      * Add MaxAttempts attribute.
      *
-     * @param integer $maxAttempts Maximum number of allowed retries when gathering
-     *                             input
+     * @param int $maxAttempts Maximum number of allowed retries when gathering
+     *                         input
      * @return static $this.
      */
     public function setMaxAttempts($maxAttempts) {
@@ -96,7 +95,7 @@ class Pay extends TwiML {
     /**
      * Add SecurityCode attribute.
      *
-     * @param boolean $securityCode Prompt for security code
+     * @param bool $securityCode Prompt for security code
      * @return static $this.
      */
     public function setSecurityCode($securityCode) {

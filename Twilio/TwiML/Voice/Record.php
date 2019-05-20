@@ -84,7 +84,7 @@ class Record extends TwiML {
     /**
      * Add Trim attribute.
      *
-     * @param bool $trim Trim the recording
+     * @param string $trim Trim the recording
      * @return static $this.
      */
     public function setTrim($trim) {
@@ -113,12 +113,9 @@ class Record extends TwiML {
 
     /**
      * Add RecordingStatusCallbackEvent attribute.
-     * 
-     * @param record:Enum:RecordingEvent $recordingStatusCallbackEvent Recording
-     *                                                                 status
-     *                                                                 callback
-     *                                                                 events
-     * @return TwiML $this.
+     *
+     * @param string $recordingStatusCallbackEvent Recording status callback events
+     * @return static $this.
      */
     public function setRecordingStatusCallbackEvent($recordingStatusCallbackEvent) {
         return $this->setAttribute('recordingStatusCallbackEvent', $recordingStatusCallbackEvent);
