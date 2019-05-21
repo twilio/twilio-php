@@ -32,7 +32,7 @@ class UpdateKeyOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -43,7 +43,7 @@ class UpdateKeyOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

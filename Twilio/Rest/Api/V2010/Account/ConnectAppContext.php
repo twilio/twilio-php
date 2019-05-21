@@ -18,12 +18,12 @@ use Twilio\Version;
 class ConnectAppContext extends InstanceContext {
     /**
      * Initialize the ConnectAppContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Fetch a ConnectAppInstance
-     * 
+     *
      * @return ConnectAppInstance Fetched ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,7 +59,7 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Update the ConnectAppInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ConnectAppInstance Updated ConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,7 +95,7 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Deletes the ConnectAppInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -105,7 +105,7 @@ class ConnectAppContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

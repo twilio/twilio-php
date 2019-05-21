@@ -18,9 +18,9 @@ use Twilio\Version;
 class FormList extends ListResource {
     /**
      * Construct the FormList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Authy\V1\FormList 
+     * @return \Twilio\Rest\Authy\V1\FormList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,9 +31,9 @@ class FormList extends ListResource {
 
     /**
      * Constructs a FormContext
-     * 
+     *
      * @param string $formType The Type of this Form
-     * @return \Twilio\Rest\Authy\V1\FormContext 
+     * @return \Twilio\Rest\Authy\V1\FormContext
      */
     public function getContext($formType) {
         return new FormContext($this->version, $formType);
@@ -41,7 +41,7 @@ class FormList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -40,7 +40,7 @@ class UpdateVariableOptions extends Options {
 
     /**
      * A string by which this Variable can be referenced, fewer than 128 characters. Optional.
-     * 
+     *
      * @param string $key A string by which this Variable can be referenced.
      * @return $this Fluent Builder
      */
@@ -51,7 +51,7 @@ class UpdateVariableOptions extends Options {
 
     /**
      * A string that contains the actual value of this Variable, less than 450 bytes. Optional.
-     * 
+     *
      * @param string $value A string that contains the actual value of this
      *                      Variable.
      * @return $this Fluent Builder
@@ -63,7 +63,7 @@ class UpdateVariableOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

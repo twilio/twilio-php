@@ -18,11 +18,11 @@ use Twilio\Version;
 class DefaultsList extends ListResource {
     /**
      * Construct the DefaultsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -33,8 +33,8 @@ class DefaultsList extends ListResource {
 
     /**
      * Constructs a DefaultsContext
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext
      */
     public function getContext() {
         return new DefaultsContext($this->version, $this->solution['assistantSid']);
@@ -42,7 +42,7 @@ class DefaultsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

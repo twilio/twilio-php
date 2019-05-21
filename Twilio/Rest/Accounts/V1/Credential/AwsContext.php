@@ -17,10 +17,10 @@ use Twilio\Version;
 class AwsContext extends InstanceContext {
     /**
      * Initialize the AwsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Accounts\V1\Credential\AwsContext 
+     * @return \Twilio\Rest\Accounts\V1\Credential\AwsContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class AwsContext extends InstanceContext {
 
     /**
      * Fetch a AwsInstance
-     * 
+     *
      * @return AwsInstance Fetched AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -51,7 +51,7 @@ class AwsContext extends InstanceContext {
 
     /**
      * Update the AwsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AwsInstance Updated AwsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -73,7 +73,7 @@ class AwsContext extends InstanceContext {
 
     /**
      * Deletes the AwsInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -83,7 +83,7 @@ class AwsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -67,7 +67,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * A unique string identifier for the session participant as [Chat User](https://www.twilio.com/docs/api/chat/rest/users). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate.
-     * 
+     *
      * @param string $identity A unique string identifier for the session
      *                         participant as Chat User.
      * @return $this Fluent Builder
@@ -79,7 +79,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Twilio Address, this determines a participant uniquely. This field (with twilio_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
-     * 
+     *
      * @param string $userAddress The address of the participant's device.
      * @return $this Fluent Builder
      */
@@ -90,7 +90,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
-     * 
+     *
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @return $this Fluent Builder
@@ -102,7 +102,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with user_address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
-     * 
+     *
      * @param string $twilioAddress The address of the Twilio phone number that the
      *                              participant is in contact with.
      * @return $this Fluent Builder
@@ -114,7 +114,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The date that this resource was created. This is most often useful when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
-     * 
+     *
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
@@ -125,7 +125,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The date that this resource was last updated. This is most often provided when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
-     * 
+     *
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
@@ -136,7 +136,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -165,7 +165,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
-     * 
+     *
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @return $this Fluent Builder
@@ -177,7 +177,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The date that this resource was created. This is useful when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
-     * 
+     *
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
@@ -188,7 +188,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The date that this resource was last updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
@@ -199,7 +199,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

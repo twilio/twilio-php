@@ -20,13 +20,13 @@ use Twilio\Version;
 class SyncListPermissionContext extends InstanceContext {
     /**
      * Initialize the SyncListPermissionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Sync Service Instance SID or unique name.
      * @param string $listSid Sync List SID or unique name.
      * @param string $identity Identity of the user to whom the Sync List
      *                         Permission applies.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext
      */
     public function __construct(Version $version, $serviceSid, $listSid, $identity) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class SyncListPermissionContext extends InstanceContext {
 
     /**
      * Fetch a SyncListPermissionInstance
-     * 
+     *
      * @return SyncListPermissionInstance Fetched SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -67,7 +67,7 @@ class SyncListPermissionContext extends InstanceContext {
 
     /**
      * Deletes the SyncListPermissionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -77,7 +77,7 @@ class SyncListPermissionContext extends InstanceContext {
 
     /**
      * Update the SyncListPermissionInstance
-     * 
+     *
      * @param bool $read Read access.
      * @param bool $write Write access.
      * @param bool $manage Manage access.
@@ -109,7 +109,7 @@ class SyncListPermissionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

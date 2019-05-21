@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string identity
  * @property string accountSid
@@ -32,12 +32,12 @@ class EntityInstance extends InstanceResource {
 
     /**
      * Initialize the EntityInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $identity Unique identity of the Entity
-     * @return \Twilio\Rest\Authy\V1\Service\EntityInstance 
+     * @return \Twilio\Rest\Authy\V1\Service\EntityInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $identity = null) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class EntityInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Authy\V1\Service\EntityContext Context for this
      *                                                     EntityInstance
      */
@@ -81,7 +81,7 @@ class EntityInstance extends InstanceResource {
 
     /**
      * Deletes the EntityInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -91,7 +91,7 @@ class EntityInstance extends InstanceResource {
 
     /**
      * Fetch a EntityInstance
-     * 
+     *
      * @return EntityInstance Fetched EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -101,8 +101,8 @@ class EntityInstance extends InstanceResource {
 
     /**
      * Access the factors
-     * 
-     * @return \Twilio\Rest\Authy\V1\Service\Entity\FactorList 
+     *
+     * @return \Twilio\Rest\Authy\V1\Service\Entity\FactorList
      */
     protected function getFactors() {
         return $this->proxy()->factors;
@@ -110,7 +110,7 @@ class EntityInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -130,7 +130,7 @@ class EntityInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -21,12 +21,12 @@ use Twilio\Version;
 class SyncListItemContext extends InstanceContext {
     /**
      * Initialize the SyncListItemContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $listSid The list_sid
      * @param int $index The index
-     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext
      */
     public function __construct(Version $version, $serviceSid, $listSid, $index) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Fetch a SyncListItemInstance
-     * 
+     *
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,7 +63,7 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Deletes the SyncListItemInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -73,7 +73,7 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Update the SyncListItemInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -106,7 +106,7 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

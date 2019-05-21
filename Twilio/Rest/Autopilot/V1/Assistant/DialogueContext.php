@@ -19,12 +19,12 @@ use Twilio\Version;
 class DialogueContext extends InstanceContext {
     /**
      * Initialize the DialogueContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext
      */
     public function __construct(Version $version, $assistantSid, $sid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class DialogueContext extends InstanceContext {
 
     /**
      * Fetch a DialogueInstance
-     * 
+     *
      * @return DialogueInstance Fetched DialogueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -60,7 +60,7 @@ class DialogueContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

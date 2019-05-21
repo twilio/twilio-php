@@ -52,7 +52,7 @@ class CreateModelBuildOptions extends Options {
 
     /**
      * The status_callback
-     * 
+     *
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class CreateModelBuildOptions extends Options {
 
     /**
      * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
-     * 
+     *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long. For example: v0.1
@@ -76,7 +76,7 @@ class CreateModelBuildOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -102,7 +102,7 @@ class UpdateModelBuildOptions extends Options {
 
     /**
      * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
-     * 
+     *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long. For example: v0.1
@@ -115,7 +115,7 @@ class UpdateModelBuildOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

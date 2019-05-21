@@ -155,7 +155,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Whether the participant should be muted. Can be `true` or `false. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
-     * 
+     *
      * @param bool $muted Whether the participant should be muted
      * @return $this Fluent Builder
      */
@@ -166,7 +166,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference.
-     * 
+     *
      * @param bool $hold Whether the participant should be on hold
      * @return $this Fluent Builder
      */
@@ -177,7 +177,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The URL we call using the `hold_method` for  music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains the `<Play>`, `<Say>` or `<Redirect>` commands.
-     * 
+     *
      * @param string $holdUrl The URL we call using the `hold_method` for  music
      *                        that plays when the participant is on hold
      * @return $this Fluent Builder
@@ -189,7 +189,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `hold_url`. Can be: `GET` or `POST` and the default is `GET`.
-     * 
+     *
      * @param string $holdMethod The HTTP method we should use to call hold_url
      * @return $this Fluent Builder
      */
@@ -200,7 +200,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The URL we call using the `announce_method` for an announcement to the participant. The URL must return an MP3 file, a WAV file, or a TwiML document that contains `<Play>` or `<Say>` commands.
-     * 
+     *
      * @param string $announceUrl The URL we call using the `announce_method` for
      *                            an announcement to the participant
      * @return $this Fluent Builder
@@ -212,7 +212,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`.
-     * 
+     *
      * @param string $announceMethod The HTTP method we should use to call
      *                               announce_url
      * @return $this Fluent Builder
@@ -224,7 +224,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
-     * 
+     *
      * @param string $waitUrl URL that hosts pre-conference hold music
      * @return $this Fluent Builder
      */
@@ -235,7 +235,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
-     * 
+     *
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
      * @return $this Fluent Builder
      */
@@ -246,7 +246,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $beepOnExit Whether to play a notification beep to the
      *                         conference when the participant exit
      * @return $this Fluent Builder
@@ -258,7 +258,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
-     * 
+     *
      * @param bool $endConferenceOnExit Whether to end the conference when the
      *                                  participant leaves
      * @return $this Fluent Builder
@@ -270,7 +270,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
-     * 
+     *
      * @param bool $coaching Indicates if the participant changed to coach
      * @return $this Fluent Builder
      */
@@ -281,7 +281,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
-     * 
+     *
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
      * @return $this Fluent Builder
@@ -293,7 +293,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -405,7 +405,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The URL we should call using the `status_callback_method` to send status information to your application.
-     * 
+     *
      * @param string $statusCallback The URL we should call to send status
      *                               information to your application
      * @return $this Fluent Builder
@@ -417,7 +417,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `status_callback`. Can be: `GET` and `POST` and defaults to `POST`.
-     * 
+     *
      * @param string $statusCallbackMethod The HTTP method we should use to call
      *                                     `status_callback`
      * @return $this Fluent Builder
@@ -429,7 +429,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
-     * 
+     *
      * @param string $statusCallbackEvent Set state change events that will trigger
      *                                    a callback
      * @return $this Fluent Builder
@@ -441,7 +441,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds.
-     * 
+     *
      * @param int $timeout he number of seconds that we should wait for an answer
      * @return $this Fluent Builder
      */
@@ -452,7 +452,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.
-     * 
+     *
      * @param bool $record Whether to record the participant and their conferences
      * @return $this Fluent Builder
      */
@@ -463,7 +463,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`.
-     * 
+     *
      * @param bool $muted Whether to mute the agent
      * @return $this Fluent Builder
      */
@@ -474,7 +474,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to play a notification beep to the conference when the participant joins. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.
-     * 
+     *
      * @param string $beep Whether to play a notification beep to the conference
      *                     when the participant joins
      * @return $this Fluent Builder
@@ -486,7 +486,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.
-     * 
+     *
      * @param bool $startConferenceOnEnter Whether the conference starts when the
      *                                     participant joins the conference
      * @return $this Fluent Builder
@@ -498,7 +498,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
-     * 
+     *
      * @param bool $endConferenceOnExit Whether to end the conference when the
      *                                  participant leaves
      * @return $this Fluent Builder
@@ -510,7 +510,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
-     * 
+     *
      * @param string $waitUrl URL that hosts pre-conference hold music
      * @return $this Fluent Builder
      */
@@ -521,7 +521,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
-     * 
+     *
      * @param string $waitMethod The HTTP method we should use to call `wait_url`
      * @return $this Fluent Builder
      */
@@ -532,7 +532,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
-     * 
+     *
      * @param bool $earlyMedia Whether agents can hear the state of the outbound
      *                         call
      * @return $this Fluent Builder
@@ -544,7 +544,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The maximum number of participants in the conference. Can be a positive integer from `2` to `10`. The default value is `10`.
-     * 
+     *
      * @param int $maxParticipants The maximum number of agent conference
      *                             participants
      * @return $this Fluent Builder
@@ -556,7 +556,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
-     * 
+     *
      * @param string $conferenceRecord Whether to record the conference the
      *                                 participant is joining
      * @return $this Fluent Builder
@@ -568,7 +568,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
-     * 
+     *
      * @param string $conferenceTrim Whether to trim leading and trailing silence
      *                               from your recorded conference audio files
      * @return $this Fluent Builder
@@ -580,7 +580,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
-     * 
+     *
      * @param string $conferenceStatusCallback The callback URL for conference
      *                                         events
      * @return $this Fluent Builder
@@ -592,7 +592,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-     * 
+     *
      * @param string $conferenceStatusCallbackMethod HTTP method for requesting
      *                                               `conference_status_callback`
      *                                               URL
@@ -605,7 +605,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, and `speaker`. Separate multiple values with a space. Defaults to `start end`.
-     * 
+     *
      * @param string $conferenceStatusCallbackEvent The conference state changes
      *                                              that should generate a call to
      *                                              `conference_status_callback`
@@ -618,7 +618,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.
-     * 
+     *
      * @param string $recordingChannels Specify `mono` or `dual` recording channels
      * @return $this Fluent Builder
      */
@@ -629,7 +629,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The URL that we should call using the `recording_status_callback_method` when the recording status changes.
-     * 
+     *
      * @param string $recordingStatusCallback The URL that we should call using the
      *                                        `recording_status_callback_method`
      *                                        when the recording status changes
@@ -642,7 +642,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-     * 
+     *
      * @param string $recordingStatusCallbackMethod The HTTP method we should use
      *                                              when we call
      *                                              `recording_status_callback`
@@ -655,7 +655,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The SIP username used for authentication.
-     * 
+     *
      * @param string $sipAuthUsername The SIP username used for authentication
      * @return $this Fluent Builder
      */
@@ -666,7 +666,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The SIP password for authentication.
-     * 
+     *
      * @param string $sipAuthPassword The SIP password for authentication
      * @return $this Fluent Builder
      */
@@ -677,7 +677,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
-     * 
+     *
      * @param string $region The region where we should mix the conference audio
      * @return $this Fluent Builder
      */
@@ -688,7 +688,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
-     * 
+     *
      * @param string $conferenceRecordingStatusCallback The URL we should call
      *                                                  using the
      *                                                  `conference_recording_status_callback_method` when the conference recording is available
@@ -701,7 +701,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-     * 
+     *
      * @param string $conferenceRecordingStatusCallbackMethod The HTTP method we
      *                                                        should use to call
      *                                                        `conference_recording_status_callback`
@@ -714,7 +714,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The recording state changes that should generate a call to `recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
-     * 
+     *
      * @param string $recordingStatusCallbackEvent The recording state changes that
      *                                             should generate a call to
      *                                             `recording_status_callback`
@@ -727,7 +727,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, and `failed`. Separate multiple values with a space. The default value is `in-progress completed failed`.
-     * 
+     *
      * @param string $conferenceRecordingStatusCallbackEvent The conference
      *                                                       recording state
      *                                                       changes that should
@@ -742,7 +742,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
-     * 
+     *
      * @param bool $coaching Indicates if the participant changed to coach
      * @return $this Fluent Builder
      */
@@ -753,7 +753,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
-     * 
+     *
      * @param string $callSidToCoach The SID of the participant who is being
      *                               `coached`
      * @return $this Fluent Builder
@@ -765,7 +765,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -794,7 +794,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Whether to return only participants that are muted. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $muted Whether to return only participants that are muted
      * @return $this Fluent Builder
      */
@@ -805,7 +805,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Whether to return only participants that are on hold. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $hold Whether to return only participants that are on hold
      * @return $this Fluent Builder
      */
@@ -816,7 +816,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Whether to return only participants who are coaching another call. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $coaching Whether to return only participants who are coaching
      *                       another call
      * @return $this Fluent Builder
@@ -828,7 +828,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

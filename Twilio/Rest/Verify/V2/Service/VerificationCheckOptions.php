@@ -48,7 +48,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * The phone number to verify. Either this parameter or the `verification_sid` must be specified
-     * 
+     *
      * @param string $to The phone number to verify
      * @return $this Fluent Builder
      */
@@ -59,7 +59,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number must be specified.
-     * 
+     *
      * @param string $verificationSid A SID that uniquely identifies the
      *                                Verification Check
      * @return $this Fluent Builder
@@ -71,7 +71,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
-     * 
+     *
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
      * @return $this Fluent Builder
@@ -83,7 +83,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
-     * 
+     *
      * @param string $payee The payee of the associated PSD2 compliant transaction
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

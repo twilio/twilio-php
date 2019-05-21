@@ -41,7 +41,7 @@ class UpdateSettingsOptions extends Options {
 
     /**
      * `true` for this sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`.
-     * 
+     *
      * @param bool $dialingPermissionsInheritance `true` for this sub-account to
      *                                            inherit voice dialing permissions
      *                                            from the Master Project;
@@ -55,7 +55,7 @@ class UpdateSettingsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

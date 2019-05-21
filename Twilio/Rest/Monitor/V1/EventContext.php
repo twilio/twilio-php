@@ -16,10 +16,10 @@ use Twilio\Version;
 class EventContext extends InstanceContext {
     /**
      * Initialize the EventContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this event.
-     * @return \Twilio\Rest\Monitor\V1\EventContext 
+     * @return \Twilio\Rest\Monitor\V1\EventContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -32,7 +32,7 @@ class EventContext extends InstanceContext {
 
     /**
      * Fetch a EventInstance
-     * 
+     *
      * @return EventInstance Fetched EventInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -50,7 +50,7 @@ class EventContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

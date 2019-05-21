@@ -32,12 +32,12 @@ use Twilio\Version;
 class OriginationUrlInstance extends InstanceResource {
     /**
      * Initialize the OriginationUrlInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $trunkSid The SID of the Trunk that owns the Origination URL
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlInstance 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlInstance
      */
     public function __construct(Version $version, array $payload, $trunkSid, $sid = null) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class OriginationUrlInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext Context for
      *                                                              this
      *                                                              OriginationUrlInstance
@@ -82,7 +82,7 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Fetch a OriginationUrlInstance
-     * 
+     *
      * @return OriginationUrlInstance Fetched OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -92,7 +92,7 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Deletes the OriginationUrlInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Update the OriginationUrlInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return OriginationUrlInstance Updated OriginationUrlInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,7 +113,7 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -133,7 +133,7 @@ class OriginationUrlInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

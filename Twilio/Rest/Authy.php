@@ -25,7 +25,7 @@ class Authy extends Domain {
 
     /**
      * Construct the Authy Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Authy Domain for Authy
@@ -48,7 +48,7 @@ class Authy extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -64,7 +64,7 @@ class Authy extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -80,7 +80,7 @@ class Authy extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Authy\V1\ServiceList 
+     * @return \Twilio\Rest\Authy\V1\ServiceList
      */
     protected function getServices() {
         return $this->v1->services;
@@ -88,14 +88,14 @@ class Authy extends Domain {
 
     /**
      * @param string $sid A string that uniquely identifies this Service.
-     * @return \Twilio\Rest\Authy\V1\ServiceContext 
+     * @return \Twilio\Rest\Authy\V1\ServiceContext
      */
     protected function contextServices($sid) {
         return $this->v1->services($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Authy\V1\FormList 
+     * @return \Twilio\Rest\Authy\V1\FormList
      */
     protected function getForms() {
         return $this->v1->forms;
@@ -103,7 +103,7 @@ class Authy extends Domain {
 
     /**
      * @param string $formType The Type of this Form
-     * @return \Twilio\Rest\Authy\V1\FormContext 
+     * @return \Twilio\Rest\Authy\V1\FormContext
      */
     protected function contextForms($formType) {
         return $this->v1->forms($formType);
@@ -111,7 +111,7 @@ class Authy extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

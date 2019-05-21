@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList extensions
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext extensions(string $sid)
  */
@@ -26,10 +26,10 @@ class AvailableAddOnContext extends InstanceContext {
 
     /**
      * Initialize the AvailableAddOnContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The unique Available Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext 
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class AvailableAddOnContext extends InstanceContext {
 
     /**
      * Fetch a AvailableAddOnInstance
-     * 
+     *
      * @return AvailableAddOnInstance Fetched AvailableAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -60,8 +60,8 @@ class AvailableAddOnContext extends InstanceContext {
 
     /**
      * Access the extensions
-     * 
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList 
+     *
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList
      */
     protected function getExtensions() {
         if (!$this->_extensions) {
@@ -73,7 +73,7 @@ class AvailableAddOnContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -89,7 +89,7 @@ class AvailableAddOnContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -106,7 +106,7 @@ class AvailableAddOnContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

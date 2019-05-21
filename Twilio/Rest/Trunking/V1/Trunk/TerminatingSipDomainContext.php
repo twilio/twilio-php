@@ -16,11 +16,11 @@ use Twilio\Version;
 class TerminatingSipDomainContext extends InstanceContext {
     /**
      * Initialize the TerminatingSipDomainContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk with the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class TerminatingSipDomainContext extends InstanceContext {
 
     /**
      * Fetch a TerminatingSipDomainInstance
-     * 
+     *
      * @return TerminatingSipDomainInstance Fetched TerminatingSipDomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +56,7 @@ class TerminatingSipDomainContext extends InstanceContext {
 
     /**
      * Deletes the TerminatingSipDomainInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class TerminatingSipDomainContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

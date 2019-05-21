@@ -20,11 +20,11 @@ use Twilio\Version;
 class VerificationCheckList extends ListResource {
     /**
      * Construct the VerificationCheckList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @return \Twilio\Rest\Verify\V2\Service\VerificationCheckList 
+     * @return \Twilio\Rest\Verify\V2\Service\VerificationCheckList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class VerificationCheckList extends ListResource {
 
     /**
      * Create a new VerificationCheckInstance
-     * 
+     *
      * @param string $code The verification string
      * @param array|Options $options Optional Arguments
      * @return VerificationCheckInstance Newly created VerificationCheckInstance
@@ -66,7 +66,7 @@ class VerificationCheckList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

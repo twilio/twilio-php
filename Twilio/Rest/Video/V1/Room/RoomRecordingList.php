@@ -18,10 +18,10 @@ use Twilio\Version;
 class RoomRecordingList extends ListResource {
     /**
      * Construct the RoomRecordingList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $roomSid The room_sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList
      */
     public function __construct(Version $version, $roomSid) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class RoomRecordingList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -63,7 +63,7 @@ class RoomRecordingList extends ListResource {
      * Reads RoomRecordingInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -82,7 +82,7 @@ class RoomRecordingList extends ListResource {
     /**
      * Retrieve a single page of RoomRecordingInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -113,7 +113,7 @@ class RoomRecordingList extends ListResource {
     /**
      * Retrieve a specific page of RoomRecordingInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of RoomRecordingInstance
      */
@@ -128,9 +128,9 @@ class RoomRecordingList extends ListResource {
 
     /**
      * Constructs a RoomRecordingContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext
      */
     public function getContext($sid) {
         return new RoomRecordingContext($this->version, $this->solution['roomSid'], $sid);
@@ -138,7 +138,7 @@ class RoomRecordingList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

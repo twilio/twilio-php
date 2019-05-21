@@ -22,7 +22,7 @@ class Accounts extends Domain {
 
     /**
      * Construct the Accounts Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Accounts Domain for Accounts
@@ -45,7 +45,7 @@ class Accounts extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -61,7 +61,7 @@ class Accounts extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -77,7 +77,7 @@ class Accounts extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Accounts\V1\CredentialList 
+     * @return \Twilio\Rest\Accounts\V1\CredentialList
      */
     protected function getCredentials() {
         return $this->v1->credentials;
@@ -85,7 +85,7 @@ class Accounts extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

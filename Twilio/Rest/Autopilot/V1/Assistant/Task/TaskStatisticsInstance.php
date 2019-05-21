@@ -16,7 +16,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string assistantSid
  * @property string taskSid
@@ -27,14 +27,14 @@ use Twilio\Version;
 class TaskStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the Task associated with the resource
      * @param string $taskSid The SID of the Task for which the statistics were
      *                        collected
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsInstance 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $taskSid) {
         parent::__construct($version);
@@ -55,7 +55,7 @@ class TaskStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext Context for this TaskStatisticsInstance
      */
     protected function proxy() {
@@ -72,7 +72,7 @@ class TaskStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a TaskStatisticsInstance
-     * 
+     *
      * @return TaskStatisticsInstance Fetched TaskStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -82,7 +82,7 @@ class TaskStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -102,7 +102,7 @@ class TaskStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

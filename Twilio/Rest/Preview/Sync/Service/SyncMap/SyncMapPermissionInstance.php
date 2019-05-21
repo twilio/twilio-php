@@ -16,7 +16,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string serviceSid
  * @property string mapSid
@@ -29,14 +29,14 @@ use Twilio\Version;
 class SyncMapPermissionInstance extends InstanceResource {
     /**
      * Initialize the SyncMapPermissionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Sync Service Instance SID.
      * @param string $mapSid Sync Map SID.
      * @param string $identity Identity of the user to whom the Sync Map Permission
      *                         applies.
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionInstance 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $identity = null) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class SyncMapPermissionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext Context for this SyncMapPermissionInstance
      */
     protected function proxy() {
@@ -81,7 +81,7 @@ class SyncMapPermissionInstance extends InstanceResource {
 
     /**
      * Fetch a SyncMapPermissionInstance
-     * 
+     *
      * @return SyncMapPermissionInstance Fetched SyncMapPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -91,7 +91,7 @@ class SyncMapPermissionInstance extends InstanceResource {
 
     /**
      * Deletes the SyncMapPermissionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -101,7 +101,7 @@ class SyncMapPermissionInstance extends InstanceResource {
 
     /**
      * Update the SyncMapPermissionInstance
-     * 
+     *
      * @param bool $read Read access.
      * @param bool $write Write access.
      * @param bool $manage Manage access.
@@ -114,7 +114,7 @@ class SyncMapPermissionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -134,7 +134,7 @@ class SyncMapPermissionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

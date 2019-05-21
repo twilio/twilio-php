@@ -53,7 +53,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Only show Recordings with the given status.
-     * 
+     *
      * @param string $status Only show Recordings with the given status.
      * @return $this Fluent Builder
      */
@@ -64,7 +64,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Only show the Recordings with the given source Sid (you can use this to filter Recordings by `TrackSid` for Video Room Recordings.
-     * 
+     *
      * @param string $sourceSid Only show the Recordings with the given source Sid.
      * @return $this Fluent Builder
      */
@@ -75,7 +75,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Only show Recordings that have this GroupingSid, which may include a ParticipantSid and/or a RoomSid.
-     * 
+     *
      * @param string $groupingSid Only show Recordings that have this GroupingSid.
      * @return $this Fluent Builder
      */
@@ -86,7 +86,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Only show Recordings that started on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
-     * 
+     *
      * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
      *                                    after this ISO8601 date-time with
      *                                    timezone.
@@ -99,7 +99,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Only show Recordings that started before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
-     * 
+     *
      * @param \DateTime $dateCreatedBefore Only show Recordings that started before
      *                                     this ISO8601 date-time with timezone.
      * @return $this Fluent Builder
@@ -111,7 +111,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Only show Recordings that have this media type. Can be either `audio` or `video`.
-     * 
+     *
      * @param string $mediaType Only show Recordings that have this media type.
      * @return $this Fluent Builder
      */
@@ -122,7 +122,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

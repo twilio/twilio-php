@@ -41,7 +41,7 @@ class V1 extends Version {
 
     /**
      * Construct the V1 version of Video
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Video\V1 V1 version of Video
      */
@@ -51,7 +51,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionHookList 
+     * @return \Twilio\Rest\Video\V1\CompositionHookList
      */
     protected function getCompositionHooks() {
         if (!$this->_compositionHooks) {
@@ -61,7 +61,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionSettingsList 
+     * @return \Twilio\Rest\Video\V1\CompositionSettingsList
      */
     protected function getCompositionSettings() {
         if (!$this->_compositionSettings) {
@@ -71,7 +71,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RecordingList 
+     * @return \Twilio\Rest\Video\V1\RecordingList
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
@@ -81,7 +81,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsList 
+     * @return \Twilio\Rest\Video\V1\RecordingSettingsList
      */
     protected function getRecordingSettings() {
         if (!$this->_recordingSettings) {
@@ -91,7 +91,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList 
+     * @return \Twilio\Rest\Video\V1\CompositionList
      */
     protected function getCompositions() {
         if (!$this->_compositions) {
@@ -101,7 +101,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RoomList 
+     * @return \Twilio\Rest\Video\V1\RoomList
      */
     protected function getRooms() {
         if (!$this->_rooms) {
@@ -112,7 +112,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -128,7 +128,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -145,7 +145,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

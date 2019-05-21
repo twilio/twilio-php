@@ -79,7 +79,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
-     * 
+     *
      * @param int $codeLength The length of the verification code to generate
      * @return $this Fluent Builder
      */
@@ -90,7 +90,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Whether to perform a lookup with each verification started and return info about the phone number.
-     * 
+     *
      * @param bool $lookupEnabled Whether to perform a lookup with each verification
      * @return $this Fluent Builder
      */
@@ -101,7 +101,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
-     * 
+     *
      * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
      *                                 landlines
      * @return $this Fluent Builder
@@ -113,7 +113,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Whether to ask the user to press a number before delivering the verify code in a phone call.
-     * 
+     *
      * @param bool $dtmfInputRequired Whether to ask the user to press a number
      *                                before delivering the verify code in a phone
      *                                call
@@ -126,7 +126,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
-     * 
+     *
      * @param string $ttsName The name of an alternative text-to-speech service to
      *                        use in phone calls
      * @return $this Fluent Builder
@@ -138,7 +138,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Whether to pass PSD2 transaction parameters when starting a verification.
-     * 
+     *
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
      *                          starting a verification
      * @return $this Fluent Builder
@@ -150,7 +150,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -191,7 +191,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the verification service. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the verification service
      * @return $this Fluent Builder
      */
@@ -202,7 +202,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
-     * 
+     *
      * @param int $codeLength The length of the verification code to generate
      * @return $this Fluent Builder
      */
@@ -213,7 +213,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to perform a lookup with each verification started and return info about the phone number.
-     * 
+     *
      * @param bool $lookupEnabled Whether to perform a lookup with each verification
      * @return $this Fluent Builder
      */
@@ -224,7 +224,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
-     * 
+     *
      * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to
      *                                 landlines
      * @return $this Fluent Builder
@@ -236,7 +236,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to ask the user to press a number before delivering the verify code in a phone call.
-     * 
+     *
      * @param bool $dtmfInputRequired Whether to ask the user to press a number
      *                                before delivering the verify code in a phone
      *                                call
@@ -249,7 +249,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
-     * 
+     *
      * @param string $ttsName The name of an alternative text-to-speech service to
      *                        use in phone calls
      * @return $this Fluent Builder
@@ -261,7 +261,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to pass PSD2 transaction parameters when starting a verification.
-     * 
+     *
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when
      *                          starting a verification
      * @return $this Fluent Builder
@@ -273,7 +273,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

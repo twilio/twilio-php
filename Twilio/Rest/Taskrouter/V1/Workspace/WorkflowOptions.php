@@ -90,7 +90,7 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * A string representing a human readable name for this Workflow. Examples include 'Customer Support' or 'Sales Team'.
-     * 
+     *
      * @param string $friendlyName A string representing a human readable name for
      *                             this Workflow.
      * @return $this Fluent Builder
@@ -102,7 +102,7 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * A valid URL for the application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/api/taskrouter/handling-assignment-callbacks) for more details.
-     * 
+     *
      * @param string $assignmentCallbackUrl A valid URL for the application that
      *                                      will process task assignment events.
      * @return $this Fluent Builder
@@ -114,7 +114,7 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
-     * 
+     *
      * @param string $fallbackAssignmentCallbackUrl If the request to the
      *                                              AssignmentCallbackUrl fails,
      *                                              the assignment callback will be
@@ -128,7 +128,7 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * JSON document configuring the rules for this Workflow. See [Configuring Workflows](https://www.twilio.com/docs/api/taskrouter/workflow-configuration) for more information.
-     * 
+     *
      * @param string $configuration JSON document configuring the rules for this
      *                              Workflow.
      * @return $this Fluent Builder
@@ -140,7 +140,7 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker. Defaults to 120 seconds. Maximum value is 86400 (24 hours)
-     * 
+     *
      * @param int $taskReservationTimeout An integer value controlling how long in
      *                                    seconds TaskRouter will wait for a
      *                                    confirmation response from your
@@ -155,7 +155,7 @@ class UpdateWorkflowOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -179,7 +179,7 @@ class ReadWorkflowOptions extends Options {
 
     /**
      * Human readable description of this Workflow (for example "Customer Support" or "2014 Election Campaign")
-     * 
+     *
      * @param string $friendlyName Human readable description of this Workflow
      * @return $this Fluent Builder
      */
@@ -190,7 +190,7 @@ class ReadWorkflowOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -226,7 +226,7 @@ class CreateWorkflowOptions extends Options {
 
     /**
      * A valid URL for the application that will process task assignment events. See [Handling Task Assignment Callback](https://www.twilio.com/docs/api/taskrouter/handling-assignment-callbacks) for more details.
-     * 
+     *
      * @param string $assignmentCallbackUrl A valid URL for the application that
      *                                      will process task assignment events.
      * @return $this Fluent Builder
@@ -238,7 +238,7 @@ class CreateWorkflowOptions extends Options {
 
     /**
      * If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
-     * 
+     *
      * @param string $fallbackAssignmentCallbackUrl If the request to the
      *                                              AssignmentCallbackUrl fails,
      *                                              the assignment callback will be
@@ -252,7 +252,7 @@ class CreateWorkflowOptions extends Options {
 
     /**
      * An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker. See Task Assignment Callback for more information. Defaults to 120 seconds. Maximum value is 86400 (24 hours)
-     * 
+     *
      * @param int $taskReservationTimeout An integer value controlling how long in
      *                                    seconds TaskRouter will wait for a
      *                                    confirmation response from your
@@ -267,7 +267,7 @@ class CreateWorkflowOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

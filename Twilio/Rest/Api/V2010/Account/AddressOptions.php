@@ -72,7 +72,7 @@ class CreateAddressOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the new address. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
@@ -83,7 +83,7 @@ class CreateAddressOptions extends Options {
 
     /**
      * Whether to enable emergency calling on the new address. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $emergencyEnabled Whether to enable emergency calling on the new
      *                               address
      * @return $this Fluent Builder
@@ -95,7 +95,7 @@ class CreateAddressOptions extends Options {
 
     /**
      * Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
-     * 
+     *
      * @param bool $autoCorrectAddress Whether we should automatically correct the
      *                                 address
      * @return $this Fluent Builder
@@ -107,7 +107,7 @@ class CreateAddressOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -147,7 +147,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the address. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -158,7 +158,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * The name to associate with the address.
-     * 
+     *
      * @param string $customerName The name to associate with the address
      * @return $this Fluent Builder
      */
@@ -169,7 +169,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * The number and street address of the address.
-     * 
+     *
      * @param string $street The number and street address of the address
      * @return $this Fluent Builder
      */
@@ -180,7 +180,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * The city of the address.
-     * 
+     *
      * @param string $city The city of the address
      * @return $this Fluent Builder
      */
@@ -191,7 +191,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * The state or region of the address.
-     * 
+     *
      * @param string $region The state or region of the address
      * @return $this Fluent Builder
      */
@@ -202,7 +202,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * The postal code of the address.
-     * 
+     *
      * @param string $postalCode The postal code of the address
      * @return $this Fluent Builder
      */
@@ -213,7 +213,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * Whether to enable emergency calling on the address. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $emergencyEnabled Whether to enable emergency calling on the
      *                               address
      * @return $this Fluent Builder
@@ -225,7 +225,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
-     * 
+     *
      * @param bool $autoCorrectAddress Whether we should automatically correct the
      *                                 address
      * @return $this Fluent Builder
@@ -237,7 +237,7 @@ class UpdateAddressOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -268,7 +268,7 @@ class ReadAddressOptions extends Options {
 
     /**
      * The `customer_name` of the Address resources to read.
-     * 
+     *
      * @param string $customerName The `customer_name` of the Address resources to
      *                             read
      * @return $this Fluent Builder
@@ -280,7 +280,7 @@ class ReadAddressOptions extends Options {
 
     /**
      * The string that identifies the Address resources to read.
-     * 
+     *
      * @param string $friendlyName The string that identifies the Address resources
      *                             to read
      * @return $this Fluent Builder
@@ -292,7 +292,7 @@ class ReadAddressOptions extends Options {
 
     /**
      * The ISO country code of the Address resources to read.
-     * 
+     *
      * @param string $isoCountry The ISO country code of the Address resources to
      *                           read
      * @return $this Fluent Builder
@@ -304,7 +304,7 @@ class ReadAddressOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

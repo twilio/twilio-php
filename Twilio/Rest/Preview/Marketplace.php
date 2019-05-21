@@ -27,7 +27,7 @@ class Marketplace extends Version {
 
     /**
      * Construct the Marketplace version of Preview
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Preview\Marketplace Marketplace version of Preview
      */
@@ -37,7 +37,7 @@ class Marketplace extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList 
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList
      */
     protected function getInstalledAddOns() {
         if (!$this->_installedAddOns) {
@@ -47,7 +47,7 @@ class Marketplace extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList 
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList
      */
     protected function getAvailableAddOns() {
         if (!$this->_availableAddOns) {
@@ -58,7 +58,7 @@ class Marketplace extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -74,7 +74,7 @@ class Marketplace extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -91,7 +91,7 @@ class Marketplace extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -19,10 +19,10 @@ use Twilio\Version;
 class FunctionList extends ListResource {
     /**
      * Construct the FunctionList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionList 
+     * @return \Twilio\Rest\Serverless\V1\Service\FunctionList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class FunctionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -63,7 +63,7 @@ class FunctionList extends ListResource {
      * Reads FunctionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -81,7 +81,7 @@ class FunctionList extends ListResource {
     /**
      * Retrieve a single page of FunctionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -106,7 +106,7 @@ class FunctionList extends ListResource {
     /**
      * Retrieve a specific page of FunctionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of FunctionInstance
      */
@@ -121,7 +121,7 @@ class FunctionList extends ListResource {
 
     /**
      * Create a new FunctionInstance
-     * 
+     *
      * @param string $friendlyName A human-readable description of this Function.
      * @return FunctionInstance Newly created FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -141,9 +141,9 @@ class FunctionList extends ListResource {
 
     /**
      * Constructs a FunctionContext
-     * 
+     *
      * @param string $sid Function Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext
      */
     public function getContext($sid) {
         return new FunctionContext($this->version, $this->solution['serviceSid'], $sid);
@@ -151,7 +151,7 @@ class FunctionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

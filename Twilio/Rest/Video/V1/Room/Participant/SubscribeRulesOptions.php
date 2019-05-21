@@ -35,7 +35,7 @@ class UpdateSubscribeRulesOptions extends Options {
 
     /**
      * A JSON-encoded array of Subscribe Rules. See the [Subscribe Rule format](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
-     * 
+     *
      * @param array $rules A JSON-encoded array of Subscribe Rules.
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class UpdateSubscribeRulesOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

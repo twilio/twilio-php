@@ -38,7 +38,7 @@ class CreateMessageInteractionOptions extends Options {
 
     /**
      * The message to send to the participant
-     * 
+     *
      * @param string $body Message body
      * @return $this Fluent Builder
      */
@@ -49,7 +49,7 @@ class CreateMessageInteractionOptions extends Options {
 
     /**
      * Reserved. Not currently supported.
-     * 
+     *
      * @param string $mediaUrl Reserved
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class CreateMessageInteractionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

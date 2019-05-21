@@ -32,12 +32,12 @@ use Twilio\Version;
 class CommandInstance extends InstanceResource {
     /**
      * Initialize the CommandInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\CommandInstance 
+     * @return \Twilio\Rest\Wireless\V1\CommandInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class CommandInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Wireless\V1\CommandContext Context for this
      *                                                 CommandInstance
      */
@@ -78,7 +78,7 @@ class CommandInstance extends InstanceResource {
 
     /**
      * Fetch a CommandInstance
-     * 
+     *
      * @return CommandInstance Fetched CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -88,7 +88,7 @@ class CommandInstance extends InstanceResource {
 
     /**
      * Deletes the CommandInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +98,7 @@ class CommandInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -118,7 +118,7 @@ class CommandInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

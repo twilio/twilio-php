@@ -28,7 +28,7 @@ class V1 extends Version {
 
     /**
      * Construct the V1 version of Pricing
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Pricing\V1 V1 version of Pricing
      */
@@ -38,7 +38,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Pricing\V1\MessagingList 
+     * @return \Twilio\Rest\Pricing\V1\MessagingList
      */
     protected function getMessaging() {
         if (!$this->_messaging) {
@@ -48,7 +48,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumberList 
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumberList
      */
     protected function getPhoneNumbers() {
         if (!$this->_phoneNumbers) {
@@ -58,7 +58,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Pricing\V1\VoiceList 
+     * @return \Twilio\Rest\Pricing\V1\VoiceList
      */
     protected function getVoice() {
         if (!$this->_voice) {
@@ -69,7 +69,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -85,7 +85,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -102,7 +102,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

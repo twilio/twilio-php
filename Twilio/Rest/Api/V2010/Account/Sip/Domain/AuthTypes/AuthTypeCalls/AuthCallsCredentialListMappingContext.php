@@ -16,14 +16,14 @@ use Twilio\Version;
 class AuthCallsCredentialListMappingContext extends InstanceContext {
     /**
      * Initialize the AuthCallsCredentialListMappingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $domainSid The SID of the SIP domain that contains the
      *                          resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsCredentialListMappingContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCalls\AuthCallsCredentialListMappingContext
      */
     public function __construct(Version $version, $accountSid, $domainSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
 
     /**
      * Fetch a AuthCallsCredentialListMappingInstance
-     * 
+     *
      * @return AuthCallsCredentialListMappingInstance Fetched
      *                                                AuthCallsCredentialListMappingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -61,7 +61,7 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
 
     /**
      * Deletes the AuthCallsCredentialListMappingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -71,7 +71,7 @@ class AuthCallsCredentialListMappingContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

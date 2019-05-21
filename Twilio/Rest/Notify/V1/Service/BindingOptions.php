@@ -61,7 +61,7 @@ class CreateBindingOptions extends Options {
 
     /**
      * A tag that can be used to select the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 20 tags.
-     * 
+     *
      * @param string $tag A tag that can be used to select the Bindings to notify
      * @return $this Fluent Builder
      */
@@ -72,7 +72,7 @@ class CreateBindingOptions extends Options {
 
     /**
      * The protocol version to use to send the notification. This defaults to the value of `default_xxxx_notification_protocol_version` for the protocol in the [Service](https://www.twilio.com/docs/notify/api/service-resource). The current version is `"3"` for `apn`, `fcm`, and `gcm` type Bindings. The parameter is not applicable to `sms` and `facebook-messenger` type Bindings as the data format is fixed.
-     * 
+     *
      * @param string $notificationProtocolVersion The protocol version to use to
      *                                            send the notification
      * @return $this Fluent Builder
@@ -84,7 +84,7 @@ class CreateBindingOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) resource to be used to send notifications to this Binding. If present, this overrides the Credential specified in the Service resource. Applies to only `apn`, `fcm`, and `gcm` type Bindings.
-     * 
+     *
      * @param string $credentialSid The SID of the Credential resource to be used
      *                              to send notifications to this Binding
      * @return $this Fluent Builder
@@ -96,7 +96,7 @@ class CreateBindingOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $endpoint Deprecated
      * @return $this Fluent Builder
      */
@@ -107,7 +107,7 @@ class CreateBindingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -139,7 +139,7 @@ class ReadBindingOptions extends Options {
 
     /**
      * Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
-     * 
+     *
      * @param \DateTime $startDate Only include usage that has occurred on or after
      *                             this date
      * @return $this Fluent Builder
@@ -151,7 +151,7 @@ class ReadBindingOptions extends Options {
 
     /**
      * Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
-     * 
+     *
      * @param \DateTime $endDate Only include usage that occurred on or before this
      *                           date
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class ReadBindingOptions extends Options {
 
     /**
      * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read.
-     * 
+     *
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -174,7 +174,7 @@ class ReadBindingOptions extends Options {
 
     /**
      * Only list Bindings that have all of the specified Tags. The following implicit tags are available: `all`, `apn`, `fcm`, `gcm`, `sms`, `facebook-messenger`. Up to 5 tags are allowed.
-     * 
+     *
      * @param string $tag Only list Bindings that have all of the specified Tags
      * @return $this Fluent Builder
      */
@@ -185,7 +185,7 @@ class ReadBindingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

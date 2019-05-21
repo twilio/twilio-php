@@ -20,9 +20,9 @@ use Twilio\Version;
 class PhoneCallList extends ListResource {
     /**
      * Construct the PhoneCallList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList 
+     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class PhoneCallList extends ListResource {
 
     /**
      * Create a new PhoneCallInstance
-     * 
+     *
      * @param string $from The originating Phone Number
      * @param string $to The terminating Phone Number
      * @param string $url The Twiml URL
@@ -65,7 +65,7 @@ class PhoneCallList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

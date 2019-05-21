@@ -19,11 +19,11 @@ use Twilio\Version;
 class FunctionVersionList extends ListResource {
     /**
      * Construct the FunctionVersionList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $functionSid Function Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList 
+     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList
      */
     public function __construct(Version $version, $serviceSid, $functionSid) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class FunctionVersionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -64,7 +64,7 @@ class FunctionVersionList extends ListResource {
      * Reads FunctionVersionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -82,7 +82,7 @@ class FunctionVersionList extends ListResource {
     /**
      * Retrieve a single page of FunctionVersionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -107,7 +107,7 @@ class FunctionVersionList extends ListResource {
     /**
      * Retrieve a specific page of FunctionVersionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of FunctionVersionInstance
      */
@@ -122,7 +122,7 @@ class FunctionVersionList extends ListResource {
 
     /**
      * Create a new FunctionVersionInstance
-     * 
+     *
      * @param string $path The URL-friendly string by which this Function Version
      *                     can be referenced.
      * @param string $visibility The access control which determines how the
@@ -150,9 +150,9 @@ class FunctionVersionList extends ListResource {
 
     /**
      * Constructs a FunctionVersionContext
-     * 
+     *
      * @param string $sid Function Version Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext
      */
     public function getContext($sid) {
         return new FunctionVersionContext(
@@ -165,7 +165,7 @@ class FunctionVersionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

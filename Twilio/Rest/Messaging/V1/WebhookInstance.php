@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string serviceSid
  * @property string webhookMethod
@@ -32,10 +32,10 @@ use Twilio\Version;
 class WebhookInstance extends InstanceResource {
     /**
      * Initialize the WebhookInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Messaging\V1\WebhookInstance 
+     * @return \Twilio\Rest\Messaging\V1\WebhookInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -60,7 +60,7 @@ class WebhookInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Messaging\V1\WebhookContext Context for this
      *                                                  WebhookInstance
      */
@@ -74,7 +74,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Fetch a WebhookInstance
-     * 
+     *
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -84,7 +84,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Update the WebhookInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,7 +95,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -115,7 +115,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -51,7 +51,7 @@ class CreateUserOptions extends Options {
 
     /**
      * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) assigned to the new User.
-     * 
+     *
      * @param string $roleSid The SID of the Role assigned to this user
      * @return $this Fluent Builder
      */
@@ -62,7 +62,7 @@ class CreateUserOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -74,7 +74,7 @@ class CreateUserOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the new resource. This value is often used for display purposes.
-     * 
+     *
      * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
@@ -85,7 +85,7 @@ class CreateUserOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -114,7 +114,7 @@ class UpdateUserOptions extends Options {
 
     /**
      * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) assigned to this user.
-     * 
+     *
      * @param string $roleSid The SID id of the Role assigned to this user
      * @return $this Fluent Builder
      */
@@ -125,7 +125,7 @@ class UpdateUserOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -137,7 +137,7 @@ class UpdateUserOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It is often used for display purposes.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -148,7 +148,7 @@ class UpdateUserOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

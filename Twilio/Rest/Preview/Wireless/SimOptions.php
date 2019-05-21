@@ -70,7 +70,7 @@ class ReadSimOptions extends Options {
 
     /**
      * The status
-     * 
+     *
      * @param string $status The status
      * @return $this Fluent Builder
      */
@@ -81,7 +81,7 @@ class ReadSimOptions extends Options {
 
     /**
      * The iccid
-     * 
+     *
      * @param string $iccid The iccid
      * @return $this Fluent Builder
      */
@@ -92,7 +92,7 @@ class ReadSimOptions extends Options {
 
     /**
      * The rate_plan
-     * 
+     *
      * @param string $ratePlan The rate_plan
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class ReadSimOptions extends Options {
 
     /**
      * The e_id
-     * 
+     *
      * @param string $eId The e_id
      * @return $this Fluent Builder
      */
@@ -114,7 +114,7 @@ class ReadSimOptions extends Options {
 
     /**
      * The sim_registration_code
-     * 
+     *
      * @param string $simRegistrationCode The sim_registration_code
      * @return $this Fluent Builder
      */
@@ -125,7 +125,7 @@ class ReadSimOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -179,7 +179,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
@@ -190,7 +190,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The callback_method
-     * 
+     *
      * @param string $callbackMethod The callback_method
      * @return $this Fluent Builder
      */
@@ -201,7 +201,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The callback_url
-     * 
+     *
      * @param string $callbackUrl The callback_url
      * @return $this Fluent Builder
      */
@@ -212,7 +212,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -223,7 +223,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The rate_plan
-     * 
+     *
      * @param string $ratePlan The rate_plan
      * @return $this Fluent Builder
      */
@@ -234,7 +234,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The status
-     * 
+     *
      * @param string $status The status
      * @return $this Fluent Builder
      */
@@ -245,7 +245,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The commands_callback_method
-     * 
+     *
      * @param string $commandsCallbackMethod The commands_callback_method
      * @return $this Fluent Builder
      */
@@ -256,7 +256,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The commands_callback_url
-     * 
+     *
      * @param string $commandsCallbackUrl The commands_callback_url
      * @return $this Fluent Builder
      */
@@ -267,7 +267,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The sms_fallback_method
-     * 
+     *
      * @param string $smsFallbackMethod The sms_fallback_method
      * @return $this Fluent Builder
      */
@@ -278,7 +278,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The sms_fallback_url
-     * 
+     *
      * @param string $smsFallbackUrl The sms_fallback_url
      * @return $this Fluent Builder
      */
@@ -289,7 +289,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The sms_method
-     * 
+     *
      * @param string $smsMethod The sms_method
      * @return $this Fluent Builder
      */
@@ -300,7 +300,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The sms_url
-     * 
+     *
      * @param string $smsUrl The sms_url
      * @return $this Fluent Builder
      */
@@ -311,7 +311,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The voice_fallback_method
-     * 
+     *
      * @param string $voiceFallbackMethod The voice_fallback_method
      * @return $this Fluent Builder
      */
@@ -322,7 +322,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The voice_fallback_url
-     * 
+     *
      * @param string $voiceFallbackUrl The voice_fallback_url
      * @return $this Fluent Builder
      */
@@ -333,7 +333,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The voice_method
-     * 
+     *
      * @param string $voiceMethod The voice_method
      * @return $this Fluent Builder
      */
@@ -344,7 +344,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * The voice_url
-     * 
+     *
      * @param string $voiceUrl The voice_url
      * @return $this Fluent Builder
      */
@@ -355,7 +355,7 @@ class UpdateSimOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

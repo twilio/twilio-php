@@ -31,13 +31,13 @@ use Twilio\Version;
 class TaskChannelInstance extends InstanceResource {
     /**
      * Initialize the TaskChannelInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The unique ID of the Workspace that this
      *                             TaskChannel belongs to.
      * @param string $sid The unique ID for this TaskChannel.
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -62,7 +62,7 @@ class TaskChannelInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext Context for
      *                                                                 this
      *                                                                 TaskChannelInstance
@@ -81,7 +81,7 @@ class TaskChannelInstance extends InstanceResource {
 
     /**
      * Fetch a TaskChannelInstance
-     * 
+     *
      * @return TaskChannelInstance Fetched TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -91,7 +91,7 @@ class TaskChannelInstance extends InstanceResource {
 
     /**
      * Update the TaskChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskChannelInstance Updated TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -102,7 +102,7 @@ class TaskChannelInstance extends InstanceResource {
 
     /**
      * Deletes the TaskChannelInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -112,7 +112,7 @@ class TaskChannelInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -132,7 +132,7 @@ class TaskChannelInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

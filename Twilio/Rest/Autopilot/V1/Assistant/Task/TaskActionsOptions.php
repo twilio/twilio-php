@@ -37,7 +37,7 @@ class UpdateTaskActionsOptions extends Options {
 
     /**
      * The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task.
-     * 
+     *
      * @param array $actions The JSON string that specifies the actions that
      *                       instruct the Assistant on how to perform the task
      * @return $this Fluent Builder
@@ -49,7 +49,7 @@ class UpdateTaskActionsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

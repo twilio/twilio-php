@@ -42,10 +42,10 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Initialize the TrunkContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\TrunkContext 
+     * @return \Twilio\Rest\Trunking\V1\TrunkContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -58,7 +58,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Fetch a TrunkInstance
-     * 
+     *
      * @return TrunkInstance Fetched TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -76,7 +76,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Deletes the TrunkInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -86,7 +86,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Update the TrunkInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -116,8 +116,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the originationUrls
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList
      */
     protected function getOriginationUrls() {
         if (!$this->_originationUrls) {
@@ -129,8 +129,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the credentialsLists
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList
      */
     protected function getCredentialsLists() {
         if (!$this->_credentialsLists) {
@@ -142,8 +142,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the ipAccessControlLists
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList
      */
     protected function getIpAccessControlLists() {
         if (!$this->_ipAccessControlLists) {
@@ -155,8 +155,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the phoneNumbers
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList
      */
     protected function getPhoneNumbers() {
         if (!$this->_phoneNumbers) {
@@ -168,8 +168,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the terminatingSipDomains
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList
      */
     protected function getTerminatingSipDomains() {
         if (!$this->_terminatingSipDomains) {
@@ -184,7 +184,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -200,7 +200,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -217,7 +217,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

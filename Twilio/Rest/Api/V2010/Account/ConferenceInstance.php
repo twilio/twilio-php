@@ -34,12 +34,12 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Initialize the ConferenceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class ConferenceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext Context for this
      *                                                          ConferenceInstance
      */
@@ -82,7 +82,7 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Fetch a ConferenceInstance
-     * 
+     *
      * @return ConferenceInstance Fetched ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -92,7 +92,7 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Update the ConferenceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ConferenceInstance Updated ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -103,8 +103,8 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList
      */
     protected function getParticipants() {
         return $this->proxy()->participants;
@@ -112,8 +112,8 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;
@@ -121,7 +121,7 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -141,7 +141,7 @@ class ConferenceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

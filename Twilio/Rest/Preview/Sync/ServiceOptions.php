@@ -55,7 +55,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -66,7 +66,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The webhook_url
-     * 
+     *
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
@@ -77,7 +77,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The reachability_webhooks_enabled
-     * 
+     *
      * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
@@ -88,7 +88,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The acl_enabled
-     * 
+     *
      * @param bool $aclEnabled The acl_enabled
      * @return $this Fluent Builder
      */
@@ -99,7 +99,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -129,7 +129,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The webhook_url
-     * 
+     *
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
@@ -140,7 +140,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -151,7 +151,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The reachability_webhooks_enabled
-     * 
+     *
      * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
@@ -162,7 +162,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The acl_enabled
-     * 
+     *
      * @param bool $aclEnabled The acl_enabled
      * @return $this Fluent Builder
      */
@@ -173,7 +173,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

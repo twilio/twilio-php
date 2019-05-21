@@ -21,10 +21,10 @@ use Twilio\Version;
 class HostedNumberOrderContext extends InstanceContext {
     /**
      * Initialize the HostedNumberOrderContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid HostedNumberOrder sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext 
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Fetch a HostedNumberOrderInstance
-     * 
+     *
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -55,7 +55,7 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Deletes the HostedNumberOrderInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -65,7 +65,7 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Update the HostedNumberOrderInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

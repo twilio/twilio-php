@@ -17,12 +17,12 @@ use Twilio\Version;
 class OutgoingCallerIdContext extends InstanceContext {
     /**
      * Initialize the OutgoingCallerIdContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext 
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class OutgoingCallerIdContext extends InstanceContext {
 
     /**
      * Fetch a OutgoingCallerIdInstance
-     * 
+     *
      * @return OutgoingCallerIdInstance Fetched OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -58,7 +58,7 @@ class OutgoingCallerIdContext extends InstanceContext {
 
     /**
      * Update the OutgoingCallerIdInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return OutgoingCallerIdInstance Updated OutgoingCallerIdInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -85,7 +85,7 @@ class OutgoingCallerIdContext extends InstanceContext {
 
     /**
      * Deletes the OutgoingCallerIdInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -95,7 +95,7 @@ class OutgoingCallerIdContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

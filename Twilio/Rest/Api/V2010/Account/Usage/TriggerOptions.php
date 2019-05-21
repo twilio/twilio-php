@@ -60,7 +60,7 @@ class UpdateTriggerOptions extends Options {
 
     /**
      * The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
-     * 
+     *
      * @param string $callbackMethod The HTTP method to use to call callback_url
      * @return $this Fluent Builder
      */
@@ -71,7 +71,7 @@ class UpdateTriggerOptions extends Options {
 
     /**
      * The URL we should call using `callback_method` when the trigger fires.
-     * 
+     *
      * @param string $callbackUrl The URL we call when the trigger fires
      * @return $this Fluent Builder
      */
@@ -82,7 +82,7 @@ class UpdateTriggerOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -93,7 +93,7 @@ class UpdateTriggerOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -124,7 +124,7 @@ class CreateTriggerOptions extends Options {
 
     /**
      * The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
-     * 
+     *
      * @param string $callbackMethod The HTTP method to use to call callback_url
      * @return $this Fluent Builder
      */
@@ -135,7 +135,7 @@ class CreateTriggerOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -146,7 +146,7 @@ class CreateTriggerOptions extends Options {
 
     /**
      * The frequency of a recurring UsageTrigger.  Can be: `daily`, `monthly`, or `yearly` for recurring triggers or empty for non-recurring triggers. A trigger will only fire once during each period. Recurring times are in GMT.
-     * 
+     *
      * @param string $recurring The frequency of a recurring UsageTrigger
      * @return $this Fluent Builder
      */
@@ -157,7 +157,7 @@ class CreateTriggerOptions extends Options {
 
     /**
      * The field in the [UsageRecord](https://www.twilio.com/docs/api/rest/usage-records) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).  The default is `usage`.
-     * 
+     *
      * @param string $triggerBy The field in the UsageRecord resource that fires
      *                          the trigger
      * @return $this Fluent Builder
@@ -169,7 +169,7 @@ class CreateTriggerOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -197,7 +197,7 @@ class ReadTriggerOptions extends Options {
 
     /**
      * The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers.
-     * 
+     *
      * @param string $recurring The frequency of recurring UsageTriggers to read
      * @return $this Fluent Builder
      */
@@ -208,7 +208,7 @@ class ReadTriggerOptions extends Options {
 
     /**
      * The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).
-     * 
+     *
      * @param string $triggerBy The trigger field of the UsageTriggers to read
      * @return $this Fluent Builder
      */
@@ -219,7 +219,7 @@ class ReadTriggerOptions extends Options {
 
     /**
      * The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
-     * 
+     *
      * @param string $usageCategory The usage category of the UsageTriggers to read
      * @return $this Fluent Builder
      */
@@ -230,7 +230,7 @@ class ReadTriggerOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

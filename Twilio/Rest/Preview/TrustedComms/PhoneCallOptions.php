@@ -35,7 +35,7 @@ class CreatePhoneCallOptions extends Options {
 
     /**
      * The business reason for this phone call that will appear in the terminating device's screen.
-     * 
+     *
      * @param string $reason The business reason for this phone call
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class CreatePhoneCallOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

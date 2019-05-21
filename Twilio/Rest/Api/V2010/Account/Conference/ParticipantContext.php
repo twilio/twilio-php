@@ -18,14 +18,14 @@ use Twilio\Version;
 class ParticipantContext extends InstanceContext {
     /**
      * Initialize the ParticipantContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $conferenceSid The SID of the conference with the participant
      *                              to fetch
      * @param string $callSid The Call SID of the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext
      */
     public function __construct(Version $version, $accountSid, $conferenceSid, $callSid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Fetch a ParticipantInstance
-     * 
+     *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Update the ParticipantInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -107,7 +107,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Deletes the ParticipantInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -117,7 +117,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

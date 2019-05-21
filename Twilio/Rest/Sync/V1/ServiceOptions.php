@@ -70,7 +70,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Human-readable name for this service instance
-     * 
+     *
      * @param string $friendlyName Human-readable name for this service instance
      * @return $this Fluent Builder
      */
@@ -81,7 +81,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * A URL that will receive event updates when objects are manipulated.
-     * 
+     *
      * @param string $webhookUrl A URL that will receive event updates when objects
      *                           are manipulated.
      * @return $this Fluent Builder
@@ -93,7 +93,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * `true` or `false` - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.
-     * 
+     *
      * @param bool $reachabilityWebhooksEnabled true or false - controls whether
      *                                          this instance fires webhooks when
      *                                          client endpoints connect to Sync
@@ -106,7 +106,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * `true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.
-     * 
+     *
      * @param bool $aclEnabled true or false - determines whether token identities
      *                         must be granted access to Sync objects via the
      *                         Permissions API in this Service.
@@ -119,7 +119,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -154,7 +154,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A URL that will receive event updates when objects are manipulated.
-     * 
+     *
      * @param string $webhookUrl A URL that will receive event updates when objects
      *                           are manipulated.
      * @return $this Fluent Builder
@@ -166,7 +166,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Human-readable name for this service instance
-     * 
+     *
      * @param string $friendlyName Human-readable name for this service instance
      * @return $this Fluent Builder
      */
@@ -177,7 +177,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * True or false - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.
-     * 
+     *
      * @param bool $reachabilityWebhooksEnabled True or false - controls whether
      *                                          this instance fires webhooks when
      *                                          client endpoints connect to Sync
@@ -190,7 +190,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * `true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.
-     * 
+     *
      * @param bool $aclEnabled true or false - determines whether token identities
      *                         must be granted access to Sync objects via the
      *                         Permissions API in this Service.
@@ -203,7 +203,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

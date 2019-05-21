@@ -40,13 +40,13 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Initialize the WorkerInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The ID of the Workflow this worker is associated
      *                             with
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -74,7 +74,7 @@ class WorkerInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext Context for this
      *                                                            WorkerInstance
      */
@@ -92,7 +92,7 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Fetch a WorkerInstance
-     * 
+     *
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Update the WorkerInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerInstance Updated WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,7 +113,7 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Deletes the WorkerInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -123,8 +123,8 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Access the realTimeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList
      */
     protected function getRealTimeStatistics() {
         return $this->proxy()->realTimeStatistics;
@@ -132,8 +132,8 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Access the cumulativeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList
      */
     protected function getCumulativeStatistics() {
         return $this->proxy()->cumulativeStatistics;
@@ -141,8 +141,8 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList
      */
     protected function getStatistics() {
         return $this->proxy()->statistics;
@@ -150,8 +150,8 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Access the reservations
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList
      */
     protected function getReservations() {
         return $this->proxy()->reservations;
@@ -159,8 +159,8 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Access the workerChannels
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList
      */
     protected function getWorkerChannels() {
         return $this->proxy()->workerChannels;
@@ -168,7 +168,7 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -188,7 +188,7 @@ class WorkerInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

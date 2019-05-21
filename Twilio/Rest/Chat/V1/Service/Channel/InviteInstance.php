@@ -30,14 +30,14 @@ use Twilio\Version;
 class InviteInstance extends InstanceResource {
     /**
      * Initialize the InviteInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $channelSid The SID of the Channel the new resource belongs to
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Chat\V1\Service\Channel\InviteInstance 
+     * @return \Twilio\Rest\Chat\V1\Service\Channel\InviteInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
@@ -66,7 +66,7 @@ class InviteInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V1\Service\Channel\InviteContext Context for this
      *                                                            InviteInstance
      */
@@ -85,7 +85,7 @@ class InviteInstance extends InstanceResource {
 
     /**
      * Fetch a InviteInstance
-     * 
+     *
      * @return InviteInstance Fetched InviteInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -95,7 +95,7 @@ class InviteInstance extends InstanceResource {
 
     /**
      * Deletes the InviteInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -105,7 +105,7 @@ class InviteInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -125,7 +125,7 @@ class InviteInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

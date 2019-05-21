@@ -16,12 +16,12 @@ use Twilio\Version;
 class PublishedTrackList extends ListResource {
     /**
      * Construct the PublishedTrackList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $roomSid Unique Room identifier where this Track is published.
      * @param string $participantSid Unique Participant identifier that publishes
      *                               this Track.
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList
      */
     public function __construct(Version $version, $roomSid, $participantSid) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class PublishedTrackList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -62,7 +62,7 @@ class PublishedTrackList extends ListResource {
      * Reads PublishedTrackInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -80,7 +80,7 @@ class PublishedTrackList extends ListResource {
     /**
      * Retrieve a single page of PublishedTrackInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -105,7 +105,7 @@ class PublishedTrackList extends ListResource {
     /**
      * Retrieve a specific page of PublishedTrackInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of PublishedTrackInstance
      */
@@ -120,10 +120,10 @@ class PublishedTrackList extends ListResource {
 
     /**
      * Constructs a PublishedTrackContext
-     * 
+     *
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext
      */
     public function getContext($sid) {
         return new PublishedTrackContext(
@@ -136,7 +136,7 @@ class PublishedTrackList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

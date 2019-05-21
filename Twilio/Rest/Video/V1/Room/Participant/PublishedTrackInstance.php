@@ -29,7 +29,7 @@ use Twilio\Version;
 class PublishedTrackInstance extends InstanceResource {
     /**
      * Initialize the PublishedTrackInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid Unique Room identifier where this Track is published.
@@ -37,7 +37,7 @@ class PublishedTrackInstance extends InstanceResource {
      *                               this Track.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackInstance 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {
         parent::__construct($version);
@@ -65,7 +65,7 @@ class PublishedTrackInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext Context
      *                                                                      for
      *                                                                      this
@@ -86,7 +86,7 @@ class PublishedTrackInstance extends InstanceResource {
 
     /**
      * Fetch a PublishedTrackInstance
-     * 
+     *
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -96,7 +96,7 @@ class PublishedTrackInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -116,7 +116,7 @@ class PublishedTrackInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

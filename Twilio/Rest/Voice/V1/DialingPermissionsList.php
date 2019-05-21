@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Voice\V1\DialingPermissions\CountryList countries
  * @property \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList settings
  * @property \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList bulkCountryUpdates
@@ -32,9 +32,9 @@ class DialingPermissionsList extends ListResource {
 
     /**
      * Construct the DialingPermissionsList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -78,7 +78,7 @@ class DialingPermissionsList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -94,7 +94,7 @@ class DialingPermissionsList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -111,7 +111,7 @@ class DialingPermissionsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

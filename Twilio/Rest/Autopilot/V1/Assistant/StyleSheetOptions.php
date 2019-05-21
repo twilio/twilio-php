@@ -37,7 +37,7 @@ class UpdateStyleSheetOptions extends Options {
 
     /**
      * The JSON string that describes the style sheet object.
-     * 
+     *
      * @param array $styleSheet The JSON string that describes the style sheet
      *                          object
      * @return $this Fluent Builder
@@ -49,7 +49,7 @@ class UpdateStyleSheetOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -72,7 +72,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by an end date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.
-     * 
+     *
      * @param \DateTime $endDate Filter events by an end date.
      * @return $this Fluent Builder
      */
@@ -83,7 +83,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those of a certain event type
-     * 
+     *
      * @param string $eventType Filter events by those of a certain event type
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by up to 'x' minutes in the past. This is helpful for events for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
-     * 
+     *
      * @param int $minutes Filter events by up to 'x' minutes in the past.
      * @return $this Fluent Builder
      */
@@ -105,7 +105,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular reservation
-     * 
+     *
      * @param string $reservationSid Filter events by those pertaining to a
      *                               particular reservation
      * @return $this Fluent Builder
@@ -117,7 +117,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by a start date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.
-     * 
+     *
      * @param \DateTime $startDate Filter events by a start date.
      * @return $this Fluent Builder
      */
@@ -128,7 +128,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular queue
-     * 
+     *
      * @param string $taskQueueSid Filter events by those pertaining to a
      *                             particular queue
      * @return $this Fluent Builder
@@ -140,7 +140,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular task
-     * 
+     *
      * @param string $taskSid Filter events by those pertaining to a particular task
      * @return $this Fluent Builder
      */
@@ -151,7 +151,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular worker
-     * 
+     *
      * @param string $workerSid Filter events by those pertaining to a particular
      *                          worker
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular workflow
-     * 
+     *
      * @param string $workflowSid Filter events by those pertaining to a particular
      *                            workflow
      * @return $this Fluent Builder
@@ -175,7 +175,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular task channel
-     * 
+     *
      * @param string $taskChannel Filter events by those pertaining to a particular
      *                            task channel
      * @return $this Fluent Builder
@@ -187,7 +187,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Filter events by those pertaining to a particular event
-     * 
+     *
      * @param string $sid Filter events by those pertaining to a particular event
      * @return $this Fluent Builder
      */
@@ -198,7 +198,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

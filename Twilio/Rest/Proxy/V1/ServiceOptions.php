@@ -84,7 +84,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
-     * 
+     *
      * @param int $defaultTtl Default TTL for a Session, in seconds
      * @return $this Fluent Builder
      */
@@ -95,7 +95,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The URL we should call when the interaction status changes.
-     * 
+     *
      * @param string $callbackUrl The URL we should call when the interaction
      *                            status changes
      * @return $this Fluent Builder
@@ -107,7 +107,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.
-     * 
+     *
      * @param string $geoMatchLevel Where a proxy number must be located relative
      *                              to the participant identifier
      * @return $this Fluent Builder
@@ -119,7 +119,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.
-     * 
+     *
      * @param string $numberSelectionBehavior The preference for Proxy Number
      *                                        selection for the Service instance
      * @return $this Fluent Builder
@@ -131,7 +131,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
-     * 
+     *
      * @param string $interceptCallbackUrl The URL we call on each interaction
      * @return $this Fluent Builder
      */
@@ -142,7 +142,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
-     * 
+     *
      * @param string $outOfSessionCallbackUrl The URL we call when an inbound call
      *                                        or SMS action occurs on a closed or
      *                                        non-existent Session
@@ -155,7 +155,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
-     * 
+     *
      * @param string $chatInstanceSid The SID of the Chat Service Instance
      * @return $this Fluent Builder
      */
@@ -166,7 +166,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -210,7 +210,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -222,7 +222,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
-     * 
+     *
      * @param int $defaultTtl Default TTL for a Session, in seconds
      * @return $this Fluent Builder
      */
@@ -233,7 +233,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL we should call when the interaction status changes.
-     * 
+     *
      * @param string $callbackUrl The URL we should call when the interaction
      *                            status changes
      * @return $this Fluent Builder
@@ -245,7 +245,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Where a proxy number must be located relative to the participant identifier. Can be: `country`, `area-code`, or `extended-area-code`. The default value is `country` and more specific areas than `country` are only available in North America.
-     * 
+     *
      * @param string $geoMatchLevel Where a proxy number must be located relative
      *                              to the participant identifier
      * @return $this Fluent Builder
@@ -257,7 +257,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The preference for Proxy Number selection in the Service instance. Can be: `prefer-sticky` or `avoid-sticky` and the default is `prefer-sticky`. `prefer-sticky` means that we will try and select the same Proxy Number for a given participant if they have previous [Sessions](https://www.twilio.com/docs/proxy/api/session), but we will not fail if that Proxy Number cannot be used.  `avoid-sticky` means that we will try to use different Proxy Numbers as long as that is possible within a given pool rather than try and use a previously assigned number.
-     * 
+     *
      * @param string $numberSelectionBehavior The preference for Proxy Number
      *                                        selection for the Service instance
      * @return $this Fluent Builder
@@ -269,7 +269,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
-     * 
+     *
      * @param string $interceptCallbackUrl The URL we call on each interaction
      * @return $this Fluent Builder
      */
@@ -280,7 +280,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
-     * 
+     *
      * @param string $outOfSessionCallbackUrl The URL we call when an inbound call
      *                                        or SMS action occurs on a closed or
      *                                        non-existent Session
@@ -293,7 +293,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
-     * 
+     *
      * @param string $chatInstanceSid The SID of the Chat Service Instance
      * @return $this Fluent Builder
      */
@@ -304,7 +304,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

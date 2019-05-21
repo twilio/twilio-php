@@ -21,9 +21,9 @@ use Twilio\Version;
 class CompositionSettingsContext extends InstanceContext {
     /**
      * Initialize the CompositionSettingsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Video\V1\CompositionSettingsContext 
+     * @return \Twilio\Rest\Video\V1\CompositionSettingsContext
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class CompositionSettingsContext extends InstanceContext {
 
     /**
      * Fetch a CompositionSettingsInstance
-     * 
+     *
      * @return CompositionSettingsInstance Fetched CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -54,7 +54,7 @@ class CompositionSettingsContext extends InstanceContext {
 
     /**
      * Create a new CompositionSettingsInstance
-     * 
+     *
      * @param string $friendlyName Friendly name of the configuration to be shown
      *                             in the console
      * @param array|Options $options Optional Arguments
@@ -85,7 +85,7 @@ class CompositionSettingsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

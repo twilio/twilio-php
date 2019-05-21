@@ -18,11 +18,11 @@ use Twilio\Version;
 class FeedbackContext extends InstanceContext {
     /**
      * Initialize the FeedbackContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The call sid that uniquely identifies the call
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class FeedbackContext extends InstanceContext {
 
     /**
      * Create a new FeedbackInstance
-     * 
+     *
      * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
@@ -66,7 +66,7 @@ class FeedbackContext extends InstanceContext {
 
     /**
      * Fetch a FeedbackInstance
-     * 
+     *
      * @return FeedbackInstance Fetched FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -89,7 +89,7 @@ class FeedbackContext extends InstanceContext {
 
     /**
      * Update the FeedbackInstance
-     * 
+     *
      * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
@@ -120,7 +120,7 @@ class FeedbackContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

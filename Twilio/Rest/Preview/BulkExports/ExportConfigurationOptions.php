@@ -41,7 +41,7 @@ class UpdateExportConfigurationOptions extends Options {
 
     /**
      * The enabled
-     * 
+     *
      * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
@@ -52,7 +52,7 @@ class UpdateExportConfigurationOptions extends Options {
 
     /**
      * The webhook_url
-     * 
+     *
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class UpdateExportConfigurationOptions extends Options {
 
     /**
      * The webhook_method
-     * 
+     *
      * @param string $webhookMethod The webhook_method
      * @return $this Fluent Builder
      */
@@ -74,7 +74,7 @@ class UpdateExportConfigurationOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

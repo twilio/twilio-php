@@ -18,11 +18,11 @@ use Twilio\Version;
 class TollFreeList extends ListResource {
     /**
      * Construct the TollFreeList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $countryCode The ISO-3166-1 country code of the country.
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList
      */
     public function __construct(Version $version, $accountSid, $countryCode) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class TollFreeList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -64,7 +64,7 @@ class TollFreeList extends ListResource {
      * Reads TollFreeInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -83,7 +83,7 @@ class TollFreeList extends ListResource {
     /**
      * Retrieve a single page of TollFreeInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -128,7 +128,7 @@ class TollFreeList extends ListResource {
     /**
      * Retrieve a specific page of TollFreeInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of TollFreeInstance
      */
@@ -143,7 +143,7 @@ class TollFreeList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,10 +18,10 @@ use Twilio\Version;
 class StyleSheetList extends ListResource {
     /**
      * Construct the StyleSheetList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the Assistant
-     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetList 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -32,8 +32,8 @@ class StyleSheetList extends ListResource {
 
     /**
      * Constructs a StyleSheetContext
-     * 
-     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetContext 
+     *
+     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetContext
      */
     public function getContext() {
         return new StyleSheetContext($this->version, $this->solution['assistantSid']);
@@ -41,7 +41,7 @@ class StyleSheetList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

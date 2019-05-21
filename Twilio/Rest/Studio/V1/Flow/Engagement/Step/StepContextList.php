@@ -15,12 +15,12 @@ use Twilio\Version;
 class StepContextList extends ListResource {
     /**
      * Construct the StepContextList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $engagementSid Engagement Sid.
      * @param string $stepSid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList
      */
     public function __construct(Version $version, $flowSid, $engagementSid, $stepSid) {
         parent::__construct($version);
@@ -35,8 +35,8 @@ class StepContextList extends ListResource {
 
     /**
      * Constructs a StepContextContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext
      */
     public function getContext() {
         return new StepContextContext(
@@ -49,7 +49,7 @@ class StepContextList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

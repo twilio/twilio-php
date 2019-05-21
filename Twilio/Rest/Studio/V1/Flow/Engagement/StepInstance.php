@@ -34,13 +34,13 @@ class StepInstance extends InstanceResource {
 
     /**
      * Initialize the StepInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid Flow Sid.
      * @param string $engagementSid Engagement Sid.
      * @param string $sid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepInstance 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $engagementSid, $sid = null) {
         parent::__construct($version);
@@ -71,7 +71,7 @@ class StepInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepContext Context for this
      *                                                            StepInstance
      */
@@ -90,7 +90,7 @@ class StepInstance extends InstanceResource {
 
     /**
      * Fetch a StepInstance
-     * 
+     *
      * @return StepInstance Fetched StepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -100,8 +100,8 @@ class StepInstance extends InstanceResource {
 
     /**
      * Access the stepContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList
      */
     protected function getStepContext() {
         return $this->proxy()->stepContext;
@@ -109,7 +109,7 @@ class StepInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -129,7 +129,7 @@ class StepInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

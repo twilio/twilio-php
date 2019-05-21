@@ -27,13 +27,13 @@ use Twilio\Version;
 class MediaInstance extends InstanceResource {
     /**
      * Initialize the MediaInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $messageSid The unique string that identifies the resource
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $messageSid, $sid = null) {
         parent::__construct($version);
@@ -59,7 +59,7 @@ class MediaInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext Context for this
      *                                                             MediaInstance
      */
@@ -78,7 +78,7 @@ class MediaInstance extends InstanceResource {
 
     /**
      * Deletes the MediaInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -88,7 +88,7 @@ class MediaInstance extends InstanceResource {
 
     /**
      * Fetch a MediaInstance
-     * 
+     *
      * @return MediaInstance Fetched MediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +98,7 @@ class MediaInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -118,7 +118,7 @@ class MediaInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

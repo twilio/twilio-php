@@ -16,7 +16,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string isoCode
  * @property string name
  * @property string continent
@@ -32,11 +32,11 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Initialize the CountryInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryInstance 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryInstance
      */
     public function __construct(Version $version, array $payload, $isoCode = null) {
         parent::__construct($version);
@@ -60,7 +60,7 @@ class CountryInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext Context for
      *                                                                 this
      *                                                                 CountryInstance
@@ -75,7 +75,7 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Fetch a CountryInstance
-     * 
+     *
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -85,8 +85,8 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Access the highriskSpecialPrefixes
-     * 
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList 
+     *
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList
      */
     protected function getHighriskSpecialPrefixes() {
         return $this->proxy()->highriskSpecialPrefixes;
@@ -94,7 +94,7 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -114,7 +114,7 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -31,13 +31,13 @@ use Twilio\Version;
 class FunctionVersionInstance extends InstanceResource {
     /**
      * Initialize the FunctionVersionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $functionSid Function Sid.
      * @param string $sid Function Version Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionInstance 
+     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $functionSid, $sid = null) {
         parent::__construct($version);
@@ -65,7 +65,7 @@ class FunctionVersionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext Context for this
      *                                                                                  FunctionVersionInstance
      */
@@ -84,7 +84,7 @@ class FunctionVersionInstance extends InstanceResource {
 
     /**
      * Fetch a FunctionVersionInstance
-     * 
+     *
      * @return FunctionVersionInstance Fetched FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,7 +94,7 @@ class FunctionVersionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -114,7 +114,7 @@ class FunctionVersionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

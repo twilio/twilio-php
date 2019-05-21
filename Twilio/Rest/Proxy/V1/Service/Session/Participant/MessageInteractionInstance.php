@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string sessionSid
  * @property string serviceSid
@@ -42,14 +42,14 @@ use Twilio\Version;
 class MessageInteractionInstance extends InstanceResource {
     /**
      * Initialize the MessageInteractionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the resource's parent Service
      * @param string $sessionSid The SID of the resource's parent Session
      * @param string $participantSid The SID of the Participant resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionInstance 
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sessionSid, $participantSid, $sid = null) {
         parent::__construct($version);
@@ -89,7 +89,7 @@ class MessageInteractionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext Context for this
      *                                                                                     MessageInteractionInstance
      */
@@ -109,7 +109,7 @@ class MessageInteractionInstance extends InstanceResource {
 
     /**
      * Fetch a MessageInteractionInstance
-     * 
+     *
      * @return MessageInteractionInstance Fetched MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -119,7 +119,7 @@ class MessageInteractionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -139,7 +139,7 @@ class MessageInteractionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

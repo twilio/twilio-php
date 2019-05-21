@@ -21,9 +21,9 @@ use Twilio\Version;
 class CompositionList extends ListResource {
     /**
      * Construct the CompositionList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Video\V1\CompositionList 
+     * @return \Twilio\Rest\Video\V1\CompositionList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class CompositionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -65,7 +65,7 @@ class CompositionList extends ListResource {
      * Reads CompositionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -84,7 +84,7 @@ class CompositionList extends ListResource {
     /**
      * Retrieve a single page of CompositionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -115,7 +115,7 @@ class CompositionList extends ListResource {
     /**
      * Retrieve a specific page of CompositionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of CompositionInstance
      */
@@ -130,7 +130,7 @@ class CompositionList extends ListResource {
 
     /**
      * Create a new CompositionInstance
-     * 
+     *
      * @param string $roomSid Twilio Room SID.
      * @param array|Options $options Optional Arguments
      * @return CompositionInstance Newly created CompositionInstance
@@ -163,10 +163,10 @@ class CompositionList extends ListResource {
 
     /**
      * Constructs a CompositionContext
-     * 
+     *
      * @param string $sid The Composition Sid that uniquely identifies the
      *                    Composition to fetch.
-     * @return \Twilio\Rest\Video\V1\CompositionContext 
+     * @return \Twilio\Rest\Video\V1\CompositionContext
      */
     public function getContext($sid) {
         return new CompositionContext($this->version, $sid);
@@ -174,7 +174,7 @@ class CompositionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

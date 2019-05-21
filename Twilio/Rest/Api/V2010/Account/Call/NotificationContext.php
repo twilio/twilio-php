@@ -16,13 +16,13 @@ use Twilio\Version;
 class NotificationContext extends InstanceContext {
     /**
      * Initialize the NotificationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $callSid The Call SID of the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\NotificationContext
      */
     public function __construct(Version $version, $accountSid, $callSid, $sid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class NotificationContext extends InstanceContext {
 
     /**
      * Fetch a NotificationInstance
-     * 
+     *
      * @return NotificationInstance Fetched NotificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,7 +59,7 @@ class NotificationContext extends InstanceContext {
 
     /**
      * Deletes the NotificationInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -69,7 +69,7 @@ class NotificationContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

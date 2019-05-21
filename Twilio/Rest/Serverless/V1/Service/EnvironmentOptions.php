@@ -37,7 +37,7 @@ class CreateEnvironmentOptions extends Options {
 
     /**
      * A URL-friendly name that represents this Environment and forms part of the domain name, fewer than 32 characters. Required.
-     * 
+     *
      * @param string $domainSuffix A URL-friendly name that represents this
      *                             Environment.
      * @return $this Fluent Builder
@@ -49,7 +49,7 @@ class CreateEnvironmentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

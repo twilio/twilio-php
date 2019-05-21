@@ -83,7 +83,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -106,7 +106,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -118,7 +118,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * The visibility of the channel. Can be: `public` or `private` and defaults to `public`.
-     * 
+     *
      * @param string $type The visibility of the channel
      * @return $this Fluent Builder
      */
@@ -129,7 +129,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default is the current time set by the Chat service.  Note that this should only be used in cases where a Channel is being recreated from a backup/separate source.
-     * 
+     *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
      * @return $this Fluent Builder
@@ -141,7 +141,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`.  Note that this should only be used in cases where a Channel is being recreated from a backup/separate source  and where a Message was previously updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
      * @return $this Fluent Builder
@@ -153,7 +153,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * The `identity` of the User that created the channel. Default is: `system`.
-     * 
+     *
      * @param string $createdBy The identity of the User that created the Channel
      * @return $this Fluent Builder
      */
@@ -164,7 +164,7 @@ class CreateChannelOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -188,7 +188,7 @@ class ReadChannelOptions extends Options {
 
     /**
      * The visibility of the Channels to read. Can be: `public` or `private` and defaults to `public`.
-     * 
+     *
      * @param string $type The visibility of the channel to read
      * @return $this Fluent Builder
      */
@@ -199,7 +199,7 @@ class ReadChannelOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -237,7 +237,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -248,7 +248,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -260,7 +260,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -272,7 +272,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
-     * 
+     *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
      * @return $this Fluent Builder
@@ -284,7 +284,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
      * @return $this Fluent Builder
@@ -296,7 +296,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * The `identity` of the User that created the channel. Default is: `system`.
-     * 
+     *
      * @param string $createdBy The identity of the User that created the Channel
      * @return $this Fluent Builder
      */
@@ -307,7 +307,7 @@ class UpdateChannelOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

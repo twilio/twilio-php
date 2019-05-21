@@ -35,7 +35,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * The To phonenumber of the phone being verified
-     * 
+     *
      * @param string $to To phonenumber
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class CreateVerificationCheckOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -36,12 +36,12 @@ class EnvironmentInstance extends InstanceResource {
 
     /**
      * Initialize the EnvironmentInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $sid Environment Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentInstance 
+     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -67,7 +67,7 @@ class EnvironmentInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext Context for
      *                                                               this
      *                                                               EnvironmentInstance
@@ -86,7 +86,7 @@ class EnvironmentInstance extends InstanceResource {
 
     /**
      * Fetch a EnvironmentInstance
-     * 
+     *
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -96,8 +96,8 @@ class EnvironmentInstance extends InstanceResource {
 
     /**
      * Access the variables
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList
      */
     protected function getVariables() {
         return $this->proxy()->variables;
@@ -105,8 +105,8 @@ class EnvironmentInstance extends InstanceResource {
 
     /**
      * Access the deployments
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList
      */
     protected function getDeployments() {
         return $this->proxy()->deployments;
@@ -114,7 +114,7 @@ class EnvironmentInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -134,7 +134,7 @@ class EnvironmentInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

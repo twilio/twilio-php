@@ -62,7 +62,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The human-readable name of this session. Optional.
-     * 
+     *
      * @param string $friendlyName The human-readable name of this session.
      * @return $this Fluent Builder
      */
@@ -73,7 +73,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
-     * 
+     *
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @return $this Fluent Builder
@@ -85,7 +85,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The date that this resource was created.
-     * 
+     *
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
@@ -96,7 +96,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The date that this resource was last updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
@@ -107,7 +107,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * Identity of the session's creator. If the Session was created through the API, the value will be `system`
-     * 
+     *
      * @param string $createdBy Identity of the session's creator.
      * @return $this Fluent Builder
      */
@@ -118,7 +118,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -151,7 +151,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The human-readable name of this session. Optional.
-     * 
+     *
      * @param string $friendlyName The human-readable name of this session.
      * @return $this Fluent Builder
      */
@@ -162,7 +162,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
-     * 
+     *
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
      * @return $this Fluent Builder
@@ -174,7 +174,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The date that this resource was created.
-     * 
+     *
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
@@ -185,7 +185,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The date that this resource was last updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
@@ -196,7 +196,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * Identity of the session's creator. If the Session was created through the API, the value will be `system`
-     * 
+     *
      * @param string $createdBy Identity of the session's creator.
      * @return $this Fluent Builder
      */
@@ -207,7 +207,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

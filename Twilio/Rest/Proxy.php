@@ -23,7 +23,7 @@ class Proxy extends Domain {
 
     /**
      * Construct the Proxy Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Proxy Domain for Proxy
@@ -46,7 +46,7 @@ class Proxy extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -62,7 +62,7 @@ class Proxy extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,7 +78,7 @@ class Proxy extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Proxy\V1\ServiceList 
+     * @return \Twilio\Rest\Proxy\V1\ServiceList
      */
     protected function getServices() {
         return $this->v1->services;
@@ -86,7 +86,7 @@ class Proxy extends Domain {
 
     /**
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\ServiceContext 
+     * @return \Twilio\Rest\Proxy\V1\ServiceContext
      */
     protected function contextServices($sid) {
         return $this->v1->services($sid);
@@ -94,7 +94,7 @@ class Proxy extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

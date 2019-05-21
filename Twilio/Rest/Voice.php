@@ -22,7 +22,7 @@ class Voice extends Domain {
 
     /**
      * Construct the Voice Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Voice Domain for Voice
@@ -45,7 +45,7 @@ class Voice extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -61,7 +61,7 @@ class Voice extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -77,7 +77,7 @@ class Voice extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
      */
     protected function getDialingPermissions() {
         return $this->v1->dialingPermissions;
@@ -85,7 +85,7 @@ class Voice extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

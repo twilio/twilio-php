@@ -95,7 +95,7 @@ class ReadReservationOptions extends Options {
 
     /**
      * Filter by a worker's reservation status (pending, accepted, rejected, timeout, canceled, rescinded)
-     * 
+     *
      * @param string $reservationStatus Filter by a worker's reservation status
      * @return $this Fluent Builder
      */
@@ -106,7 +106,7 @@ class ReadReservationOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -235,7 +235,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * Yes
-     * 
+     *
      * @param string $reservationStatus Yes
      * @return $this Fluent Builder
      */
@@ -246,7 +246,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * No
-     * 
+     *
      * @param string $workerActivitySid No
      * @return $this Fluent Builder
      */
@@ -257,7 +257,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * Yes
-     * 
+     *
      * @param string $instruction Yes
      * @return $this Fluent Builder
      */
@@ -268,7 +268,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * No
-     * 
+     *
      * @param string $dequeuePostWorkActivitySid No
      * @return $this Fluent Builder
      */
@@ -279,7 +279,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * Yes
-     * 
+     *
      * @param string $dequeueFrom Yes
      * @return $this Fluent Builder
      */
@@ -290,7 +290,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The dequeue_record
-     * 
+     *
      * @param string $dequeueRecord The dequeue_record
      * @return $this Fluent Builder
      */
@@ -301,7 +301,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The dequeue_timeout
-     * 
+     *
      * @param int $dequeueTimeout The dequeue_timeout
      * @return $this Fluent Builder
      */
@@ -312,7 +312,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The dequeue_to
-     * 
+     *
      * @param string $dequeueTo The dequeue_to
      * @return $this Fluent Builder
      */
@@ -323,7 +323,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The dequeue_status_callback_url
-     * 
+     *
      * @param string $dequeueStatusCallbackUrl The dequeue_status_callback_url
      * @return $this Fluent Builder
      */
@@ -334,7 +334,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * Yes
-     * 
+     *
      * @param string $callFrom Yes
      * @return $this Fluent Builder
      */
@@ -345,7 +345,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The call_record
-     * 
+     *
      * @param string $callRecord The call_record
      * @return $this Fluent Builder
      */
@@ -356,7 +356,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The call_timeout
-     * 
+     *
      * @param int $callTimeout The call_timeout
      * @return $this Fluent Builder
      */
@@ -367,7 +367,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The call_to
-     * 
+     *
      * @param string $callTo The call_to
      * @return $this Fluent Builder
      */
@@ -378,7 +378,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * Yes
-     * 
+     *
      * @param string $callUrl Yes
      * @return $this Fluent Builder
      */
@@ -389,7 +389,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * No
-     * 
+     *
      * @param string $callStatusCallbackUrl No
      * @return $this Fluent Builder
      */
@@ -400,7 +400,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * No
-     * 
+     *
      * @param bool $callAccept No
      * @return $this Fluent Builder
      */
@@ -411,7 +411,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The redirect_call_sid
-     * 
+     *
      * @param string $redirectCallSid The redirect_call_sid
      * @return $this Fluent Builder
      */
@@ -422,7 +422,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The redirect_accept
-     * 
+     *
      * @param bool $redirectAccept The redirect_accept
      * @return $this Fluent Builder
      */
@@ -433,7 +433,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The redirect_url
-     * 
+     *
      * @param string $redirectUrl The redirect_url
      * @return $this Fluent Builder
      */
@@ -444,7 +444,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The to
-     * 
+     *
      * @param string $to The to
      * @return $this Fluent Builder
      */
@@ -455,7 +455,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The from
-     * 
+     *
      * @param string $from The from
      * @return $this Fluent Builder
      */
@@ -466,7 +466,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The status_callback
-     * 
+     *
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
@@ -477,7 +477,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The status_callback_method
-     * 
+     *
      * @param string $statusCallbackMethod The status_callback_method
      * @return $this Fluent Builder
      */
@@ -488,7 +488,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The status_callback_event
-     * 
+     *
      * @param string $statusCallbackEvent The status_callback_event
      * @return $this Fluent Builder
      */
@@ -499,7 +499,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The timeout
-     * 
+     *
      * @param int $timeout The timeout
      * @return $this Fluent Builder
      */
@@ -510,7 +510,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The record
-     * 
+     *
      * @param bool $record The record
      * @return $this Fluent Builder
      */
@@ -521,7 +521,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The muted
-     * 
+     *
      * @param bool $muted The muted
      * @return $this Fluent Builder
      */
@@ -532,7 +532,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The beep
-     * 
+     *
      * @param string $beep The beep
      * @return $this Fluent Builder
      */
@@ -543,7 +543,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The start_conference_on_enter
-     * 
+     *
      * @param bool $startConferenceOnEnter The start_conference_on_enter
      * @return $this Fluent Builder
      */
@@ -554,7 +554,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The end_conference_on_exit
-     * 
+     *
      * @param bool $endConferenceOnExit The end_conference_on_exit
      * @return $this Fluent Builder
      */
@@ -565,7 +565,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The wait_url
-     * 
+     *
      * @param string $waitUrl The wait_url
      * @return $this Fluent Builder
      */
@@ -576,7 +576,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The wait_method
-     * 
+     *
      * @param string $waitMethod The wait_method
      * @return $this Fluent Builder
      */
@@ -587,7 +587,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The early_media
-     * 
+     *
      * @param bool $earlyMedia The early_media
      * @return $this Fluent Builder
      */
@@ -598,7 +598,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The max_participants
-     * 
+     *
      * @param int $maxParticipants The max_participants
      * @return $this Fluent Builder
      */
@@ -609,7 +609,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_status_callback
-     * 
+     *
      * @param string $conferenceStatusCallback The conference_status_callback
      * @return $this Fluent Builder
      */
@@ -620,7 +620,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_status_callback_method
-     * 
+     *
      * @param string $conferenceStatusCallbackMethod The
      *                                               conference_status_callback_method
      * @return $this Fluent Builder
@@ -632,7 +632,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_status_callback_event
-     * 
+     *
      * @param string $conferenceStatusCallbackEvent The
      *                                              conference_status_callback_event
      * @return $this Fluent Builder
@@ -644,7 +644,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_record
-     * 
+     *
      * @param string $conferenceRecord The conference_record
      * @return $this Fluent Builder
      */
@@ -655,7 +655,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_trim
-     * 
+     *
      * @param string $conferenceTrim The conference_trim
      * @return $this Fluent Builder
      */
@@ -666,7 +666,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The recording_channels
-     * 
+     *
      * @param string $recordingChannels The recording_channels
      * @return $this Fluent Builder
      */
@@ -677,7 +677,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The recording_status_callback
-     * 
+     *
      * @param string $recordingStatusCallback The recording_status_callback
      * @return $this Fluent Builder
      */
@@ -688,7 +688,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The recording_status_callback_method
-     * 
+     *
      * @param string $recordingStatusCallbackMethod The
      *                                              recording_status_callback_method
      * @return $this Fluent Builder
@@ -700,7 +700,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_recording_status_callback
-     * 
+     *
      * @param string $conferenceRecordingStatusCallback The
      *                                                  conference_recording_status_callback
      * @return $this Fluent Builder
@@ -712,7 +712,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The conference_recording_status_callback_method
-     * 
+     *
      * @param string $conferenceRecordingStatusCallbackMethod The
      *                                                        conference_recording_status_callback_method
      * @return $this Fluent Builder
@@ -724,7 +724,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The region
-     * 
+     *
      * @param string $region The region
      * @return $this Fluent Builder
      */
@@ -735,7 +735,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The sip_auth_username
-     * 
+     *
      * @param string $sipAuthUsername The sip_auth_username
      * @return $this Fluent Builder
      */
@@ -746,7 +746,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The sip_auth_password
-     * 
+     *
      * @param string $sipAuthPassword The sip_auth_password
      * @return $this Fluent Builder
      */
@@ -757,7 +757,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The dequeue_status_callback_event
-     * 
+     *
      * @param string $dequeueStatusCallbackEvent The dequeue_status_callback_event
      * @return $this Fluent Builder
      */
@@ -768,7 +768,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The post_work_activity_sid
-     * 
+     *
      * @param string $postWorkActivitySid The post_work_activity_sid
      * @return $this Fluent Builder
      */
@@ -779,7 +779,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The end_conference_on_customer_exit
-     * 
+     *
      * @param bool $endConferenceOnCustomerExit The end_conference_on_customer_exit
      * @return $this Fluent Builder
      */
@@ -790,7 +790,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * The beep_on_customer_entrance
-     * 
+     *
      * @param bool $beepOnCustomerEntrance The beep_on_customer_entrance
      * @return $this Fluent Builder
      */
@@ -801,7 +801,7 @@ class UpdateReservationOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

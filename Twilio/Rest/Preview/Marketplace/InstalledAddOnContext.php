@@ -19,7 +19,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList extensions
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext extensions(string $sid)
  */
@@ -28,10 +28,10 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Initialize the InstalledAddOnContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The unique Installed Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext 
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -44,7 +44,7 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Deletes the InstalledAddOnInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -54,7 +54,7 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Fetch a InstalledAddOnInstance
-     * 
+     *
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -72,7 +72,7 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Update the InstalledAddOnInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Updated InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -97,8 +97,8 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Access the extensions
-     * 
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList 
+     *
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList
      */
     protected function getExtensions() {
         if (!$this->_extensions) {
@@ -110,7 +110,7 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -126,7 +126,7 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -143,7 +143,7 @@ class InstalledAddOnContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

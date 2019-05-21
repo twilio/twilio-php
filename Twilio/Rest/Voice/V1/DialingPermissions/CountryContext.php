@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList highriskSpecialPrefixes
  */
 class CountryContext extends InstanceContext {
@@ -25,10 +25,10 @@ class CountryContext extends InstanceContext {
 
     /**
      * Initialize the CountryContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $isoCode The ISO country code
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext
      */
     public function __construct(Version $version, $isoCode) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class CountryContext extends InstanceContext {
 
     /**
      * Fetch a CountryInstance
-     * 
+     *
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,8 +59,8 @@ class CountryContext extends InstanceContext {
 
     /**
      * Access the highriskSpecialPrefixes
-     * 
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList 
+     *
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList
      */
     protected function getHighriskSpecialPrefixes() {
         if (!$this->_highriskSpecialPrefixes) {
@@ -75,7 +75,7 @@ class CountryContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -91,7 +91,7 @@ class CountryContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -108,7 +108,7 @@ class CountryContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

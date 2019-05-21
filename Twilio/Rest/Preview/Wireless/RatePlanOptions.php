@@ -71,7 +71,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
@@ -82,7 +82,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -93,7 +93,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The data_enabled
-     * 
+     *
      * @param bool $dataEnabled The data_enabled
      * @return $this Fluent Builder
      */
@@ -104,7 +104,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The data_limit
-     * 
+     *
      * @param int $dataLimit The data_limit
      * @return $this Fluent Builder
      */
@@ -115,7 +115,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The data_metering
-     * 
+     *
      * @param string $dataMetering The data_metering
      * @return $this Fluent Builder
      */
@@ -126,7 +126,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The messaging_enabled
-     * 
+     *
      * @param bool $messagingEnabled The messaging_enabled
      * @return $this Fluent Builder
      */
@@ -137,7 +137,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The voice_enabled
-     * 
+     *
      * @param bool $voiceEnabled The voice_enabled
      * @return $this Fluent Builder
      */
@@ -148,7 +148,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The commands_enabled
-     * 
+     *
      * @param bool $commandsEnabled The commands_enabled
      * @return $this Fluent Builder
      */
@@ -159,7 +159,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The national_roaming_enabled
-     * 
+     *
      * @param bool $nationalRoamingEnabled The national_roaming_enabled
      * @return $this Fluent Builder
      */
@@ -170,7 +170,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The international_roaming
-     * 
+     *
      * @param string $internationalRoaming The international_roaming
      * @return $this Fluent Builder
      */
@@ -181,7 +181,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -207,7 +207,7 @@ class UpdateRatePlanOptions extends Options {
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
@@ -218,7 +218,7 @@ class UpdateRatePlanOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -229,7 +229,7 @@ class UpdateRatePlanOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

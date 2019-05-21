@@ -49,11 +49,11 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Initialize the ServiceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Chat\V2\ServiceInstance 
+     * @return \Twilio\Rest\Chat\V2\ServiceInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -91,7 +91,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V2\ServiceContext Context for this ServiceInstance
      */
     protected function proxy() {
@@ -104,7 +104,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -114,7 +114,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -124,7 +124,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -135,8 +135,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the channels
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\ChannelList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\ChannelList
      */
     protected function getChannels() {
         return $this->proxy()->channels;
@@ -144,8 +144,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the roles
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\RoleList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\RoleList
      */
     protected function getRoles() {
         return $this->proxy()->roles;
@@ -153,8 +153,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the users
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\UserList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\UserList
      */
     protected function getUsers() {
         return $this->proxy()->users;
@@ -162,8 +162,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the bindings
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\BindingList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\BindingList
      */
     protected function getBindings() {
         return $this->proxy()->bindings;
@@ -171,7 +171,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -191,7 +191,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

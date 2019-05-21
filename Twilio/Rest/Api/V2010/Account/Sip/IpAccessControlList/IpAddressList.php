@@ -17,14 +17,14 @@ use Twilio\Version;
 class IpAddressList extends ListResource {
     /**
      * Construct the IpAddressList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
      * @param string $ipAccessControlListSid The unique id of the
      *                                       IpAccessControlList resource that
      *                                       includes this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList
      */
     public function __construct(Version $version, $accountSid, $ipAccessControlListSid) {
         parent::__construct($version);
@@ -45,7 +45,7 @@ class IpAddressList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -68,7 +68,7 @@ class IpAddressList extends ListResource {
      * Reads IpAddressInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -86,7 +86,7 @@ class IpAddressList extends ListResource {
     /**
      * Retrieve a single page of IpAddressInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -111,7 +111,7 @@ class IpAddressList extends ListResource {
     /**
      * Retrieve a specific page of IpAddressInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of IpAddressInstance
      */
@@ -126,7 +126,7 @@ class IpAddressList extends ListResource {
 
     /**
      * Create a new IpAddressInstance
-     * 
+     *
      * @param string $friendlyName A human readable descriptive text for this
      *                             resource, up to 64 characters long.
      * @param string $ipAddress An IP address in dotted decimal notation from which
@@ -163,9 +163,9 @@ class IpAddressList extends ListResource {
 
     /**
      * Constructs a IpAddressContext
-     * 
+     *
      * @param string $sid A string that identifies the IpAddress resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext
      */
     public function getContext($sid) {
         return new IpAddressContext(
@@ -178,7 +178,7 @@ class IpAddressList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

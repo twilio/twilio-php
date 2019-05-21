@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Wireless\Sim\UsageList usage
  * @method \Twilio\Rest\Preview\Wireless\Sim\UsageContext usage()
  */
@@ -27,10 +27,10 @@ class SimContext extends InstanceContext {
 
     /**
      * Initialize the SimContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\SimContext 
+     * @return \Twilio\Rest\Preview\Wireless\SimContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Fetch a SimInstance
-     * 
+     *
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -61,7 +61,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Update the SimInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,8 +100,8 @@ class SimContext extends InstanceContext {
 
     /**
      * Access the usage
-     * 
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
+     *
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList
      */
     protected function getUsage() {
         if (!$this->_usage) {
@@ -113,7 +113,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -129,7 +129,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -146,7 +146,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

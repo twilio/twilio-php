@@ -66,7 +66,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -78,7 +78,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.
-     * 
+     *
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @return $this Fluent Builder
      */
@@ -89,7 +89,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
-     * 
+     *
      * @param int $ttl When the session will expire
      * @return $this Fluent Builder
      */
@@ -100,7 +100,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message` and the default value is `voice-and-message`.
-     * 
+     *
      * @param string $mode The Mode of the Session
      * @return $this Fluent Builder
      */
@@ -111,7 +111,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The initial status of the Session. Can be: `open`, `in-progress`, `closed`, `failed`, or `unknown`. The default is `open` on create.
-     * 
+     *
      * @param string $status Session status
      * @return $this Fluent Builder
      */
@@ -122,7 +122,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * The Participant objects to include in the new session.
-     * 
+     *
      * @param array $participants The Participant objects to include in the new
      *                            session
      * @return $this Fluent Builder
@@ -134,7 +134,7 @@ class CreateSessionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -166,7 +166,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.
-     * 
+     *
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @return $this Fluent Builder
      */
@@ -177,7 +177,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
-     * 
+     *
      * @param int $ttl When the session will expire
      * @return $this Fluent Builder
      */
@@ -188,7 +188,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message` and the default value is `voice-and-message`.
-     * 
+     *
      * @param string $mode The Mode of the Session
      * @return $this Fluent Builder
      */
@@ -199,7 +199,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The new status of the resource. Can be: `in-progress` to re-open a session or `closed` to close a session.
-     * 
+     *
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
@@ -210,7 +210,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * The Participant objects to include in the session.
-     * 
+     *
      * @param array $participants The Participant objects to include in the session
      * @return $this Fluent Builder
      */
@@ -221,7 +221,7 @@ class UpdateSessionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

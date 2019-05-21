@@ -32,12 +32,12 @@ use Twilio\Version;
 class TollFreeInstance extends InstanceResource {
     /**
      * Initialize the TollFreeInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The account_sid
      * @param string $countryCode The ISO-3166-1 country code of the country.
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class TollFreeInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -84,7 +84,7 @@ class TollFreeInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

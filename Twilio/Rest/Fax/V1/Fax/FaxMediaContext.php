@@ -19,11 +19,11 @@ use Twilio\Version;
 class FaxMediaContext extends InstanceContext {
     /**
      * Initialize the FaxMediaContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $faxSid The SID of the fax with the FaxMedia resource to fetch
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaContext 
+     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaContext
      */
     public function __construct(Version $version, $faxSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class FaxMediaContext extends InstanceContext {
 
     /**
      * Fetch a FaxMediaInstance
-     * 
+     *
      * @return FaxMediaInstance Fetched FaxMediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,7 +59,7 @@ class FaxMediaContext extends InstanceContext {
 
     /**
      * Deletes the FaxMediaInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -69,7 +69,7 @@ class FaxMediaContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

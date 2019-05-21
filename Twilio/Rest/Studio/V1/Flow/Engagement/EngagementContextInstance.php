@@ -24,12 +24,12 @@ use Twilio\Version;
 class EngagementContextInstance extends InstanceResource {
     /**
      * Initialize the EngagementContextInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid Flow Sid.
      * @param string $engagementSid Engagement Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextInstance 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $engagementSid) {
         parent::__construct($version);
@@ -49,7 +49,7 @@ class EngagementContextInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext Context for this EngagementContextInstance
      */
     protected function proxy() {
@@ -66,7 +66,7 @@ class EngagementContextInstance extends InstanceResource {
 
     /**
      * Fetch a EngagementContextInstance
-     * 
+     *
      * @return EngagementContextInstance Fetched EngagementContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -76,7 +76,7 @@ class EngagementContextInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -96,7 +96,7 @@ class EngagementContextInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

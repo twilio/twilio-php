@@ -48,7 +48,7 @@ class ReadExecutionOptions extends Options {
 
     /**
      * Only show Executions that started on or after this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
-     * 
+     *
      * @param \DateTime $dateCreatedFrom Only show Executions that started on or
      *                                   after this ISO8601 date-time.
      * @return $this Fluent Builder
@@ -60,7 +60,7 @@ class ReadExecutionOptions extends Options {
 
     /**
      * Only show Executions that started before this this ISO8601 date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
-     * 
+     *
      * @param \DateTime $dateCreatedTo Only show Executions that started before
      *                                 this this ISO8601 date-time.
      * @return $this Fluent Builder
@@ -72,7 +72,7 @@ class ReadExecutionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -97,7 +97,7 @@ class CreateExecutionOptions extends Options {
 
     /**
      * JSON data that will be added to your flow's context and can accessed as variables inside your flow. For example, if you pass in `Parameters={"name":"Zeke"}`, then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string "Zeke". Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string.
-     * 
+     *
      * @param array $parameters JSON data that will be added to your flow's context
      *                          and can accessed as variables inside your flow.
      * @return $this Fluent Builder
@@ -109,7 +109,7 @@ class CreateExecutionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string callSid
  * @property string callType
@@ -42,11 +42,11 @@ use Twilio\Version;
 class CallSummaryInstance extends InstanceResource {
     /**
      * Initialize the CallSummaryInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\CallSummaryInstance 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryInstance
      */
     public function __construct(Version $version, array $payload, $callSid = null) {
         parent::__construct($version);
@@ -80,7 +80,7 @@ class CallSummaryInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Insights\V1\CallSummaryContext Context for this
      *                                                     CallSummaryInstance
      */
@@ -94,7 +94,7 @@ class CallSummaryInstance extends InstanceResource {
 
     /**
      * Fetch a CallSummaryInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -105,7 +105,7 @@ class CallSummaryInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -125,7 +125,7 @@ class CallSummaryInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

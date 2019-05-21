@@ -28,7 +28,7 @@ class TrustedComms extends Version {
 
     /**
      * Construct the TrustedComms version of Preview
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Preview\TrustedComms TrustedComms version of Preview
      */
@@ -38,7 +38,7 @@ class TrustedComms extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList 
+     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList
      */
     protected function getDevices() {
         if (!$this->_devices) {
@@ -48,7 +48,7 @@ class TrustedComms extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList 
+     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList
      */
     protected function getPhoneCalls() {
         if (!$this->_phoneCalls) {
@@ -58,7 +58,7 @@ class TrustedComms extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList 
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
      */
     protected function getCurrentCalls() {
         if (!$this->_currentCalls) {
@@ -69,7 +69,7 @@ class TrustedComms extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -85,7 +85,7 @@ class TrustedComms extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -102,7 +102,7 @@ class TrustedComms extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

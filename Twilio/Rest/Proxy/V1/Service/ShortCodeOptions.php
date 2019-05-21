@@ -37,7 +37,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * Whether the short code should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.
-     * 
+     *
      * @param bool $isReserved Whether the short code should be reserved for manual
      *                         assignment to participants only
      * @return $this Fluent Builder
@@ -49,7 +49,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

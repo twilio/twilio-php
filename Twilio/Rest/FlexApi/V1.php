@@ -26,7 +26,7 @@ class V1 extends Version {
 
     /**
      * Construct the V1 version of FlexApi
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\FlexApi\V1 V1 version of FlexApi
      */
@@ -36,7 +36,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList 
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
      */
     protected function getFlexFlow() {
         if (!$this->_flexFlow) {
@@ -46,7 +46,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationList 
+     * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
      */
     protected function getConfiguration() {
         if (!$this->_configuration) {
@@ -57,7 +57,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -73,7 +73,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -90,7 +90,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

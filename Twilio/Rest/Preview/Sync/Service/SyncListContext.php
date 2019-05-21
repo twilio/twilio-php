@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList syncListItems
  * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList syncListPermissions
  * @method \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext syncListItems(int $index)
@@ -30,11 +30,11 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Initialize the SyncListContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncListContext 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncListContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Fetch a SyncListInstance
-     * 
+     *
      * @return SyncListInstance Fetched SyncListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Deletes the SyncListInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,8 +80,8 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Access the syncListItems
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList
      */
     protected function getSyncListItems() {
         if (!$this->_syncListItems) {
@@ -97,8 +97,8 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Access the syncListPermissions
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList
      */
     protected function getSyncListPermissions() {
         if (!$this->_syncListPermissions) {
@@ -114,7 +114,7 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -130,7 +130,7 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -147,7 +147,7 @@ class SyncListContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

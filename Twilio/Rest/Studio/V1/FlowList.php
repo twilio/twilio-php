@@ -16,9 +16,9 @@ use Twilio\Version;
 class FlowList extends ListResource {
     /**
      * Construct the FlowList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Studio\V1\FlowList 
+     * @return \Twilio\Rest\Studio\V1\FlowList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class FlowList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -59,7 +59,7 @@ class FlowList extends ListResource {
      * Reads FlowInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -77,7 +77,7 @@ class FlowList extends ListResource {
     /**
      * Retrieve a single page of FlowInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -102,7 +102,7 @@ class FlowList extends ListResource {
     /**
      * Retrieve a specific page of FlowInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of FlowInstance
      */
@@ -117,9 +117,9 @@ class FlowList extends ListResource {
 
     /**
      * Constructs a FlowContext
-     * 
+     *
      * @param string $sid A string that uniquely identifies this Flow.
-     * @return \Twilio\Rest\Studio\V1\FlowContext 
+     * @return \Twilio\Rest\Studio\V1\FlowContext
      */
     public function getContext($sid) {
         return new FlowContext($this->version, $sid);
@@ -127,7 +127,7 @@ class FlowList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

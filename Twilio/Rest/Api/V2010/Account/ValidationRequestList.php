@@ -17,10 +17,10 @@ use Twilio\Version;
 class ValidationRequestList extends ListResource {
     /**
      * Construct the ValidationRequestList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class ValidationRequestList extends ListResource {
 
     /**
      * Create a new ValidationRequestInstance
-     * 
+     *
      * @param string $phoneNumber The phone number to verify in E.164 format
      * @param array|Options $options Optional Arguments
      * @return ValidationRequestInstance Newly created ValidationRequestInstance
@@ -63,7 +63,7 @@ class ValidationRequestList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

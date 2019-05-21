@@ -54,7 +54,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * The text of a custom message to use for the verification.
-     * 
+     *
      * @param string $customMessage The text of a custom message to use for the
      *                              verification
      * @return $this Fluent Builder
@@ -66,7 +66,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).
-     * 
+     *
      * @param string $sendDigits The digits to send after a phone call is answered
      * @return $this Fluent Builder
      */
@@ -77,7 +77,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * The locale to use for the verification SMS or call. Can be: `af`, `ar`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `ko`, `ms`, `nb`, `nl`, `pl`, `pt`, `pr-BR`, `ro`, `ru`, `sv`, `th`, `tl`, `tr`, `vi`, `zh`, `zh-CN`, or `zh-HK.`
-     * 
+     *
      * @param string $locale The locale to use for the verification SMS or call
      * @return $this Fluent Builder
      */
@@ -88,7 +88,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.
-     * 
+     *
      * @param string $customCode A pre-generated code
      * @return $this Fluent Builder
      */
@@ -99,7 +99,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
-     * 
+     *
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
      * @return $this Fluent Builder
@@ -111,7 +111,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
-     * 
+     *
      * @param string $payee The payee of the associated PSD2 compliant transaction
      * @return $this Fluent Builder
      */
@@ -122,7 +122,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

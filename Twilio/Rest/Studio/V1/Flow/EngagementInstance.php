@@ -34,12 +34,12 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Initialize the EngagementInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid Flow Sid.
      * @param string $sid Engagement Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\EngagementInstance 
+     * @return \Twilio\Rest\Studio\V1\Flow\EngagementInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $sid = null) {
         parent::__construct($version);
@@ -65,7 +65,7 @@ class EngagementInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Studio\V1\Flow\EngagementContext Context for this
      *                                                       EngagementInstance
      */
@@ -83,7 +83,7 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Fetch a EngagementInstance
-     * 
+     *
      * @return EngagementInstance Fetched EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -93,7 +93,7 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Deletes the EngagementInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,8 +103,8 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Access the steps
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepList 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepList
      */
     protected function getSteps() {
         return $this->proxy()->steps;
@@ -112,8 +112,8 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Access the engagementContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextList 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextList
      */
     protected function getEngagementContext() {
         return $this->proxy()->engagementContext;
@@ -121,7 +121,7 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -141,7 +141,7 @@ class EngagementInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

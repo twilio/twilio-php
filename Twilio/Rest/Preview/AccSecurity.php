@@ -23,7 +23,7 @@ class AccSecurity extends Version {
 
     /**
      * Construct the AccSecurity version of Preview
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Preview\AccSecurity AccSecurity version of Preview
      */
@@ -33,7 +33,7 @@ class AccSecurity extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\AccSecurity\ServiceList 
+     * @return \Twilio\Rest\Preview\AccSecurity\ServiceList
      */
     protected function getServices() {
         if (!$this->_services) {
@@ -44,7 +44,7 @@ class AccSecurity extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -60,7 +60,7 @@ class AccSecurity extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -77,7 +77,7 @@ class AccSecurity extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

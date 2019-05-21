@@ -70,7 +70,7 @@ class ReadCompositionOptions extends Options {
 
     /**
      * Only show Compositions with the given status.
-     * 
+     *
      * @param string $status Only show Compositions with the given status.
      * @return $this Fluent Builder
      */
@@ -81,7 +81,7 @@ class ReadCompositionOptions extends Options {
 
     /**
      * Only show Compositions created on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
-     * 
+     *
      * @param \DateTime $dateCreatedAfter Only show Compositions created on or
      *                                    after this ISO8601 date-time with
      *                                    timezone.
@@ -94,7 +94,7 @@ class ReadCompositionOptions extends Options {
 
     /**
      * Only show Compositions created before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
-     * 
+     *
      * @param \DateTime $dateCreatedBefore Only show Compositions created before
      *                                     this ISO8601 date-time with timezone.
      * @return $this Fluent Builder
@@ -106,7 +106,7 @@ class ReadCompositionOptions extends Options {
 
     /**
      * Only show Compositions with the given Room SID.
-     * 
+     *
      * @param string $roomSid Only show Compositions with the given Room SID.
      * @return $this Fluent Builder
      */
@@ -117,7 +117,7 @@ class ReadCompositionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -160,7 +160,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * A JSON object defining the video layout of the Composition in terms of regions. See the section [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) below for further information.
-     * 
+     *
      * @param array $videoLayout The JSON video layout description.
      * @return $this Fluent Builder
      */
@@ -170,13 +170,13 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include: 
+     * An array of audio sources to merge. All the specified sources must belong to the same Group Room. It can include:
 
     * Zero or more `RecordingTrackSid`
     * Zero or more `MediaTrackSid`
     * Zero or more `ParticipantSid`
     * Zero or more Track names. These can be specified using wildcards (e.g. `student*`). The use of `[*]` has semantics "all if any" meaning zero or more (i.e. all) depending on whether the target room had audio tracks.
-     * 
+     *
      * @param string $audioSources A list of audio sources related to this
      *                             Composition.
      * @return $this Fluent Builder
@@ -187,13 +187,13 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * An array of audio sources to exclude from the Composition. Any new Composition shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include: 
+     * An array of audio sources to exclude from the Composition. Any new Composition shall include all audio sources specified in `AudioSources` except for the ones specified in `AudioSourcesExcluded`. This parameter may include:
 
     * Zero or more `RecordingTrackSid`
     * Zero or more `MediaTrackSid`
     * Zero or more `ParticipantSid`
     * Zero or more Track names. These can be specified using wildcards (e.g. `student*`)
-     * 
+     *
      * @param string $audioSourcesExcluded A list of audio sources excluded related
      *                                     to this Composition.
      * @return $this Fluent Builder
@@ -204,13 +204,13 @@ class CreateCompositionOptions extends Options {
     }
 
     /**
-     * A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints: 
+     * A string representing the number of pixels for rows (width) and columns (height) of the generated composed video. This string must have the format `{width}x{height}`. This parameter must comply with the following constraints:
 
     * `width >= 16 && width <= 1280`
     * `height >= 16 && height <= 1280`
     * `width * height <= 921,600`
 
-    Typical values are: 
+    Typical values are:
 
     * HD = `1280x720`
     * PAL = `1024x576`
@@ -218,7 +218,7 @@ class CreateCompositionOptions extends Options {
     * CIF = `320x240`
 
     Note that the `Resolution` implicitly imposes an aspect ratio to the resulting composition. When the original video tracks get constrained by this aspect ratio they are scaled-down to fit. You can find detailed information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `640x480`.
-     * 
+     *
      * @param string $resolution Pixel resolution of the composed video.
      * @return $this Fluent Builder
      */
@@ -229,7 +229,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * Container format of the Composition media file. Can be any of the following: `mp4`, `webm`. The use of `mp4` or `webm` makes mandatory the specification of `AudioSources` and/or one `VideoLayout` element containing a valid `video_sources` list, otherwise an error is fired. Defaults to `webm`.
-     * 
+     *
      * @param string $format Container format of the Composition media file. Any of
      *                       the following: `mp4`, `webm`.
      * @return $this Fluent Builder
@@ -241,7 +241,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * A URL that Twilio sends asynchronous webhook requests to on every composition event. If not provided, status callback events will not be dispatched.
-     * 
+     *
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every composition event.
      * @return $this Fluent Builder
@@ -253,7 +253,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.
-     * 
+     *
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
      * @return $this Fluent Builder
@@ -265,7 +265,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * When activated, clips all the Composition intervals where there is no active media. This results in shorter compositions in cases when the Room was created but no Participant joined for some time, or if all the Participants left the room and joined at a later stage, as those gaps will be removed. You can find further information in the [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) section. Defaults to `true`.
-     * 
+     *
      * @param bool $trim Boolean flag for clipping intervals that have no media.
      * @return $this Fluent Builder
      */
@@ -276,7 +276,7 @@ class CreateCompositionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

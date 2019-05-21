@@ -48,7 +48,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
      *                                  read
      * @return $this Fluent Builder
@@ -60,7 +60,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -71,7 +71,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
      *                                 read
      * @return $this Fluent Builder
@@ -83,7 +83,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to read.
-     * 
+     *
      * @param string $callSid The Call SID of the resources to read
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The Conference SID that identifies the conference associated with the recording to read.
-     * 
+     *
      * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return $this Fluent Builder
      */
@@ -105,7 +105,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

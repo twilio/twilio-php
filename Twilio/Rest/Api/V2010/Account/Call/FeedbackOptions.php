@@ -40,7 +40,7 @@ class CreateFeedbackOptions extends Options {
 
     /**
      * A list of one or more issues experienced during the call. Issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
-     * 
+     *
      * @param string $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
@@ -51,7 +51,7 @@ class CreateFeedbackOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -75,7 +75,7 @@ class UpdateFeedbackOptions extends Options {
 
     /**
      * One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
-     * 
+     *
      * @param string $issue Issues experienced during the call
      * @return $this Fluent Builder
      */
@@ -86,7 +86,7 @@ class UpdateFeedbackOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

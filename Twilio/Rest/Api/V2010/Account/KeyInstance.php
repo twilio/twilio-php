@@ -25,13 +25,13 @@ use Twilio\Version;
 class KeyInstance extends InstanceResource {
     /**
      * Initialize the KeyInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\KeyInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\KeyInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -50,7 +50,7 @@ class KeyInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\KeyContext Context for this
      *                                                   KeyInstance
      */
@@ -68,7 +68,7 @@ class KeyInstance extends InstanceResource {
 
     /**
      * Fetch a KeyInstance
-     * 
+     *
      * @return KeyInstance Fetched KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -78,7 +78,7 @@ class KeyInstance extends InstanceResource {
 
     /**
      * Update the KeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return KeyInstance Updated KeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class KeyInstance extends InstanceResource {
 
     /**
      * Deletes the KeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -99,7 +99,7 @@ class KeyInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -119,7 +119,7 @@ class KeyInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

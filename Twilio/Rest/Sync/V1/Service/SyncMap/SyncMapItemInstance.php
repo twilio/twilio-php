@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string key
  * @property string accountSid
  * @property string serviceSid
@@ -34,7 +34,7 @@ use Twilio\Version;
 class SyncMapItemInstance extends InstanceResource {
     /**
      * Initialize the SyncMapItemInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique SID identifier of the Service Instance
@@ -42,7 +42,7 @@ class SyncMapItemInstance extends InstanceResource {
      * @param string $mapSid The unique 34-character SID identifier of the Map
      *                       containing this Item.
      * @param string $key The key
-     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemInstance 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $key = null) {
         parent::__construct($version);
@@ -72,7 +72,7 @@ class SyncMapItemInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemContext Context for
      *                                                                 this
      *                                                                 SyncMapItemInstance
@@ -92,7 +92,7 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Fetch a SyncMapItemInstance
-     * 
+     *
      * @return SyncMapItemInstance Fetched SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Deletes the SyncMapItemInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -112,7 +112,7 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Update the SyncMapItemInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -123,7 +123,7 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -143,7 +143,7 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

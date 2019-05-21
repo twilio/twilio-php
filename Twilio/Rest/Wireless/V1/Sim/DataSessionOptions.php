@@ -35,7 +35,7 @@ class ReadDataSessionOptions extends Options {
 
     /**
      * The end
-     * 
+     *
      * @param \DateTime $end The end
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class ReadDataSessionOptions extends Options {
 
     /**
      * The start
-     * 
+     *
      * @param \DateTime $start The start
      * @return $this Fluent Builder
      */
@@ -57,7 +57,7 @@ class ReadDataSessionOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

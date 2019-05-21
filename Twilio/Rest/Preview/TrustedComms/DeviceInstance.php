@@ -16,7 +16,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string phoneNumber
  * @property string bindingSid
@@ -25,10 +25,10 @@ use Twilio\Version;
 class DeviceInstance extends InstanceResource {
     /**
      * Initialize the DeviceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceInstance 
+     * @return \Twilio\Rest\Preview\TrustedComms\DeviceInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -46,7 +46,7 @@ class DeviceInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -66,7 +66,7 @@ class DeviceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

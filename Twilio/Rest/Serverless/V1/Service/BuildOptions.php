@@ -41,7 +41,7 @@ class CreateBuildOptions extends Options {
 
     /**
      * The list of Asset Version Sids that are included in this Build. Optional.
-     * 
+     *
      * @param string $assetVersions List of Asset Version Sids.
      * @return $this Fluent Builder
      */
@@ -52,7 +52,7 @@ class CreateBuildOptions extends Options {
 
     /**
      * The list of Function Version Sids that are included in this Build. Optional.
-     * 
+     *
      * @param string $functionVersions List of Function Version Sids.
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class CreateBuildOptions extends Options {
 
     /**
      * The list of Dependencies that are included in this Build, each described by a `name` and a `version` in a JSON object. Optional.
-     * 
+     *
      * @param string $dependencies List of Dependencies.
      * @return $this Fluent Builder
      */
@@ -74,7 +74,7 @@ class CreateBuildOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,10 +18,10 @@ use Twilio\Version;
 class CredentialContext extends InstanceContext {
     /**
      * Initialize the CredentialContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\IpMessaging\V1\CredentialContext 
+     * @return \Twilio\Rest\IpMessaging\V1\CredentialContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Fetch a CredentialInstance
-     * 
+     *
      * @return CredentialInstance Fetched CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -52,7 +52,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Update the CredentialInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -81,7 +81,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Deletes the CredentialInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -91,7 +91,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

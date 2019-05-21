@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string name
@@ -34,11 +34,11 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Initialize the ServiceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid Verification Service Instance SID.
-     * @return \Twilio\Rest\Preview\AccSecurity\ServiceInstance 
+     * @return \Twilio\Rest\Preview\AccSecurity\ServiceInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -61,7 +61,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\AccSecurity\ServiceContext Context for this
      *                                                         ServiceInstance
      */
@@ -75,7 +75,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -85,7 +85,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -96,8 +96,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the verifications
-     * 
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationList 
+     *
+     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationList
      */
     protected function getVerifications() {
         return $this->proxy()->verifications;
@@ -105,8 +105,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the verificationChecks
-     * 
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationCheckList 
+     *
+     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationCheckList
      */
     protected function getVerificationChecks() {
         return $this->proxy()->verificationChecks;
@@ -114,7 +114,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -134,7 +134,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

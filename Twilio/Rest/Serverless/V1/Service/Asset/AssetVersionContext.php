@@ -19,12 +19,12 @@ use Twilio\Version;
 class AssetVersionContext extends InstanceContext {
     /**
      * Initialize the AssetVersionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $assetSid Asset Sid.
      * @param string $sid Asset Version Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext
      */
     public function __construct(Version $version, $serviceSid, $assetSid, $sid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class AssetVersionContext extends InstanceContext {
 
     /**
      * Fetch a AssetVersionInstance
-     * 
+     *
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -61,7 +61,7 @@ class AssetVersionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

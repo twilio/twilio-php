@@ -34,13 +34,13 @@ class ExecutionStepInstance extends InstanceResource {
 
     /**
      * Initialize the ExecutionStepInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $flowSid Flow Sid.
      * @param string $executionSid Execution Sid.
      * @param string $sid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepInstance 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $executionSid, $sid = null) {
         parent::__construct($version);
@@ -71,7 +71,7 @@ class ExecutionStepInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext Context
      *                                                                    for this
      *                                                                    ExecutionStepInstance
@@ -91,7 +91,7 @@ class ExecutionStepInstance extends InstanceResource {
 
     /**
      * Fetch a ExecutionStepInstance
-     * 
+     *
      * @return ExecutionStepInstance Fetched ExecutionStepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -101,8 +101,8 @@ class ExecutionStepInstance extends InstanceResource {
 
     /**
      * Access the stepContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList
      */
     protected function getStepContext() {
         return $this->proxy()->stepContext;
@@ -110,7 +110,7 @@ class ExecutionStepInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -130,7 +130,7 @@ class ExecutionStepInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

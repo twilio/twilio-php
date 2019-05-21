@@ -18,9 +18,9 @@ use Twilio\Version;
 class SettingsList extends ListResource {
     /**
      * Construct the SettingsList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,8 +31,8 @@ class SettingsList extends ListResource {
 
     /**
      * Constructs a SettingsContext
-     * 
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext 
+     *
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext
      */
     public function getContext() {
         return new SettingsContext($this->version);
@@ -40,7 +40,7 @@ class SettingsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

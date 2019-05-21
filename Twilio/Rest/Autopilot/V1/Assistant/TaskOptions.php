@@ -58,7 +58,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName descriptive string that you create to describe
      *                             the new resource
      * @return $this Fluent Builder
@@ -70,7 +70,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task. It is optional and not unique.
-     * 
+     *
      * @param array $actions The JSON string that specifies the actions that
      *                       instruct the Assistant on how to perform the task
      * @return $this Fluent Builder
@@ -82,7 +82,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * The URL from which the Assistant can fetch actions.
-     * 
+     *
      * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return $this Fluent Builder
      */
@@ -93,7 +93,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -125,7 +125,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -136,7 +136,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. This value must be 64 characters or less in length and be unique. It can be used as an alternative to the `sid` in the URL path to address the resource.
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -148,7 +148,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * The JSON string that specifies the [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant on how to perform the task.
-     * 
+     *
      * @param array $actions The JSON string that specifies the actions that
      *                       instruct the Assistant on how to perform the task
      * @return $this Fluent Builder
@@ -160,7 +160,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * The URL from which the Assistant can fetch actions.
-     * 
+     *
      * @param string $actionsUrl The URL from which the Assistant can fetch actions
      * @return $this Fluent Builder
      */
@@ -171,7 +171,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

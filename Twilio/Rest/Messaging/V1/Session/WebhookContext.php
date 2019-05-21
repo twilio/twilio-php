@@ -21,12 +21,12 @@ use Twilio\Version;
 class WebhookContext extends InstanceContext {
     /**
      * Initialize the WebhookContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sessionSid The unique id of the Session for this webhook.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Messaging\V1\Session\WebhookContext 
+     * @return \Twilio\Rest\Messaging\V1\Session\WebhookContext
      */
     public function __construct(Version $version, $sessionSid, $sid) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class WebhookContext extends InstanceContext {
 
     /**
      * Fetch a WebhookInstance
-     * 
+     *
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -62,7 +62,7 @@ class WebhookContext extends InstanceContext {
 
     /**
      * Update the WebhookInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class WebhookContext extends InstanceContext {
 
     /**
      * Deletes the WebhookInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -108,7 +108,7 @@ class WebhookContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -57,7 +57,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * The device
-     * 
+     *
      * @param string $device The device
      * @return $this Fluent Builder
      */
@@ -68,7 +68,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * The sim
-     * 
+     *
      * @param string $sim The sim
      * @return $this Fluent Builder
      */
@@ -79,7 +79,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * The status
-     * 
+     *
      * @param string $status The status
      * @return $this Fluent Builder
      */
@@ -90,7 +90,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * The direction
-     * 
+     *
      * @param string $direction The direction
      * @return $this Fluent Builder
      */
@@ -101,7 +101,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -135,7 +135,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The device
-     * 
+     *
      * @param string $device The device
      * @return $this Fluent Builder
      */
@@ -146,7 +146,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The sim
-     * 
+     *
      * @param string $sim The sim
      * @return $this Fluent Builder
      */
@@ -157,7 +157,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The callback_method
-     * 
+     *
      * @param string $callbackMethod The callback_method
      * @return $this Fluent Builder
      */
@@ -168,7 +168,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The callback_url
-     * 
+     *
      * @param string $callbackUrl The callback_url
      * @return $this Fluent Builder
      */
@@ -179,7 +179,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The command_mode
-     * 
+     *
      * @param string $commandMode The command_mode
      * @return $this Fluent Builder
      */
@@ -190,7 +190,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The include_sid
-     * 
+     *
      * @param string $includeSid The include_sid
      * @return $this Fluent Builder
      */
@@ -201,7 +201,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -32,7 +32,7 @@ class UpdateMemberOptions extends Options {
 
     /**
      * How to pass the update request data. Can be `GET` or `POST` and the default is `POST`. `POST` sends the data as encoded form data and `GET` sends the data as query parameters.
-     * 
+     *
      * @param string $method How to pass the update request data
      * @return $this Fluent Builder
      */
@@ -43,7 +43,7 @@ class UpdateMemberOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

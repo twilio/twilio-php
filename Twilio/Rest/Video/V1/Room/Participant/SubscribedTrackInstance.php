@@ -30,7 +30,7 @@ use Twilio\Version;
 class SubscribedTrackInstance extends InstanceResource {
     /**
      * Initialize the SubscribedTrackInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid Unique Room identifier where this Track is published.
@@ -38,7 +38,7 @@ class SubscribedTrackInstance extends InstanceResource {
      *                               to this Track.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackInstance 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {
         parent::__construct($version);
@@ -67,7 +67,7 @@ class SubscribedTrackInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext Context for this SubscribedTrackInstance
      */
     protected function proxy() {
@@ -85,7 +85,7 @@ class SubscribedTrackInstance extends InstanceResource {
 
     /**
      * Fetch a SubscribedTrackInstance
-     * 
+     *
      * @return SubscribedTrackInstance Fetched SubscribedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -95,7 +95,7 @@ class SubscribedTrackInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -115,7 +115,7 @@ class SubscribedTrackInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

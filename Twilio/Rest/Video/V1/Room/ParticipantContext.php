@@ -32,13 +32,13 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Initialize the ParticipantContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $roomSid A system-generated 34-character string that uniquely
      *                        identifies a Room.
      * @param string $sid A system-generated 34-character string that uniquely
      *                    identifies this Participant.
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
@@ -51,7 +51,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Fetch a ParticipantInstance
-     * 
+     *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -74,7 +74,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Update the ParticipantInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -101,8 +101,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the publishedTracks
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList
      */
     protected function getPublishedTracks() {
         if (!$this->_publishedTracks) {
@@ -118,8 +118,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the subscribedTracks
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList
      */
     protected function getSubscribedTracks() {
         if (!$this->_subscribedTracks) {
@@ -135,8 +135,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the subscribeRules
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList
      */
     protected function getSubscribeRules() {
         if (!$this->_subscribeRules) {
@@ -152,7 +152,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -168,7 +168,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -185,7 +185,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -34,7 +34,7 @@ use Twilio\Version;
 class MessageInstance extends InstanceResource {
     /**
      * Initialize the MessageInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
@@ -42,7 +42,7 @@ class MessageInstance extends InstanceResource {
      * @param string $channelSid The unique ID of the Channel the Message resource
      *                           belongs to
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageInstance 
+     * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
@@ -74,7 +74,7 @@ class MessageInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V1\Service\Channel\MessageContext Context for this
      *                                                             MessageInstance
      */
@@ -93,7 +93,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Fetch a MessageInstance
-     * 
+     *
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,7 +103,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Deletes the MessageInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -113,7 +113,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Update the MessageInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -124,7 +124,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -144,7 +144,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

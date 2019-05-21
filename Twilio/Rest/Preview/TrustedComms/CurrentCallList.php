@@ -18,9 +18,9 @@ use Twilio\Version;
 class CurrentCallList extends ListResource {
     /**
      * Construct the CurrentCallList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList 
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,8 +31,8 @@ class CurrentCallList extends ListResource {
 
     /**
      * Constructs a CurrentCallContext
-     * 
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext 
+     *
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext
      */
     public function getContext() {
         return new CurrentCallContext($this->version);
@@ -40,7 +40,7 @@ class CurrentCallList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

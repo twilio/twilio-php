@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -34,12 +34,12 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Initialize the FieldTypeInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldTypeInstance 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldTypeInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $sid = null) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class FieldTypeInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Understand\Assistant\FieldTypeContext Context
      *                                                                    for this
      *                                                                    FieldTypeInstance
@@ -82,7 +82,7 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Fetch a FieldTypeInstance
-     * 
+     *
      * @return FieldTypeInstance Fetched FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -92,7 +92,7 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Update the FieldTypeInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FieldTypeInstance Updated FieldTypeInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -103,7 +103,7 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Deletes the FieldTypeInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -113,8 +113,8 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Access the fieldValues
-     * 
-     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueList 
+     *
+     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueList
      */
     protected function getFieldValues() {
         return $this->proxy()->fieldValues;
@@ -122,7 +122,7 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -142,7 +142,7 @@ class FieldTypeInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -32,7 +32,7 @@ class FetchConfigurationOptions extends Options {
 
     /**
      * Pinned UI version
-     * 
+     *
      * @param string $uiVersion Pinned UI version
      * @return $this Fluent Builder
      */
@@ -43,7 +43,7 @@ class FetchConfigurationOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

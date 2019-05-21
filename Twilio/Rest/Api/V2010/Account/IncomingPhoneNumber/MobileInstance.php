@@ -48,11 +48,11 @@ use Twilio\Version;
 class MobileInstance extends InstanceResource {
     /**
      * Initialize the MobileInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
@@ -94,7 +94,7 @@ class MobileInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -114,7 +114,7 @@ class MobileInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -77,7 +77,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Use Twilio Network Traversal for TURN service. Defaults to true. Only applicable to Rooms with type `peer-to-peer`.
-     * 
+     *
      * @param bool $enableTurn Use Twilio Network Traversal for TURN service.
      * @return $this Fluent Builder
      */
@@ -88,7 +88,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Type of room, either `peer-to-peer`, `group-small` or `group`. Will be `group` by default.
-     * 
+     *
      * @param string $type Type of room, either peer-to-peer, group-small or group.
      * @return $this Fluent Builder
      */
@@ -99,7 +99,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Name of the Room.  This is unique for `in-progress` rooms. If not provided, Room name will be set to the Room Sid.
-     * 
+     *
      * @param string $uniqueName Name of the Room.
      * @return $this Fluent Builder
      */
@@ -110,7 +110,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * A URL that Twilio sends asynchronous webhook requests to on every room event. If not provided, status callback events will not be dispatched.
-     * 
+     *
      * @param string $statusCallback A URL that Twilio sends asynchronous webhook
      *                               requests to on every room event.
      * @return $this Fluent Builder
@@ -122,7 +122,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * HTTP method Twilio should use when requesting the above URL. Defaults to `POST`.
-     * 
+     *
      * @param string $statusCallbackMethod HTTP method Twilio should use when
      *                                     requesting the above URL.
      * @return $this Fluent Builder
@@ -134,7 +134,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Maximum number of Participants in the Room. Peer-to-peer rooms can have a maximum of 10 Participants. Small Group rooms can have a max of 4 Participants. Group rooms can have a max of 50 Participants
-     * 
+     *
      * @param int $maxParticipants Maximum number of Participants in the Room.
      * @return $this Fluent Builder
      */
@@ -145,7 +145,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Start Participant recording when connected. ***This feature is not available in `peer-to-peer` rooms.***
-     * 
+     *
      * @param bool $recordParticipantsOnConnect Start Participant recording when
      *                                          connected.
      * @return $this Fluent Builder
@@ -157,7 +157,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * An array of video codecs supported when publishing a Track in the Room.  `VP8` and `H264` codecs are supported.  ***This feature is not available in `peer-to-peer` rooms***
-     * 
+     *
      * @param string $videoCodecs An array of video codecs supported when
      *                            publishing a Track in the Room.
      * @return $this Fluent Builder
@@ -169,7 +169,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Region for the media server in Group Rooms.  Default region is `us1`.  See the list of [available Media Regions.](https://www.twilio.com/docs/api/video/ip-address-whitelisting#group-rooms-media-servers)***This feature is not available in `peer-to-peer` rooms.***
-     * 
+     *
      * @param string $mediaRegion Region for the media server in Group Rooms.
      * @return $this Fluent Builder
      */
@@ -180,7 +180,7 @@ class CreateRoomOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -212,7 +212,7 @@ class ReadRoomOptions extends Options {
 
     /**
      * Only show Rooms with the given status.
-     * 
+     *
      * @param string $status Only show Rooms with the given status.
      * @return $this Fluent Builder
      */
@@ -223,7 +223,7 @@ class ReadRoomOptions extends Options {
 
     /**
      * Only show Rooms with the provided Name.
-     * 
+     *
      * @param string $uniqueName Only show Rooms with the provided Name.
      * @return $this Fluent Builder
      */
@@ -234,7 +234,7 @@ class ReadRoomOptions extends Options {
 
     /**
      * Only show Rooms that started on or after this date, given as `YYYY-MM-DD`.
-     * 
+     *
      * @param \DateTime $dateCreatedAfter Only show Rooms that started on or after
      *                                    this date, given as YYYY-MM-DD.
      * @return $this Fluent Builder
@@ -246,7 +246,7 @@ class ReadRoomOptions extends Options {
 
     /**
      * Only show Rooms that started before this date, given as `YYYY-MM-DD`.
-     * 
+     *
      * @param \DateTime $dateCreatedBefore Only show Rooms that started before this
      *                                     date, given as YYYY-MM-DD.
      * @return $this Fluent Builder
@@ -258,7 +258,7 @@ class ReadRoomOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -19,14 +19,14 @@ use Twilio\Version;
 class InteractionContext extends InstanceContext {
     /**
      * Initialize the InteractionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The SID of the parent Service of the resource to
      *                           fetch
      * @param string $sessionSid he SID of the parent Session of the resource to
      *                           fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext 
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext
      */
     public function __construct(Version $version, $serviceSid, $sessionSid, $sid) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class InteractionContext extends InstanceContext {
 
     /**
      * Fetch a InteractionInstance
-     * 
+     *
      * @return InteractionInstance Fetched InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,7 +63,7 @@ class InteractionContext extends InstanceContext {
 
     /**
      * Deletes the InteractionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -73,7 +73,7 @@ class InteractionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -46,7 +46,7 @@ class ReadFieldValueOptions extends Options {
 
     /**
      * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`
-     * 
+     *
      * @param string $language The ISO language-country tag that identifies the
      *                         language of the value
      * @return $this Fluent Builder
@@ -58,7 +58,7 @@ class ReadFieldValueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -83,7 +83,7 @@ class CreateFieldValueOptions extends Options {
 
     /**
      * The string value that indicates which word the field value is a synonym of.
-     * 
+     *
      * @param string $synonymOf The string value that indicates which word the
      *                          field value is a synonym of
      * @return $this Fluent Builder
@@ -95,7 +95,7 @@ class CreateFieldValueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Authy\V1\Service\Entity\FactorList factors
  * @method \Twilio\Rest\Authy\V1\Service\Entity\FactorContext factors(string $sid)
  */
@@ -26,11 +26,11 @@ class EntityContext extends InstanceContext {
 
     /**
      * Initialize the EntityContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $identity Unique identity of the Entity
-     * @return \Twilio\Rest\Authy\V1\Service\EntityContext 
+     * @return \Twilio\Rest\Authy\V1\Service\EntityContext
      */
     public function __construct(Version $version, $serviceSid, $identity) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class EntityContext extends InstanceContext {
 
     /**
      * Deletes the EntityInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -53,7 +53,7 @@ class EntityContext extends InstanceContext {
 
     /**
      * Fetch a EntityInstance
-     * 
+     *
      * @return EntityInstance Fetched EntityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -76,8 +76,8 @@ class EntityContext extends InstanceContext {
 
     /**
      * Access the factors
-     * 
-     * @return \Twilio\Rest\Authy\V1\Service\Entity\FactorList 
+     *
+     * @return \Twilio\Rest\Authy\V1\Service\Entity\FactorList
      */
     protected function getFactors() {
         if (!$this->_factors) {
@@ -93,7 +93,7 @@ class EntityContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -109,7 +109,7 @@ class EntityContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -126,7 +126,7 @@ class EntityContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

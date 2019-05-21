@@ -19,11 +19,11 @@ use Twilio\Version;
 class VariableList extends ListResource {
     /**
      * Construct the VariableList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $environmentSid Environment Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList 
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList
      */
     public function __construct(Version $version, $serviceSid, $environmentSid) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class VariableList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -64,7 +64,7 @@ class VariableList extends ListResource {
      * Reads VariableInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -82,7 +82,7 @@ class VariableList extends ListResource {
     /**
      * Retrieve a single page of VariableInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -107,7 +107,7 @@ class VariableList extends ListResource {
     /**
      * Retrieve a specific page of VariableInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of VariableInstance
      */
@@ -122,7 +122,7 @@ class VariableList extends ListResource {
 
     /**
      * Create a new VariableInstance
-     * 
+     *
      * @param string $key A string by which this Variable can be referenced.
      * @param string $value A string that contains the actual value of this
      *                      Variable.
@@ -149,9 +149,9 @@ class VariableList extends ListResource {
 
     /**
      * Constructs a VariableContext
-     * 
+     *
      * @param string $sid Variable Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext
      */
     public function getContext($sid) {
         return new VariableContext(
@@ -164,7 +164,7 @@ class VariableList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

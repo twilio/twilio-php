@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList assetVersions
  * @method \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext assetVersions(string $sid)
  */
@@ -26,11 +26,11 @@ class AssetContext extends InstanceContext {
 
     /**
      * Initialize the AssetContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $sid Asset Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\AssetContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\AssetContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class AssetContext extends InstanceContext {
 
     /**
      * Fetch a AssetInstance
-     * 
+     *
      * @return AssetInstance Fetched AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class AssetContext extends InstanceContext {
 
     /**
      * Update the AssetInstance
-     * 
+     *
      * @param string $friendlyName A human-readable description of this Asset.
      * @return AssetInstance Updated AssetInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,8 +91,8 @@ class AssetContext extends InstanceContext {
 
     /**
      * Access the assetVersions
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionList
      */
     protected function getAssetVersions() {
         if (!$this->_assetVersions) {
@@ -108,7 +108,7 @@ class AssetContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -124,7 +124,7 @@ class AssetContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -141,7 +141,7 @@ class AssetContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

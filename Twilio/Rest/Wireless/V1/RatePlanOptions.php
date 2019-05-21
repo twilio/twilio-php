@@ -101,7 +101,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * A user-provided string that uniquely identifies this resource as an alternative to the Sid.
-     * 
+     *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the Sid.
      * @return $this Fluent Builder
@@ -113,7 +113,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * A user-provided string that identifies this resource. Non-unique.
-     * 
+     *
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource.
      * @return $this Fluent Builder
@@ -125,7 +125,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Defines whether SIMs are capable of using GPRS/3G/LTE data connectivity.
-     * 
+     *
      * @param bool $dataEnabled Defines whether SIMs are capable of using
      *                          GPRS/3G/LTE data connectivity.
      * @return $this Fluent Builder
@@ -137,7 +137,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Network-enforced limit specifying the total Megabytes of data usage (download and upload combined) allowed during one month on the home network. Metering begins on the day of activation and ends on the same day of the following month.  Max value is 2TB.
-     * 
+     *
      * @param int $dataLimit Network-enforced limit specifying the total Megabytes
      *                       of data usage allowed during one month on the home
      *                       network.
@@ -150,7 +150,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The model by which to meter data usage, in accordance with the two available [data metering models](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#explanation-of-pooled-vs-individual). Valid options are `pooled` and `individual`.
-     * 
+     *
      * @param string $dataMetering The model by which to meter data usage, in
      *                             accordance with the two available data metering
      *                             models.
@@ -163,7 +163,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Defines whether SIMs are capable of making and sending and receiving SMS messages via either [Commands](https://www.twilio.com/docs/wireless/api/commands) or Programmable SMS APIs.
-     * 
+     *
      * @param bool $messagingEnabled Defines whether SIMs are capable of making and
      *                               sending and receiving SMS messages via either
      *                               Commands or Programmable SMS APIs.
@@ -176,7 +176,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Defines whether SIMs are capable of making and receiving voice calls.
-     * 
+     *
      * @param bool $voiceEnabled Defines whether SIMs are capable of making and
      *                           receiving voice calls.
      * @return $this Fluent Builder
@@ -188,7 +188,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Defines whether SIMs can roam onto other networks in the SIM's home country. See ['national' roaming](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan#national-roaming).
-     * 
+     *
      * @param bool $nationalRoamingEnabled Defines whether SIMs can roam onto other
      *                                     networks in the SIM's home country.
      * @return $this Fluent Builder
@@ -200,7 +200,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The international_roaming
-     * 
+     *
      * @param string $internationalRoaming The international_roaming
      * @return $this Fluent Builder
      */
@@ -211,7 +211,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Network-enforced limit specifying the total Megabytes of national roaming data usage (download and upload combined) allowed during one month.  Max value is 2TB. If unspecified, the default value is the lesser of `DataLimit` and 1000MB.
-     * 
+     *
      * @param int $nationalRoamingDataLimit Network-enforced limit specifying the
      *                                      total Megabytes of national roaming
      *                                      data usage allowed during one month.
@@ -224,7 +224,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * The international_roaming_data_limit
-     * 
+     *
      * @param int $internationalRoamingDataLimit The
      *                                           international_roaming_data_limit
      * @return $this Fluent Builder
@@ -236,7 +236,7 @@ class CreateRatePlanOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -264,7 +264,7 @@ class UpdateRatePlanOptions extends Options {
 
     /**
      * A user-provided string that uniquely identifies this resource as an alternative to the Sid.
-     * 
+     *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the Sid.
      * @return $this Fluent Builder
@@ -276,7 +276,7 @@ class UpdateRatePlanOptions extends Options {
 
     /**
      * A user-provided string that identifies this resource. Non-unique.
-     * 
+     *
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource.
      * @return $this Fluent Builder
@@ -288,7 +288,7 @@ class UpdateRatePlanOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

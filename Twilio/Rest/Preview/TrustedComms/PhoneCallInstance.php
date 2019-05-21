@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string from
@@ -29,10 +29,10 @@ use Twilio\Version;
 class PhoneCallInstance extends InstanceResource {
     /**
      * Initialize the PhoneCallInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallInstance 
+     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -53,7 +53,7 @@ class PhoneCallInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -73,7 +73,7 @@ class PhoneCallInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

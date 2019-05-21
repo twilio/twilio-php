@@ -34,11 +34,11 @@ use Twilio\Version;
 class FlexFlowInstance extends InstanceResource {
     /**
      * Initialize the FlexFlowInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique ID of the FlexFlow
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowInstance 
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -66,7 +66,7 @@ class FlexFlowInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext Context for this
      *                                                 FlexFlowInstance
      */
@@ -80,7 +80,7 @@ class FlexFlowInstance extends InstanceResource {
 
     /**
      * Fetch a FlexFlowInstance
-     * 
+     *
      * @return FlexFlowInstance Fetched FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -90,7 +90,7 @@ class FlexFlowInstance extends InstanceResource {
 
     /**
      * Update the FlexFlowInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FlexFlowInstance Updated FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -101,7 +101,7 @@ class FlexFlowInstance extends InstanceResource {
 
     /**
      * Deletes the FlexFlowInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -111,7 +111,7 @@ class FlexFlowInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -131,7 +131,7 @@ class FlexFlowInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

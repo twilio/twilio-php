@@ -18,13 +18,13 @@ use Twilio\Version;
 class TaskStatisticsList extends ListResource {
     /**
      * Construct the TaskStatisticsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the Task associated with the resource
      * @param string $taskSid The SID of the Task for which the statistics were
      *                        collected
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
         parent::__construct($version);
@@ -35,8 +35,8 @@ class TaskStatisticsList extends ListResource {
 
     /**
      * Constructs a TaskStatisticsContext
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext
      */
     public function getContext() {
         return new TaskStatisticsContext(
@@ -48,7 +48,7 @@ class TaskStatisticsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

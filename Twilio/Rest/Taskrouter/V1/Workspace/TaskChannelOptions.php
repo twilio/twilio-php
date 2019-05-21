@@ -46,7 +46,7 @@ class UpdateTaskChannelOptions extends Options {
 
     /**
      * Toggle the FriendlyName for the TaskChannel
-     * 
+     *
      * @param string $friendlyName Toggle the FriendlyName for the TaskChannel
      * @return $this Fluent Builder
      */
@@ -57,7 +57,7 @@ class UpdateTaskChannelOptions extends Options {
 
     /**
      * A boolean that if true; mean that the channel will prioritize workers that have been idle
-     * 
+     *
      * @param bool $channelOptimizedRouting If true then prioritize longest idle
      *                                      workers
      * @return $this Fluent Builder
@@ -69,7 +69,7 @@ class UpdateTaskChannelOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -94,7 +94,7 @@ class CreateTaskChannelOptions extends Options {
 
     /**
      * A boolean that if true; mean that the channel will prioritize workers that have been idle
-     * 
+     *
      * @param bool $channelOptimizedRouting If true then prioritize longest idle
      *                                      workers
      * @return $this Fluent Builder
@@ -106,7 +106,7 @@ class CreateTaskChannelOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

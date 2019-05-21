@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Serverless\V1\Service\Environment\VariableList variables
  * @property \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList deployments
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext variables(string $sid)
@@ -30,11 +30,11 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Initialize the EnvironmentContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $sid Environment Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Fetch a EnvironmentInstance
-     * 
+     *
      * @return EnvironmentInstance Fetched EnvironmentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,8 +70,8 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Access the variables
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList
      */
     protected function getVariables() {
         if (!$this->_variables) {
@@ -87,8 +87,8 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Access the deployments
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList
      */
     protected function getDeployments() {
         if (!$this->_deployments) {
@@ -104,7 +104,7 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -120,7 +120,7 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -137,7 +137,7 @@ class EnvironmentContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

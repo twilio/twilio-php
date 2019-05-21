@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string serviceSid
  * @property string accountSid
@@ -35,13 +35,13 @@ use Twilio\Version;
 class VerificationInstance extends InstanceResource {
     /**
      * Initialize the VerificationInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Verify\V2\Service\VerificationInstance 
+     * @return \Twilio\Rest\Verify\V2\Service\VerificationInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -69,7 +69,7 @@ class VerificationInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Verify\V2\Service\VerificationContext Context for this
      *                                                            VerificationInstance
      */
@@ -87,7 +87,7 @@ class VerificationInstance extends InstanceResource {
 
     /**
      * Update the VerificationInstance
-     * 
+     *
      * @param string $status The new status of the resource
      * @return VerificationInstance Updated VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +98,7 @@ class VerificationInstance extends InstanceResource {
 
     /**
      * Fetch a VerificationInstance
-     * 
+     *
      * @return VerificationInstance Fetched VerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -108,7 +108,7 @@ class VerificationInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -128,7 +128,7 @@ class VerificationInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

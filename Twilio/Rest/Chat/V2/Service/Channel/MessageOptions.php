@@ -83,7 +83,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The [identity](https://www.twilio.com/docs/chat/identity) of the new message's author. The default value is `system`.
-     * 
+     *
      * @param string $from The identity of the new message's author
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -106,7 +106,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
-     * 
+     *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
      * @return $this Fluent Builder
@@ -118,7 +118,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`. Note that this parameter should only be used when a Chat's history is being recreated from a backup/separate source  and where a Message was previously updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
      * @return $this Fluent Builder
@@ -130,7 +130,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The [identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
-     * 
+     *
      * @param string $lastUpdatedBy The Identity of the User who last updated the
      *                              Message
      * @return $this Fluent Builder
@@ -142,7 +142,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
-     * 
+     *
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
@@ -153,7 +153,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The SID of the [Media](https://www.twilio.com/docs/chat/rest/media) to attach to the new Message.
-     * 
+     *
      * @param string $mediaSid The Media Sid to be attached to the new Message
      * @return $this Fluent Builder
      */
@@ -164,7 +164,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -188,7 +188,7 @@ class ReadMessageOptions extends Options {
 
     /**
      * The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.
-     * 
+     *
      * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
@@ -199,7 +199,7 @@ class ReadMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -237,7 +237,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
-     * 
+     *
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
@@ -248,7 +248,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -260,7 +260,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
-     * 
+     *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
      * @return $this Fluent Builder
@@ -272,7 +272,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
-     * 
+     *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
      * @return $this Fluent Builder
@@ -284,7 +284,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
-     * 
+     *
      * @param string $lastUpdatedBy The Identity of the User who last updated the
      *                              Message, if applicable
      * @return $this Fluent Builder
@@ -296,7 +296,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The [Identity](https://www.twilio.com/docs/chat/identity) of the message's author.
-     * 
+     *
      * @param string $from The identity of the message's author
      * @return $this Fluent Builder
      */
@@ -307,7 +307,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -69,7 +69,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can up to 255
      *                             characters long.
@@ -82,7 +82,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * A user-provided JSON object encoded as a string to specify the actions for this task. It is optional and non-unique.
-     * 
+     *
      * @param array $actions A user-provided JSON object encoded as a string to
      *                       specify the actions for this task. It is optional and
      *                       non-unique.
@@ -95,7 +95,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * User-provided HTTP endpoint where from the assistant fetches actions
-     * 
+     *
      * @param string $actionsUrl User-provided HTTP endpoint where from the
      *                           assistant fetches actions
      * @return $this Fluent Builder
@@ -107,7 +107,7 @@ class CreateTaskOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -144,7 +144,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can up to 255
      *                             characters long.
@@ -157,7 +157,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
-     * 
+     *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -170,7 +170,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * A user-provided JSON object encoded as a string to specify the actions for this task. It is optional and non-unique.
-     * 
+     *
      * @param array $actions A user-provided JSON object encoded as a string to
      *                       specify the actions for this task. It is optional and
      *                       non-unique.
@@ -183,7 +183,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * User-provided HTTP endpoint where from the assistant fetches actions
-     * 
+     *
      * @param string $actionsUrl User-provided HTTP endpoint where from the
      *                           assistant fetches actions
      * @return $this Fluent Builder
@@ -195,7 +195,7 @@ class UpdateTaskOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

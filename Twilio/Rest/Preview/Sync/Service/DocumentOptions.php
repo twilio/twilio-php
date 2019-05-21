@@ -38,7 +38,7 @@ class CreateDocumentOptions extends Options {
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
@@ -49,7 +49,7 @@ class CreateDocumentOptions extends Options {
 
     /**
      * The data
-     * 
+     *
      * @param array $data The data
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class CreateDocumentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

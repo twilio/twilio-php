@@ -20,10 +20,10 @@ use Twilio\Version;
 class DialingPermissionsInstance extends InstanceResource {
     /**
      * Initialize the DialingPermissionsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsInstance 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class DialingPermissionsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -53,7 +53,7 @@ class DialingPermissionsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

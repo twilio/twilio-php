@@ -19,7 +19,7 @@ use Twilio\Version;
 class AssignedAddOnExtensionContext extends InstanceContext {
     /**
      * Initialize the AssignedAddOnExtensionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
@@ -28,7 +28,7 @@ class AssignedAddOnExtensionContext extends InstanceContext {
      * @param string $assignedAddOnSid The SID that uniquely identifies the
      *                                 assigned Add-on installation
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOn\AssignedAddOnExtensionContext
      */
     public function __construct(Version $version, $accountSid, $resourceSid, $assignedAddOnSid, $sid) {
         parent::__construct($version);
@@ -46,7 +46,7 @@ class AssignedAddOnExtensionContext extends InstanceContext {
 
     /**
      * Fetch a AssignedAddOnExtensionInstance
-     * 
+     *
      * @return AssignedAddOnExtensionInstance Fetched AssignedAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -71,7 +71,7 @@ class AssignedAddOnExtensionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -35,7 +35,7 @@ class UpdateDefaultsOptions extends Options {
 
     /**
      * A JSON string that describes the default task links for the `assistant_initiation`, `collect`, and `fallback` situations.
-     * 
+     *
      * @param array $defaults A JSON string that describes the default task links.
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class UpdateDefaultsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

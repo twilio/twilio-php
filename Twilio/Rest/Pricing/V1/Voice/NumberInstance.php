@@ -26,11 +26,11 @@ use Twilio\Version;
 class NumberInstance extends InstanceResource {
     /**
      * Initialize the NumberInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $number The phone number to fetch
-     * @return \Twilio\Rest\Pricing\V1\Voice\NumberInstance 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberInstance
      */
     public function __construct(Version $version, array $payload, $number = null) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class NumberInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext Context for this
      *                                                     NumberInstance
      */
@@ -66,7 +66,7 @@ class NumberInstance extends InstanceResource {
 
     /**
      * Fetch a NumberInstance
-     * 
+     *
      * @return NumberInstance Fetched NumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -76,7 +76,7 @@ class NumberInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -96,7 +96,7 @@ class NumberInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -43,12 +43,12 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Initialize the MessageInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\MessageInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\MessageInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -83,7 +83,7 @@ class MessageInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\MessageContext Context for this
      *                                                       MessageInstance
      */
@@ -101,7 +101,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Deletes the MessageInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -111,7 +111,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Fetch a MessageInstance
-     * 
+     *
      * @return MessageInstance Fetched MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -121,7 +121,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Update the MessageInstance
-     * 
+     *
      * @param string $body The text of the message you want to send
      * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -132,8 +132,8 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Access the media
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaList
      */
     protected function getMedia() {
         return $this->proxy()->media;
@@ -141,8 +141,8 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Access the feedback
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Message\FeedbackList
      */
     protected function getFeedback() {
         return $this->proxy()->feedback;
@@ -150,7 +150,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -170,7 +170,7 @@ class MessageInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

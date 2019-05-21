@@ -16,11 +16,11 @@ use Twilio\Version;
 class ExecutionStepList extends ListResource {
     /**
      * Construct the ExecutionStepList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $executionSid Execution Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepList
      */
     public function __construct(Version $version, $flowSid, $executionSid) {
         parent::__construct($version);
@@ -38,7 +38,7 @@ class ExecutionStepList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -61,7 +61,7 @@ class ExecutionStepList extends ListResource {
      * Reads ExecutionStepInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -79,7 +79,7 @@ class ExecutionStepList extends ListResource {
     /**
      * Retrieve a single page of ExecutionStepInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -104,7 +104,7 @@ class ExecutionStepList extends ListResource {
     /**
      * Retrieve a specific page of ExecutionStepInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of ExecutionStepInstance
      */
@@ -119,9 +119,9 @@ class ExecutionStepList extends ListResource {
 
     /**
      * Constructs a ExecutionStepContext
-     * 
+     *
      * @param string $sid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext
      */
     public function getContext($sid) {
         return new ExecutionStepContext(
@@ -134,7 +134,7 @@ class ExecutionStepList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -32,12 +32,12 @@ use Twilio\Version;
 class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskQueueRealTimeStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $taskQueueSid The task_queue_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsContext Context for this
      *                                                                                           TaskQueueRealTimeStatisticsInstance
      */
@@ -82,7 +82,7 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a TaskQueueRealTimeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueRealTimeStatisticsInstance Fetched
      *                                             TaskQueueRealTimeStatisticsInstance
@@ -94,7 +94,7 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -114,7 +114,7 @@ class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

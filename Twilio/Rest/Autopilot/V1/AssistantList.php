@@ -21,9 +21,9 @@ use Twilio\Version;
 class AssistantList extends ListResource {
     /**
      * Construct the AssistantList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Autopilot\V1\AssistantList 
+     * @return \Twilio\Rest\Autopilot\V1\AssistantList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class AssistantList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -64,7 +64,7 @@ class AssistantList extends ListResource {
      * Reads AssistantInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -82,7 +82,7 @@ class AssistantList extends ListResource {
     /**
      * Retrieve a single page of AssistantInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -107,7 +107,7 @@ class AssistantList extends ListResource {
     /**
      * Retrieve a specific page of AssistantInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of AssistantInstance
      */
@@ -122,7 +122,7 @@ class AssistantList extends ListResource {
 
     /**
      * Create a new AssistantInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AssistantInstance Newly created AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -152,9 +152,9 @@ class AssistantList extends ListResource {
 
     /**
      * Constructs a AssistantContext
-     * 
+     *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\AssistantContext 
+     * @return \Twilio\Rest\Autopilot\V1\AssistantContext
      */
     public function getContext($sid) {
         return new AssistantContext($this->version, $sid);
@@ -162,7 +162,7 @@ class AssistantList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

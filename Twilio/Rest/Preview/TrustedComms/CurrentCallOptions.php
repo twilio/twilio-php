@@ -38,7 +38,7 @@ class FetchCurrentCallOptions extends Options {
 
     /**
      * The originating Phone Number, given in E.164 format (https://en.wikipedia.org/wiki/E.164). This phone number should be a Twilio number, otherwise it will return an error with HTTP Status Code 400.
-     * 
+     *
      * @param string $from The originating Phone Number
      * @return $this Fluent Builder
      */
@@ -49,7 +49,7 @@ class FetchCurrentCallOptions extends Options {
 
     /**
      * The terminating Phone Number, given in E.164 format (https://en.wikipedia.org/wiki/E.164).
-     * 
+     *
      * @param string $to The terminating Phone Number
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class FetchCurrentCallOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

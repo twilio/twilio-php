@@ -21,13 +21,13 @@ use Twilio\Version;
 class SyncMapItemList extends ListResource {
     /**
      * Construct the SyncMapItemList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The unique SID identifier of the Service Instance
      *                           that hosts this Map object.
      * @param string $mapSid The unique 34-character SID identifier of the Map
      *                       containing this Item.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemList 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemList
      */
     public function __construct(Version $version, $serviceSid, $mapSid) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class SyncMapItemList extends ListResource {
 
     /**
      * Create a new SyncMapItemInstance
-     * 
+     *
      * @param string $key The unique user-defined key of this Map Item.
      * @param array $data Contains arbitrary user-defined, schema-less data that
      *                    this Map Item stores, represented by a JSON object, up to
@@ -82,7 +82,7 @@ class SyncMapItemList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -106,7 +106,7 @@ class SyncMapItemList extends ListResource {
      * Reads SyncMapItemInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -125,7 +125,7 @@ class SyncMapItemList extends ListResource {
     /**
      * Retrieve a single page of SyncMapItemInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -155,7 +155,7 @@ class SyncMapItemList extends ListResource {
     /**
      * Retrieve a specific page of SyncMapItemInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of SyncMapItemInstance
      */
@@ -170,9 +170,9 @@ class SyncMapItemList extends ListResource {
 
     /**
      * Constructs a SyncMapItemContext
-     * 
+     *
      * @param string $key The key
-     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemContext
      */
     public function getContext($key) {
         return new SyncMapItemContext(
@@ -185,7 +185,7 @@ class SyncMapItemList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

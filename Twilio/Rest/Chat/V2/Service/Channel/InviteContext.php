@@ -16,13 +16,13 @@ use Twilio\Version;
 class InviteContext extends InstanceContext {
     /**
      * Initialize the InviteContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $channelSid The SID of the Channel the resource to fetch
      *                           belongs to
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteContext 
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteContext
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class InviteContext extends InstanceContext {
 
     /**
      * Fetch a InviteInstance
-     * 
+     *
      * @return InviteInstance Fetched InviteInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,7 +59,7 @@ class InviteContext extends InstanceContext {
 
     /**
      * Deletes the InviteInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -69,7 +69,7 @@ class InviteContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -16,10 +16,10 @@ use Twilio\Version;
 class BalanceList extends ListResource {
     /**
      * Construct the BalanceList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid Account Sid.
-     * @return \Twilio\Rest\Api\V2010\Account\BalanceList 
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -32,7 +32,7 @@ class BalanceList extends ListResource {
 
     /**
      * Fetch a BalanceInstance
-     * 
+     *
      * @return BalanceInstance Fetched BalanceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -50,7 +50,7 @@ class BalanceList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,10 +18,10 @@ use Twilio\Version;
 class AssistantInitiationActionsList extends ListResource {
     /**
      * Construct the AssistantInitiationActionsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -32,8 +32,8 @@ class AssistantInitiationActionsList extends ListResource {
 
     /**
      * Constructs a AssistantInitiationActionsContext
-     * 
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsContext 
+     *
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsContext
      */
     public function getContext() {
         return new AssistantInitiationActionsContext($this->version, $this->solution['assistantSid']);
@@ -41,7 +41,7 @@ class AssistantInitiationActionsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,10 +18,10 @@ use Twilio\Version;
 class PhoneNumberContext extends InstanceContext {
     /**
      * Initialize the PhoneNumberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $phoneNumber The phone number to fetch in E.164 format
-     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext
      */
     public function __construct(Version $version, $phoneNumber) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class PhoneNumberContext extends InstanceContext {
 
     /**
      * Fetch a PhoneNumberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -60,7 +60,7 @@ class PhoneNumberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

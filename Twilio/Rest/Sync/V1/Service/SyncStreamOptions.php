@@ -46,7 +46,7 @@ class CreateSyncStreamOptions extends Options {
 
     /**
      * The unique and addressable name of this Stream. Optional, up to 320 characters long.
-     * 
+     *
      * @param string $uniqueName Stream unique name.
      * @return $this Fluent Builder
      */
@@ -57,7 +57,7 @@ class CreateSyncStreamOptions extends Options {
 
     /**
      * Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
+     *
      * @param int $ttl Stream TTL.
      * @return $this Fluent Builder
      */
@@ -68,7 +68,7 @@ class CreateSyncStreamOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -92,7 +92,7 @@ class UpdateSyncStreamOptions extends Options {
 
     /**
      * New time-to-live of this Stream in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
+     *
      * @param int $ttl Stream TTL.
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class UpdateSyncStreamOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

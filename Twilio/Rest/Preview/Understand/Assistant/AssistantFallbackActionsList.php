@@ -18,10 +18,10 @@ use Twilio\Version;
 class AssistantFallbackActionsList extends ListResource {
     /**
      * Construct the AssistantFallbackActionsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -32,8 +32,8 @@ class AssistantFallbackActionsList extends ListResource {
 
     /**
      * Constructs a AssistantFallbackActionsContext
-     * 
-     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsContext 
+     *
+     * @return \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsContext
      */
     public function getContext() {
         return new AssistantFallbackActionsContext($this->version, $this->solution['assistantSid']);
@@ -41,7 +41,7 @@ class AssistantFallbackActionsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

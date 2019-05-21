@@ -63,7 +63,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * The URL to redirect the user to after we authenticate the user and obtain authorization to access the Connect App.
-     * 
+     *
      * @param string $authorizeRedirectUrl The URL to redirect the user to after
      *                                     authorization
      * @return $this Fluent Builder
@@ -75,7 +75,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * The company name to set for the Connect App.
-     * 
+     *
      * @param string $companyName The company name to set for the Connect App
      * @return $this Fluent Builder
      */
@@ -86,7 +86,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * The HTTP method to use when calling `deauthorize_callback_url`.
-     * 
+     *
      * @param string $deauthorizeCallbackMethod The HTTP method to use when calling
      *                                          deauthorize_callback_url
      * @return $this Fluent Builder
@@ -98,7 +98,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * The URL to call using the `deauthorize_callback_method` to de-authorize the Connect App.
-     * 
+     *
      * @param string $deauthorizeCallbackUrl The URL to call to de-authorize the
      *                                       Connect App
      * @return $this Fluent Builder
@@ -110,7 +110,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * A description of the Connect App.
-     * 
+     *
      * @param string $description A description of the Connect App
      * @return $this Fluent Builder
      */
@@ -121,7 +121,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -132,7 +132,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * A public URL where users can obtain more information about this Connect App.
-     * 
+     *
      * @param string $homepageUrl A public URL where users can obtain more
      *                            information
      * @return $this Fluent Builder
@@ -144,7 +144,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`.
-     * 
+     *
      * @param string $permissions The set of permissions that your ConnectApp will
      *                            request
      * @return $this Fluent Builder
@@ -156,7 +156,7 @@ class UpdateConnectAppOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

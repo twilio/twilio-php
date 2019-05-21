@@ -81,7 +81,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * A descriptive string that you created to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -92,7 +92,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * The URL we should when the domain receives a call.
-     * 
+     *
      * @param string $voiceUrl The URL we should call when receiving a call
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $voiceMethod The HTTP method to use with voice_url
      * @return $this Fluent Builder
      */
@@ -114,7 +114,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * The URL that we should call when an error occurs while retrieving or executing the TwiML from `voice_url`.
-     * 
+     *
      * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
      * @return $this Fluent Builder
@@ -126,7 +126,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $voiceFallbackMethod The HTTP method to use with
      *                                    voice_fallback_url
      * @return $this Fluent Builder
@@ -138,7 +138,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * The URL that we should call to pass status parameters (such as call ended) to your application.
-     * 
+     *
      * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
      * @return $this Fluent Builder
@@ -150,7 +150,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $voiceStatusCallbackMethod The HTTP method we should use to
      *                                          call `voice_status_callback_url`
      * @return $this Fluent Builder
@@ -162,7 +162,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
-     * 
+     *
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
@@ -173,7 +173,7 @@ class CreateDomainOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -217,7 +217,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * A descriptive string that you created to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -228,7 +228,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $voiceFallbackMethod The HTTP method used with
      *                                    voice_fallback_url
      * @return $this Fluent Builder
@@ -240,7 +240,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The URL that we should call when an error occurs while retrieving or executing the TwiML requested by `voice_url`.
-     * 
+     *
      * @param string $voiceFallbackUrl The URL we should call when an error occurs
      *                                 in executing TwiML
      * @return $this Fluent Builder
@@ -252,7 +252,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The HTTP method we should use to call `voice_url`
-     * 
+     *
      * @param string $voiceMethod The HTTP method we should use with voice_url
      * @return $this Fluent Builder
      */
@@ -263,7 +263,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $voiceStatusCallbackMethod The HTTP method we should use to
      *                                          call voice_status_callback_url
      * @return $this Fluent Builder
@@ -275,7 +275,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The URL that we should call to pass status parameters (such as call ended) to your application.
-     * 
+     *
      * @param string $voiceStatusCallbackUrl The URL that we should call to pass
      *                                       status updates
      * @return $this Fluent Builder
@@ -287,7 +287,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The URL we should call when the domain receives a call.
-     * 
+     *
      * @param string $voiceUrl The URL we should call when receiving a call
      * @return $this Fluent Builder
      */
@@ -298,7 +298,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
-     * 
+     *
      * @param bool $sipRegistration Whether SIP registration is allowed
      * @return $this Fluent Builder
      */
@@ -309,7 +309,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and "-".
-     * 
+     *
      * @param string $domainName The unique address on Twilio to route SIP traffic
      * @return $this Fluent Builder
      */
@@ -320,7 +320,7 @@ class UpdateDomainOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

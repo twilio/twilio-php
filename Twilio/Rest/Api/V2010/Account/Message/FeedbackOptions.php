@@ -32,7 +32,7 @@ class CreateFeedbackOptions extends Options {
 
     /**
      * Whether the feedback has arrived. Can be: `unconfirmed` or `confirmed`. If `provide_feedback`=`true` in [the initial HTTP POST](https://www.twilio.com/docs/sms/api/message#create-a-message-resource), the initial value of this property is `unconfirmed`. After the message arrives, update the value to `confirmed`.
-     * 
+     *
      * @param string $outcome Whether the feedback has arrived
      * @return $this Fluent Builder
      */
@@ -43,7 +43,7 @@ class CreateFeedbackOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

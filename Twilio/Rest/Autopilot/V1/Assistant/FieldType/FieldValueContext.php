@@ -19,7 +19,7 @@ use Twilio\Version;
 class FieldValueContext extends InstanceContext {
     /**
      * Initialize the FieldValueContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the FieldType associated with the resource to
@@ -27,7 +27,7 @@ class FieldValueContext extends InstanceContext {
      * @param string $fieldTypeSid The SID of the Field Type associated with  the
      *                             Field Value to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid, $sid) {
         parent::__construct($version);
@@ -44,7 +44,7 @@ class FieldValueContext extends InstanceContext {
 
     /**
      * Fetch a FieldValueInstance
-     * 
+     *
      * @return FieldValueInstance Fetched FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -68,7 +68,7 @@ class FieldValueContext extends InstanceContext {
 
     /**
      * Deletes the FieldValueInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -78,7 +78,7 @@ class FieldValueContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

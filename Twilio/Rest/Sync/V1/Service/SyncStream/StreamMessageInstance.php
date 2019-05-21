@@ -16,19 +16,19 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property array data
  */
 class StreamMessageInstance extends InstanceResource {
     /**
      * Initialize the StreamMessageInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Instance SID.
      * @param string $streamSid Stream SID.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageInstance 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $streamSid) {
         parent::__construct($version);
@@ -44,7 +44,7 @@ class StreamMessageInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -64,7 +64,7 @@ class StreamMessageInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

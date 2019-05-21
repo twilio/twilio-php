@@ -52,10 +52,10 @@ use Twilio\Version;
 class ConfigurationInstance extends InstanceResource {
     /**
      * Initialize the ConfigurationInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationInstance 
+     * @return \Twilio\Rest\FlexApi\V1\ConfigurationInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -101,7 +101,7 @@ class ConfigurationInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext Context for this
      *                                                      ConfigurationInstance
      */
@@ -115,7 +115,7 @@ class ConfigurationInstance extends InstanceResource {
 
     /**
      * Fetch a ConfigurationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -126,7 +126,7 @@ class ConfigurationInstance extends InstanceResource {
 
     /**
      * Create a new ConfigurationInstance
-     * 
+     *
      * @return ConfigurationInstance Newly created ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -136,7 +136,7 @@ class ConfigurationInstance extends InstanceResource {
 
     /**
      * Update the ConfigurationInstance
-     * 
+     *
      * @return ConfigurationInstance Updated ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -146,7 +146,7 @@ class ConfigurationInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -166,7 +166,7 @@ class ConfigurationInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

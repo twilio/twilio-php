@@ -17,10 +17,10 @@ use Twilio\Version;
 class CredentialInstance extends InstanceResource {
     /**
      * Initialize the CredentialInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Accounts\V1\CredentialInstance 
+     * @return \Twilio\Rest\Accounts\V1\CredentialInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -30,7 +30,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -50,7 +50,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

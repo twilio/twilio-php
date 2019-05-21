@@ -52,7 +52,7 @@ class CreateSyncMapOptions extends Options {
 
     /**
      * Human-readable name for this map
-     * 
+     *
      * @param string $uniqueName Human-readable name for this map
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class CreateSyncMapOptions extends Options {
 
     /**
      * Alias for collection_ttl. If both are provided, this value is ignored.
-     * 
+     *
      * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
@@ -74,7 +74,7 @@ class CreateSyncMapOptions extends Options {
 
     /**
      * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
+     *
      * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
      *                           no expiration.
      * @return $this Fluent Builder
@@ -86,7 +86,7 @@ class CreateSyncMapOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -112,7 +112,7 @@ class UpdateSyncMapOptions extends Options {
 
     /**
      * Alias for collection_ttl. If both are provided, this value is ignored.
-     * 
+     *
      * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
@@ -123,7 +123,7 @@ class UpdateSyncMapOptions extends Options {
 
     /**
      * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
+     *
      * @param int $collectionTtl New time-to-live of this Map in seconds.
      * @return $this Fluent Builder
      */
@@ -134,7 +134,7 @@ class UpdateSyncMapOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

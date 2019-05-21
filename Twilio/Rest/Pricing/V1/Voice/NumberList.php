@@ -15,9 +15,9 @@ use Twilio\Version;
 class NumberList extends ListResource {
     /**
      * Construct the NumberList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V1\Voice\NumberList 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -28,9 +28,9 @@ class NumberList extends ListResource {
 
     /**
      * Constructs a NumberContext
-     * 
+     *
      * @param string $number The phone number to fetch
-     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext 
+     * @return \Twilio\Rest\Pricing\V1\Voice\NumberContext
      */
     public function getContext($number) {
         return new NumberContext($this->version, $number);
@@ -38,7 +38,7 @@ class NumberList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

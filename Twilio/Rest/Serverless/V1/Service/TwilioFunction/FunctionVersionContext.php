@@ -19,12 +19,12 @@ use Twilio\Version;
 class FunctionVersionContext extends InstanceContext {
     /**
      * Initialize the FunctionVersionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $functionSid Function Sid.
      * @param string $sid Function Version Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext
      */
     public function __construct(Version $version, $serviceSid, $functionSid, $sid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class FunctionVersionContext extends InstanceContext {
 
     /**
      * Fetch a FunctionVersionInstance
-     * 
+     *
      * @return FunctionVersionInstance Fetched FunctionVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -61,7 +61,7 @@ class FunctionVersionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

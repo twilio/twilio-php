@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -32,13 +32,13 @@ use Twilio\Version;
 class VariableInstance extends InstanceResource {
     /**
      * Initialize the VariableInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $environmentSid Environment Sid.
      * @param string $sid Variable Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableInstance 
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $environmentSid, $sid = null) {
         parent::__construct($version);
@@ -66,7 +66,7 @@ class VariableInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext Context for this VariableInstance
      */
     protected function proxy() {
@@ -84,7 +84,7 @@ class VariableInstance extends InstanceResource {
 
     /**
      * Fetch a VariableInstance
-     * 
+     *
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,7 +94,7 @@ class VariableInstance extends InstanceResource {
 
     /**
      * Update the VariableInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -105,7 +105,7 @@ class VariableInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -125,7 +125,7 @@ class VariableInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

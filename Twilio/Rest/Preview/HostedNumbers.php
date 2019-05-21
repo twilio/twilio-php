@@ -27,7 +27,7 @@ class HostedNumbers extends Version {
 
     /**
      * Construct the HostedNumbers version of Preview
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Preview\HostedNumbers HostedNumbers version of Preview
      */
@@ -37,7 +37,7 @@ class HostedNumbers extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList 
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList
      */
     protected function getAuthorizationDocuments() {
         if (!$this->_authorizationDocuments) {
@@ -47,7 +47,7 @@ class HostedNumbers extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList 
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList
      */
     protected function getHostedNumberOrders() {
         if (!$this->_hostedNumberOrders) {
@@ -58,7 +58,7 @@ class HostedNumbers extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -74,7 +74,7 @@ class HostedNumbers extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -91,7 +91,7 @@ class HostedNumbers extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

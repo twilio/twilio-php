@@ -43,7 +43,7 @@ class UpdateQueueOptions extends Options {
 
     /**
      * A descriptive string that you created to describe this resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe this resource
      * @return $this Fluent Builder
      */
@@ -54,7 +54,7 @@ class UpdateQueueOptions extends Options {
 
     /**
      * The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
-     * 
+     *
      * @param int $maxSize The max number of calls allowed in the queue
      * @return $this Fluent Builder
      */
@@ -65,7 +65,7 @@ class UpdateQueueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -89,7 +89,7 @@ class CreateQueueOptions extends Options {
 
     /**
      * The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
-     * 
+     *
      * @param int $maxSize The max number of calls allowed in the queue
      * @return $this Fluent Builder
      */
@@ -100,7 +100,7 @@ class CreateQueueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

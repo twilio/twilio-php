@@ -37,7 +37,7 @@ class UpdateWorkerChannelOptions extends Options {
 
     /**
      * The total number of Tasks worker should handle for this TaskChannel type. TaskRouter will only create reservations for Tasks of this TaskChannel type up to the capacity configured. If the capacity is 0, no new reservations will be created
-     * 
+     *
      * @param int $capacity The total number of Tasks worker should handle for this
      *                      TaskChannel type.
      * @return $this Fluent Builder
@@ -49,7 +49,7 @@ class UpdateWorkerChannelOptions extends Options {
 
     /**
      * Toggle the availability of the WorkerChannel. Set this to 'False' to make worker unavailable to receive any new Tasks of this TaskChannel type.
-     * 
+     *
      * @param bool $available Toggle the availability of the WorkerChannel.
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class UpdateWorkerChannelOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

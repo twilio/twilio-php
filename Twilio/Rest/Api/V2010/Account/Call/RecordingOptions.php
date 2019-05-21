@@ -75,7 +75,7 @@ class CreateRecordingOptions extends Options {
 
     /**
      * The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
-     * 
+     *
      * @param string $recordingStatusCallbackEvent The recording status changes
      *                                             that should generate a callback
      * @return $this Fluent Builder
@@ -87,7 +87,7 @@ class CreateRecordingOptions extends Options {
 
     /**
      * The URL we should call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
-     * 
+     *
      * @param string $recordingStatusCallback The callback URL on each selected
      *                                        recording event
      * @return $this Fluent Builder
@@ -99,7 +99,7 @@ class CreateRecordingOptions extends Options {
 
     /**
      * The HTTP method we should use to call `recording_status_callback`. Can be: `GET` or `POST` and the default is `POST`.
-     * 
+     *
      * @param string $recordingStatusCallbackMethod The HTTP method we should use
      *                                              to call
      *                                              `recording_status_callback`
@@ -112,7 +112,7 @@ class CreateRecordingOptions extends Options {
 
     /**
      * Whether to trim any leading and trailing silence in the recording. Can be: `trim-silence` or `do-not-trim` and the default is `do-not-trim`. `trim-silence` trims the silence from the beginning and end of the recording and `do-not-trim` does not.
-     * 
+     *
      * @param string $trim Whether to trim the silence in the recording
      * @return $this Fluent Builder
      */
@@ -123,7 +123,7 @@ class CreateRecordingOptions extends Options {
 
     /**
      * The number of channels used in the recording. Can be: `mono` or `dual` and the default is `mono`. `mono` records all parties of the call into one channel. `dual` records each party of a 2-party call into separate channels.
-     * 
+     *
      * @param string $recordingChannels The number of channels that the output
      *                                  recording will be configured with
      * @return $this Fluent Builder
@@ -135,7 +135,7 @@ class CreateRecordingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -160,7 +160,7 @@ class UpdateRecordingOptions extends Options {
 
     /**
      * Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
-     * 
+     *
      * @param string $pauseBehavior Whether to record or not during the pause
      *                              period.
      * @return $this Fluent Builder
@@ -172,7 +172,7 @@ class UpdateRecordingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -202,7 +202,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
      *                                  read
      * @return $this Fluent Builder
@@ -214,7 +214,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -225,7 +225,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
      *                                 read
      * @return $this Fluent Builder
@@ -237,7 +237,7 @@ class ReadRecordingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

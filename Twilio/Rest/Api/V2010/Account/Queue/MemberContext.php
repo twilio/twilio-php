@@ -17,13 +17,13 @@ use Twilio\Version;
 class MemberContext extends InstanceContext {
     /**
      * Initialize the MemberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the
      *                           resource(s) to fetch
      * @param string $queueSid The SID of the Queue in which to find the members
      * @param string $callSid The Call SID of the resource(s) to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext
      */
     public function __construct(Version $version, $accountSid, $queueSid, $callSid) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Fetch a MemberInstance
-     * 
+     *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -64,7 +64,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Update the MemberInstance
-     * 
+     *
      * @param string $url The absolute URL of the Queue resource
      * @param array|Options $options Optional Arguments
      * @return MemberInstance Updated MemberInstance
@@ -93,7 +93,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

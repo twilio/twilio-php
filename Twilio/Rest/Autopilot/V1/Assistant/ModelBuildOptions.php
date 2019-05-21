@@ -51,7 +51,7 @@ class CreateModelBuildOptions extends Options {
 
     /**
      * The URL we should call using a POST method to send status information to your application.
-     * 
+     *
      * @param string $statusCallback The URL we should call using a POST method to
      *                               send status information to your application
      * @return $this Fluent Builder
@@ -63,7 +63,7 @@ class CreateModelBuildOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the new resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the new resource
      * @return $this Fluent Builder
@@ -75,7 +75,7 @@ class CreateModelBuildOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -100,7 +100,7 @@ class UpdateModelBuildOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. This value must be a unique string of no more than 64 characters. It can be used as an alternative to the `sid` in the URL path to address the resource.
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -112,7 +112,7 @@ class UpdateModelBuildOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

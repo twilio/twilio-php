@@ -97,7 +97,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The absolute url the webhook request should be sent to.
-     * 
+     *
      * @param string $configurationUrl The absolute url the webhook request should
      *                                 be sent to.
      * @return $this Fluent Builder
@@ -109,7 +109,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The HTTP method to be used when sending a webhook request.
-     * 
+     *
      * @param string $configurationMethod The HTTP method to be used when sending a
      *                                    webhook request.
      * @return $this Fluent Builder
@@ -121,7 +121,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The list of events, firing webhook event for this Session.
-     * 
+     *
      * @param string $configurationFilters The list of events, firing webhook event
      *                                     for this Session.
      * @return $this Fluent Builder
@@ -133,7 +133,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The list of keywords, firing webhook event for this Session.
-     * 
+     *
      * @param string $configurationTriggers The list of keywords, firing webhook
      *                                      event for this Session.
      * @return $this Fluent Builder
@@ -145,7 +145,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The studio flow sid, where the webhook should be sent to.
-     * 
+     *
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      * @return $this Fluent Builder
@@ -157,7 +157,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.
-     * 
+     *
      * @param int $configurationRetryCount The number of retries in case of webhook
      *                                     request failures.
      * @return $this Fluent Builder
@@ -169,7 +169,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The message index for which and it's successors the webhook will be replayed. Not set by default
-     * 
+     *
      * @param int $configurationReplayAfter The message index for which and it's
      *                                      successors the webhook will be replayed.
      * @return $this Fluent Builder
@@ -181,7 +181,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The flag whether buffering should be applied to messages. Not set by default
-     * 
+     *
      * @param bool $configurationBufferMessages The flag whether buffering should
      *                                          be applied to messages.
      * @return $this Fluent Builder
@@ -193,7 +193,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * The period of buffering messages. Default is 3000 ms.
-     * 
+     *
      * @param int $configurationBufferWindow The period of buffering messages.
      * @return $this Fluent Builder
      */
@@ -204,7 +204,7 @@ class CreateWebhookOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -249,7 +249,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The absolute url the webhook request should be sent to.
-     * 
+     *
      * @param string $configurationUrl The absolute url the webhook request should
      *                                 be sent to.
      * @return $this Fluent Builder
@@ -261,7 +261,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The HTTP method to be used when sending a webhook request.
-     * 
+     *
      * @param string $configurationMethod The HTTP method to be used when sending a
      *                                    webhook request.
      * @return $this Fluent Builder
@@ -273,7 +273,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The list of events, firing webhook event for this Session.
-     * 
+     *
      * @param string $configurationFilters The list of events, firing webhook event
      *                                     for this Session.
      * @return $this Fluent Builder
@@ -285,7 +285,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The list of keywords, firing webhook event for this Session.
-     * 
+     *
      * @param string $configurationTriggers The list of keywords, firing webhook
      *                                      event for this Session.
      * @return $this Fluent Builder
@@ -297,7 +297,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The studio flow sid, where the webhook should be sent to.
-     * 
+     *
      * @param string $configurationFlowSid The studio flow sid, where the webhook
      *                                     should be sent to.
      * @return $this Fluent Builder
@@ -309,7 +309,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The number of retries in case of webhook request failures. Maximum 3 retries are allowed, the default value is 0.
-     * 
+     *
      * @param int $configurationRetryCount The number of retries in case of webhook
      *                                     request failures.
      * @return $this Fluent Builder
@@ -321,7 +321,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The flag whether buffering should be applied to messages. Not set by default
-     * 
+     *
      * @param bool $configurationBufferMessages The flag whether buffering should
      *                                          be applied to messages.
      * @return $this Fluent Builder
@@ -333,7 +333,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * The period of buffering messages. Default is 3000 ms.
-     * 
+     *
      * @param int $configurationBufferWindow The period of buffering messages.
      * @return $this Fluent Builder
      */
@@ -344,7 +344,7 @@ class UpdateWebhookOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

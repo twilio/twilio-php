@@ -23,7 +23,7 @@ class Lookups extends Domain {
 
     /**
      * Construct the Lookups Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Lookups Domain for Lookups
@@ -46,7 +46,7 @@ class Lookups extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -62,7 +62,7 @@ class Lookups extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,7 +78,7 @@ class Lookups extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Lookups\V1\PhoneNumberList 
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberList
      */
     protected function getPhoneNumbers() {
         return $this->v1->phoneNumbers;
@@ -86,7 +86,7 @@ class Lookups extends Domain {
 
     /**
      * @param string $phoneNumber The phone number to fetch in E.164 format
-     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext 
+     * @return \Twilio\Rest\Lookups\V1\PhoneNumberContext
      */
     protected function contextPhoneNumbers($phoneNumber) {
         return $this->v1->phoneNumbers($phoneNumber);
@@ -94,7 +94,7 @@ class Lookups extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

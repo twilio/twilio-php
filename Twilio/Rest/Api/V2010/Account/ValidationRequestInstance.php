@@ -24,11 +24,11 @@ use Twilio\Version;
 class ValidationRequestInstance extends InstanceResource {
     /**
      * Initialize the ValidationRequestInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class ValidationRequestInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -67,7 +67,7 @@ class ValidationRequestInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

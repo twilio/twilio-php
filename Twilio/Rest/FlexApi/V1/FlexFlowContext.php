@@ -18,10 +18,10 @@ use Twilio\Version;
 class FlexFlowContext extends InstanceContext {
     /**
      * Initialize the FlexFlowContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The unique ID of the FlexFlow
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext 
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class FlexFlowContext extends InstanceContext {
 
     /**
      * Fetch a FlexFlowInstance
-     * 
+     *
      * @return FlexFlowInstance Fetched FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -52,7 +52,7 @@ class FlexFlowContext extends InstanceContext {
 
     /**
      * Update the FlexFlowInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FlexFlowInstance Updated FlexFlowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,7 +90,7 @@ class FlexFlowContext extends InstanceContext {
 
     /**
      * Deletes the FlexFlowInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -100,7 +100,7 @@ class FlexFlowContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

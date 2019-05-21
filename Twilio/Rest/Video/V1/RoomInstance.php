@@ -41,12 +41,12 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Initialize the RoomInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The Room Sid or name that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Video\V1\RoomInstance 
+     * @return \Twilio\Rest\Video\V1\RoomInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -79,7 +79,7 @@ class RoomInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\RoomContext Context for this RoomInstance
      */
     protected function proxy() {
@@ -92,7 +92,7 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Fetch a RoomInstance
-     * 
+     *
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Update the RoomInstance
-     * 
+     *
      * @param string $status Set to completed to end the Room.
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,8 +113,8 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;
@@ -122,8 +122,8 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList
      */
     protected function getParticipants() {
         return $this->proxy()->participants;
@@ -131,7 +131,7 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -151,7 +151,7 @@ class RoomInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

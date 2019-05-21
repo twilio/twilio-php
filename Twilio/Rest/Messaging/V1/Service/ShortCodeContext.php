@@ -19,11 +19,11 @@ use Twilio\Version;
 class ShortCodeContext extends InstanceContext {
     /**
      * Initialize the ShortCodeContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeContext 
+     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class ShortCodeContext extends InstanceContext {
 
     /**
      * Deletes the ShortCodeInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -46,7 +46,7 @@ class ShortCodeContext extends InstanceContext {
 
     /**
      * Fetch a ShortCodeInstance
-     * 
+     *
      * @return ShortCodeInstance Fetched ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -69,7 +69,7 @@ class ShortCodeContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

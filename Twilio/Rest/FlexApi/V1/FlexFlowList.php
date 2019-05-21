@@ -18,9 +18,9 @@ use Twilio\Version;
 class FlexFlowList extends ListResource {
     /**
      * Construct the FlexFlowList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList 
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -38,7 +38,7 @@ class FlexFlowList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -62,7 +62,7 @@ class FlexFlowList extends ListResource {
      * Reads FlexFlowInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -81,7 +81,7 @@ class FlexFlowList extends ListResource {
     /**
      * Retrieve a single page of FlexFlowInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -109,7 +109,7 @@ class FlexFlowList extends ListResource {
     /**
      * Retrieve a specific page of FlexFlowInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of FlexFlowInstance
      */
@@ -124,7 +124,7 @@ class FlexFlowList extends ListResource {
 
     /**
      * Create a new FlexFlowInstance
-     * 
+     *
      * @param string $friendlyName Human readable description of this FlexFlow
      * @param string $chatServiceSid Service Sid.
      * @param string $channelType Channel type
@@ -165,9 +165,9 @@ class FlexFlowList extends ListResource {
 
     /**
      * Constructs a FlexFlowContext
-     * 
+     *
      * @param string $sid The unique ID of the FlexFlow
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext 
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext
      */
     public function getContext($sid) {
         return new FlexFlowContext($this->version, $sid);
@@ -175,7 +175,7 @@ class FlexFlowList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

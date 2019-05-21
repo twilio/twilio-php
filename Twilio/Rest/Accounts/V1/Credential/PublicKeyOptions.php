@@ -45,7 +45,7 @@ class CreatePublicKeyOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -56,7 +56,7 @@ class CreatePublicKeyOptions extends Options {
 
     /**
      * The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request
-     * 
+     *
      * @param string $accountSid The Subaccount this Credential should be
      *                           associated with.
      * @return $this Fluent Builder
@@ -68,7 +68,7 @@ class CreatePublicKeyOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -92,7 +92,7 @@ class UpdatePublicKeyOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class UpdatePublicKeyOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

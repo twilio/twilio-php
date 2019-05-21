@@ -48,12 +48,12 @@ class SimInstance extends InstanceResource {
 
     /**
      * Initialize the SimInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\SimInstance 
+     * @return \Twilio\Rest\Wireless\V1\SimInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -92,7 +92,7 @@ class SimInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Wireless\V1\SimContext Context for this SimInstance
      */
     protected function proxy() {
@@ -105,7 +105,7 @@ class SimInstance extends InstanceResource {
 
     /**
      * Fetch a SimInstance
-     * 
+     *
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -115,7 +115,7 @@ class SimInstance extends InstanceResource {
 
     /**
      * Update the SimInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -126,7 +126,7 @@ class SimInstance extends InstanceResource {
 
     /**
      * Deletes the SimInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -136,8 +136,8 @@ class SimInstance extends InstanceResource {
 
     /**
      * Access the usageRecords
-     * 
-     * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordList 
+     *
+     * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordList
      */
     protected function getUsageRecords() {
         return $this->proxy()->usageRecords;
@@ -145,8 +145,8 @@ class SimInstance extends InstanceResource {
 
     /**
      * Access the dataSessions
-     * 
-     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList 
+     *
+     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList
      */
     protected function getDataSessions() {
         return $this->proxy()->dataSessions;
@@ -154,7 +154,7 @@ class SimInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -174,7 +174,7 @@ class SimInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

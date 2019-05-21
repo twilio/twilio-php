@@ -20,12 +20,12 @@ use Twilio\Version;
 class VariableContext extends InstanceContext {
     /**
      * Initialize the VariableContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $environmentSid Environment Sid.
      * @param string $sid Variable Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext 
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext
      */
     public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class VariableContext extends InstanceContext {
 
     /**
      * Fetch a VariableInstance
-     * 
+     *
      * @return VariableInstance Fetched VariableInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class VariableContext extends InstanceContext {
 
     /**
      * Update the VariableInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return VariableInstance Updated VariableInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -94,7 +94,7 @@ class VariableContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -24,12 +24,12 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Initialize the ExecutionStepContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $executionSid Execution Sid.
      * @param string $sid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext
      */
     public function __construct(Version $version, $flowSid, $executionSid, $sid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Fetch a ExecutionStepInstance
-     * 
+     *
      * @return ExecutionStepInstance Fetched ExecutionStepInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,8 +66,8 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Access the stepContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList
      */
     protected function getStepContext() {
         if (!$this->_stepContext) {
@@ -84,7 +84,7 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -100,7 +100,7 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -117,7 +117,7 @@ class ExecutionStepContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

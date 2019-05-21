@@ -30,7 +30,7 @@ class AuthRegistrationsCredentialListMappingPage extends Page {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

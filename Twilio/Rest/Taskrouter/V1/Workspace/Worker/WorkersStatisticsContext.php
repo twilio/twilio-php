@@ -18,10 +18,10 @@ use Twilio\Version;
 class WorkersStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkersStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class WorkersStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a WorkersStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkersStatisticsInstance Fetched WorkersStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -63,7 +63,7 @@ class WorkersStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

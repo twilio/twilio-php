@@ -52,7 +52,7 @@ class CreateFieldTypeOptions extends Options {
 
     /**
      * A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can up to 255
      *                             characters long.
@@ -65,7 +65,7 @@ class CreateFieldTypeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -95,7 +95,7 @@ class UpdateFieldTypeOptions extends Options {
 
     /**
      * A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A user-provided string that identifies this
      *                             resource. It is non-unique and can up to 255
      *                             characters long.
@@ -108,7 +108,7 @@ class UpdateFieldTypeOptions extends Options {
 
     /**
      * A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
-     * 
+     *
      * @param string $uniqueName A user-provided string that uniquely identifies
      *                           this resource as an alternative to the sid. Unique
      *                           up to 64 characters long.
@@ -121,7 +121,7 @@ class UpdateFieldTypeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

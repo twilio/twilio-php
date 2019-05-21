@@ -17,10 +17,10 @@ use Twilio\Version;
 class WorkersRealTimeStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkersRealTimeStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class WorkersRealTimeStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a WorkersRealTimeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkersRealTimeStatisticsInstance Fetched
      *                                           WorkersRealTimeStatisticsInstance
@@ -59,7 +59,7 @@ class WorkersRealTimeStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

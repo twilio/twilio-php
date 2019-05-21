@@ -18,12 +18,12 @@ use Twilio\Version;
 class TaskChannelContext extends InstanceContext {
     /**
      * Initialize the TaskChannelContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The unique ID of the Workspace that this
      *                             TaskChannel belongs to.
      * @param string $sid The unique ID for this TaskChannel.
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Fetch a TaskChannelInstance
-     * 
+     *
      * @return TaskChannelInstance Fetched TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,7 +59,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Update the TaskChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskChannelInstance Updated TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Deletes the TaskChannelInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -99,7 +99,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

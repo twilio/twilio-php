@@ -16,10 +16,10 @@ use Twilio\Version;
 class CountryContext extends InstanceContext {
     /**
      * Initialize the CountryContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $isoCountry The ISO country code
-     * @return \Twilio\Rest\Pricing\V1\Voice\CountryContext 
+     * @return \Twilio\Rest\Pricing\V1\Voice\CountryContext
      */
     public function __construct(Version $version, $isoCountry) {
         parent::__construct($version);
@@ -32,7 +32,7 @@ class CountryContext extends InstanceContext {
 
     /**
      * Fetch a CountryInstance
-     * 
+     *
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -50,7 +50,7 @@ class CountryContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

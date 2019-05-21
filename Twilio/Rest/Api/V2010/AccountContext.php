@@ -110,10 +110,10 @@ class AccountContext extends InstanceContext {
 
     /**
      * Initialize the AccountContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid Fetch by unique Account Sid
-     * @return \Twilio\Rest\Api\V2010\AccountContext 
+     * @return \Twilio\Rest\Api\V2010\AccountContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -126,7 +126,7 @@ class AccountContext extends InstanceContext {
 
     /**
      * Fetch a AccountInstance
-     * 
+     *
      * @return AccountInstance Fetched AccountInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -144,7 +144,7 @@ class AccountContext extends InstanceContext {
 
     /**
      * Update the AccountInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AccountInstance Updated AccountInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -169,8 +169,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the addresses
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AddressList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AddressList
      */
     protected function getAddresses() {
         if (!$this->_addresses) {
@@ -182,8 +182,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the applications
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList
      */
     protected function getApplications() {
         if (!$this->_applications) {
@@ -195,8 +195,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the authorizedConnectApps
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList
      */
     protected function getAuthorizedConnectApps() {
         if (!$this->_authorizedConnectApps) {
@@ -211,8 +211,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the availablePhoneNumbers
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList
      */
     protected function getAvailablePhoneNumbers() {
         if (!$this->_availablePhoneNumbers) {
@@ -227,8 +227,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the balance
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\BalanceList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceList
      */
     protected function getBalance() {
         if (!$this->_balance) {
@@ -240,8 +240,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the calls
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\CallList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\CallList
      */
     protected function getCalls() {
         if (!$this->_calls) {
@@ -253,8 +253,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the conferences
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceList
      */
     protected function getConferences() {
         if (!$this->_conferences) {
@@ -266,8 +266,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the connectApps
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ConnectAppList
      */
     protected function getConnectApps() {
         if (!$this->_connectApps) {
@@ -279,8 +279,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the incomingPhoneNumbers
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList
      */
     protected function getIncomingPhoneNumbers() {
         if (!$this->_incomingPhoneNumbers) {
@@ -292,8 +292,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the keys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\KeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\KeyList
      */
     protected function getKeys() {
         if (!$this->_keys) {
@@ -305,8 +305,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the messages
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\MessageList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\MessageList
      */
     protected function getMessages() {
         if (!$this->_messages) {
@@ -318,8 +318,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the newKeys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\NewKeyList
      */
     protected function getNewKeys() {
         if (!$this->_newKeys) {
@@ -331,8 +331,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the newSigningKeys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList
      */
     protected function getNewSigningKeys() {
         if (!$this->_newSigningKeys) {
@@ -344,8 +344,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the notifications
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\NotificationList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\NotificationList
      */
     protected function getNotifications() {
         if (!$this->_notifications) {
@@ -357,8 +357,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the outgoingCallerIds
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList
      */
     protected function getOutgoingCallerIds() {
         if (!$this->_outgoingCallerIds) {
@@ -370,8 +370,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the queues
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\QueueList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\QueueList
      */
     protected function getQueues() {
         if (!$this->_queues) {
@@ -383,8 +383,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingList
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
@@ -396,8 +396,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the signingKeys
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyList
      */
     protected function getSigningKeys() {
         if (!$this->_signingKeys) {
@@ -409,8 +409,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the sip
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\SipList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\SipList
      */
     protected function getSip() {
         if (!$this->_sip) {
@@ -422,8 +422,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the shortCodes
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ShortCodeList
      */
     protected function getShortCodes() {
         if (!$this->_shortCodes) {
@@ -435,8 +435,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the tokens
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\TokenList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\TokenList
      */
     protected function getTokens() {
         if (!$this->_tokens) {
@@ -448,8 +448,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the transcriptions
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionList
      */
     protected function getTranscriptions() {
         if (!$this->_transcriptions) {
@@ -461,8 +461,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the usage
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList
      */
     protected function getUsage() {
         if (!$this->_usage) {
@@ -474,8 +474,8 @@ class AccountContext extends InstanceContext {
 
     /**
      * Access the validationRequests
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\ValidationRequestList
      */
     protected function getValidationRequests() {
         if (!$this->_validationRequests) {
@@ -487,7 +487,7 @@ class AccountContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -503,7 +503,7 @@ class AccountContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -520,7 +520,7 @@ class AccountContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -30,11 +30,11 @@ use Twilio\Version;
 class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceRealTimeStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
@@ -59,7 +59,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsContext Context for this
      *                                                                                 WorkspaceRealTimeStatisticsInstance
      */
@@ -76,7 +76,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkspaceRealTimeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceRealTimeStatisticsInstance Fetched
      *                                             WorkspaceRealTimeStatisticsInstance
@@ -88,7 +88,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -108,7 +108,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

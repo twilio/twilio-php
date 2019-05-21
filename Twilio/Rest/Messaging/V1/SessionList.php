@@ -21,9 +21,9 @@ use Twilio\Version;
 class SessionList extends ListResource {
     /**
      * Construct the SessionList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Messaging\V1\SessionList 
+     * @return \Twilio\Rest\Messaging\V1\SessionList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class SessionList extends ListResource {
 
     /**
      * Create a new SessionInstance
-     * 
+     *
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    session belongs to.
      * @param array|Options $options Optional Arguments
@@ -72,7 +72,7 @@ class SessionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -95,7 +95,7 @@ class SessionList extends ListResource {
      * Reads SessionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -113,7 +113,7 @@ class SessionList extends ListResource {
     /**
      * Retrieve a single page of SessionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -138,7 +138,7 @@ class SessionList extends ListResource {
     /**
      * Retrieve a specific page of SessionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of SessionInstance
      */
@@ -153,10 +153,10 @@ class SessionList extends ListResource {
 
     /**
      * Constructs a SessionContext
-     * 
+     *
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Messaging\V1\SessionContext 
+     * @return \Twilio\Rest\Messaging\V1\SessionContext
      */
     public function getContext($sid) {
         return new SessionContext($this->version, $sid);
@@ -164,7 +164,7 @@ class SessionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -59,7 +59,7 @@ class ReadSampleOptions extends Options {
 
     /**
      * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`.
-     * 
+     *
      * @param string $language The ISO language-country string that specifies the
      *                         language used for the sample
      * @return $this Fluent Builder
@@ -71,7 +71,7 @@ class ReadSampleOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -96,7 +96,7 @@ class CreateSampleOptions extends Options {
 
     /**
      * The communication channel from which the new sample was captured. Can be: `voice`, `sms`, `chat`, `alexa`, `google-assistant`, `slack`, or null if not included.
-     * 
+     *
      * @param string $sourceChannel The communication channel from which the new
      *                              sample was captured
      * @return $this Fluent Builder
@@ -108,7 +108,7 @@ class CreateSampleOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -139,7 +139,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) string that specifies the language used for the sample. For example: `en-US`.
-     * 
+     *
      * @param string $language The ISO language-country string that specifies the
      *                         language used for the sample
      * @return $this Fluent Builder
@@ -151,7 +151,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * The text example of how end users might express the task. The sample can contain [Field tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging).
-     * 
+     *
      * @param string $taggedText The text example of how end users might express
      *                           the task
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * The communication channel from which the sample was captured. Can be: `voice`, `sms`, `chat`, `alexa`, `google-assistant`, `slack`, or null if not included.
-     * 
+     *
      * @param string $sourceChannel The communication channel from which the sample
      *                              was captured
      * @return $this Fluent Builder
@@ -175,7 +175,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

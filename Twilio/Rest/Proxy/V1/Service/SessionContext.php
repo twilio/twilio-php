@@ -20,7 +20,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property \Twilio\Rest\Proxy\V1\Service\Session\InteractionList interactions
  * @property \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList participants
  * @method \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext interactions(string $sid)
@@ -32,11 +32,11 @@ class SessionContext extends InstanceContext {
 
     /**
      * Initialize the SessionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\Service\SessionContext 
+     * @return \Twilio\Rest\Proxy\V1\Service\SessionContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -49,7 +49,7 @@ class SessionContext extends InstanceContext {
 
     /**
      * Fetch a SessionInstance
-     * 
+     *
      * @return SessionInstance Fetched SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -72,7 +72,7 @@ class SessionContext extends InstanceContext {
 
     /**
      * Deletes the SessionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -82,7 +82,7 @@ class SessionContext extends InstanceContext {
 
     /**
      * Update the SessionInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SessionInstance Updated SessionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -115,8 +115,8 @@ class SessionContext extends InstanceContext {
 
     /**
      * Access the interactions
-     * 
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionList 
+     *
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionList
      */
     protected function getInteractions() {
         if (!$this->_interactions) {
@@ -132,8 +132,8 @@ class SessionContext extends InstanceContext {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList 
+     *
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList
      */
     protected function getParticipants() {
         if (!$this->_participants) {
@@ -149,7 +149,7 @@ class SessionContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -165,7 +165,7 @@ class SessionContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -182,7 +182,7 @@ class SessionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

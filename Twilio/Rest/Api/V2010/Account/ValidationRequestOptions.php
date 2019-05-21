@@ -52,7 +52,7 @@ class CreateValidationRequestOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the new caller ID resource. It can be up to 64 characters long. The default value is a formatted version of the phone number.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class CreateValidationRequestOptions extends Options {
 
     /**
      * The number of seconds to delay before initiating the verification call. Can be an integer between `0` and `60`, inclusive. The default is `0`.
-     * 
+     *
      * @param int $callDelay The number of seconds to delay before initiating the
      *                       verification call
      * @return $this Fluent Builder
@@ -75,7 +75,7 @@ class CreateValidationRequestOptions extends Options {
 
     /**
      * The digits to dial after connecting the verification call.
-     * 
+     *
      * @param string $extension The digits to dial after connecting the
      *                          verification call
      * @return $this Fluent Builder
@@ -87,7 +87,7 @@ class CreateValidationRequestOptions extends Options {
 
     /**
      * The URL we should call using the `status_callback_method` to send status information about the verification process to your application.
-     * 
+     *
      * @param string $statusCallback The URL we should call to send status
      *                               information to your application
      * @return $this Fluent Builder
@@ -99,7 +99,7 @@ class CreateValidationRequestOptions extends Options {
 
     /**
      * The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`, and the default is `POST`.
-     * 
+     *
      * @param string $statusCallbackMethod The HTTP method we should use to call
      *                                     status_callback
      * @return $this Fluent Builder
@@ -111,7 +111,7 @@ class CreateValidationRequestOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

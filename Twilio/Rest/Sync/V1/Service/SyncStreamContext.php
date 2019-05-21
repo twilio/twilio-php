@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList streamMessages
  */
 class SyncStreamContext extends InstanceContext {
@@ -26,11 +26,11 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Initialize the SyncStreamContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Instance SID or unique name.
      * @param string $sid Stream SID or unique name.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Fetch a SyncStreamInstance
-     * 
+     *
      * @return SyncStreamInstance Fetched SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Deletes the SyncStreamInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -76,7 +76,7 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Update the SyncStreamInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SyncStreamInstance Updated SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -103,8 +103,8 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Access the streamMessages
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList
      */
     protected function getStreamMessages() {
         if (!$this->_streamMessages) {
@@ -120,7 +120,7 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -136,7 +136,7 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -153,7 +153,7 @@ class SyncStreamContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

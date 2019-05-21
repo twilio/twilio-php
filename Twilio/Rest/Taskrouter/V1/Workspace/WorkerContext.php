@@ -42,11 +42,11 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Initialize the WorkerContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
@@ -59,7 +59,7 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Fetch a WorkerInstance
-     * 
+     *
      * @return WorkerInstance Fetched WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -82,7 +82,7 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Update the WorkerInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerInstance Updated WorkerInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -114,7 +114,7 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Deletes the WorkerInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -124,8 +124,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the realTimeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList
      */
     protected function getRealTimeStatistics() {
         if (!$this->_realTimeStatistics) {
@@ -140,8 +140,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the cumulativeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList
      */
     protected function getCumulativeStatistics() {
         if (!$this->_cumulativeStatistics) {
@@ -156,8 +156,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
@@ -173,8 +173,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the reservations
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList
      */
     protected function getReservations() {
         if (!$this->_reservations) {
@@ -190,8 +190,8 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Access the workerChannels
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList
      */
     protected function getWorkerChannels() {
         if (!$this->_workerChannels) {
@@ -207,7 +207,7 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -223,7 +223,7 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -240,7 +240,7 @@ class WorkerContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

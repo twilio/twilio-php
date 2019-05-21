@@ -49,7 +49,7 @@ class ReadDependentHostedNumberOrderOptions extends Options {
 
     /**
      * Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
-     * 
+     *
      * @param string $status The Status of this HostedNumberOrder.
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class ReadDependentHostedNumberOrderOptions extends Options {
 
     /**
      * An E164 formatted phone number hosted by this HostedNumberOrder.
-     * 
+     *
      * @param string $phoneNumber An E164 formatted phone number.
      * @return $this Fluent Builder
      */
@@ -71,7 +71,7 @@ class ReadDependentHostedNumberOrderOptions extends Options {
 
     /**
      * A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
-     * 
+     *
      * @param string $incomingPhoneNumberSid IncomingPhoneNumber sid.
      * @return $this Fluent Builder
      */
@@ -82,7 +82,7 @@ class ReadDependentHostedNumberOrderOptions extends Options {
 
     /**
      * A human readable description of this resource, up to 64 characters.
-     * 
+     *
      * @param string $friendlyName A human readable description of this resource.
      * @return $this Fluent Builder
      */
@@ -93,7 +93,7 @@ class ReadDependentHostedNumberOrderOptions extends Options {
 
     /**
      * Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.
-     * 
+     *
      * @param string $uniqueName A unique, developer assigned name of this
      *                           HostedNumberOrder.
      * @return $this Fluent Builder
@@ -105,7 +105,7 @@ class ReadDependentHostedNumberOrderOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -37,11 +37,11 @@ use Twilio\Version;
 class AlertInstance extends InstanceResource {
     /**
      * Initialize the AlertInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Monitor\V1\AlertInstance 
+     * @return \Twilio\Rest\Monitor\V1\AlertInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -73,7 +73,7 @@ class AlertInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Monitor\V1\AlertContext Context for this AlertInstance
      */
     protected function proxy() {
@@ -86,7 +86,7 @@ class AlertInstance extends InstanceResource {
 
     /**
      * Fetch a AlertInstance
-     * 
+     *
      * @return AlertInstance Fetched AlertInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -96,7 +96,7 @@ class AlertInstance extends InstanceResource {
 
     /**
      * Deletes the AlertInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -106,7 +106,7 @@ class AlertInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -126,7 +126,7 @@ class AlertInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

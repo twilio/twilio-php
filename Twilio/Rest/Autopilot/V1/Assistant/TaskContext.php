@@ -22,7 +22,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList fields
  * @property \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleList samples
  * @property \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList taskActions
@@ -40,12 +40,12 @@ class TaskContext extends InstanceContext {
 
     /**
      * Initialize the TaskContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource to fetch
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskContext 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskContext
      */
     public function __construct(Version $version, $assistantSid, $sid) {
         parent::__construct($version);
@@ -58,7 +58,7 @@ class TaskContext extends InstanceContext {
 
     /**
      * Fetch a TaskInstance
-     * 
+     *
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -81,7 +81,7 @@ class TaskContext extends InstanceContext {
 
     /**
      * Update the TaskInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,7 +113,7 @@ class TaskContext extends InstanceContext {
 
     /**
      * Deletes the TaskInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -123,8 +123,8 @@ class TaskContext extends InstanceContext {
 
     /**
      * Access the fields
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\FieldList
      */
     protected function getFields() {
         if (!$this->_fields) {
@@ -140,8 +140,8 @@ class TaskContext extends InstanceContext {
 
     /**
      * Access the samples
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleList
      */
     protected function getSamples() {
         if (!$this->_samples) {
@@ -157,8 +157,8 @@ class TaskContext extends InstanceContext {
 
     /**
      * Access the taskActions
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskActionsList
      */
     protected function getTaskActions() {
         if (!$this->_taskActions) {
@@ -174,8 +174,8 @@ class TaskContext extends InstanceContext {
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsList
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
@@ -191,7 +191,7 @@ class TaskContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -207,7 +207,7 @@ class TaskContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -224,7 +224,7 @@ class TaskContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

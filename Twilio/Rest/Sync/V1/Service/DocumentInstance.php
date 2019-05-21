@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string uniqueName
  * @property string accountSid
@@ -37,13 +37,13 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Initialize the DocumentInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique SID identifier of the Service Instance
      *                           that hosts this Document.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Sync\V1\Service\DocumentInstance 
+     * @return \Twilio\Rest\Sync\V1\Service\DocumentInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -70,7 +70,7 @@ class DocumentInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Sync\V1\Service\DocumentContext Context for this
      *                                                      DocumentInstance
      */
@@ -88,7 +88,7 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Fetch a DocumentInstance
-     * 
+     *
      * @return DocumentInstance Fetched DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +98,7 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Deletes the DocumentInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -108,7 +108,7 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Update the DocumentInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return DocumentInstance Updated DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -119,8 +119,8 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Access the documentPermissions
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList
      */
     protected function getDocumentPermissions() {
         return $this->proxy()->documentPermissions;
@@ -128,7 +128,7 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -148,7 +148,7 @@ class DocumentInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -21,10 +21,10 @@ use Twilio\Version;
 class StyleSheetContext extends InstanceContext {
     /**
      * Initialize the StyleSheetContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the Assistant
-     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetContext 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\StyleSheetContext
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class StyleSheetContext extends InstanceContext {
 
     /**
      * Fetch a StyleSheetInstance
-     * 
+     *
      * @return StyleSheetInstance Fetched StyleSheetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -55,7 +55,7 @@ class StyleSheetContext extends InstanceContext {
 
     /**
      * Update the StyleSheetInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return StyleSheetInstance Updated StyleSheetInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -77,7 +77,7 @@ class StyleSheetContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

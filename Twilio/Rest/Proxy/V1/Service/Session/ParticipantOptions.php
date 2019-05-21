@@ -45,7 +45,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII.**
-     * 
+     *
      * @param string $friendlyName The string that you assigned to describe the
      *                             participant
      * @return $this Fluent Builder
@@ -57,7 +57,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool.
-     * 
+     *
      * @param string $proxyIdentifier The proxy phone number to use for the
      *                                Participant
      * @return $this Fluent Builder
@@ -69,7 +69,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * The SID of the Proxy Identifier to assign to the Participant.
-     * 
+     *
      * @param string $proxyIdentifierSid The Proxy Identifier Sid
      * @return $this Fluent Builder
      */
@@ -80,7 +80,7 @@ class CreateParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

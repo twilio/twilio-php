@@ -23,7 +23,7 @@ class V1 extends Version {
 
     /**
      * Construct the V1 version of Trunking
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Trunking\V1 V1 version of Trunking
      */
@@ -33,7 +33,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Trunking\V1\TrunkList 
+     * @return \Twilio\Rest\Trunking\V1\TrunkList
      */
     protected function getTrunks() {
         if (!$this->_trunks) {
@@ -44,7 +44,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -60,7 +60,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -77,7 +77,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

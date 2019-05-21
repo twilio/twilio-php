@@ -18,13 +18,13 @@ use Twilio\Version;
 class MessageList extends ListResource {
     /**
      * Construct the MessageList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $channelSid The unique ID of the Channel the Message resource
      *                           belongs to
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageList 
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageList
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class MessageList extends ListResource {
 
     /**
      * Create a new MessageInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -77,7 +77,7 @@ class MessageList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -101,7 +101,7 @@ class MessageList extends ListResource {
      * Reads MessageInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -120,7 +120,7 @@ class MessageList extends ListResource {
     /**
      * Retrieve a single page of MessageInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -148,7 +148,7 @@ class MessageList extends ListResource {
     /**
      * Retrieve a specific page of MessageInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of MessageInstance
      */
@@ -163,9 +163,9 @@ class MessageList extends ListResource {
 
     /**
      * Constructs a MessageContext
-     * 
+     *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageContext 
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageContext
      */
     public function getContext($sid) {
         return new MessageContext(
@@ -178,7 +178,7 @@ class MessageList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

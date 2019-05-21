@@ -62,7 +62,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.
-     * 
+     *
      * @param string $author The identity of the message's author.
      * @return $this Fluent Builder
      */
@@ -73,7 +73,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.
-     * 
+     *
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
      * @return $this Fluent Builder
@@ -85,7 +85,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The date that this resource was created.
-     * 
+     *
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
@@ -96,7 +96,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The date that this resource was last updated. `null` if the message has not been edited.
-     * 
+     *
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
@@ -107,7 +107,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The contents of the message.
-     * 
+     *
      * @param string $body The contents of the message.
      * @return $this Fluent Builder
      */
@@ -118,7 +118,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -151,7 +151,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.
-     * 
+     *
      * @param string $author The identity of the message's author.
      * @return $this Fluent Builder
      */
@@ -162,7 +162,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.
-     * 
+     *
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
      * @return $this Fluent Builder
@@ -174,7 +174,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The date that this resource was created.
-     * 
+     *
      * @param \DateTime $dateCreated The date that this resource was created.
      * @return $this Fluent Builder
      */
@@ -185,7 +185,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The date that this resource was last updated. `null` if the message has not been edited.
-     * 
+     *
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @return $this Fluent Builder
      */
@@ -196,7 +196,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The contents of the message.
-     * 
+     *
      * @param string $body The contents of the message.
      * @return $this Fluent Builder
      */
@@ -207,7 +207,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

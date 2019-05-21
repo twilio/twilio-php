@@ -18,12 +18,12 @@ use Twilio\Version;
 class MemberContext extends InstanceContext {
     /**
      * Initialize the MemberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $channelSid The unique ID of the channel the member belongs to
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext 
+     * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Fetch a MemberInstance
-     * 
+     *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -60,7 +60,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Deletes the MemberInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Update the MemberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -105,7 +105,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

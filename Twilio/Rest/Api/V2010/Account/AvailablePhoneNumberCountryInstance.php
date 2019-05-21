@@ -32,14 +32,14 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Initialize the AvailablePhoneNumberCountryInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $countryCode The ISO country code of the country to fetch
      *                            available phone number information about
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $countryCode = null) {
         parent::__construct($version);
@@ -62,7 +62,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext Context for this AvailablePhoneNumberCountryInstance
      */
     protected function proxy() {
@@ -79,7 +79,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Fetch a AvailablePhoneNumberCountryInstance
-     * 
+     *
      * @return AvailablePhoneNumberCountryInstance Fetched
      *                                             AvailablePhoneNumberCountryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,8 +90,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the local
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList
      */
     protected function getLocal() {
         return $this->proxy()->local;
@@ -99,8 +99,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the tollFree
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList
      */
     protected function getTollFree() {
         return $this->proxy()->tollFree;
@@ -108,8 +108,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the mobile
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList
      */
     protected function getMobile() {
         return $this->proxy()->mobile;
@@ -117,8 +117,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the national
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList
      */
     protected function getNational() {
         return $this->proxy()->national;
@@ -126,8 +126,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the voip
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList
      */
     protected function getVoip() {
         return $this->proxy()->voip;
@@ -135,8 +135,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the sharedCost
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList
      */
     protected function getSharedCost() {
         return $this->proxy()->sharedCost;
@@ -144,8 +144,8 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Access the machineToMachine
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList
      */
     protected function getMachineToMachine() {
         return $this->proxy()->machineToMachine;
@@ -153,7 +153,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -173,7 +173,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

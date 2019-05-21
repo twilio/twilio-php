@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
@@ -47,11 +47,11 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Initialize the ServiceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Messaging\V1\ServiceInstance 
+     * @return \Twilio\Rest\Messaging\V1\ServiceInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -86,7 +86,7 @@ class ServiceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Messaging\V1\ServiceContext Context for this
      *                                                  ServiceInstance
      */
@@ -100,7 +100,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -111,7 +111,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -121,7 +121,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -131,8 +131,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the phoneNumbers
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList
      */
     protected function getPhoneNumbers() {
         return $this->proxy()->phoneNumbers;
@@ -140,8 +140,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the shortCodes
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList
      */
     protected function getShortCodes() {
         return $this->proxy()->shortCodes;
@@ -149,8 +149,8 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the alphaSenders
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList
      */
     protected function getAlphaSenders() {
         return $this->proxy()->alphaSenders;
@@ -158,7 +158,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -178,7 +178,7 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

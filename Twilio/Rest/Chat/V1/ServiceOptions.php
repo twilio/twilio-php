@@ -379,7 +379,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -390,7 +390,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The service role assigned to users when they are added to the service. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
-     * 
+     *
      * @param string $defaultServiceRoleSid The service role assigned to users when
      *                                      they are added to the service
      * @return $this Fluent Builder
@@ -402,7 +402,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The channel role assigned to users when they are added to a channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
-     * 
+     *
      * @param string $defaultChannelRoleSid The channel role assigned to users when
      *                                      they are added to a channel
      * @return $this Fluent Builder
@@ -414,7 +414,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The channel role assigned to a channel creator when they join a new channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
-     * 
+     *
      * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
      *                                             channel creator when they join a
      *                                             new channel
@@ -427,7 +427,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to enable the [Message Consumption Horizon](https://www.twilio.com/docs/chat/consumption-horizon) feature. The default is `true`.
-     * 
+     *
      * @param bool $readStatusEnabled Whether to enable the Message Consumption
      *                                Horizon feature
      * @return $this Fluent Builder
@@ -439,7 +439,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to enable the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) for this Service instance. The default is `false`.
-     * 
+     *
      * @param bool $reachabilityEnabled Whether to enable the Reachability
      *                                  Indicator feature for this Service instance
      * @return $this Fluent Builder
@@ -451,7 +451,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * How long in seconds after a `started typing` event until clients should assume that user is no longer typing, even if no `ended typing` message was received.  The default is 5 seconds.
-     * 
+     *
      * @param int $typingIndicatorTimeout How long in seconds to wait before
      *                                    assuming the user is no longer typing
      * @return $this Fluent Builder
@@ -463,7 +463,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * DEPRECATED. The interval in seconds between consumption reports submission batches from client endpoints.
-     * 
+     *
      * @param int $consumptionReportInterval DEPRECATED
      * @return $this Fluent Builder
      */
@@ -474,7 +474,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to send a notification when a new message is added to a channel. Can be: `true` or `false` and the default is `false`.
-     * 
+     *
      * @param bool $notificationsNewMessageEnabled Whether to send a notification
      *                                             when a new message is added to a
      *                                             channel
@@ -487,7 +487,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The template to use to create the notification text displayed when a new message is added to a channel and `notifications.new_message.enabled` is `true`.
-     * 
+     *
      * @param string $notificationsNewMessageTemplate The template to use to create
      *                                                the notification text
      *                                                displayed when a new message
@@ -501,7 +501,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to send a notification when a member is added to a channel. Can be: `true` or `false` and the default is `false`.
-     * 
+     *
      * @param bool $notificationsAddedToChannelEnabled Whether to send a
      *                                                 notification when a member
      *                                                 is added to a channel
@@ -514,7 +514,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The template to use to create the notification text displayed when a member is added to a channel and `notifications.added_to_channel.enabled` is `true`.
-     * 
+     *
      * @param string $notificationsAddedToChannelTemplate The template to use to
      *                                                    create the notification
      *                                                    text displayed when a
@@ -529,7 +529,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to send a notification to a user when they are removed from a channel. Can be: `true` or `false` and the default is `false`.
-     * 
+     *
      * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
      *                                                     notification to a user
      *                                                     when they are removed
@@ -543,7 +543,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The template to use to create the notification text displayed to a user when they are removed from a channel and `notifications.removed_from_channel.enabled` is `true`.
-     * 
+     *
      * @param string $notificationsRemovedFromChannelTemplate The template to use
      *                                                        to create the
      *                                                        notification text
@@ -558,7 +558,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to send a notification when a user is invited to a channel. Can be: `true` or `false` and the default is `false`.
-     * 
+     *
      * @param bool $notificationsInvitedToChannelEnabled Whether to send a
      *                                                   notification when a user
      *                                                   is invited to a channel
@@ -571,7 +571,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The template to use to create the notification text displayed when a user is invited to a channel and `notifications.invited_to_channel.enabled` is `true`.
-     * 
+     *
      * @param string $notificationsInvitedToChannelTemplate The template to use to
      *                                                      create the notification
      *                                                      text displayed when a
@@ -586,7 +586,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL for pre-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
-     * 
+     *
      * @param string $preWebhookUrl The webhook URL for pre-event webhooks
      * @return $this Fluent Builder
      */
@@ -597,7 +597,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL for post-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
-     * 
+     *
      * @param string $postWebhookUrl The URL for post-event webhooks
      * @return $this Fluent Builder
      */
@@ -608,7 +608,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use for calls to the `pre_webhook_url` and `post_webhook_url` webhooks.  Can be: `POST` or `GET` and the default is `POST`. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
-     * 
+     *
      * @param string $webhookMethod The HTTP method  to use for both PRE and POST
      *                              webhooks
      * @return $this Fluent Builder
@@ -620,7 +620,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The list of WebHook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
-     * 
+     *
      * @param string $webhookFilters The list of WebHook events that are enabled
      *                               for this Service instance
      * @return $this Fluent Builder
@@ -632,7 +632,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_send` event using the `webhooks.on_message_send.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMessageSendUrl The URL of the webhook to call in
      *                                         response to the on_message_send event
      * @return $this Fluent Builder
@@ -644,7 +644,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_message_send.url`.
-     * 
+     *
      * @param string $webhooksOnMessageSendMethod The HTTP method to use when
      *                                            calling the
      *                                            webhooks.on_message_send.url
@@ -657,7 +657,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_update` event using the `webhooks.on_message_update.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMessageUpdateUrl The URL of the webhook to call in
      *                                           response to the on_message_update
      *                                           event
@@ -670,7 +670,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_message_update.url`.
-     * 
+     *
      * @param string $webhooksOnMessageUpdateMethod The HTTP method to use when
      *                                              calling the
      *                                              webhooks.on_message_update.url
@@ -683,7 +683,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_remove` event using the `webhooks.on_message_remove.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMessageRemoveUrl The URL of the webhook to call in
      *                                           response to the on_message_remove
      *                                           event
@@ -696,7 +696,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_message_remove.url`.
-     * 
+     *
      * @param string $webhooksOnMessageRemoveMethod The HTTP method to use when
      *                                              calling the
      *                                              webhooks.on_message_remove.url
@@ -709,7 +709,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_add` event using the `webhooks.on_channel_add.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnChannelAddUrl The URL of the webhook to call in
      *                                        response to the on_channel_add event
      * @return $this Fluent Builder
@@ -721,7 +721,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_channel_add.url`.
-     * 
+     *
      * @param string $webhooksOnChannelAddMethod The HTTP method to use when
      *                                           calling the
      *                                           webhooks.on_channel_add.url
@@ -734,7 +734,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_destroy` event using the `webhooks.on_channel_destroy.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnChannelDestroyUrl The URL of the webhook to call in
      *                                            response to the
      *                                            on_channel_destroy event
@@ -747,7 +747,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_channel_destroy.url`.
-     * 
+     *
      * @param string $webhooksOnChannelDestroyMethod The HTTP method to use when
      *                                               calling the
      *                                               webhooks.on_channel_destroy.url
@@ -760,7 +760,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_update` event using the `webhooks.on_channel_update.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnChannelUpdateUrl The URL of the webhook to call in
      *                                           response to the on_channel_update
      *                                           event
@@ -773,7 +773,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_channel_update.url`.
-     * 
+     *
      * @param string $webhooksOnChannelUpdateMethod The HTTP method to use when
      *                                              calling the
      *                                              webhooks.on_channel_update.url
@@ -786,7 +786,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_member_add` event using the `webhooks.on_member_add.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMemberAddUrl The URL of the webhook to call in
      *                                       response to the on_member_add event
      * @return $this Fluent Builder
@@ -798,7 +798,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_member_add.url`.
-     * 
+     *
      * @param string $webhooksOnMemberAddMethod The HTTP method to use when calling
      *                                          the webhooks.on_member_add.url
      * @return $this Fluent Builder
@@ -810,7 +810,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_member_remove` event using the `webhooks.on_member_remove.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMemberRemoveUrl The URL of the webhook to call in
      *                                          response to the on_member_remove
      *                                          event
@@ -823,7 +823,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_member_remove.url`.
-     * 
+     *
      * @param string $webhooksOnMemberRemoveMethod The HTTP method to use when
      *                                             calling the
      *                                             webhooks.on_member_remove.url
@@ -836,7 +836,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_sent` event using the `webhooks.on_message_sent.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMessageSentUrl The URL of the webhook to call in
      *                                         response to the on_message_sent event
      * @return $this Fluent Builder
@@ -848,7 +848,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_sent` event`.
-     * 
+     *
      * @param string $webhooksOnMessageSentMethod The URL of the webhook to call in
      *                                            response to the on_message_sent
      *                                            event
@@ -861,7 +861,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_updated` event using the `webhooks.on_message_updated.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMessageUpdatedUrl The URL of the webhook to call in
      *                                            response to the
      *                                            on_message_updated event
@@ -874,7 +874,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_message_updated.url`.
-     * 
+     *
      * @param string $webhooksOnMessageUpdatedMethod The HTTP method to use when
      *                                               calling the
      *                                               webhooks.on_message_updated.url
@@ -887,7 +887,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_message_removed` event using the `webhooks.on_message_removed.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMessageRemovedUrl The URL of the webhook to call in
      *                                            response to the
      *                                            on_message_removed event
@@ -900,7 +900,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_message_removed.url`.
-     * 
+     *
      * @param string $webhooksOnMessageRemovedMethod The HTTP method to use when
      *                                               calling the
      *                                               webhooks.on_message_removed.url
@@ -913,7 +913,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_added` event using the `webhooks.on_channel_added.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnChannelAddedUrl The URL of the webhook to call in
      *                                          response to the on_channel_added
      *                                          event
@@ -926,7 +926,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_added` event`.
-     * 
+     *
      * @param string $webhooksOnChannelAddedMethod The URL of the webhook to call
      *                                             in response to the
      *                                             on_channel_added event
@@ -939,7 +939,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_added` event using the `webhooks.on_channel_destroyed.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnChannelDestroyedUrl The URL of the webhook to call
      *                                              in response to the
      *                                              on_channel_added event
@@ -952,7 +952,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_channel_destroyed.url`.
-     * 
+     *
      * @param string $webhooksOnChannelDestroyedMethod The HTTP method to use when
      *                                                 calling the
      *                                                 webhooks.on_channel_destroyed.url
@@ -965,7 +965,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_updated` event using the `webhooks.on_channel_updated.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnChannelUpdatedUrl he URL of the webhook to call in
      *                                            response to the
      *                                            on_channel_updated event
@@ -978,7 +978,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_channel_updated.url`.
-     * 
+     *
      * @param string $webhooksOnChannelUpdatedMethod The HTTP method to use when
      *                                               calling the
      *                                               webhooks.on_channel_updated.url
@@ -991,7 +991,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_channel_updated` event using the `webhooks.on_channel_updated.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMemberAddedUrl The URL of the webhook to call in
      *                                         response to the on_channel_updated
      *                                         event
@@ -1004,7 +1004,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_channel_updated.url`.
-     * 
+     *
      * @param string $webhooksOnMemberAddedMethod he HTTP method to use when
      *                                            calling the
      *                                            webhooks.on_channel_updated.url
@@ -1017,7 +1017,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The URL of the webhook to call in response to the `on_member_removed` event using the `webhooks.on_member_removed.method` HTTP method.
-     * 
+     *
      * @param string $webhooksOnMemberRemovedUrl The URL of the webhook to call in
      *                                           response to the on_member_removed
      *                                           event
@@ -1030,7 +1030,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The HTTP method to use when calling the `webhooks.on_member_removed.url`.
-     * 
+     *
      * @param string $webhooksOnMemberRemovedMethod The HTTP method to use when
      *                                              calling the
      *                                              webhooks.on_member_removed.url
@@ -1043,7 +1043,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The maximum number of Members that can be added to Channels within this Service. Can be up to 1,000.
-     * 
+     *
      * @param int $limitsChannelMembers The maximum number of Members that can be
      *                                  added to Channels within this Service
      * @return $this Fluent Builder
@@ -1055,7 +1055,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The maximum number of Channels Users can be a Member of within this Service. Can be up to 1,000.
-     * 
+     *
      * @param int $limitsUserChannels The maximum number of Channels Users can be a
      *                                Member of within this Service
      * @return $this Fluent Builder
@@ -1067,7 +1067,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

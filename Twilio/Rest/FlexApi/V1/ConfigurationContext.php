@@ -17,9 +17,9 @@ use Twilio\Version;
 class ConfigurationContext extends InstanceContext {
     /**
      * Initialize the ConfigurationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext 
+     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -32,7 +32,7 @@ class ConfigurationContext extends InstanceContext {
 
     /**
      * Fetch a ConfigurationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ConfigurationInstance Fetched ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -53,7 +53,7 @@ class ConfigurationContext extends InstanceContext {
 
     /**
      * Create a new ConfigurationInstance
-     * 
+     *
      * @return ConfigurationInstance Newly created ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -72,7 +72,7 @@ class ConfigurationContext extends InstanceContext {
 
     /**
      * Update the ConfigurationInstance
-     * 
+     *
      * @return ConfigurationInstance Updated ConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -91,7 +91,7 @@ class ConfigurationContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

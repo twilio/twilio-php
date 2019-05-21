@@ -18,9 +18,9 @@ use Twilio\Version;
 class RecordingSettingsList extends ListResource {
     /**
      * Construct the RecordingSettingsList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsList 
+     * @return \Twilio\Rest\Video\V1\RecordingSettingsList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,8 +31,8 @@ class RecordingSettingsList extends ListResource {
 
     /**
      * Constructs a RecordingSettingsContext
-     * 
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsContext 
+     *
+     * @return \Twilio\Rest\Video\V1\RecordingSettingsContext
      */
     public function getContext() {
         return new RecordingSettingsContext($this->version);
@@ -40,7 +40,7 @@ class RecordingSettingsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

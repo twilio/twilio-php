@@ -126,7 +126,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -137,7 +137,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings.
-     * 
+     *
      * @param string $apnCredentialSid The SID of the Credential to use for APN
      *                                 Bindings
      * @return $this Fluent Builder
@@ -149,7 +149,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings.
-     * 
+     *
      * @param string $gcmCredentialSid The SID of the Credential to use for GCM
      *                                 Bindings
      * @return $this Fluent Builder
@@ -161,7 +161,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications.
-     * 
+     *
      * @param string $messagingServiceSid The SID of the Messaging Service to use
      *                                    for SMS Bindings
      * @return $this Fluent Builder
@@ -173,7 +173,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $facebookMessengerPageId Deprecated
      * @return $this Fluent Builder
      */
@@ -184,7 +184,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
-     * 
+     *
      * @param string $defaultApnNotificationProtocolVersion The protocol version to
      *                                                      use for sending APNS
      *                                                      notifications
@@ -197,7 +197,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
-     * 
+     *
      * @param string $defaultGcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending GCM
      *                                                      notifications
@@ -210,7 +210,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings.
-     * 
+     *
      * @param string $fcmCredentialSid The SID of the Credential to use for FCM
      *                                 Bindings
      * @return $this Fluent Builder
@@ -222,7 +222,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
-     * 
+     *
      * @param string $defaultFcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending FCM
      *                                                      notifications
@@ -235,7 +235,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Whether to log notifications. Can be: `true` or `false` and the default is `true`.
-     * 
+     *
      * @param bool $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
@@ -246,7 +246,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $alexaSkillId Deprecated
      * @return $this Fluent Builder
      */
@@ -257,7 +257,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return $this Fluent Builder
      */
@@ -268,7 +268,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -293,7 +293,7 @@ class ReadServiceOptions extends Options {
 
     /**
      * The string that identifies the Service resources to read.
-     * 
+     *
      * @param string $friendlyName The string that identifies the Service resources
      *                             to read
      * @return $this Fluent Builder
@@ -305,7 +305,7 @@ class ReadServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -361,7 +361,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -372,7 +372,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings.
-     * 
+     *
      * @param string $apnCredentialSid The SID of the Credential to use for APN
      *                                 Bindings
      * @return $this Fluent Builder
@@ -384,7 +384,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings.
-     * 
+     *
      * @param string $gcmCredentialSid The SID of the Credential to use for GCM
      *                                 Bindings
      * @return $this Fluent Builder
@@ -396,7 +396,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The SID of the [Messaging Service](https://www.twilio.com/docs/sms/send-messages#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications.
-     * 
+     *
      * @param string $messagingServiceSid The SID of the Messaging Service to use
      *                                    for SMS Bindings
      * @return $this Fluent Builder
@@ -408,7 +408,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $facebookMessengerPageId Deprecated
      * @return $this Fluent Builder
      */
@@ -419,7 +419,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
-     * 
+     *
      * @param string $defaultApnNotificationProtocolVersion The protocol version to
      *                                                      use for sending APNS
      *                                                      notifications
@@ -432,7 +432,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
-     * 
+     *
      * @param string $defaultGcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending GCM
      *                                                      notifications
@@ -445,7 +445,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings.
-     * 
+     *
      * @param string $fcmCredentialSid The SID of the Credential to use for FCM
      *                                 Bindings
      * @return $this Fluent Builder
@@ -457,7 +457,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
-     * 
+     *
      * @param string $defaultFcmNotificationProtocolVersion The protocol version to
      *                                                      use for sending FCM
      *                                                      notifications
@@ -470,7 +470,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Whether to log notifications. Can be: `true` or `false` and the default is `true`.
-     * 
+     *
      * @param bool $logEnabled Whether to log notifications
      * @return $this Fluent Builder
      */
@@ -481,7 +481,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $alexaSkillId Deprecated
      * @return $this Fluent Builder
      */
@@ -492,7 +492,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Deprecated.
-     * 
+     *
      * @param string $defaultAlexaNotificationProtocolVersion Deprecated
      * @return $this Fluent Builder
      */
@@ -503,7 +503,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

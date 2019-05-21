@@ -44,7 +44,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The length of the verification code to be generated. Must be an integer value between 4-10
-     * 
+     *
      * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return $this Fluent Builder
      */
@@ -55,7 +55,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -81,7 +81,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A 1-64 character string with friendly name of service
-     * 
+     *
      * @param string $name Friendly name of the service
      * @return $this Fluent Builder
      */
@@ -92,7 +92,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The length of the verification code to be generated. Must be an integer value between 4-10
-     * 
+     *
      * @param int $codeLength Length of verification code. Valid values are 4-10
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

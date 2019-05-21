@@ -25,13 +25,13 @@ use Twilio\Version;
 class SigningKeyInstance extends InstanceResource {
     /**
      * Initialize the SigningKeyInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -50,7 +50,7 @@ class SigningKeyInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\SigningKeyContext Context for this
      *                                                          SigningKeyInstance
      */
@@ -68,7 +68,7 @@ class SigningKeyInstance extends InstanceResource {
 
     /**
      * Fetch a SigningKeyInstance
-     * 
+     *
      * @return SigningKeyInstance Fetched SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -78,7 +78,7 @@ class SigningKeyInstance extends InstanceResource {
 
     /**
      * Update the SigningKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SigningKeyInstance Updated SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class SigningKeyInstance extends InstanceResource {
 
     /**
      * Deletes the SigningKeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -99,7 +99,7 @@ class SigningKeyInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -119,7 +119,7 @@ class SigningKeyInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

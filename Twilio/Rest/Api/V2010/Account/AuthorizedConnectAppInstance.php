@@ -30,12 +30,12 @@ use Twilio\Version;
 class AuthorizedConnectAppInstance extends InstanceResource {
     /**
      * Initialize the AuthorizedConnectAppInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $connectAppSid The SID of the Connect App to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $connectAppSid = null) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext Context
      *                                                                    for this
      *                                                                    AuthorizedConnectAppInstance
@@ -82,7 +82,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
 
     /**
      * Fetch a AuthorizedConnectAppInstance
-     * 
+     *
      * @return AuthorizedConnectAppInstance Fetched AuthorizedConnectAppInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -92,7 +92,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -112,7 +112,7 @@ class AuthorizedConnectAppInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

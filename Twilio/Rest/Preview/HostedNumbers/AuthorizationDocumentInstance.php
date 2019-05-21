@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string addressSid
  * @property string status
@@ -34,11 +34,11 @@ class AuthorizationDocumentInstance extends InstanceResource {
 
     /**
      * Initialize the AuthorizationDocumentInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid AuthorizationDocument sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentInstance 
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -62,7 +62,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext Context for this AuthorizationDocumentInstance
      */
     protected function proxy() {
@@ -75,7 +75,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
 
     /**
      * Fetch a AuthorizationDocumentInstance
-     * 
+     *
      * @return AuthorizationDocumentInstance Fetched AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -85,7 +85,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
 
     /**
      * Update the AuthorizationDocumentInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AuthorizationDocumentInstance Updated AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -96,8 +96,8 @@ class AuthorizationDocumentInstance extends InstanceResource {
 
     /**
      * Access the dependentHostedNumberOrders
-     * 
-     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumberOrderList 
+     *
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumberOrderList
      */
     protected function getDependentHostedNumberOrders() {
         return $this->proxy()->dependentHostedNumberOrders;
@@ -105,7 +105,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -125,7 +125,7 @@ class AuthorizationDocumentInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

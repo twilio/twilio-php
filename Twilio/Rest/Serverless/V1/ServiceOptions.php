@@ -47,7 +47,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional, default `false`.
-     * 
+     *
      * @param bool $includeCredentials Whether to inject Account credentials into a
      *                                 Function invocation context.
      * @return $this Fluent Builder
@@ -59,7 +59,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -86,7 +86,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional.
-     * 
+     *
      * @param bool $includeCredentials Whether to inject Account credentials into a
      *                                 Function invocation context.
      * @return $this Fluent Builder
@@ -98,7 +98,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A human-readable description of this Service, fewer than 256 characters. Optional
-     * 
+     *
      * @param string $friendlyName A human-readable description of this Service.
      * @return $this Fluent Builder
      */
@@ -109,7 +109,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

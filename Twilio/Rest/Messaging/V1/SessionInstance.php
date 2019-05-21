@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -38,12 +38,12 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Initialize the SessionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Messaging\V1\SessionInstance 
+     * @return \Twilio\Rest\Messaging\V1\SessionInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -69,7 +69,7 @@ class SessionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Messaging\V1\SessionContext Context for this
      *                                                  SessionInstance
      */
@@ -83,7 +83,7 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Fetch a SessionInstance
-     * 
+     *
      * @return SessionInstance Fetched SessionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -93,7 +93,7 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Deletes the SessionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,7 +103,7 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Update the SessionInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SessionInstance Updated SessionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -114,8 +114,8 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Session\ParticipantList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Session\ParticipantList
      */
     protected function getParticipants() {
         return $this->proxy()->participants;
@@ -123,8 +123,8 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Access the messages
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Session\MessageList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Session\MessageList
      */
     protected function getMessages() {
         return $this->proxy()->messages;
@@ -132,8 +132,8 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Access the webhooks
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Session\WebhookList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Session\WebhookList
      */
     protected function getWebhooks() {
         return $this->proxy()->webhooks;
@@ -141,7 +141,7 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -161,7 +161,7 @@ class SessionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

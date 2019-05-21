@@ -18,9 +18,9 @@ use Twilio\Version;
 class WebhookList extends ListResource {
     /**
      * Construct the WebhookList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Messaging\V1\WebhookList 
+     * @return \Twilio\Rest\Messaging\V1\WebhookList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,8 +31,8 @@ class WebhookList extends ListResource {
 
     /**
      * Constructs a WebhookContext
-     * 
-     * @return \Twilio\Rest\Messaging\V1\WebhookContext 
+     *
+     * @return \Twilio\Rest\Messaging\V1\WebhookContext
      */
     public function getContext() {
         return new WebhookContext($this->version);
@@ -40,7 +40,7 @@ class WebhookList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

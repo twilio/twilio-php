@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string uniqueName
  * @property string accountSid
@@ -37,11 +37,11 @@ use Twilio\Version;
 class RatePlanInstance extends InstanceResource {
     /**
      * Initialize the RatePlanInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\RatePlanInstance 
+     * @return \Twilio\Rest\Preview\Wireless\RatePlanInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -70,7 +70,7 @@ class RatePlanInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Wireless\RatePlanContext Context for this
      *                                                       RatePlanInstance
      */
@@ -84,7 +84,7 @@ class RatePlanInstance extends InstanceResource {
 
     /**
      * Fetch a RatePlanInstance
-     * 
+     *
      * @return RatePlanInstance Fetched RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,7 +94,7 @@ class RatePlanInstance extends InstanceResource {
 
     /**
      * Update the RatePlanInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return RatePlanInstance Updated RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -105,7 +105,7 @@ class RatePlanInstance extends InstanceResource {
 
     /**
      * Deletes the RatePlanInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -115,7 +115,7 @@ class RatePlanInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -135,7 +135,7 @@ class RatePlanInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

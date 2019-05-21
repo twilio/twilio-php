@@ -46,12 +46,12 @@ use Twilio\Version;
 class DependentPhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the DependentPhoneNumberInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created the resource
      * @param string $addressSid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $addressSid) {
         parent::__construct($version);
@@ -91,7 +91,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -111,7 +111,7 @@ class DependentPhoneNumberInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

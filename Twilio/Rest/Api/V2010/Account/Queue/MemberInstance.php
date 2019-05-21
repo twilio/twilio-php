@@ -27,13 +27,13 @@ use Twilio\Version;
 class MemberInstance extends InstanceResource {
     /**
      * Initialize the MemberInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The SID of the Account that created this resource
      * @param string $queueSid The SID of the Queue the member is in
      * @param string $callSid The Call SID of the resource(s) to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $queueSid, $callSid = null) {
         parent::__construct($version);
@@ -58,7 +58,7 @@ class MemberInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext Context for this
      *                                                            MemberInstance
      */
@@ -77,7 +77,7 @@ class MemberInstance extends InstanceResource {
 
     /**
      * Fetch a MemberInstance
-     * 
+     *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -87,7 +87,7 @@ class MemberInstance extends InstanceResource {
 
     /**
      * Update the MemberInstance
-     * 
+     *
      * @param string $url The absolute URL of the Queue resource
      * @param array|Options $options Optional Arguments
      * @return MemberInstance Updated MemberInstance
@@ -99,7 +99,7 @@ class MemberInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -119,7 +119,7 @@ class MemberInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

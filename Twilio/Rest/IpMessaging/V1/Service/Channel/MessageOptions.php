@@ -55,7 +55,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the new message's author. The default value is `system`.
-     * 
+     *
      * @param string $from The identity of the new message's author
      * @return $this Fluent Builder
      */
@@ -66,7 +66,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -78,7 +78,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -102,7 +102,7 @@ class ReadMessageOptions extends Options {
 
     /**
      * The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.
-     * 
+     *
      * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
@@ -113,7 +113,7 @@ class ReadMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -140,7 +140,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
-     * 
+     *
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
@@ -151,7 +151,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * A valid JSON string that contains application-specific data.
-     * 
+     *
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

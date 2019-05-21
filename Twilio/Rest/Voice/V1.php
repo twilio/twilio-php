@@ -22,7 +22,7 @@ class V1 extends Version {
 
     /**
      * Construct the V1 version of Voice
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Voice\V1 V1 version of Voice
      */
@@ -32,7 +32,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
      */
     protected function getDialingPermissions() {
         if (!$this->_dialingPermissions) {
@@ -43,7 +43,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -59,7 +59,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -76,7 +76,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

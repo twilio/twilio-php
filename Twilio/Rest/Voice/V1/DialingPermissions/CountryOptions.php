@@ -70,7 +70,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Filter to retrieve the country permissions by specifying the [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-     * 
+     *
      * @param string $isoCode Filter to retrieve the country permissions by
      *                        specifying the ISO country code
      * @return $this Fluent Builder
@@ -82,7 +82,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Filter to retrieve the country permissions by specifying the continent
-     * 
+     *
      * @param string $continent Filter to retrieve the country permissions by
      *                          specifying the continent
      * @return $this Fluent Builder
@@ -94,7 +94,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
-     * 
+     *
      * @param string $countryCode Country code filter
      * @return $this Fluent Builder
      */
@@ -105,7 +105,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $lowRiskNumbersEnabled Filter to retrieve the country
      *                                    permissions with dialing to low-risk
      *                                    numbers enabled
@@ -118,7 +118,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`
-     * 
+     *
      * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country
      *                                            permissions with dialing to
      *                                            high-risk special service numbers
@@ -132,7 +132,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
-     * 
+     *
      * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country
      *                                              permissions with dialing to
      *                                              high-risk toll fraud numbers
@@ -146,7 +146,7 @@ class ReadCountryOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -19,9 +19,9 @@ use Twilio\Version;
 class BulkCountryUpdateList extends ListResource {
     /**
      * Construct the BulkCountryUpdateList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class BulkCountryUpdateList extends ListResource {
 
     /**
      * Create a new BulkCountryUpdateInstance
-     * 
+     *
      * @param string $updateRequest URL encoded JSON array of update objects
      * @return BulkCountryUpdateInstance Newly created BulkCountryUpdateInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -54,7 +54,7 @@ class BulkCountryUpdateList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

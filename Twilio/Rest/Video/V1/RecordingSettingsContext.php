@@ -21,9 +21,9 @@ use Twilio\Version;
 class RecordingSettingsContext extends InstanceContext {
     /**
      * Initialize the RecordingSettingsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsContext 
+     * @return \Twilio\Rest\Video\V1\RecordingSettingsContext
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class RecordingSettingsContext extends InstanceContext {
 
     /**
      * Fetch a RecordingSettingsInstance
-     * 
+     *
      * @return RecordingSettingsInstance Fetched RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -54,7 +54,7 @@ class RecordingSettingsContext extends InstanceContext {
 
     /**
      * Create a new RecordingSettingsInstance
-     * 
+     *
      * @param string $friendlyName Friendly name of the configuration to be shown
      *                             in the console
      * @param array|Options $options Optional Arguments
@@ -85,7 +85,7 @@ class RecordingSettingsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

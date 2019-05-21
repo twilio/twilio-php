@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string from
  * @property string to
@@ -29,10 +29,10 @@ use Twilio\Version;
 class CurrentCallInstance extends InstanceResource {
     /**
      * Initialize the CurrentCallInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallInstance 
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -53,7 +53,7 @@ class CurrentCallInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext Context for
      *                                                              this
      *                                                              CurrentCallInstance
@@ -68,7 +68,7 @@ class CurrentCallInstance extends InstanceResource {
 
     /**
      * Fetch a CurrentCallInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -79,7 +79,7 @@ class CurrentCallInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -99,7 +99,7 @@ class CurrentCallInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

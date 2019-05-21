@@ -22,7 +22,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Serverless\V1\Service\EnvironmentList environments
  * @property \Twilio\Rest\Serverless\V1\Service\FunctionList functions
  * @property \Twilio\Rest\Serverless\V1\Service\AssetList assets
@@ -40,10 +40,10 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Initialize the ServiceContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid Serverless Service Sid or unique name.
-     * @return \Twilio\Rest\Serverless\V1\ServiceContext 
+     * @return \Twilio\Rest\Serverless\V1\ServiceContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -56,7 +56,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -74,7 +74,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -99,8 +99,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the environments
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentList
      */
     protected function getEnvironments() {
         if (!$this->_environments) {
@@ -112,8 +112,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the functions
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\FunctionList
      */
     protected function getFunctions() {
         if (!$this->_functions) {
@@ -125,8 +125,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the assets
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\AssetList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\AssetList
      */
     protected function getAssets() {
         if (!$this->_assets) {
@@ -138,8 +138,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the builds
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\BuildList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\BuildList
      */
     protected function getBuilds() {
         if (!$this->_builds) {
@@ -151,7 +151,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -167,7 +167,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -184,7 +184,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

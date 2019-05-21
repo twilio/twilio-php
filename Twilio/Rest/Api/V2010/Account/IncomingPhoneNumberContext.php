@@ -26,12 +26,12 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Initialize the IncomingPhoneNumberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -44,7 +44,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Update the IncomingPhoneNumberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -94,7 +94,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Fetch a IncomingPhoneNumberInstance
-     * 
+     *
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -117,7 +117,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Deletes the IncomingPhoneNumberInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -127,8 +127,8 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Access the assignedAddOns
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList
      */
     protected function getAssignedAddOns() {
         if (!$this->_assignedAddOns) {
@@ -144,7 +144,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -160,7 +160,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -177,7 +177,7 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

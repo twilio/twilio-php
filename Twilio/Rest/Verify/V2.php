@@ -23,7 +23,7 @@ class V2 extends Version {
 
     /**
      * Construct the V2 version of Verify
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Verify\V2 V2 version of Verify
      */
@@ -33,7 +33,7 @@ class V2 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Verify\V2\ServiceList 
+     * @return \Twilio\Rest\Verify\V2\ServiceList
      */
     protected function getServices() {
         if (!$this->_services) {
@@ -44,7 +44,7 @@ class V2 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -60,7 +60,7 @@ class V2 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -77,7 +77,7 @@ class V2 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

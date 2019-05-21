@@ -35,7 +35,7 @@ class UpdateAssistantInitiationActionsOptions extends Options {
 
     /**
      * The initiation_actions
-     * 
+     *
      * @param array $initiationActions The initiation_actions
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class UpdateAssistantInitiationActionsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

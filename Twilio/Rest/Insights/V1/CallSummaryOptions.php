@@ -35,7 +35,7 @@ class FetchCallSummaryOptions extends Options {
 
     /**
      * The processing_state
-     * 
+     *
      * @param string $processingState The processing_state
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class FetchCallSummaryOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

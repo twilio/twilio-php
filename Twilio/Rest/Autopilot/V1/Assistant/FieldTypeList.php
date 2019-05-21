@@ -20,11 +20,11 @@ use Twilio\Version;
 class FieldTypeList extends ListResource {
     /**
      * Construct the FieldTypeList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class FieldTypeList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -65,7 +65,7 @@ class FieldTypeList extends ListResource {
      * Reads FieldTypeInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -83,7 +83,7 @@ class FieldTypeList extends ListResource {
     /**
      * Retrieve a single page of FieldTypeInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -108,7 +108,7 @@ class FieldTypeList extends ListResource {
     /**
      * Retrieve a specific page of FieldTypeInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of FieldTypeInstance
      */
@@ -123,7 +123,7 @@ class FieldTypeList extends ListResource {
 
     /**
      * Create a new FieldTypeInstance
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the new resource
      * @param array|Options $options Optional Arguments
@@ -147,9 +147,9 @@ class FieldTypeList extends ListResource {
 
     /**
      * Constructs a FieldTypeContext
-     * 
+     *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext
      */
     public function getContext($sid) {
         return new FieldTypeContext($this->version, $this->solution['assistantSid'], $sid);
@@ -157,7 +157,7 @@ class FieldTypeList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

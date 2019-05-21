@@ -50,7 +50,7 @@ class CreateMemberOptions extends Options {
 
     /**
      * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
-     * 
+     *
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
@@ -61,7 +61,7 @@ class CreateMemberOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -85,7 +85,7 @@ class ReadMemberOptions extends Options {
 
     /**
      * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
-     * 
+     *
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -96,7 +96,7 @@ class ReadMemberOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -123,7 +123,7 @@ class UpdateMemberOptions extends Options {
 
     /**
      * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
-     * 
+     *
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
      */
@@ -134,7 +134,7 @@ class UpdateMemberOptions extends Options {
 
     /**
      * The index of the last [Message](https://www.twilio.com/docs/api/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/api/chat/rest/channels).
-     * 
+     *
      * @param int $lastConsumedMessageIndex The index of the last consumed Message
      *                                      for the Channel for the Member
      * @return $this Fluent Builder
@@ -146,7 +146,7 @@ class UpdateMemberOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

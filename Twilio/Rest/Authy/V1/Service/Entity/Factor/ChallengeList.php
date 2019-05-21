@@ -21,12 +21,12 @@ use Twilio\Version;
 class ChallengeList extends ListResource {
     /**
      * Construct the ChallengeList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $identity Unique identity of the Entity
      * @param string $factorSid Factor Sid.
-     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeList 
+     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeList
      */
     public function __construct(Version $version, $serviceSid, $identity, $factorSid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class ChallengeList extends ListResource {
 
     /**
      * Create a new ChallengeInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ChallengeInstance Newly created ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -75,10 +75,10 @@ class ChallengeList extends ListResource {
 
     /**
      * Constructs a ChallengeContext
-     * 
+     *
      * @param string $sid A string that uniquely identifies this Challenge, or
      *                    `latest`.
-     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeContext 
+     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeContext
      */
     public function getContext($sid) {
         return new ChallengeContext(
@@ -92,7 +92,7 @@ class ChallengeList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

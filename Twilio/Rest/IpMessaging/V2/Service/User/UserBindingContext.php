@@ -16,12 +16,12 @@ use Twilio\Version;
 class UserBindingContext extends InstanceContext {
     /**
      * Initialize the UserBindingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $userSid The SID of the User for the binding
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingContext 
+     * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingContext
      */
     public function __construct(Version $version, $serviceSid, $userSid, $sid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class UserBindingContext extends InstanceContext {
 
     /**
      * Fetch a UserBindingInstance
-     * 
+     *
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -58,7 +58,7 @@ class UserBindingContext extends InstanceContext {
 
     /**
      * Deletes the UserBindingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -68,7 +68,7 @@ class UserBindingContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

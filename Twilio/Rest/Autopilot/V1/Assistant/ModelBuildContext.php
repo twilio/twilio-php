@@ -20,12 +20,12 @@ use Twilio\Version;
 class ModelBuildContext extends InstanceContext {
     /**
      * Initialize the ModelBuildContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $assistantSid The SID of the Assistant that is the parent of
      *                             the resource to fetch
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildContext 
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildContext
      */
     public function __construct(Version $version, $assistantSid, $sid) {
         parent::__construct($version);
@@ -38,7 +38,7 @@ class ModelBuildContext extends InstanceContext {
 
     /**
      * Fetch a ModelBuildInstance
-     * 
+     *
      * @return ModelBuildInstance Fetched ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -61,7 +61,7 @@ class ModelBuildContext extends InstanceContext {
 
     /**
      * Update the ModelBuildInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ModelBuildInstance Updated ModelBuildInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -88,7 +88,7 @@ class ModelBuildContext extends InstanceContext {
 
     /**
      * Deletes the ModelBuildInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +98,7 @@ class ModelBuildContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

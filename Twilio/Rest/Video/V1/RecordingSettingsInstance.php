@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string friendlyName
  * @property string awsCredentialsSid
@@ -30,10 +30,10 @@ use Twilio\Version;
 class RecordingSettingsInstance extends InstanceResource {
     /**
      * Initialize the RecordingSettingsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsInstance 
+     * @return \Twilio\Rest\Video\V1\RecordingSettingsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -56,7 +56,7 @@ class RecordingSettingsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\RecordingSettingsContext Context for this
      *                                                        RecordingSettingsInstance
      */
@@ -70,7 +70,7 @@ class RecordingSettingsInstance extends InstanceResource {
 
     /**
      * Fetch a RecordingSettingsInstance
-     * 
+     *
      * @return RecordingSettingsInstance Fetched RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,7 +80,7 @@ class RecordingSettingsInstance extends InstanceResource {
 
     /**
      * Create a new RecordingSettingsInstance
-     * 
+     *
      * @param string $friendlyName Friendly name of the configuration to be shown
      *                             in the console
      * @param array|Options $options Optional Arguments
@@ -93,7 +93,7 @@ class RecordingSettingsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -113,7 +113,7 @@ class RecordingSettingsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

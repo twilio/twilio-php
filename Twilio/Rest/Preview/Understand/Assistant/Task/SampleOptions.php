@@ -60,7 +60,7 @@ class ReadSampleOptions extends Options {
 
     /**
      * An ISO language-country string of the sample.
-     * 
+     *
      * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
@@ -71,7 +71,7 @@ class ReadSampleOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -98,7 +98,7 @@ class CreateSampleOptions extends Options {
 
     /**
      * The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null
-     * 
+     *
      * @param string $sourceChannel The communication channel the sample was
      *                              captured. It can be: voice, sms, chat, alexa,
      *                              google-assistant, or slack. If not included the
@@ -112,7 +112,7 @@ class CreateSampleOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -144,7 +144,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * An ISO language-country string of the sample.
-     * 
+     *
      * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
@@ -155,7 +155,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * The text example of how end-users may express this task. The sample may contain Field tag blocks.
-     * 
+     *
      * @param string $taggedText The text example of how end-users may express this
      *                           task. The sample may contain Field tag blocks.
      * @return $this Fluent Builder
@@ -167,7 +167,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * The communication channel the sample was captured. It can be: *voice*, *sms*, *chat*, *alexa*, *google-assistant*, or *slack*. If not included the value will be null
-     * 
+     *
      * @param string $sourceChannel The communication channel the sample was
      *                              captured. It can be: voice, sms, chat, alexa,
      *                              google-assistant, or slack. If not included the
@@ -181,7 +181,7 @@ class UpdateSampleOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

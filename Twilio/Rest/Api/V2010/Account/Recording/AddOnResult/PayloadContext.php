@@ -16,7 +16,7 @@ use Twilio\Version;
 class PayloadContext extends InstanceContext {
     /**
      * Initialize the PayloadContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the resource
      *                           to fetch
@@ -26,7 +26,7 @@ class PayloadContext extends InstanceContext {
      * @param string $addOnResultSid The SID of the AddOnResult to which the
      *                               payload to fetch belongs
      * @param string $sid The unique string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid, $sid) {
         parent::__construct($version);
@@ -44,7 +44,7 @@ class PayloadContext extends InstanceContext {
 
     /**
      * Fetch a PayloadInstance
-     * 
+     *
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -69,7 +69,7 @@ class PayloadContext extends InstanceContext {
 
     /**
      * Deletes the PayloadInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -79,7 +79,7 @@ class PayloadContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

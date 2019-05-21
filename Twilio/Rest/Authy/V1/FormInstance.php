@@ -16,7 +16,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string formType
  * @property array forms
  * @property array formMeta
@@ -25,11 +25,11 @@ use Twilio\Version;
 class FormInstance extends InstanceResource {
     /**
      * Initialize the FormInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $formType The Type of this Form
-     * @return \Twilio\Rest\Authy\V1\FormInstance 
+     * @return \Twilio\Rest\Authy\V1\FormInstance
      */
     public function __construct(Version $version, array $payload, $formType = null) {
         parent::__construct($version);
@@ -48,7 +48,7 @@ class FormInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Authy\V1\FormContext Context for this FormInstance
      */
     protected function proxy() {
@@ -61,7 +61,7 @@ class FormInstance extends InstanceResource {
 
     /**
      * Fetch a FormInstance
-     * 
+     *
      * @return FormInstance Fetched FormInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -71,7 +71,7 @@ class FormInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -91,7 +91,7 @@ class FormInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

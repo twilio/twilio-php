@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string serviceSid
  * @property string accountSid
@@ -31,11 +31,11 @@ use Twilio\Version;
 class VerificationCheckInstance extends InstanceResource {
     /**
      * Initialize the VerificationCheckInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationCheckInstance 
+     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationCheckInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid) {
         parent::__construct($version);
@@ -58,7 +58,7 @@ class VerificationCheckInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -78,7 +78,7 @@ class VerificationCheckInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

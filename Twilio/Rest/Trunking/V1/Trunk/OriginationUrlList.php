@@ -17,10 +17,10 @@ use Twilio\Version;
 class OriginationUrlList extends ListResource {
     /**
      * Construct the OriginationUrlList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $trunkSid The SID of the Trunk that owns the Origination URL
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList
      */
     public function __construct(Version $version, $trunkSid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class OriginationUrlList extends ListResource {
 
     /**
      * Create a new OriginationUrlInstance
-     * 
+     *
      * @param int $weight The value that determines the relative load the URI
      *                    should receive compared to others with the same priority
      * @param int $priority The relative importance of the URI
@@ -70,7 +70,7 @@ class OriginationUrlList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -93,7 +93,7 @@ class OriginationUrlList extends ListResource {
      * Reads OriginationUrlInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -111,7 +111,7 @@ class OriginationUrlList extends ListResource {
     /**
      * Retrieve a single page of OriginationUrlInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -136,7 +136,7 @@ class OriginationUrlList extends ListResource {
     /**
      * Retrieve a specific page of OriginationUrlInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of OriginationUrlInstance
      */
@@ -151,9 +151,9 @@ class OriginationUrlList extends ListResource {
 
     /**
      * Constructs a OriginationUrlContext
-     * 
+     *
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext 
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext
      */
     public function getContext($sid) {
         return new OriginationUrlContext($this->version, $this->solution['trunkSid'], $sid);
@@ -161,7 +161,7 @@ class OriginationUrlList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

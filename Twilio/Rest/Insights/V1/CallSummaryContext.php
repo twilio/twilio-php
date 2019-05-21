@@ -20,10 +20,10 @@ use Twilio\Version;
 class CallSummaryContext extends InstanceContext {
     /**
      * Initialize the CallSummaryContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\CallSummaryContext 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryContext
      */
     public function __construct(Version $version, $callSid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class CallSummaryContext extends InstanceContext {
 
     /**
      * Fetch a CallSummaryInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CallSummaryInstance Fetched CallSummaryInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -57,7 +57,7 @@ class CallSummaryContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

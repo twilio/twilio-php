@@ -43,7 +43,7 @@ class UpdateOutgoingCallerIdOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -54,7 +54,7 @@ class UpdateOutgoingCallerIdOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -82,7 +82,7 @@ class ReadOutgoingCallerIdOptions extends Options {
 
     /**
      * The phone number of the OutgoingCallerId resources to read.
-     * 
+     *
      * @param string $phoneNumber The phone number of the OutgoingCallerId
      *                            resources to read
      * @return $this Fluent Builder
@@ -94,7 +94,7 @@ class ReadOutgoingCallerIdOptions extends Options {
 
     /**
      * The string that identifies the OutgoingCallerId resources to read.
-     * 
+     *
      * @param string $friendlyName The string that identifies the OutgoingCallerId
      *                             resources to read
      * @return $this Fluent Builder
@@ -106,7 +106,7 @@ class ReadOutgoingCallerIdOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

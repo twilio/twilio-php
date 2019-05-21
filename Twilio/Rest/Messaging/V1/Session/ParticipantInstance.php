@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string serviceSid
  * @property string messagingServiceSid
@@ -36,13 +36,13 @@ use Twilio\Version;
 class ParticipantInstance extends InstanceResource {
     /**
      * Initialize the ParticipantInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sessionSid The unique id of the Session for this participant.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Messaging\V1\Session\ParticipantInstance 
+     * @return \Twilio\Rest\Messaging\V1\Session\ParticipantInstance
      */
     public function __construct(Version $version, array $payload, $sessionSid, $sid = null) {
         parent::__construct($version);
@@ -70,7 +70,7 @@ class ParticipantInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Messaging\V1\Session\ParticipantContext Context for
      *                                                              this
      *                                                              ParticipantInstance
@@ -89,7 +89,7 @@ class ParticipantInstance extends InstanceResource {
 
     /**
      * Update the ParticipantInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class ParticipantInstance extends InstanceResource {
 
     /**
      * Fetch a ParticipantInstance
-     * 
+     *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -110,7 +110,7 @@ class ParticipantInstance extends InstanceResource {
 
     /**
      * Deletes the ParticipantInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -120,7 +120,7 @@ class ParticipantInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -140,7 +140,7 @@ class ParticipantInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

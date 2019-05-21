@@ -20,9 +20,9 @@ use Twilio\Version;
 class CurrentCallContext extends InstanceContext {
     /**
      * Initialize the CurrentCallContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext 
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class CurrentCallContext extends InstanceContext {
 
     /**
      * Fetch a CurrentCallInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CurrentCallInstance Fetched CurrentCallInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -56,7 +56,7 @@ class CurrentCallContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

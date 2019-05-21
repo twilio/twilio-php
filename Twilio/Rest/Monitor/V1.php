@@ -27,7 +27,7 @@ class V1 extends Version {
 
     /**
      * Construct the V1 version of Monitor
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Monitor\V1 V1 version of Monitor
      */
@@ -37,7 +37,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList
      */
     protected function getAlerts() {
         if (!$this->_alerts) {
@@ -47,7 +47,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\EventList 
+     * @return \Twilio\Rest\Monitor\V1\EventList
      */
     protected function getEvents() {
         if (!$this->_events) {
@@ -58,7 +58,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -74,7 +74,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -91,7 +91,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

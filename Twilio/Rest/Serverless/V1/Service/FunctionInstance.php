@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -32,12 +32,12 @@ class FunctionInstance extends InstanceResource {
 
     /**
      * Initialize the FunctionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $sid Function Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\FunctionInstance 
+     * @return \Twilio\Rest\Serverless\V1\Service\FunctionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -60,7 +60,7 @@ class FunctionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext Context for this
      *                                                            FunctionInstance
      */
@@ -78,7 +78,7 @@ class FunctionInstance extends InstanceResource {
 
     /**
      * Fetch a FunctionInstance
-     * 
+     *
      * @return FunctionInstance Fetched FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -88,7 +88,7 @@ class FunctionInstance extends InstanceResource {
 
     /**
      * Update the FunctionInstance
-     * 
+     *
      * @param string $friendlyName A human-readable description of this Function.
      * @return FunctionInstance Updated FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -99,8 +99,8 @@ class FunctionInstance extends InstanceResource {
 
     /**
      * Access the functionVersions
-     * 
-     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList 
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList
      */
     protected function getFunctionVersions() {
         return $this->proxy()->functionVersions;
@@ -108,7 +108,7 @@ class FunctionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -128,7 +128,7 @@ class FunctionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

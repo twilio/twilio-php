@@ -45,7 +45,7 @@ class CreateFieldTypeOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the new resource. It is not unique and can be up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
@@ -56,7 +56,7 @@ class CreateFieldTypeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -83,7 +83,7 @@ class UpdateFieldTypeOptions extends Options {
 
     /**
      * A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long.
-     * 
+     *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class UpdateFieldTypeOptions extends Options {
 
     /**
      * An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource. The first 64 characters must be unique.
-     * 
+     *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource
      * @return $this Fluent Builder
@@ -106,7 +106,7 @@ class UpdateFieldTypeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

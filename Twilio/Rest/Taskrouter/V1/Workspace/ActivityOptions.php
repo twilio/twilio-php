@@ -54,7 +54,7 @@ class UpdateActivityOptions extends Options {
 
     /**
      * A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc. These names will be used to calculate and expose statistics about workers, and give you visibility into the state of each of your workers.
-     * 
+     *
      * @param string $friendlyName A human-readable name for the Activity, such as
      *                             'on-call', 'break', 'email', etc.
      * @return $this Fluent Builder
@@ -66,7 +66,7 @@ class UpdateActivityOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -93,7 +93,7 @@ class ReadActivityOptions extends Options {
 
     /**
      * Filter by an Activity's friendly name
-     * 
+     *
      * @param string $friendlyName Filter by an Activity's friendly name
      * @return $this Fluent Builder
      */
@@ -104,7 +104,7 @@ class ReadActivityOptions extends Options {
 
     /**
      * Filter by activities that are available or unavailable. (Note: This can be 'true', '1'' or 'yes' to indicate a true value. All other values will represent false)
-     * 
+     *
      * @param string $available Filter by activities that are available or
      *                          unavailable.
      * @return $this Fluent Builder
@@ -116,7 +116,7 @@ class ReadActivityOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -142,7 +142,7 @@ class CreateActivityOptions extends Options {
 
     /**
      * Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity. For example, a call center might have an activity named 'On Call' with an availability set to 'false'. Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false. Defaults to false.
-     * 
+     *
      * @param bool $available Boolean value indicating whether the worker should be
      *                        eligible to receive a Task when they occupy this
      *                        Activity.
@@ -155,7 +155,7 @@ class CreateActivityOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

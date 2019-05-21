@@ -19,11 +19,11 @@ use Twilio\Version;
 class SyncListPermissionList extends ListResource {
     /**
      * Construct the SyncListPermissionList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Sync Service Instance SID.
      * @param string $listSid Sync List SID.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList
      */
     public function __construct(Version $version, $serviceSid, $listSid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class SyncListPermissionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -65,7 +65,7 @@ class SyncListPermissionList extends ListResource {
      * Reads SyncListPermissionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -83,7 +83,7 @@ class SyncListPermissionList extends ListResource {
     /**
      * Retrieve a single page of SyncListPermissionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -108,7 +108,7 @@ class SyncListPermissionList extends ListResource {
     /**
      * Retrieve a specific page of SyncListPermissionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of SyncListPermissionInstance
      */
@@ -123,10 +123,10 @@ class SyncListPermissionList extends ListResource {
 
     /**
      * Constructs a SyncListPermissionContext
-     * 
+     *
      * @param string $identity Identity of the user to whom the Sync List
      *                         Permission applies.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext
      */
     public function getContext($identity) {
         return new SyncListPermissionContext(
@@ -139,7 +139,7 @@ class SyncListPermissionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -31,13 +31,13 @@ use Twilio\Version;
 class AssetVersionInstance extends InstanceResource {
     /**
      * Initialize the AssetVersionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $assetSid Asset Sid.
      * @param string $sid Asset Version Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionInstance 
+     * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $assetSid, $sid = null) {
         parent::__construct($version);
@@ -65,7 +65,7 @@ class AssetVersionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionContext Context
      *                                                                      for
      *                                                                      this
@@ -86,7 +86,7 @@ class AssetVersionInstance extends InstanceResource {
 
     /**
      * Fetch a AssetVersionInstance
-     * 
+     *
      * @return AssetVersionInstance Fetched AssetVersionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -96,7 +96,7 @@ class AssetVersionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -116,7 +116,7 @@ class AssetVersionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,10 +18,10 @@ use Twilio\Version;
 class UsageList extends ListResource {
     /**
      * Construct the UsageList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $simSid The sim_sid
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList
      */
     public function __construct(Version $version, $simSid) {
         parent::__construct($version);
@@ -32,8 +32,8 @@ class UsageList extends ListResource {
 
     /**
      * Constructs a UsageContext
-     * 
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext 
+     *
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext
      */
     public function getContext() {
         return new UsageContext($this->version, $this->solution['simSid']);
@@ -41,7 +41,7 @@ class UsageList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

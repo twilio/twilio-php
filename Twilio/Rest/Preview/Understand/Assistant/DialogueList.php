@@ -18,10 +18,10 @@ use Twilio\Version;
 class DialogueList extends ListResource {
     /**
      * Construct the DialogueList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the parent Assistant.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueList 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueList
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -32,9 +32,9 @@ class DialogueList extends ListResource {
 
     /**
      * Constructs a DialogueContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueContext 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\DialogueContext
      */
     public function getContext($sid) {
         return new DialogueContext($this->version, $this->solution['assistantSid'], $sid);
@@ -42,7 +42,7 @@ class DialogueList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

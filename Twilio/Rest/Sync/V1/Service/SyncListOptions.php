@@ -53,7 +53,7 @@ class CreateSyncListOptions extends Options {
 
     /**
      * Human-readable name for this list
-     * 
+     *
      * @param string $uniqueName Human-readable name for this list
      * @return $this Fluent Builder
      */
@@ -64,7 +64,7 @@ class CreateSyncListOptions extends Options {
 
     /**
      * Alias for collection_ttl. If both are provided, this value is ignored.
-     * 
+     *
      * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
@@ -75,7 +75,7 @@ class CreateSyncListOptions extends Options {
 
     /**
      * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
+     *
      * @param int $collectionTtl Time-to-live of this List in seconds, defaults to
      *                           no expiration.
      * @return $this Fluent Builder
@@ -87,7 +87,7 @@ class CreateSyncListOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -114,7 +114,7 @@ class UpdateSyncListOptions extends Options {
 
     /**
      * Alias for collection_ttl. If both are provided, this value is ignored.
-     * 
+     *
      * @param int $ttl Alias for collection_ttl
      * @return $this Fluent Builder
      */
@@ -125,7 +125,7 @@ class UpdateSyncListOptions extends Options {
 
     /**
      * Time-to-live of this List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
+     *
      * @param int $collectionTtl Time-to-live of this List in seconds, defaults to
      *                           no expiration.
      * @return $this Fluent Builder
@@ -137,7 +137,7 @@ class UpdateSyncListOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

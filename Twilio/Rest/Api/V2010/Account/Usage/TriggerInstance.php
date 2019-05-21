@@ -37,13 +37,13 @@ use Twilio\Version;
 class TriggerInstance extends InstanceResource {
     /**
      * Initialize the TriggerInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -74,7 +74,7 @@ class TriggerInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext Context for this
      *                                                             TriggerInstance
      */
@@ -92,7 +92,7 @@ class TriggerInstance extends InstanceResource {
 
     /**
      * Fetch a TriggerInstance
-     * 
+     *
      * @return TriggerInstance Fetched TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class TriggerInstance extends InstanceResource {
 
     /**
      * Update the TriggerInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TriggerInstance Updated TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,7 +113,7 @@ class TriggerInstance extends InstanceResource {
 
     /**
      * Deletes the TriggerInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -123,7 +123,7 @@ class TriggerInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -143,7 +143,7 @@ class TriggerInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
