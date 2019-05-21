@@ -18,7 +18,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList functionVersions
+ * @property \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList $functionVersions
  * @method \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext functionVersions(string $sid)
  */
 class FunctionContext extends InstanceContext {

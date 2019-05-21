@@ -17,26 +17,26 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property int age
- * @property string assignmentStatus
- * @property string attributes
- * @property string addons
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property int priority
- * @property string reason
- * @property string sid
- * @property string taskQueueSid
- * @property string taskQueueFriendlyName
- * @property string taskChannelSid
- * @property string taskChannelUniqueName
- * @property int timeout
- * @property string workflowSid
- * @property string workflowFriendlyName
- * @property string workspaceSid
- * @property string url
- * @property array links
+ * @property string $accountSid
+ * @property int $age
+ * @property string $assignmentStatus
+ * @property string $attributes
+ * @property string $addons
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property int $priority
+ * @property string $reason
+ * @property string $sid
+ * @property string $taskQueueSid
+ * @property string $taskQueueFriendlyName
+ * @property string $taskChannelSid
+ * @property string $taskChannelUniqueName
+ * @property int $timeout
+ * @property string $workflowSid
+ * @property string $workflowFriendlyName
+ * @property string $workspaceSid
+ * @property string $url
+ * @property array $links
  */
 class TaskInstance extends InstanceResource {
     protected $_reservations = null;

@@ -16,13 +16,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property array subresourceUris
- * @property string uri
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property array $subresourceUris
+ * @property string $uri
  */
 class IpAccessControlListInstance extends InstanceResource {
     protected $_ipAddresses = null;

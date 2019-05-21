@@ -17,8 +17,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Message\MediaList media
- * @property \Twilio\Rest\Api\V2010\Account\Message\FeedbackList feedback
+ * @property \Twilio\Rest\Api\V2010\Account\Message\MediaList $media
+ * @property \Twilio\Rest\Api\V2010\Account\Message\FeedbackList $feedback
  * @method \Twilio\Rest\Api\V2010\Account\Message\MediaContext media(string $sid)
  */
 class MessageContext extends InstanceContext {

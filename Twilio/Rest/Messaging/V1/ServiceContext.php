@@ -22,9 +22,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Messaging\V1\Service\PhoneNumberList phoneNumbers
- * @property \Twilio\Rest\Messaging\V1\Service\ShortCodeList shortCodes
- * @property \Twilio\Rest\Messaging\V1\Service\AlphaSenderList alphaSenders
+ * @property \Twilio\Rest\Messaging\V1\Service\PhoneNumberList $phoneNumbers
+ * @property \Twilio\Rest\Messaging\V1\Service\ShortCodeList $shortCodes
+ * @property \Twilio\Rest\Messaging\V1\Service\AlphaSenderList $alphaSenders
  * @method \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext alphaSenders(string $sid)

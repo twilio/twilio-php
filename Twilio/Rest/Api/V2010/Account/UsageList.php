@@ -16,8 +16,8 @@ use Twilio\Rest\Api\V2010\Account\Usage\TriggerList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Usage\RecordList records
- * @property \Twilio\Rest\Api\V2010\Account\Usage\TriggerList triggers
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\RecordList $records
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\TriggerList $triggers
  * @method \Twilio\Rest\Api\V2010\Account\Usage\TriggerContext triggers(string $sid)
  */
 class UsageList extends ListResource {

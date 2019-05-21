@@ -15,7 +15,7 @@ use Twilio\Rest\Proxy\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Proxy\V1\ServiceList services
+ * @property \Twilio\Rest\Proxy\V1\ServiceList $services
  * @method \Twilio\Rest\Proxy\V1\ServiceContext services(string $sid)
  */
 class V1 extends Version {

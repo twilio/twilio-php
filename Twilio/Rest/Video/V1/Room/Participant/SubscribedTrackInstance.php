@@ -16,16 +16,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string participantSid
- * @property string publisherSid
- * @property string roomSid
- * @property string name
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property bool enabled
- * @property string kind
- * @property string url
+ * @property string $sid
+ * @property string $participantSid
+ * @property string $publisherSid
+ * @property string $roomSid
+ * @property string $name
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property bool $enabled
+ * @property string $kind
+ * @property string $url
  */
 class SubscribedTrackInstance extends InstanceResource {
     /**

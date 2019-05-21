@@ -17,16 +17,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string sid
- * @property string uniqueName
- * @property string workspaceSid
- * @property bool channelOptimizedRouting
- * @property string url
- * @property array links
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $sid
+ * @property string $uniqueName
+ * @property string $workspaceSid
+ * @property bool $channelOptimizedRouting
+ * @property string $url
+ * @property array $links
  */
 class TaskChannelInstance extends InstanceResource {
     /**

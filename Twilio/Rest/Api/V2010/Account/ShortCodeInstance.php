@@ -17,18 +17,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string shortCode
- * @property string sid
- * @property string smsFallbackMethod
- * @property string smsFallbackUrl
- * @property string smsMethod
- * @property string smsUrl
- * @property string uri
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $shortCode
+ * @property string $sid
+ * @property string $smsFallbackMethod
+ * @property string $smsFallbackUrl
+ * @property string $smsMethod
+ * @property string $smsUrl
+ * @property string $uri
  */
 class ShortCodeInstance extends InstanceResource {
     /**

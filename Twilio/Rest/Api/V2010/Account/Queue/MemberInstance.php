@@ -17,12 +17,12 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string callSid
- * @property \DateTime dateEnqueued
- * @property int position
- * @property string uri
- * @property int waitTime
- * @property string queueSid
+ * @property string $callSid
+ * @property \DateTime $dateEnqueued
+ * @property int $position
+ * @property string $uri
+ * @property int $waitTime
+ * @property string $queueSid
  */
 class MemberInstance extends InstanceResource {
     /**

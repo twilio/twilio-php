@@ -17,9 +17,9 @@ use Twilio\Rest\Pricing\V1\VoiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V1\MessagingList messaging
- * @property \Twilio\Rest\Pricing\V1\PhoneNumberList phoneNumbers
- * @property \Twilio\Rest\Pricing\V1\VoiceList voice
+ * @property \Twilio\Rest\Pricing\V1\MessagingList $messaging
+ * @property \Twilio\Rest\Pricing\V1\PhoneNumberList $phoneNumbers
+ * @property \Twilio\Rest\Pricing\V1\VoiceList $voice
  */
 class V1 extends Version {
     protected $_messaging = null;

@@ -19,15 +19,15 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string sid
- * @property string url
- * @property string uniqueName
- * @property string friendlyName
- * @property string accountSid
- * @property string defaultDeploymentSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property array links
+ * @property string $sid
+ * @property string $url
+ * @property string $uniqueName
+ * @property string $friendlyName
+ * @property string $accountSid
+ * @property string $defaultDeploymentSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property array $links
  */
 class FleetInstance extends InstanceResource {
     protected $_devices = null;

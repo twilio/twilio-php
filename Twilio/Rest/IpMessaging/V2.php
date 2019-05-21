@@ -16,8 +16,8 @@ use Twilio\Rest\IpMessaging\V2\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V2\CredentialList credentials
- * @property \Twilio\Rest\IpMessaging\V2\ServiceList services
+ * @property \Twilio\Rest\IpMessaging\V2\CredentialList $credentials
+ * @property \Twilio\Rest\IpMessaging\V2\ServiceList $services
  * @method \Twilio\Rest\IpMessaging\V2\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\ServiceContext services(string $sid)
  */

@@ -15,7 +15,7 @@ use Twilio\Rest\Preview\Sync\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Sync\ServiceList services
+ * @property \Twilio\Rest\Preview\Sync\ServiceList $services
  * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  */
 class Sync extends Version {

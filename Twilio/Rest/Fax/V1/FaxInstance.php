@@ -19,24 +19,24 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string accountSid
- * @property string from
- * @property string to
- * @property string quality
- * @property string mediaSid
- * @property string mediaUrl
- * @property int numPages
- * @property int duration
- * @property string status
- * @property string direction
- * @property string apiVersion
- * @property string price
- * @property string priceUnit
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property array links
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $from
+ * @property string $to
+ * @property string $quality
+ * @property string $mediaSid
+ * @property string $mediaUrl
+ * @property int $numPages
+ * @property int $duration
+ * @property string $status
+ * @property string $direction
+ * @property string $apiVersion
+ * @property string $price
+ * @property string $priceUnit
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property array $links
+ * @property string $url
  */
 class FaxInstance extends InstanceResource {
     protected $_media = null;

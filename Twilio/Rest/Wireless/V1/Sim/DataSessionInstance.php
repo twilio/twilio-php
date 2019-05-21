@@ -16,22 +16,22 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string simSid
- * @property string accountSid
- * @property string radioLink
- * @property string operatorMcc
- * @property string operatorMnc
- * @property string operatorCountry
- * @property string operatorName
- * @property string cellId
- * @property array cellLocationEstimate
- * @property int packetsUploaded
- * @property int packetsDownloaded
- * @property \DateTime lastUpdated
- * @property \DateTime start
- * @property \DateTime end
- * @property string imei
+ * @property string $sid
+ * @property string $simSid
+ * @property string $accountSid
+ * @property string $radioLink
+ * @property string $operatorMcc
+ * @property string $operatorMnc
+ * @property string $operatorCountry
+ * @property string $operatorName
+ * @property string $cellId
+ * @property array $cellLocationEstimate
+ * @property int $packetsUploaded
+ * @property int $packetsDownloaded
+ * @property \DateTime $lastUpdated
+ * @property \DateTime $start
+ * @property \DateTime $end
+ * @property string $imei
  */
 class DataSessionInstance extends InstanceResource {
     /**

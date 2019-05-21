@@ -17,8 +17,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList transcriptions
- * @property \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList addOnResults
+ * @property \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList $transcriptions
+ * @property \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList $addOnResults
  * @method \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionContext transcriptions(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext addOnResults(string $sid)
  */

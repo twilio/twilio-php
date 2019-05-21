@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList ipAddresses
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList $ipAddresses
  * @method \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressContext ipAddresses(string $sid)
  */
 class IpAccessControlListContext extends InstanceContext {

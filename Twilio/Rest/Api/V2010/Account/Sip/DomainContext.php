@@ -20,9 +20,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList ipAccessControlListMappings
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList credentialListMappings
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList auth
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList $ipAccessControlListMappings
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList $credentialListMappings
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList $auth
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingContext ipAccessControlListMappings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingContext credentialListMappings(string $sid)
  */

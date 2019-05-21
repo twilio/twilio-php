@@ -16,11 +16,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string friendlyName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string secret
+ * @property string $sid
+ * @property string $friendlyName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $secret
  */
 class NewKeyInstance extends InstanceResource {
     /**

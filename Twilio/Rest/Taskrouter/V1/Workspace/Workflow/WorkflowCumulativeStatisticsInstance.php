@@ -17,28 +17,28 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property int avgTaskAcceptanceTime
- * @property \DateTime startTime
- * @property \DateTime endTime
- * @property int reservationsCreated
- * @property int reservationsAccepted
- * @property int reservationsRejected
- * @property int reservationsTimedOut
- * @property int reservationsCanceled
- * @property int reservationsRescinded
- * @property array splitByWaitTime
- * @property array waitDurationUntilAccepted
- * @property array waitDurationUntilCanceled
- * @property int tasksCanceled
- * @property int tasksCompleted
- * @property int tasksEntered
- * @property int tasksDeleted
- * @property int tasksMoved
- * @property int tasksTimedOutInWorkflow
- * @property string workflowSid
- * @property string workspaceSid
- * @property string url
+ * @property string $accountSid
+ * @property int $avgTaskAcceptanceTime
+ * @property \DateTime $startTime
+ * @property \DateTime $endTime
+ * @property int $reservationsCreated
+ * @property int $reservationsAccepted
+ * @property int $reservationsRejected
+ * @property int $reservationsTimedOut
+ * @property int $reservationsCanceled
+ * @property int $reservationsRescinded
+ * @property array $splitByWaitTime
+ * @property array $waitDurationUntilAccepted
+ * @property array $waitDurationUntilCanceled
+ * @property int $tasksCanceled
+ * @property int $tasksCompleted
+ * @property int $tasksEntered
+ * @property int $tasksDeleted
+ * @property int $tasksMoved
+ * @property int $tasksTimedOutInWorkflow
+ * @property string $workflowSid
+ * @property string $workspaceSid
+ * @property string $url
  */
 class WorkflowCumulativeStatisticsInstance extends InstanceResource {
     /**

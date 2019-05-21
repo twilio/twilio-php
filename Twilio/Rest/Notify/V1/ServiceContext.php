@@ -21,8 +21,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Notify\V1\Service\BindingList bindings
- * @property \Twilio\Rest\Notify\V1\Service\NotificationList notifications
+ * @property \Twilio\Rest\Notify\V1\Service\BindingList $bindings
+ * @property \Twilio\Rest\Notify\V1\Service\NotificationList $notifications
  * @method \Twilio\Rest\Notify\V1\Service\BindingContext bindings(string $sid)
  */
 class ServiceContext extends InstanceContext {

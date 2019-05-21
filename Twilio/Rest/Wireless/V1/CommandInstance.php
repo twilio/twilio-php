@@ -16,18 +16,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string simSid
- * @property string command
- * @property string commandMode
- * @property string transport
- * @property bool deliveryReceiptRequested
- * @property string status
- * @property string direction
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $simSid
+ * @property string $command
+ * @property string $commandMode
+ * @property string $transport
+ * @property bool $deliveryReceiptRequested
+ * @property string $status
+ * @property string $direction
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class CommandInstance extends InstanceResource {
     /**

@@ -17,22 +17,22 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string uniqueName
- * @property string accountSid
- * @property string friendlyName
- * @property bool dataEnabled
- * @property string dataMetering
- * @property int dataLimit
- * @property bool messagingEnabled
- * @property bool voiceEnabled
- * @property bool nationalRoamingEnabled
- * @property int nationalRoamingDataLimit
- * @property string internationalRoaming
- * @property int internationalRoamingDataLimit
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $sid
+ * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property bool $dataEnabled
+ * @property string $dataMetering
+ * @property int $dataLimit
+ * @property bool $messagingEnabled
+ * @property bool $voiceEnabled
+ * @property bool $nationalRoamingEnabled
+ * @property int $nationalRoamingDataLimit
+ * @property string $internationalRoaming
+ * @property int $internationalRoamingDataLimit
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class RatePlanInstance extends InstanceResource {
     /**

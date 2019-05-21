@@ -27,16 +27,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList activities
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\EventList events
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskList tasks
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList taskQueues
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList workers
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList workflows
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList statistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList realTimeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList cumulativeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList taskChannels
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList $activities
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\EventList $events
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskList $tasks
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList $taskQueues
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList $workers
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList $workflows
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList $statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList $realTimeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList $cumulativeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList $taskChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext tasks(string $sid)

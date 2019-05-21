@@ -25,14 +25,14 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeList allTime
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyList daily
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthList lastMonth
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyList monthly
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthList thisMonth
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\TodayList today
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyList yearly
- * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayList yesterday
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeList $allTime
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyList $daily
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthList $lastMonth
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyList $monthly
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthList $thisMonth
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\TodayList $today
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyList $yearly
+ * @property \Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayList $yesterday
  */
 class RecordList extends ListResource {
     protected $_allTime = null;

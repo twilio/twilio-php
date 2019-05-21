@@ -17,21 +17,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string defaultActivityName
- * @property string defaultActivitySid
- * @property string eventCallbackUrl
- * @property string eventsFilter
- * @property string friendlyName
- * @property bool multiTaskEnabled
- * @property string sid
- * @property string timeoutActivityName
- * @property string timeoutActivitySid
- * @property string prioritizeQueueOrder
- * @property string url
- * @property array links
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $defaultActivityName
+ * @property string $defaultActivitySid
+ * @property string $eventCallbackUrl
+ * @property string $eventsFilter
+ * @property string $friendlyName
+ * @property bool $multiTaskEnabled
+ * @property string $sid
+ * @property string $timeoutActivityName
+ * @property string $timeoutActivitySid
+ * @property string $prioritizeQueueOrder
+ * @property string $url
+ * @property array $links
  */
 class WorkspaceInstance extends InstanceResource {
     protected $_activities = null;

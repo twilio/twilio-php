@@ -19,18 +19,18 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string latestModelBuildSid
- * @property array links
- * @property bool logQueries
- * @property string sid
- * @property string uniqueName
- * @property string url
- * @property string callbackUrl
- * @property string callbackEvents
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $latestModelBuildSid
+ * @property array $links
+ * @property bool $logQueries
+ * @property string $sid
+ * @property string $uniqueName
+ * @property string $url
+ * @property string $callbackUrl
+ * @property string $callbackEvents
  */
 class AssistantInstance extends InstanceResource {
     protected $_fieldTypes = null;

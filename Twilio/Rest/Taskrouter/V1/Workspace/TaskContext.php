@@ -17,7 +17,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList reservations
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList $reservations
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationContext reservations(string $sid)
  */
 class TaskContext extends InstanceContext {

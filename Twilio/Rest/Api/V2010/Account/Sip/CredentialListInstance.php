@@ -16,13 +16,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string sid
- * @property array subresourceUris
- * @property string uri
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $sid
+ * @property array $subresourceUris
+ * @property string $uri
  */
 class CredentialListInstance extends InstanceResource {
     protected $_credentials = null;

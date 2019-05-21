@@ -23,10 +23,10 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Serverless\V1\Service\EnvironmentList environments
- * @property \Twilio\Rest\Serverless\V1\Service\FunctionList functions
- * @property \Twilio\Rest\Serverless\V1\Service\AssetList assets
- * @property \Twilio\Rest\Serverless\V1\Service\BuildList builds
+ * @property \Twilio\Rest\Serverless\V1\Service\EnvironmentList $environments
+ * @property \Twilio\Rest\Serverless\V1\Service\FunctionList $functions
+ * @property \Twilio\Rest\Serverless\V1\Service\AssetList $assets
+ * @property \Twilio\Rest\Serverless\V1\Service\BuildList $builds
  * @method \Twilio\Rest\Serverless\V1\Service\EnvironmentContext environments(string $sid)
  * @method \Twilio\Rest\Serverless\V1\Service\FunctionContext functions(string $sid)
  * @method \Twilio\Rest\Serverless\V1\Service\AssetContext assets(string $sid)

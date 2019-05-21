@@ -15,7 +15,7 @@ use Twilio\Rest\Accounts\V1\CredentialList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Accounts\V1\CredentialList credentials
+ * @property \Twilio\Rest\Accounts\V1\CredentialList $credentials
  */
 class V1 extends Version {
     protected $_credentials = null;

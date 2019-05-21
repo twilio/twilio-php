@@ -17,20 +17,20 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string serviceSid
- * @property string attributes
- * @property string friendlyName
- * @property string roleSid
- * @property string identity
- * @property bool isOnline
- * @property bool isNotifiable
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property int joinedChannelsCount
- * @property array links
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $attributes
+ * @property string $friendlyName
+ * @property string $roleSid
+ * @property string $identity
+ * @property bool $isOnline
+ * @property bool $isNotifiable
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property int $joinedChannelsCount
+ * @property array $links
+ * @property string $url
  */
 class UserInstance extends InstanceResource {
     protected $_userChannels = null;

@@ -16,20 +16,20 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property int callCount
- * @property int callFeedbackCount
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property \DateTime endDate
- * @property bool includeSubaccounts
- * @property string issues
- * @property string qualityScoreAverage
- * @property string qualityScoreMedian
- * @property string qualityScoreStandardDeviation
- * @property string sid
- * @property \DateTime startDate
- * @property string status
+ * @property string $accountSid
+ * @property int $callCount
+ * @property int $callFeedbackCount
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property \DateTime $endDate
+ * @property bool $includeSubaccounts
+ * @property string $issues
+ * @property string $qualityScoreAverage
+ * @property string $qualityScoreMedian
+ * @property string $qualityScoreStandardDeviation
+ * @property string $sid
+ * @property \DateTime $startDate
+ * @property string $status
  */
 class FeedbackSummaryInstance extends InstanceResource {
     /**

@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList stepContext
+ * @property \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList $stepContext
  * @method \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextContext stepContext()
  */
 class ExecutionStepContext extends InstanceContext {

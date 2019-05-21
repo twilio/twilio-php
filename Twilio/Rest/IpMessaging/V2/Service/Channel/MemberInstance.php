@@ -17,18 +17,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string channelSid
- * @property string serviceSid
- * @property string identity
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string roleSid
- * @property int lastConsumedMessageIndex
- * @property \DateTime lastConsumptionTimestamp
- * @property string url
- * @property string attributes
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $channelSid
+ * @property string $serviceSid
+ * @property string $identity
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $roleSid
+ * @property int $lastConsumedMessageIndex
+ * @property \DateTime $lastConsumptionTimestamp
+ * @property string $url
+ * @property string $attributes
  */
 class MemberInstance extends InstanceResource {
     /**

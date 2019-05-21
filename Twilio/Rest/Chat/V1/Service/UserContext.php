@@ -17,7 +17,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Chat\V1\Service\User\UserChannelList userChannels
+ * @property \Twilio\Rest\Chat\V1\Service\User\UserChannelList $userChannels
  */
 class UserContext extends InstanceContext {
     protected $_userChannels = null;

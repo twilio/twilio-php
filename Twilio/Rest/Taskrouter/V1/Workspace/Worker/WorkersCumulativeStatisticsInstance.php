@@ -17,18 +17,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime startTime
- * @property \DateTime endTime
- * @property array activityDurations
- * @property int reservationsCreated
- * @property int reservationsAccepted
- * @property int reservationsRejected
- * @property int reservationsTimedOut
- * @property int reservationsCanceled
- * @property int reservationsRescinded
- * @property string workspaceSid
- * @property string url
+ * @property string $accountSid
+ * @property \DateTime $startTime
+ * @property \DateTime $endTime
+ * @property array $activityDurations
+ * @property int $reservationsCreated
+ * @property int $reservationsAccepted
+ * @property int $reservationsRejected
+ * @property int $reservationsTimedOut
+ * @property int $reservationsCanceled
+ * @property int $reservationsRescinded
+ * @property string $workspaceSid
+ * @property string $url
  */
 class WorkersCumulativeStatisticsInstance extends InstanceResource {
     /**

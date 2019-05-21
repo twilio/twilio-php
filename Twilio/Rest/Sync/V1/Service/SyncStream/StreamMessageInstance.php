@@ -17,8 +17,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property array data
+ * @property string $sid
+ * @property array $data
  */
 class StreamMessageInstance extends InstanceResource {
     /**

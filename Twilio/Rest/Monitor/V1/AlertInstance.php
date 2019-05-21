@@ -16,23 +16,23 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string alertText
- * @property string apiVersion
- * @property \DateTime dateCreated
- * @property \DateTime dateGenerated
- * @property \DateTime dateUpdated
- * @property string errorCode
- * @property string logLevel
- * @property string moreInfo
- * @property string requestMethod
- * @property string requestUrl
- * @property string requestVariables
- * @property string resourceSid
- * @property string responseBody
- * @property string responseHeaders
- * @property string sid
- * @property string url
+ * @property string $accountSid
+ * @property string $alertText
+ * @property string $apiVersion
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateGenerated
+ * @property \DateTime $dateUpdated
+ * @property string $errorCode
+ * @property string $logLevel
+ * @property string $moreInfo
+ * @property string $requestMethod
+ * @property string $requestUrl
+ * @property string $requestVariables
+ * @property string $resourceSid
+ * @property string $responseBody
+ * @property string $responseHeaders
+ * @property string $sid
+ * @property string $url
  */
 class AlertInstance extends InstanceResource {
     /**

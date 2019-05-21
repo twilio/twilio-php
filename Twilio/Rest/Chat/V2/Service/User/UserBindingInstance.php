@@ -16,18 +16,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string serviceSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string endpoint
- * @property string identity
- * @property string userSid
- * @property string credentialSid
- * @property string bindingType
- * @property string messageTypes
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $endpoint
+ * @property string $identity
+ * @property string $userSid
+ * @property string $credentialSid
+ * @property string $bindingType
+ * @property string $messageTypes
+ * @property string $url
  */
 class UserBindingInstance extends InstanceResource {
     /**

@@ -19,7 +19,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Fax\V1\Fax\FaxMediaList media
+ * @property \Twilio\Rest\Fax\V1\Fax\FaxMediaList $media
  * @method \Twilio\Rest\Fax\V1\Fax\FaxMediaContext media(string $sid)
  */
 class FaxContext extends InstanceContext {

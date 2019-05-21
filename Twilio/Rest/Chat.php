@@ -15,10 +15,10 @@ use Twilio\Rest\Chat\V1;
 use Twilio\Rest\Chat\V2;
 
 /**
- * @property \Twilio\Rest\Chat\V1 v1
- * @property \Twilio\Rest\Chat\V2 v2
- * @property \Twilio\Rest\Chat\V2\CredentialList credentials
- * @property \Twilio\Rest\Chat\V2\ServiceList services
+ * @property \Twilio\Rest\Chat\V1 $v1
+ * @property \Twilio\Rest\Chat\V2 $v2
+ * @property \Twilio\Rest\Chat\V2\CredentialList $credentials
+ * @property \Twilio\Rest\Chat\V2\ServiceList $services
  * @method \Twilio\Rest\Chat\V2\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Chat\V2\ServiceContext services(string $sid)
  */

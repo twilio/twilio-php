@@ -17,9 +17,9 @@ use Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\DomainList domains
- * @property \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListList ipAccessControlLists
- * @property \Twilio\Rest\Api\V2010\Account\Sip\CredentialListList credentialLists
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\DomainList $domains
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListList $ipAccessControlLists
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\CredentialListList $credentialLists
  * @method \Twilio\Rest\Api\V2010\Account\Sip\DomainContext domains(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext ipAccessControlLists(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext credentialLists(string $sid)

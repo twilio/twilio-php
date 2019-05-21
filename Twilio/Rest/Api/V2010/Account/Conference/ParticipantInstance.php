@@ -17,19 +17,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string callSid
- * @property string callSidToCoach
- * @property bool coaching
- * @property string conferenceSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property bool endConferenceOnExit
- * @property bool muted
- * @property bool hold
- * @property bool startConferenceOnEnter
- * @property string status
- * @property string uri
+ * @property string $accountSid
+ * @property string $callSid
+ * @property string $callSidToCoach
+ * @property bool $coaching
+ * @property string $conferenceSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property bool $endConferenceOnExit
+ * @property bool $muted
+ * @property bool $hold
+ * @property bool $startConferenceOnEnter
+ * @property string $status
+ * @property string $uri
  */
 class ParticipantInstance extends InstanceResource {
     /**

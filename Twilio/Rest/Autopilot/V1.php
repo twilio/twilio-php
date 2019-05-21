@@ -15,7 +15,7 @@ use Twilio\Rest\Autopilot\V1\AssistantList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Autopilot\V1\AssistantList assistants
+ * @property \Twilio\Rest\Autopilot\V1\AssistantList $assistants
  * @method \Twilio\Rest\Autopilot\V1\AssistantContext assistants(string $sid)
  */
 class V1 extends Version {

@@ -17,7 +17,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Queue\MemberList members
+ * @property \Twilio\Rest\Api\V2010\Account\Queue\MemberList $members
  * @method \Twilio\Rest\Api\V2010\Account\Queue\MemberContext members(string $callSid)
  */
 class QueueContext extends InstanceContext {

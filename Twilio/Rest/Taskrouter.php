@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Taskrouter\V1;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1 v1
- * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList workspaces
+ * @property \Twilio\Rest\Taskrouter\V1 $v1
+ * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList $workspaces
  * @method \Twilio\Rest\Taskrouter\V1\WorkspaceContext workspaces(string $sid)
  */
 class Taskrouter extends Domain {

@@ -16,8 +16,8 @@ use Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList authorizationDocuments
- * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList hostedNumberOrders
+ * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList $authorizationDocuments
+ * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList $hostedNumberOrders
  * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */

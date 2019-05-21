@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Sync\V1;
 
 /**
- * @property \Twilio\Rest\Sync\V1 v1
- * @property \Twilio\Rest\Sync\V1\ServiceList services
+ * @property \Twilio\Rest\Sync\V1 $v1
+ * @property \Twilio\Rest\Sync\V1\ServiceList $services
  * @method \Twilio\Rest\Sync\V1\ServiceContext services(string $sid)
  */
 class Sync extends Domain {

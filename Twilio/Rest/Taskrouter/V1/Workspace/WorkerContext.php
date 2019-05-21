@@ -22,11 +22,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList realTimeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList cumulativeStatistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList statistics
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList reservations
- * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList workerChannels
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsList $realTimeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsList $cumulativeStatistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList $statistics
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList $reservations
+ * @property \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList $workerChannels
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext realTimeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext cumulativeStatistics()
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsContext statistics()

@@ -16,17 +16,17 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string flowSid
- * @property string contactSid
- * @property string contactChannelAddress
- * @property array context
- * @property string status
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $flowSid
+ * @property string $contactSid
+ * @property string $contactChannelAddress
+ * @property array $context
+ * @property string $status
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
+ * @property array $links
  */
 class EngagementInstance extends InstanceResource {
     protected $_steps = null;

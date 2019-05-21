@@ -21,8 +21,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Proxy\V1\Service\Session\InteractionList interactions
- * @property \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList participants
+ * @property \Twilio\Rest\Proxy\V1\Service\Session\InteractionList $interactions
+ * @property \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList $participants
  * @method \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext interactions(string $sid)
  * @method \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext participants(string $sid)
  */

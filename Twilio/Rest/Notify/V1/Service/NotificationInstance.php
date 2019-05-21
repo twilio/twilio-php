@@ -18,26 +18,26 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string accountSid
- * @property string serviceSid
- * @property \DateTime dateCreated
- * @property string identities
- * @property string tags
- * @property string segments
- * @property string priority
- * @property int ttl
- * @property string title
- * @property string body
- * @property string sound
- * @property string action
- * @property array data
- * @property array apn
- * @property array gcm
- * @property array fcm
- * @property array sms
- * @property array facebookMessenger
- * @property array alexa
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property \DateTime $dateCreated
+ * @property string $identities
+ * @property string $tags
+ * @property string $segments
+ * @property string $priority
+ * @property int $ttl
+ * @property string $title
+ * @property string $body
+ * @property string $sound
+ * @property string $action
+ * @property array $data
+ * @property array $apn
+ * @property array $gcm
+ * @property array $fcm
+ * @property array $sms
+ * @property array $facebookMessenger
+ * @property array $alexa
  */
 class NotificationInstance extends InstanceResource {
     /**

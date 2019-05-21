@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Trunking\V1;
 
 /**
- * @property \Twilio\Rest\Trunking\V1 v1
- * @property \Twilio\Rest\Trunking\V1\TrunkList trunks
+ * @property \Twilio\Rest\Trunking\V1 $v1
+ * @property \Twilio\Rest\Trunking\V1\TrunkList $trunks
  * @method \Twilio\Rest\Trunking\V1\TrunkContext trunks(string $sid)
  */
 class Trunking extends Domain {

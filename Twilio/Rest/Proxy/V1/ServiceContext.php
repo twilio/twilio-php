@@ -21,9 +21,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Proxy\V1\Service\SessionList sessions
- * @property \Twilio\Rest\Proxy\V1\Service\PhoneNumberList phoneNumbers
- * @property \Twilio\Rest\Proxy\V1\Service\ShortCodeList shortCodes
+ * @property \Twilio\Rest\Proxy\V1\Service\SessionList $sessions
+ * @property \Twilio\Rest\Proxy\V1\Service\PhoneNumberList $phoneNumbers
+ * @property \Twilio\Rest\Proxy\V1\Service\ShortCodeList $shortCodes
  * @method \Twilio\Rest\Proxy\V1\Service\SessionContext sessions(string $sid)
  * @method \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
  * @method \Twilio\Rest\Proxy\V1\Service\ShortCodeContext shortCodes(string $sid)

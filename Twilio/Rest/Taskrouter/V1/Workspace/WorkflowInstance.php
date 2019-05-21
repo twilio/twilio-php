@@ -17,19 +17,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string assignmentCallbackUrl
- * @property string configuration
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string documentContentType
- * @property string fallbackAssignmentCallbackUrl
- * @property string friendlyName
- * @property string sid
- * @property int taskReservationTimeout
- * @property string workspaceSid
- * @property string url
- * @property array links
+ * @property string $accountSid
+ * @property string $assignmentCallbackUrl
+ * @property string $configuration
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $documentContentType
+ * @property string $fallbackAssignmentCallbackUrl
+ * @property string $friendlyName
+ * @property string $sid
+ * @property int $taskReservationTimeout
+ * @property string $workspaceSid
+ * @property string $url
+ * @property array $links
  */
 class WorkflowInstance extends InstanceResource {
     protected $_statistics = null;

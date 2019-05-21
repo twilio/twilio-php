@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Proxy\V1;
 
 /**
- * @property \Twilio\Rest\Proxy\V1 v1
- * @property \Twilio\Rest\Proxy\V1\ServiceList services
+ * @property \Twilio\Rest\Proxy\V1 $v1
+ * @property \Twilio\Rest\Proxy\V1\ServiceList $services
  * @method \Twilio\Rest\Proxy\V1\ServiceContext services(string $sid)
  */
 class Proxy extends Domain {

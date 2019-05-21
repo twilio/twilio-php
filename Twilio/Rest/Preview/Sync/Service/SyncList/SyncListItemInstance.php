@@ -18,16 +18,16 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property int index
- * @property string accountSid
- * @property string serviceSid
- * @property string listSid
- * @property string url
- * @property string revision
- * @property array data
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string createdBy
+ * @property int $index
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $listSid
+ * @property string $url
+ * @property string $revision
+ * @property array $data
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $createdBy
  */
 class SyncListItemInstance extends InstanceResource {
     /**

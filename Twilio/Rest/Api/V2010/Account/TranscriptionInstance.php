@@ -16,19 +16,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string duration
- * @property string price
- * @property string priceUnit
- * @property string recordingSid
- * @property string sid
- * @property string status
- * @property string transcriptionText
- * @property string type
- * @property string uri
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $duration
+ * @property string $price
+ * @property string $priceUnit
+ * @property string $recordingSid
+ * @property string $sid
+ * @property string $status
+ * @property string $transcriptionText
+ * @property string $type
+ * @property string $uri
  */
 class TranscriptionInstance extends InstanceResource {
     /**

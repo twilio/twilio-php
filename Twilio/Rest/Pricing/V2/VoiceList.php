@@ -16,8 +16,8 @@ use Twilio\Rest\Pricing\V2\Voice\NumberList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V2\Voice\CountryList countries
- * @property \Twilio\Rest\Pricing\V2\Voice\NumberList numbers
+ * @property \Twilio\Rest\Pricing\V2\Voice\CountryList $countries
+ * @property \Twilio\Rest\Pricing\V2\Voice\NumberList $numbers
  * @method \Twilio\Rest\Pricing\V2\Voice\CountryContext countries(string $isoCountry)
  * @method \Twilio\Rest\Pricing\V2\Voice\NumberContext numbers(string $destinationNumber)
  */

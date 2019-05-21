@@ -19,21 +19,21 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string accountSid
- * @property string friendlyName
- * @property bool enabled
- * @property \DateTime dateCreated
- * @property string dateUpdated
- * @property string sid
- * @property string audioSources
- * @property string audioSourcesExcluded
- * @property array videoLayout
- * @property string resolution
- * @property bool trim
- * @property string format
- * @property string statusCallback
- * @property string statusCallbackMethod
- * @property string url
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property bool $enabled
+ * @property \DateTime $dateCreated
+ * @property string $dateUpdated
+ * @property string $sid
+ * @property string $audioSources
+ * @property string $audioSourcesExcluded
+ * @property array $videoLayout
+ * @property string $resolution
+ * @property bool $trim
+ * @property string $format
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
+ * @property string $url
  */
 class CompositionHookInstance extends InstanceResource {
     /**

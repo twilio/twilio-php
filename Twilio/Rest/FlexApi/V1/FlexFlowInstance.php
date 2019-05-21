@@ -17,19 +17,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string sid
- * @property string friendlyName
- * @property string chatServiceSid
- * @property string channelType
- * @property string contactIdentity
- * @property bool enabled
- * @property string integrationType
- * @property array integration
- * @property bool longLived
- * @property string url
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $sid
+ * @property string $friendlyName
+ * @property string $chatServiceSid
+ * @property string $channelType
+ * @property string $contactIdentity
+ * @property bool $enabled
+ * @property string $integrationType
+ * @property array $integration
+ * @property bool $longLived
+ * @property string $url
  */
 class FlexFlowInstance extends InstanceResource {
     /**

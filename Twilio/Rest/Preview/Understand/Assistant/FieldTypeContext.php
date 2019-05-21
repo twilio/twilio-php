@@ -19,7 +19,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueList fieldValues
+ * @property \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueList $fieldValues
  * @method \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueContext fieldValues(string $sid)
  */
 class FieldTypeContext extends InstanceContext {

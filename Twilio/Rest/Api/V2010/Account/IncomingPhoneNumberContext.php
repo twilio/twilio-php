@@ -18,7 +18,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList assignedAddOns
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList $assignedAddOns
  * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnContext assignedAddOns(string $sid)
  */
 class IncomingPhoneNumberContext extends InstanceContext {

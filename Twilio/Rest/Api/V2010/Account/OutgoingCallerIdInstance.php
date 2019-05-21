@@ -17,13 +17,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string accountSid
- * @property string phoneNumber
- * @property string uri
+ * @property string $sid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $accountSid
+ * @property string $phoneNumber
+ * @property string $uri
  */
 class OutgoingCallerIdInstance extends InstanceResource {
     /**

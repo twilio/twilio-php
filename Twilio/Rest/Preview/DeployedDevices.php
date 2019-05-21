@@ -15,7 +15,7 @@ use Twilio\Rest\Preview\DeployedDevices\FleetList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\DeployedDevices\FleetList fleets
+ * @property \Twilio\Rest\Preview\DeployedDevices\FleetList $fleets
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  */
 class DeployedDevices extends Version {

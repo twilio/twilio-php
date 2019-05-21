@@ -17,15 +17,15 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string accountSid
- * @property string resourceSid
- * @property string assignedAddOnSid
- * @property string friendlyName
- * @property string productName
- * @property string uniqueName
- * @property string uri
- * @property bool enabled
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $resourceSid
+ * @property string $assignedAddOnSid
+ * @property string $friendlyName
+ * @property string $productName
+ * @property string $uniqueName
+ * @property string $uri
+ * @property bool $enabled
  */
 class AssignedAddOnExtensionInstance extends InstanceResource {
     /**

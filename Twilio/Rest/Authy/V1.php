@@ -16,8 +16,8 @@ use Twilio\Rest\Authy\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Authy\V1\ServiceList services
- * @property \Twilio\Rest\Authy\V1\FormList forms
+ * @property \Twilio\Rest\Authy\V1\ServiceList $services
+ * @property \Twilio\Rest\Authy\V1\FormList $forms
  * @method \Twilio\Rest\Authy\V1\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
  */

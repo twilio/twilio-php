@@ -23,10 +23,10 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Sync\V1\Service\DocumentList documents
- * @property \Twilio\Rest\Sync\V1\Service\SyncListList syncLists
- * @property \Twilio\Rest\Sync\V1\Service\SyncMapList syncMaps
- * @property \Twilio\Rest\Sync\V1\Service\SyncStreamList syncStreams
+ * @property \Twilio\Rest\Sync\V1\Service\DocumentList $documents
+ * @property \Twilio\Rest\Sync\V1\Service\SyncListList $syncLists
+ * @property \Twilio\Rest\Sync\V1\Service\SyncMapList $syncMaps
+ * @property \Twilio\Rest\Sync\V1\Service\SyncStreamList $syncStreams
  * @method \Twilio\Rest\Sync\V1\Service\DocumentContext documents(string $sid)
  * @method \Twilio\Rest\Sync\V1\Service\SyncListContext syncLists(string $sid)
  * @method \Twilio\Rest\Sync\V1\Service\SyncMapContext syncMaps(string $sid)

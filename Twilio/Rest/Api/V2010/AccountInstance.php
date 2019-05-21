@@ -17,16 +17,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string authToken
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string ownerAccountSid
- * @property string sid
- * @property string status
- * @property array subresourceUris
- * @property string type
- * @property string uri
+ * @property string $authToken
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $ownerAccountSid
+ * @property string $sid
+ * @property string $status
+ * @property array $subresourceUris
+ * @property string $type
+ * @property string $uri
  */
 class AccountInstance extends InstanceResource {
     protected $_addresses = null;

@@ -22,9 +22,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Sync\Service\DocumentList documents
- * @property \Twilio\Rest\Preview\Sync\Service\SyncListList syncLists
- * @property \Twilio\Rest\Preview\Sync\Service\SyncMapList syncMaps
+ * @property \Twilio\Rest\Preview\Sync\Service\DocumentList $documents
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncListList $syncLists
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncMapList $syncMaps
  * @method \Twilio\Rest\Preview\Sync\Service\DocumentContext documents(string $sid)
  * @method \Twilio\Rest\Preview\Sync\Service\SyncListContext syncLists(string $sid)
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMapContext syncMaps(string $sid)

@@ -19,8 +19,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Serverless\V1\Service\Environment\VariableList variables
- * @property \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList deployments
+ * @property \Twilio\Rest\Serverless\V1\Service\Environment\VariableList $variables
+ * @property \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList $deployments
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext variables(string $sid)
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentContext deployments(string $sid)
  */

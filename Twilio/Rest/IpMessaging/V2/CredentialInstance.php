@@ -17,14 +17,14 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property string type
- * @property string sandbox
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property string $type
+ * @property string $sandbox
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class CredentialInstance extends InstanceResource {
     /**

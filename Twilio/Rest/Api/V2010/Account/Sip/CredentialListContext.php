@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList credentials
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList $credentials
  * @method \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext credentials(string $sid)
  */
 class CredentialListContext extends InstanceContext {

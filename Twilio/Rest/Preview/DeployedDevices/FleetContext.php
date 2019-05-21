@@ -22,10 +22,10 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList devices
- * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList deployments
- * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList certificates
- * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyList keys
+ * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList $devices
+ * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList $deployments
+ * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList $certificates
+ * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyList $keys
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceContext devices(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext deployments(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)

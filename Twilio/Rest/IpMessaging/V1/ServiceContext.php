@@ -20,9 +20,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V1\Service\ChannelList channels
- * @property \Twilio\Rest\IpMessaging\V1\Service\RoleList roles
- * @property \Twilio\Rest\IpMessaging\V1\Service\UserList users
+ * @property \Twilio\Rest\IpMessaging\V1\Service\ChannelList $channels
+ * @property \Twilio\Rest\IpMessaging\V1\Service\RoleList $roles
+ * @property \Twilio\Rest\IpMessaging\V1\Service\UserList $users
  * @method \Twilio\Rest\IpMessaging\V1\Service\ChannelContext channels(string $sid)
  * @method \Twilio\Rest\IpMessaging\V1\Service\RoleContext roles(string $sid)
  * @method \Twilio\Rest\IpMessaging\V1\Service\UserContext users(string $sid)

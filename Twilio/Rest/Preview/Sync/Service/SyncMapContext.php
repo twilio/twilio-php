@@ -19,8 +19,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList syncMapItems
- * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList syncMapPermissions
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList $syncMapItems
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList $syncMapPermissions
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemContext syncMapItems(string $key)
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext syncMapPermissions(string $identity)
  */

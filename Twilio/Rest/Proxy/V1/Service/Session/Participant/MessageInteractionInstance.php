@@ -18,26 +18,26 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string sessionSid
- * @property string serviceSid
- * @property string accountSid
- * @property string data
- * @property string type
- * @property string participantSid
- * @property string inboundParticipantSid
- * @property string inboundResourceSid
- * @property string inboundResourceStatus
- * @property string inboundResourceType
- * @property string inboundResourceUrl
- * @property string outboundParticipantSid
- * @property string outboundResourceSid
- * @property string outboundResourceStatus
- * @property string outboundResourceType
- * @property string outboundResourceUrl
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $sid
+ * @property string $sessionSid
+ * @property string $serviceSid
+ * @property string $accountSid
+ * @property string $data
+ * @property string $type
+ * @property string $participantSid
+ * @property string $inboundParticipantSid
+ * @property string $inboundResourceSid
+ * @property string $inboundResourceStatus
+ * @property string $inboundResourceType
+ * @property string $inboundResourceUrl
+ * @property string $outboundParticipantSid
+ * @property string $outboundResourceSid
+ * @property string $outboundResourceStatus
+ * @property string $outboundResourceType
+ * @property string $outboundResourceUrl
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class MessageInteractionInstance extends InstanceResource {
     /**

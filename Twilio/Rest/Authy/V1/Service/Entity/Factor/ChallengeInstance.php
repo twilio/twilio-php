@@ -19,23 +19,23 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string sid
- * @property string accountSid
- * @property string serviceSid
- * @property string entitySid
- * @property string identity
- * @property string factorSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property \DateTime dateResponded
- * @property \DateTime expirationDate
- * @property string status
- * @property string respondedReason
- * @property string details
- * @property string hiddenDetails
- * @property string factorType
- * @property string factorStrength
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $entitySid
+ * @property string $identity
+ * @property string $factorSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property \DateTime $dateResponded
+ * @property \DateTime $expirationDate
+ * @property string $status
+ * @property string $respondedReason
+ * @property string $details
+ * @property string $hiddenDetails
+ * @property string $factorType
+ * @property string $factorStrength
+ * @property string $url
  */
 class ChallengeInstance extends InstanceResource {
     /**

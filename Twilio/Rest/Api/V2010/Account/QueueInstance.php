@@ -17,16 +17,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property int averageWaitTime
- * @property int currentSize
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property int maxSize
- * @property string sid
- * @property string uri
- * @property array subresourceUris
+ * @property string $accountSid
+ * @property int $averageWaitTime
+ * @property int $currentSize
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property int $maxSize
+ * @property string $sid
+ * @property string $uri
+ * @property array $subresourceUris
  */
 class QueueInstance extends InstanceResource {
     protected $_members = null;

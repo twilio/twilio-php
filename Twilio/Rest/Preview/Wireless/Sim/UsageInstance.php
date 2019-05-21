@@ -18,15 +18,15 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string simSid
- * @property string simUniqueName
- * @property string accountSid
- * @property array period
- * @property array commandsUsage
- * @property array commandsCosts
- * @property array dataUsage
- * @property array dataCosts
- * @property string url
+ * @property string $simSid
+ * @property string $simUniqueName
+ * @property string $accountSid
+ * @property array $period
+ * @property array $commandsUsage
+ * @property array $commandsCosts
+ * @property array $dataUsage
+ * @property array $dataCosts
+ * @property string $url
  */
 class UsageInstance extends InstanceResource {
     /**

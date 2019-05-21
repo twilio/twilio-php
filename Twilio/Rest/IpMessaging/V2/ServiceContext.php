@@ -21,10 +21,10 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V2\Service\ChannelList channels
- * @property \Twilio\Rest\IpMessaging\V2\Service\RoleList roles
- * @property \Twilio\Rest\IpMessaging\V2\Service\UserList users
- * @property \Twilio\Rest\IpMessaging\V2\Service\BindingList bindings
+ * @property \Twilio\Rest\IpMessaging\V2\Service\ChannelList $channels
+ * @property \Twilio\Rest\IpMessaging\V2\Service\RoleList $roles
+ * @property \Twilio\Rest\IpMessaging\V2\Service\UserList $users
+ * @property \Twilio\Rest\IpMessaging\V2\Service\BindingList $bindings
  * @method \Twilio\Rest\IpMessaging\V2\Service\ChannelContext channels(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\RoleContext roles(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\UserContext users(string $sid)

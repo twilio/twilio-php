@@ -17,12 +17,12 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string issues
- * @property int qualityScore
- * @property string sid
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $issues
+ * @property int $qualityScore
+ * @property string $sid
  */
 class FeedbackInstance extends InstanceResource {
     /**

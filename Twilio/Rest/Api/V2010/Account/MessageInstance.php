@@ -16,26 +16,26 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property string body
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property \DateTime dateSent
- * @property string direction
- * @property int errorCode
- * @property string errorMessage
- * @property string from
- * @property string messagingServiceSid
- * @property string numMedia
- * @property string numSegments
- * @property string price
- * @property string priceUnit
- * @property string sid
- * @property string status
- * @property array subresourceUris
- * @property string to
- * @property string uri
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property string $body
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property \DateTime $dateSent
+ * @property string $direction
+ * @property int $errorCode
+ * @property string $errorMessage
+ * @property string $from
+ * @property string $messagingServiceSid
+ * @property string $numMedia
+ * @property string $numSegments
+ * @property string $price
+ * @property string $priceUnit
+ * @property string $sid
+ * @property string $status
+ * @property array $subresourceUris
+ * @property string $to
+ * @property string $uri
  */
 class MessageInstance extends InstanceResource {
     protected $_media = null;

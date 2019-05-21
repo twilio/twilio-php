@@ -17,21 +17,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string city
- * @property string customerName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string isoCountry
- * @property string postalCode
- * @property string region
- * @property string sid
- * @property string street
- * @property string uri
- * @property bool emergencyEnabled
- * @property bool validated
- * @property bool verified
+ * @property string $accountSid
+ * @property string $city
+ * @property string $customerName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $isoCountry
+ * @property string $postalCode
+ * @property string $region
+ * @property string $sid
+ * @property string $street
+ * @property string $uri
+ * @property bool $emergencyEnabled
+ * @property bool $validated
+ * @property bool $verified
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;

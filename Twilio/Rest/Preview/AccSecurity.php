@@ -15,7 +15,7 @@ use Twilio\Rest\Preview\AccSecurity\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\AccSecurity\ServiceList services
+ * @property \Twilio\Rest\Preview\AccSecurity\ServiceList $services
  * @method \Twilio\Rest\Preview\AccSecurity\ServiceContext services(string $sid)
  */
 class AccSecurity extends Version {

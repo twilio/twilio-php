@@ -22,11 +22,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList originationUrls
- * @property \Twilio\Rest\Trunking\V1\Trunk\CredentialListList credentialsLists
- * @property \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList ipAccessControlLists
- * @property \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList phoneNumbers
- * @property \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList terminatingSipDomains
+ * @property \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList $originationUrls
+ * @property \Twilio\Rest\Trunking\V1\Trunk\CredentialListList $credentialsLists
+ * @property \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList $ipAccessControlLists
+ * @property \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList $phoneNumbers
+ * @property \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList $terminatingSipDomains
  * @method \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext originationUrls(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext credentialsLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext ipAccessControlLists(string $sid)

@@ -16,18 +16,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property array activityStatistics
- * @property int longestTaskWaitingAge
- * @property string longestTaskWaitingSid
- * @property string taskQueueSid
- * @property array tasksByPriority
- * @property array tasksByStatus
- * @property int totalAvailableWorkers
- * @property int totalEligibleWorkers
- * @property int totalTasks
- * @property string workspaceSid
- * @property string url
+ * @property string $accountSid
+ * @property array $activityStatistics
+ * @property int $longestTaskWaitingAge
+ * @property string $longestTaskWaitingSid
+ * @property string $taskQueueSid
+ * @property array $tasksByPriority
+ * @property array $tasksByStatus
+ * @property int $totalAvailableWorkers
+ * @property int $totalEligibleWorkers
+ * @property int $totalTasks
+ * @property string $workspaceSid
+ * @property string $url
  */
 class TaskQueueRealTimeStatisticsInstance extends InstanceResource {
     /**

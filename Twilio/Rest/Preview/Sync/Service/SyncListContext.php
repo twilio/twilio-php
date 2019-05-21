@@ -19,8 +19,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList syncListItems
- * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList syncListPermissions
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList $syncListItems
+ * @property \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList $syncListPermissions
  * @method \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext syncListItems(int $index)
  * @method \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionContext syncListPermissions(string $identity)
  */

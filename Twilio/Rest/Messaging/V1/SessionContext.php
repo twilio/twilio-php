@@ -22,9 +22,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Messaging\V1\Session\ParticipantList participants
- * @property \Twilio\Rest\Messaging\V1\Session\MessageList messages
- * @property \Twilio\Rest\Messaging\V1\Session\WebhookList webhooks
+ * @property \Twilio\Rest\Messaging\V1\Session\ParticipantList $participants
+ * @property \Twilio\Rest\Messaging\V1\Session\MessageList $messages
+ * @property \Twilio\Rest\Messaging\V1\Session\WebhookList $webhooks
  * @method \Twilio\Rest\Messaging\V1\Session\ParticipantContext participants(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Session\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Session\WebhookContext webhooks(string $sid)

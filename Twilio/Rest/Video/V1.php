@@ -20,12 +20,12 @@ use Twilio\Rest\Video\V1\RoomList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\CompositionHookList compositionHooks
- * @property \Twilio\Rest\Video\V1\CompositionSettingsList compositionSettings
- * @property \Twilio\Rest\Video\V1\RecordingList recordings
- * @property \Twilio\Rest\Video\V1\RecordingSettingsList recordingSettings
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
- * @property \Twilio\Rest\Video\V1\RoomList rooms
+ * @property \Twilio\Rest\Video\V1\CompositionHookList $compositionHooks
+ * @property \Twilio\Rest\Video\V1\CompositionSettingsList $compositionSettings
+ * @property \Twilio\Rest\Video\V1\RecordingList $recordings
+ * @property \Twilio\Rest\Video\V1\RecordingSettingsList $recordingSettings
+ * @property \Twilio\Rest\Video\V1\CompositionList $compositions
+ * @property \Twilio\Rest\Video\V1\RoomList $rooms
  * @method \Twilio\Rest\Video\V1\CompositionHookContext compositionHooks(string $sid)
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)

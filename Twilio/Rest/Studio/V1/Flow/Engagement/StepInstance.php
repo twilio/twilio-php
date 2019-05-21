@@ -16,18 +16,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string flowSid
- * @property string engagementSid
- * @property string name
- * @property array context
- * @property string transitionedFrom
- * @property string transitionedTo
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $flowSid
+ * @property string $engagementSid
+ * @property string $name
+ * @property array $context
+ * @property string $transitionedFrom
+ * @property string $transitionedTo
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
+ * @property array $links
  */
 class StepInstance extends InstanceResource {
     protected $_stepContext = null;

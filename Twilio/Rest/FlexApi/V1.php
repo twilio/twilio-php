@@ -16,8 +16,8 @@ use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\FlexApi\V1\FlexFlowList flexFlow
- * @property \Twilio\Rest\FlexApi\V1\ConfigurationList configuration
+ * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
+ * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
  */
 class V1 extends Version {

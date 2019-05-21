@@ -16,8 +16,8 @@ use Twilio\Rest\Preview\BulkExports\ExportList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\BulkExports\ExportList exports
- * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList exportConfiguration
+ * @property \Twilio\Rest\Preview\BulkExports\ExportList $exports
+ * @property \Twilio\Rest\Preview\BulkExports\ExportConfigurationList $exportConfiguration
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  */

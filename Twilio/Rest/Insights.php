@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Insights\V1;
 
 /**
- * @property \Twilio\Rest\Insights\V1 v1
- * @property \Twilio\Rest\Insights\V1\CallSummaryList summary
+ * @property \Twilio\Rest\Insights\V1 $v1
+ * @property \Twilio\Rest\Insights\V1\CallSummaryList $summary
  * @method \Twilio\Rest\Insights\V1\CallSummaryContext summary(string $callSid)
  */
 class Insights extends Domain {

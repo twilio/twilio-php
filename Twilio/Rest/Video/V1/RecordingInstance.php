@@ -16,21 +16,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string status
- * @property \DateTime dateCreated
- * @property string sid
- * @property string sourceSid
- * @property string size
- * @property string url
- * @property string type
- * @property int duration
- * @property string containerFormat
- * @property string codec
- * @property array groupingSids
- * @property string trackName
- * @property string offset
- * @property array links
+ * @property string $accountSid
+ * @property string $status
+ * @property \DateTime $dateCreated
+ * @property string $sid
+ * @property string $sourceSid
+ * @property string $size
+ * @property string $url
+ * @property string $type
+ * @property int $duration
+ * @property string $containerFormat
+ * @property string $codec
+ * @property array $groupingSids
+ * @property string $trackName
+ * @property string $offset
+ * @property array $links
  */
 class RecordingInstance extends InstanceResource {
     /**

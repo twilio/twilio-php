@@ -15,9 +15,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string name
- * @property string url
- * @property array links
+ * @property string $name
+ * @property string $url
+ * @property array $links
  */
 class VoiceInstance extends InstanceResource {
     /**

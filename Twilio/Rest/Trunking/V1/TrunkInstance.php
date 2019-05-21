@@ -17,21 +17,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string domainName
- * @property string disasterRecoveryMethod
- * @property string disasterRecoveryUrl
- * @property string friendlyName
- * @property bool secure
- * @property array recording
- * @property bool cnamLookupEnabled
- * @property string authType
- * @property string authTypeSet
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string sid
- * @property string url
- * @property array links
+ * @property string $accountSid
+ * @property string $domainName
+ * @property string $disasterRecoveryMethod
+ * @property string $disasterRecoveryUrl
+ * @property string $friendlyName
+ * @property bool $secure
+ * @property array $recording
+ * @property bool $cnamLookupEnabled
+ * @property string $authType
+ * @property string $authTypeSet
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $sid
+ * @property string $url
+ * @property array $links
  */
 class TrunkInstance extends InstanceResource {
     protected $_originationUrls = null;

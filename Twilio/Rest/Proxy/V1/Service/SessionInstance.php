@@ -19,22 +19,22 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string serviceSid
- * @property string accountSid
- * @property \DateTime dateStarted
- * @property \DateTime dateEnded
- * @property \DateTime dateLastInteraction
- * @property \DateTime dateExpiry
- * @property string uniqueName
- * @property string status
- * @property string closedReason
- * @property int ttl
- * @property string mode
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $serviceSid
+ * @property string $accountSid
+ * @property \DateTime $dateStarted
+ * @property \DateTime $dateEnded
+ * @property \DateTime $dateLastInteraction
+ * @property \DateTime $dateExpiry
+ * @property string $uniqueName
+ * @property string $status
+ * @property string $closedReason
+ * @property int $ttl
+ * @property string $mode
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
+ * @property array $links
  */
 class SessionInstance extends InstanceResource {
     protected $_interactions = null;

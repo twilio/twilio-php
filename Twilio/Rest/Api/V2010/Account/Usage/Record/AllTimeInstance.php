@@ -16,20 +16,20 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property string category
- * @property string count
- * @property string countUnit
- * @property string description
- * @property \DateTime endDate
- * @property string price
- * @property string priceUnit
- * @property \DateTime startDate
- * @property array subresourceUris
- * @property string uri
- * @property string usage
- * @property string usageUnit
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property string $category
+ * @property string $count
+ * @property string $countUnit
+ * @property string $description
+ * @property \DateTime $endDate
+ * @property string $price
+ * @property string $priceUnit
+ * @property \DateTime $startDate
+ * @property array $subresourceUris
+ * @property string $uri
+ * @property string $usage
+ * @property string $usageUnit
  */
 class AllTimeInstance extends InstanceResource {
     /**

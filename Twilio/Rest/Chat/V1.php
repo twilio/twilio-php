@@ -16,8 +16,8 @@ use Twilio\Rest\Chat\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Chat\V1\CredentialList credentials
- * @property \Twilio\Rest\Chat\V1\ServiceList services
+ * @property \Twilio\Rest\Chat\V1\CredentialList $credentials
+ * @property \Twilio\Rest\Chat\V1\ServiceList $services
  * @method \Twilio\Rest\Chat\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Chat\V1\ServiceContext services(string $sid)
  */

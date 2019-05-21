@@ -15,7 +15,7 @@ use Twilio\Rest\Insights\V1\CallSummaryList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Insights\V1\CallSummaryList summary
+ * @property \Twilio\Rest\Insights\V1\CallSummaryList $summary
  * @method \Twilio\Rest\Insights\V1\CallSummaryContext summary(string $callSid)
  */
 class V1 extends Version {

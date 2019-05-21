@@ -16,12 +16,12 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property array cumulative
- * @property array realtime
- * @property string taskQueueSid
- * @property string workspaceSid
- * @property string url
+ * @property string $accountSid
+ * @property array $cumulative
+ * @property array $realtime
+ * @property string $taskQueueSid
+ * @property string $workspaceSid
+ * @property string $url
  */
 class TaskQueueStatisticsInstance extends InstanceResource {
     /**
