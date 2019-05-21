@@ -15,7 +15,7 @@ use Twilio\Rest\Fax\V1\FaxList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Fax\V1\FaxList faxes
+ * @property \Twilio\Rest\Fax\V1\FaxList $faxes
  * @method \Twilio\Rest\Fax\V1\FaxContext faxes(string $sid)
  */
 class V1 extends Version {

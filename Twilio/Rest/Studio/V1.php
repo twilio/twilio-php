@@ -15,7 +15,7 @@ use Twilio\Rest\Studio\V1\FlowList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V1\FlowList flows
+ * @property \Twilio\Rest\Studio\V1\FlowList $flows
  * @method \Twilio\Rest\Studio\V1\FlowContext flows(string $sid)
  */
 class V1 extends Version {

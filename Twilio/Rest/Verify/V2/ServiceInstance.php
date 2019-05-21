@@ -19,19 +19,19 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property int codeLength
- * @property bool lookupEnabled
- * @property bool psd2Enabled
- * @property bool skipSmsToLandlines
- * @property bool dtmfInputRequired
- * @property string ttsName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property int $codeLength
+ * @property bool $lookupEnabled
+ * @property bool $psd2Enabled
+ * @property bool $skipSmsToLandlines
+ * @property bool $dtmfInputRequired
+ * @property string $ttsName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
+ * @property array $links
  */
 class ServiceInstance extends InstanceResource {
     protected $_verifications = null;

@@ -19,25 +19,25 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string accountSid
- * @property string callSid
- * @property string callType
- * @property string callState
- * @property string processingState
- * @property string direction
- * @property string disconnectedBy
- * @property \DateTime startTime
- * @property \DateTime endTime
- * @property int duration
- * @property int connectDuration
- * @property array from
- * @property array to
- * @property array carrierEdge
- * @property array clientEdge
- * @property array sdkEdge
- * @property array sipEdge
- * @property string tags
- * @property string url
+ * @property string $accountSid
+ * @property string $callSid
+ * @property string $callType
+ * @property string $callState
+ * @property string $processingState
+ * @property string $direction
+ * @property string $disconnectedBy
+ * @property \DateTime $startTime
+ * @property \DateTime $endTime
+ * @property int $duration
+ * @property int $connectDuration
+ * @property array $from
+ * @property array $to
+ * @property array $carrierEdge
+ * @property array $clientEdge
+ * @property array $sdkEdge
+ * @property array $sipEdge
+ * @property string $tags
+ * @property string $url
  */
 class CallSummaryInstance extends InstanceResource {
     /**

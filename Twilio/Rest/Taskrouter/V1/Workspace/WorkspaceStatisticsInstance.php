@@ -16,11 +16,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property array realtime
- * @property array cumulative
- * @property string accountSid
- * @property string workspaceSid
- * @property string url
+ * @property array $realtime
+ * @property array $cumulative
+ * @property string $accountSid
+ * @property string $workspaceSid
+ * @property string $url
  */
 class WorkspaceStatisticsInstance extends InstanceResource {
     /**

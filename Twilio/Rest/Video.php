@@ -14,13 +14,13 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Video\V1;
 
 /**
- * @property \Twilio\Rest\Video\V1 v1
- * @property \Twilio\Rest\Video\V1\CompositionHookList compositionHooks
- * @property \Twilio\Rest\Video\V1\CompositionSettingsList compositionSettings
- * @property \Twilio\Rest\Video\V1\RecordingList recordings
- * @property \Twilio\Rest\Video\V1\RecordingSettingsList recordingSettings
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
- * @property \Twilio\Rest\Video\V1\RoomList rooms
+ * @property \Twilio\Rest\Video\V1 $v1
+ * @property \Twilio\Rest\Video\V1\CompositionHookList $compositionHooks
+ * @property \Twilio\Rest\Video\V1\CompositionSettingsList $compositionSettings
+ * @property \Twilio\Rest\Video\V1\RecordingList $recordings
+ * @property \Twilio\Rest\Video\V1\RecordingSettingsList $recordingSettings
+ * @property \Twilio\Rest\Video\V1\CompositionList $compositions
+ * @property \Twilio\Rest\Video\V1\RoomList $rooms
  * @method \Twilio\Rest\Video\V1\CompositionHookContext compositionHooks(string $sid)
  * @method \Twilio\Rest\Video\V1\CompositionSettingsContext compositionSettings()
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)

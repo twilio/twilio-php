@@ -17,12 +17,12 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class AwsInstance extends InstanceResource {
     /**

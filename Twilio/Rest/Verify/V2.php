@@ -15,7 +15,7 @@ use Twilio\Rest\Verify\V2\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Verify\V2\ServiceList services
+ * @property \Twilio\Rest\Verify\V2\ServiceList $services
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class V2 extends Version {

@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Voice\V1;
 
 /**
- * @property \Twilio\Rest\Voice\V1 v1
- * @property \Twilio\Rest\Voice\V1\DialingPermissionsList dialingPermissions
+ * @property \Twilio\Rest\Voice\V1 $v1
+ * @property \Twilio\Rest\Voice\V1\DialingPermissionsList $dialingPermissions
  */
 class Voice extends Domain {
     protected $_v1 = null;

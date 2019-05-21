@@ -19,9 +19,9 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\CountryList countries
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList settings
- * @property \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList bulkCountryUpdates
+ * @property \Twilio\Rest\Voice\V1\DialingPermissions\CountryList $countries
+ * @property \Twilio\Rest\Voice\V1\DialingPermissions\SettingsList $settings
+ * @property \Twilio\Rest\Voice\V1\DialingPermissions\BulkCountryUpdateList $bulkCountryUpdates
  * @method \Twilio\Rest\Voice\V1\DialingPermissions\CountryContext countries(string $isoCode)
  * @method \Twilio\Rest\Voice\V1\DialingPermissions\SettingsContext settings()
  */

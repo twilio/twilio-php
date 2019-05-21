@@ -18,11 +18,11 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property bool enabled
- * @property string webhookUrl
- * @property string webhookMethod
- * @property string resourceType
- * @property string url
+ * @property bool $enabled
+ * @property string $webhookUrl
+ * @property string $webhookMethod
+ * @property string $resourceType
+ * @property string $url
  */
 class ExportConfigurationInstance extends InstanceResource {
     /**

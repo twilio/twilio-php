@@ -27,14 +27,14 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Understand\Assistant\FieldTypeList fieldTypes
- * @property \Twilio\Rest\Preview\Understand\Assistant\TaskList tasks
- * @property \Twilio\Rest\Preview\Understand\Assistant\ModelBuildList modelBuilds
- * @property \Twilio\Rest\Preview\Understand\Assistant\QueryList queries
- * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList assistantFallbackActions
- * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList assistantInitiationActions
- * @property \Twilio\Rest\Preview\Understand\Assistant\DialogueList dialogues
- * @property \Twilio\Rest\Preview\Understand\Assistant\StyleSheetList styleSheet
+ * @property \Twilio\Rest\Preview\Understand\Assistant\FieldTypeList $fieldTypes
+ * @property \Twilio\Rest\Preview\Understand\Assistant\TaskList $tasks
+ * @property \Twilio\Rest\Preview\Understand\Assistant\ModelBuildList $modelBuilds
+ * @property \Twilio\Rest\Preview\Understand\Assistant\QueryList $queries
+ * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantFallbackActionsList $assistantFallbackActions
+ * @property \Twilio\Rest\Preview\Understand\Assistant\AssistantInitiationActionsList $assistantInitiationActions
+ * @property \Twilio\Rest\Preview\Understand\Assistant\DialogueList $dialogues
+ * @property \Twilio\Rest\Preview\Understand\Assistant\StyleSheetList $styleSheet
  * @method \Twilio\Rest\Preview\Understand\Assistant\FieldTypeContext fieldTypes(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\TaskContext tasks(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\ModelBuildContext modelBuilds(string $sid)

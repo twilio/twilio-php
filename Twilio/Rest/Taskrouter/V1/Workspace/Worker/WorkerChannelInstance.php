@@ -17,19 +17,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property int assignedTasks
- * @property bool available
- * @property int availableCapacityPercentage
- * @property int configuredCapacity
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string sid
- * @property string taskChannelSid
- * @property string taskChannelUniqueName
- * @property string workerSid
- * @property string workspaceSid
- * @property string url
+ * @property string $accountSid
+ * @property int $assignedTasks
+ * @property bool $available
+ * @property int $availableCapacityPercentage
+ * @property int $configuredCapacity
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $sid
+ * @property string $taskChannelSid
+ * @property string $taskChannelUniqueName
+ * @property string $workerSid
+ * @property string $workspaceSid
+ * @property string $url
  */
 class WorkerChannelInstance extends InstanceResource {
     /**

@@ -18,7 +18,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList messageInteractions
+ * @property \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList $messageInteractions
  * @method \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext messageInteractions(string $sid)
  */
 class ParticipantContext extends InstanceContext {

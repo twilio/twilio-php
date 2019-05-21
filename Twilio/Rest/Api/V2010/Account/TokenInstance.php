@@ -16,13 +16,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string iceServers
- * @property string password
- * @property string ttl
- * @property string username
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $iceServers
+ * @property string $password
+ * @property string $ttl
+ * @property string $username
  */
 class TokenInstance extends InstanceResource {
     /**

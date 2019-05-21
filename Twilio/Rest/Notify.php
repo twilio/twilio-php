@@ -14,9 +14,9 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Notify\V1;
 
 /**
- * @property \Twilio\Rest\Notify\V1 v1
- * @property \Twilio\Rest\Notify\V1\CredentialList credentials
- * @property \Twilio\Rest\Notify\V1\ServiceList services
+ * @property \Twilio\Rest\Notify\V1 $v1
+ * @property \Twilio\Rest\Notify\V1\CredentialList $credentials
+ * @property \Twilio\Rest\Notify\V1\ServiceList $services
  * @method \Twilio\Rest\Notify\V1\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\Notify\V1\ServiceContext services(string $sid)
  */

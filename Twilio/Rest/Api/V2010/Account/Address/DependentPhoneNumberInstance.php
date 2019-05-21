@@ -16,32 +16,32 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property string phoneNumber
- * @property string voiceUrl
- * @property string voiceMethod
- * @property string voiceFallbackMethod
- * @property string voiceFallbackUrl
- * @property bool voiceCallerIdLookup
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string smsFallbackMethod
- * @property string smsFallbackUrl
- * @property string smsMethod
- * @property string smsUrl
- * @property string addressRequirements
- * @property array capabilities
- * @property string statusCallback
- * @property string statusCallbackMethod
- * @property string apiVersion
- * @property string smsApplicationSid
- * @property string voiceApplicationSid
- * @property string trunkSid
- * @property string emergencyStatus
- * @property string emergencyAddressSid
- * @property string uri
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property string $phoneNumber
+ * @property string $voiceUrl
+ * @property string $voiceMethod
+ * @property string $voiceFallbackMethod
+ * @property string $voiceFallbackUrl
+ * @property bool $voiceCallerIdLookup
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $smsFallbackMethod
+ * @property string $smsFallbackUrl
+ * @property string $smsMethod
+ * @property string $smsUrl
+ * @property string $addressRequirements
+ * @property array $capabilities
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
+ * @property string $apiVersion
+ * @property string $smsApplicationSid
+ * @property string $voiceApplicationSid
+ * @property string $trunkSid
+ * @property string $emergencyStatus
+ * @property string $emergencyAddressSid
+ * @property string $uri
  */
 class DependentPhoneNumberInstance extends InstanceResource {
     /**

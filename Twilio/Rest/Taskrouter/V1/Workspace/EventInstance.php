@@ -16,23 +16,23 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string actorSid
- * @property string actorType
- * @property string actorUrl
- * @property string description
- * @property array eventData
- * @property \DateTime eventDate
- * @property string eventDateMs
- * @property string eventType
- * @property string resourceSid
- * @property string resourceType
- * @property string resourceUrl
- * @property string sid
- * @property string source
- * @property string sourceIpAddress
- * @property string url
- * @property string workspaceSid
+ * @property string $accountSid
+ * @property string $actorSid
+ * @property string $actorType
+ * @property string $actorUrl
+ * @property string $description
+ * @property array $eventData
+ * @property \DateTime $eventDate
+ * @property string $eventDateMs
+ * @property string $eventType
+ * @property string $resourceSid
+ * @property string $resourceType
+ * @property string $resourceUrl
+ * @property string $sid
+ * @property string $source
+ * @property string $sourceIpAddress
+ * @property string $url
+ * @property string $workspaceSid
  */
 class EventInstance extends InstanceResource {
     /**

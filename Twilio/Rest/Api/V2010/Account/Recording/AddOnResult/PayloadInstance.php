@@ -16,17 +16,17 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string addOnResultSid
- * @property string accountSid
- * @property string label
- * @property string addOnSid
- * @property string addOnConfigurationSid
- * @property string contentType
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string referenceSid
- * @property array subresourceUris
+ * @property string $sid
+ * @property string $addOnResultSid
+ * @property string $accountSid
+ * @property string $label
+ * @property string $addOnSid
+ * @property string $addOnConfigurationSid
+ * @property string $contentType
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $referenceSid
+ * @property array $subresourceUris
  */
 class PayloadInstance extends InstanceResource {
     /**

@@ -16,23 +16,23 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property string callSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string errorCode
- * @property string log
- * @property \DateTime messageDate
- * @property string messageText
- * @property string moreInfo
- * @property string requestMethod
- * @property string requestUrl
- * @property string requestVariables
- * @property string responseBody
- * @property string responseHeaders
- * @property string sid
- * @property string uri
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property string $callSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $errorCode
+ * @property string $log
+ * @property \DateTime $messageDate
+ * @property string $messageText
+ * @property string $moreInfo
+ * @property string $requestMethod
+ * @property string $requestUrl
+ * @property string $requestVariables
+ * @property string $responseBody
+ * @property string $responseHeaders
+ * @property string $sid
+ * @property string $uri
  */
 class NotificationInstance extends InstanceResource {
     /**

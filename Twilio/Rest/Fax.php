@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Fax\V1;
 
 /**
- * @property \Twilio\Rest\Fax\V1 v1
- * @property \Twilio\Rest\Fax\V1\FaxList faxes
+ * @property \Twilio\Rest\Fax\V1 $v1
+ * @property \Twilio\Rest\Fax\V1\FaxList $faxes
  * @method \Twilio\Rest\Fax\V1\FaxContext faxes(string $sid)
  */
 class Fax extends Domain {

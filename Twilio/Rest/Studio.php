@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Studio\V1;
 
 /**
- * @property \Twilio\Rest\Studio\V1 v1
- * @property \Twilio\Rest\Studio\V1\FlowList flows
+ * @property \Twilio\Rest\Studio\V1 $v1
+ * @property \Twilio\Rest\Studio\V1\FlowList $flows
  * @method \Twilio\Rest\Studio\V1\FlowContext flows(string $sid)
  */
 class Studio extends Domain {

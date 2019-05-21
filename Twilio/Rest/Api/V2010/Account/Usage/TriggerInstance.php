@@ -17,22 +17,22 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property string callbackMethod
- * @property string callbackUrl
- * @property string currentValue
- * @property \DateTime dateCreated
- * @property \DateTime dateFired
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string recurring
- * @property string sid
- * @property string triggerBy
- * @property string triggerValue
- * @property string uri
- * @property string usageCategory
- * @property string usageRecordUri
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property string $callbackMethod
+ * @property string $callbackUrl
+ * @property string $currentValue
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateFired
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $recurring
+ * @property string $sid
+ * @property string $triggerBy
+ * @property string $triggerValue
+ * @property string $uri
+ * @property string $usageCategory
+ * @property string $usageRecordUri
  */
 class TriggerInstance extends InstanceResource {
     /**

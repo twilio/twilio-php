@@ -26,13 +26,13 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList fieldTypes
- * @property \Twilio\Rest\Autopilot\V1\Assistant\TaskList tasks
- * @property \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList modelBuilds
- * @property \Twilio\Rest\Autopilot\V1\Assistant\QueryList queries
- * @property \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList styleSheet
- * @property \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList defaults
- * @property \Twilio\Rest\Autopilot\V1\Assistant\DialogueList dialogues
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList $fieldTypes
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\TaskList $tasks
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList $modelBuilds
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\QueryList $queries
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList $styleSheet
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList $defaults
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\DialogueList $dialogues
  * @method \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext fieldTypes(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\TaskContext tasks(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildContext modelBuilds(string $sid)

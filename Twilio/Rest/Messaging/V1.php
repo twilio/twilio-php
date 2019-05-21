@@ -17,9 +17,9 @@ use Twilio\Rest\Messaging\V1\WebhookList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Messaging\V1\SessionList sessions
- * @property \Twilio\Rest\Messaging\V1\ServiceList services
- * @property \Twilio\Rest\Messaging\V1\WebhookList webhooks
+ * @property \Twilio\Rest\Messaging\V1\SessionList $sessions
+ * @property \Twilio\Rest\Messaging\V1\ServiceList $services
+ * @property \Twilio\Rest\Messaging\V1\WebhookList $webhooks
  * @method \Twilio\Rest\Messaging\V1\SessionContext sessions(string $sid)
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  */

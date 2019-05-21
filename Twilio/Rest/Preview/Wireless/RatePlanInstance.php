@@ -19,20 +19,20 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string sid
- * @property string uniqueName
- * @property string accountSid
- * @property string friendlyName
- * @property bool dataEnabled
- * @property string dataMetering
- * @property int dataLimit
- * @property bool messagingEnabled
- * @property bool voiceEnabled
- * @property bool nationalRoamingEnabled
- * @property string internationalRoaming
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $sid
+ * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property bool $dataEnabled
+ * @property string $dataMetering
+ * @property int $dataLimit
+ * @property bool $messagingEnabled
+ * @property bool $voiceEnabled
+ * @property bool $nationalRoamingEnabled
+ * @property string $internationalRoaming
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class RatePlanInstance extends InstanceResource {
     /**

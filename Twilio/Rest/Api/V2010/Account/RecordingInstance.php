@@ -16,24 +16,24 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string apiVersion
- * @property string callSid
- * @property string conferenceSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property \DateTime startTime
- * @property string duration
- * @property string sid
- * @property string price
- * @property string priceUnit
- * @property string status
- * @property int channels
- * @property string source
- * @property int errorCode
- * @property string uri
- * @property array encryptionDetails
- * @property array subresourceUris
+ * @property string $accountSid
+ * @property string $apiVersion
+ * @property string $callSid
+ * @property string $conferenceSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property \DateTime $startTime
+ * @property string $duration
+ * @property string $sid
+ * @property string $price
+ * @property string $priceUnit
+ * @property string $status
+ * @property int $channels
+ * @property string $source
+ * @property int $errorCode
+ * @property string $uri
+ * @property array $encryptionDetails
+ * @property array $subresourceUris
  */
 class RecordingInstance extends InstanceResource {
     protected $_transcriptions = null;

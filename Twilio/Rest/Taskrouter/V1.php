@@ -15,7 +15,7 @@ use Twilio\Rest\Taskrouter\V1\WorkspaceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList workspaces
+ * @property \Twilio\Rest\Taskrouter\V1\WorkspaceList $workspaces
  * @method \Twilio\Rest\Taskrouter\V1\WorkspaceContext workspaces(string $sid)
  */
 class V1 extends Version {

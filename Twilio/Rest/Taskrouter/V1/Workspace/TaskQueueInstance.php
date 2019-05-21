@@ -17,21 +17,21 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string assignmentActivitySid
- * @property string assignmentActivityName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property int maxReservedWorkers
- * @property string reservationActivitySid
- * @property string reservationActivityName
- * @property string sid
- * @property string targetWorkers
- * @property string taskOrder
- * @property string url
- * @property string workspaceSid
- * @property array links
+ * @property string $accountSid
+ * @property string $assignmentActivitySid
+ * @property string $assignmentActivityName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property int $maxReservedWorkers
+ * @property string $reservationActivitySid
+ * @property string $reservationActivityName
+ * @property string $sid
+ * @property string $targetWorkers
+ * @property string $taskOrder
+ * @property string $url
+ * @property string $workspaceSid
+ * @property array $links
  */
 class TaskQueueInstance extends InstanceResource {
     protected $_statistics = null;

@@ -15,7 +15,7 @@ use Twilio\Rest\Preview\Understand\AssistantList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Understand\AssistantList assistants
+ * @property \Twilio\Rest\Preview\Understand\AssistantList $assistants
  * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
  */
 class Understand extends Version {

@@ -18,16 +18,16 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string accountSid
- * @property string serviceSid
- * @property string webhookMethod
- * @property string webhookFilters
- * @property string preWebhookUrl
- * @property string postWebhookUrl
- * @property int preWebhookRetryCount
- * @property int postWebhookRetryCount
- * @property string target
- * @property string url
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $webhookMethod
+ * @property string $webhookFilters
+ * @property string $preWebhookUrl
+ * @property string $postWebhookUrl
+ * @property int $preWebhookRetryCount
+ * @property int $postWebhookRetryCount
+ * @property string $target
+ * @property string $url
  */
 class WebhookInstance extends InstanceResource {
     /**

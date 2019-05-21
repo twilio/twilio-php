@@ -17,27 +17,27 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string defaultServiceRoleSid
- * @property string defaultChannelRoleSid
- * @property string defaultChannelCreatorRoleSid
- * @property bool readStatusEnabled
- * @property bool reachabilityEnabled
- * @property int typingIndicatorTimeout
- * @property int consumptionReportInterval
- * @property array limits
- * @property array webhooks
- * @property string preWebhookUrl
- * @property string postWebhookUrl
- * @property string webhookMethod
- * @property string webhookFilters
- * @property array notifications
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $defaultServiceRoleSid
+ * @property string $defaultChannelRoleSid
+ * @property string $defaultChannelCreatorRoleSid
+ * @property bool $readStatusEnabled
+ * @property bool $reachabilityEnabled
+ * @property int $typingIndicatorTimeout
+ * @property int $consumptionReportInterval
+ * @property array $limits
+ * @property array $webhooks
+ * @property string $preWebhookUrl
+ * @property string $postWebhookUrl
+ * @property string $webhookMethod
+ * @property string $webhookFilters
+ * @property array $notifications
+ * @property string $url
+ * @property array $links
  */
 class ServiceInstance extends InstanceResource {
     protected $_channels = null;

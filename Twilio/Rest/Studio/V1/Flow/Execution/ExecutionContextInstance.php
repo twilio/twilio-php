@@ -15,11 +15,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property array context
- * @property string flowSid
- * @property string executionSid
- * @property string url
+ * @property string $accountSid
+ * @property array $context
+ * @property string $flowSid
+ * @property string $executionSid
+ * @property string $url
  */
 class ExecutionContextInstance extends InstanceResource {
     /**

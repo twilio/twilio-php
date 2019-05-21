@@ -17,19 +17,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string attributes
- * @property string serviceSid
- * @property string to
- * @property string channelSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property bool wasEdited
- * @property string from
- * @property string body
- * @property int index
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $attributes
+ * @property string $serviceSid
+ * @property string $to
+ * @property string $channelSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property bool $wasEdited
+ * @property string $from
+ * @property string $body
+ * @property int $index
+ * @property string $url
  */
 class MessageInstance extends InstanceResource {
     /**

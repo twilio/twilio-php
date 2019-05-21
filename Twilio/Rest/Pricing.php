@@ -15,11 +15,11 @@ use Twilio\Rest\Pricing\V1;
 use Twilio\Rest\Pricing\V2;
 
 /**
- * @property \Twilio\Rest\Pricing\V1 v1
- * @property \Twilio\Rest\Pricing\V2 v2
- * @property \Twilio\Rest\Pricing\V1\MessagingList messaging
- * @property \Twilio\Rest\Pricing\V1\PhoneNumberList phoneNumbers
- * @property \Twilio\Rest\Pricing\V2\VoiceList voice
+ * @property \Twilio\Rest\Pricing\V1 $v1
+ * @property \Twilio\Rest\Pricing\V2 $v2
+ * @property \Twilio\Rest\Pricing\V1\MessagingList $messaging
+ * @property \Twilio\Rest\Pricing\V1\PhoneNumberList $phoneNumbers
+ * @property \Twilio\Rest\Pricing\V2\VoiceList $voice
  */
 class Pricing extends Domain {
     protected $_v1 = null;

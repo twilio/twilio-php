@@ -19,9 +19,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Call\RecordingList recordings
- * @property \Twilio\Rest\Api\V2010\Account\Call\NotificationList notifications
- * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackList feedback
+ * @property \Twilio\Rest\Api\V2010\Account\Call\RecordingList $recordings
+ * @property \Twilio\Rest\Api\V2010\Account\Call\NotificationList $notifications
+ * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackList $feedback
  * @method \Twilio\Rest\Api\V2010\Account\Call\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\NotificationContext notifications(string $sid)
  * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext feedback()

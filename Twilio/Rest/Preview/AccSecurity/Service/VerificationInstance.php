@@ -18,15 +18,15 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string sid
- * @property string serviceSid
- * @property string accountSid
- * @property string to
- * @property string channel
- * @property string status
- * @property bool valid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
+ * @property string $sid
+ * @property string $serviceSid
+ * @property string $accountSid
+ * @property string $to
+ * @property string $channel
+ * @property string $status
+ * @property bool $valid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
  */
 class VerificationInstance extends InstanceResource {
     /**

@@ -18,8 +18,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList participants
- * @property \Twilio\Rest\Api\V2010\Account\Conference\RecordingList recordings
+ * @property \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList $participants
+ * @property \Twilio\Rest\Api\V2010\Account\Conference\RecordingList $recordings
  * @method \Twilio\Rest\Api\V2010\Account\Conference\ParticipantContext participants(string $callSid)
  * @method \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext recordings(string $sid)
  */

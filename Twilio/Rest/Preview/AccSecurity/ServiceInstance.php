@@ -19,14 +19,14 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string sid
- * @property string accountSid
- * @property string name
- * @property int codeLength
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $name
+ * @property int $codeLength
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
+ * @property array $links
  */
 class ServiceInstance extends InstanceResource {
     protected $_verifications = null;

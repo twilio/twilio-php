@@ -19,17 +19,17 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string uniqueName
- * @property string accountSid
- * @property string serviceSid
- * @property string url
- * @property array links
- * @property string revision
- * @property \DateTime dateExpires
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string createdBy
+ * @property string $sid
+ * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $url
+ * @property array $links
+ * @property string $revision
+ * @property \DateTime $dateExpires
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $createdBy
  */
 class SyncMapInstance extends InstanceResource {
     protected $_syncMapItems = null;

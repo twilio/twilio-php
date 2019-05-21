@@ -17,14 +17,14 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string accountSid
- * @property string serviceSid
- * @property string documentSid
- * @property string identity
- * @property bool read
- * @property bool write
- * @property bool manage
- * @property string url
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $documentSid
+ * @property string $identity
+ * @property bool $read
+ * @property bool $write
+ * @property bool $manage
+ * @property string $url
  */
 class DocumentPermissionInstance extends InstanceResource {
     /**

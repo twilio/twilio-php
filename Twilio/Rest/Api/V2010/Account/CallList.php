@@ -18,7 +18,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList feedbackSummaries
+ * @property \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryList $feedbackSummaries
  * @method \Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryContext feedbackSummaries(string $sid)
  */
 class CallList extends ListResource {

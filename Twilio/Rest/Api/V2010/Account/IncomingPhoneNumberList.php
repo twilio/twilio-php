@@ -20,9 +20,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalList local
- * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileList mobile
- * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeList tollFree
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalList $local
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileList $mobile
+ * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeList $tollFree
  */
 class IncomingPhoneNumberList extends ListResource {
     protected $_local = null;

@@ -17,9 +17,9 @@ use Twilio\Rest\Preview\Wireless\SimList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Wireless\CommandList commands
- * @property \Twilio\Rest\Preview\Wireless\RatePlanList ratePlans
- * @property \Twilio\Rest\Preview\Wireless\SimList sims
+ * @property \Twilio\Rest\Preview\Wireless\CommandList $commands
+ * @property \Twilio\Rest\Preview\Wireless\RatePlanList $ratePlans
+ * @property \Twilio\Rest\Preview\Wireless\SimList $sims
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)

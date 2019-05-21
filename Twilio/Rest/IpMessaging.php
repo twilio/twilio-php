@@ -15,10 +15,10 @@ use Twilio\Rest\IpMessaging\V1;
 use Twilio\Rest\IpMessaging\V2;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V1 v1
- * @property \Twilio\Rest\IpMessaging\V2 v2
- * @property \Twilio\Rest\IpMessaging\V2\CredentialList credentials
- * @property \Twilio\Rest\IpMessaging\V2\ServiceList services
+ * @property \Twilio\Rest\IpMessaging\V1 $v1
+ * @property \Twilio\Rest\IpMessaging\V2 $v2
+ * @property \Twilio\Rest\IpMessaging\V2\CredentialList $credentials
+ * @property \Twilio\Rest\IpMessaging\V2\ServiceList $services
  * @method \Twilio\Rest\IpMessaging\V2\CredentialContext credentials(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\ServiceContext services(string $sid)
  */

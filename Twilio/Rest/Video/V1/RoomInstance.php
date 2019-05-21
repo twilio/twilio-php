@@ -16,24 +16,24 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string status
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string accountSid
- * @property bool enableTurn
- * @property string uniqueName
- * @property string statusCallback
- * @property string statusCallbackMethod
- * @property \DateTime endTime
- * @property int duration
- * @property string type
- * @property int maxParticipants
- * @property bool recordParticipantsOnConnect
- * @property string videoCodecs
- * @property string mediaRegion
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $status
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $accountSid
+ * @property bool $enableTurn
+ * @property string $uniqueName
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
+ * @property \DateTime $endTime
+ * @property int $duration
+ * @property string $type
+ * @property int $maxParticipants
+ * @property bool $recordParticipantsOnConnect
+ * @property string $videoCodecs
+ * @property string $mediaRegion
+ * @property string $url
+ * @property array $links
  */
 class RoomInstance extends InstanceResource {
     protected $_recordings = null;

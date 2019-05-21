@@ -17,15 +17,15 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string isoCode
- * @property string name
- * @property string continent
- * @property string countryCodes
- * @property bool lowRiskNumbersEnabled
- * @property bool highRiskSpecialNumbersEnabled
- * @property bool highRiskTollfraudNumbersEnabled
- * @property string url
- * @property array links
+ * @property string $isoCode
+ * @property string $name
+ * @property string $continent
+ * @property string $countryCodes
+ * @property bool $lowRiskNumbersEnabled
+ * @property bool $highRiskSpecialNumbersEnabled
+ * @property bool $highRiskTollfraudNumbersEnabled
+ * @property string $url
+ * @property array $links
  */
 class CountryInstance extends InstanceResource {
     protected $_highriskSpecialPrefixes = null;

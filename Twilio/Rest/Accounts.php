@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Accounts\V1;
 
 /**
- * @property \Twilio\Rest\Accounts\V1 v1
- * @property \Twilio\Rest\Accounts\V1\CredentialList credentials
+ * @property \Twilio\Rest\Accounts\V1 $v1
+ * @property \Twilio\Rest\Accounts\V1\CredentialList $credentials
  */
 class Accounts extends Domain {
     protected $_v1 = null;

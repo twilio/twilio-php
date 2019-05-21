@@ -17,14 +17,14 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property bool available
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string sid
- * @property string workspaceSid
- * @property string url
+ * @property string $accountSid
+ * @property bool $available
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $sid
+ * @property string $workspaceSid
+ * @property string $url
  */
 class ActivityInstance extends InstanceResource {
     /**

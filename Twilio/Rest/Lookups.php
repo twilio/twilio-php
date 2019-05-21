@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Lookups\V1;
 
 /**
- * @property \Twilio\Rest\Lookups\V1 v1
- * @property \Twilio\Rest\Lookups\V1\PhoneNumberList phoneNumbers
+ * @property \Twilio\Rest\Lookups\V1 $v1
+ * @property \Twilio\Rest\Lookups\V1\PhoneNumberList $phoneNumbers
  * @method \Twilio\Rest\Lookups\V1\PhoneNumberContext phoneNumbers(string $phoneNumber)
  */
 class Lookups extends Domain {

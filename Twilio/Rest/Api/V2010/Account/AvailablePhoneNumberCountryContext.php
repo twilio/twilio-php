@@ -22,13 +22,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList local
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList tollFree
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList mobile
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList national
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList voip
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList sharedCost
- * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList machineToMachine
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalList $local
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeList $tollFree
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList $mobile
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList $national
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList $voip
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\SharedCostList $sharedCost
+ * @property \Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MachineToMachineList $machineToMachine
  */
 class AvailablePhoneNumberCountryContext extends InstanceContext {
     protected $_local = null;

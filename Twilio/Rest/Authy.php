@@ -14,9 +14,9 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Authy\V1;
 
 /**
- * @property \Twilio\Rest\Authy\V1 v1
- * @property \Twilio\Rest\Authy\V1\ServiceList services
- * @property \Twilio\Rest\Authy\V1\FormList forms
+ * @property \Twilio\Rest\Authy\V1 $v1
+ * @property \Twilio\Rest\Authy\V1\ServiceList $services
+ * @property \Twilio\Rest\Authy\V1\FormList $forms
  * @method \Twilio\Rest\Authy\V1\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
  */

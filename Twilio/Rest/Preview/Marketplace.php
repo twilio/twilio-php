@@ -16,8 +16,8 @@ use Twilio\Rest\Preview\Marketplace\InstalledAddOnList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList installedAddOns
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList availableAddOns
+ * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList $installedAddOns
+ * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList $availableAddOns
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  */

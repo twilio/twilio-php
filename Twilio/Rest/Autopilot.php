@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Autopilot\V1;
 
 /**
- * @property \Twilio\Rest\Autopilot\V1 v1
- * @property \Twilio\Rest\Autopilot\V1\AssistantList assistants
+ * @property \Twilio\Rest\Autopilot\V1 $v1
+ * @property \Twilio\Rest\Autopilot\V1\AssistantList $assistants
  * @method \Twilio\Rest\Autopilot\V1\AssistantContext assistants(string $sid)
  */
 class Autopilot extends Domain {

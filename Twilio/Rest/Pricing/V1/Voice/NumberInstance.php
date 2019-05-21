@@ -15,13 +15,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string number
- * @property string country
- * @property string isoCountry
- * @property string outboundCallPrice
- * @property string inboundCallPrice
- * @property string priceUnit
- * @property string url
+ * @property string $number
+ * @property string $country
+ * @property string $isoCountry
+ * @property string $outboundCallPrice
+ * @property string $inboundCallPrice
+ * @property string $priceUnit
+ * @property string $url
  */
 class NumberInstance extends InstanceResource {
     /**

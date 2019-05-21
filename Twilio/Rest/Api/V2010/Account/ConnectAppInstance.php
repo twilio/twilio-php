@@ -16,17 +16,17 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string authorizeRedirectUrl
- * @property string companyName
- * @property string deauthorizeCallbackMethod
- * @property string deauthorizeCallbackUrl
- * @property string description
- * @property string friendlyName
- * @property string homepageUrl
- * @property string permissions
- * @property string sid
- * @property string uri
+ * @property string $accountSid
+ * @property string $authorizeRedirectUrl
+ * @property string $companyName
+ * @property string $deauthorizeCallbackMethod
+ * @property string $deauthorizeCallbackUrl
+ * @property string $description
+ * @property string $friendlyName
+ * @property string $homepageUrl
+ * @property string $permissions
+ * @property string $sid
+ * @property string $uri
  */
 class ConnectAppInstance extends InstanceResource {
     /**

@@ -16,34 +16,34 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string addressSid
- * @property string addressRequirements
- * @property string apiVersion
- * @property bool beta
- * @property string capabilities
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string identitySid
- * @property string phoneNumber
- * @property string origin
- * @property string sid
- * @property string smsApplicationSid
- * @property string smsFallbackMethod
- * @property string smsFallbackUrl
- * @property string smsMethod
- * @property string smsUrl
- * @property string statusCallback
- * @property string statusCallbackMethod
- * @property string trunkSid
- * @property string uri
- * @property string voiceApplicationSid
- * @property bool voiceCallerIdLookup
- * @property string voiceFallbackMethod
- * @property string voiceFallbackUrl
- * @property string voiceMethod
- * @property string voiceUrl
+ * @property string $accountSid
+ * @property string $addressSid
+ * @property string $addressRequirements
+ * @property string $apiVersion
+ * @property bool $beta
+ * @property string $capabilities
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $identitySid
+ * @property string $phoneNumber
+ * @property string $origin
+ * @property string $sid
+ * @property string $smsApplicationSid
+ * @property string $smsFallbackMethod
+ * @property string $smsFallbackUrl
+ * @property string $smsMethod
+ * @property string $smsUrl
+ * @property string $statusCallback
+ * @property string $statusCallbackMethod
+ * @property string $trunkSid
+ * @property string $uri
+ * @property string $voiceApplicationSid
+ * @property bool $voiceCallerIdLookup
+ * @property string $voiceFallbackMethod
+ * @property string $voiceFallbackUrl
+ * @property string $voiceMethod
+ * @property string $voiceUrl
  */
 class TollFreeInstance extends InstanceResource {
     /**

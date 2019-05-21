@@ -19,9 +19,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Chat\V1\Service\Channel\MemberList members
- * @property \Twilio\Rest\Chat\V1\Service\Channel\MessageList messages
- * @property \Twilio\Rest\Chat\V1\Service\Channel\InviteList invites
+ * @property \Twilio\Rest\Chat\V1\Service\Channel\MemberList $members
+ * @property \Twilio\Rest\Chat\V1\Service\Channel\MessageList $messages
+ * @property \Twilio\Rest\Chat\V1\Service\Channel\InviteList $invites
  * @method \Twilio\Rest\Chat\V1\Service\Channel\MemberContext members(string $sid)
  * @method \Twilio\Rest\Chat\V1\Service\Channel\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Chat\V1\Service\Channel\InviteContext invites(string $sid)

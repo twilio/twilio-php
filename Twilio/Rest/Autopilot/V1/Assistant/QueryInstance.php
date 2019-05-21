@@ -19,19 +19,19 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property array results
- * @property string language
- * @property string modelBuildSid
- * @property string query
- * @property string sampleSid
- * @property string assistantSid
- * @property string sid
- * @property string status
- * @property string url
- * @property string sourceChannel
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property array $results
+ * @property string $language
+ * @property string $modelBuildSid
+ * @property string $query
+ * @property string $sampleSid
+ * @property string $assistantSid
+ * @property string $sid
+ * @property string $status
+ * @property string $url
+ * @property string $sourceChannel
  */
 class QueryInstance extends InstanceResource {
     /**

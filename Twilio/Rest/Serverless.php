@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Serverless\V1;
 
 /**
- * @property \Twilio\Rest\Serverless\V1 v1
- * @property \Twilio\Rest\Serverless\V1\ServiceList services
+ * @property \Twilio\Rest\Serverless\V1 $v1
+ * @property \Twilio\Rest\Serverless\V1\ServiceList $services
  * @method \Twilio\Rest\Serverless\V1\ServiceContext services(string $sid)
  */
 class Serverless extends Domain {

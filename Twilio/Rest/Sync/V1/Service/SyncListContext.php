@@ -20,8 +20,8 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemList syncListItems
- * @property \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList syncListPermissions
+ * @property \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemList $syncListItems
+ * @property \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList $syncListPermissions
  * @method \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext syncListItems(int $index)
  * @method \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext syncListPermissions(string $identity)
  */

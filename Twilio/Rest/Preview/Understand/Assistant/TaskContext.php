@@ -23,10 +23,10 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Understand\Assistant\Task\FieldList fields
- * @property \Twilio\Rest\Preview\Understand\Assistant\Task\SampleList samples
- * @property \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsList taskActions
- * @property \Twilio\Rest\Preview\Understand\Assistant\Task\TaskStatisticsList statistics
+ * @property \Twilio\Rest\Preview\Understand\Assistant\Task\FieldList $fields
+ * @property \Twilio\Rest\Preview\Understand\Assistant\Task\SampleList $samples
+ * @property \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsList $taskActions
+ * @property \Twilio\Rest\Preview\Understand\Assistant\Task\TaskStatisticsList $statistics
  * @method \Twilio\Rest\Preview\Understand\Assistant\Task\FieldContext fields(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\Task\SampleContext samples(string $sid)
  * @method \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsContext taskActions()

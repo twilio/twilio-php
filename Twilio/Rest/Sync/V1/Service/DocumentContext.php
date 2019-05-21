@@ -20,7 +20,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList documentPermissions
+ * @property \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList $documentPermissions
  * @method \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext documentPermissions(string $identity)
  */
 class DocumentContext extends InstanceContext {

@@ -17,9 +17,9 @@ use Twilio\Rest\Preview\TrustedComms\PhoneCallList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Preview\TrustedComms\DeviceList devices
- * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList phoneCalls
- * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList currentCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
+ * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
  */
 class TrustedComms extends Version {
     protected $_devices = null;

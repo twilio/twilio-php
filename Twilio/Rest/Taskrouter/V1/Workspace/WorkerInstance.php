@@ -17,19 +17,19 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string activityName
- * @property string activitySid
- * @property string attributes
- * @property bool available
- * @property \DateTime dateCreated
- * @property \DateTime dateStatusChanged
- * @property \DateTime dateUpdated
- * @property string friendlyName
- * @property string sid
- * @property string workspaceSid
- * @property string url
- * @property array links
+ * @property string $accountSid
+ * @property string $activityName
+ * @property string $activitySid
+ * @property string $attributes
+ * @property bool $available
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateStatusChanged
+ * @property \DateTime $dateUpdated
+ * @property string $friendlyName
+ * @property string $sid
+ * @property string $workspaceSid
+ * @property string $url
+ * @property array $links
  */
 class WorkerInstance extends InstanceResource {
     protected $_realTimeStatistics = null;

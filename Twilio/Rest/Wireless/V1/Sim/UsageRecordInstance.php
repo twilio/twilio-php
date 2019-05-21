@@ -15,11 +15,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string simSid
- * @property string accountSid
- * @property array period
- * @property array commands
- * @property array data
+ * @property string $simSid
+ * @property string $accountSid
+ * @property array $period
+ * @property array $commands
+ * @property array $data
  */
 class UsageRecordInstance extends InstanceResource {
     /**

@@ -17,10 +17,10 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string friendlyName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
+ * @property string $sid
+ * @property string $friendlyName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
  */
 class SigningKeyInstance extends InstanceResource {
     /**

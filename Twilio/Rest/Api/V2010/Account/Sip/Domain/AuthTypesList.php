@@ -16,8 +16,8 @@ use Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsList calls
- * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList registrations
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsList $calls
+ * @property \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList $registrations
  */
 class AuthTypesList extends ListResource {
     protected $_calls = null;

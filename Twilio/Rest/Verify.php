@@ -14,8 +14,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Verify\V2;
 
 /**
- * @property \Twilio\Rest\Verify\V2 v2
- * @property \Twilio\Rest\Verify\V2\ServiceList services
+ * @property \Twilio\Rest\Verify\V2 $v2
+ * @property \Twilio\Rest\Verify\V2\ServiceList $services
  * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class Verify extends Domain {

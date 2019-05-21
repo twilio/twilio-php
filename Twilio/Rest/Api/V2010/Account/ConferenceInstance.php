@@ -17,16 +17,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string apiVersion
- * @property string friendlyName
- * @property string region
- * @property string sid
- * @property string status
- * @property string uri
- * @property array subresourceUris
+ * @property string $accountSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $apiVersion
+ * @property string $friendlyName
+ * @property string $region
+ * @property string $sid
+ * @property string $status
+ * @property string $uri
+ * @property array $subresourceUris
  */
 class ConferenceInstance extends InstanceResource {
     protected $_participants = null;

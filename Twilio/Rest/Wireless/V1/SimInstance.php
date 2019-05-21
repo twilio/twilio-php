@@ -17,30 +17,30 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string uniqueName
- * @property string accountSid
- * @property string ratePlanSid
- * @property string friendlyName
- * @property string iccid
- * @property string eId
- * @property string status
- * @property string resetStatus
- * @property string commandsCallbackUrl
- * @property string commandsCallbackMethod
- * @property string smsFallbackMethod
- * @property string smsFallbackUrl
- * @property string smsMethod
- * @property string smsUrl
- * @property string voiceFallbackMethod
- * @property string voiceFallbackUrl
- * @property string voiceMethod
- * @property string voiceUrl
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
- * @property array links
- * @property string ipAddress
+ * @property string $sid
+ * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $ratePlanSid
+ * @property string $friendlyName
+ * @property string $iccid
+ * @property string $eId
+ * @property string $status
+ * @property string $resetStatus
+ * @property string $commandsCallbackUrl
+ * @property string $commandsCallbackMethod
+ * @property string $smsFallbackMethod
+ * @property string $smsFallbackUrl
+ * @property string $smsMethod
+ * @property string $smsUrl
+ * @property string $voiceFallbackMethod
+ * @property string $voiceFallbackUrl
+ * @property string $voiceMethod
+ * @property string $voiceUrl
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
+ * @property array $links
+ * @property string $ipAddress
  */
 class SimInstance extends InstanceResource {
     protected $_usageRecords = null;

@@ -17,15 +17,15 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string friendlyName
- * @property string ipAddress
- * @property int cidrPrefixLength
- * @property string ipAccessControlListSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string uri
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $friendlyName
+ * @property string $ipAddress
+ * @property int $cidrPrefixLength
+ * @property string $ipAccessControlListSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $uri
  */
 class IpAddressInstance extends InstanceResource {
     /**

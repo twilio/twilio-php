@@ -17,18 +17,18 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string roomSid
- * @property string accountSid
- * @property string status
- * @property string identity
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property \DateTime startTime
- * @property \DateTime endTime
- * @property int duration
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $roomSid
+ * @property string $accountSid
+ * @property string $status
+ * @property string $identity
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property \DateTime $startTime
+ * @property \DateTime $endTime
+ * @property int $duration
+ * @property string $url
+ * @property array $links
  */
 class ParticipantInstance extends InstanceResource {
     protected $_publishedTracks = null;

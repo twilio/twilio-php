@@ -18,8 +18,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Wireless\V1\Sim\UsageRecordList usageRecords
- * @property \Twilio\Rest\Wireless\V1\Sim\DataSessionList dataSessions
+ * @property \Twilio\Rest\Wireless\V1\Sim\UsageRecordList $usageRecords
+ * @property \Twilio\Rest\Wireless\V1\Sim\DataSessionList $dataSessions
  */
 class SimContext extends InstanceContext {
     protected $_usageRecords = null;

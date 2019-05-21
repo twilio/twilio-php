@@ -16,16 +16,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string status
- * @property string addOnSid
- * @property string addOnConfigurationSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property \DateTime dateCompleted
- * @property string referenceSid
- * @property array subresourceUris
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $status
+ * @property string $addOnSid
+ * @property string $addOnConfigurationSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property \DateTime $dateCompleted
+ * @property string $referenceSid
+ * @property array $subresourceUris
  */
 class AddOnResultInstance extends InstanceResource {
     protected $_payloads = null;

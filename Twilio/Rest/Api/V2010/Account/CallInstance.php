@@ -17,31 +17,31 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string annotation
- * @property string answeredBy
- * @property string apiVersion
- * @property string callerName
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string direction
- * @property string duration
- * @property \DateTime endTime
- * @property string forwardedFrom
- * @property string from
- * @property string fromFormatted
- * @property string groupSid
- * @property string parentCallSid
- * @property string phoneNumberSid
- * @property string price
- * @property string priceUnit
- * @property string sid
- * @property \DateTime startTime
- * @property string status
- * @property array subresourceUris
- * @property string to
- * @property string toFormatted
- * @property string uri
+ * @property string $accountSid
+ * @property string $annotation
+ * @property string $answeredBy
+ * @property string $apiVersion
+ * @property string $callerName
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $direction
+ * @property string $duration
+ * @property \DateTime $endTime
+ * @property string $forwardedFrom
+ * @property string $from
+ * @property string $fromFormatted
+ * @property string $groupSid
+ * @property string $parentCallSid
+ * @property string $phoneNumberSid
+ * @property string $price
+ * @property string $priceUnit
+ * @property string $sid
+ * @property \DateTime $startTime
+ * @property string $status
+ * @property array $subresourceUris
+ * @property string $to
+ * @property string $toFormatted
+ * @property string $uri
  */
 class CallInstance extends InstanceResource {
     protected $_recordings = null;

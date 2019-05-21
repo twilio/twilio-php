@@ -15,7 +15,7 @@ use Twilio\Rest\Voice\V1\DialingPermissionsList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Voice\V1\DialingPermissionsList dialingPermissions
+ * @property \Twilio\Rest\Voice\V1\DialingPermissionsList $dialingPermissions
  */
 class V1 extends Version {
     protected $_dialingPermissions = null;

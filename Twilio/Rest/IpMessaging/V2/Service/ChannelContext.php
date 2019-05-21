@@ -21,10 +21,10 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberList members
- * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList messages
- * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteList invites
- * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookList webhooks
+ * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberList $members
+ * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageList $messages
+ * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteList $invites
+ * @property \Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookList $webhooks
  * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext members(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\MessageContext messages(string $sid)
  * @method \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteContext invites(string $sid)

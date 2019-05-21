@@ -17,8 +17,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList recordings
- * @property \Twilio\Rest\Video\V1\Room\ParticipantList participants
+ * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList $recordings
+ * @property \Twilio\Rest\Video\V1\Room\ParticipantList $participants
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)
  */

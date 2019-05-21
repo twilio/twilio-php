@@ -18,7 +18,7 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList extensions
+ * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionList $extensions
  * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext extensions(string $sid)
  */
 class AvailableAddOnContext extends InstanceContext {

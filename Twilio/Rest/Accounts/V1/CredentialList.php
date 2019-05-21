@@ -16,8 +16,8 @@ use Twilio\Rest\Accounts\V1\Credential\PublicKeyList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Accounts\V1\Credential\PublicKeyList publicKey
- * @property \Twilio\Rest\Accounts\V1\Credential\AwsList aws
+ * @property \Twilio\Rest\Accounts\V1\Credential\PublicKeyList $publicKey
+ * @property \Twilio\Rest\Accounts\V1\Credential\AwsList $aws
  * @method \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext publicKey(string $sid)
  * @method \Twilio\Rest\Accounts\V1\Credential\AwsContext aws(string $sid)
  */

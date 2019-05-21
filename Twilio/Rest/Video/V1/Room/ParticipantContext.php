@@ -19,9 +19,9 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList publishedTracks
- * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList subscribedTracks
- * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList subscribeRules
+ * @property \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList $publishedTracks
+ * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList $subscribedTracks
+ * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList $subscribeRules
  * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
  * @method \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext subscribedTracks(string $sid)
  */

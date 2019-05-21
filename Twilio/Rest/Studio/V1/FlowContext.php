@@ -17,8 +17,8 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Studio\V1\Flow\EngagementList engagements
- * @property \Twilio\Rest\Studio\V1\Flow\ExecutionList executions
+ * @property \Twilio\Rest\Studio\V1\Flow\EngagementList $engagements
+ * @property \Twilio\Rest\Studio\V1\Flow\ExecutionList $executions
  * @method \Twilio\Rest\Studio\V1\Flow\EngagementContext engagements(string $sid)
  * @method \Twilio\Rest\Studio\V1\Flow\ExecutionContext executions(string $sid)
  */

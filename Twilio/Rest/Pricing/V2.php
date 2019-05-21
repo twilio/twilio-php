@@ -15,7 +15,7 @@ use Twilio\Rest\Pricing\V2\VoiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V2\VoiceList voice
+ * @property \Twilio\Rest\Pricing\V2\VoiceList $voice
  */
 class V2 extends Version {
     protected $_voice = null;

@@ -16,13 +16,13 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string contentType
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string parentSid
- * @property string sid
- * @property string uri
+ * @property string $accountSid
+ * @property string $contentType
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $parentSid
+ * @property string $sid
+ * @property string $uri
  */
 class MediaInstance extends InstanceResource {
     /**

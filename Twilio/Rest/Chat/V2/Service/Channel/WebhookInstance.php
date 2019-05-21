@@ -17,15 +17,15 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string serviceSid
- * @property string channelSid
- * @property string type
- * @property string url
- * @property array configuration
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $channelSid
+ * @property string $type
+ * @property string $url
+ * @property array $configuration
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
  */
 class WebhookInstance extends InstanceResource {
     /**

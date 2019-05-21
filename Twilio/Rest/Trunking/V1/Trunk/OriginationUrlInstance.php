@@ -17,17 +17,17 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string accountSid
- * @property string sid
- * @property string trunkSid
- * @property int weight
- * @property bool enabled
- * @property string sipUrl
- * @property string friendlyName
- * @property int priority
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string url
+ * @property string $accountSid
+ * @property string $sid
+ * @property string $trunkSid
+ * @property int $weight
+ * @property bool $enabled
+ * @property string $sipUrl
+ * @property string $friendlyName
+ * @property int $priority
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $url
  */
 class OriginationUrlInstance extends InstanceResource {
     /**

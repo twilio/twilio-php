@@ -14,9 +14,9 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\FlexApi\V1;
 
 /**
- * @property \Twilio\Rest\FlexApi\V1 v1
- * @property \Twilio\Rest\FlexApi\V1\FlexFlowList flexFlow
- * @property \Twilio\Rest\FlexApi\V1\ConfigurationList configuration
+ * @property \Twilio\Rest\FlexApi\V1 $v1
+ * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
+ * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  */

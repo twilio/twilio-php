@@ -16,7 +16,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList payloads
+ * @property \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList $payloads
  * @method \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext payloads(string $sid)
  */
 class AddOnResultContext extends InstanceContext {

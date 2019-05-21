@@ -15,11 +15,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string countryCode
- * @property string country
- * @property string uri
- * @property bool beta
- * @property array subresourceUris
+ * @property string $countryCode
+ * @property string $country
+ * @property string $uri
+ * @property bool $beta
+ * @property array $subresourceUris
  */
 class AvailablePhoneNumberCountryInstance extends InstanceResource {
     protected $_local = null;

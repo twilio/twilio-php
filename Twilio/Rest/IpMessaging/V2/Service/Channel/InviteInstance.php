@@ -16,16 +16,16 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string sid
- * @property string accountSid
- * @property string channelSid
- * @property string serviceSid
- * @property string identity
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string roleSid
- * @property string createdBy
- * @property string url
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $channelSid
+ * @property string $serviceSid
+ * @property string $identity
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $roleSid
+ * @property string $createdBy
+ * @property string $url
  */
 class InviteInstance extends InstanceResource {
     /**

@@ -18,20 +18,20 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property string sid
- * @property string accountSid
- * @property string serviceSid
- * @property string credentialSid
- * @property \DateTime dateCreated
- * @property \DateTime dateUpdated
- * @property string notificationProtocolVersion
- * @property string endpoint
- * @property string identity
- * @property string bindingType
- * @property string address
- * @property string tags
- * @property string url
- * @property array links
+ * @property string $sid
+ * @property string $accountSid
+ * @property string $serviceSid
+ * @property string $credentialSid
+ * @property \DateTime $dateCreated
+ * @property \DateTime $dateUpdated
+ * @property string $notificationProtocolVersion
+ * @property string $endpoint
+ * @property string $identity
+ * @property string $bindingType
+ * @property string $address
+ * @property string $tags
+ * @property string $url
+ * @property array $links
  */
 class BindingInstance extends InstanceResource {
     /**

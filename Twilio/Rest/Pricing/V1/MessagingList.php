@@ -15,7 +15,7 @@ use Twilio\Rest\Pricing\V1\Messaging\CountryList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Pricing\V1\Messaging\CountryList countries
+ * @property \Twilio\Rest\Pricing\V1\Messaging\CountryList $countries
  * @method \Twilio\Rest\Pricing\V1\Messaging\CountryContext countries(string $isoCountry)
  */
 class MessagingList extends ListResource {
