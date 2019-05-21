@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
@@ -32,14 +32,14 @@ use Twilio\Version;
 class FieldValueInstance extends InstanceResource {
     /**
      * Initialize the FieldValueInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the Assistant.
      * @param string $fieldTypeSid The unique ID of the Field Type associated with
      *                             this Field Value.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueInstance 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $fieldTypeSid, $sid = null) {
         parent::__construct($version);
@@ -68,7 +68,7 @@ class FieldValueInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Understand\Assistant\FieldType\FieldValueContext Context for this
      *                                                                               FieldValueInstance
      */
@@ -87,7 +87,7 @@ class FieldValueInstance extends InstanceResource {
 
     /**
      * Fetch a FieldValueInstance
-     * 
+     *
      * @return FieldValueInstance Fetched FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -97,7 +97,7 @@ class FieldValueInstance extends InstanceResource {
 
     /**
      * Deletes the FieldValueInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -107,7 +107,7 @@ class FieldValueInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -127,7 +127,7 @@ class FieldValueInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

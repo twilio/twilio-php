@@ -35,7 +35,7 @@ class CreateSyncListOptions extends Options {
 
     /**
      * The unique_name
-     * 
+     *
      * @param string $uniqueName The unique_name
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class CreateSyncListOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

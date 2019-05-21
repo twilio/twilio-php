@@ -50,7 +50,7 @@ class CreateDeploymentOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Deployment, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName A human readable description for this Deployment.
      * @return $this Fluent Builder
      */
@@ -61,7 +61,7 @@ class CreateDeploymentOptions extends Options {
 
     /**
      * Provides the unique string identifier of the Twilio Sync service instance that will be linked to and accessible by this Deployment.
-     * 
+     *
      * @param string $syncServiceSid The unique identifier of the Sync service
      *                               instance.
      * @return $this Fluent Builder
@@ -73,7 +73,7 @@ class CreateDeploymentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -100,7 +100,7 @@ class UpdateDeploymentOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Deployment, up to 64 characters long
-     * 
+     *
      * @param string $friendlyName A human readable description for this Deployment.
      * @return $this Fluent Builder
      */
@@ -111,7 +111,7 @@ class UpdateDeploymentOptions extends Options {
 
     /**
      * Provides the unique string identifier of the Twilio Sync service instance that will be linked to and accessible by this Deployment.
-     * 
+     *
      * @param string $syncServiceSid The unique identifier of the Sync service
      *                               instance.
      * @return $this Fluent Builder
@@ -123,7 +123,7 @@ class UpdateDeploymentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

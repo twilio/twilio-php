@@ -16,20 +16,20 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string redirectTo
  * @property string day
- * @property integer size
+ * @property int size
  * @property string resourceType
  */
 class DayInstance extends InstanceResource {
     /**
      * Initialize the DayInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $resourceType The resource_type
-     * @return \Twilio\Rest\Preview\BulkExports\Export\DayInstance 
+     * @return \Twilio\Rest\Preview\BulkExports\Export\DayInstance
      */
     public function __construct(Version $version, array $payload, $resourceType) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class DayInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -67,7 +67,7 @@ class DayInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -28,11 +28,12 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Initialize the RecordingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $sid Fetch by unique recording SID
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingContext 
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -45,7 +46,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Fetch a RecordingInstance
-     * 
+     *
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -68,7 +69,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Deletes the RecordingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -78,8 +79,8 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Access the transcriptions
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList
      */
     protected function getTranscriptions() {
         if (!$this->_transcriptions) {
@@ -95,8 +96,8 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Access the addOnResults
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList
      */
     protected function getAddOnResults() {
         if (!$this->_addOnResults) {
@@ -112,7 +113,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -128,7 +129,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -145,7 +146,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -16,11 +16,12 @@ use Twilio\Version;
 class CredentialListContext extends InstanceContext {
     /**
      * Initialize the CredentialListContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $trunkSid The trunk_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext 
+     * @param string $trunkSid The SID of the Trunk from which to fetch the
+     *                         credential list
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);
@@ -33,7 +34,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Fetch a CredentialListInstance
-     * 
+     *
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +57,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Deletes the CredentialListInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +67,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

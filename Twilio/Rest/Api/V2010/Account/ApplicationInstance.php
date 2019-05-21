@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string statusCallback
  * @property string statusCallbackMethod
  * @property string uri
- * @property boolean voiceCallerIdLookup
+ * @property bool voiceCallerIdLookup
  * @property string voiceFallbackMethod
  * @property string voiceFallbackUrl
  * @property string voiceMethod
@@ -41,12 +41,12 @@ use Twilio\Version;
 class ApplicationInstance extends InstanceResource {
     /**
      * Initialize the ApplicationInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid A string that uniquely identifies this resource
-     * @param string $sid Fetch by unique Application Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -81,7 +81,7 @@ class ApplicationInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext Context for this
      *                                                           ApplicationInstance
      */
@@ -99,7 +99,7 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Deletes the ApplicationInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -109,7 +109,7 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Fetch a ApplicationInstance
-     * 
+     *
      * @return ApplicationInstance Fetched ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -119,7 +119,7 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Update the ApplicationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -130,7 +130,7 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -150,7 +150,7 @@ class ApplicationInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

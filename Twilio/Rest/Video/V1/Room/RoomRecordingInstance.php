@@ -24,7 +24,7 @@ use Twilio\Version;
  * @property string size
  * @property string url
  * @property string type
- * @property integer duration
+ * @property int duration
  * @property string containerFormat
  * @property string codec
  * @property array groupingSids
@@ -36,12 +36,12 @@ use Twilio\Version;
 class RoomRecordingInstance extends InstanceResource {
     /**
      * Initialize the RoomRecordingInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $roomSid The room_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingInstance 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $sid = null) {
         parent::__construct($version);
@@ -72,7 +72,7 @@ class RoomRecordingInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext Context for this
      *                                                         RoomRecordingInstance
      */
@@ -90,7 +90,7 @@ class RoomRecordingInstance extends InstanceResource {
 
     /**
      * Fetch a RoomRecordingInstance
-     * 
+     *
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -100,7 +100,7 @@ class RoomRecordingInstance extends InstanceResource {
 
     /**
      * Deletes the RoomRecordingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -110,7 +110,7 @@ class RoomRecordingInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -130,7 +130,7 @@ class RoomRecordingInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

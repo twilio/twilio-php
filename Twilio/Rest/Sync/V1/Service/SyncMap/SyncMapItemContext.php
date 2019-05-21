@@ -21,12 +21,12 @@ use Twilio\Version;
 class SyncMapItemContext extends InstanceContext {
     /**
      * Initialize the SyncMapItemContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $mapSid The map_sid
      * @param string $key The key
-     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemContext 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemContext
      */
     public function __construct(Version $version, $serviceSid, $mapSid, $key) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class SyncMapItemContext extends InstanceContext {
 
     /**
      * Fetch a SyncMapItemInstance
-     * 
+     *
      * @return SyncMapItemInstance Fetched SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,7 +63,7 @@ class SyncMapItemContext extends InstanceContext {
 
     /**
      * Deletes the SyncMapItemInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -73,7 +73,7 @@ class SyncMapItemContext extends InstanceContext {
 
     /**
      * Update the SyncMapItemInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -106,7 +106,7 @@ class SyncMapItemContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

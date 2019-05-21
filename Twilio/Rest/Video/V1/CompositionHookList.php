@@ -21,9 +21,9 @@ use Twilio\Version;
 class CompositionHookList extends ListResource {
     /**
      * Construct the CompositionHookList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Video\V1\CompositionHookList 
+     * @return \Twilio\Rest\Video\V1\CompositionHookList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class CompositionHookList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -65,7 +65,7 @@ class CompositionHookList extends ListResource {
      * Reads CompositionHookInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -84,7 +84,7 @@ class CompositionHookList extends ListResource {
     /**
      * Retrieve a single page of CompositionHookInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -97,6 +97,7 @@ class CompositionHookList extends ListResource {
             'Enabled' => Serialize::booleanToString($options['enabled']),
             'DateCreatedAfter' => Serialize::iso8601DateTime($options['dateCreatedAfter']),
             'DateCreatedBefore' => Serialize::iso8601DateTime($options['dateCreatedBefore']),
+            'FriendlyName' => $options['friendlyName'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -114,7 +115,7 @@ class CompositionHookList extends ListResource {
     /**
      * Retrieve a specific page of CompositionHookInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of CompositionHookInstance
      */
@@ -129,7 +130,7 @@ class CompositionHookList extends ListResource {
 
     /**
      * Create a new CompositionHookInstance
-     * 
+     *
      * @param string $friendlyName Friendly name of the Composition Hook to be
      *                             shown in the console.
      * @param array|Options $options Optional Arguments
@@ -164,10 +165,10 @@ class CompositionHookList extends ListResource {
 
     /**
      * Constructs a CompositionHookContext
-     * 
+     *
      * @param string $sid The Composition Hook Sid that uniquely identifies the
      *                    Composition Hook to fetch.
-     * @return \Twilio\Rest\Video\V1\CompositionHookContext 
+     * @return \Twilio\Rest\Video\V1\CompositionHookContext
      */
     public function getContext($sid) {
         return new CompositionHookContext($this->version, $sid);
@@ -175,7 +176,7 @@ class CompositionHookList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

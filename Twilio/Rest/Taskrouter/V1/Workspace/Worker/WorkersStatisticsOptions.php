@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class WorkersStatisticsOptions {
     /**
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param \DateTime $endDate Filter cumulative statistics by a end date.
      * @param string $taskQueueSid Filter the real-time and cumulative statistics
@@ -33,8 +33,8 @@ abstract class WorkersStatisticsOptions {
 
 class FetchWorkersStatisticsOptions extends Options {
     /**
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param \DateTime $endDate Filter cumulative statistics by a end date.
      * @param string $taskQueueSid Filter the real-time and cumulative statistics
@@ -56,9 +56,9 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
-     * 
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     *
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -68,7 +68,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.
-     * 
+     *
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @return $this Fluent Builder
      */
@@ -79,7 +79,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by a end date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.
-     * 
+     *
      * @param \DateTime $endDate Filter cumulative statistics by a end date.
      * @return $this Fluent Builder
      */
@@ -90,7 +90,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Filter the real-time and cumulative statistics based on Workers tied to a particular queue
-     * 
+     *
      * @param string $taskQueueSid Filter the real-time and cumulative statistics
      *                             based on Workers tied to a particular queue
      * @return $this Fluent Builder
@@ -102,7 +102,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Filter the real-time and cumulative statistics based on Workers tied to a particular queue
-     * 
+     *
      * @param string $taskQueueName Filter the real-time and cumulative statistics
      *                              based on Workers tied to a particular queue
      * @return $this Fluent Builder
@@ -114,7 +114,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -125,7 +125,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
-     * 
+     *
      * @param string $taskChannel Filter cumulative statistics by TaskChannel.
      * @return $this Fluent Builder
      */
@@ -136,7 +136,7 @@ class FetchWorkersStatisticsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

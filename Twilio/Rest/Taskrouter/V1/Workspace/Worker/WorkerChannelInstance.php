@@ -18,10 +18,10 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property integer assignedTasks
- * @property boolean available
- * @property integer availableCapacityPercentage
- * @property integer configuredCapacity
+ * @property int assignedTasks
+ * @property bool available
+ * @property int availableCapacityPercentage
+ * @property int configuredCapacity
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string sid
@@ -34,7 +34,7 @@ use Twilio\Version;
 class WorkerChannelInstance extends InstanceResource {
     /**
      * Initialize the WorkerChannelInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The unique ID of the Workspace that this
@@ -42,7 +42,7 @@ class WorkerChannelInstance extends InstanceResource {
      * @param string $workerSid The unique ID of the Worker that this WorkerChannel
      *                          belongs to.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
@@ -74,7 +74,7 @@ class WorkerChannelInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext Context for this WorkerChannelInstance
      */
     protected function proxy() {
@@ -92,7 +92,7 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Fetch a WorkerChannelInstance
-     * 
+     *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Update the WorkerChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerChannelInstance Updated WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,7 +113,7 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -133,7 +133,7 @@ class WorkerChannelInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

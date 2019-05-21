@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class TokenOptions {
     /**
-     * @param integer $ttl The duration in seconds the credentials are valid
+     * @param int $ttl The duration in seconds the credentials are valid
      * @return CreateTokenOptions Options builder
      */
     public static function create($ttl = Values::NONE) {
@@ -24,16 +24,16 @@ abstract class TokenOptions {
 
 class CreateTokenOptions extends Options {
     /**
-     * @param integer $ttl The duration in seconds the credentials are valid
+     * @param int $ttl The duration in seconds the credentials are valid
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * The duration in seconds for which the generated credentials are valid, the default value is 86400 (24 hours).
-     * 
-     * @param integer $ttl The duration in seconds the credentials are valid
+     * The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
+     *
+     * @param int $ttl The duration in seconds the credentials are valid
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -43,7 +43,7 @@ class CreateTokenOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

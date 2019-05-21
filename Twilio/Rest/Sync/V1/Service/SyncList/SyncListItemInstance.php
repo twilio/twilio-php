@@ -18,8 +18,8 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
- * @property integer index
+ *
+ * @property int index
  * @property string accountSid
  * @property string serviceSid
  * @property string listSid
@@ -34,15 +34,15 @@ use Twilio\Version;
 class SyncListItemInstance extends InstanceResource {
     /**
      * Initialize the SyncListItemInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique SID identifier of the Service Instance
      *                           that hosts this List object.
      * @param string $listSid The unique 34-character SID identifier of the List
      *                        containing this Item.
-     * @param integer $index The index
-     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemInstance 
+     * @param int $index The index
+     * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $listSid, $index = null) {
         parent::__construct($version);
@@ -72,7 +72,7 @@ class SyncListItemInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext Context
      *                                                                   for this
      *                                                                   SyncListItemInstance
@@ -92,7 +92,7 @@ class SyncListItemInstance extends InstanceResource {
 
     /**
      * Fetch a SyncListItemInstance
-     * 
+     *
      * @return SyncListItemInstance Fetched SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class SyncListItemInstance extends InstanceResource {
 
     /**
      * Deletes the SyncListItemInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -112,7 +112,7 @@ class SyncListItemInstance extends InstanceResource {
 
     /**
      * Update the SyncListItemInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Updated SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -123,7 +123,7 @@ class SyncListItemInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -143,7 +143,7 @@ class SyncListItemInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

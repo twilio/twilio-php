@@ -21,11 +21,11 @@ class AlphaSenderTest extends HolodeckTestCase {
 
         try {
             $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                        ->alphaSenders->create("alphaSender");
+                                        ->alphaSenders->create("alpha_sender");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('AlphaSender' => "alphaSender", );
+        $values = array('AlphaSender' => "alpha_sender", );
 
         $this->assertRequest(new Request(
             'post',
@@ -53,7 +53,7 @@ class AlphaSenderTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->messaging->v1->services("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                              ->alphaSenders->create("alphaSender");
+                                              ->alphaSenders->create("alpha_sender");
 
         $this->assertNotNull($actual);
     }

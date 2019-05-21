@@ -20,28 +20,28 @@ use Twilio\Rest\Video\V1\RoomList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Video\V1\CompositionList compositions
  * @property \Twilio\Rest\Video\V1\CompositionHookList compositionHooks
  * @property \Twilio\Rest\Video\V1\CompositionSettingsList compositionSettings
  * @property \Twilio\Rest\Video\V1\RecordingList recordings
  * @property \Twilio\Rest\Video\V1\RecordingSettingsList recordingSettings
+ * @property \Twilio\Rest\Video\V1\CompositionList compositions
  * @property \Twilio\Rest\Video\V1\RoomList rooms
- * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\CompositionHookContext compositionHooks(string $sid)
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
+ * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
 class V1 extends Version {
-    protected $_compositions = null;
     protected $_compositionHooks = null;
     protected $_compositionSettings = null;
     protected $_recordings = null;
     protected $_recordingSettings = null;
+    protected $_compositions = null;
     protected $_rooms = null;
 
     /**
      * Construct the V1 version of Video
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Video\V1 V1 version of Video
      */
@@ -51,17 +51,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList 
-     */
-    protected function getCompositions() {
-        if (!$this->_compositions) {
-            $this->_compositions = new CompositionList($this);
-        }
-        return $this->_compositions;
-    }
-
-    /**
-     * @return \Twilio\Rest\Video\V1\CompositionHookList 
+     * @return \Twilio\Rest\Video\V1\CompositionHookList
      */
     protected function getCompositionHooks() {
         if (!$this->_compositionHooks) {
@@ -71,7 +61,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionSettingsList 
+     * @return \Twilio\Rest\Video\V1\CompositionSettingsList
      */
     protected function getCompositionSettings() {
         if (!$this->_compositionSettings) {
@@ -81,7 +71,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RecordingList 
+     * @return \Twilio\Rest\Video\V1\RecordingList
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
@@ -91,7 +81,7 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RecordingSettingsList 
+     * @return \Twilio\Rest\Video\V1\RecordingSettingsList
      */
     protected function getRecordingSettings() {
         if (!$this->_recordingSettings) {
@@ -101,7 +91,17 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\RoomList 
+     * @return \Twilio\Rest\Video\V1\CompositionList
+     */
+    protected function getCompositions() {
+        if (!$this->_compositions) {
+            $this->_compositions = new CompositionList($this);
+        }
+        return $this->_compositions;
+    }
+
+    /**
+     * @return \Twilio\Rest\Video\V1\RoomList
      */
     protected function getRooms() {
         if (!$this->_rooms) {
@@ -112,7 +112,7 @@ class V1 extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -128,7 +128,7 @@ class V1 extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -145,7 +145,7 @@ class V1 extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

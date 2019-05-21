@@ -17,8 +17,8 @@ abstract class TaskQueuesStatisticsOptions {
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @param string $friendlyName Filter the TaskQueue stats based on a
      *                             TaskQueue's name
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
      *                            TaskChannel.
@@ -37,8 +37,8 @@ class ReadTaskQueuesStatisticsOptions extends Options {
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @param string $friendlyName Filter the TaskQueue stats based on a
      *                             TaskQueue's name
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param string $taskChannel Filter real-time and cumulative statistics by
      *                            TaskChannel.
@@ -57,7 +57,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by an end date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.
-     * 
+     *
      * @param \DateTime $endDate Filter cumulative statistics by an end date.
      * @return $this Fluent Builder
      */
@@ -68,7 +68,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * Filter the TaskQueue stats based on a TaskQueue's name (only for list resource)
-     * 
+     *
      * @param string $friendlyName Filter the TaskQueue stats based on a
      *                             TaskQueue's name
      * @return $this Fluent Builder
@@ -80,9 +80,9 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
-     * 
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     *
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -92,7 +92,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a GMT ISO 8601 Timestamp.
-     * 
+     *
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * Filter real-time and cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
-     * 
+     *
      * @param string $taskChannel Filter real-time and cumulative statistics by
      *                            TaskChannel.
      * @return $this Fluent Builder
@@ -115,7 +115,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds. Ex: "5,30" would show splits of tasks that were canceled or accepted before or after 5 seconds and respectively, 30 seconds. This is great for showing short abandoned tasks or tasks that failed to meet your SLA.
-     * 
+     *
      * @param string $splitByWaitTime A comma separated values for viewing splits
      *                                of tasks canceled and accepted above the
      *                                given threshold in seconds.
@@ -128,7 +128,7 @@ class ReadTaskQueuesStatisticsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

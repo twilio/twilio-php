@@ -27,7 +27,7 @@ class Wireless extends Domain {
 
     /**
      * Construct the Wireless Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Wireless Domain for Wireless
@@ -50,7 +50,7 @@ class Wireless extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -66,7 +66,7 @@ class Wireless extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -82,7 +82,7 @@ class Wireless extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Wireless\V1\CommandList 
+     * @return \Twilio\Rest\Wireless\V1\CommandList
      */
     protected function getCommands() {
         return $this->v1->commands;
@@ -91,14 +91,14 @@ class Wireless extends Domain {
     /**
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\CommandContext 
+     * @return \Twilio\Rest\Wireless\V1\CommandContext
      */
     protected function contextCommands($sid) {
         return $this->v1->commands($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList 
+     * @return \Twilio\Rest\Wireless\V1\RatePlanList
      */
     protected function getRatePlans() {
         return $this->v1->ratePlans;
@@ -106,14 +106,14 @@ class Wireless extends Domain {
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext 
+     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
      */
     protected function contextRatePlans($sid) {
         return $this->v1->ratePlans($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Wireless\V1\SimList 
+     * @return \Twilio\Rest\Wireless\V1\SimList
      */
     protected function getSims() {
         return $this->v1->sims;
@@ -122,7 +122,7 @@ class Wireless extends Domain {
     /**
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\SimContext 
+     * @return \Twilio\Rest\Wireless\V1\SimContext
      */
     protected function contextSims($sid) {
         return $this->v1->sims($sid);
@@ -130,7 +130,7 @@ class Wireless extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -44,7 +44,7 @@ class ReadUsageRecordOptions extends Options {
 
     /**
      * Only include usage that has occurred on or before this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).
-     * 
+     *
      * @param \DateTime $end Only include usage that has occurred on or before this
      *                       date.
      * @return $this Fluent Builder
@@ -56,7 +56,7 @@ class ReadUsageRecordOptions extends Options {
 
     /**
      * Only include usage that has occurred on or after this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).
-     * 
+     *
      * @param \DateTime $start Only include usage that has occurred on or after
      *                         this date.
      * @return $this Fluent Builder
@@ -68,7 +68,7 @@ class ReadUsageRecordOptions extends Options {
 
     /**
      * The time-based grouping that results are aggregated by. Valid values are `daily`, `hourly`, `all`. `all` will return one Usage Record for the entire period.
-     * 
+     *
      * @param string $granularity The time-based grouping that results are
      *                            aggregated by.
      * @return $this Fluent Builder
@@ -80,7 +80,7 @@ class ReadUsageRecordOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

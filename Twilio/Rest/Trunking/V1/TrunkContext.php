@@ -16,6 +16,7 @@ use Twilio\Rest\Trunking\V1\Trunk\CredentialListList;
 use Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList;
 use Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList;
 use Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList;
+use Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -25,24 +26,26 @@ use Twilio\Version;
  * @property \Twilio\Rest\Trunking\V1\Trunk\CredentialListList credentialsLists
  * @property \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList ipAccessControlLists
  * @property \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList phoneNumbers
+ * @property \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList terminatingSipDomains
  * @method \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlContext originationUrls(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\CredentialListContext credentialsLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext ipAccessControlLists(string $sid)
  * @method \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberContext phoneNumbers(string $sid)
+ * @method \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainContext terminatingSipDomains(string $sid)
  */
 class TrunkContext extends InstanceContext {
     protected $_originationUrls = null;
     protected $_credentialsLists = null;
     protected $_ipAccessControlLists = null;
     protected $_phoneNumbers = null;
+    protected $_terminatingSipDomains = null;
 
     /**
      * Initialize the TrunkContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies the SIP
-     *                    Trunk in Twilio.
-     * @return \Twilio\Rest\Trunking\V1\TrunkContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Trunking\V1\TrunkContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -55,7 +58,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Fetch a TrunkInstance
-     * 
+     *
      * @return TrunkInstance Fetched TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -73,7 +76,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Deletes the TrunkInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -83,7 +86,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Update the TrunkInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TrunkInstance Updated TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -113,8 +116,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the originationUrls
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\OriginationUrlList
      */
     protected function getOriginationUrls() {
         if (!$this->_originationUrls) {
@@ -126,8 +129,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the credentialsLists
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\CredentialListList
      */
     protected function getCredentialsLists() {
         if (!$this->_credentialsLists) {
@@ -139,8 +142,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the ipAccessControlLists
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListList
      */
     protected function getIpAccessControlLists() {
         if (!$this->_ipAccessControlLists) {
@@ -152,8 +155,8 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Access the phoneNumbers
-     * 
-     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList 
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\PhoneNumberList
      */
     protected function getPhoneNumbers() {
         if (!$this->_phoneNumbers) {
@@ -164,8 +167,24 @@ class TrunkContext extends InstanceContext {
     }
 
     /**
+     * Access the terminatingSipDomains
+     *
+     * @return \Twilio\Rest\Trunking\V1\Trunk\TerminatingSipDomainList
+     */
+    protected function getTerminatingSipDomains() {
+        if (!$this->_terminatingSipDomains) {
+            $this->_terminatingSipDomains = new TerminatingSipDomainList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_terminatingSipDomains;
+    }
+
+    /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -181,7 +200,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -198,7 +217,7 @@ class TrunkContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

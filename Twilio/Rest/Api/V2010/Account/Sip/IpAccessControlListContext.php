@@ -24,11 +24,11 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Initialize the IpAccessControlListContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
      * @param string $sid A string that identifies the resource to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Fetch a IpAccessControlListInstance
-     * 
+     *
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -64,7 +64,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Update the IpAccessControlListInstance
-     * 
+     *
      * @param string $friendlyName A human readable description of this resource
      * @return IpAccessControlListInstance Updated IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Deletes the IpAccessControlListInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -99,8 +99,8 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Access the ipAddresses
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressList
      */
     protected function getIpAddresses() {
         if (!$this->_ipAddresses) {
@@ -116,7 +116,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -132,7 +132,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -149,7 +149,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -49,7 +49,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Only include Events initiated by this Actor. Useful for auditing actions taken by specific users or API credentials.
-     * 
+     *
      * @param string $actorSid Only include Events initiated by this Actor
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Only include Events of this EventType.
-     * 
+     *
      * @param string $eventType Only include Events of this EventType
      * @return $this Fluent Builder
      */
@@ -71,7 +71,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Only include Events referring to this resource. Useful for discovering the history of a specific resource.
-     * 
+     *
      * @param string $resourceSid Only include Events referring to this resource
      * @return $this Fluent Builder
      */
@@ -82,7 +82,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Only include Events that originated from this IP address. Useful for tracking suspicious activity originating from the API or the Twilio Console.
-     * 
+     *
      * @param string $sourceIpAddress Only include Events that originated from this
      *                                IP address
      * @return $this Fluent Builder
@@ -94,7 +94,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Only show events on or after this date. Useful in combination with `EndDate` to define a date-range of events. Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter.
-     * 
+     *
      * @param \DateTime $startDate Only show events on or after this date
      * @return $this Fluent Builder
      */
@@ -105,7 +105,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Only show events on or before this date. Useful in combination with `StartDate` to define a date-range of events. Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter.
-     * 
+     *
      * @param \DateTime $endDate Only show events on or before this date
      * @return $this Fluent Builder
      */
@@ -116,7 +116,7 @@ class ReadEventOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,9 +18,9 @@ use Twilio\Version;
 class ExportList extends ListResource {
     /**
      * Construct the ExportList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\BulkExports\ExportList 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,9 +31,9 @@ class ExportList extends ListResource {
 
     /**
      * Constructs a ExportContext
-     * 
+     *
      * @param string $resourceType The resource_type
-     * @return \Twilio\Rest\Preview\BulkExports\ExportContext 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportContext
      */
     public function getContext($resourceType) {
         return new ExportContext($this->version, $resourceType);
@@ -41,7 +41,7 @@ class ExportList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

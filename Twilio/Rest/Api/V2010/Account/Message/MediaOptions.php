@@ -42,7 +42,7 @@ class ReadMediaOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
      *                                  read
      * @return $this Fluent Builder
@@ -54,7 +54,7 @@ class ReadMediaOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -65,7 +65,7 @@ class ReadMediaOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
-     * 
+     *
      * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
      *                                 read
      * @return $this Fluent Builder
@@ -77,7 +77,7 @@ class ReadMediaOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

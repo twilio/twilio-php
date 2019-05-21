@@ -19,8 +19,8 @@ abstract class ServiceOptions {
     /**
      * @param string $friendlyName The friendly_name
      * @param string $webhookUrl The webhook_url
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param bool $aclEnabled The acl_enabled
      * @return CreateServiceOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
@@ -30,8 +30,8 @@ abstract class ServiceOptions {
     /**
      * @param string $webhookUrl The webhook_url
      * @param string $friendlyName The friendly_name
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param bool $aclEnabled The acl_enabled
      * @return UpdateServiceOptions Options builder
      */
     public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
@@ -43,8 +43,8 @@ class CreateServiceOptions extends Options {
     /**
      * @param string $friendlyName The friendly_name
      * @param string $webhookUrl The webhook_url
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param bool $aclEnabled The acl_enabled
      */
     public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -55,7 +55,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -66,7 +66,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The webhook_url
-     * 
+     *
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
@@ -77,8 +77,8 @@ class CreateServiceOptions extends Options {
 
     /**
      * The reachability_webhooks_enabled
-     * 
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     *
+     * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
@@ -88,8 +88,8 @@ class CreateServiceOptions extends Options {
 
     /**
      * The acl_enabled
-     * 
-     * @param boolean $aclEnabled The acl_enabled
+     *
+     * @param bool $aclEnabled The acl_enabled
      * @return $this Fluent Builder
      */
     public function setAclEnabled($aclEnabled) {
@@ -99,7 +99,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -117,8 +117,8 @@ class UpdateServiceOptions extends Options {
     /**
      * @param string $webhookUrl The webhook_url
      * @param string $friendlyName The friendly_name
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
-     * @param boolean $aclEnabled The acl_enabled
+     * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     * @param bool $aclEnabled The acl_enabled
      */
     public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
         $this->options['webhookUrl'] = $webhookUrl;
@@ -129,7 +129,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The webhook_url
-     * 
+     *
      * @param string $webhookUrl The webhook_url
      * @return $this Fluent Builder
      */
@@ -140,7 +140,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -151,8 +151,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The reachability_webhooks_enabled
-     * 
-     * @param boolean $reachabilityWebhooksEnabled The reachability_webhooks_enabled
+     *
+     * @param bool $reachabilityWebhooksEnabled The reachability_webhooks_enabled
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
@@ -162,8 +162,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The acl_enabled
-     * 
-     * @param boolean $aclEnabled The acl_enabled
+     *
+     * @param bool $aclEnabled The acl_enabled
      * @return $this Fluent Builder
      */
     public function setAclEnabled($aclEnabled) {
@@ -173,7 +173,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

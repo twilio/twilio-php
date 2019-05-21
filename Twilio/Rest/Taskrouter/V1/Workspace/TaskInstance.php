@@ -18,20 +18,20 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property integer age
+ * @property int age
  * @property string assignmentStatus
  * @property string attributes
  * @property string addons
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property integer priority
+ * @property int priority
  * @property string reason
  * @property string sid
  * @property string taskQueueSid
  * @property string taskQueueFriendlyName
  * @property string taskChannelSid
  * @property string taskChannelUniqueName
- * @property integer timeout
+ * @property int timeout
  * @property string workflowSid
  * @property string workflowFriendlyName
  * @property string workspaceSid
@@ -43,12 +43,12 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Initialize the TaskInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The ID of the Workspace that holds this Task
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -83,7 +83,7 @@ class TaskInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext Context for this
      *                                                          TaskInstance
      */
@@ -101,7 +101,7 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Fetch a TaskInstance
-     * 
+     *
      * @return TaskInstance Fetched TaskInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -111,7 +111,7 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Update the TaskInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskInstance Updated TaskInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -122,7 +122,7 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Deletes the TaskInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -132,8 +132,8 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Access the reservations
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList
      */
     protected function getReservations() {
         return $this->proxy()->reservations;
@@ -141,7 +141,7 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -161,7 +161,7 @@ class TaskInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

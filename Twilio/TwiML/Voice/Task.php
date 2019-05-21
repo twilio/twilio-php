@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class Task extends TwiML {
     /**
      * Task constructor.
-     * 
+     *
      * @param string $body TaskRouter task attributes
      * @param array $attributes Optional attributes
      */
@@ -24,9 +24,9 @@ class Task extends TwiML {
 
     /**
      * Add Priority attribute.
-     * 
-     * @param integer $priority Task priority
-     * @return TwiML $this.
+     *
+     * @param int $priority Task priority
+     * @return static $this.
      */
     public function setPriority($priority) {
         return $this->setAttribute('priority', $priority);
@@ -34,9 +34,9 @@ class Task extends TwiML {
 
     /**
      * Add Timeout attribute.
-     * 
-     * @param integer $timeout Timeout associated with task
-     * @return TwiML $this.
+     *
+     * @param int $timeout Timeout associated with task
+     * @return static $this.
      */
     public function setTimeout($timeout) {
         return $this->setAttribute('timeout', $timeout);

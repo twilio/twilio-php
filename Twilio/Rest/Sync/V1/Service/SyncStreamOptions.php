@@ -18,7 +18,7 @@ use Twilio\Values;
 abstract class SyncStreamOptions {
     /**
      * @param string $uniqueName Stream unique name.
-     * @param integer $ttl Stream TTL.
+     * @param int $ttl Stream TTL.
      * @return CreateSyncStreamOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
@@ -26,7 +26,7 @@ abstract class SyncStreamOptions {
     }
 
     /**
-     * @param integer $ttl Stream TTL.
+     * @param int $ttl Stream TTL.
      * @return UpdateSyncStreamOptions Options builder
      */
     public static function update($ttl = Values::NONE) {
@@ -37,7 +37,7 @@ abstract class SyncStreamOptions {
 class CreateSyncStreamOptions extends Options {
     /**
      * @param string $uniqueName Stream unique name.
-     * @param integer $ttl Stream TTL.
+     * @param int $ttl Stream TTL.
      */
     public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -46,7 +46,7 @@ class CreateSyncStreamOptions extends Options {
 
     /**
      * The unique and addressable name of this Stream. Optional, up to 320 characters long.
-     * 
+     *
      * @param string $uniqueName Stream unique name.
      * @return $this Fluent Builder
      */
@@ -57,8 +57,8 @@ class CreateSyncStreamOptions extends Options {
 
     /**
      * Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
-     * @param integer $ttl Stream TTL.
+     *
+     * @param int $ttl Stream TTL.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -68,7 +68,7 @@ class CreateSyncStreamOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -84,7 +84,7 @@ class CreateSyncStreamOptions extends Options {
 
 class UpdateSyncStreamOptions extends Options {
     /**
-     * @param integer $ttl Stream TTL.
+     * @param int $ttl Stream TTL.
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
@@ -92,8 +92,8 @@ class UpdateSyncStreamOptions extends Options {
 
     /**
      * New time-to-live of this Stream in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
-     * @param integer $ttl Stream TTL.
+     *
+     * @param int $ttl Stream TTL.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -103,7 +103,7 @@ class UpdateSyncStreamOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

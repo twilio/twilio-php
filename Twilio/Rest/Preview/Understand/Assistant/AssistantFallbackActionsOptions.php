@@ -35,7 +35,7 @@ class UpdateAssistantFallbackActionsOptions extends Options {
 
     /**
      * The fallback_actions
-     * 
+     *
      * @param array $fallbackActions The fallback_actions
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class UpdateAssistantFallbackActionsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

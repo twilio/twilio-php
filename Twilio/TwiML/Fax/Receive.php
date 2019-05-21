@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class Receive extends TwiML {
     /**
      * Receive constructor.
-     * 
+     *
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
@@ -23,9 +23,9 @@ class Receive extends TwiML {
 
     /**
      * Add Action attribute.
-     * 
-     * @param url $action Receive action URL
-     * @return TwiML $this.
+     *
+     * @param string $action Receive action URL
+     * @return static $this.
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -33,9 +33,9 @@ class Receive extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
-     * @param httpMethod $method Receive action URL method
-     * @return TwiML $this.
+     *
+     * @param string $method Receive action URL method
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);

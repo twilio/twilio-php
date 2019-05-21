@@ -37,7 +37,7 @@ class UpdateTaskActionsOptions extends Options {
 
     /**
      * The JSON actions that instruct the Assistant how to perform this task.
-     * 
+     *
      * @param array $actions The JSON actions that instruct the Assistant how to
      *                       perform this task.
      * @return $this Fluent Builder
@@ -49,7 +49,7 @@ class UpdateTaskActionsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

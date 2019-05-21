@@ -20,11 +20,11 @@ use Twilio\Version;
 class DeploymentContext extends InstanceContext {
     /**
      * Initialize the DeploymentContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $fleetSid The fleet_sid
      * @param string $sid A string that uniquely identifies the Deployment.
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext 
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext
      */
     public function __construct(Version $version, $fleetSid, $sid) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class DeploymentContext extends InstanceContext {
 
     /**
      * Fetch a DeploymentInstance
-     * 
+     *
      * @return DeploymentInstance Fetched DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -60,7 +60,7 @@ class DeploymentContext extends InstanceContext {
 
     /**
      * Deletes the DeploymentInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class DeploymentContext extends InstanceContext {
 
     /**
      * Update the DeploymentInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return DeploymentInstance Updated DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -100,7 +100,7 @@ class DeploymentContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

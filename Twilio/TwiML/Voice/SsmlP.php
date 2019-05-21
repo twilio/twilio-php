@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class SsmlP extends TwiML {
     /**
      * SsmlP constructor.
-     * 
+     *
      * @param string $words Words to speak
      */
     public function __construct($words) {

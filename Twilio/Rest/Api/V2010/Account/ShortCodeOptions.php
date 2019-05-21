@@ -61,7 +61,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * A descriptive string that you created to describe this resource. It can be up to 64 characters long. By default, the `FriendlyName` is the short code.
-     * 
+     *
      * @param string $friendlyName A string to describe this resource
      * @return $this Fluent Builder
      */
@@ -72,7 +72,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`.
-     * 
+     *
      * @param string $apiVersion The API version to use to start a new TwiML session
      * @return $this Fluent Builder
      */
@@ -83,7 +83,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * The URL we should call when receiving an incoming SMS message to this short code.
-     * 
+     *
      * @param string $smsUrl URL Twilio will request when receiving an SMS
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * The HTTP method we should use when calling the `sms_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $smsMethod HTTP method to use when requesting the sms url
      * @return $this Fluent Builder
      */
@@ -105,7 +105,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * The URL that we should call if an error occurs while retrieving or executing the TwiML from `sms_url`.
-     * 
+     *
      * @param string $smsFallbackUrl URL Twilio will request if an error occurs in
      *                               executing TwiML
      * @return $this Fluent Builder
@@ -117,7 +117,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * The HTTP method that we should use to call the `sms_fallback_url`. Can be: `GET` or `POST`.
-     * 
+     *
      * @param string $smsFallbackMethod HTTP method Twilio will use with
      *                                  sms_fallback_url
      * @return $this Fluent Builder
@@ -129,7 +129,7 @@ class UpdateShortCodeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -156,7 +156,7 @@ class ReadShortCodeOptions extends Options {
 
     /**
      * The string that identifies the ShortCode resources to read.
-     * 
+     *
      * @param string $friendlyName The string that identifies the ShortCode
      *                             resources to read
      * @return $this Fluent Builder
@@ -168,7 +168,7 @@ class ReadShortCodeOptions extends Options {
 
     /**
      * Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.
-     * 
+     *
      * @param string $shortCode Filter by ShortCode
      * @return $this Fluent Builder
      */
@@ -179,7 +179,7 @@ class ReadShortCodeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

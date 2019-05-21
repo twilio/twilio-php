@@ -15,11 +15,11 @@ use Twilio\Version;
 class EngagementContextList extends ListResource {
     /**
      * Construct the EngagementContextList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $engagementSid Engagement Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextList
      */
     public function __construct(Version $version, $flowSid, $engagementSid) {
         parent::__construct($version);
@@ -30,8 +30,8 @@ class EngagementContextList extends ListResource {
 
     /**
      * Constructs a EngagementContextContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext
      */
     public function getContext() {
         return new EngagementContextContext(
@@ -43,7 +43,7 @@ class EngagementContextList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

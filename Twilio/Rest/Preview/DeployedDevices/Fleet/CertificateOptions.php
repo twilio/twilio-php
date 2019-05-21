@@ -62,7 +62,7 @@ class CreateCertificateOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName The human readable description for this
      *                             Certificate.
      * @return $this Fluent Builder
@@ -74,7 +74,7 @@ class CreateCertificateOptions extends Options {
 
     /**
      * Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
-     * 
+     *
      * @param string $deviceSid The unique identifier of a Device to be
      *                          authenticated.
      * @return $this Fluent Builder
@@ -86,7 +86,7 @@ class CreateCertificateOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -111,7 +111,7 @@ class ReadCertificateOptions extends Options {
 
     /**
      * Filters the resulting list of Certificates by a unique string identifier of an authenticated Device.
-     * 
+     *
      * @param string $deviceSid Find all Certificates authenticating specified
      *                          Device.
      * @return $this Fluent Builder
@@ -123,7 +123,7 @@ class ReadCertificateOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -151,7 +151,7 @@ class UpdateCertificateOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Certificate credential, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName The human readable description for this
      *                             Certificate.
      * @return $this Fluent Builder
@@ -163,7 +163,7 @@ class UpdateCertificateOptions extends Options {
 
     /**
      * Provides the unique string identifier of an existing Device to become authenticated with this Certificate credential.
-     * 
+     *
      * @param string $deviceSid The unique identifier of a Device to be
      *                          authenticated.
      * @return $this Fluent Builder
@@ -175,7 +175,7 @@ class UpdateCertificateOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

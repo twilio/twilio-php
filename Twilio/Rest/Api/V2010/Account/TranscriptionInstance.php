@@ -33,12 +33,12 @@ use Twilio\Version;
 class TranscriptionInstance extends InstanceResource {
     /**
      * Initialize the TranscriptionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $sid Fetch by unique transcription SID
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -66,7 +66,7 @@ class TranscriptionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext Context for this
      *                                                             TranscriptionInstance
      */
@@ -84,7 +84,7 @@ class TranscriptionInstance extends InstanceResource {
 
     /**
      * Fetch a TranscriptionInstance
-     * 
+     *
      * @return TranscriptionInstance Fetched TranscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,7 +94,7 @@ class TranscriptionInstance extends InstanceResource {
 
     /**
      * Deletes the TranscriptionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -104,7 +104,7 @@ class TranscriptionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -124,7 +124,7 @@ class TranscriptionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

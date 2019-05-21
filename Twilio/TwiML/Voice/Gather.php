@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class Gather extends TwiML {
     /**
      * Gather constructor.
-     * 
+     *
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
@@ -23,10 +23,10 @@ class Gather extends TwiML {
 
     /**
      * Add Say child.
-     * 
+     *
      * @param string $message Message to say
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Say Child element.
      */
     public function say($message, $attributes = array()) {
         return $this->nest(new Say($message, $attributes));
@@ -34,9 +34,9 @@ class Gather extends TwiML {
 
     /**
      * Add Pause child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Pause Child element.
      */
     public function pause($attributes = array()) {
         return $this->nest(new Pause($attributes));
@@ -44,10 +44,10 @@ class Gather extends TwiML {
 
     /**
      * Add Play child.
-     * 
-     * @param url $url Media URL
+     *
+     * @param string $url Media URL
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Play Child element.
      */
     public function play($url = null, $attributes = array()) {
         return $this->nest(new Play($url, $attributes));
@@ -55,9 +55,9 @@ class Gather extends TwiML {
 
     /**
      * Add Input attribute.
-     * 
-     * @param gather:Enum:Input $input Input type Twilio should accept
-     * @return TwiML $this.
+     *
+     * @param string $input Input type Twilio should accept
+     * @return static $this.
      */
     public function setInput($input) {
         return $this->setAttribute('input', $input);
@@ -65,9 +65,9 @@ class Gather extends TwiML {
 
     /**
      * Add Action attribute.
-     * 
-     * @param url $action Action URL
-     * @return TwiML $this.
+     *
+     * @param string $action Action URL
+     * @return static $this.
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -75,9 +75,9 @@ class Gather extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
-     * @param httpMethod $method Action URL method
-     * @return TwiML $this.
+     *
+     * @param string $method Action URL method
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -85,9 +85,9 @@ class Gather extends TwiML {
 
     /**
      * Add Timeout attribute.
-     * 
-     * @param integer $timeout Time to wait to gather input
-     * @return TwiML $this.
+     *
+     * @param int $timeout Time to wait to gather input
+     * @return static $this.
      */
     public function setTimeout($timeout) {
         return $this->setAttribute('timeout', $timeout);
@@ -95,10 +95,10 @@ class Gather extends TwiML {
 
     /**
      * Add SpeechTimeout attribute.
-     * 
+     *
      * @param string $speechTimeout Time to wait to gather speech input and it
      *                              should be either auto or a positive integer.
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setSpeechTimeout($speechTimeout) {
         return $this->setAttribute('speechTimeout', $speechTimeout);
@@ -106,9 +106,9 @@ class Gather extends TwiML {
 
     /**
      * Add MaxSpeechTime attribute.
-     * 
-     * @param integer $maxSpeechTime Max allowed time for speech input
-     * @return TwiML $this.
+     *
+     * @param int $maxSpeechTime Max allowed time for speech input
+     * @return static $this.
      */
     public function setMaxSpeechTime($maxSpeechTime) {
         return $this->setAttribute('maxSpeechTime', $maxSpeechTime);
@@ -116,9 +116,9 @@ class Gather extends TwiML {
 
     /**
      * Add ProfanityFilter attribute.
-     * 
-     * @param boolean $profanityFilter Profanity Filter on speech
-     * @return TwiML $this.
+     *
+     * @param bool $profanityFilter Profanity Filter on speech
+     * @return static $this.
      */
     public function setProfanityFilter($profanityFilter) {
         return $this->setAttribute('profanityFilter', $profanityFilter);
@@ -126,9 +126,9 @@ class Gather extends TwiML {
 
     /**
      * Add FinishOnKey attribute.
-     * 
+     *
      * @param string $finishOnKey Finish gather on key
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setFinishOnKey($finishOnKey) {
         return $this->setAttribute('finishOnKey', $finishOnKey);
@@ -136,9 +136,9 @@ class Gather extends TwiML {
 
     /**
      * Add NumDigits attribute.
-     * 
-     * @param integer $numDigits Number of digits to collect
-     * @return TwiML $this.
+     *
+     * @param int $numDigits Number of digits to collect
+     * @return static $this.
      */
     public function setNumDigits($numDigits) {
         return $this->setAttribute('numDigits', $numDigits);
@@ -146,9 +146,9 @@ class Gather extends TwiML {
 
     /**
      * Add PartialResultCallback attribute.
-     * 
-     * @param url $partialResultCallback Partial result callback URL
-     * @return TwiML $this.
+     *
+     * @param string $partialResultCallback Partial result callback URL
+     * @return static $this.
      */
     public function setPartialResultCallback($partialResultCallback) {
         return $this->setAttribute('partialResultCallback', $partialResultCallback);
@@ -156,10 +156,9 @@ class Gather extends TwiML {
 
     /**
      * Add PartialResultCallbackMethod attribute.
-     * 
-     * @param httpMethod $partialResultCallbackMethod Partial result callback URL
-     *                                                method
-     * @return TwiML $this.
+     *
+     * @param string $partialResultCallbackMethod Partial result callback URL method
+     * @return static $this.
      */
     public function setPartialResultCallbackMethod($partialResultCallbackMethod) {
         return $this->setAttribute('partialResultCallbackMethod', $partialResultCallbackMethod);
@@ -167,9 +166,9 @@ class Gather extends TwiML {
 
     /**
      * Add Language attribute.
-     * 
-     * @param gather:Enum:Language $language Language to use
-     * @return TwiML $this.
+     *
+     * @param string $language Language to use
+     * @return static $this.
      */
     public function setLanguage($language) {
         return $this->setAttribute('language', $language);
@@ -177,9 +176,9 @@ class Gather extends TwiML {
 
     /**
      * Add Hints attribute.
-     * 
+     *
      * @param string $hints Speech recognition hints
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setHints($hints) {
         return $this->setAttribute('hints', $hints);
@@ -187,9 +186,9 @@ class Gather extends TwiML {
 
     /**
      * Add BargeIn attribute.
-     * 
-     * @param boolean $bargeIn Stop playing media upon speech
-     * @return TwiML $this.
+     *
+     * @param bool $bargeIn Stop playing media upon speech
+     * @return static $this.
      */
     public function setBargeIn($bargeIn) {
         return $this->setAttribute('bargeIn', $bargeIn);
@@ -197,11 +196,22 @@ class Gather extends TwiML {
 
     /**
      * Add Debug attribute.
-     * 
-     * @param boolean $debug Allow debug for gather
-     * @return TwiML $this.
+     *
+     * @param bool $debug Allow debug for gather
+     * @return static $this.
      */
     public function setDebug($debug) {
         return $this->setAttribute('debug', $debug);
+    }
+
+    /**
+     * Add ActionOnEmptyResult attribute.
+     *
+     * @param bool $actionOnEmptyResult Force webhook to the action URL event if
+     *                                  there is no input
+     * @return static $this.
+     */
+    public function setActionOnEmptyResult($actionOnEmptyResult) {
+        return $this->setAttribute('actionOnEmptyResult', $actionOnEmptyResult);
     }
 }

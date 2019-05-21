@@ -14,261 +14,313 @@ use Twilio\Values;
 
 abstract class ServiceOptions {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $defaultServiceRoleSid The default_service_role_sid
-     * @param string $defaultChannelRoleSid Channel role assigned on channel join
-     * @param string $defaultChannelCreatorRoleSid Channel role assigned to creator
-     *                                             of channel when joining for
-     *                                             first time
-     * @param boolean $readStatusEnabled true if the member read status feature is
-     *                                   enabled, false if not.
-     * @param boolean $reachabilityEnabled true if the reachability feature should
-     *                                     be enabled.
-     * @param integer $typingIndicatorTimeout ISO 8601 duration indicating the
-     *                                        timeout after "started typing" event
-     *                                        when client should assume that user
-     *                                        is not typing anymore even if no
-     *                                        "ended typing" message received
-     * @param integer $consumptionReportInterval ISO 8601 duration indicating the
-     *                                           interval between consumption
-     *                                           reports sent from client endpoints.
-     * @param boolean $notificationsNewMessageEnabled The
-     *                                                notifications.new_message.enabled
-     * @param string $notificationsNewMessageTemplate The
-     *                                                notifications.new_message.template
-     * @param boolean $notificationsAddedToChannelEnabled The
-     *                                                    notifications.added_to_channel.enabled
-     * @param string $notificationsAddedToChannelTemplate The
-     *                                                    notifications.added_to_channel.template
-     * @param boolean $notificationsRemovedFromChannelEnabled The
-     *                                                        notifications.removed_from_channel.enabled
-     * @param string $notificationsRemovedFromChannelTemplate The
-     *                                                        notifications.removed_from_channel.template
-     * @param boolean $notificationsInvitedToChannelEnabled The
-     *                                                      notifications.invited_to_channel.enabled
-     * @param string $notificationsInvitedToChannelTemplate The
-     *                                                      notifications.invited_to_channel.template
-     * @param string $preWebhookUrl The webhook URL for PRE-Event webhooks.
-     * @param string $postWebhookUrl The webhook URL for POST-Event webhooks.
-     * @param string $webhookMethod The webhook request format to use.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $defaultServiceRoleSid The service role assigned to users when
+     *                                      they are added to the service
+     * @param string $defaultChannelRoleSid The channel role assigned to users when
+     *                                      they are added to a channel
+     * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
+     *                                             channel creator when they join a
+     *                                             new channel
+     * @param bool $readStatusEnabled Whether to enable the Message Consumption
+     *                                Horizon feature
+     * @param bool $reachabilityEnabled Whether to enable the Reachability
+     *                                  Indicator feature for this Service instance
+     * @param int $typingIndicatorTimeout How long in seconds to wait before
+     *                                    assuming the user is no longer typing
+     * @param int $consumptionReportInterval DEPRECATED
+     * @param bool $notificationsNewMessageEnabled Whether to send a notification
+     *                                             when a new message is added to a
+     *                                             channel
+     * @param string $notificationsNewMessageTemplate The template to use to create
+     *                                                the notification text
+     *                                                displayed when a new message
+     *                                                is added to a channel
+     * @param bool $notificationsAddedToChannelEnabled Whether to send a
+     *                                                 notification when a member
+     *                                                 is added to a channel
+     * @param string $notificationsAddedToChannelTemplate The template to use to
+     *                                                    create the notification
+     *                                                    text displayed when a
+     *                                                    member is added to a
+     *                                                    channel
+     * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
+     *                                                     notification to a user
+     *                                                     when they are removed
+     *                                                     from a channel
+     * @param string $notificationsRemovedFromChannelTemplate The template to use
+     *                                                        to create the
+     *                                                        notification text
+     *                                                        displayed to a user
+     *                                                        when they are removed
+     * @param bool $notificationsInvitedToChannelEnabled Whether to send a
+     *                                                   notification when a user
+     *                                                   is invited to a channel
+     * @param string $notificationsInvitedToChannelTemplate The template to use to
+     *                                                      create the notification
+     *                                                      text displayed when a
+     *                                                      user is invited to a
+     *                                                      channel
+     * @param string $preWebhookUrl The webhook URL for pre-event webhooks
+     * @param string $postWebhookUrl The URL for post-event webhooks
+     * @param string $webhookMethod The HTTP method  to use for both PRE and POST
+     *                              webhooks
      * @param string $webhookFilters The list of WebHook events that are enabled
-     *                               for this Service instance.
-     * @param string $webhooksOnMessageSendUrl The webhooks.on_message_send.url
-     * @param string $webhooksOnMessageSendMethod The
-     *                                            webhooks.on_message_send.method
-     * @param string $webhooksOnMessageSendFormat The
-     *                                            webhooks.on_message_send.format
-     * @param string $webhooksOnMessageUpdateUrl The webhooks.on_message_update.url
-     * @param string $webhooksOnMessageUpdateMethod The
-     *                                              webhooks.on_message_update.method
-     * @param string $webhooksOnMessageUpdateFormat The
-     *                                              webhooks.on_message_update.format
-     * @param string $webhooksOnMessageRemoveUrl The webhooks.on_message_remove.url
-     * @param string $webhooksOnMessageRemoveMethod The
-     *                                              webhooks.on_message_remove.method
-     * @param string $webhooksOnMessageRemoveFormat The
-     *                                              webhooks.on_message_remove.format
-     * @param string $webhooksOnChannelAddUrl The webhooks.on_channel_add.url
-     * @param string $webhooksOnChannelAddMethod The webhooks.on_channel_add.method
-     * @param string $webhooksOnChannelAddFormat The webhooks.on_channel_add.format
-     * @param string $webhooksOnChannelDestroyUrl The
-     *                                            webhooks.on_channel_destroy.url
-     * @param string $webhooksOnChannelDestroyMethod The
-     *                                               webhooks.on_channel_destroy.method
-     * @param string $webhooksOnChannelDestroyFormat The
-     *                                               webhooks.on_channel_destroy.format
-     * @param string $webhooksOnChannelUpdateUrl The webhooks.on_channel_update.url
-     * @param string $webhooksOnChannelUpdateMethod The
-     *                                              webhooks.on_channel_update.method
-     * @param string $webhooksOnChannelUpdateFormat The
-     *                                              webhooks.on_channel_update.format
-     * @param string $webhooksOnMemberAddUrl The webhooks.on_member_add.url
-     * @param string $webhooksOnMemberAddMethod The webhooks.on_member_add.method
-     * @param string $webhooksOnMemberAddFormat The webhooks.on_member_add.format
-     * @param string $webhooksOnMemberRemoveUrl The webhooks.on_member_remove.url
-     * @param string $webhooksOnMemberRemoveMethod The
-     *                                             webhooks.on_member_remove.method
-     * @param string $webhooksOnMemberRemoveFormat The
-     *                                             webhooks.on_member_remove.format
-     * @param string $webhooksOnMessageSentUrl The webhooks.on_message_sent.url
-     * @param string $webhooksOnMessageSentMethod The
-     *                                            webhooks.on_message_sent.method
-     * @param string $webhooksOnMessageSentFormat The
-     *                                            webhooks.on_message_sent.format
-     * @param string $webhooksOnMessageUpdatedUrl The
-     *                                            webhooks.on_message_updated.url
-     * @param string $webhooksOnMessageUpdatedMethod The
-     *                                               webhooks.on_message_updated.method
-     * @param string $webhooksOnMessageUpdatedFormat The
-     *                                               webhooks.on_message_updated.format
-     * @param string $webhooksOnMessageRemovedUrl The
-     *                                            webhooks.on_message_removed.url
-     * @param string $webhooksOnMessageRemovedMethod The
-     *                                               webhooks.on_message_removed.method
-     * @param string $webhooksOnMessageRemovedFormat The
-     *                                               webhooks.on_message_removed.format
-     * @param string $webhooksOnChannelAddedUrl The webhooks.on_channel_added.url
-     * @param string $webhooksOnChannelAddedMethod The
-     *                                             webhooks.on_channel_added.method
-     * @param string $webhooksOnChannelAddedFormat The
-     *                                             webhooks.on_channel_added.format
-     * @param string $webhooksOnChannelDestroyedUrl The
-     *                                              webhooks.on_channel_destroyed.url
-     * @param string $webhooksOnChannelDestroyedMethod The
-     *                                                 webhooks.on_channel_destroyed.method
-     * @param string $webhooksOnChannelDestroyedFormat The
-     *                                                 webhooks.on_channel_destroyed.format
-     * @param string $webhooksOnChannelUpdatedUrl The
+     *                               for this Service instance
+     * @param string $webhooksOnMessageSendUrl The URL of the webhook to call in
+     *                                         response to the on_message_send event
+     * @param string $webhooksOnMessageSendMethod The HTTP method to use when
+     *                                            calling the
+     *                                            webhooks.on_message_send.url
+     * @param string $webhooksOnMessageUpdateUrl The URL of the webhook to call in
+     *                                           response to the on_message_update
+     *                                           event
+     * @param string $webhooksOnMessageUpdateMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_message_update.url
+     * @param string $webhooksOnMessageRemoveUrl The URL of the webhook to call in
+     *                                           response to the on_message_remove
+     *                                           event
+     * @param string $webhooksOnMessageRemoveMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_message_remove.url
+     * @param string $webhooksOnChannelAddUrl The URL of the webhook to call in
+     *                                        response to the on_channel_add event
+     * @param string $webhooksOnChannelAddMethod The HTTP method to use when
+     *                                           calling the
+     *                                           webhooks.on_channel_add.url
+     * @param string $webhooksOnChannelDestroyUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_channel_destroy event
+     * @param string $webhooksOnChannelDestroyMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_channel_destroy.url
+     * @param string $webhooksOnChannelUpdateUrl The URL of the webhook to call in
+     *                                           response to the on_channel_update
+     *                                           event
+     * @param string $webhooksOnChannelUpdateMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_channel_update.url
+     * @param string $webhooksOnMemberAddUrl The URL of the webhook to call in
+     *                                       response to the on_member_add event
+     * @param string $webhooksOnMemberAddMethod The HTTP method to use when calling
+     *                                          the webhooks.on_member_add.url
+     * @param string $webhooksOnMemberRemoveUrl The URL of the webhook to call in
+     *                                          response to the on_member_remove
+     *                                          event
+     * @param string $webhooksOnMemberRemoveMethod The HTTP method to use when
+     *                                             calling the
+     *                                             webhooks.on_member_remove.url
+     * @param string $webhooksOnMessageSentUrl The URL of the webhook to call in
+     *                                         response to the on_message_sent event
+     * @param string $webhooksOnMessageSentMethod The URL of the webhook to call in
+     *                                            response to the on_message_sent
+     *                                            event
+     * @param string $webhooksOnMessageUpdatedUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_message_updated event
+     * @param string $webhooksOnMessageUpdatedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_message_updated.url
+     * @param string $webhooksOnMessageRemovedUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_message_removed event
+     * @param string $webhooksOnMessageRemovedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_message_removed.url
+     * @param string $webhooksOnChannelAddedUrl The URL of the webhook to call in
+     *                                          response to the on_channel_added
+     *                                          event
+     * @param string $webhooksOnChannelAddedMethod The URL of the webhook to call
+     *                                             in response to the
+     *                                             on_channel_added event
+     * @param string $webhooksOnChannelDestroyedUrl The URL of the webhook to call
+     *                                              in response to the
+     *                                              on_channel_added event
+     * @param string $webhooksOnChannelDestroyedMethod The HTTP method to use when
+     *                                                 calling the
+     *                                                 webhooks.on_channel_destroyed.url
+     * @param string $webhooksOnChannelUpdatedUrl he URL of the webhook to call in
+     *                                            response to the
+     *                                            on_channel_updated event
+     * @param string $webhooksOnChannelUpdatedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_channel_updated.url
+     * @param string $webhooksOnMemberAddedUrl The URL of the webhook to call in
+     *                                         response to the on_channel_updated
+     *                                         event
+     * @param string $webhooksOnMemberAddedMethod he HTTP method to use when
+     *                                            calling the
      *                                            webhooks.on_channel_updated.url
-     * @param string $webhooksOnChannelUpdatedMethod The
-     *                                               webhooks.on_channel_updated.method
-     * @param string $webhooksOnChannelUpdatedFormat The
-     *                                               webhooks.on_channel_updated.format
-     * @param string $webhooksOnMemberAddedUrl The webhooks.on_member_added.url
-     * @param string $webhooksOnMemberAddedMethod The
-     *                                            webhooks.on_member_added.method
-     * @param string $webhooksOnMemberAddedFormat The
-     *                                            webhooks.on_member_added.format
-     * @param string $webhooksOnMemberRemovedUrl The webhooks.on_member_removed.url
-     * @param string $webhooksOnMemberRemovedMethod The
-     *                                              webhooks.on_member_removed.method
-     * @param string $webhooksOnMemberRemovedFormat The
-     *                                              webhooks.on_member_removed.format
-     * @param integer $limitsChannelMembers The limits.channel_members
-     * @param integer $limitsUserChannels The limits.user_channels
+     * @param string $webhooksOnMemberRemovedUrl The URL of the webhook to call in
+     *                                           response to the on_member_removed
+     *                                           event
+     * @param string $webhooksOnMemberRemovedMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_member_removed.url
+     * @param int $limitsChannelMembers The maximum number of Members that can be
+     *                                  added to Channels within this Service
+     * @param int $limitsUserChannels The maximum number of Channels Users can be a
+     *                                Member of within this Service
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooksOnMessageSendUrl = Values::NONE, $webhooksOnMessageSendMethod = Values::NONE, $webhooksOnMessageSendFormat = Values::NONE, $webhooksOnMessageUpdateUrl = Values::NONE, $webhooksOnMessageUpdateMethod = Values::NONE, $webhooksOnMessageUpdateFormat = Values::NONE, $webhooksOnMessageRemoveUrl = Values::NONE, $webhooksOnMessageRemoveMethod = Values::NONE, $webhooksOnMessageRemoveFormat = Values::NONE, $webhooksOnChannelAddUrl = Values::NONE, $webhooksOnChannelAddMethod = Values::NONE, $webhooksOnChannelAddFormat = Values::NONE, $webhooksOnChannelDestroyUrl = Values::NONE, $webhooksOnChannelDestroyMethod = Values::NONE, $webhooksOnChannelDestroyFormat = Values::NONE, $webhooksOnChannelUpdateUrl = Values::NONE, $webhooksOnChannelUpdateMethod = Values::NONE, $webhooksOnChannelUpdateFormat = Values::NONE, $webhooksOnMemberAddUrl = Values::NONE, $webhooksOnMemberAddMethod = Values::NONE, $webhooksOnMemberAddFormat = Values::NONE, $webhooksOnMemberRemoveUrl = Values::NONE, $webhooksOnMemberRemoveMethod = Values::NONE, $webhooksOnMemberRemoveFormat = Values::NONE, $webhooksOnMessageSentUrl = Values::NONE, $webhooksOnMessageSentMethod = Values::NONE, $webhooksOnMessageSentFormat = Values::NONE, $webhooksOnMessageUpdatedUrl = Values::NONE, $webhooksOnMessageUpdatedMethod = Values::NONE, $webhooksOnMessageUpdatedFormat = Values::NONE, $webhooksOnMessageRemovedUrl = Values::NONE, $webhooksOnMessageRemovedMethod = Values::NONE, $webhooksOnMessageRemovedFormat = Values::NONE, $webhooksOnChannelAddedUrl = Values::NONE, $webhooksOnChannelAddedMethod = Values::NONE, $webhooksOnChannelAddedFormat = Values::NONE, $webhooksOnChannelDestroyedUrl = Values::NONE, $webhooksOnChannelDestroyedMethod = Values::NONE, $webhooksOnChannelDestroyedFormat = Values::NONE, $webhooksOnChannelUpdatedUrl = Values::NONE, $webhooksOnChannelUpdatedMethod = Values::NONE, $webhooksOnChannelUpdatedFormat = Values::NONE, $webhooksOnMemberAddedUrl = Values::NONE, $webhooksOnMemberAddedMethod = Values::NONE, $webhooksOnMemberAddedFormat = Values::NONE, $webhooksOnMemberRemovedUrl = Values::NONE, $webhooksOnMemberRemovedMethod = Values::NONE, $webhooksOnMemberRemovedFormat = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
-        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $reachabilityEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $notificationsNewMessageEnabled, $notificationsNewMessageTemplate, $notificationsAddedToChannelEnabled, $notificationsAddedToChannelTemplate, $notificationsRemovedFromChannelEnabled, $notificationsRemovedFromChannelTemplate, $notificationsInvitedToChannelEnabled, $notificationsInvitedToChannelTemplate, $preWebhookUrl, $postWebhookUrl, $webhookMethod, $webhookFilters, $webhooksOnMessageSendUrl, $webhooksOnMessageSendMethod, $webhooksOnMessageSendFormat, $webhooksOnMessageUpdateUrl, $webhooksOnMessageUpdateMethod, $webhooksOnMessageUpdateFormat, $webhooksOnMessageRemoveUrl, $webhooksOnMessageRemoveMethod, $webhooksOnMessageRemoveFormat, $webhooksOnChannelAddUrl, $webhooksOnChannelAddMethod, $webhooksOnChannelAddFormat, $webhooksOnChannelDestroyUrl, $webhooksOnChannelDestroyMethod, $webhooksOnChannelDestroyFormat, $webhooksOnChannelUpdateUrl, $webhooksOnChannelUpdateMethod, $webhooksOnChannelUpdateFormat, $webhooksOnMemberAddUrl, $webhooksOnMemberAddMethod, $webhooksOnMemberAddFormat, $webhooksOnMemberRemoveUrl, $webhooksOnMemberRemoveMethod, $webhooksOnMemberRemoveFormat, $webhooksOnMessageSentUrl, $webhooksOnMessageSentMethod, $webhooksOnMessageSentFormat, $webhooksOnMessageUpdatedUrl, $webhooksOnMessageUpdatedMethod, $webhooksOnMessageUpdatedFormat, $webhooksOnMessageRemovedUrl, $webhooksOnMessageRemovedMethod, $webhooksOnMessageRemovedFormat, $webhooksOnChannelAddedUrl, $webhooksOnChannelAddedMethod, $webhooksOnChannelAddedFormat, $webhooksOnChannelDestroyedUrl, $webhooksOnChannelDestroyedMethod, $webhooksOnChannelDestroyedFormat, $webhooksOnChannelUpdatedUrl, $webhooksOnChannelUpdatedMethod, $webhooksOnChannelUpdatedFormat, $webhooksOnMemberAddedUrl, $webhooksOnMemberAddedMethod, $webhooksOnMemberAddedFormat, $webhooksOnMemberRemovedUrl, $webhooksOnMemberRemovedMethod, $webhooksOnMemberRemovedFormat, $limitsChannelMembers, $limitsUserChannels);
+    public static function update($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooksOnMessageSendUrl = Values::NONE, $webhooksOnMessageSendMethod = Values::NONE, $webhooksOnMessageUpdateUrl = Values::NONE, $webhooksOnMessageUpdateMethod = Values::NONE, $webhooksOnMessageRemoveUrl = Values::NONE, $webhooksOnMessageRemoveMethod = Values::NONE, $webhooksOnChannelAddUrl = Values::NONE, $webhooksOnChannelAddMethod = Values::NONE, $webhooksOnChannelDestroyUrl = Values::NONE, $webhooksOnChannelDestroyMethod = Values::NONE, $webhooksOnChannelUpdateUrl = Values::NONE, $webhooksOnChannelUpdateMethod = Values::NONE, $webhooksOnMemberAddUrl = Values::NONE, $webhooksOnMemberAddMethod = Values::NONE, $webhooksOnMemberRemoveUrl = Values::NONE, $webhooksOnMemberRemoveMethod = Values::NONE, $webhooksOnMessageSentUrl = Values::NONE, $webhooksOnMessageSentMethod = Values::NONE, $webhooksOnMessageUpdatedUrl = Values::NONE, $webhooksOnMessageUpdatedMethod = Values::NONE, $webhooksOnMessageRemovedUrl = Values::NONE, $webhooksOnMessageRemovedMethod = Values::NONE, $webhooksOnChannelAddedUrl = Values::NONE, $webhooksOnChannelAddedMethod = Values::NONE, $webhooksOnChannelDestroyedUrl = Values::NONE, $webhooksOnChannelDestroyedMethod = Values::NONE, $webhooksOnChannelUpdatedUrl = Values::NONE, $webhooksOnChannelUpdatedMethod = Values::NONE, $webhooksOnMemberAddedUrl = Values::NONE, $webhooksOnMemberAddedMethod = Values::NONE, $webhooksOnMemberRemovedUrl = Values::NONE, $webhooksOnMemberRemovedMethod = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
+        return new UpdateServiceOptions($friendlyName, $defaultServiceRoleSid, $defaultChannelRoleSid, $defaultChannelCreatorRoleSid, $readStatusEnabled, $reachabilityEnabled, $typingIndicatorTimeout, $consumptionReportInterval, $notificationsNewMessageEnabled, $notificationsNewMessageTemplate, $notificationsAddedToChannelEnabled, $notificationsAddedToChannelTemplate, $notificationsRemovedFromChannelEnabled, $notificationsRemovedFromChannelTemplate, $notificationsInvitedToChannelEnabled, $notificationsInvitedToChannelTemplate, $preWebhookUrl, $postWebhookUrl, $webhookMethod, $webhookFilters, $webhooksOnMessageSendUrl, $webhooksOnMessageSendMethod, $webhooksOnMessageUpdateUrl, $webhooksOnMessageUpdateMethod, $webhooksOnMessageRemoveUrl, $webhooksOnMessageRemoveMethod, $webhooksOnChannelAddUrl, $webhooksOnChannelAddMethod, $webhooksOnChannelDestroyUrl, $webhooksOnChannelDestroyMethod, $webhooksOnChannelUpdateUrl, $webhooksOnChannelUpdateMethod, $webhooksOnMemberAddUrl, $webhooksOnMemberAddMethod, $webhooksOnMemberRemoveUrl, $webhooksOnMemberRemoveMethod, $webhooksOnMessageSentUrl, $webhooksOnMessageSentMethod, $webhooksOnMessageUpdatedUrl, $webhooksOnMessageUpdatedMethod, $webhooksOnMessageRemovedUrl, $webhooksOnMessageRemovedMethod, $webhooksOnChannelAddedUrl, $webhooksOnChannelAddedMethod, $webhooksOnChannelDestroyedUrl, $webhooksOnChannelDestroyedMethod, $webhooksOnChannelUpdatedUrl, $webhooksOnChannelUpdatedMethod, $webhooksOnMemberAddedUrl, $webhooksOnMemberAddedMethod, $webhooksOnMemberRemovedUrl, $webhooksOnMemberRemovedMethod, $limitsChannelMembers, $limitsUserChannels);
     }
 }
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $defaultServiceRoleSid The default_service_role_sid
-     * @param string $defaultChannelRoleSid Channel role assigned on channel join
-     * @param string $defaultChannelCreatorRoleSid Channel role assigned to creator
-     *                                             of channel when joining for
-     *                                             first time
-     * @param boolean $readStatusEnabled true if the member read status feature is
-     *                                   enabled, false if not.
-     * @param boolean $reachabilityEnabled true if the reachability feature should
-     *                                     be enabled.
-     * @param integer $typingIndicatorTimeout ISO 8601 duration indicating the
-     *                                        timeout after "started typing" event
-     *                                        when client should assume that user
-     *                                        is not typing anymore even if no
-     *                                        "ended typing" message received
-     * @param integer $consumptionReportInterval ISO 8601 duration indicating the
-     *                                           interval between consumption
-     *                                           reports sent from client endpoints.
-     * @param boolean $notificationsNewMessageEnabled The
-     *                                                notifications.new_message.enabled
-     * @param string $notificationsNewMessageTemplate The
-     *                                                notifications.new_message.template
-     * @param boolean $notificationsAddedToChannelEnabled The
-     *                                                    notifications.added_to_channel.enabled
-     * @param string $notificationsAddedToChannelTemplate The
-     *                                                    notifications.added_to_channel.template
-     * @param boolean $notificationsRemovedFromChannelEnabled The
-     *                                                        notifications.removed_from_channel.enabled
-     * @param string $notificationsRemovedFromChannelTemplate The
-     *                                                        notifications.removed_from_channel.template
-     * @param boolean $notificationsInvitedToChannelEnabled The
-     *                                                      notifications.invited_to_channel.enabled
-     * @param string $notificationsInvitedToChannelTemplate The
-     *                                                      notifications.invited_to_channel.template
-     * @param string $preWebhookUrl The webhook URL for PRE-Event webhooks.
-     * @param string $postWebhookUrl The webhook URL for POST-Event webhooks.
-     * @param string $webhookMethod The webhook request format to use.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $defaultServiceRoleSid The service role assigned to users when
+     *                                      they are added to the service
+     * @param string $defaultChannelRoleSid The channel role assigned to users when
+     *                                      they are added to a channel
+     * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
+     *                                             channel creator when they join a
+     *                                             new channel
+     * @param bool $readStatusEnabled Whether to enable the Message Consumption
+     *                                Horizon feature
+     * @param bool $reachabilityEnabled Whether to enable the Reachability
+     *                                  Indicator feature for this Service instance
+     * @param int $typingIndicatorTimeout How long in seconds to wait before
+     *                                    assuming the user is no longer typing
+     * @param int $consumptionReportInterval DEPRECATED
+     * @param bool $notificationsNewMessageEnabled Whether to send a notification
+     *                                             when a new message is added to a
+     *                                             channel
+     * @param string $notificationsNewMessageTemplate The template to use to create
+     *                                                the notification text
+     *                                                displayed when a new message
+     *                                                is added to a channel
+     * @param bool $notificationsAddedToChannelEnabled Whether to send a
+     *                                                 notification when a member
+     *                                                 is added to a channel
+     * @param string $notificationsAddedToChannelTemplate The template to use to
+     *                                                    create the notification
+     *                                                    text displayed when a
+     *                                                    member is added to a
+     *                                                    channel
+     * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
+     *                                                     notification to a user
+     *                                                     when they are removed
+     *                                                     from a channel
+     * @param string $notificationsRemovedFromChannelTemplate The template to use
+     *                                                        to create the
+     *                                                        notification text
+     *                                                        displayed to a user
+     *                                                        when they are removed
+     * @param bool $notificationsInvitedToChannelEnabled Whether to send a
+     *                                                   notification when a user
+     *                                                   is invited to a channel
+     * @param string $notificationsInvitedToChannelTemplate The template to use to
+     *                                                      create the notification
+     *                                                      text displayed when a
+     *                                                      user is invited to a
+     *                                                      channel
+     * @param string $preWebhookUrl The webhook URL for pre-event webhooks
+     * @param string $postWebhookUrl The URL for post-event webhooks
+     * @param string $webhookMethod The HTTP method  to use for both PRE and POST
+     *                              webhooks
      * @param string $webhookFilters The list of WebHook events that are enabled
-     *                               for this Service instance.
-     * @param string $webhooksOnMessageSendUrl The webhooks.on_message_send.url
-     * @param string $webhooksOnMessageSendMethod The
-     *                                            webhooks.on_message_send.method
-     * @param string $webhooksOnMessageSendFormat The
-     *                                            webhooks.on_message_send.format
-     * @param string $webhooksOnMessageUpdateUrl The webhooks.on_message_update.url
-     * @param string $webhooksOnMessageUpdateMethod The
-     *                                              webhooks.on_message_update.method
-     * @param string $webhooksOnMessageUpdateFormat The
-     *                                              webhooks.on_message_update.format
-     * @param string $webhooksOnMessageRemoveUrl The webhooks.on_message_remove.url
-     * @param string $webhooksOnMessageRemoveMethod The
-     *                                              webhooks.on_message_remove.method
-     * @param string $webhooksOnMessageRemoveFormat The
-     *                                              webhooks.on_message_remove.format
-     * @param string $webhooksOnChannelAddUrl The webhooks.on_channel_add.url
-     * @param string $webhooksOnChannelAddMethod The webhooks.on_channel_add.method
-     * @param string $webhooksOnChannelAddFormat The webhooks.on_channel_add.format
-     * @param string $webhooksOnChannelDestroyUrl The
-     *                                            webhooks.on_channel_destroy.url
-     * @param string $webhooksOnChannelDestroyMethod The
-     *                                               webhooks.on_channel_destroy.method
-     * @param string $webhooksOnChannelDestroyFormat The
-     *                                               webhooks.on_channel_destroy.format
-     * @param string $webhooksOnChannelUpdateUrl The webhooks.on_channel_update.url
-     * @param string $webhooksOnChannelUpdateMethod The
-     *                                              webhooks.on_channel_update.method
-     * @param string $webhooksOnChannelUpdateFormat The
-     *                                              webhooks.on_channel_update.format
-     * @param string $webhooksOnMemberAddUrl The webhooks.on_member_add.url
-     * @param string $webhooksOnMemberAddMethod The webhooks.on_member_add.method
-     * @param string $webhooksOnMemberAddFormat The webhooks.on_member_add.format
-     * @param string $webhooksOnMemberRemoveUrl The webhooks.on_member_remove.url
-     * @param string $webhooksOnMemberRemoveMethod The
-     *                                             webhooks.on_member_remove.method
-     * @param string $webhooksOnMemberRemoveFormat The
-     *                                             webhooks.on_member_remove.format
-     * @param string $webhooksOnMessageSentUrl The webhooks.on_message_sent.url
-     * @param string $webhooksOnMessageSentMethod The
-     *                                            webhooks.on_message_sent.method
-     * @param string $webhooksOnMessageSentFormat The
-     *                                            webhooks.on_message_sent.format
-     * @param string $webhooksOnMessageUpdatedUrl The
-     *                                            webhooks.on_message_updated.url
-     * @param string $webhooksOnMessageUpdatedMethod The
-     *                                               webhooks.on_message_updated.method
-     * @param string $webhooksOnMessageUpdatedFormat The
-     *                                               webhooks.on_message_updated.format
-     * @param string $webhooksOnMessageRemovedUrl The
-     *                                            webhooks.on_message_removed.url
-     * @param string $webhooksOnMessageRemovedMethod The
-     *                                               webhooks.on_message_removed.method
-     * @param string $webhooksOnMessageRemovedFormat The
-     *                                               webhooks.on_message_removed.format
-     * @param string $webhooksOnChannelAddedUrl The webhooks.on_channel_added.url
-     * @param string $webhooksOnChannelAddedMethod The
-     *                                             webhooks.on_channel_added.method
-     * @param string $webhooksOnChannelAddedFormat The
-     *                                             webhooks.on_channel_added.format
-     * @param string $webhooksOnChannelDestroyedUrl The
-     *                                              webhooks.on_channel_destroyed.url
-     * @param string $webhooksOnChannelDestroyedMethod The
-     *                                                 webhooks.on_channel_destroyed.method
-     * @param string $webhooksOnChannelDestroyedFormat The
-     *                                                 webhooks.on_channel_destroyed.format
-     * @param string $webhooksOnChannelUpdatedUrl The
+     *                               for this Service instance
+     * @param string $webhooksOnMessageSendUrl The URL of the webhook to call in
+     *                                         response to the on_message_send event
+     * @param string $webhooksOnMessageSendMethod The HTTP method to use when
+     *                                            calling the
+     *                                            webhooks.on_message_send.url
+     * @param string $webhooksOnMessageUpdateUrl The URL of the webhook to call in
+     *                                           response to the on_message_update
+     *                                           event
+     * @param string $webhooksOnMessageUpdateMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_message_update.url
+     * @param string $webhooksOnMessageRemoveUrl The URL of the webhook to call in
+     *                                           response to the on_message_remove
+     *                                           event
+     * @param string $webhooksOnMessageRemoveMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_message_remove.url
+     * @param string $webhooksOnChannelAddUrl The URL of the webhook to call in
+     *                                        response to the on_channel_add event
+     * @param string $webhooksOnChannelAddMethod The HTTP method to use when
+     *                                           calling the
+     *                                           webhooks.on_channel_add.url
+     * @param string $webhooksOnChannelDestroyUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_channel_destroy event
+     * @param string $webhooksOnChannelDestroyMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_channel_destroy.url
+     * @param string $webhooksOnChannelUpdateUrl The URL of the webhook to call in
+     *                                           response to the on_channel_update
+     *                                           event
+     * @param string $webhooksOnChannelUpdateMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_channel_update.url
+     * @param string $webhooksOnMemberAddUrl The URL of the webhook to call in
+     *                                       response to the on_member_add event
+     * @param string $webhooksOnMemberAddMethod The HTTP method to use when calling
+     *                                          the webhooks.on_member_add.url
+     * @param string $webhooksOnMemberRemoveUrl The URL of the webhook to call in
+     *                                          response to the on_member_remove
+     *                                          event
+     * @param string $webhooksOnMemberRemoveMethod The HTTP method to use when
+     *                                             calling the
+     *                                             webhooks.on_member_remove.url
+     * @param string $webhooksOnMessageSentUrl The URL of the webhook to call in
+     *                                         response to the on_message_sent event
+     * @param string $webhooksOnMessageSentMethod The URL of the webhook to call in
+     *                                            response to the on_message_sent
+     *                                            event
+     * @param string $webhooksOnMessageUpdatedUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_message_updated event
+     * @param string $webhooksOnMessageUpdatedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_message_updated.url
+     * @param string $webhooksOnMessageRemovedUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_message_removed event
+     * @param string $webhooksOnMessageRemovedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_message_removed.url
+     * @param string $webhooksOnChannelAddedUrl The URL of the webhook to call in
+     *                                          response to the on_channel_added
+     *                                          event
+     * @param string $webhooksOnChannelAddedMethod The URL of the webhook to call
+     *                                             in response to the
+     *                                             on_channel_added event
+     * @param string $webhooksOnChannelDestroyedUrl The URL of the webhook to call
+     *                                              in response to the
+     *                                              on_channel_added event
+     * @param string $webhooksOnChannelDestroyedMethod The HTTP method to use when
+     *                                                 calling the
+     *                                                 webhooks.on_channel_destroyed.url
+     * @param string $webhooksOnChannelUpdatedUrl he URL of the webhook to call in
+     *                                            response to the
+     *                                            on_channel_updated event
+     * @param string $webhooksOnChannelUpdatedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_channel_updated.url
+     * @param string $webhooksOnMemberAddedUrl The URL of the webhook to call in
+     *                                         response to the on_channel_updated
+     *                                         event
+     * @param string $webhooksOnMemberAddedMethod he HTTP method to use when
+     *                                            calling the
      *                                            webhooks.on_channel_updated.url
-     * @param string $webhooksOnChannelUpdatedMethod The
-     *                                               webhooks.on_channel_updated.method
-     * @param string $webhooksOnChannelUpdatedFormat The
-     *                                               webhooks.on_channel_updated.format
-     * @param string $webhooksOnMemberAddedUrl The webhooks.on_member_added.url
-     * @param string $webhooksOnMemberAddedMethod The
-     *                                            webhooks.on_member_added.method
-     * @param string $webhooksOnMemberAddedFormat The
-     *                                            webhooks.on_member_added.format
-     * @param string $webhooksOnMemberRemovedUrl The webhooks.on_member_removed.url
-     * @param string $webhooksOnMemberRemovedMethod The
-     *                                              webhooks.on_member_removed.method
-     * @param string $webhooksOnMemberRemovedFormat The
-     *                                              webhooks.on_member_removed.format
-     * @param integer $limitsChannelMembers The limits.channel_members
-     * @param integer $limitsUserChannels The limits.user_channels
+     * @param string $webhooksOnMemberRemovedUrl The URL of the webhook to call in
+     *                                           response to the on_member_removed
+     *                                           event
+     * @param string $webhooksOnMemberRemovedMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_member_removed.url
+     * @param int $limitsChannelMembers The maximum number of Members that can be
+     *                                  added to Channels within this Service
+     * @param int $limitsUserChannels The maximum number of Channels Users can be a
+     *                                Member of within this Service
      */
-    public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooksOnMessageSendUrl = Values::NONE, $webhooksOnMessageSendMethod = Values::NONE, $webhooksOnMessageSendFormat = Values::NONE, $webhooksOnMessageUpdateUrl = Values::NONE, $webhooksOnMessageUpdateMethod = Values::NONE, $webhooksOnMessageUpdateFormat = Values::NONE, $webhooksOnMessageRemoveUrl = Values::NONE, $webhooksOnMessageRemoveMethod = Values::NONE, $webhooksOnMessageRemoveFormat = Values::NONE, $webhooksOnChannelAddUrl = Values::NONE, $webhooksOnChannelAddMethod = Values::NONE, $webhooksOnChannelAddFormat = Values::NONE, $webhooksOnChannelDestroyUrl = Values::NONE, $webhooksOnChannelDestroyMethod = Values::NONE, $webhooksOnChannelDestroyFormat = Values::NONE, $webhooksOnChannelUpdateUrl = Values::NONE, $webhooksOnChannelUpdateMethod = Values::NONE, $webhooksOnChannelUpdateFormat = Values::NONE, $webhooksOnMemberAddUrl = Values::NONE, $webhooksOnMemberAddMethod = Values::NONE, $webhooksOnMemberAddFormat = Values::NONE, $webhooksOnMemberRemoveUrl = Values::NONE, $webhooksOnMemberRemoveMethod = Values::NONE, $webhooksOnMemberRemoveFormat = Values::NONE, $webhooksOnMessageSentUrl = Values::NONE, $webhooksOnMessageSentMethod = Values::NONE, $webhooksOnMessageSentFormat = Values::NONE, $webhooksOnMessageUpdatedUrl = Values::NONE, $webhooksOnMessageUpdatedMethod = Values::NONE, $webhooksOnMessageUpdatedFormat = Values::NONE, $webhooksOnMessageRemovedUrl = Values::NONE, $webhooksOnMessageRemovedMethod = Values::NONE, $webhooksOnMessageRemovedFormat = Values::NONE, $webhooksOnChannelAddedUrl = Values::NONE, $webhooksOnChannelAddedMethod = Values::NONE, $webhooksOnChannelAddedFormat = Values::NONE, $webhooksOnChannelDestroyedUrl = Values::NONE, $webhooksOnChannelDestroyedMethod = Values::NONE, $webhooksOnChannelDestroyedFormat = Values::NONE, $webhooksOnChannelUpdatedUrl = Values::NONE, $webhooksOnChannelUpdatedMethod = Values::NONE, $webhooksOnChannelUpdatedFormat = Values::NONE, $webhooksOnMemberAddedUrl = Values::NONE, $webhooksOnMemberAddedMethod = Values::NONE, $webhooksOnMemberAddedFormat = Values::NONE, $webhooksOnMemberRemovedUrl = Values::NONE, $webhooksOnMemberRemovedMethod = Values::NONE, $webhooksOnMemberRemovedFormat = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $defaultServiceRoleSid = Values::NONE, $defaultChannelRoleSid = Values::NONE, $defaultChannelCreatorRoleSid = Values::NONE, $readStatusEnabled = Values::NONE, $reachabilityEnabled = Values::NONE, $typingIndicatorTimeout = Values::NONE, $consumptionReportInterval = Values::NONE, $notificationsNewMessageEnabled = Values::NONE, $notificationsNewMessageTemplate = Values::NONE, $notificationsAddedToChannelEnabled = Values::NONE, $notificationsAddedToChannelTemplate = Values::NONE, $notificationsRemovedFromChannelEnabled = Values::NONE, $notificationsRemovedFromChannelTemplate = Values::NONE, $notificationsInvitedToChannelEnabled = Values::NONE, $notificationsInvitedToChannelTemplate = Values::NONE, $preWebhookUrl = Values::NONE, $postWebhookUrl = Values::NONE, $webhookMethod = Values::NONE, $webhookFilters = Values::NONE, $webhooksOnMessageSendUrl = Values::NONE, $webhooksOnMessageSendMethod = Values::NONE, $webhooksOnMessageUpdateUrl = Values::NONE, $webhooksOnMessageUpdateMethod = Values::NONE, $webhooksOnMessageRemoveUrl = Values::NONE, $webhooksOnMessageRemoveMethod = Values::NONE, $webhooksOnChannelAddUrl = Values::NONE, $webhooksOnChannelAddMethod = Values::NONE, $webhooksOnChannelDestroyUrl = Values::NONE, $webhooksOnChannelDestroyMethod = Values::NONE, $webhooksOnChannelUpdateUrl = Values::NONE, $webhooksOnChannelUpdateMethod = Values::NONE, $webhooksOnMemberAddUrl = Values::NONE, $webhooksOnMemberAddMethod = Values::NONE, $webhooksOnMemberRemoveUrl = Values::NONE, $webhooksOnMemberRemoveMethod = Values::NONE, $webhooksOnMessageSentUrl = Values::NONE, $webhooksOnMessageSentMethod = Values::NONE, $webhooksOnMessageUpdatedUrl = Values::NONE, $webhooksOnMessageUpdatedMethod = Values::NONE, $webhooksOnMessageRemovedUrl = Values::NONE, $webhooksOnMessageRemovedMethod = Values::NONE, $webhooksOnChannelAddedUrl = Values::NONE, $webhooksOnChannelAddedMethod = Values::NONE, $webhooksOnChannelDestroyedUrl = Values::NONE, $webhooksOnChannelDestroyedMethod = Values::NONE, $webhooksOnChannelUpdatedUrl = Values::NONE, $webhooksOnChannelUpdatedMethod = Values::NONE, $webhooksOnMemberAddedUrl = Values::NONE, $webhooksOnMemberAddedMethod = Values::NONE, $webhooksOnMemberRemovedUrl = Values::NONE, $webhooksOnMemberRemovedMethod = Values::NONE, $limitsChannelMembers = Values::NONE, $limitsUserChannels = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['defaultServiceRoleSid'] = $defaultServiceRoleSid;
         $this->options['defaultChannelRoleSid'] = $defaultChannelRoleSid;
@@ -291,60 +343,44 @@ class UpdateServiceOptions extends Options {
         $this->options['webhookFilters'] = $webhookFilters;
         $this->options['webhooksOnMessageSendUrl'] = $webhooksOnMessageSendUrl;
         $this->options['webhooksOnMessageSendMethod'] = $webhooksOnMessageSendMethod;
-        $this->options['webhooksOnMessageSendFormat'] = $webhooksOnMessageSendFormat;
         $this->options['webhooksOnMessageUpdateUrl'] = $webhooksOnMessageUpdateUrl;
         $this->options['webhooksOnMessageUpdateMethod'] = $webhooksOnMessageUpdateMethod;
-        $this->options['webhooksOnMessageUpdateFormat'] = $webhooksOnMessageUpdateFormat;
         $this->options['webhooksOnMessageRemoveUrl'] = $webhooksOnMessageRemoveUrl;
         $this->options['webhooksOnMessageRemoveMethod'] = $webhooksOnMessageRemoveMethod;
-        $this->options['webhooksOnMessageRemoveFormat'] = $webhooksOnMessageRemoveFormat;
         $this->options['webhooksOnChannelAddUrl'] = $webhooksOnChannelAddUrl;
         $this->options['webhooksOnChannelAddMethod'] = $webhooksOnChannelAddMethod;
-        $this->options['webhooksOnChannelAddFormat'] = $webhooksOnChannelAddFormat;
         $this->options['webhooksOnChannelDestroyUrl'] = $webhooksOnChannelDestroyUrl;
         $this->options['webhooksOnChannelDestroyMethod'] = $webhooksOnChannelDestroyMethod;
-        $this->options['webhooksOnChannelDestroyFormat'] = $webhooksOnChannelDestroyFormat;
         $this->options['webhooksOnChannelUpdateUrl'] = $webhooksOnChannelUpdateUrl;
         $this->options['webhooksOnChannelUpdateMethod'] = $webhooksOnChannelUpdateMethod;
-        $this->options['webhooksOnChannelUpdateFormat'] = $webhooksOnChannelUpdateFormat;
         $this->options['webhooksOnMemberAddUrl'] = $webhooksOnMemberAddUrl;
         $this->options['webhooksOnMemberAddMethod'] = $webhooksOnMemberAddMethod;
-        $this->options['webhooksOnMemberAddFormat'] = $webhooksOnMemberAddFormat;
         $this->options['webhooksOnMemberRemoveUrl'] = $webhooksOnMemberRemoveUrl;
         $this->options['webhooksOnMemberRemoveMethod'] = $webhooksOnMemberRemoveMethod;
-        $this->options['webhooksOnMemberRemoveFormat'] = $webhooksOnMemberRemoveFormat;
         $this->options['webhooksOnMessageSentUrl'] = $webhooksOnMessageSentUrl;
         $this->options['webhooksOnMessageSentMethod'] = $webhooksOnMessageSentMethod;
-        $this->options['webhooksOnMessageSentFormat'] = $webhooksOnMessageSentFormat;
         $this->options['webhooksOnMessageUpdatedUrl'] = $webhooksOnMessageUpdatedUrl;
         $this->options['webhooksOnMessageUpdatedMethod'] = $webhooksOnMessageUpdatedMethod;
-        $this->options['webhooksOnMessageUpdatedFormat'] = $webhooksOnMessageUpdatedFormat;
         $this->options['webhooksOnMessageRemovedUrl'] = $webhooksOnMessageRemovedUrl;
         $this->options['webhooksOnMessageRemovedMethod'] = $webhooksOnMessageRemovedMethod;
-        $this->options['webhooksOnMessageRemovedFormat'] = $webhooksOnMessageRemovedFormat;
         $this->options['webhooksOnChannelAddedUrl'] = $webhooksOnChannelAddedUrl;
         $this->options['webhooksOnChannelAddedMethod'] = $webhooksOnChannelAddedMethod;
-        $this->options['webhooksOnChannelAddedFormat'] = $webhooksOnChannelAddedFormat;
         $this->options['webhooksOnChannelDestroyedUrl'] = $webhooksOnChannelDestroyedUrl;
         $this->options['webhooksOnChannelDestroyedMethod'] = $webhooksOnChannelDestroyedMethod;
-        $this->options['webhooksOnChannelDestroyedFormat'] = $webhooksOnChannelDestroyedFormat;
         $this->options['webhooksOnChannelUpdatedUrl'] = $webhooksOnChannelUpdatedUrl;
         $this->options['webhooksOnChannelUpdatedMethod'] = $webhooksOnChannelUpdatedMethod;
-        $this->options['webhooksOnChannelUpdatedFormat'] = $webhooksOnChannelUpdatedFormat;
         $this->options['webhooksOnMemberAddedUrl'] = $webhooksOnMemberAddedUrl;
         $this->options['webhooksOnMemberAddedMethod'] = $webhooksOnMemberAddedMethod;
-        $this->options['webhooksOnMemberAddedFormat'] = $webhooksOnMemberAddedFormat;
         $this->options['webhooksOnMemberRemovedUrl'] = $webhooksOnMemberRemovedUrl;
         $this->options['webhooksOnMemberRemovedMethod'] = $webhooksOnMemberRemovedMethod;
-        $this->options['webhooksOnMemberRemovedFormat'] = $webhooksOnMemberRemovedFormat;
         $this->options['limitsChannelMembers'] = $limitsChannelMembers;
         $this->options['limitsUserChannels'] = $limitsUserChannels;
     }
 
     /**
-     * Human-readable name for this service instance
-     * 
-     * @param string $friendlyName Human-readable name for this service instance
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     *
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -353,9 +389,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The default_service_role_sid
-     * 
-     * @param string $defaultServiceRoleSid The default_service_role_sid
+     * The service role assigned to users when they are added to the service. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
+     *
+     * @param string $defaultServiceRoleSid The service role assigned to users when
+     *                                      they are added to the service
      * @return $this Fluent Builder
      */
     public function setDefaultServiceRoleSid($defaultServiceRoleSid) {
@@ -364,9 +401,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Channel role assigned on channel join (see [Roles](https://www.twilio.com/docs/api/chat/rest/v1/roles) data model for the details)
-     * 
-     * @param string $defaultChannelRoleSid Channel role assigned on channel join
+     * The channel role assigned to users when they are added to a channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
+     *
+     * @param string $defaultChannelRoleSid The channel role assigned to users when
+     *                                      they are added to a channel
      * @return $this Fluent Builder
      */
     public function setDefaultChannelRoleSid($defaultChannelRoleSid) {
@@ -375,11 +413,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Channel role assigned to creator of channel when joining for first time
-     * 
-     * @param string $defaultChannelCreatorRoleSid Channel role assigned to creator
-     *                                             of channel when joining for
-     *                                             first time
+     * The channel role assigned to a channel creator when they join a new channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
+     *
+     * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
+     *                                             channel creator when they join a
+     *                                             new channel
      * @return $this Fluent Builder
      */
     public function setDefaultChannelCreatorRoleSid($defaultChannelCreatorRoleSid) {
@@ -388,10 +426,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * `true` if the member read status feature is enabled, `false` if not.  Defaults to `true`.
-     * 
-     * @param boolean $readStatusEnabled true if the member read status feature is
-     *                                   enabled, false if not.
+     * Whether to enable the [Message Consumption Horizon](https://www.twilio.com/docs/chat/consumption-horizon) feature. The default is `true`.
+     *
+     * @param bool $readStatusEnabled Whether to enable the Message Consumption
+     *                                Horizon feature
      * @return $this Fluent Builder
      */
     public function setReadStatusEnabled($readStatusEnabled) {
@@ -400,10 +438,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * `true` if the reachability feature should be enabled.  Defaults to `false`
-     * 
-     * @param boolean $reachabilityEnabled true if the reachability feature should
-     *                                     be enabled.
+     * Whether to enable the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) for this Service instance. The default is `false`.
+     *
+     * @param bool $reachabilityEnabled Whether to enable the Reachability
+     *                                  Indicator feature for this Service instance
      * @return $this Fluent Builder
      */
     public function setReachabilityEnabled($reachabilityEnabled) {
@@ -412,13 +450,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * ISO 8601 duration indicating the timeout after "started typing" event when client should assume that user is not typing anymore even if no "ended typing" message received
-     * 
-     * @param integer $typingIndicatorTimeout ISO 8601 duration indicating the
-     *                                        timeout after "started typing" event
-     *                                        when client should assume that user
-     *                                        is not typing anymore even if no
-     *                                        "ended typing" message received
+     * How long in seconds after a `started typing` event until clients should assume that user is no longer typing, even if no `ended typing` message was received.  The default is 5 seconds.
+     *
+     * @param int $typingIndicatorTimeout How long in seconds to wait before
+     *                                    assuming the user is no longer typing
      * @return $this Fluent Builder
      */
     public function setTypingIndicatorTimeout($typingIndicatorTimeout) {
@@ -427,11 +462,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * ISO 8601 duration indicating the interval between consumption reports sent from client endpoints.
-     * 
-     * @param integer $consumptionReportInterval ISO 8601 duration indicating the
-     *                                           interval between consumption
-     *                                           reports sent from client endpoints.
+     * DEPRECATED. The interval in seconds between consumption reports submission batches from client endpoints.
+     *
+     * @param int $consumptionReportInterval DEPRECATED
      * @return $this Fluent Builder
      */
     public function setConsumptionReportInterval($consumptionReportInterval) {
@@ -440,10 +473,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.new_message.enabled
-     * 
-     * @param boolean $notificationsNewMessageEnabled The
-     *                                                notifications.new_message.enabled
+     * Whether to send a notification when a new message is added to a channel. Can be: `true` or `false` and the default is `false`.
+     *
+     * @param bool $notificationsNewMessageEnabled Whether to send a notification
+     *                                             when a new message is added to a
+     *                                             channel
      * @return $this Fluent Builder
      */
     public function setNotificationsNewMessageEnabled($notificationsNewMessageEnabled) {
@@ -452,10 +486,12 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.new_message.template
-     * 
-     * @param string $notificationsNewMessageTemplate The
-     *                                                notifications.new_message.template
+     * The template to use to create the notification text displayed when a new message is added to a channel and `notifications.new_message.enabled` is `true`.
+     *
+     * @param string $notificationsNewMessageTemplate The template to use to create
+     *                                                the notification text
+     *                                                displayed when a new message
+     *                                                is added to a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsNewMessageTemplate($notificationsNewMessageTemplate) {
@@ -464,10 +500,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.added_to_channel.enabled
-     * 
-     * @param boolean $notificationsAddedToChannelEnabled The
-     *                                                    notifications.added_to_channel.enabled
+     * Whether to send a notification when a member is added to a channel. Can be: `true` or `false` and the default is `false`.
+     *
+     * @param bool $notificationsAddedToChannelEnabled Whether to send a
+     *                                                 notification when a member
+     *                                                 is added to a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsAddedToChannelEnabled($notificationsAddedToChannelEnabled) {
@@ -476,10 +513,13 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.added_to_channel.template
-     * 
-     * @param string $notificationsAddedToChannelTemplate The
-     *                                                    notifications.added_to_channel.template
+     * The template to use to create the notification text displayed when a member is added to a channel and `notifications.added_to_channel.enabled` is `true`.
+     *
+     * @param string $notificationsAddedToChannelTemplate The template to use to
+     *                                                    create the notification
+     *                                                    text displayed when a
+     *                                                    member is added to a
+     *                                                    channel
      * @return $this Fluent Builder
      */
     public function setNotificationsAddedToChannelTemplate($notificationsAddedToChannelTemplate) {
@@ -488,10 +528,12 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.removed_from_channel.enabled
-     * 
-     * @param boolean $notificationsRemovedFromChannelEnabled The
-     *                                                        notifications.removed_from_channel.enabled
+     * Whether to send a notification to a user when they are removed from a channel. Can be: `true` or `false` and the default is `false`.
+     *
+     * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
+     *                                                     notification to a user
+     *                                                     when they are removed
+     *                                                     from a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsRemovedFromChannelEnabled($notificationsRemovedFromChannelEnabled) {
@@ -500,10 +542,13 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.removed_from_channel.template
-     * 
-     * @param string $notificationsRemovedFromChannelTemplate The
-     *                                                        notifications.removed_from_channel.template
+     * The template to use to create the notification text displayed to a user when they are removed from a channel and `notifications.removed_from_channel.enabled` is `true`.
+     *
+     * @param string $notificationsRemovedFromChannelTemplate The template to use
+     *                                                        to create the
+     *                                                        notification text
+     *                                                        displayed to a user
+     *                                                        when they are removed
      * @return $this Fluent Builder
      */
     public function setNotificationsRemovedFromChannelTemplate($notificationsRemovedFromChannelTemplate) {
@@ -512,10 +557,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.invited_to_channel.enabled
-     * 
-     * @param boolean $notificationsInvitedToChannelEnabled The
-     *                                                      notifications.invited_to_channel.enabled
+     * Whether to send a notification when a user is invited to a channel. Can be: `true` or `false` and the default is `false`.
+     *
+     * @param bool $notificationsInvitedToChannelEnabled Whether to send a
+     *                                                   notification when a user
+     *                                                   is invited to a channel
      * @return $this Fluent Builder
      */
     public function setNotificationsInvitedToChannelEnabled($notificationsInvitedToChannelEnabled) {
@@ -524,10 +570,13 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The notifications.invited_to_channel.template
-     * 
-     * @param string $notificationsInvitedToChannelTemplate The
-     *                                                      notifications.invited_to_channel.template
+     * The template to use to create the notification text displayed when a user is invited to a channel and `notifications.invited_to_channel.enabled` is `true`.
+     *
+     * @param string $notificationsInvitedToChannelTemplate The template to use to
+     *                                                      create the notification
+     *                                                      text displayed when a
+     *                                                      user is invited to a
+     *                                                      channel
      * @return $this Fluent Builder
      */
     public function setNotificationsInvitedToChannelTemplate($notificationsInvitedToChannelTemplate) {
@@ -536,9 +585,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhook URL for PRE-Event webhooks. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
-     * 
-     * @param string $preWebhookUrl The webhook URL for PRE-Event webhooks.
+     * The URL for pre-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
+     *
+     * @param string $preWebhookUrl The webhook URL for pre-event webhooks
      * @return $this Fluent Builder
      */
     public function setPreWebhookUrl($preWebhookUrl) {
@@ -547,9 +596,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhook URL for POST-Event webhooks. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
-     * 
-     * @param string $postWebhookUrl The webhook URL for POST-Event webhooks.
+     * The URL for post-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
+     *
+     * @param string $postWebhookUrl The URL for post-event webhooks
      * @return $this Fluent Builder
      */
     public function setPostWebhookUrl($postWebhookUrl) {
@@ -558,9 +607,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhook request format to use.  Must be POST or GET. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
-     * 
-     * @param string $webhookMethod The webhook request format to use.
+     * The HTTP method to use for calls to the `pre_webhook_url` and `post_webhook_url` webhooks.  Can be: `POST` or `GET` and the default is `POST`. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
+     *
+     * @param string $webhookMethod The HTTP method  to use for both PRE and POST
+     *                              webhooks
      * @return $this Fluent Builder
      */
     public function setWebhookMethod($webhookMethod) {
@@ -569,10 +619,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The list of WebHook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/api/chat/webhooks) for more details.
-     * 
+     * The list of WebHook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
+     *
      * @param string $webhookFilters The list of WebHook events that are enabled
-     *                               for this Service instance.
+     *                               for this Service instance
      * @return $this Fluent Builder
      */
     public function setWebhookFilters($webhookFilters) {
@@ -581,9 +631,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_send.url
-     * 
-     * @param string $webhooksOnMessageSendUrl The webhooks.on_message_send.url
+     * The URL of the webhook to call in response to the `on_message_send` event using the `webhooks.on_message_send.method` HTTP method.
+     *
+     * @param string $webhooksOnMessageSendUrl The URL of the webhook to call in
+     *                                         response to the on_message_send event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageSendUrl($webhooksOnMessageSendUrl) {
@@ -592,10 +643,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_send.method
-     * 
-     * @param string $webhooksOnMessageSendMethod The
-     *                                            webhooks.on_message_send.method
+     * The HTTP method to use when calling the `webhooks.on_message_send.url`.
+     *
+     * @param string $webhooksOnMessageSendMethod The HTTP method to use when
+     *                                            calling the
+     *                                            webhooks.on_message_send.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageSendMethod($webhooksOnMessageSendMethod) {
@@ -604,21 +656,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_send.format
-     * 
-     * @param string $webhooksOnMessageSendFormat The
-     *                                            webhooks.on_message_send.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMessageSendFormat($webhooksOnMessageSendFormat) {
-        $this->options['webhooksOnMessageSendFormat'] = $webhooksOnMessageSendFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_message_update.url
-     * 
-     * @param string $webhooksOnMessageUpdateUrl The webhooks.on_message_update.url
+     * The URL of the webhook to call in response to the `on_message_update` event using the `webhooks.on_message_update.method` HTTP method.
+     *
+     * @param string $webhooksOnMessageUpdateUrl The URL of the webhook to call in
+     *                                           response to the on_message_update
+     *                                           event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageUpdateUrl($webhooksOnMessageUpdateUrl) {
@@ -627,10 +669,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_update.method
-     * 
-     * @param string $webhooksOnMessageUpdateMethod The
-     *                                              webhooks.on_message_update.method
+     * The HTTP method to use when calling the `webhooks.on_message_update.url`.
+     *
+     * @param string $webhooksOnMessageUpdateMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_message_update.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageUpdateMethod($webhooksOnMessageUpdateMethod) {
@@ -639,21 +682,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_update.format
-     * 
-     * @param string $webhooksOnMessageUpdateFormat The
-     *                                              webhooks.on_message_update.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMessageUpdateFormat($webhooksOnMessageUpdateFormat) {
-        $this->options['webhooksOnMessageUpdateFormat'] = $webhooksOnMessageUpdateFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_message_remove.url
-     * 
-     * @param string $webhooksOnMessageRemoveUrl The webhooks.on_message_remove.url
+     * The URL of the webhook to call in response to the `on_message_remove` event using the `webhooks.on_message_remove.method` HTTP method.
+     *
+     * @param string $webhooksOnMessageRemoveUrl The URL of the webhook to call in
+     *                                           response to the on_message_remove
+     *                                           event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageRemoveUrl($webhooksOnMessageRemoveUrl) {
@@ -662,10 +695,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_remove.method
-     * 
-     * @param string $webhooksOnMessageRemoveMethod The
-     *                                              webhooks.on_message_remove.method
+     * The HTTP method to use when calling the `webhooks.on_message_remove.url`.
+     *
+     * @param string $webhooksOnMessageRemoveMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_message_remove.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageRemoveMethod($webhooksOnMessageRemoveMethod) {
@@ -674,21 +708,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_remove.format
-     * 
-     * @param string $webhooksOnMessageRemoveFormat The
-     *                                              webhooks.on_message_remove.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMessageRemoveFormat($webhooksOnMessageRemoveFormat) {
-        $this->options['webhooksOnMessageRemoveFormat'] = $webhooksOnMessageRemoveFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_channel_add.url
-     * 
-     * @param string $webhooksOnChannelAddUrl The webhooks.on_channel_add.url
+     * The URL of the webhook to call in response to the `on_channel_add` event using the `webhooks.on_channel_add.method` HTTP method.
+     *
+     * @param string $webhooksOnChannelAddUrl The URL of the webhook to call in
+     *                                        response to the on_channel_add event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelAddUrl($webhooksOnChannelAddUrl) {
@@ -697,9 +720,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_add.method
-     * 
-     * @param string $webhooksOnChannelAddMethod The webhooks.on_channel_add.method
+     * The HTTP method to use when calling the `webhooks.on_channel_add.url`.
+     *
+     * @param string $webhooksOnChannelAddMethod The HTTP method to use when
+     *                                           calling the
+     *                                           webhooks.on_channel_add.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelAddMethod($webhooksOnChannelAddMethod) {
@@ -708,21 +733,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_add.format
-     * 
-     * @param string $webhooksOnChannelAddFormat The webhooks.on_channel_add.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnChannelAddFormat($webhooksOnChannelAddFormat) {
-        $this->options['webhooksOnChannelAddFormat'] = $webhooksOnChannelAddFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_channel_destroy.url
-     * 
-     * @param string $webhooksOnChannelDestroyUrl The
-     *                                            webhooks.on_channel_destroy.url
+     * The URL of the webhook to call in response to the `on_channel_destroy` event using the `webhooks.on_channel_destroy.method` HTTP method.
+     *
+     * @param string $webhooksOnChannelDestroyUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_channel_destroy event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelDestroyUrl($webhooksOnChannelDestroyUrl) {
@@ -731,10 +746,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_destroy.method
-     * 
-     * @param string $webhooksOnChannelDestroyMethod The
-     *                                               webhooks.on_channel_destroy.method
+     * The HTTP method to use when calling the `webhooks.on_channel_destroy.url`.
+     *
+     * @param string $webhooksOnChannelDestroyMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_channel_destroy.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelDestroyMethod($webhooksOnChannelDestroyMethod) {
@@ -743,21 +759,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_destroy.format
-     * 
-     * @param string $webhooksOnChannelDestroyFormat The
-     *                                               webhooks.on_channel_destroy.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnChannelDestroyFormat($webhooksOnChannelDestroyFormat) {
-        $this->options['webhooksOnChannelDestroyFormat'] = $webhooksOnChannelDestroyFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_channel_update.url
-     * 
-     * @param string $webhooksOnChannelUpdateUrl The webhooks.on_channel_update.url
+     * The URL of the webhook to call in response to the `on_channel_update` event using the `webhooks.on_channel_update.method` HTTP method.
+     *
+     * @param string $webhooksOnChannelUpdateUrl The URL of the webhook to call in
+     *                                           response to the on_channel_update
+     *                                           event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelUpdateUrl($webhooksOnChannelUpdateUrl) {
@@ -766,10 +772,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_update.method
-     * 
-     * @param string $webhooksOnChannelUpdateMethod The
-     *                                              webhooks.on_channel_update.method
+     * The HTTP method to use when calling the `webhooks.on_channel_update.url`.
+     *
+     * @param string $webhooksOnChannelUpdateMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_channel_update.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelUpdateMethod($webhooksOnChannelUpdateMethod) {
@@ -778,21 +785,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_update.format
-     * 
-     * @param string $webhooksOnChannelUpdateFormat The
-     *                                              webhooks.on_channel_update.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnChannelUpdateFormat($webhooksOnChannelUpdateFormat) {
-        $this->options['webhooksOnChannelUpdateFormat'] = $webhooksOnChannelUpdateFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_member_add.url
-     * 
-     * @param string $webhooksOnMemberAddUrl The webhooks.on_member_add.url
+     * The URL of the webhook to call in response to the `on_member_add` event using the `webhooks.on_member_add.method` HTTP method.
+     *
+     * @param string $webhooksOnMemberAddUrl The URL of the webhook to call in
+     *                                       response to the on_member_add event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberAddUrl($webhooksOnMemberAddUrl) {
@@ -801,9 +797,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_add.method
-     * 
-     * @param string $webhooksOnMemberAddMethod The webhooks.on_member_add.method
+     * The HTTP method to use when calling the `webhooks.on_member_add.url`.
+     *
+     * @param string $webhooksOnMemberAddMethod The HTTP method to use when calling
+     *                                          the webhooks.on_member_add.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberAddMethod($webhooksOnMemberAddMethod) {
@@ -812,20 +809,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_add.format
-     * 
-     * @param string $webhooksOnMemberAddFormat The webhooks.on_member_add.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMemberAddFormat($webhooksOnMemberAddFormat) {
-        $this->options['webhooksOnMemberAddFormat'] = $webhooksOnMemberAddFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_member_remove.url
-     * 
-     * @param string $webhooksOnMemberRemoveUrl The webhooks.on_member_remove.url
+     * The URL of the webhook to call in response to the `on_member_remove` event using the `webhooks.on_member_remove.method` HTTP method.
+     *
+     * @param string $webhooksOnMemberRemoveUrl The URL of the webhook to call in
+     *                                          response to the on_member_remove
+     *                                          event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberRemoveUrl($webhooksOnMemberRemoveUrl) {
@@ -834,10 +822,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_remove.method
-     * 
-     * @param string $webhooksOnMemberRemoveMethod The
-     *                                             webhooks.on_member_remove.method
+     * The HTTP method to use when calling the `webhooks.on_member_remove.url`.
+     *
+     * @param string $webhooksOnMemberRemoveMethod The HTTP method to use when
+     *                                             calling the
+     *                                             webhooks.on_member_remove.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberRemoveMethod($webhooksOnMemberRemoveMethod) {
@@ -846,21 +835,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_remove.format
-     * 
-     * @param string $webhooksOnMemberRemoveFormat The
-     *                                             webhooks.on_member_remove.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMemberRemoveFormat($webhooksOnMemberRemoveFormat) {
-        $this->options['webhooksOnMemberRemoveFormat'] = $webhooksOnMemberRemoveFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_message_sent.url
-     * 
-     * @param string $webhooksOnMessageSentUrl The webhooks.on_message_sent.url
+     * The URL of the webhook to call in response to the `on_message_sent` event using the `webhooks.on_message_sent.method` HTTP method.
+     *
+     * @param string $webhooksOnMessageSentUrl The URL of the webhook to call in
+     *                                         response to the on_message_sent event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageSentUrl($webhooksOnMessageSentUrl) {
@@ -869,10 +847,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_sent.method
-     * 
-     * @param string $webhooksOnMessageSentMethod The
-     *                                            webhooks.on_message_sent.method
+     * The URL of the webhook to call in response to the `on_message_sent` event`.
+     *
+     * @param string $webhooksOnMessageSentMethod The URL of the webhook to call in
+     *                                            response to the on_message_sent
+     *                                            event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageSentMethod($webhooksOnMessageSentMethod) {
@@ -881,22 +860,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_sent.format
-     * 
-     * @param string $webhooksOnMessageSentFormat The
-     *                                            webhooks.on_message_sent.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMessageSentFormat($webhooksOnMessageSentFormat) {
-        $this->options['webhooksOnMessageSentFormat'] = $webhooksOnMessageSentFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_message_updated.url
-     * 
-     * @param string $webhooksOnMessageUpdatedUrl The
-     *                                            webhooks.on_message_updated.url
+     * The URL of the webhook to call in response to the `on_message_updated` event using the `webhooks.on_message_updated.method` HTTP method.
+     *
+     * @param string $webhooksOnMessageUpdatedUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_message_updated event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageUpdatedUrl($webhooksOnMessageUpdatedUrl) {
@@ -905,10 +873,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_updated.method
-     * 
-     * @param string $webhooksOnMessageUpdatedMethod The
-     *                                               webhooks.on_message_updated.method
+     * The HTTP method to use when calling the `webhooks.on_message_updated.url`.
+     *
+     * @param string $webhooksOnMessageUpdatedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_message_updated.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageUpdatedMethod($webhooksOnMessageUpdatedMethod) {
@@ -917,22 +886,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_updated.format
-     * 
-     * @param string $webhooksOnMessageUpdatedFormat The
-     *                                               webhooks.on_message_updated.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMessageUpdatedFormat($webhooksOnMessageUpdatedFormat) {
-        $this->options['webhooksOnMessageUpdatedFormat'] = $webhooksOnMessageUpdatedFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_message_removed.url
-     * 
-     * @param string $webhooksOnMessageRemovedUrl The
-     *                                            webhooks.on_message_removed.url
+     * The URL of the webhook to call in response to the `on_message_removed` event using the `webhooks.on_message_removed.method` HTTP method.
+     *
+     * @param string $webhooksOnMessageRemovedUrl The URL of the webhook to call in
+     *                                            response to the
+     *                                            on_message_removed event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageRemovedUrl($webhooksOnMessageRemovedUrl) {
@@ -941,10 +899,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_removed.method
-     * 
-     * @param string $webhooksOnMessageRemovedMethod The
-     *                                               webhooks.on_message_removed.method
+     * The HTTP method to use when calling the `webhooks.on_message_removed.url`.
+     *
+     * @param string $webhooksOnMessageRemovedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_message_removed.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMessageRemovedMethod($webhooksOnMessageRemovedMethod) {
@@ -953,21 +912,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_message_removed.format
-     * 
-     * @param string $webhooksOnMessageRemovedFormat The
-     *                                               webhooks.on_message_removed.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMessageRemovedFormat($webhooksOnMessageRemovedFormat) {
-        $this->options['webhooksOnMessageRemovedFormat'] = $webhooksOnMessageRemovedFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_channel_added.url
-     * 
-     * @param string $webhooksOnChannelAddedUrl The webhooks.on_channel_added.url
+     * The URL of the webhook to call in response to the `on_channel_added` event using the `webhooks.on_channel_added.method` HTTP method.
+     *
+     * @param string $webhooksOnChannelAddedUrl The URL of the webhook to call in
+     *                                          response to the on_channel_added
+     *                                          event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelAddedUrl($webhooksOnChannelAddedUrl) {
@@ -976,10 +925,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_added.method
-     * 
-     * @param string $webhooksOnChannelAddedMethod The
-     *                                             webhooks.on_channel_added.method
+     * The URL of the webhook to call in response to the `on_channel_added` event`.
+     *
+     * @param string $webhooksOnChannelAddedMethod The URL of the webhook to call
+     *                                             in response to the
+     *                                             on_channel_added event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelAddedMethod($webhooksOnChannelAddedMethod) {
@@ -988,22 +938,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_added.format
-     * 
-     * @param string $webhooksOnChannelAddedFormat The
-     *                                             webhooks.on_channel_added.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnChannelAddedFormat($webhooksOnChannelAddedFormat) {
-        $this->options['webhooksOnChannelAddedFormat'] = $webhooksOnChannelAddedFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_channel_destroyed.url
-     * 
-     * @param string $webhooksOnChannelDestroyedUrl The
-     *                                              webhooks.on_channel_destroyed.url
+     * The URL of the webhook to call in response to the `on_channel_added` event using the `webhooks.on_channel_destroyed.method` HTTP method.
+     *
+     * @param string $webhooksOnChannelDestroyedUrl The URL of the webhook to call
+     *                                              in response to the
+     *                                              on_channel_added event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelDestroyedUrl($webhooksOnChannelDestroyedUrl) {
@@ -1012,10 +951,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_destroyed.method
-     * 
-     * @param string $webhooksOnChannelDestroyedMethod The
-     *                                                 webhooks.on_channel_destroyed.method
+     * The HTTP method to use when calling the `webhooks.on_channel_destroyed.url`.
+     *
+     * @param string $webhooksOnChannelDestroyedMethod The HTTP method to use when
+     *                                                 calling the
+     *                                                 webhooks.on_channel_destroyed.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelDestroyedMethod($webhooksOnChannelDestroyedMethod) {
@@ -1024,22 +964,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_destroyed.format
-     * 
-     * @param string $webhooksOnChannelDestroyedFormat The
-     *                                                 webhooks.on_channel_destroyed.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnChannelDestroyedFormat($webhooksOnChannelDestroyedFormat) {
-        $this->options['webhooksOnChannelDestroyedFormat'] = $webhooksOnChannelDestroyedFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_channel_updated.url
-     * 
-     * @param string $webhooksOnChannelUpdatedUrl The
-     *                                            webhooks.on_channel_updated.url
+     * The URL of the webhook to call in response to the `on_channel_updated` event using the `webhooks.on_channel_updated.method` HTTP method.
+     *
+     * @param string $webhooksOnChannelUpdatedUrl he URL of the webhook to call in
+     *                                            response to the
+     *                                            on_channel_updated event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelUpdatedUrl($webhooksOnChannelUpdatedUrl) {
@@ -1048,10 +977,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_updated.method
-     * 
-     * @param string $webhooksOnChannelUpdatedMethod The
-     *                                               webhooks.on_channel_updated.method
+     * The HTTP method to use when calling the `webhooks.on_channel_updated.url`.
+     *
+     * @param string $webhooksOnChannelUpdatedMethod The HTTP method to use when
+     *                                               calling the
+     *                                               webhooks.on_channel_updated.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnChannelUpdatedMethod($webhooksOnChannelUpdatedMethod) {
@@ -1060,21 +990,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_channel_updated.format
-     * 
-     * @param string $webhooksOnChannelUpdatedFormat The
-     *                                               webhooks.on_channel_updated.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnChannelUpdatedFormat($webhooksOnChannelUpdatedFormat) {
-        $this->options['webhooksOnChannelUpdatedFormat'] = $webhooksOnChannelUpdatedFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_member_added.url
-     * 
-     * @param string $webhooksOnMemberAddedUrl The webhooks.on_member_added.url
+     * The URL of the webhook to call in response to the `on_channel_updated` event using the `webhooks.on_channel_updated.method` HTTP method.
+     *
+     * @param string $webhooksOnMemberAddedUrl The URL of the webhook to call in
+     *                                         response to the on_channel_updated
+     *                                         event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberAddedUrl($webhooksOnMemberAddedUrl) {
@@ -1083,10 +1003,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_added.method
-     * 
-     * @param string $webhooksOnMemberAddedMethod The
-     *                                            webhooks.on_member_added.method
+     * The HTTP method to use when calling the `webhooks.on_channel_updated.url`.
+     *
+     * @param string $webhooksOnMemberAddedMethod he HTTP method to use when
+     *                                            calling the
+     *                                            webhooks.on_channel_updated.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberAddedMethod($webhooksOnMemberAddedMethod) {
@@ -1095,21 +1016,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_added.format
-     * 
-     * @param string $webhooksOnMemberAddedFormat The
-     *                                            webhooks.on_member_added.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMemberAddedFormat($webhooksOnMemberAddedFormat) {
-        $this->options['webhooksOnMemberAddedFormat'] = $webhooksOnMemberAddedFormat;
-        return $this;
-    }
-
-    /**
-     * The webhooks.on_member_removed.url
-     * 
-     * @param string $webhooksOnMemberRemovedUrl The webhooks.on_member_removed.url
+     * The URL of the webhook to call in response to the `on_member_removed` event using the `webhooks.on_member_removed.method` HTTP method.
+     *
+     * @param string $webhooksOnMemberRemovedUrl The URL of the webhook to call in
+     *                                           response to the on_member_removed
+     *                                           event
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberRemovedUrl($webhooksOnMemberRemovedUrl) {
@@ -1118,10 +1029,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_removed.method
-     * 
-     * @param string $webhooksOnMemberRemovedMethod The
-     *                                              webhooks.on_member_removed.method
+     * The HTTP method to use when calling the `webhooks.on_member_removed.url`.
+     *
+     * @param string $webhooksOnMemberRemovedMethod The HTTP method to use when
+     *                                              calling the
+     *                                              webhooks.on_member_removed.url
      * @return $this Fluent Builder
      */
     public function setWebhooksOnMemberRemovedMethod($webhooksOnMemberRemovedMethod) {
@@ -1130,21 +1042,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The webhooks.on_member_removed.format
-     * 
-     * @param string $webhooksOnMemberRemovedFormat The
-     *                                              webhooks.on_member_removed.format
-     * @return $this Fluent Builder
-     */
-    public function setWebhooksOnMemberRemovedFormat($webhooksOnMemberRemovedFormat) {
-        $this->options['webhooksOnMemberRemovedFormat'] = $webhooksOnMemberRemovedFormat;
-        return $this;
-    }
-
-    /**
-     * The limits.channel_members
-     * 
-     * @param integer $limitsChannelMembers The limits.channel_members
+     * The maximum number of Members that can be added to Channels within this Service. Can be up to 1,000.
+     *
+     * @param int $limitsChannelMembers The maximum number of Members that can be
+     *                                  added to Channels within this Service
      * @return $this Fluent Builder
      */
     public function setLimitsChannelMembers($limitsChannelMembers) {
@@ -1153,9 +1054,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The limits.user_channels
-     * 
-     * @param integer $limitsUserChannels The limits.user_channels
+     * The maximum number of Channels Users can be a Member of within this Service. Can be up to 1,000.
+     *
+     * @param int $limitsUserChannels The maximum number of Channels Users can be a
+     *                                Member of within this Service
      * @return $this Fluent Builder
      */
     public function setLimitsUserChannels($limitsUserChannels) {
@@ -1165,7 +1067,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

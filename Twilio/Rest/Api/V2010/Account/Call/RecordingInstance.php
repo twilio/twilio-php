@@ -31,20 +31,20 @@ use Twilio\Version;
  * @property array encryptionDetails
  * @property string priceUnit
  * @property string status
- * @property integer channels
+ * @property int channels
  * @property string source
- * @property integer errorCode
+ * @property int errorCode
  */
 class RecordingInstance extends InstanceResource {
     /**
      * Initialize the RecordingInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The SID of the Account that created this resource
-     * @param string $callSid The SID of the Call this resource is associated with
-     * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $callSid The SID of the Call the resource is associated with
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid, $sid = null) {
         parent::__construct($version);
@@ -80,7 +80,7 @@ class RecordingInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Call\RecordingContext Context for
      *                                                              this
      *                                                              RecordingInstance
@@ -100,7 +100,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Update the RecordingInstance
-     * 
+     *
      * @param string $status The new status of the recording
      * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
@@ -112,7 +112,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Fetch a RecordingInstance
-     * 
+     *
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -122,7 +122,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Deletes the RecordingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -132,7 +132,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -152,7 +152,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,11 +18,11 @@ use Twilio\Version;
 class TaskQueueCumulativeStatisticsContext extends InstanceContext {
     /**
      * Initialize the TaskQueueCumulativeStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $taskQueueSid The task_queue_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class TaskQueueCumulativeStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a TaskQueueCumulativeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueCumulativeStatisticsInstance Fetched
      *                                               TaskQueueCumulativeStatisticsInstance
@@ -68,7 +68,7 @@ class TaskQueueCumulativeStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

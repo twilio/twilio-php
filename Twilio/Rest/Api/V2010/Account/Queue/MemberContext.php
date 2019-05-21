@@ -10,19 +10,20 @@
 namespace Twilio\Rest\Api\V2010\Account\Queue;
 
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 class MemberContext extends InstanceContext {
     /**
      * Initialize the MemberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the
      *                           resource(s) to fetch
-     * @param string $queueSid The Queue in which to find the members
+     * @param string $queueSid The SID of the Queue in which to find the members
      * @param string $callSid The Call SID of the resource(s) to fetch
-     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Queue\MemberContext
      */
     public function __construct(Version $version, $accountSid, $queueSid, $callSid) {
         parent::__construct($version);
@@ -39,7 +40,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Fetch a MemberInstance
-     * 
+     *
      * @return MemberInstance Fetched MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,14 +64,16 @@ class MemberContext extends InstanceContext {
 
     /**
      * Update the MemberInstance
-     * 
-     * @param string $url The absolute URL of this Queue resource
-     * @param string $method How to pass the update request data
+     *
+     * @param string $url The absolute URL of the Queue resource
+     * @param array|Options $options Optional Arguments
      * @return MemberInstance Updated MemberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update($url, $method) {
-        $data = Values::of(array('Url' => $url, 'Method' => $method, ));
+    public function update($url, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Url' => $url, 'Method' => $options['method'], ));
 
         $payload = $this->version->update(
             'POST',
@@ -90,7 +93,7 @@ class MemberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

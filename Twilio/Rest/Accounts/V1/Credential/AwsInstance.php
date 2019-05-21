@@ -27,11 +27,11 @@ use Twilio\Version;
 class AwsInstance extends InstanceResource {
     /**
      * Initialize the AwsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid Fetch by unique Credential Sid
-     * @return \Twilio\Rest\Accounts\V1\Credential\AwsInstance 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Accounts\V1\Credential\AwsInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class AwsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Accounts\V1\Credential\AwsContext Context for this
      *                                                        AwsInstance
      */
@@ -66,7 +66,7 @@ class AwsInstance extends InstanceResource {
 
     /**
      * Fetch a AwsInstance
-     * 
+     *
      * @return AwsInstance Fetched AwsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -76,7 +76,7 @@ class AwsInstance extends InstanceResource {
 
     /**
      * Update the AwsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AwsInstance Updated AwsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -87,7 +87,7 @@ class AwsInstance extends InstanceResource {
 
     /**
      * Deletes the AwsInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -97,7 +97,7 @@ class AwsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -117,7 +117,7 @@ class AwsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

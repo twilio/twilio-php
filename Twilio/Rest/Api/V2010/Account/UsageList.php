@@ -26,11 +26,11 @@ class UsageList extends ListResource {
 
     /**
      * Construct the UsageList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\UsageList 
+     * @return \Twilio\Rest\Api\V2010\Account\UsageList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -63,7 +63,7 @@ class UsageList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -79,7 +79,7 @@ class UsageList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -96,7 +96,7 @@ class UsageList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

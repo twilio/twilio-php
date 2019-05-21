@@ -16,11 +16,12 @@ use Twilio\Version;
 class IpAccessControlListContext extends InstanceContext {
     /**
      * Initialize the IpAccessControlListContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $trunkSid The trunk_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext 
+     * @param string $trunkSid The SID of the Trunk from which to fetch the IP
+     *                         Access Control List
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListContext
      */
     public function __construct(Version $version, $trunkSid, $sid) {
         parent::__construct($version);
@@ -33,7 +34,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Fetch a IpAccessControlListInstance
-     * 
+     *
      * @return IpAccessControlListInstance Fetched IpAccessControlListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +57,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Deletes the IpAccessControlListInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +67,7 @@ class IpAccessControlListContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

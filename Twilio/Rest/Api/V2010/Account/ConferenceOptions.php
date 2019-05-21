@@ -74,7 +74,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
-     * 
+     *
      * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
      *                                  read
      * @return $this Fluent Builder
@@ -86,7 +86,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
-     * 
+     *
      * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -97,7 +97,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
-     * 
+     *
      * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
      *                                 read
      * @return $this Fluent Builder
@@ -109,7 +109,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
-     * 
+     *
      * @param string $dateUpdatedBefore The `YYYY-MM-DD` value of the resources to
      *                                  read
      * @return $this Fluent Builder
@@ -121,7 +121,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
-     * 
+     *
      * @param string $dateUpdated The `YYYY-MM-DD` value of the resources to read
      * @return $this Fluent Builder
      */
@@ -132,7 +132,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
-     * 
+     *
      * @param string $dateUpdatedAfter The `YYYY-MM-DD` value of the resources to
      *                                 read
      * @return $this Fluent Builder
@@ -144,7 +144,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The string that identifies the Conference resources to read.
-     * 
+     *
      * @param string $friendlyName The string that identifies the Conference
      *                             resources to read
      * @return $this Fluent Builder
@@ -156,7 +156,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
-     * 
+     *
      * @param string $status The status of the resources to read
      * @return $this Fluent Builder
      */
@@ -167,7 +167,7 @@ class ReadConferenceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -196,7 +196,7 @@ class UpdateConferenceOptions extends Options {
 
     /**
      * The new status of the resource. Can be:  Can be: `init`, `in-progress`, or `completed`. Specifying `completed` will end the conference and hang up all participants
-     * 
+     *
      * @param string $status The new status of the resource
      * @return $this Fluent Builder
      */
@@ -207,7 +207,7 @@ class UpdateConferenceOptions extends Options {
 
     /**
      * The URL we should call to announce something into the conference. The URL can return an MP3, a WAV, or a TwiML document with `<Play>` or `<Say>`.
-     * 
+     *
      * @param string $announceUrl The URL we should call to announce something into
      *                            the conference
      * @return $this Fluent Builder
@@ -219,7 +219,7 @@ class UpdateConferenceOptions extends Options {
 
     /**
      * The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
-     * 
+     *
      * @param string $announceMethod he HTTP method used to call announce_url
      * @return $this Fluent Builder
      */
@@ -230,7 +230,7 @@ class UpdateConferenceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

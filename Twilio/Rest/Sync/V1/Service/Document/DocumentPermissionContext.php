@@ -20,13 +20,13 @@ use Twilio\Version;
 class DocumentPermissionContext extends InstanceContext {
     /**
      * Initialize the DocumentPermissionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Sync Service Instance SID or unique name.
      * @param string $documentSid Sync Document SID or unique name.
      * @param string $identity Identity of the user to whom the Sync Document
      *                         Permission applies.
-     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext 
+     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext
      */
     public function __construct(Version $version, $serviceSid, $documentSid, $identity) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class DocumentPermissionContext extends InstanceContext {
 
     /**
      * Fetch a DocumentPermissionInstance
-     * 
+     *
      * @return DocumentPermissionInstance Fetched DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -67,7 +67,7 @@ class DocumentPermissionContext extends InstanceContext {
 
     /**
      * Deletes the DocumentPermissionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -77,10 +77,10 @@ class DocumentPermissionContext extends InstanceContext {
 
     /**
      * Update the DocumentPermissionInstance
-     * 
-     * @param boolean $read Read access.
-     * @param boolean $write Write access.
-     * @param boolean $manage Manage access.
+     *
+     * @param bool $read Read access.
+     * @param bool $write Write access.
+     * @param bool $manage Manage access.
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -109,7 +109,7 @@ class DocumentPermissionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

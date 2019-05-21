@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class Queue extends TwiML {
     /**
      * Queue constructor.
-     * 
+     *
      * @param string $name Queue name
      * @param array $attributes Optional attributes
      */
@@ -24,9 +24,9 @@ class Queue extends TwiML {
 
     /**
      * Add Url attribute.
-     * 
-     * @param url $url Action URL
-     * @return TwiML $this.
+     *
+     * @param string $url Action URL
+     * @return static $this.
      */
     public function setUrl($url) {
         return $this->setAttribute('url', $url);
@@ -34,9 +34,9 @@ class Queue extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
-     * @param httpMethod $method Action URL method
-     * @return TwiML $this.
+     *
+     * @param string $method Action URL method
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -44,9 +44,9 @@ class Queue extends TwiML {
 
     /**
      * Add ReservationSid attribute.
-     * 
+     *
      * @param string $reservationSid TaskRouter Reservation SID
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setReservationSid($reservationSid) {
         return $this->setAttribute('reservationSid', $reservationSid);
@@ -54,9 +54,9 @@ class Queue extends TwiML {
 
     /**
      * Add PostWorkActivitySid attribute.
-     * 
+     *
      * @param string $postWorkActivitySid TaskRouter Activity SID
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setPostWorkActivitySid($postWorkActivitySid) {
         return $this->setAttribute('postWorkActivitySid', $postWorkActivitySid);

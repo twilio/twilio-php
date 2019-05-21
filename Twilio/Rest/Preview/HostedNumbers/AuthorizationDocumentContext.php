@@ -19,7 +19,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumberOrderList dependentHostedNumberOrders
  */
 class AuthorizationDocumentContext extends InstanceContext {
@@ -27,10 +27,10 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Initialize the AuthorizationDocumentContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid AuthorizationDocument sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext 
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Fetch a AuthorizationDocumentInstance
-     * 
+     *
      * @return AuthorizationDocumentInstance Fetched AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -61,7 +61,7 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Update the AuthorizationDocumentInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AuthorizationDocumentInstance Updated AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,8 +91,8 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Access the dependentHostedNumberOrders
-     * 
-     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumberOrderList 
+     *
+     * @return \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocument\DependentHostedNumberOrderList
      */
     protected function getDependentHostedNumberOrders() {
         if (!$this->_dependentHostedNumberOrders) {
@@ -107,7 +107,7 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -123,7 +123,7 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -140,7 +140,7 @@ class AuthorizationDocumentContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

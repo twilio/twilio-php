@@ -1,6 +1,164 @@
 twilio-php Changelog
 ====================
 
+[2019-05-15] Version 5.32.0
+----------------------------
+**Library**
+- [PR #540](https://github.com/twilio/twilio-php/pull/540): Update Readme TwiML Documentation. Thanks to [@gjrdiesel](https://github.com/gjrdiesel)!
+
+**Api**
+- Make `method` optional for queue members update
+
+**Chat**
+- Removed `webhook.*.format` update parameters in Service resource from public library visibility in v1 **(breaking change)**
+
+**Insights**
+- Added client metrics as sdk_edge to summary.
+- Added optional query param processing_state.
+
+**Numbers**
+- Add addtional metadata fields on a Document
+- Add status callback fields and parameters
+
+**Taskrouter**
+- Added `channel_optimized_routing` attribute to task-channel endpoint
+
+**Video**
+- [Rooms] Add Video Subscription API
+
+**Wireless**
+- Added `imei` to Data Session resource.
+- Remove `imeisv` from Data Session resource. **(breaking change)**
+
+
+[2019-05-01] Version 5.31.3
+----------------------------
+**Serverless**
+- Documentation
+
+**Wireless**
+- Added `imeisv` to Data Session resource.
+
+
+[2019-04-24] Version 5.31.2
+----------------------------
+**Library**
+- PR #539: Drop all the unused 'read_the_docs' stuff. Thanks to @childish-sambino!
+
+**Api**
+- Add `verified` property to Addresses
+
+**Numbers**
+- Add API for Identites and documents
+
+**Proxy**
+- Add in use count on number instance
+
+
+[2019-04-12] Version 5.31.1
+----------------------------
+**Flex**
+- Adding PluginService to Flex Configuration
+
+**Numbers**
+- Add API for Proof of Addresses
+
+**Proxy**
+- Clarify documentation for Service and Session fetch
+
+**Serverless**
+- Serverless scaffolding
+
+
+[2019-03-28] Version 5.31.0
+----------------------------
+**Api**
+- Remove optional `if_machine` call create parameter from helper libraries **(breaking change)**
+- Changed `call_sid` path parameter type on QueueMember fetch and update requests **(breaking change)**
+
+**Voice**
+- changed file names to dialing_permissions prefix **(breaking change)**
+
+**Wireless**
+- Added `ResetStatus` property to Sim resource to allow resetting connectivity via the API.
+
+
+[2019-03-15] Version 5.30.2
+----------------------------
+**Library**
+- PR #536: Add Help Center and Support Ticket links to the README. Thanks to @childish-sambino!
+
+**Api**
+- Add `machine_detection_speech_threshold`, `machine_detection_speech_end_threshold`, `machine_detection_silence_timeout` optional params to Call create request
+
+**Flex**
+- Adding Flex Channel Orchestration
+- Adding Flex Flow
+
+
+[2019-03-06] Version 5.30.1
+----------------------------
+**Twiml**
+- Add `de1` to `<Conference>` regions
+
+
+[2019-03-01] Version 5.30.0
+----------------------------
+**Api**
+- Make conference participant preview parameters public
+
+**Authy**
+- Added support for FactorType and FactorStrength for Factors and Challenges
+
+**Iam**
+- First public release
+
+**Verify**
+- Add endpoint to update/cancel a Verification **(breaking change)**
+
+**Video**
+- [Composer] Make RoomSid mandatory **(breaking change)**
+- [Composer] Add `enqueued` state to Composition
+
+**Twiml**
+- Update message body to not be required for TwiML `Dial` noun.
+
+
+[2019-02-20] Version 5.29.1
+----------------------------
+**Library**
+- PR #533: Pin hhvm to pre-4.0 because of lack of composer support. Thanks to @cjcodes!
+
+**Api**
+- Add `force_opt_in` optional param to Messages create request
+- Add agent conference category to usage records
+
+**Flex**
+- First public release
+
+**Taskrouter**
+- Adding `reject_pending_reservations` to worker update endpoint
+- Added `event_date_ms` and `worker_time_in_previous_activity_ms` to Events API response
+- Add ability to filter events by TaskChannel
+
+**Verify**
+- Add `EnablePsd2` optional parameter for PSD2 on Service resource creation or update.
+- Add `Amount`, `Payee` optional parameters for PSD2.
+
+
+[2019-02-04] Version 5.29.0
+----------------------------
+**Library**
+- PR #523: Switch body validator to use hex instead of base64. Thanks to @cjcodes!
+
+**Video**
+- [Recordings] Add media type filter to list operation
+- [Composer] Filter Composition Hook resources by FriendlyName
+
+**Twiml**
+- Update `language` enum for `Gather` to fix language code for Filipino (Philippines) and include additional supported languages **(breaking change)**
+
+
 [2019-01-11] Version 5.28.1
 ----------------------------
 **Verify**

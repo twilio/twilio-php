@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList syncMapItems
  * @property \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList syncMapPermissions
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemContext syncMapItems(string $key)
@@ -30,11 +30,11 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Initialize the SyncMapContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMapContext 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMapContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Fetch a SyncMapInstance
-     * 
+     *
      * @return SyncMapInstance Fetched SyncMapInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Deletes the SyncMapInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,8 +80,8 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Access the syncMapItems
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList
      */
     protected function getSyncMapItems() {
         if (!$this->_syncMapItems) {
@@ -97,8 +97,8 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Access the syncMapPermissions
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionList
      */
     protected function getSyncMapPermissions() {
         if (!$this->_syncMapPermissions) {
@@ -114,7 +114,7 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -130,7 +130,7 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -147,7 +147,7 @@ class SyncMapContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

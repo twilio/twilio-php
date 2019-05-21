@@ -44,7 +44,7 @@ class CreateFleetOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Fleet, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName A human readable description for this Fleet.
      * @return $this Fluent Builder
      */
@@ -55,7 +55,7 @@ class CreateFleetOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -81,7 +81,7 @@ class UpdateFleetOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Fleet, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName A human readable description for this Fleet.
      * @return $this Fluent Builder
      */
@@ -92,7 +92,7 @@ class UpdateFleetOptions extends Options {
 
     /**
      * Provides a string identifier of a Deployment that is going to be used as a default one for this Fleet.
-     * 
+     *
      * @param string $defaultDeploymentSid A default Deployment SID.
      * @return $this Fluent Builder
      */
@@ -103,7 +103,7 @@ class UpdateFleetOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

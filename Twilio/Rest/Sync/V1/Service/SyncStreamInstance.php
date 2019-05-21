@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string uniqueName
  * @property string accountSid
@@ -35,12 +35,12 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Initialize the SyncStreamInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Instance SID.
      * @param string $sid Stream SID or unique name.
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamInstance 
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -65,7 +65,7 @@ class SyncStreamInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Sync\V1\Service\SyncStreamContext Context for this
      *                                                        SyncStreamInstance
      */
@@ -83,7 +83,7 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Fetch a SyncStreamInstance
-     * 
+     *
      * @return SyncStreamInstance Fetched SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -93,7 +93,7 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Deletes the SyncStreamInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,7 +103,7 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Update the SyncStreamInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SyncStreamInstance Updated SyncStreamInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -114,8 +114,8 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Access the streamMessages
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList
      */
     protected function getStreamMessages() {
         return $this->proxy()->streamMessages;
@@ -123,7 +123,7 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -143,7 +143,7 @@ class SyncStreamInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

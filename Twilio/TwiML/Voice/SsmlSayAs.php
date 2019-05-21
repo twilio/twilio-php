@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class SsmlSayAs extends TwiML {
     /**
      * SsmlSayAs constructor.
-     * 
+     *
      * @param string $words Words to be interpreted
      * @param array $attributes Optional attributes
      */
@@ -24,10 +24,9 @@ class SsmlSayAs extends TwiML {
 
     /**
      * Add Interpret-As attribute.
-     * 
-     * @param ssmlSayAs:Enum:InterpretAs $interpret-As Specify the type of words
-     *                                                 are spoken
-     * @return TwiML $this.
+     *
+     * @param string $interpretAs Specify the type of words are spoken
+     * @return static $this.
      */
     public function setInterpretAs($interpretAs) {
         return $this->setAttribute('interpret-as', $interpretAs);
@@ -35,10 +34,10 @@ class SsmlSayAs extends TwiML {
 
     /**
      * Add Role attribute.
-     * 
-     * @param ssmlSayAs:Enum:Role $role Specify the format of the date when
-     *                                  interpret-as is set to date
-     * @return TwiML $this.
+     *
+     * @param string $role Specify the format of the date when interpret-as is set
+     *                     to date
+     * @return static $this.
      */
     public function setRole($role) {
         return $this->setAttribute('role', $role);

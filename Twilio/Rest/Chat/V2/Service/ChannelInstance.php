@@ -27,8 +27,8 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string createdBy
- * @property integer membersCount
- * @property integer messagesCount
+ * @property int membersCount
+ * @property int messagesCount
  * @property string url
  * @property array links
  */
@@ -40,13 +40,13 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Initialize the ChannelInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique id of the Service this channel belongs
-     *                           to.
-     * @param string $sid Key that uniquely defines the channel to fetch.
-     * @return \Twilio\Rest\Chat\V2\Service\ChannelInstance 
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Chat\V2\Service\ChannelInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -75,7 +75,7 @@ class ChannelInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V2\Service\ChannelContext Context for this
      *                                                     ChannelInstance
      */
@@ -93,7 +93,7 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Fetch a ChannelInstance
-     * 
+     *
      * @return ChannelInstance Fetched ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,7 +103,7 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Deletes the ChannelInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -113,7 +113,7 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Update the ChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ChannelInstance Updated ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -124,8 +124,8 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Access the members
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\MemberList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\MemberList
      */
     protected function getMembers() {
         return $this->proxy()->members;
@@ -133,8 +133,8 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Access the messages
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageList
      */
     protected function getMessages() {
         return $this->proxy()->messages;
@@ -142,8 +142,8 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Access the invites
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteList
      */
     protected function getInvites() {
         return $this->proxy()->invites;
@@ -151,8 +151,8 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Access the webhooks
-     * 
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookList 
+     *
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookList
      */
     protected function getWebhooks() {
         return $this->proxy()->webhooks;
@@ -160,7 +160,7 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -180,7 +180,7 @@ class ChannelInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

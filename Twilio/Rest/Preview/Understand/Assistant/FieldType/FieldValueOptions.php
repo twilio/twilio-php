@@ -46,7 +46,7 @@ class ReadFieldValueOptions extends Options {
 
     /**
      * An ISO language-country string of the value. For example: *en-US*
-     * 
+     *
      * @param string $language An ISO language-country string of the value. For
      *                         example: en-US
      * @return $this Fluent Builder
@@ -58,7 +58,7 @@ class ReadFieldValueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -83,7 +83,7 @@ class CreateFieldValueOptions extends Options {
 
     /**
      * A value that indicates this field value is a synonym of. Empty if the value is not a synonym.
-     * 
+     *
      * @param string $synonymOf A value that indicates this field value is a
      *                          synonym of. Empty if the value is not a synonym.
      * @return $this Fluent Builder
@@ -95,7 +95,7 @@ class CreateFieldValueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

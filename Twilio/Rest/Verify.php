@@ -11,19 +11,19 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Verify\V1;
+use Twilio\Rest\Verify\V2;
 
 /**
- * @property \Twilio\Rest\Verify\V1 v1
- * @property \Twilio\Rest\Verify\V1\ServiceList services
- * @method \Twilio\Rest\Verify\V1\ServiceContext services(string $sid)
+ * @property \Twilio\Rest\Verify\V2 v2
+ * @property \Twilio\Rest\Verify\V2\ServiceList services
+ * @method \Twilio\Rest\Verify\V2\ServiceContext services(string $sid)
  */
 class Verify extends Domain {
-    protected $_v1 = null;
+    protected $_v2 = null;
 
     /**
      * Construct the Verify Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Verify Domain for Verify
@@ -35,18 +35,18 @@ class Verify extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Verify\V1 Version v1 of verify
+     * @return \Twilio\Rest\Verify\V2 Version v2 of verify
      */
-    protected function getV1() {
-        if (!$this->_v1) {
-            $this->_v1 = new V1($this);
+    protected function getV2() {
+        if (!$this->_v2) {
+            $this->_v2 = new V2($this);
         }
-        return $this->_v1;
+        return $this->_v2;
     }
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -62,7 +62,7 @@ class Verify extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,23 +78,23 @@ class Verify extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Verify\V1\ServiceList 
+     * @return \Twilio\Rest\Verify\V2\ServiceList
      */
     protected function getServices() {
-        return $this->v1->services;
+        return $this->v2->services;
     }
 
     /**
-     * @param string $sid Verification Service Instance SID.
-     * @return \Twilio\Rest\Verify\V1\ServiceContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Verify\V2\ServiceContext
      */
     protected function contextServices($sid) {
-        return $this->v1->services($sid);
+        return $this->v2->services($sid);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

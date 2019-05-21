@@ -112,11 +112,11 @@ class DomainTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->sip
-                                     ->domains->create("domainName");
+                                     ->domains->create("domain_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('DomainName' => "domainName", );
+        $values = array('DomainName' => "domain_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -158,7 +158,7 @@ class DomainTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->sip
-                                           ->domains->create("domainName");
+                                           ->domains->create("domain_name");
 
         $this->assertNotNull($actual);
     }

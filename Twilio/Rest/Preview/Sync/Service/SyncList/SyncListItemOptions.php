@@ -41,7 +41,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * The order
-     * 
+     *
      * @param string $order The order
      * @return $this Fluent Builder
      */
@@ -52,7 +52,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * The from
-     * 
+     *
      * @param string $from The from
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * The bounds
-     * 
+     *
      * @param string $bounds The bounds
      * @return $this Fluent Builder
      */
@@ -74,7 +74,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -20,10 +20,10 @@ use Twilio\Version;
 class UsageContext extends InstanceContext {
     /**
      * Initialize the UsageContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $simSid The sim_sid
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext
      */
     public function __construct(Version $version, $simSid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class UsageContext extends InstanceContext {
 
     /**
      * Fetch a UsageInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return UsageInstance Fetched UsageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -57,7 +57,7 @@ class UsageContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

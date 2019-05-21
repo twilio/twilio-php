@@ -18,11 +18,11 @@ use Twilio\Version;
 class DataSessionList extends ListResource {
     /**
      * Construct the DataSessionList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $simSid The unique id of the SIM resource that this Data
      *                       Session is for.
-     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList 
+     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList
      */
     public function __construct(Version $version, $simSid) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class DataSessionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -64,7 +64,7 @@ class DataSessionList extends ListResource {
      * Reads DataSessionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -83,7 +83,7 @@ class DataSessionList extends ListResource {
     /**
      * Retrieve a single page of DataSessionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -112,7 +112,7 @@ class DataSessionList extends ListResource {
     /**
      * Retrieve a specific page of DataSessionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of DataSessionInstance
      */
@@ -127,7 +127,7 @@ class DataSessionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

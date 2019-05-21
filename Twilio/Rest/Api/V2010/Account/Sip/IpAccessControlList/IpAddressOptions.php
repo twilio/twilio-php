@@ -14,10 +14,10 @@ use Twilio\Values;
 
 abstract class IpAddressOptions {
     /**
-     * @param integer $cidrPrefixLength An integer representing the length of the
-     *                                  CIDR prefix to use with this IP address
-     *                                  when accepting traffic. By default the
-     *                                  entire IP address is used.
+     * @param int $cidrPrefixLength An integer representing the length of the CIDR
+     *                              prefix to use with this IP address when
+     *                              accepting traffic. By default the entire IP
+     *                              address is used.
      * @return CreateIpAddressOptions Options builder
      */
     public static function create($cidrPrefixLength = Values::NONE) {
@@ -31,10 +31,10 @@ abstract class IpAddressOptions {
      *                          only supported today.
      * @param string $friendlyName A human readable descriptive text for this
      *                             resource, up to 64 characters long.
-     * @param integer $cidrPrefixLength An integer representing the length of the
-     *                                  CIDR prefix to use with this IP address
-     *                                  when accepting traffic. By default the
-     *                                  entire IP address is used.
+     * @param int $cidrPrefixLength An integer representing the length of the CIDR
+     *                              prefix to use with this IP address when
+     *                              accepting traffic. By default the entire IP
+     *                              address is used.
      * @return UpdateIpAddressOptions Options builder
      */
     public static function update($ipAddress = Values::NONE, $friendlyName = Values::NONE, $cidrPrefixLength = Values::NONE) {
@@ -44,10 +44,10 @@ abstract class IpAddressOptions {
 
 class CreateIpAddressOptions extends Options {
     /**
-     * @param integer $cidrPrefixLength An integer representing the length of the
-     *                                  CIDR prefix to use with this IP address
-     *                                  when accepting traffic. By default the
-     *                                  entire IP address is used.
+     * @param int $cidrPrefixLength An integer representing the length of the CIDR
+     *                              prefix to use with this IP address when
+     *                              accepting traffic. By default the entire IP
+     *                              address is used.
      */
     public function __construct($cidrPrefixLength = Values::NONE) {
         $this->options['cidrPrefixLength'] = $cidrPrefixLength;
@@ -55,11 +55,11 @@ class CreateIpAddressOptions extends Options {
 
     /**
      * An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
-     * 
-     * @param integer $cidrPrefixLength An integer representing the length of the
-     *                                  CIDR prefix to use with this IP address
-     *                                  when accepting traffic. By default the
-     *                                  entire IP address is used.
+     *
+     * @param int $cidrPrefixLength An integer representing the length of the CIDR
+     *                              prefix to use with this IP address when
+     *                              accepting traffic. By default the entire IP
+     *                              address is used.
      * @return $this Fluent Builder
      */
     public function setCidrPrefixLength($cidrPrefixLength) {
@@ -69,7 +69,7 @@ class CreateIpAddressOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -91,10 +91,10 @@ class UpdateIpAddressOptions extends Options {
      *                          only supported today.
      * @param string $friendlyName A human readable descriptive text for this
      *                             resource, up to 64 characters long.
-     * @param integer $cidrPrefixLength An integer representing the length of the
-     *                                  CIDR prefix to use with this IP address
-     *                                  when accepting traffic. By default the
-     *                                  entire IP address is used.
+     * @param int $cidrPrefixLength An integer representing the length of the CIDR
+     *                              prefix to use with this IP address when
+     *                              accepting traffic. By default the entire IP
+     *                              address is used.
      */
     public function __construct($ipAddress = Values::NONE, $friendlyName = Values::NONE, $cidrPrefixLength = Values::NONE) {
         $this->options['ipAddress'] = $ipAddress;
@@ -104,7 +104,7 @@ class UpdateIpAddressOptions extends Options {
 
     /**
      * An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
-     * 
+     *
      * @param string $ipAddress An IP address in dotted decimal notation from which
      *                          you want to accept traffic. Any SIP requests from
      *                          this IP address will be allowed by Twilio. IPv4
@@ -118,7 +118,7 @@ class UpdateIpAddressOptions extends Options {
 
     /**
      * A human readable descriptive text for this resource, up to 64 characters long.
-     * 
+     *
      * @param string $friendlyName A human readable descriptive text for this
      *                             resource, up to 64 characters long.
      * @return $this Fluent Builder
@@ -130,11 +130,11 @@ class UpdateIpAddressOptions extends Options {
 
     /**
      * An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
-     * 
-     * @param integer $cidrPrefixLength An integer representing the length of the
-     *                                  CIDR prefix to use with this IP address
-     *                                  when accepting traffic. By default the
-     *                                  entire IP address is used.
+     *
+     * @param int $cidrPrefixLength An integer representing the length of the CIDR
+     *                              prefix to use with this IP address when
+     *                              accepting traffic. By default the entire IP
+     *                              address is used.
      * @return $this Fluent Builder
      */
     public function setCidrPrefixLength($cidrPrefixLength) {
@@ -144,7 +144,7 @@ class UpdateIpAddressOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

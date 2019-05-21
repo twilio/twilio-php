@@ -32,13 +32,14 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Initialize the AddOnResultInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
-     * @param string $sid Fetch by unique result Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource belongs
+     * @param string $sid The unique string that identifies the resource to fetch
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $sid = null) {
         parent::__construct($version);
@@ -67,7 +68,7 @@ class AddOnResultInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext Context
      *                                                                     for this
      *                                                                     AddOnResultInstance
@@ -87,7 +88,7 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Fetch a AddOnResultInstance
-     * 
+     *
      * @return AddOnResultInstance Fetched AddOnResultInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -97,7 +98,7 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Deletes the AddOnResultInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -107,8 +108,8 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Access the payloads
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList
      */
     protected function getPayloads() {
         return $this->proxy()->payloads;
@@ -116,7 +117,7 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -136,7 +137,7 @@ class AddOnResultInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

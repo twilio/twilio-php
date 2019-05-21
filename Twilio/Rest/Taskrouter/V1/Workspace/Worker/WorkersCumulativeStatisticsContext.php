@@ -18,10 +18,10 @@ use Twilio\Version;
 class WorkersCumulativeStatisticsContext extends InstanceContext {
     /**
      * Initialize the WorkersCumulativeStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersCumulativeStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a WorkersCumulativeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkersCumulativeStatisticsInstance Fetched
      *                                             WorkersCumulativeStatisticsInstance
@@ -65,7 +65,7 @@ class WorkersCumulativeStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

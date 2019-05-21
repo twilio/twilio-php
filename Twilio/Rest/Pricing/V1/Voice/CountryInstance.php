@@ -25,11 +25,11 @@ use Twilio\Version;
 class CountryInstance extends InstanceResource {
     /**
      * Initialize the CountryInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $isoCountry The iso_country
-     * @return \Twilio\Rest\Pricing\V1\Voice\CountryInstance 
+     * @param string $isoCountry The ISO country code
+     * @return \Twilio\Rest\Pricing\V1\Voice\CountryInstance
      */
     public function __construct(Version $version, array $payload, $isoCountry = null) {
         parent::__construct($version);
@@ -50,7 +50,7 @@ class CountryInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Pricing\V1\Voice\CountryContext Context for this
      *                                                      CountryInstance
      */
@@ -64,7 +64,7 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Fetch a CountryInstance
-     * 
+     *
      * @return CountryInstance Fetched CountryInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -74,7 +74,7 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -94,7 +94,7 @@ class CountryInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

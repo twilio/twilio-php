@@ -13,6 +13,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList;
+use Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList;
 use Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList;
 use Twilio\Values;
 use Twilio\Version;
@@ -20,19 +21,24 @@ use Twilio\Version;
 /**
  * @property \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList publishedTracks
  * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList subscribedTracks
+ * @property \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList subscribeRules
  * @method \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext publishedTracks(string $sid)
+ * @method \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext subscribedTracks(string $sid)
  */
 class ParticipantContext extends InstanceContext {
     protected $_publishedTracks = null;
     protected $_subscribedTracks = null;
+    protected $_subscribeRules = null;
 
     /**
      * Initialize the ParticipantContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $roomSid The room_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
+     * @param string $roomSid A system-generated 34-character string that uniquely
+     *                        identifies a Room.
+     * @param string $sid A system-generated 34-character string that uniquely
+     *                    identifies this Participant.
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
@@ -45,7 +51,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Fetch a ParticipantInstance
-     * 
+     *
      * @return ParticipantInstance Fetched ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -68,7 +74,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Update the ParticipantInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Updated ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,8 +101,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the publishedTracks
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackList
      */
     protected function getPublishedTracks() {
         if (!$this->_publishedTracks) {
@@ -112,8 +118,8 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Access the subscribedTracks
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList
      */
     protected function getSubscribedTracks() {
         if (!$this->_subscribedTracks) {
@@ -128,8 +134,25 @@ class ParticipantContext extends InstanceContext {
     }
 
     /**
+     * Access the subscribeRules
+     *
+     * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList
+     */
+    protected function getSubscribeRules() {
+        if (!$this->_subscribeRules) {
+            $this->_subscribeRules = new SubscribeRulesList(
+                $this->version,
+                $this->solution['roomSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_subscribeRules;
+    }
+
+    /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -145,7 +168,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -162,7 +185,7 @@ class ParticipantContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

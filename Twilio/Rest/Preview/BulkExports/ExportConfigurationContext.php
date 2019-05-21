@@ -21,10 +21,10 @@ use Twilio\Version;
 class ExportConfigurationContext extends InstanceContext {
     /**
      * Initialize the ExportConfigurationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $resourceType The resource_type
-     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext
      */
     public function __construct(Version $version, $resourceType) {
         parent::__construct($version);
@@ -37,7 +37,7 @@ class ExportConfigurationContext extends InstanceContext {
 
     /**
      * Fetch a ExportConfigurationInstance
-     * 
+     *
      * @return ExportConfigurationInstance Fetched ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -55,7 +55,7 @@ class ExportConfigurationContext extends InstanceContext {
 
     /**
      * Update the ExportConfigurationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ExportConfigurationInstance Updated ExportConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -81,7 +81,7 @@ class ExportConfigurationContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

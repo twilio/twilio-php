@@ -23,7 +23,7 @@ class Autopilot extends Domain {
 
     /**
      * Construct the Autopilot Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Autopilot Domain for Autopilot
@@ -46,7 +46,7 @@ class Autopilot extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -62,7 +62,7 @@ class Autopilot extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,16 +78,15 @@ class Autopilot extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Autopilot\V1\AssistantList 
+     * @return \Twilio\Rest\Autopilot\V1\AssistantList
      */
     protected function getAssistants() {
         return $this->v1->assistants;
     }
 
     /**
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
-     * @return \Twilio\Rest\Autopilot\V1\AssistantContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Autopilot\V1\AssistantContext
      */
     protected function contextAssistants($sid) {
         return $this->v1->assistants($sid);
@@ -95,7 +94,7 @@ class Autopilot extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

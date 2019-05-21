@@ -22,11 +22,11 @@ use Twilio\Version;
 class BalanceInstance extends InstanceResource {
     /**
      * Initialize the BalanceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid Account Sid.
-     * @return \Twilio\Rest\Api\V2010\Account\BalanceInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\BalanceInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class BalanceInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -63,7 +63,7 @@ class BalanceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

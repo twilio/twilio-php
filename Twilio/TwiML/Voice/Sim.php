@@ -14,8 +14,8 @@ use Twilio\TwiML\TwiML;
 class Sim extends TwiML {
     /**
      * Sim constructor.
-     * 
-     * @param sid $simSid SIM SID
+     *
+     * @param string $simSid SIM SID
      */
     public function __construct($simSid) {
         parent::__construct('Sim', $simSid);

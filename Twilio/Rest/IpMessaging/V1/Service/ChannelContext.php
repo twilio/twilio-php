@@ -33,11 +33,11 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Initialize the ChannelContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelContext 
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\IpMessaging\V1\Service\ChannelContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -50,7 +50,7 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Fetch a ChannelInstance
-     * 
+     *
      * @return ChannelInstance Fetched ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -73,7 +73,7 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Deletes the ChannelInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -83,7 +83,7 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Update the ChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ChannelInstance Updated ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -114,8 +114,8 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Access the members
-     * 
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList 
+     *
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MemberList
      */
     protected function getMembers() {
         if (!$this->_members) {
@@ -131,8 +131,8 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Access the messages
-     * 
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList 
+     *
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList
      */
     protected function getMessages() {
         if (!$this->_messages) {
@@ -148,8 +148,8 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Access the invites
-     * 
-     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\InviteList 
+     *
+     * @return \Twilio\Rest\IpMessaging\V1\Service\Channel\InviteList
      */
     protected function getInvites() {
         if (!$this->_invites) {
@@ -165,7 +165,7 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -181,7 +181,7 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -198,7 +198,7 @@ class ChannelContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

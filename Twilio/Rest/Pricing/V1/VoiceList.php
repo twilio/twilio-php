@@ -27,9 +27,9 @@ class VoiceList extends ListResource {
 
     /**
      * Construct the VoiceList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V1\VoiceList 
+     * @return \Twilio\Rest\Pricing\V1\VoiceList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -62,7 +62,7 @@ class VoiceList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -78,7 +78,7 @@ class VoiceList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -95,7 +95,7 @@ class VoiceList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

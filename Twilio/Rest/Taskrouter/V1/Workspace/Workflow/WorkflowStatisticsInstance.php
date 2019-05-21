@@ -26,12 +26,12 @@ use Twilio\Version;
 class WorkflowStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkflowStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $workflowSid The workflow_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workflowSid) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsContext Context for this
      *                                                                                 WorkflowStatisticsInstance
      */
@@ -70,7 +70,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkflowStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkflowStatisticsInstance Fetched WorkflowStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -81,7 +81,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -101,7 +101,7 @@ class WorkflowStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

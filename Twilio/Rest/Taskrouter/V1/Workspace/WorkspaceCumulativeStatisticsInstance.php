@@ -18,35 +18,35 @@ use Twilio\Version;
 
 /**
  * @property string accountSid
- * @property integer avgTaskAcceptanceTime
+ * @property int avgTaskAcceptanceTime
  * @property \DateTime startTime
  * @property \DateTime endTime
- * @property integer reservationsCreated
- * @property integer reservationsAccepted
- * @property integer reservationsRejected
- * @property integer reservationsTimedOut
- * @property integer reservationsCanceled
- * @property integer reservationsRescinded
+ * @property int reservationsCreated
+ * @property int reservationsAccepted
+ * @property int reservationsRejected
+ * @property int reservationsTimedOut
+ * @property int reservationsCanceled
+ * @property int reservationsRescinded
  * @property array splitByWaitTime
  * @property array waitDurationUntilAccepted
  * @property array waitDurationUntilCanceled
- * @property integer tasksCanceled
- * @property integer tasksCompleted
- * @property integer tasksCreated
- * @property integer tasksDeleted
- * @property integer tasksMoved
- * @property integer tasksTimedOutInWorkflow
+ * @property int tasksCanceled
+ * @property int tasksCompleted
+ * @property int tasksCreated
+ * @property int tasksDeleted
+ * @property int tasksMoved
+ * @property int tasksTimedOutInWorkflow
  * @property string workspaceSid
  * @property string url
  */
 class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceCumulativeStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
@@ -82,7 +82,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsContext Context for this
      *                                                                                   WorkspaceCumulativeStatisticsInstance
      */
@@ -99,7 +99,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkspaceCumulativeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceCumulativeStatisticsInstance Fetched
      *                                               WorkspaceCumulativeStatisticsInstance
@@ -111,7 +111,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -131,7 +131,7 @@ class WorkspaceCumulativeStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

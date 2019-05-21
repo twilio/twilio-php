@@ -18,9 +18,9 @@ use Twilio\Version;
 class TrunkList extends ListResource {
     /**
      * Construct the TrunkList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Trunking\V1\TrunkList 
+     * @return \Twilio\Rest\Trunking\V1\TrunkList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class TrunkList extends ListResource {
 
     /**
      * Create a new TrunkInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TrunkInstance Newly created TrunkInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -68,7 +68,7 @@ class TrunkList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -91,7 +91,7 @@ class TrunkList extends ListResource {
      * Reads TrunkInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -109,7 +109,7 @@ class TrunkList extends ListResource {
     /**
      * Retrieve a single page of TrunkInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -134,7 +134,7 @@ class TrunkList extends ListResource {
     /**
      * Retrieve a specific page of TrunkInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of TrunkInstance
      */
@@ -149,10 +149,9 @@ class TrunkList extends ListResource {
 
     /**
      * Constructs a TrunkContext
-     * 
-     * @param string $sid A 34 character string that uniquely identifies the SIP
-     *                    Trunk in Twilio.
-     * @return \Twilio\Rest\Trunking\V1\TrunkContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Trunking\V1\TrunkContext
      */
     public function getContext($sid) {
         return new TrunkContext($this->version, $sid);
@@ -160,7 +159,7 @@ class TrunkList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

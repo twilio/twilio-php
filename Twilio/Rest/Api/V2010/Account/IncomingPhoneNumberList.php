@@ -31,10 +31,10 @@ class IncomingPhoneNumberList extends ListResource {
 
     /**
      * Construct the IncomingPhoneNumberList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -53,7 +53,7 @@ class IncomingPhoneNumberList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -77,7 +77,7 @@ class IncomingPhoneNumberList extends ListResource {
      * Reads IncomingPhoneNumberInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -96,7 +96,7 @@ class IncomingPhoneNumberList extends ListResource {
     /**
      * Retrieve a single page of IncomingPhoneNumberInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -127,7 +127,7 @@ class IncomingPhoneNumberList extends ListResource {
     /**
      * Retrieve a specific page of IncomingPhoneNumberInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of IncomingPhoneNumberInstance
      */
@@ -142,7 +142,7 @@ class IncomingPhoneNumberList extends ListResource {
 
     /**
      * Create a new IncomingPhoneNumberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Newly created IncomingPhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -221,9 +221,9 @@ class IncomingPhoneNumberList extends ListResource {
 
     /**
      * Constructs a IncomingPhoneNumberContext
-     * 
-     * @param string $sid Fetch by unique incoming-phone-number Sid
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext
      */
     public function getContext($sid) {
         return new IncomingPhoneNumberContext($this->version, $this->solution['accountSid'], $sid);
@@ -231,7 +231,7 @@ class IncomingPhoneNumberList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -247,7 +247,7 @@ class IncomingPhoneNumberList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -264,7 +264,7 @@ class IncomingPhoneNumberList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

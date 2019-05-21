@@ -17,10 +17,10 @@ use Twilio\Version;
 class RatePlanContext extends InstanceContext {
     /**
      * Initialize the RatePlanContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext 
+     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class RatePlanContext extends InstanceContext {
 
     /**
      * Fetch a RatePlanInstance
-     * 
+     *
      * @return RatePlanInstance Fetched RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -51,7 +51,7 @@ class RatePlanContext extends InstanceContext {
 
     /**
      * Update the RatePlanInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return RatePlanInstance Updated RatePlanInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -76,7 +76,7 @@ class RatePlanContext extends InstanceContext {
 
     /**
      * Deletes the RatePlanInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -86,7 +86,7 @@ class RatePlanContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

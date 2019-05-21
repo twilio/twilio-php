@@ -14,8 +14,8 @@ use Twilio\TwiML\TwiML;
 class Play extends TwiML {
     /**
      * Play constructor.
-     * 
-     * @param url $url Media URL
+     *
+     * @param string $url Media URL
      * @param array $attributes Optional attributes
      */
     public function __construct($url = null, $attributes = array()) {
@@ -24,9 +24,9 @@ class Play extends TwiML {
 
     /**
      * Add Loop attribute.
-     * 
-     * @param integer $loop Times to loop media
-     * @return TwiML $this.
+     *
+     * @param int $loop Times to loop media
+     * @return static $this.
      */
     public function setLoop($loop) {
         return $this->setAttribute('loop', $loop);
@@ -34,9 +34,9 @@ class Play extends TwiML {
 
     /**
      * Add Digits attribute.
-     * 
+     *
      * @param string $digits Play DTMF tones for digits
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setDigits($digits) {
         return $this->setAttribute('digits', $digits);

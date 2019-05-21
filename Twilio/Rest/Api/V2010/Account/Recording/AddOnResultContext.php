@@ -24,12 +24,14 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Initialize the AddOnResultContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $referenceSid The reference_sid
-     * @param string $sid Fetch by unique result Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext 
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $referenceSid The SID of the recording to which the result to
+     *                             fetch belongs
+     * @param string $sid The unique string that identifies the resource to fetch
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $sid) {
         parent::__construct($version);
@@ -46,7 +48,7 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Fetch a AddOnResultInstance
-     * 
+     *
      * @return AddOnResultInstance Fetched AddOnResultInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +72,7 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Deletes the AddOnResultInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,8 +82,8 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Access the payloads
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList
      */
     protected function getPayloads() {
         if (!$this->_payloads) {
@@ -98,7 +100,7 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -114,7 +116,7 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -131,7 +133,7 @@ class AddOnResultContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

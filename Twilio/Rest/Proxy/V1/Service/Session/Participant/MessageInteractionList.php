@@ -21,12 +21,12 @@ use Twilio\Version;
 class MessageInteractionList extends ListResource {
     /**
      * Construct the MessageInteractionList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sessionSid Session Sid.
-     * @param string $participantSid Participant Sid.
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList 
+     * @param string $serviceSid The SID of the resource's parent Service
+     * @param string $sessionSid The SID of the resource's parent Session
+     * @param string $participantSid The SID of the Participant resource
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionList
      */
     public function __construct(Version $version, $serviceSid, $sessionSid, $participantSid) {
         parent::__construct($version);
@@ -43,7 +43,7 @@ class MessageInteractionList extends ListResource {
 
     /**
      * Create a new MessageInteractionInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return MessageInteractionInstance Newly created MessageInteractionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -80,7 +80,7 @@ class MessageInteractionList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -103,7 +103,7 @@ class MessageInteractionList extends ListResource {
      * Reads MessageInteractionInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -121,7 +121,7 @@ class MessageInteractionList extends ListResource {
     /**
      * Retrieve a single page of MessageInteractionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -146,7 +146,7 @@ class MessageInteractionList extends ListResource {
     /**
      * Retrieve a specific page of MessageInteractionInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of MessageInteractionInstance
      */
@@ -161,9 +161,9 @@ class MessageInteractionList extends ListResource {
 
     /**
      * Constructs a MessageInteractionContext
-     * 
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionContext
      */
     public function getContext($sid) {
         return new MessageInteractionContext(
@@ -177,7 +177,7 @@ class MessageInteractionList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

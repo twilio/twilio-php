@@ -28,11 +28,11 @@ class RoomContext extends InstanceContext {
 
     /**
      * Initialize the RoomContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The Room Sid or name that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Video\V1\RoomContext 
+     * @return \Twilio\Rest\Video\V1\RoomContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -45,7 +45,7 @@ class RoomContext extends InstanceContext {
 
     /**
      * Fetch a RoomInstance
-     * 
+     *
      * @return RoomInstance Fetched RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,7 +63,7 @@ class RoomContext extends InstanceContext {
 
     /**
      * Update the RoomInstance
-     * 
+     *
      * @param string $status Set to completed to end the Room.
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -83,8 +83,8 @@ class RoomContext extends InstanceContext {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingList
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
@@ -96,8 +96,8 @@ class RoomContext extends InstanceContext {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
+     *
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList
      */
     protected function getParticipants() {
         if (!$this->_participants) {
@@ -109,7 +109,7 @@ class RoomContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -125,7 +125,7 @@ class RoomContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -142,7 +142,7 @@ class RoomContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

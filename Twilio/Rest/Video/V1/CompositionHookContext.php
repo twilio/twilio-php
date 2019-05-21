@@ -21,11 +21,11 @@ use Twilio\Version;
 class CompositionHookContext extends InstanceContext {
     /**
      * Initialize the CompositionHookContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The Composition Hook Sid that uniquely identifies the
      *                    Composition Hook to fetch.
-     * @return \Twilio\Rest\Video\V1\CompositionHookContext 
+     * @return \Twilio\Rest\Video\V1\CompositionHookContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -38,7 +38,7 @@ class CompositionHookContext extends InstanceContext {
 
     /**
      * Fetch a CompositionHookInstance
-     * 
+     *
      * @return CompositionHookInstance Fetched CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +56,7 @@ class CompositionHookContext extends InstanceContext {
 
     /**
      * Deletes the CompositionHookInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class CompositionHookContext extends InstanceContext {
 
     /**
      * Update the CompositionHookInstance
-     * 
+     *
      * @param string $friendlyName Friendly name of the Composition Hook to be
      *                             shown in the console.
      * @param array|Options $options Optional Arguments
@@ -101,7 +101,7 @@ class CompositionHookContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -16,11 +16,11 @@ use Twilio\Version;
 class EngagementContextContext extends InstanceContext {
     /**
      * Initialize the EngagementContextContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $engagementSid Engagement Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextContext
      */
     public function __construct(Version $version, $flowSid, $engagementSid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class EngagementContextContext extends InstanceContext {
 
     /**
      * Fetch a EngagementContextInstance
-     * 
+     *
      * @return EngagementContextInstance Fetched EngagementContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +56,7 @@ class EngagementContextContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

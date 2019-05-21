@@ -20,10 +20,10 @@ use Twilio\Version;
 class VerificationList extends ListResource {
     /**
      * Construct the VerificationList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationList 
+     * @return \Twilio\Rest\Preview\AccSecurity\Service\VerificationList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class VerificationList extends ListResource {
 
     /**
      * Create a new VerificationInstance
-     * 
+     *
      * @param string $to To phonenumber
      * @param string $channel sms or call
      * @param array|Options $options Optional Arguments
@@ -64,7 +64,7 @@ class VerificationList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

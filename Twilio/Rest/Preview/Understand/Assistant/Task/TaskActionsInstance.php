@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string assistantSid
  * @property string taskSid
@@ -27,12 +27,12 @@ use Twilio\Version;
 class TaskActionsInstance extends InstanceResource {
     /**
      * Initialize the TaskActionsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $taskSid The unique ID of the Task.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsInstance 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid, $taskSid) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class TaskActionsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsContext Context for this TaskActionsInstance
      */
     protected function proxy() {
@@ -69,7 +69,7 @@ class TaskActionsInstance extends InstanceResource {
 
     /**
      * Fetch a TaskActionsInstance
-     * 
+     *
      * @return TaskActionsInstance Fetched TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -79,7 +79,7 @@ class TaskActionsInstance extends InstanceResource {
 
     /**
      * Update the TaskActionsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskActionsInstance Updated TaskActionsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,7 +90,7 @@ class TaskActionsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -110,7 +110,7 @@ class TaskActionsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

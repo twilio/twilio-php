@@ -32,13 +32,13 @@ use Twilio\Version;
 class ReservationInstance extends InstanceResource {
     /**
      * Initialize the ReservationInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workerSid, $sid = null) {
         parent::__construct($version);
@@ -68,7 +68,7 @@ class ReservationInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext Context for this ReservationInstance
      */
     protected function proxy() {
@@ -86,7 +86,7 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Fetch a ReservationInstance
-     * 
+     *
      * @return ReservationInstance Fetched ReservationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -96,7 +96,7 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Update the ReservationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ReservationInstance Updated ReservationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -107,7 +107,7 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -127,7 +127,7 @@ class ReservationInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

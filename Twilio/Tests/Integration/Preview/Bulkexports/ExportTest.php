@@ -20,13 +20,13 @@ class ExportTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->bulkExports->exports("resourceType")->fetch();
+            $this->twilio->preview->bulkExports->exports("resource_type")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resourceType'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type'
         ));
     }
 
@@ -44,7 +44,7 @@ class ExportTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->bulkExports->exports("resourceType")->fetch();
+        $actual = $this->twilio->preview->bulkExports->exports("resource_type")->fetch();
 
         $this->assertNotNull($actual);
     }

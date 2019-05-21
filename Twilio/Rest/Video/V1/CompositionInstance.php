@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string status
  * @property \DateTime dateCreated
@@ -29,23 +29,23 @@ use Twilio\Version;
  * @property string audioSourcesExcluded
  * @property array videoLayout
  * @property string resolution
- * @property boolean trim
+ * @property bool trim
  * @property string format
- * @property integer bitrate
+ * @property int bitrate
  * @property string size
- * @property integer duration
+ * @property int duration
  * @property string url
  * @property array links
  */
 class CompositionInstance extends InstanceResource {
     /**
      * Initialize the CompositionInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The Composition Sid that uniquely identifies the
      *                    Composition to fetch.
-     * @return \Twilio\Rest\Video\V1\CompositionInstance 
+     * @return \Twilio\Rest\Video\V1\CompositionInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -78,7 +78,7 @@ class CompositionInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\CompositionContext Context for this
      *                                                  CompositionInstance
      */
@@ -92,7 +92,7 @@ class CompositionInstance extends InstanceResource {
 
     /**
      * Fetch a CompositionInstance
-     * 
+     *
      * @return CompositionInstance Fetched CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -102,7 +102,7 @@ class CompositionInstance extends InstanceResource {
 
     /**
      * Deletes the CompositionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -112,7 +112,7 @@ class CompositionInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -132,7 +132,7 @@ class CompositionInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

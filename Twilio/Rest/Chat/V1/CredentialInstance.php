@@ -29,11 +29,11 @@ use Twilio\Version;
 class CredentialInstance extends InstanceResource {
     /**
      * Initialize the CredentialInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V1\CredentialInstance 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Chat\V1\CredentialInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -56,7 +56,7 @@ class CredentialInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V1\CredentialContext Context for this
      *                                                CredentialInstance
      */
@@ -70,7 +70,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Fetch a CredentialInstance
-     * 
+     *
      * @return CredentialInstance Fetched CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,7 +80,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Update the CredentialInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,7 +91,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Deletes the CredentialInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -101,7 +101,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -121,7 +121,7 @@ class CredentialInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

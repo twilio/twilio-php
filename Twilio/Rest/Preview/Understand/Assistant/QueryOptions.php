@@ -73,7 +73,7 @@ class ReadQueryOptions extends Options {
 
     /**
      * An ISO language-country string of the sample.
-     * 
+     *
      * @param string $language An ISO language-country string of the sample.
      * @return $this Fluent Builder
      */
@@ -84,7 +84,7 @@ class ReadQueryOptions extends Options {
 
     /**
      * The Model Build Sid or unique name of the Model Build to be queried.
-     * 
+     *
      * @param string $modelBuild The Model Build Sid or unique name of the Model
      *                           Build to be queried.
      * @return $this Fluent Builder
@@ -96,7 +96,7 @@ class ReadQueryOptions extends Options {
 
     /**
      * A string that described the query status. The values can be: pending_review, reviewed, discarded
-     * 
+     *
      * @param string $status A string that described the query status. The values
      *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
@@ -108,7 +108,7 @@ class ReadQueryOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -143,7 +143,7 @@ class CreateQueryOptions extends Options {
 
     /**
      * Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated *task-unique-name-1*, *task-unique-name-2*
-     * 
+     *
      * @param string $tasks Constraints the query to a set of tasks. Useful when
      *                      you need to constrain the paths the user can take.
      *                      Tasks should be comma separated task-unique-name-1,
@@ -157,7 +157,7 @@ class CreateQueryOptions extends Options {
 
     /**
      * The Model Build Sid or unique name of the Model Build to be queried.
-     * 
+     *
      * @param string $modelBuild The Model Build Sid or unique name of the Model
      *                           Build to be queried.
      * @return $this Fluent Builder
@@ -169,7 +169,7 @@ class CreateQueryOptions extends Options {
 
     /**
      * Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format *task-unique-name-1*:*field-unique-name*
-     * 
+     *
      * @param string $field Constraints the query to a given Field with an task.
      *                      Useful when you know the Field you are expecting. It
      *                      accepts one field in the format
@@ -183,7 +183,7 @@ class CreateQueryOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -211,7 +211,7 @@ class UpdateQueryOptions extends Options {
 
     /**
      * An optional reference to the Sample created from this query.
-     * 
+     *
      * @param string $sampleSid An optional reference to the Sample created from
      *                          this query.
      * @return $this Fluent Builder
@@ -223,7 +223,7 @@ class UpdateQueryOptions extends Options {
 
     /**
      * A string that described the query status. The values can be: pending_review, reviewed, discarded
-     * 
+     *
      * @param string $status A string that described the query status. The values
      *                       can be: pending_review, reviewed, discarded
      * @return $this Fluent Builder
@@ -235,7 +235,7 @@ class UpdateQueryOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

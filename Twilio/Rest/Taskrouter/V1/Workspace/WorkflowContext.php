@@ -33,11 +33,11 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Initialize the WorkflowContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
@@ -50,7 +50,7 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Fetch a WorkflowInstance
-     * 
+     *
      * @return WorkflowInstance Fetched WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -73,7 +73,7 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Update the WorkflowInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkflowInstance Updated WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -106,7 +106,7 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Deletes the WorkflowInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -116,8 +116,8 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsList
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
@@ -133,8 +133,8 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Access the realTimeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList
      */
     protected function getRealTimeStatistics() {
         if (!$this->_realTimeStatistics) {
@@ -150,8 +150,8 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Access the cumulativeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList
      */
     protected function getCumulativeStatistics() {
         if (!$this->_cumulativeStatistics) {
@@ -167,7 +167,7 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -183,7 +183,7 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -200,7 +200,7 @@ class WorkflowContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

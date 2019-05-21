@@ -41,7 +41,7 @@ class ReadRoomRecordingOptions extends Options {
 
     /**
      * The status
-     * 
+     *
      * @param string $status The status
      * @return $this Fluent Builder
      */
@@ -52,7 +52,7 @@ class ReadRoomRecordingOptions extends Options {
 
     /**
      * The source_sid
-     * 
+     *
      * @param string $sourceSid The source_sid
      * @return $this Fluent Builder
      */
@@ -63,7 +63,7 @@ class ReadRoomRecordingOptions extends Options {
 
     /**
      * The date_created_after
-     * 
+     *
      * @param \DateTime $dateCreatedAfter The date_created_after
      * @return $this Fluent Builder
      */
@@ -74,7 +74,7 @@ class ReadRoomRecordingOptions extends Options {
 
     /**
      * The date_created_before
-     * 
+     *
      * @param \DateTime $dateCreatedBefore The date_created_before
      * @return $this Fluent Builder
      */
@@ -85,7 +85,7 @@ class ReadRoomRecordingOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

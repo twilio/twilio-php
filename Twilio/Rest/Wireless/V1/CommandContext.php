@@ -16,11 +16,11 @@ use Twilio\Version;
 class CommandContext extends InstanceContext {
     /**
      * Initialize the CommandContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\CommandContext 
+     * @return \Twilio\Rest\Wireless\V1\CommandContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class CommandContext extends InstanceContext {
 
     /**
      * Fetch a CommandInstance
-     * 
+     *
      * @return CommandInstance Fetched CommandInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -51,7 +51,7 @@ class CommandContext extends InstanceContext {
 
     /**
      * Deletes the CommandInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -61,7 +61,7 @@ class CommandContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

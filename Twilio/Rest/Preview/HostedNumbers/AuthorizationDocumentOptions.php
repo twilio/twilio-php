@@ -72,7 +72,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
-     * 
+     *
      * @param string $hostedNumberOrderSids A list of HostedNumberOrder sids.
      * @return $this Fluent Builder
      */
@@ -83,7 +83,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
-     * 
+     *
      * @param string $addressSid Address sid.
      * @return $this Fluent Builder
      */
@@ -94,7 +94,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * Email that this AuthorizationDocument will be sent to for signing.
-     * 
+     *
      * @param string $email Email.
      * @return $this Fluent Builder
      */
@@ -105,7 +105,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * Email recipients who will be informed when an Authorization Document has been sent and signed
-     * 
+     *
      * @param string $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
@@ -116,7 +116,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
-     * 
+     *
      * @param string $status The Status of this AuthorizationDocument.
      * @return $this Fluent Builder
      */
@@ -127,7 +127,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * The title of the person authorized to sign the Authorization Document for this phone number.
-     * 
+     *
      * @param string $contactTitle Title of signee of this Authorization Document.
      * @return $this Fluent Builder
      */
@@ -138,7 +138,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * The contact phone number of the person authorized to sign the Authorization Document.
-     * 
+     *
      * @param string $contactPhoneNumber Authorization Document's signee's phone
      *                                   number.
      * @return $this Fluent Builder
@@ -150,7 +150,7 @@ class UpdateAuthorizationDocumentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -176,7 +176,7 @@ class ReadAuthorizationDocumentOptions extends Options {
 
     /**
      * Email that this AuthorizationDocument will be sent to for signing.
-     * 
+     *
      * @param string $email Email.
      * @return $this Fluent Builder
      */
@@ -187,7 +187,7 @@ class ReadAuthorizationDocumentOptions extends Options {
 
     /**
      * Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
-     * 
+     *
      * @param string $status The Status of this AuthorizationDocument.
      * @return $this Fluent Builder
      */
@@ -198,7 +198,7 @@ class ReadAuthorizationDocumentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -222,7 +222,7 @@ class CreateAuthorizationDocumentOptions extends Options {
 
     /**
      * Email recipients who will be informed when an Authorization Document has been sent and signed.
-     * 
+     *
      * @param string $ccEmails A list of emails.
      * @return $this Fluent Builder
      */
@@ -233,7 +233,7 @@ class CreateAuthorizationDocumentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

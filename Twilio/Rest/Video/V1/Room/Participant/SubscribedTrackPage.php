@@ -24,13 +24,13 @@ class SubscribedTrackPage extends Page {
             $this->version,
             $payload,
             $this->solution['roomSid'],
-            $this->solution['subscriberSid']
+            $this->solution['participantSid']
         );
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

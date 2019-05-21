@@ -38,7 +38,7 @@ class FetchUsageOptions extends Options {
 
     /**
      * The end
-     * 
+     *
      * @param string $end The end
      * @return $this Fluent Builder
      */
@@ -49,7 +49,7 @@ class FetchUsageOptions extends Options {
 
     /**
      * The start
-     * 
+     *
      * @param string $start The start
      * @return $this Fluent Builder
      */
@@ -60,7 +60,7 @@ class FetchUsageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

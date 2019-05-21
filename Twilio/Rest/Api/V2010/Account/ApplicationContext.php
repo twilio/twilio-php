@@ -18,11 +18,12 @@ use Twilio\Version;
 class ApplicationContext extends InstanceContext {
     /**
      * Initialize the ApplicationContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique Application Sid
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext 
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -35,7 +36,7 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Deletes the ApplicationInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -45,7 +46,7 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Fetch a ApplicationInstance
-     * 
+     *
      * @return ApplicationInstance Fetched ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -68,7 +69,7 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Update the ApplicationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ApplicationInstance Updated ApplicationInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -111,7 +112,7 @@ class ApplicationContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

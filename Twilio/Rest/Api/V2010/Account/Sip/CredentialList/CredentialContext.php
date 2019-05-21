@@ -17,7 +17,7 @@ use Twilio\Version;
 class CredentialContext extends InstanceContext {
     /**
      * Initialize the CredentialContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
@@ -25,7 +25,7 @@ class CredentialContext extends InstanceContext {
      *                                  credential list that contains the desired
      *                                  credential
      * @param string $sid The unique id that identifies the resource to fetch.
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialContext
      */
     public function __construct(Version $version, $accountSid, $credentialListSid, $sid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Fetch a CredentialInstance
-     * 
+     *
      * @return CredentialInstance Fetched CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Update the CredentialInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return CredentialInstance Updated CredentialInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -94,7 +94,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Deletes the CredentialInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -104,7 +104,7 @@ class CredentialContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

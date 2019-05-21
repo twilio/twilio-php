@@ -20,14 +20,14 @@ use Twilio\Version;
 class ChallengeContext extends InstanceContext {
     /**
      * Initialize the ChallengeContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $identity Unique identity of the Entity
      * @param string $factorSid Factor Sid.
      * @param string $sid A string that uniquely identifies this Challenge, or
      *                    `latest`.
-     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeContext 
+     * @return \Twilio\Rest\Authy\V1\Service\Entity\Factor\ChallengeContext
      */
     public function __construct(Version $version, $serviceSid, $identity, $factorSid, $sid) {
         parent::__construct($version);
@@ -45,7 +45,7 @@ class ChallengeContext extends InstanceContext {
 
     /**
      * Deletes the ChallengeInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -55,7 +55,7 @@ class ChallengeContext extends InstanceContext {
 
     /**
      * Fetch a ChallengeInstance
-     * 
+     *
      * @return ChallengeInstance Fetched ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,7 +80,7 @@ class ChallengeContext extends InstanceContext {
 
     /**
      * Update the ChallengeInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ChallengeInstance Updated ChallengeInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -109,7 +109,7 @@ class ChallengeContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

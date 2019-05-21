@@ -16,13 +16,13 @@ use Twilio\Version;
 class WorkerChannelList extends ListResource {
     /**
      * Construct the WorkerChannelList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The unique ID of the Workspace that this
      *                             WorkerChannel belongs to.
      * @param string $workerSid The unique ID of the Worker that this WorkerChannel
      *                          belongs to.
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList
      */
     public function __construct(Version $version, $workspaceSid, $workerSid) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class WorkerChannelList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -63,7 +63,7 @@ class WorkerChannelList extends ListResource {
      * Reads WorkerChannelInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -81,7 +81,7 @@ class WorkerChannelList extends ListResource {
     /**
      * Retrieve a single page of WorkerChannelInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -106,7 +106,7 @@ class WorkerChannelList extends ListResource {
     /**
      * Retrieve a specific page of WorkerChannelInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of WorkerChannelInstance
      */
@@ -121,9 +121,9 @@ class WorkerChannelList extends ListResource {
 
     /**
      * Constructs a WorkerChannelContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext
      */
     public function getContext($sid) {
         return new WorkerChannelContext(
@@ -136,7 +136,7 @@ class WorkerChannelList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -23,7 +23,7 @@ class Insights extends Domain {
 
     /**
      * Construct the Insights Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Insights Domain for Insights
@@ -46,7 +46,7 @@ class Insights extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -62,7 +62,7 @@ class Insights extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,7 +78,7 @@ class Insights extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Insights\V1\CallSummaryList 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryList
      */
     protected function getSummary() {
         return $this->v1->summary;
@@ -86,7 +86,7 @@ class Insights extends Domain {
 
     /**
      * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\CallSummaryContext 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryContext
      */
     protected function contextSummary($callSid) {
         return $this->v1->summary($callSid);
@@ -94,7 +94,7 @@ class Insights extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -20,13 +20,13 @@ class ExportConfigurationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->bulkExports->exportConfiguration("resourceType")->fetch();
+            $this->twilio->preview->bulkExports->exportConfiguration("resource_type")->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'get',
-            'https://preview.twilio.com/BulkExports/Exports/resourceType/Configuration'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Configuration'
         ));
     }
 
@@ -44,7 +44,7 @@ class ExportConfigurationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->bulkExports->exportConfiguration("resourceType")->fetch();
+        $actual = $this->twilio->preview->bulkExports->exportConfiguration("resource_type")->fetch();
 
         $this->assertNotNull($actual);
     }
@@ -53,13 +53,13 @@ class ExportConfigurationTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->bulkExports->exportConfiguration("resourceType")->update();
+            $this->twilio->preview->bulkExports->exportConfiguration("resource_type")->update();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
         $this->assertRequest(new Request(
             'post',
-            'https://preview.twilio.com/BulkExports/Exports/resourceType/Configuration'
+            'https://preview.twilio.com/BulkExports/Exports/resource_type/Configuration'
         ));
     }
 
@@ -77,7 +77,7 @@ class ExportConfigurationTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->bulkExports->exportConfiguration("resourceType")->update();
+        $actual = $this->twilio->preview->bulkExports->exportConfiguration("resource_type")->update();
 
         $this->assertNotNull($actual);
     }

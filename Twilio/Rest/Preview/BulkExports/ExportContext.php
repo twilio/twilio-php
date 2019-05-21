@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\BulkExports\Export\DayList days
  */
 class ExportContext extends InstanceContext {
@@ -25,10 +25,10 @@ class ExportContext extends InstanceContext {
 
     /**
      * Initialize the ExportContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $resourceType The resource_type
-     * @return \Twilio\Rest\Preview\BulkExports\ExportContext 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportContext
      */
     public function __construct(Version $version, $resourceType) {
         parent::__construct($version);
@@ -41,7 +41,7 @@ class ExportContext extends InstanceContext {
 
     /**
      * Fetch a ExportInstance
-     * 
+     *
      * @return ExportInstance Fetched ExportInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,8 +59,8 @@ class ExportContext extends InstanceContext {
 
     /**
      * Access the days
-     * 
-     * @return \Twilio\Rest\Preview\BulkExports\Export\DayList 
+     *
+     * @return \Twilio\Rest\Preview\BulkExports\Export\DayList
      */
     protected function getDays() {
         if (!$this->_days) {
@@ -72,7 +72,7 @@ class ExportContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -88,7 +88,7 @@ class ExportContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -105,7 +105,7 @@ class ExportContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

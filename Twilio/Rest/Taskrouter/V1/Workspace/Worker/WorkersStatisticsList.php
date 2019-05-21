@@ -15,11 +15,11 @@ use Twilio\Version;
 class WorkersStatisticsList extends ListResource {
     /**
      * Construct the WorkersStatisticsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The ID of the Workflow this worker is associated
      *                             with
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsList
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -30,8 +30,8 @@ class WorkersStatisticsList extends ListResource {
 
     /**
      * Constructs a WorkersStatisticsContext
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsContext
      */
     public function getContext() {
         return new WorkersStatisticsContext($this->version, $this->solution['workspaceSid']);
@@ -39,7 +39,7 @@ class WorkersStatisticsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

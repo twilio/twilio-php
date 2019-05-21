@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class Message extends TwiML {
     /**
      * Message constructor.
-     * 
+     *
      * @param string $body Message Body
      * @param array $attributes Optional attributes
      */
@@ -24,9 +24,9 @@ class Message extends TwiML {
 
     /**
      * Add Body child.
-     * 
+     *
      * @param string $message Message Body
-     * @return TwiML Child element.
+     * @return Body Child element.
      */
     public function body($message) {
         return $this->nest(new Body($message));
@@ -34,9 +34,9 @@ class Message extends TwiML {
 
     /**
      * Add Media child.
-     * 
-     * @param url $url Media URL
-     * @return TwiML Child element.
+     *
+     * @param string $url Media URL
+     * @return Media Child element.
      */
     public function media($url) {
         return $this->nest(new Media($url));
@@ -44,9 +44,9 @@ class Message extends TwiML {
 
     /**
      * Add To attribute.
-     * 
-     * @param phoneNumber $to Phone Number to send Message to
-     * @return TwiML $this.
+     *
+     * @param string $to Phone Number to send Message to
+     * @return static $this.
      */
     public function setTo($to) {
         return $this->setAttribute('to', $to);
@@ -54,9 +54,9 @@ class Message extends TwiML {
 
     /**
      * Add From attribute.
-     * 
-     * @param phoneNumber $from Phone Number to send Message from
-     * @return TwiML $this.
+     *
+     * @param string $from Phone Number to send Message from
+     * @return static $this.
      */
     public function setFrom($from) {
         return $this->setAttribute('from', $from);
@@ -64,9 +64,9 @@ class Message extends TwiML {
 
     /**
      * Add Action attribute.
-     * 
-     * @param url $action Action URL
-     * @return TwiML $this.
+     *
+     * @param string $action Action URL
+     * @return static $this.
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
@@ -74,9 +74,9 @@ class Message extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
-     * @param httpMethod $method Action URL Method
-     * @return TwiML $this.
+     *
+     * @param string $method Action URL Method
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -84,10 +84,10 @@ class Message extends TwiML {
 
     /**
      * Add StatusCallback attribute.
-     * 
-     * @param url $statusCallback Status callback URL. Deprecated in favor of
-     *                            action.
-     * @return TwiML $this.
+     *
+     * @param string $statusCallback Status callback URL. Deprecated in favor of
+     *                               action.
+     * @return static $this.
      */
     public function setStatusCallback($statusCallback) {
         return $this->setAttribute('statusCallback', $statusCallback);

@@ -28,9 +28,9 @@ use Twilio\Version;
  * @property string price
  * @property string priceUnit
  * @property string status
- * @property integer channels
+ * @property int channels
  * @property string source
- * @property integer errorCode
+ * @property int errorCode
  * @property string uri
  * @property array encryptionDetails
  * @property array subresourceUris
@@ -41,12 +41,12 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Initialize the RecordingInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique SID that identifies this account
-     * @param string $sid Fetch by unique recording SID
-     * @return \Twilio\Rest\Api\V2010\Account\RecordingInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\RecordingInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -79,7 +79,7 @@ class RecordingInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\RecordingContext Context for this
      *                                                         RecordingInstance
      */
@@ -97,7 +97,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Fetch a RecordingInstance
-     * 
+     *
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -107,7 +107,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Deletes the RecordingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -117,8 +117,8 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Access the transcriptions
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList
      */
     protected function getTranscriptions() {
         return $this->proxy()->transcriptions;
@@ -126,8 +126,8 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Access the addOnResults
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList
      */
     protected function getAddOnResults() {
         return $this->proxy()->addOnResults;
@@ -135,7 +135,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -155,7 +155,7 @@ class RecordingInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

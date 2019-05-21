@@ -15,11 +15,11 @@ use Twilio\Version;
 class FeedbackList extends ListResource {
     /**
      * Construct the FeedbackList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackList
      */
     public function __construct(Version $version, $accountSid, $callSid) {
         parent::__construct($version);
@@ -30,8 +30,8 @@ class FeedbackList extends ListResource {
 
     /**
      * Constructs a FeedbackContext
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext
      */
     public function getContext() {
         return new FeedbackContext(
@@ -43,7 +43,7 @@ class FeedbackList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

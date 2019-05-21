@@ -23,7 +23,7 @@ class Taskrouter extends Domain {
 
     /**
      * Construct the Taskrouter Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Taskrouter Domain for Taskrouter
@@ -46,7 +46,7 @@ class Taskrouter extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -62,7 +62,7 @@ class Taskrouter extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,7 +78,7 @@ class Taskrouter extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceList
      */
     protected function getWorkspaces() {
         return $this->v1->workspaces;
@@ -86,7 +86,7 @@ class Taskrouter extends Domain {
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext
      */
     protected function contextWorkspaces($sid) {
         return $this->v1->workspaces($sid);
@@ -94,7 +94,7 @@ class Taskrouter extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

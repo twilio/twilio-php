@@ -35,7 +35,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * A character string containing a custom message for this verification
-     * 
+     *
      * @param string $customMessage A custom message for this verification
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class CreateVerificationOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -21,11 +21,12 @@ use Twilio\Version;
 class PhoneNumberContext extends InstanceContext {
     /**
      * Initialize the PhoneNumberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sid A string that uniquely identifies this Phone Number.
-     * @return \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext 
+     * @param string $serviceSid The SID of the parent Service resource of the
+     *                           PhoneNumber resource to fetch
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -38,7 +39,7 @@ class PhoneNumberContext extends InstanceContext {
 
     /**
      * Deletes the PhoneNumberInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -48,7 +49,7 @@ class PhoneNumberContext extends InstanceContext {
 
     /**
      * Fetch a PhoneNumberInstance
-     * 
+     *
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -71,7 +72,7 @@ class PhoneNumberContext extends InstanceContext {
 
     /**
      * Update the PhoneNumberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return PhoneNumberInstance Updated PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,7 +99,7 @@ class PhoneNumberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

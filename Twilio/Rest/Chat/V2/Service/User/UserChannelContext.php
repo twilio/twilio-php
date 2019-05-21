@@ -16,13 +16,15 @@ use Twilio\Version;
 class UserChannelContext extends InstanceContext {
     /**
      * Initialize the UserChannelContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service those channels belong
-     *                           to.
-     * @param string $userSid The unique id of a User.
-     * @param string $channelSid The unique id of a Channel.
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelContext 
+     * @param string $serviceSid The SID of the Service to fetch the User Channel
+     *                           resource from
+     * @param string $userSid The SID of the User to fetch the User Channel
+     *                        resource from
+     * @param string $channelSid The SID of the Channel that has the User Channel
+     *                           to fetch
+     * @return \Twilio\Rest\Chat\V2\Service\User\UserChannelContext
      */
     public function __construct(Version $version, $serviceSid, $userSid, $channelSid) {
         parent::__construct($version);
@@ -39,7 +41,7 @@ class UserChannelContext extends InstanceContext {
 
     /**
      * Fetch a UserChannelInstance
-     * 
+     *
      * @return UserChannelInstance Fetched UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,9 +65,9 @@ class UserChannelContext extends InstanceContext {
 
     /**
      * Update the UserChannelInstance
-     * 
-     * @param string $notificationLevel Push notification level to be assigned to
-     *                                  Channel of the User.
+     *
+     * @param string $notificationLevel The push notification level to assign to
+     *                                  the User Channel
      * @return UserChannelInstance Updated UserChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -90,7 +92,7 @@ class UserChannelContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

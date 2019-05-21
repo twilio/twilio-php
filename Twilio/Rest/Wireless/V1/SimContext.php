@@ -27,11 +27,11 @@ class SimContext extends InstanceContext {
 
     /**
      * Initialize the SimContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\SimContext 
+     * @return \Twilio\Rest\Wireless\V1\SimContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -44,7 +44,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Fetch a SimInstance
-     * 
+     *
      * @return SimInstance Fetched SimInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -62,7 +62,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Update the SimInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SimInstance Updated SimInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -87,6 +87,7 @@ class SimContext extends InstanceContext {
             'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
+            'ResetStatus' => $options['resetStatus'],
         ));
 
         $payload = $this->version->update(
@@ -101,7 +102,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Deletes the SimInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -111,8 +112,8 @@ class SimContext extends InstanceContext {
 
     /**
      * Access the usageRecords
-     * 
-     * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordList 
+     *
+     * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordList
      */
     protected function getUsageRecords() {
         if (!$this->_usageRecords) {
@@ -124,8 +125,8 @@ class SimContext extends InstanceContext {
 
     /**
      * Access the dataSessions
-     * 
-     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList 
+     *
+     * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList
      */
     protected function getDataSessions() {
         if (!$this->_dataSessions) {
@@ -137,7 +138,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -153,7 +154,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -170,7 +171,7 @@ class SimContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

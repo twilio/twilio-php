@@ -14,8 +14,9 @@ use Twilio\Values;
 
 abstract class MessageOptions {
     /**
-     * @param string $from The from
-     * @param string $attributes The attributes
+     * @param string $from The identity of the new message's author
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return CreateMessageOptions Options builder
      */
     public static function create($from = Values::NONE, $attributes = Values::NONE) {
@@ -23,7 +24,7 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $order The order
+     * @param string $order The sort order of the returned messages
      * @return ReadMessageOptions Options builder
      */
     public static function read($order = Values::NONE) {
@@ -31,9 +32,9 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $body The new message body string.
-     * @param string $attributes The new attributes metadata field you can use to
-     *                           store any data you wish.
+     * @param string $body The message to send to the channel
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return UpdateMessageOptions Options builder
      */
     public static function update($body = Values::NONE, $attributes = Values::NONE) {
@@ -43,8 +44,9 @@ abstract class MessageOptions {
 
 class CreateMessageOptions extends Options {
     /**
-     * @param string $from The from
-     * @param string $attributes The attributes
+     * @param string $from The identity of the new message's author
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      */
     public function __construct($from = Values::NONE, $attributes = Values::NONE) {
         $this->options['from'] = $from;
@@ -52,9 +54,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The from
-     * 
-     * @param string $from The from
+     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the new message's author. The default value is `system`.
+     *
+     * @param string $from The identity of the new message's author
      * @return $this Fluent Builder
      */
     public function setFrom($from) {
@@ -63,9 +65,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The attributes
-     * 
-     * @param string $attributes The attributes
+     * A valid JSON string that contains application-specific data.
+     *
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -75,7 +78,7 @@ class CreateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -91,16 +94,16 @@ class CreateMessageOptions extends Options {
 
 class ReadMessageOptions extends Options {
     /**
-     * @param string $order The order
+     * @param string $order The sort order of the returned messages
      */
     public function __construct($order = Values::NONE) {
         $this->options['order'] = $order;
     }
 
     /**
-     * The order
-     * 
-     * @param string $order The order
+     * The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending) with `asc` as the default.
+     *
+     * @param string $order The sort order of the returned messages
      * @return $this Fluent Builder
      */
     public function setOrder($order) {
@@ -110,7 +113,7 @@ class ReadMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -126,9 +129,9 @@ class ReadMessageOptions extends Options {
 
 class UpdateMessageOptions extends Options {
     /**
-     * @param string $body The new message body string.
-     * @param string $attributes The new attributes metadata field you can use to
-     *                           store any data you wish.
+     * @param string $body The message to send to the channel
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      */
     public function __construct($body = Values::NONE, $attributes = Values::NONE) {
         $this->options['body'] = $body;
@@ -136,9 +139,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The new message body string. You can also send structured data by serializing it into a string.
-     * 
-     * @param string $body The new message body string.
+     * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     *
+     * @param string $body The message to send to the channel
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -147,10 +150,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The new attributes metadata field you can use to store any data you wish.  The string value must contain structurally valid JSON if specified.
-     * 
-     * @param string $attributes The new attributes metadata field you can use to
-     *                           store any data you wish.
+     * A valid JSON string that contains application-specific data.
+     *
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -160,7 +163,7 @@ class UpdateMessageOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

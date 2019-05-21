@@ -27,7 +27,7 @@ class BulkExports extends Version {
 
     /**
      * Construct the BulkExports version of Preview
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Preview\BulkExports BulkExports version of Preview
      */
@@ -37,7 +37,7 @@ class BulkExports extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\BulkExports\ExportList 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportList
      */
     protected function getExports() {
         if (!$this->_exports) {
@@ -47,7 +47,7 @@ class BulkExports extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationList 
+     * @return \Twilio\Rest\Preview\BulkExports\ExportConfigurationList
      */
     protected function getExportConfiguration() {
         if (!$this->_exportConfiguration) {
@@ -58,7 +58,7 @@ class BulkExports extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -74,7 +74,7 @@ class BulkExports extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -91,7 +91,7 @@ class BulkExports extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

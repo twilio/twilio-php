@@ -15,11 +15,11 @@ use Twilio\Version;
 class WorkflowCumulativeStatisticsList extends ListResource {
     /**
      * Construct the WorkflowCumulativeStatisticsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $workflowSid The workflow_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid, $workflowSid) {
         parent::__construct($version);
@@ -30,8 +30,8 @@ class WorkflowCumulativeStatisticsList extends ListResource {
 
     /**
      * Constructs a WorkflowCumulativeStatisticsContext
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsContext 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsContext
      */
     public function getContext() {
         return new WorkflowCumulativeStatisticsContext(
@@ -43,7 +43,7 @@ class WorkflowCumulativeStatisticsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

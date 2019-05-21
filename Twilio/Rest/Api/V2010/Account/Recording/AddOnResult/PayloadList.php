@@ -16,12 +16,15 @@ use Twilio\Version;
 class PayloadList extends ListResource {
     /**
      * Construct the PayloadList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
-     * @param string $addOnResultSid A string that uniquely identifies the result
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource that contains the payload
+     *                             belongs
+     * @param string $addOnResultSid The SID of the AddOnResult to which the
+     *                               payload belongs
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadList
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid) {
         parent::__construct($version);
@@ -43,7 +46,7 @@ class PayloadList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -66,7 +69,7 @@ class PayloadList extends ListResource {
      * Reads PayloadInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -84,7 +87,7 @@ class PayloadList extends ListResource {
     /**
      * Retrieve a single page of PayloadInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -109,7 +112,7 @@ class PayloadList extends ListResource {
     /**
      * Retrieve a specific page of PayloadInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of PayloadInstance
      */
@@ -124,9 +127,9 @@ class PayloadList extends ListResource {
 
     /**
      * Constructs a PayloadContext
-     * 
-     * @param string $sid Fetch by unique payload Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext 
+     *
+     * @param string $sid The unique string that identifies the resource to fetch
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext
      */
     public function getContext($sid) {
         return new PayloadContext(
@@ -140,7 +143,7 @@ class PayloadList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

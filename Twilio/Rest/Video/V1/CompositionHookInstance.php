@@ -18,10 +18,10 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string friendlyName
- * @property boolean enabled
+ * @property bool enabled
  * @property \DateTime dateCreated
  * @property string dateUpdated
  * @property string sid
@@ -29,7 +29,7 @@ use Twilio\Version;
  * @property string audioSourcesExcluded
  * @property array videoLayout
  * @property string resolution
- * @property boolean trim
+ * @property bool trim
  * @property string format
  * @property string statusCallback
  * @property string statusCallbackMethod
@@ -38,12 +38,12 @@ use Twilio\Version;
 class CompositionHookInstance extends InstanceResource {
     /**
      * Initialize the CompositionHookInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The Composition Hook Sid that uniquely identifies the
      *                    Composition Hook to fetch.
-     * @return \Twilio\Rest\Video\V1\CompositionHookInstance 
+     * @return \Twilio\Rest\Video\V1\CompositionHookInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -73,7 +73,7 @@ class CompositionHookInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Video\V1\CompositionHookContext Context for this
      *                                                      CompositionHookInstance
      */
@@ -87,7 +87,7 @@ class CompositionHookInstance extends InstanceResource {
 
     /**
      * Fetch a CompositionHookInstance
-     * 
+     *
      * @return CompositionHookInstance Fetched CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -97,7 +97,7 @@ class CompositionHookInstance extends InstanceResource {
 
     /**
      * Deletes the CompositionHookInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -107,7 +107,7 @@ class CompositionHookInstance extends InstanceResource {
 
     /**
      * Update the CompositionHookInstance
-     * 
+     *
      * @param string $friendlyName Friendly name of the Composition Hook to be
      *                             shown in the console.
      * @param array|Options $options Optional Arguments
@@ -120,7 +120,7 @@ class CompositionHookInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -140,7 +140,7 @@ class CompositionHookInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

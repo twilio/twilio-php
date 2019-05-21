@@ -52,6 +52,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "responded_reason": "none",
                 "details": "Hi! Mr. John Doe, would you like to sign up?",
                 "hidden_details": "Hidden details about the sign up",
+                "factor_strength": "low",
                 "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -133,6 +134,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "responded_reason": "none",
                 "details": "details",
                 "hidden_details": "hidden_details",
+                "factor_strength": "low",
                 "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -166,6 +168,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "responded_reason": "none",
                 "details": "details",
                 "hidden_details": "hidden_details",
+                "factor_strength": "low",
                 "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -216,6 +219,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "responded_reason": "none",
                 "details": "Hi! Mr. John Doe, would you like to sign up?",
                 "hidden_details": "Hidden details about the sign up",
+                "factor_strength": "low",
                 "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
@@ -249,6 +253,7 @@ class ChallengeTest extends HolodeckTestCase {
                 "responded_reason": "none",
                 "details": "Hi! Mr. John Doe, would you like to sign up?",
                 "hidden_details": "Hidden details about the sign up",
+                "factor_strength": "low",
                 "factor_type": "sms",
                 "url": "https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }

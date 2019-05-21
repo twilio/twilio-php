@@ -29,12 +29,12 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Initialize the ConferenceContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the
      *                           resource(s) to fetch
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext 
+     * @return \Twilio\Rest\Api\V2010\Account\ConferenceContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Fetch a ConferenceInstance
-     * 
+     *
      * @return ConferenceInstance Fetched ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Update the ConferenceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ConferenceInstance Updated ConferenceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -101,8 +101,8 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\ParticipantList
      */
     protected function getParticipants() {
         if (!$this->_participants) {
@@ -118,8 +118,8 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Access the recordings
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingList
      */
     protected function getRecordings() {
         if (!$this->_recordings) {
@@ -135,7 +135,7 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -151,7 +151,7 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -168,7 +168,7 @@ class ConferenceContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

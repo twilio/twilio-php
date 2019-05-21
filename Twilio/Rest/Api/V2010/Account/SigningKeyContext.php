@@ -17,11 +17,11 @@ use Twilio\Version;
 class SigningKeyContext extends InstanceContext {
     /**
      * Initialize the SigningKeyContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyContext 
+     * @return \Twilio\Rest\Api\V2010\Account\SigningKeyContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class SigningKeyContext extends InstanceContext {
 
     /**
      * Fetch a SigningKeyInstance
-     * 
+     *
      * @return SigningKeyInstance Fetched SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -57,7 +57,7 @@ class SigningKeyContext extends InstanceContext {
 
     /**
      * Update the SigningKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SigningKeyInstance Updated SigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +84,7 @@ class SigningKeyContext extends InstanceContext {
 
     /**
      * Deletes the SigningKeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,7 +94,7 @@ class SigningKeyContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

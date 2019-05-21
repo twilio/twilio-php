@@ -19,10 +19,10 @@ use Twilio\Version;
 class PhoneNumberList extends ListResource {
     /**
      * Construct the PhoneNumberList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The 34 character unique sid of the Service.
-     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList 
+     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Create a new PhoneNumberInstance
-     * 
+     *
      * @param string $phoneNumberSid Phone Number SID for the Phone Number being
      *                               added to the Service.
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
@@ -61,7 +61,7 @@ class PhoneNumberList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -84,7 +84,7 @@ class PhoneNumberList extends ListResource {
      * Reads PhoneNumberInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -102,7 +102,7 @@ class PhoneNumberList extends ListResource {
     /**
      * Retrieve a single page of PhoneNumberInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -127,7 +127,7 @@ class PhoneNumberList extends ListResource {
     /**
      * Retrieve a specific page of PhoneNumberInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of PhoneNumberInstance
      */
@@ -142,9 +142,9 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Constructs a PhoneNumberContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext 
+     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext
      */
     public function getContext($sid) {
         return new PhoneNumberContext($this->version, $this->solution['serviceSid'], $sid);
@@ -152,7 +152,7 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

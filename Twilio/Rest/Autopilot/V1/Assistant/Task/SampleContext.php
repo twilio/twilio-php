@@ -20,13 +20,14 @@ use Twilio\Version;
 class SampleContext extends InstanceContext {
     /**
      * Initialize the SampleContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $taskSid The unique ID of the Task associated with this Sample.
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleContext 
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the Task associated with the resource to fetch
+     * @param string $taskSid The SID of the Task associated with the Sample
+     *                        resource to create
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\SampleContext
      */
     public function __construct(Version $version, $assistantSid, $taskSid, $sid) {
         parent::__construct($version);
@@ -39,7 +40,7 @@ class SampleContext extends InstanceContext {
 
     /**
      * Fetch a SampleInstance
-     * 
+     *
      * @return SampleInstance Fetched SampleInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -63,7 +64,7 @@ class SampleContext extends InstanceContext {
 
     /**
      * Update the SampleInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SampleInstance Updated SampleInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -95,7 +96,7 @@ class SampleContext extends InstanceContext {
 
     /**
      * Deletes the SampleInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -105,7 +106,7 @@ class SampleContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

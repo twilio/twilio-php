@@ -23,7 +23,7 @@ class DeployedDevices extends Version {
 
     /**
      * Construct the DeployedDevices version of Preview
-     * 
+     *
      * @param \Twilio\Domain $domain Domain that contains the version
      * @return \Twilio\Rest\Preview\DeployedDevices DeployedDevices version of
      *                                              Preview
@@ -34,7 +34,7 @@ class DeployedDevices extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList 
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetList
      */
     protected function getFleets() {
         if (!$this->_fleets) {
@@ -45,7 +45,7 @@ class DeployedDevices extends Version {
 
     /**
      * Magic getter to lazy load root resources
-     * 
+     *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
@@ -61,7 +61,7 @@ class DeployedDevices extends Version {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -78,7 +78,7 @@ class DeployedDevices extends Version {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

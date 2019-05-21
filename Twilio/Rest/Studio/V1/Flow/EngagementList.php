@@ -18,10 +18,10 @@ use Twilio\Version;
 class EngagementList extends ListResource {
     /**
      * Construct the EngagementList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\EngagementList 
+     * @return \Twilio\Rest\Studio\V1\Flow\EngagementList
      */
     public function __construct(Version $version, $flowSid) {
         parent::__construct($version);
@@ -39,7 +39,7 @@ class EngagementList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -62,7 +62,7 @@ class EngagementList extends ListResource {
      * Reads EngagementInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -80,7 +80,7 @@ class EngagementList extends ListResource {
     /**
      * Retrieve a single page of EngagementInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -105,7 +105,7 @@ class EngagementList extends ListResource {
     /**
      * Retrieve a specific page of EngagementInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of EngagementInstance
      */
@@ -120,7 +120,7 @@ class EngagementList extends ListResource {
 
     /**
      * Create a new EngagementInstance
-     * 
+     *
      * @param string $to The Contact phone number to start a Studio Flow Engagement.
      * @param string $from The Twilio phone number to send messages or initiate
      *                     calls from during the Flow Engagement.
@@ -149,9 +149,9 @@ class EngagementList extends ListResource {
 
     /**
      * Constructs a EngagementContext
-     * 
+     *
      * @param string $sid Engagement Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\EngagementContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\EngagementContext
      */
     public function getContext($sid) {
         return new EngagementContext($this->version, $this->solution['flowSid'], $sid);
@@ -159,7 +159,7 @@ class EngagementList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

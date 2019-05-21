@@ -77,11 +77,11 @@ $call = $client->calls->create(
 
 To control phone calls, your application needs to output
 [TwiML](https://www.twilio.com/docs/api/twiml/ "Twilio Markup Language"). Use
-`Twilio\Twiml` to easily create such responses.
+`Twilio\TwiML\(Voice|Messaging|Fax)Response` to easily chain said responses.
 
 ```php
 <?php
-$response = new Twilio\Twiml();
+$response = new Twilio\TwiML\VoiceResponse();
 $response->say('Hello');
 $response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
 print $response;
@@ -116,9 +116,9 @@ The PHP library documentation can be found [here][documentation].
 
 The `Dockerfile` present in this repository and its respective `twilio/twilio-php` Docker image are currently used by Twilio for testing purposes only.
 
-# Getting help
+## Getting help
 
-If you need help installing or using the library, please contact Twilio Support at help@twilio.com first. Twilio's Support staff are well-versed in all of the Twilio Helper Libraries, and usually reply within 24 hours.
+If you need help installing or using the library, please check the [Twilio Support Help Center](https://support.twilio.com) first, and [file a support ticket](https://twilio.com/help/contact) if you don't find an answer to your question.
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 

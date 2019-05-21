@@ -16,11 +16,11 @@ use Twilio\Version;
 class RoomRecordingContext extends InstanceContext {
     /**
      * Initialize the RoomRecordingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $roomSid The room_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext 
+     * @return \Twilio\Rest\Video\V1\Room\RoomRecordingContext
      */
     public function __construct(Version $version, $roomSid, $sid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class RoomRecordingContext extends InstanceContext {
 
     /**
      * Fetch a RoomRecordingInstance
-     * 
+     *
      * @return RoomRecordingInstance Fetched RoomRecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +56,7 @@ class RoomRecordingContext extends InstanceContext {
 
     /**
      * Deletes the RoomRecordingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +66,7 @@ class RoomRecordingContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

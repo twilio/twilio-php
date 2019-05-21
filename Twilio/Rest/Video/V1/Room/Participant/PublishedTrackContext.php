@@ -16,14 +16,14 @@ use Twilio\Version;
 class PublishedTrackContext extends InstanceContext {
     /**
      * Initialize the PublishedTrackContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $roomSid Unique Room identifier where this Track is published.
      * @param string $participantSid Unique Participant identifier that publishes
      *                               this Track.
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext 
+     * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackContext
      */
     public function __construct(Version $version, $roomSid, $participantSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class PublishedTrackContext extends InstanceContext {
 
     /**
      * Fetch a PublishedTrackInstance
-     * 
+     *
      * @return PublishedTrackInstance Fetched PublishedTrackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -60,7 +60,7 @@ class PublishedTrackContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

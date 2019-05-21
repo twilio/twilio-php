@@ -16,12 +16,12 @@ use Twilio\Version;
 class StepContextContext extends InstanceContext {
     /**
      * Initialize the StepContextContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $engagementSid Engagement Sid.
      * @param string $stepSid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextContext
      */
     public function __construct(Version $version, $flowSid, $engagementSid, $stepSid) {
         parent::__construct($version);
@@ -38,7 +38,7 @@ class StepContextContext extends InstanceContext {
 
     /**
      * Fetch a StepContextInstance
-     * 
+     *
      * @return StepContextInstance Fetched StepContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -62,7 +62,7 @@ class StepContextContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

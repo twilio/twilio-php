@@ -50,7 +50,7 @@ class CreateInstalledAddOnOptions extends Options {
 
     /**
      * The JSON object representing the configuration of the new Add-on installation.
-     * 
+     *
      * @param array $configuration The JSON object representing the configuration
      * @return $this Fluent Builder
      */
@@ -61,7 +61,7 @@ class CreateInstalledAddOnOptions extends Options {
 
     /**
      * The human-readable string that uniquely identifies this Add-on installation for an Account.
-     * 
+     *
      * @param string $uniqueName The string that uniquely identifies this Add-on
      *                           installation
      * @return $this Fluent Builder
@@ -73,7 +73,7 @@ class CreateInstalledAddOnOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -100,7 +100,7 @@ class UpdateInstalledAddOnOptions extends Options {
 
     /**
      * Valid JSON object that conform to the configuration schema exposed by the associated Available Add-on resource. This is only required by Add-ons that need to be configured
-     * 
+     *
      * @param array $configuration The JSON object representing the configuration
      * @return $this Fluent Builder
      */
@@ -111,7 +111,7 @@ class UpdateInstalledAddOnOptions extends Options {
 
     /**
      * The human-readable string that uniquely identifies this Add-on installation for an Account.
-     * 
+     *
      * @param string $uniqueName The string that uniquely identifies this Add-on
      *                           installation
      * @return $this Fluent Builder
@@ -123,7 +123,7 @@ class UpdateInstalledAddOnOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

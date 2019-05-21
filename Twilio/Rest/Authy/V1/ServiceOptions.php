@@ -35,7 +35,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * A human readable description of this resource, up to 64 characters.
-     * 
+     *
      * @param string $friendlyName A human readable description of this resource.
      * @return $this Fluent Builder
      */
@@ -46,7 +46,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -23,8 +23,8 @@ abstract class WorkspaceOptions {
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
      * @param string $friendlyName Human readable description of this workspace
-     * @param boolean $multiTaskEnabled Enable or Disable Multitasking by passing
-     *                                  either true or False with the POST request.
+     * @param bool $multiTaskEnabled Enable or Disable Multitasking by passing
+     *                               either true or False with the POST request.
      * @param string $timeoutActivitySid The ID of the Activity that will be
      *                                   assigned to a Worker when a Task
      *                                   reservation times out without a response.
@@ -52,8 +52,8 @@ abstract class WorkspaceOptions {
      * @param string $eventsFilter Use this parameter to receive webhooks on
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
-     * @param boolean $multiTaskEnabled Multi tasking allows workers to handle
-     *                                  multiple tasks simultaneously.
+     * @param bool $multiTaskEnabled Multi tasking allows workers to handle
+     *                               multiple tasks simultaneously.
      * @param string $template One of the available template names.
      * @param string $prioritizeQueueOrder Use this parameter to configure whether
      *                                     to prioritize LIFO or FIFO when workers
@@ -77,8 +77,8 @@ class UpdateWorkspaceOptions extends Options {
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
      * @param string $friendlyName Human readable description of this workspace
-     * @param boolean $multiTaskEnabled Enable or Disable Multitasking by passing
-     *                                  either true or False with the POST request.
+     * @param bool $multiTaskEnabled Enable or Disable Multitasking by passing
+     *                               either true or False with the POST request.
      * @param string $timeoutActivitySid The ID of the Activity that will be
      *                                   assigned to a Worker when a Task
      *                                   reservation times out without a response.
@@ -99,7 +99,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * The ID of the Activity that will be used when new Workers are created in this Workspace.
-     * 
+     *
      * @param string $defaultActivitySid The ID of the Activity that will be used
      *                                   when new Workers are created in this
      *                                   Workspace.
@@ -112,7 +112,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * The Workspace will publish events to this URL. You can use this to gather data for reporting. See [Events][/docs/taskrouter/api/events] for more information.
-     * 
+     *
      * @param string $eventCallbackUrl The Workspace will publish events to this
      *                                 URL.
      * @return $this Fluent Builder
@@ -124,7 +124,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace. For example if 'EventsFilter=task.created,task.canceled,worker.activity.update', then TaskRouter will webhook to EventCallbackUrl only when a task is created, canceled or a worker activity is updated.
-     * 
+     *
      * @param string $eventsFilter Use this parameter to receive webhooks on
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
@@ -137,7 +137,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * Human readable description of this workspace (for example "Sales Call Center" or "Customer Support Team")
-     * 
+     *
      * @param string $friendlyName Human readable description of this workspace
      * @return $this Fluent Builder
      */
@@ -148,9 +148,9 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * Enable or Disable Multitasking by passing either *true* or *False* with the POST request. Learn more by visiting [Multitasking][/docs/taskrouter/multitasking].
-     * 
-     * @param boolean $multiTaskEnabled Enable or Disable Multitasking by passing
-     *                                  either true or False with the POST request.
+     *
+     * @param bool $multiTaskEnabled Enable or Disable Multitasking by passing
+     *                               either true or False with the POST request.
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {
@@ -160,7 +160,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * The ID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.
-     * 
+     *
      * @param string $timeoutActivitySid The ID of the Activity that will be
      *                                   assigned to a Worker when a Task
      *                                   reservation times out without a response.
@@ -173,7 +173,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues. Default is FIFO. [Click here][/docs/taskrouter/queue-ordering-last-first-out-lifo] to learn more about LIFO and the use of the parameter.
-     * 
+     *
      * @param string $prioritizeQueueOrder Use this parameter to configure whether
      *                                     to prioritize LIFO or FIFO when workers
      *                                     are receiving Tasks from combination of
@@ -187,7 +187,7 @@ class UpdateWorkspaceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -211,7 +211,7 @@ class ReadWorkspaceOptions extends Options {
 
     /**
      * Filter by a workspace's friendly name. This is a human readable description of this Workspace (for example "Customer Support" or "2014 Election Campaign")
-     * 
+     *
      * @param string $friendlyName Filter by a workspace's friendly name.
      * @return $this Fluent Builder
      */
@@ -222,7 +222,7 @@ class ReadWorkspaceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -243,8 +243,8 @@ class CreateWorkspaceOptions extends Options {
      * @param string $eventsFilter Use this parameter to receive webhooks on
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
-     * @param boolean $multiTaskEnabled Multi tasking allows workers to handle
-     *                                  multiple tasks simultaneously.
+     * @param bool $multiTaskEnabled Multi tasking allows workers to handle
+     *                               multiple tasks simultaneously.
      * @param string $template One of the available template names.
      * @param string $prioritizeQueueOrder Use this parameter to configure whether
      *                                     to prioritize LIFO or FIFO when workers
@@ -261,7 +261,7 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * If provided, the Workspace will publish events to this URL. You can use this to gather data for reporting. See Workspace Events for more information.
-     * 
+     *
      * @param string $eventCallbackUrl If provided, the Workspace will publish
      *                                 events to this URL.
      * @return $this Fluent Builder
@@ -273,7 +273,7 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace. For example if 'EventsFilter=task.created,task.canceled,worker.activity.update', then TaskRouter will webhook to EventCallbackUrl only when a task is created, canceled or a worker activity is updated.
-     * 
+     *
      * @param string $eventsFilter Use this parameter to receive webhooks on
      *                             EventCallbackUrl for specific events on a
      *                             workspace.
@@ -286,9 +286,9 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * Multi tasking allows workers to handle multiple tasks simultaneously. When enabled (MultiTaskEnabled=true), each worker will be eligible to receive parallel reservations up to the per-channel maximums defined in the Workers section. Default is disabled (MultiTaskEnabled=false), where each worker will only receive a new reservation when the previous task is completed. Learn more by visiting [Multitasking][/docs/taskrouter/multitasking].
-     * 
-     * @param boolean $multiTaskEnabled Multi tasking allows workers to handle
-     *                                  multiple tasks simultaneously.
+     *
+     * @param bool $multiTaskEnabled Multi tasking allows workers to handle
+     *                               multiple tasks simultaneously.
      * @return $this Fluent Builder
      */
     public function setMultiTaskEnabled($multiTaskEnabled) {
@@ -298,7 +298,7 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * One of the available template names. Will pre-configure this Workspace with the Workflow and Activities specified in the template. "NONE" will create a Workspace with a set of default activities and nothing else. "FIFO" will configure TaskRouter with a set of default activities and a single task queue for first-in, first-out distribution, useful if you want to see a simple TaskRouter configuration when getting started. Defaults to "NONE".
-     * 
+     *
      * @param string $template One of the available template names.
      * @return $this Fluent Builder
      */
@@ -309,7 +309,7 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues. Default is FIFO. [Click here][/docs/taskrouter/queue-ordering-last-first-out-lifo] to learn more about LIFO and the use of the parameter.
-     * 
+     *
      * @param string $prioritizeQueueOrder Use this parameter to configure whether
      *                                     to prioritize LIFO or FIFO when workers
      *                                     are receiving Tasks from combination of
@@ -323,7 +323,7 @@ class CreateWorkspaceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

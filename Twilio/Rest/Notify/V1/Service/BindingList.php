@@ -21,10 +21,11 @@ use Twilio\Version;
 class BindingList extends ListResource {
     /**
      * Construct the BindingList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @return \Twilio\Rest\Notify\V1\Service\BindingList 
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @return \Twilio\Rest\Notify\V1\Service\BindingList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -37,10 +38,11 @@ class BindingList extends ListResource {
 
     /**
      * Create a new BindingInstance
-     * 
-     * @param string $identity The Identity to which this Binding belongs to.
-     * @param string $bindingType The type of the Binding.
-     * @param string $address The address specific to the channel.
+     *
+     * @param string $identity The `identity` value that identifies the new
+     *                         resource's User
+     * @param string $bindingType The type of the Binding
+     * @param string $address The channel-specific address
      * @param array|Options $options Optional Arguments
      * @return BindingInstance Newly created BindingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -75,7 +77,7 @@ class BindingList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -99,7 +101,7 @@ class BindingList extends ListResource {
      * Reads BindingInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -118,7 +120,7 @@ class BindingList extends ListResource {
     /**
      * Retrieve a single page of BindingInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -149,7 +151,7 @@ class BindingList extends ListResource {
     /**
      * Retrieve a specific page of BindingInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of BindingInstance
      */
@@ -164,9 +166,9 @@ class BindingList extends ListResource {
 
     /**
      * Constructs a BindingContext
-     * 
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Notify\V1\Service\BindingContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Notify\V1\Service\BindingContext
      */
     public function getContext($sid) {
         return new BindingContext($this->version, $this->solution['serviceSid'], $sid);
@@ -174,7 +176,7 @@ class BindingList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -24,11 +24,11 @@ use Twilio\Version;
 class TaskQueuesStatisticsInstance extends InstanceResource {
     /**
      * Initialize the TaskQueuesStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The ID of the Workspace that owns this TaskQueue
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -67,7 +67,7 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
@@ -35,11 +35,11 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Initialize the InstalledAddOnInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique Installed Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnInstance 
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -64,7 +64,7 @@ class InstalledAddOnInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext Context for
      *                                                                this
      *                                                                InstalledAddOnInstance
@@ -79,7 +79,7 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Deletes the InstalledAddOnInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -89,7 +89,7 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Fetch a InstalledAddOnInstance
-     * 
+     *
      * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -99,7 +99,7 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Update the InstalledAddOnInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return InstalledAddOnInstance Updated InstalledAddOnInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -110,8 +110,8 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Access the extensions
-     * 
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList 
+     *
+     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList
      */
     protected function getExtensions() {
         return $this->proxy()->extensions;
@@ -119,7 +119,7 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -139,7 +139,7 @@ class InstalledAddOnInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

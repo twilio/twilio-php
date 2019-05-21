@@ -18,11 +18,11 @@ use Twilio\Version;
 class ParticipantList extends ListResource {
     /**
      * Construct the ParticipantList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $roomSid A system-generated 34-character string that uniquely
      *                        identifies.
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList
      */
     public function __construct(Version $version, $roomSid) {
         parent::__construct($version);
@@ -40,7 +40,7 @@ class ParticipantList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -64,7 +64,7 @@ class ParticipantList extends ListResource {
      * Reads ParticipantInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -83,7 +83,7 @@ class ParticipantList extends ListResource {
     /**
      * Retrieve a single page of ParticipantInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -114,7 +114,7 @@ class ParticipantList extends ListResource {
     /**
      * Retrieve a specific page of ParticipantInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of ParticipantInstance
      */
@@ -129,9 +129,10 @@ class ParticipantList extends ListResource {
 
     /**
      * Constructs a ParticipantContext
-     * 
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext 
+     *
+     * @param string $sid A system-generated 34-character string that uniquely
+     *                    identifies this Participant.
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantContext
      */
     public function getContext($sid) {
         return new ParticipantContext($this->version, $this->solution['roomSid'], $sid);
@@ -139,7 +140,7 @@ class ParticipantList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -27,11 +27,11 @@ use Twilio\Version;
 class PublicKeyInstance extends InstanceResource {
     /**
      * Initialize the PublicKeyInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid Fetch by unique Credential Sid
-     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyInstance 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class PublicKeyInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext Context for
      *                                                              this
      *                                                              PublicKeyInstance
@@ -67,7 +67,7 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Fetch a PublicKeyInstance
-     * 
+     *
      * @return PublicKeyInstance Fetched PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -77,7 +77,7 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Update the PublicKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return PublicKeyInstance Updated PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -88,7 +88,7 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Deletes the PublicKeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +98,7 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -118,7 +118,7 @@ class PublicKeyInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

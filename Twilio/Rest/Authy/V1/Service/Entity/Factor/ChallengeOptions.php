@@ -53,7 +53,7 @@ class CreateChallengeOptions extends Options {
 
     /**
      * The future date in which this Challenge will expire, given in ISO 8601 format (https://en.wikipedia.org/wiki/ISO_8601).
-     * 
+     *
      * @param \DateTime $expirationDate The future date in which this Challenge
      *                                  will expire
      * @return $this Fluent Builder
@@ -65,7 +65,7 @@ class CreateChallengeOptions extends Options {
 
     /**
      * Details provided to give context about the Challenge. Shown to the end user.
-     * 
+     *
      * @param string $details Public details provided to contextualize the Challenge
      * @return $this Fluent Builder
      */
@@ -76,7 +76,7 @@ class CreateChallengeOptions extends Options {
 
     /**
      * Details provided to give context about the Challenge. Not shown to the end user.
-     * 
+     *
      * @param string $hiddenDetails Hidden details provided to contextualize the
      *                              Challenge
      * @return $this Fluent Builder
@@ -88,7 +88,7 @@ class CreateChallengeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -112,7 +112,7 @@ class UpdateChallengeOptions extends Options {
 
     /**
      * The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code.
-     * 
+     *
      * @param string $authPayload Optional payload to verify the Challenge
      * @return $this Fluent Builder
      */
@@ -123,7 +123,7 @@ class UpdateChallengeOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

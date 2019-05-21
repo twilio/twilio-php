@@ -37,6 +37,29 @@ class MemberTest extends HolodeckTestCase {
             200,
             '
             {
+                "queue_sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_enqueued": "Tue, 07 Aug 2012 22:57:41 +0000",
+                "position": 1,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                "wait_time": 143
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchFrontResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "queue_sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_enqueued": "Tue, 07 Aug 2012 22:57:41 +0000",
                 "position": 1,
@@ -59,11 +82,11 @@ class MemberTest extends HolodeckTestCase {
         try {
             $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                      ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
+                                     ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('Url' => "https://example.com", 'Method' => "GET", );
+        $values = array('Url' => "https://example.com", );
 
         $this->assertRequest(new Request(
             'post',
@@ -78,6 +101,29 @@ class MemberTest extends HolodeckTestCase {
             200,
             '
             {
+                "queue_sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "date_enqueued": "Thu, 06 Dec 2018 18:42:47 +0000",
+                "position": 1,
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                "wait_time": 143
+            }
+            '
+        ));
+
+        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com");
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testDequeueFrontResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "queue_sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "date_enqueued": "Tue, 07 Aug 2012 22:57:41 +0000",
                 "position": 1,
@@ -89,7 +135,7 @@ class MemberTest extends HolodeckTestCase {
 
         $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->queues("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com", "GET");
+                                           ->members("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("https://example.com");
 
         $this->assertNotNull($actual);
     }
@@ -116,25 +162,23 @@ class MemberTest extends HolodeckTestCase {
             '
             {
                 "end": 0,
-                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50",
+                "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?PageSize=50&Page=0",
                 "next_page_uri": null,
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "previous_page_uri": null,
                 "queue_members": [
                     {
+                        "queue_sid": "QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "call_sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "date_enqueued": "Tue, 07 Aug 2012 22:57:41 +0000",
+                        "date_enqueued": "Mon, 17 Dec 2018 18:36:39 +0000",
                         "position": 1,
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
                         "wait_time": 124
                     }
                 ],
                 "start": 0,
-                "total": 1,
-                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json"
+                "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?PageSize=50&Page=0"
             }
             '
         ));
@@ -153,15 +197,12 @@ class MemberTest extends HolodeckTestCase {
             {
                 "end": 0,
                 "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50",
-                "last_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50",
                 "next_page_uri": null,
-                "num_pages": 1,
                 "page": 0,
                 "page_size": 50,
                 "previous_page_uri": null,
                 "queue_members": [],
                 "start": 0,
-                "total": 1,
                 "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json"
             }
             '

@@ -15,14 +15,14 @@ use Twilio\Rest\Voice\V1;
 
 /**
  * @property \Twilio\Rest\Voice\V1 v1
- * @property \Twilio\Rest\Voice\V1\VoicePermissionList voicePermissions
+ * @property \Twilio\Rest\Voice\V1\DialingPermissionsList dialingPermissions
  */
 class Voice extends Domain {
     protected $_v1 = null;
 
     /**
      * Construct the Voice Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Voice Domain for Voice
@@ -45,7 +45,7 @@ class Voice extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -61,7 +61,7 @@ class Voice extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -77,15 +77,15 @@ class Voice extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Voice\V1\VoicePermissionList 
+     * @return \Twilio\Rest\Voice\V1\DialingPermissionsList
      */
-    protected function getVoicePermissions() {
-        return $this->v1->voicePermissions;
+    protected function getDialingPermissions() {
+        return $this->v1->dialingPermissions;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

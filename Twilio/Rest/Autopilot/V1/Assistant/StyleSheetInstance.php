@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string accountSid
  * @property string assistantSid
  * @property string url
@@ -26,11 +26,12 @@ use Twilio\Version;
 class StyleSheetInstance extends InstanceResource {
     /**
      * Initialize the StyleSheetInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assistantSid The unique ID of the Assistant
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetInstance 
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetInstance
      */
     public function __construct(Version $version, array $payload, $assistantSid) {
         parent::__construct($version);
@@ -49,7 +50,7 @@ class StyleSheetInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetContext Context for
      *                                                               this
      *                                                               StyleSheetInstance
@@ -64,7 +65,7 @@ class StyleSheetInstance extends InstanceResource {
 
     /**
      * Fetch a StyleSheetInstance
-     * 
+     *
      * @return StyleSheetInstance Fetched StyleSheetInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -74,7 +75,7 @@ class StyleSheetInstance extends InstanceResource {
 
     /**
      * Update the StyleSheetInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return StyleSheetInstance Updated StyleSheetInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -85,7 +86,7 @@ class StyleSheetInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -105,7 +106,7 @@ class StyleSheetInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

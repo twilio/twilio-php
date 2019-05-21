@@ -14,11 +14,10 @@ use Twilio\Values;
 
 abstract class UserOptions {
     /**
-     * @param string $roleSid The unique id of the Role assigned to this user.
-     * @param string $attributes An optional string used to contain any metadata or
-     *                           other information for the User.
-     * @param string $friendlyName An optional human readable string representing
-     *                             the user.
+     * @param string $roleSid The SID of the Role assigned to this user
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param string $friendlyName A string to describe the new resource
      * @return CreateUserOptions Options builder
      */
     public static function create($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
@@ -26,12 +25,10 @@ abstract class UserOptions {
     }
 
     /**
-     * @param string $roleSid The unique id of the [Role][role] assigned to this
-     *                        user.
-     * @param string $attributes An optional string used to contain any metadata or
-     *                           other information for the User.
-     * @param string $friendlyName An optional human readable string representing
-     *                             the user.
+     * @param string $roleSid The SID id of the Role assigned to this user
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param string $friendlyName A string to describe the resource
      * @return UpdateUserOptions Options builder
      */
     public static function update($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
@@ -41,11 +38,10 @@ abstract class UserOptions {
 
 class CreateUserOptions extends Options {
     /**
-     * @param string $roleSid The unique id of the Role assigned to this user.
-     * @param string $attributes An optional string used to contain any metadata or
-     *                           other information for the User.
-     * @param string $friendlyName An optional human readable string representing
-     *                             the user.
+     * @param string $roleSid The SID of the Role assigned to this user
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param string $friendlyName A string to describe the new resource
      */
     public function __construct($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -54,9 +50,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The unique id of the [Role](https://www.twilio.com/docs/api/chat/rest/v1/roles) assigned to this user.
-     * 
-     * @param string $roleSid The unique id of the Role assigned to this user.
+     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User.
+     *
+     * @param string $roleSid The SID of the Role assigned to this user
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -65,10 +61,10 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * An optional string used to contain any metadata or other information for the User.  The string must contain structurally valid JSON if specified.
-     * 
-     * @param string $attributes An optional string used to contain any metadata or
-     *                           other information for the User.
+     * A valid JSON string that contains application-specific data.
+     *
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -77,10 +73,9 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * An optional human readable string representing the user.  Often used for display purposes.
-     * 
-     * @param string $friendlyName An optional human readable string representing
-     *                             the user.
+     * A descriptive string that you create to describe the new resource. This value is often used for display purposes.
+     *
+     * @param string $friendlyName A string to describe the new resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -90,7 +85,7 @@ class CreateUserOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -106,12 +101,10 @@ class CreateUserOptions extends Options {
 
 class UpdateUserOptions extends Options {
     /**
-     * @param string $roleSid The unique id of the [Role][role] assigned to this
-     *                        user.
-     * @param string $attributes An optional string used to contain any metadata or
-     *                           other information for the User.
-     * @param string $friendlyName An optional human readable string representing
-     *                             the user.
+     * @param string $roleSid The SID id of the Role assigned to this user
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
+     * @param string $friendlyName A string to describe the resource
      */
     public function __construct($roleSid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
@@ -120,10 +113,9 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The unique id of the [Role][role] assigned to this user.
-     * 
-     * @param string $roleSid The unique id of the [Role][role] assigned to this
-     *                        user.
+     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user.
+     *
+     * @param string $roleSid The SID id of the Role assigned to this user
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -132,10 +124,10 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * An optional string used to contain any metadata or other information for the User.  The string must contain structurally valid JSON if specified.
-     * 
-     * @param string $attributes An optional string used to contain any metadata or
-     *                           other information for the User.
+     * A valid JSON string that contains application-specific data.
+     *
+     * @param string $attributes A valid JSON string that contains
+     *                           application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -144,10 +136,9 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * An optional human readable string representing the user.  Often used for display purposes.
-     * 
-     * @param string $friendlyName An optional human readable string representing
-     *                             the user.
+     * A descriptive string that you create to describe the resource. It is often used for display purposes.
+     *
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -157,7 +148,7 @@ class UpdateUserOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

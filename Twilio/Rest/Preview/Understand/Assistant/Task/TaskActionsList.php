@@ -18,11 +18,11 @@ use Twilio\Version;
 class TaskActionsList extends ListResource {
     /**
      * Construct the TaskActionsList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $assistantSid The unique ID of the parent Assistant.
      * @param string $taskSid The unique ID of the Task.
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsList 
+     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsList
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
         parent::__construct($version);
@@ -33,8 +33,8 @@ class TaskActionsList extends ListResource {
 
     /**
      * Constructs a TaskActionsContext
-     * 
-     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsContext 
+     *
+     * @return \Twilio\Rest\Preview\Understand\Assistant\Task\TaskActionsContext
      */
     public function getContext() {
         return new TaskActionsContext(
@@ -46,7 +46,7 @@ class TaskActionsList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

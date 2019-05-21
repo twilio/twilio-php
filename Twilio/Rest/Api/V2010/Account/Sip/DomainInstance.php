@@ -33,7 +33,7 @@ use Twilio\Version;
  * @property string voiceStatusCallbackUrl
  * @property string voiceUrl
  * @property array subresourceUris
- * @property boolean sipRegistration
+ * @property bool sipRegistration
  */
 class DomainInstance extends InstanceResource {
     protected $_ipAccessControlListMappings = null;
@@ -42,13 +42,13 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Initialize the DomainInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @param string $sid Fetch by unique Domain Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainInstance 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -80,7 +80,7 @@ class DomainInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Sip\DomainContext Context for this
      *                                                          DomainInstance
      */
@@ -98,7 +98,7 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Fetch a DomainInstance
-     * 
+     *
      * @return DomainInstance Fetched DomainInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -108,7 +108,7 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Update the DomainInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return DomainInstance Updated DomainInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -119,7 +119,7 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Deletes the DomainInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -129,8 +129,8 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Access the ipAccessControlListMappings
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList
      */
     protected function getIpAccessControlListMappings() {
         return $this->proxy()->ipAccessControlListMappings;
@@ -138,8 +138,8 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Access the credentialListMappings
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList
      */
     protected function getCredentialListMappings() {
         return $this->proxy()->credentialListMappings;
@@ -147,8 +147,8 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Access the auth
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList
      */
     protected function getAuth() {
         return $this->proxy()->auth;
@@ -156,7 +156,7 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -176,7 +176,7 @@ class DomainInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

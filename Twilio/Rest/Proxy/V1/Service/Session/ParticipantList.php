@@ -20,11 +20,11 @@ use Twilio\Version;
 class ParticipantList extends ListResource {
     /**
      * Construct the ParticipantList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sessionSid Session Sid.
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList 
+     * @param string $serviceSid The SID of the resource's parent Service
+     * @param string $sessionSid The SID of the resource's parent Session
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList
      */
     public function __construct(Version $version, $serviceSid, $sessionSid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class ParticipantList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -65,7 +65,7 @@ class ParticipantList extends ListResource {
      * Reads ParticipantInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -83,7 +83,7 @@ class ParticipantList extends ListResource {
     /**
      * Retrieve a single page of ParticipantInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -108,7 +108,7 @@ class ParticipantList extends ListResource {
     /**
      * Retrieve a specific page of ParticipantInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of ParticipantInstance
      */
@@ -123,8 +123,8 @@ class ParticipantList extends ListResource {
 
     /**
      * Create a new ParticipantInstance
-     * 
-     * @param string $identifier The phone number of this Participant.
+     *
+     * @param string $identifier The phone number of the Participant
      * @param array|Options $options Optional Arguments
      * @return ParticipantInstance Newly created ParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -156,9 +156,9 @@ class ParticipantList extends ListResource {
 
     /**
      * Constructs a ParticipantContext
-     * 
-     * @param string $sid A string that uniquely identifies this Participant.
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext
      */
     public function getContext($sid) {
         return new ParticipantContext(
@@ -171,7 +171,7 @@ class ParticipantList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

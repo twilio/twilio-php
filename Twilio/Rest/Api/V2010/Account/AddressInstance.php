@@ -29,21 +29,22 @@ use Twilio\Version;
  * @property string sid
  * @property string street
  * @property string uri
- * @property boolean emergencyEnabled
- * @property boolean validated
+ * @property bool emergencyEnabled
+ * @property bool validated
+ * @property bool verified
  */
 class AddressInstance extends InstanceResource {
     protected $_dependentPhoneNumbers = null;
 
     /**
      * Initialize the AddressInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique id of the Account responsible for this
-     *                           address.
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Api\V2010\Account\AddressInstance 
+     * @param string $accountSid The SID of the Account that is responsible for the
+     *                           resource
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\AddressInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $sid = null) {
         parent::__construct($version);
@@ -64,6 +65,7 @@ class AddressInstance extends InstanceResource {
             'uri' => Values::array_get($payload, 'uri'),
             'emergencyEnabled' => Values::array_get($payload, 'emergency_enabled'),
             'validated' => Values::array_get($payload, 'validated'),
+            'verified' => Values::array_get($payload, 'verified'),
         );
 
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], );
@@ -72,7 +74,7 @@ class AddressInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\AddressContext Context for this
      *                                                       AddressInstance
      */
@@ -90,7 +92,7 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Deletes the AddressInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -100,7 +102,7 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Fetch a AddressInstance
-     * 
+     *
      * @return AddressInstance Fetched AddressInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -110,7 +112,7 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Update the AddressInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AddressInstance Updated AddressInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -121,8 +123,8 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Access the dependentPhoneNumbers
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberList
      */
     protected function getDependentPhoneNumbers() {
         return $this->proxy()->dependentPhoneNumbers;
@@ -130,7 +132,7 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -150,7 +152,7 @@ class AddressInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

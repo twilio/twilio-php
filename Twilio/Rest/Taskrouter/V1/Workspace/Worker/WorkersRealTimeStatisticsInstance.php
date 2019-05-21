@@ -18,18 +18,18 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property array activityStatistics
- * @property integer totalWorkers
+ * @property int totalWorkers
  * @property string workspaceSid
  * @property string url
  */
 class WorkersRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkersRealTimeStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
@@ -49,7 +49,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsContext Context for this
      *                                                                                      WorkersRealTimeStatisticsInstance
      */
@@ -66,7 +66,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkersRealTimeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkersRealTimeStatisticsInstance Fetched
      *                                           WorkersRealTimeStatisticsInstance
@@ -78,7 +78,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -98,7 +98,7 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

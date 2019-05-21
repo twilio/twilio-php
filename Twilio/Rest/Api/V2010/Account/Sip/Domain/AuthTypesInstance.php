@@ -17,13 +17,12 @@ use Twilio\Version;
 class AuthTypesInstance extends InstanceResource {
     /**
      * Initialize the AuthTypesInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique id of the account responsible for this
-     *                           domain
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $domainSid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $domainSid) {
         parent::__construct($version);
@@ -33,7 +32,7 @@ class AuthTypesInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -53,7 +52,7 @@ class AuthTypesInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -26,10 +26,10 @@ class CallList extends ListResource {
 
     /**
      * Construct the CallList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created this resource
-     * @return \Twilio\Rest\Api\V2010\Account\CallList 
+     * @return \Twilio\Rest\Api\V2010\Account\CallList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class CallList extends ListResource {
 
     /**
      * Create a new CallInstance
-     * 
+     *
      * @param string $to Phone number, SIP address, or client identifier to call
      * @param string $from Twilio number from which to originate the call
      * @param array|Options $options Optional Arguments
@@ -64,7 +64,6 @@ class CallList extends ListResource {
             'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SendDigits' => $options['sendDigits'],
-            'IfMachine' => $options['ifMachine'],
             'Timeout' => $options['timeout'],
             'Record' => Serialize::booleanToString($options['record']),
             'RecordingChannels' => $options['recordingChannels'],
@@ -77,6 +76,9 @@ class CallList extends ListResource {
             'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
             'Trim' => $options['trim'],
             'CallerId' => $options['callerId'],
+            'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
+            'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
+            'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
         ));
 
         $payload = $this->version->create(
@@ -96,7 +98,7 @@ class CallList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -120,7 +122,7 @@ class CallList extends ListResource {
      * Reads CallInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -139,7 +141,7 @@ class CallList extends ListResource {
     /**
      * Retrieve a single page of CallInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -176,7 +178,7 @@ class CallList extends ListResource {
     /**
      * Retrieve a specific page of CallInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of CallInstance
      */
@@ -202,9 +204,9 @@ class CallList extends ListResource {
 
     /**
      * Constructs a CallContext
-     * 
+     *
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\CallContext 
+     * @return \Twilio\Rest\Api\V2010\Account\CallContext
      */
     public function getContext($sid) {
         return new CallContext($this->version, $this->solution['accountSid'], $sid);
@@ -212,7 +214,7 @@ class CallList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -228,7 +230,7 @@ class CallList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -245,7 +247,7 @@ class CallList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -17,10 +17,11 @@ use Twilio\Version;
 class UserList extends ListResource {
     /**
      * Construct the UserList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique id of the Service this user belongs to.
-     * @return \Twilio\Rest\IpMessaging\V2\Service\UserList 
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @return \Twilio\Rest\IpMessaging\V2\Service\UserList
      */
     public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
@@ -33,9 +34,9 @@ class UserList extends ListResource {
 
     /**
      * Create a new UserInstance
-     * 
-     * @param string $identity A unique string that identifies the user within this
-     *                         service - often a username or email address.
+     *
+     * @param string $identity The `identity` value that identifies the new
+     *                         resource's User
      * @param array|Options $options Optional Arguments
      * @return UserInstance Newly created UserInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -67,7 +68,7 @@ class UserList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -90,7 +91,7 @@ class UserList extends ListResource {
      * Reads UserInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -108,7 +109,7 @@ class UserList extends ListResource {
     /**
      * Retrieve a single page of UserInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
@@ -133,7 +134,7 @@ class UserList extends ListResource {
     /**
      * Retrieve a specific page of UserInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of UserInstance
      */
@@ -148,9 +149,9 @@ class UserList extends ListResource {
 
     /**
      * Constructs a UserContext
-     * 
-     * @param string $sid Key that uniquely defines the user to fetch.
-     * @return \Twilio\Rest\IpMessaging\V2\Service\UserContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\IpMessaging\V2\Service\UserContext
      */
     public function getContext($sid) {
         return new UserContext($this->version, $this->solution['serviceSid'], $sid);
@@ -158,7 +159,7 @@ class UserList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

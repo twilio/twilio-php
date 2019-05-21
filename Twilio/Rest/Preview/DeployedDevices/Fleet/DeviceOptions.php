@@ -21,7 +21,7 @@ abstract class DeviceOptions {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return CreateDeviceOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
@@ -41,7 +41,7 @@ abstract class DeviceOptions {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      * @return UpdateDeviceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
@@ -55,7 +55,7 @@ class CreateDeviceOptions extends Options {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      */
     public function __construct($uniqueName = Values::NONE, $friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -67,7 +67,7 @@ class CreateDeviceOptions extends Options {
 
     /**
      * Provides a unique and addressable name to be assigned to this Device, to be used in addition to SID, up to 128 characters long.
-     * 
+     *
      * @param string $uniqueName A unique, addressable name of this Device.
      * @return $this Fluent Builder
      */
@@ -78,7 +78,7 @@ class CreateDeviceOptions extends Options {
 
     /**
      * Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName A human readable description for this Device.
      * @return $this Fluent Builder
      */
@@ -89,7 +89,7 @@ class CreateDeviceOptions extends Options {
 
     /**
      * Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
-     * 
+     *
      * @param string $identity An identifier of the Device user.
      * @return $this Fluent Builder
      */
@@ -100,7 +100,7 @@ class CreateDeviceOptions extends Options {
 
     /**
      * Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
-     * 
+     *
      * @param string $deploymentSid The unique SID of the Deployment group.
      * @return $this Fluent Builder
      */
@@ -111,8 +111,8 @@ class CreateDeviceOptions extends Options {
 
     /**
      * The enabled
-     * 
-     * @param boolean $enabled The enabled
+     *
+     * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -122,7 +122,7 @@ class CreateDeviceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -147,7 +147,7 @@ class ReadDeviceOptions extends Options {
 
     /**
      * Filters the resulting list of Devices by a unique string identifier of the Deployment they are associated with.
-     * 
+     *
      * @param string $deploymentSid Find all Devices grouped under the specified
      *                              Deployment.
      * @return $this Fluent Builder
@@ -159,7 +159,7 @@ class ReadDeviceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -178,7 +178,7 @@ class UpdateDeviceOptions extends Options {
      * @param string $friendlyName A human readable description for this Device.
      * @param string $identity An identifier of the Device user.
      * @param string $deploymentSid The unique SID of the Deployment group.
-     * @param boolean $enabled The enabled
+     * @param bool $enabled The enabled
      */
     public function __construct($friendlyName = Values::NONE, $identity = Values::NONE, $deploymentSid = Values::NONE, $enabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -189,7 +189,7 @@ class UpdateDeviceOptions extends Options {
 
     /**
      * Provides a human readable descriptive text to be assigned to this Device, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName A human readable description for this Device.
      * @return $this Fluent Builder
      */
@@ -200,7 +200,7 @@ class UpdateDeviceOptions extends Options {
 
     /**
      * Provides an arbitrary string identifier representing a human user to be associated with this Device, up to 256 characters long.
-     * 
+     *
      * @param string $identity An identifier of the Device user.
      * @return $this Fluent Builder
      */
@@ -211,7 +211,7 @@ class UpdateDeviceOptions extends Options {
 
     /**
      * Specifies the unique string identifier of the Deployment group that this Device is going to be associated with.
-     * 
+     *
      * @param string $deploymentSid The unique SID of the Deployment group.
      * @return $this Fluent Builder
      */
@@ -222,8 +222,8 @@ class UpdateDeviceOptions extends Options {
 
     /**
      * The enabled
-     * 
-     * @param boolean $enabled The enabled
+     *
+     * @param bool $enabled The enabled
      * @return $this Fluent Builder
      */
     public function setEnabled($enabled) {
@@ -233,7 +233,7 @@ class UpdateDeviceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

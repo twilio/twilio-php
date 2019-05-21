@@ -34,12 +34,12 @@ use Twilio\Version;
 class DailyInstance extends InstanceResource {
     /**
      * Initialize the DailyInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Usage\Record\DailyInstance
      */
     public function __construct(Version $version, array $payload, $accountSid) {
         parent::__construct($version);
@@ -67,7 +67,7 @@ class DailyInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -87,7 +87,7 @@ class DailyInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

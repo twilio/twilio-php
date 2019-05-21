@@ -16,11 +16,11 @@ use Twilio\Version;
 class ExecutionContextContext extends InstanceContext {
     /**
      * Initialize the ExecutionContextContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $executionSid Execution Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextContext 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextContext
      */
     public function __construct(Version $version, $flowSid, $executionSid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class ExecutionContextContext extends InstanceContext {
 
     /**
      * Fetch a ExecutionContextInstance
-     * 
+     *
      * @return ExecutionContextInstance Fetched ExecutionContextInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +56,7 @@ class ExecutionContextContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

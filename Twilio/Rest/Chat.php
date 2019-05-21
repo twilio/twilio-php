@@ -28,7 +28,7 @@ class Chat extends Domain {
 
     /**
      * Construct the Chat Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Chat Domain for Chat
@@ -61,7 +61,7 @@ class Chat extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -77,7 +77,7 @@ class Chat extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -93,30 +93,30 @@ class Chat extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Chat\V2\CredentialList 
+     * @return \Twilio\Rest\Chat\V2\CredentialList
      */
     protected function getCredentials() {
         return $this->v2->credentials;
     }
 
     /**
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V2\CredentialContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Chat\V2\CredentialContext
      */
     protected function contextCredentials($sid) {
         return $this->v2->credentials($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Chat\V2\ServiceList 
+     * @return \Twilio\Rest\Chat\V2\ServiceList
      */
     protected function getServices() {
         return $this->v2->services;
     }
 
     /**
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V2\ServiceContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Chat\V2\ServiceContext
      */
     protected function contextServices($sid) {
         return $this->v2->services($sid);
@@ -124,7 +124,7 @@ class Chat extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

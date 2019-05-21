@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string from
@@ -26,8 +26,8 @@ use Twilio\Version;
  * @property string quality
  * @property string mediaSid
  * @property string mediaUrl
- * @property integer numPages
- * @property integer duration
+ * @property int numPages
+ * @property int duration
  * @property string status
  * @property string direction
  * @property string apiVersion
@@ -43,11 +43,11 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Initialize the FaxInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid A string that uniquely identifies this fax.
-     * @return \Twilio\Rest\Fax\V1\FaxInstance 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Fax\V1\FaxInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -80,7 +80,7 @@ class FaxInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Fax\V1\FaxContext Context for this FaxInstance
      */
     protected function proxy() {
@@ -93,7 +93,7 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Fetch a FaxInstance
-     * 
+     *
      * @return FaxInstance Fetched FaxInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,7 +103,7 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Update the FaxInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Updated FaxInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -114,7 +114,7 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Deletes the FaxInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -124,8 +124,8 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Access the media
-     * 
-     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList 
+     *
+     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList
      */
     protected function getMedia() {
         return $this->proxy()->media;
@@ -133,7 +133,7 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -153,7 +153,7 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

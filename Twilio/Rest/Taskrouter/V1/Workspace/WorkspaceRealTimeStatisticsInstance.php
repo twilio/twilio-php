@@ -18,22 +18,23 @@ use Twilio\Version;
 /**
  * @property string accountSid
  * @property array activityStatistics
- * @property integer longestTaskWaitingAge
+ * @property int longestTaskWaitingAge
+ * @property string longestTaskWaitingSid
  * @property array tasksByPriority
  * @property array tasksByStatus
- * @property integer totalTasks
- * @property integer totalWorkers
+ * @property int totalTasks
+ * @property int totalWorkers
  * @property string workspaceSid
  * @property string url
  */
 class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Initialize the WorkspaceRealTimeStatisticsInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The workspace_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {
         parent::__construct($version);
@@ -43,6 +44,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'activityStatistics' => Values::array_get($payload, 'activity_statistics'),
             'longestTaskWaitingAge' => Values::array_get($payload, 'longest_task_waiting_age'),
+            'longestTaskWaitingSid' => Values::array_get($payload, 'longest_task_waiting_sid'),
             'tasksByPriority' => Values::array_get($payload, 'tasks_by_priority'),
             'tasksByStatus' => Values::array_get($payload, 'tasks_by_status'),
             'totalTasks' => Values::array_get($payload, 'total_tasks'),
@@ -57,7 +59,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsContext Context for this
      *                                                                                 WorkspaceRealTimeStatisticsInstance
      */
@@ -74,7 +76,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Fetch a WorkspaceRealTimeStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceRealTimeStatisticsInstance Fetched
      *                                             WorkspaceRealTimeStatisticsInstance
@@ -86,7 +88,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -106,7 +108,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

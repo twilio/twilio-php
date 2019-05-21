@@ -32,7 +32,7 @@ class FetchWorkersRealTimeStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
-     * 
+     *
      * @param string $taskChannel Filter cumulative statistics by TaskChannel.
      * @return $this Fluent Builder
      */
@@ -43,7 +43,7 @@ class FetchWorkersRealTimeStatisticsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

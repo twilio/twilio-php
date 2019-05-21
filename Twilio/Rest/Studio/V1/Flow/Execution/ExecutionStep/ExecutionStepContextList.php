@@ -15,12 +15,12 @@ use Twilio\Version;
 class ExecutionStepContextList extends ListResource {
     /**
      * Construct the ExecutionStepContextList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $flowSid Flow Sid.
      * @param string $executionSid Execution Sid.
      * @param string $stepSid Step Sid.
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList 
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList
      */
     public function __construct(Version $version, $flowSid, $executionSid, $stepSid) {
         parent::__construct($version);
@@ -35,8 +35,8 @@ class ExecutionStepContextList extends ListResource {
 
     /**
      * Constructs a ExecutionStepContextContext
-     * 
-     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextContext 
+     *
+     * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextContext
      */
     public function getContext() {
         return new ExecutionStepContextContext(
@@ -49,7 +49,7 @@ class ExecutionStepContextList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

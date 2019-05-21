@@ -30,7 +30,7 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param string $status Set to disconnected to remove participant.
+     * @param string $status Set to `disconnected` to remove participant.
      * @return UpdateParticipantOptions Options builder
      */
     public static function update($status = Values::NONE) {
@@ -59,7 +59,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Only show Participants with the given Status.  For `in-progress` Rooms the default Status is `connected`, for `completed` Rooms only `disconnected` Participants are returned.
-     * 
+     *
      * @param string $status Only show Participants with the given Status.
      * @return $this Fluent Builder
      */
@@ -70,7 +70,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Only show Participants that connected to the Room using the provided Identity.
-     * 
+     *
      * @param string $identity Only show Participants that connected to the Room
      *                         using the provided Identity.
      * @return $this Fluent Builder
@@ -82,7 +82,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Only show Participants that started after this date, given as an [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC).
-     * 
+     *
      * @param \DateTime $dateCreatedAfter Only show Participants that started after
      *                                    this date, given as an UTC ISO 8601
      *                                    Timestamp.
@@ -95,7 +95,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Only show Participants that started before this date, given as an [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC).
-     * 
+     *
      * @param \DateTime $dateCreatedBefore Only show Participants that started
      *                                     before this date, given as an UTC ISO
      *                                     8601 Timestamp.
@@ -108,7 +108,7 @@ class ReadParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -124,7 +124,7 @@ class ReadParticipantOptions extends Options {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param string $status Set to disconnected to remove participant.
+     * @param string $status Set to `disconnected` to remove participant.
      */
     public function __construct($status = Values::NONE) {
         $this->options['status'] = $status;
@@ -132,8 +132,8 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Set to `disconnected` to remove participant.
-     * 
-     * @param string $status Set to disconnected to remove participant.
+     *
+     * @param string $status Set to `disconnected` to remove participant.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -143,7 +143,7 @@ class UpdateParticipantOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

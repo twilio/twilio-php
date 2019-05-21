@@ -17,13 +17,13 @@ use Twilio\Version;
 class RecordingContext extends InstanceContext {
     /**
      * Initialize the RecordingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The SID of the Account that created the
-     *                           resource(s) to fetch
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
      * @param string $conferenceSid Fetch by unique Conference SID for the recording
-     * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\Conference\RecordingContext
      */
     public function __construct(Version $version, $accountSid, $conferenceSid, $sid) {
         parent::__construct($version);
@@ -40,8 +40,8 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Update the RecordingInstance
-     * 
-     * @param string $status The new status of the resource
+     *
+     * @param string $status The new status of the recording
      * @param array|Options $options Optional Arguments
      * @return RecordingInstance Updated RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -69,7 +69,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Fetch a RecordingInstance
-     * 
+     *
      * @return RecordingInstance Fetched RecordingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -93,7 +93,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Deletes the RecordingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -103,7 +103,7 @@ class RecordingContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -19,7 +19,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList documentPermissions
  * @method \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext documentPermissions(string $identity)
  */
@@ -28,11 +28,11 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Initialize the DocumentContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Sync\V1\Service\DocumentContext 
+     * @return \Twilio\Rest\Sync\V1\Service\DocumentContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -45,7 +45,7 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Fetch a DocumentInstance
-     * 
+     *
      * @return DocumentInstance Fetched DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -68,7 +68,7 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Deletes the DocumentInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -78,7 +78,7 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Update the DocumentInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return DocumentInstance Updated DocumentInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -108,8 +108,8 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Access the documentPermissions
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList
      */
     protected function getDocumentPermissions() {
         if (!$this->_documentPermissions) {
@@ -125,7 +125,7 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -141,7 +141,7 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -158,7 +158,7 @@ class DocumentContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -19,9 +19,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Connect child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Connect Child element.
      */
     public function connect($attributes = array()) {
         return $this->nest(new Voice\Connect($attributes));
@@ -29,19 +29,19 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Dial child.
-     * 
+     *
      * @param string $number Phone number to dial
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Dial Child element.
      */
-    public function dial($number, $attributes = array()) {
+    public function dial($number = null, $attributes = array()) {
         return $this->nest(new Voice\Dial($number, $attributes));
     }
 
     /**
      * Add Echo child.
-     * 
-     * @return TwiML Child element.
+     *
+     * @return Voice\Echo_ Child element.
      */
     public function echo_() {
         return $this->nest(new Voice\Echo_());
@@ -49,10 +49,10 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Enqueue child.
-     * 
+     *
      * @param string $name Friendly name
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Enqueue Child element.
      */
     public function enqueue($name = null, $attributes = array()) {
         return $this->nest(new Voice\Enqueue($name, $attributes));
@@ -60,9 +60,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Gather child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Gather Child element.
      */
     public function gather($attributes = array()) {
         return $this->nest(new Voice\Gather($attributes));
@@ -70,8 +70,8 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Hangup child.
-     * 
-     * @return TwiML Child element.
+     *
+     * @return Voice\Hangup Child element.
      */
     public function hangup() {
         return $this->nest(new Voice\Hangup());
@@ -79,8 +79,8 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Leave child.
-     * 
-     * @return TwiML Child element.
+     *
+     * @return Voice\Leave Child element.
      */
     public function leave() {
         return $this->nest(new Voice\Leave());
@@ -88,9 +88,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Pause child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Pause Child element.
      */
     public function pause($attributes = array()) {
         return $this->nest(new Voice\Pause($attributes));
@@ -98,10 +98,10 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Play child.
-     * 
-     * @param url $url Media URL
+     *
+     * @param string $url Media URL
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Play Child element.
      */
     public function play($url = null, $attributes = array()) {
         return $this->nest(new Voice\Play($url, $attributes));
@@ -109,10 +109,10 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Queue child.
-     * 
+     *
      * @param string $name Queue name
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Queue Child element.
      */
     public function queue($name, $attributes = array()) {
         return $this->nest(new Voice\Queue($name, $attributes));
@@ -120,9 +120,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Record child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Record Child element.
      */
     public function record($attributes = array()) {
         return $this->nest(new Voice\Record($attributes));
@@ -130,10 +130,10 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Redirect child.
-     * 
-     * @param url $url Redirect URL
+     *
+     * @param string $url Redirect URL
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Redirect Child element.
      */
     public function redirect($url, $attributes = array()) {
         return $this->nest(new Voice\Redirect($url, $attributes));
@@ -141,9 +141,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Reject child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Reject Child element.
      */
     public function reject($attributes = array()) {
         return $this->nest(new Voice\Reject($attributes));
@@ -151,10 +151,10 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Say child.
-     * 
+     *
      * @param string $message Message to say
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Say Child element.
      */
     public function say($message, $attributes = array()) {
         return $this->nest(new Voice\Say($message, $attributes));
@@ -162,10 +162,10 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Sms child.
-     * 
+     *
      * @param string $message Message body
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Sms Child element.
      */
     public function sms($message, $attributes = array()) {
         return $this->nest(new Voice\Sms($message, $attributes));
@@ -173,9 +173,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Pay child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Pay Child element.
      */
     public function pay($attributes = array()) {
         return $this->nest(new Voice\Pay($attributes));
@@ -183,9 +183,9 @@ class VoiceResponse extends TwiML {
 
     /**
      * Add Prompt child.
-     * 
+     *
      * @param array $attributes Optional attributes
-     * @return TwiML Child element.
+     * @return Voice\Prompt Child element.
      */
     public function prompt($attributes = array()) {
         return $this->nest(new Voice\Prompt($attributes));

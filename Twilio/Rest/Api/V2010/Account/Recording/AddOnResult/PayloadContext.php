@@ -16,13 +16,17 @@ use Twilio\Version;
 class PayloadContext extends InstanceContext {
     /**
      * Initialize the PayloadContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $referenceSid The reference_sid
-     * @param string $addOnResultSid The add_on_result_sid
-     * @param string $sid Fetch by unique payload Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext 
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource that contains the payload
+     *                             to fetch belongs
+     * @param string $addOnResultSid The SID of the AddOnResult to which the
+     *                               payload to fetch belongs
+     * @param string $sid The unique string that identifies the resource to fetch
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext
      */
     public function __construct(Version $version, $accountSid, $referenceSid, $addOnResultSid, $sid) {
         parent::__construct($version);
@@ -40,7 +44,7 @@ class PayloadContext extends InstanceContext {
 
     /**
      * Fetch a PayloadInstance
-     * 
+     *
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -65,7 +69,7 @@ class PayloadContext extends InstanceContext {
 
     /**
      * Deletes the PayloadInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -75,7 +79,7 @@ class PayloadContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

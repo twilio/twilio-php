@@ -30,13 +30,15 @@ use Twilio\Version;
 class WebhookInstance extends InstanceResource {
     /**
      * Initialize the WebhookInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
-     * @param string $channelSid The channel_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookInstance 
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $channelSid The SID of the Channel the ChannelWebhook resource
+     *                           belongs to
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {
         parent::__construct($version);
@@ -64,7 +66,7 @@ class WebhookInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookContext Context for this
      *                                                             WebhookInstance
      */
@@ -83,7 +85,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Fetch a WebhookInstance
-     * 
+     *
      * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -93,7 +95,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Update the WebhookInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -104,7 +106,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Deletes the WebhookInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -114,7 +116,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -134,7 +136,7 @@ class WebhookInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -32,14 +32,14 @@ use Twilio\Version;
 class UserBindingInstance extends InstanceResource {
     /**
      * Initialize the UserBindingInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique id of the Service this binding belongs
-     *                           to.
-     * @param string $userSid The unique id of the User for this binding.
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingInstance 
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $userSid The SID of the User for the binding
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid, $sid = null) {
         parent::__construct($version);
@@ -70,7 +70,7 @@ class UserBindingInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Chat\V2\Service\User\UserBindingContext Context for
      *                                                              this
      *                                                              UserBindingInstance
@@ -90,7 +90,7 @@ class UserBindingInstance extends InstanceResource {
 
     /**
      * Fetch a UserBindingInstance
-     * 
+     *
      * @return UserBindingInstance Fetched UserBindingInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -100,7 +100,7 @@ class UserBindingInstance extends InstanceResource {
 
     /**
      * Deletes the UserBindingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -110,7 +110,7 @@ class UserBindingInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -130,7 +130,7 @@ class UserBindingInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

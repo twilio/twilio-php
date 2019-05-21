@@ -16,14 +16,14 @@ use Twilio\Version;
 class MediaContext extends InstanceContext {
     /**
      * Initialize the MediaContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The SID of the Account that created the
      *                           resource(s) to fetch
      * @param string $messageSid The SID of the Message resource that this Media
      *                           resource belongs to
      * @param string $sid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Message\MediaContext
      */
     public function __construct(Version $version, $accountSid, $messageSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class MediaContext extends InstanceContext {
 
     /**
      * Deletes the MediaInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -46,7 +46,7 @@ class MediaContext extends InstanceContext {
 
     /**
      * Fetch a MediaInstance
-     * 
+     *
      * @return MediaInstance Fetched MediaInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class MediaContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

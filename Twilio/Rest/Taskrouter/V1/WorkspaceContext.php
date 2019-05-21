@@ -62,10 +62,10 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Initialize the WorkspaceContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext 
+     * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -78,7 +78,7 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Fetch a WorkspaceInstance
-     * 
+     *
      * @return WorkspaceInstance Fetched WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -96,7 +96,7 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Update the WorkspaceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Updated WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -126,7 +126,7 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Deletes the WorkspaceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -136,8 +136,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the activities
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\ActivityList
      */
     protected function getActivities() {
         if (!$this->_activities) {
@@ -149,8 +149,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the events
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\EventList
      */
     protected function getEvents() {
         if (!$this->_events) {
@@ -162,8 +162,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the tasks
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList
      */
     protected function getTasks() {
         if (!$this->_tasks) {
@@ -175,8 +175,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the taskQueues
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList
      */
     protected function getTaskQueues() {
         if (!$this->_taskQueues) {
@@ -188,8 +188,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the workers
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList
      */
     protected function getWorkers() {
         if (!$this->_workers) {
@@ -201,8 +201,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the workflows
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList
      */
     protected function getWorkflows() {
         if (!$this->_workflows) {
@@ -214,8 +214,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList
      */
     protected function getStatistics() {
         if (!$this->_statistics) {
@@ -227,8 +227,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the realTimeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList
      */
     protected function getRealTimeStatistics() {
         if (!$this->_realTimeStatistics) {
@@ -243,8 +243,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the cumulativeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList
      */
     protected function getCumulativeStatistics() {
         if (!$this->_cumulativeStatistics) {
@@ -259,8 +259,8 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Access the taskChannels
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList
      */
     protected function getTaskChannels() {
         if (!$this->_taskChannels) {
@@ -272,7 +272,7 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -288,7 +288,7 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -305,7 +305,7 @@ class WorkspaceContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

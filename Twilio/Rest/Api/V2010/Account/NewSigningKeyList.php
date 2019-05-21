@@ -17,11 +17,11 @@ use Twilio\Version;
 class NewSigningKeyList extends ListResource {
     /**
      * Construct the NewSigningKeyList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $accountSid A 34 character string that uniquely identifies
      *                           this resource.
-     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList 
+     * @return \Twilio\Rest\Api\V2010\Account\NewSigningKeyList
      */
     public function __construct(Version $version, $accountSid) {
         parent::__construct($version);
@@ -34,7 +34,7 @@ class NewSigningKeyList extends ListResource {
 
     /**
      * Create a new NewSigningKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return NewSigningKeyInstance Newly created NewSigningKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -56,7 +56,7 @@ class NewSigningKeyList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

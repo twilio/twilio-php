@@ -19,8 +19,8 @@ abstract class DocumentOptions {
     /**
      * @param string $uniqueName Human-readable name for this document
      * @param array $data JSON data to be stored in this document
-     * @param integer $ttl Time-to-live of this Document in seconds, defaults to no
-     *                     expiration.
+     * @param int $ttl Time-to-live of this Document in seconds, defaults to no
+     *                 expiration.
      * @return CreateDocumentOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE) {
@@ -30,7 +30,7 @@ abstract class DocumentOptions {
     /**
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Document.
-     * @param integer $ttl New time-to-live of this Document in seconds.
+     * @param int $ttl New time-to-live of this Document in seconds.
      * @return UpdateDocumentOptions Options builder
      */
     public static function update($data = Values::NONE, $ttl = Values::NONE) {
@@ -42,8 +42,8 @@ class CreateDocumentOptions extends Options {
     /**
      * @param string $uniqueName Human-readable name for this document
      * @param array $data JSON data to be stored in this document
-     * @param integer $ttl Time-to-live of this Document in seconds, defaults to no
-     *                     expiration.
+     * @param int $ttl Time-to-live of this Document in seconds, defaults to no
+     *                 expiration.
      */
     public function __construct($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -53,7 +53,7 @@ class CreateDocumentOptions extends Options {
 
     /**
      * Human-readable name for this document
-     * 
+     *
      * @param string $uniqueName Human-readable name for this document
      * @return $this Fluent Builder
      */
@@ -64,7 +64,7 @@ class CreateDocumentOptions extends Options {
 
     /**
      * JSON data to be stored in this document
-     * 
+     *
      * @param array $data JSON data to be stored in this document
      * @return $this Fluent Builder
      */
@@ -75,9 +75,9 @@ class CreateDocumentOptions extends Options {
 
     /**
      * Time-to-live of this Document in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
-     * @param integer $ttl Time-to-live of this Document in seconds, defaults to no
-     *                     expiration.
+     *
+     * @param int $ttl Time-to-live of this Document in seconds, defaults to no
+     *                 expiration.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -87,7 +87,7 @@ class CreateDocumentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -105,7 +105,7 @@ class UpdateDocumentOptions extends Options {
     /**
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Document.
-     * @param integer $ttl New time-to-live of this Document in seconds.
+     * @param int $ttl New time-to-live of this Document in seconds.
      */
     public function __construct($data = Values::NONE, $ttl = Values::NONE) {
         $this->options['data'] = $data;
@@ -114,7 +114,7 @@ class UpdateDocumentOptions extends Options {
 
     /**
      * Contains an arbitrary JSON object to be stored in this Document. Serialized to string to respect HTTP form input, up to 16KB.
-     * 
+     *
      * @param array $data Contains an arbitrary JSON object to be stored in this
      *                    Document.
      * @return $this Fluent Builder
@@ -126,8 +126,8 @@ class UpdateDocumentOptions extends Options {
 
     /**
      * New time-to-live of this Document in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
-     * 
-     * @param integer $ttl New time-to-live of this Document in seconds.
+     *
+     * @param int $ttl New time-to-live of this Document in seconds.
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -137,7 +137,7 @@ class UpdateDocumentOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

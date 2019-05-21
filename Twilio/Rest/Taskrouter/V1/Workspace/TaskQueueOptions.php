@@ -24,9 +24,9 @@ abstract class TaskQueueOptions {
      * @param string $assignmentActivitySid ActivitySID that will be assigned to
      *                                      Workers when they are assigned a task
      *                                      from this TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @return UpdateTaskQueueOptions Options builder
@@ -54,9 +54,9 @@ abstract class TaskQueueOptions {
      * @param string $targetWorkers A string describing the Worker selection
      *                              criteria for any Tasks that enter this
      *                              TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @param string $reservationActivitySid ActivitySID to assign workers once a
@@ -82,9 +82,9 @@ class UpdateTaskQueueOptions extends Options {
      * @param string $assignmentActivitySid ActivitySID that will be assigned to
      *                                      Workers when they are assigned a task
      *                                      from this TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      */
@@ -99,7 +99,7 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * Human readable description of this TaskQueue (for example "Support – Tier 1", "Sales" or "Escalation")
-     * 
+     *
      * @param string $friendlyName Human readable description of this TaskQueue
      * @return $this Fluent Builder
      */
@@ -110,7 +110,7 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * A string describing the Worker selection criteria for any Tasks that enter this TaskQueue. For example '"language" == "spanish"' If no TargetWorkers parameter is provided, Tasks will wait in this queue until they are either deleted or moved to another queue. Additional examples on how to describing Worker selection criteria below.
-     * 
+     *
      * @param string $targetWorkers A string describing the Worker selection
      *                              criteria for any Tasks that enter this
      *                              TaskQueue.
@@ -123,7 +123,7 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * ActivitySID that will be assigned to Workers when they are reserved for a task from this TaskQueue.
-     * 
+     *
      * @param string $reservationActivitySid ActivitySID that will be assigned to
      *                                       Workers when they are reserved for a
      *                                       task from this TaskQueue.
@@ -136,7 +136,7 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * ActivitySID that will be assigned to Workers when they are assigned a task from this TaskQueue.
-     * 
+     *
      * @param string $assignmentActivitySid ActivitySID that will be assigned to
      *                                      Workers when they are assigned a task
      *                                      from this TaskQueue.
@@ -149,10 +149,10 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * The maximum amount of workers to create reservations for the assignment of a task while in this queue. Maximum of 50.
-     * 
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     *
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {
@@ -162,7 +162,7 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * TaskOrder will determine which order the Tasks will be assigned to Workers. Set this parameter to LIFO to assign most recently created Task first or FIFO to assign the oldest Task. Default is FIFO. [Click here](https://www.twilio.com/docs/api/taskrouter/last-first-out-lifo) to learn more.
-     * 
+     *
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @return $this Fluent Builder
@@ -174,7 +174,7 @@ class UpdateTaskQueueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -207,7 +207,7 @@ class ReadTaskQueueOptions extends Options {
 
     /**
      * Filter by a human readable description of a TaskQueue (for example "Customer Support" or "2014 Election Campaign")
-     * 
+     *
      * @param string $friendlyName Filter by a human readable description of a
      *                             TaskQueue
      * @return $this Fluent Builder
@@ -219,7 +219,7 @@ class ReadTaskQueueOptions extends Options {
 
     /**
      * Provide a Worker attributes expression, and this will return the list of TaskQueues that would distribute tasks to a worker with these attributes.
-     * 
+     *
      * @param string $evaluateWorkerAttributes Provide a Worker attributes
      *                                         expression, and this will return the
      *                                         list of TaskQueues that would
@@ -234,7 +234,7 @@ class ReadTaskQueueOptions extends Options {
 
     /**
      * The worker_sid
-     * 
+     *
      * @param string $workerSid The worker_sid
      * @return $this Fluent Builder
      */
@@ -245,7 +245,7 @@ class ReadTaskQueueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -264,9 +264,9 @@ class CreateTaskQueueOptions extends Options {
      * @param string $targetWorkers A string describing the Worker selection
      *                              criteria for any Tasks that enter this
      *                              TaskQueue.
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @param string $reservationActivitySid ActivitySID to assign workers once a
@@ -284,7 +284,7 @@ class CreateTaskQueueOptions extends Options {
 
     /**
      * A string describing the Worker selection criteria for any Tasks that enter this TaskQueue. For example `'"language" == "spanish"'` If no TargetWorkers parameter is provided, Tasks will wait in this TaskQueue until they are either deleted or moved to another TaskQueue. Additional examples on how to describing Worker selection criteria below. Defaults to 1==1.
-     * 
+     *
      * @param string $targetWorkers A string describing the Worker selection
      *                              criteria for any Tasks that enter this
      *                              TaskQueue.
@@ -297,10 +297,10 @@ class CreateTaskQueueOptions extends Options {
 
     /**
      * The maximum amount of workers to create reservations for the assignment of a task while in this queue. Defaults to 1, with a Maximum of 50.
-     * 
-     * @param integer $maxReservedWorkers The maximum amount of workers to create
-     *                                    reservations for the assignment of a task
-     *                                    while in this queue.
+     *
+     * @param int $maxReservedWorkers The maximum amount of workers to create
+     *                                reservations for the assignment of a task
+     *                                while in this queue.
      * @return $this Fluent Builder
      */
     public function setMaxReservedWorkers($maxReservedWorkers) {
@@ -310,7 +310,7 @@ class CreateTaskQueueOptions extends Options {
 
     /**
      * TaskOrder will determine which order the Tasks will be assigned to Workers. Set this parameter to LIFO to assign most recently created Task first or FIFO to assign the oldest Task. Default is FIFO. [Click here](https://www.twilio.com/docs/api/taskrouter/last-first-out-lifo) to learn more.
-     * 
+     *
      * @param string $taskOrder TaskOrder will determine which order the Tasks will
      *                          be assigned to Workers.
      * @return $this Fluent Builder
@@ -322,7 +322,7 @@ class CreateTaskQueueOptions extends Options {
 
     /**
      * ActivitySID to assign workers once a task is reserved for them
-     * 
+     *
      * @param string $reservationActivitySid ActivitySID to assign workers once a
      *                                       task is reserved for them
      * @return $this Fluent Builder
@@ -334,7 +334,7 @@ class CreateTaskQueueOptions extends Options {
 
     /**
      * ActivitySID to assign workers once a task is assigned for them
-     * 
+     *
      * @param string $assignmentActivitySid ActivitySID to assign workers once a
      *                                      task is assigned for them
      * @return $this Fluent Builder
@@ -346,7 +346,7 @@ class CreateTaskQueueOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

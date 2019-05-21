@@ -11,17 +11,19 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace;
 
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
 class TaskChannelContext extends InstanceContext {
     /**
      * Initialize the TaskChannelContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext 
+     * @param string $workspaceSid The unique ID of the Workspace that this
+     *                             TaskChannel belongs to.
+     * @param string $sid The unique ID for this TaskChannel.
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {
         parent::__construct($version);
@@ -34,7 +36,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Fetch a TaskChannelInstance
-     * 
+     *
      * @return TaskChannelInstance Fetched TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -57,7 +59,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Update the TaskChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskChannelInstance Updated TaskChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -65,7 +67,10 @@ class TaskChannelContext extends InstanceContext {
     public function update($options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('FriendlyName' => $options['friendlyName'], ));
+        $data = Values::of(array(
+            'FriendlyName' => $options['friendlyName'],
+            'ChannelOptimizedRouting' => Serialize::booleanToString($options['channelOptimizedRouting']),
+        ));
 
         $payload = $this->version->update(
             'POST',
@@ -84,7 +89,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Deletes the TaskChannelInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,7 +99,7 @@ class TaskChannelContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

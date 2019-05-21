@@ -20,12 +20,13 @@ use Twilio\Version;
 class FieldValueList extends ListResource {
     /**
      * Construct the FieldValueList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $fieldTypeSid The unique ID of the Field Type associated with
-     *                             this Field Value.
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList 
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the FieldType associated with the resource
+     * @param string $fieldTypeSid The SID of the Field Type associated with the
+     *                             Field Value
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueList
      */
     public function __construct(Version $version, $assistantSid, $fieldTypeSid) {
         parent::__construct($version);
@@ -43,7 +44,7 @@ class FieldValueList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -67,7 +68,7 @@ class FieldValueList extends ListResource {
      * Reads FieldValueInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -86,7 +87,7 @@ class FieldValueList extends ListResource {
     /**
      * Retrieve a single page of FieldValueInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -114,7 +115,7 @@ class FieldValueList extends ListResource {
     /**
      * Retrieve a specific page of FieldValueInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of FieldValueInstance
      */
@@ -129,13 +130,10 @@ class FieldValueList extends ListResource {
 
     /**
      * Create a new FieldValueInstance
-     * 
-     * @param string $language An ISO language-country string that specifies the
-     *                         language used for this field value. For example:
-     *                         en-US
-     * @param string $value A user-provided string that uniquely identifies this
-     *                      resource as an alternative to the sid. Unique up to 64
-     *                      characters long.
+     *
+     * @param string $language The ISO language-country tag that identifies the
+     *                         language of the value
+     * @param string $value The Field Value data
      * @param array|Options $options Optional Arguments
      * @return FieldValueInstance Newly created FieldValueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -166,10 +164,9 @@ class FieldValueList extends ListResource {
 
     /**
      * Constructs a FieldValueContext
-     * 
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext 
+     *
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldType\FieldValueContext
      */
     public function getContext($sid) {
         return new FieldValueContext(
@@ -182,7 +179,7 @@ class FieldValueList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

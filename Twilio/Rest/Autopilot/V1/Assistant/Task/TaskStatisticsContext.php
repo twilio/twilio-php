@@ -19,11 +19,13 @@ use Twilio\Version;
 class TaskStatisticsContext extends InstanceContext {
     /**
      * Initialize the TaskStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The unique ID of the Assistant.
-     * @param string $taskSid The unique ID of the Task associated with this Field.
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext 
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource to fetch
+     * @param string $taskSid The SID of the Task that is associated with the
+     *                        resource to fetch
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\Task\TaskStatisticsContext
      */
     public function __construct(Version $version, $assistantSid, $taskSid) {
         parent::__construct($version);
@@ -36,7 +38,7 @@ class TaskStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a TaskStatisticsInstance
-     * 
+     *
      * @return TaskStatisticsInstance Fetched TaskStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -59,7 +61,7 @@ class TaskStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

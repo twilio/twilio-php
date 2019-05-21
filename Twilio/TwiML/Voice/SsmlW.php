@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class SsmlW extends TwiML {
     /**
      * SsmlW constructor.
-     * 
+     *
      * @param string $words Words to speak
      * @param array $attributes Optional attributes
      */
@@ -24,10 +24,10 @@ class SsmlW extends TwiML {
 
     /**
      * Add Role attribute.
-     * 
+     *
      * @param string $role Customize the pronunciation of words by specifying the
      *                     word’s part of speech or alternate meaning
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setRole($role) {
         return $this->setAttribute('role', $role);

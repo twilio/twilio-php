@@ -142,7 +142,7 @@ class CompositionHookTest extends HolodeckTestCase {
                 "composition_hooks": [
                     {
                         "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "friendly_name": "My composition hook",
+                        "friendly_name": "My Special Hook1",
                         "enabled": true,
                         "date_created": "2015-07-30T20:00:00Z",
                         "date_updated": "2015-07-30T20:01:33Z",
@@ -240,11 +240,11 @@ class CompositionHookTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->compositionHooks->create("friendlyName");
+            $this->twilio->video->v1->compositionHooks->create("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -304,7 +304,7 @@ class CompositionHookTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->compositionHooks->create("friendlyName");
+        $actual = $this->twilio->video->v1->compositionHooks->create("friendly_name");
 
         $this->assertNotNull($actual);
     }
@@ -313,11 +313,11 @@ class CompositionHookTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->video->v1->compositionHooks("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+            $this->twilio->video->v1->compositionHooks("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('FriendlyName' => "friendlyName", );
+        $values = array('FriendlyName' => "friendly_name", );
 
         $this->assertRequest(new Request(
             'post',
@@ -377,7 +377,7 @@ class CompositionHookTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->compositionHooks("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+        $actual = $this->twilio->video->v1->compositionHooks("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
 
         $this->assertNotNull($actual);
     }
@@ -411,7 +411,7 @@ class CompositionHookTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->video->v1->compositionHooks("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendlyName");
+        $actual = $this->twilio->video->v1->compositionHooks("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->update("friendly_name");
 
         $this->assertNotNull($actual);
     }

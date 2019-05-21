@@ -18,9 +18,9 @@ use Twilio\Version;
 class CallSummaryList extends ListResource {
     /**
      * Construct the CallSummaryList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Insights\V1\CallSummaryList 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -31,9 +31,9 @@ class CallSummaryList extends ListResource {
 
     /**
      * Constructs a CallSummaryContext
-     * 
+     *
      * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\CallSummaryContext 
+     * @return \Twilio\Rest\Insights\V1\CallSummaryContext
      */
     public function getContext($callSid) {
         return new CallSummaryContext($this->version, $callSid);
@@ -41,7 +41,7 @@ class CallSummaryList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

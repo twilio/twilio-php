@@ -25,7 +25,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList fieldTypes
  * @property \Twilio\Rest\Autopilot\V1\Assistant\TaskList tasks
  * @property \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList modelBuilds
@@ -52,11 +52,10 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Initialize the AssistantContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34-character string that uniquely identifies this
-     *                    resource.
-     * @return \Twilio\Rest\Autopilot\V1\AssistantContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Autopilot\V1\AssistantContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -69,7 +68,7 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Fetch a AssistantInstance
-     * 
+     *
      * @return AssistantInstance Fetched AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -87,7 +86,7 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Update the AssistantInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return AssistantInstance Updated AssistantInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -117,7 +116,7 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Deletes the AssistantInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -127,8 +126,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the fieldTypes
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeList
      */
     protected function getFieldTypes() {
         if (!$this->_fieldTypes) {
@@ -140,8 +139,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the tasks
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\TaskList
      */
     protected function getTasks() {
         if (!$this->_tasks) {
@@ -153,8 +152,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the modelBuilds
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList
      */
     protected function getModelBuilds() {
         if (!$this->_modelBuilds) {
@@ -166,8 +165,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the queries
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\QueryList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\QueryList
      */
     protected function getQueries() {
         if (!$this->_queries) {
@@ -179,8 +178,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the styleSheet
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList
      */
     protected function getStyleSheet() {
         if (!$this->_styleSheet) {
@@ -192,8 +191,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the defaults
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList
      */
     protected function getDefaults() {
         if (!$this->_defaults) {
@@ -205,8 +204,8 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Access the dialogues
-     * 
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueList 
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\DialogueList
      */
     protected function getDialogues() {
         if (!$this->_dialogues) {
@@ -218,7 +217,7 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -234,7 +233,7 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -251,7 +250,7 @@ class AssistantContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

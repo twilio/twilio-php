@@ -31,21 +31,19 @@ abstract class ServiceOptions {
      * @param string $statusCallback A webhook request is made to the Status
      *                               Callback to pass status updates about your
      *                               messages.
-     * @param boolean $stickySender Configuration to enable or disable Sticky
-     *                              Sender on your Service Instance.
-     * @param boolean $mmsConverter Configuration to enable or disable MMS
-     *                              Converter on your Service Instance.
-     * @param boolean $smartEncoding Configuration to enable or disable Smart
-     *                               Encoding.
+     * @param bool $stickySender Configuration to enable or disable Sticky Sender
+     *                           on your Service Instance.
+     * @param bool $mmsConverter Configuration to enable or disable MMS Converter
+     *                           on your Service Instance.
+     * @param bool $smartEncoding Configuration to enable or disable Smart Encoding.
      * @param string $scanMessageContent The scan_message_content
-     * @param boolean $fallbackToLongCode Configuration to enable or disable
-     *                                    Fallback to Long Code.
-     * @param boolean $areaCodeGeomatch Configuration to enable or disable Area
-     *                                  Code Geomatch.
-     * @param integer $validityPeriod Configuration to set the validity period of
-     *                                all messages sent from your Service, in
-     *                                seconds.
-     * @param boolean $synchronousValidation The synchronous_validation
+     * @param bool $fallbackToLongCode Configuration to enable or disable Fallback
+     *                                 to Long Code.
+     * @param bool $areaCodeGeomatch Configuration to enable or disable Area Code
+     *                               Geomatch.
+     * @param int $validityPeriod Configuration to set the validity period of all
+     *                            messages sent from your Service, in seconds.
+     * @param bool $synchronousValidation The synchronous_validation
      * @return CreateServiceOptions Options builder
      */
     public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
@@ -59,14 +57,14 @@ abstract class ServiceOptions {
      * @param string $fallbackUrl The fallback_url
      * @param string $fallbackMethod The fallback_method
      * @param string $statusCallback The status_callback
-     * @param boolean $stickySender The sticky_sender
-     * @param boolean $mmsConverter The mms_converter
-     * @param boolean $smartEncoding The smart_encoding
+     * @param bool $stickySender The sticky_sender
+     * @param bool $mmsConverter The mms_converter
+     * @param bool $smartEncoding The smart_encoding
      * @param string $scanMessageContent The scan_message_content
-     * @param boolean $fallbackToLongCode The fallback_to_long_code
-     * @param boolean $areaCodeGeomatch The area_code_geomatch
-     * @param integer $validityPeriod The validity_period
-     * @param boolean $synchronousValidation The synchronous_validation
+     * @param bool $fallbackToLongCode The fallback_to_long_code
+     * @param bool $areaCodeGeomatch The area_code_geomatch
+     * @param int $validityPeriod The validity_period
+     * @param bool $synchronousValidation The synchronous_validation
      * @return UpdateServiceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
@@ -90,21 +88,19 @@ class CreateServiceOptions extends Options {
      * @param string $statusCallback A webhook request is made to the Status
      *                               Callback to pass status updates about your
      *                               messages.
-     * @param boolean $stickySender Configuration to enable or disable Sticky
-     *                              Sender on your Service Instance.
-     * @param boolean $mmsConverter Configuration to enable or disable MMS
-     *                              Converter on your Service Instance.
-     * @param boolean $smartEncoding Configuration to enable or disable Smart
-     *                               Encoding.
+     * @param bool $stickySender Configuration to enable or disable Sticky Sender
+     *                           on your Service Instance.
+     * @param bool $mmsConverter Configuration to enable or disable MMS Converter
+     *                           on your Service Instance.
+     * @param bool $smartEncoding Configuration to enable or disable Smart Encoding.
      * @param string $scanMessageContent The scan_message_content
-     * @param boolean $fallbackToLongCode Configuration to enable or disable
-     *                                    Fallback to Long Code.
-     * @param boolean $areaCodeGeomatch Configuration to enable or disable Area
-     *                                  Code Geomatch.
-     * @param integer $validityPeriod Configuration to set the validity period of
-     *                                all messages sent from your Service, in
-     *                                seconds.
-     * @param boolean $synchronousValidation The synchronous_validation
+     * @param bool $fallbackToLongCode Configuration to enable or disable Fallback
+     *                                 to Long Code.
+     * @param bool $areaCodeGeomatch Configuration to enable or disable Area Code
+     *                               Geomatch.
+     * @param int $validityPeriod Configuration to set the validity period of all
+     *                            messages sent from your Service, in seconds.
+     * @param bool $synchronousValidation The synchronous_validation
      */
     public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
@@ -124,7 +120,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * A [webhook request](https://www.twilio.com/docs/api/twiml/sms/twilio_request) is made to the Inbound Request URL when a message is received by any phone number or shortcode associated to your Messaging Service. Set to `null` to disable inbound messaging.
-     * 
+     *
      * @param string $inboundRequestUrl A webhook request is made to the Inbound
      *                                  Request URL when a message is received by
      *                                  any phone number or shortcode associated to
@@ -138,7 +134,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The HTTP method used when making requests to the Inbound Request URL. Either `GET` or `POST`. Default value is `POST`.
-     * 
+     *
      * @param string $inboundMethod The HTTP method used when making requests to
      *                              the Inbound Request URL.
      * @return $this Fluent Builder
@@ -150,7 +146,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * A request is made to the Fallback URL if an error occurs with retrieving or executing the TwiML from you Inbound Request URL.
-     * 
+     *
      * @param string $fallbackUrl A request is made to the Fallback URL if an error
      *                            occurs with retrieving or executing the TwiML
      *                            from you Inbound Request URL.
@@ -163,7 +159,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The HTTP method used when requesting the Fallback URL. Either `GET` or `POST`. Default value is `POST`.
-     * 
+     *
      * @param string $fallbackMethod The HTTP method used when requesting the
      *                               Fallback URL.
      * @return $this Fluent Builder
@@ -175,7 +171,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * A webhook request is made to the Status Callback to pass [status updates](https://www.twilio.com/docs/api/rest/message#sms-status-values) about your messages. These status updates let you know if your accepted message were successfully sent and delivered or if a [delivery related error](https://www.twilio.com/docs/api/rest/message#error-values) may have occurred.
-     * 
+     *
      * @param string $statusCallback A webhook request is made to the Status
      *                               Callback to pass status updates about your
      *                               messages.
@@ -188,9 +184,9 @@ class CreateServiceOptions extends Options {
 
     /**
      * Configuration to enable or disable Sticky Sender on your Service Instance. Possible values are `true` and `false`. Default value is `true`.
-     * 
-     * @param boolean $stickySender Configuration to enable or disable Sticky
-     *                              Sender on your Service Instance.
+     *
+     * @param bool $stickySender Configuration to enable or disable Sticky Sender
+     *                           on your Service Instance.
      * @return $this Fluent Builder
      */
     public function setStickySender($stickySender) {
@@ -200,9 +196,9 @@ class CreateServiceOptions extends Options {
 
     /**
      * Configuration to enable or disable MMS Converter on your Service Instance. Possible values are `true` and `false`. Default value is `true`.
-     * 
-     * @param boolean $mmsConverter Configuration to enable or disable MMS
-     *                              Converter on your Service Instance.
+     *
+     * @param bool $mmsConverter Configuration to enable or disable MMS Converter
+     *                           on your Service Instance.
      * @return $this Fluent Builder
      */
     public function setMmsConverter($mmsConverter) {
@@ -212,9 +208,8 @@ class CreateServiceOptions extends Options {
 
     /**
      * Configuration to enable or disable [Smart Encoding](https://www.twilio.com/docs/api/messaging/services-and-copilot#smart-encoding). Possible values are `true` and `false`. Default value is `true`.
-     * 
-     * @param boolean $smartEncoding Configuration to enable or disable Smart
-     *                               Encoding.
+     *
+     * @param bool $smartEncoding Configuration to enable or disable Smart Encoding.
      * @return $this Fluent Builder
      */
     public function setSmartEncoding($smartEncoding) {
@@ -224,7 +219,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * The scan_message_content
-     * 
+     *
      * @param string $scanMessageContent The scan_message_content
      * @return $this Fluent Builder
      */
@@ -235,9 +230,9 @@ class CreateServiceOptions extends Options {
 
     /**
      * Configuration to enable or disable [Fallback to Long Code](https://www.twilio.com/docs/api/messaging/services-and-copilot#fallback-to-long-code). Possible values are `true` and `false`. Default value is `false`.
-     * 
-     * @param boolean $fallbackToLongCode Configuration to enable or disable
-     *                                    Fallback to Long Code.
+     *
+     * @param bool $fallbackToLongCode Configuration to enable or disable Fallback
+     *                                 to Long Code.
      * @return $this Fluent Builder
      */
     public function setFallbackToLongCode($fallbackToLongCode) {
@@ -247,9 +242,9 @@ class CreateServiceOptions extends Options {
 
     /**
      * Configuration to enable or disable [Area Code Geomatch](https://www.twilio.com/docs/api/messaging/services-and-copilot#area-code-geomatch). Possible values are `true` and `false`. Default value is `false`.
-     * 
-     * @param boolean $areaCodeGeomatch Configuration to enable or disable Area
-     *                                  Code Geomatch.
+     *
+     * @param bool $areaCodeGeomatch Configuration to enable or disable Area Code
+     *                               Geomatch.
      * @return $this Fluent Builder
      */
     public function setAreaCodeGeomatch($areaCodeGeomatch) {
@@ -259,10 +254,9 @@ class CreateServiceOptions extends Options {
 
     /**
      * Configuration to set the [validity period](https://www.twilio.com/docs/api/messaging/services-and-copilot#validity-period) of all messages sent from your Service, in seconds. Acceptable integers range from `1` to `14,400`.  Default value is `14,400`.
-     * 
-     * @param integer $validityPeriod Configuration to set the validity period of
-     *                                all messages sent from your Service, in
-     *                                seconds.
+     *
+     * @param int $validityPeriod Configuration to set the validity period of all
+     *                            messages sent from your Service, in seconds.
      * @return $this Fluent Builder
      */
     public function setValidityPeriod($validityPeriod) {
@@ -272,8 +266,8 @@ class CreateServiceOptions extends Options {
 
     /**
      * The synchronous_validation
-     * 
-     * @param boolean $synchronousValidation The synchronous_validation
+     *
+     * @param bool $synchronousValidation The synchronous_validation
      * @return $this Fluent Builder
      */
     public function setSynchronousValidation($synchronousValidation) {
@@ -283,7 +277,7 @@ class CreateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -305,14 +299,14 @@ class UpdateServiceOptions extends Options {
      * @param string $fallbackUrl The fallback_url
      * @param string $fallbackMethod The fallback_method
      * @param string $statusCallback The status_callback
-     * @param boolean $stickySender The sticky_sender
-     * @param boolean $mmsConverter The mms_converter
-     * @param boolean $smartEncoding The smart_encoding
+     * @param bool $stickySender The sticky_sender
+     * @param bool $mmsConverter The mms_converter
+     * @param bool $smartEncoding The smart_encoding
      * @param string $scanMessageContent The scan_message_content
-     * @param boolean $fallbackToLongCode The fallback_to_long_code
-     * @param boolean $areaCodeGeomatch The area_code_geomatch
-     * @param integer $validityPeriod The validity_period
-     * @param boolean $synchronousValidation The synchronous_validation
+     * @param bool $fallbackToLongCode The fallback_to_long_code
+     * @param bool $areaCodeGeomatch The area_code_geomatch
+     * @param int $validityPeriod The validity_period
+     * @param bool $synchronousValidation The synchronous_validation
      */
     public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -333,7 +327,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The friendly_name
-     * 
+     *
      * @param string $friendlyName The friendly_name
      * @return $this Fluent Builder
      */
@@ -344,7 +338,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The inbound_request_url
-     * 
+     *
      * @param string $inboundRequestUrl The inbound_request_url
      * @return $this Fluent Builder
      */
@@ -355,7 +349,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The inbound_method
-     * 
+     *
      * @param string $inboundMethod The inbound_method
      * @return $this Fluent Builder
      */
@@ -366,7 +360,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The fallback_url
-     * 
+     *
      * @param string $fallbackUrl The fallback_url
      * @return $this Fluent Builder
      */
@@ -377,7 +371,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The fallback_method
-     * 
+     *
      * @param string $fallbackMethod The fallback_method
      * @return $this Fluent Builder
      */
@@ -388,7 +382,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The status_callback
-     * 
+     *
      * @param string $statusCallback The status_callback
      * @return $this Fluent Builder
      */
@@ -399,8 +393,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The sticky_sender
-     * 
-     * @param boolean $stickySender The sticky_sender
+     *
+     * @param bool $stickySender The sticky_sender
      * @return $this Fluent Builder
      */
     public function setStickySender($stickySender) {
@@ -410,8 +404,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The mms_converter
-     * 
-     * @param boolean $mmsConverter The mms_converter
+     *
+     * @param bool $mmsConverter The mms_converter
      * @return $this Fluent Builder
      */
     public function setMmsConverter($mmsConverter) {
@@ -421,8 +415,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The smart_encoding
-     * 
-     * @param boolean $smartEncoding The smart_encoding
+     *
+     * @param bool $smartEncoding The smart_encoding
      * @return $this Fluent Builder
      */
     public function setSmartEncoding($smartEncoding) {
@@ -432,7 +426,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The scan_message_content
-     * 
+     *
      * @param string $scanMessageContent The scan_message_content
      * @return $this Fluent Builder
      */
@@ -443,8 +437,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The fallback_to_long_code
-     * 
-     * @param boolean $fallbackToLongCode The fallback_to_long_code
+     *
+     * @param bool $fallbackToLongCode The fallback_to_long_code
      * @return $this Fluent Builder
      */
     public function setFallbackToLongCode($fallbackToLongCode) {
@@ -454,8 +448,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The area_code_geomatch
-     * 
-     * @param boolean $areaCodeGeomatch The area_code_geomatch
+     *
+     * @param bool $areaCodeGeomatch The area_code_geomatch
      * @return $this Fluent Builder
      */
     public function setAreaCodeGeomatch($areaCodeGeomatch) {
@@ -465,8 +459,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The validity_period
-     * 
-     * @param integer $validityPeriod The validity_period
+     *
+     * @param int $validityPeriod The validity_period
      * @return $this Fluent Builder
      */
     public function setValidityPeriod($validityPeriod) {
@@ -476,8 +470,8 @@ class UpdateServiceOptions extends Options {
 
     /**
      * The synchronous_validation
-     * 
-     * @param boolean $synchronousValidation The synchronous_validation
+     *
+     * @param bool $synchronousValidation The synchronous_validation
      * @return $this Fluent Builder
      */
     public function setSynchronousValidation($synchronousValidation) {
@@ -487,7 +481,7 @@ class UpdateServiceOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

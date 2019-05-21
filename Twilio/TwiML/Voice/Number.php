@@ -14,8 +14,8 @@ use Twilio\TwiML\TwiML;
 class Number extends TwiML {
     /**
      * Number constructor.
-     * 
-     * @param phoneNumber $phoneNumber Phone Number to dial
+     *
+     * @param string $phoneNumber Phone Number to dial
      * @param array $attributes Optional attributes
      */
     public function __construct($phoneNumber, $attributes = array()) {
@@ -24,9 +24,9 @@ class Number extends TwiML {
 
     /**
      * Add SendDigits attribute.
-     * 
+     *
      * @param string $sendDigits DTMF tones to play when the call is answered
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setSendDigits($sendDigits) {
         return $this->setAttribute('sendDigits', $sendDigits);
@@ -34,9 +34,9 @@ class Number extends TwiML {
 
     /**
      * Add Url attribute.
-     * 
-     * @param url $url TwiML URL
-     * @return TwiML $this.
+     *
+     * @param string $url TwiML URL
+     * @return static $this.
      */
     public function setUrl($url) {
         return $this->setAttribute('url', $url);
@@ -44,9 +44,9 @@ class Number extends TwiML {
 
     /**
      * Add Method attribute.
-     * 
-     * @param httpMethod $method TwiML URL method
-     * @return TwiML $this.
+     *
+     * @param string $method TwiML URL method
+     * @return static $this.
      */
     public function setMethod($method) {
         return $this->setAttribute('method', $method);
@@ -54,9 +54,9 @@ class Number extends TwiML {
 
     /**
      * Add StatusCallbackEvent attribute.
-     * 
-     * @param number:Enum:Event $statusCallbackEvent Events to call status callback
-     * @return TwiML $this.
+     *
+     * @param string $statusCallbackEvent Events to call status callback
+     * @return static $this.
      */
     public function setStatusCallbackEvent($statusCallbackEvent) {
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);
@@ -64,9 +64,9 @@ class Number extends TwiML {
 
     /**
      * Add StatusCallback attribute.
-     * 
-     * @param url $statusCallback Status callback URL
-     * @return TwiML $this.
+     *
+     * @param string $statusCallback Status callback URL
+     * @return static $this.
      */
     public function setStatusCallback($statusCallback) {
         return $this->setAttribute('statusCallback', $statusCallback);
@@ -74,9 +74,9 @@ class Number extends TwiML {
 
     /**
      * Add StatusCallbackMethod attribute.
-     * 
-     * @param httpMethod $statusCallbackMethod Status callback URL method
-     * @return TwiML $this.
+     *
+     * @param string $statusCallbackMethod Status callback URL method
+     * @return static $this.
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);

@@ -23,9 +23,9 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Construct the PhoneNumberList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumberList 
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumberList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -63,7 +63,7 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -80,7 +80,7 @@ class PhoneNumberList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -37,9 +37,9 @@ abstract class CommandOptions {
      *                           Command in the message body, which could be used
      *                           to ensure that the device does not process the
      *                           same Command more than once.
-     * @param boolean $deliveryReceiptRequested A boolean representing whether to
-     *                                          request delivery receipt from the
-     *                                          recipient.
+     * @param bool $deliveryReceiptRequested A boolean representing whether to
+     *                                       request delivery receipt from the
+     *                                       recipient.
      * @return CreateCommandOptions Options builder
      */
     public static function create($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE, $deliveryReceiptRequested = Values::NONE) {
@@ -63,7 +63,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * Only return Commands to or from this SIM.
-     * 
+     *
      * @param string $sim Only return Commands to or from this SIM.
      * @return $this Fluent Builder
      */
@@ -74,7 +74,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * Only return Commands with this status value.
-     * 
+     *
      * @param string $status Only return Commands with this status value.
      * @return $this Fluent Builder
      */
@@ -85,7 +85,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * Only return Commands with this direction value.
-     * 
+     *
      * @param string $direction Only return Commands with this direction value.
      * @return $this Fluent Builder
      */
@@ -96,7 +96,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * Only return Commands with this transport value.
-     * 
+     *
      * @param string $transport Only return Commands with this transport value.
      * @return $this Fluent Builder
      */
@@ -107,7 +107,7 @@ class ReadCommandOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -135,9 +135,9 @@ class CreateCommandOptions extends Options {
      *                           Command in the message body, which could be used
      *                           to ensure that the device does not process the
      *                           same Command more than once.
-     * @param boolean $deliveryReceiptRequested A boolean representing whether to
-     *                                          request delivery receipt from the
-     *                                          recipient.
+     * @param bool $deliveryReceiptRequested A boolean representing whether to
+     *                                       request delivery receipt from the
+     *                                       recipient.
      */
     public function __construct($sim = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $commandMode = Values::NONE, $includeSid = Values::NONE, $deliveryReceiptRequested = Values::NONE) {
         $this->options['sim'] = $sim;
@@ -150,7 +150,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The Sid or UniqueName of the [SIM](https://www.twilio.com/docs/api/wireless/rest-api/sim) to send the Command to.
-     * 
+     *
      * @param string $sim The Sid or UniqueName of the SIM to send the Command to.
      * @return $this Fluent Builder
      */
@@ -161,7 +161,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * The HTTP method Twilio will use when making a request to the callback URL (valid options are GET or POST). Defaults to POST.
-     * 
+     *
      * @param string $callbackMethod The HTTP method Twilio will use when making a
      *                               request to the callback URL.
      * @return $this Fluent Builder
@@ -173,7 +173,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * Twilio will make a request to this URL when the Command has finished sending (delivered or failed).
-     * 
+     *
      * @param string $callbackUrl Twilio will make a request to this URL when the
      *                            Command has finished sending.
      * @return $this Fluent Builder
@@ -185,7 +185,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * A string representing which mode to send the SMS message using. May be `text` or `binary`. If omitted, the default SMS mode is `text`.
-     * 
+     *
      * @param string $commandMode A string representing which mode to send the SMS
      *                            message using.
      * @return $this Fluent Builder
@@ -197,7 +197,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once. The options for inclusion are `none`, `start` and `end`. The default behavior is `none`. When using `start` or `end`, the CommandSid will be prepended or appended to the message body, with a space character separating the CommandSid and the message body. The length of the CommandSid contributes toward the 160 character limit, i.e. the SMS body must be 128 characters or less before the Command Sid is included.
-     * 
+     *
      * @param string $includeSid When sending a Command to a SIM in text mode,
      *                           Twilio can automatically include the Sid of the
      *                           Command in the message body, which could be used
@@ -212,10 +212,10 @@ class CreateCommandOptions extends Options {
 
     /**
      * A boolean representing whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. Defaults to true.
-     * 
-     * @param boolean $deliveryReceiptRequested A boolean representing whether to
-     *                                          request delivery receipt from the
-     *                                          recipient.
+     *
+     * @param bool $deliveryReceiptRequested A boolean representing whether to
+     *                                       request delivery receipt from the
+     *                                       recipient.
      * @return $this Fluent Builder
      */
     public function setDeliveryReceiptRequested($deliveryReceiptRequested) {
@@ -225,7 +225,7 @@ class CreateCommandOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

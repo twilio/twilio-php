@@ -25,12 +25,11 @@ class AuthTypesList extends ListResource {
 
     /**
      * Construct the AuthTypesList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the account responsible for this
-     *                           domain
-     * @param string $domainSid A string that uniquely identifies the SIP Domain
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $domainSid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList
      */
     public function __construct(Version $version, $accountSid, $domainSid) {
         parent::__construct($version);
@@ -71,7 +70,7 @@ class AuthTypesList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -87,7 +86,7 @@ class AuthTypesList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -104,7 +103,7 @@ class AuthTypesList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

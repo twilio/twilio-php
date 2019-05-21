@@ -20,20 +20,20 @@ use Twilio\Version;
  * @property string channelSid
  * @property string memberSid
  * @property string status
- * @property integer lastConsumedMessageIndex
- * @property integer unreadMessagesCount
+ * @property int lastConsumedMessageIndex
+ * @property int unreadMessagesCount
  * @property array links
  */
 class UserChannelInstance extends InstanceResource {
     /**
      * Initialize the UserChannelInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The service_sid
-     * @param string $userSid A 34 character string that uniquely identifies this
-     *                        resource.
-     * @return \Twilio\Rest\IpMessaging\V1\Service\User\UserChannelInstance 
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @param string $userSid The unique string that identifies the resource
+     * @return \Twilio\Rest\IpMessaging\V1\Service\User\UserChannelInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid) {
         parent::__construct($version);
@@ -55,7 +55,7 @@ class UserChannelInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -75,7 +75,7 @@ class UserChannelInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

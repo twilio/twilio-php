@@ -25,11 +25,11 @@ class WorkerList extends ListResource {
 
     /**
      * Construct the WorkerList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $workspaceSid The ID of the Workflow this worker is associated
      *                             with
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerList
      */
     public function __construct(Version $version, $workspaceSid) {
         parent::__construct($version);
@@ -47,7 +47,7 @@ class WorkerList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
@@ -71,7 +71,7 @@ class WorkerList extends ListResource {
      * Reads WorkerInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
@@ -90,7 +90,7 @@ class WorkerList extends ListResource {
     /**
      * Retrieve a single page of WorkerInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
@@ -124,7 +124,7 @@ class WorkerList extends ListResource {
     /**
      * Retrieve a specific page of WorkerInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of WorkerInstance
      */
@@ -139,7 +139,7 @@ class WorkerList extends ListResource {
 
     /**
      * Create a new WorkerInstance
-     * 
+     *
      * @param string $friendlyName String representing user-friendly name for the
      *                             Worker.
      * @param array|Options $options Optional Arguments
@@ -178,9 +178,9 @@ class WorkerList extends ListResource {
 
     /**
      * Constructs a WorkerContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext
      */
     public function getContext($sid) {
         return new WorkerContext($this->version, $this->solution['workspaceSid'], $sid);
@@ -188,7 +188,7 @@ class WorkerList extends ListResource {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -204,7 +204,7 @@ class WorkerList extends ListResource {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -221,7 +221,7 @@ class WorkerList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

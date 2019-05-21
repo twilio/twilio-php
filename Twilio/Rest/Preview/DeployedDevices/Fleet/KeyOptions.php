@@ -55,7 +55,7 @@ class CreateKeyOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Key credential, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName The human readable description for this Key.
      * @return $this Fluent Builder
      */
@@ -66,7 +66,7 @@ class CreateKeyOptions extends Options {
 
     /**
      * Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
-     * 
+     *
      * @param string $deviceSid The unique identifier of a Key to be authenticated.
      * @return $this Fluent Builder
      */
@@ -77,7 +77,7 @@ class CreateKeyOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -101,7 +101,7 @@ class ReadKeyOptions extends Options {
 
     /**
      * Filters the resulting list of Keys by a unique string identifier of an authenticated Device.
-     * 
+     *
      * @param string $deviceSid Find all Keys authenticating specified Device.
      * @return $this Fluent Builder
      */
@@ -112,7 +112,7 @@ class ReadKeyOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -138,7 +138,7 @@ class UpdateKeyOptions extends Options {
 
     /**
      * Provides a human readable descriptive text for this Key credential, up to 256 characters long.
-     * 
+     *
      * @param string $friendlyName The human readable description for this Key.
      * @return $this Fluent Builder
      */
@@ -149,7 +149,7 @@ class UpdateKeyOptions extends Options {
 
     /**
      * Provides the unique string identifier of an existing Device to become authenticated with this Key credential.
-     * 
+     *
      * @param string $deviceSid The unique identifier of a Key to be authenticated.
      * @return $this Fluent Builder
      */
@@ -160,7 +160,7 @@ class UpdateKeyOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

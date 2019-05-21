@@ -21,18 +21,18 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string issues
- * @property integer qualityScore
+ * @property int qualityScore
  * @property string sid
  */
 class FeedbackInstance extends InstanceResource {
     /**
      * Initialize the FeedbackInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $accountSid The unique sid that identifies this account
      * @param string $callSid The unique string that identifies this resource
-     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackInstance 
+     * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $callSid) {
         parent::__construct($version);
@@ -53,7 +53,7 @@ class FeedbackInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Call\FeedbackContext Context for this
      *                                                             FeedbackInstance
      */
@@ -71,9 +71,8 @@ class FeedbackInstance extends InstanceResource {
 
     /**
      * Create a new FeedbackInstance
-     * 
-     * @param integer $qualityScore The call quality expressed as an integer from 1
-     *                              to 5
+     *
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Newly created FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -84,7 +83,7 @@ class FeedbackInstance extends InstanceResource {
 
     /**
      * Fetch a FeedbackInstance
-     * 
+     *
      * @return FeedbackInstance Fetched FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -94,9 +93,8 @@ class FeedbackInstance extends InstanceResource {
 
     /**
      * Update the FeedbackInstance
-     * 
-     * @param integer $qualityScore The call quality expressed as an integer from 1
-     *                              to 5
+     *
+     * @param int $qualityScore The call quality expressed as an integer from 1 to 5
      * @param array|Options $options Optional Arguments
      * @return FeedbackInstance Updated FeedbackInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -107,7 +105,7 @@ class FeedbackInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -127,7 +125,7 @@ class FeedbackInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class InviteOptions {
     /**
-     * @param string $roleSid The Role assigned to this member.
+     * @param string $roleSid The Role assigned to the new member
      * @return CreateInviteOptions Options builder
      */
     public static function create($roleSid = Values::NONE) {
@@ -22,8 +22,7 @@ abstract class InviteOptions {
     }
 
     /**
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * @param string $identity The `identity` value of the resources to read
      * @return ReadInviteOptions Options builder
      */
     public static function read($identity = Values::NONE) {
@@ -33,16 +32,16 @@ abstract class InviteOptions {
 
 class CreateInviteOptions extends Options {
     /**
-     * @param string $roleSid The Role assigned to this member.
+     * @param string $roleSid The Role assigned to the new member
      */
     public function __construct($roleSid = Values::NONE) {
         $this->options['roleSid'] = $roleSid;
     }
 
     /**
-     * The [Role](https://www.twilio.com/docs/api/chat/rest/v1/role) assigned to this member.
-     * 
-     * @param string $roleSid The Role assigned to this member.
+     * The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new member.
+     *
+     * @param string $roleSid The Role assigned to the new member
      * @return $this Fluent Builder
      */
     public function setRoleSid($roleSid) {
@@ -52,7 +51,7 @@ class CreateInviteOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -68,18 +67,16 @@ class CreateInviteOptions extends Options {
 
 class ReadInviteOptions extends Options {
     /**
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * @param string $identity The `identity` value of the resources to read
      */
     public function __construct($identity = Values::NONE) {
         $this->options['identity'] = $identity;
     }
 
     /**
-     * A unique string identifier for this [User](https://www.twilio.com/docs/api/chat/rest/v1/user) in this [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). See the [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens)[/docs/api/chat/guides/create-tokens] docs for more details.
-     * 
-     * @param string $identity A unique string identifier for this User in this
-     *                         Service.
+     * The [User](https://www.twilio.com/docs/api/chat/rest/v1/user)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/api/chat/guides/create-tokens) for more details.
+     *
+     * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -89,7 +86,7 @@ class ReadInviteOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

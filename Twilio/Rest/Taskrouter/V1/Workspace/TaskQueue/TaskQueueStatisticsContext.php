@@ -18,11 +18,11 @@ use Twilio\Version;
 class TaskQueueStatisticsContext extends InstanceContext {
     /**
      * Initialize the TaskQueueStatisticsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $taskQueueSid The task_queue_sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {
         parent::__construct($version);
@@ -35,7 +35,7 @@ class TaskQueueStatisticsContext extends InstanceContext {
 
     /**
      * Fetch a TaskQueueStatisticsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueStatisticsInstance Fetched TaskQueueStatisticsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -67,7 +67,7 @@ class TaskQueueStatisticsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

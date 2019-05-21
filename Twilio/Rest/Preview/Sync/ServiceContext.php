@@ -21,7 +21,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Sync\Service\DocumentList documents
  * @property \Twilio\Rest\Preview\Sync\Service\SyncListList syncLists
  * @property \Twilio\Rest\Preview\Sync\Service\SyncMapList syncMaps
@@ -36,10 +36,10 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Initialize the ServiceContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Sync\ServiceContext 
+     * @return \Twilio\Rest\Preview\Sync\ServiceContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -70,7 +70,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -80,7 +80,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -107,8 +107,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the documents
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\DocumentList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\DocumentList
      */
     protected function getDocuments() {
         if (!$this->_documents) {
@@ -120,8 +120,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the syncLists
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncListList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncListList
      */
     protected function getSyncLists() {
         if (!$this->_syncLists) {
@@ -133,8 +133,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the syncMaps
-     * 
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMapList 
+     *
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMapList
      */
     protected function getSyncMaps() {
         if (!$this->_syncMaps) {
@@ -146,7 +146,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -162,7 +162,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -179,7 +179,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

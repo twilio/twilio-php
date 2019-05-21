@@ -18,12 +18,12 @@ use Twilio\Version;
 class WorkerChannelContext extends InstanceContext {
     /**
      * Initialize the WorkerChannelContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $workspaceSid The workspace_sid
      * @param string $workerSid The worker_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext
      */
     public function __construct(Version $version, $workspaceSid, $workerSid, $sid) {
         parent::__construct($version);
@@ -36,7 +36,7 @@ class WorkerChannelContext extends InstanceContext {
 
     /**
      * Fetch a WorkerChannelInstance
-     * 
+     *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -60,7 +60,7 @@ class WorkerChannelContext extends InstanceContext {
 
     /**
      * Update the WorkerChannelInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return WorkerChannelInstance Updated WorkerChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -91,7 +91,7 @@ class WorkerChannelContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

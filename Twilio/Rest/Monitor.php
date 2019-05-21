@@ -25,7 +25,7 @@ class Monitor extends Domain {
 
     /**
      * Construct the Monitor Domain
-     * 
+     *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
      * @return \Twilio\Rest\Monitor Domain for Monitor
@@ -48,7 +48,7 @@ class Monitor extends Domain {
 
     /**
      * Magic getter to lazy load version
-     * 
+     *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
      * @throws \Twilio\Exceptions\TwilioException For unknown versions
@@ -64,7 +64,7 @@ class Monitor extends Domain {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -80,7 +80,7 @@ class Monitor extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\AlertList 
+     * @return \Twilio\Rest\Monitor\V1\AlertList
      */
     protected function getAlerts() {
         return $this->v1->alerts;
@@ -88,14 +88,14 @@ class Monitor extends Domain {
 
     /**
      * @param string $sid The sid
-     * @return \Twilio\Rest\Monitor\V1\AlertContext 
+     * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
     protected function contextAlerts($sid) {
         return $this->v1->alerts($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Monitor\V1\EventList 
+     * @return \Twilio\Rest\Monitor\V1\EventList
      */
     protected function getEvents() {
         return $this->v1->events;
@@ -103,7 +103,7 @@ class Monitor extends Domain {
 
     /**
      * @param string $sid A 34 character string that uniquely identifies this event.
-     * @return \Twilio\Rest\Monitor\V1\EventContext 
+     * @return \Twilio\Rest\Monitor\V1\EventContext
      */
     protected function contextEvents($sid) {
         return $this->v1->events($sid);
@@ -111,7 +111,7 @@ class Monitor extends Domain {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

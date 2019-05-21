@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -30,13 +30,13 @@ use Twilio\Version;
 class AlphaSenderInstance extends InstanceResource {
     /**
      * Initialize the AlphaSenderInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The 34 character unique sid of the Messaging
      *                           Service.
      * @param string $sid The sid
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderInstance 
+     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
         parent::__construct($version);
@@ -59,7 +59,7 @@ class AlphaSenderInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext Context for
      *                                                              this
      *                                                              AlphaSenderInstance
@@ -78,7 +78,7 @@ class AlphaSenderInstance extends InstanceResource {
 
     /**
      * Fetch a AlphaSenderInstance
-     * 
+     *
      * @return AlphaSenderInstance Fetched AlphaSenderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -88,7 +88,7 @@ class AlphaSenderInstance extends InstanceResource {
 
     /**
      * Deletes the AlphaSenderInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +98,7 @@ class AlphaSenderInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -118,7 +118,7 @@ class AlphaSenderInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

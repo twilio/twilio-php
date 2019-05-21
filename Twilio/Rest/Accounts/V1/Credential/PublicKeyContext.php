@@ -17,10 +17,10 @@ use Twilio\Version;
 class PublicKeyContext extends InstanceContext {
     /**
      * Initialize the PublicKeyContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid Fetch by unique Credential Sid
-     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext 
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Accounts\V1\Credential\PublicKeyContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -33,7 +33,7 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Fetch a PublicKeyInstance
-     * 
+     *
      * @return PublicKeyInstance Fetched PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -51,7 +51,7 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Update the PublicKeyInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return PublicKeyInstance Updated PublicKeyInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -73,7 +73,7 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Deletes the PublicKeyInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -83,7 +83,7 @@ class PublicKeyContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

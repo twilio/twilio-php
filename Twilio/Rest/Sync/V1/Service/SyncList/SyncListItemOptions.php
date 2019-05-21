@@ -17,11 +17,11 @@ use Twilio\Values;
  */
 abstract class SyncListItemOptions {
     /**
-     * @param integer $ttl Alias for item_ttl
-     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
-     *                         expiration.
-     * @param integer $collectionTtl Time-to-live of this item's parent List in
-     *                               seconds, defaults to no expiration.
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent List in
+     *                           seconds, defaults to no expiration.
      * @return CreateSyncListItemOptions Options builder
      */
     public static function create($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -42,11 +42,11 @@ abstract class SyncListItemOptions {
      * @param array $data Contains arbitrary user-defined, schema-less data that
      *                    this List Item stores, represented by a JSON object, up
      *                    to 16KB.
-     * @param integer $ttl Alias for item_ttl
-     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
-     *                         expiration.
-     * @param integer $collectionTtl Time-to-live of this item's parent List in
-     *                               seconds, defaults to no expiration.
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent List in
+     *                           seconds, defaults to no expiration.
      * @return UpdateSyncListItemOptions Options builder
      */
     public static function update($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -56,11 +56,11 @@ abstract class SyncListItemOptions {
 
 class CreateSyncListItemOptions extends Options {
     /**
-     * @param integer $ttl Alias for item_ttl
-     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
-     *                         expiration.
-     * @param integer $collectionTtl Time-to-live of this item's parent List in
-     *                               seconds, defaults to no expiration.
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent List in
+     *                           seconds, defaults to no expiration.
      */
     public function __construct($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
@@ -70,8 +70,8 @@ class CreateSyncListItemOptions extends Options {
 
     /**
      * Alias for item_ttl. If both are provided, this value is ignored.
-     * 
-     * @param integer $ttl Alias for item_ttl
+     *
+     * @param int $ttl Alias for item_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -81,9 +81,9 @@ class CreateSyncListItemOptions extends Options {
 
     /**
      * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
-     * 
-     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
-     *                         expiration.
+     *
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setItemTtl($itemTtl) {
@@ -93,9 +93,9 @@ class CreateSyncListItemOptions extends Options {
 
     /**
      * Time-to-live of this item's parent List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the list item's data or ttl is updated in the same request.
-     * 
-     * @param integer $collectionTtl Time-to-live of this item's parent List in
-     *                               seconds, defaults to no expiration.
+     *
+     * @param int $collectionTtl Time-to-live of this item's parent List in
+     *                           seconds, defaults to no expiration.
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {
@@ -105,7 +105,7 @@ class CreateSyncListItemOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -133,7 +133,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * A string; `asc` or `desc`
-     * 
+     *
      * @param string $order A string; asc or desc
      * @return $this Fluent Builder
      */
@@ -144,7 +144,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * An integer representing Item index offset (inclusive). If not present, query is performed from the start or end, depending on the Order query parameter.
-     * 
+     *
      * @param string $from An integer representing Item index offset.
      * @return $this Fluent Builder
      */
@@ -155,7 +155,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * The bounds
-     * 
+     *
      * @param string $bounds The bounds
      * @return $this Fluent Builder
      */
@@ -166,7 +166,7 @@ class ReadSyncListItemOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
@@ -185,11 +185,11 @@ class UpdateSyncListItemOptions extends Options {
      * @param array $data Contains arbitrary user-defined, schema-less data that
      *                    this List Item stores, represented by a JSON object, up
      *                    to 16KB.
-     * @param integer $ttl Alias for item_ttl
-     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
-     *                         expiration.
-     * @param integer $collectionTtl Time-to-live of this item's parent List in
-     *                               seconds, defaults to no expiration.
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent List in
+     *                           seconds, defaults to no expiration.
      */
     public function __construct($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
@@ -200,7 +200,7 @@ class UpdateSyncListItemOptions extends Options {
 
     /**
      * Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
-     * 
+     *
      * @param array $data Contains arbitrary user-defined, schema-less data that
      *                    this List Item stores, represented by a JSON object, up
      *                    to 16KB.
@@ -213,8 +213,8 @@ class UpdateSyncListItemOptions extends Options {
 
     /**
      * Alias for item_ttl. If both are provided, this value is ignored.
-     * 
-     * @param integer $ttl Alias for item_ttl
+     *
+     * @param int $ttl Alias for item_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -224,9 +224,9 @@ class UpdateSyncListItemOptions extends Options {
 
     /**
      * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the list item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
-     * 
-     * @param integer $itemTtl Time-to-live of this item in seconds, defaults to no
-     *                         expiration.
+     *
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setItemTtl($itemTtl) {
@@ -236,9 +236,9 @@ class UpdateSyncListItemOptions extends Options {
 
     /**
      * Time-to-live of this item's parent List in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the list item's data or ttl is updated in the same request.
-     * 
-     * @param integer $collectionTtl Time-to-live of this item's parent List in
-     *                               seconds, defaults to no expiration.
+     *
+     * @param int $collectionTtl Time-to-live of this item's parent List in
+     *                           seconds, defaults to no expiration.
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {
@@ -248,7 +248,7 @@ class UpdateSyncListItemOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

@@ -31,14 +31,17 @@ use Twilio\Version;
 class PayloadInstance extends InstanceResource {
     /**
      * Initialize the PayloadInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $accountSid The unique sid that identifies this account
-     * @param string $referenceSid A string that uniquely identifies the recording.
-     * @param string $addOnResultSid A string that uniquely identifies the result
-     * @param string $sid Fetch by unique payload Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadInstance 
+     * @param string $accountSid The SID of the Account that created the resource
+     * @param string $referenceSid The SID of the recording to which the
+     *                             AddOnResult resource that contains the payload
+     *                             belongs
+     * @param string $addOnResultSid The SID of the AddOnResult to which the
+     *                               payload belongs
+     * @param string $sid The unique string that identifies the resource to fetch
+     * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadInstance
      */
     public function __construct(Version $version, array $payload, $accountSid, $referenceSid, $addOnResultSid, $sid = null) {
         parent::__construct($version);
@@ -69,7 +72,7 @@ class PayloadInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext Context for this PayloadInstance
      */
     protected function proxy() {
@@ -88,7 +91,7 @@ class PayloadInstance extends InstanceResource {
 
     /**
      * Fetch a PayloadInstance
-     * 
+     *
      * @return PayloadInstance Fetched PayloadInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -98,7 +101,7 @@ class PayloadInstance extends InstanceResource {
 
     /**
      * Deletes the PayloadInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -108,7 +111,7 @@ class PayloadInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -128,7 +131,7 @@ class PayloadInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

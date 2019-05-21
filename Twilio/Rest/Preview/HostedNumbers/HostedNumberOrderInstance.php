@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string incomingPhoneNumberSid
@@ -32,25 +32,25 @@ use Twilio\Version;
  * @property string failureReason
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
- * @property integer verificationAttempts
+ * @property int verificationAttempts
  * @property string email
  * @property string ccEmails
  * @property string url
  * @property string verificationType
  * @property string verificationDocumentSid
  * @property string extension
- * @property integer callDelay
+ * @property int callDelay
  * @property string verificationCode
  * @property string verificationCallSids
  */
 class HostedNumberOrderInstance extends InstanceResource {
     /**
      * Initialize the HostedNumberOrderInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid HostedNumberOrder sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderInstance 
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
         parent::__construct($version);
@@ -88,7 +88,7 @@ class HostedNumberOrderInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext Context
      *                                                                     for this
      *                                                                     HostedNumberOrderInstance
@@ -103,7 +103,7 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Fetch a HostedNumberOrderInstance
-     * 
+     *
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -113,7 +113,7 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Deletes the HostedNumberOrderInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -123,7 +123,7 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Update the HostedNumberOrderInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -134,7 +134,7 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -154,7 +154,7 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

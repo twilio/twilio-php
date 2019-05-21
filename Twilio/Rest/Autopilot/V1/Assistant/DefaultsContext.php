@@ -21,10 +21,11 @@ use Twilio\Version;
 class DefaultsContext extends InstanceContext {
     /**
      * Initialize the DefaultsContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $assistantSid The assistant_sid
-     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext 
+     * @param string $assistantSid The SID of the Assistant that is the parent of
+     *                             the resource to fetch
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext
      */
     public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
@@ -37,7 +38,7 @@ class DefaultsContext extends InstanceContext {
 
     /**
      * Fetch a DefaultsInstance
-     * 
+     *
      * @return DefaultsInstance Fetched DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -55,7 +56,7 @@ class DefaultsContext extends InstanceContext {
 
     /**
      * Update the DefaultsInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return DefaultsInstance Updated DefaultsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -77,7 +78,7 @@ class DefaultsContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

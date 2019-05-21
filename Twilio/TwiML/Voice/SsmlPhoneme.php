@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class SsmlPhoneme extends TwiML {
     /**
      * SsmlPhoneme constructor.
-     * 
+     *
      * @param string $words Words to speak
      * @param array $attributes Optional attributes
      */
@@ -24,9 +24,9 @@ class SsmlPhoneme extends TwiML {
 
     /**
      * Add Alphabet attribute.
-     * 
-     * @param ssmlPhoneme:Enum:Alphabet $alphabet Specify the phonetic alphabet
-     * @return TwiML $this.
+     *
+     * @param string $alphabet Specify the phonetic alphabet
+     * @return static $this.
      */
     public function setAlphabet($alphabet) {
         return $this->setAttribute('alphabet', $alphabet);
@@ -34,9 +34,9 @@ class SsmlPhoneme extends TwiML {
 
     /**
      * Add Ph attribute.
-     * 
+     *
      * @param string $ph Specifiy the phonetic symbols for pronunciation
-     * @return TwiML $this.
+     * @return static $this.
      */
     public function setPh($ph) {
         return $this->setAttribute('ph', $ph);

@@ -24,12 +24,12 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Initialize the CredentialListContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The unique id of the Account that is responsible
      *                           for this resource.
      * @param string $sid Fetch by unique credential list Sid
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext 
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialListContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Fetch a CredentialListInstance
-     * 
+     *
      * @return CredentialListInstance Fetched CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -65,7 +65,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Update the CredentialListInstance
-     * 
+     *
      * @param string $friendlyName Human readable descriptive text
      * @return CredentialListInstance Updated CredentialListInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -90,7 +90,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Deletes the CredentialListInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -100,8 +100,8 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Access the credentials
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialList
      */
     protected function getCredentials() {
         if (!$this->_credentials) {
@@ -117,7 +117,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -133,7 +133,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -150,7 +150,7 @@ class CredentialListContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

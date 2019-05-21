@@ -21,7 +21,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property \Twilio\Rest\Messaging\V1\Service\PhoneNumberList phoneNumbers
  * @property \Twilio\Rest\Messaging\V1\Service\ShortCodeList shortCodes
  * @property \Twilio\Rest\Messaging\V1\Service\AlphaSenderList alphaSenders
@@ -36,10 +36,10 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Initialize the ServiceContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Messaging\V1\ServiceContext 
+     * @return \Twilio\Rest\Messaging\V1\ServiceContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -52,7 +52,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -89,7 +89,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -107,7 +107,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -117,8 +117,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the phoneNumbers
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList
      */
     protected function getPhoneNumbers() {
         if (!$this->_phoneNumbers) {
@@ -130,8 +130,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the shortCodes
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList
      */
     protected function getShortCodes() {
         if (!$this->_shortCodes) {
@@ -143,8 +143,8 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the alphaSenders
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList
      */
     protected function getAlphaSenders() {
         if (!$this->_alphaSenders) {
@@ -156,7 +156,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
@@ -172,7 +172,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
@@ -189,7 +189,7 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

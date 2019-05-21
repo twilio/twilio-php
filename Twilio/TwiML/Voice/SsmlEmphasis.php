@@ -14,7 +14,7 @@ use Twilio\TwiML\TwiML;
 class SsmlEmphasis extends TwiML {
     /**
      * SsmlEmphasis constructor.
-     * 
+     *
      * @param string $words Words to emphasize
      * @param array $attributes Optional attributes
      */
@@ -24,9 +24,9 @@ class SsmlEmphasis extends TwiML {
 
     /**
      * Add Level attribute.
-     * 
-     * @param ssmlEmphasis:Enum:Level $level Specify the degree of emphasis
-     * @return TwiML $this.
+     *
+     * @param string $level Specify the degree of emphasis
+     * @return static $this.
      */
     public function setLevel($level) {
         return $this->setAttribute('level', $level);

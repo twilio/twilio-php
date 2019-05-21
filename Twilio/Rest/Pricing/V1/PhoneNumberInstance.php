@@ -22,10 +22,10 @@ use Twilio\Version;
 class PhoneNumberInstance extends InstanceResource {
     /**
      * Initialize the PhoneNumberInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Pricing\V1\PhoneNumberInstance 
+     * @return \Twilio\Rest\Pricing\V1\PhoneNumberInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
@@ -42,7 +42,7 @@ class PhoneNumberInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -62,7 +62,7 @@ class PhoneNumberInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

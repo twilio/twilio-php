@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property \DateTime dateCreated
  * @property \DateTime dateUpdated
  * @property string friendlyName
- * @property integer maxReservedWorkers
+ * @property int maxReservedWorkers
  * @property string reservationActivitySid
  * @property string reservationActivityName
  * @property string sid
@@ -40,12 +40,12 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Initialize the TaskQueueInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $workspaceSid The ID of the Workspace that owns this TaskQueue
      * @param string $sid The sid
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueInstance 
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {
         parent::__construct($version);
@@ -75,7 +75,7 @@ class TaskQueueInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext Context for
      *                                                               this
      *                                                               TaskQueueInstance
@@ -94,7 +94,7 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Fetch a TaskQueueInstance
-     * 
+     *
      * @return TaskQueueInstance Fetched TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -104,7 +104,7 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Update the TaskQueueInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Updated TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -115,7 +115,7 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Deletes the TaskQueueInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -125,8 +125,8 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Access the statistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsList
      */
     protected function getStatistics() {
         return $this->proxy()->statistics;
@@ -134,8 +134,8 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Access the realTimeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsList
      */
     protected function getRealTimeStatistics() {
         return $this->proxy()->realTimeStatistics;
@@ -143,8 +143,8 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Access the cumulativeStatistics
-     * 
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList 
+     *
+     * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList
      */
     protected function getCumulativeStatistics() {
         return $this->proxy()->cumulativeStatistics;
@@ -152,7 +152,7 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
@@ -172,7 +172,7 @@ class TaskQueueInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

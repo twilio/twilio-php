@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class WorkerStatisticsOptions {
     /**
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param \DateTime $endDate Filter cumulative statistics by a end date.
      * @param string $taskChannel Filter cumulative statistics by TaskChannel.
@@ -28,8 +28,8 @@ abstract class WorkerStatisticsOptions {
 
 class FetchWorkerStatisticsOptions extends Options {
     /**
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @param \DateTime $endDate Filter cumulative statistics by a end date.
      * @param string $taskChannel Filter cumulative statistics by TaskChannel.
@@ -43,9 +43,9 @@ class FetchWorkerStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
-     * 
-     * @param integer $minutes Filter cumulative statistics by up to 'x' minutes in
-     *                         the past.
+     *
+     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
+     *                     past.
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -55,7 +55,7 @@ class FetchWorkerStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.
-     * 
+     *
      * @param \DateTime $startDate Filter cumulative statistics by a start date.
      * @return $this Fluent Builder
      */
@@ -66,7 +66,7 @@ class FetchWorkerStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by a end date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.
-     * 
+     *
      * @param \DateTime $endDate Filter cumulative statistics by a end date.
      * @return $this Fluent Builder
      */
@@ -77,7 +77,7 @@ class FetchWorkerStatisticsOptions extends Options {
 
     /**
      * Filter cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
-     * 
+     *
      * @param string $taskChannel Filter cumulative statistics by TaskChannel.
      * @return $this Fluent Builder
      */
@@ -88,7 +88,7 @@ class FetchWorkerStatisticsOptions extends Options {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {

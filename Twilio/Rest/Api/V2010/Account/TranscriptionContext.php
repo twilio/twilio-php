@@ -16,11 +16,12 @@ use Twilio\Version;
 class TranscriptionContext extends InstanceContext {
     /**
      * Initialize the TranscriptionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $accountSid The account_sid
-     * @param string $sid Fetch by unique transcription SID
-     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext 
+     * @param string $accountSid The SID of the Account that created the resource
+     *                           to fetch
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Api\V2010\Account\TranscriptionContext
      */
     public function __construct(Version $version, $accountSid, $sid) {
         parent::__construct($version);
@@ -33,7 +34,7 @@ class TranscriptionContext extends InstanceContext {
 
     /**
      * Fetch a TranscriptionInstance
-     * 
+     *
      * @return TranscriptionInstance Fetched TranscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -56,7 +57,7 @@ class TranscriptionContext extends InstanceContext {
 
     /**
      * Deletes the TranscriptionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -66,7 +67,7 @@ class TranscriptionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
     public function __toString() {
