@@ -22,7 +22,7 @@ class MessagingResponse extends TwiML {
      *
      * @param string $body Message Body
      * @param array $attributes Optional attributes
-     * @return \Twilio\TwiML\Messaging\Message Child element.
+     * @return Messaging\Message Child element.
      */
     public function message($body, $attributes = array()) {
         return $this->nest(new Messaging\Message($body, $attributes));
@@ -33,7 +33,7 @@ class MessagingResponse extends TwiML {
      *
      * @param string $url Redirect URL
      * @param array $attributes Optional attributes
-     * @return \Twilio\TwiML\Messaging\Redirect Child element.
+     * @return Messaging\Redirect Child element.
      */
     public function redirect($url, $attributes = array()) {
         return $this->nest(new Messaging\Redirect($url, $attributes));

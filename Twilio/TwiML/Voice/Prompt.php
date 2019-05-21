@@ -86,7 +86,7 @@ class Prompt extends TwiML {
     /**
      * Add Attempt attribute.
      *
-     * @param integer $attempt Current attempt count
+     * @param int $attempt Current attempt count
      * @return static $this.
      */
     public function setAttempt($attempt) {

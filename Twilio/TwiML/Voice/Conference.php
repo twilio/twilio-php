@@ -35,7 +35,7 @@ class Conference extends TwiML {
     /**
      * Add Beep attribute.
      *
-     * @param bool $beep Play beep when joining
+     * @param string $beep Play beep when joining
      * @return static $this.
      */
     public function setBeep($beep) {
@@ -95,7 +95,7 @@ class Conference extends TwiML {
     /**
      * Add Record attribute.
      *
-     * @param bool $record Record the conference
+     * @param string $record Record the conference
      * @return static $this.
      */
     public function setRecord($record) {
@@ -125,7 +125,7 @@ class Conference extends TwiML {
     /**
      * Add Trim attribute.
      *
-     * @param bool $trim Trim the conference recording
+     * @param string $trim Trim the conference recording
      * @return static $this.
      */
     public function setTrim($trim) {
@@ -175,8 +175,8 @@ class Conference extends TwiML {
     /**
      * Add RecordingStatusCallbackMethod attribute.
      *
-     * @param string $recordingStatusCallbackMethod Recording status callback
-     *                                                  URL method
+     * @param string $recordingStatusCallbackMethod Recording status callback URL
+     *                                              method
      * @return static $this.
      */
     public function setRecordingStatusCallbackMethod($recordingStatusCallbackMethod) {
