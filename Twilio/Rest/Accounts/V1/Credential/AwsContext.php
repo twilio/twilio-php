@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Accounts\V1\Credential;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;

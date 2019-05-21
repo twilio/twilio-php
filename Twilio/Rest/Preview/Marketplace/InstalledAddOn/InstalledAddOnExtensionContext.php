@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Preview\Marketplace\InstalledAddOn;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Values;

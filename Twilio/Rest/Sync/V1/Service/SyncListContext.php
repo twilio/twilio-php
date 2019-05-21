@@ -145,7 +145,7 @@ class SyncListContext extends InstanceContext {
      *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
-     * @throws \Twilio\Exceptions\TwilioException For unknown subresources
+     * @throws TwilioException For unknown subresources
      */
     public function __get($name) {
         if (property_exists($this, '_' . $name)) {
@@ -162,7 +162,7 @@ class SyncListContext extends InstanceContext {
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
-     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     * @throws TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

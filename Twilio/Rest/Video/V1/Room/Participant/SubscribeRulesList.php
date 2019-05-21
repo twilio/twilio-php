@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Video\V1\Room\Participant;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;

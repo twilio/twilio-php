@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Wireless\V1;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;

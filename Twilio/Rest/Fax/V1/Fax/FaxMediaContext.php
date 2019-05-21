@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Fax\V1\Fax;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;

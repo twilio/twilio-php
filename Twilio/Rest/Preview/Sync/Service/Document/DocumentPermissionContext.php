@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Preview\Sync\Service\Document;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Values;

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -38,7 +39,7 @@ class MessageList extends ListResource {
      * @param string $to The destination phone number
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Newly created MessageInstance
-     * @throws \Twilio\Exceptions\TwilioException When an HTTP error occurs.
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function create($to, $options = array()) {
         $options = new Values($options);

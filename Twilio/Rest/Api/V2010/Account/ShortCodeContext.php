@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;

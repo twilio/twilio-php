@@ -61,7 +61,7 @@ class V1 extends Version {
      *
      * @param string $name Resource to return
      * @return \Twilio\ListResource The requested resource
-     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     * @throws TwilioException For unknown resource
      */
     public function __get($name) {
         $method = 'get' . ucfirst($name);
@@ -78,7 +78,7 @@ class V1 extends Version {
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
-     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     * @throws TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $property = $this->$name;

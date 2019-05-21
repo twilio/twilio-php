@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Preview\Understand\Assistant;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;

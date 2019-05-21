@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Autopilot\V1\Assistant;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;

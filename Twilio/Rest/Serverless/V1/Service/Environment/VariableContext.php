@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Serverless\V1\Service\Environment;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
