@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Video\V1\Room;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;

@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Api\V2010\Account\Sip\CredentialList;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;

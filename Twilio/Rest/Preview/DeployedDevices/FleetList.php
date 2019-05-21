@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Preview\DeployedDevices;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;

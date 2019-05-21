@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Proxy\V1\Service\Session\Participant;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;

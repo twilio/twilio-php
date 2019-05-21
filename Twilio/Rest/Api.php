@@ -91,7 +91,7 @@ class Api extends Domain {
      *
      * @param string $name Version to return
      * @return \Twilio\Version The requested version
-     * @throws \Twilio\Exceptions\TwilioException For unknown versions
+     * @throws TwilioException For unknown versions
      */
     public function __get($name) {
         $method = 'get' . ucfirst($name);
@@ -108,7 +108,7 @@ class Api extends Domain {
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
-     * @throws \Twilio\Exceptions\TwilioException For unknown resource
+     * @throws TwilioException For unknown resource
      */
     public function __call($name, $arguments) {
         $method = 'context' . ucfirst($name);

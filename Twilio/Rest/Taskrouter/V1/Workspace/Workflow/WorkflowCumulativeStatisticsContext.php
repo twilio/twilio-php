@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Taskrouter\V1\Workspace\Workflow;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Serialize;

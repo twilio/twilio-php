@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Proxy\V1\Service\Session;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;

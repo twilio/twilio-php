@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Authy\V1\Service\Entity\Factor;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
 use Twilio\Values;

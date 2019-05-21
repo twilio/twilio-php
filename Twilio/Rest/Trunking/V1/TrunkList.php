@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Trunking\V1;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;

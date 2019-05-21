@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Chat\V1\Service\Channel;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;

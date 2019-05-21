@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\IpMessaging\V1\Service\Channel;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Values;
 use Twilio\Version;

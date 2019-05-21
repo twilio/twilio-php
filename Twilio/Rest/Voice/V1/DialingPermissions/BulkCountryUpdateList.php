@@ -9,6 +9,7 @@
 
 namespace Twilio\Rest\Voice\V1\DialingPermissions;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
