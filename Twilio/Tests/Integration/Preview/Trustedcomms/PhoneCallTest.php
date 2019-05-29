@@ -20,11 +20,11 @@ class PhoneCallTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->preview->trustedComms->phoneCalls->create("from", "to", "url");
+            $this->twilio->preview->trustedComms->phoneCalls->create("from", "to");
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = array('From' => "from", 'To' => "to", 'Url' => "url", );
+        $values = array('From' => "from", 'To' => "to", );
 
         $this->assertRequest(new Request(
             'post',
@@ -50,7 +50,7 @@ class PhoneCallTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->preview->trustedComms->phoneCalls->create("from", "to", "url");
+        $actual = $this->twilio->preview->trustedComms->phoneCalls->create("from", "to");
 
         $this->assertNotNull($actual);
     }

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -37,21 +38,43 @@ class PhoneCallList extends ListResource {
     /**
      * Create a new PhoneCallInstance
      *
-     * @param string $from The originating Phone Number
+     * @param string $from Twilio number from which to originate the call
      * @param string $to The terminating Phone Number
-     * @param string $url The Twiml URL
      * @param array|Options $options Optional Arguments
      * @return PhoneCallInstance Newly created PhoneCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($from, $to, $url, $options = array()) {
+    public function create($from, $to, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
             'From' => $from,
             'To' => $to,
-            'Url' => $url,
             'Reason' => $options['reason'],
+            'ApplicationSid' => $options['applicationSid'],
+            'CallerId' => $options['callerId'],
+            'FallbackMethod' => $options['fallbackMethod'],
+            'FallbackUrl' => $options['fallbackUrl'],
+            'MachineDetection' => $options['machineDetection'],
+            'MachineDetectionSilenceTimeout' => $options['machineDetectionSilenceTimeout'],
+            'MachineDetectionSpeechEndThreshold' => $options['machineDetectionSpeechEndThreshold'],
+            'MachineDetectionSpeechThreshold' => $options['machineDetectionSpeechThreshold'],
+            'MachineDetectionTimeout' => $options['machineDetectionTimeout'],
+            'Method' => $options['method'],
+            'Record' => Serialize::booleanToString($options['record']),
+            'RecordingChannels' => $options['recordingChannels'],
+            'RecordingStatusCallback' => $options['recordingStatusCallback'],
+            'RecordingStatusCallbackEvent' => Serialize::map($options['recordingStatusCallbackEvent'], function($e) { return $e; }),
+            'RecordingStatusCallbackMethod' => $options['recordingStatusCallbackMethod'],
+            'SendDigits' => $options['sendDigits'],
+            'SipAuthPassword' => $options['sipAuthPassword'],
+            'SipAuthUsername' => $options['sipAuthUsername'],
+            'StatusCallback' => $options['statusCallback'],
+            'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
+            'StatusCallbackMethod' => $options['statusCallbackMethod'],
+            'Timeout' => $options['timeout'],
+            'Trim' => $options['trim'],
+            'Url' => $options['url'],
         ));
 
         $payload = $this->version->create(

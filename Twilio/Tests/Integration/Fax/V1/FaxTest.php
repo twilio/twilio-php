@@ -85,13 +85,13 @@ class FaxTest extends HolodeckTestCase {
             {
                 "faxes": [],
                 "meta": {
-                    "first_page_url": "https://fax.twilio.com/v1/Faxes?PageSize=50&Page=0",
+                    "first_page_url": "https://fax.twilio.com/v1/Faxes?DateCreatedOnOrBefore=2017-04-01T00%3A00%3A00Z&To=%2B14155554321&DateCreatedAfter=2017-03-31T00%3A00%3A00Z&From=%2B14155551234&PageSize=50&Page=0",
                     "key": "faxes",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://fax.twilio.com/v1/Faxes?PageSize=50&Page=0"
+                    "url": "https://fax.twilio.com/v1/Faxes?DateCreatedOnOrBefore=2017-04-01T00%3A00%3A00Z&To=%2B14155554321&DateCreatedAfter=2017-03-31T00%3A00%3A00Z&From=%2B14155551234&PageSize=50&Page=0"
                 }
             }
             '
@@ -132,13 +132,13 @@ class FaxTest extends HolodeckTestCase {
                     }
                 ],
                 "meta": {
-                    "first_page_url": "https://fax.twilio.com/v1/Faxes?PageSize=50&Page=0",
+                    "first_page_url": "https://fax.twilio.com/v1/Faxes?To=%2B14155554321&From=%2B14155551234&PageSize=50&Page=0",
                     "key": "faxes",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://fax.twilio.com/v1/Faxes?PageSize=50&Page=0"
+                    "url": "https://fax.twilio.com/v1/Faxes?To=%2B14155554321&From=%2B14155551234&PageSize=50&Page=0"
                 }
             }
             '

@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2019-05-29] Version 5.32.1
+----------------------------
+**Library**
+- [PR #545](https://github.com/twilio/twilio-php/pull/545): Commonize usage of 'TwilioException' in doc strings. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #514](https://github.com/twilio/twilio-php/pull/514): Fix wrong twilio exception namespace in doc. Thanks to [@brainrepo](https://github.com/brainrepo)!
+- [PR #544](https://github.com/twilio/twilio-php/pull/544): Add missing dollar sign to property doc tags. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #512](https://github.com/twilio/twilio-php/pull/512): Properties should use dollar sign ($) in phpDoc. Thanks to [@andreshg112](https://github.com/andreshg112)!
+- [PR #542](https://github.com/twilio/twilio-php/pull/542): Update TwiML doc types. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #541](https://github.com/twilio/twilio-php/pull/541): Switch boolean and integer to using primitive types in doc tags. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #499](https://github.com/twilio/twilio-php/pull/499): Fix doc blocks typing for TwiML. Thanks to [@erickskrauch](https://github.com/erickskrauch)!
+
+**Verify**
+- Add `approved` to status enum
+
+
 [2019-05-15] Version 5.32.0
 ----------------------------
 **Library**

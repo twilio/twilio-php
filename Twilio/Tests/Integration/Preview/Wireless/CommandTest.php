@@ -76,13 +76,13 @@ class CommandTest extends HolodeckTestCase {
             {
                 "commands": [],
                 "meta": {
-                    "first_page_url": "https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0",
+                    "first_page_url": "https://preview.twilio.com/wireless/Commands?Device=device&Status=status&Direction=direction&Sim=sim&PageSize=50&Page=0",
                     "key": "commands",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0"
+                    "url": "https://preview.twilio.com/wireless/Commands?Device=device&Status=status&Direction=direction&Sim=sim&PageSize=50&Page=0"
                 }
             }
             '
@@ -114,13 +114,13 @@ class CommandTest extends HolodeckTestCase {
                     }
                 ],
                 "meta": {
-                    "first_page_url": "https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0",
+                    "first_page_url": "https://preview.twilio.com/wireless/Commands?Device=device&Status=status&Direction=direction&Sim=sim&PageSize=50&Page=0",
                     "key": "commands",
                     "next_page_url": null,
                     "page": 0,
                     "page_size": 50,
                     "previous_page_url": null,
-                    "url": "https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0"
+                    "url": "https://preview.twilio.com/wireless/Commands?Device=device&Status=status&Direction=direction&Sim=sim&PageSize=50&Page=0"
                 }
             }
             '

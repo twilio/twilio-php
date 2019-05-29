@@ -153,11 +153,11 @@ class AccountTest extends HolodeckTestCase {
             200,
             '
             {
-                "first_page_uri": "/2010-04-01/Accounts.json?PageSize=50&Page=0",
+                "first_page_uri": "/2010-04-01/Accounts.json?FriendlyName=friendly_name&Status=active&PageSize=50&Page=0",
                 "end": 0,
                 "previous_page_uri": null,
                 "accounts": [],
-                "uri": "/2010-04-01/Accounts.json?PageSize=50&Page=0",
+                "uri": "/2010-04-01/Accounts.json?FriendlyName=friendly_name&Status=active&PageSize=50&Page=0",
                 "page_size": 50,
                 "start": 0,
                 "next_page_uri": null,
@@ -176,7 +176,7 @@ class AccountTest extends HolodeckTestCase {
             200,
             '
             {
-                "first_page_uri": "/2010-04-01/Accounts.json?PageSize=50&Page=0",
+                "first_page_uri": "/2010-04-01/Accounts.json?FriendlyName=friendly_name&Status=active&PageSize=50&Page=0",
                 "end": 0,
                 "previous_page_uri": null,
                 "accounts": [
@@ -214,7 +214,7 @@ class AccountTest extends HolodeckTestCase {
                         "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json"
                     }
                 ],
-                "uri": "/2010-04-01/Accounts.json?PageSize=50&Page=0",
+                "uri": "/2010-04-01/Accounts.json?FriendlyName=friendly_name&Status=active&PageSize=50&Page=0",
                 "page_size": 50,
                 "start": 0,
                 "next_page_uri": null,

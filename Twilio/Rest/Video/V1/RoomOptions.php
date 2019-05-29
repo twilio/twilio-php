@@ -211,7 +211,7 @@ class ReadRoomOptions extends Options {
     }
 
     /**
-     * Only show Rooms with the given status.
+     * Only show Rooms with the given status: `in-progress` (default), or `completed`
      *
      * @param string $status Only show Rooms with the given status.
      * @return $this Fluent Builder
