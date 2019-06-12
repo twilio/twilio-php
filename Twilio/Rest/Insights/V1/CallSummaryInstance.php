@@ -38,6 +38,7 @@ use Twilio\Version;
  * @property array $sipEdge
  * @property string $tags
  * @property string $url
+ * @property array $attributes
  */
 class CallSummaryInstance extends InstanceResource {
     /**
@@ -72,6 +73,7 @@ class CallSummaryInstance extends InstanceResource {
             'sipEdge' => Values::array_get($payload, 'sip_edge'),
             'tags' => Values::array_get($payload, 'tags'),
             'url' => Values::array_get($payload, 'url'),
+            'attributes' => Values::array_get($payload, 'attributes'),
         );
 
         $this->solution = array('callSid' => $callSid ?: $this->properties['callSid'], );

@@ -12,6 +12,7 @@ namespace Twilio\Rest\Verify\V2;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
 use Twilio\Serialize;
@@ -23,11 +24,14 @@ use Twilio\Version;
  *
  * @property \Twilio\Rest\Verify\V2\Service\VerificationList $verifications
  * @property \Twilio\Rest\Verify\V2\Service\VerificationCheckList $verificationChecks
+ * @property \Twilio\Rest\Verify\V2\Service\RateLimitList $rateLimits
  * @method \Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)
+ * @method \Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)
  */
 class ServiceContext extends InstanceContext {
     protected $_verifications = null;
     protected $_verificationChecks = null;
+    protected $_rateLimits = null;
 
     /**
      * Initialize the ServiceContext
@@ -127,6 +131,19 @@ class ServiceContext extends InstanceContext {
         }
 
         return $this->_verificationChecks;
+    }
+
+    /**
+     * Access the rateLimits
+     *
+     * @return \Twilio\Rest\Verify\V2\Service\RateLimitList
+     */
+    protected function getRateLimits() {
+        if (!$this->_rateLimits) {
+            $this->_rateLimits = new RateLimitList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_rateLimits;
     }
 
     /**

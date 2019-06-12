@@ -47,6 +47,7 @@ use Twilio\Version;
  * @property array $publicAttributes
  * @property bool $pluginServiceEnabled
  * @property array $pluginServiceAttributes
+ * @property array $integrations
  * @property string $url
  */
 class ConfigurationInstance extends InstanceResource {
@@ -92,6 +93,7 @@ class ConfigurationInstance extends InstanceResource {
             'publicAttributes' => Values::array_get($payload, 'public_attributes'),
             'pluginServiceEnabled' => Values::array_get($payload, 'plugin_service_enabled'),
             'pluginServiceAttributes' => Values::array_get($payload, 'plugin_service_attributes'),
+            'integrations' => Values::array_get($payload, 'integrations'),
             'url' => Values::array_get($payload, 'url'),
         );
 

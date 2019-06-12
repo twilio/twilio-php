@@ -25,10 +25,12 @@ abstract class VerificationOptions {
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
      * @param string $payee The payee of the associated PSD2 compliant transaction
+     * @param array $rateLimits The custom key-value pairs of Programmable Rate
+     *                          Limits.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
-        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee);
+    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE) {
+        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits);
     }
 }
 
@@ -42,14 +44,17 @@ class CreateVerificationOptions extends Options {
      * @param string $amount The amount of the associated PSD2 compliant
      *                       transaction.
      * @param string $payee The payee of the associated PSD2 compliant transaction
+     * @param array $rateLimits The custom key-value pairs of Programmable Rate
+     *                          Limits.
      */
-    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE) {
+    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
         $this->options['customCode'] = $customCode;
         $this->options['amount'] = $amount;
         $this->options['payee'] = $payee;
+        $this->options['rateLimits'] = $rateLimits;
     }
 
     /**
@@ -117,6 +122,18 @@ class CreateVerificationOptions extends Options {
      */
     public function setPayee($payee) {
         $this->options['payee'] = $payee;
+        return $this;
+    }
+
+    /**
+     * The custom key-value pairs of Programmable Rate Limits. Keys should be the unique_name configured while creating you Rate Limit along with the associated values for each particular request. You may include multiple Rate Limit values in each request.
+     *
+     * @param array $rateLimits The custom key-value pairs of Programmable Rate
+     *                          Limits.
+     * @return $this Fluent Builder
+     */
+    public function setRateLimits($rateLimits) {
+        $this->options['rateLimits'] = $rateLimits;
         return $this;
     }
 

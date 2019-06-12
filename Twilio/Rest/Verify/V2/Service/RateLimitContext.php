@@ -7,36 +7,32 @@
  * /       /
  */
 
-namespace Twilio\Rest\Proxy\V1\Service;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
-use Twilio\Rest\Proxy\V1\Service\Session\InteractionList;
-use Twilio\Rest\Proxy\V1\Service\Session\ParticipantList;
-use Twilio\Serialize;
+use Twilio\Rest\Verify\V2\Service\RateLimit\BucketList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
- * @property \Twilio\Rest\Proxy\V1\Service\Session\InteractionList $interactions
- * @property \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList $participants
- * @method \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext interactions(string $sid)
- * @method \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext participants(string $sid)
+ * @property \Twilio\Rest\Verify\V2\Service\RateLimit\BucketList $buckets
+ * @method \Twilio\Rest\Verify\V2\Service\RateLimit\BucketContext buckets(string $sid)
  */
-class SessionContext extends InstanceContext {
-    protected $_interactions = null;
-    protected $_participants = null;
+class RateLimitContext extends InstanceContext {
+    protected $_buckets = null;
 
     /**
-     * Initialize the SessionContext
+     * Initialize the RateLimitContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Proxy\V1\Service\SessionContext
+     * @return \Twilio\Rest\Verify\V2\Service\RateLimitContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
         parent::__construct($version);
@@ -44,13 +40,40 @@ class SessionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/RateLimits/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch a SessionInstance
+     * Update the RateLimitInstance
      *
-     * @return SessionInstance Fetched SessionInstance
+     * @param array|Options $options Optional Arguments
+     * @return RateLimitInstance Updated RateLimitInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array('Description' => $options['description'], ));
+
+        $payload = $this->version->update(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new RateLimitInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid'],
+            $this->solution['sid']
+        );
+    }
+
+    /**
+     * Fetch a RateLimitInstance
+     *
+     * @return RateLimitInstance Fetched RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -62,7 +85,7 @@ class SessionContext extends InstanceContext {
             $params
         );
 
-        return new SessionInstance(
+        return new RateLimitInstance(
             $this->version,
             $payload,
             $this->solution['serviceSid'],
@@ -71,7 +94,7 @@ class SessionContext extends InstanceContext {
     }
 
     /**
-     * Deletes the SessionInstance
+     * Deletes the RateLimitInstance
      *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -81,68 +104,20 @@ class SessionContext extends InstanceContext {
     }
 
     /**
-     * Update the SessionInstance
+     * Access the buckets
      *
-     * @param array|Options $options Optional Arguments
-     * @return SessionInstance Updated SessionInstance
-     * @throws TwilioException When an HTTP error occurs.
+     * @return \Twilio\Rest\Verify\V2\Service\RateLimit\BucketList
      */
-    public function update($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'DateExpiry' => Serialize::iso8601DateTime($options['dateExpiry']),
-            'Ttl' => $options['ttl'],
-            'Status' => $options['status'],
-        ));
-
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new SessionInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['sid']
-        );
-    }
-
-    /**
-     * Access the interactions
-     *
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\InteractionList
-     */
-    protected function getInteractions() {
-        if (!$this->_interactions) {
-            $this->_interactions = new InteractionList(
+    protected function getBuckets() {
+        if (!$this->_buckets) {
+            $this->_buckets = new BucketList(
                 $this->version,
                 $this->solution['serviceSid'],
                 $this->solution['sid']
             );
         }
 
-        return $this->_interactions;
-    }
-
-    /**
-     * Access the participants
-     *
-     * @return \Twilio\Rest\Proxy\V1\Service\Session\ParticipantList
-     */
-    protected function getParticipants() {
-        if (!$this->_participants) {
-            $this->_participants = new ParticipantList(
-                $this->version,
-                $this->solution['serviceSid'],
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_participants;
+        return $this->_buckets;
     }
 
     /**
@@ -188,6 +163,6 @@ class SessionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Proxy.V1.SessionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Verify.V2.RateLimitContext ' . implode(' ', $context) . ']';
     }
 }

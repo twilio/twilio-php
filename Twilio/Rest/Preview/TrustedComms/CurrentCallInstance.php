@@ -22,8 +22,16 @@ use Twilio\Version;
  * @property string $sid
  * @property string $from
  * @property string $to
+ * @property string $status
  * @property string $reason
  * @property \DateTime $createdAt
+ * @property string $caller
+ * @property string $logo
+ * @property string $bgColor
+ * @property string $fontColor
+ * @property string $useCase
+ * @property string $manager
+ * @property string $shieldImg
  * @property string $url
  */
 class CurrentCallInstance extends InstanceResource {
@@ -42,8 +50,16 @@ class CurrentCallInstance extends InstanceResource {
             'sid' => Values::array_get($payload, 'sid'),
             'from' => Values::array_get($payload, 'from'),
             'to' => Values::array_get($payload, 'to'),
+            'status' => Values::array_get($payload, 'status'),
             'reason' => Values::array_get($payload, 'reason'),
             'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'created_at')),
+            'caller' => Values::array_get($payload, 'caller'),
+            'logo' => Values::array_get($payload, 'logo'),
+            'bgColor' => Values::array_get($payload, 'bg_color'),
+            'fontColor' => Values::array_get($payload, 'font_color'),
+            'useCase' => Values::array_get($payload, 'use_case'),
+            'manager' => Values::array_get($payload, 'manager'),
+            'shieldImg' => Values::array_get($payload, 'shield_img'),
             'url' => Values::array_get($payload, 'url'),
         );
 

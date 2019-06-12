@@ -42,7 +42,7 @@ class ServiceContext extends InstanceContext {
      * Initialize the ServiceContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The sid
+     * @param string $sid A unique identifier for this service instance.
      * @return \Twilio\Rest\Sync\V1\ServiceContext
      */
     public function __construct(Version $version, $sid) {
@@ -97,6 +97,8 @@ class ServiceContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'ReachabilityWebhooksEnabled' => Serialize::booleanToString($options['reachabilityWebhooksEnabled']),
             'AclEnabled' => Serialize::booleanToString($options['aclEnabled']),
+            'ReachabilityDebouncingEnabled' => Serialize::booleanToString($options['reachabilityDebouncingEnabled']),
+            'ReachabilityDebouncingWindow' => $options['reachabilityDebouncingWindow'],
         ));
 
         $payload = $this->version->update(

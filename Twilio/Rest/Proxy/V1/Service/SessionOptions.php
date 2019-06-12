@@ -34,13 +34,11 @@ abstract class SessionOptions {
     /**
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @param int $ttl When the session will expire
-     * @param string $mode The Mode of the Session
      * @param string $status The new status of the resource
-     * @param array $participants The Participant objects to include in the session
      * @return UpdateSessionOptions Options builder
      */
-    public static function update($dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
-        return new UpdateSessionOptions($dateExpiry, $ttl, $mode, $status, $participants);
+    public static function update($dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE) {
+        return new UpdateSessionOptions($dateExpiry, $ttl, $status);
     }
 }
 
@@ -152,16 +150,12 @@ class UpdateSessionOptions extends Options {
     /**
      * @param \DateTime $dateExpiry The ISO 8601 date when the Session should expire
      * @param int $ttl When the session will expire
-     * @param string $mode The Mode of the Session
      * @param string $status The new status of the resource
-     * @param array $participants The Participant objects to include in the session
      */
-    public function __construct($dateExpiry = Values::NONE, $ttl = Values::NONE, $mode = Values::NONE, $status = Values::NONE, $participants = Values::NONE) {
+    public function __construct($dateExpiry = Values::NONE, $ttl = Values::NONE, $status = Values::NONE) {
         $this->options['dateExpiry'] = $dateExpiry;
         $this->options['ttl'] = $ttl;
-        $this->options['mode'] = $mode;
         $this->options['status'] = $status;
-        $this->options['participants'] = $participants;
     }
 
     /**
@@ -187,17 +181,6 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message` and the default value is `voice-and-message`.
-     *
-     * @param string $mode The Mode of the Session
-     * @return $this Fluent Builder
-     */
-    public function setMode($mode) {
-        $this->options['mode'] = $mode;
-        return $this;
-    }
-
-    /**
      * The new status of the resource. Can be: `in-progress` to re-open a session or `closed` to close a session.
      *
      * @param string $status The new status of the resource
@@ -205,17 +188,6 @@ class UpdateSessionOptions extends Options {
      */
     public function setStatus($status) {
         $this->options['status'] = $status;
-        return $this;
-    }
-
-    /**
-     * The Participant objects to include in the session.
-     *
-     * @param array $participants The Participant objects to include in the session
-     * @return $this Fluent Builder
-     */
-    public function setParticipants($participants) {
-        $this->options['participants'] = $participants;
         return $this;
     }
 

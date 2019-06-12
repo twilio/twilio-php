@@ -29,6 +29,8 @@ use Twilio\Version;
  * @property string $webhookUrl
  * @property bool $reachabilityWebhooksEnabled
  * @property bool $aclEnabled
+ * @property bool $reachabilityDebouncingEnabled
+ * @property int $reachabilityDebouncingWindow
  * @property array $links
  */
 class ServiceInstance extends InstanceResource {
@@ -42,7 +44,7 @@ class ServiceInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A unique identifier for this service instance.
      * @return \Twilio\Rest\Sync\V1\ServiceInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -60,6 +62,8 @@ class ServiceInstance extends InstanceResource {
             'webhookUrl' => Values::array_get($payload, 'webhook_url'),
             'reachabilityWebhooksEnabled' => Values::array_get($payload, 'reachability_webhooks_enabled'),
             'aclEnabled' => Values::array_get($payload, 'acl_enabled'),
+            'reachabilityDebouncingEnabled' => Values::array_get($payload, 'reachability_debouncing_enabled'),
+            'reachabilityDebouncingWindow' => Values::array_get($payload, 'reachability_debouncing_window'),
             'links' => Values::array_get($payload, 'links'),
         );
 

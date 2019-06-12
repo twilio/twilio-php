@@ -55,6 +55,7 @@ class CallSummaryTest extends HolodeckTestCase {
                 "tags": [
                     "tags"
                 ],
+                "attributes": {},
                 "url": "https://insights.twilio.com/v1/Voice/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Summary"
             }
             '

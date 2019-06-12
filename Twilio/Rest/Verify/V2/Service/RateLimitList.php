@@ -7,52 +7,48 @@
  * /       /
  */
 
-namespace Twilio\Rest\Sync\V1;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class ServiceList extends ListResource {
+class RateLimitList extends ListResource {
     /**
-     * Construct the ServiceList
+     * Construct the RateLimitList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Sync\V1\ServiceList
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
+     * @return \Twilio\Rest\Verify\V2\Service\RateLimitList
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $serviceSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/RateLimits';
     }
 
     /**
-     * Create a new ServiceInstance
+     * Create a new RateLimitInstance
      *
+     * @param string $uniqueName A unique, developer assigned name of this Rate
+     *                           Limit.
      * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Newly created ServiceInstance
+     * @return RateLimitInstance Newly created RateLimitInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($uniqueName, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
-            'WebhookUrl' => $options['webhookUrl'],
-            'ReachabilityWebhooksEnabled' => Serialize::booleanToString($options['reachabilityWebhooksEnabled']),
-            'AclEnabled' => Serialize::booleanToString($options['aclEnabled']),
-            'ReachabilityDebouncingEnabled' => Serialize::booleanToString($options['reachabilityDebouncingEnabled']),
-            'ReachabilityDebouncingWindow' => $options['reachabilityDebouncingWindow'],
-        ));
+        $data = Values::of(array('UniqueName' => $uniqueName, 'Description' => $options['description'], ));
 
         $payload = $this->version->create(
             'POST',
@@ -61,11 +57,11 @@ class ServiceList extends ListResource {
             $data
         );
 
-        return new ServiceInstance($this->version, $payload);
+        return new RateLimitInstance($this->version, $payload, $this->solution['serviceSid']);
     }
 
     /**
-     * Streams ServiceInstance records from the API as a generator stream.
+     * Streams RateLimitInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -91,7 +87,7 @@ class ServiceList extends ListResource {
     }
 
     /**
-     * Reads ServiceInstance records from the API as a list.
+     * Reads RateLimitInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -103,20 +99,20 @@ class ServiceList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ServiceInstance[] Array of results
+     * @return RateLimitInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ServiceInstance records from the API.
+     * Retrieve a single page of RateLimitInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ServiceInstance
+     * @return \Twilio\Page Page of RateLimitInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -131,15 +127,15 @@ class ServiceList extends ListResource {
             $params
         );
 
-        return new ServicePage($this->version, $response, $this->solution);
+        return new RateLimitPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of ServiceInstance records from the API.
+     * Retrieve a specific page of RateLimitInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ServiceInstance
+     * @return \Twilio\Page Page of RateLimitInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -147,17 +143,17 @@ class ServiceList extends ListResource {
             $targetUrl
         );
 
-        return new ServicePage($this->version, $response, $this->solution);
+        return new RateLimitPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a ServiceContext
+     * Constructs a RateLimitContext
      *
-     * @param string $sid A unique identifier for this service instance.
-     * @return \Twilio\Rest\Sync\V1\ServiceContext
+     * @param string $sid The unique string that identifies the resource
+     * @return \Twilio\Rest\Verify\V2\Service\RateLimitContext
      */
     public function getContext($sid) {
-        return new ServiceContext($this->version, $sid);
+        return new RateLimitContext($this->version, $this->solution['serviceSid'], $sid);
     }
 
     /**
@@ -166,6 +162,6 @@ class ServiceList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Sync.V1.ServiceList]';
+        return '[Twilio.Verify.V2.RateLimitList]';
     }
 }

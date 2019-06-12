@@ -19,6 +19,7 @@ use Twilio\Rest\Autopilot\V1\Assistant\ModelBuildList;
 use Twilio\Rest\Autopilot\V1\Assistant\QueryList;
 use Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList;
 use Twilio\Rest\Autopilot\V1\Assistant\TaskList;
+use Twilio\Rest\Autopilot\V1\Assistant\WebhookList;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
@@ -33,6 +34,7 @@ use Twilio\Version;
  * @property \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetList $styleSheet
  * @property \Twilio\Rest\Autopilot\V1\Assistant\DefaultsList $defaults
  * @property \Twilio\Rest\Autopilot\V1\Assistant\DialogueList $dialogues
+ * @property \Twilio\Rest\Autopilot\V1\Assistant\WebhookList $webhooks
  * @method \Twilio\Rest\Autopilot\V1\Assistant\FieldTypeContext fieldTypes(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\TaskContext tasks(string $sid)
  * @method \Twilio\Rest\Autopilot\V1\Assistant\ModelBuildContext modelBuilds(string $sid)
@@ -40,6 +42,7 @@ use Twilio\Version;
  * @method \Twilio\Rest\Autopilot\V1\Assistant\StyleSheetContext styleSheet()
  * @method \Twilio\Rest\Autopilot\V1\Assistant\DefaultsContext defaults()
  * @method \Twilio\Rest\Autopilot\V1\Assistant\DialogueContext dialogues(string $sid)
+ * @method \Twilio\Rest\Autopilot\V1\Assistant\WebhookContext webhooks(string $sid)
  */
 class AssistantContext extends InstanceContext {
     protected $_fieldTypes = null;
@@ -49,6 +52,7 @@ class AssistantContext extends InstanceContext {
     protected $_styleSheet = null;
     protected $_defaults = null;
     protected $_dialogues = null;
+    protected $_webhooks = null;
 
     /**
      * Initialize the AssistantContext
@@ -213,6 +217,19 @@ class AssistantContext extends InstanceContext {
         }
 
         return $this->_dialogues;
+    }
+
+    /**
+     * Access the webhooks
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\WebhookList
+     */
+    protected function getWebhooks() {
+        if (!$this->_webhooks) {
+            $this->_webhooks = new WebhookList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_webhooks;
     }
 
     /**

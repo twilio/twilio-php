@@ -23,13 +23,13 @@ class Room extends TwiML {
     }
 
     /**
-     * Add Participantidentity attribute.
+     * Add ParticipantIdentity attribute.
      *
-     * @param string $participantidentity Participant identity when connecting to
+     * @param string $participantIdentity Participant identity when connecting to
      *                                    the Room
      * @return static $this.
      */
-    public function setParticipantidentity($participantidentity) {
-        return $this->setAttribute('participantidentity', $participantidentity);
+    public function setParticipantIdentity($participantIdentity) {
+        return $this->setAttribute('participantIdentity', $participantIdentity);
     }
 }

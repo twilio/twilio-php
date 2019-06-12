@@ -26,10 +26,18 @@ abstract class ServiceOptions {
      * @param bool $aclEnabled true or false - determines whether token identities
      *                         must be granted access to Sync objects via the
      *                         Permissions API in this Service.
+     * @param bool $reachabilityDebouncingEnabled true or false - Determines
+     *                                            whether transient disconnections
+     *                                            (i.e. an immediate reconnect
+     *                                            succeeds) cause reachability
+     *                                            webhooks.
+     * @param int $reachabilityDebouncingWindow Determines how long an identity
+     *                                          must be offline before reachability
+     *                                          webhooks fire.
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled);
+    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
+        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow);
     }
 
     /**
@@ -42,10 +50,18 @@ abstract class ServiceOptions {
      * @param bool $aclEnabled true or false - determines whether token identities
      *                         must be granted access to Sync objects via the
      *                         Permissions API in this Service.
+     * @param bool $reachabilityDebouncingEnabled true or false - Determines
+     *                                            whether transient disconnections
+     *                                            (i.e. an immediate reconnect
+     *                                            succeeds) cause reachability
+     *                                            webhooks.
+     * @param int $reachabilityDebouncingWindow Determines how long an identity
+     *                                          must be offline before reachability
+     *                                          webhooks fire.
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
-        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled);
+    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
+        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow);
     }
 }
 
@@ -60,12 +76,22 @@ class CreateServiceOptions extends Options {
      * @param bool $aclEnabled true or false - determines whether token identities
      *                         must be granted access to Sync objects via the
      *                         Permissions API in this Service.
+     * @param bool $reachabilityDebouncingEnabled true or false - Determines
+     *                                            whether transient disconnections
+     *                                            (i.e. an immediate reconnect
+     *                                            succeeds) cause reachability
+     *                                            webhooks.
+     * @param int $reachabilityDebouncingWindow Determines how long an identity
+     *                                          must be offline before reachability
+     *                                          webhooks fire.
      */
-    public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         $this->options['aclEnabled'] = $aclEnabled;
+        $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
+        $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
     }
 
     /**
@@ -118,6 +144,34 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * `true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.
+     *
+     * @param bool $reachabilityDebouncingEnabled true or false - Determines
+     *                                            whether transient disconnections
+     *                                            (i.e. an immediate reconnect
+     *                                            succeeds) cause reachability
+     *                                            webhooks.
+     * @return $this Fluent Builder
+     */
+    public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled) {
+        $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
+        return $this;
+    }
+
+    /**
+     * Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window — from the same identity — means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.
+     *
+     * @param int $reachabilityDebouncingWindow Determines how long an identity
+     *                                          must be offline before reachability
+     *                                          webhooks fire.
+     * @return $this Fluent Builder
+     */
+    public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
+        $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -144,12 +198,22 @@ class UpdateServiceOptions extends Options {
      * @param bool $aclEnabled true or false - determines whether token identities
      *                         must be granted access to Sync objects via the
      *                         Permissions API in this Service.
+     * @param bool $reachabilityDebouncingEnabled true or false - Determines
+     *                                            whether transient disconnections
+     *                                            (i.e. an immediate reconnect
+     *                                            succeeds) cause reachability
+     *                                            webhooks.
+     * @param int $reachabilityDebouncingWindow Determines how long an identity
+     *                                          must be offline before reachability
+     *                                          webhooks fire.
      */
-    public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE) {
+    public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         $this->options['aclEnabled'] = $aclEnabled;
+        $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
+        $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
     }
 
     /**
@@ -198,6 +262,34 @@ class UpdateServiceOptions extends Options {
      */
     public function setAclEnabled($aclEnabled) {
         $this->options['aclEnabled'] = $aclEnabled;
+        return $this;
+    }
+
+    /**
+     * `true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.
+     *
+     * @param bool $reachabilityDebouncingEnabled true or false - Determines
+     *                                            whether transient disconnections
+     *                                            (i.e. an immediate reconnect
+     *                                            succeeds) cause reachability
+     *                                            webhooks.
+     * @return $this Fluent Builder
+     */
+    public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled) {
+        $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
+        return $this;
+    }
+
+    /**
+     * Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window — from the same identity — means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.
+     *
+     * @param int $reachabilityDebouncingWindow Determines how long an identity
+     *                                          must be offline before reachability
+     *                                          webhooks fire.
+     * @return $this Fluent Builder
+     */
+    public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
+        $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
         return $this;
     }
 

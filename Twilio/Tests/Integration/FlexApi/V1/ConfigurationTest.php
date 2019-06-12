@@ -123,6 +123,22 @@ class ConfigurationTest extends HolodeckTestCase {
                     "agent-logger": "^3.10.5",
                     "typewriter": "^7.0.1"
                 },
+                "integrations": [
+                    {
+                        "name": "twilio",
+                        "type": "http",
+                        "active": true,
+                        "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}",
+                        "logo": "logo1",
+                        "author": "somebody1"
+                    },
+                    {
+                        "name": "twilio-stage",
+                        "type": "http",
+                        "active": false,
+                        "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}"
+                    }
+                ],
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
@@ -240,6 +256,22 @@ class ConfigurationTest extends HolodeckTestCase {
                     "agent-logger": "^3.10.5",
                     "typewriter": "^7.0.1"
                 },
+                "integrations": [
+                    {
+                        "name": "twilio",
+                        "type": "http",
+                        "active": true,
+                        "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}",
+                        "logo": "logo1",
+                        "author": "somebody1"
+                    },
+                    {
+                        "name": "twilio-stage",
+                        "type": "http",
+                        "active": false,
+                        "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}"
+                    }
+                ],
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
@@ -357,6 +389,22 @@ class ConfigurationTest extends HolodeckTestCase {
                     "agent-logger": "^3.10.5",
                     "typewriter": "^7.0.1"
                 },
+                "integrations": [
+                    {
+                        "name": "twilio",
+                        "type": "http",
+                        "active": true,
+                        "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}",
+                        "logo": "logo1",
+                        "author": "somebody1"
+                    },
+                    {
+                        "name": "twilio-stage",
+                        "type": "http",
+                        "active": false,
+                        "config": "{\\"callback\\":\\"twilio.com/cb\\",\\"allowed_methods\\":[\\"GET\\",\\"POST\\"]}"
+                    }
+                ],
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '

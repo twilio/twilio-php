@@ -12,6 +12,7 @@ namespace Twilio\Rest\Verify\V2\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -57,6 +58,7 @@ class VerificationList extends ListResource {
             'CustomCode' => $options['customCode'],
             'Amount' => $options['amount'],
             'Payee' => $options['payee'],
+            'RateLimits' => Serialize::jsonObject($options['rateLimits']),
         ));
 
         $payload = $this->version->create(
