@@ -3,6 +3,7 @@
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
+    curl -s https://getcomposer.org/installer | php
 	COMPOSER = php composer.phar
 endif
 
@@ -13,7 +14,6 @@ clean:
 
 install:
 	@composer --version || (echo "Composer is not installed, please install Composer"; exit 1);
-	# Composer: http://getcomposer.org/download/
 	$(COMPOSER) install
 
 vendor: install
