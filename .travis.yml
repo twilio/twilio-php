@@ -1,35 +1,31 @@
 language: php
 dist: trusty
 sudo: false
-
+php:
+    - '5.5'
+    - '5.6'
+    - '7.0'
+    - '7.1'
+    - '7.2'
+    - '7.3'
+    - nightly
 services:
   - docker
-
-php:
-    - 7.1
-    - 7.2
-    - 7.3
-    - nightly
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - php: nightly
-  include:
-    - php: 7.2
-      env: dependencies=lowest
-    - php: 7.3
-      env: dependencies=lowest
-
 before_script:
   - composer self-update -q
   - if [ -z "$dependencies" ]; then composer install; fi;
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-stable -n; fi;
-
 script: "make test"
-
 before_install: "composer install --dev"
-
+matrix:
+    fast_finish: true
+    allow_failures:
+        - php: nightly
+    include:
+        - php: '7.2'
+          env: dependencies=lowest
+        - php: '7.3'
+          env: dependencies=lowest
 deploy:
   provider: script
   script: make docker-build && make docker-push

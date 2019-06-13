@@ -3,7 +3,7 @@
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
-    curl -s https://getcomposer.org/installer | php
+	curl -s https://getcomposer.org/installer | php
 	COMPOSER = php composer.phar
 endif
 
@@ -20,6 +20,7 @@ vendor: install
 
 # if these fail, you may need to install the helper library
 test: install
+	composer require phpunit/phpunit --prefer-dist
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs-install:
