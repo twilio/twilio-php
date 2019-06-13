@@ -3,9 +3,9 @@
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
-	curl -s https://getcomposer.org/installer | php
 	COMPOSER = php composer.phar
 endif
+PHPVERSION = $(shell php -r 'echo PHP_VERSION;')
 
 all: test
 
@@ -13,14 +13,15 @@ clean:
 	@rm -rf venv vendor
 
 install:
-	@composer --version || (echo "Composer is not installed, please install Composer"; exit 1);
+	@composer --version || (curl -s https://getcomposer.org/installer | php);
+	$(COMPOSER) config platform.php $(PHPVERSION)
 	$(COMPOSER) install
 
 vendor: install
 
 # if these fail, you may need to install the helper library
 test: install
-	composer require phpunit/phpunit --prefer-dist
+	$(COMPOSER) require --dev phpunit/phpunit
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs-install:
