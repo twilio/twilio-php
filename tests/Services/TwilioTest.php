@@ -1,6 +1,6 @@
 <?php
 
-require 'Twilio.php';
+require dirname(__DIR__) . '/../src/Services/Twilio.php';
 
 class TwilioTest extends \PHPUnit\Framework\TestCase {
 
