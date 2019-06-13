@@ -1,25 +1,40 @@
 language: php
 dist: trusty
 sudo: false
-php:
-    - '5.5'
-    - '5.6'
-    - '7.0'
-    - '7.1'
-    - hhvm-3.18 # on Trusty only
-    - nightly
+
 services:
   - docker
-script: "make test"
-before_install: "composer install --dev"
+
+php:
+    - 7.1
+    - 7.2
+    - 7.3
+    - hhvm-3.18 # on Trusty only
+    - nightly
+
 matrix:
-    fast_finish: true
-    allow_failures:
-        - php: nightly
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+  include:
+    - php: 7.2
+      env: dependencies=lowest
+    - php: 7.3
+      env: dependencies=lowest
+
+before_script:
+  - composer self-update -q
+  - if [ -z "$dependencies" ]; then composer install; fi;
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest --prefer-stable -n; fi;
+
+script: "make test"
+
+before_install: "composer install --dev"
+
 deploy:
   provider: script
   script: make docker-build && make docker-push
   skip_cleanup: true
   on:
     tags: true
-    php: "5.6"
+    php: "7.1"

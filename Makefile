@@ -20,14 +20,14 @@ vendor: install
 
 # if these fail, you may need to install the helper library
 test: install
-	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
-	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors Services/Tests/TwilioTest.php
+	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
+	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors Services/Tests/TwilioTest.php
 
 docs-install:
-	composer require --dev apigen/apigen
+	curl "https://github.com/ApiGen/ApiGen/releases/download/v4.1.2/apigen.phar" --create-dirs -L -o bin/apigen
 
 docs: docs-install
-	vendor/bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
+	bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
