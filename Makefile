@@ -20,8 +20,7 @@ vendor: install
 
 # if these fail, you may need to install the helper library
 test: install
-	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
-	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors Services/Tests/TwilioTest.php
+	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs-install:
 	curl "https://github.com/ApiGen/ApiGen/releases/download/v4.1.2/apigen.phar" --create-dirs -L -o bin/apigen

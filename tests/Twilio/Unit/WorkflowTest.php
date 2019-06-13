@@ -287,7 +287,7 @@ class WorkflowTest extends UnitTest {
 
 		$this->assertEquals(3, count($taskRoutingConfig->filters));
 		$this->assertEquals(3, count($config->filters));
-		$this->assertEquals(1, count($config->default_filter));
+		$this->assertEquals(1, count((array)$config->default_filter));
 		// sales assertions
 		$this->assertEquals("type=='sales'", $config->filters[0]->expression);
 		$this->assertEquals("Sales", $config->filters[0]->friendly_name);
@@ -380,7 +380,7 @@ class WorkflowTest extends UnitTest {
 
 		$this->assertEquals(3, count($taskRoutingConfig->filters));
 		$this->assertEquals(3, count($config->filters));
-		$this->assertEquals(1, count($config->default_filter));
+		$this->assertEquals(1, count((array)$config->default_filter));
 		// sales assertions
 		$this->assertEquals("type=='sales'", $config->filters[0]->expression);
 		$this->assertEquals("Sales", $config->filters[0]->friendly_name);

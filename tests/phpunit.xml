@@ -2,8 +2,11 @@
 <phpunit bootstrap="./Bootstrap.php" convertNoticesToExceptions="false">
   <testsuites>
     <testsuite name="Twilio Test Suite">
-      <directory>./</directory>
+      <directory>./Twilio</directory>
       <exclude>Unit/WorkflowTest.php</exclude>
+    </testsuite>
+    <testsuite name="Twilio Services Test Suite">
+      <directory>./Services</directory>
     </testsuite>
   </testsuites>
 </phpunit>

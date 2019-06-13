@@ -19,7 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Twilio\\": "Twilio/"
+            "Twilio\\": "src/Twilio/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Twilio\\Tests\\": "tests/Twilio/"
         }
     }
 }

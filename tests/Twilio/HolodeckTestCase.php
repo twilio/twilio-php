@@ -2,11 +2,10 @@
 
 namespace Twilio\Tests;
 
-use \PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Twilio\Rest\Client;
 
-
-class HolodeckTestCase extends PHPUnit_Framework_TestCase
+class HolodeckTestCase extends TestCase
 {
     /** @var Holodeck $holodeck */
     protected $holodeck = null;

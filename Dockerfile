@@ -3,7 +3,7 @@ FROM php:5.6
 RUN mkdir /twilio
 WORKDIR /twilio
 
-COPY Twilio ./Twilio
+COPY src/Twilio ./src/Twilio
 COPY Services ./Services
 COPY composer* ./
 
