@@ -10,9 +10,10 @@ PHPVERSION = $(shell php -r 'echo PHP_VERSION;')
 all: test
 
 clean:
-	@rm -rf venv vendor
+	@rm -rf venv vendor composer.lock
+	@git checkout composer.json
 
-install:
+install: clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
 	$(COMPOSER) config platform.php $(PHPVERSION)
 	$(COMPOSER) install
@@ -33,6 +34,15 @@ docs: docs-install
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
 	git log --raw | grep "^Author: " | cut -d ' ' -f2- | cut -d '<' -f1 | sed 's/^/- /' | sort | uniq >> AUTHORS.md
+
+# Required to fix the php:5.5 Docker image, as one of the repositories does not exist anymore
+docker-php5-sources:
+	echo 'deb http://httpredir.debian.org/debian jessie main' > /etc/apt/sources.list
+	echo 'deb http://security.debian.org jessie/updates main' >> /etc/apt/sources.list
+
+docker-infra:
+	apt-get -q update
+	apt-get -qy install git zip unzip
 
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
 docker-build:
