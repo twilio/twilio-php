@@ -7,7 +7,6 @@
     </testsuite>
     <testsuite name="Twilio Integration Test Suite">
       <directory>./Twilio/Integration</directory>
-      <exclude>WorkflowTest.php</exclude>
     </testsuite>
     <testsuite name="Twilio Services Test Suite">
       <directory>./Services</directory>
