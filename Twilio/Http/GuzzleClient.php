@@ -40,7 +40,6 @@ final class GuzzleClient implements Client
             ]);
         } catch (BadResponseException $exception) {
             $response = $exception->getResponse();
-            return new Response($response->getStatusCode(), $response->getBody()->getContents(), $response->getHeaders());
         } catch (\Exception $exception) {
             throw new HttpException('Unable to complete the HTTP request', 0, $exception);
         }
