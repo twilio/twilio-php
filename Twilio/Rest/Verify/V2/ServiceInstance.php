@@ -37,6 +37,7 @@ class ServiceInstance extends InstanceResource {
     protected $_verifications = null;
     protected $_verificationChecks = null;
     protected $_rateLimits = null;
+    protected $_messagingConfigurations = null;
 
     /**
      * Initialize the ServiceInstance
@@ -140,6 +141,15 @@ class ServiceInstance extends InstanceResource {
      */
     protected function getRateLimits() {
         return $this->proxy()->rateLimits;
+    }
+
+    /**
+     * Access the messagingConfigurations
+     *
+     * @return \Twilio\Rest\Verify\V2\Service\MessagingConfigurationList
+     */
+    protected function getMessagingConfigurations() {
+        return $this->proxy()->messagingConfigurations;
     }
 
     /**

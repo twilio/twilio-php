@@ -26,6 +26,8 @@ use Twilio\Version;
  * @property string $latestModelBuildSid
  * @property array $links
  * @property bool $logQueries
+ * @property string $developmentStage
+ * @property bool $needsModelBuild
  * @property string $sid
  * @property string $uniqueName
  * @property string $url
@@ -62,6 +64,8 @@ class AssistantInstance extends InstanceResource {
             'latestModelBuildSid' => Values::array_get($payload, 'latest_model_build_sid'),
             'links' => Values::array_get($payload, 'links'),
             'logQueries' => Values::array_get($payload, 'log_queries'),
+            'developmentStage' => Values::array_get($payload, 'development_stage'),
+            'needsModelBuild' => Values::array_get($payload, 'needs_model_build'),
             'sid' => Values::array_get($payload, 'sid'),
             'uniqueName' => Values::array_get($payload, 'unique_name'),
             'url' => Values::array_get($payload, 'url'),

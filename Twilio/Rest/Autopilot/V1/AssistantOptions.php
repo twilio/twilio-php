@@ -46,10 +46,12 @@ abstract class AssistantOptions {
      *                          sheet
      * @param array $defaults A JSON object that defines the Assistant's [default
      *                        tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
+     * @param string $developmentStage A string describing the state of the
+     *                                 assistant.
      * @return UpdateAssistantOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $styleSheet = Values::NONE, $defaults = Values::NONE) {
-        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $styleSheet, $defaults);
+    public static function update($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $styleSheet = Values::NONE, $defaults = Values::NONE, $developmentStage = Values::NONE) {
+        return new UpdateAssistantOptions($friendlyName, $logQueries, $uniqueName, $callbackUrl, $callbackEvents, $styleSheet, $defaults, $developmentStage);
     }
 }
 
@@ -187,8 +189,10 @@ class UpdateAssistantOptions extends Options {
      *                          sheet
      * @param array $defaults A JSON object that defines the Assistant's [default
      *                        tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
+     * @param string $developmentStage A string describing the state of the
+     *                                 assistant.
      */
-    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $styleSheet = Values::NONE, $defaults = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $logQueries = Values::NONE, $uniqueName = Values::NONE, $callbackUrl = Values::NONE, $callbackEvents = Values::NONE, $styleSheet = Values::NONE, $defaults = Values::NONE, $developmentStage = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['logQueries'] = $logQueries;
         $this->options['uniqueName'] = $uniqueName;
@@ -196,6 +200,7 @@ class UpdateAssistantOptions extends Options {
         $this->options['callbackEvents'] = $callbackEvents;
         $this->options['styleSheet'] = $styleSheet;
         $this->options['defaults'] = $defaults;
+        $this->options['developmentStage'] = $developmentStage;
     }
 
     /**
@@ -276,6 +281,18 @@ class UpdateAssistantOptions extends Options {
      */
     public function setDefaults($defaults) {
         $this->options['defaults'] = $defaults;
+        return $this;
+    }
+
+    /**
+     * A string describing the state of the assistant.
+     *
+     * @param string $developmentStage A string describing the state of the
+     *                                 assistant.
+     * @return $this Fluent Builder
+     */
+    public function setDevelopmentStage($developmentStage) {
+        $this->options['developmentStage'] = $developmentStage;
         return $this;
     }
 

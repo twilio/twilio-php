@@ -12,6 +12,7 @@ namespace Twilio\Rest\Verify\V2;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
@@ -25,13 +26,16 @@ use Twilio\Version;
  * @property \Twilio\Rest\Verify\V2\Service\VerificationList $verifications
  * @property \Twilio\Rest\Verify\V2\Service\VerificationCheckList $verificationChecks
  * @property \Twilio\Rest\Verify\V2\Service\RateLimitList $rateLimits
+ * @property \Twilio\Rest\Verify\V2\Service\MessagingConfigurationList $messagingConfigurations
  * @method \Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)
+ * @method \Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext messagingConfigurations(string $country)
  */
 class ServiceContext extends InstanceContext {
     protected $_verifications = null;
     protected $_verificationChecks = null;
     protected $_rateLimits = null;
+    protected $_messagingConfigurations = null;
 
     /**
      * Initialize the ServiceContext
@@ -144,6 +148,22 @@ class ServiceContext extends InstanceContext {
         }
 
         return $this->_rateLimits;
+    }
+
+    /**
+     * Access the messagingConfigurations
+     *
+     * @return \Twilio\Rest\Verify\V2\Service\MessagingConfigurationList
+     */
+    protected function getMessagingConfigurations() {
+        if (!$this->_messagingConfigurations) {
+            $this->_messagingConfigurations = new MessagingConfigurationList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_messagingConfigurations;
     }
 
     /**

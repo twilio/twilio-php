@@ -153,7 +153,7 @@ class CreateFaxOptions extends Options {
     }
 
     /**
-     * The [Fax Quality value](https://www.twilio.com/docs/api/fax/rest/faxes#fax-quality-values) that describes the fax quality. Can be: `standard`, `fine`, or `superfine` and defaults to `fine`.
+     * The [Fax Quality value](https://www.twilio.com/docs/api/fax/rest/faxes-resource#fax-quality-values) that describes the fax quality. Can be: `standard`, `fine`, or `superfine` and defaults to `fine`.
      *
      * @param string $quality The quality of this fax
      * @return $this Fluent Builder
@@ -164,7 +164,7 @@ class CreateFaxOptions extends Options {
     }
 
     /**
-     * The URL we should call using the `POST` method to send status information to your application when the status of the fax changes.
+     * The URL we should call using the `POST` method to send [status information](https://www.twilio.com/docs/api/fax/rest/faxes-resource#fax-status-callback) to your application when the status of the fax changes.
      *
      * @param string $statusCallback The URL we should call to send status
      *                               information to your application
@@ -255,7 +255,7 @@ class UpdateFaxOptions extends Options {
     }
 
     /**
-     * The new status of the resource. Can be only `canceled`. This may fail if transmission has already started.
+     * The new [status](https://www.twilio.com/docs/api/fax/rest/faxes-resource#fax-status-values) of the resource. Can be only `canceled`. This may fail if transmission has already started.
      *
      * @param string $status The new status of the resource
      * @return $this Fluent Builder

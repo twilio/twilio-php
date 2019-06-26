@@ -17,12 +17,12 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class CurrentCallContext extends InstanceContext {
+class CpsContext extends InstanceContext {
     /**
-     * Initialize the CurrentCallContext
+     * Initialize the CpsContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -30,13 +30,13 @@ class CurrentCallContext extends InstanceContext {
         // Path Solution
         $this->solution = array();
 
-        $this->uri = '/CurrentCall';
+        $this->uri = '/CPS';
     }
 
     /**
-     * Fetch a CurrentCallInstance
+     * Fetch a CpsInstance
      *
-     * @return CurrentCallInstance Fetched CurrentCallInstance
+     * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -48,7 +48,7 @@ class CurrentCallContext extends InstanceContext {
             $params
         );
 
-        return new CurrentCallInstance($this->version, $payload);
+        return new CpsInstance($this->version, $payload);
     }
 
     /**
@@ -61,6 +61,6 @@ class CurrentCallContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CurrentCallContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.TrustedComms.CpsContext ' . implode(' ', $context) . ']';
     }
 }

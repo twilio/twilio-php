@@ -106,6 +106,7 @@ class AssistantContext extends InstanceContext {
             'CallbackEvents' => $options['callbackEvents'],
             'StyleSheet' => Serialize::jsonObject($options['styleSheet']),
             'Defaults' => Serialize::jsonObject($options['defaults']),
+            'DevelopmentStage' => $options['developmentStage'],
         ));
 
         $payload = $this->version->update(

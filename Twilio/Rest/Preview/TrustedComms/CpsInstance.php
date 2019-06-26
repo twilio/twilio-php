@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Preview\TrustedComms;
 
-use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -18,47 +17,25 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $sid
- * @property string $from
- * @property string $to
- * @property string $status
- * @property string $reason
- * @property \DateTime $createdAt
- * @property string $caller
- * @property string $logo
- * @property string $bgColor
- * @property string $fontColor
- * @property string $useCase
- * @property string $manager
- * @property string $shieldImg
+ * @property string $phoneNumber
+ * @property string $cpsUrl
  * @property string $url
  */
-class CurrentCallInstance extends InstanceResource {
+class CpsInstance extends InstanceResource {
     /**
-     * Initialize the CurrentCallInstance
+     * Initialize the CpsInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallInstance
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsInstance
      */
     public function __construct(Version $version, array $payload) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => Values::array_get($payload, 'sid'),
-            'from' => Values::array_get($payload, 'from'),
-            'to' => Values::array_get($payload, 'to'),
-            'status' => Values::array_get($payload, 'status'),
-            'reason' => Values::array_get($payload, 'reason'),
-            'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'created_at')),
-            'caller' => Values::array_get($payload, 'caller'),
-            'logo' => Values::array_get($payload, 'logo'),
-            'bgColor' => Values::array_get($payload, 'bg_color'),
-            'fontColor' => Values::array_get($payload, 'font_color'),
-            'useCase' => Values::array_get($payload, 'use_case'),
-            'manager' => Values::array_get($payload, 'manager'),
-            'shieldImg' => Values::array_get($payload, 'shield_img'),
+            'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'cpsUrl' => Values::array_get($payload, 'cps_url'),
             'url' => Values::array_get($payload, 'url'),
         );
 
@@ -69,22 +46,21 @@ class CurrentCallInstance extends InstanceResource {
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallContext Context for
-     *                                                              this
-     *                                                              CurrentCallInstance
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext Context for this
+     *                                                      CpsInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new CurrentCallContext($this->version);
+            $this->context = new CpsContext($this->version);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a CurrentCallInstance
+     * Fetch a CpsInstance
      *
-     * @return CurrentCallInstance Fetched CurrentCallInstance
+     * @return CpsInstance Fetched CpsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -121,6 +97,6 @@ class CurrentCallInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CurrentCallInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.TrustedComms.CpsInstance ' . implode(' ', $context) . ']';
     }
 }
