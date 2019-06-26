@@ -3121,7 +3121,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Tracy: the addictive tool to ease debugging PHP code for cool developers. Friendly design, logging, profiler, advanced features like debugging AJAX calls or CLI support. You will love it.",
+            "description": "😎 Tracy: the addictive tool to ease debugging PHP code for cool developers. Friendly design, logging, profiler, advanced features like debugging AJAX calls or CLI support. You will love it.",
             "homepage": "https://tracy.nette.org",
             "keywords": [
                 "Xdebug",
