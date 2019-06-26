@@ -16,7 +16,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.*",
+        "guzzlehttp/guzzle": "^6.3",
         "apigen/apigen": "^4.1"
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
     },
     "autoload": {
         "psr-4": {
