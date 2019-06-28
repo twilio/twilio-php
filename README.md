@@ -101,8 +101,6 @@ That will output XML that looks like this:
 
 The documentation for the Twilio API is located [here][apidocs].
 
-The PHP library documentation can be found [here][documentation].
-
 ## Versions
 
 `twilio-php`'s versioning strategy can be found [here][versioning].
