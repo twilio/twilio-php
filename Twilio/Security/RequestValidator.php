@@ -1,18 +1,17 @@
 <?php
 
-
 namespace Twilio\Security;
 
+final class RequestValidator {
 
-class RequestValidator {
+    private $authToken;
 
-    protected $authToken;
-
-    function __construct($authToken) {
+    public function __construct($authToken) {
         $this->authToken = $authToken;
     }
 
     public function computeSignature($url, $data = array()) {
+
         // sort the array by keys
         ksort($data);
 
@@ -22,6 +21,7 @@ class RequestValidator {
             $url .= "$key$value";
 
         return base64_encode(hash_hmac("sha1", $url, $this->authToken, true));
+
     }
 
     public function computeBodyHash($data = '') {
@@ -29,12 +29,16 @@ class RequestValidator {
     }
 
     public function validate($expectedSignature, $url, $data = array()) {
+
         if (is_array($data)) {
+
             return self::compare(
                 $this->computeSignature($url, $data),
                 $expectedSignature
             );
+
         } else {
+
             $queryString = explode('?', $url);
             $queryString = $queryString[1];
             parse_str($queryString, $params);
@@ -46,7 +50,9 @@ class RequestValidator {
                 $this->computeBodyHash($data),
                 $params['bodySHA256']
             );
+
         }
+
     }
 
     /**
@@ -56,8 +62,7 @@ class RequestValidator {
      * @param $b string Second part of the comparison pair
      * @return bool True if $a == $b, false otherwise.
      */
-    public
-    static function compare($a, $b) {
+    public static function compare($a, $b) {
         $result = true;
 
         if (strlen($a) != strlen($b)) {
