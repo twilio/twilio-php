@@ -85,6 +85,7 @@ final class RequestValidator {
 
         } else {
 
+            // handling if the data was passed through as a string instead of an array of params
             $queryString = \explode('?', $url);
             $queryString = $queryString[1];
             \parse_str($queryString, $params);
