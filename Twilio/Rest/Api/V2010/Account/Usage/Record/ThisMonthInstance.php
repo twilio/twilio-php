@@ -18,6 +18,7 @@ use Twilio\Version;
 /**
  * @property string $accountSid
  * @property string $apiVersion
+ * @property string $asOf
  * @property string $category
  * @property string $count
  * @property string $countUnit
@@ -48,6 +49,7 @@ class ThisMonthInstance extends InstanceResource {
         $this->properties = array(
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
+            'asOf' => Values::array_get($payload, 'as_of'),
             'category' => Values::array_get($payload, 'category'),
             'count' => Values::array_get($payload, 'count'),
             'countUnit' => Values::array_get($payload, 'count_unit'),

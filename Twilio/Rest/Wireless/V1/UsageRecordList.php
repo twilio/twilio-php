@@ -7,72 +7,32 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account;
+namespace Twilio\Rest\Wireless\V1;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class ApplicationList extends ListResource {
+class UsageRecordList extends ListResource {
     /**
-     * Construct the ApplicationList
+     * Construct the UsageRecordList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the Account that created the resource
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationList
+     * @return \Twilio\Rest\Wireless\V1\UsageRecordList
      */
-    public function __construct(Version $version, $accountSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid, );
+        $this->solution = array();
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Applications.json';
+        $this->uri = '/UsageRecords';
     }
 
     /**
-     * Create a new ApplicationInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return ApplicationInstance Newly created ApplicationInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'ApiVersion' => $options['apiVersion'],
-            'VoiceUrl' => $options['voiceUrl'],
-            'VoiceMethod' => $options['voiceMethod'],
-            'VoiceFallbackUrl' => $options['voiceFallbackUrl'],
-            'VoiceFallbackMethod' => $options['voiceFallbackMethod'],
-            'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'VoiceCallerIdLookup' => Serialize::booleanToString($options['voiceCallerIdLookup']),
-            'SmsUrl' => $options['smsUrl'],
-            'SmsMethod' => $options['smsMethod'],
-            'SmsFallbackUrl' => $options['smsFallbackUrl'],
-            'SmsFallbackMethod' => $options['smsFallbackMethod'],
-            'SmsStatusCallback' => $options['smsStatusCallback'],
-            'MessageStatusCallback' => $options['messageStatusCallback'],
-            'FriendlyName' => $options['friendlyName'],
-        ));
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new ApplicationInstance($this->version, $payload, $this->solution['accountSid']);
-    }
-
-    /**
-     * Streams ApplicationInstance records from the API as a generator stream.
+     * Streams UsageRecordInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -99,7 +59,7 @@ class ApplicationList extends ListResource {
     }
 
     /**
-     * Reads ApplicationInstance records from the API as a list.
+     * Reads UsageRecordInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -112,26 +72,28 @@ class ApplicationList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ApplicationInstance[] Array of results
+     * @return UsageRecordInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ApplicationInstance records from the API.
+     * Retrieve a single page of UsageRecordInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ApplicationInstance
+     * @return \Twilio\Page Page of UsageRecordInstance
      */
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
+            'End' => Serialize::iso8601DateTime($options['end']),
+            'Start' => Serialize::iso8601DateTime($options['start']),
+            'Granularity' => $options['granularity'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -143,15 +105,15 @@ class ApplicationList extends ListResource {
             $params
         );
 
-        return new ApplicationPage($this->version, $response, $this->solution);
+        return new UsageRecordPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of ApplicationInstance records from the API.
+     * Retrieve a specific page of UsageRecordInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ApplicationInstance
+     * @return \Twilio\Page Page of UsageRecordInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -159,17 +121,7 @@ class ApplicationList extends ListResource {
             $targetUrl
         );
 
-        return new ApplicationPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Constructs a ApplicationContext
-     *
-     * @param string $sid The unique string that identifies the resource
-     * @return \Twilio\Rest\Api\V2010\Account\ApplicationContext
-     */
-    public function getContext($sid) {
-        return new ApplicationContext($this->version, $this->solution['accountSid'], $sid);
+        return new UsageRecordPage($this->version, $response, $this->solution);
     }
 
     /**
@@ -178,6 +130,6 @@ class ApplicationList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Api.V2010.ApplicationList]';
+        return '[Twilio.Wireless.V1.UsageRecordList]';
     }
 }

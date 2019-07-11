@@ -35,10 +35,11 @@ abstract class ApplicationOptions {
      *                                  application
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
+     * @param string $friendlyName A string to describe the new resource
      * @return CreateApplicationOptions Options builder
      */
-    public static function create($apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE) {
-        return new CreateApplicationOptions($apiVersion, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $statusCallback, $statusCallbackMethod, $voiceCallerIdLookup, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $smsStatusCallback, $messageStatusCallback);
+    public static function create($apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE, $friendlyName = Values::NONE) {
+        return new CreateApplicationOptions($apiVersion, $voiceUrl, $voiceMethod, $voiceFallbackUrl, $voiceFallbackMethod, $statusCallback, $statusCallbackMethod, $voiceCallerIdLookup, $smsUrl, $smsMethod, $smsFallbackUrl, $smsFallbackMethod, $smsStatusCallback, $messageStatusCallback, $friendlyName);
     }
 
     /**
@@ -103,8 +104,9 @@ class CreateApplicationOptions extends Options {
      *                                  application
      * @param string $messageStatusCallback The URL to send message status
      *                                      information to your application
+     * @param string $friendlyName A string to describe the new resource
      */
-    public function __construct($apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE) {
+    public function __construct($apiVersion = Values::NONE, $voiceUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $voiceCallerIdLookup = Values::NONE, $smsUrl = Values::NONE, $smsMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsStatusCallback = Values::NONE, $messageStatusCallback = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['apiVersion'] = $apiVersion;
         $this->options['voiceUrl'] = $voiceUrl;
         $this->options['voiceMethod'] = $voiceMethod;
@@ -119,6 +121,7 @@ class CreateApplicationOptions extends Options {
         $this->options['smsFallbackMethod'] = $smsFallbackMethod;
         $this->options['smsStatusCallback'] = $smsStatusCallback;
         $this->options['messageStatusCallback'] = $messageStatusCallback;
+        $this->options['friendlyName'] = $friendlyName;
     }
 
     /**
@@ -279,6 +282,17 @@ class CreateApplicationOptions extends Options {
      */
     public function setMessageStatusCallback($messageStatusCallback) {
         $this->options['messageStatusCallback'] = $messageStatusCallback;
+        return $this;
+    }
+
+    /**
+     * A descriptive string that you create to describe the new application. It can be up to 64 characters long.
+     *
+     * @param string $friendlyName A string to describe the new resource
+     * @return $this Fluent Builder
+     */
+    public function setFriendlyName($friendlyName) {
+        $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 

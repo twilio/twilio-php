@@ -14,11 +14,13 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Wireless\V1\CommandList;
 use Twilio\Rest\Wireless\V1\RatePlanList;
 use Twilio\Rest\Wireless\V1\SimList;
+use Twilio\Rest\Wireless\V1\UsageRecordList;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Wireless\V1\CommandList $commands
  * @property \Twilio\Rest\Wireless\V1\RatePlanList $ratePlans
+ * @property \Twilio\Rest\Wireless\V1\UsageRecordList $usageRecords
  * @property \Twilio\Rest\Wireless\V1\SimList $sims
  * @method \Twilio\Rest\Wireless\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Wireless\V1\RatePlanContext ratePlans(string $sid)
@@ -27,6 +29,7 @@ use Twilio\Version;
 class V1 extends Version {
     protected $_commands = null;
     protected $_ratePlans = null;
+    protected $_usageRecords = null;
     protected $_sims = null;
 
     /**
@@ -58,6 +61,16 @@ class V1 extends Version {
             $this->_ratePlans = new RatePlanList($this);
         }
         return $this->_ratePlans;
+    }
+
+    /**
+     * @return \Twilio\Rest\Wireless\V1\UsageRecordList
+     */
+    protected function getUsageRecords() {
+        if (!$this->_usageRecords) {
+            $this->_usageRecords = new UsageRecordList($this);
+        }
+        return $this->_usageRecords;
     }
 
     /**

@@ -20,7 +20,7 @@ use Twilio\Version;
  *
  * @property string $participantSid
  * @property string $roomSid
- * @property array $rules
+ * @property string $rules
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
