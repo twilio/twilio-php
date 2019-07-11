@@ -2,18 +2,48 @@
 
 namespace Twilio\Security;
 
+/**
+ *
+ */
+
+/**
+ * RequestValidator is a helper to validate that a request to a web server was actually made from Twilio
+ * EXAMPLE USAGE:
+ * $validator = new RequestValidator('your auth token here');
+ * $isFromTwilio = $validator->validate($_SERVER['HTTP_X_TWILIO_SIGNATURE'], 'https://your-example-url.com/api/route/', $_REQUEST);
+ * $isFromTwilio // <- if this is true, the request did come from Twilio, if not, it didn't
+ */
+
 final class RequestValidator {
 
+    /**
+     * @access private
+     * @var string The auth token to the Twilio Account
+     */
     private $authToken;
+
+    /**
+     * constructor
+     * @access public
+     * @param string $authToken the auth token of the Twilio user's account
+     * Sets the account auth token to be used by the rest of the class
+     */
 
     public function __construct($authToken) {
         $this->authToken = $authToken;
     }
 
-    public function computeSignature($url, $data = array()) {
+    /**
+     * Creates the actual base64 encoded signature of the sha1 hash of the concatenated URL and your auth token
+     * @param string $url the full URL of the request URL you specify for your phone number or app, from the protocol (https...) through the end of the query string (everything after the ?)
+     * @param array $data the Twilio parameters the request was made with
+     * @return string 
+     */
+
+    private function computeSignature($url, $data = array()) {
 
         // sort the array by keys
-        ksort($data);
+        \ksort($data);
 
         // append them to the data string in order
         // with no delimiters
@@ -21,21 +51,34 @@ final class RequestValidator {
             $url .= $key.$value;
         }
 
-        // sha1 then base64 the url to the auth token and output the raw data
-        return base64_encode(hash_hmac('sha1', $url, $this->authToken, true));
+        // sha1 then base64 the url to the auth token and return the base64-ed string
+        return \base64_encode(\hash_hmac('sha1', $url, $this->authToken, true));
 
     }
 
-    private static function computeBodyHash($data = '') {
+    /**
+     * Converts the raw binary output to a hexadecimal return
+     * @param string $data
+     * @return string 
+     */
+
+    public static function computeBodyHash($data = '') {
 
         // doing the hexadecimal translation on our own
-        return bin2hex(hash('sha256', $data, true));
+        return \bin2hex(\hash('sha256', $data, true));
 
     }
+
+    /**
+     * @param string $expectedSignature
+     * @param string $url
+     * @param array $data
+     * @return bool 
+     */
 
     public function validate($expectedSignature, $url, $data = array()) {
 
-        if (is_array($data)) {
+        if (\is_array($data)) {
 
             return self::compare(
                 $this->computeSignature($url, $data),
@@ -44,9 +87,9 @@ final class RequestValidator {
 
         } else {
 
-            $queryString = explode('?', $url);
+            $queryString = \explode('?', $url);
             $queryString = $queryString[1];
-            parse_str($queryString, $params);
+            \parse_str($queryString, $params);
 
             return self::compare(
                 $this->computeSignature($url),
@@ -67,10 +110,10 @@ final class RequestValidator {
      * @param $b string Second part of the comparison pair
      * @return bool True if $a == $b, false otherwise.
      */
-    public static function compare($a, $b) {
+    private static function compare($a, $b) {
         $result = true;
 
-        if (strlen($a) != strlen($b)) {
+        if (\strlen($a) != \strlen($b)) {
             return false;
         }
 
@@ -78,7 +121,7 @@ final class RequestValidator {
             return true;
         }
 
-        $limit = strlen($a);
+        $limit = \strlen($a);
 
         for ($i = 0; $i < $limit; ++$i) {
             if ($a[$i] != $b[$i]) {
