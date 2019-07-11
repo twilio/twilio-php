@@ -26,11 +26,11 @@ final class RequestValidator {
 
     }
 
-    public function computeBodyHash($data = '') {
+    private static function computeBodyHash($data = '') {
 
         // doing the hexadecimal translation on our own
         return bin2hex(hash('sha256', $data, true));
-        
+
     }
 
     public function validate($expectedSignature, $url, $data = array()) {
@@ -52,7 +52,7 @@ final class RequestValidator {
                 $this->computeSignature($url),
                 $expectedSignature
             ) && self::compare(
-                $this->computeBodyHash($data),
+                self::computeBodyHash($data),
                 $params['bodySHA256']
             );
 
