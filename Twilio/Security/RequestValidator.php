@@ -63,13 +63,11 @@ final class RequestValidator {
      */
 
     public static function computeBodyHash($data = '') {
-
-        // doing the hexadecimal translation on our own
         return \bin2hex(\hash('sha256', $data, true));
-
     }
 
     /**
+     * The only method the client should be running...takes the Twilio signature, their URL, and the Twilio params and validates the signature
      * @param string $expectedSignature
      * @param string $url
      * @param array $data
@@ -108,12 +106,12 @@ final class RequestValidator {
      * of the first argument, not the difference between the arguments.
      * @param $a string First part of the comparison pair
      * @param $b string Second part of the comparison pair
-     * @return bool True if $a == $b, false otherwise.
+     * @return bool True if $a === $b, false otherwise.
      */
     private static function compare($a, $b) {
-        $result = true;
 
-        if (\strlen($a) != \strlen($b)) {
+        // if the strings are different lengths, obviously they're invalid
+        if (\strlen($a) !== \strlen($b)) {
             return false;
         }
 
@@ -123,13 +121,16 @@ final class RequestValidator {
 
         $limit = \strlen($a);
 
+        // checking every character for an exact difference, if you find one, return false
         for ($i = 0; $i < $limit; ++$i) {
-            if ($a[$i] != $b[$i]) {
-                $result = false;
+            if ($a[$i] !== $b[$i]) {
+                return false;
             }
         }
 
-        return $result;
+        // there have been no differences found
+        return true;
+
     }
 
 }
