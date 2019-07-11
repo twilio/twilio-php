@@ -17,15 +17,20 @@ final class RequestValidator {
 
         // append them to the data string in order
         // with no delimiters
-        foreach ($data as $key => $value)
-            $url .= "$key$value";
+        foreach ($data as $key => $value) {
+            $url .= $key.$value;
+        }
 
-        return base64_encode(hash_hmac("sha1", $url, $this->authToken, true));
+        // sha1 then base64 the url to the auth token and output the raw data
+        return base64_encode(hash_hmac('sha1', $url, $this->authToken, true));
 
     }
 
     public function computeBodyHash($data = '') {
-        return bin2hex(hash("sha256", $data, true));
+
+        // doing the hexadecimal translation on our own
+        return bin2hex(hash('sha256', $data, true));
+        
     }
 
     public function validate($expectedSignature, $url, $data = array()) {
