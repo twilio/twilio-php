@@ -44,6 +44,6 @@ final class GuzzleClient implements Client
             throw new HttpException('Unable to complete the HTTP request', 0, $exception);
         }
 
-        return new Response($response->getStatusCode(), $response->getBody()->getContents(), $response->getHeaders());
+        return new Response($response->getStatusCode(), "" . $response->getBody(), $response->getHeaders());
     }
 }
