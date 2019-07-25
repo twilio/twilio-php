@@ -23,7 +23,6 @@ use Twilio\Version;
  * @property string $serviceSid
  * @property string $functionSid
  * @property string $path
- * @property array $preSignedUploadUrl
  * @property string $visibility
  * @property \DateTime $dateCreated
  * @property string $url
@@ -49,7 +48,6 @@ class FunctionVersionInstance extends InstanceResource {
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'functionSid' => Values::array_get($payload, 'function_sid'),
             'path' => Values::array_get($payload, 'path'),
-            'preSignedUploadUrl' => Values::array_get($payload, 'pre_signed_upload_url'),
             'visibility' => Values::array_get($payload, 'visibility'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'url' => Values::array_get($payload, 'url'),

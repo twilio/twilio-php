@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Preview\TrustedComms\BrandedCallList;
 use Twilio\Rest\Preview\TrustedComms\CpsList;
 use Twilio\Rest\Preview\TrustedComms\CurrentCallList;
 use Twilio\Rest\Preview\TrustedComms\DeviceList;
@@ -18,16 +19,18 @@ use Twilio\Rest\Preview\TrustedComms\PhoneCallList;
 use Twilio\Version;
 
 /**
+ * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
+ * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
  * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
  * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
- * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
- * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  */
 class TrustedComms extends Version {
+    protected $_brandedCalls = null;
+    protected $_cps = null;
+    protected $_currentCalls = null;
     protected $_devices = null;
     protected $_phoneCalls = null;
-    protected $_currentCalls = null;
-    protected $_cps = null;
 
     /**
      * Construct the TrustedComms version of Preview
@@ -38,6 +41,36 @@ class TrustedComms extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'TrustedComms';
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\BrandedCallList
+     */
+    protected function getBrandedCalls() {
+        if (!$this->_brandedCalls) {
+            $this->_brandedCalls = new BrandedCallList($this);
+        }
+        return $this->_brandedCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
+     */
+    protected function getCps() {
+        if (!$this->_cps) {
+            $this->_cps = new CpsList($this);
+        }
+        return $this->_cps;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
+     */
+    protected function getCurrentCalls() {
+        if (!$this->_currentCalls) {
+            $this->_currentCalls = new CurrentCallList($this);
+        }
+        return $this->_currentCalls;
     }
 
     /**
@@ -58,26 +91,6 @@ class TrustedComms extends Version {
             $this->_phoneCalls = new PhoneCallList($this);
         }
         return $this->_phoneCalls;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
-     */
-    protected function getCurrentCalls() {
-        if (!$this->_currentCalls) {
-            $this->_currentCalls = new CurrentCallList($this);
-        }
-        return $this->_currentCalls;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
-     */
-    protected function getCps() {
-        if (!$this->_cps) {
-            $this->_cps = new CpsList($this);
-        }
-        return $this->_cps;
     }
 
     /**

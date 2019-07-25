@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Serverless\V1\Service\TwilioFunction;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
@@ -119,34 +118,6 @@ class FunctionVersionList extends ListResource {
         );
 
         return new FunctionVersionPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Create a new FunctionVersionInstance
-     *
-     * @param string $path The URL-friendly string by which this Function Version
-     *                     can be referenced.
-     * @param string $visibility The access control which determines how the
-     *                           Function Version can be accessed.
-     * @return FunctionVersionInstance Newly created FunctionVersionInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create($path, $visibility) {
-        $data = Values::of(array('Path' => $path, 'Visibility' => $visibility, ));
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new FunctionVersionInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['functionSid']
-        );
     }
 
     /**

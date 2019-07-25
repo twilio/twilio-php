@@ -73,6 +73,16 @@ class ServiceContext extends InstanceContext {
     }
 
     /**
+     * Deletes the ServiceInstance
+     *
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
+    }
+
+    /**
      * Update the ServiceInstance
      *
      * @param array|Options $options Optional Arguments

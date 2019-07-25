@@ -190,7 +190,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the verification service. It can be up to 64 characters long.
+     * A descriptive string that you create to describe the verification service. It can be up to 64 characters long. **This value should not contain PII.**
      *
      * @param string $friendlyName A string to describe the verification service
      * @return $this Fluent Builder

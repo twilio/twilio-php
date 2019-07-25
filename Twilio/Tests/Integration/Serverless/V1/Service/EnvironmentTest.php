@@ -147,4 +147,31 @@ class EnvironmentTest extends HolodeckTestCase {
 
         $this->assertNotNull($actual);
     }
+
+    public function testDeleteRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->environments("ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments/ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->environments("ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
+    }
 }

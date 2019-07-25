@@ -236,7 +236,7 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * A descriptive string that you create to describe the resource. It can be up to 256 characters long.
      *
      * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
@@ -247,7 +247,7 @@ class UpdateChannelOptions extends Options {
     }
 
     /**
-     * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 64 characters or less in length and be unique within the Service.
+     * An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL. This value must be 256 characters or less in length and unique within the Service.
      *
      * @param string $uniqueName An application-defined string that uniquely
      *                           identifies the resource

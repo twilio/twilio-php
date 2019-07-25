@@ -95,6 +95,16 @@ class EnvironmentInstance extends InstanceResource {
     }
 
     /**
+     * Deletes the EnvironmentInstance
+     *
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
      * Access the variables
      *
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableList

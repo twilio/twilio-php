@@ -85,7 +85,6 @@ class FunctionVersionTest extends HolodeckTestCase {
                 "function_sid": "ZH00000000000000000000000000000000",
                 "path": "test-path",
                 "visibility": "public",
-                "pre_signed_upload_url": null,
                 "date_created": "2018-11-10T20:00:00Z",
                 "url": "https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Functions/ZH00000000000000000000000000000000/Versions/ZN00000000000000000000000000000000"
             }
@@ -95,56 +94,6 @@ class FunctionVersionTest extends HolodeckTestCase {
         $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->functions("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                ->functionVersions("ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
-
-        $this->assertNotNull($actual);
-    }
-
-    public function testCreateRequest() {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->functions("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                         ->functionVersions->create("path", "public");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $values = array('Path' => "path", 'Visibility' => "public", );
-
-        $this->assertRequest(new Request(
-            'post',
-            'https://serverless.twilio.com/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Functions/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Versions',
-            null,
-            $values
-        ));
-    }
-
-    public function testCreateResponse() {
-        $this->holodeck->mock(new Response(
-            201,
-            '
-            {
-                "sid": "ZN00000000000000000000000000000000",
-                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "service_sid": "ZS00000000000000000000000000000000",
-                "function_sid": "ZH00000000000000000000000000000000",
-                "path": "/some/sample/path",
-                "visibility": "protected",
-                "date_created": "2018-11-10T20:00:00Z",
-                "pre_signed_upload_url": {
-                    "url": "https://s3.amazonaws.com/com.twilio.dev.serverless",
-                    "expiration": "2019-01-01T00:08:00.000Z",
-                    "method": "PUT",
-                    "kmsARN": "arn:aws:kms:us-east-1:719084529295:key/2a7bf064-c88c-4fdd-b376-625d7bcd2d98"
-                },
-                "url": "https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Functions/ZH00000000000000000000000000000000/Versions/ZN00000000000000000000000000000000"
-            }
-            '
-        ));
-
-        $actual = $this->twilio->serverless->v1->services("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->functions("ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                               ->functionVersions->create("path", "public");
 
         $this->assertNotNull($actual);
     }

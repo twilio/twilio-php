@@ -39,6 +39,7 @@ use Twilio\Version;
  * @property string $tags
  * @property string $url
  * @property array $attributes
+ * @property array $properties
  */
 class CallSummaryInstance extends InstanceResource {
     /**
@@ -74,6 +75,7 @@ class CallSummaryInstance extends InstanceResource {
             'tags' => Values::array_get($payload, 'tags'),
             'url' => Values::array_get($payload, 'url'),
             'attributes' => Values::array_get($payload, 'attributes'),
+            'properties' => Values::array_get($payload, 'properties'),
         );
 
         $this->solution = array('callSid' => $callSid ?: $this->properties['callSid'], );

@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2019-07-24] Version 5.34.2
+----------------------------
+**Insights**
+- Added `properties` to summary.
+
+**Preview**
+- Added endpoint to brand a call without initiating it, so it can be initiated manually by the Customer
+
+**Twiml**
+- Update `<Conference>` recording events **(breaking change)**
+
+
 [2019-07-10] Version 5.34.1
 ----------------------------
 **Api**

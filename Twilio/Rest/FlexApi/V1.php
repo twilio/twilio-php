@@ -16,13 +16,13 @@ use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
+ * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
  */
 class V1 extends Version {
-    protected $_flexFlow = null;
     protected $_configuration = null;
+    protected $_flexFlow = null;
 
     /**
      * Construct the V1 version of FlexApi
@@ -36,16 +36,6 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
-     */
-    protected function getFlexFlow() {
-        if (!$this->_flexFlow) {
-            $this->_flexFlow = new FlexFlowList($this);
-        }
-        return $this->_flexFlow;
-    }
-
-    /**
      * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
      */
     protected function getConfiguration() {
@@ -53,6 +43,16 @@ class V1 extends Version {
             $this->_configuration = new ConfigurationList($this);
         }
         return $this->_configuration;
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
+     */
+    protected function getFlexFlow() {
+        if (!$this->_flexFlow) {
+            $this->_flexFlow = new FlexFlowList($this);
+        }
+        return $this->_flexFlow;
     }
 
     /**

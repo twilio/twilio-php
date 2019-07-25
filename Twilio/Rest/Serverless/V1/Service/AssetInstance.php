@@ -87,6 +87,16 @@ class AssetInstance extends InstanceResource {
     }
 
     /**
+     * Deletes the AssetInstance
+     *
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
+    }
+
+    /**
      * Update the AssetInstance
      *
      * @param string $friendlyName A human-readable description of this Asset.

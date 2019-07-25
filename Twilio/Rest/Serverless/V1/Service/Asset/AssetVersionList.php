@@ -9,7 +9,6 @@
 
 namespace Twilio\Rest\Serverless\V1\Service\Asset;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
@@ -119,34 +118,6 @@ class AssetVersionList extends ListResource {
         );
 
         return new AssetVersionPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Create a new AssetVersionInstance
-     *
-     * @param string $path The URL-friendly string by which this Asset Version can
-     *                     be referenced.
-     * @param string $visibility The access control which determines how the Asset
-     *                           Version can be accessed.
-     * @return AssetVersionInstance Newly created AssetVersionInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create($path, $visibility) {
-        $data = Values::of(array('Path' => $path, 'Visibility' => $visibility, ));
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new AssetVersionInstance(
-            $this->version,
-            $payload,
-            $this->solution['serviceSid'],
-            $this->solution['assetSid']
-        );
     }
 
     /**
