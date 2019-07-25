@@ -18,18 +18,18 @@ use Twilio\Rest\Wireless\V1\UsageRecordList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Wireless\V1\UsageRecordList $usageRecords
  * @property \Twilio\Rest\Wireless\V1\CommandList $commands
  * @property \Twilio\Rest\Wireless\V1\RatePlanList $ratePlans
+ * @property \Twilio\Rest\Wireless\V1\UsageRecordList $usageRecords
  * @property \Twilio\Rest\Wireless\V1\SimList $sims
  * @method \Twilio\Rest\Wireless\V1\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Wireless\V1\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Wireless\V1\SimContext sims(string $sid)
  */
 class V1 extends Version {
-    protected $_usageRecords = null;
     protected $_commands = null;
     protected $_ratePlans = null;
+    protected $_usageRecords = null;
     protected $_sims = null;
 
     /**
@@ -41,16 +41,6 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
-    }
-
-    /**
-     * @return \Twilio\Rest\Wireless\V1\UsageRecordList
-     */
-    protected function getUsageRecords() {
-        if (!$this->_usageRecords) {
-            $this->_usageRecords = new UsageRecordList($this);
-        }
-        return $this->_usageRecords;
     }
 
     /**
@@ -71,6 +61,16 @@ class V1 extends Version {
             $this->_ratePlans = new RatePlanList($this);
         }
         return $this->_ratePlans;
+    }
+
+    /**
+     * @return \Twilio\Rest\Wireless\V1\UsageRecordList
+     */
+    protected function getUsageRecords() {
+        if (!$this->_usageRecords) {
+            $this->_usageRecords = new UsageRecordList($this);
+        }
+        return $this->_usageRecords;
     }
 
     /**

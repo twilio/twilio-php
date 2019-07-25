@@ -15,17 +15,17 @@ use Twilio\Rest\Video\V1;
 
 /**
  * @property \Twilio\Rest\Video\V1 $v1
- * @property \Twilio\Rest\Video\V1\CompositionList $compositions
  * @property \Twilio\Rest\Video\V1\CompositionHookList $compositionHooks
  * @property \Twilio\Rest\Video\V1\CompositionSettingsList $compositionSettings
  * @property \Twilio\Rest\Video\V1\RecordingList $recordings
  * @property \Twilio\Rest\Video\V1\RecordingSettingsList $recordingSettings
+ * @property \Twilio\Rest\Video\V1\CompositionList $compositions
  * @property \Twilio\Rest\Video\V1\RoomList $rooms
- * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\CompositionHookContext compositionHooks(string $sid)
  * @method \Twilio\Rest\Video\V1\CompositionSettingsContext compositionSettings()
  * @method \Twilio\Rest\Video\V1\RecordingContext recordings(string $sid)
  * @method \Twilio\Rest\Video\V1\RecordingSettingsContext recordingSettings()
+ * @method \Twilio\Rest\Video\V1\CompositionContext compositions(string $sid)
  * @method \Twilio\Rest\Video\V1\RoomContext rooms(string $sid)
  */
 class Video extends Domain {
@@ -88,22 +88,6 @@ class Video extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Video\V1\CompositionList
-     */
-    protected function getCompositions() {
-        return $this->v1->compositions;
-    }
-
-    /**
-     * @param string $sid The Composition Sid that uniquely identifies the
-     *                    Composition to fetch.
-     * @return \Twilio\Rest\Video\V1\CompositionContext
-     */
-    protected function contextCompositions($sid) {
-        return $this->v1->compositions($sid);
-    }
-
-    /**
      * @return \Twilio\Rest\Video\V1\CompositionHookList
      */
     protected function getCompositionHooks() {
@@ -161,6 +145,22 @@ class Video extends Domain {
      */
     protected function contextRecordingSettings() {
         return $this->v1->recordingSettings();
+    }
+
+    /**
+     * @return \Twilio\Rest\Video\V1\CompositionList
+     */
+    protected function getCompositions() {
+        return $this->v1->compositions;
+    }
+
+    /**
+     * @param string $sid The Composition Sid that uniquely identifies the
+     *                    Composition to fetch.
+     * @return \Twilio\Rest\Video\V1\CompositionContext
+     */
+    protected function contextCompositions($sid) {
+        return $this->v1->compositions($sid);
     }
 
     /**

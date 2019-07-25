@@ -15,10 +15,10 @@ use Twilio\Rest\FlexApi\V1;
 
 /**
  * @property \Twilio\Rest\FlexApi\V1 $v1
- * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
- * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
+ * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  */
 class FlexApi extends Domain {
     protected $_v1 = null;
@@ -80,20 +80,6 @@ class FlexApi extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
-     */
-    protected function getConfiguration() {
-        return $this->v1->configuration;
-    }
-
-    /**
-     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext
-     */
-    protected function contextConfiguration() {
-        return $this->v1->configuration();
-    }
-
-    /**
      * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
      */
     protected function getFlexFlow() {
@@ -106,6 +92,20 @@ class FlexApi extends Domain {
      */
     protected function contextFlexFlow($sid) {
         return $this->v1->flexFlow($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
+     */
+    protected function getConfiguration() {
+        return $this->v1->configuration;
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\ConfigurationContext
+     */
+    protected function contextConfiguration() {
+        return $this->v1->configuration();
     }
 
     /**

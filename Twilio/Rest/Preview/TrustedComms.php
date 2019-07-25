@@ -20,17 +20,17 @@ use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
- * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
- * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
  * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
  * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  */
 class TrustedComms extends Version {
     protected $_brandedCalls = null;
-    protected $_cps = null;
-    protected $_currentCalls = null;
     protected $_devices = null;
     protected $_phoneCalls = null;
+    protected $_currentCalls = null;
+    protected $_cps = null;
 
     /**
      * Construct the TrustedComms version of Preview
@@ -54,26 +54,6 @@ class TrustedComms extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
-     */
-    protected function getCps() {
-        if (!$this->_cps) {
-            $this->_cps = new CpsList($this);
-        }
-        return $this->_cps;
-    }
-
-    /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
-     */
-    protected function getCurrentCalls() {
-        if (!$this->_currentCalls) {
-            $this->_currentCalls = new CurrentCallList($this);
-        }
-        return $this->_currentCalls;
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\TrustedComms\DeviceList
      */
     protected function getDevices() {
@@ -91,6 +71,26 @@ class TrustedComms extends Version {
             $this->_phoneCalls = new PhoneCallList($this);
         }
         return $this->_phoneCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\CurrentCallList
+     */
+    protected function getCurrentCalls() {
+        if (!$this->_currentCalls) {
+            $this->_currentCalls = new CurrentCallList($this);
+        }
+        return $this->_currentCalls;
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
+     */
+    protected function getCps() {
+        if (!$this->_cps) {
+            $this->_cps = new CpsList($this);
+        }
+        return $this->_cps;
     }
 
     /**

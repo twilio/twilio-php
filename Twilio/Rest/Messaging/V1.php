@@ -17,15 +17,15 @@ use Twilio\Rest\Messaging\V1\WebhookList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Messaging\V1\ServiceList $services
  * @property \Twilio\Rest\Messaging\V1\SessionList $sessions
+ * @property \Twilio\Rest\Messaging\V1\ServiceList $services
  * @property \Twilio\Rest\Messaging\V1\WebhookList $webhooks
- * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Messaging\V1\SessionContext sessions(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  */
 class V1 extends Version {
-    protected $_services = null;
     protected $_sessions = null;
+    protected $_services = null;
     protected $_webhooks = null;
 
     /**
@@ -40,16 +40,6 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Messaging\V1\ServiceList
-     */
-    protected function getServices() {
-        if (!$this->_services) {
-            $this->_services = new ServiceList($this);
-        }
-        return $this->_services;
-    }
-
-    /**
      * @return \Twilio\Rest\Messaging\V1\SessionList
      */
     protected function getSessions() {
@@ -57,6 +47,16 @@ class V1 extends Version {
             $this->_sessions = new SessionList($this);
         }
         return $this->_sessions;
+    }
+
+    /**
+     * @return \Twilio\Rest\Messaging\V1\ServiceList
+     */
+    protected function getServices() {
+        if (!$this->_services) {
+            $this->_services = new ServiceList($this);
+        }
+        return $this->_services;
     }
 
     /**

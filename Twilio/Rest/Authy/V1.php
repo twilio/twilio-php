@@ -16,14 +16,14 @@ use Twilio\Rest\Authy\V1\ServiceList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\Authy\V1\FormList $forms
  * @property \Twilio\Rest\Authy\V1\ServiceList $services
- * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
+ * @property \Twilio\Rest\Authy\V1\FormList $forms
  * @method \Twilio\Rest\Authy\V1\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
  */
 class V1 extends Version {
-    protected $_forms = null;
     protected $_services = null;
+    protected $_forms = null;
 
     /**
      * Construct the V1 version of Authy
@@ -37,16 +37,6 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\Authy\V1\FormList
-     */
-    protected function getForms() {
-        if (!$this->_forms) {
-            $this->_forms = new FormList($this);
-        }
-        return $this->_forms;
-    }
-
-    /**
      * @return \Twilio\Rest\Authy\V1\ServiceList
      */
     protected function getServices() {
@@ -54,6 +44,16 @@ class V1 extends Version {
             $this->_services = new ServiceList($this);
         }
         return $this->_services;
+    }
+
+    /**
+     * @return \Twilio\Rest\Authy\V1\FormList
+     */
+    protected function getForms() {
+        if (!$this->_forms) {
+            $this->_forms = new FormList($this);
+        }
+        return $this->_forms;
     }
 
     /**

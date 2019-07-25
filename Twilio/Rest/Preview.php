@@ -36,32 +36,32 @@ use Twilio\Rest\Preview\Wireless as PreviewWireless;
  * @property \Twilio\Rest\Preview\DeployedDevices\FleetList $fleets
  * @property \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList $authorizationDocuments
  * @property \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList $hostedNumberOrders
- * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList $availableAddOns
  * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOnList $installedAddOns
+ * @property \Twilio\Rest\Preview\Marketplace\AvailableAddOnList $availableAddOns
  * @property \Twilio\Rest\Preview\Sync\ServiceList $services
  * @property \Twilio\Rest\Preview\Understand\AssistantList $assistants
  * @property \Twilio\Rest\Preview\Wireless\CommandList $commands
  * @property \Twilio\Rest\Preview\Wireless\RatePlanList $ratePlans
  * @property \Twilio\Rest\Preview\Wireless\SimList $sims
  * @property \Twilio\Rest\Preview\TrustedComms\BrandedCallList $brandedCalls
- * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
- * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
  * @property \Twilio\Rest\Preview\TrustedComms\DeviceList $devices
  * @property \Twilio\Rest\Preview\TrustedComms\PhoneCallList $phoneCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CurrentCallList $currentCalls
+ * @property \Twilio\Rest\Preview\TrustedComms\CpsList $cps
  * @method \Twilio\Rest\Preview\BulkExports\ExportContext exports(string $resourceType)
  * @method \Twilio\Rest\Preview\BulkExports\ExportConfigurationContext exportConfiguration(string $resourceType)
  * @method \Twilio\Rest\Preview\DeployedDevices\FleetContext fleets(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext hostedNumberOrders(string $sid)
- * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext installedAddOns(string $sid)
+ * @method \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext availableAddOns(string $sid)
  * @method \Twilio\Rest\Preview\Sync\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Preview\Understand\AssistantContext assistants(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\CommandContext commands(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\RatePlanContext ratePlans(string $sid)
  * @method \Twilio\Rest\Preview\Wireless\SimContext sims(string $sid)
- * @method \Twilio\Rest\Preview\TrustedComms\CpsContext cps()
  * @method \Twilio\Rest\Preview\TrustedComms\CurrentCallContext currentCalls()
+ * @method \Twilio\Rest\Preview\TrustedComms\CpsContext cps()
  */
 class Preview extends Domain {
     protected $_bulkExports = null;
@@ -287,21 +287,6 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList
-     */
-    protected function getAvailableAddOns() {
-        return $this->marketplace->availableAddOns;
-    }
-
-    /**
-     * @param string $sid The unique Available Add-on Sid
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext
-     */
-    protected function contextAvailableAddOns($sid) {
-        return $this->marketplace->availableAddOns($sid);
-    }
-
-    /**
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnList
      */
     protected function getInstalledAddOns() {
@@ -314,6 +299,21 @@ class Preview extends Domain {
      */
     protected function contextInstalledAddOns($sid) {
         return $this->marketplace->installedAddOns($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList
+     */
+    protected function getAvailableAddOns() {
+        return $this->marketplace->availableAddOns;
+    }
+
+    /**
+     * @param string $sid The unique Available Add-on Sid
+     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext
+     */
+    protected function contextAvailableAddOns($sid) {
+        return $this->marketplace->availableAddOns($sid);
     }
 
     /**
@@ -400,17 +400,17 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
+     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList
      */
-    protected function getCps() {
-        return $this->trustedComms->cps;
+    protected function getDevices() {
+        return $this->trustedComms->devices;
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext
+     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList
      */
-    protected function contextCps() {
-        return $this->trustedComms->cps();
+    protected function getPhoneCalls() {
+        return $this->trustedComms->phoneCalls;
     }
 
     /**
@@ -428,17 +428,17 @@ class Preview extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceList
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsList
      */
-    protected function getDevices() {
-        return $this->trustedComms->devices;
+    protected function getCps() {
+        return $this->trustedComms->cps;
     }
 
     /**
-     * @return \Twilio\Rest\Preview\TrustedComms\PhoneCallList
+     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext
      */
-    protected function getPhoneCalls() {
-        return $this->trustedComms->phoneCalls;
+    protected function contextCps() {
+        return $this->trustedComms->cps();
     }
 
     /**

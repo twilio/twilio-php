@@ -15,10 +15,10 @@ use Twilio\Rest\Authy\V1;
 
 /**
  * @property \Twilio\Rest\Authy\V1 $v1
- * @property \Twilio\Rest\Authy\V1\FormList $forms
  * @property \Twilio\Rest\Authy\V1\ServiceList $services
- * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
+ * @property \Twilio\Rest\Authy\V1\FormList $forms
  * @method \Twilio\Rest\Authy\V1\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Authy\V1\FormContext forms(string $formType)
  */
 class Authy extends Domain {
     protected $_v1 = null;
@@ -80,21 +80,6 @@ class Authy extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Authy\V1\FormList
-     */
-    protected function getForms() {
-        return $this->v1->forms;
-    }
-
-    /**
-     * @param string $formType The Type of this Form
-     * @return \Twilio\Rest\Authy\V1\FormContext
-     */
-    protected function contextForms($formType) {
-        return $this->v1->forms($formType);
-    }
-
-    /**
      * @return \Twilio\Rest\Authy\V1\ServiceList
      */
     protected function getServices() {
@@ -107,6 +92,21 @@ class Authy extends Domain {
      */
     protected function contextServices($sid) {
         return $this->v1->services($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\Authy\V1\FormList
+     */
+    protected function getForms() {
+        return $this->v1->forms;
+    }
+
+    /**
+     * @param string $formType The Type of this Form
+     * @return \Twilio\Rest\Authy\V1\FormContext
+     */
+    protected function contextForms($formType) {
+        return $this->v1->forms($formType);
     }
 
     /**
