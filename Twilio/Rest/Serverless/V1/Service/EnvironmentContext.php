@@ -12,6 +12,7 @@ namespace Twilio\Rest\Serverless\V1\Service;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList;
+use Twilio\Rest\Serverless\V1\Service\Environment\LogList;
 use Twilio\Rest\Serverless\V1\Service\Environment\VariableList;
 use Twilio\Values;
 use Twilio\Version;
@@ -21,12 +22,15 @@ use Twilio\Version;
  *
  * @property \Twilio\Rest\Serverless\V1\Service\Environment\VariableList $variables
  * @property \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList $deployments
+ * @property \Twilio\Rest\Serverless\V1\Service\Environment\LogList $logs
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\VariableContext variables(string $sid)
  * @method \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentContext deployments(string $sid)
+ * @method \Twilio\Rest\Serverless\V1\Service\Environment\LogContext logs(string $sid)
  */
 class EnvironmentContext extends InstanceContext {
     protected $_variables = null;
     protected $_deployments = null;
+    protected $_logs = null;
 
     /**
      * Initialize the EnvironmentContext
@@ -110,6 +114,19 @@ class EnvironmentContext extends InstanceContext {
         }
 
         return $this->_deployments;
+    }
+
+    /**
+     * Access the logs
+     *
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogList
+     */
+    protected function getLogs() {
+        if (!$this->_logs) {
+            $this->_logs = new LogList($this->version, $this->solution['serviceSid'], $this->solution['sid']);
+        }
+
+        return $this->_logs;
     }
 
     /**

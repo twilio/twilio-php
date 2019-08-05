@@ -11,36 +11,33 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Wireless\V1;
+use Twilio\Rest\Conversations\V1;
 
 /**
- * @property \Twilio\Rest\Wireless\V1 $v1
- * @property \Twilio\Rest\Wireless\V1\CommandList $commands
- * @property \Twilio\Rest\Wireless\V1\RatePlanList $ratePlans
- * @property \Twilio\Rest\Wireless\V1\UsageRecordList $usageRecords
- * @property \Twilio\Rest\Wireless\V1\SimList $sims
- * @method \Twilio\Rest\Wireless\V1\CommandContext commands(string $sid)
- * @method \Twilio\Rest\Wireless\V1\RatePlanContext ratePlans(string $sid)
- * @method \Twilio\Rest\Wireless\V1\SimContext sims(string $sid)
+ * @property \Twilio\Rest\Conversations\V1 $v1
+ * @property \Twilio\Rest\Conversations\V1\ConversationList $conversations
+ * @property \Twilio\Rest\Conversations\V1\WebhookList $webhooks
+ * @method \Twilio\Rest\Conversations\V1\ConversationContext conversations(string $sid)
+ * @method \Twilio\Rest\Conversations\V1\WebhookContext webhooks()
  */
-class Wireless extends Domain {
+class Conversations extends Domain {
     protected $_v1 = null;
 
     /**
-     * Construct the Wireless Domain
+     * Construct the Conversations Domain
      *
      * @param \Twilio\Rest\Client $client Twilio\Rest\Client to communicate with
      *                                    Twilio
-     * @return \Twilio\Rest\Wireless Domain for Wireless
+     * @return \Twilio\Rest\Conversations Domain for Conversations
      */
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://wireless.twilio.com';
+        $this->baseUrl = 'https://conversations.twilio.com';
     }
 
     /**
-     * @return \Twilio\Rest\Wireless\V1 Version v1 of wireless
+     * @return \Twilio\Rest\Conversations\V1 Version v1 of conversations
      */
     protected function getV1() {
         if (!$this->_v1) {
@@ -83,58 +80,33 @@ class Wireless extends Domain {
     }
 
     /**
-     * @return \Twilio\Rest\Wireless\V1\CommandList
+     * @return \Twilio\Rest\Conversations\V1\ConversationList
      */
-    protected function getCommands() {
-        return $this->v1->commands;
+    protected function getConversations() {
+        return $this->v1->conversations;
     }
 
     /**
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\CommandContext
+     * @return \Twilio\Rest\Conversations\V1\ConversationContext
      */
-    protected function contextCommands($sid) {
-        return $this->v1->commands($sid);
+    protected function contextConversations($sid) {
+        return $this->v1->conversations($sid);
     }
 
     /**
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList
+     * @return \Twilio\Rest\Conversations\V1\WebhookList
      */
-    protected function getRatePlans() {
-        return $this->v1->ratePlans;
+    protected function getWebhooks() {
+        return $this->v1->webhooks;
     }
 
     /**
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
+     * @return \Twilio\Rest\Conversations\V1\WebhookContext
      */
-    protected function contextRatePlans($sid) {
-        return $this->v1->ratePlans($sid);
-    }
-
-    /**
-     * @return \Twilio\Rest\Wireless\V1\UsageRecordList
-     */
-    protected function getUsageRecords() {
-        return $this->v1->usageRecords;
-    }
-
-    /**
-     * @return \Twilio\Rest\Wireless\V1\SimList
-     */
-    protected function getSims() {
-        return $this->v1->sims;
-    }
-
-    /**
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\SimContext
-     */
-    protected function contextSims($sid) {
-        return $this->v1->sims($sid);
+    protected function contextWebhooks() {
+        return $this->v1->webhooks();
     }
 
     /**
@@ -143,6 +115,6 @@ class Wireless extends Domain {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Wireless]';
+        return '[Twilio.Conversations]';
     }
 }

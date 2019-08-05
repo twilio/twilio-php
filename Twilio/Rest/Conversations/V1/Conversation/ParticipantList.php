@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Wireless\V1;
+namespace Twilio\Rest\Conversations\V1\Conversation;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
@@ -16,24 +16,57 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class RatePlanList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class ParticipantList extends ListResource {
     /**
-     * Construct the RatePlanList
+     * Construct the ParticipantList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList
+     * @param string $conversationSid The unique id of the Conversation for this
+     *                                participant.
+     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantList
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $conversationSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = array('conversationSid' => $conversationSid, );
 
-        $this->uri = '/RatePlans';
+        $this->uri = '/Conversations/' . rawurlencode($conversationSid) . '/Participants';
     }
 
     /**
-     * Streams RatePlanInstance records from the API as a generator stream.
+     * Create a new ParticipantInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ParticipantInstance Newly created ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'Identity' => $options['identity'],
+            'MessagingBinding.Address' => $options['messagingBindingAddress'],
+            'MessagingBinding.ProxyAddress' => $options['messagingBindingProxyAddress'],
+            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
+            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+        ));
+
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new ParticipantInstance($this->version, $payload, $this->solution['conversationSid']);
+    }
+
+    /**
+     * Streams ParticipantInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +92,7 @@ class RatePlanList extends ListResource {
     }
 
     /**
-     * Reads RatePlanInstance records from the API as a list.
+     * Reads ParticipantInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -71,20 +104,20 @@ class RatePlanList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RatePlanInstance[] Array of results
+     * @return ParticipantInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RatePlanInstance records from the API.
+     * Retrieve a single page of ParticipantInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of RatePlanInstance
+     * @return \Twilio\Page Page of ParticipantInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -99,15 +132,15 @@ class RatePlanList extends ListResource {
             $params
         );
 
-        return new RatePlanPage($this->version, $response, $this->solution);
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of RatePlanInstance records from the API.
+     * Retrieve a specific page of ParticipantInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of RatePlanInstance
+     * @return \Twilio\Page Page of ParticipantInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -115,52 +148,18 @@ class RatePlanList extends ListResource {
             $targetUrl
         );
 
-        return new RatePlanPage($this->version, $response, $this->solution);
+        return new ParticipantPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create a new RatePlanInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return RatePlanInstance Newly created RatePlanInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'UniqueName' => $options['uniqueName'],
-            'FriendlyName' => $options['friendlyName'],
-            'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
-            'DataLimit' => $options['dataLimit'],
-            'DataMetering' => $options['dataMetering'],
-            'MessagingEnabled' => Serialize::booleanToString($options['messagingEnabled']),
-            'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
-            'NationalRoamingEnabled' => Serialize::booleanToString($options['nationalRoamingEnabled']),
-            'InternationalRoaming' => Serialize::map($options['internationalRoaming'], function($e) { return $e; }),
-            'NationalRoamingDataLimit' => $options['nationalRoamingDataLimit'],
-            'InternationalRoamingDataLimit' => $options['internationalRoamingDataLimit'],
-        ));
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new RatePlanInstance($this->version, $payload);
-    }
-
-    /**
-     * Constructs a RatePlanContext
+     * Constructs a ParticipantContext
      *
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
+     * @return \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext
      */
     public function getContext($sid) {
-        return new RatePlanContext($this->version, $sid);
+        return new ParticipantContext($this->version, $this->solution['conversationSid'], $sid);
     }
 
     /**
@@ -169,6 +168,6 @@ class RatePlanList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Wireless.V1.RatePlanList]';
+        return '[Twilio.Conversations.V1.ParticipantList]';
     }
 }

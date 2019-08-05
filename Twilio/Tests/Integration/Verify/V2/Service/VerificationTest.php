@@ -162,6 +162,42 @@ class VerificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testApproveVerificationWithPnResponse() {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "to": "+14159373912",
+                "channel": "sms",
+                "status": "approved",
+                "valid": true,
+                "date_created": "2015-07-30T20:00:00Z",
+                "date_updated": "2015-07-30T20:00:00Z",
+                "lookup": {
+                    "carrier": {
+                        "error_code": null,
+                        "name": "Carrier Name",
+                        "mobile_country_code": "310",
+                        "mobile_network_code": "150",
+                        "type": "mobile"
+                    }
+                },
+                "amount": null,
+                "payee": null,
+                "url": "https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->verify->v2->services("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                           ->verifications("sid")->update("canceled");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testFetchRequest() {
         $this->holodeck->mock(new Response(500, ''));
 

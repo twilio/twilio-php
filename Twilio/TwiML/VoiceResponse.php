@@ -190,4 +190,23 @@ class VoiceResponse extends TwiML {
     public function prompt($attributes = array()) {
         return $this->nest(new Voice\Prompt($attributes));
     }
+
+    /**
+     * Add Start child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Voice\Start Child element.
+     */
+    public function start($attributes = array()) {
+        return $this->nest(new Voice\Start($attributes));
+    }
+
+    /**
+     * Add Stop child.
+     *
+     * @return Voice\Stop Child element.
+     */
+    public function stop() {
+        return $this->nest(new Voice\Stop());
+    }
 }

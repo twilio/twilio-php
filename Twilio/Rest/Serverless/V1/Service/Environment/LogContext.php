@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service;
+namespace Twilio\Rest\Serverless\V1\Service\Environment;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
@@ -17,28 +17,33 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class BuildContext extends InstanceContext {
+class LogContext extends InstanceContext {
     /**
-     * Initialize the BuildContext
+     * Initialize the LogContext
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
-     * @param string $sid Build Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\BuildContext
+     * @param string $environmentSid Environment Sid.
+     * @param string $sid Log Sid.
+     * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogContext
      */
-    public function __construct(Version $version, $serviceSid, $sid) {
+    public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
+        $this->solution = array(
+            'serviceSid' => $serviceSid,
+            'environmentSid' => $environmentSid,
+            'sid' => $sid,
+        );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Builds/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Environments/' . rawurlencode($environmentSid) . '/Logs/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Fetch a BuildInstance
+     * Fetch a LogInstance
      *
-     * @return BuildInstance Fetched BuildInstance
+     * @return LogInstance Fetched LogInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -50,22 +55,13 @@ class BuildContext extends InstanceContext {
             $params
         );
 
-        return new BuildInstance(
+        return new LogInstance(
             $this->version,
             $payload,
             $this->solution['serviceSid'],
+            $this->solution['environmentSid'],
             $this->solution['sid']
         );
-    }
-
-    /**
-     * Deletes the BuildInstance
-     *
-     * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete() {
-        return $this->version->delete('delete', $this->uri);
     }
 
     /**
@@ -78,6 +74,6 @@ class BuildContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.BuildContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.LogContext ' . implode(' ', $context) . ']';
     }
 }

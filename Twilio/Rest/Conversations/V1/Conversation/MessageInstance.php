@@ -7,70 +7,75 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service;
+namespace Twilio\Rest\Conversations\V1\Conversation;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $sid
  * @property string $accountSid
- * @property string $serviceSid
- * @property string $status
- * @property array $assetVersions
- * @property array $functionVersions
- * @property array $dependencies
+ * @property string $conversationSid
+ * @property string $sid
+ * @property int $index
+ * @property string $author
+ * @property string $body
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
  */
-class BuildInstance extends InstanceResource {
+class MessageInstance extends InstanceResource {
     /**
-     * Initialize the BuildInstance
+     * Initialize the MessageInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Build Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\BuildInstance
+     * @param string $conversationSid The unique id of the Conversation for this
+     *                                message.
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
+     * @return \Twilio\Rest\Conversations\V1\Conversation\MessageInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $conversationSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'serviceSid' => Values::array_get($payload, 'service_sid'),
-            'status' => Values::array_get($payload, 'status'),
-            'assetVersions' => Values::array_get($payload, 'asset_versions'),
-            'functionVersions' => Values::array_get($payload, 'function_versions'),
-            'dependencies' => Values::array_get($payload, 'dependencies'),
+            'conversationSid' => Values::array_get($payload, 'conversation_sid'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'index' => Values::array_get($payload, 'index'),
+            'author' => Values::array_get($payload, 'author'),
+            'body' => Values::array_get($payload, 'body'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = array(
+            'conversationSid' => $conversationSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Serverless\V1\Service\BuildContext Context for this
-     *                                                         BuildInstance
+     * @return \Twilio\Rest\Conversations\V1\Conversation\MessageContext Context
+     *                                                                   for this
+     *                                                                   MessageInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new BuildContext(
+            $this->context = new MessageContext(
                 $this->version,
-                $this->solution['serviceSid'],
+                $this->solution['conversationSid'],
                 $this->solution['sid']
             );
         }
@@ -79,23 +84,34 @@ class BuildInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BuildInstance
+     * Update the MessageInstance
      *
-     * @return BuildInstance Fetched BuildInstance
+     * @param array|Options $options Optional Arguments
+     * @return MessageInstance Updated MessageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch() {
-        return $this->proxy()->fetch();
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
     }
 
     /**
-     * Deletes the BuildInstance
+     * Deletes the MessageInstance
      *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
     public function delete() {
         return $this->proxy()->delete();
+    }
+
+    /**
+     * Fetch a MessageInstance
+     *
+     * @return MessageInstance Fetched MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch() {
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -128,6 +144,6 @@ class BuildInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.BuildInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.MessageInstance ' . implode(' ', $context) . ']';
     }
 }

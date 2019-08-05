@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Wireless\V1;
+namespace Twilio\Rest\Conversations\V1\Conversation;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
@@ -16,24 +16,29 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class RatePlanList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class WebhookList extends ListResource {
     /**
-     * Construct the RatePlanList
+     * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList
+     * @param string $conversationSid The unique id of the Conversation for this
+     *                                webhook.
+     * @return \Twilio\Rest\Conversations\V1\Conversation\WebhookList
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $conversationSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = array('conversationSid' => $conversationSid, );
 
-        $this->uri = '/RatePlans';
+        $this->uri = '/Conversations/' . rawurlencode($conversationSid) . '/Webhooks';
     }
 
     /**
-     * Streams RatePlanInstance records from the API as a generator stream.
+     * Streams WebhookInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -59,7 +64,7 @@ class RatePlanList extends ListResource {
     }
 
     /**
-     * Reads RatePlanInstance records from the API as a list.
+     * Reads WebhookInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -71,20 +76,20 @@ class RatePlanList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return RatePlanInstance[] Array of results
+     * @return WebhookInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of RatePlanInstance records from the API.
+     * Retrieve a single page of WebhookInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of RatePlanInstance
+     * @return \Twilio\Page Page of WebhookInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -99,15 +104,15 @@ class RatePlanList extends ListResource {
             $params
         );
 
-        return new RatePlanPage($this->version, $response, $this->solution);
+        return new WebhookPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of RatePlanInstance records from the API.
+     * Retrieve a specific page of WebhookInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of RatePlanInstance
+     * @return \Twilio\Page Page of WebhookInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -115,31 +120,28 @@ class RatePlanList extends ListResource {
             $targetUrl
         );
 
-        return new RatePlanPage($this->version, $response, $this->solution);
+        return new WebhookPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Create a new RatePlanInstance
+     * Create a new WebhookInstance
      *
+     * @param string $target The target of this webhook.
      * @param array|Options $options Optional Arguments
-     * @return RatePlanInstance Newly created RatePlanInstance
+     * @return WebhookInstance Newly created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($options = array()) {
+    public function create($target, $options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'UniqueName' => $options['uniqueName'],
-            'FriendlyName' => $options['friendlyName'],
-            'DataEnabled' => Serialize::booleanToString($options['dataEnabled']),
-            'DataLimit' => $options['dataLimit'],
-            'DataMetering' => $options['dataMetering'],
-            'MessagingEnabled' => Serialize::booleanToString($options['messagingEnabled']),
-            'VoiceEnabled' => Serialize::booleanToString($options['voiceEnabled']),
-            'NationalRoamingEnabled' => Serialize::booleanToString($options['nationalRoamingEnabled']),
-            'InternationalRoaming' => Serialize::map($options['internationalRoaming'], function($e) { return $e; }),
-            'NationalRoamingDataLimit' => $options['nationalRoamingDataLimit'],
-            'InternationalRoamingDataLimit' => $options['internationalRoamingDataLimit'],
+            'Target' => $target,
+            'Configuration.Url' => $options['configurationUrl'],
+            'Configuration.Method' => $options['configurationMethod'],
+            'Configuration.Filters' => Serialize::map($options['configurationFilters'], function($e) { return $e; }),
+            'Configuration.Triggers' => Serialize::map($options['configurationTriggers'], function($e) { return $e; }),
+            'Configuration.FlowSid' => $options['configurationFlowSid'],
+            'Configuration.ReplayAfter' => $options['configurationReplayAfter'],
         ));
 
         $payload = $this->version->create(
@@ -149,18 +151,18 @@ class RatePlanList extends ListResource {
             $data
         );
 
-        return new RatePlanInstance($this->version, $payload);
+        return new WebhookInstance($this->version, $payload, $this->solution['conversationSid']);
     }
 
     /**
-     * Constructs a RatePlanContext
+     * Constructs a WebhookContext
      *
      * @param string $sid A 34 character string that uniquely identifies this
      *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
+     * @return \Twilio\Rest\Conversations\V1\Conversation\WebhookContext
      */
     public function getContext($sid) {
-        return new RatePlanContext($this->version, $sid);
+        return new WebhookContext($this->version, $this->solution['conversationSid'], $sid);
     }
 
     /**
@@ -169,6 +171,6 @@ class RatePlanList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Wireless.V1.RatePlanList]';
+        return '[Twilio.Conversations.V1.WebhookList]';
     }
 }

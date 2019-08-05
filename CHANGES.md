@@ -1,6 +1,17 @@
 twilio-php Changelog
 ====================
 
+[2019-08-05] Version 5.34.3
+----------------------------
+**Preview**
+- Added support for the header `Twilio-Sandbox-Mode` to mock all Voice dependencies
+
+**Twiml**
+- Add support for `<Siprec>` noun
+- Add support for `<Stream>` noun
+- Create verbs `<Start>` and `<Stop>`
+
+
 [2019-07-24] Version 5.34.2
 ----------------------------
 **Insights**

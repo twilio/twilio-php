@@ -11,35 +11,14 @@ namespace Twilio\TwiML\Voice;
 
 use Twilio\TwiML\TwiML;
 
-class Connect extends TwiML {
+class Start extends TwiML {
     /**
-     * Connect constructor.
+     * Start constructor.
      *
      * @param array $attributes Optional attributes
      */
     public function __construct($attributes = array()) {
-        parent::__construct('Connect', null, $attributes);
-    }
-
-    /**
-     * Add Room child.
-     *
-     * @param string $name Room name
-     * @param array $attributes Optional attributes
-     * @return Room Child element.
-     */
-    public function room($name, $attributes = array()) {
-        return $this->nest(new Room($name, $attributes));
-    }
-
-    /**
-     * Add Autopilot child.
-     *
-     * @param string $name Autopilot assistant sid or unique name
-     * @return Autopilot Child element.
-     */
-    public function autopilot($name) {
-        return $this->nest(new Autopilot($name));
+        parent::__construct('Start', null, $attributes);
     }
 
     /**
@@ -50,6 +29,16 @@ class Connect extends TwiML {
      */
     public function stream($attributes = array()) {
         return $this->nest(new Stream($attributes));
+    }
+
+    /**
+     * Add Siprec child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Siprec Child element.
+     */
+    public function siprec($attributes = array()) {
+        return $this->nest(new Siprec($attributes));
     }
 
     /**

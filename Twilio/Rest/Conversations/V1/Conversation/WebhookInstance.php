@@ -7,11 +7,12 @@
  * /       /
  */
 
-namespace Twilio\Rest\Serverless\V1\Service;
+namespace Twilio\Rest\Conversations\V1\Conversation;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -20,57 +21,59 @@ use Twilio\Version;
  *
  * @property string $sid
  * @property string $accountSid
- * @property string $serviceSid
- * @property string $status
- * @property array $assetVersions
- * @property array $functionVersions
- * @property array $dependencies
+ * @property string $conversationSid
+ * @property string $target
+ * @property string $url
+ * @property array $configuration
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $url
  */
-class BuildInstance extends InstanceResource {
+class WebhookInstance extends InstanceResource {
     /**
-     * Initialize the BuildInstance
+     * Initialize the WebhookInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Build Sid.
-     * @return \Twilio\Rest\Serverless\V1\Service\BuildInstance
+     * @param string $conversationSid The unique id of the Conversation for this
+     *                                webhook.
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
+     * @return \Twilio\Rest\Conversations\V1\Conversation\WebhookInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $conversationSid, $sid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'serviceSid' => Values::array_get($payload, 'service_sid'),
-            'status' => Values::array_get($payload, 'status'),
-            'assetVersions' => Values::array_get($payload, 'asset_versions'),
-            'functionVersions' => Values::array_get($payload, 'function_versions'),
-            'dependencies' => Values::array_get($payload, 'dependencies'),
+            'conversationSid' => Values::array_get($payload, 'conversation_sid'),
+            'target' => Values::array_get($payload, 'target'),
+            'url' => Values::array_get($payload, 'url'),
+            'configuration' => Values::array_get($payload, 'configuration'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid ?: $this->properties['sid'], );
+        $this->solution = array(
+            'conversationSid' => $conversationSid,
+            'sid' => $sid ?: $this->properties['sid'],
+        );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Serverless\V1\Service\BuildContext Context for this
-     *                                                         BuildInstance
+     * @return \Twilio\Rest\Conversations\V1\Conversation\WebhookContext Context
+     *                                                                   for this
+     *                                                                   WebhookInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new BuildContext(
+            $this->context = new WebhookContext(
                 $this->version,
-                $this->solution['serviceSid'],
+                $this->solution['conversationSid'],
                 $this->solution['sid']
             );
         }
@@ -79,9 +82,9 @@ class BuildInstance extends InstanceResource {
     }
 
     /**
-     * Fetch a BuildInstance
+     * Fetch a WebhookInstance
      *
-     * @return BuildInstance Fetched BuildInstance
+     * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -89,7 +92,18 @@ class BuildInstance extends InstanceResource {
     }
 
     /**
-     * Deletes the BuildInstance
+     * Update the WebhookInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return WebhookInstance Updated WebhookInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update($options = array()) {
+        return $this->proxy()->update($options);
+    }
+
+    /**
+     * Deletes the WebhookInstance
      *
      * @return boolean True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -128,6 +142,6 @@ class BuildInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.BuildInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.WebhookInstance ' . implode(' ', $context) . ']';
     }
 }

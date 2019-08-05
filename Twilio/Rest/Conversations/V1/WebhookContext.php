@@ -7,36 +7,38 @@
  * /       /
  */
 
-namespace Twilio\Rest\Wireless\V1;
+namespace Twilio\Rest\Conversations\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-class RatePlanContext extends InstanceContext {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class WebhookContext extends InstanceContext {
     /**
-     * Initialize the RatePlanContext
+     * Initialize the WebhookContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
+     * @return \Twilio\Rest\Conversations\V1\WebhookContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid, );
+        $this->solution = array();
 
-        $this->uri = '/RatePlans/' . rawurlencode($sid) . '';
+        $this->uri = '/Conversations/Webhooks';
     }
 
     /**
-     * Fetch a RatePlanInstance
+     * Fetch a WebhookInstance
      *
-     * @return RatePlanInstance Fetched RatePlanInstance
+     * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -48,22 +50,25 @@ class RatePlanContext extends InstanceContext {
             $params
         );
 
-        return new RatePlanInstance($this->version, $payload, $this->solution['sid']);
+        return new WebhookInstance($this->version, $payload);
     }
 
     /**
-     * Update the RatePlanInstance
+     * Update the WebhookInstance
      *
      * @param array|Options $options Optional Arguments
-     * @return RatePlanInstance Updated RatePlanInstance
+     * @return WebhookInstance Updated WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function update($options = array()) {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'UniqueName' => $options['uniqueName'],
-            'FriendlyName' => $options['friendlyName'],
+            'Method' => $options['method'],
+            'Filters' => Serialize::map($options['filters'], function($e) { return $e; }),
+            'PreWebhookUrl' => $options['preWebhookUrl'],
+            'PostWebhookUrl' => $options['postWebhookUrl'],
+            'Target' => $options['target'],
         ));
 
         $payload = $this->version->update(
@@ -73,17 +78,7 @@ class RatePlanContext extends InstanceContext {
             $data
         );
 
-        return new RatePlanInstance($this->version, $payload, $this->solution['sid']);
-    }
-
-    /**
-     * Deletes the RatePlanInstance
-     *
-     * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete() {
-        return $this->version->delete('delete', $this->uri);
+        return new WebhookInstance($this->version, $payload);
     }
 
     /**
@@ -96,6 +91,6 @@ class RatePlanContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Wireless.V1.RatePlanContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.WebhookContext ' . implode(' ', $context) . ']';
     }
 }
