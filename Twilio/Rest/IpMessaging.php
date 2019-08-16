@@ -36,7 +36,7 @@ class IpMessaging extends Domain {
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://ip-messaging.twilio.com';
+        $this->baseUrl = 'https://chat.twilio.com';
     }
 
     /**
