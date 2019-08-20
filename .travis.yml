@@ -1,6 +1,11 @@
 language: php
 dist: trusty
 sudo: false
+## Currently required for 7.4snapshot and nightly
+addons:
+  apt:
+    packages:
+      - libonig-dev
 php:
     - '5.5'
     - '5.6'
@@ -8,6 +13,7 @@ php:
     - '7.1'
     - '7.2'
     - '7.3'
+    - '7.4snapshot'
     - nightly
 services:
   - docker
