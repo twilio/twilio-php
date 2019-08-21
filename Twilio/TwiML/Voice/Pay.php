@@ -32,6 +32,16 @@ class Pay extends TwiML {
     }
 
     /**
+     * Add Parameter child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Parameter Child element.
+     */
+    public function parameter($attributes = array()) {
+        return $this->nest(new Parameter($attributes));
+    }
+
+    /**
      * Add Input attribute.
      *
      * @param string $input Input type Twilio should accept
@@ -49,6 +59,19 @@ class Pay extends TwiML {
      */
     public function setAction($action) {
         return $this->setAttribute('action', $action);
+    }
+
+    /**
+     * Add BankAccountType attribute.
+     *
+     * @param string $bankAccountType Bank account type for ach transactions. If
+     *                                set, payment method attribute must be
+     *                                provided and value should be set to
+     *                                ach-debit. defaults to consumer-checking
+     * @return static $this.
+     */
+    public function setBankAccountType($bankAccountType) {
+        return $this->setAttribute('bankAccountType', $bankAccountType);
     }
 
     /**
@@ -114,6 +137,16 @@ class Pay extends TwiML {
     }
 
     /**
+     * Add MinPostalCodeLength attribute.
+     *
+     * @param int $minPostalCodeLength Prompt for minimum postal code length
+     * @return static $this.
+     */
+    public function setMinPostalCodeLength($minPostalCodeLength) {
+        return $this->setAttribute('minPostalCodeLength', $minPostalCodeLength);
+    }
+
+    /**
      * Add PaymentConnector attribute.
      *
      * @param string $paymentConnector Unique name for payment connector
@@ -121,6 +154,17 @@ class Pay extends TwiML {
      */
     public function setPaymentConnector($paymentConnector) {
         return $this->setAttribute('paymentConnector', $paymentConnector);
+    }
+
+    /**
+     * Add PaymentMethod attribute.
+     *
+     * @param string $paymentMethod Payment method to be used. defaults to
+     *                              credit-card
+     * @return static $this.
+     */
+    public function setPaymentMethod($paymentMethod) {
+        return $this->setAttribute('paymentMethod', $paymentMethod);
     }
 
     /**

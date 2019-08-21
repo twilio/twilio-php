@@ -34,10 +34,13 @@ abstract class ServiceOptions {
      * @param int $reachabilityDebouncingWindow Determines how long an identity
      *                                          must be offline before reachability
      *                                          webhooks fire.
+     * @param bool $webhooksFromRestEnabled true or false - controls whether this
+     *                                      instance fires webhooks when Sync
+     *                                      objects are updated through REST
      * @return CreateServiceOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
-        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow);
+    public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
+        return new CreateServiceOptions($friendlyName, $webhookUrl, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow, $webhooksFromRestEnabled);
     }
 
     /**
@@ -58,10 +61,13 @@ abstract class ServiceOptions {
      * @param int $reachabilityDebouncingWindow Determines how long an identity
      *                                          must be offline before reachability
      *                                          webhooks fire.
+     * @param bool $webhooksFromRestEnabled true or false - controls whether this
+     *                                      instance fires webhooks when Sync
+     *                                      objects are updated through REST
      * @return UpdateServiceOptions Options builder
      */
-    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
-        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow);
+    public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
+        return new UpdateServiceOptions($webhookUrl, $friendlyName, $reachabilityWebhooksEnabled, $aclEnabled, $reachabilityDebouncingEnabled, $reachabilityDebouncingWindow, $webhooksFromRestEnabled);
     }
 }
 
@@ -84,14 +90,18 @@ class CreateServiceOptions extends Options {
      * @param int $reachabilityDebouncingWindow Determines how long an identity
      *                                          must be offline before reachability
      *                                          webhooks fire.
+     * @param bool $webhooksFromRestEnabled true or false - controls whether this
+     *                                      instance fires webhooks when Sync
+     *                                      objects are updated through REST
      */
-    public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         $this->options['aclEnabled'] = $aclEnabled;
         $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
         $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
+        $this->options['webhooksFromRestEnabled'] = $webhooksFromRestEnabled;
     }
 
     /**
@@ -172,6 +182,19 @@ class CreateServiceOptions extends Options {
     }
 
     /**
+     * `true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.
+     *
+     * @param bool $webhooksFromRestEnabled true or false - controls whether this
+     *                                      instance fires webhooks when Sync
+     *                                      objects are updated through REST
+     * @return $this Fluent Builder
+     */
+    public function setWebhooksFromRestEnabled($webhooksFromRestEnabled) {
+        $this->options['webhooksFromRestEnabled'] = $webhooksFromRestEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -206,14 +229,18 @@ class UpdateServiceOptions extends Options {
      * @param int $reachabilityDebouncingWindow Determines how long an identity
      *                                          must be offline before reachability
      *                                          webhooks fire.
+     * @param bool $webhooksFromRestEnabled true or false - controls whether this
+     *                                      instance fires webhooks when Sync
+     *                                      objects are updated through REST
      */
-    public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE) {
+    public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
         $this->options['webhookUrl'] = $webhookUrl;
         $this->options['friendlyName'] = $friendlyName;
         $this->options['reachabilityWebhooksEnabled'] = $reachabilityWebhooksEnabled;
         $this->options['aclEnabled'] = $aclEnabled;
         $this->options['reachabilityDebouncingEnabled'] = $reachabilityDebouncingEnabled;
         $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
+        $this->options['webhooksFromRestEnabled'] = $webhooksFromRestEnabled;
     }
 
     /**
@@ -290,6 +317,19 @@ class UpdateServiceOptions extends Options {
      */
     public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
         $this->options['reachabilityDebouncingWindow'] = $reachabilityDebouncingWindow;
+        return $this;
+    }
+
+    /**
+     * `true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.
+     *
+     * @param bool $webhooksFromRestEnabled true or false - controls whether this
+     *                                      instance fires webhooks when Sync
+     *                                      objects are updated through REST
+     * @return $this Fluent Builder
+     */
+    public function setWebhooksFromRestEnabled($webhooksFromRestEnabled) {
+        $this->options['webhooksFromRestEnabled'] = $webhooksFromRestEnabled;
         return $this;
     }
 

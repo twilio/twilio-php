@@ -16,8 +16,12 @@ use Twilio\Rest\FlexApi\V1;
 /**
  * @property \Twilio\Rest\FlexApi\V1 $v1
  * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
+ * @property \Twilio\Rest\FlexApi\V1\ChannelList $channel
+ * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  */
 class FlexApi extends Domain {
@@ -92,6 +96,36 @@ class FlexApi extends Domain {
      */
     protected function contextFlexFlow($sid) {
         return $this->v1->flexFlow($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\ChannelList
+     */
+    protected function getChannel() {
+        return $this->v1->channel;
+    }
+
+    /**
+     * @param string $sid Flex Chat Channel Sid
+     * @return \Twilio\Rest\FlexApi\V1\ChannelContext
+     */
+    protected function contextChannel($sid) {
+        return $this->v1->channel($sid);
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\WebChannelList
+     */
+    protected function getWebChannel() {
+        return $this->v1->webChannel;
+    }
+
+    /**
+     * @param string $sid Flex Chat Channel Sid
+     * @return \Twilio\Rest\FlexApi\V1\WebChannelContext
+     */
+    protected function contextWebChannel($sid) {
+        return $this->v1->webChannel($sid);
     }
 
     /**

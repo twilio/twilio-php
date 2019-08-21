@@ -45,7 +45,7 @@ class ReadFieldValueOptions extends Options {
     }
 
     /**
-     * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`, `nl-NL`
+     * The [ISO language-country](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) tag that specifies the language of the value. Currently supported tags: `en-US`
      *
      * @param string $language The ISO language-country tag that identifies the
      *                         language of the value

@@ -99,6 +99,7 @@ class ServiceContext extends InstanceContext {
             'AclEnabled' => Serialize::booleanToString($options['aclEnabled']),
             'ReachabilityDebouncingEnabled' => Serialize::booleanToString($options['reachabilityDebouncingEnabled']),
             'ReachabilityDebouncingWindow' => $options['reachabilityDebouncingWindow'],
+            'WebhooksFromRestEnabled' => Serialize::booleanToString($options['webhooksFromRestEnabled']),
         ));
 
         $payload = $this->version->update(

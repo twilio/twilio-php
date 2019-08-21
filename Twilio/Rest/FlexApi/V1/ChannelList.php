@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Sync\V1;
+namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
@@ -16,15 +16,12 @@ use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
-/**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- */
-class ServiceList extends ListResource {
+class ChannelList extends ListResource {
     /**
-     * Construct the ServiceList
+     * Construct the ChannelList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Sync\V1\ServiceList
+     * @return \Twilio\Rest\FlexApi\V1\ChannelList
      */
     public function __construct(Version $version) {
         parent::__construct($version);
@@ -32,41 +29,11 @@ class ServiceList extends ListResource {
         // Path Solution
         $this->solution = array();
 
-        $this->uri = '/Services';
+        $this->uri = '/Channels';
     }
 
     /**
-     * Create a new ServiceInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Newly created ServiceInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
-            'WebhookUrl' => $options['webhookUrl'],
-            'ReachabilityWebhooksEnabled' => Serialize::booleanToString($options['reachabilityWebhooksEnabled']),
-            'AclEnabled' => Serialize::booleanToString($options['aclEnabled']),
-            'ReachabilityDebouncingEnabled' => Serialize::booleanToString($options['reachabilityDebouncingEnabled']),
-            'ReachabilityDebouncingWindow' => $options['reachabilityDebouncingWindow'],
-            'WebhooksFromRestEnabled' => Serialize::booleanToString($options['webhooksFromRestEnabled']),
-        ));
-
-        $payload = $this->version->create(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new ServiceInstance($this->version, $payload);
-    }
-
-    /**
-     * Streams ServiceInstance records from the API as a generator stream.
+     * Streams ChannelInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -92,7 +59,7 @@ class ServiceList extends ListResource {
     }
 
     /**
-     * Reads ServiceInstance records from the API as a list.
+     * Reads ChannelInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -104,20 +71,20 @@ class ServiceList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ServiceInstance[] Array of results
+     * @return ChannelInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ServiceInstance records from the API.
+     * Retrieve a single page of ChannelInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ServiceInstance
+     * @return \Twilio\Page Page of ChannelInstance
      */
     public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $params = Values::of(array(
@@ -132,15 +99,15 @@ class ServiceList extends ListResource {
             $params
         );
 
-        return new ServicePage($this->version, $response, $this->solution);
+        return new ChannelPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of ServiceInstance records from the API.
+     * Retrieve a specific page of ChannelInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ServiceInstance
+     * @return \Twilio\Page Page of ChannelInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -148,17 +115,54 @@ class ServiceList extends ListResource {
             $targetUrl
         );
 
-        return new ServicePage($this->version, $response, $this->solution);
+        return new ChannelPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a ServiceContext
+     * Create a new ChannelInstance
      *
-     * @param string $sid A unique identifier for this service instance.
-     * @return \Twilio\Rest\Sync\V1\ServiceContext
+     * @param string $flexFlowSid The unique ID of the FlexFlow
+     * @param string $identity Chat User identity
+     * @param string $chatUserFriendlyName Customer friendly name
+     * @param string $chatFriendlyName Chat channel friendly name
+     * @param array|Options $options Optional Arguments
+     * @return ChannelInstance Newly created ChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create($flexFlowSid, $identity, $chatUserFriendlyName, $chatFriendlyName, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'FlexFlowSid' => $flexFlowSid,
+            'Identity' => $identity,
+            'ChatUserFriendlyName' => $chatUserFriendlyName,
+            'ChatFriendlyName' => $chatFriendlyName,
+            'Target' => $options['target'],
+            'ChatUniqueName' => $options['chatUniqueName'],
+            'PreEngagementData' => $options['preEngagementData'],
+            'TaskSid' => $options['taskSid'],
+            'TaskAttributes' => $options['taskAttributes'],
+            'LongLived' => Serialize::booleanToString($options['longLived']),
+        ));
+
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
+        );
+
+        return new ChannelInstance($this->version, $payload);
+    }
+
+    /**
+     * Constructs a ChannelContext
+     *
+     * @param string $sid Flex Chat Channel Sid
+     * @return \Twilio\Rest\FlexApi\V1\ChannelContext
      */
     public function getContext($sid) {
-        return new ServiceContext($this->version, $sid);
+        return new ChannelContext($this->version, $sid);
     }
 
     /**
@@ -167,6 +171,6 @@ class ServiceList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Sync.V1.ServiceList]';
+        return '[Twilio.FlexApi.V1.ChannelList]';
     }
 }

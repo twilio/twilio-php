@@ -11,17 +11,25 @@ namespace Twilio\Rest\FlexApi;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
+use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
+ * @property \Twilio\Rest\FlexApi\V1\ChannelList $channel
+ * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
 class V1 extends Version {
     protected $_flexFlow = null;
+    protected $_channel = null;
+    protected $_webChannel = null;
     protected $_configuration = null;
 
     /**
@@ -43,6 +51,26 @@ class V1 extends Version {
             $this->_flexFlow = new FlexFlowList($this);
         }
         return $this->_flexFlow;
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\ChannelList
+     */
+    protected function getChannel() {
+        if (!$this->_channel) {
+            $this->_channel = new ChannelList($this);
+        }
+        return $this->_channel;
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\WebChannelList
+     */
+    protected function getWebChannel() {
+        if (!$this->_webChannel) {
+            $this->_webChannel = new WebChannelList($this);
+        }
+        return $this->_webChannel;
     }
 
     /**

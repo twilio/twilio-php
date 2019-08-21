@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property \DateTime $dateUpdated
  * @property string $url
  * @property string $webhookUrl
+ * @property bool $webhooksFromRestEnabled
  * @property bool $reachabilityWebhooksEnabled
  * @property bool $aclEnabled
  * @property bool $reachabilityDebouncingEnabled
@@ -60,6 +61,7 @@ class ServiceInstance extends InstanceResource {
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'webhookUrl' => Values::array_get($payload, 'webhook_url'),
+            'webhooksFromRestEnabled' => Values::array_get($payload, 'webhooks_from_rest_enabled'),
             'reachabilityWebhooksEnabled' => Values::array_get($payload, 'reachability_webhooks_enabled'),
             'aclEnabled' => Values::array_get($payload, 'acl_enabled'),
             'reachabilityDebouncingEnabled' => Values::array_get($payload, 'reachability_debouncing_enabled'),

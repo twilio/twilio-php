@@ -56,7 +56,7 @@ class Prompt extends TwiML {
     /**
      * Add For_ attribute.
      *
-     * @param string $for_ Name of the credit card data element
+     * @param string $for_ Name of the payment source data element
      * @return static $this.
      */
     public function setFor_($for_) {

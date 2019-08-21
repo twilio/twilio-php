@@ -1,6 +1,31 @@
 twilio-php Changelog
 ====================
 
+[2019-08-21] Version 5.34.4
+----------------------------
+**Library**
+- [PR #554](https://github.com/twilio/twilio-php/pull/554): Update the IP messaging domain name to be 'chat'. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Add Chat Conversation SID to conversation default output properties
+
+**Flex**
+- Adding `outbound_call_flows` object to Flex Configuration
+- Adding read and fetch to channels API
+
+**Supersim**
+- Add Sims and Commands resources for the Super Sim Pilot
+
+**Sync**
+- Added configuration option for enabling webhooks from REST.
+
+**Wireless**
+- Added `usage_notification_method` and `usage_notification_url` properties to `rate_plan`.
+
+**Twiml**
+- Add support for `ach-debit` transactions in `Pay` verb
+
+
 [2019-08-05] Version 5.34.3
 ----------------------------
 **Preview**

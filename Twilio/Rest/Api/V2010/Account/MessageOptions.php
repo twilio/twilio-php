@@ -31,13 +31,10 @@ abstract class MessageOptions {
      * @param bool $forceDelivery Reserved
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
-     * @param string $interactiveData A JSON string that represents an interactive
-     *                                message
-     * @param bool $forceOptIn Whether to forcefully whitelist a from:to pair
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
-        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $smartEncoded, $interactiveData, $forceOptIn);
+    public static function create($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE) {
+        return new CreateMessageOptions($from, $messagingServiceSid, $body, $mediaUrl, $statusCallback, $applicationSid, $maxPrice, $provideFeedback, $validityPeriod, $forceDelivery, $smartEncoded);
     }
 
     /**
@@ -72,11 +69,8 @@ class CreateMessageOptions extends Options {
      * @param bool $forceDelivery Reserved
      * @param bool $smartEncoded Whether to detect Unicode characters that have a
      *                           similar GSM-7 character and replace them
-     * @param string $interactiveData A JSON string that represents an interactive
-     *                                message
-     * @param bool $forceOptIn Whether to forcefully whitelist a from:to pair
      */
-    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE, $interactiveData = Values::NONE, $forceOptIn = Values::NONE) {
+    public function __construct($from = Values::NONE, $messagingServiceSid = Values::NONE, $body = Values::NONE, $mediaUrl = Values::NONE, $statusCallback = Values::NONE, $applicationSid = Values::NONE, $maxPrice = Values::NONE, $provideFeedback = Values::NONE, $validityPeriod = Values::NONE, $forceDelivery = Values::NONE, $smartEncoded = Values::NONE) {
         $this->options['from'] = $from;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
         $this->options['body'] = $body;
@@ -88,8 +82,6 @@ class CreateMessageOptions extends Options {
         $this->options['validityPeriod'] = $validityPeriod;
         $this->options['forceDelivery'] = $forceDelivery;
         $this->options['smartEncoded'] = $smartEncoded;
-        $this->options['interactiveData'] = $interactiveData;
-        $this->options['forceOptIn'] = $forceOptIn;
     }
 
     /**
@@ -216,29 +208,6 @@ class CreateMessageOptions extends Options {
      */
     public function setSmartEncoded($smartEncoded) {
         $this->options['smartEncoded'] = $smartEncoded;
-        return $this;
-    }
-
-    /**
-     * A JSON string that represents an interactive message. An interactive message is a category of messages that includes a list picker, a time picker, and an Apple Pay request.
-     *
-     * @param string $interactiveData A JSON string that represents an interactive
-     *                                message
-     * @return $this Fluent Builder
-     */
-    public function setInteractiveData($interactiveData) {
-        $this->options['interactiveData'] = $interactiveData;
-        return $this;
-    }
-
-    /**
-     * Whether to forcefully whitelist a from:to pair. Can be: `true` or `false`.
-     *
-     * @param bool $forceOptIn Whether to forcefully whitelist a from:to pair
-     * @return $this Fluent Builder
-     */
-    public function setForceOptIn($forceOptIn) {
-        $this->options['forceOptIn'] = $forceOptIn;
         return $this;
     }
 
