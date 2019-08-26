@@ -3,10 +3,6 @@
 namespace Twilio\Security;
 
 /**
- *
- */
-
-/**
  * RequestValidator is a helper to validate that a request to a web server was actually made from Twilio
  * EXAMPLE USAGE:
  * $validator = new RequestValidator('your auth token here');
@@ -40,7 +36,7 @@ final class RequestValidator {
      * @return string 
      */
 
-    private function computeSignature($url, $data = array()) {
+    public function computeSignature($url, $data = array()) {
 
         // sort the array by keys
         \ksort($data);
@@ -109,7 +105,7 @@ final class RequestValidator {
      * @param $b string Second part of the comparison pair
      * @return bool True if $a === $b, false otherwise.
      */
-    private static function compare($a, $b) {
+    public static function compare($a, $b) {
 
         // if the strings are different lengths, obviously they're invalid
         if (\strlen($a) !== \strlen($b)) {
