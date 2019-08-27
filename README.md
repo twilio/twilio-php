@@ -1,8 +1,14 @@
 # twilio-php
 
-[![Build Status](https://secure.travis-ci.org/twilio/twilio-php.png?branch=master)](http://travis-ci.org/twilio/twilio-php)
+[![Build Status](https://secure.travis-ci.org/twilio/twilio-php.png?branch=master)](https://travis-ci.org/twilio/twilio-php)
 [![Packagist](https://img.shields.io/packagist/v/twilio/sdk.svg)](https://packagist.org/packages/twilio/sdk)
 [![Packagist](https://img.shields.io/packagist/dt/twilio/sdk.svg)](https://packagist.org/packages/twilio/sdk)
+
+## Documentation
+
+The documentation for the Twilio API can be found [here][apidocs].
+
+The PHP library documentation can be found [here][libdocs].
 
 ## Recent Update
 
@@ -26,7 +32,7 @@ You can install **twilio-php** via composer or by downloading the source.
 #### Via Composer:
 
 **twilio-php** is available on Packagist as the
-[`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package:
+[`twilio/sdk`](https://packagist.org/packages/twilio/sdk) package:
 
 ```
 composer require twilio/sdk
@@ -75,9 +81,9 @@ $call = $client->calls->create(
 
 ### Generating TwiML
 
-To control phone calls, your application needs to output
-[TwiML](https://www.twilio.com/docs/api/twiml/ "Twilio Markup Language"). Use
-`Twilio\TwiML\(Voice|Messaging|Fax)Response` to easily chain said responses.
+To control phone calls, your application needs to output [TwiML](twiml "TwiML - Twilio Markup Language").
+
+Use `Twilio\TwiML\(Voice|Messaging|Fax)Response` to easily chain said responses.
 
 ```php
 <?php
@@ -96,12 +102,6 @@ That will output XML that looks like this:
     <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
 </Response>
 ```
-
-## Documentation
-
-The documentation for the Twilio API is located [here][apidocs].
-
-The PHP library documentation can be found [here][documentation].
 
 ## Versions
 
@@ -123,5 +123,6 @@ If you need help installing or using the library, please check the [Twilio Suppo
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
 [apidocs]: https://www.twilio.com/docs/api
-[documentation]: https://twilio.github.io/twilio-php/
+[twiml]: https://www.twilio.com/docs/api/twiml
+[libdocs]: https://twilio.github.io/twilio-php
 [versioning]: https://github.com/twilio/twilio-php/blob/master/VERSIONS.md
