@@ -81,7 +81,7 @@ $call = $client->calls->create(
 
 ### Generating TwiML
 
-To control phone calls, your application needs to output [TwiML](twiml "TwiML - Twilio Markup Language").
+To control phone calls, your application needs to output [TwiML][twiml].
 
 Use `Twilio\TwiML\(Voice|Messaging|Fax)Response` to easily chain said responses.
 
