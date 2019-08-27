@@ -43,7 +43,8 @@ final class GuzzleClient implements Client
         } catch (\Exception $exception) {
             throw new HttpException('Unable to complete the HTTP request', 0, $exception);
         }
-
-        return new Response($response->getStatusCode(), $response->getBody()->getContents(), $response->getHeaders());
+        // Casting the body (stream) to a string performs a rewind, ensuring we return the entire response.
+        // See https://stackoverflow.com/a/30549372/86696
+        return new Response($response->getStatusCode(), (string) $response->getBody(), $response->getHeaders());
     }
 }
