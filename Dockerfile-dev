@@ -1,0 +1,8 @@
+ARG version
+FROM php:$version
+
+RUN curl --silent --show-error https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
+WORKDIR /twilio
