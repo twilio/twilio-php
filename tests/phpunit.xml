@@ -1,0 +1,15 @@
+<!--suppress XmlUnboundNsPrefix -->
+<phpunit bootstrap="./Bootstrap.php" convertNoticesToExceptions="false">
+  <testsuites>
+    <testsuite name="Twilio Unit Test Suite">
+      <directory>./Twilio/Unit</directory>
+      <exclude>WorkflowTest.php</exclude>
+    </testsuite>
+    <testsuite name="Twilio Integration Test Suite">
+      <directory>./Twilio/Integration</directory>
+    </testsuite>
+    <testsuite name="Twilio Services Test Suite">
+      <directory>./Services</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

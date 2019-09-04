@@ -3,8 +3,7 @@ FROM php:5.6
 RUN mkdir /twilio
 WORKDIR /twilio
 
-COPY Twilio ./Twilio
-COPY Services ./Services
+COPY src ./src
 COPY composer* ./
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php

@@ -19,7 +19,7 @@ class RequestValidatorTest extends UnitTest {
     private $body = '{"property": "value", "boolean": true}';
     private $bodyHash = '0a1ff7634d9ab3b95db5c9a2dfe9416e41502b283a80c7cf19632632f96e6620';
 
-    public function setUp() {
+    public function doSetUp() {
         $this->validator = new RequestValidator('12345');
     }
 

@@ -2,23 +2,22 @@
 
 namespace Twilio\Tests;
 
-use \PHPUnit_Framework_TestCase;
 use Twilio\Rest\Client;
+use Twilio\Tests\Unit\UnitTest;
 
-
-class HolodeckTestCase extends PHPUnit_Framework_TestCase
+class HolodeckTestCase extends UnitTest
 {
     /** @var Holodeck $holodeck */
     protected $holodeck = null;
     /** @var Client $twilio */
     protected $twilio = null;
 
-    protected function setUp() {
+    protected function doSetUp() {
         $this->holodeck = new Holodeck();
         $this->twilio = new Client('ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'AUTHTOKEN', null, null, $this->holodeck);
     }
 
-    protected function tearDown() {
+    protected function doTearDown() {
         $this->twilio = null;
         $this->holodeck = null;
     }
