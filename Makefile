@@ -51,7 +51,6 @@ docker-build-dev:
 	-docker rm twilio_php${VERSION}
 	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile-dev .
 	docker run -itd --name="twilio_php${VERSION}" --mount type=bind,source=${PWD},target=/twilio twilio/php${VERSION} /bin/bash
-	docker exec -it twilio_php${VERSION} /bin/bash -c 'make all'
 
 docker-test:
 	docker exec -it twilio_php${VERSION} /bin/bash -c 'make all'
