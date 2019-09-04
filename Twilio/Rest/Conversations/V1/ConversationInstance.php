@@ -24,6 +24,7 @@ use Twilio\Version;
  * @property string $messagingServiceSid
  * @property string $sid
  * @property string $friendlyName
+ * @property string $attributes
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $url
@@ -53,6 +54,7 @@ class ConversationInstance extends InstanceResource {
             'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'attributes' => Values::array_get($payload, 'attributes'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

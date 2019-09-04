@@ -17,10 +17,12 @@ use Twilio\Values;
  */
 abstract class DocumentOptions {
     /**
-     * @param string $uniqueName Human-readable name for this document
-     * @param array $data JSON data to be stored in this document
-     * @param int $ttl Time-to-live of this Document in seconds, defaults to no
-     *                 expiration.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the Sync Document
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the Sync Document stores
+     * @param int $ttl How long, in seconds, before the Sync Document expires and
+     *                 is deleted
      * @return CreateDocumentOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE) {
@@ -28,9 +30,10 @@ abstract class DocumentOptions {
     }
 
     /**
-     * @param array $data Contains an arbitrary JSON object to be stored in this
-     *                    Document.
-     * @param int $ttl New time-to-live of this Document in seconds.
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the Sync Document stores
+     * @param int $ttl How long, in seconds, before the Document resource expires
+     *                 and is deleted
      * @return UpdateDocumentOptions Options builder
      */
     public static function update($data = Values::NONE, $ttl = Values::NONE) {
@@ -40,10 +43,12 @@ abstract class DocumentOptions {
 
 class CreateDocumentOptions extends Options {
     /**
-     * @param string $uniqueName Human-readable name for this document
-     * @param array $data JSON data to be stored in this document
-     * @param int $ttl Time-to-live of this Document in seconds, defaults to no
-     *                 expiration.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the Sync Document
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the Sync Document stores
+     * @param int $ttl How long, in seconds, before the Sync Document expires and
+     *                 is deleted
      */
     public function __construct($uniqueName = Values::NONE, $data = Values::NONE, $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -52,9 +57,10 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * Human-readable name for this document
+     * An application-defined string that uniquely identifies the Sync Document
      *
-     * @param string $uniqueName Human-readable name for this document
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the Sync Document
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -63,9 +69,10 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * JSON data to be stored in this document
+     * A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.
      *
-     * @param array $data JSON data to be stored in this document
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the Sync Document stores
      * @return $this Fluent Builder
      */
     public function setData($data) {
@@ -74,10 +81,10 @@ class CreateDocumentOptions extends Options {
     }
 
     /**
-     * Time-to-live of this Document in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * How long, in seconds, before the Sync Document expires and is deleted (the Sync Document's time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Document does not expire. The Sync Document might not be deleted immediately after it expires.
      *
-     * @param int $ttl Time-to-live of this Document in seconds, defaults to no
-     *                 expiration.
+     * @param int $ttl How long, in seconds, before the Sync Document expires and
+     *                 is deleted
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -103,9 +110,10 @@ class CreateDocumentOptions extends Options {
 
 class UpdateDocumentOptions extends Options {
     /**
-     * @param array $data Contains an arbitrary JSON object to be stored in this
-     *                    Document.
-     * @param int $ttl New time-to-live of this Document in seconds.
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the Sync Document stores
+     * @param int $ttl How long, in seconds, before the Document resource expires
+     *                 and is deleted
      */
     public function __construct($data = Values::NONE, $ttl = Values::NONE) {
         $this->options['data'] = $data;
@@ -113,10 +121,10 @@ class UpdateDocumentOptions extends Options {
     }
 
     /**
-     * Contains an arbitrary JSON object to be stored in this Document. Serialized to string to respect HTTP form input, up to 16KB.
+     * A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16KB in length.
      *
-     * @param array $data Contains an arbitrary JSON object to be stored in this
-     *                    Document.
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the Sync Document stores
      * @return $this Fluent Builder
      */
     public function setData($data) {
@@ -125,9 +133,10 @@ class UpdateDocumentOptions extends Options {
     }
 
     /**
-     * New time-to-live of this Document in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * How long, in seconds, before the Sync Document expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Document resource does not expire. The Document resource might not be deleted immediately after it expires.
      *
-     * @param int $ttl New time-to-live of this Document in seconds.
+     * @param int $ttl How long, in seconds, before the Document resource expires
+     *                 and is deleted
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {

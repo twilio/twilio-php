@@ -39,8 +39,8 @@ class DataSessionInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $simSid The unique id of the SIM resource that this Data
-     *                       Session is for.
+     * @param string $simSid The SID of the Sim resource that the Data Session is
+     *                       for
      * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionInstance
      */
     public function __construct(Version $version, array $payload, $simSid) {

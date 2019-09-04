@@ -20,8 +20,8 @@ class UsageRecordList extends ListResource {
      * Construct the UsageRecordList
      *
      * @param Version $version Version that contains the resource
-     * @param string $simSid The unique id of the SIM resource that this Usage
-     *                       Record is for.
+     * @param string $simSid The SID of the Sim resource that this Usage Record is
+     *                       for
      * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordList
      */
     public function __construct(Version $version, $simSid) {

@@ -22,20 +22,24 @@ abstract class ConversationOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return CreateConversationOptions Options builder
      */
-    public static function create($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $messagingServiceSid = Values::NONE) {
-        return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid);
+    public static function create($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $messagingServiceSid = Values::NONE, $attributes = Values::NONE) {
+        return new CreateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $messagingServiceSid, $attributes);
     }
 
     /**
      * @param string $friendlyName The human-readable name of this conversation.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return UpdateConversationOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
-        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated);
+    public static function update($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+        return new UpdateConversationOptions($friendlyName, $dateCreated, $dateUpdated, $attributes);
     }
 }
 
@@ -46,12 +50,15 @@ class CreateConversationOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $messagingServiceSid The unique id of the SMS Service this
      *                                    conversation belongs to.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      */
-    public function __construct($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $messagingServiceSid = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $messagingServiceSid = Values::NONE, $attributes = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['messagingServiceSid'] = $messagingServiceSid;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -100,6 +107,18 @@ class CreateConversationOptions extends Options {
     }
 
     /**
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     *
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -120,11 +139,14 @@ class UpdateConversationOptions extends Options {
      * @param string $friendlyName The human-readable name of this conversation.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      */
-    public function __construct($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -157,6 +179,18 @@ class UpdateConversationOptions extends Options {
      */
     public function setDateUpdated($dateUpdated) {
         $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     *
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
         return $this;
     }
 

@@ -23,10 +23,13 @@ class DocumentPermissionContext extends InstanceContext {
      * Initialize the DocumentPermissionContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Sync Service Instance SID or unique name.
-     * @param string $documentSid Sync Document SID or unique name.
-     * @param string $identity Identity of the user to whom the Sync Document
-     *                         Permission applies.
+     * @param string $serviceSid The SID of the Sync Service with the Document
+     *                           Permission resource to fetch
+     * @param string $documentSid The SID of the Sync Document with the Document
+     *                            Permission resource to fetch
+     * @param string $identity The application-defined string that uniquely
+     *                         identifies the User's Document Permission resource
+     *                         to fetch
      * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext
      */
     public function __construct(Version $version, $serviceSid, $documentSid, $identity) {
@@ -79,9 +82,9 @@ class DocumentPermissionContext extends InstanceContext {
     /**
      * Update the DocumentPermissionInstance
      *
-     * @param bool $read Read access.
-     * @param bool $write Write access.
-     * @param bool $manage Manage access.
+     * @param bool $read Read access
+     * @param bool $write Write access
+     * @param bool $manage Manage access
      * @return DocumentPermissionInstance Updated DocumentPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */

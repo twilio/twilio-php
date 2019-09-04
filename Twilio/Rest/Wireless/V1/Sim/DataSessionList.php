@@ -20,8 +20,8 @@ class DataSessionList extends ListResource {
      * Construct the DataSessionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $simSid The unique id of the SIM resource that this Data
-     *                       Session is for.
+     * @param string $simSid The SID of the Sim resource that the Data Session is
+     *                       for
      * @return \Twilio\Rest\Wireless\V1\Sim\DataSessionList
      */
     public function __construct(Version $version, $simSid) {

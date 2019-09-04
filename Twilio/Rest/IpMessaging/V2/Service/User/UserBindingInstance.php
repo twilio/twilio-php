@@ -37,8 +37,8 @@ class UserBindingInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @param string $userSid The SID of the User for the binding
-     * @param string $sid The unique string that identifies the resource
+     * @param string $userSid The SID of the User with the binding
+     * @param string $sid The SID of the User Binding resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\Service\User\UserBindingInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $userSid, $sid = null) {

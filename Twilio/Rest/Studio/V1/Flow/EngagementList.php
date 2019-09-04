@@ -21,7 +21,7 @@ class EngagementList extends ListResource {
      * Construct the EngagementList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
+     * @param string $flowSid The SID of the Flow
      * @return \Twilio\Rest\Studio\V1\Flow\EngagementList
      */
     public function __construct(Version $version, $flowSid) {
@@ -122,9 +122,9 @@ class EngagementList extends ListResource {
     /**
      * Create a new EngagementInstance
      *
-     * @param string $to The Contact phone number to start a Studio Flow Engagement.
+     * @param string $to The Contact phone number to start a Studio Flow Engagement
      * @param string $from The Twilio phone number to send messages or initiate
-     *                     calls from during the Flow Engagement.
+     *                     calls from during the Flow Engagement
      * @param array|Options $options Optional Arguments
      * @return EngagementInstance Newly created EngagementInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -151,7 +151,7 @@ class EngagementList extends ListResource {
     /**
      * Constructs a EngagementContext
      *
-     * @param string $sid Engagement Sid.
+     * @param string $sid The SID of the Engagement resource to fetch
      * @return \Twilio\Rest\Studio\V1\Flow\EngagementContext
      */
     public function getContext($sid) {

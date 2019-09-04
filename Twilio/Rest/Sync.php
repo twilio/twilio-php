@@ -85,7 +85,7 @@ class Sync extends Domain {
     }
 
     /**
-     * @param string $sid A unique identifier for this service instance.
+     * @param string $sid The SID of the Service resource to fetch
      * @return \Twilio\Rest\Sync\V1\ServiceContext
      */
     protected function contextServices($sid) {

@@ -14,7 +14,7 @@ use Twilio\Values;
 
 abstract class MessageOptions {
     /**
-     * @param string $from The identity of the new message's author
+     * @param string $from The Identity of the new message's author
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
@@ -49,7 +49,7 @@ abstract class MessageOptions {
      *                               resource was updated
      * @param string $lastUpdatedBy The Identity of the User who last updated the
      *                              Message, if applicable
-     * @param string $from The identity of the message's author
+     * @param string $from The Identity of the message's author
      * @return UpdateMessageOptions Options builder
      */
     public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
@@ -59,7 +59,7 @@ abstract class MessageOptions {
 
 class CreateMessageOptions extends Options {
     /**
-     * @param string $from The identity of the new message's author
+     * @param string $from The Identity of the new message's author
      * @param string $attributes A valid JSON string that contains
      *                           application-specific data
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
@@ -82,9 +82,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/chat/identity) of the new message's author. The default value is `system`.
+     * The [Identity](https://www.twilio.com/docs/chat/identity) of the new message's author. The default value is `system`.
      *
-     * @param string $from The identity of the new message's author
+     * @param string $from The Identity of the new message's author
      * @return $this Fluent Builder
      */
     public function setFrom($from) {
@@ -105,7 +105,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default value is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
      *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
@@ -117,7 +117,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`. Note that this parameter should only be used when a Chat's history is being recreated from a backup/separate source  and where a Message was previously updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
@@ -129,7 +129,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
+     * The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
      *
      * @param string $lastUpdatedBy The Identity of the User who last updated the
      *                              Message
@@ -141,7 +141,7 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     * The message to send to the channel. Can be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
      *
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
@@ -224,7 +224,7 @@ class UpdateMessageOptions extends Options {
      *                               resource was updated
      * @param string $lastUpdatedBy The Identity of the User who last updated the
      *                              Message, if applicable
-     * @param string $from The identity of the message's author
+     * @param string $from The Identity of the message's author
      */
     public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE, $from = Values::NONE) {
         $this->options['body'] = $body;
@@ -236,7 +236,7 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     * The message to send to the channel. Can be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
      *
      * @param string $body The message to send to the channel
      * @return $this Fluent Builder
@@ -259,7 +259,7 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default value is the current time set by the Chat service. This parameter should only be used when a Chat's history is being recreated from a backup/separate source.
      *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
@@ -297,7 +297,7 @@ class UpdateMessageOptions extends Options {
     /**
      * The [Identity](https://www.twilio.com/docs/chat/identity) of the message's author.
      *
-     * @param string $from The identity of the message's author
+     * @param string $from The Identity of the message's author
      * @return $this Fluent Builder
      */
     public function setFrom($from) {

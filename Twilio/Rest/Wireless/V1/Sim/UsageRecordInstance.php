@@ -27,8 +27,8 @@ class UsageRecordInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $simSid The unique id of the SIM resource that this Usage
-     *                       Record is for.
+     * @param string $simSid The SID of the Sim resource that this Usage Record is
+     *                       for
      * @return \Twilio\Rest\Wireless\V1\Sim\UsageRecordInstance
      */
     public function __construct(Version $version, array $payload, $simSid) {

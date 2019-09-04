@@ -24,9 +24,11 @@ class SyncMapItemContext extends InstanceContext {
      * Initialize the SyncMapItemContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $mapSid The map_sid
-     * @param string $key The key
+     * @param string $serviceSid The SID of the Sync Service with the Sync Map Item
+     *                           resource to fetch
+     * @param string $mapSid The SID of the Sync Map with the Sync Map Item
+     *                       resource to fetch
+     * @param string $key The key value of the Sync Map Item resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemContext
      */
     public function __construct(Version $version, $serviceSid, $mapSid, $key) {

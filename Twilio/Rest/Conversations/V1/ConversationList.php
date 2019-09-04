@@ -50,6 +50,7 @@ class ConversationList extends ListResource {
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'MessagingServiceSid' => $options['messagingServiceSid'],
+            'Attributes' => $options['attributes'],
         ));
 
         $payload = $this->version->create(

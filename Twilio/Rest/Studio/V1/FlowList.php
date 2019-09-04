@@ -118,7 +118,7 @@ class FlowList extends ListResource {
     /**
      * Constructs a FlowContext
      *
-     * @param string $sid A string that uniquely identifies this Flow.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Studio\V1\FlowContext
      */
     public function getContext($sid) {

@@ -37,8 +37,8 @@ class ExecutionInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid Flow Sid.
-     * @param string $sid Execution Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $sid The SID of the Execution resource to fetch
      * @return \Twilio\Rest\Studio\V1\Flow\ExecutionInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $sid = null) {

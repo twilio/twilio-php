@@ -1,6 +1,30 @@
 twilio-php Changelog
 ====================
 
+[2019-09-04] Version 5.35.0
+----------------------------
+**Library**
+- [PR #558](https://github.com/twilio/twilio-php/pull/558): Adds local dockerized tests for configurable PHP versions. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #552](https://github.com/twilio/twilio-php/pull/552): GuzzleClient - change body retrieval to rewind stream. Thanks to [@DavidGoodwin](https://github.com/DavidGoodwin)!
+- [PR #551](https://github.com/twilio/twilio-php/pull/551): Request validator small changes. Thanks to [@Mcgurk-Adam](https://github.com/Mcgurk-Adam)!
+- [PR #555](https://github.com/twilio/twilio-php/pull/555): Correct the 'array' type hint for a few resource instance properties. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+-  Pass Twiml in call update request
+
+**Conversations**
+- Add attributes to Conversations resources
+
+**Flex**
+- Adding `features_enabled` and `serverless_service_sids` to Flex Configuration
+
+**Messaging**
+- Message API required params updated **(breaking change)**
+
+**Preview**
+- Added support for the optional `CallSid` to `/BrandedCalls` endpoint
+
+
 [2019-08-21] Version 5.34.4
 ----------------------------
 **Library**

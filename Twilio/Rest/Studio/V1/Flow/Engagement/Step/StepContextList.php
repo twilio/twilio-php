@@ -17,9 +17,9 @@ class StepContextList extends ListResource {
      * Construct the StepContextList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
-     * @param string $engagementSid Engagement Sid.
-     * @param string $stepSid Step Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $engagementSid The SID of the Engagement
+     * @param string $stepSid Step SID
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList
      */
     public function __construct(Version $version, $flowSid, $engagementSid, $stepSid) {

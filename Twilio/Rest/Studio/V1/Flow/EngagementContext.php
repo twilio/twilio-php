@@ -30,8 +30,8 @@ class EngagementContext extends InstanceContext {
      * Initialize the EngagementContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
-     * @param string $sid Engagement Sid.
+     * @param string $flowSid Flow SID
+     * @param string $sid The SID of the Engagement resource to fetch
      * @return \Twilio\Rest\Studio\V1\Flow\EngagementContext
      */
     public function __construct(Version $version, $flowSid, $sid) {

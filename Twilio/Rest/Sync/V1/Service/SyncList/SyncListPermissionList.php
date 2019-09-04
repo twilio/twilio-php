@@ -21,8 +21,10 @@ class SyncListPermissionList extends ListResource {
      * Construct the SyncListPermissionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Sync Service Instance SID.
-     * @param string $listSid Sync List SID.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $listSid The SID of the Sync List to which the Permission
+     *                        applies
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionList
      */
     public function __construct(Version $version, $serviceSid, $listSid) {
@@ -124,8 +126,9 @@ class SyncListPermissionList extends ListResource {
     /**
      * Constructs a SyncListPermissionContext
      *
-     * @param string $identity Identity of the user to whom the Sync List
-     *                         Permission applies.
+     * @param string $identity The application-defined string that uniquely
+     *                         identifies the User's Sync List Permission resource
+     *                         to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionContext
      */
     public function getContext($identity) {

@@ -14,12 +14,11 @@ use Twilio\Values;
 
 abstract class UsageRecordOptions {
     /**
-     * @param \DateTime $end Only include usage that has occurred on or before this
-     *                       date.
+     * @param \DateTime $end Only include usage that occurred on or before this date
      * @param \DateTime $start Only include usage that has occurred on or after
-     *                         this date.
+     *                         this date
      * @param string $granularity The time-based grouping that results are
-     *                            aggregated by.
+     *                            aggregated by
      * @return ReadUsageRecordOptions Options builder
      */
     public static function read($end = Values::NONE, $start = Values::NONE, $granularity = Values::NONE) {
@@ -29,12 +28,11 @@ abstract class UsageRecordOptions {
 
 class ReadUsageRecordOptions extends Options {
     /**
-     * @param \DateTime $end Only include usage that has occurred on or before this
-     *                       date.
+     * @param \DateTime $end Only include usage that occurred on or before this date
      * @param \DateTime $start Only include usage that has occurred on or after
-     *                         this date.
+     *                         this date
      * @param string $granularity The time-based grouping that results are
-     *                            aggregated by.
+     *                            aggregated by
      */
     public function __construct($end = Values::NONE, $start = Values::NONE, $granularity = Values::NONE) {
         $this->options['end'] = $end;
@@ -43,10 +41,9 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or before this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).
+     * Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).
      *
-     * @param \DateTime $end Only include usage that has occurred on or before this
-     *                       date.
+     * @param \DateTime $end Only include usage that occurred on or before this date
      * @return $this Fluent Builder
      */
     public function setEnd($end) {
@@ -55,10 +52,10 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date. Format is [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm).
+     * Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).
      *
      * @param \DateTime $start Only include usage that has occurred on or after
-     *                         this date.
+     *                         this date
      * @return $this Fluent Builder
      */
     public function setStart($start) {
@@ -67,10 +64,10 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * The time-based grouping that results are aggregated by. Valid values are `daily`, `hourly`, `all`. `all` will return one Usage Record for the entire period.
+     * How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.
      *
      * @param string $granularity The time-based grouping that results are
-     *                            aggregated by.
+     *                            aggregated by
      * @return $this Fluent Builder
      */
     public function setGranularity($granularity) {

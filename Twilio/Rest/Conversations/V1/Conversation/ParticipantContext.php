@@ -52,6 +52,7 @@ class ParticipantContext extends InstanceContext {
         $data = Values::of(array(
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' => $options['attributes'],
         ));
 
         $payload = $this->version->update(

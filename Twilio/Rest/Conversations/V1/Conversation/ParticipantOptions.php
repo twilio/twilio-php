@@ -26,19 +26,23 @@ abstract class ParticipantOptions {
      *                                             in contact with.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
-        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated);
+    public static function create($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes);
     }
 
     /**
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      * @return UpdateParticipantOptions Options builder
      */
-    public static function update($dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
-        return new UpdateParticipantOptions($dateCreated, $dateUpdated);
+    public static function update($dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+        return new UpdateParticipantOptions($dateCreated, $dateUpdated, $attributes);
     }
 }
 
@@ -53,13 +57,16 @@ class CreateParticipantOptions extends Options {
      *                                             in contact with.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      */
-    public function __construct($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['messagingBindingAddress'] = $messagingBindingAddress;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -122,6 +129,18 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     *
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -141,10 +160,13 @@ class UpdateParticipantOptions extends Options {
     /**
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
      */
-    public function __construct($dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+    public function __construct($dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
+        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -166,6 +188,18 @@ class UpdateParticipantOptions extends Options {
      */
     public function setDateUpdated($dateUpdated) {
         $this->options['dateUpdated'] = $dateUpdated;
+        return $this;
+    }
+
+    /**
+     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     *
+     * @param string $attributes An optional string metadata field you can use to
+     *                           store any data you wish.
+     * @return $this Fluent Builder
+     */
+    public function setAttributes($attributes) {
+        $this->options['attributes'] = $attributes;
         return $this;
     }
 

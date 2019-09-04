@@ -21,8 +21,9 @@ class SyncMapPermissionList extends ListResource {
      * Construct the SyncMapPermissionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Sync Service Instance SID.
-     * @param string $mapSid Sync Map SID.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $mapSid Sync Map SID
      * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapPermissionList
      */
     public function __construct(Version $version, $serviceSid, $mapSid) {
@@ -123,8 +124,9 @@ class SyncMapPermissionList extends ListResource {
     /**
      * Constructs a SyncMapPermissionContext
      *
-     * @param string $identity Identity of the user to whom the Sync Map Permission
-     *                         applies.
+     * @param string $identity The application-defined string that uniquely
+     *                         identifies the User's Sync Map Permission resource
+     *                         to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapPermissionContext
      */
     public function getContext($identity) {

@@ -20,8 +20,7 @@ class RatePlanContext extends InstanceContext {
      * Initialize the RatePlanContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Wireless\V1\RatePlanContext
      */
     public function __construct(Version $version, $sid) {

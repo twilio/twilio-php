@@ -153,7 +153,7 @@ class CredentialList extends ListResource {
     /**
      * Constructs a CredentialContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Credential resource to fetch
      * @return \Twilio\Rest\Chat\V2\CredentialContext
      */
     public function getContext($sid) {

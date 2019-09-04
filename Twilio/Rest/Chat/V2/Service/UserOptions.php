@@ -50,7 +50,7 @@ class CreateUserOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) assigned to the new User.
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the new User.
      *
      * @param string $roleSid The SID of the Role assigned to this user
      * @return $this Fluent Builder
@@ -113,7 +113,7 @@ class UpdateUserOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) assigned to this user.
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the User.
      *
      * @param string $roleSid The SID id of the Role assigned to this user
      * @return $this Fluent Builder

@@ -81,7 +81,7 @@ abstract class ServiceOptions {
      * @param string $postWebhookUrl The URL for post-event webhooks
      * @param string $webhookMethod The HTTP method  to use for both PRE and POST
      *                              webhooks
-     * @param string $webhookFilters The list of WebHook events that are enabled
+     * @param string $webhookFilters The list of webhook events that are enabled
      *                               for this Service instance
      * @param int $limitsChannelMembers The maximum number of Members that can be
      *                                  added to Channels within this Service
@@ -171,7 +171,7 @@ class UpdateServiceOptions extends Options {
      * @param string $postWebhookUrl The URL for post-event webhooks
      * @param string $webhookMethod The HTTP method  to use for both PRE and POST
      *                              webhooks
-     * @param string $webhookFilters The list of WebHook events that are enabled
+     * @param string $webhookFilters The list of webhook events that are enabled
      *                               for this Service instance
      * @param int $limitsChannelMembers The maximum number of Members that can be
      *                                  added to Channels within this Service
@@ -232,7 +232,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The service role assigned to users when they are added to the service. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
+     * The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.
      *
      * @param string $defaultServiceRoleSid The service role assigned to users when
      *                                      they are added to the service
@@ -244,7 +244,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The channel role assigned to users when they are added to a channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
+     * The channel role assigned to users when they are added to a channel. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.
      *
      * @param string $defaultChannelRoleSid The channel role assigned to users when
      *                                      they are added to a channel
@@ -256,7 +256,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The channel role assigned to a channel creator when they join a new channel. See the [Roles endpoint](https://www.twilio.com/docs/chat/api/roles) for more details.
+     * The channel role assigned to a channel creator when they join a new channel. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.
      *
      * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
      *                                             channel creator when they join a
@@ -316,7 +316,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Whether to send a notification when a new message is added to a channel. Can be: `true` or `false` and the default is `false`.
+     * Whether to send a notification when a new message is added to a channel. The default is `false`.
      *
      * @param bool $notificationsNewMessageEnabled Whether to send a notification
      *                                             when a new message is added to a
@@ -356,7 +356,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Whether the new message badge is enabled. Can be: `true` or `false` and the default is `false`.
+     * Whether the new message badge is enabled. The default is `false`.
      *
      * @param bool $notificationsNewMessageBadgeCountEnabled Whether the new
      *                                                       message badge is
@@ -369,7 +369,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Whether to send a notification when a member is added to a channel. Can be: `true` or `false` and the default is `false`.
+     * Whether to send a notification when a member is added to a channel. The default is `false`.
      *
      * @param bool $notificationsAddedToChannelEnabled Whether to send a
      *                                                 notification when a member
@@ -410,7 +410,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Whether to send a notification to a user when they are removed from a channel. Can be: `true` or `false` and the default is `false`.
+     * Whether to send a notification to a user when they are removed from a channel. The default is `false`.
      *
      * @param bool $notificationsRemovedFromChannelEnabled Whether to send a
      *                                                     notification to a user
@@ -453,7 +453,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Whether to send a notification when a user is invited to a channel. Can be: `true` or `false` and the default is `false`.
+     * Whether to send a notification when a user is invited to a channel. The default is `false`.
      *
      * @param bool $notificationsInvitedToChannelEnabled Whether to send a
      *                                                   notification when a user
@@ -528,9 +528,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The list of WebHook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
+     * The list of webhook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
      *
-     * @param string $webhookFilters The list of WebHook events that are enabled
+     * @param string $webhookFilters The list of webhook events that are enabled
      *                               for this Service instance
      * @return $this Fluent Builder
      */
@@ -601,7 +601,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Whether to log notifications. Can be: `true` or `false` and the default is `false`.
+     * Whether to log notifications. The default is `false`.
      *
      * @param bool $notificationsLogEnabled Whether to log notifications
      * @return $this Fluent Builder

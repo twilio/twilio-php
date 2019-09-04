@@ -18,9 +18,9 @@ abstract class MemberOptions {
      * @param int $lastConsumedMessageIndex The index of the last Message in the
      *                                      Channel the Member has read
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string representing the date-time
+     *                                            string representing the datetime
      *                                            of the last Message read event
-     *                                            for the Member within the Channel
+     *                                            for the member within the Channel
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
@@ -46,7 +46,7 @@ abstract class MemberOptions {
      * @param int $lastConsumedMessageIndex The index of the last consumed Message
      *                                      for the Channel for the Member
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string representing the date-time
+     *                                            string representing the datetime
      *                                            of the last Message read event
      *                                            for the Member within the Channel
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
@@ -68,9 +68,9 @@ class CreateMemberOptions extends Options {
      * @param int $lastConsumedMessageIndex The index of the last Message in the
      *                                      Channel the Member has read
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string representing the date-time
+     *                                            string representing the datetime
      *                                            of the last Message read event
-     *                                            for the Member within the Channel
+     *                                            for the member within the Channel
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
@@ -111,12 +111,12 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The ISO 8601 timestamp string that represents the date-time of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
      *
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string representing the date-time
+     *                                            string representing the datetime
      *                                            of the last Message read event
-     *                                            for the Member within the Channel
+     *                                            for the member within the Channel
      * @return $this Fluent Builder
      */
     public function setLastConsumptionTimestamp($lastConsumptionTimestamp) {
@@ -137,7 +137,7 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`.  Note that this parameter should only be used when a Member is being recreated from a backup/separate source and where a Member was previously updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. The default value is `null`. Note that this parameter should only be used when a Member is being recreated from a backup/separate source and where a Member was previously updated.
      *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated
@@ -185,7 +185,7 @@ class ReadMemberOptions extends Options {
     }
 
     /**
-     * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
+     * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the Member resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
      *
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
@@ -217,7 +217,7 @@ class UpdateMemberOptions extends Options {
      * @param int $lastConsumedMessageIndex The index of the last consumed Message
      *                                      for the Channel for the Member
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string representing the date-time
+     *                                            string representing the datetime
      *                                            of the last Message read event
      *                                            for the Member within the Channel
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
@@ -260,10 +260,10 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The ISO 8601 timestamp string that represents the date-time of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
      *
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
-     *                                            string representing the date-time
+     *                                            string representing the datetime
      *                                            of the last Message read event
      *                                            for the Member within the Channel
      * @return $this Fluent Builder
@@ -274,7 +274,7 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default is the current time set by the Chat service.  Note that this parameter should only be used when a Member is being recreated from a backup/separate source.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. The default value is the current time set by the Chat service.  Note that this parameter should only be used when a Member is being recreated from a backup/separate source.
      *
      * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
      *                               resource was created
@@ -286,7 +286,7 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. Note that this parameter should only be used when a Member is being recreated from a backup/separate source and where a Member was previously updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
      * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
      *                               resource was updated

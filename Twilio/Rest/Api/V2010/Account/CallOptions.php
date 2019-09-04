@@ -99,10 +99,11 @@ abstract class CallOptions {
      *                               information to your application
      * @param string $statusCallbackMethod HTTP Method to use to call
      *                                     status_callback
+     * @param string $twiml TwiML instructions for the call
      * @return UpdateCallOptions Options builder
      */
-    public static function update($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
-        return new UpdateCallOptions($url, $method, $status, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackMethod);
+    public static function update($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $twiml = Values::NONE) {
+        return new UpdateCallOptions($url, $method, $status, $fallbackUrl, $fallbackMethod, $statusCallback, $statusCallbackMethod, $twiml);
     }
 }
 
@@ -659,8 +660,9 @@ class UpdateCallOptions extends Options {
      *                               information to your application
      * @param string $statusCallbackMethod HTTP Method to use to call
      *                                     status_callback
+     * @param string $twiml TwiML instructions for the call
      */
-    public function __construct($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE) {
+    public function __construct($url = Values::NONE, $method = Values::NONE, $status = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $statusCallbackMethod = Values::NONE, $twiml = Values::NONE) {
         $this->options['url'] = $url;
         $this->options['method'] = $method;
         $this->options['status'] = $status;
@@ -668,6 +670,7 @@ class UpdateCallOptions extends Options {
         $this->options['fallbackMethod'] = $fallbackMethod;
         $this->options['statusCallback'] = $statusCallback;
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        $this->options['twiml'] = $twiml;
     }
 
     /**
@@ -746,6 +749,17 @@ class UpdateCallOptions extends Options {
      */
     public function setStatusCallbackMethod($statusCallbackMethod) {
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
+        return $this;
+    }
+
+    /**
+     * TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive
+     *
+     * @param string $twiml TwiML instructions for the call
+     * @return $this Fluent Builder
+     */
+    public function setTwiml($twiml) {
+        $this->options['twiml'] = $twiml;
         return $this;
     }
 

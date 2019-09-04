@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property string $from
  * @property string $logo
  * @property string $reason
+ * @property string $sid
  * @property string $status
  * @property string $to
  * @property string $url
@@ -52,6 +53,7 @@ class BrandedCallInstance extends InstanceResource {
             'from' => Values::array_get($payload, 'from'),
             'logo' => Values::array_get($payload, 'logo'),
             'reason' => Values::array_get($payload, 'reason'),
+            'sid' => Values::array_get($payload, 'sid'),
             'status' => Values::array_get($payload, 'status'),
             'to' => Values::array_get($payload, 'to'),
             'url' => Values::array_get($payload, 'url'),

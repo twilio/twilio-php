@@ -17,10 +17,11 @@ use Twilio\Values;
  */
 abstract class SyncMapOptions {
     /**
-     * @param string $uniqueName Human-readable name for this map
-     * @param int $ttl Alias for collection_ttl
-     * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
-     *                           no expiration.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param int $ttl An alias for collection_ttl
+     * @param int $collectionTtl How long, in seconds, before the Sync Map expires
+     *                           and is deleted
      * @return CreateSyncMapOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -28,8 +29,9 @@ abstract class SyncMapOptions {
     }
 
     /**
-     * @param int $ttl Alias for collection_ttl
-     * @param int $collectionTtl New time-to-live of this Map in seconds.
+     * @param int $ttl An alias for collection_ttl
+     * @param int $collectionTtl How long, in seconds, before the Sync Map expires
+     *                           and is deleted
      * @return UpdateSyncMapOptions Options builder
      */
     public static function update($ttl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -39,10 +41,11 @@ abstract class SyncMapOptions {
 
 class CreateSyncMapOptions extends Options {
     /**
-     * @param string $uniqueName Human-readable name for this map
-     * @param int $ttl Alias for collection_ttl
-     * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
-     *                           no expiration.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param int $ttl An alias for collection_ttl
+     * @param int $collectionTtl How long, in seconds, before the Sync Map expires
+     *                           and is deleted
      */
     public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -51,9 +54,10 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * Human-readable name for this map
+     * An application-defined string that uniquely identifies the resource. It can be used as an alternative to the `sid` in the URL path to address the resource.
      *
-     * @param string $uniqueName Human-readable name for this map
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -62,9 +66,9 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * Alias for collection_ttl. If both are provided, this value is ignored.
+     * An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
      *
-     * @param int $ttl Alias for collection_ttl
+     * @param int $ttl An alias for collection_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -73,10 +77,10 @@ class CreateSyncMapOptions extends Options {
     }
 
     /**
-     * Time-to-live of this Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.
      *
-     * @param int $collectionTtl Time-to-live of this Map in seconds, defaults to
-     *                           no expiration.
+     * @param int $collectionTtl How long, in seconds, before the Sync Map expires
+     *                           and is deleted
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {
@@ -102,8 +106,9 @@ class CreateSyncMapOptions extends Options {
 
 class UpdateSyncMapOptions extends Options {
     /**
-     * @param int $ttl Alias for collection_ttl
-     * @param int $collectionTtl New time-to-live of this Map in seconds.
+     * @param int $ttl An alias for collection_ttl
+     * @param int $collectionTtl How long, in seconds, before the Sync Map expires
+     *                           and is deleted
      */
     public function __construct($ttl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
@@ -111,9 +116,9 @@ class UpdateSyncMapOptions extends Options {
     }
 
     /**
-     * Alias for collection_ttl. If both are provided, this value is ignored.
+     * An alias for `collection_ttl`. If both parameters are provided, this value is ignored.
      *
-     * @param int $ttl Alias for collection_ttl
+     * @param int $ttl An alias for collection_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -122,9 +127,10 @@ class UpdateSyncMapOptions extends Options {
     }
 
     /**
-     * New time-to-live of this Map in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * How long, in seconds, before the Sync Map expires (time-to-live) and is deleted. Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.
      *
-     * @param int $collectionTtl New time-to-live of this Map in seconds.
+     * @param int $collectionTtl How long, in seconds, before the Sync Map expires
+     *                           and is deleted
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {

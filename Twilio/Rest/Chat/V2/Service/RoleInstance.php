@@ -34,7 +34,7 @@ class RoleInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Role resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\RoleInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

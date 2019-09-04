@@ -27,8 +27,8 @@ class ExecutionContextInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid Flow Sid.
-     * @param string $executionSid Execution Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
      * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $executionSid) {

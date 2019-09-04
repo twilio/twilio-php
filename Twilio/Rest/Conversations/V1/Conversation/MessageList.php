@@ -52,6 +52,7 @@ class MessageList extends ListResource {
             'Body' => $options['body'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' => $options['attributes'],
         ));
 
         $payload = $this->version->create(

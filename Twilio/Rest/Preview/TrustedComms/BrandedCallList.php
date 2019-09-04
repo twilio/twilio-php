@@ -11,6 +11,7 @@ namespace Twilio\Rest\Preview\TrustedComms;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -39,11 +40,19 @@ class BrandedCallList extends ListResource {
      * @param string $from Twilio number from which to brand the call
      * @param string $to The terminating Phone Number
      * @param string $reason The business reason for this phone call
+     * @param array|Options $options Optional Arguments
      * @return BrandedCallInstance Newly created BrandedCallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create($from, $to, $reason) {
-        $data = Values::of(array('From' => $from, 'To' => $to, 'Reason' => $reason, ));
+    public function create($from, $to, $reason, $options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'From' => $from,
+            'To' => $to,
+            'Reason' => $reason,
+            'CallSid' => $options['callSid'],
+        ));
 
         $payload = $this->version->create(
             'POST',

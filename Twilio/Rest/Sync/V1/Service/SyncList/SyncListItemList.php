@@ -24,10 +24,9 @@ class SyncListItemList extends ListResource {
      * Construct the SyncListItemList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique SID identifier of the Service Instance
-     *                           that hosts this List object.
-     * @param string $listSid The unique 34-character SID identifier of the List
-     *                        containing this Item.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $listSid The SID of the Sync List that contains the List Item
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemList
      */
     public function __construct(Version $version, $serviceSid, $listSid) {
@@ -42,9 +41,8 @@ class SyncListItemList extends ListResource {
     /**
      * Create a new SyncListItemInstance
      *
-     * @param array $data Contains arbitrary user-defined, schema-less data that
-     *                    this List Item stores, represented by a JSON object, up
-     *                    to 16KB.
+     * @param array $data A JSON string that represents an arbitrary, schema-less
+     *                    object that the List Item stores
      * @param array|Options $options Optional Arguments
      * @return SyncListItemInstance Newly created SyncListItemInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -170,7 +168,7 @@ class SyncListItemList extends ListResource {
     /**
      * Constructs a SyncListItemContext
      *
-     * @param int $index The index
+     * @param int $index The index of the Sync List Item resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListItemContext
      */
     public function getContext($index) {

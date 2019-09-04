@@ -21,10 +21,10 @@ class WebhookList extends ListResource {
      * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
-     * @param string $channelSid The SID of the Channel the ChannelWebhook resource
-     *                           belongs to
+     * @param string $serviceSid The SID of the Service that the Channel Webhook
+     *                           resource is associated with
+     * @param string $channelSid The SID of the Channel the Channel Webhook
+     *                           resource belongs to
      * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookList
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
@@ -161,7 +161,7 @@ class WebhookList extends ListResource {
     /**
      * Constructs a WebhookContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Channel Webhook resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookContext
      */
     public function getContext($sid) {

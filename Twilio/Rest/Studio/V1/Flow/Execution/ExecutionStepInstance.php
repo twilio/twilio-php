@@ -37,9 +37,9 @@ class ExecutionStepInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid Flow Sid.
-     * @param string $executionSid Execution Sid.
-     * @param string $sid Step Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $executionSid, $sid = null) {

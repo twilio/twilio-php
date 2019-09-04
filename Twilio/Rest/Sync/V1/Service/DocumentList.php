@@ -24,8 +24,8 @@ class DocumentList extends ListResource {
      * Construct the DocumentList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique SID identifier of the Service Instance
-     *                           that hosts this Document.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Sync\V1\Service\DocumentList
      */
     public function __construct(Version $version, $serviceSid) {
@@ -152,7 +152,7 @@ class DocumentList extends ListResource {
     /**
      * Constructs a DocumentContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the Document resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\DocumentContext
      */
     public function getContext($sid) {

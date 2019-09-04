@@ -17,8 +17,8 @@ class EngagementContextList extends ListResource {
      * Construct the EngagementContextList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
-     * @param string $engagementSid Engagement Sid.
+     * @param string $flowSid Flow SID
+     * @param string $engagementSid Engagement SID
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\EngagementContextList
      */
     public function __construct(Version $version, $flowSid, $engagementSid) {

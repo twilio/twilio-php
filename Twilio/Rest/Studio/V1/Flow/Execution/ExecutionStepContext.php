@@ -26,9 +26,9 @@ class ExecutionStepContext extends InstanceContext {
      * Initialize the ExecutionStepContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
-     * @param string $executionSid Execution Sid.
-     * @param string $sid Step Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStepContext
      */
     public function __construct(Version $version, $flowSid, $executionSid, $sid) {

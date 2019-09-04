@@ -32,10 +32,13 @@ class SyncListPermissionInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Sync Service Instance SID.
-     * @param string $listSid Sync List SID.
-     * @param string $identity Identity of the user to whom the Sync List
-     *                         Permission applies.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $listSid The SID of the Sync List to which the Permission
+     *                        applies
+     * @param string $identity The application-defined string that uniquely
+     *                         identifies the User's Sync List Permission resource
+     *                         to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncList\SyncListPermissionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $listSid, $identity = null) {
@@ -102,9 +105,9 @@ class SyncListPermissionInstance extends InstanceResource {
     /**
      * Update the SyncListPermissionInstance
      *
-     * @param bool $read Read access.
-     * @param bool $write Write access.
-     * @param bool $manage Manage access.
+     * @param bool $read Read access
+     * @param bool $write Write access
+     * @param bool $manage Manage access
      * @return SyncListPermissionInstance Updated SyncListPermissionInstance
      * @throws TwilioException When an HTTP error occurs.
      */

@@ -32,7 +32,7 @@ class CredentialInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Credential resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\CredentialInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {

@@ -65,6 +65,7 @@ class ConversationContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' => $options['attributes'],
         ));
 
         $payload = $this->version->update(

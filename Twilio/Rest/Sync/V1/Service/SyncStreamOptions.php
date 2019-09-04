@@ -17,8 +17,10 @@ use Twilio\Values;
  */
 abstract class SyncStreamOptions {
     /**
-     * @param string $uniqueName Stream unique name.
-     * @param int $ttl Stream TTL.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param int $ttl How long, in seconds, before the Stream expires and is
+     *                 deleted
      * @return CreateSyncStreamOptions Options builder
      */
     public static function create($uniqueName = Values::NONE, $ttl = Values::NONE) {
@@ -26,7 +28,8 @@ abstract class SyncStreamOptions {
     }
 
     /**
-     * @param int $ttl Stream TTL.
+     * @param int $ttl How long, in seconds, before the Stream expires and is
+     *                 deleted
      * @return UpdateSyncStreamOptions Options builder
      */
     public static function update($ttl = Values::NONE) {
@@ -36,8 +39,10 @@ abstract class SyncStreamOptions {
 
 class CreateSyncStreamOptions extends Options {
     /**
-     * @param string $uniqueName Stream unique name.
-     * @param int $ttl Stream TTL.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
+     * @param int $ttl How long, in seconds, before the Stream expires and is
+     *                 deleted
      */
     public function __construct($uniqueName = Values::NONE, $ttl = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -45,9 +50,10 @@ class CreateSyncStreamOptions extends Options {
     }
 
     /**
-     * The unique and addressable name of this Stream. Optional, up to 320 characters long.
+     * An application-defined string that uniquely identifies the resource. This value must be unique within its Service and it can be up to 320 characters long. The `unique_name` value can be used as an alternative to the `sid` in the URL path to address the resource.
      *
-     * @param string $uniqueName Stream unique name.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -56,9 +62,10 @@ class CreateSyncStreamOptions extends Options {
     }
 
     /**
-     * Time-to-live of this Stream in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Stream might not be deleted immediately after it expires.
      *
-     * @param int $ttl Stream TTL.
+     * @param int $ttl How long, in seconds, before the Stream expires and is
+     *                 deleted
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -84,16 +91,18 @@ class CreateSyncStreamOptions extends Options {
 
 class UpdateSyncStreamOptions extends Options {
     /**
-     * @param int $ttl Stream TTL.
+     * @param int $ttl How long, in seconds, before the Stream expires and is
+     *                 deleted
      */
     public function __construct($ttl = Values::NONE) {
         $this->options['ttl'] = $ttl;
     }
 
     /**
-     * New time-to-live of this Stream in seconds. In the range [1, 31 536 000 (1 year)], or 0 for infinity.
+     * How long, in seconds, before the Stream expires and is deleted (time-to-live). Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Stream does not expire. The Sync Map might not be deleted immediately after it expires.
      *
-     * @param int $ttl Stream TTL.
+     * @param int $ttl How long, in seconds, before the Stream expires and is
+     *                 deleted
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
