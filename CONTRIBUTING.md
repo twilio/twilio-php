@@ -164,10 +164,10 @@ Sample simple workflow:
 1. `git clone https://github.com/twilio/twilio-php.git`
 1. `cd twilio-php`
 1. `make install`
-1. `make docker-build-dev VERSION=7.3.9`
-1. `make docker-test VERSION=7.3.9`
-1. Modify code
-1. `make docker-test VERSION=7.3.9`
+2. `make docker-dev-build VERSION=7.3.9`
+3. `make docker-dev-test VERSION=7.3.9`
+4. Modify code
+5. `make docker-dev-test VERSION=7.3.9`
 
 A complete list of supported PHP versions can be found at the [Docker docs page](https://docs.docker.com/samples/library/php).
 
