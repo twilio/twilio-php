@@ -46,4 +46,16 @@ docker-push:
 	docker push twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 	docker push twilio/twilio-php:latest
 
-.PHONY: all clean test docs docs-install test-install authors
+docker-dev-build:
+	-docker stop twilio_php${VERSION}
+	-docker rm twilio_php${VERSION}
+	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile-dev .
+	docker run -itd --name="twilio_php${VERSION}" --mount type=bind,source=${PWD},target=/twilio twilio/php${VERSION} /bin/bash
+
+docker-dev-clean:
+	docker ps --format '{{.Names}}' | grep "^twilio_php" | xargs -I {} sh -c "docker stop {} && docker rm {}" > /dev/null
+
+docker-dev-test:
+	docker exec -it twilio_php${VERSION} /bin/bash -c 'make all'
+
+.PHONY: all clean test docs docs-install test-install authors docker-dev-build docker-dev-clean docker-dev-test
