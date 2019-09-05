@@ -109,7 +109,7 @@ That will output XML that looks like this:
 
 ## Prerequisites
 
-* PHP >= 5.5
+* PHP >= 7.1.32
 * The PHP JSON extension
 
 ## Docker Image

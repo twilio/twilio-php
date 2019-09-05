@@ -60,8 +60,7 @@ class VersionTest extends UnitTest {
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp() {
-        parent::setUp();
+    protected function doSetUp() {
         $this->client = new Client('username', 'password');
         $this->domain = new TestDomain($this->client);
         $this->version = new TestVersion($this->domain);

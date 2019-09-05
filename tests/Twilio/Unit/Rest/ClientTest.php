@@ -113,9 +113,12 @@ class ClientTest extends UnitTest {
 
 	public function testValidationSslCertificateSuccess() {
 		$client = new Client('username', 'password');
-		$curlClient = $this->getMock(CurlClient::class);
-		$curlClient->method('request')
-			->willReturn(new Response(200, ''));
+		$curlClient = $this->createMock(CurlClient::class);
+		$curlClient
+            ->expects($this->once())
+            ->method('request')
+			->willReturn(new Response(200, ''))
+        ;
 
 		$client->validateSslCertificate($curlClient);
 	}
@@ -125,9 +128,12 @@ class ClientTest extends UnitTest {
 	 */
 	public function testValidationSslCertificateError() {
 		$client = new Client('username', 'password');
-		$curlClient = $this->getMock(CurlClient::class);
-		$curlClient->method('request')
-			->willReturn(new Response(504, ''));
+		$curlClient = $this->createMock(CurlClient::class);
+		$curlClient
+            ->expects($this->once())
+            ->method('request')
+			->willReturn(new Response(504, ''))
+        ;
 		
 		$client->validateSslCertificate($curlClient);
 	}

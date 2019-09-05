@@ -5,29 +5,30 @@ COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
 	COMPOSER = php composer.phar
 endif
+PHPVERSION = $(shell php -r 'echo PHP_VERSION;')
 
 all: test
 
 clean:
-	@rm -rf venv vendor
+	@rm -rf venv vendor composer.lock
 
-install:
-	@composer --version || (echo "Composer is not installed, please install Composer"; exit 1);
-	# Composer: http://getcomposer.org/download/
+install: clean
+	@composer --version || (curl -s https://getcomposer.org/installer | php);
+	$(COMPOSER) config platform.php $(PHPVERSION)
 	$(COMPOSER) install
 
 vendor: install
 
 # if these fail, you may need to install the helper library
 test: install
-	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors --configuration Twilio/Tests/phpunit.xml
-	@PATH=vendor/bin:$(PATH) phpunit --report-useless-tests --strict-coverage --disallow-test-output --colors Services/Tests/TwilioTest.php
+	$(COMPOSER) require --dev phpunit/phpunit
+	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs-install:
-	composer require --dev apigen/apigen
+	curl "https://github.com/ApiGen/ApiGen/releases/download/v4.1.2/apigen.phar" --create-dirs -L -o bin/apigen
 
 docs: docs-install
-	vendor/bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
+	bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
@@ -49,7 +50,7 @@ docker-push:
 docker-dev-build:
 	-docker stop twilio_php${VERSION}
 	-docker rm twilio_php${VERSION}
-	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile-dev .
+	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile .
 	docker run -itd --name="twilio_php${VERSION}" --mount type=bind,source=${PWD},target=/twilio twilio/php${VERSION} /bin/bash
 
 docker-dev-clean:

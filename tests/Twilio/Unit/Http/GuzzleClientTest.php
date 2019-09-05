@@ -27,7 +27,7 @@ final class GuzzleClientTest extends UnitTest
      */
     private $mockHandler;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->mockHandler = new MockHandler();
@@ -69,7 +69,7 @@ final class GuzzleClientTest extends UnitTest
     public function testPostMethodThatThrowsException()
     {
         $this->mockHandler->append(new RequestException('Not found', new Request('get', 'https://www.whatever.com')));
-        $this->setExpectedException(HttpException::class, 'Unable to complete the HTTP request');
+        $this->expectException(HttpException::class, 'Unable to complete the HTTP request');
         $this->client->request('post', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
     }
 }
