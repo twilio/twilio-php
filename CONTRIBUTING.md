@@ -157,7 +157,7 @@ you are working:
 
 ## <a name="testing"></a> Local Testing with Docker
 
-We have included a [Dockerfile](https://github.com/twilio/twilio-php/blob/master/Dockerfile) that enables easy local testing, given a specified PHP version.
+We have included a [Dockerfile](https://github.com/twilio/twilio-php/blob/master/Dockerfile-dev) that enables easy local testing, given a specified PHP version.
 
 Sample simple workflow:
 
