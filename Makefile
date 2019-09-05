@@ -36,7 +36,7 @@ authors:
 
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
 docker-build:
-	docker build -t twilio/twilio-php .
+	docker build -t twilio/twilio-php --build-arg version=5.6 .
 	docker tag twilio/twilio-php twilio/twilio-php:${TRAVIS_TAG}
 	docker tag twilio/twilio-php twilio/twilio-php:apidefs-${API_DEFINITIONS_SHA}
 	docker tag twilio/twilio-php twilio/twilio-php:latest
