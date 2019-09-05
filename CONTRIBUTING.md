@@ -169,7 +169,7 @@ Sample simple workflow:
 1. Modify code
 1. `make docker-dev-test VERSION=7.3.9`
 
-A complete list of supported PHP versions can be found at the [Docker docs page](https://docs.docker.com/samples/library/php).
+Tested versions: 7.1.32, 7.2.22, 7.3.9 and 7.4-rc. A complete list of supported PHP versions can be found at the [Docker docs page](https://docs.docker.com/samples/library/php).
 
 [docs-link]: https://www.twilio.com/docs/libraries/php
 [issue-link]: https://github.com/twilio/twilio-php/issues/new

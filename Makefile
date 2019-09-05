@@ -11,7 +11,6 @@ all: test
 
 clean:
 	@rm -rf venv vendor composer.lock
-	@git checkout composer.json
 
 install: clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
