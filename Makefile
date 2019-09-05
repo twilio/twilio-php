@@ -34,15 +34,6 @@ authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
 	git log --raw | grep "^Author: " | cut -d ' ' -f2- | cut -d '<' -f1 | sed 's/^/- /' | sort | uniq >> AUTHORS.md
 
-# Required to fix the php:5.5 Docker image, as one of the repositories does not exist anymore
-docker-php5-sources:
-	echo 'deb http://httpredir.debian.org/debian jessie main' > /etc/apt/sources.list
-	echo 'deb http://security.debian.org jessie/updates main' >> /etc/apt/sources.list
-
-docker-infra:
-	apt-get -q update
-	apt-get -qy install git zip unzip
-
 API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cut -d ' ' -f 5)
 docker-build:
 	docker build -t twilio/twilio-php .
@@ -59,7 +50,7 @@ docker-push:
 docker-dev-build:
 	-docker stop twilio_php${VERSION}
 	-docker rm twilio_php${VERSION}
-	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile-dev .
+	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile .
 	docker run -itd --name="twilio_php${VERSION}" --mount type=bind,source=${PWD},target=/twilio twilio/php${VERSION} /bin/bash
 
 docker-dev-clean:
