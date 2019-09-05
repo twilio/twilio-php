@@ -103,14 +103,14 @@ class ClientTokenTest extends UnitTest {
     }
 
     function testClientNameValidation() {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientIncoming('@');
         $this->fail('exception should have been raised');
     }
 
     function zeroLengthNameInvalid() {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientIncoming("");
         $this->fail('exception should have been raised');
