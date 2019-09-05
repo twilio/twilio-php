@@ -50,7 +50,7 @@ docker-push:
 docker-dev-build:
 	-docker stop twilio_php${VERSION}
 	-docker rm twilio_php${VERSION}
-	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile .
+	docker image build --tag="twilio/php${VERSION}" --build-arg version=${VERSION} -f ./Dockerfile-dev .
 	docker run -itd --name="twilio_php${VERSION}" --mount type=bind,source=${PWD},target=/twilio twilio/php${VERSION} /bin/bash
 
 docker-dev-clean:
