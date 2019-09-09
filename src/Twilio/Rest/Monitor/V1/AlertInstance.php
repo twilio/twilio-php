@@ -40,7 +40,7 @@ class AlertInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this Alert.
      * @return \Twilio\Rest\Monitor\V1\AlertInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -92,16 +92,6 @@ class AlertInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Deletes the AlertInstance
-     *
-     * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete() {
-        return $this->proxy()->delete();
     }
 
     /**

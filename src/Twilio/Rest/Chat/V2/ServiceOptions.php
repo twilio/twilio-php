@@ -232,7 +232,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.
+     * The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
      *
      * @param string $defaultServiceRoleSid The service role assigned to users when
      *                                      they are added to the service
@@ -244,7 +244,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The channel role assigned to users when they are added to a channel. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.
+     * The channel role assigned to users when they are added to a channel. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
      *
      * @param string $defaultChannelRoleSid The channel role assigned to users when
      *                                      they are added to a channel
@@ -256,7 +256,7 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The channel role assigned to a channel creator when they join a new channel. See the [Role resource](https://www.twilio.com/docs/chat/api/roles) for more info about roles.
+     * The channel role assigned to a channel creator when they join a new channel. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
      *
      * @param string $defaultChannelCreatorRoleSid The channel role assigned to a
      *                                             channel creator when they join a

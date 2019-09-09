@@ -88,7 +88,7 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/rest/service-resource).
      *
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
@@ -99,7 +99,7 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The index of the last [Message](https://www.twilio.com/docs/chat/rest/messages) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read. This parameter should only be used when recreating a Member from a backup/separate source.
+     * The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read. This parameter should only be used when recreating a Member from a backup/separate source.
      *
      * @param int $lastConsumedMessageIndex The index of the last Message in the
      *                                      Channel the Member has read
@@ -111,7 +111,7 @@ class CreateMemberOptions extends Options {
     }
 
     /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
      *
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
      *                                            string representing the datetime
@@ -185,7 +185,7 @@ class ReadMemberOptions extends Options {
     }
 
     /**
-     * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the Member resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
+     * The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the Member resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
      *
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder
@@ -237,7 +237,7 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/api/services).
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the member. The default roles are those specified on the [Service](https://www.twilio.com/docs/chat/rest/service-resource).
      *
      * @param string $roleSid The SID of the Role to assign to the member
      * @return $this Fluent Builder
@@ -248,7 +248,7 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The index of the last [Message](https://www.twilio.com/docs/chat/rest/messages) that the Member has read within the [Channel](https://www.twilio.com/docs/chat/channels).
+     * The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) that the Member has read within the [Channel](https://www.twilio.com/docs/chat/channels).
      *
      * @param int $lastConsumedMessageIndex The index of the last consumed Message
      *                                      for the Channel for the Member
@@ -260,7 +260,7 @@ class UpdateMemberOptions extends Options {
     }
 
     /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/messages) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
      *
      * @param \DateTime $lastConsumptionTimestamp The ISO 8601 based timestamp
      *                                            string representing the datetime

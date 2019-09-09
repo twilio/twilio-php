@@ -82,7 +82,7 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The [Call](https://www.twilio.com/docs/api/voice/call) SID of the resources to read.
+     * The [Call](https://www.twilio.com/docs/voice/api/call) SID of the resources to read.
      *
      * @param string $callSid The Call SID of the resources to read
      * @return $this Fluent Builder

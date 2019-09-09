@@ -61,31 +61,6 @@ class AlertTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $this->twilio->monitor->v1->alerts("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $this->assertRequest(new Request(
-            'delete',
-            'https://monitor.twilio.com/v1/Alerts/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-        ));
-    }
-
-    public function testDeleteResponse() {
-        $this->holodeck->mock(new Response(
-            204,
-            null
-        ));
-
-        $actual = $this->twilio->monitor->v1->alerts("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
-
-        $this->assertTrue($actual);
-    }
-
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
 
