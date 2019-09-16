@@ -142,5 +142,5 @@ class SplClassLoader {
     }
 }
 
-$twilioClassLoader = new SplClassLoader('Twilio', realpath(__DIR__ . DIRECTORY_SEPARATOR));
+$twilioClassLoader = new SplClassLoader('Twilio', realpath(__DIR__ . DIRECTORY_SEPARATOR . '..'));
 $twilioClassLoader->register();
