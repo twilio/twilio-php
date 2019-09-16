@@ -38,6 +38,10 @@ You can install **twilio-php** via composer or by downloading the source.
 composer require twilio/sdk
 ```
 
+## Versions
+
+`twilio-php` uses a modified version of [Semantic Versioning](https://semver.org) for all changes. [See this document](VERSIONS.md) for details.
+
 ## Quickstart
 
 ### Send an SMS
@@ -103,10 +107,6 @@ That will output XML that looks like this:
 </Response>
 ```
 
-## Versions
-
-`twilio-php`'s versioning strategy can be found [here][versioning].
-
 ## Prerequisites
 
 * PHP >= 7.1.32
@@ -125,4 +125,3 @@ If you've instead found a bug in the library or would like new features added, g
 [apidocs]: https://www.twilio.com/docs/api
 [twiml]: https://www.twilio.com/docs/api/twiml
 [libdocs]: https://twilio.github.io/twilio-php
-[versioning]: https://github.com/twilio/twilio-php/blob/master/VERSIONS.md
