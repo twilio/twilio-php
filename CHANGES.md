@@ -1,6 +1,30 @@
 twilio-php Changelog
 ====================
 
+[2019-09-18] Version 5.36.0
+----------------------------
+**Library**
+- [PR #570](https://github.com/twilio/twilio-php/pull/570): Revert to using composer to install apigen for doc generation. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #569](https://github.com/twilio/twilio-php/pull/569): Re-add DeserializeTest.php. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #568](https://github.com/twilio/twilio-php/pull/568): Update the Dockerfile for PHP 7.1 and new code structure. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #567](https://github.com/twilio/twilio-php/pull/567): Put back the parent directory directive in 'autoload'. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #563](https://github.com/twilio/twilio-php/pull/563): Support running docker tests in Jenkins. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #562](https://github.com/twilio/twilio-php/pull/562): Allow for usage of older PHP unit versions. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #561](https://github.com/twilio/twilio-php/pull/561): Make docker-build work with new Dockerfile format. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #560](https://github.com/twilio/twilio-php/pull/560): Loosen hard php version restriction. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #557](https://github.com/twilio/twilio-php/pull/557): Prevent null date-time strings from deserializing to 'now'. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #549](https://github.com/twilio/twilio-php/pull/549): [RFC] Test SDK on PHP 7.2 and 7.3. Thanks to [@rvanlaak](https://github.com/rvanlaak)!
+
+**Numbers**
+- Add v2 of the Identites API
+
+**Preview**
+- Changed authentication method for SDK Trusted Comms endpoints: `/CPS`, `/CurrentCall`, and `/Devices`. Please use `Authorization: Bearer <xCNAM JWT>` **(breaking change)**
+
+**Voice**
+- Add Recordings endpoints
+
+
 [2019-09-04] Version 5.35.0
 ----------------------------
 **Library**

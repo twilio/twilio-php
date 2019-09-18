@@ -183,7 +183,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
     }
 
     /**
-     * The SID of the [Account](https://www.twilio.com/docs/api/rest/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
      *
      * @param string $accountSid The SID of the Account that created the resource
      *                           to update
