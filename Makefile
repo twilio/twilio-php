@@ -25,10 +25,10 @@ test: install
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
 docs-install:
-	curl "https://github.com/ApiGen/ApiGen/releases/download/v4.1.2/apigen.phar" --create-dirs -L -o bin/apigen
+	composer require --dev apigen/apigen
 
 docs: docs-install
-	bin/apigen generate -s ./ -d docs/api --exclude="Tests/*" --exclude="vendor/*" --exclude="autoload.php" --template-theme bootstrap --main Twilio
+	vendor/bin/apigen generate --source src -d docs/api --exclude="autoload.php" --template-theme bootstrap --main Twilio
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
