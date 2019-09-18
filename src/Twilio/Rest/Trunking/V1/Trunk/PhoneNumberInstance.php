@@ -20,7 +20,7 @@ use Twilio\Version;
  * @property string $addressRequirements
  * @property string $apiVersion
  * @property bool $beta
- * @property array $capabilities
+ * @property string $capabilities
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  * @property string $friendlyName

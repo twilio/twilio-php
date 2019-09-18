@@ -30,9 +30,8 @@ class DocumentContext extends InstanceContext {
      * Initialize the DocumentContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The SID of the Sync Service with the Document
-     *                           resource to fetch
-     * @param string $sid The SID of the Document resource to fetch
+     * @param string $serviceSid The service_sid
+     * @param string $sid The sid
      * @return \Twilio\Rest\Sync\V1\Service\DocumentContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {

@@ -17,13 +17,12 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
  * @property string $accountSid
  * @property string $conversationSid
  * @property string $sid
  * @property string $identity
- * @property string $attributes
  * @property array $messagingBinding
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
@@ -50,7 +49,6 @@ class ParticipantInstance extends InstanceResource {
             'conversationSid' => Values::array_get($payload, 'conversation_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'identity' => Values::array_get($payload, 'identity'),
-            'attributes' => Values::array_get($payload, 'attributes'),
             'messagingBinding' => Values::array_get($payload, 'messaging_binding'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),

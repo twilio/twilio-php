@@ -170,7 +170,7 @@ class VerificationTest extends HolodeckTestCase {
                 "sid": "VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "service_sid": "VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "to": "+15017122661",
+                "to": "+14159373912",
                 "channel": "sms",
                 "status": "approved",
                 "valid": true,

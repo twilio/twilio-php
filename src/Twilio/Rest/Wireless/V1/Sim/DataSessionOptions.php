@@ -14,10 +14,8 @@ use Twilio\Values;
 
 abstract class DataSessionOptions {
     /**
-     * @param \DateTime $end The date that the record ended, given as GMT in ISO
-     *                       8601 format
-     * @param \DateTime $start The date that the Data Session started, given as GMT
-     *                         in ISO 8601 format
+     * @param \DateTime $end The end
+     * @param \DateTime $start The start
      * @return ReadDataSessionOptions Options builder
      */
     public static function read($end = Values::NONE, $start = Values::NONE) {
@@ -27,10 +25,8 @@ abstract class DataSessionOptions {
 
 class ReadDataSessionOptions extends Options {
     /**
-     * @param \DateTime $end The date that the record ended, given as GMT in ISO
-     *                       8601 format
-     * @param \DateTime $start The date that the Data Session started, given as GMT
-     *                         in ISO 8601 format
+     * @param \DateTime $end The end
+     * @param \DateTime $start The start
      */
     public function __construct($end = Values::NONE, $start = Values::NONE) {
         $this->options['end'] = $end;
@@ -38,10 +34,9 @@ class ReadDataSessionOptions extends Options {
     }
 
     /**
-     * The date that the record ended, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+     * The end
      *
-     * @param \DateTime $end The date that the record ended, given as GMT in ISO
-     *                       8601 format
+     * @param \DateTime $end The end
      * @return $this Fluent Builder
      */
     public function setEnd($end) {
@@ -50,10 +45,9 @@ class ReadDataSessionOptions extends Options {
     }
 
     /**
-     * The date that the Data Session started, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+     * The start
      *
-     * @param \DateTime $start The date that the Data Session started, given as GMT
-     *                         in ISO 8601 format
+     * @param \DateTime $start The start
      * @return $this Fluent Builder
      */
     public function setStart($start) {

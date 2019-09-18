@@ -50,10 +50,8 @@ class AlertTest extends HolodeckTestCase {
                 "resource_sid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "response_body": "response_body",
                 "response_headers": "response_headers",
-                "request_headers": "request_headers",
                 "sid": "NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "url": "https://monitor.twilio.com/v1/Alerts/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "service_sid": "PNe2cd757cd5257b0217a447933a0290d2"
+                "url": "https://monitor.twilio.com/v1/Alerts/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             }
             '
         ));
@@ -61,6 +59,31 @@ class AlertTest extends HolodeckTestCase {
         $actual = $this->twilio->monitor->v1->alerts("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
 
         $this->assertNotNull($actual);
+    }
+
+    public function testDeleteRequest() {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->monitor->v1->alerts("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $this->assertRequest(new Request(
+            'delete',
+            'https://monitor.twilio.com/v1/Alerts/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        ));
+    }
+
+    public function testDeleteResponse() {
+        $this->holodeck->mock(new Response(
+            204,
+            null
+        ));
+
+        $actual = $this->twilio->monitor->v1->alerts("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
+
+        $this->assertTrue($actual);
     }
 
     public function testReadRequest() {
@@ -121,8 +144,7 @@ class AlertTest extends HolodeckTestCase {
                         "request_url": "http://www.example.com",
                         "resource_sid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "sid": "NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "url": "https://monitor.twilio.com/v1/Alerts/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "service_sid": "PNe2cd757cd5257b0217a447933a0290d2"
+                        "url": "https://monitor.twilio.com/v1/Alerts/NOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 ],
                 "meta": {

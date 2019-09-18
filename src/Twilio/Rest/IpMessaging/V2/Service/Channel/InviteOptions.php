@@ -39,7 +39,7 @@ class CreateInviteOptions extends Options {
     }
 
     /**
-     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the new member.
+     * The SID of the [Role](https://www.twilio.com/docs/chat/rest/roles) assigned to the new member.
      *
      * @param string $roleSid The Role assigned to the new member
      * @return $this Fluent Builder
@@ -74,7 +74,7 @@ class ReadInviteOptions extends Options {
     }
 
     /**
-     * The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
+     * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details.
      *
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder

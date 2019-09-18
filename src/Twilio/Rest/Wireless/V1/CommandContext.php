@@ -19,7 +19,8 @@ class CommandContext extends InstanceContext {
      * Initialize the CommandContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $sid A 34 character string that uniquely identifies this
+     *                    resource.
      * @return \Twilio\Rest\Wireless\V1\CommandContext
      */
     public function __construct(Version $version, $sid) {

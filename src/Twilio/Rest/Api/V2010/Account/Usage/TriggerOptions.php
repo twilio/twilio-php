@@ -156,7 +156,7 @@ class CreateTriggerOptions extends Options {
     }
 
     /**
-     * The field in the [UsageRecord](https://www.twilio.com/docs/usage/api/usage-record) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).  The default is `usage`.
+     * The field in the [UsageRecord](https://www.twilio.com/docs/api/rest/usage-records) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).  The default is `usage`.
      *
      * @param string $triggerBy The field in the UsageRecord resource that fires
      *                          the trigger
@@ -207,7 +207,7 @@ class ReadTriggerOptions extends Options {
     }
 
     /**
-     * The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).
+     * The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/api/rest/usage-records#usage-count-price).
      *
      * @param string $triggerBy The trigger field of the UsageTriggers to read
      * @return $this Fluent Builder
@@ -218,7 +218,7 @@ class ReadTriggerOptions extends Options {
     }
 
     /**
-     * The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories).
+     * The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/api/rest/usage-records#usage-categories).
      *
      * @param string $usageCategory The usage category of the UsageTriggers to read
      * @return $this Fluent Builder

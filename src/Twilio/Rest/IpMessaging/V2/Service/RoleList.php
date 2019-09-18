@@ -148,7 +148,7 @@ class RoleList extends ListResource {
     /**
      * Constructs a RoleContext
      *
-     * @param string $sid The SID of the Role resource to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\IpMessaging\V2\Service\RoleContext
      */
     public function getContext($sid) {

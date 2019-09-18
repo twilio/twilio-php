@@ -13,7 +13,7 @@ use Twilio\Options;
 use Twilio\Values;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
 abstract class MessageOptions {
     /**
@@ -22,12 +22,10 @@ abstract class MessageOptions {
      * @param string $body The content of the message.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
      * @return CreateMessageOptions Options builder
      */
-    public static function create($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
-        return new CreateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes);
+    public static function create($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+        return new CreateMessageOptions($author, $body, $dateCreated, $dateUpdated);
     }
 
     /**
@@ -36,12 +34,10 @@ abstract class MessageOptions {
      * @param string $body The content of the message.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
-        return new UpdateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes);
+    public static function update($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
+        return new UpdateMessageOptions($author, $body, $dateCreated, $dateUpdated);
     }
 }
 
@@ -52,15 +48,12 @@ class CreateMessageOptions extends Options {
      * @param string $body The content of the message.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
      */
-    public function __construct($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
-        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -105,18 +98,6 @@ class CreateMessageOptions extends Options {
      */
     public function setDateUpdated($dateUpdated) {
         $this->options['dateUpdated'] = $dateUpdated;
-        return $this;
-    }
-
-    /**
-     * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
-     *
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
-     * @return $this Fluent Builder
-     */
-    public function setAttributes($attributes) {
-        $this->options['attributes'] = $attributes;
         return $this;
     }
 
@@ -143,15 +124,12 @@ class UpdateMessageOptions extends Options {
      * @param string $body The content of the message.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
      */
-    public function __construct($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
-        $this->options['attributes'] = $attributes;
     }
 
     /**
@@ -196,18 +174,6 @@ class UpdateMessageOptions extends Options {
      */
     public function setDateUpdated($dateUpdated) {
         $this->options['dateUpdated'] = $dateUpdated;
-        return $this;
-    }
-
-    /**
-     * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
-     *
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
-     * @return $this Fluent Builder
-     */
-    public function setAttributes($attributes) {
-        $this->options['attributes'] = $attributes;
         return $this;
     }
 

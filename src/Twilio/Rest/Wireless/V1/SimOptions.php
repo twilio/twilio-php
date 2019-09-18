@@ -14,12 +14,12 @@ use Twilio\Values;
 
 abstract class SimOptions {
     /**
-     * @param string $status Only return Sim resources with this status
-     * @param string $iccid Only return Sim resources with this ICCID
-     * @param string $ratePlan Only return Sim resources with this Rate Plan
-     * @param string $eId Deprecated
-     * @param string $simRegistrationCode Only return Sim resources with this
-     *                                    registration code
+     * @param string $status Only return Sims with this status.
+     * @param string $iccid Return Sims with this Iccid.
+     * @param string $ratePlan Only return Sims with this Rate Plan.
+     * @param string $eId Only return Sims with this EID.
+     * @param string $simRegistrationCode Only return Sims with this registration
+     *                                    code.
      * @return ReadSimOptions Options builder
      */
     public static function read($status = Values::NONE, $iccid = Values::NONE, $ratePlan = Values::NONE, $eId = Values::NONE, $simRegistrationCode = Values::NONE) {
@@ -27,35 +27,41 @@ abstract class SimOptions {
     }
 
     /**
-     * @param string $uniqueName An application-defined string that uniquely
-     *                           identifies the resource
-     * @param string $callbackMethod The HTTP method we use to call callback_url
-     * @param string $callbackUrl The URL we call when the SIM has finished updating
-     * @param string $friendlyName A string to describe the resource
-     * @param string $ratePlan The sid or unique_name of the RatePlan resource that
-     *                         this SIM should use
-     * @param string $status The new status of the resource
-     * @param string $commandsCallbackMethod The HTTP method we use to call
-     *                                       commands_callback_url
-     * @param string $commandsCallbackUrl he URL we call when the SIM originates a
-     *                                    Command
-     * @param string $smsFallbackMethod The HTTP method we use to call
-     *                                  sms_fallback_url
-     * @param string $smsFallbackUrl The URL we call when an error occurs while
-     *                               retrieving or executing the TwiML requested
-     *                               from sms_url
-     * @param string $smsMethod The HTTP method we use to call sms_url
-     * @param string $smsUrl The URL we call when the SIM-connected device sends an
-     *                       SMS message that is not a Command
-     * @param string $voiceFallbackMethod The HTTP method we use to call
-     *                                    voice_fallback_url
-     * @param string $voiceFallbackUrl The URL we call when an error occurs while
-     *                                 retrieving or executing the TwiML requested
-     *                                 from voice_url
-     * @param string $voiceMethod The HTTP method we use when we call voice_url
-     * @param string $voiceUrl The URL we call when the SIM-connected device makes
-     *                         a voice call
-     * @param string $resetStatus Initiate a connectivity reset on a SIM
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
+     * @param string $callbackMethod The HTTP method Twilio will use when making a
+     *                               request to the callback URL.
+     * @param string $callbackUrl Twilio will make a request to this URL when the
+     *                            Sim has finished updating.
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
+     * @param string $ratePlan The Sid or UniqueName of the RatePlan that this Sim
+     *                         should use.
+     * @param string $status A string representing the status of the Sim.
+     * @param string $commandsCallbackMethod A string representing the HTTP method
+     *                                       to use when making a request to
+     *                                       CommandsCallbackUrl.
+     * @param string $commandsCallbackUrl The URL that will receive a webhook when
+     *                                    this Sim originates a Command.
+     * @param string $smsFallbackMethod The HTTP method Twilio will use when
+     *                                  requesting the sms_fallback_url.
+     * @param string $smsFallbackUrl The URL that Twilio will request if an error
+     *                               occurs retrieving or executing the TwiML
+     *                               requested by sms_url.
+     * @param string $smsMethod The HTTP method Twilio will use when requesting the
+     *                          above Url.
+     * @param string $smsUrl The URL Twilio will request when the SIM-connected
+     *                       device sends an SMS message that is not a Command.
+     * @param string $voiceFallbackMethod The HTTP method Twilio will use when
+     *                                    requesting the voice_fallback_url.
+     * @param string $voiceFallbackUrl The URL that Twilio will request if an error
+     *                                 occurs retrieving or executing the TwiML
+     *                                 requested by voice_url.
+     * @param string $voiceMethod The HTTP method Twilio will use when requesting
+     *                            the above Url.
+     * @param string $voiceUrl The URL Twilio will request when the SIM-connected
+     *                         device makes a call.
+     * @param string $resetStatus Initiate a connectivity reset on a Sim.
      * @return UpdateSimOptions Options builder
      */
     public static function update($uniqueName = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $resetStatus = Values::NONE) {
@@ -65,12 +71,12 @@ abstract class SimOptions {
 
 class ReadSimOptions extends Options {
     /**
-     * @param string $status Only return Sim resources with this status
-     * @param string $iccid Only return Sim resources with this ICCID
-     * @param string $ratePlan Only return Sim resources with this Rate Plan
-     * @param string $eId Deprecated
-     * @param string $simRegistrationCode Only return Sim resources with this
-     *                                    registration code
+     * @param string $status Only return Sims with this status.
+     * @param string $iccid Return Sims with this Iccid.
+     * @param string $ratePlan Only return Sims with this Rate Plan.
+     * @param string $eId Only return Sims with this EID.
+     * @param string $simRegistrationCode Only return Sims with this registration
+     *                                    code.
      */
     public function __construct($status = Values::NONE, $iccid = Values::NONE, $ratePlan = Values::NONE, $eId = Values::NONE, $simRegistrationCode = Values::NONE) {
         $this->options['status'] = $status;
@@ -81,9 +87,9 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * Only return Sim resources with this status.
+     * Only return Sims with this status.
      *
-     * @param string $status Only return Sim resources with this status
+     * @param string $status Only return Sims with this status.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -92,9 +98,9 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * Only return Sim resources with this ICCID. Currently this should be a list with maximum size 1.
+     * Return Sims with this Iccid. Currently this should be a list with maximum size 1.
      *
-     * @param string $iccid Only return Sim resources with this ICCID
+     * @param string $iccid Return Sims with this Iccid.
      * @return $this Fluent Builder
      */
     public function setIccid($iccid) {
@@ -103,9 +109,9 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * The `sid` or `unique_name` of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rate-plan) used by the Sim resources to read.
+     * Only return Sims with this Rate Plan.
      *
-     * @param string $ratePlan Only return Sim resources with this Rate Plan
+     * @param string $ratePlan Only return Sims with this Rate Plan.
      * @return $this Fluent Builder
      */
     public function setRatePlan($ratePlan) {
@@ -114,9 +120,9 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * Deprecated.
+     * Only return Sims with this EID.
      *
-     * @param string $eId Deprecated
+     * @param string $eId Only return Sims with this EID.
      * @return $this Fluent Builder
      */
     public function setEId($eId) {
@@ -125,10 +131,10 @@ class ReadSimOptions extends Options {
     }
 
     /**
-     * Only return Sim resources with this registration code.
+     * Only return Sims with this registration code.
      *
-     * @param string $simRegistrationCode Only return Sim resources with this
-     *                                    registration code
+     * @param string $simRegistrationCode Only return Sims with this registration
+     *                                    code.
      * @return $this Fluent Builder
      */
     public function setSimRegistrationCode($simRegistrationCode) {
@@ -154,35 +160,41 @@ class ReadSimOptions extends Options {
 
 class UpdateSimOptions extends Options {
     /**
-     * @param string $uniqueName An application-defined string that uniquely
-     *                           identifies the resource
-     * @param string $callbackMethod The HTTP method we use to call callback_url
-     * @param string $callbackUrl The URL we call when the SIM has finished updating
-     * @param string $friendlyName A string to describe the resource
-     * @param string $ratePlan The sid or unique_name of the RatePlan resource that
-     *                         this SIM should use
-     * @param string $status The new status of the resource
-     * @param string $commandsCallbackMethod The HTTP method we use to call
-     *                                       commands_callback_url
-     * @param string $commandsCallbackUrl he URL we call when the SIM originates a
-     *                                    Command
-     * @param string $smsFallbackMethod The HTTP method we use to call
-     *                                  sms_fallback_url
-     * @param string $smsFallbackUrl The URL we call when an error occurs while
-     *                               retrieving or executing the TwiML requested
-     *                               from sms_url
-     * @param string $smsMethod The HTTP method we use to call sms_url
-     * @param string $smsUrl The URL we call when the SIM-connected device sends an
-     *                       SMS message that is not a Command
-     * @param string $voiceFallbackMethod The HTTP method we use to call
-     *                                    voice_fallback_url
-     * @param string $voiceFallbackUrl The URL we call when an error occurs while
-     *                                 retrieving or executing the TwiML requested
-     *                                 from voice_url
-     * @param string $voiceMethod The HTTP method we use when we call voice_url
-     * @param string $voiceUrl The URL we call when the SIM-connected device makes
-     *                         a voice call
-     * @param string $resetStatus Initiate a connectivity reset on a SIM
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
+     * @param string $callbackMethod The HTTP method Twilio will use when making a
+     *                               request to the callback URL.
+     * @param string $callbackUrl Twilio will make a request to this URL when the
+     *                            Sim has finished updating.
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
+     * @param string $ratePlan The Sid or UniqueName of the RatePlan that this Sim
+     *                         should use.
+     * @param string $status A string representing the status of the Sim.
+     * @param string $commandsCallbackMethod A string representing the HTTP method
+     *                                       to use when making a request to
+     *                                       CommandsCallbackUrl.
+     * @param string $commandsCallbackUrl The URL that will receive a webhook when
+     *                                    this Sim originates a Command.
+     * @param string $smsFallbackMethod The HTTP method Twilio will use when
+     *                                  requesting the sms_fallback_url.
+     * @param string $smsFallbackUrl The URL that Twilio will request if an error
+     *                               occurs retrieving or executing the TwiML
+     *                               requested by sms_url.
+     * @param string $smsMethod The HTTP method Twilio will use when requesting the
+     *                          above Url.
+     * @param string $smsUrl The URL Twilio will request when the SIM-connected
+     *                       device sends an SMS message that is not a Command.
+     * @param string $voiceFallbackMethod The HTTP method Twilio will use when
+     *                                    requesting the voice_fallback_url.
+     * @param string $voiceFallbackUrl The URL that Twilio will request if an error
+     *                                 occurs retrieving or executing the TwiML
+     *                                 requested by voice_url.
+     * @param string $voiceMethod The HTTP method Twilio will use when requesting
+     *                            the above Url.
+     * @param string $voiceUrl The URL Twilio will request when the SIM-connected
+     *                         device makes a call.
+     * @param string $resetStatus Initiate a connectivity reset on a Sim.
      */
     public function __construct($uniqueName = Values::NONE, $callbackMethod = Values::NONE, $callbackUrl = Values::NONE, $friendlyName = Values::NONE, $ratePlan = Values::NONE, $status = Values::NONE, $commandsCallbackMethod = Values::NONE, $commandsCallbackUrl = Values::NONE, $smsFallbackMethod = Values::NONE, $smsFallbackUrl = Values::NONE, $smsMethod = Values::NONE, $smsUrl = Values::NONE, $voiceFallbackMethod = Values::NONE, $voiceFallbackUrl = Values::NONE, $voiceMethod = Values::NONE, $voiceUrl = Values::NONE, $resetStatus = Values::NONE) {
         $this->options['uniqueName'] = $uniqueName;
@@ -205,10 +217,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * An application-defined string that uniquely identifies the resource. It can be used in place of the `sid` in the URL path to address the resource.
+     * A user-provided string that uniquely identifies this resource as an alternative to the `Sid`.
      *
-     * @param string $uniqueName An application-defined string that uniquely
-     *                           identifies the resource
+     * @param string $uniqueName A user-provided string that uniquely identifies
+     *                           this resource as an alternative to the Sid.
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -217,9 +229,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.
+     * The HTTP method Twilio will use when making a request to the callback URL (valid options are GET or POST). Defaults to POST.
      *
-     * @param string $callbackMethod The HTTP method we use to call callback_url
+     * @param string $callbackMethod The HTTP method Twilio will use when making a
+     *                               request to the callback URL.
      * @return $this Fluent Builder
      */
     public function setCallbackMethod($callbackMethod) {
@@ -228,9 +241,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`).
+     * Twilio will make a request to this URL when the Sim has finished updating. In the case of a transition from the Sim's `new` status to its `ready` status, or from any status to its `deactivated` status, you will receive two callbacks. One when the Sim moves to its intermediary status (`ready` or `deactivated`), and a second when it transitions to its final status (`active` or `canceled`).
      *
-     * @param string $callbackUrl The URL we call when the SIM has finished updating
+     * @param string $callbackUrl Twilio will make a request to this URL when the
+     *                            Sim has finished updating.
      * @return $this Fluent Builder
      */
     public function setCallbackUrl($callbackUrl) {
@@ -239,9 +253,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * A descriptive string that you create to describe the resource. It does not need to be unique.
+     * A user-provided string that identifies this resource. Non-unique.
      *
-     * @param string $friendlyName A string to describe the resource
+     * @param string $friendlyName A user-provided string that identifies this
+     *                             resource.
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -250,10 +265,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The `sid` or `unique_name` of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rate-plan) that this SIM should use.
+     * The Sid or UniqueName of the [RatePlan](https://www.twilio.com/docs/api/wireless/rest-api/rate-plan) that this Sim should use.
      *
-     * @param string $ratePlan The sid or unique_name of the RatePlan resource that
-     *                         this SIM should use
+     * @param string $ratePlan The Sid or UniqueName of the RatePlan that this Sim
+     *                         should use.
      * @return $this Fluent Builder
      */
     public function setRatePlan($ratePlan) {
@@ -262,9 +277,9 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The new status of the resource. Can be: `ready`, `active`, `suspended` or `deactivated`; however the SIM might support additional values.
+     * A string representing the status of the Sim. Valid options depend on the current state of the Sim, but may include `ready`, `active`, `suspended` or `deactivated`.
      *
-     * @param string $status The new status of the resource
+     * @param string $status A string representing the status of the Sim.
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -273,10 +288,11 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we use to call `commands_callback_url`.  Can be: `POST` or `GET`, and the default is `POST`.
+     * A string representing the HTTP method to use when making a request to `CommandsCallbackUrl`.  Can be one of `POST` or `GET`. Defaults to `POST`.
      *
-     * @param string $commandsCallbackMethod The HTTP method we use to call
-     *                                       commands_callback_url
+     * @param string $commandsCallbackMethod A string representing the HTTP method
+     *                                       to use when making a request to
+     *                                       CommandsCallbackUrl.
      * @return $this Fluent Builder
      */
     public function setCommandsCallbackMethod($commandsCallbackMethod) {
@@ -285,10 +301,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we call using the `commands_callback_method` when the SIM originates a [Command](https://www.twilio.com/docs/wireless/api/commands). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
+     * The URL that will receive a webhook when this Sim originates a [Command](https://www.twilio.com/docs/api/wireless/rest-api/command). Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
      *
-     * @param string $commandsCallbackUrl he URL we call when the SIM originates a
-     *                                    Command
+     * @param string $commandsCallbackUrl The URL that will receive a webhook when
+     *                                    this Sim originates a Command.
      * @return $this Fluent Builder
      */
     public function setCommandsCallbackUrl($commandsCallbackUrl) {
@@ -297,10 +313,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+     * The HTTP method Twilio will use when requesting the sms_fallback_url. Either `GET` or `POST`.
      *
-     * @param string $smsFallbackMethod The HTTP method we use to call
-     *                                  sms_fallback_url
+     * @param string $smsFallbackMethod The HTTP method Twilio will use when
+     *                                  requesting the sms_fallback_url.
      * @return $this Fluent Builder
      */
     public function setSmsFallbackMethod($smsFallbackMethod) {
@@ -309,11 +325,11 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`.
+     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `sms_url`.
      *
-     * @param string $smsFallbackUrl The URL we call when an error occurs while
-     *                               retrieving or executing the TwiML requested
-     *                               from sms_url
+     * @param string $smsFallbackUrl The URL that Twilio will request if an error
+     *                               occurs retrieving or executing the TwiML
+     *                               requested by sms_url.
      * @return $this Fluent Builder
      */
     public function setSmsFallbackUrl($smsFallbackUrl) {
@@ -322,9 +338,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`.
+     * The HTTP method Twilio will use when requesting the above Url. Either `GET` or `POST`.
      *
-     * @param string $smsMethod The HTTP method we use to call sms_url
+     * @param string $smsMethod The HTTP method Twilio will use when requesting the
+     *                          above Url.
      * @return $this Fluent Builder
      */
     public function setSmsMethod($smsMethod) {
@@ -333,10 +350,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/commands).
+     * The URL Twilio will request when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/api/wireless/rest-api/command).
      *
-     * @param string $smsUrl The URL we call when the SIM-connected device sends an
-     *                       SMS message that is not a Command
+     * @param string $smsUrl The URL Twilio will request when the SIM-connected
+     *                       device sends an SMS message that is not a Command.
      * @return $this Fluent Builder
      */
     public function setSmsUrl($smsUrl) {
@@ -345,10 +362,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+     * The HTTP method Twilio will use when requesting the voice_fallback_url. Either `GET` or `POST`.
      *
-     * @param string $voiceFallbackMethod The HTTP method we use to call
-     *                                    voice_fallback_url
+     * @param string $voiceFallbackMethod The HTTP method Twilio will use when
+     *                                    requesting the voice_fallback_url.
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackMethod($voiceFallbackMethod) {
@@ -357,11 +374,11 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we call using the `voice_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `voice_url`.
+     * The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by `voice_url`.
      *
-     * @param string $voiceFallbackUrl The URL we call when an error occurs while
-     *                                 retrieving or executing the TwiML requested
-     *                                 from voice_url
+     * @param string $voiceFallbackUrl The URL that Twilio will request if an error
+     *                                 occurs retrieving or executing the TwiML
+     *                                 requested by voice_url.
      * @return $this Fluent Builder
      */
     public function setVoiceFallbackUrl($voiceFallbackUrl) {
@@ -370,9 +387,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The HTTP method we use when we call `voice_url`. Can be: `GET` or `POST`.
+     * The HTTP method Twilio will use when requesting the above Url. Either `GET` or `POST`.
      *
-     * @param string $voiceMethod The HTTP method we use when we call voice_url
+     * @param string $voiceMethod The HTTP method Twilio will use when requesting
+     *                            the above Url.
      * @return $this Fluent Builder
      */
     public function setVoiceMethod($voiceMethod) {
@@ -381,10 +399,10 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * The URL we call using the `voice_method` when the SIM-connected device makes a voice call.
+     * The URL Twilio will request when the SIM-connected device makes a call.
      *
-     * @param string $voiceUrl The URL we call when the SIM-connected device makes
-     *                         a voice call
+     * @param string $voiceUrl The URL Twilio will request when the SIM-connected
+     *                         device makes a call.
      * @return $this Fluent Builder
      */
     public function setVoiceUrl($voiceUrl) {
@@ -393,9 +411,9 @@ class UpdateSimOptions extends Options {
     }
 
     /**
-     * Initiate a connectivity reset on the SIM. Set to `resetting` to initiate a connectivity reset on the SIM. No other value is valid.
+     * Pass `resetting` to initiate a connectivity reset on a Sim, this is the only valid value for this parameter.
      *
-     * @param string $resetStatus Initiate a connectivity reset on a SIM
+     * @param string $resetStatus Initiate a connectivity reset on a Sim.
      * @return $this Fluent Builder
      */
     public function setResetStatus($resetStatus) {

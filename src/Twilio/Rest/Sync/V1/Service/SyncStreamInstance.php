@@ -38,9 +38,8 @@ class SyncStreamInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Sync Service that the resource is
-     *                           associated with
-     * @param string $sid The SID of the Stream resource to fetch
+     * @param string $serviceSid Service Instance SID.
+     * @param string $sid Stream SID or unique name.
      * @return \Twilio\Rest\Sync\V1\Service\SyncStreamInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

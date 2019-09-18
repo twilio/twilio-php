@@ -19,7 +19,7 @@ class AlertContext extends InstanceContext {
      * Initialize the AlertContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this Alert.
+     * @param string $sid The sid
      * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
     public function __construct(Version $version, $sid) {
@@ -47,6 +47,16 @@ class AlertContext extends InstanceContext {
         );
 
         return new AlertInstance($this->version, $payload, $this->solution['sid']);
+    }
+
+    /**
+     * Deletes the AlertInstance
+     *
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**

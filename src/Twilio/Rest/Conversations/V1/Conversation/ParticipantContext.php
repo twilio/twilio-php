@@ -17,7 +17,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
 class ParticipantContext extends InstanceContext {
     /**
@@ -52,7 +52,6 @@ class ParticipantContext extends InstanceContext {
         $data = Values::of(array(
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'Attributes' => $options['attributes'],
         ));
 
         $payload = $this->version->update(

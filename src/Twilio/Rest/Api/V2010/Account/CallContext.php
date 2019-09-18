@@ -100,7 +100,6 @@ class CallContext extends InstanceContext {
             'FallbackMethod' => $options['fallbackMethod'],
             'StatusCallback' => $options['statusCallback'],
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
-            'Twiml' => $options['twiml'],
         ));
 
         $payload = $this->version->update(

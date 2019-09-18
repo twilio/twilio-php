@@ -139,7 +139,7 @@ class ServiceList extends ListResource {
     /**
      * Constructs a ServiceContext
      *
-     * @param string $sid The SID of the Service resource to fetch
+     * @param string $sid The unique string that identifies the resource
      * @return \Twilio\Rest\Chat\V2\ServiceContext
      */
     public function getContext($sid) {

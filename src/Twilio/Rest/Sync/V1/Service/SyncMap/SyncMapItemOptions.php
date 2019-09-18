@@ -17,10 +17,11 @@ use Twilio\Values;
  */
 abstract class SyncMapItemOptions {
     /**
-     * @param int $ttl An alias for item_ttl
-     * @param int $itemTtl How long, in seconds, before the Map Item expires
-     * @param int $collectionTtl How long, in seconds, before the Map Item's parent
-     *                           Sync Map expires and is deleted
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent Map in seconds,
+     *                           defaults to no expiration.
      * @return CreateSyncMapItemOptions Options builder
      */
     public static function create($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -28,10 +29,10 @@ abstract class SyncMapItemOptions {
     }
 
     /**
-     * @param string $order How to order the Map Items returned by their key value
-     * @param string $from The index of the first Sync Map Item resource to read
-     * @param string $bounds Whether to include the Map Item referenced by the from
-     *                       parameter
+     * @param string $order A string; asc or desc. Map Items are ordered
+     *                      lexicographically by Item key.
+     * @param string $from The Item key offset (including the specified key).
+     * @param string $bounds The bounds
      * @return ReadSyncMapItemOptions Options builder
      */
     public static function read($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
@@ -39,12 +40,13 @@ abstract class SyncMapItemOptions {
     }
 
     /**
-     * @param array $data A JSON string that represents an arbitrary, schema-less
-     *                    object that the Map Item stores
-     * @param int $ttl An alias for item_ttl
-     * @param int $itemTtl How long, in seconds, before the Map Item expires
-     * @param int $collectionTtl How long, in seconds, before the Map Item's parent
-     *                           Sync Map expires and is deleted
+     * @param array $data Contains an arbitrary JSON object to be stored in this
+     *                    Map Item.
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent Map in seconds,
+     *                           defaults to no expiration.
      * @return UpdateSyncMapItemOptions Options builder
      */
     public static function update($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
@@ -54,10 +56,11 @@ abstract class SyncMapItemOptions {
 
 class CreateSyncMapItemOptions extends Options {
     /**
-     * @param int $ttl An alias for item_ttl
-     * @param int $itemTtl How long, in seconds, before the Map Item expires
-     * @param int $collectionTtl How long, in seconds, before the Map Item's parent
-     *                           Sync Map expires and is deleted
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent Map in seconds,
+     *                           defaults to no expiration.
      */
     public function __construct($ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['ttl'] = $ttl;
@@ -66,9 +69,9 @@ class CreateSyncMapItemOptions extends Options {
     }
 
     /**
-     * An alias for `item_ttl`. If both parameters are provided, this value is ignored.
+     * Alias for item_ttl. If both are provided, this value is ignored.
      *
-     * @param int $ttl An alias for item_ttl
+     * @param int $ttl Alias for item_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -77,9 +80,10 @@ class CreateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire.  The Map Item might not be deleted immediately after it expires.
+     * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
      *
-     * @param int $itemTtl How long, in seconds, before the Map Item expires
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setItemTtl($itemTtl) {
@@ -88,10 +92,10 @@ class CreateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. The Sync Map might not be deleted immediately after it expires.
+     * Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.
      *
-     * @param int $collectionTtl How long, in seconds, before the Map Item's parent
-     *                           Sync Map expires and is deleted
+     * @param int $collectionTtl Time-to-live of this item's parent Map in seconds,
+     *                           defaults to no expiration.
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {
@@ -117,10 +121,10 @@ class CreateSyncMapItemOptions extends Options {
 
 class ReadSyncMapItemOptions extends Options {
     /**
-     * @param string $order How to order the Map Items returned by their key value
-     * @param string $from The index of the first Sync Map Item resource to read
-     * @param string $bounds Whether to include the Map Item referenced by the from
-     *                       parameter
+     * @param string $order A string; asc or desc. Map Items are ordered
+     *                      lexicographically by Item key.
+     * @param string $from The Item key offset (including the specified key).
+     * @param string $bounds The bounds
      */
     public function __construct($order = Values::NONE, $from = Values::NONE, $bounds = Values::NONE) {
         $this->options['order'] = $order;
@@ -129,9 +133,10 @@ class ReadSyncMapItemOptions extends Options {
     }
 
     /**
-     * How to order the Map Items returned by their `key` value. Can be: `asc` (ascending) or `desc` (descending) and the default is ascending. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.
+     * A string; asc or desc. Map Items are [ordered lexicographically](https://en.wikipedia.org/wiki/Lexicographical_order) by Item key.
      *
-     * @param string $order How to order the Map Items returned by their key value
+     * @param string $order A string; asc or desc. Map Items are ordered
+     *                      lexicographically by Item key.
      * @return $this Fluent Builder
      */
     public function setOrder($order) {
@@ -140,9 +145,9 @@ class ReadSyncMapItemOptions extends Options {
     }
 
     /**
-     * The `key` of the first Sync Map Item resource to read. See also `bounds`.
+     * The Item key offset (including the specified key). If not present, query is performed from the start or end, depending on the Order query parameter.
      *
-     * @param string $from The index of the first Sync Map Item resource to read
+     * @param string $from The Item key offset (including the specified key).
      * @return $this Fluent Builder
      */
     public function setFrom($from) {
@@ -151,10 +156,9 @@ class ReadSyncMapItemOptions extends Options {
     }
 
     /**
-     * Whether to include the Map Item referenced by the `from` parameter. Can be: `inclusive` to include the Map Item referenced by the `from` parameter or `exclusive` to start with the next Map Item. The default value is `inclusive`.
+     * The bounds
      *
-     * @param string $bounds Whether to include the Map Item referenced by the from
-     *                       parameter
+     * @param string $bounds The bounds
      * @return $this Fluent Builder
      */
     public function setBounds($bounds) {
@@ -180,12 +184,13 @@ class ReadSyncMapItemOptions extends Options {
 
 class UpdateSyncMapItemOptions extends Options {
     /**
-     * @param array $data A JSON string that represents an arbitrary, schema-less
-     *                    object that the Map Item stores
-     * @param int $ttl An alias for item_ttl
-     * @param int $itemTtl How long, in seconds, before the Map Item expires
-     * @param int $collectionTtl How long, in seconds, before the Map Item's parent
-     *                           Sync Map expires and is deleted
+     * @param array $data Contains an arbitrary JSON object to be stored in this
+     *                    Map Item.
+     * @param int $ttl Alias for item_ttl
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
+     * @param int $collectionTtl Time-to-live of this item's parent Map in seconds,
+     *                           defaults to no expiration.
      */
     public function __construct($data = Values::NONE, $ttl = Values::NONE, $itemTtl = Values::NONE, $collectionTtl = Values::NONE) {
         $this->options['data'] = $data;
@@ -195,10 +200,10 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16KB in length.
+     * Contains an arbitrary JSON object to be stored in this Map Item. Serialized to string to respect HTTP form input, up to 16KB.
      *
-     * @param array $data A JSON string that represents an arbitrary, schema-less
-     *                    object that the Map Item stores
+     * @param array $data Contains an arbitrary JSON object to be stored in this
+     *                    Map Item.
      * @return $this Fluent Builder
      */
     public function setData($data) {
@@ -207,9 +212,9 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * An alias for `item_ttl`. If both parameters are provided, this value is ignored.
+     * Alias for item_ttl. If both are provided, this value is ignored.
      *
-     * @param int $ttl An alias for item_ttl
+     * @param int $ttl Alias for item_ttl
      * @return $this Fluent Builder
      */
     public function setTtl($ttl) {
@@ -218,9 +223,10 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the Map Item does not expire. The Map Item might not be deleted immediately after it expires.
+     * Time-to-live of this item in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. Upon expiry, the map item will be cleaned up at least in a matter of hours, and often within seconds, making this a good tool for garbage management.
      *
-     * @param int $itemTtl How long, in seconds, before the Map Item expires
+     * @param int $itemTtl Time-to-live of this item in seconds, defaults to no
+     *                     expiration.
      * @return $this Fluent Builder
      */
     public function setItemTtl($itemTtl) {
@@ -229,10 +235,10 @@ class UpdateSyncMapItemOptions extends Options {
     }
 
     /**
-     * How long, in seconds, before the Map Item's parent Sync Map expires (time-to-live) and is deleted.  Can be an integer from 0 to 31,536,000 (1 year). The default value is `0`, which means the parent Sync Map does not expire. This parameter can only be used when the Map Item's `data` or `ttl` is updated in the same request. The Sync Map might not be deleted immediately after it expires.
+     * Time-to-live of this item's parent Map in seconds, defaults to no expiration. In the range [1, 31 536 000 (1 year)], or 0 for infinity. This parameter can only be used when the map item's data or ttl is updated in the same request.
      *
-     * @param int $collectionTtl How long, in seconds, before the Map Item's parent
-     *                           Sync Map expires and is deleted
+     * @param int $collectionTtl Time-to-live of this item's parent Map in seconds,
+     *                           defaults to no expiration.
      * @return $this Fluent Builder
      */
     public function setCollectionTtl($collectionTtl) {

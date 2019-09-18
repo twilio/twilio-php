@@ -147,14 +147,6 @@ class ConfigurationTest extends HolodeckTestCase {
                         "workflow_sid": "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 },
-                "features_enabled": [
-                    "some_feature",
-                    "another_feature"
-                ],
-                "serverless_service_sids": [
-                    "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
-                ],
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
@@ -296,14 +288,6 @@ class ConfigurationTest extends HolodeckTestCase {
                         "workflow_sid": "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 },
-                "features_enabled": [
-                    "some_feature",
-                    "another_feature"
-                ],
-                "serverless_service_sids": [
-                    "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
-                ],
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
@@ -445,14 +429,6 @@ class ConfigurationTest extends HolodeckTestCase {
                         "workflow_sid": "WWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     }
                 },
-                "features_enabled": [
-                    "some_feature",
-                    "another_feature"
-                ],
-                "serverless_service_sids": [
-                    "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "ZSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
-                ],
                 "url": "https://flex-api.twilio.com/v1/Configuration"
             }
             '
