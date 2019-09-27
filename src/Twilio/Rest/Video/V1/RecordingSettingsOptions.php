@@ -17,18 +17,15 @@ use Twilio\Values;
  */
 abstract class RecordingSettingsOptions {
     /**
-     * @param string $awsCredentialsSid SID of the Stored Credential resource CRxx
-     * @param string $encryptionKeySid SID of the Public Key resource CRxx
-     * @param string $awsS3Url Identity of the external location where the
-     *                         recordings should be stored. We only support
-     *                         DNS-compliant URLs like
-     *                         http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.
-     * @param bool $awsStorageEnabled true|false When set to true, all Recordings
-     *                                will be written to the AwsS3Url specified
-     *                                above. When set to false, all Recordings will
-     *                                be stored in Twilio's cloud.
-     * @param bool $encryptionEnabled true|false When set to true, all Recordings
-     *                                will be stored encrypted.
+     * @param string $awsCredentialsSid The SID of the stored Credential resource
+     * @param string $encryptionKeySid The SID of the Public Key resource to use
+     *                                 for encryption
+     * @param string $awsS3Url The URL of the AWS S3 bucket where the recordings
+     *                         should be stored
+     * @param bool $awsStorageEnabled Whether all recordings should be written to
+     *                                the aws_s3_url
+     * @param bool $encryptionEnabled Whether all recordings should be stored in an
+     *                                encrypted form
      * @return CreateRecordingSettingsOptions Options builder
      */
     public static function create($awsCredentialsSid = Values::NONE, $encryptionKeySid = Values::NONE, $awsS3Url = Values::NONE, $awsStorageEnabled = Values::NONE, $encryptionEnabled = Values::NONE) {
@@ -38,18 +35,15 @@ abstract class RecordingSettingsOptions {
 
 class CreateRecordingSettingsOptions extends Options {
     /**
-     * @param string $awsCredentialsSid SID of the Stored Credential resource CRxx
-     * @param string $encryptionKeySid SID of the Public Key resource CRxx
-     * @param string $awsS3Url Identity of the external location where the
-     *                         recordings should be stored. We only support
-     *                         DNS-compliant URLs like
-     *                         http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.
-     * @param bool $awsStorageEnabled true|false When set to true, all Recordings
-     *                                will be written to the AwsS3Url specified
-     *                                above. When set to false, all Recordings will
-     *                                be stored in Twilio's cloud.
-     * @param bool $encryptionEnabled true|false When set to true, all Recordings
-     *                                will be stored encrypted.
+     * @param string $awsCredentialsSid The SID of the stored Credential resource
+     * @param string $encryptionKeySid The SID of the Public Key resource to use
+     *                                 for encryption
+     * @param string $awsS3Url The URL of the AWS S3 bucket where the recordings
+     *                         should be stored
+     * @param bool $awsStorageEnabled Whether all recordings should be written to
+     *                                the aws_s3_url
+     * @param bool $encryptionEnabled Whether all recordings should be stored in an
+     *                                encrypted form
      */
     public function __construct($awsCredentialsSid = Values::NONE, $encryptionKeySid = Values::NONE, $awsS3Url = Values::NONE, $awsStorageEnabled = Values::NONE, $encryptionEnabled = Values::NONE) {
         $this->options['awsCredentialsSid'] = $awsCredentialsSid;
@@ -60,9 +54,9 @@ class CreateRecordingSettingsOptions extends Options {
     }
 
     /**
-     * SID of the Stored Credential resource `CRxx`
+     * The SID of the stored Credential resource.
      *
-     * @param string $awsCredentialsSid SID of the Stored Credential resource CRxx
+     * @param string $awsCredentialsSid The SID of the stored Credential resource
      * @return $this Fluent Builder
      */
     public function setAwsCredentialsSid($awsCredentialsSid) {
@@ -71,9 +65,10 @@ class CreateRecordingSettingsOptions extends Options {
     }
 
     /**
-     * SID of the Public Key resource `CRxx`
+     * The SID of the Public Key resource to use for encryption.
      *
-     * @param string $encryptionKeySid SID of the Public Key resource CRxx
+     * @param string $encryptionKeySid The SID of the Public Key resource to use
+     *                                 for encryption
      * @return $this Fluent Builder
      */
     public function setEncryptionKeySid($encryptionKeySid) {
@@ -82,12 +77,10 @@ class CreateRecordingSettingsOptions extends Options {
     }
 
     /**
-     * Identity of the external location where the recordings should be stored. We only support DNS-compliant URLs like `http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings`, where `recordings` is the path where you want recordings to be stored.
+     * The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings`, where `recordings` is the path in which you want the recordings to be stored.
      *
-     * @param string $awsS3Url Identity of the external location where the
-     *                         recordings should be stored. We only support
-     *                         DNS-compliant URLs like
-     *                         http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.
+     * @param string $awsS3Url The URL of the AWS S3 bucket where the recordings
+     *                         should be stored
      * @return $this Fluent Builder
      */
     public function setAwsS3Url($awsS3Url) {
@@ -96,12 +89,10 @@ class CreateRecordingSettingsOptions extends Options {
     }
 
     /**
-     * `true|false` When set to `true`, all Recordings will be written to the `AwsS3Url` specified above. When set to `false`, all Recordings will be stored in Twilio's cloud.
+     * Whether all recordings should be written to the `aws_s3_url`. When `false`, all recordings are stored in our cloud.
      *
-     * @param bool $awsStorageEnabled true|false When set to true, all Recordings
-     *                                will be written to the AwsS3Url specified
-     *                                above. When set to false, all Recordings will
-     *                                be stored in Twilio's cloud.
+     * @param bool $awsStorageEnabled Whether all recordings should be written to
+     *                                the aws_s3_url
      * @return $this Fluent Builder
      */
     public function setAwsStorageEnabled($awsStorageEnabled) {
@@ -110,10 +101,10 @@ class CreateRecordingSettingsOptions extends Options {
     }
 
     /**
-     * `true|false` When set to `true`, all Recordings will be stored encrypted. Dafault value is `false`
+     * Whether all recordings should be stored in an encrypted form. The default is `false`.
      *
-     * @param bool $encryptionEnabled true|false When set to true, all Recordings
-     *                                will be stored encrypted.
+     * @param bool $encryptionEnabled Whether all recordings should be stored in an
+     *                                encrypted form
      * @return $this Fluent Builder
      */
     public function setEncryptionEnabled($encryptionEnabled) {

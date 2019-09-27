@@ -17,8 +17,8 @@ class ExecutionContextList extends ListResource {
      * Construct the ExecutionContextList
      *
      * @param Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
-     * @param string $executionSid Execution Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $executionSid The SID of the Execution
      * @return \Twilio\Rest\Studio\V1\Flow\Execution\ExecutionContextList
      */
     public function __construct(Version $version, $flowSid, $executionSid) {

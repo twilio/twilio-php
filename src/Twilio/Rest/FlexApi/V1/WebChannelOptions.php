@@ -14,8 +14,8 @@ use Twilio\Values;
 
 abstract class WebChannelOptions {
     /**
-     * @param string $chatUniqueName Chat channel unique name
-     * @param string $preEngagementData Pre-engagement data
+     * @param string $chatUniqueName The chat channel's unique name
+     * @param string $preEngagementData The pre-engagement data
      * @return CreateWebChannelOptions Options builder
      */
     public static function create($chatUniqueName = Values::NONE, $preEngagementData = Values::NONE) {
@@ -23,8 +23,8 @@ abstract class WebChannelOptions {
     }
 
     /**
-     * @param string $chatStatus Chat status
-     * @param string $postEngagementData Post-engagement data
+     * @param string $chatStatus The chat status
+     * @param string $postEngagementData The post-engagement data
      * @return UpdateWebChannelOptions Options builder
      */
     public static function update($chatStatus = Values::NONE, $postEngagementData = Values::NONE) {
@@ -34,8 +34,8 @@ abstract class WebChannelOptions {
 
 class CreateWebChannelOptions extends Options {
     /**
-     * @param string $chatUniqueName Chat channel unique name
-     * @param string $preEngagementData Pre-engagement data
+     * @param string $chatUniqueName The chat channel's unique name
+     * @param string $preEngagementData The pre-engagement data
      */
     public function __construct($chatUniqueName = Values::NONE, $preEngagementData = Values::NONE) {
         $this->options['chatUniqueName'] = $chatUniqueName;
@@ -43,9 +43,9 @@ class CreateWebChannelOptions extends Options {
     }
 
     /**
-     * Chat channel unique name
+     * The chat channel's unique name.
      *
-     * @param string $chatUniqueName Chat channel unique name
+     * @param string $chatUniqueName The chat channel's unique name
      * @return $this Fluent Builder
      */
     public function setChatUniqueName($chatUniqueName) {
@@ -54,9 +54,9 @@ class CreateWebChannelOptions extends Options {
     }
 
     /**
-     * Pre-engagement data
+     * The pre-engagement data.
      *
-     * @param string $preEngagementData Pre-engagement data
+     * @param string $preEngagementData The pre-engagement data
      * @return $this Fluent Builder
      */
     public function setPreEngagementData($preEngagementData) {
@@ -82,8 +82,8 @@ class CreateWebChannelOptions extends Options {
 
 class UpdateWebChannelOptions extends Options {
     /**
-     * @param string $chatStatus Chat status
-     * @param string $postEngagementData Post-engagement data
+     * @param string $chatStatus The chat status
+     * @param string $postEngagementData The post-engagement data
      */
     public function __construct($chatStatus = Values::NONE, $postEngagementData = Values::NONE) {
         $this->options['chatStatus'] = $chatStatus;
@@ -91,9 +91,9 @@ class UpdateWebChannelOptions extends Options {
     }
 
     /**
-     * Chat status, can only used to make chat 'inactive'
+     * The chat status. Can only be `inactive`.
      *
-     * @param string $chatStatus Chat status
+     * @param string $chatStatus The chat status
      * @return $this Fluent Builder
      */
     public function setChatStatus($chatStatus) {
@@ -102,9 +102,9 @@ class UpdateWebChannelOptions extends Options {
     }
 
     /**
-     * Post-engagement data
+     * The post-engagement data.
      *
-     * @param string $postEngagementData Post-engagement data
+     * @param string $postEngagementData The post-engagement data
      * @return $this Fluent Builder
      */
     public function setPostEngagementData($postEngagementData) {

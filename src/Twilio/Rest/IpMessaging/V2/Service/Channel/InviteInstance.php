@@ -36,7 +36,7 @@ class InviteInstance extends InstanceResource {
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
      * @param string $channelSid The SID of the Channel the new resource belongs to
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Invite resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {

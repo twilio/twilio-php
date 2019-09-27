@@ -14,13 +14,13 @@ use Twilio\Values;
 
 abstract class ChannelOptions {
     /**
-     * @param string $target Target Contact Identity
-     * @param string $chatUniqueName Chat channel unique name
-     * @param string $preEngagementData Pre-engagement data
-     * @param string $taskSid TaskRouter Task Sid.
-     * @param string $taskAttributes Task attributes to be added for the TaskRouter
-     *                               Task
-     * @param bool $longLived Long Lived flag
+     * @param string $target The Target Contact Identity
+     * @param string $chatUniqueName The chat channel's unique name
+     * @param string $preEngagementData The pre-engagement data
+     * @param string $taskSid The SID of the TaskRouter task
+     * @param string $taskAttributes The task attributes to be added for the
+     *                               TaskRouter Task
+     * @param bool $longLived Whether to create the channel as long-lived
      * @return CreateChannelOptions Options builder
      */
     public static function create($target = Values::NONE, $chatUniqueName = Values::NONE, $preEngagementData = Values::NONE, $taskSid = Values::NONE, $taskAttributes = Values::NONE, $longLived = Values::NONE) {
@@ -30,13 +30,13 @@ abstract class ChannelOptions {
 
 class CreateChannelOptions extends Options {
     /**
-     * @param string $target Target Contact Identity
-     * @param string $chatUniqueName Chat channel unique name
-     * @param string $preEngagementData Pre-engagement data
-     * @param string $taskSid TaskRouter Task Sid.
-     * @param string $taskAttributes Task attributes to be added for the TaskRouter
-     *                               Task
-     * @param bool $longLived Long Lived flag
+     * @param string $target The Target Contact Identity
+     * @param string $chatUniqueName The chat channel's unique name
+     * @param string $preEngagementData The pre-engagement data
+     * @param string $taskSid The SID of the TaskRouter task
+     * @param string $taskAttributes The task attributes to be added for the
+     *                               TaskRouter Task
+     * @param bool $longLived Whether to create the channel as long-lived
      */
     public function __construct($target = Values::NONE, $chatUniqueName = Values::NONE, $preEngagementData = Values::NONE, $taskSid = Values::NONE, $taskAttributes = Values::NONE, $longLived = Values::NONE) {
         $this->options['target'] = $target;
@@ -48,9 +48,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * Target Contact Identity, for example phone number for SMS
+     * The Target Contact Identity, for example the phone number of an SMS.
      *
-     * @param string $target Target Contact Identity
+     * @param string $target The Target Contact Identity
      * @return $this Fluent Builder
      */
     public function setTarget($target) {
@@ -59,9 +59,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * Chat channel unique name
+     * The chat channel's unique name.
      *
-     * @param string $chatUniqueName Chat channel unique name
+     * @param string $chatUniqueName The chat channel's unique name
      * @return $this Fluent Builder
      */
     public function setChatUniqueName($chatUniqueName) {
@@ -70,9 +70,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * Pre-engagement data
+     * The pre-engagement data.
      *
-     * @param string $preEngagementData Pre-engagement data
+     * @param string $preEngagementData The pre-engagement data
      * @return $this Fluent Builder
      */
     public function setPreEngagementData($preEngagementData) {
@@ -81,9 +81,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * The unique SID identifier of the Taskrouter task
+     * The SID of the TaskRouter task.
      *
-     * @param string $taskSid TaskRouter Task Sid.
+     * @param string $taskSid The SID of the TaskRouter task
      * @return $this Fluent Builder
      */
     public function setTaskSid($taskSid) {
@@ -92,10 +92,10 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * Task attributes to be added for the TaskRouter Task
+     * The task attributes to be added for the TaskRouter Task.
      *
-     * @param string $taskAttributes Task attributes to be added for the TaskRouter
-     *                               Task
+     * @param string $taskAttributes The task attributes to be added for the
+     *                               TaskRouter Task
      * @return $this Fluent Builder
      */
     public function setTaskAttributes($taskAttributes) {
@@ -104,9 +104,9 @@ class CreateChannelOptions extends Options {
     }
 
     /**
-     * Boolean flag determining whether channel is created as long lived or not
+     * Whether to create the channel as long-lived.
      *
-     * @param bool $longLived Long Lived flag
+     * @param bool $longLived Whether to create the channel as long-lived
      * @return $this Fluent Builder
      */
     public function setLongLived($longLived) {

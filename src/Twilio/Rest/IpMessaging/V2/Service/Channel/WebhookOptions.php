@@ -112,7 +112,7 @@ class CreateWebhookOptions extends Options {
     }
 
     /**
-     * A string that will cause us to call the webhook when it is found in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`.
+     * A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`.
      *
      * @param string $configurationTriggers A string that will cause us to call the
      *                                      webhook when it is found in a message
@@ -224,7 +224,7 @@ class UpdateWebhookOptions extends Options {
     }
 
     /**
-     * A string that will cause us to call the webhook when it is found in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`.
+     * A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`.
      *
      * @param string $configurationTriggers A string that will cause us to call the
      *                                      webhook when it is found in a message

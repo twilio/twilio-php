@@ -23,7 +23,7 @@ class MemberList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @param string $channelSid The unique ID of the Channel for the member
+     * @param string $channelSid The SID of the Channel for the member
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberList
      */
     public function __construct(Version $version, $serviceSid, $channelSid) {
@@ -166,7 +166,7 @@ class MemberList extends ListResource {
     /**
      * Constructs a MemberContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Member resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\MemberContext
      */
     public function getContext($sid) {

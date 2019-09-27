@@ -30,8 +30,7 @@ class RoomContext extends InstanceContext {
      * Initialize the RoomContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The Room Sid or name that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\RoomContext
      */
     public function __construct(Version $version, $sid) {
@@ -64,7 +63,7 @@ class RoomContext extends InstanceContext {
     /**
      * Update the RoomInstance
      *
-     * @param string $status Set to completed to end the Room.
+     * @param string $status The new status of the resource
      * @return RoomInstance Updated RoomInstance
      * @throws TwilioException When an HTTP error occurs.
      */

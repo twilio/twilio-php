@@ -21,7 +21,7 @@ class TaskList extends ListResource {
      * Construct the TaskList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The ID of the Workspace that holds this Task
+     * @param string $workspaceSid The SID of the Workspace that contains the Task
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskList
      */
     public function __construct(Version $version, $workspaceSid) {
@@ -163,7 +163,7 @@ class TaskList extends ListResource {
     /**
      * Constructs a TaskContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext
      */
     public function getContext($sid) {

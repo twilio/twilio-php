@@ -17,12 +17,13 @@ use Twilio\Values;
  */
 abstract class SessionOptions {
     /**
-     * @param string $friendlyName The human-readable name of this session.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $createdBy Identity of the session's creator.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The Identity of the session's creator
      * @return CreateSessionOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
@@ -30,12 +31,13 @@ abstract class SessionOptions {
     }
 
     /**
-     * @param string $friendlyName The human-readable name of this session.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $createdBy Identity of the session's creator.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The Identity of the session's creator
      * @return UpdateSessionOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
@@ -45,12 +47,13 @@ abstract class SessionOptions {
 
 class CreateSessionOptions extends Options {
     /**
-     * @param string $friendlyName The human-readable name of this session.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $createdBy Identity of the session's creator.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The Identity of the session's creator
      */
     public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -61,9 +64,9 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * The human-readable name of this session. Optional.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      *
-     * @param string $friendlyName The human-readable name of this session.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -72,10 +75,9 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * A JSON string that stores application-specific data.
      *
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -84,9 +86,10 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * The date that this resource was created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
      *
-     * @param \DateTime $dateCreated The date that this resource was created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -95,9 +98,10 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * The date that this resource was last updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -106,9 +110,9 @@ class CreateSessionOptions extends Options {
     }
 
     /**
-     * Identity of the session's creator. If the Session was created through the API, the value will be `system`
+     * The Identity of the session's creator. If the Session was created through the API, the value will be `system`
      *
-     * @param string $createdBy Identity of the session's creator.
+     * @param string $createdBy The Identity of the session's creator
      * @return $this Fluent Builder
      */
     public function setCreatedBy($createdBy) {
@@ -134,12 +138,13 @@ class CreateSessionOptions extends Options {
 
 class UpdateSessionOptions extends Options {
     /**
-     * @param string $friendlyName The human-readable name of this session.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $createdBy Identity of the session's creator.
+     * @param string $friendlyName A string to describe the resource
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $createdBy The Identity of the session's creator
      */
     public function __construct($friendlyName = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $createdBy = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -150,9 +155,9 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The human-readable name of this session. Optional.
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      *
-     * @param string $friendlyName The human-readable name of this session.
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -161,10 +166,9 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * A JSON string that stores application-specific data.
      *
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -173,9 +177,10 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The date that this resource was created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
      *
-     * @param \DateTime $dateCreated The date that this resource was created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -184,9 +189,10 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * The date that this resource was last updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -195,9 +201,9 @@ class UpdateSessionOptions extends Options {
     }
 
     /**
-     * Identity of the session's creator. If the Session was created through the API, the value will be `system`
+     * The Identity of the session's creator. If the Session was created through the API, the value will be `system`
      *
-     * @param string $createdBy Identity of the session's creator.
+     * @param string $createdBy The Identity of the session's creator
      * @return $this Fluent Builder
      */
     public function setCreatedBy($createdBy) {

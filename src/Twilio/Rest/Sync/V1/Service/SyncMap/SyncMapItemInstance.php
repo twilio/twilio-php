@@ -37,11 +37,10 @@ class SyncMapItemInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique SID identifier of the Service Instance
-     *                           that hosts this Map object.
-     * @param string $mapSid The unique 34-character SID identifier of the Map
-     *                       containing this Item.
-     * @param string $key The key
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $mapSid The SID of the Sync Map that contains the Map Item
+     * @param string $key The key value of the Sync Map Item resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncMap\SyncMapItemInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $key = null) {

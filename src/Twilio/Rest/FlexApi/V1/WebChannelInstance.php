@@ -30,7 +30,7 @@ class WebChannelInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid Flex Chat Channel Sid
+     * @param string $sid The SID of the WebChannel resource to fetch
      * @return \Twilio\Rest\FlexApi\V1\WebChannelInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {

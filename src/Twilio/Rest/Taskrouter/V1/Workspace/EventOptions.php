@@ -14,22 +14,19 @@ use Twilio\Values;
 
 abstract class EventOptions {
     /**
-     * @param \DateTime $endDate Filter events by an end date.
-     * @param string $eventType Filter events by those of a certain event type
-     * @param int $minutes Filter events by up to 'x' minutes in the past.
-     * @param string $reservationSid Filter events by those pertaining to a
-     *                               particular reservation
-     * @param \DateTime $startDate Filter events by a start date.
-     * @param string $taskQueueSid Filter events by those pertaining to a
-     *                             particular queue
-     * @param string $taskSid Filter events by those pertaining to a particular task
-     * @param string $workerSid Filter events by those pertaining to a particular
-     *                          worker
-     * @param string $workflowSid Filter events by those pertaining to a particular
-     *                            workflow
-     * @param string $taskChannel Filter events by those pertaining to a particular
-     *                            task channel
-     * @param string $sid Filter events by those pertaining to a particular event
+     * @param \DateTime $endDate Only include usage that occurred on or before this
+     *                           date
+     * @param string $eventType The type of Events to read
+     * @param int $minutes The period of events to read in minutes
+     * @param string $reservationSid The SID of the Reservation with the Events to
+     *                               read
+     * @param \DateTime $startDate Only include Events from on or after this date
+     * @param string $taskQueueSid The SID of the TaskQueue with the Events to read
+     * @param string $taskSid The SID of the Task with the Events to read
+     * @param string $workerSid The SID of the Worker with the Events to read
+     * @param string $workflowSid The SID of the Worker with the Events to read
+     * @param string $taskChannel The TaskChannel with the Events to read
+     * @param string $sid The unique string that identifies the resource
      * @return ReadEventOptions Options builder
      */
     public static function read($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE, $taskChannel = Values::NONE, $sid = Values::NONE) {
@@ -39,22 +36,19 @@ abstract class EventOptions {
 
 class ReadEventOptions extends Options {
     /**
-     * @param \DateTime $endDate Filter events by an end date.
-     * @param string $eventType Filter events by those of a certain event type
-     * @param int $minutes Filter events by up to 'x' minutes in the past.
-     * @param string $reservationSid Filter events by those pertaining to a
-     *                               particular reservation
-     * @param \DateTime $startDate Filter events by a start date.
-     * @param string $taskQueueSid Filter events by those pertaining to a
-     *                             particular queue
-     * @param string $taskSid Filter events by those pertaining to a particular task
-     * @param string $workerSid Filter events by those pertaining to a particular
-     *                          worker
-     * @param string $workflowSid Filter events by those pertaining to a particular
-     *                            workflow
-     * @param string $taskChannel Filter events by those pertaining to a particular
-     *                            task channel
-     * @param string $sid Filter events by those pertaining to a particular event
+     * @param \DateTime $endDate Only include usage that occurred on or before this
+     *                           date
+     * @param string $eventType The type of Events to read
+     * @param int $minutes The period of events to read in minutes
+     * @param string $reservationSid The SID of the Reservation with the Events to
+     *                               read
+     * @param \DateTime $startDate Only include Events from on or after this date
+     * @param string $taskQueueSid The SID of the TaskQueue with the Events to read
+     * @param string $taskSid The SID of the Task with the Events to read
+     * @param string $workerSid The SID of the Worker with the Events to read
+     * @param string $workflowSid The SID of the Worker with the Events to read
+     * @param string $taskChannel The TaskChannel with the Events to read
+     * @param string $sid The unique string that identifies the resource
      */
     public function __construct($endDate = Values::NONE, $eventType = Values::NONE, $minutes = Values::NONE, $reservationSid = Values::NONE, $startDate = Values::NONE, $taskQueueSid = Values::NONE, $taskSid = Values::NONE, $workerSid = Values::NONE, $workflowSid = Values::NONE, $taskChannel = Values::NONE, $sid = Values::NONE) {
         $this->options['endDate'] = $endDate;
@@ -71,9 +65,10 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by an end date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.
+     * Only include Events that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.
      *
-     * @param \DateTime $endDate Filter events by an end date.
+     * @param \DateTime $endDate Only include usage that occurred on or before this
+     *                           date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
@@ -82,9 +77,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those of a certain event type
+     * The type of Events to read. Returns only Events of the type specified.
      *
-     * @param string $eventType Filter events by those of a certain event type
+     * @param string $eventType The type of Events to read
      * @return $this Fluent Builder
      */
     public function setEventType($eventType) {
@@ -93,9 +88,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by up to 'x' minutes in the past. This is helpful for events for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
+     * The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes.
      *
-     * @param int $minutes Filter events by up to 'x' minutes in the past.
+     * @param int $minutes The period of events to read in minutes
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -104,10 +99,10 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular reservation
+     * The SID of the Reservation with the Events to read. Returns only Events that pertain to the specified Reservation.
      *
-     * @param string $reservationSid Filter events by those pertaining to a
-     *                               particular reservation
+     * @param string $reservationSid The SID of the Reservation with the Events to
+     *                               read
      * @return $this Fluent Builder
      */
     public function setReservationSid($reservationSid) {
@@ -116,9 +111,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by a start date. This is helpful for defining a range of events to capture. Input is a GMT ISO 8601 Timestamp.
+     * Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
      *
-     * @param \DateTime $startDate Filter events by a start date.
+     * @param \DateTime $startDate Only include Events from on or after this date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -127,10 +122,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular queue
+     * The SID of the TaskQueue with the Events to read. Returns only the Events that pertain to the specified TaskQueue.
      *
-     * @param string $taskQueueSid Filter events by those pertaining to a
-     *                             particular queue
+     * @param string $taskQueueSid The SID of the TaskQueue with the Events to read
      * @return $this Fluent Builder
      */
     public function setTaskQueueSid($taskQueueSid) {
@@ -139,9 +133,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular task
+     * The SID of the Task with the Events to read. Returns only the Events that pertain to the specified Task.
      *
-     * @param string $taskSid Filter events by those pertaining to a particular task
+     * @param string $taskSid The SID of the Task with the Events to read
      * @return $this Fluent Builder
      */
     public function setTaskSid($taskSid) {
@@ -150,10 +144,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular worker
+     * The SID of the Worker with the Events to read. Returns only the Events that pertain to the specified Worker.
      *
-     * @param string $workerSid Filter events by those pertaining to a particular
-     *                          worker
+     * @param string $workerSid The SID of the Worker with the Events to read
      * @return $this Fluent Builder
      */
     public function setWorkerSid($workerSid) {
@@ -162,10 +155,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular workflow
+     * The SID of the Workflow with the Events to read. Returns only the Events that pertain to the specified Workflow.
      *
-     * @param string $workflowSid Filter events by those pertaining to a particular
-     *                            workflow
+     * @param string $workflowSid The SID of the Worker with the Events to read
      * @return $this Fluent Builder
      */
     public function setWorkflowSid($workflowSid) {
@@ -174,10 +166,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular task channel
+     * The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel.
      *
-     * @param string $taskChannel Filter events by those pertaining to a particular
-     *                            task channel
+     * @param string $taskChannel The TaskChannel with the Events to read
      * @return $this Fluent Builder
      */
     public function setTaskChannel($taskChannel) {
@@ -186,9 +177,9 @@ class ReadEventOptions extends Options {
     }
 
     /**
-     * Filter events by those pertaining to a particular event
+     * The SID of the Event resource to read.
      *
-     * @param string $sid Filter events by those pertaining to a particular event
+     * @param string $sid The unique string that identifies the resource
      * @return $this Fluent Builder
      */
     public function setSid($sid) {

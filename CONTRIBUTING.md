@@ -10,7 +10,7 @@ even better than it is today! Here are the guidelines we'd like you to follow:
  - [Documentation fixes](#docs)
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
- - [Local Testing with Docker 2](#testing)
+ - [Local Testing with Docker](#testing)
 
 
 ## <a name="coc"></a> Code of Conduct

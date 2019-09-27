@@ -38,8 +38,7 @@ class ServiceList extends ListResource {
     /**
      * Create a new ServiceInstance
      *
-     * @param string $friendlyName A human readable descriptive text for this
-     *                             resource, up to 64 characters.
+     * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -163,7 +162,7 @@ class ServiceList extends ListResource {
     /**
      * Constructs a ServiceContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\ServiceContext
      */
     public function getContext($sid) {

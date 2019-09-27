@@ -543,7 +543,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The maximum number of participants in the conference. Can be a positive integer from `2` to `10`. The default value is `10`.
+     * The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
      *
      * @param int $maxParticipants The maximum number of agent conference
      *                             participants

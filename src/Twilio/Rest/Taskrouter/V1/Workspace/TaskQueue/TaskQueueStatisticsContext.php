@@ -21,8 +21,10 @@ class TaskQueueStatisticsContext extends InstanceContext {
      * Initialize the TaskQueueStatisticsContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $taskQueueSid The task_queue_sid
+     * @param string $workspaceSid The SID of the Workspace with the TaskQueue to
+     *                             fetch
+     * @param string $taskQueueSid The SID of the TaskQueue for which to fetch
+     *                             statistics
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {

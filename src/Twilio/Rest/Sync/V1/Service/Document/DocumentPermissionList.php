@@ -21,8 +21,9 @@ class DocumentPermissionList extends ListResource {
      * Construct the DocumentPermissionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Sync Service Instance SID.
-     * @param string $documentSid Sync Document SID.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $documentSid The Sync Document SID
      * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionList
      */
     public function __construct(Version $version, $serviceSid, $documentSid) {
@@ -124,8 +125,9 @@ class DocumentPermissionList extends ListResource {
     /**
      * Constructs a DocumentPermissionContext
      *
-     * @param string $identity Identity of the user to whom the Sync Document
-     *                         Permission applies.
+     * @param string $identity The application-defined string that uniquely
+     *                         identifies the User's Document Permission resource
+     *                         to fetch
      * @return \Twilio\Rest\Sync\V1\Service\Document\DocumentPermissionContext
      */
     public function getContext($identity) {

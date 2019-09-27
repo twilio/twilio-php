@@ -34,9 +34,9 @@ class TaskChannelInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The unique ID of the Workspace that this
-     *                             TaskChannel belongs to.
-     * @param string $sid The unique ID for this TaskChannel.
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             TaskChannel
+     * @param string $sid The SID of the TaskChannel resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $sid = null) {

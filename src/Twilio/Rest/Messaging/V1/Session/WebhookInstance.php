@@ -34,9 +34,8 @@ class WebhookInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sessionSid The unique id of the Session for this webhook.
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sessionSid The SID of the Session for the webhook
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Session\WebhookInstance
      */
     public function __construct(Version $version, array $payload, $sessionSid, $sid = null) {

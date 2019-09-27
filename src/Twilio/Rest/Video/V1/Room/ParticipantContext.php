@@ -34,10 +34,9 @@ class ParticipantContext extends InstanceContext {
      * Initialize the ParticipantContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $roomSid A system-generated 34-character string that uniquely
-     *                        identifies a Room.
-     * @param string $sid A system-generated 34-character string that uniquely
-     *                    identifies this Participant.
+     * @param string $roomSid The SID of the room with the Participant resource to
+     *                        fetch
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\Room\ParticipantContext
      */
     public function __construct(Version $version, $roomSid, $sid) {

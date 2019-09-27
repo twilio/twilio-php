@@ -117,7 +117,7 @@ class ReadVoipOptions extends Options {
     }
 
     /**
-     * The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/api/rest/available-phone-numbers#local-get-basic-example-3). If specified, this value must have at least two characters.
+     * The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
      *
      * @param string $contains The pattern on which to match phone numbers
      * @return $this Fluent Builder
@@ -161,7 +161,7 @@ class ReadVoipOptions extends Options {
     }
 
     /**
-     * Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.
+     * Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
      *
      * @param bool $excludeAllAddressRequired Whether to exclude phone numbers that
      *                                        require an Address
@@ -173,7 +173,7 @@ class ReadVoipOptions extends Options {
     }
 
     /**
-     * Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.
+     * Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
      *
      * @param bool $excludeLocalAddressRequired Whether to exclude phone numbers
      *                                          that require a local address
@@ -185,7 +185,7 @@ class ReadVoipOptions extends Options {
     }
 
     /**
-     * Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/addresses). Can be: `true` or `false` and the default is `false`.
+     * Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
      *
      * @param bool $excludeForeignAddressRequired Whether to exclude phone numbers
      *                                            that require a foreign address
@@ -282,7 +282,7 @@ class ReadVoipOptions extends Options {
     }
 
     /**
-     * Limit results to a specific local access and transport area ([LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](http://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+     * Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
      *
      * @param string $inLata Limit results to a specific local access and transport
      *                       area. (US/Canada only)

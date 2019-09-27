@@ -33,11 +33,10 @@ class SubscribedTrackInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid Unique Room identifier where this Track is published.
-     * @param string $participantSid Unique Participant identifier that subscribes
-     *                               to this Track.
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $roomSid The SID of the room where the track is published
+     * @param string $participantSid The SID of the participant that subscribes to
+     *                               the track
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {

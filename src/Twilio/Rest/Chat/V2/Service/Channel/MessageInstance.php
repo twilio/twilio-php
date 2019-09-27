@@ -42,9 +42,9 @@ class MessageInstance extends InstanceResource {
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @param string $channelSid The unique ID of the Channel the Message resource
+     * @param string $channelSid The SID of the Channel the Message resource
      *                           belongs to
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Message resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {

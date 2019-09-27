@@ -85,7 +85,7 @@ class Taskrouter extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext
      */
     protected function contextWorkspaces($sid) {

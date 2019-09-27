@@ -47,6 +47,7 @@ class BrandedCallTest extends HolodeckTestCase {
                 "from": "+15000000000",
                 "logo": "https://www.twilio.com/marketing/bundles/company/img/logos/red/twilio-logo-red.png",
                 "reason": "Hello Jhon, your appointment has been confirmed.",
+                "sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "status": "unknown",
                 "to": "+573000000000",
                 "use_case": "conversational",

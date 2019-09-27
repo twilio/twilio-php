@@ -33,11 +33,11 @@ class WebhookInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The SID of the Service that the resource is
-     *                           associated with
-     * @param string $channelSid The SID of the Channel the ChannelWebhook resource
-     *                           belongs to
-     * @param string $sid The unique string that identifies the resource
+     * @param string $serviceSid The SID of the Service that the Channel Webhook
+     *                           resource is associated with
+     * @param string $channelSid The SID of the Channel the Channel Webhook
+     *                           resource belongs to
+     * @param string $sid The SID of the Channel Webhook resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\Channel\WebhookInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $channelSid, $sid = null) {

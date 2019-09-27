@@ -16,11 +16,11 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * @property string $callerName
+ * @property array $callerName
  * @property string $countryCode
  * @property string $phoneNumber
  * @property string $nationalFormat
- * @property string $carrier
+ * @property array $carrier
  * @property array $addOns
  * @property string $url
  */

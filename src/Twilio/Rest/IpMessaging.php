@@ -100,7 +100,7 @@ class IpMessaging extends Domain {
     }
 
     /**
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Credential resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\CredentialContext
      */
     protected function contextCredentials($sid) {
@@ -115,7 +115,7 @@ class IpMessaging extends Domain {
     }
 
     /**
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Service resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\ServiceContext
      */
     protected function contextServices($sid) {

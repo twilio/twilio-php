@@ -40,7 +40,7 @@ class ServiceContext extends InstanceContext {
      * Initialize the ServiceContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Service resource to fetch
      * @return \Twilio\Rest\Chat\V2\ServiceContext
      */
     public function __construct(Version $version, $sid) {

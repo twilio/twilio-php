@@ -28,9 +28,9 @@ class StepContextInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $flowSid Flow Sid.
-     * @param string $engagementSid Engagement Sid.
-     * @param string $stepSid Step Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $engagementSid The SID of the Engagement
+     * @param string $stepSid Step SID
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextInstance
      */
     public function __construct(Version $version, array $payload, $flowSid, $engagementSid, $stepSid) {

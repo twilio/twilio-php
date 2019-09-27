@@ -130,7 +130,7 @@ class CommandList extends ListResource {
      * Create a new CommandInstance
      *
      * @param string $command The message body of the Command or a Base64 encoded
-     *                        byte string in binary mode.
+     *                        byte string in binary mode
      * @param array|Options $options Optional Arguments
      * @return CommandInstance Newly created CommandInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -161,8 +161,7 @@ class CommandList extends ListResource {
     /**
      * Constructs a CommandContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Wireless\V1\CommandContext
      */
     public function getContext($sid) {

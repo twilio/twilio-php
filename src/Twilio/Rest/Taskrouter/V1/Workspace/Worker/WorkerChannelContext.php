@@ -21,9 +21,11 @@ class WorkerChannelContext extends InstanceContext {
      * Initialize the WorkerChannelContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workerSid The worker_sid
-     * @param string $sid The sid
+     * @param string $workspaceSid The SID of the Workspace with the WorkerChannel
+     *                             to fetch
+     * @param string $workerSid The SID of the Worker with the WorkerChannel to
+     *                          fetch
+     * @param string $sid The SID of the to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext
      */
     public function __construct(Version $version, $workspaceSid, $workerSid, $sid) {

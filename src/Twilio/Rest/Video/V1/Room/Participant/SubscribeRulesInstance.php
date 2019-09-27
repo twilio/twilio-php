@@ -30,9 +30,9 @@ class SubscribeRulesInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid The unique Room identifier for the Subscribe Rules
-     * @param string $participantSid The unique Participant identifier for the
-     *                               Subscribe Rules.
+     * @param string $roomSid The SID of the Room resource for the Subscribe Rules
+     * @param string $participantSid The SID of the Participant resource for the
+     *                               Subscribe Rules
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $participantSid) {

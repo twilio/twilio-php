@@ -40,9 +40,9 @@ class DocumentInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid The unique SID identifier of the Service Instance
-     *                           that hosts this Document.
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
+     * @param string $sid The SID of the Document resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\DocumentInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

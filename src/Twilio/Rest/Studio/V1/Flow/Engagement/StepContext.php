@@ -26,9 +26,9 @@ class StepContext extends InstanceContext {
      * Initialize the StepContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $flowSid Flow Sid.
-     * @param string $engagementSid Engagement Sid.
-     * @param string $sid Step Sid.
+     * @param string $flowSid The SID of the Flow
+     * @param string $engagementSid The SID of the Engagement
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Studio\V1\Flow\Engagement\StepContext
      */
     public function __construct(Version $version, $flowSid, $engagementSid, $sid) {

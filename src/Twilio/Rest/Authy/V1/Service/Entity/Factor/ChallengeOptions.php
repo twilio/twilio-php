@@ -52,7 +52,7 @@ class CreateChallengeOptions extends Options {
     }
 
     /**
-     * The future date in which this Challenge will expire, given in ISO 8601 format (https://en.wikipedia.org/wiki/ISO_8601).
+     * The future date in which this Challenge will expire, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
      *
      * @param \DateTime $expirationDate The future date in which this Challenge
      *                                  will expire

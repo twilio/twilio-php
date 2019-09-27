@@ -23,8 +23,8 @@ class SyncListList extends ListResource {
      * Construct the SyncListList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The unique SID identifier of the Service Instance
-     *                           that hosts this List object.
+     * @param string $serviceSid The SID of the Sync Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Sync\V1\Service\SyncListList
      */
     public function __construct(Version $version, $serviceSid) {
@@ -151,7 +151,7 @@ class SyncListList extends ListResource {
     /**
      * Constructs a SyncListContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the Sync List resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncListContext
      */
     public function getContext($sid) {

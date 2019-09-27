@@ -45,7 +45,7 @@ class ServiceInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid A unique identifier for this service instance.
+     * @param string $sid The SID of the Service resource to fetch
      * @return \Twilio\Rest\Sync\V1\ServiceInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {

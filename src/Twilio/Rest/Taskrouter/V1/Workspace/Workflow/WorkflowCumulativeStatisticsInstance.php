@@ -46,8 +46,11 @@ class WorkflowCumulativeStatisticsInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workflowSid The workflow_sid
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             Workflow.
+     * @param string $workflowSid Returns the list of Tasks that are being
+     *                            controlled by the Workflow with the specified Sid
+     *                            value
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid, $workflowSid) {

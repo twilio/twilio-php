@@ -24,9 +24,9 @@ class ParticipantContext extends InstanceContext {
      * Initialize the ParticipantContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sessionSid The unique id of the Session for this participant.
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sessionSid The SID of the Session with the participant to
+     *                           fetch
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Session\ParticipantContext
      */
     public function __construct(Version $version, $sessionSid, $sid) {

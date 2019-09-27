@@ -47,7 +47,7 @@ class CreateVerificationCheckOptions extends Options {
     }
 
     /**
-     * The phone number to verify. Either this parameter or the `verification_sid` must be specified
+     * The phone number to verify. Either this parameter or the `verification_sid` must be specified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      *
      * @param string $to The phone number to verify
      * @return $this Fluent Builder

@@ -132,7 +132,8 @@ class CompositionList extends ListResource {
     /**
      * Create a new CompositionInstance
      *
-     * @param string $roomSid Twilio Room SID.
+     * @param string $roomSid The SID of the Group Room with the media tracks to be
+     *                        used as composition sources
      * @param array|Options $options Optional Arguments
      * @return CompositionInstance Newly created CompositionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -165,8 +166,7 @@ class CompositionList extends ListResource {
     /**
      * Constructs a CompositionContext
      *
-     * @param string $sid The Composition Sid that uniquely identifies the
-     *                    Composition to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\CompositionContext
      */
     public function getContext($sid) {

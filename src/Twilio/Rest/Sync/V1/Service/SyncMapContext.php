@@ -33,8 +33,9 @@ class SyncMapContext extends InstanceContext {
      * Initialize the SyncMapContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Sync Service with the Sync Map
+     *                           resource to fetch
+     * @param string $sid The SID of the Sync Map resource to fetch
      * @return \Twilio\Rest\Sync\V1\Service\SyncMapContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {

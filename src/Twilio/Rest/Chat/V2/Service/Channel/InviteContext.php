@@ -22,7 +22,7 @@ class InviteContext extends InstanceContext {
      * @param string $serviceSid The SID of the Service to fetch the resource from
      * @param string $channelSid The SID of the Channel the resource to fetch
      *                           belongs to
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Invite resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\Channel\InviteContext
      */
     public function __construct(Version $version, $serviceSid, $channelSid, $sid) {

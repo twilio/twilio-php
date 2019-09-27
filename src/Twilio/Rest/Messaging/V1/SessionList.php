@@ -38,8 +38,8 @@ class SessionList extends ListResource {
     /**
      * Create a new SessionInstance
      *
-     * @param string $messagingServiceSid The unique id of the SMS Service this
-     *                                    session belongs to.
+     * @param string $messagingServiceSid The SID of the SMS Service the session
+     *                                    belongs to
      * @param array|Options $options Optional Arguments
      * @return SessionInstance Newly created SessionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -155,8 +155,7 @@ class SessionList extends ListResource {
     /**
      * Constructs a SessionContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\SessionContext
      */
     public function getContext($sid) {

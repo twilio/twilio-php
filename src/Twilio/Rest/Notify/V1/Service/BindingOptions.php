@@ -162,7 +162,7 @@ class ReadBindingOptions extends Options {
     }
 
     /**
-     * The [User](https://www.twilio.com/docs/chat/rest/users)'s `identity` value of the resources to read.
+     * The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read.
      *
      * @param string $identity The `identity` value of the resources to read
      * @return $this Fluent Builder

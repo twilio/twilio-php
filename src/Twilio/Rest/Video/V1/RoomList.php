@@ -161,8 +161,7 @@ class RoomList extends ListResource {
     /**
      * Constructs a RoomContext
      *
-     * @param string $sid The Room Sid or name that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\RoomContext
      */
     public function getContext($sid) {

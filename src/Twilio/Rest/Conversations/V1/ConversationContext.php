@@ -20,7 +20,7 @@ use Twilio\Values;
 use Twilio\Version;
 
 /**
- * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  *
  * @property \Twilio\Rest\Conversations\V1\Conversation\ParticipantList $participants
  * @property \Twilio\Rest\Conversations\V1\Conversation\MessageList $messages
@@ -65,6 +65,7 @@ class ConversationContext extends InstanceContext {
             'FriendlyName' => $options['friendlyName'],
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
+            'Attributes' => $options['attributes'],
         ));
 
         $payload = $this->version->update(

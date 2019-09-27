@@ -158,7 +158,7 @@ class InviteList extends ListResource {
     /**
      * Constructs a InviteContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Invite resource to fetch
      * @return \Twilio\Rest\IpMessaging\V2\Service\Channel\InviteContext
      */
     public function getContext($sid) {

@@ -14,7 +14,8 @@ use Twilio\Values;
 
 abstract class ConfigurationOptions {
     /**
-     * @param string $uiVersion Pinned UI version
+     * @param string $uiVersion The Pinned UI version of the Configuration resource
+     *                          to fetch
      * @return FetchConfigurationOptions Options builder
      */
     public static function fetch($uiVersion = Values::NONE) {
@@ -24,16 +25,18 @@ abstract class ConfigurationOptions {
 
 class FetchConfigurationOptions extends Options {
     /**
-     * @param string $uiVersion Pinned UI version
+     * @param string $uiVersion The Pinned UI version of the Configuration resource
+     *                          to fetch
      */
     public function __construct($uiVersion = Values::NONE) {
         $this->options['uiVersion'] = $uiVersion;
     }
 
     /**
-     * Pinned UI version
+     * The Pinned UI version of the Configuration resource to fetch.
      *
-     * @param string $uiVersion Pinned UI version
+     * @param string $uiVersion The Pinned UI version of the Configuration resource
+     *                          to fetch
      * @return $this Fluent Builder
      */
     public function setUiVersion($uiVersion) {

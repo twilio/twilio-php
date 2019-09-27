@@ -19,8 +19,7 @@ class RecordingContext extends InstanceContext {
      * Initialize the RecordingContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The Recording Sid that uniquely identifies the Recording
-     *                    to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\RecordingContext
      */
     public function __construct(Version $version, $sid) {

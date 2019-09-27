@@ -89,8 +89,7 @@ class Messaging extends Domain {
     }
 
     /**
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\SessionContext
      */
     protected function contextSessions($sid) {
@@ -105,7 +104,7 @@ class Messaging extends Domain {
     }
 
     /**
-     * @param string $sid The sid
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\ServiceContext
      */
     protected function contextServices($sid) {

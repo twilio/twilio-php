@@ -90,7 +90,7 @@ class CreateCredentialOptions extends Options {
     /**
      * [APN only] The URL encoded representation of the certificate. For example,
     `-----BEGIN CERTIFICATE-----
-    MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==
+    MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEF.....A==
     -----END CERTIFICATE-----`
      *
      * @param string $certificate [APN only] The URL encoded representation of the
@@ -105,7 +105,7 @@ class CreateCredentialOptions extends Options {
     /**
      * [APN only] The URL encoded representation of the private key. For example,
     `-----BEGIN RSA PRIVATE KEY-----
-    MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR.
+    MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fG...
     -----END RSA PRIVATE KEY-----`
      *
      * @param string $privateKey [APN only] The URL encoded representation of the
@@ -208,7 +208,7 @@ class UpdateCredentialOptions extends Options {
     /**
      * [APN only] The URL encoded representation of the certificate. For example,
     `-----BEGIN CERTIFICATE-----
-    MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNV.....A==
+    MIIFnTCCBIWgAwIBAgIIAjy9H849+E8wDQYJKoZIhvcNAQEF.....A==
     -----END CERTIFICATE-----`
      *
      * @param string $certificate [APN only] The URL encoded representation of the
@@ -223,7 +223,7 @@ class UpdateCredentialOptions extends Options {
     /**
      * [APN only] The URL encoded representation of the private key. For example,
     `-----BEGIN RSA PRIVATE KEY-----
-    MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fGgvCI1l9s+cmBY3WIz+cUDqmxiieR.
+    MIIEpQIBAAKCAQEAuyf/lNrH9ck8DmNyo3fG...
     -----END RSA PRIVATE KEY-----`
      *
      * @param string $privateKey [APN only] The URL encoded representation of the

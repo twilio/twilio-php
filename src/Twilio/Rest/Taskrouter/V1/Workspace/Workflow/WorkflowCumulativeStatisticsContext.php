@@ -21,8 +21,11 @@ class WorkflowCumulativeStatisticsContext extends InstanceContext {
      * Initialize the WorkflowCumulativeStatisticsContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workflowSid The workflow_sid
+     * @param string $workspaceSid The SID of the Workspace with the resource to
+     *                             fetch
+     * @param string $workflowSid Returns the list of Tasks that are being
+     *                            controlled by the Workflow with the specified Sid
+     *                            value
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowCumulativeStatisticsContext
      */
     public function __construct(Version $version, $workspaceSid, $workflowSid) {

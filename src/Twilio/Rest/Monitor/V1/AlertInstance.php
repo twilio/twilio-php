@@ -33,6 +33,8 @@ use Twilio\Version;
  * @property string $responseHeaders
  * @property string $sid
  * @property string $url
+ * @property string $requestHeaders
+ * @property string $serviceSid
  */
 class AlertInstance extends InstanceResource {
     /**
@@ -40,7 +42,7 @@ class AlertInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The sid
+     * @param string $sid A 34 character string that uniquely identifies this Alert.
      * @return \Twilio\Rest\Monitor\V1\AlertInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -62,9 +64,11 @@ class AlertInstance extends InstanceResource {
             'resourceSid' => Values::array_get($payload, 'resource_sid'),
             'sid' => Values::array_get($payload, 'sid'),
             'url' => Values::array_get($payload, 'url'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
             'requestVariables' => Values::array_get($payload, 'request_variables'),
             'responseBody' => Values::array_get($payload, 'response_body'),
             'responseHeaders' => Values::array_get($payload, 'response_headers'),
+            'requestHeaders' => Values::array_get($payload, 'request_headers'),
         );
 
         $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
@@ -92,16 +96,6 @@ class AlertInstance extends InstanceResource {
      */
     public function fetch() {
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Deletes the AlertInstance
-     *
-     * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete() {
-        return $this->proxy()->delete();
     }
 
     /**

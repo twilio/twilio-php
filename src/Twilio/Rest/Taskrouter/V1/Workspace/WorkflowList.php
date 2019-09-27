@@ -20,7 +20,7 @@ class WorkflowList extends ListResource {
      * Construct the WorkflowList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The ID of the Workspace that contains this
+     * @param string $workspaceSid The SID of the Workspace that contains the
      *                             Workflow
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList
      */
@@ -127,10 +127,10 @@ class WorkflowList extends ListResource {
     /**
      * Create a new WorkflowInstance
      *
-     * @param string $friendlyName A string representing a human readable name for
-     *                             this Workflow.
-     * @param string $configuration JSON document configuring the rules for this
-     *                              Workflow.
+     * @param string $friendlyName descriptive string that you create to describe
+     *                             the Workflow resource
+     * @param string $configuration A JSON string that contains the rules to apply
+     *                              to the Workflow
      * @param array|Options $options Optional Arguments
      * @return WorkflowInstance Newly created WorkflowInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -159,7 +159,7 @@ class WorkflowList extends ListResource {
     /**
      * Constructs a WorkflowContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the resource
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext
      */
     public function getContext($sid) {

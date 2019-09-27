@@ -14,11 +14,14 @@ use Twilio\Values;
 
 abstract class WorkersCumulativeStatisticsOptions {
     /**
-     * @param \DateTime $endDate Filter cumulative statistics by a end date.
-     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
-     *                     past.
-     * @param \DateTime $startDate Filter cumulative statistics by a start date.
-     * @param string $taskChannel Filter cumulative statistics by TaskChannel.
+     * @param \DateTime $endDate Only calculate statistics from on or before this
+     *                           date
+     * @param int $minutes Only calculate statistics since this many minutes in the
+     *                     past
+     * @param \DateTime $startDate Only calculate statistics from on or after this
+     *                             date
+     * @param string $taskChannel Only calculate cumulative statistics on this
+     *                            TaskChannel
      * @return FetchWorkersCumulativeStatisticsOptions Options builder
      */
     public static function fetch($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE, $taskChannel = Values::NONE) {
@@ -28,11 +31,14 @@ abstract class WorkersCumulativeStatisticsOptions {
 
 class FetchWorkersCumulativeStatisticsOptions extends Options {
     /**
-     * @param \DateTime $endDate Filter cumulative statistics by a end date.
-     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
-     *                     past.
-     * @param \DateTime $startDate Filter cumulative statistics by a start date.
-     * @param string $taskChannel Filter cumulative statistics by TaskChannel.
+     * @param \DateTime $endDate Only calculate statistics from on or before this
+     *                           date
+     * @param int $minutes Only calculate statistics since this many minutes in the
+     *                     past
+     * @param \DateTime $startDate Only calculate statistics from on or after this
+     *                             date
+     * @param string $taskChannel Only calculate cumulative statistics on this
+     *                            TaskChannel
      */
     public function __construct($endDate = Values::NONE, $minutes = Values::NONE, $startDate = Values::NONE, $taskChannel = Values::NONE) {
         $this->options['endDate'] = $endDate;
@@ -42,9 +48,10 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
     }
 
     /**
-     * Filter cumulative statistics by a end date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.
+     * Only calculate statistics from this date and time and earlier, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
      *
-     * @param \DateTime $endDate Filter cumulative statistics by a end date.
+     * @param \DateTime $endDate Only calculate statistics from on or before this
+     *                           date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {
@@ -53,10 +60,10 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
     }
 
     /**
-     * Filter cumulative statistics by up to 'x' minutes in the past. This is helpful for statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends. Defaults to 15 minutes.
+     * Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends.
      *
-     * @param int $minutes Filter cumulative statistics by up to 'x' minutes in the
-     *                     past.
+     * @param int $minutes Only calculate statistics since this many minutes in the
+     *                     past
      * @return $this Fluent Builder
      */
     public function setMinutes($minutes) {
@@ -65,9 +72,10 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
     }
 
     /**
-     * Filter cumulative statistics by a start date. This is helpful for defining a range of statistics to capture. Input is a string of the format: yyyy-MM-dd'T'HH:mm:ss'Z'.
+     * Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
      *
-     * @param \DateTime $startDate Filter cumulative statistics by a start date.
+     * @param \DateTime $startDate Only calculate statistics from on or after this
+     *                             date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -76,9 +84,10 @@ class FetchWorkersCumulativeStatisticsOptions extends Options {
     }
 
     /**
-     * Filter cumulative statistics by TaskChannel. Takes in a Unique Name ("voice", "sms", "default", etc.) or a TaskChannelSid.
+     * Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
      *
-     * @param string $taskChannel Filter cumulative statistics by TaskChannel.
+     * @param string $taskChannel Only calculate cumulative statistics on this
+     *                            TaskChannel
      * @return $this Fluent Builder
      */
     public function setTaskChannel($taskChannel) {

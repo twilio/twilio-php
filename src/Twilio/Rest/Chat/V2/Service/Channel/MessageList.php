@@ -23,7 +23,7 @@ class MessageList extends ListResource {
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The SID of the Service that the resource is
      *                           associated with
-     * @param string $channelSid The unique ID of the Channel the Message resource
+     * @param string $channelSid The SID of the Channel the Message resource
      *                           belongs to
      * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageList
      */
@@ -165,7 +165,7 @@ class MessageList extends ListResource {
     /**
      * Constructs a MessageContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the Message resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\Channel\MessageContext
      */
     public function getContext($sid) {

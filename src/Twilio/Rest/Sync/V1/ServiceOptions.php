@@ -17,26 +17,23 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $webhookUrl A URL that will receive event updates when objects
-     *                           are manipulated.
-     * @param bool $reachabilityWebhooksEnabled true or false - controls whether
-     *                                          this instance fires webhooks when
-     *                                          client endpoints connect to Sync
-     * @param bool $aclEnabled true or false - determines whether token identities
-     *                         must be granted access to Sync objects via the
-     *                         Permissions API in this Service.
-     * @param bool $reachabilityDebouncingEnabled true or false - Determines
-     *                                            whether transient disconnections
-     *                                            (i.e. an immediate reconnect
-     *                                            succeeds) cause reachability
-     *                                            webhooks.
-     * @param int $reachabilityDebouncingWindow Determines how long an identity
-     *                                          must be offline before reachability
-     *                                          webhooks fire.
-     * @param bool $webhooksFromRestEnabled true or false - controls whether this
-     *                                      instance fires webhooks when Sync
-     *                                      objects are updated through REST
+     * @param string $friendlyName A string that you assign to describe the resource
+     * @param string $webhookUrl The URL we should call when Sync objects are
+     *                           manipulated
+     * @param bool $reachabilityWebhooksEnabled Whether the service instance should
+     *                                          call webhook_url when client
+     *                                          endpoints connect to Sync
+     * @param bool $aclEnabled Whether token identities in the Service must be
+     *                         granted access to Sync objects by using the
+     *                         Permissions resource
+     * @param bool $reachabilityDebouncingEnabled Whether every
+     *                                            endpoint_disconnected event
+     *                                            occurs after a configurable delay
+     * @param int $reachabilityDebouncingWindow The reachability event delay in
+     *                                          milliseconds
+     * @param bool $webhooksFromRestEnabled Whether the Service instance should
+     *                                      call webhook_url when the REST API is
+     *                                      used to update Sync objects
      * @return CreateServiceOptions Options builder
      */
     public static function create($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
@@ -44,26 +41,23 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param string $webhookUrl A URL that will receive event updates when objects
-     *                           are manipulated.
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param bool $reachabilityWebhooksEnabled True or false - controls whether
-     *                                          this instance fires webhooks when
-     *                                          client endpoints connect to Sync
-     * @param bool $aclEnabled true or false - determines whether token identities
-     *                         must be granted access to Sync objects via the
-     *                         Permissions API in this Service.
-     * @param bool $reachabilityDebouncingEnabled true or false - Determines
-     *                                            whether transient disconnections
-     *                                            (i.e. an immediate reconnect
-     *                                            succeeds) cause reachability
-     *                                            webhooks.
-     * @param int $reachabilityDebouncingWindow Determines how long an identity
-     *                                          must be offline before reachability
-     *                                          webhooks fire.
-     * @param bool $webhooksFromRestEnabled true or false - controls whether this
-     *                                      instance fires webhooks when Sync
-     *                                      objects are updated through REST
+     * @param string $webhookUrl The URL we should call when Sync objects are
+     *                           manipulated
+     * @param string $friendlyName A string that you assign to describe the resource
+     * @param bool $reachabilityWebhooksEnabled Whether the service instance should
+     *                                          call webhook_url when client
+     *                                          endpoints connect to Sync
+     * @param bool $aclEnabled Whether token identities in the Service must be
+     *                         granted access to Sync objects by using the
+     *                         Permissions resource
+     * @param bool $reachabilityDebouncingEnabled Whether every
+     *                                            endpoint_disconnected event
+     *                                            occurs after a configurable delay
+     * @param int $reachabilityDebouncingWindow The reachability event delay in
+     *                                          milliseconds
+     * @param bool $webhooksFromRestEnabled Whether the Service instance should
+     *                                      call webhook_url when the REST API is
+     *                                      used to update Sync objects
      * @return UpdateServiceOptions Options builder
      */
     public static function update($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
@@ -73,26 +67,23 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param string $webhookUrl A URL that will receive event updates when objects
-     *                           are manipulated.
-     * @param bool $reachabilityWebhooksEnabled true or false - controls whether
-     *                                          this instance fires webhooks when
-     *                                          client endpoints connect to Sync
-     * @param bool $aclEnabled true or false - determines whether token identities
-     *                         must be granted access to Sync objects via the
-     *                         Permissions API in this Service.
-     * @param bool $reachabilityDebouncingEnabled true or false - Determines
-     *                                            whether transient disconnections
-     *                                            (i.e. an immediate reconnect
-     *                                            succeeds) cause reachability
-     *                                            webhooks.
-     * @param int $reachabilityDebouncingWindow Determines how long an identity
-     *                                          must be offline before reachability
-     *                                          webhooks fire.
-     * @param bool $webhooksFromRestEnabled true or false - controls whether this
-     *                                      instance fires webhooks when Sync
-     *                                      objects are updated through REST
+     * @param string $friendlyName A string that you assign to describe the resource
+     * @param string $webhookUrl The URL we should call when Sync objects are
+     *                           manipulated
+     * @param bool $reachabilityWebhooksEnabled Whether the service instance should
+     *                                          call webhook_url when client
+     *                                          endpoints connect to Sync
+     * @param bool $aclEnabled Whether token identities in the Service must be
+     *                         granted access to Sync objects by using the
+     *                         Permissions resource
+     * @param bool $reachabilityDebouncingEnabled Whether every
+     *                                            endpoint_disconnected event
+     *                                            occurs after a configurable delay
+     * @param int $reachabilityDebouncingWindow The reachability event delay in
+     *                                          milliseconds
+     * @param bool $webhooksFromRestEnabled Whether the Service instance should
+     *                                      call webhook_url when the REST API is
+     *                                      used to update Sync objects
      */
     public function __construct($friendlyName = Values::NONE, $webhookUrl = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -105,9 +96,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Human-readable name for this service instance
+     * A string that you assign to describe the resource.
      *
-     * @param string $friendlyName Human-readable name for this service instance
+     * @param string $friendlyName A string that you assign to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -116,10 +107,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * A URL that will receive event updates when objects are manipulated.
+     * The URL we should call when Sync objects are manipulated.
      *
-     * @param string $webhookUrl A URL that will receive event updates when objects
-     *                           are manipulated.
+     * @param string $webhookUrl The URL we should call when Sync objects are
+     *                           manipulated
      * @return $this Fluent Builder
      */
     public function setWebhookUrl($webhookUrl) {
@@ -128,11 +119,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.
+     * Whether the service instance should call `webhook_url` when client endpoints connect to Sync. The default is `false`.
      *
-     * @param bool $reachabilityWebhooksEnabled true or false - controls whether
-     *                                          this instance fires webhooks when
-     *                                          client endpoints connect to Sync
+     * @param bool $reachabilityWebhooksEnabled Whether the service instance should
+     *                                          call webhook_url when client
+     *                                          endpoints connect to Sync
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
@@ -141,11 +132,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.
+     * Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/permissions) resource.
      *
-     * @param bool $aclEnabled true or false - determines whether token identities
-     *                         must be granted access to Sync objects via the
-     *                         Permissions API in this Service.
+     * @param bool $aclEnabled Whether token identities in the Service must be
+     *                         granted access to Sync objects by using the
+     *                         Permissions resource
      * @return $this Fluent Builder
      */
     public function setAclEnabled($aclEnabled) {
@@ -154,13 +145,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.
+     * Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event.
      *
-     * @param bool $reachabilityDebouncingEnabled true or false - Determines
-     *                                            whether transient disconnections
-     *                                            (i.e. an immediate reconnect
-     *                                            succeeds) cause reachability
-     *                                            webhooks.
+     * @param bool $reachabilityDebouncingEnabled Whether every
+     *                                            endpoint_disconnected event
+     *                                            occurs after a configurable delay
      * @return $this Fluent Builder
      */
     public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled) {
@@ -169,11 +158,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window — from the same identity — means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.
+     * The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before the `webhook_url` is called if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the call to `webhook_url`.
      *
-     * @param int $reachabilityDebouncingWindow Determines how long an identity
-     *                                          must be offline before reachability
-     *                                          webhooks fire.
+     * @param int $reachabilityDebouncingWindow The reachability event delay in
+     *                                          milliseconds
      * @return $this Fluent Builder
      */
     public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
@@ -182,11 +170,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.
+     * Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`.
      *
-     * @param bool $webhooksFromRestEnabled true or false - controls whether this
-     *                                      instance fires webhooks when Sync
-     *                                      objects are updated through REST
+     * @param bool $webhooksFromRestEnabled Whether the Service instance should
+     *                                      call webhook_url when the REST API is
+     *                                      used to update Sync objects
      * @return $this Fluent Builder
      */
     public function setWebhooksFromRestEnabled($webhooksFromRestEnabled) {
@@ -212,26 +200,23 @@ class CreateServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $webhookUrl A URL that will receive event updates when objects
-     *                           are manipulated.
-     * @param string $friendlyName Human-readable name for this service instance
-     * @param bool $reachabilityWebhooksEnabled True or false - controls whether
-     *                                          this instance fires webhooks when
-     *                                          client endpoints connect to Sync
-     * @param bool $aclEnabled true or false - determines whether token identities
-     *                         must be granted access to Sync objects via the
-     *                         Permissions API in this Service.
-     * @param bool $reachabilityDebouncingEnabled true or false - Determines
-     *                                            whether transient disconnections
-     *                                            (i.e. an immediate reconnect
-     *                                            succeeds) cause reachability
-     *                                            webhooks.
-     * @param int $reachabilityDebouncingWindow Determines how long an identity
-     *                                          must be offline before reachability
-     *                                          webhooks fire.
-     * @param bool $webhooksFromRestEnabled true or false - controls whether this
-     *                                      instance fires webhooks when Sync
-     *                                      objects are updated through REST
+     * @param string $webhookUrl The URL we should call when Sync objects are
+     *                           manipulated
+     * @param string $friendlyName A string that you assign to describe the resource
+     * @param bool $reachabilityWebhooksEnabled Whether the service instance should
+     *                                          call webhook_url when client
+     *                                          endpoints connect to Sync
+     * @param bool $aclEnabled Whether token identities in the Service must be
+     *                         granted access to Sync objects by using the
+     *                         Permissions resource
+     * @param bool $reachabilityDebouncingEnabled Whether every
+     *                                            endpoint_disconnected event
+     *                                            occurs after a configurable delay
+     * @param int $reachabilityDebouncingWindow The reachability event delay in
+     *                                          milliseconds
+     * @param bool $webhooksFromRestEnabled Whether the Service instance should
+     *                                      call webhook_url when the REST API is
+     *                                      used to update Sync objects
      */
     public function __construct($webhookUrl = Values::NONE, $friendlyName = Values::NONE, $reachabilityWebhooksEnabled = Values::NONE, $aclEnabled = Values::NONE, $reachabilityDebouncingEnabled = Values::NONE, $reachabilityDebouncingWindow = Values::NONE, $webhooksFromRestEnabled = Values::NONE) {
         $this->options['webhookUrl'] = $webhookUrl;
@@ -244,10 +229,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * A URL that will receive event updates when objects are manipulated.
+     * The URL we should call when Sync objects are manipulated.
      *
-     * @param string $webhookUrl A URL that will receive event updates when objects
-     *                           are manipulated.
+     * @param string $webhookUrl The URL we should call when Sync objects are
+     *                           manipulated
      * @return $this Fluent Builder
      */
     public function setWebhookUrl($webhookUrl) {
@@ -256,9 +241,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Human-readable name for this service instance
+     * A string that you assign to describe the resource.
      *
-     * @param string $friendlyName Human-readable name for this service instance
+     * @param string $friendlyName A string that you assign to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -267,11 +252,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * True or false - controls whether this instance fires webhooks when client endpoints connect to Sync Defaults to false.
+     * Whether the service instance should call `webhook_url` when client endpoints connect to Sync. The default is `false`.
      *
-     * @param bool $reachabilityWebhooksEnabled True or false - controls whether
-     *                                          this instance fires webhooks when
-     *                                          client endpoints connect to Sync
+     * @param bool $reachabilityWebhooksEnabled Whether the service instance should
+     *                                          call webhook_url when client
+     *                                          endpoints connect to Sync
      * @return $this Fluent Builder
      */
     public function setReachabilityWebhooksEnabled($reachabilityWebhooksEnabled) {
@@ -280,11 +265,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - determines whether token identities must be granted access to Sync objects via the [Permissions API](https://www.twilio.com/docs/api/sync/rest/sync-rest-api-permissions) in this Service.
+     * Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/permissions) resource.
      *
-     * @param bool $aclEnabled true or false - determines whether token identities
-     *                         must be granted access to Sync objects via the
-     *                         Permissions API in this Service.
+     * @param bool $aclEnabled Whether token identities in the Service must be
+     *                         granted access to Sync objects by using the
+     *                         Permissions resource
      * @return $this Fluent Builder
      */
     public function setAclEnabled($aclEnabled) {
@@ -293,13 +278,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - If false, every endpoint disconnection immediately yields a reachability webhook (if enabled). If true, then 'disconnection' webhook events will only be fired after a configurable delay. Intervening reconnections would effectively cancel that webhook. Defaults to false.
+     * Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event.
      *
-     * @param bool $reachabilityDebouncingEnabled true or false - Determines
-     *                                            whether transient disconnections
-     *                                            (i.e. an immediate reconnect
-     *                                            succeeds) cause reachability
-     *                                            webhooks.
+     * @param bool $reachabilityDebouncingEnabled Whether every
+     *                                            endpoint_disconnected event
+     *                                            occurs after a configurable delay
      * @return $this Fluent Builder
      */
     public function setReachabilityDebouncingEnabled($reachabilityDebouncingEnabled) {
@@ -308,11 +291,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * Reachability webhook delay period in milliseconds. Determines the delay after which a Sync identity is declared actually offline, measured from the moment the last running client disconnects. If all endpoints remain offline throughout this delay, then reachability webhooks will be fired (if enabled). A reconnection by any endpoint during this window — from the same identity — means no reachability webhook would be fired. Must be between 1000 and 30000. Defaults to 5000.
+     * The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before the webhook is called if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the webhook from being called.
      *
-     * @param int $reachabilityDebouncingWindow Determines how long an identity
-     *                                          must be offline before reachability
-     *                                          webhooks fire.
+     * @param int $reachabilityDebouncingWindow The reachability event delay in
+     *                                          milliseconds
      * @return $this Fluent Builder
      */
     public function setReachabilityDebouncingWindow($reachabilityDebouncingWindow) {
@@ -321,11 +303,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * `true` or `false` - controls whether this instance fires webhooks when Sync objects are updated through REST. Defaults to false.
+     * Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`.
      *
-     * @param bool $webhooksFromRestEnabled true or false - controls whether this
-     *                                      instance fires webhooks when Sync
-     *                                      objects are updated through REST
+     * @param bool $webhooksFromRestEnabled Whether the Service instance should
+     *                                      call webhook_url when the REST API is
+     *                                      used to update Sync objects
      * @return $this Fluent Builder
      */
     public function setWebhooksFromRestEnabled($webhooksFromRestEnabled) {

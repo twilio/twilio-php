@@ -151,7 +151,7 @@ class UserList extends ListResource {
     /**
      * Constructs a UserContext
      *
-     * @param string $sid The unique string that identifies the resource
+     * @param string $sid The SID of the User resource to fetch
      * @return \Twilio\Rest\Chat\V2\Service\UserContext
      */
     public function getContext($sid) {

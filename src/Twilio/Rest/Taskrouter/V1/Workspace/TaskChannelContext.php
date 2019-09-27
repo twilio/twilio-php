@@ -21,9 +21,9 @@ class TaskChannelContext extends InstanceContext {
      * Initialize the TaskChannelContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The unique ID of the Workspace that this
-     *                             TaskChannel belongs to.
-     * @param string $sid The unique ID for this TaskChannel.
+     * @param string $workspaceSid The SID of the Workspace with the TaskChannel to
+     *                             fetch
+     * @param string $sid The SID of the TaskChannel resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {

@@ -130,7 +130,7 @@ class EventList extends ListResource {
     /**
      * Constructs a EventContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this event.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Monitor\V1\EventContext
      */
     public function getContext($sid) {
