@@ -22,8 +22,10 @@ class LogList extends ListResource {
      * Construct the LogList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $environmentSid Environment Sid.
+     * @param string $serviceSid The SID of the Service that the Log resource is
+     *                           associated with
+     * @param string $environmentSid The SID of the environment in which the log
+     *                               occurred
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogList
      */
     public function __construct(Version $version, $serviceSid, $environmentSid) {
@@ -129,7 +131,7 @@ class LogList extends ListResource {
     /**
      * Constructs a LogContext
      *
-     * @param string $sid Log Sid.
+     * @param string $sid The SID that identifies the Log resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogContext
      */
     public function getContext($sid) {

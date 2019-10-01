@@ -71,18 +71,12 @@ abstract class CallOptions {
      * @param string $from Phone number or Client identifier to filter `from` on
      * @param string $parentCallSid Parent call SID to filter on
      * @param string $status The status of the resources to read
-     * @param string $startTimeBefore Only include calls that started on or after
-     *                                this date
-     * @param string $startTime Only include calls that started on or after this
-     *                          date
-     * @param string $startTimeAfter Only include calls that started on or after
-     *                               this date
-     * @param string $endTimeBefore Only include usage that occurred on or before
-     *                              this date
-     * @param string $endTime Only include usage that occurred on or before this
-     *                        date
-     * @param string $endTimeAfter Only include usage that occurred on or before
-     *                             this date
+     * @param string $startTimeBefore Only include calls that started on this date
+     * @param string $startTime Only include calls that started on this date
+     * @param string $startTimeAfter Only include calls that started on this date
+     * @param string $endTimeBefore Only include calls that ended on this date
+     * @param string $endTime Only include calls that ended on this date
+     * @param string $endTimeAfter Only include calls that ended on this date
      * @return ReadCallOptions Options builder
      */
     public static function read($to = Values::NONE, $from = Values::NONE, $parentCallSid = Values::NONE, $status = Values::NONE, $startTimeBefore = Values::NONE, $startTime = Values::NONE, $startTimeAfter = Values::NONE, $endTimeBefore = Values::NONE, $endTime = Values::NONE, $endTimeAfter = Values::NONE) {
@@ -491,18 +485,12 @@ class ReadCallOptions extends Options {
      * @param string $from Phone number or Client identifier to filter `from` on
      * @param string $parentCallSid Parent call SID to filter on
      * @param string $status The status of the resources to read
-     * @param string $startTimeBefore Only include calls that started on or after
-     *                                this date
-     * @param string $startTime Only include calls that started on or after this
-     *                          date
-     * @param string $startTimeAfter Only include calls that started on or after
-     *                               this date
-     * @param string $endTimeBefore Only include usage that occurred on or before
-     *                              this date
-     * @param string $endTime Only include usage that occurred on or before this
-     *                        date
-     * @param string $endTimeAfter Only include usage that occurred on or before
-     *                             this date
+     * @param string $startTimeBefore Only include calls that started on this date
+     * @param string $startTime Only include calls that started on this date
+     * @param string $startTimeAfter Only include calls that started on this date
+     * @param string $endTimeBefore Only include calls that ended on this date
+     * @param string $endTime Only include calls that ended on this date
+     * @param string $endTimeAfter Only include calls that ended on this date
      */
     public function __construct($to = Values::NONE, $from = Values::NONE, $parentCallSid = Values::NONE, $status = Values::NONE, $startTimeBefore = Values::NONE, $startTime = Values::NONE, $startTimeAfter = Values::NONE, $endTimeBefore = Values::NONE, $endTime = Values::NONE, $endTimeAfter = Values::NONE) {
         $this->options['to'] = $to;
@@ -562,10 +550,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
+     * Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
      *
-     * @param string $startTimeBefore Only include calls that started on or after
-     *                                this date
+     * @param string $startTimeBefore Only include calls that started on this date
      * @return $this Fluent Builder
      */
     public function setStartTimeBefore($startTimeBefore) {
@@ -574,10 +561,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
+     * Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
      *
-     * @param string $startTime Only include calls that started on or after this
-     *                          date
+     * @param string $startTime Only include calls that started on this date
      * @return $this Fluent Builder
      */
     public function setStartTime($startTime) {
@@ -586,10 +572,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only include calls that started on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`.
+     * Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
      *
-     * @param string $startTimeAfter Only include calls that started on or after
-     *                               this date
+     * @param string $startTimeAfter Only include calls that started on this date
      * @return $this Fluent Builder
      */
     public function setStartTimeAfter($startTimeAfter) {
@@ -598,10 +583,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
+     * Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
      *
-     * @param string $endTimeBefore Only include usage that occurred on or before
-     *                              this date
+     * @param string $endTimeBefore Only include calls that ended on this date
      * @return $this Fluent Builder
      */
     public function setEndTimeBefore($endTimeBefore) {
@@ -610,10 +594,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
+     * Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
      *
-     * @param string $endTime Only include usage that occurred on or before this
-     *                        date
+     * @param string $endTime Only include calls that ended on this date
      * @return $this Fluent Builder
      */
     public function setEndTime($endTime) {
@@ -622,10 +605,9 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only include calls that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.
+     * Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
      *
-     * @param string $endTimeAfter Only include usage that occurred on or before
-     *                             this date
+     * @param string $endTimeAfter Only include calls that ended on this date
      * @return $this Fluent Builder
      */
     public function setEndTimeAfter($endTimeAfter) {

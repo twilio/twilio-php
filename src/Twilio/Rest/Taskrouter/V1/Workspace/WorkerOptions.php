@@ -187,7 +187,7 @@ class CreateWorkerOptions extends Options {
     }
 
     /**
-     * The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activities) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace.
+     * The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace.
      *
      * @param string $activitySid The SID of a valid Activity that describes the
      *                            new Worker's initial state
@@ -241,7 +241,7 @@ class UpdateWorkerOptions extends Options {
     }
 
     /**
-     * The SID of a valid Activity that will describe the Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activities) for more information.
+     * The SID of a valid Activity that will describe the Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information.
      *
      * @param string $activitySid The SID of the Activity that describes the
      *                            Worker's initial state

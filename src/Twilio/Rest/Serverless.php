@@ -85,7 +85,7 @@ class Serverless extends Domain {
     }
 
     /**
-     * @param string $sid Serverless Service Sid or unique name.
+     * @param string $sid The SID of the Service resource to fetch
      * @return \Twilio\Rest\Serverless\V1\ServiceContext
      */
     protected function contextServices($sid) {

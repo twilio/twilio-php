@@ -36,8 +36,9 @@ class EnvironmentContext extends InstanceContext {
      * Initialize the EnvironmentContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Environment Sid.
+     * @param string $serviceSid The SID of the Service to fetch the Environment
+     *                           resource from
+     * @param string $sid The SID of the Environment resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {

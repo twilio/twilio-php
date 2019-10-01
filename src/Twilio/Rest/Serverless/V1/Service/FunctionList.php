@@ -22,7 +22,8 @@ class FunctionList extends ListResource {
      * Construct the FunctionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the Service that the Function resource
+     *                           is associated with
      * @return \Twilio\Rest\Serverless\V1\Service\FunctionList
      */
     public function __construct(Version $version, $serviceSid) {
@@ -123,7 +124,7 @@ class FunctionList extends ListResource {
     /**
      * Create a new FunctionInstance
      *
-     * @param string $friendlyName A human-readable description of this Function.
+     * @param string $friendlyName A string to describe the Function resource
      * @return FunctionInstance Newly created FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -143,7 +144,7 @@ class FunctionList extends ListResource {
     /**
      * Constructs a FunctionContext
      *
-     * @param string $sid Function Sid.
+     * @param string $sid The SID of the Function resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext
      */
     public function getContext($sid) {

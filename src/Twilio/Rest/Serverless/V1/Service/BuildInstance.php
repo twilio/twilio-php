@@ -35,8 +35,9 @@ class BuildInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Build Sid.
+     * @param string $serviceSid The SID of the Service that the Build resource is
+     *                           associated with
+     * @param string $sid The SID of the Build resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\BuildInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

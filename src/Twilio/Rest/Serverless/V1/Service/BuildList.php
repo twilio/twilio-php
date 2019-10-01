@@ -24,7 +24,8 @@ class BuildList extends ListResource {
      * Construct the BuildList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
+     * @param string $serviceSid The SID of the Service that the Build resource is
+     *                           associated with
      * @return \Twilio\Rest\Serverless\V1\Service\BuildList
      */
     public function __construct(Version $version, $serviceSid) {
@@ -151,7 +152,7 @@ class BuildList extends ListResource {
     /**
      * Constructs a BuildContext
      *
-     * @param string $sid Build Sid.
+     * @param string $sid The SID of the Build resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\BuildContext
      */
     public function getContext($sid) {

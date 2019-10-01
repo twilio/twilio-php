@@ -19,7 +19,7 @@ class AlertContext extends InstanceContext {
      * Initialize the AlertContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this Alert.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
     public function __construct(Version $version, $sid) {

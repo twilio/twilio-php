@@ -40,8 +40,9 @@ class EnvironmentInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Environment Sid.
+     * @param string $serviceSid The SID of the Service that the Environment
+     *                           resource is associated with
+     * @param string $sid The SID of the Environment resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\EnvironmentInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {

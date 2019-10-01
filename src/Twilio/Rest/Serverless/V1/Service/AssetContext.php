@@ -28,8 +28,9 @@ class AssetContext extends InstanceContext {
      * Initialize the AssetContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Asset Sid.
+     * @param string $serviceSid The SID of the Service to fetch the Asset resource
+     *                           from
+     * @param string $sid The SID that identifies the Asset resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\AssetContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
@@ -77,7 +78,7 @@ class AssetContext extends InstanceContext {
     /**
      * Update the AssetInstance
      *
-     * @param string $friendlyName A human-readable description of this Asset.
+     * @param string $friendlyName A string to describe the Asset resource
      * @return AssetInstance Updated AssetInstance
      * @throws TwilioException When an HTTP error occurs.
      */

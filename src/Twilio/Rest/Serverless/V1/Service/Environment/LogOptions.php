@@ -17,7 +17,8 @@ use Twilio\Values;
  */
 abstract class LogOptions {
     /**
-     * @param string $functionSid Function Sid.
+     * @param string $functionSid The SID of the function whose invocation produced
+     *                            the Log resources to read
      * @return ReadLogOptions Options builder
      */
     public static function read($functionSid = Values::NONE) {
@@ -27,16 +28,18 @@ abstract class LogOptions {
 
 class ReadLogOptions extends Options {
     /**
-     * @param string $functionSid Function Sid.
+     * @param string $functionSid The SID of the function whose invocation produced
+     *                            the Log resources to read
      */
     public function __construct($functionSid = Values::NONE) {
         $this->options['functionSid'] = $functionSid;
     }
 
     /**
-     * The unique SID identifier of the Function whose invocation produced this Log.
+     * The SID of the function whose invocation produced the Log resources to read.
      *
-     * @param string $functionSid Function Sid.
+     * @param string $functionSid The SID of the function whose invocation produced
+     *                            the Log resources to read
      * @return $this Fluent Builder
      */
     public function setFunctionSid($functionSid) {

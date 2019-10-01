@@ -28,8 +28,9 @@ class FunctionContext extends InstanceContext {
      * Initialize the FunctionContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $sid Function Sid.
+     * @param string $serviceSid The SID of the Service to fetch the Function
+     *                           resource from
+     * @param string $sid The SID of the Function resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\FunctionContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {
@@ -77,7 +78,7 @@ class FunctionContext extends InstanceContext {
     /**
      * Update the FunctionInstance
      *
-     * @param string $friendlyName A human-readable description of this Function.
+     * @param string $friendlyName A string to describe the Function resource
      * @return FunctionInstance Updated FunctionInstance
      * @throws TwilioException When an HTTP error occurs.
      */

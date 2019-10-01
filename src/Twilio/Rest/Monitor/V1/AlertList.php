@@ -127,7 +127,7 @@ class AlertList extends ListResource {
     /**
      * Constructs a AlertContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this Alert.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Monitor\V1\AlertContext
      */
     public function getContext($sid) {

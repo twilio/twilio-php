@@ -22,9 +22,11 @@ class DeploymentContext extends InstanceContext {
      * Initialize the DeploymentContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $environmentSid Environment Sid.
-     * @param string $sid Deployment Sid.
+     * @param string $serviceSid The SID of the Service to fetch the Deployment
+     *                           resource from
+     * @param string $environmentSid The SID of the environment used by the
+     *                               Deployment to fetch
+     * @param string $sid The SID that identifies the Deployment resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentContext
      */
     public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {
