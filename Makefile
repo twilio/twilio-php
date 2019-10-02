@@ -10,24 +10,18 @@ PHPVERSION = $(shell php -r 'echo PHP_VERSION;')
 all: test
 
 clean:
-	@rm -rf venv vendor composer.lock
+	@rm -rf docs venv vendor composer.lock
 
 install: clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
-	$(COMPOSER) config platform.php $(PHPVERSION)
 	$(COMPOSER) install
 
 vendor: install
 
-# if these fail, you may need to install the helper library
 test: install
-	$(COMPOSER) require --dev phpunit/phpunit
 	@PATH=vendor/bin:$(PATH) phpunit --strict-coverage --disallow-test-output --colors --configuration tests/phpunit.xml
 
-docs-install:
-	composer require --dev apigen/apigen
-
-docs: docs-install
+docs:
 	vendor/bin/apigen generate --source src -d docs/api --exclude="autoload.php" --template-theme bootstrap --main Twilio
 
 authors:
@@ -59,4 +53,4 @@ docker-dev-clean:
 docker-dev-test:
 	docker exec -t twilio_php${VERSION} /bin/bash -c 'make all'
 
-.PHONY: all clean test docs docs-install test-install authors docker-dev-build docker-dev-clean docker-dev-test
+.PHONY: all clean install test docs authors docker-dev-build docker-dev-clean docker-dev-test
