@@ -56,8 +56,7 @@ class RecordingSettingsContext extends InstanceContext {
     /**
      * Create a new RecordingSettingsInstance
      *
-     * @param string $friendlyName Friendly name of the configuration to be shown
-     *                             in the console
+     * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
      * @return RecordingSettingsInstance Newly created RecordingSettingsInstance
      * @throws TwilioException When an HTTP error occurs.

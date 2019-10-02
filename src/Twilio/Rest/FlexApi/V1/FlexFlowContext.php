@@ -21,7 +21,7 @@ class FlexFlowContext extends InstanceContext {
      * Initialize the FlexFlowContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The unique ID of the FlexFlow
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext
      */
     public function __construct(Version $version, $sid) {

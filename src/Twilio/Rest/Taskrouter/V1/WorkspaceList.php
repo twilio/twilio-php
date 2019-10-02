@@ -126,7 +126,7 @@ class WorkspaceList extends ListResource {
     /**
      * Create a new WorkspaceInstance
      *
-     * @param string $friendlyName Human readable description of this workspace
+     * @param string $friendlyName A string to describe the Workspace resource
      * @param array|Options $options Optional Arguments
      * @return WorkspaceInstance Newly created WorkspaceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -156,7 +156,7 @@ class WorkspaceList extends ListResource {
     /**
      * Constructs a WorkspaceContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\WorkspaceContext
      */
     public function getContext($sid) {

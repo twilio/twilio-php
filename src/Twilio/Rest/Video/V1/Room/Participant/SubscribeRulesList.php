@@ -24,9 +24,9 @@ class SubscribeRulesList extends ListResource {
      * Construct the SubscribeRulesList
      *
      * @param Version $version Version that contains the resource
-     * @param string $roomSid The unique Room identifier for the Subscribe Rules
-     * @param string $participantSid The unique Participant identifier for the
-     *                               Subscribe Rules.
+     * @param string $roomSid The SID of the Room resource for the Subscribe Rules
+     * @param string $participantSid The SID of the Participant resource for the
+     *                               Subscribe Rules
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribeRulesList
      */
     public function __construct(Version $version, $roomSid, $participantSid) {

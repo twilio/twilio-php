@@ -44,8 +44,8 @@ class WorkerContext extends InstanceContext {
      * Initialize the WorkerContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $sid The sid
+     * @param string $workspaceSid The SID of the Workspace with the Worker to fetch
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkerContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {

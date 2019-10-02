@@ -18,7 +18,7 @@ use Twilio\Values;
 abstract class ServiceOptions {
     /**
      * @param bool $includeCredentials Whether to inject Account credentials into a
-     *                                 Function invocation context.
+     *                                 function invocation context
      * @return CreateServiceOptions Options builder
      */
     public static function create($includeCredentials = Values::NONE) {
@@ -27,8 +27,8 @@ abstract class ServiceOptions {
 
     /**
      * @param bool $includeCredentials Whether to inject Account credentials into a
-     *                                 Function invocation context.
-     * @param string $friendlyName A human-readable description of this Service.
+     *                                 function invocation context
+     * @param string $friendlyName A string to describe the Service resource
      * @return UpdateServiceOptions Options builder
      */
     public static function update($includeCredentials = Values::NONE, $friendlyName = Values::NONE) {
@@ -39,17 +39,17 @@ abstract class ServiceOptions {
 class CreateServiceOptions extends Options {
     /**
      * @param bool $includeCredentials Whether to inject Account credentials into a
-     *                                 Function invocation context.
+     *                                 function invocation context
      */
     public function __construct($includeCredentials = Values::NONE) {
         $this->options['includeCredentials'] = $includeCredentials;
     }
 
     /**
-     * A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional, default `false`.
+     * Whether to inject Account credentials into a function invocation context. The default value is `false`.
      *
      * @param bool $includeCredentials Whether to inject Account credentials into a
-     *                                 Function invocation context.
+     *                                 function invocation context
      * @return $this Fluent Builder
      */
     public function setIncludeCredentials($includeCredentials) {
@@ -76,8 +76,8 @@ class CreateServiceOptions extends Options {
 class UpdateServiceOptions extends Options {
     /**
      * @param bool $includeCredentials Whether to inject Account credentials into a
-     *                                 Function invocation context.
-     * @param string $friendlyName A human-readable description of this Service.
+     *                                 function invocation context
+     * @param string $friendlyName A string to describe the Service resource
      */
     public function __construct($includeCredentials = Values::NONE, $friendlyName = Values::NONE) {
         $this->options['includeCredentials'] = $includeCredentials;
@@ -85,10 +85,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * A boolean value that indicates whether to inject Account credentials into a Function invocation context. Optional.
+     * Whether to inject Account credentials into a function invocation context.
      *
      * @param bool $includeCredentials Whether to inject Account credentials into a
-     *                                 Function invocation context.
+     *                                 function invocation context
      * @return $this Fluent Builder
      */
     public function setIncludeCredentials($includeCredentials) {
@@ -97,9 +97,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * A human-readable description of this Service, fewer than 256 characters. Optional
+     * A descriptive string that you create to describe the Service resource. It can be up to 255 characters long.
      *
-     * @param string $friendlyName A human-readable description of this Service.
+     * @param string $friendlyName A string to describe the Service resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {

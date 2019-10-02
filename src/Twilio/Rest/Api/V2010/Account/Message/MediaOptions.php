@@ -14,11 +14,11 @@ use Twilio\Values;
 
 abstract class MediaOptions {
     /**
-     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
-     *                                  read
-     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
-     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
-     *                                 read
+     * @param string $dateCreatedBefore Only include media that was created on this
+     *                                  date
+     * @param string $dateCreated Only include media that was created on this date
+     * @param string $dateCreatedAfter Only include media that was created on this
+     *                                 date
      * @return ReadMediaOptions Options builder
      */
     public static function read($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
@@ -28,11 +28,11 @@ abstract class MediaOptions {
 
 class ReadMediaOptions extends Options {
     /**
-     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
-     *                                  read
-     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
-     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
-     *                                 read
+     * @param string $dateCreatedBefore Only include media that was created on this
+     *                                  date
+     * @param string $dateCreated Only include media that was created on this date
+     * @param string $dateCreatedAfter Only include media that was created on this
+     *                                 date
      */
     public function __construct($dateCreatedBefore = Values::NONE, $dateCreated = Values::NONE, $dateCreatedAfter = Values::NONE) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;
@@ -41,10 +41,10 @@ class ReadMediaOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
+     * Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
      *
-     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
-     *                                  read
+     * @param string $dateCreatedBefore Only include media that was created on this
+     *                                  date
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -53,9 +53,9 @@ class ReadMediaOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
+     * Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
      *
-     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreated Only include media that was created on this date
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -64,10 +64,10 @@ class ReadMediaOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality, such as `DateCreated<=YYYY-MM-DD` for media generated at or before midnight on a date, and `DateCreated>=YYYY-MM-DD` for media generated at or after midnight on a date.
+     * Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
      *
-     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
-     *                                 read
+     * @param string $dateCreatedAfter Only include media that was created on this
+     *                                 date
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {

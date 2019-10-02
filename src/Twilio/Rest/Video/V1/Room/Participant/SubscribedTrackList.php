@@ -18,9 +18,9 @@ class SubscribedTrackList extends ListResource {
      * Construct the SubscribedTrackList
      *
      * @param Version $version Version that contains the resource
-     * @param string $roomSid Unique Room identifier where this Track is published.
-     * @param string $participantSid Unique Participant identifier that subscribes
-     *                               to this Track.
+     * @param string $roomSid The SID of the room where the track is published
+     * @param string $participantSid The SID of the participant that subscribes to
+     *                               the track
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackList
      */
     public function __construct(Version $version, $roomSid, $participantSid) {
@@ -121,8 +121,7 @@ class SubscribedTrackList extends ListResource {
     /**
      * Constructs a SubscribedTrackContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext
      */
     public function getContext($sid) {

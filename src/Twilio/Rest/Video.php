@@ -95,8 +95,7 @@ class Video extends Domain {
     }
 
     /**
-     * @param string $sid The Composition Hook Sid that uniquely identifies the
-     *                    Composition Hook to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\CompositionHookContext
      */
     protected function contextCompositionHooks($sid) {
@@ -125,8 +124,7 @@ class Video extends Domain {
     }
 
     /**
-     * @param string $sid The Recording Sid that uniquely identifies the Recording
-     *                    to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\RecordingContext
      */
     protected function contextRecordings($sid) {
@@ -155,8 +153,7 @@ class Video extends Domain {
     }
 
     /**
-     * @param string $sid The Composition Sid that uniquely identifies the
-     *                    Composition to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\CompositionContext
      */
     protected function contextCompositions($sid) {
@@ -171,8 +168,7 @@ class Video extends Domain {
     }
 
     /**
-     * @param string $sid The Room Sid or name that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\RoomContext
      */
     protected function contextRooms($sid) {

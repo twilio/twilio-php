@@ -17,33 +17,32 @@ use Twilio\Values;
  */
 abstract class ServiceOptions {
     /**
-     * @param string $inboundRequestUrl A webhook request is made to the Inbound
-     *                                  Request URL when a message is received by
-     *                                  any phone number or shortcode associated to
-     *                                  your Messaging Service.
-     * @param string $inboundMethod The HTTP method used when making requests to
-     *                              the Inbound Request URL.
-     * @param string $fallbackUrl A request is made to the Fallback URL if an error
-     *                            occurs with retrieving or executing the TwiML
-     *                            from you Inbound Request URL.
-     * @param string $fallbackMethod The HTTP method used when requesting the
-     *                               Fallback URL.
-     * @param string $statusCallback A webhook request is made to the Status
-     *                               Callback to pass status updates about your
-     *                               messages.
-     * @param bool $stickySender Configuration to enable or disable Sticky Sender
-     *                           on your Service Instance.
-     * @param bool $mmsConverter Configuration to enable or disable MMS Converter
-     *                           on your Service Instance.
-     * @param bool $smartEncoding Configuration to enable or disable Smart Encoding.
-     * @param string $scanMessageContent The scan_message_content
-     * @param bool $fallbackToLongCode Configuration to enable or disable Fallback
-     *                                 to Long Code.
-     * @param bool $areaCodeGeomatch Configuration to enable or disable Area Code
-     *                               Geomatch.
-     * @param int $validityPeriod Configuration to set the validity period of all
-     *                            messages sent from your Service, in seconds.
-     * @param bool $synchronousValidation The synchronous_validation
+     * @param string $inboundRequestUrl The URL we call using inbound_method when a
+     *                                  message is received by any phone number or
+     *                                  short code in the Service
+     * @param string $inboundMethod The HTTP method we should use to call
+     *                              inbound_request_url
+     * @param string $fallbackUrl The URL that we call using fallback_method if an
+     *                            error occurs while retrieving or executing the
+     *                            TwiML from the Inbound Request URL
+     * @param string $fallbackMethod The HTTP method we should use to call
+     *                               fallback_url
+     * @param string $statusCallback The URL we should call to pass status updates
+     *                               about message delivery
+     * @param bool $stickySender Whether to enable Sticky Sender on the Service
+     *                           instance
+     * @param bool $mmsConverter Whether to enable the MMS Converter for messages
+     *                           sent through the Service instance
+     * @param bool $smartEncoding Whether to enable Encoding for messages sent
+     *                            through the Service instance
+     * @param string $scanMessageContent Reserved
+     * @param bool $fallbackToLongCode Whether to enable Fallback to Long Code for
+     *                                 messages sent through the Service instance
+     * @param bool $areaCodeGeomatch Whether to enable Area Code Geomatch on the
+     *                               Service Instance
+     * @param int $validityPeriod How long, in seconds, messages sent from the
+     *                            Service are valid
+     * @param bool $synchronousValidation Reserved
      * @return CreateServiceOptions Options builder
      */
     public static function create($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
@@ -51,20 +50,33 @@ abstract class ServiceOptions {
     }
 
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $inboundRequestUrl The inbound_request_url
-     * @param string $inboundMethod The inbound_method
-     * @param string $fallbackUrl The fallback_url
-     * @param string $fallbackMethod The fallback_method
-     * @param string $statusCallback The status_callback
-     * @param bool $stickySender The sticky_sender
-     * @param bool $mmsConverter The mms_converter
-     * @param bool $smartEncoding The smart_encoding
-     * @param string $scanMessageContent The scan_message_content
-     * @param bool $fallbackToLongCode The fallback_to_long_code
-     * @param bool $areaCodeGeomatch The area_code_geomatch
-     * @param int $validityPeriod The validity_period
-     * @param bool $synchronousValidation The synchronous_validation
+     * @param string $friendlyName A string to describe the resource
+     * @param string $inboundRequestUrl The URL we call using inbound_method when a
+     *                                  message is received by any phone number or
+     *                                  short code in the Service
+     * @param string $inboundMethod The HTTP method we should use to call
+     *                              inbound_request_url
+     * @param string $fallbackUrl The URL that we call using fallback_method if an
+     *                            error occurs while retrieving or executing the
+     *                            TwiML from the Inbound Request URL
+     * @param string $fallbackMethod The HTTP method we should use to call
+     *                               fallback_url
+     * @param string $statusCallback The URL we should call to pass status updates
+     *                               about message delivery
+     * @param bool $stickySender Whether to enable Sticky Sender on the Service
+     *                           instance
+     * @param bool $mmsConverter Whether to enable the MMS Converter for messages
+     *                           sent through the Service instance
+     * @param bool $smartEncoding Whether to enable Encoding for messages sent
+     *                            through the Service instance
+     * @param string $scanMessageContent Reserved
+     * @param bool $fallbackToLongCode Whether to enable Fallback to Long Code for
+     *                                 messages sent through the Service instance
+     * @param bool $areaCodeGeomatch Whether to enable Area Code Geomatch on the
+     *                               Service Instance
+     * @param int $validityPeriod How long, in seconds, messages sent from the
+     *                            Service are valid
+     * @param bool $synchronousValidation Reserved
      * @return UpdateServiceOptions Options builder
      */
     public static function update($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
@@ -74,33 +86,32 @@ abstract class ServiceOptions {
 
 class CreateServiceOptions extends Options {
     /**
-     * @param string $inboundRequestUrl A webhook request is made to the Inbound
-     *                                  Request URL when a message is received by
-     *                                  any phone number or shortcode associated to
-     *                                  your Messaging Service.
-     * @param string $inboundMethod The HTTP method used when making requests to
-     *                              the Inbound Request URL.
-     * @param string $fallbackUrl A request is made to the Fallback URL if an error
-     *                            occurs with retrieving or executing the TwiML
-     *                            from you Inbound Request URL.
-     * @param string $fallbackMethod The HTTP method used when requesting the
-     *                               Fallback URL.
-     * @param string $statusCallback A webhook request is made to the Status
-     *                               Callback to pass status updates about your
-     *                               messages.
-     * @param bool $stickySender Configuration to enable or disable Sticky Sender
-     *                           on your Service Instance.
-     * @param bool $mmsConverter Configuration to enable or disable MMS Converter
-     *                           on your Service Instance.
-     * @param bool $smartEncoding Configuration to enable or disable Smart Encoding.
-     * @param string $scanMessageContent The scan_message_content
-     * @param bool $fallbackToLongCode Configuration to enable or disable Fallback
-     *                                 to Long Code.
-     * @param bool $areaCodeGeomatch Configuration to enable or disable Area Code
-     *                               Geomatch.
-     * @param int $validityPeriod Configuration to set the validity period of all
-     *                            messages sent from your Service, in seconds.
-     * @param bool $synchronousValidation The synchronous_validation
+     * @param string $inboundRequestUrl The URL we call using inbound_method when a
+     *                                  message is received by any phone number or
+     *                                  short code in the Service
+     * @param string $inboundMethod The HTTP method we should use to call
+     *                              inbound_request_url
+     * @param string $fallbackUrl The URL that we call using fallback_method if an
+     *                            error occurs while retrieving or executing the
+     *                            TwiML from the Inbound Request URL
+     * @param string $fallbackMethod The HTTP method we should use to call
+     *                               fallback_url
+     * @param string $statusCallback The URL we should call to pass status updates
+     *                               about message delivery
+     * @param bool $stickySender Whether to enable Sticky Sender on the Service
+     *                           instance
+     * @param bool $mmsConverter Whether to enable the MMS Converter for messages
+     *                           sent through the Service instance
+     * @param bool $smartEncoding Whether to enable Encoding for messages sent
+     *                            through the Service instance
+     * @param string $scanMessageContent Reserved
+     * @param bool $fallbackToLongCode Whether to enable Fallback to Long Code for
+     *                                 messages sent through the Service instance
+     * @param bool $areaCodeGeomatch Whether to enable Area Code Geomatch on the
+     *                               Service Instance
+     * @param int $validityPeriod How long, in seconds, messages sent from the
+     *                            Service are valid
+     * @param bool $synchronousValidation Reserved
      */
     public function __construct($inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
         $this->options['inboundRequestUrl'] = $inboundRequestUrl;
@@ -119,12 +130,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * A [webhook request](https://www.twilio.com/docs/api/twiml/sms/twilio_request) is made to the Inbound Request URL when a message is received by any phone number or shortcode associated to your Messaging Service. Set to `null` to disable inbound messaging.
+     * The URL we should call using `inbound_method` when a message is received by any phone number or short code in the Service. When this property is `null`, receiving inbound messages is disabled.
      *
-     * @param string $inboundRequestUrl A webhook request is made to the Inbound
-     *                                  Request URL when a message is received by
-     *                                  any phone number or shortcode associated to
-     *                                  your Messaging Service.
+     * @param string $inboundRequestUrl The URL we call using inbound_method when a
+     *                                  message is received by any phone number or
+     *                                  short code in the Service
      * @return $this Fluent Builder
      */
     public function setInboundRequestUrl($inboundRequestUrl) {
@@ -133,10 +143,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The HTTP method used when making requests to the Inbound Request URL. Either `GET` or `POST`. Default value is `POST`.
+     * The HTTP method we should use to call `inbound_request_url`. Can be `GET` or `POST` and the default is `POST`.
      *
-     * @param string $inboundMethod The HTTP method used when making requests to
-     *                              the Inbound Request URL.
+     * @param string $inboundMethod The HTTP method we should use to call
+     *                              inbound_request_url
      * @return $this Fluent Builder
      */
     public function setInboundMethod($inboundMethod) {
@@ -145,11 +155,11 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * A request is made to the Fallback URL if an error occurs with retrieving or executing the TwiML from you Inbound Request URL.
+     * The URL that we should call using `fallback_method` if an error occurs while retrieving or executing the TwiML from the Inbound Request URL.
      *
-     * @param string $fallbackUrl A request is made to the Fallback URL if an error
-     *                            occurs with retrieving or executing the TwiML
-     *                            from you Inbound Request URL.
+     * @param string $fallbackUrl The URL that we call using fallback_method if an
+     *                            error occurs while retrieving or executing the
+     *                            TwiML from the Inbound Request URL
      * @return $this Fluent Builder
      */
     public function setFallbackUrl($fallbackUrl) {
@@ -158,10 +168,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The HTTP method used when requesting the Fallback URL. Either `GET` or `POST`. Default value is `POST`.
+     * The HTTP method we should use to call `fallback_url`. Can be: `GET` or `POST`.
      *
-     * @param string $fallbackMethod The HTTP method used when requesting the
-     *                               Fallback URL.
+     * @param string $fallbackMethod The HTTP method we should use to call
+     *                               fallback_url
      * @return $this Fluent Builder
      */
     public function setFallbackMethod($fallbackMethod) {
@@ -170,11 +180,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * A webhook request is made to the Status Callback to pass [status updates](https://www.twilio.com/docs/api/rest/message#sms-status-values) about your messages. These status updates let you know if your accepted message were successfully sent and delivered or if a [delivery related error](https://www.twilio.com/docs/api/rest/message#error-values) may have occurred.
+     * The URL we should call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery.
      *
-     * @param string $statusCallback A webhook request is made to the Status
-     *                               Callback to pass status updates about your
-     *                               messages.
+     * @param string $statusCallback The URL we should call to pass status updates
+     *                               about message delivery
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -183,10 +192,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configuration to enable or disable Sticky Sender on your Service Instance. Possible values are `true` and `false`. Default value is `true`.
+     * Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance.
      *
-     * @param bool $stickySender Configuration to enable or disable Sticky Sender
-     *                           on your Service Instance.
+     * @param bool $stickySender Whether to enable Sticky Sender on the Service
+     *                           instance
      * @return $this Fluent Builder
      */
     public function setStickySender($stickySender) {
@@ -195,10 +204,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configuration to enable or disable MMS Converter on your Service Instance. Possible values are `true` and `false`. Default value is `true`.
+     * Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance.
      *
-     * @param bool $mmsConverter Configuration to enable or disable MMS Converter
-     *                           on your Service Instance.
+     * @param bool $mmsConverter Whether to enable the MMS Converter for messages
+     *                           sent through the Service instance
      * @return $this Fluent Builder
      */
     public function setMmsConverter($mmsConverter) {
@@ -207,9 +216,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configuration to enable or disable [Smart Encoding](https://www.twilio.com/docs/api/messaging/services-and-copilot#smart-encoding). Possible values are `true` and `false`. Default value is `true`.
+     * Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance.
      *
-     * @param bool $smartEncoding Configuration to enable or disable Smart Encoding.
+     * @param bool $smartEncoding Whether to enable Encoding for messages sent
+     *                            through the Service instance
      * @return $this Fluent Builder
      */
     public function setSmartEncoding($smartEncoding) {
@@ -218,9 +228,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The scan_message_content
+     * Reserved.
      *
-     * @param string $scanMessageContent The scan_message_content
+     * @param string $scanMessageContent Reserved
      * @return $this Fluent Builder
      */
     public function setScanMessageContent($scanMessageContent) {
@@ -229,10 +239,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configuration to enable or disable [Fallback to Long Code](https://www.twilio.com/docs/api/messaging/services-and-copilot#fallback-to-long-code). Possible values are `true` and `false`. Default value is `false`.
+     * Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance.
      *
-     * @param bool $fallbackToLongCode Configuration to enable or disable Fallback
-     *                                 to Long Code.
+     * @param bool $fallbackToLongCode Whether to enable Fallback to Long Code for
+     *                                 messages sent through the Service instance
      * @return $this Fluent Builder
      */
     public function setFallbackToLongCode($fallbackToLongCode) {
@@ -241,10 +251,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configuration to enable or disable [Area Code Geomatch](https://www.twilio.com/docs/api/messaging/services-and-copilot#area-code-geomatch). Possible values are `true` and `false`. Default value is `false`.
+     * Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance.
      *
-     * @param bool $areaCodeGeomatch Configuration to enable or disable Area Code
-     *                               Geomatch.
+     * @param bool $areaCodeGeomatch Whether to enable Area Code Geomatch on the
+     *                               Service Instance
      * @return $this Fluent Builder
      */
     public function setAreaCodeGeomatch($areaCodeGeomatch) {
@@ -253,10 +263,10 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * Configuration to set the [validity period](https://www.twilio.com/docs/api/messaging/services-and-copilot#validity-period) of all messages sent from your Service, in seconds. Acceptable integers range from `1` to `14,400`.  Default value is `14,400`.
+     * How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      *
-     * @param int $validityPeriod Configuration to set the validity period of all
-     *                            messages sent from your Service, in seconds.
+     * @param int $validityPeriod How long, in seconds, messages sent from the
+     *                            Service are valid
      * @return $this Fluent Builder
      */
     public function setValidityPeriod($validityPeriod) {
@@ -265,9 +275,9 @@ class CreateServiceOptions extends Options {
     }
 
     /**
-     * The synchronous_validation
+     * Reserved.
      *
-     * @param bool $synchronousValidation The synchronous_validation
+     * @param bool $synchronousValidation Reserved
      * @return $this Fluent Builder
      */
     public function setSynchronousValidation($synchronousValidation) {
@@ -293,20 +303,33 @@ class CreateServiceOptions extends Options {
 
 class UpdateServiceOptions extends Options {
     /**
-     * @param string $friendlyName The friendly_name
-     * @param string $inboundRequestUrl The inbound_request_url
-     * @param string $inboundMethod The inbound_method
-     * @param string $fallbackUrl The fallback_url
-     * @param string $fallbackMethod The fallback_method
-     * @param string $statusCallback The status_callback
-     * @param bool $stickySender The sticky_sender
-     * @param bool $mmsConverter The mms_converter
-     * @param bool $smartEncoding The smart_encoding
-     * @param string $scanMessageContent The scan_message_content
-     * @param bool $fallbackToLongCode The fallback_to_long_code
-     * @param bool $areaCodeGeomatch The area_code_geomatch
-     * @param int $validityPeriod The validity_period
-     * @param bool $synchronousValidation The synchronous_validation
+     * @param string $friendlyName A string to describe the resource
+     * @param string $inboundRequestUrl The URL we call using inbound_method when a
+     *                                  message is received by any phone number or
+     *                                  short code in the Service
+     * @param string $inboundMethod The HTTP method we should use to call
+     *                              inbound_request_url
+     * @param string $fallbackUrl The URL that we call using fallback_method if an
+     *                            error occurs while retrieving or executing the
+     *                            TwiML from the Inbound Request URL
+     * @param string $fallbackMethod The HTTP method we should use to call
+     *                               fallback_url
+     * @param string $statusCallback The URL we should call to pass status updates
+     *                               about message delivery
+     * @param bool $stickySender Whether to enable Sticky Sender on the Service
+     *                           instance
+     * @param bool $mmsConverter Whether to enable the MMS Converter for messages
+     *                           sent through the Service instance
+     * @param bool $smartEncoding Whether to enable Encoding for messages sent
+     *                            through the Service instance
+     * @param string $scanMessageContent Reserved
+     * @param bool $fallbackToLongCode Whether to enable Fallback to Long Code for
+     *                                 messages sent through the Service instance
+     * @param bool $areaCodeGeomatch Whether to enable Area Code Geomatch on the
+     *                               Service Instance
+     * @param int $validityPeriod How long, in seconds, messages sent from the
+     *                            Service are valid
+     * @param bool $synchronousValidation Reserved
      */
     public function __construct($friendlyName = Values::NONE, $inboundRequestUrl = Values::NONE, $inboundMethod = Values::NONE, $fallbackUrl = Values::NONE, $fallbackMethod = Values::NONE, $statusCallback = Values::NONE, $stickySender = Values::NONE, $mmsConverter = Values::NONE, $smartEncoding = Values::NONE, $scanMessageContent = Values::NONE, $fallbackToLongCode = Values::NONE, $areaCodeGeomatch = Values::NONE, $validityPeriod = Values::NONE, $synchronousValidation = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
@@ -326,9 +349,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      *
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A string to describe the resource
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -337,9 +360,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The inbound_request_url
+     * The URL we should call using `inbound_method` when a message is received by any phone number or short code in the Service. When this property is `null`, receiving inbound messages is disabled.
      *
-     * @param string $inboundRequestUrl The inbound_request_url
+     * @param string $inboundRequestUrl The URL we call using inbound_method when a
+     *                                  message is received by any phone number or
+     *                                  short code in the Service
      * @return $this Fluent Builder
      */
     public function setInboundRequestUrl($inboundRequestUrl) {
@@ -348,9 +373,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The inbound_method
+     * The HTTP method we should use to call `inbound_request_url`. Can be `GET` or `POST` and the default is `POST`.
      *
-     * @param string $inboundMethod The inbound_method
+     * @param string $inboundMethod The HTTP method we should use to call
+     *                              inbound_request_url
      * @return $this Fluent Builder
      */
     public function setInboundMethod($inboundMethod) {
@@ -359,9 +385,11 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The fallback_url
+     * The URL that we should call using `fallback_method` if an error occurs while retrieving or executing the TwiML from the Inbound Request URL.
      *
-     * @param string $fallbackUrl The fallback_url
+     * @param string $fallbackUrl The URL that we call using fallback_method if an
+     *                            error occurs while retrieving or executing the
+     *                            TwiML from the Inbound Request URL
      * @return $this Fluent Builder
      */
     public function setFallbackUrl($fallbackUrl) {
@@ -370,9 +398,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The fallback_method
+     * The HTTP method we should use to call `fallback_url`. Can be: `GET` or `POST`.
      *
-     * @param string $fallbackMethod The fallback_method
+     * @param string $fallbackMethod The HTTP method we should use to call
+     *                               fallback_url
      * @return $this Fluent Builder
      */
     public function setFallbackMethod($fallbackMethod) {
@@ -381,9 +410,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The status_callback
+     * The URL we should call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery.
      *
-     * @param string $statusCallback The status_callback
+     * @param string $statusCallback The URL we should call to pass status updates
+     *                               about message delivery
      * @return $this Fluent Builder
      */
     public function setStatusCallback($statusCallback) {
@@ -392,9 +422,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The sticky_sender
+     * Whether to enable [Sticky Sender](https://www.twilio.com/docs/sms/services#sticky-sender) on the Service instance.
      *
-     * @param bool $stickySender The sticky_sender
+     * @param bool $stickySender Whether to enable Sticky Sender on the Service
+     *                           instance
      * @return $this Fluent Builder
      */
     public function setStickySender($stickySender) {
@@ -403,9 +434,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The mms_converter
+     * Whether to enable the [MMS Converter](https://www.twilio.com/docs/sms/services#mms-converter) for messages sent through the Service instance.
      *
-     * @param bool $mmsConverter The mms_converter
+     * @param bool $mmsConverter Whether to enable the MMS Converter for messages
+     *                           sent through the Service instance
      * @return $this Fluent Builder
      */
     public function setMmsConverter($mmsConverter) {
@@ -414,9 +446,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The smart_encoding
+     * Whether to enable [Smart Encoding](https://www.twilio.com/docs/sms/services#smart-encoding) for messages sent through the Service instance.
      *
-     * @param bool $smartEncoding The smart_encoding
+     * @param bool $smartEncoding Whether to enable Encoding for messages sent
+     *                            through the Service instance
      * @return $this Fluent Builder
      */
     public function setSmartEncoding($smartEncoding) {
@@ -425,9 +458,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The scan_message_content
+     * Reserved.
      *
-     * @param string $scanMessageContent The scan_message_content
+     * @param string $scanMessageContent Reserved
      * @return $this Fluent Builder
      */
     public function setScanMessageContent($scanMessageContent) {
@@ -436,9 +469,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The fallback_to_long_code
+     * Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/sms/services#fallback-to-long-code) for messages sent through the Service instance.
      *
-     * @param bool $fallbackToLongCode The fallback_to_long_code
+     * @param bool $fallbackToLongCode Whether to enable Fallback to Long Code for
+     *                                 messages sent through the Service instance
      * @return $this Fluent Builder
      */
     public function setFallbackToLongCode($fallbackToLongCode) {
@@ -447,9 +481,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The area_code_geomatch
+     * Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/sms/services#area-code-geomatch) on the Service Instance.
      *
-     * @param bool $areaCodeGeomatch The area_code_geomatch
+     * @param bool $areaCodeGeomatch Whether to enable Area Code Geomatch on the
+     *                               Service Instance
      * @return $this Fluent Builder
      */
     public function setAreaCodeGeomatch($areaCodeGeomatch) {
@@ -458,9 +493,10 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The validity_period
+     * How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      *
-     * @param int $validityPeriod The validity_period
+     * @param int $validityPeriod How long, in seconds, messages sent from the
+     *                            Service are valid
      * @return $this Fluent Builder
      */
     public function setValidityPeriod($validityPeriod) {
@@ -469,9 +505,9 @@ class UpdateServiceOptions extends Options {
     }
 
     /**
-     * The synchronous_validation
+     * Reserved.
      *
-     * @param bool $synchronousValidation The synchronous_validation
+     * @param bool $synchronousValidation Reserved
      * @return $this Fluent Builder
      */
     public function setSynchronousValidation($synchronousValidation) {

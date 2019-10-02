@@ -124,8 +124,9 @@ class ServiceList extends ListResource {
     /**
      * Create a new ServiceInstance
      *
-     * @param string $uniqueName A unique, addressable name of this Service.
-     * @param string $friendlyName A human-readable description of this Service.
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the Service resource
+     * @param string $friendlyName A string to describe the Service resource
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Newly created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -152,7 +153,7 @@ class ServiceList extends ListResource {
     /**
      * Constructs a ServiceContext
      *
-     * @param string $sid Serverless Service Sid or unique name.
+     * @param string $sid The SID of the Service resource to fetch
      * @return \Twilio\Rest\Serverless\V1\ServiceContext
      */
     public function getContext($sid) {

@@ -22,9 +22,11 @@ class LogContext extends InstanceContext {
      * Initialize the LogContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $environmentSid Environment Sid.
-     * @param string $sid Log Sid.
+     * @param string $serviceSid The SID of the Service to fetch the Log resource
+     *                           from
+     * @param string $environmentSid The SID of the environment with the Log
+     *                               resource to fetch
+     * @param string $sid The SID that identifies the Log resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogContext
      */
     public function __construct(Version $version, $serviceSid, $environmentSid, $sid) {

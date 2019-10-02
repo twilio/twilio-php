@@ -17,7 +17,7 @@ use Twilio\Values;
  */
 abstract class SubscribeRulesOptions {
     /**
-     * @param array $rules A JSON-encoded array of Subscribe Rules.
+     * @param array $rules A JSON-encoded array of subscribe rules
      * @return UpdateSubscribeRulesOptions Options builder
      */
     public static function update($rules = Values::NONE) {
@@ -27,16 +27,16 @@ abstract class SubscribeRulesOptions {
 
 class UpdateSubscribeRulesOptions extends Options {
     /**
-     * @param array $rules A JSON-encoded array of Subscribe Rules.
+     * @param array $rules A JSON-encoded array of subscribe rules
      */
     public function __construct($rules = Values::NONE) {
         $this->options['rules'] = $rules;
     }
 
     /**
-     * A JSON-encoded array of Subscribe Rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
+     * A JSON-encoded array of subscribe rules. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
      *
-     * @param array $rules A JSON-encoded array of Subscribe Rules.
+     * @param array $rules A JSON-encoded array of subscribe rules
      * @return $this Fluent Builder
      */
     public function setRules($rules) {

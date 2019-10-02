@@ -17,7 +17,7 @@ class WorkspaceRealTimeStatisticsList extends ListResource {
      * Construct the WorkspaceRealTimeStatisticsList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The SID of the Workspace
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid) {

@@ -14,9 +14,9 @@ use Twilio\Values;
 
 abstract class WorkerChannelOptions {
     /**
-     * @param int $capacity The total number of Tasks worker should handle for this
-     *                      TaskChannel type.
-     * @param bool $available Toggle the availability of the WorkerChannel.
+     * @param int $capacity The total number of Tasks that the Worker should handle
+     *                      for the TaskChannel type
+     * @param bool $available Whether the WorkerChannel is available
      * @return UpdateWorkerChannelOptions Options builder
      */
     public static function update($capacity = Values::NONE, $available = Values::NONE) {
@@ -26,9 +26,9 @@ abstract class WorkerChannelOptions {
 
 class UpdateWorkerChannelOptions extends Options {
     /**
-     * @param int $capacity The total number of Tasks worker should handle for this
-     *                      TaskChannel type.
-     * @param bool $available Toggle the availability of the WorkerChannel.
+     * @param int $capacity The total number of Tasks that the Worker should handle
+     *                      for the TaskChannel type
+     * @param bool $available Whether the WorkerChannel is available
      */
     public function __construct($capacity = Values::NONE, $available = Values::NONE) {
         $this->options['capacity'] = $capacity;
@@ -36,10 +36,10 @@ class UpdateWorkerChannelOptions extends Options {
     }
 
     /**
-     * The total number of Tasks worker should handle for this TaskChannel type. TaskRouter will only create reservations for Tasks of this TaskChannel type up to the capacity configured. If the capacity is 0, no new reservations will be created
+     * The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created.
      *
-     * @param int $capacity The total number of Tasks worker should handle for this
-     *                      TaskChannel type.
+     * @param int $capacity The total number of Tasks that the Worker should handle
+     *                      for the TaskChannel type
      * @return $this Fluent Builder
      */
     public function setCapacity($capacity) {
@@ -48,9 +48,9 @@ class UpdateWorkerChannelOptions extends Options {
     }
 
     /**
-     * Toggle the availability of the WorkerChannel. Set this to 'False' to make worker unavailable to receive any new Tasks of this TaskChannel type.
+     * Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type.
      *
-     * @param bool $available Toggle the availability of the WorkerChannel.
+     * @param bool $available Whether the WorkerChannel is available
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {

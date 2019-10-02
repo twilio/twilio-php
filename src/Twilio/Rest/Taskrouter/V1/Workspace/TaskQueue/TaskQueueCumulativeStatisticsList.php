@@ -17,8 +17,10 @@ class TaskQueueCumulativeStatisticsList extends ListResource {
      * Construct the TaskQueueCumulativeStatisticsList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $taskQueueSid The task_queue_sid
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             TaskQueue
+     * @param string $taskQueueSid The SID of the TaskQueue from which these
+     *                             statistics were calculated
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueCumulativeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid, $taskQueueSid) {

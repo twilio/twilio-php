@@ -24,7 +24,7 @@ class MessageList extends ListResource {
      * Construct the MessageList
      *
      * @param Version $version Version that contains the resource
-     * @param string $sessionSid The unique id of the Session for this message.
+     * @param string $sessionSid The SID of the Session for the message
      * @return \Twilio\Rest\Messaging\V1\Session\MessageList
      */
     public function __construct(Version $version, $sessionSid) {
@@ -153,8 +153,7 @@ class MessageList extends ListResource {
     /**
      * Constructs a MessageContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Session\MessageContext
      */
     public function getContext($sid) {

@@ -91,7 +91,7 @@ class FlexApi extends Domain {
     }
 
     /**
-     * @param string $sid The unique ID of the FlexFlow
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\FlexApi\V1\FlexFlowContext
      */
     protected function contextFlexFlow($sid) {
@@ -106,7 +106,8 @@ class FlexApi extends Domain {
     }
 
     /**
-     * @param string $sid Flex Chat Channel Sid
+     * @param string $sid The SID that identifies the Flex chat channel resource to
+     *                    fetch
      * @return \Twilio\Rest\FlexApi\V1\ChannelContext
      */
     protected function contextChannel($sid) {
@@ -121,7 +122,7 @@ class FlexApi extends Domain {
     }
 
     /**
-     * @param string $sid Flex Chat Channel Sid
+     * @param string $sid The SID of the WebChannel resource to fetch
      * @return \Twilio\Rest\FlexApi\V1\WebChannelContext
      */
     protected function contextWebChannel($sid) {

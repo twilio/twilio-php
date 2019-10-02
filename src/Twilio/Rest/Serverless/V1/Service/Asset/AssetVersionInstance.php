@@ -33,9 +33,11 @@ class AssetVersionInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $assetSid Asset Sid.
-     * @param string $sid Asset Version Sid.
+     * @param string $serviceSid The SID of the Service that the AssetVersion
+     *                           resource is associated with
+     * @param string $assetSid The SID of the Asset resource that is the parent of
+     *                         the asset version
+     * @param string $sid The SID that identifies the AssetVersion resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Asset\AssetVersionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $assetSid, $sid = null) {

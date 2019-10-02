@@ -133,8 +133,7 @@ class FaxList extends ListResource {
      * Create a new FaxInstance
      *
      * @param string $to The phone number to receive the fax
-     * @param string $mediaUrl The Twilio-hosted URL of the PDF that contains the
-     *                         fax
+     * @param string $mediaUrl The URL of the PDF that contains the fax
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Newly created FaxInstance
      * @throws TwilioException When an HTTP error occurs.

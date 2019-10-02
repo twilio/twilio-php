@@ -17,12 +17,13 @@ use Twilio\Values;
  */
 abstract class MessageOptions {
     /**
-     * @param string $author The identity of the message's author.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $body The contents of the message.
+     * @param string $author The identity of the message's author
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $body The message body
      * @return CreateMessageOptions Options builder
      */
     public static function create($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE) {
@@ -30,12 +31,13 @@ abstract class MessageOptions {
     }
 
     /**
-     * @param string $author The identity of the message's author.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $body The contents of the message.
+     * @param string $author The identity of the message's author
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $body The message body
      * @return UpdateMessageOptions Options builder
      */
     public static function update($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE) {
@@ -45,12 +47,13 @@ abstract class MessageOptions {
 
 class CreateMessageOptions extends Options {
     /**
-     * @param string $author The identity of the message's author.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $body The contents of the message.
+     * @param string $author The identity of the message's author
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $body The message body
      */
     public function __construct($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE) {
         $this->options['author'] = $author;
@@ -61,9 +64,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.
+     * The [identity](https://www.twilio.com/docs/chat/identity) of the message's author. Defaults to `system`.
      *
-     * @param string $author The identity of the message's author.
+     * @param string $author The identity of the message's author
      * @return $this Fluent Builder
      */
     public function setAuthor($author) {
@@ -72,10 +75,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.
+     * A JSON string that stores application-specific data.
      *
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
+     * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -84,9 +86,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The date that this resource was created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
      *
-     * @param \DateTime $dateCreated The date that this resource was created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -95,9 +98,10 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The date that this resource was last updated. `null` if the message has not been edited.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -106,9 +110,9 @@ class CreateMessageOptions extends Options {
     }
 
     /**
-     * The contents of the message.
+     * The message body.
      *
-     * @param string $body The contents of the message.
+     * @param string $body The message body
      * @return $this Fluent Builder
      */
     public function setBody($body) {
@@ -134,12 +138,13 @@ class CreateMessageOptions extends Options {
 
 class UpdateMessageOptions extends Options {
     /**
-     * @param string $author The identity of the message's author.
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
-     * @param string $body The contents of the message.
+     * @param string $author The identity of the message's author
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
+     * @param string $body The message body
      */
     public function __construct($author = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $body = Values::NONE) {
         $this->options['author'] = $author;
@@ -150,9 +155,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The [identity](https://www.twilio.com/docs/api/chat/guides/identity) of the message's author. Defaults to `system`.
+     * The [identity](https://www.twilio.com/docs/chat/identity) of the message's author. Defaults to `system`.
      *
-     * @param string $author The identity of the message's author.
+     * @param string $author The identity of the message's author
      * @return $this Fluent Builder
      */
     public function setAuthor($author) {
@@ -161,10 +166,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.
+     * A JSON string that stores application-specific data.
      *
-     * @param string $attributes A string metadata field you can use to store any
-     *                           data you wish.
+     * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -173,9 +177,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The date that this resource was created.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created.
      *
-     * @param \DateTime $dateCreated The date that this resource was created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -184,9 +189,10 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The date that this resource was last updated. `null` if the message has not been edited.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -195,9 +201,9 @@ class UpdateMessageOptions extends Options {
     }
 
     /**
-     * The contents of the message.
+     * The message body.
      *
-     * @param string $body The contents of the message.
+     * @param string $body The message body
      * @return $this Fluent Builder
      */
     public function setBody($body) {

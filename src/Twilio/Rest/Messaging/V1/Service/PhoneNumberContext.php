@@ -22,8 +22,8 @@ class PhoneNumberContext extends InstanceContext {
      * Initialize the PhoneNumberContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $serviceSid The service_sid
-     * @param string $sid The sid
+     * @param string $serviceSid The SID of the Service to fetch the resource from
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext
      */
     public function __construct(Version $version, $serviceSid, $sid) {

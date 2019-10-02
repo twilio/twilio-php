@@ -21,8 +21,10 @@ class FunctionVersionList extends ListResource {
      * Construct the FunctionVersionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $functionSid Function Sid.
+     * @param string $serviceSid The SID of the Service that the FunctionVersion
+     *                           resource is associated with
+     * @param string $functionSid The SID of the function that is the parent of the
+     *                            function version
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionList
      */
     public function __construct(Version $version, $serviceSid, $functionSid) {
@@ -123,7 +125,8 @@ class FunctionVersionList extends ListResource {
     /**
      * Constructs a FunctionVersionContext
      *
-     * @param string $sid Function Version Sid.
+     * @param string $sid The SID that identifies the FunctionVersion resource to
+     *                    fetch
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext
      */
     public function getContext($sid) {

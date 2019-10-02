@@ -22,7 +22,8 @@ class PhoneNumberList extends ListResource {
      * Construct the PhoneNumberList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid The 34 character unique sid of the Service.
+     * @param string $serviceSid The SID of the Service that the resource is
+     *                           associated with
      * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList
      */
     public function __construct(Version $version, $serviceSid) {
@@ -37,8 +38,8 @@ class PhoneNumberList extends ListResource {
     /**
      * Create a new PhoneNumberInstance
      *
-     * @param string $phoneNumberSid Phone Number SID for the Phone Number being
-     *                               added to the Service.
+     * @param string $phoneNumberSid The SID of the Phone Number being added to the
+     *                               Service
      * @return PhoneNumberInstance Newly created PhoneNumberInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -144,7 +145,7 @@ class PhoneNumberList extends ListResource {
     /**
      * Constructs a PhoneNumberContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext
      */
     public function getContext($sid) {

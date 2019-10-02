@@ -40,10 +40,8 @@ class ParticipantInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid A system-generated 34-character string that uniquely
-     *                        identifies.
-     * @param string $sid A system-generated 34-character string that uniquely
-     *                    identifies this Participant.
+     * @param string $roomSid The SID of the participant's room
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\Room\ParticipantInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $sid = null) {

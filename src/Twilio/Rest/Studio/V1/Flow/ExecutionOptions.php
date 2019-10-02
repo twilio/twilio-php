@@ -46,7 +46,7 @@ class ReadExecutionOptions extends Options {
     }
 
     /**
-     * Only show Execution resources starting on or after this [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      *
      * @param \DateTime $dateCreatedFrom Only show Executions that started on or
      *                                   after this ISO 8601 date-time
@@ -58,7 +58,7 @@ class ReadExecutionOptions extends Options {
     }
 
     /**
-     * Only show Execution resources starting before this [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
+     * Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`.
      *
      * @param \DateTime $dateCreatedTo Only show Executions that started before
      *                                 this ISO 8601 date-time

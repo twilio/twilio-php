@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2019-10-02] Version 5.36.1
+---------------------------
+**Library**
+- [PR #572](https://github.com/twilio/twilio-php/pull/572): Dependency Fix for PHPUnit. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Conversations**
+- Add media to Conversations Message resource
+
+**Supersim**
+- Add List endpoint to Sims resource for Super Sim Pilot
+
+
 [2019-09-18] Version 5.36.0
 ----------------------------
 **Library**

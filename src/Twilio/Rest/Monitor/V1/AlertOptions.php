@@ -14,9 +14,11 @@ use Twilio\Values;
 
 abstract class AlertOptions {
     /**
-     * @param string $logLevel Only show alerts for this log-level.
-     * @param \DateTime $startDate Only show Alerts on or after this date.
-     * @param \DateTime $endDate Only show Alerts on or before this date.
+     * @param string $logLevel Only show alerts for this log-level
+     * @param \DateTime $startDate Only include alerts that occurred on or after
+     *                             this date
+     * @param \DateTime $endDate Only include alerts that occurred on or before
+     *                           this date
      * @return ReadAlertOptions Options builder
      */
     public static function read($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
@@ -26,9 +28,11 @@ abstract class AlertOptions {
 
 class ReadAlertOptions extends Options {
     /**
-     * @param string $logLevel Only show alerts for this log-level.
-     * @param \DateTime $startDate Only show Alerts on or after this date.
-     * @param \DateTime $endDate Only show Alerts on or before this date.
+     * @param string $logLevel Only show alerts for this log-level
+     * @param \DateTime $startDate Only include alerts that occurred on or after
+     *                             this date
+     * @param \DateTime $endDate Only include alerts that occurred on or before
+     *                           this date
      */
     public function __construct($logLevel = Values::NONE, $startDate = Values::NONE, $endDate = Values::NONE) {
         $this->options['logLevel'] = $logLevel;
@@ -37,9 +41,9 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * Only show alerts for this log-level.  One of 'error', 'warning', 'notice', or 'debug'.
+     * Only show alerts for this log-level.  Can be: `error`, `warning`, `notice`, or `debug`.
      *
-     * @param string $logLevel Only show alerts for this log-level.
+     * @param string $logLevel Only show alerts for this log-level
      * @return $this Fluent Builder
      */
     public function setLogLevel($logLevel) {
@@ -48,9 +52,10 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * Only show Alerts on or after this date.  Useful in combination with `EndDate` to define a date-range of Alerts.  Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter. Queries for Alerts older than 30 days are not supported.
+     * Only include alerts that occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. Queries for alerts older than 30 days are not supported.
      *
-     * @param \DateTime $startDate Only show Alerts on or after this date.
+     * @param \DateTime $startDate Only include alerts that occurred on or after
+     *                             this date
      * @return $this Fluent Builder
      */
     public function setStartDate($startDate) {
@@ -59,9 +64,10 @@ class ReadAlertOptions extends Options {
     }
 
     /**
-     * Only show Alerts on or before this date.  Useful in combination with `StartDate` to define a date-range of Alerts.  Input is a [UTC ISO 8601 Timestamp](http://en.wikipedia.org/wiki/ISO_8601#UTC), but time of day is ignored by the filter. Queries for Alerts older than 30 days are not supported.
+     * Only include alerts that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`. Queries for alerts older than 30 days are not supported.
      *
-     * @param \DateTime $endDate Only show Alerts on or before this date.
+     * @param \DateTime $endDate Only include alerts that occurred on or before
+     *                           this date
      * @return $this Fluent Builder
      */
     public function setEndDate($endDate) {

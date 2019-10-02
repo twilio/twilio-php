@@ -41,8 +41,7 @@ class CompositionHookInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The Composition Hook Sid that uniquely identifies the
-     *                    Composition Hook to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\CompositionHookInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {
@@ -108,8 +107,7 @@ class CompositionHookInstance extends InstanceResource {
     /**
      * Update the CompositionHookInstance
      *
-     * @param string $friendlyName Friendly name of the Composition Hook to be
-     *                             shown in the console.
+     * @param string $friendlyName A unique string to describe the resource
      * @param array|Options $options Optional Arguments
      * @return CompositionHookInstance Updated CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.

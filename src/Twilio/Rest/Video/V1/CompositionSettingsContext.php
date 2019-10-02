@@ -56,8 +56,8 @@ class CompositionSettingsContext extends InstanceContext {
     /**
      * Create a new CompositionSettingsInstance
      *
-     * @param string $friendlyName Friendly name of the configuration to be shown
-     *                             in the console
+     * @param string $friendlyName A descriptive string that you create to describe
+     *                             the resource
      * @param array|Options $options Optional Arguments
      * @return CompositionSettingsInstance Newly created CompositionSettingsInstance
      * @throws TwilioException When an HTTP error occurs.

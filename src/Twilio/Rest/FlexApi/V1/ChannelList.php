@@ -121,10 +121,11 @@ class ChannelList extends ListResource {
     /**
      * Create a new ChannelInstance
      *
-     * @param string $flexFlowSid The unique ID of the FlexFlow
-     * @param string $identity Chat User identity
-     * @param string $chatUserFriendlyName Customer friendly name
-     * @param string $chatFriendlyName Chat channel friendly name
+     * @param string $flexFlowSid The SID of the FlexFlow
+     * @param string $identity The identity value that identifies the new
+     *                         resource's chat User
+     * @param string $chatUserFriendlyName The chat participant's friendly name
+     * @param string $chatFriendlyName The chat channel's friendly name
      * @param array|Options $options Optional Arguments
      * @return ChannelInstance Newly created ChannelInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -158,7 +159,8 @@ class ChannelList extends ListResource {
     /**
      * Constructs a ChannelContext
      *
-     * @param string $sid Flex Chat Channel Sid
+     * @param string $sid The SID that identifies the Flex chat channel resource to
+     *                    fetch
      * @return \Twilio\Rest\FlexApi\V1\ChannelContext
      */
     public function getContext($sid) {

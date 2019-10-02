@@ -17,9 +17,8 @@ use Twilio\Values;
  */
 abstract class VariableOptions {
     /**
-     * @param string $key A string by which this Variable can be referenced.
-     * @param string $value A string that contains the actual value of this
-     *                      Variable.
+     * @param string $key A string by which the Variable resource can be referenced
+     * @param string $value A string that contains the actual value of the variable
      * @return UpdateVariableOptions Options builder
      */
     public static function update($key = Values::NONE, $value = Values::NONE) {
@@ -29,9 +28,8 @@ abstract class VariableOptions {
 
 class UpdateVariableOptions extends Options {
     /**
-     * @param string $key A string by which this Variable can be referenced.
-     * @param string $value A string that contains the actual value of this
-     *                      Variable.
+     * @param string $key A string by which the Variable resource can be referenced
+     * @param string $value A string that contains the actual value of the variable
      */
     public function __construct($key = Values::NONE, $value = Values::NONE) {
         $this->options['key'] = $key;
@@ -39,9 +37,9 @@ class UpdateVariableOptions extends Options {
     }
 
     /**
-     * A string by which this Variable can be referenced, fewer than 128 characters. Optional.
+     * A string by which the Variable resource can be referenced. Must be less than 128 characters long.
      *
-     * @param string $key A string by which this Variable can be referenced.
+     * @param string $key A string by which the Variable resource can be referenced
      * @return $this Fluent Builder
      */
     public function setKey($key) {
@@ -50,10 +48,9 @@ class UpdateVariableOptions extends Options {
     }
 
     /**
-     * A string that contains the actual value of this Variable, less than 450 bytes. Optional.
+     * A string that contains the actual value of the variable. Must have less than 450 bytes.
      *
-     * @param string $value A string that contains the actual value of this
-     *                      Variable.
+     * @param string $value A string that contains the actual value of the variable
      * @return $this Fluent Builder
      */
     public function setValue($value) {

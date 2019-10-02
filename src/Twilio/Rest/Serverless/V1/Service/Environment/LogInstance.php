@@ -36,9 +36,11 @@ class LogInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $environmentSid Environment Sid.
-     * @param string $sid Log Sid.
+     * @param string $serviceSid The SID of the Service that the Log resource is
+     *                           associated with
+     * @param string $environmentSid The SID of the environment in which the log
+     *                               occurred
+     * @param string $sid The SID that identifies the Log resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\LogInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $environmentSid, $sid = null) {

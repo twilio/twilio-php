@@ -22,8 +22,9 @@ class DeploymentList extends ListResource {
      * Construct the DeploymentList
      *
      * @param Version $version Version that contains the resource
-     * @param string $serviceSid Service Sid.
-     * @param string $environmentSid Environment Sid.
+     * @param string $serviceSid The SID of the Service that the Deployment
+     *                           resource is associated with
+     * @param string $environmentSid The SID of the environment for the deployment
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentList
      */
     public function __construct(Version $version, $serviceSid, $environmentSid) {
@@ -124,7 +125,7 @@ class DeploymentList extends ListResource {
     /**
      * Create a new DeploymentInstance
      *
-     * @param string $buildSid Build Sid.
+     * @param string $buildSid The SID of the build for the deployment
      * @return DeploymentInstance Newly created DeploymentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -149,7 +150,7 @@ class DeploymentList extends ListResource {
     /**
      * Constructs a DeploymentContext
      *
-     * @param string $sid Deployment Sid.
+     * @param string $sid The SID that identifies the Deployment resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\DeploymentContext
      */
     public function getContext($sid) {

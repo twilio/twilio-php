@@ -20,7 +20,8 @@ class TaskQueuesStatisticsList extends ListResource {
      * Construct the TaskQueuesStatisticsList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The ID of the Workspace that owns this TaskQueue
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             TaskQueue
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList
      */
     public function __construct(Version $version, $workspaceSid) {

@@ -27,8 +27,8 @@ class TaskContext extends InstanceContext {
      * Initialize the TaskContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $sid The sid
+     * @param string $workspaceSid The SID of the Workspace with the Task to fetch
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext
      */
     public function __construct(Version $version, $workspaceSid, $sid) {

@@ -19,7 +19,8 @@ class ChannelContext extends InstanceContext {
      * Initialize the ChannelContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid Flex Chat Channel Sid
+     * @param string $sid The SID that identifies the Flex chat channel resource to
+     *                    fetch
      * @return \Twilio\Rest\FlexApi\V1\ChannelContext
      */
     public function __construct(Version $version, $sid) {

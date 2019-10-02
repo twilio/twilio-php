@@ -24,10 +24,11 @@ abstract class MessageOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
+     * @param string $mediaSid The Media Sid to be attached to the new Message.
      * @return CreateMessageOptions Options builder
      */
-    public static function create($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
-        return new CreateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes);
+    public static function create($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $mediaSid = Values::NONE) {
+        return new CreateMessageOptions($author, $body, $dateCreated, $dateUpdated, $attributes, $mediaSid);
     }
 
     /**
@@ -54,13 +55,15 @@ class CreateMessageOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes A string metadata field you can use to store any
      *                           data you wish.
+     * @param string $mediaSid The Media Sid to be attached to the new Message.
      */
-    public function __construct($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($author = Values::NONE, $body = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $mediaSid = Values::NONE) {
         $this->options['author'] = $author;
         $this->options['body'] = $body;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['mediaSid'] = $mediaSid;
     }
 
     /**
@@ -117,6 +120,17 @@ class CreateMessageOptions extends Options {
      */
     public function setAttributes($attributes) {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The Media Sid to be attached to the new Message.
+     *
+     * @param string $mediaSid The Media Sid to be attached to the new Message.
+     * @return $this Fluent Builder
+     */
+    public function setMediaSid($mediaSid) {
+        $this->options['mediaSid'] = $mediaSid;
         return $this;
     }
 

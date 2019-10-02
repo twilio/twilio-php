@@ -24,7 +24,7 @@ class ParticipantList extends ListResource {
      * Construct the ParticipantList
      *
      * @param Version $version Version that contains the resource
-     * @param string $sessionSid The unique id of the Session for this participant.
+     * @param string $sessionSid The SID of the Session for the participant
      * @return \Twilio\Rest\Messaging\V1\Session\ParticipantList
      */
     public function __construct(Version $version, $sessionSid) {
@@ -154,8 +154,7 @@ class ParticipantList extends ListResource {
     /**
      * Constructs a ParticipantContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Session\ParticipantContext
      */
     public function getContext($sid) {

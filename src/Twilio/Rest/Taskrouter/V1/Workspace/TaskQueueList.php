@@ -26,7 +26,8 @@ class TaskQueueList extends ListResource {
      * Construct the TaskQueueList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The ID of the Workspace that owns this TaskQueue
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             TaskQueue
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList
      */
     public function __construct(Version $version, $workspaceSid) {
@@ -134,7 +135,7 @@ class TaskQueueList extends ListResource {
     /**
      * Create a new TaskQueueInstance
      *
-     * @param string $friendlyName Human readable description of this TaskQueue
+     * @param string $friendlyName A string to describe the resource
      * @param array|Options $options Optional Arguments
      * @return TaskQueueInstance Newly created TaskQueueInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -175,7 +176,7 @@ class TaskQueueList extends ListResource {
     /**
      * Constructs a TaskQueueContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the resource to
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueContext
      */
     public function getContext($sid) {

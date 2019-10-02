@@ -32,11 +32,11 @@ class PublishedTrackInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $roomSid Unique Room identifier where this Track is published.
-     * @param string $participantSid Unique Participant identifier that publishes
-     *                               this Track.
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $roomSid The SID of the Room resource where the track is
+     *                        published
+     * @param string $participantSid The SID of the Participant resource with the
+     *                               published track
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\Room\Participant\PublishedTrackInstance
      */
     public function __construct(Version $version, array $payload, $roomSid, $participantSid, $sid = null) {

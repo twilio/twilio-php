@@ -24,7 +24,7 @@ class WebhookList extends ListResource {
      * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
-     * @param string $sessionSid The unique id of the Session for this webhook.
+     * @param string $sessionSid The SID of the Session for the webhook
      * @return \Twilio\Rest\Messaging\V1\Session\WebhookList
      */
     public function __construct(Version $version, $sessionSid) {
@@ -125,7 +125,7 @@ class WebhookList extends ListResource {
     /**
      * Create a new WebhookInstance
      *
-     * @param string $target The target of this webhook.
+     * @param string $target The target of the webhook
      * @param array|Options $options Optional Arguments
      * @return WebhookInstance Newly created WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -159,8 +159,7 @@ class WebhookList extends ListResource {
     /**
      * Constructs a WebhookContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
+     * @param string $sid The SID of the resource to fetch
      * @return \Twilio\Rest\Messaging\V1\Session\WebhookContext
      */
     public function getContext($sid) {

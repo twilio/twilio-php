@@ -132,8 +132,7 @@ class CompositionHookList extends ListResource {
     /**
      * Create a new CompositionHookInstance
      *
-     * @param string $friendlyName Friendly name of the Composition Hook to be
-     *                             shown in the console.
+     * @param string $friendlyName A unique string to describe the resource
      * @param array|Options $options Optional Arguments
      * @return CompositionHookInstance Newly created CompositionHookInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -167,8 +166,7 @@ class CompositionHookList extends ListResource {
     /**
      * Constructs a CompositionHookContext
      *
-     * @param string $sid The Composition Hook Sid that uniquely identifies the
-     *                    Composition Hook to fetch.
+     * @param string $sid The SID that identifies the resource to fetch
      * @return \Twilio\Rest\Video\V1\CompositionHookContext
      */
     public function getContext($sid) {

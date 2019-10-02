@@ -18,10 +18,10 @@ class WorkerChannelList extends ListResource {
      * Construct the WorkerChannelList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The unique ID of the Workspace that this
-     *                             WorkerChannel belongs to.
-     * @param string $workerSid The unique ID of the Worker that this WorkerChannel
-     *                          belongs to.
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             WorkerChannel
+     * @param string $workerSid The SID of the Worker that contains the
+     *                          WorkerChannel
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList
      */
     public function __construct(Version $version, $workspaceSid, $workerSid) {
@@ -122,7 +122,7 @@ class WorkerChannelList extends ListResource {
     /**
      * Constructs a WorkerChannelContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelContext
      */
     public function getContext($sid) {

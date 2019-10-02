@@ -132,7 +132,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * The business reason for this phone call that will appear in the terminating device's screen.
+     * The business reason for this phone call that will appear in the terminating device's screen. Max 50 characters.
      *
      * @param string $reason The business reason for this phone call
      * @return $this Fluent Builder
@@ -143,7 +143,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $applicationSid Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -154,7 +154,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $callerId Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -165,7 +165,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $fallbackMethod Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -176,7 +176,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $fallbackUrl Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -187,7 +187,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $machineDetection Refers to the Voice API Initiate Call
      *                                 parameter
@@ -199,7 +199,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param int $machineDetectionSilenceTimeout Refers to the Voice API Initiate
      *                                            Call parameter
@@ -211,7 +211,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param int $machineDetectionSpeechEndThreshold Refers to the Voice API
      *                                                Initiate Call parameter
@@ -223,7 +223,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param int $machineDetectionSpeechThreshold Refers to the Voice API Initiate
      *                                             Call parameter
@@ -235,7 +235,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param int $machineDetectionTimeout Refers to the Voice API Initiate Call
      *                                     parameter
@@ -247,7 +247,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $method Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -258,7 +258,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param bool $record Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -269,7 +269,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $recordingChannels Refers to the Voice API Initiate Call
      *                                  parameter
@@ -281,7 +281,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $recordingStatusCallback Refers to the Voice API Initiate Call
      *                                        parameter
@@ -293,7 +293,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $recordingStatusCallbackEvent Refers to the Voice API Initiate
      *                                             Call parameter
@@ -305,7 +305,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $recordingStatusCallbackMethod Refers to the Voice API
      *                                              Initiate Call parameter
@@ -317,7 +317,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $sendDigits Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -328,7 +328,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $sipAuthPassword Refers to the Voice API Initiate Call
      *                                parameter
@@ -340,7 +340,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $sipAuthUsername Refers to the Voice API Initiate Call
      *                                parameter
@@ -352,7 +352,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $statusCallback Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -363,7 +363,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $statusCallbackEvent Refers to the Voice API Initiate Call
      *                                    parameter
@@ -375,7 +375,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $statusCallbackMethod Refers to the Voice API Initiate Call
      *                                     parameter
@@ -387,7 +387,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param int $timeout Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -398,7 +398,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $trim Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder
@@ -409,7 +409,7 @@ class CreatePhoneCallOptions extends Options {
     }
 
     /**
-     * Refers to the parameter with the same name when initiating a call via Voice API (https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
+     * Refers to the parameter with the same name when [initiating a call via Voice API](https://www.twilio.com/docs/voice/api/call#create-a-call-resource)
      *
      * @param string $url Refers to the Voice API Initiate Call parameter
      * @return $this Fluent Builder

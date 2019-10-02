@@ -28,7 +28,8 @@ class WorkersRealTimeStatisticsInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             Workers
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {

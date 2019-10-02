@@ -17,8 +17,7 @@ class WorkersStatisticsList extends ListResource {
      * Construct the WorkersStatisticsList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The ID of the Workflow this worker is associated
-     *                             with
+     * @param string $workspaceSid The SID of the Workspace that contains the Worker
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsList
      */
     public function __construct(Version $version, $workspaceSid) {

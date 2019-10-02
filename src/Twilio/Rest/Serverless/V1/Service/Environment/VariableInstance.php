@@ -35,9 +35,11 @@ class VariableInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $environmentSid Environment Sid.
-     * @param string $sid Variable Sid.
+     * @param string $serviceSid The SID of the Service that the Variable resource
+     *                           is associated with
+     * @param string $environmentSid The SID of the environment in which the
+     *                               variable exists
+     * @param string $sid The SID of the Variable resource to fetch
      * @return \Twilio\Rest\Serverless\V1\Service\Environment\VariableInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $environmentSid, $sid = null) {

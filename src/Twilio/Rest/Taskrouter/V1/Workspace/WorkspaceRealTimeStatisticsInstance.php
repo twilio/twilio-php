@@ -33,7 +33,7 @@ class WorkspaceRealTimeStatisticsInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The workspace_sid
+     * @param string $workspaceSid The SID of the Workspace
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {

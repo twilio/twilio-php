@@ -33,9 +33,12 @@ class FunctionVersionInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $serviceSid Service Sid.
-     * @param string $functionSid Function Sid.
-     * @param string $sid Function Version Sid.
+     * @param string $serviceSid The SID of the Service that the FunctionVersion
+     *                           resource is associated with
+     * @param string $functionSid The SID of the function that is the parent of the
+     *                            function version
+     * @param string $sid The SID that identifies the FunctionVersion resource to
+     *                    fetch
      * @return \Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionInstance
      */
     public function __construct(Version $version, array $payload, $serviceSid, $functionSid, $sid = null) {

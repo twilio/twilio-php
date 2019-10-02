@@ -14,11 +14,12 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
-     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
-     *                                  read
-     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
-     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
-     *                                 read
+     * @param string $dateCreatedBefore Only include recordings that were created
+     *                                  on this date
+     * @param string $dateCreated Only include recordings that were created on this
+     *                            date
+     * @param string $dateCreatedAfter Only include recordings that were created on
+     *                                 this date
      * @param string $callSid The Call SID of the resources to read
      * @param string $conferenceSid Read by unique Conference SID for the recording
      * @return ReadRecordingOptions Options builder
@@ -30,11 +31,12 @@ abstract class RecordingOptions {
 
 class ReadRecordingOptions extends Options {
     /**
-     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
-     *                                  read
-     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
-     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
-     *                                 read
+     * @param string $dateCreatedBefore Only include recordings that were created
+     *                                  on this date
+     * @param string $dateCreated Only include recordings that were created on this
+     *                            date
+     * @param string $dateCreatedAfter Only include recordings that were created on
+     *                                 this date
      * @param string $callSid The Call SID of the resources to read
      * @param string $conferenceSid Read by unique Conference SID for the recording
      */
@@ -47,10 +49,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
      *
-     * @param string $dateCreatedBefore The `YYYY-MM-DD` value of the resources to
-     *                                  read
+     * @param string $dateCreatedBefore Only include recordings that were created
+     *                                  on this date
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -59,9 +61,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
      *
-     * @param string $dateCreated The `YYYY-MM-DD` value of the resources to read
+     * @param string $dateCreated Only include recordings that were created on this
+     *                            date
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -70,10 +73,10 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+     * Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
      *
-     * @param string $dateCreatedAfter The `YYYY-MM-DD` value of the resources to
-     *                                 read
+     * @param string $dateCreatedAfter Only include recordings that were created on
+     *                                 this date
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {

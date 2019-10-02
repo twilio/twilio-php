@@ -48,7 +48,7 @@ class CreatePhoneNumberOptions extends Options {
     }
 
     /**
-     * The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incoming-phone-numbers) resource that represents the Twilio Number you would like to assign to your Proxy Service.
+     * The SID of a Twilio [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the Twilio Number you would like to assign to your Proxy Service.
      *
      * @param string $sid The SID of a Twilio IncomingPhoneNumber resource
      * @return $this Fluent Builder

@@ -17,15 +17,15 @@ use Twilio\Values;
  */
 abstract class ParticipantOptions {
     /**
-     * @param string $identity A unique string identifier for the session
-     *                         participant as Chat User.
-     * @param string $userAddress The address of the participant's device.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $identity The string that identifies the resource's User
+     * @param string $userAddress The address of the participant's device
+     * @param string $attributes A JSON string that stores application-specific data
      * @param string $twilioAddress The address of the Twilio phone number that the
-     *                              participant is in contact with.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     *                              participant is in contact with
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return CreateParticipantOptions Options builder
      */
     public static function create($identity = Values::NONE, $userAddress = Values::NONE, $attributes = Values::NONE, $twilioAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
@@ -33,10 +33,11 @@ abstract class ParticipantOptions {
     }
 
     /**
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return UpdateParticipantOptions Options builder
      */
     public static function update($attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
@@ -46,15 +47,15 @@ abstract class ParticipantOptions {
 
 class CreateParticipantOptions extends Options {
     /**
-     * @param string $identity A unique string identifier for the session
-     *                         participant as Chat User.
-     * @param string $userAddress The address of the participant's device.
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $identity The string that identifies the resource's User
+     * @param string $userAddress The address of the participant's device
+     * @param string $attributes A JSON string that stores application-specific data
      * @param string $twilioAddress The address of the Twilio phone number that the
-     *                              participant is in contact with.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     *                              participant is in contact with
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      */
     public function __construct($identity = Values::NONE, $userAddress = Values::NONE, $attributes = Values::NONE, $twilioAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['identity'] = $identity;
@@ -66,10 +67,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * A unique string identifier for the session participant as [Chat User](https://www.twilio.com/docs/api/chat/rest/users). This parameter is non-null if (and only if) the participant is using the Programmable Chat SDK to communicate.
+     * The application-defined string that uniquely identifies the [Chat User](https://www.twilio.com/docs/chat/rest/user-resource) as the session participant. This parameter is null unless the participant is using the Programmable Chat SDK to communicate.
      *
-     * @param string $identity A unique string identifier for the session
-     *                         participant as Chat User.
+     * @param string $identity The string that identifies the resource's User
      * @return $this Fluent Builder
      */
     public function setIdentity($identity) {
@@ -78,9 +78,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Twilio Address, this determines a participant uniquely. This field (with twilio_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
+     * The address of the participant's device. Can be a phone number or Messenger ID. Together with the Twilio Address, this determines a participant uniquely. This field (with twilio_address) is null when the participant is interacting from a Chat endpoint (see the `identity` field).
      *
-     * @param string $userAddress The address of the participant's device.
+     * @param string $userAddress The address of the participant's device
      * @return $this Fluent Builder
      */
     public function setUserAddress($userAddress) {
@@ -89,10 +89,9 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * A JSON string that stores application-specific data.
      *
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -101,10 +100,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with user_address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
+     * The address of the Twilio phone number, WhatsApp number, or Messenger Page ID that the participant is in contact with. This field, together with user_address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
      *
      * @param string $twilioAddress The address of the Twilio phone number that the
-     *                              participant is in contact with.
+     *                              participant is in contact with
      * @return $this Fluent Builder
      */
     public function setTwilioAddress($twilioAddress) {
@@ -113,9 +112,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The date that this resource was created. This is most often useful when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. This is used when importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
      *
-     * @param \DateTime $dateCreated The date that this resource was created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -124,9 +124,10 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The date that this resource was last updated. This is most often provided when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated. This is used when importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
      *
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {
@@ -152,10 +153,11 @@ class CreateParticipantOptions extends Options {
 
 class UpdateParticipantOptions extends Options {
     /**
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
-     * @param \DateTime $dateCreated The date that this resource was created.
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param string $attributes A JSON string that stores application-specific data
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      */
     public function __construct($attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE) {
         $this->options['attributes'] = $attributes;
@@ -164,10 +166,9 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+     * A JSON string that stores application-specific data.
      *
-     * @param string $attributes An optional string metadata field you can use to
-     *                           store any data you wish.
+     * @param string $attributes A JSON string that stores application-specific data
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -176,9 +177,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The date that this resource was created. This is useful when bulk-importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was created. This is used when importing messages from another system, as the provided value will be trusted and displayed on SDK clients.
      *
-     * @param \DateTime $dateCreated The date that this resource was created.
+     * @param \DateTime $dateCreated The ISO 8601 date and time in GMT when the
+     *                               resource was created
      * @return $this Fluent Builder
      */
     public function setDateCreated($dateCreated) {
@@ -187,9 +189,10 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * The date that this resource was last updated.
+     * The date, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, to assign to the resource as the date it was last updated.
      *
-     * @param \DateTime $dateUpdated The date that this resource was last updated.
+     * @param \DateTime $dateUpdated The ISO 8601 date and time in GMT when the
+     *                               resource was updated
      * @return $this Fluent Builder
      */
     public function setDateUpdated($dateUpdated) {

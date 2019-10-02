@@ -14,15 +14,16 @@ use Twilio\Values;
 
 abstract class RecordingOptions {
     /**
-     * @param string $status Only show Recordings with the given status.
-     * @param string $sourceSid Only show the Recordings with the given source Sid.
-     * @param string $groupingSid Only show Recordings that have this GroupingSid.
-     * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
-     *                                    after this ISO8601 date-time with
-     *                                    timezone.
-     * @param \DateTime $dateCreatedBefore Only show Recordings that started before
-     *                                     this ISO8601 date-time with timezone.
-     * @param string $mediaType Only show Recordings that have this media type.
+     * @param string $status Read only the recordings that have this status
+     * @param string $sourceSid Read only the recordings that have this source_sid
+     * @param string $groupingSid Read only recordings that have this grouping_sid
+     * @param \DateTime $dateCreatedAfter Read only recordings that started on or
+     *                                    after this [ISO
+     *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+     * @param \DateTime $dateCreatedBefore Read only recordings that started before
+     *                                     this [ISO
+     *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+     * @param string $mediaType Read only recordings that have this media type
      * @return ReadRecordingOptions Options builder
      */
     public static function read($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE) {
@@ -32,15 +33,16 @@ abstract class RecordingOptions {
 
 class ReadRecordingOptions extends Options {
     /**
-     * @param string $status Only show Recordings with the given status.
-     * @param string $sourceSid Only show the Recordings with the given source Sid.
-     * @param string $groupingSid Only show Recordings that have this GroupingSid.
-     * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
-     *                                    after this ISO8601 date-time with
-     *                                    timezone.
-     * @param \DateTime $dateCreatedBefore Only show Recordings that started before
-     *                                     this ISO8601 date-time with timezone.
-     * @param string $mediaType Only show Recordings that have this media type.
+     * @param string $status Read only the recordings that have this status
+     * @param string $sourceSid Read only the recordings that have this source_sid
+     * @param string $groupingSid Read only recordings that have this grouping_sid
+     * @param \DateTime $dateCreatedAfter Read only recordings that started on or
+     *                                    after this [ISO
+     *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+     * @param \DateTime $dateCreatedBefore Read only recordings that started before
+     *                                     this [ISO
+     *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
+     * @param string $mediaType Read only recordings that have this media type
      */
     public function __construct($status = Values::NONE, $sourceSid = Values::NONE, $groupingSid = Values::NONE, $dateCreatedAfter = Values::NONE, $dateCreatedBefore = Values::NONE, $mediaType = Values::NONE) {
         $this->options['status'] = $status;
@@ -52,9 +54,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings with the given status.
+     * Read only the recordings that have this status. Can be: `processing`, `completed`, or `deleted`.
      *
-     * @param string $status Only show Recordings with the given status.
+     * @param string $status Read only the recordings that have this status
      * @return $this Fluent Builder
      */
     public function setStatus($status) {
@@ -63,9 +65,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show the Recordings with the given source Sid (you can use this to filter Recordings by `TrackSid` for Video Room Recordings.
+     * Read only the recordings that have this `source_sid`.
      *
-     * @param string $sourceSid Only show the Recordings with the given source Sid.
+     * @param string $sourceSid Read only the recordings that have this source_sid
      * @return $this Fluent Builder
      */
     public function setSourceSid($sourceSid) {
@@ -74,9 +76,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings that have this GroupingSid, which may include a ParticipantSid and/or a RoomSid.
+     * Read only recordings with this `grouping_sid`, which may include a `participant_sid` and/or a `room_sid`.
      *
-     * @param string $groupingSid Only show Recordings that have this GroupingSid.
+     * @param string $groupingSid Read only recordings that have this grouping_sid
      * @return $this Fluent Builder
      */
     public function setGroupingSid($groupingSid) {
@@ -85,11 +87,11 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings that started on or after this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
+     * Read only recordings that started on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone.
      *
-     * @param \DateTime $dateCreatedAfter Only show Recordings that started on or
-     *                                    after this ISO8601 date-time with
-     *                                    timezone.
+     * @param \DateTime $dateCreatedAfter Read only recordings that started on or
+     *                                    after this [ISO
+     *                                    8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
     public function setDateCreatedAfter($dateCreatedAfter) {
@@ -98,10 +100,11 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings that started before this ISO8601 date-time with timezone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
+     * Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone, given as `YYYY-MM-DDThh:mm:ss+|-hh:mm` or `YYYY-MM-DDThh:mm:ssZ`.
      *
-     * @param \DateTime $dateCreatedBefore Only show Recordings that started before
-     *                                     this ISO8601 date-time with timezone.
+     * @param \DateTime $dateCreatedBefore Read only recordings that started before
+     *                                     this [ISO
+     *                                     8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
      * @return $this Fluent Builder
      */
     public function setDateCreatedBefore($dateCreatedBefore) {
@@ -110,9 +113,9 @@ class ReadRecordingOptions extends Options {
     }
 
     /**
-     * Only show Recordings that have this media type. Can be either `audio` or `video`.
+     * Read only recordings that have this media type. Can be either `audio` or `video`.
      *
-     * @param string $mediaType Only show Recordings that have this media type.
+     * @param string $mediaType Read only recordings that have this media type
      * @return $this Fluent Builder
      */
     public function setMediaType($mediaType) {

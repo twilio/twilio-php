@@ -17,8 +17,10 @@ class WorkerStatisticsList extends ListResource {
      * Construct the WorkerStatisticsList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workerSid The worker_sid
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             WorkerChannel
+     * @param string $workerSid The SID of the Worker that contains the
+     *                          WorkerChannel
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsList
      */
     public function __construct(Version $version, $workspaceSid, $workerSid) {

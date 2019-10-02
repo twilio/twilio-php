@@ -14,18 +14,17 @@ use Twilio\Values;
 
 abstract class WorkerOptions {
     /**
-     * @param string $activityName Filter by workers that are in a particular
-     *                             Activity by Friendly Name
-     * @param string $activitySid Filter by workers that are in a particular
-     *                            Activity by SID
-     * @param string $available Filter by workers that are available or unavailable.
-     * @param string $friendlyName Filter by a worker's friendly name
-     * @param string $targetWorkersExpression Filter by workers that would match an
-     *                                        expression on a TaskQueue.
-     * @param string $taskQueueName Filter by workers that are eligible for a
-     *                              TaskQueue by Friendly Name
-     * @param string $taskQueueSid Filter by workers that are eligible for a
-     *                             TaskQueue by SID
+     * @param string $activityName The activity_name of the Worker resources to read
+     * @param string $activitySid The activity_sid of the Worker resources to read
+     * @param string $available Whether to return Worker resources that are
+     *                          available or unavailable
+     * @param string $friendlyName The friendly_name of the Worker resources to read
+     * @param string $targetWorkersExpression Filter by Workers that would match an
+     *                                        expression on a TaskQueue
+     * @param string $taskQueueName The friendly_name of the TaskQueue that the
+     *                              Workers to read are eligible for
+     * @param string $taskQueueSid The SID of the TaskQueue that the Workers to
+     *                             read are eligible for
      * @return ReadWorkerOptions Options builder
      */
     public static function read($activityName = Values::NONE, $activitySid = Values::NONE, $available = Values::NONE, $friendlyName = Values::NONE, $targetWorkersExpression = Values::NONE, $taskQueueName = Values::NONE, $taskQueueSid = Values::NONE) {
@@ -33,9 +32,9 @@ abstract class WorkerOptions {
     }
 
     /**
-     * @param string $activitySid A valid Activity describing the worker's initial
-     *                            state.
-     * @param string $attributes JSON object describing this worker.
+     * @param string $activitySid The SID of a valid Activity that describes the
+     *                            new Worker's initial state
+     * @param string $attributes A valid JSON string that describes the new Worker
      * @return CreateWorkerOptions Options builder
      */
     public static function create($activitySid = Values::NONE, $attributes = Values::NONE) {
@@ -43,10 +42,11 @@ abstract class WorkerOptions {
     }
 
     /**
-     * @param string $activitySid The activity_sid
-     * @param string $attributes The attributes
-     * @param string $friendlyName The friendly_name
-     * @param bool $rejectPendingReservations The reject_pending_reservations
+     * @param string $activitySid The SID of the Activity that describes the
+     *                            Worker's initial state
+     * @param string $attributes The JSON string that describes the Worker
+     * @param string $friendlyName A string to describe the Worker
+     * @param bool $rejectPendingReservations Whether to reject pending reservations
      * @return UpdateWorkerOptions Options builder
      */
     public static function update($activitySid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE, $rejectPendingReservations = Values::NONE) {
@@ -56,18 +56,17 @@ abstract class WorkerOptions {
 
 class ReadWorkerOptions extends Options {
     /**
-     * @param string $activityName Filter by workers that are in a particular
-     *                             Activity by Friendly Name
-     * @param string $activitySid Filter by workers that are in a particular
-     *                            Activity by SID
-     * @param string $available Filter by workers that are available or unavailable.
-     * @param string $friendlyName Filter by a worker's friendly name
-     * @param string $targetWorkersExpression Filter by workers that would match an
-     *                                        expression on a TaskQueue.
-     * @param string $taskQueueName Filter by workers that are eligible for a
-     *                              TaskQueue by Friendly Name
-     * @param string $taskQueueSid Filter by workers that are eligible for a
-     *                             TaskQueue by SID
+     * @param string $activityName The activity_name of the Worker resources to read
+     * @param string $activitySid The activity_sid of the Worker resources to read
+     * @param string $available Whether to return Worker resources that are
+     *                          available or unavailable
+     * @param string $friendlyName The friendly_name of the Worker resources to read
+     * @param string $targetWorkersExpression Filter by Workers that would match an
+     *                                        expression on a TaskQueue
+     * @param string $taskQueueName The friendly_name of the TaskQueue that the
+     *                              Workers to read are eligible for
+     * @param string $taskQueueSid The SID of the TaskQueue that the Workers to
+     *                             read are eligible for
      */
     public function __construct($activityName = Values::NONE, $activitySid = Values::NONE, $available = Values::NONE, $friendlyName = Values::NONE, $targetWorkersExpression = Values::NONE, $taskQueueName = Values::NONE, $taskQueueSid = Values::NONE) {
         $this->options['activityName'] = $activityName;
@@ -80,10 +79,9 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that are in a particular Activity by Friendly Name
+     * The `activity_name` of the Worker resources to read.
      *
-     * @param string $activityName Filter by workers that are in a particular
-     *                             Activity by Friendly Name
+     * @param string $activityName The activity_name of the Worker resources to read
      * @return $this Fluent Builder
      */
     public function setActivityName($activityName) {
@@ -92,10 +90,9 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that are in a particular Activity by SID
+     * The `activity_sid` of the Worker resources to read.
      *
-     * @param string $activitySid Filter by workers that are in a particular
-     *                            Activity by SID
+     * @param string $activitySid The activity_sid of the Worker resources to read
      * @return $this Fluent Builder
      */
     public function setActivitySid($activitySid) {
@@ -104,9 +101,10 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that are available or unavailable. (Note: This can be 'true', '1' or 'yes' to indicate a true value. All other values will represent false)
+     * Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available.
      *
-     * @param string $available Filter by workers that are available or unavailable.
+     * @param string $available Whether to return Worker resources that are
+     *                          available or unavailable
      * @return $this Fluent Builder
      */
     public function setAvailable($available) {
@@ -115,9 +113,9 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by a worker's friendly name
+     * The `friendly_name` of the Worker resources to read.
      *
-     * @param string $friendlyName Filter by a worker's friendly name
+     * @param string $friendlyName The friendly_name of the Worker resources to read
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -126,10 +124,10 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that would match an expression on a TaskQueue. This is helpful for debugging which workers would match a potential queue.
+     * Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue.
      *
-     * @param string $targetWorkersExpression Filter by workers that would match an
-     *                                        expression on a TaskQueue.
+     * @param string $targetWorkersExpression Filter by Workers that would match an
+     *                                        expression on a TaskQueue
      * @return $this Fluent Builder
      */
     public function setTargetWorkersExpression($targetWorkersExpression) {
@@ -138,10 +136,10 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that are eligible for a TaskQueue by Friendly Name
+     * The `friendly_name` of the TaskQueue that the Workers to read are eligible for.
      *
-     * @param string $taskQueueName Filter by workers that are eligible for a
-     *                              TaskQueue by Friendly Name
+     * @param string $taskQueueName The friendly_name of the TaskQueue that the
+     *                              Workers to read are eligible for
      * @return $this Fluent Builder
      */
     public function setTaskQueueName($taskQueueName) {
@@ -150,10 +148,10 @@ class ReadWorkerOptions extends Options {
     }
 
     /**
-     * Filter by workers that are eligible for a TaskQueue by SID
+     * The SID of the TaskQueue that the Workers to read are eligible for.
      *
-     * @param string $taskQueueSid Filter by workers that are eligible for a
-     *                             TaskQueue by SID
+     * @param string $taskQueueSid The SID of the TaskQueue that the Workers to
+     *                             read are eligible for
      * @return $this Fluent Builder
      */
     public function setTaskQueueSid($taskQueueSid) {
@@ -179,9 +177,9 @@ class ReadWorkerOptions extends Options {
 
 class CreateWorkerOptions extends Options {
     /**
-     * @param string $activitySid A valid Activity describing the worker's initial
-     *                            state.
-     * @param string $attributes JSON object describing this worker.
+     * @param string $activitySid The SID of a valid Activity that describes the
+     *                            new Worker's initial state
+     * @param string $attributes A valid JSON string that describes the new Worker
      */
     public function __construct($activitySid = Values::NONE, $attributes = Values::NONE) {
         $this->options['activitySid'] = $activitySid;
@@ -189,10 +187,10 @@ class CreateWorkerOptions extends Options {
     }
 
     /**
-     * A valid Activity describing the worker's initial state. See Activities for more information. If not provided, new Workers will be use the DefaultActivitySid configured on the Workspace.
+     * The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace.
      *
-     * @param string $activitySid A valid Activity describing the worker's initial
-     *                            state.
+     * @param string $activitySid The SID of a valid Activity that describes the
+     *                            new Worker's initial state
      * @return $this Fluent Builder
      */
     public function setActivitySid($activitySid) {
@@ -201,9 +199,9 @@ class CreateWorkerOptions extends Options {
     }
 
     /**
-     * JSON object describing this worker. For example: `{ 'email: 'Bob@foo.com', 'phone': '8675309' }`. This data will be passed to the Assignment Callback URL whenever TaskRouter assigns a Task to this worker. Defaults to {}.
+     * A valid JSON string that describes the new Worker. For example: `{ "email": "Bob@example.com", "phone": "+5095551234" }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}.
      *
-     * @param string $attributes JSON object describing this worker.
+     * @param string $attributes A valid JSON string that describes the new Worker
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -229,10 +227,11 @@ class CreateWorkerOptions extends Options {
 
 class UpdateWorkerOptions extends Options {
     /**
-     * @param string $activitySid The activity_sid
-     * @param string $attributes The attributes
-     * @param string $friendlyName The friendly_name
-     * @param bool $rejectPendingReservations The reject_pending_reservations
+     * @param string $activitySid The SID of the Activity that describes the
+     *                            Worker's initial state
+     * @param string $attributes The JSON string that describes the Worker
+     * @param string $friendlyName A string to describe the Worker
+     * @param bool $rejectPendingReservations Whether to reject pending reservations
      */
     public function __construct($activitySid = Values::NONE, $attributes = Values::NONE, $friendlyName = Values::NONE, $rejectPendingReservations = Values::NONE) {
         $this->options['activitySid'] = $activitySid;
@@ -242,9 +241,10 @@ class UpdateWorkerOptions extends Options {
     }
 
     /**
-     * The activity_sid
+     * The SID of a valid Activity that will describe the Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information.
      *
-     * @param string $activitySid The activity_sid
+     * @param string $activitySid The SID of the Activity that describes the
+     *                            Worker's initial state
      * @return $this Fluent Builder
      */
     public function setActivitySid($activitySid) {
@@ -253,9 +253,9 @@ class UpdateWorkerOptions extends Options {
     }
 
     /**
-     * The attributes
+     * The JSON string that describes the Worker. For example: `{ "email": "Bob@example.com", "phone": "+5095551234" }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}.
      *
-     * @param string $attributes The attributes
+     * @param string $attributes The JSON string that describes the Worker
      * @return $this Fluent Builder
      */
     public function setAttributes($attributes) {
@@ -264,9 +264,9 @@ class UpdateWorkerOptions extends Options {
     }
 
     /**
-     * The friendly_name
+     * A descriptive string that you create to describe the Worker. It can be up to 64 characters long.
      *
-     * @param string $friendlyName The friendly_name
+     * @param string $friendlyName A string to describe the Worker
      * @return $this Fluent Builder
      */
     public function setFriendlyName($friendlyName) {
@@ -275,9 +275,9 @@ class UpdateWorkerOptions extends Options {
     }
 
     /**
-     * The reject_pending_reservations
+     * Whether to reject pending reservations.
      *
-     * @param bool $rejectPendingReservations The reject_pending_reservations
+     * @param bool $rejectPendingReservations Whether to reject pending reservations
      * @return $this Fluent Builder
      */
     public function setRejectPendingReservations($rejectPendingReservations) {

@@ -27,7 +27,8 @@ class TaskQueuesStatisticsInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $workspaceSid The ID of the Workspace that owns this TaskQueue
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             TaskQueue
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsInstance
      */
     public function __construct(Version $version, array $payload, $workspaceSid) {

@@ -17,8 +17,8 @@ use Twilio\Values;
  */
 abstract class EnvironmentOptions {
     /**
-     * @param string $domainSuffix A URL-friendly name that represents this
-     *                             Environment.
+     * @param string $domainSuffix A URL-friendly name that represents the
+     *                             environment
      * @return CreateEnvironmentOptions Options builder
      */
     public static function create($domainSuffix = Values::NONE) {
@@ -28,18 +28,18 @@ abstract class EnvironmentOptions {
 
 class CreateEnvironmentOptions extends Options {
     /**
-     * @param string $domainSuffix A URL-friendly name that represents this
-     *                             Environment.
+     * @param string $domainSuffix A URL-friendly name that represents the
+     *                             environment
      */
     public function __construct($domainSuffix = Values::NONE) {
         $this->options['domainSuffix'] = $domainSuffix;
     }
 
     /**
-     * A URL-friendly name that represents this Environment and forms part of the domain name, fewer than 32 characters. Required.
+     * A URL-friendly name that represents the environment and forms part of the domain name. Must have fewer than 32 characters.
      *
-     * @param string $domainSuffix A URL-friendly name that represents this
-     *                             Environment.
+     * @param string $domainSuffix A URL-friendly name that represents the
+     *                             environment
      * @return $this Fluent Builder
      */
     public function setDomainSuffix($domainSuffix) {

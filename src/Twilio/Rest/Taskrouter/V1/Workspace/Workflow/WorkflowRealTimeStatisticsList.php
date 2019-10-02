@@ -17,8 +17,11 @@ class WorkflowRealTimeStatisticsList extends ListResource {
      * Construct the WorkflowRealTimeStatisticsList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workflowSid The workflow_sid
+     * @param string $workspaceSid The SID of the Workspace that contains the
+     *                             Workflow.
+     * @param string $workflowSid Returns the list of Tasks that are being
+     *                            controlled by the Workflow with the specified SID
+     *                            value
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList
      */
     public function __construct(Version $version, $workspaceSid, $workflowSid) {
