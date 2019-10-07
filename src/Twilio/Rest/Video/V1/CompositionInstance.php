@@ -21,8 +21,8 @@ use Twilio\Version;
  * @property string $accountSid
  * @property string $status
  * @property \DateTime $dateCreated
- * @property string $dateCompleted
- * @property string $dateDeleted
+ * @property \DateTime $dateCompleted
+ * @property \DateTime $dateDeleted
  * @property string $sid
  * @property string $roomSid
  * @property string $audioSources
@@ -54,8 +54,8 @@ class CompositionInstance extends InstanceResource {
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'status' => Values::array_get($payload, 'status'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateCompleted' => Values::array_get($payload, 'date_completed'),
-            'dateDeleted' => Values::array_get($payload, 'date_deleted'),
+            'dateCompleted' => Deserialize::dateTime(Values::array_get($payload, 'date_completed')),
+            'dateDeleted' => Deserialize::dateTime(Values::array_get($payload, 'date_deleted')),
             'sid' => Values::array_get($payload, 'sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
             'audioSources' => Values::array_get($payload, 'audio_sources'),

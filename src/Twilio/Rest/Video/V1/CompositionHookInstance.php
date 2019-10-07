@@ -23,7 +23,7 @@ use Twilio\Version;
  * @property string $friendlyName
  * @property bool $enabled
  * @property \DateTime $dateCreated
- * @property string $dateUpdated
+ * @property \DateTime $dateUpdated
  * @property string $sid
  * @property string $audioSources
  * @property string $audioSourcesExcluded
@@ -53,7 +53,7 @@ class CompositionHookInstance extends InstanceResource {
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'enabled' => Values::array_get($payload, 'enabled'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Values::array_get($payload, 'date_updated'),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'sid' => Values::array_get($payload, 'sid'),
             'audioSources' => Values::array_get($payload, 'audio_sources'),
             'audioSourcesExcluded' => Values::array_get($payload, 'audio_sources_excluded'),
