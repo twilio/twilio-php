@@ -51,4 +51,31 @@ class RequestValidatorTest extends UnitTest {
 
         $this->assertFalse($isValid);
     }
+
+    public function testValidateRemovesPortHttps() {
+        $url = str_replace('.com', '.com:1234', $this->url);
+        $isValid = $this->validator->validate($this->signature, $url, $this->params);
+        $this->assertTrue($isValid);
+    }
+
+    public function testValidateRemovesPortHttp() {
+        $url = str_replace('.com', '.com:1234', $this->url);
+        $url = str_replace('https', 'http', $url);
+        $signature =  'Zmvh+3yNM1Phv2jhDCwEM3q5ebU=';  // hash of http url with port 1234
+        $isValid = $this->validator->validate($signature, $url, $this->params);
+        $this->assertTrue($isValid);
+    }
+
+    public function testValidateAddsPortHttps() {
+        $signature =  'kvajT1Ptam85bY51eRf/AJRuM3w=';  // hash of https url with port 443
+        $isValid = $this->validator->validate($signature, $this->url, $this->params);
+        $this->assertTrue($isValid);
+    }
+
+    public function testValidateAddsPortHttp() {
+        $url = str_replace('https', 'http', $this->url);
+        $signature =  '0ZXoZLH/DfblKGATFgpif+LLRf4=';  // hash of http url with port 80
+        $isValid = $this->validator->validate($signature, $url, $this->params);
+        $this->assertTrue($isValid);
+    }
 }
