@@ -83,9 +83,9 @@ final class RequestValidator {
             $queryString = $queryString[1];
             \parse_str($queryString, $params);
 
+            $params['bodySHA256'] = (isset($params['bodySHA256'])) ? $params['bodySHA256'] : NULL;
             $validBodyHash = self::compare(self::computeBodyHash($data), $params['bodySHA256']);
             $data = array();
-
         }
 
         /*  Check signature of the URL with and without port information
@@ -152,7 +152,7 @@ final class RequestValidator {
      * @returns string Full URL with the port number
      */
     private static function addPort($parsedUrl) {
-        if ($parsedUrl['port'] === NULL) {
+        if (!isset($parsedUrl['port'])) {
             $port = ($parsedUrl['scheme'] === 'https') ? 443 : 80;
             $parsedUrl['port'] = $port;
         }
