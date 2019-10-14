@@ -78,4 +78,25 @@ class RequestValidatorTest extends UnitTest {
         $isValid = $this->validator->validate($signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
+
+    public function testBuildUrlCreds() {
+        $url = 'https://user:pass@mycompany.com/myapp.php?foo=1&bar=2';
+        $signature = 'CukzLTc1tT5dXEDIHm/tKBanW10='; // hash of this url
+        $isValid = $this->validator->validate($signature, $url, $this->params);
+        $this->assertTrue($isValid);
+    }
+
+    public function testBuildUrlWithUser() {
+        $url = 'https://user@mycompany.com/myapp.php?foo=1&bar=2';
+        $signature = '2YRLlVAflCqxaNicjMpJcSTgzSs='; // hash of this url
+        $isValid = $this->validator->validate($signature, $url, $this->params);
+        $this->assertTrue($isValid);
+    }
+
+    public function testBuildUrlCredsAddsPort() {
+        $url = 'https://user:pass@mycompany.com/myapp.php?foo=1&bar=2';
+        $signature = 'ZQFR1PTIZXF2MXB8ZnKCvnnA+rI='; // hash of this url with port 443
+        $isValid = $this->validator->validate($signature, $url, $this->params);
+        $this->assertTrue($isValid);
+    }
 }

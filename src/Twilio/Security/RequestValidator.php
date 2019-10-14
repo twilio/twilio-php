@@ -2,6 +2,8 @@
 
 namespace Twilio\Security;
 
+use Twilio\Values;
+
 /**
  * RequestValidator is a helper to validate that a request to a web server was actually made from Twilio
  * EXAMPLE USAGE:
@@ -72,9 +74,10 @@ final class RequestValidator {
 
     public function validate($expectedSignature, $url, $data = array()) {
 
-        $urlWithPort = RequestValidator::addPort(\parse_url($url));
-        $urlWithoutPort = RequestValidator::removePort(\parse_url($url));
+        $parsedUrl = parse_url($url);
 
+        $urlWithPort = RequestValidator::addPort($parsedUrl);
+        $urlWithoutPort = RequestValidator::removePort($parsedUrl);
         $validBodyHash = true;  // May not receive body hash, so default succeed
 
         if (!\is_array($data)) {
@@ -83,12 +86,12 @@ final class RequestValidator {
             $queryString = $queryString[1];
             \parse_str($queryString, $params);
 
-            $params['bodySHA256'] = (isset($params['bodySHA256'])) ? $params['bodySHA256'] : NULL;
-            $validBodyHash = self::compare(self::computeBodyHash($data), $params['bodySHA256']);
+            $validBodyHash = self::compare(self::computeBodyHash($data), Values::array_get($params, 'bodySHA256'));
             $data = array();
         }
 
-        /*  Check signature of the URL with and without port information
+        /*
+         *  Check signature of the URL with and without port information
          *  since sig generation on the back end is inconsistent.
          */
         $validSignatureWithPort = self::compare(
@@ -169,11 +172,11 @@ final class RequestValidator {
         $parts = array();
 
         $parts['scheme'] = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : '';
-        $parts['host'] = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
-        $parts['port'] = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
         $parts['user'] = isset($parsedUrl['user']) ? $parsedUrl['user'] : '';
         $parts['pass'] = isset($parsedUrl['pass']) ? ':' . $parsedUrl['pass'] : '';
         $parts['pass'] = ($parts['user'] || $parts['pass']) ? $parts['pass'] . '@' : '';
+        $parts['host'] = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
+        $parts['port'] = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
         $parts['path'] = isset($parsedUrl['path']) ? $parsedUrl['path'] : '';
         $parts['query'] = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
         $parts['fragment'] = isset($parsedUrl['fragment']) ? '#' . $parsedUrl['fragment'] : '';
