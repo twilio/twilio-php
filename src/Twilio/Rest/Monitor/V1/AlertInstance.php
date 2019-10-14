@@ -61,14 +61,14 @@ class AlertInstance extends InstanceResource {
             'moreInfo' => Values::array_get($payload, 'more_info'),
             'requestMethod' => Values::array_get($payload, 'request_method'),
             'requestUrl' => Values::array_get($payload, 'request_url'),
-            'resourceSid' => Values::array_get($payload, 'resource_sid'),
-            'sid' => Values::array_get($payload, 'sid'),
-            'url' => Values::array_get($payload, 'url'),
-            'serviceSid' => Values::array_get($payload, 'service_sid'),
             'requestVariables' => Values::array_get($payload, 'request_variables'),
+            'resourceSid' => Values::array_get($payload, 'resource_sid'),
             'responseBody' => Values::array_get($payload, 'response_body'),
             'responseHeaders' => Values::array_get($payload, 'response_headers'),
+            'sid' => Values::array_get($payload, 'sid'),
+            'url' => Values::array_get($payload, 'url'),
             'requestHeaders' => Values::array_get($payload, 'request_headers'),
+            'serviceSid' => Values::array_get($payload, 'service_sid'),
         );
 
         $this->solution = array('sid' => $sid ?: $this->properties['sid'], );
