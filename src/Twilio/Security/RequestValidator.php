@@ -2,6 +2,8 @@
 
 namespace Twilio\Security;
 
+use Twilio\Values;
+
 /**
  * RequestValidator is a helper to validate that a request to a web server was actually made from Twilio
  * EXAMPLE USAGE:
@@ -33,7 +35,7 @@ final class RequestValidator {
      * Creates the actual base64 encoded signature of the sha1 hash of the concatenated URL and your auth token
      * @param string $url the full URL of the request URL you specify for your phone number or app, from the protocol (https...) through the end of the query string (everything after the ?)
      * @param array $data the Twilio parameters the request was made with
-     * @return string 
+     * @return string
      */
 
     public function computeSignature($url, $data = array()) {
@@ -55,7 +57,7 @@ final class RequestValidator {
     /**
      * Converts the raw binary output to a hexadecimal return
      * @param string $data
-     * @return string 
+     * @return string
      */
 
     public static function computeBodyHash($data = '') {
@@ -67,34 +69,41 @@ final class RequestValidator {
      * @param string $expectedSignature
      * @param string $url
      * @param array $data
-     * @return bool 
+     * @return bool
      */
 
     public function validate($expectedSignature, $url, $data = array()) {
 
-        if (\is_array($data)) {
+        $parsedUrl = parse_url($url);
 
-            return self::compare(
-                $this->computeSignature($url, $data),
-                $expectedSignature
-            );
+        $urlWithPort = RequestValidator::addPort($parsedUrl);
+        $urlWithoutPort = RequestValidator::removePort($parsedUrl);
+        $validBodyHash = true;  // May not receive body hash, so default succeed
 
-        } else {
-
+        if (!\is_array($data)) {
             // handling if the data was passed through as a string instead of an array of params
             $queryString = \explode('?', $url);
             $queryString = $queryString[1];
             \parse_str($queryString, $params);
 
-            return self::compare(
-                $this->computeSignature($url),
-                $expectedSignature
-            ) && self::compare(
-                self::computeBodyHash($data),
-                $params['bodySHA256']
-            );
-
+            $validBodyHash = self::compare(self::computeBodyHash($data), Values::array_get($params, 'bodySHA256'));
+            $data = array();
         }
+
+        /*
+         *  Check signature of the URL with and without port information
+         *  since sig generation on the back end is inconsistent.
+         */
+        $validSignatureWithPort = self::compare(
+            $this->computeSignature($urlWithPort, $data),
+            $expectedSignature
+        );
+        $validSignatureWithoutPort = self::compare(
+            $this->computeSignature($urlWithoutPort, $data),
+            $expectedSignature
+        );
+
+        return $validBodyHash && ($validSignatureWithPort || $validSignatureWithoutPort);
 
     }
 
@@ -130,4 +139,50 @@ final class RequestValidator {
 
     }
 
+    /*
+     * Removes the port from the URL
+     * @param $parsedURL array
+     * @returns string Full URL without the port number
+     */
+    private static function removePort($parsedUrl) {
+        unset($parsedUrl['port']);
+        return RequestValidator::buildUrl($parsedUrl);
+    }
+
+    /*
+     * Adds the port to the URL
+     * @param $parsedURL array
+     * @returns string Full URL with the port number
+     */
+    private static function addPort($parsedUrl) {
+        if (!isset($parsedUrl['port'])) {
+            $port = ($parsedUrl['scheme'] === 'https') ? 443 : 80;
+            $parsedUrl['port'] = $port;
+        }
+        return RequestValidator::buildUrl($parsedUrl);
+    }
+
+    /*
+     * Builds the URL from its parsed component pieces
+     * @param $parsedURL array
+     * @returns string Full URL
+     */
+    private static function buildUrl($parsedUrl) {
+        $url = '';
+        $parts = array();
+
+        $parts['scheme'] = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : '';
+        $parts['user'] = isset($parsedUrl['user']) ? $parsedUrl['user'] : '';
+        $parts['pass'] = isset($parsedUrl['pass']) ? ':' . $parsedUrl['pass'] : '';
+        $parts['pass'] = ($parts['user'] || $parts['pass']) ? $parts['pass'] . '@' : '';
+        $parts['host'] = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
+        $parts['port'] = isset($parsedUrl['port']) ? ':' . $parsedUrl['port'] : '';
+        $parts['path'] = isset($parsedUrl['path']) ? $parsedUrl['path'] : '';
+        $parts['query'] = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
+        $parts['fragment'] = isset($parsedUrl['fragment']) ? '#' . $parsedUrl['fragment'] : '';
+
+        return \implode('', $parts);
+    }
+
 }
+
