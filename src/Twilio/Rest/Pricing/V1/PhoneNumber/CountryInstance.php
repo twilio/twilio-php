@@ -37,9 +37,9 @@ class CountryInstance extends InstanceResource {
         $this->properties = array(
             'country' => Values::array_get($payload, 'country'),
             'isoCountry' => Values::array_get($payload, 'iso_country'),
-            'url' => Values::array_get($payload, 'url'),
             'phoneNumberPrices' => Values::array_get($payload, 'phone_number_prices'),
             'priceUnit' => Values::array_get($payload, 'price_unit'),
+            'url' => Values::array_get($payload, 'url'),
         );
 
         $this->solution = array('isoCountry' => $isoCountry ?: $this->properties['isoCountry'], );
