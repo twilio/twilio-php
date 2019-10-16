@@ -45,11 +45,7 @@ class QueryTest extends HolodeckTestCase {
                 "sample_sid": "UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "assistant_sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "results": {
-                    "task": {
-                        "name": "name",
-                        "task_sid": "UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "confidence": 0.9
-                    },
+                    "task": "name",
                     "fields": [
                         {
                             "name": "name",
@@ -128,11 +124,7 @@ class QueryTest extends HolodeckTestCase {
                         "sample_sid": "UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "assistant_sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         "results": {
-                            "task": {
-                                "name": "name",
-                                "task_sid": "UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                                "confidence": 0.9
-                            },
+                            "task": "name",
                             "fields": [
                                 {
                                     "name": "name",
@@ -199,11 +191,7 @@ class QueryTest extends HolodeckTestCase {
                 "sample_sid": "UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "assistant_sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "results": {
-                    "task": {
-                        "name": "name",
-                        "task_sid": "UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "confidence": 0.9
-                    },
+                    "task": "name",
                     "fields": [
                         {
                             "name": "name",
@@ -255,11 +243,7 @@ class QueryTest extends HolodeckTestCase {
                 "sample_sid": "UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "assistant_sid": "UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "results": {
-                    "task": {
-                        "name": "name",
-                        "task_sid": "UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                        "confidence": 0.9
-                    },
+                    "task": "name",
                     "fields": [
                         {
                             "name": "name",

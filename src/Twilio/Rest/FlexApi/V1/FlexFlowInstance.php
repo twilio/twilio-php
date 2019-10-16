@@ -29,6 +29,7 @@ use Twilio\Version;
  * @property string $integrationType
  * @property array $integration
  * @property bool $longLived
+ * @property bool $janitorEnabled
  * @property string $url
  */
 class FlexFlowInstance extends InstanceResource {
@@ -57,6 +58,7 @@ class FlexFlowInstance extends InstanceResource {
             'integrationType' => Values::array_get($payload, 'integration_type'),
             'integration' => Values::array_get($payload, 'integration'),
             'longLived' => Values::array_get($payload, 'long_lived'),
+            'janitorEnabled' => Values::array_get($payload, 'janitor_enabled'),
             'url' => Values::array_get($payload, 'url'),
         );
 

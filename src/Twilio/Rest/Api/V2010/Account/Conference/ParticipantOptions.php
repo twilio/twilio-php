@@ -154,7 +154,7 @@ class UpdateParticipantOptions extends Options {
     }
 
     /**
-     * Whether the participant should be muted. Can be `true` or `false. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
+     * Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
      *
      * @param bool $muted Whether the participant should be muted
      * @return $this Fluent Builder

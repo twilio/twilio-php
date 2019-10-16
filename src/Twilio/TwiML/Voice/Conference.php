@@ -113,13 +113,13 @@ class Conference extends TwiML {
     }
 
     /**
-     * Add Whisper attribute.
+     * Add Coach attribute.
      *
-     * @param string $whisper Call whisper
+     * @param string $coach Call coach
      * @return static $this.
      */
-    public function setWhisper($whisper) {
-        return $this->setAttribute('whisper', $whisper);
+    public function setCoach($coach) {
+        return $this->setAttribute('coach', $coach);
     }
 
     /**

@@ -36,10 +36,12 @@ abstract class FlexFlowOptions {
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
      * @param bool $longLived Whether new channels are long-lived
+     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
+     *                             Janitor
      * @return CreateFlexFlowOptions Options builder
      */
-    public static function create($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE) {
-        return new CreateFlexFlowOptions($contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived);
+    public static function create($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
+        return new CreateFlexFlowOptions($contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled);
     }
 
     /**
@@ -59,10 +61,12 @@ abstract class FlexFlowOptions {
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
      * @param bool $longLived Whether new channels created are long-lived
+     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
+     *                             Janitor
      * @return UpdateFlexFlowOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE) {
-        return new UpdateFlexFlowOptions($friendlyName, $chatServiceSid, $channelType, $contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived);
+    public static function update($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
+        return new UpdateFlexFlowOptions($friendlyName, $chatServiceSid, $channelType, $contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled);
     }
 }
 
@@ -118,8 +122,10 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
      * @param bool $longLived Whether new channels are long-lived
+     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
+     *                             Janitor
      */
-    public function __construct($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE) {
+    public function __construct($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
         $this->options['contactIdentity'] = $contactIdentity;
         $this->options['enabled'] = $enabled;
         $this->options['integrationType'] = $integrationType;
@@ -132,6 +138,7 @@ class CreateFlexFlowOptions extends Options {
         $this->options['integrationPriority'] = $integrationPriority;
         $this->options['integrationCreationOnMessage'] = $integrationCreationOnMessage;
         $this->options['longLived'] = $longLived;
+        $this->options['janitorEnabled'] = $janitorEnabled;
     }
 
     /**
@@ -268,6 +275,18 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
+     * Boolean flag for enabling or disabling the Janitor
+     *
+     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
+     *                             Janitor
+     * @return $this Fluent Builder
+     */
+    public function setJanitorEnabled($janitorEnabled) {
+        $this->options['janitorEnabled'] = $janitorEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -301,8 +320,10 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $integrationCreationOnMessage Whether to create a task when the
      *                                           first message arrives
      * @param bool $longLived Whether new channels created are long-lived
+     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
+     *                             Janitor
      */
-    public function __construct($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['chatServiceSid'] = $chatServiceSid;
         $this->options['channelType'] = $channelType;
@@ -318,6 +339,7 @@ class UpdateFlexFlowOptions extends Options {
         $this->options['integrationPriority'] = $integrationPriority;
         $this->options['integrationCreationOnMessage'] = $integrationCreationOnMessage;
         $this->options['longLived'] = $longLived;
+        $this->options['janitorEnabled'] = $janitorEnabled;
     }
 
     /**
@@ -483,6 +505,18 @@ class UpdateFlexFlowOptions extends Options {
      */
     public function setLongLived($longLived) {
         $this->options['longLived'] = $longLived;
+        return $this;
+    }
+
+    /**
+     * Boolean flag for enabling or disabling the Janitor
+     *
+     * @param bool $janitorEnabled Boolean flag for enabling or disabling the
+     *                             Janitor
+     * @return $this Fluent Builder
+     */
+    public function setJanitorEnabled($janitorEnabled) {
+        $this->options['janitorEnabled'] = $janitorEnabled;
         return $this;
     }
 

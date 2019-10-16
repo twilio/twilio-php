@@ -1,6 +1,33 @@
 twilio-php Changelog
 ====================
 
+[2019-10-16] Version 5.37.0
+---------------------------
+**Library**
+- [PR #579](https://github.com/twilio/twilio-php/pull/579): Update instance property ordering. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #578](https://github.com/twilio/twilio-php/pull/578): added validation of signature without stripping port number. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #577](https://github.com/twilio/twilio-php/pull/577): breaking: Correct video composition date types. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+- [PR #576](https://github.com/twilio/twilio-php/pull/576): Fix curl client fails through squid proxy. Thanks to [@jmo161](https://github.com/jmo161)!
+- [PR #574](https://github.com/twilio/twilio-php/pull/574): Do not update new dependencies or versioning during testing and doc generation. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add new property `attempt` to sms_messages
+- Fixed a typo in the documentation for Feedback outcome enum **(breaking change)**
+- Update the call price to be optional for deserializing **(breaking change)**
+
+**Flex**
+- Added `JanitorEnabled` attribute to Flex Flow
+- Change `features_enabled` Flex Configuration key to private **(breaking change)**
+
+**Supersim**
+- Add Fetch endpoint to Fleets resource for Super Sim Pilot
+- Allow assigning a Sim to a Fleet for Super Sim Pilot
+- Add Create endpoint to Fleets resource for Super Sim Pilot
+
+**Twiml**
+- Update `<Conference>` rename "whisper" attribute to "coach" **(breaking change)**
+
+
 [2019-10-02] Version 5.36.1
 ---------------------------
 **Library**
