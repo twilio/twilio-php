@@ -6,19 +6,17 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * This file is placed outside of the Unit test suite to prevent parse errors by earlier PHP versions.
- *
- * Void keyword is available since 7.1.
  */
 abstract class UnitTest extends TestCase
 {
-    protected function setUp(): void
+    protected function setUp()
     {
         if (method_exists($this, 'doSetUp')) {
             $this->doSetUp();
         }
     }
 
-    protected function tearDown(): void
+    protected function tearDown()
     {
         if (method_exists($this, 'doTearDown')) {
             $this->doTearDown();

@@ -27,7 +27,7 @@ final class GuzzleClientTest extends UnitTest
      */
     private $mockHandler;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
         $this->mockHandler = new MockHandler();
