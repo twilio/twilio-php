@@ -18,19 +18,19 @@ use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
 /**
- * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
  * @property \Twilio\Rest\FlexApi\V1\ChannelList $channel
- * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
  * @property \Twilio\Rest\FlexApi\V1\ConfigurationList $configuration
- * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @property \Twilio\Rest\FlexApi\V1\FlexFlowList $flexFlow
+ * @property \Twilio\Rest\FlexApi\V1\WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
 class V1 extends Version {
-    protected $_flexFlow = null;
     protected $_channel = null;
-    protected $_webChannel = null;
     protected $_configuration = null;
+    protected $_flexFlow = null;
+    protected $_webChannel = null;
 
     /**
      * Construct the V1 version of FlexApi
@@ -44,16 +44,6 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
-     */
-    protected function getFlexFlow() {
-        if (!$this->_flexFlow) {
-            $this->_flexFlow = new FlexFlowList($this);
-        }
-        return $this->_flexFlow;
-    }
-
-    /**
      * @return \Twilio\Rest\FlexApi\V1\ChannelList
      */
     protected function getChannel() {
@@ -64,16 +54,6 @@ class V1 extends Version {
     }
 
     /**
-     * @return \Twilio\Rest\FlexApi\V1\WebChannelList
-     */
-    protected function getWebChannel() {
-        if (!$this->_webChannel) {
-            $this->_webChannel = new WebChannelList($this);
-        }
-        return $this->_webChannel;
-    }
-
-    /**
      * @return \Twilio\Rest\FlexApi\V1\ConfigurationList
      */
     protected function getConfiguration() {
@@ -81,6 +61,26 @@ class V1 extends Version {
             $this->_configuration = new ConfigurationList($this);
         }
         return $this->_configuration;
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\FlexFlowList
+     */
+    protected function getFlexFlow() {
+        if (!$this->_flexFlow) {
+            $this->_flexFlow = new FlexFlowList($this);
+        }
+        return $this->_flexFlow;
+    }
+
+    /**
+     * @return \Twilio\Rest\FlexApi\V1\WebChannelList
+     */
+    protected function getWebChannel() {
+        if (!$this->_webChannel) {
+            $this->_webChannel = new WebChannelList($this);
+        }
+        return $this->_webChannel;
     }
 
     /**
