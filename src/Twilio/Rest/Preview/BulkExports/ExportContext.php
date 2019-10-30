@@ -12,6 +12,7 @@ namespace Twilio\Rest\Preview\BulkExports;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Preview\BulkExports\Export\DayList;
+use Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -19,9 +20,11 @@ use Twilio\Version;
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
  * @property \Twilio\Rest\Preview\BulkExports\Export\DayList $days
+ * @property \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList $exportCustomJobs
  */
 class ExportContext extends InstanceContext {
     protected $_days = null;
+    protected $_exportCustomJobs = null;
 
     /**
      * Initialize the ExportContext
@@ -68,6 +71,19 @@ class ExportContext extends InstanceContext {
         }
 
         return $this->_days;
+    }
+
+    /**
+     * Access the exportCustomJobs
+     *
+     * @return \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList
+     */
+    protected function getExportCustomJobs() {
+        if (!$this->_exportCustomJobs) {
+            $this->_exportCustomJobs = new ExportCustomJobList($this->version, $this->solution['resourceType']);
+        }
+
+        return $this->_exportCustomJobs;
     }
 
     /**

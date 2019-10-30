@@ -27,7 +27,7 @@ abstract class CallOptions {
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
      * @param int $timeout Number of seconds to wait for an answer
-     * @param bool $record Whether or not to record the call
+     * @param bool $record Whether to record the call
      * @param string $recordingChannels The number of channels in the final
      *                                  recording
      * @param string $recordingStatusCallback The URL that we call when the
@@ -116,7 +116,7 @@ class CreateCallOptions extends Options {
      * @param string $statusCallbackMethod HTTP Method to use with status_callback
      * @param string $sendDigits The digits to dial after connecting to the number
      * @param int $timeout Number of seconds to wait for an answer
-     * @param bool $record Whether or not to record the call
+     * @param bool $record Whether to record the call
      * @param string $recordingChannels The number of channels in the final
      *                                  recording
      * @param string $recordingStatusCallback The URL that we call when the
@@ -246,7 +246,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call?code-sample=code-create-a-call-and-specify-a-statuscallbackevent). If an `application_sid` is present, this parameter is ignored.
+     * The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.
      *
      * @param string $statusCallbackEvent The call progress events that we send to
      *                                    the `status_callback` URL.
@@ -291,9 +291,9 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * Set this parameter to `true` to record the phone call. The `recording_url` will be sent to the `status_callback` URL. The default is `false`.
+     * Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.
      *
-     * @param bool $record Whether or not to record the call
+     * @param bool $record Whether to record the call
      * @return $this Fluent Builder
      */
     public function setRecord($record) {
@@ -363,7 +363,7 @@ class CreateCallOptions extends Options {
     }
 
     /**
-     * Detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+     * Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
      *
      * @param string $machineDetection Enable machine detection or end of greeting
      *                                 detection
@@ -506,7 +506,7 @@ class ReadCallOptions extends Options {
     }
 
     /**
-     * Only show calls to this phone number, SIP address, Client identifier or SIM SID.
+     * Only show calls made to this phone number, SIP address, Client identifier or SIM SID.
      *
      * @param string $to Phone number or Client identifier of calls to include
      * @return $this Fluent Builder

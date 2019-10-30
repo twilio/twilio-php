@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Preview\BulkExports\Export;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -17,54 +17,73 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $cpsUrl
- * @property string $phoneNumber
+ * @property string $resourceType
+ * @property string $friendlyName
+ * @property array $details
+ * @property string $startDay
+ * @property string $endDay
+ * @property string $jobSid
  * @property string $url
  */
-class CpsInstance extends InstanceResource {
+class JobInstance extends InstanceResource {
     /**
-     * Initialize the CpsInstance
+     * Initialize the JobInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsInstance
+     * @param string $jobSid The job_sid
+     * @return \Twilio\Rest\Preview\BulkExports\Export\JobInstance
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, $jobSid = null) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'cpsUrl' => Values::array_get($payload, 'cps_url'),
-            'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'resourceType' => Values::array_get($payload, 'resource_type'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'details' => Values::array_get($payload, 'details'),
+            'startDay' => Values::array_get($payload, 'start_day'),
+            'endDay' => Values::array_get($payload, 'end_day'),
+            'jobSid' => Values::array_get($payload, 'job_sid'),
             'url' => Values::array_get($payload, 'url'),
         );
 
-        $this->solution = array();
+        $this->solution = array('jobSid' => $jobSid ?: $this->properties['jobSid'], );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\TrustedComms\CpsContext Context for this
-     *                                                      CpsInstance
+     * @return \Twilio\Rest\Preview\BulkExports\Export\JobContext Context for this
+     *                                                            JobInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new CpsContext($this->version);
+            $this->context = new JobContext($this->version, $this->solution['jobSid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a CpsInstance
+     * Fetch a JobInstance
      *
-     * @return CpsInstance Fetched CpsInstance
+     * @return JobInstance Fetched JobInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Deletes the JobInstance
+     *
+     * @return boolean True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete() {
+        return $this->proxy()->delete();
     }
 
     /**
@@ -97,6 +116,6 @@ class CpsInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CpsInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.BulkExports.JobInstance ' . implode(' ', $context) . ']';
     }
 }

@@ -63,33 +63,6 @@ class NotificationTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
-        $this->holodeck->mock(new Response(500, ''));
-
-        try {
-            $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                     ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
-
-        $this->assertRequest(new Request(
-            'delete',
-            'https://api.twilio.com/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Notifications/NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json'
-        ));
-    }
-
-    public function testDeleteResponse() {
-        $this->holodeck->mock(new Response(
-            204,
-            null
-        ));
-
-        $actual = $this->twilio->api->v2010->accounts("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-                                           ->notifications("NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->delete();
-
-        $this->assertTrue($actual);
-    }
-
     public function testReadRequest() {
         $this->holodeck->mock(new Response(500, ''));
 

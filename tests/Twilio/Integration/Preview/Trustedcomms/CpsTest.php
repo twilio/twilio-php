@@ -35,8 +35,8 @@ class CpsTest extends HolodeckTestCase {
             200,
             '
             {
-                "phone_number": "+1500123",
                 "cps_url": "https://preview.twilio.com/TrustedComms/CurrentCall",
+                "phone_number": "+1500123",
                 "url": "https://preview.twilio.com/TrustedComms/CPS"
             }
             '

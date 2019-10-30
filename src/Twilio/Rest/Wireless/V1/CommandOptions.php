@@ -56,7 +56,7 @@ class ReadCommandOptions extends Options {
     }
 
     /**
-     * The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim) to read.
+     * The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.
      *
      * @param string $sim The sid or unique_name of the Sim resources to read
      * @return $this Fluent Builder
@@ -137,7 +137,7 @@ class CreateCommandOptions extends Options {
     }
 
     /**
-     * The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim) to send the Command to.
+     * The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.
      *
      * @param string $sim The sid or unique_name of the SIM to send the Command to
      * @return $this Fluent Builder

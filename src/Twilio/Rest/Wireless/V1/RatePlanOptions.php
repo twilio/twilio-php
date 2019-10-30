@@ -146,7 +146,7 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rate-plan#payg-vs-quota-data-plans).
+     * The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/wireless/api/rateplan-resource#payg-vs-quota-data-plans).
      *
      * @param string $dataMetering The model used to meter data usage
      * @return $this Fluent Builder
@@ -157,7 +157,7 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/commands).
+     * Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/wireless/api/command-resource).
      *
      * @param bool $messagingEnabled Whether SIMs can make, send, and receive SMS
      *                               using Commands
@@ -180,7 +180,7 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rate-plan#national-roaming).
+     * Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming).
      *
      * @param bool $nationalRoamingEnabled Whether SIMs can roam on networks other
      *                                     than the home network in the United
@@ -206,7 +206,7 @@ class CreateRatePlanOptions extends Options {
     }
 
     /**
-     * The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/wireless/api/rate-plan#national-roaming) for more info.
+     * The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/wireless/api/rateplan-resource#national-roaming) for more info.
      *
      * @param int $nationalRoamingDataLimit The total data usage in Megabytes that
      *                                      the Network allows during one month on

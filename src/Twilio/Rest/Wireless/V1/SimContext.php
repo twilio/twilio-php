@@ -29,7 +29,7 @@ class SimContext extends InstanceContext {
      * Initialize the SimContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $sid The SID of the Sim resource to fetch
      * @return \Twilio\Rest\Wireless\V1\SimContext
      */
     public function __construct(Version $version, $sid) {
@@ -87,6 +87,7 @@ class SimContext extends InstanceContext {
             'VoiceMethod' => $options['voiceMethod'],
             'VoiceUrl' => $options['voiceUrl'],
             'ResetStatus' => $options['resetStatus'],
+            'AccountSid' => $options['accountSid'],
         ));
 
         $payload = $this->version->update(

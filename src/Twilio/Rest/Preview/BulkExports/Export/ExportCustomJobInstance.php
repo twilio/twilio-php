@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\TrustedComms;
+namespace Twilio\Rest\Preview\BulkExports\Export;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -17,31 +17,42 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $bindingSid
- * @property string $phoneNumber
- * @property string $sid
- * @property string $url
+ * @property string $friendlyName
+ * @property string $resourceType
+ * @property string $startDay
+ * @property string $endDay
+ * @property string $webhookUrl
+ * @property string $webhookMethod
+ * @property string $email
+ * @property string $jobSid
+ * @property array $details
  */
-class DeviceInstance extends InstanceResource {
+class ExportCustomJobInstance extends InstanceResource {
     /**
-     * Initialize the DeviceInstance
+     * Initialize the ExportCustomJobInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @return \Twilio\Rest\Preview\TrustedComms\DeviceInstance
+     * @param string $resourceType The type of communication – Messages, Calls
+     * @return \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobInstance
      */
-    public function __construct(Version $version, array $payload) {
+    public function __construct(Version $version, array $payload, $resourceType) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'bindingSid' => Values::array_get($payload, 'binding_sid'),
-            'phoneNumber' => Values::array_get($payload, 'phone_number'),
-            'sid' => Values::array_get($payload, 'sid'),
-            'url' => Values::array_get($payload, 'url'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'resourceType' => Values::array_get($payload, 'resource_type'),
+            'startDay' => Values::array_get($payload, 'start_day'),
+            'endDay' => Values::array_get($payload, 'end_day'),
+            'webhookUrl' => Values::array_get($payload, 'webhook_url'),
+            'webhookMethod' => Values::array_get($payload, 'webhook_method'),
+            'email' => Values::array_get($payload, 'email'),
+            'jobSid' => Values::array_get($payload, 'job_sid'),
+            'details' => Values::array_get($payload, 'details'),
         );
 
-        $this->solution = array();
+        $this->solution = array('resourceType' => $resourceType, );
     }
 
     /**
@@ -70,6 +81,6 @@ class DeviceInstance extends InstanceResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.TrustedComms.DeviceInstance]';
+        return '[Twilio.Preview.BulkExports.ExportCustomJobInstance]';
     }
 }

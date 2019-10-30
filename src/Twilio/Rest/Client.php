@@ -387,7 +387,7 @@ class Client {
     }
 
     /**
-     * @param string $sid The unique string that identifies this resource
+     * @param string $sid The SID of the Call resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\CallContext
      */
     protected function contextCalls($sid) {

@@ -41,7 +41,7 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).
+     * Only include usage that occurred on or before this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is the current time.
      *
      * @param \DateTime $end Only include usage that occurred on or before this date
      * @return $this Fluent Builder
@@ -52,7 +52,7 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).
+     * Only include usage that has occurred on or after this date, specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). The default is on month before the `end` parameter value.
      *
      * @param \DateTime $start Only include usage that has occurred on or after
      *                         this date
@@ -64,7 +64,7 @@ class ReadUsageRecordOptions extends Options {
     }
 
     /**
-     * How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.
+     * How to summarize the usage by time. Can be: `daily`, `hourly`, or `all`. The default is `all`. A value of `all` returns one Usage Record that describes the usage for the entire period.
      *
      * @param string $granularity The time-based grouping that results are
      *                            aggregated by

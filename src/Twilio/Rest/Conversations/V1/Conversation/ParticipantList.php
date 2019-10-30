@@ -54,6 +54,7 @@ class ParticipantList extends ListResource {
             'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
             'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' => $options['attributes'],
+            'MessagingBinding.ProjectedAddress' => $options['messagingBindingProjectedAddress'],
         ));
 
         $payload = $this->version->create(

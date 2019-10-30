@@ -23,6 +23,7 @@ use Twilio\Version;
  */
 class ExportInstance extends InstanceResource {
     protected $_days = null;
+    protected $_exportCustomJobs = null;
 
     /**
      * Initialize the ExportInstance
@@ -77,6 +78,15 @@ class ExportInstance extends InstanceResource {
      */
     protected function getDays() {
         return $this->proxy()->days;
+    }
+
+    /**
+     * Access the exportCustomJobs
+     *
+     * @return \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList
+     */
+    protected function getExportCustomJobs() {
+        return $this->proxy()->exportCustomJobs;
     }
 
     /**

@@ -19,8 +19,9 @@ class ReservationList extends ListResource {
      * Construct the ReservationList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workerSid The worker_sid
+     * @param string $workspaceSid The SID of the Workspace that this worker is
+     *                             contained within.
+     * @param string $workerSid The SID of the reserved Worker resource
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList
      */
     public function __construct(Version $version, $workspaceSid, $workerSid) {
@@ -126,7 +127,7 @@ class ReservationList extends ListResource {
     /**
      * Constructs a ReservationContext
      *
-     * @param string $sid The sid
+     * @param string $sid The SID of the WorkerReservation resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext
      */
     public function getContext($sid) {

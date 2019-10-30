@@ -7,34 +7,36 @@
  * /       /
  */
 
-namespace Twilio\Rest\Taskrouter\V1\Workspace\Task;
+namespace Twilio\Rest\Preview\BulkExports\Export;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
-class ReservationList extends ListResource {
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
+class ExportCustomJobList extends ListResource {
     /**
-     * Construct the ReservationList
+     * Construct the ExportCustomJobList
      *
      * @param Version $version Version that contains the resource
-     * @param string $workspaceSid The SID of the Workspace that this task is
-     *                             contained within.
-     * @param string $taskSid The SID of the reserved Task resource
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList
+     * @param string $resourceType The type of communication – Messages, Calls
+     * @return \Twilio\Rest\Preview\BulkExports\Export\ExportCustomJobList
      */
-    public function __construct(Version $version, $workspaceSid, $taskSid) {
+    public function __construct(Version $version, $resourceType) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('workspaceSid' => $workspaceSid, 'taskSid' => $taskSid, );
+        $this->solution = array('resourceType' => $resourceType, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks/' . rawurlencode($taskSid) . '/Reservations';
+        $this->uri = '/Exports/' . rawurlencode($resourceType) . '/Jobs';
     }
 
     /**
-     * Streams ReservationInstance records from the API as a generator stream.
+     * Streams ExportCustomJobInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -61,7 +63,7 @@ class ReservationList extends ListResource {
     }
 
     /**
-     * Reads ReservationInstance records from the API as a list.
+     * Reads ExportCustomJobInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -74,26 +76,27 @@ class ReservationList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return ReservationInstance[] Array of results
+     * @return ExportCustomJobInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
         return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of ReservationInstance records from the API.
+     * Retrieve a single page of ExportCustomJobInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of ReservationInstance
+     * @return \Twilio\Page Page of ExportCustomJobInstance
      */
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'ReservationStatus' => $options['reservationStatus'],
+            'NextToken' => $options['nextToken'],
+            'PreviousToken' => $options['previousToken'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -105,15 +108,15 @@ class ReservationList extends ListResource {
             $params
         );
 
-        return new ReservationPage($this->version, $response, $this->solution);
+        return new ExportCustomJobPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of ReservationInstance records from the API.
+     * Retrieve a specific page of ExportCustomJobInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of ReservationInstance
+     * @return \Twilio\Page Page of ExportCustomJobInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -121,22 +124,36 @@ class ReservationList extends ListResource {
             $targetUrl
         );
 
-        return new ReservationPage($this->version, $response, $this->solution);
+        return new ExportCustomJobPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a ReservationContext
+     * Create a new ExportCustomJobInstance
      *
-     * @param string $sid The SID of the TaskReservation resource to fetch
-     * @return \Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationContext
+     * @param array|Options $options Optional Arguments
+     * @return ExportCustomJobInstance Newly created ExportCustomJobInstance
+     * @throws TwilioException When an HTTP error occurs.
      */
-    public function getContext($sid) {
-        return new ReservationContext(
-            $this->version,
-            $this->solution['workspaceSid'],
-            $this->solution['taskSid'],
-            $sid
+    public function create($options = array()) {
+        $options = new Values($options);
+
+        $data = Values::of(array(
+            'FriendlyName' => $options['friendlyName'],
+            'StartDay' => $options['startDay'],
+            'EndDay' => $options['endDay'],
+            'WebhookUrl' => $options['webhookUrl'],
+            'WebhookMethod' => $options['webhookMethod'],
+            'Email' => $options['email'],
+        ));
+
+        $payload = $this->version->create(
+            'POST',
+            $this->uri,
+            array(),
+            $data
         );
+
+        return new ExportCustomJobInstance($this->version, $payload, $this->solution['resourceType']);
     }
 
     /**
@@ -145,6 +162,6 @@ class ReservationList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Taskrouter.V1.ReservationList]';
+        return '[Twilio.Preview.BulkExports.ExportCustomJobList]';
     }
 }

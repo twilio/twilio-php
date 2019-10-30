@@ -127,7 +127,7 @@ class Wireless extends Domain {
     }
 
     /**
-     * @param string $sid The SID that identifies the resource to fetch
+     * @param string $sid The SID of the Sim resource to fetch
      * @return \Twilio\Rest\Wireless\V1\SimContext
      */
     protected function contextSims($sid) {

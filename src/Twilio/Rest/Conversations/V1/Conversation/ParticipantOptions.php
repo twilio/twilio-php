@@ -28,10 +28,13 @@ abstract class ParticipantOptions {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $messagingBindingProjectedAddress The address of the Twilio
+     *                                                 phone number that is used in
+     *                                                 Group MMS.
      * @return CreateParticipantOptions Options builder
      */
-    public static function create($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
-        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes);
+    public static function create($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $messagingBindingProjectedAddress = Values::NONE) {
+        return new CreateParticipantOptions($identity, $messagingBindingAddress, $messagingBindingProxyAddress, $dateCreated, $dateUpdated, $attributes, $messagingBindingProjectedAddress);
     }
 
     /**
@@ -59,14 +62,18 @@ class CreateParticipantOptions extends Options {
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to
      *                           store any data you wish.
+     * @param string $messagingBindingProjectedAddress The address of the Twilio
+     *                                                 phone number that is used in
+     *                                                 Group MMS.
      */
-    public function __construct($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE) {
+    public function __construct($identity = Values::NONE, $messagingBindingAddress = Values::NONE, $messagingBindingProxyAddress = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $attributes = Values::NONE, $messagingBindingProjectedAddress = Values::NONE) {
         $this->options['identity'] = $identity;
         $this->options['messagingBindingAddress'] = $messagingBindingAddress;
         $this->options['messagingBindingProxyAddress'] = $messagingBindingProxyAddress;
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
     }
 
     /**
@@ -82,7 +89,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field). Limited to 256 characters.
+     * The address of the participant's device, e.g. a phone number or Messenger ID. Together with the Proxy address, this determines a participant uniquely. This field (with proxy_address) is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
      *
      * @param string $messagingBindingAddress The address of the participant's
      *                                        device.
@@ -94,7 +101,7 @@ class CreateParticipantOptions extends Options {
     }
 
     /**
-     * The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field). Limited to 256 characters.
+     * The address of the Twilio phone number (or WhatsApp number, or Messenger Page ID) that the participant is in contact with. This field, together with participant address, is only null when the participant is interacting from a Chat endpoint (see the 'identity' field).
      *
      * @param string $messagingBindingProxyAddress The address of the Twilio phone
      *                                             number that the participant is
@@ -137,6 +144,19 @@ class CreateParticipantOptions extends Options {
      */
     public function setAttributes($attributes) {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The address of the Twilio phone number that is used in Group MMS. Communication mask for the Chat participant with Identity.
+     *
+     * @param string $messagingBindingProjectedAddress The address of the Twilio
+     *                                                 phone number that is used in
+     *                                                 Group MMS.
+     * @return $this Fluent Builder
+     */
+    public function setMessagingBindingProjectedAddress($messagingBindingProjectedAddress) {
+        $this->options['messagingBindingProjectedAddress'] = $messagingBindingProjectedAddress;
         return $this;
     }
 

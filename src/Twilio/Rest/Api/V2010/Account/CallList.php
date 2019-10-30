@@ -205,7 +205,7 @@ class CallList extends ListResource {
     /**
      * Constructs a CallContext
      *
-     * @param string $sid The unique string that identifies this resource
+     * @param string $sid The SID of the Call resource to fetch
      * @return \Twilio\Rest\Api\V2010\Account\CallContext
      */
     public function getContext($sid) {

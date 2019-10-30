@@ -21,9 +21,11 @@ class ReservationContext extends InstanceContext {
      * Initialize the ReservationContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $workspaceSid The workspace_sid
-     * @param string $workerSid The worker_sid
-     * @param string $sid The sid
+     * @param string $workspaceSid The SID of the Workspace with the
+     *                             WorkerReservation resource to fetch
+     * @param string $workerSid The SID of the reserved Worker resource with the
+     *                          WorkerReservation resource to fetch
+     * @param string $sid The SID of the WorkerReservation resource to fetch
      * @return \Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationContext
      */
     public function __construct(Version $version, $workspaceSid, $workerSid, $sid) {
