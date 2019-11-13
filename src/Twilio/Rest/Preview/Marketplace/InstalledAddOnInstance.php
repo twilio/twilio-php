@@ -38,7 +38,7 @@ class InstalledAddOnInstance extends InstanceResource {
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique Installed Add-on Sid
+     * @param string $sid The SID of the InstalledAddOn resource to fetch
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnInstance
      */
     public function __construct(Version $version, array $payload, $sid = null) {

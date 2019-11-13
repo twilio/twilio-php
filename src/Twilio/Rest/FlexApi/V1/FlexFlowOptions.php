@@ -38,10 +38,12 @@ abstract class FlexFlowOptions {
      * @param bool $longLived Whether new channels are long-lived
      * @param bool $janitorEnabled Boolean flag for enabling or disabling the
      *                             Janitor
+     * @param int $integrationRetryCount The number of times to retry the webhook
+     *                                   if the first attempt fails
      * @return CreateFlexFlowOptions Options builder
      */
-    public static function create($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
-        return new CreateFlexFlowOptions($contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled);
+    public static function create($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE, $integrationRetryCount = Values::NONE) {
+        return new CreateFlexFlowOptions($contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled, $integrationRetryCount);
     }
 
     /**
@@ -63,10 +65,12 @@ abstract class FlexFlowOptions {
      * @param bool $longLived Whether new channels created are long-lived
      * @param bool $janitorEnabled Boolean flag for enabling or disabling the
      *                             Janitor
+     * @param int $integrationRetryCount The number of times to retry the webhook
+     *                                   if the first attempt fails
      * @return UpdateFlexFlowOptions Options builder
      */
-    public static function update($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
-        return new UpdateFlexFlowOptions($friendlyName, $chatServiceSid, $channelType, $contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled);
+    public static function update($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE, $integrationRetryCount = Values::NONE) {
+        return new UpdateFlexFlowOptions($friendlyName, $chatServiceSid, $channelType, $contactIdentity, $enabled, $integrationType, $integrationFlowSid, $integrationUrl, $integrationWorkspaceSid, $integrationWorkflowSid, $integrationChannel, $integrationTimeout, $integrationPriority, $integrationCreationOnMessage, $longLived, $janitorEnabled, $integrationRetryCount);
     }
 }
 
@@ -124,8 +128,10 @@ class CreateFlexFlowOptions extends Options {
      * @param bool $longLived Whether new channels are long-lived
      * @param bool $janitorEnabled Boolean flag for enabling or disabling the
      *                             Janitor
+     * @param int $integrationRetryCount The number of times to retry the webhook
+     *                                   if the first attempt fails
      */
-    public function __construct($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
+    public function __construct($contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE, $integrationRetryCount = Values::NONE) {
         $this->options['contactIdentity'] = $contactIdentity;
         $this->options['enabled'] = $enabled;
         $this->options['integrationType'] = $integrationType;
@@ -139,6 +145,7 @@ class CreateFlexFlowOptions extends Options {
         $this->options['integrationCreationOnMessage'] = $integrationCreationOnMessage;
         $this->options['longLived'] = $longLived;
         $this->options['janitorEnabled'] = $janitorEnabled;
+        $this->options['integrationRetryCount'] = $integrationRetryCount;
     }
 
     /**
@@ -287,6 +294,18 @@ class CreateFlexFlowOptions extends Options {
     }
 
     /**
+     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.
+     *
+     * @param int $integrationRetryCount The number of times to retry the webhook
+     *                                   if the first attempt fails
+     * @return $this Fluent Builder
+     */
+    public function setIntegrationRetryCount($integrationRetryCount) {
+        $this->options['integrationRetryCount'] = $integrationRetryCount;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -322,8 +341,10 @@ class UpdateFlexFlowOptions extends Options {
      * @param bool $longLived Whether new channels created are long-lived
      * @param bool $janitorEnabled Boolean flag for enabling or disabling the
      *                             Janitor
+     * @param int $integrationRetryCount The number of times to retry the webhook
+     *                                   if the first attempt fails
      */
-    public function __construct($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE) {
+    public function __construct($friendlyName = Values::NONE, $chatServiceSid = Values::NONE, $channelType = Values::NONE, $contactIdentity = Values::NONE, $enabled = Values::NONE, $integrationType = Values::NONE, $integrationFlowSid = Values::NONE, $integrationUrl = Values::NONE, $integrationWorkspaceSid = Values::NONE, $integrationWorkflowSid = Values::NONE, $integrationChannel = Values::NONE, $integrationTimeout = Values::NONE, $integrationPriority = Values::NONE, $integrationCreationOnMessage = Values::NONE, $longLived = Values::NONE, $janitorEnabled = Values::NONE, $integrationRetryCount = Values::NONE) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['chatServiceSid'] = $chatServiceSid;
         $this->options['channelType'] = $channelType;
@@ -340,6 +361,7 @@ class UpdateFlexFlowOptions extends Options {
         $this->options['integrationCreationOnMessage'] = $integrationCreationOnMessage;
         $this->options['longLived'] = $longLived;
         $this->options['janitorEnabled'] = $janitorEnabled;
+        $this->options['integrationRetryCount'] = $integrationRetryCount;
     }
 
     /**
@@ -365,7 +387,7 @@ class UpdateFlexFlowOptions extends Options {
     }
 
     /**
-     * The channel type. Can be: `web`, `facebook`, or `sms`.
+     * The channel type. Can be: `web`, `facebook`, `sms`, `whatsapp`, `line` or `custom`.
      *
      * @param string $channelType The channel type
      * @return $this Fluent Builder
@@ -517,6 +539,18 @@ class UpdateFlexFlowOptions extends Options {
      */
     public function setJanitorEnabled($janitorEnabled) {
         $this->options['janitorEnabled'] = $janitorEnabled;
+        return $this;
+    }
+
+    /**
+     * The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0.
+     *
+     * @param int $integrationRetryCount The number of times to retry the webhook
+     *                                   if the first attempt fails
+     * @return $this Fluent Builder
+     */
+    public function setIntegrationRetryCount($integrationRetryCount) {
+        $this->options['integrationRetryCount'] = $integrationRetryCount;
         return $this;
     }
 

@@ -27,10 +27,12 @@ abstract class VerificationOptions {
      * @param string $payee The payee of the associated PSD2 compliant transaction
      * @param array $rateLimits The custom key-value pairs of Programmable Rate
      *                          Limits.
+     * @param array $channelConfiguration Channel specific configuration in json
+     *                                    format.
      * @return CreateVerificationOptions Options builder
      */
-    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE) {
-        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits);
+    public static function create($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE, $channelConfiguration = Values::NONE) {
+        return new CreateVerificationOptions($customMessage, $sendDigits, $locale, $customCode, $amount, $payee, $rateLimits, $channelConfiguration);
     }
 }
 
@@ -46,8 +48,10 @@ class CreateVerificationOptions extends Options {
      * @param string $payee The payee of the associated PSD2 compliant transaction
      * @param array $rateLimits The custom key-value pairs of Programmable Rate
      *                          Limits.
+     * @param array $channelConfiguration Channel specific configuration in json
+     *                                    format.
      */
-    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE) {
+    public function __construct($customMessage = Values::NONE, $sendDigits = Values::NONE, $locale = Values::NONE, $customCode = Values::NONE, $amount = Values::NONE, $payee = Values::NONE, $rateLimits = Values::NONE, $channelConfiguration = Values::NONE) {
         $this->options['customMessage'] = $customMessage;
         $this->options['sendDigits'] = $sendDigits;
         $this->options['locale'] = $locale;
@@ -55,6 +59,7 @@ class CreateVerificationOptions extends Options {
         $this->options['amount'] = $amount;
         $this->options['payee'] = $payee;
         $this->options['rateLimits'] = $rateLimits;
+        $this->options['channelConfiguration'] = $channelConfiguration;
     }
 
     /**
@@ -134,6 +139,18 @@ class CreateVerificationOptions extends Options {
      */
     public function setRateLimits($rateLimits) {
         $this->options['rateLimits'] = $rateLimits;
+        return $this;
+    }
+
+    /**
+     * Channel specific configuration in json format: For email must include 'from' and 'from_name'.
+     *
+     * @param array $channelConfiguration Channel specific configuration in json
+     *                                    format.
+     * @return $this Fluent Builder
+     */
+    public function setChannelConfiguration($channelConfiguration) {
+        $this->options['channelConfiguration'] = $channelConfiguration;
         return $this;
     }
 

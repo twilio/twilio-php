@@ -7,39 +7,42 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Marketplace;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class AvailableAddOnList extends ListResource {
+class MetricList extends ListResource {
     /**
-     * Construct the AvailableAddOnList
+     * Construct the MetricList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnList
+     * @param string $callSid The call_sid
+     * @return \Twilio\Rest\Insights\V1\Call\MetricList
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $callSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = array('callSid' => $callSid, );
 
-        $this->uri = '/AvailableAddOns';
+        $this->uri = '/Voice/' . rawurlencode($callSid) . '/Metrics';
     }
 
     /**
-     * Streams AvailableAddOnInstance records from the API as a generator stream.
+     * Streams MetricInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -50,19 +53,20 @@ class AvailableAddOnList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($options = array(), $limit = null, $pageSize = null) {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page($options, $limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
     /**
-     * Reads AvailableAddOnInstance records from the API as a list.
+     * Reads MetricInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -71,23 +75,27 @@ class AvailableAddOnList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return AvailableAddOnInstance[] Array of results
+     * @return MetricInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+    public function read($options = array(), $limit = null, $pageSize = null) {
+        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of AvailableAddOnInstance records from the API.
+     * Retrieve a single page of MetricInstance records from the API.
      * Request is executed immediately
      *
+     * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return \Twilio\Page Page of AvailableAddOnInstance
+     * @return \Twilio\Page Page of MetricInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+        $options = new Values($options);
         $params = Values::of(array(
+            'Edge' => $options['edge'],
+            'Direction' => $options['direction'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -99,15 +107,15 @@ class AvailableAddOnList extends ListResource {
             $params
         );
 
-        return new AvailableAddOnPage($this->version, $response, $this->solution);
+        return new MetricPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of AvailableAddOnInstance records from the API.
+     * Retrieve a specific page of MetricInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return \Twilio\Page Page of AvailableAddOnInstance
+     * @return \Twilio\Page Page of MetricInstance
      */
     public function getPage($targetUrl) {
         $response = $this->version->getDomain()->getClient()->request(
@@ -115,17 +123,7 @@ class AvailableAddOnList extends ListResource {
             $targetUrl
         );
 
-        return new AvailableAddOnPage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Constructs a AvailableAddOnContext
-     *
-     * @param string $sid The SID of the AvailableAddOn resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOnContext
-     */
-    public function getContext($sid) {
-        return new AvailableAddOnContext($this->version, $sid);
+        return new MetricPage($this->version, $response, $this->solution);
     }
 
     /**
@@ -134,6 +132,6 @@ class AvailableAddOnList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Preview.Marketplace.AvailableAddOnList]';
+        return '[Twilio.Insights.V1.MetricList]';
     }
 }

@@ -21,7 +21,8 @@ class InstalledAddOnExtensionList extends ListResource {
      * Construct the InstalledAddOnExtensionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $installedAddOnSid The installed_add_on_sid
+     * @param string $installedAddOnSid The SID of the InstalledAddOn resource to
+     *                                  which this extension applies
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList
      */
     public function __construct(Version $version, $installedAddOnSid) {
@@ -125,7 +126,7 @@ class InstalledAddOnExtensionList extends ListResource {
     /**
      * Constructs a InstalledAddOnExtensionContext
      *
-     * @param string $sid The unique Extension Sid
+     * @param string $sid The SID of the InstalledAddOn Extension resource to fetch
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext
      */
     public function getContext($sid) {

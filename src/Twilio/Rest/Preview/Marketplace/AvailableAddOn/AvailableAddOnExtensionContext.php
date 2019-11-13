@@ -22,8 +22,9 @@ class AvailableAddOnExtensionContext extends InstanceContext {
      * Initialize the AvailableAddOnExtensionContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $availableAddOnSid The available_add_on_sid
-     * @param string $sid The unique Extension Sid
+     * @param string $availableAddOnSid The SID of the AvailableAddOn resource with
+     *                                  the extension to fetch
+     * @param string $sid The SID of the AvailableAddOn Extension resource to fetch
      * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext
      */
     public function __construct(Version $version, $availableAddOnSid, $sid) {

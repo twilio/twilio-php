@@ -7,8 +7,9 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Marketplace\AvailableAddOn;
+namespace Twilio\Rest\Autopilot\V1\Assistant;
 
+use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
@@ -17,67 +18,60 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property string $sid
- * @property string $availableAddOnSid
- * @property string $friendlyName
- * @property string $productName
- * @property string $uniqueName
+ * @property string $accountSid
+ * @property string $assistantSid
+ * @property \DateTime $dateCreated
+ * @property string $status
+ * @property int $errorCode
  * @property string $url
+ * @property array $schema
  */
-class AvailableAddOnExtensionInstance extends InstanceResource {
+class ExportAssistantInstance extends InstanceResource {
     /**
-     * Initialize the AvailableAddOnExtensionInstance
+     * Initialize the ExportAssistantInstance
      *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $availableAddOnSid The SID of the AvailableAddOn resource to
-     *                                  which this extension applies
-     * @param string $sid The SID of the AvailableAddOn Extension resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionInstance
+     * @param string $assistantSid The SID of the Assistant to export.
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantInstance
      */
-    public function __construct(Version $version, array $payload, $availableAddOnSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $assistantSid) {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = array(
-            'sid' => Values::array_get($payload, 'sid'),
-            'availableAddOnSid' => Values::array_get($payload, 'available_add_on_sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'productName' => Values::array_get($payload, 'product_name'),
-            'uniqueName' => Values::array_get($payload, 'unique_name'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'assistantSid' => Values::array_get($payload, 'assistant_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'status' => Values::array_get($payload, 'status'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
             'url' => Values::array_get($payload, 'url'),
+            'schema' => Values::array_get($payload, 'schema'),
         );
 
-        $this->solution = array(
-            'availableAddOnSid' => $availableAddOnSid,
-            'sid' => $sid ?: $this->properties['sid'],
-        );
+        $this->solution = array('assistantSid' => $assistantSid, );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Preview\Marketplace\AvailableAddOn\AvailableAddOnExtensionContext Context for this
-     *                                                                                        AvailableAddOnExtensionInstance
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantContext Context
+     *                                                                    for this
+     *                                                                    ExportAssistantInstance
      */
     protected function proxy() {
         if (!$this->context) {
-            $this->context = new AvailableAddOnExtensionContext(
-                $this->version,
-                $this->solution['availableAddOnSid'],
-                $this->solution['sid']
-            );
+            $this->context = new ExportAssistantContext($this->version, $this->solution['assistantSid']);
         }
 
         return $this->context;
     }
 
     /**
-     * Fetch a AvailableAddOnExtensionInstance
+     * Fetch a ExportAssistantInstance
      *
-     * @return AvailableAddOnExtensionInstance Fetched
-     *                                         AvailableAddOnExtensionInstance
+     * @return ExportAssistantInstance Fetched ExportAssistantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -114,6 +108,6 @@ class AvailableAddOnExtensionInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Marketplace.AvailableAddOnExtensionInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.ExportAssistantInstance ' . implode(' ', $context) . ']';
     }
 }

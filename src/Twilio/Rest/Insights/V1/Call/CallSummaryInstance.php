@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Deserialize;
 use Twilio\Exceptions\TwilioException;
@@ -46,9 +46,9 @@ class CallSummaryInstance extends InstanceResource {
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\CallSummaryInstance
+     * @return \Twilio\Rest\Insights\V1\Call\CallSummaryInstance
      */
-    public function __construct(Version $version, array $payload, $callSid = null) {
+    public function __construct(Version $version, array $payload, $callSid) {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -74,15 +74,15 @@ class CallSummaryInstance extends InstanceResource {
             'properties' => Values::array_get($payload, 'properties'),
         );
 
-        $this->solution = array('callSid' => $callSid ?: $this->properties['callSid'], );
+        $this->solution = array('callSid' => $callSid, );
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return \Twilio\Rest\Insights\V1\CallSummaryContext Context for this
-     *                                                     CallSummaryInstance
+     * @return \Twilio\Rest\Insights\V1\Call\CallSummaryContext Context for this
+     *                                                          CallSummaryInstance
      */
     protected function proxy() {
         if (!$this->context) {

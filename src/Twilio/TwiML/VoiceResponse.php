@@ -209,4 +209,14 @@ class VoiceResponse extends TwiML {
     public function stop() {
         return $this->nest(new Voice\Stop());
     }
+
+    /**
+     * Add Refer child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Voice\Refer Child element.
+     */
+    public function refer($attributes = array()) {
+        return $this->nest(new Voice\Refer($attributes));
+    }
 }

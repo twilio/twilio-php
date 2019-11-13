@@ -40,7 +40,7 @@ class VerificationList extends ListResource {
     /**
      * Create a new VerificationInstance
      *
-     * @param string $to The phone number to verify
+     * @param string $to The phone number or email to verify
      * @param string $channel The verification method to use
      * @param array|Options $options Optional Arguments
      * @return VerificationInstance Newly created VerificationInstance
@@ -59,6 +59,7 @@ class VerificationList extends ListResource {
             'Amount' => $options['amount'],
             'Payee' => $options['payee'],
             'RateLimits' => Serialize::jsonObject($options['rateLimits']),
+            'ChannelConfiguration' => Serialize::jsonObject($options['channelConfiguration']),
         ));
 
         $payload = $this->version->create(

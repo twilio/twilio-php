@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Tests\Integration\Insights\V1;
+namespace Twilio\Tests\Integration\Insights\V1\Call;
 
 use Twilio\Exceptions\DeserializeException;
 use Twilio\Exceptions\TwilioException;
@@ -20,7 +20,8 @@ class CallSummaryTest extends HolodeckTestCase {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
-            $this->twilio->insights->v1->summary("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+            $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                       ->summary()->fetch();
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
@@ -60,7 +61,8 @@ class CallSummaryTest extends HolodeckTestCase {
             '
         ));
 
-        $actual = $this->twilio->insights->v1->summary("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")->fetch();
+        $actual = $this->twilio->insights->v1->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                             ->summary()->fetch();
 
         $this->assertNotNull($actual);
     }

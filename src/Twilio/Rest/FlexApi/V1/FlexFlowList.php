@@ -153,6 +153,7 @@ class FlexFlowList extends ListResource {
             'Integration.CreationOnMessage' => Serialize::booleanToString($options['integrationCreationOnMessage']),
             'LongLived' => Serialize::booleanToString($options['longLived']),
             'JanitorEnabled' => Serialize::booleanToString($options['janitorEnabled']),
+            'Integration.RetryCount' => $options['integrationRetryCount'],
         ));
 
         $payload = $this->version->create(

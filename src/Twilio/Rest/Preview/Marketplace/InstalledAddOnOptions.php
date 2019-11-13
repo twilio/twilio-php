@@ -18,8 +18,8 @@ use Twilio\Values;
 abstract class InstalledAddOnOptions {
     /**
      * @param array $configuration The JSON object representing the configuration
-     * @param string $uniqueName The string that uniquely identifies this Add-on
-     *                           installation
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return CreateInstalledAddOnOptions Options builder
      */
     public static function create($configuration = Values::NONE, $uniqueName = Values::NONE) {
@@ -28,8 +28,8 @@ abstract class InstalledAddOnOptions {
 
     /**
      * @param array $configuration The JSON object representing the configuration
-     * @param string $uniqueName The string that uniquely identifies this Add-on
-     *                           installation
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return UpdateInstalledAddOnOptions Options builder
      */
     public static function update($configuration = Values::NONE, $uniqueName = Values::NONE) {
@@ -40,8 +40,8 @@ abstract class InstalledAddOnOptions {
 class CreateInstalledAddOnOptions extends Options {
     /**
      * @param array $configuration The JSON object representing the configuration
-     * @param string $uniqueName The string that uniquely identifies this Add-on
-     *                           installation
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      */
     public function __construct($configuration = Values::NONE, $uniqueName = Values::NONE) {
         $this->options['configuration'] = $configuration;
@@ -49,7 +49,7 @@ class CreateInstalledAddOnOptions extends Options {
     }
 
     /**
-     * The JSON object representing the configuration of the new Add-on installation.
+     * The JSON object that represents the configuration of the new Add-on being installed.
      *
      * @param array $configuration The JSON object representing the configuration
      * @return $this Fluent Builder
@@ -60,10 +60,10 @@ class CreateInstalledAddOnOptions extends Options {
     }
 
     /**
-     * The human-readable string that uniquely identifies this Add-on installation for an Account.
+     * An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      *
-     * @param string $uniqueName The string that uniquely identifies this Add-on
-     *                           installation
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {
@@ -90,8 +90,8 @@ class CreateInstalledAddOnOptions extends Options {
 class UpdateInstalledAddOnOptions extends Options {
     /**
      * @param array $configuration The JSON object representing the configuration
-     * @param string $uniqueName The string that uniquely identifies this Add-on
-     *                           installation
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      */
     public function __construct($configuration = Values::NONE, $uniqueName = Values::NONE) {
         $this->options['configuration'] = $configuration;
@@ -99,7 +99,7 @@ class UpdateInstalledAddOnOptions extends Options {
     }
 
     /**
-     * Valid JSON object that conform to the configuration schema exposed by the associated Available Add-on resource. This is only required by Add-ons that need to be configured
+     * Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured
      *
      * @param array $configuration The JSON object representing the configuration
      * @return $this Fluent Builder
@@ -110,10 +110,10 @@ class UpdateInstalledAddOnOptions extends Options {
     }
 
     /**
-     * The human-readable string that uniquely identifies this Add-on installation for an Account.
+     * An application-defined string that uniquely identifies the resource. This value must be unique within the Account.
      *
-     * @param string $uniqueName The string that uniquely identifies this Add-on
-     *                           installation
+     * @param string $uniqueName An application-defined string that uniquely
+     *                           identifies the resource
      * @return $this Fluent Builder
      */
     public function setUniqueName($uniqueName) {

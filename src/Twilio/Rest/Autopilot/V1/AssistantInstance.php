@@ -43,6 +43,7 @@ class AssistantInstance extends InstanceResource {
     protected $_defaults = null;
     protected $_dialogues = null;
     protected $_webhooks = null;
+    protected $_exportAssistant = null;
 
     /**
      * Initialize the AssistantInstance
@@ -192,6 +193,15 @@ class AssistantInstance extends InstanceResource {
      */
     protected function getWebhooks() {
         return $this->proxy()->webhooks;
+    }
+
+    /**
+     * Access the exportAssistant
+     *
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantList
+     */
+    protected function getExportAssistant() {
+        return $this->proxy()->exportAssistant;
     }
 
     /**

@@ -23,8 +23,9 @@ class InstalledAddOnExtensionContext extends InstanceContext {
      * Initialize the InstalledAddOnExtensionContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $installedAddOnSid The installed_add_on_sid
-     * @param string $sid The unique Extension Sid
+     * @param string $installedAddOnSid The SID of the InstalledAddOn resource with
+     *                                  the extension to fetch
+     * @param string $sid The SID of the InstalledAddOn Extension resource to fetch
      * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext
      */
     public function __construct(Version $version, $installedAddOnSid, $sid) {
@@ -63,7 +64,7 @@ class InstalledAddOnExtensionContext extends InstanceContext {
     /**
      * Update the InstalledAddOnExtensionInstance
      *
-     * @param bool $enabled A Boolean indicating if the Extension will be invoked
+     * @param bool $enabled Whether the Extension should be invoked
      * @return InstalledAddOnExtensionInstance Updated
      *                                         InstalledAddOnExtensionInstance
      * @throws TwilioException When an HTTP error occurs.

@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Autopilot\V1\Assistant;
 
 use Twilio\ListResource;
 use Twilio\Version;
@@ -15,28 +15,28 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class CallSummaryList extends ListResource {
+class ExportAssistantList extends ListResource {
     /**
-     * Construct the CallSummaryList
+     * Construct the ExportAssistantList
      *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Insights\V1\CallSummaryList
+     * @param string $assistantSid The SID of the Assistant to export.
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantList
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $assistantSid) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array();
+        $this->solution = array('assistantSid' => $assistantSid, );
     }
 
     /**
-     * Constructs a CallSummaryContext
+     * Constructs a ExportAssistantContext
      *
-     * @param string $callSid The call_sid
-     * @return \Twilio\Rest\Insights\V1\CallSummaryContext
+     * @return \Twilio\Rest\Autopilot\V1\Assistant\ExportAssistantContext
      */
-    public function getContext($callSid) {
-        return new CallSummaryContext($this->version, $callSid);
+    public function getContext() {
+        return new ExportAssistantContext($this->version, $this->solution['assistantSid']);
     }
 
     /**
@@ -45,6 +45,6 @@ class CallSummaryList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Insights.V1.CallSummaryList]';
+        return '[Twilio.Autopilot.V1.ExportAssistantList]';
     }
 }

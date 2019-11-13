@@ -7,7 +7,7 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Options;
 use Twilio\Values;

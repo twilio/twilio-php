@@ -57,6 +57,7 @@ class MessageList extends ListResource {
             'ValidityPeriod' => $options['validityPeriod'],
             'ForceDelivery' => Serialize::booleanToString($options['forceDelivery']),
             'SmartEncoded' => Serialize::booleanToString($options['smartEncoded']),
+            'PersistentAction' => Serialize::map($options['persistentAction'], function($e) { return $e; }),
         ));
 
         $payload = $this->version->create(

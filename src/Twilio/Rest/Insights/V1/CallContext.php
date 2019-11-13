@@ -7,31 +7,35 @@
  * /       /
  */
 
-namespace Twilio\Rest\Preview\Marketplace;
+namespace Twilio\Rest\Insights\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Options;
-use Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList;
-use Twilio\Serialize;
+use Twilio\Rest\Insights\V1\Call\CallSummaryList;
+use Twilio\Rest\Insights\V1\Call\EventList;
+use Twilio\Rest\Insights\V1\Call\MetricList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  *
- * @property \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList $extensions
- * @method \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionContext extensions(string $sid)
+ * @property \Twilio\Rest\Insights\V1\Call\EventList $events
+ * @property \Twilio\Rest\Insights\V1\Call\MetricList $metrics
+ * @property \Twilio\Rest\Insights\V1\Call\CallSummaryList $summary
+ * @method \Twilio\Rest\Insights\V1\Call\CallSummaryContext summary()
  */
-class InstalledAddOnContext extends InstanceContext {
-    protected $_extensions = null;
+class CallContext extends InstanceContext {
+    protected $_events = null;
+    protected $_metrics = null;
+    protected $_summary = null;
 
     /**
-     * Initialize the InstalledAddOnContext
+     * Initialize the CallContext
      *
      * @param \Twilio\Version $version Version that contains the resource
-     * @param string $sid The SID of the InstalledAddOn resource to fetch
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOnContext
+     * @param string $sid The sid
+     * @return \Twilio\Rest\Insights\V1\CallContext
      */
     public function __construct(Version $version, $sid) {
         parent::__construct($version);
@@ -39,23 +43,13 @@ class InstalledAddOnContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/InstalledAddOns/' . rawurlencode($sid) . '';
+        $this->uri = '/Voice/' . rawurlencode($sid) . '';
     }
 
     /**
-     * Deletes the InstalledAddOnInstance
+     * Fetch a CallInstance
      *
-     * @return boolean True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete() {
-        return $this->version->delete('delete', $this->uri);
-    }
-
-    /**
-     * Fetch a InstalledAddOnInstance
-     *
-     * @return InstalledAddOnInstance Fetched InstalledAddOnInstance
+     * @return CallInstance Fetched CallInstance
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetch() {
@@ -67,45 +61,46 @@ class InstalledAddOnContext extends InstanceContext {
             $params
         );
 
-        return new InstalledAddOnInstance($this->version, $payload, $this->solution['sid']);
+        return new CallInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**
-     * Update the InstalledAddOnInstance
+     * Access the events
      *
-     * @param array|Options $options Optional Arguments
-     * @return InstalledAddOnInstance Updated InstalledAddOnInstance
-     * @throws TwilioException When an HTTP error occurs.
+     * @return \Twilio\Rest\Insights\V1\Call\EventList
      */
-    public function update($options = array()) {
-        $options = new Values($options);
-
-        $data = Values::of(array(
-            'Configuration' => Serialize::jsonObject($options['configuration']),
-            'UniqueName' => $options['uniqueName'],
-        ));
-
-        $payload = $this->version->update(
-            'POST',
-            $this->uri,
-            array(),
-            $data
-        );
-
-        return new InstalledAddOnInstance($this->version, $payload, $this->solution['sid']);
-    }
-
-    /**
-     * Access the extensions
-     *
-     * @return \Twilio\Rest\Preview\Marketplace\InstalledAddOn\InstalledAddOnExtensionList
-     */
-    protected function getExtensions() {
-        if (!$this->_extensions) {
-            $this->_extensions = new InstalledAddOnExtensionList($this->version, $this->solution['sid']);
+    protected function getEvents() {
+        if (!$this->_events) {
+            $this->_events = new EventList($this->version, $this->solution['sid']);
         }
 
-        return $this->_extensions;
+        return $this->_events;
+    }
+
+    /**
+     * Access the metrics
+     *
+     * @return \Twilio\Rest\Insights\V1\Call\MetricList
+     */
+    protected function getMetrics() {
+        if (!$this->_metrics) {
+            $this->_metrics = new MetricList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_metrics;
+    }
+
+    /**
+     * Access the summary
+     *
+     * @return \Twilio\Rest\Insights\V1\Call\CallSummaryList
+     */
+    protected function getSummary() {
+        if (!$this->_summary) {
+            $this->_summary = new CallSummaryList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_summary;
     }
 
     /**
@@ -151,6 +146,6 @@ class InstalledAddOnContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Marketplace.InstalledAddOnContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Insights.V1.CallContext ' . implode(' ', $context) . ']';
     }
 }

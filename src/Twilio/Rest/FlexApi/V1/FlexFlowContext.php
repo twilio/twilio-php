@@ -78,6 +78,7 @@ class FlexFlowContext extends InstanceContext {
             'Integration.CreationOnMessage' => Serialize::booleanToString($options['integrationCreationOnMessage']),
             'LongLived' => Serialize::booleanToString($options['longLived']),
             'JanitorEnabled' => Serialize::booleanToString($options['janitorEnabled']),
+            'Integration.RetryCount' => $options['integrationRetryCount'],
         ));
 
         $payload = $this->version->update(

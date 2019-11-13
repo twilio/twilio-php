@@ -7,14 +7,14 @@
  * /       /
  */
 
-namespace Twilio\Rest\Insights\V1;
+namespace Twilio\Rest\Insights\V1\Call;
 
 use Twilio\Page;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class CallSummaryPage extends Page {
+class EventPage extends Page {
     public function __construct($version, $response, $solution) {
         parent::__construct($version, $response);
 
@@ -23,7 +23,7 @@ class CallSummaryPage extends Page {
     }
 
     public function buildInstance(array $payload) {
-        return new CallSummaryInstance($this->version, $payload);
+        return new EventInstance($this->version, $payload, $this->solution['callSid']);
     }
 
     /**
@@ -32,6 +32,6 @@ class CallSummaryPage extends Page {
      * @return string Machine friendly representation
      */
     public function __toString() {
-        return '[Twilio.Insights.V1.CallSummaryPage]';
+        return '[Twilio.Insights.V1.EventPage]';
     }
 }
