@@ -204,7 +204,7 @@ class DeviceTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->deployedDevices->fleets("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                          ->devices->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

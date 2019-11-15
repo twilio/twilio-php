@@ -30,7 +30,7 @@ class TaskQueuesStatisticsList extends ListResource {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/TaskQueues/Statistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/TaskQueues/Statistics';
     }
 
     /**
@@ -78,7 +78,7 @@ class TaskQueuesStatisticsList extends ListResource {
      * @return TaskQueuesStatisticsInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

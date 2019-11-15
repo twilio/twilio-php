@@ -87,7 +87,7 @@ class CreateKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.CreateKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.CreateKeyOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -122,7 +122,7 @@ class ReadKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.ReadKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.ReadKeyOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -170,6 +170,6 @@ class UpdateKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.UpdateKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.UpdateKeyOptions ' . \implode(' ', $options) . ']';
     }
 }

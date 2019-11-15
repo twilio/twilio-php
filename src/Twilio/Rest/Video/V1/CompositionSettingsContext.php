@@ -94,6 +94,6 @@ class CompositionSettingsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.CompositionSettingsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.CompositionSettingsContext ' . \implode(' ', $context) . ']';
     }
 }

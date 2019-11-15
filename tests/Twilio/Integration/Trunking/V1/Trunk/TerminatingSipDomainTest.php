@@ -207,7 +207,7 @@ class TerminatingSipDomainTest extends HolodeckTestCase {
         $actual = $this->twilio->trunking->v1->trunks("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                              ->terminatingSipDomains->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -166,6 +166,6 @@ class CreateVerificationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Verify.V2.CreateVerificationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Verify.V2.CreateVerificationOptions ' . \implode(' ', $options) . ']';
     }
 }

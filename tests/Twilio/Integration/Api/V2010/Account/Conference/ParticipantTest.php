@@ -365,7 +365,7 @@ class ParticipantTest extends HolodeckTestCase {
                                            ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->participants->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadNextResponse() {

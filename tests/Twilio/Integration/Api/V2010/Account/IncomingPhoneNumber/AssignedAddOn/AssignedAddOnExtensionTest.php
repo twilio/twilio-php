@@ -111,7 +111,7 @@ class AssignedAddOnExtensionTest extends HolodeckTestCase {
                                            ->assignedAddOns("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->extensions->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

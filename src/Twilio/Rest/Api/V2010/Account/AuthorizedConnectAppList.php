@@ -27,7 +27,7 @@ class AuthorizedConnectAppList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/AuthorizedConnectApps.json';
     }
 
     /**
@@ -73,7 +73,7 @@ class AuthorizedConnectAppList extends ListResource {
      * @return AuthorizedConnectAppInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -70,6 +70,6 @@ class ReadBindingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.ReadBindingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.ReadBindingOptions ' . \implode(' ', $options) . ']';
     }
 }

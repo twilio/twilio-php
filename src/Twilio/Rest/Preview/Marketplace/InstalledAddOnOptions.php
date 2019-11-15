@@ -83,7 +83,7 @@ class CreateInstalledAddOnOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Marketplace.CreateInstalledAddOnOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Marketplace.CreateInstalledAddOnOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -133,6 +133,6 @@ class UpdateInstalledAddOnOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Marketplace.UpdateInstalledAddOnOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Marketplace.UpdateInstalledAddOnOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -139,7 +139,7 @@ class UpdateShortCodeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateShortCodeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateShortCodeOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -189,6 +189,6 @@ class ReadShortCodeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadShortCodeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadShortCodeOptions ' . \implode(' ', $options) . ']';
     }
 }

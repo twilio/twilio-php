@@ -134,7 +134,7 @@ class ReadMobileOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadMobileOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadMobileOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -401,6 +401,6 @@ class CreateMobileOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateMobileOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateMobileOptions ' . \implode(' ', $options) . ']';
     }
 }

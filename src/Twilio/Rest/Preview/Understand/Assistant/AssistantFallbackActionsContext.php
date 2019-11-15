@@ -33,7 +33,7 @@ class AssistantFallbackActionsContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/FallbackActions';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FallbackActions';
     }
 
     /**
@@ -96,6 +96,6 @@ class AssistantFallbackActionsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Understand.AssistantFallbackActionsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Understand.AssistantFallbackActionsContext ' . \implode(' ', $context) . ']';
     }
 }

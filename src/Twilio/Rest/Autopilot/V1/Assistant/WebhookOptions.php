@@ -73,7 +73,7 @@ class CreateWebhookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.CreateWebhookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.CreateWebhookOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -153,6 +153,6 @@ class UpdateWebhookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateWebhookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateWebhookOptions ' . \implode(' ', $options) . ']';
     }
 }

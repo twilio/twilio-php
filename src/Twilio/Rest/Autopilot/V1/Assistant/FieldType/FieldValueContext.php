@@ -40,7 +40,7 @@ class FieldValueContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/FieldTypes/' . rawurlencode($fieldTypeSid) . '/FieldValues/' . rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($fieldTypeSid) . '/FieldValues/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -87,6 +87,6 @@ class FieldValueContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.FieldValueContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.FieldValueContext ' . \implode(' ', $context) . ']';
     }
 }

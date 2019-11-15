@@ -28,7 +28,7 @@ class StepList extends ListResource {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements/' . rawurlencode($engagementSid) . '/Steps';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($engagementSid) . '/Steps';
     }
 
     /**
@@ -73,7 +73,7 @@ class StepList extends ListResource {
      * @return StepInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

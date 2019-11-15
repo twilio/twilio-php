@@ -77,7 +77,7 @@ class VoipTest extends HolodeckTestCase {
                                            ->availablePhoneNumbers("US")
                                            ->voip->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

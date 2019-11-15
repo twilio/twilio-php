@@ -31,7 +31,7 @@ class FaxMediaList extends ListResource {
         // Path Solution
         $this->solution = array('faxSid' => $faxSid, );
 
-        $this->uri = '/Faxes/' . rawurlencode($faxSid) . '/Media';
+        $this->uri = '/Faxes/' . \rawurlencode($faxSid) . '/Media';
     }
 
     /**
@@ -76,7 +76,7 @@ class FaxMediaList extends ListResource {
      * @return FaxMediaInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

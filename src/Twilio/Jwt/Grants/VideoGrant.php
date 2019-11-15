@@ -27,7 +27,7 @@ class VideoGrant implements Grant {
      * @return $this updated grant
      */
     public function setConfigurationProfileSid($configurationProfileSid) {
-        trigger_error('Configuration profile sid is deprecated, use room instead.', E_USER_NOTICE);
+        \trigger_error('Configuration profile sid is deprecated, use room instead.', E_USER_NOTICE);
         $this->configurationProfileSid = $configurationProfileSid;
         return $this;
     }

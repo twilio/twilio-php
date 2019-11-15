@@ -93,6 +93,6 @@ class WebhookContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.WebhookContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.WebhookContext ' . \implode(' ', $context) . ']';
     }
 }

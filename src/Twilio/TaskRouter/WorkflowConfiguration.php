@@ -19,11 +19,11 @@ class WorkflowConfiguration implements \JsonSerializable {
 	}
 
 	public function toJSON() {
-		return json_encode($this);
+		return \json_encode($this);
 	}
 
 	public static function parse($json) {
-		return json_decode($json);
+		return \json_decode($json);
 	}
 
 	public static function fromJson($json) {

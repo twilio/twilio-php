@@ -117,7 +117,7 @@ class CreateTaskOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.CreateTaskOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.CreateTaskOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -205,6 +205,6 @@ class UpdateTaskOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateTaskOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateTaskOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -39,7 +39,7 @@ class FlowContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Flows/' . rawurlencode($sid) . '';
+        $this->uri = '/Flows/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -104,8 +104,8 @@ class FlowContext extends InstanceContext {
      * @throws TwilioException For unknown subresources
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
 
@@ -122,8 +122,8 @@ class FlowContext extends InstanceContext {
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');
@@ -139,6 +139,6 @@ class FlowContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.FlowContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.FlowContext ' . \implode(' ', $context) . ']';
     }
 }

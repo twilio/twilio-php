@@ -56,6 +56,6 @@ class CreateBrandedCallOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.TrustedComms.CreateBrandedCallOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.TrustedComms.CreateBrandedCallOptions ' . \implode(' ', $options) . ']';
     }
 }

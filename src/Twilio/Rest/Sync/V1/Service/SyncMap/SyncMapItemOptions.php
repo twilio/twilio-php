@@ -111,7 +111,7 @@ class CreateSyncMapItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.CreateSyncMapItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.CreateSyncMapItemOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -174,7 +174,7 @@ class ReadSyncMapItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.ReadSyncMapItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.ReadSyncMapItemOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -252,6 +252,6 @@ class UpdateSyncMapItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.UpdateSyncMapItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.UpdateSyncMapItemOptions ' . \implode(' ', $options) . ']';
     }
 }

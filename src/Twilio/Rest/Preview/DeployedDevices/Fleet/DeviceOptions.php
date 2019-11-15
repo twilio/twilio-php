@@ -132,7 +132,7 @@ class CreateDeviceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.CreateDeviceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.CreateDeviceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -169,7 +169,7 @@ class ReadDeviceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.ReadDeviceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.ReadDeviceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -243,6 +243,6 @@ class UpdateDeviceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.DeployedDevices.UpdateDeviceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.DeployedDevices.UpdateDeviceOptions ' . \implode(' ', $options) . ']';
     }
 }

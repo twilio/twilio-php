@@ -124,6 +124,6 @@ class CreateRecordingSettingsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.CreateRecordingSettingsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.CreateRecordingSettingsOptions ' . \implode(' ', $options) . ']';
     }
 }

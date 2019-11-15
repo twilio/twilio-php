@@ -31,7 +31,7 @@ class FeedbackContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Feedback.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Feedback.json';
     }
 
     /**
@@ -129,6 +129,6 @@ class FeedbackContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.FeedbackContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.FeedbackContext ' . \implode(' ', $context) . ']';
     }
 }

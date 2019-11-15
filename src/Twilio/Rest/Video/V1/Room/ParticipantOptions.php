@@ -112,7 +112,7 @@ class ReadParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.ReadParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.ReadParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -147,6 +147,6 @@ class UpdateParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.UpdateParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.UpdateParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }

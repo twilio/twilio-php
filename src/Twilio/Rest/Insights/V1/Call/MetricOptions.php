@@ -70,6 +70,6 @@ class ReadMetricOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Insights.V1.ReadMetricOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Insights.V1.ReadMetricOptions ' . \implode(' ', $options) . ']';
     }
 }

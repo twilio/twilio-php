@@ -158,7 +158,7 @@ class UpdateWorkflowOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateWorkflowOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateWorkflowOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -195,7 +195,7 @@ class ReadWorkflowOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadWorkflowOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadWorkflowOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -268,6 +268,6 @@ class CreateWorkflowOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.CreateWorkflowOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.CreateWorkflowOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -134,7 +134,7 @@ class FieldTest extends HolodeckTestCase {
                                               ->tasks("UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->fields->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

@@ -132,6 +132,6 @@ class ReadEventOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Monitor.V1.ReadEventOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Monitor.V1.ReadEventOptions ' . \implode(' ', $options) . ']';
     }
 }

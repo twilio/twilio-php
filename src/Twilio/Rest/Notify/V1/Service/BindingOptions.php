@@ -117,7 +117,7 @@ class CreateBindingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.CreateBindingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.CreateBindingOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -195,6 +195,6 @@ class ReadBindingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.ReadBindingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.ReadBindingOptions ' . \implode(' ', $options) . ']';
     }
 }

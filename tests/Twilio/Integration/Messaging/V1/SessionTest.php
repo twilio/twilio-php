@@ -227,6 +227,6 @@ class SessionTest extends HolodeckTestCase {
 
         $actual = $this->twilio->messaging->v1->sessions->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

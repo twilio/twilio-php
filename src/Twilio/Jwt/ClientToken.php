@@ -45,12 +45,12 @@ class ClientToken {
     public function allowClientIncoming($clientName) {
 
         // clientName must be a non-zero length alphanumeric string
-        if (preg_match('/\W/', $clientName)) {
+        if (\preg_match('/\W/', $clientName)) {
             throw new \InvalidArgumentException(
                 'Only alphanumeric characters allowed in client name.');
         }
 
-        if (strlen($clientName) == 0) {
+        if (\strlen($clientName) == 0) {
             throw new \InvalidArgumentException(
                 'Client name must not be a zero length string.');
         }
@@ -70,7 +70,7 @@ class ClientToken {
     public function allowClientOutgoing($appSid, array $appParams = array()) {
         $this->allow('client', 'outgoing', array(
             'appSid' => $appSid,
-            'appParams' => http_build_query($appParams, '', '&')));
+            'appParams' => \http_build_query($appParams, '', '&')));
     }
 
     /**
@@ -81,7 +81,7 @@ class ClientToken {
     public function allowEventStream(array $filters = array()) {
         $this->allow('stream', 'subscribe', array(
             'path' => '/2010-04-01/Events',
-            'params' => http_build_query($filters, '', '&'),
+            'params' => \http_build_query($filters, '', '&'),
         ));
     }
 
@@ -105,10 +105,10 @@ class ClientToken {
      *         seconds
      */
     public function generateToken($ttl = 3600) {
-        $payload = array_merge($this->customClaims, array(
+        $payload = \array_merge($this->customClaims, array(
             'scope' => array(),
             'iss' => $this->accountSid,
-            'exp' => time() + $ttl,
+            'exp' => \time() + $ttl,
         ));
         $scopeStrings = array();
 
@@ -118,7 +118,7 @@ class ClientToken {
             $scopeStrings[] = $scope->toString();
         }
 
-        $payload['scope'] = implode(' ', $scopeStrings);
+        $payload['scope'] = \implode(' ', $scopeStrings);
         return JWT::encode($payload, $this->authToken, 'HS256');
     }
 

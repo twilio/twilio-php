@@ -30,7 +30,7 @@ class IpAccessControlListContext extends InstanceContext {
         // Path Solution
         $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid, );
 
-        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/IpAccessControlLists/' . rawurlencode($sid) . '';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/IpAccessControlLists/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -76,6 +76,6 @@ class IpAccessControlListContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Trunking.V1.IpAccessControlListContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Trunking.V1.IpAccessControlListContext ' . \implode(' ', $context) . ']';
     }
 }

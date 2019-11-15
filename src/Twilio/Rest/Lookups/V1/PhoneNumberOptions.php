@@ -98,6 +98,6 @@ class FetchPhoneNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Lookups.V1.FetchPhoneNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Lookups.V1.FetchPhoneNumberOptions ' . \implode(' ', $options) . ']';
     }
 }

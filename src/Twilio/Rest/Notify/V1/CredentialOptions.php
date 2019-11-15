@@ -159,7 +159,7 @@ class CreateCredentialOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.CreateCredentialOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.CreateCredentialOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -269,6 +269,6 @@ class UpdateCredentialOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.UpdateCredentialOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.UpdateCredentialOptions ' . \implode(' ', $options) . ']';
     }
 }

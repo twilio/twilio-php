@@ -33,7 +33,7 @@ class VerificationContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Verifications/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Verifications/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -94,6 +94,6 @@ class VerificationContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Verify.V2.VerificationContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Verify.V2.VerificationContext ' . \implode(' ', $context) . ']';
     }
 }

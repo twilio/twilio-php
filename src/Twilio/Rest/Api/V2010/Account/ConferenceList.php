@@ -29,7 +29,7 @@ class ConferenceList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Conferences.json';
     }
 
     /**
@@ -76,7 +76,7 @@ class ConferenceList extends ListResource {
      * @return ConferenceInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

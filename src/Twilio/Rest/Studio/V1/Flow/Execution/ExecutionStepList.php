@@ -28,7 +28,7 @@ class ExecutionStepList extends ListResource {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, 'executionSid' => $executionSid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Executions/' . rawurlencode($executionSid) . '/Steps';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($executionSid) . '/Steps';
     }
 
     /**
@@ -73,7 +73,7 @@ class ExecutionStepList extends ListResource {
      * @return ExecutionStepInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

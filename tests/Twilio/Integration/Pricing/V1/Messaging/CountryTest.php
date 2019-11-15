@@ -84,7 +84,7 @@ class CountryTest extends HolodeckTestCase {
         $actual = $this->twilio->pricing->v1->messaging
                                             ->countries->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testFetchRequest() {

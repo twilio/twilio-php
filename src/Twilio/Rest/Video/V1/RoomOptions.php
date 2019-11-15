@@ -196,7 +196,7 @@ class CreateRoomOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.CreateRoomOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.CreateRoomOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -274,6 +274,6 @@ class ReadRoomOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.ReadRoomOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.ReadRoomOptions ' . \implode(' ', $options) . ']';
     }
 }

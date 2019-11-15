@@ -143,7 +143,7 @@ class AuthCallsIpAccessControlListMappingTest extends HolodeckTestCase {
                                            ->calls
                                            ->ipAccessControlListMappings->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testFetchRequest() {

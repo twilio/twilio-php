@@ -36,7 +36,7 @@ class MessageContext extends InstanceContext {
         // Path Solution
         $this->solution = array('conversationSid' => $conversationSid, 'sid' => $sid, );
 
-        $this->uri = '/Conversations/' . rawurlencode($conversationSid) . '/Messages/' . rawurlencode($sid) . '';
+        $this->uri = '/Conversations/' . \rawurlencode($conversationSid) . '/Messages/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -115,6 +115,6 @@ class MessageContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Conversations.V1.MessageContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.MessageContext ' . \implode(' ', $context) . ']';
     }
 }

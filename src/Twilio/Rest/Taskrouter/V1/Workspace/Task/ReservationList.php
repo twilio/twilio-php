@@ -30,7 +30,7 @@ class ReservationList extends ListResource {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, 'taskSid' => $taskSid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Tasks/' . rawurlencode($taskSid) . '/Reservations';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Reservations';
     }
 
     /**
@@ -77,7 +77,7 @@ class ReservationList extends ListResource {
      * @return ReservationInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

@@ -73,6 +73,6 @@ class UpdateBucketOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Verify.V2.UpdateBucketOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Verify.V2.UpdateBucketOptions ' . \implode(' ', $options) . ']';
     }
 }

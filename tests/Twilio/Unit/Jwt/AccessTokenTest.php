@@ -24,7 +24,7 @@ class AccessTokenTest extends UnitTest {
 
         $this->assertNotNull($payload->exp);
 
-        $this->assertGreaterThanOrEqual(time(), $payload->exp);
+        $this->assertGreaterThanOrEqual(\time(), $payload->exp);
 
         $this->assertNotNull($payload->jti);
         $this->assertStringStartsWith($payload->iss . '-', $payload->jti);
@@ -39,20 +39,20 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $this->assertEquals('{}', json_encode($payload->grants));
+        $this->assertEquals('{}', \json_encode($payload->grants));
     }
 
     function testNbf() {
         $scat = new AccessToken(self::ACCOUNT_SID, self::SIGNING_KEY_SID, 'secret');
 
-        $now = time();
+        $now = \time();
         $scat->setNbf($now);
 
         $token = $scat->toJWT();
         $this->assertNotNull($token);
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
-        $this->assertEquals('{}', json_encode($payload->grants));
+        $this->assertEquals('{}', \json_encode($payload->grants));
         $this->assertEquals($now, $payload->nbf);
         $this->assertGreaterThan($payload->nbf, $payload->exp);
     }
@@ -69,8 +69,8 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(1, \count($grants));
         $this->assertArrayHasKey("ip_messaging", $grants);
         $this->assertEquals("EP123", $grants['ip_messaging']['endpoint_id']);
         $this->assertEquals("IS123", $grants['ip_messaging']['service_sid']);
@@ -88,8 +88,8 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(1, \count($grants));
         $this->assertArrayHasKey("chat", $grants);
         $this->assertEquals("EP123", $grants['chat']['endpoint_id']);
         $this->assertEquals("IS123", $grants['chat']['service_sid']);
@@ -108,8 +108,8 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(1, \count($grants));
         $this->assertArrayHasKey("data_sync", $grants);
         $this->assertEquals("EP123", $grants['data_sync']['endpoint_id']);
         $this->assertEquals("IS123", $grants['data_sync']['service_sid']);
@@ -127,8 +127,8 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(1, \count($grants));
         $this->assertArrayHasKey("video", $grants);
         $this->assertEquals("RM123", $grants['video']['room']);
     }
@@ -146,12 +146,12 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(4, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(4, \count($grants));
         $this->assertEquals('test identity', $payload->grants->identity);
-        $this->assertEquals('{}', json_encode($payload->grants->ip_messaging));
-        $this->assertEquals('{}', json_encode($payload->grants->video));
-        $this->assertEquals('{}', json_encode($payload->grants->task_router));
+        $this->assertEquals('{}', \json_encode($payload->grants->ip_messaging));
+        $this->assertEquals('{}', \json_encode($payload->grants->video));
+        $this->assertEquals('{}', \json_encode($payload->grants->task_router));
     }
 
     function testVoiceGrant() {
@@ -170,8 +170,8 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(2, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(2, \count($grants));
         $this->assertEquals('test identity', $payload->grants->identity);
 
         $decodedGrant = $grants['voice'];
@@ -198,8 +198,8 @@ class AccessTokenTest extends UnitTest {
         $payload = JWT::decode($token, 'secret');
         $this->validateClaims($payload);
 
-        $grants = json_decode(json_encode($payload->grants), true);
-        $this->assertEquals(1, count($grants));
+        $grants = \json_decode(\json_encode($payload->grants), true);
+        $this->assertEquals(1, \count($grants));
         $this->assertArrayHasKey("task_router", $grants);
         $this->assertEquals("WS123", $grants['task_router']['workspace_sid']);
         $this->assertEquals("WK123", $grants['task_router']['worker_sid']);

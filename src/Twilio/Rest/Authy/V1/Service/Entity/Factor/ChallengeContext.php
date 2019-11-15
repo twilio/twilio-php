@@ -41,7 +41,7 @@ class ChallengeContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Entities/' . rawurlencode($identity) . '/Factors/' . rawurlencode($factorSid) . '/Challenges/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors/' . \rawurlencode($factorSid) . '/Challenges/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -118,6 +118,6 @@ class ChallengeContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Authy.V1.ChallengeContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Authy.V1.ChallengeContext ' . \implode(' ', $context) . ']';
     }
 }

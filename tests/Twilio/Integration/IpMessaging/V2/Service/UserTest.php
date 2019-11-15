@@ -198,7 +198,7 @@ class UserTest extends HolodeckTestCase {
         $actual = $this->twilio->ipMessaging->v2->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->users->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -115,6 +115,6 @@ class ReadDependentHostedNumberOrderOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.HostedNumbers.ReadDependentHostedNumberOrderOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.HostedNumbers.ReadDependentHostedNumberOrderOptions ' . \implode(' ', $options) . ']';
     }
 }

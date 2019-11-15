@@ -127,7 +127,7 @@ class ReadFaxOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Fax.V1.ReadFaxOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Fax.V1.ReadFaxOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -242,7 +242,7 @@ class CreateFaxOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Fax.V1.CreateFaxOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Fax.V1.CreateFaxOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -277,6 +277,6 @@ class UpdateFaxOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Fax.V1.UpdateFaxOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Fax.V1.UpdateFaxOptions ' . \implode(' ', $options) . ']';
     }
 }

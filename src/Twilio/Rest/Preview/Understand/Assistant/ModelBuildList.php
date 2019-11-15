@@ -32,7 +32,7 @@ class ModelBuildList extends ListResource {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/ModelBuilds';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/ModelBuilds';
     }
 
     /**
@@ -77,7 +77,7 @@ class ModelBuildList extends ListResource {
      * @return ModelBuildInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

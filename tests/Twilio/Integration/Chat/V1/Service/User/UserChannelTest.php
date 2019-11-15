@@ -69,7 +69,7 @@ class UserChannelTest extends HolodeckTestCase {
                                          ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->userChannels->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

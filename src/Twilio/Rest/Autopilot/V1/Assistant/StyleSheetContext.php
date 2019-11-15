@@ -34,7 +34,7 @@ class StyleSheetContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/StyleSheet';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/StyleSheet';
     }
 
     /**
@@ -87,6 +87,6 @@ class StyleSheetContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.StyleSheetContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.StyleSheetContext ' . \implode(' ', $context) . ']';
     }
 }

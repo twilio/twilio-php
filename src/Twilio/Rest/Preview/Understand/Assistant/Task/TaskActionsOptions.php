@@ -59,6 +59,6 @@ class UpdateTaskActionsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateTaskActionsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateTaskActionsOptions ' . \implode(' ', $options) . ']';
     }
 }

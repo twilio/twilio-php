@@ -152,7 +152,7 @@ class NotificationTest extends HolodeckTestCase {
                                            ->calls("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->notifications->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

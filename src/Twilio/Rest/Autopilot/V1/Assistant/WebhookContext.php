@@ -34,7 +34,7 @@ class WebhookContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Webhooks/' . rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Webhooks/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -112,6 +112,6 @@ class WebhookContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.WebhookContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.WebhookContext ' . \implode(' ', $context) . ']';
     }
 }

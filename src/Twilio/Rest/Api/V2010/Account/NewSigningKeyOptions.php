@@ -53,6 +53,6 @@ class CreateNewSigningKeyOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateNewSigningKeyOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateNewSigningKeyOptions ' . \implode(' ', $options) . ']';
     }
 }

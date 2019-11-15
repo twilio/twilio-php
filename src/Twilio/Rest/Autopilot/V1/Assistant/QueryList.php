@@ -33,7 +33,7 @@ class QueryList extends ListResource {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Queries';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Queries';
     }
 
     /**
@@ -80,7 +80,7 @@ class QueryList extends ListResource {
      * @return QueryInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

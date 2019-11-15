@@ -174,7 +174,7 @@ class CreateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.CreateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.CreateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -209,7 +209,7 @@ class ReadMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.ReadMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.ReadMessageOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -317,6 +317,6 @@ class UpdateMessageOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.UpdateMessageOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.UpdateMessageOptions ' . \implode(' ', $options) . ']';
     }
 }

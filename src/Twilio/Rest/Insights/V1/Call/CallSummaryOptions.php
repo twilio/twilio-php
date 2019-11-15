@@ -56,6 +56,6 @@ class FetchCallSummaryOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Insights.V1.FetchCallSummaryOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Insights.V1.FetchCallSummaryOptions ' . \implode(' ', $options) . ']';
     }
 }

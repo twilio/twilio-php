@@ -27,7 +27,7 @@ class ConnectAppList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/ConnectApps.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/ConnectApps.json';
     }
 
     /**
@@ -72,7 +72,7 @@ class ConnectAppList extends ListResource {
      * @return ConnectAppInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

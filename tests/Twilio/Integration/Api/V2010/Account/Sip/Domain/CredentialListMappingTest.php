@@ -113,7 +113,7 @@ class CredentialListMappingTest extends HolodeckTestCase {
                                            ->domains("SDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->credentialListMappings->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -121,7 +121,7 @@ class CreateChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V1.CreateChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V1.CreateChannelOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -156,7 +156,7 @@ class ReadChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V1.ReadChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V1.ReadChannelOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -221,6 +221,6 @@ class UpdateChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V1.UpdateChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V1.UpdateChannelOptions ' . \implode(' ', $options) . ']';
     }
 }

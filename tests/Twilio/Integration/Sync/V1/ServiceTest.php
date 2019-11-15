@@ -216,7 +216,7 @@ class ServiceTest extends HolodeckTestCase {
 
         $actual = $this->twilio->sync->v1->services->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

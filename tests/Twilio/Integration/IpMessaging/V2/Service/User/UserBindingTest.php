@@ -75,7 +75,7 @@ class UserBindingTest extends HolodeckTestCase {
                                                 ->users("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->userBindings->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

@@ -32,7 +32,7 @@ class FieldList extends ListResource {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Tasks/' . rawurlencode($taskSid) . '/Fields';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Fields';
     }
 
     /**
@@ -77,7 +77,7 @@ class FieldList extends ListResource {
      * @return FieldInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -92,12 +92,12 @@ class StyleSheetInstance extends InstanceResource {
      * @throws TwilioException For unknown properties
      */
     public function __get($name) {
-        if (array_key_exists($name, $this->properties)) {
+        if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
 
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
 
@@ -114,6 +114,6 @@ class StyleSheetInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.StyleSheetInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.StyleSheetInstance ' . \implode(' ', $context) . ']';
     }
 }

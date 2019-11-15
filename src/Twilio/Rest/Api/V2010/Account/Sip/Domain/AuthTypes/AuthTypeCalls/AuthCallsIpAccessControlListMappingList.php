@@ -29,7 +29,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/Auth/Calls/IpAccessControlListMappings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/Auth/Calls/IpAccessControlListMappings.json';
     }
 
     /**
@@ -103,7 +103,7 @@ class AuthCallsIpAccessControlListMappingList extends ListResource {
      * @return AuthCallsIpAccessControlListMappingInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

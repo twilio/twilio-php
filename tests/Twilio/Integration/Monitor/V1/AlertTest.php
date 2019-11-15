@@ -140,6 +140,6 @@ class AlertTest extends HolodeckTestCase {
 
         $actual = $this->twilio->monitor->v1->alerts->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

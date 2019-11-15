@@ -45,7 +45,7 @@ abstract class Version {
      * @return string Domain relative uri
      */
     public function relativeUri($uri) {
-        return trim($this->version, '/') . '/' . trim($uri, '/');
+        return \trim($this->version, '/') . '/' . \trim($uri, '/');
     }
 
     public function request($method, $uri, $params = array(), $data = array(),
@@ -79,7 +79,7 @@ abstract class Version {
         $message = '[HTTP ' . $response->getStatusCode() . '] ' . $header;
 
         $content = $response->getContent();
-        if (is_array($content)) {
+        if (\is_array($content)) {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
             $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
             return new RestException($message, $code, $response->getStatusCode());
@@ -164,13 +164,13 @@ abstract class Version {
         $pageLimit = Values::NONE;
 
         if ($limit) {
-            if (is_null($pageSize)) {
-                $pageSize = min($limit, self::MAX_PAGE_SIZE);
+            if (\is_null($pageSize)) {
+                $pageSize = \min($limit, self::MAX_PAGE_SIZE);
             }
-            $pageLimit = (int)(ceil($limit / (float)$pageSize));
+            $pageLimit = (int)(\ceil($limit / (float)$pageSize));
         }
 
-        $pageSize = min($pageSize, self::MAX_PAGE_SIZE);
+        $pageSize = \min($pageSize, self::MAX_PAGE_SIZE);
 
         return array(
             'limit' => $limit ?: Values::NONE,

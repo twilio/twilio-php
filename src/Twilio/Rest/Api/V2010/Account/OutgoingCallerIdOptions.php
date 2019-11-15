@@ -64,7 +64,7 @@ class UpdateOutgoingCallerIdOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateOutgoingCallerIdOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateOutgoingCallerIdOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -116,6 +116,6 @@ class ReadOutgoingCallerIdOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadOutgoingCallerIdOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadOutgoingCallerIdOptions ' . \implode(' ', $options) . ']';
     }
 }

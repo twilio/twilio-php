@@ -38,7 +38,7 @@ class ParticipantContext extends InstanceContext {
             'callSid' => $callSid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Conferences/' . rawurlencode($conferenceSid) . '/Participants/' . rawurlencode($callSid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Conferences/' . \rawurlencode($conferenceSid) . '/Participants/' . \rawurlencode($callSid) . '.json';
     }
 
     /**
@@ -126,6 +126,6 @@ class ParticipantContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ParticipantContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.ParticipantContext ' . \implode(' ', $context) . ']';
     }
 }

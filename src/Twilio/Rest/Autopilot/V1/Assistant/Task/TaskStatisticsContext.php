@@ -34,7 +34,7 @@ class TaskStatisticsContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Tasks/' . rawurlencode($taskSid) . '/Statistics';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Statistics';
     }
 
     /**
@@ -70,6 +70,6 @@ class TaskStatisticsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.TaskStatisticsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.TaskStatisticsContext ' . \implode(' ', $context) . ']';
     }
 }

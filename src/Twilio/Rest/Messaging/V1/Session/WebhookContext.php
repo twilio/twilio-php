@@ -35,7 +35,7 @@ class WebhookContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sessionSid' => $sessionSid, 'sid' => $sid, );
 
-        $this->uri = '/Sessions/' . rawurlencode($sessionSid) . '/Webhooks/' . rawurlencode($sid) . '';
+        $this->uri = '/Sessions/' . \rawurlencode($sessionSid) . '/Webhooks/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -117,6 +117,6 @@ class WebhookContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.WebhookContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.WebhookContext ' . \implode(' ', $context) . ']';
     }
 }

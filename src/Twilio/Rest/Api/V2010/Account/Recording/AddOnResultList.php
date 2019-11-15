@@ -29,7 +29,7 @@ class AddOnResultList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'referenceSid' => $referenceSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults.json';
     }
 
     /**
@@ -74,7 +74,7 @@ class AddOnResultList extends ListResource {
      * @return AddOnResultInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -30,7 +30,7 @@ class NumberContext extends InstanceContext {
         // Path Solution
         $this->solution = array('destinationNumber' => $destinationNumber, );
 
-        $this->uri = '/Voice/Numbers/' . rawurlencode($destinationNumber) . '';
+        $this->uri = '/Voice/Numbers/' . \rawurlencode($destinationNumber) . '';
     }
 
     /**
@@ -64,6 +64,6 @@ class NumberContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Pricing.V2.NumberContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Pricing.V2.NumberContext ' . \implode(' ', $context) . ']';
     }
 }

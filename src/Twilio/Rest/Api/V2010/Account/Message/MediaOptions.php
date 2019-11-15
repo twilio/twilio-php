@@ -87,6 +87,6 @@ class ReadMediaOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadMediaOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadMediaOptions ' . \implode(' ', $options) . ']';
     }
 }

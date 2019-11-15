@@ -30,7 +30,7 @@ class WorkerChannelList extends ListResource {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, 'workerSid' => $workerSid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/' . rawurlencode($workerSid) . '/Channels';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/' . \rawurlencode($workerSid) . '/Channels';
     }
 
     /**
@@ -75,7 +75,7 @@ class WorkerChannelList extends ListResource {
      * @return WorkerChannelInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

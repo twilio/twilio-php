@@ -56,6 +56,6 @@ class CreateSyncMapOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Sync.CreateSyncMapOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Sync.CreateSyncMapOptions ' . \implode(' ', $options) . ']';
     }
 }

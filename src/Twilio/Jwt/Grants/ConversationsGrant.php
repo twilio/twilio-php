@@ -8,7 +8,7 @@ class ConversationsGrant implements Grant {
     private $configurationProfileSid;
 
     public function __construct() {
-        trigger_error("ConversationsGrant is deprecated, please use VideoGrant", E_USER_NOTICE);
+        \trigger_error("ConversationsGrant is deprecated, please use VideoGrant", E_USER_NOTICE);
     }
 
     /**

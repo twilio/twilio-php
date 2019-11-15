@@ -60,7 +60,7 @@ class WebChannelTest extends HolodeckTestCase {
 
         $actual = $this->twilio->flexApi->v1->webChannel->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

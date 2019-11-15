@@ -71,7 +71,7 @@ class FlexFlowTest extends HolodeckTestCase {
 
         $actual = $this->twilio->flexApi->v1->flexFlow->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

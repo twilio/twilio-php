@@ -126,6 +126,6 @@ class CreateChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.CreateChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.CreateChannelOptions ' . \implode(' ', $options) . ']';
     }
 }

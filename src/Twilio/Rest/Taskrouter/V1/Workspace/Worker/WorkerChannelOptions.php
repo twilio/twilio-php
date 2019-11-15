@@ -70,6 +70,6 @@ class UpdateWorkerChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateWorkerChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateWorkerChannelOptions ' . \implode(' ', $options) . ']';
     }
 }

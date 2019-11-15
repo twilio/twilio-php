@@ -166,6 +166,6 @@ class UpdateConnectAppOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateConnectAppOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateConnectAppOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -38,7 +38,7 @@ abstract class Domain {
      * @return string Absolute URL for this domain
      */
     public function absoluteUrl($uri) {
-        return implode('/', array(trim($this->baseUrl, '/'), trim($uri, '/')));
+        return \implode('/', array(\trim($this->baseUrl, '/'), \trim($uri, '/')));
     }
 
     /**

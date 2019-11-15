@@ -30,7 +30,7 @@ class AuthorizedConnectAppContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'connectAppSid' => $connectAppSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AuthorizedConnectApps/' . rawurlencode($connectAppSid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/AuthorizedConnectApps/' . \rawurlencode($connectAppSid) . '.json';
     }
 
     /**
@@ -66,6 +66,6 @@ class AuthorizedConnectAppContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.AuthorizedConnectAppContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.AuthorizedConnectAppContext ' . \implode(' ', $context) . ']';
     }
 }

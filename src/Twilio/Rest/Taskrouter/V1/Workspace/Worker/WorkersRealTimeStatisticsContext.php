@@ -30,7 +30,7 @@ class WorkersRealTimeStatisticsContext extends InstanceContext {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Workers/RealTimeStatistics';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Workers/RealTimeStatistics';
     }
 
     /**
@@ -69,6 +69,6 @@ class WorkersRealTimeStatisticsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Taskrouter.V1.WorkersRealTimeStatisticsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.WorkersRealTimeStatisticsContext ' . \implode(' ', $context) . ']';
     }
 }

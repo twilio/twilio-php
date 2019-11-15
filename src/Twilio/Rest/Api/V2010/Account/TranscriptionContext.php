@@ -30,7 +30,7 @@ class TranscriptionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Transcriptions/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Transcriptions/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -76,6 +76,6 @@ class TranscriptionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.TranscriptionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.TranscriptionContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -213,7 +213,7 @@ class RecordingTest extends HolodeckTestCase {
                                            ->conferences("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->recordings->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

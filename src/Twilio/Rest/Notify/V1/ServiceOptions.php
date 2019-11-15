@@ -278,7 +278,7 @@ class CreateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.CreateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -315,7 +315,7 @@ class ReadServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.ReadServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.ReadServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -513,6 +513,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

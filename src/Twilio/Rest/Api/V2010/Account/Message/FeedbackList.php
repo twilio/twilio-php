@@ -31,7 +31,7 @@ class FeedbackList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'messageSid' => $messageSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Feedback.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Messages/' . \rawurlencode($messageSid) . '/Feedback.json';
     }
 
     /**

@@ -169,7 +169,7 @@ class UpdateTaskQueueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateTaskQueueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateTaskQueueOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -234,7 +234,7 @@ class ReadTaskQueueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadTaskQueueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadTaskQueueOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -329,6 +329,6 @@ class CreateTaskQueueOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.CreateTaskQueueOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.CreateTaskQueueOptions ' . \implode(' ', $options) . ']';
     }
 }

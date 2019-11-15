@@ -162,7 +162,7 @@ class SyncListPermissionTest extends HolodeckTestCase {
                                          ->syncLists("ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->syncListPermissions->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

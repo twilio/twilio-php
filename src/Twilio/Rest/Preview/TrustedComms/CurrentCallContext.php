@@ -61,6 +61,6 @@ class CurrentCallContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CurrentCallContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.TrustedComms.CurrentCallContext ' . \implode(' ', $context) . ']';
     }
 }

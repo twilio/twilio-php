@@ -451,7 +451,7 @@ class UpdateIncomingPhoneNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateIncomingPhoneNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateIncomingPhoneNumberOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -531,7 +531,7 @@ class ReadIncomingPhoneNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadIncomingPhoneNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadIncomingPhoneNumberOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -882,6 +882,6 @@ class CreateIncomingPhoneNumberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateIncomingPhoneNumberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateIncomingPhoneNumberOptions ' . \implode(' ', $options) . ']';
     }
 }

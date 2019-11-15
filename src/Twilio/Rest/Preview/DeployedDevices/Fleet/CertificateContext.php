@@ -33,7 +33,7 @@ class CertificateContext extends InstanceContext {
         // Path Solution
         $this->solution = array('fleetSid' => $fleetSid, 'sid' => $sid, );
 
-        $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Certificates/' . rawurlencode($sid) . '';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Certificates/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -109,6 +109,6 @@ class CertificateContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.DeployedDevices.CertificateContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.DeployedDevices.CertificateContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -65,7 +65,7 @@ class CapabilityToken {
 
     public function addPolicyDeconstructed($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
         $policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
-        array_push($this->policies, $policy);
+        \array_push($this->policies, $policy);
         return $policy;
     }
 
@@ -78,16 +78,16 @@ class CapabilityToken {
     }
 
     private function validateJWT() {
-        if (!isset($this->accountSid) || substr($this->accountSid, 0, 2) != 'AC') {
+        if (!isset($this->accountSid) || \substr($this->accountSid, 0, 2) != 'AC') {
             throw new \Exception("Invalid AccountSid provided: " . $this->accountSid);
         }
-        if (!isset($this->workspaceSid) || substr($this->workspaceSid, 0, 2) != 'WS') {
+        if (!isset($this->workspaceSid) || \substr($this->workspaceSid, 0, 2) != 'WS') {
             throw new \Exception("Invalid WorkspaceSid provided: " . $this->workspaceSid);
         }
         if (!isset($this->channelId)) {
             throw new \Exception("ChannelId not provided");
         }
-        $prefix = substr($this->channelId, 0, 2);
+        $prefix = \substr($this->channelId, 0, 2);
         if ($prefix != 'WS' && $prefix != 'WK' && $prefix != 'WQ') {
             throw new \Exception("Invalid ChannelId provided: " . $this->channelId);
         }
@@ -133,15 +133,15 @@ class CapabilityToken {
             'version' => $this->version,
             'friendly_name' => $this->friendlyName,
             'iss' => $this->accountSid,
-            'exp' => time() + $ttl,
+            'exp' => \time() + $ttl,
             'account_sid' => $this->accountSid,
             'channel' => $this->channelId,
             'workspace_sid' => $this->workspaceSid
         );
 
-        if (substr($this->channelId, 0, 2) == 'WK') {
+        if (\substr($this->channelId, 0, 2) == 'WK') {
             $payload['worker_sid'] = $this->channelId;
-        } else if (substr($this->channelId, 0, 2) == 'WQ') {
+        } else if (\substr($this->channelId, 0, 2) == 'WQ') {
             $payload['taskqueue_sid'] = $this->channelId;
         }
 

@@ -31,7 +31,7 @@ class MemberContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Members/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($channelSid) . '/Members/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -109,6 +109,6 @@ class MemberContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Chat.V1.MemberContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Chat.V1.MemberContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -119,7 +119,7 @@ class PayloadTest extends HolodeckTestCase {
                                            ->addOnResults("XRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                            ->payloads->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

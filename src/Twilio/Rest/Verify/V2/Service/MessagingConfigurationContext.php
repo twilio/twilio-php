@@ -33,7 +33,7 @@ class MessagingConfigurationContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'country' => $country, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/MessagingConfigurations/' . rawurlencode($country) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/MessagingConfigurations/' . \rawurlencode($country) . '';
     }
 
     /**
@@ -105,6 +105,6 @@ class MessagingConfigurationContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Verify.V2.MessagingConfigurationContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Verify.V2.MessagingConfigurationContext ' . \implode(' ', $context) . ']';
     }
 }

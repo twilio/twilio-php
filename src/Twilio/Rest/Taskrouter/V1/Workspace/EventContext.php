@@ -29,7 +29,7 @@ class EventContext extends InstanceContext {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Events/' . rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Events/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -65,6 +65,6 @@ class EventContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Taskrouter.V1.EventContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.EventContext ' . \implode(' ', $context) . ']';
     }
 }

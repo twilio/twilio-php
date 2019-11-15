@@ -111,7 +111,7 @@ class ReadCommandOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Wireless.V1.ReadCommandOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Wireless.V1.ReadCommandOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -217,6 +217,6 @@ class CreateCommandOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Wireless.V1.CreateCommandOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Wireless.V1.CreateCommandOptions ' . \implode(' ', $options) . ']';
     }
 }

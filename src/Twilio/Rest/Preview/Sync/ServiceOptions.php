@@ -109,7 +109,7 @@ class CreateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Sync.CreateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Sync.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -183,6 +183,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Sync.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Sync.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -69,7 +69,7 @@ class IpAccessControlListTest extends HolodeckTestCase {
                                            ->sip
                                            ->ipAccessControlLists->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

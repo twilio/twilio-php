@@ -146,7 +146,7 @@ class FaxTest extends HolodeckTestCase {
 
         $actual = $this->twilio->fax->v1->faxes->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

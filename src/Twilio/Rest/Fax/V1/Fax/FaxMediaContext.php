@@ -32,7 +32,7 @@ class FaxMediaContext extends InstanceContext {
         // Path Solution
         $this->solution = array('faxSid' => $faxSid, 'sid' => $sid, );
 
-        $this->uri = '/Faxes/' . rawurlencode($faxSid) . '/Media/' . rawurlencode($sid) . '';
+        $this->uri = '/Faxes/' . \rawurlencode($faxSid) . '/Media/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -78,6 +78,6 @@ class FaxMediaContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Fax.V1.FaxMediaContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Fax.V1.FaxMediaContext ' . \implode(' ', $context) . ']';
     }
 }

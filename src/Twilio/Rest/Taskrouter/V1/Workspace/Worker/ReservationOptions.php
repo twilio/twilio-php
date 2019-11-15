@@ -164,7 +164,7 @@ class ReadReservationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadReservationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadReservationOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -949,6 +949,6 @@ class UpdateReservationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.UpdateReservationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.UpdateReservationOptions ' . \implode(' ', $options) . ']';
     }
 }

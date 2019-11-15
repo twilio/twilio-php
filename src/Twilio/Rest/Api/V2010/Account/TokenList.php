@@ -29,7 +29,7 @@ class TokenList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Tokens.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Tokens.json';
     }
 
     /**

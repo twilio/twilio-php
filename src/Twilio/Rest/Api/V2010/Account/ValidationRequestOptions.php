@@ -121,6 +121,6 @@ class CreateValidationRequestOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateValidationRequestOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateValidationRequestOptions ' . \implode(' ', $options) . ']';
     }
 }

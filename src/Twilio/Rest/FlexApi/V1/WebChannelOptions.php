@@ -76,7 +76,7 @@ class CreateWebChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.CreateWebChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.CreateWebChannelOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -124,6 +124,6 @@ class UpdateWebChannelOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.UpdateWebChannelOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.UpdateWebChannelOptions ' . \implode(' ', $options) . ']';
     }
 }

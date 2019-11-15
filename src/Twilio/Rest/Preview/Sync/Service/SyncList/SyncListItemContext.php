@@ -34,7 +34,7 @@ class SyncListItemContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'listSid' => $listSid, 'index' => $index, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Lists/' . rawurlencode($listSid) . '/Items/' . rawurlencode($index) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Lists/' . \rawurlencode($listSid) . '/Items/' . \rawurlencode($index) . '';
     }
 
     /**
@@ -107,6 +107,6 @@ class SyncListItemContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Sync.SyncListItemContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Sync.SyncListItemContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -90,7 +90,7 @@ class ExportCustomJobTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->bulkExports->exports("resource_type")
                                                      ->exportCustomJobs->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

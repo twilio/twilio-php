@@ -431,6 +431,6 @@ class CreatePhoneCallOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.TrustedComms.CreatePhoneCallOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.TrustedComms.CreatePhoneCallOptions ' . \implode(' ', $options) . ']';
     }
 }

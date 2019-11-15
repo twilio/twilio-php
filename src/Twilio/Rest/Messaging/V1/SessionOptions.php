@@ -132,7 +132,7 @@ class CreateSessionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Messaging.V1.CreateSessionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Messaging.V1.CreateSessionOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -223,6 +223,6 @@ class UpdateSessionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Messaging.V1.UpdateSessionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Messaging.V1.UpdateSessionOptions ' . \implode(' ', $options) . ']';
     }
 }

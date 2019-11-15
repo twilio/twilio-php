@@ -143,7 +143,7 @@ class PhoneNumberTest extends HolodeckTestCase {
         $actual = $this->twilio->proxy->v1->services("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                           ->phoneNumbers->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testFetchRequest() {

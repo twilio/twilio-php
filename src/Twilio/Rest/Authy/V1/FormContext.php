@@ -31,7 +31,7 @@ class FormContext extends InstanceContext {
         // Path Solution
         $this->solution = array('formType' => $formType, );
 
-        $this->uri = '/Forms/' . rawurlencode($formType) . '';
+        $this->uri = '/Forms/' . \rawurlencode($formType) . '';
     }
 
     /**
@@ -62,6 +62,6 @@ class FormContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Authy.V1.FormContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Authy.V1.FormContext ' . \implode(' ', $context) . ']';
     }
 }

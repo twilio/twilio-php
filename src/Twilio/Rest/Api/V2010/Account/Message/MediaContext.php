@@ -32,7 +32,7 @@ class MediaContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'messageSid' => $messageSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Messages/' . rawurlencode($messageSid) . '/Media/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Messages/' . \rawurlencode($messageSid) . '/Media/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -79,6 +79,6 @@ class MediaContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.MediaContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.MediaContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -215,7 +215,7 @@ class SyncListItemTest extends HolodeckTestCase {
                                          ->syncLists("ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->syncListItems->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

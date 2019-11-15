@@ -147,7 +147,7 @@ class CreateParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Messaging.V1.CreateParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Messaging.V1.CreateParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -212,6 +212,6 @@ class UpdateParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Messaging.V1.UpdateParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Messaging.V1.UpdateParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }

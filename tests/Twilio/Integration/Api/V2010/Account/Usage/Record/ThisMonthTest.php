@@ -86,7 +86,7 @@ class ThisMonthTest extends HolodeckTestCase {
                                            ->records
                                            ->thisMonth->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

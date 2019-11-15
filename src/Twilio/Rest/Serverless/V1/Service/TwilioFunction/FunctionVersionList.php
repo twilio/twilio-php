@@ -33,7 +33,7 @@ class FunctionVersionList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'functionSid' => $functionSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Functions/' . rawurlencode($functionSid) . '/Versions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Functions/' . \rawurlencode($functionSid) . '/Versions';
     }
 
     /**
@@ -78,7 +78,7 @@ class FunctionVersionList extends ListResource {
      * @return FunctionVersionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

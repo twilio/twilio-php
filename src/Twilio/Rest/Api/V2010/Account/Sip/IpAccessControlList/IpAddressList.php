@@ -36,7 +36,7 @@ class IpAddressList extends ListResource {
             'ipAccessControlListSid' => $ipAccessControlListSid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . rawurlencode($ipAccessControlListSid) . '/IpAddresses.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/IpAccessControlLists/' . \rawurlencode($ipAccessControlListSid) . '/IpAddresses.json';
     }
 
     /**
@@ -81,7 +81,7 @@ class IpAddressList extends ListResource {
      * @return IpAddressInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

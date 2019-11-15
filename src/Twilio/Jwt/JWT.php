@@ -20,8 +20,8 @@ class JWT {
      * @throws \UnexpectedValueException
      */
     public static function decode($jwt, $key = null, $verify = true) {
-        $tks = explode('.', $jwt);
-        if (count($tks) != 3) {
+        $tks = \explode('.', $jwt);
+        if (\count($tks) != 3) {
             throw new \UnexpectedValueException('Wrong number of segments');
         }
         list($headb64, $payloadb64, $cryptob64) = $tks;
@@ -60,12 +60,12 @@ class JWT {
         $segments = array();
         $segments[] = self::urlsafeB64Encode(self::jsonEncode($header));
         $segments[] = self::urlsafeB64Encode(self::jsonEncode($payload));
-        $signing_input = implode('.', $segments);
+        $signing_input = \implode('.', $segments);
 
         $signature = self::sign($signing_input, $key, $algo);
         $segments[] = self::urlsafeB64Encode($signature);
 
-        return implode('.', $segments);
+        return \implode('.', $segments);
     }
 
     /**
@@ -84,7 +84,7 @@ class JWT {
         if (empty($methods[$method])) {
             throw new \DomainException('Algorithm not supported');
         }
-        return hash_hmac($methods[$method], $msg, $key, true);
+        return \hash_hmac($methods[$method], $msg, $key, true);
     }
 
     /**
@@ -93,8 +93,8 @@ class JWT {
      * @throws \DomainException
      */
     public static function jsonDecode($input) {
-        $obj = json_decode($input);
-        if (function_exists('json_last_error') && $errno = json_last_error()) {
+        $obj = \json_decode($input);
+        if (\function_exists('json_last_error') && $errno = \json_last_error()) {
             self::handleJsonError($errno);
         } else if ($obj === null && $input !== 'null') {
             throw new \DomainException('Null result with non-null input');
@@ -108,8 +108,8 @@ class JWT {
      * @throws \DomainException
      */
     public static function jsonEncode($input) {
-        $json = json_encode($input);
-        if (function_exists('json_last_error') && $errno = json_last_error()) {
+        $json = \json_encode($input);
+        if (\function_exists('json_last_error') && $errno = \json_last_error()) {
             self::handleJsonError($errno);
         } else if ($json === 'null' && $input !== null) {
             throw new \DomainException('Null result with non-null input');
@@ -123,9 +123,9 @@ class JWT {
      * @return string A decoded string
      */
     public static function urlsafeB64Decode($input) {
-        $padlen = 4 - strlen($input) % 4;
-        $input .= str_repeat('=', $padlen);
-        return base64_decode(strtr($input, '-_', '+/'));
+        $padlen = 4 - \strlen($input) % 4;
+        $input .= \str_repeat('=', $padlen);
+        return \base64_decode(\strtr($input, '-_', '+/'));
     }
 
     /**
@@ -134,7 +134,7 @@ class JWT {
      * @return string The base64 encode of what you passed in
      */
     public static function urlsafeB64Encode($input) {
-        return str_replace('=', '', strtr(base64_encode($input), '+/', '-_'));
+        return \str_replace('=', '', \strtr(\base64_encode($input), '+/', '-_'));
     }
 
     /**

@@ -34,7 +34,7 @@ class DefaultsContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Defaults';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Defaults';
     }
 
     /**
@@ -87,6 +87,6 @@ class DefaultsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Autopilot.V1.DefaultsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Autopilot.V1.DefaultsContext ' . \implode(' ', $context) . ']';
     }
 }

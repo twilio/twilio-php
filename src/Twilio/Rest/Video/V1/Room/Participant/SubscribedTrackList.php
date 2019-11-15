@@ -29,7 +29,7 @@ class SubscribedTrackList extends ListResource {
         // Path Solution
         $this->solution = array('roomSid' => $roomSid, 'participantSid' => $participantSid, );
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Participants/' . rawurlencode($participantSid) . '/SubscribedTracks';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Participants/' . \rawurlencode($participantSid) . '/SubscribedTracks';
     }
 
     /**
@@ -74,7 +74,7 @@ class SubscribedTrackList extends ListResource {
      * @return SubscribedTrackInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

@@ -53,6 +53,6 @@ class CreateFeedbackOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateFeedbackOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateFeedbackOptions ' . \implode(' ', $options) . ']';
     }
 }

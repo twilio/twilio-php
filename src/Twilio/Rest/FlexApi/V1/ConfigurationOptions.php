@@ -56,6 +56,6 @@ class FetchConfigurationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.FlexApi.V1.FetchConfigurationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.FlexApi.V1.FetchConfigurationOptions ' . \implode(' ', $options) . ']';
     }
 }

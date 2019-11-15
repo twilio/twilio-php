@@ -24,7 +24,7 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals('v1', $payload->version);
 
         $policies = $payload->policies;
-        $this->assertEquals(6, count($policies));
+        $this->assertEquals(6, \count($policies));
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WK789', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
@@ -77,7 +77,7 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals('v1', $payload->version);
 
         $policies = $payload->policies;
-        $this->assertEquals(7, count($policies));
+        $this->assertEquals(7, \count($policies));
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789', $policies[6]->url);
         $this->assertEquals('POST', $policies[6]->method);
@@ -101,7 +101,7 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals('v1', $payload->version);
 
         $policies = $payload->policies;
-        $this->assertEquals(9, count($policies));
+        $this->assertEquals(9, \count($policies));
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**', $policies[7]->url);
         $this->assertEquals('POST', $policies[7]->method);
@@ -128,7 +128,7 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals('v1', $payload->version);
 
         $policies = $payload->policies;
-        $this->assertEquals(3, count($policies));
+        $this->assertEquals(3, \count($policies));
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WS456', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
@@ -162,7 +162,7 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals('v1', $payload->version);
 
         $policies = $payload->policies;
-        $this->assertEquals(4, count($policies));
+        $this->assertEquals(4, \count($policies));
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WS456', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
@@ -202,7 +202,7 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals('v1', $payload->version);
 
         $policies = $payload->policies;
-        $this->assertEquals(3, count($policies));
+        $this->assertEquals(3, \count($policies));
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WQ789', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);

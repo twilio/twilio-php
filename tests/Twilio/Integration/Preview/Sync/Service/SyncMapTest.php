@@ -207,6 +207,6 @@ class SyncMapTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->sync->services("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                               ->syncMaps->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 }

@@ -93,6 +93,6 @@ class CreateBuildOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Serverless.V1.CreateBuildOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Serverless.V1.CreateBuildOptions ' . \implode(' ', $options) . ']';
     }
 }

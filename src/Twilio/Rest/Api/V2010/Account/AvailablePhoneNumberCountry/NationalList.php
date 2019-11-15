@@ -30,7 +30,7 @@ class NationalList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'countryCode' => $countryCode, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . rawurlencode($countryCode) . '/National.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/AvailablePhoneNumbers/' . \rawurlencode($countryCode) . '/National.json';
     }
 
     /**
@@ -77,7 +77,7 @@ class NationalList extends ListResource {
      * @return NationalInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

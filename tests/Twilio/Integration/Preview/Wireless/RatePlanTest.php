@@ -96,7 +96,7 @@ class RatePlanTest extends HolodeckTestCase {
 
         $actual = $this->twilio->preview->wireless->ratePlans->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testFetchRequest() {

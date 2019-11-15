@@ -31,7 +31,7 @@ class RecordingList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Recordings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Recordings.json';
     }
 
     /**
@@ -111,7 +111,7 @@ class RecordingList extends ListResource {
      * @return RecordingInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

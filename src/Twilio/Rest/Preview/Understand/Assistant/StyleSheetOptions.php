@@ -56,6 +56,6 @@ class UpdateStyleSheetOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Understand.UpdateStyleSheetOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Understand.UpdateStyleSheetOptions ' . \implode(' ', $options) . ']';
     }
 }

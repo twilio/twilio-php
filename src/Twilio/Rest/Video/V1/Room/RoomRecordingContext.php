@@ -30,7 +30,7 @@ class RoomRecordingContext extends InstanceContext {
         // Path Solution
         $this->solution = array('roomSid' => $roomSid, 'sid' => $sid, );
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Recordings/' . rawurlencode($sid) . '';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Recordings/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -76,6 +76,6 @@ class RoomRecordingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.RoomRecordingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.RoomRecordingContext ' . \implode(' ', $context) . ']';
     }
 }

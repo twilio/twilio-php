@@ -30,7 +30,7 @@ class DayList extends ListResource {
         // Path Solution
         $this->solution = array('resourceType' => $resourceType, );
 
-        $this->uri = '/Exports/' . rawurlencode($resourceType) . '/Days';
+        $this->uri = '/Exports/' . \rawurlencode($resourceType) . '/Days';
     }
 
     /**
@@ -75,7 +75,7 @@ class DayList extends ListResource {
      * @return DayInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

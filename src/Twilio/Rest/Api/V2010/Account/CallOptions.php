@@ -489,7 +489,7 @@ class CreateCallOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateCallOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateCallOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -641,7 +641,7 @@ class ReadCallOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadCallOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadCallOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -771,6 +771,6 @@ class UpdateCallOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateCallOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateCallOptions ' . \implode(' ', $options) . ']';
     }
 }

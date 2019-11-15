@@ -34,7 +34,7 @@ class ExecutionStepContextContext extends InstanceContext {
             'stepSid' => $stepSid,
         );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Executions/' . rawurlencode($executionSid) . '/Steps/' . rawurlencode($stepSid) . '/Context';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($executionSid) . '/Steps/' . \rawurlencode($stepSid) . '/Context';
     }
 
     /**
@@ -71,6 +71,6 @@ class ExecutionStepContextContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.ExecutionStepContextContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.ExecutionStepContextContext ' . \implode(' ', $context) . ']';
     }
 }

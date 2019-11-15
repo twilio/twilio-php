@@ -36,7 +36,7 @@ class FunctionVersionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'functionSid' => $functionSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Functions/' . rawurlencode($functionSid) . '/Versions/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Functions/' . \rawurlencode($functionSid) . '/Versions/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -73,6 +73,6 @@ class FunctionVersionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.FunctionVersionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.FunctionVersionContext ' . \implode(' ', $context) . ']';
     }
 }

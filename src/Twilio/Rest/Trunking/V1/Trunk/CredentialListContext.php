@@ -30,7 +30,7 @@ class CredentialListContext extends InstanceContext {
         // Path Solution
         $this->solution = array('trunkSid' => $trunkSid, 'sid' => $sid, );
 
-        $this->uri = '/Trunks/' . rawurlencode($trunkSid) . '/CredentialLists/' . rawurlencode($sid) . '';
+        $this->uri = '/Trunks/' . \rawurlencode($trunkSid) . '/CredentialLists/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -76,6 +76,6 @@ class CredentialListContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Trunking.V1.CredentialListContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Trunking.V1.CredentialListContext ' . \implode(' ', $context) . ']';
     }
 }

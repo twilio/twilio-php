@@ -56,6 +56,6 @@ class UpdateDefaultsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateDefaultsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateDefaultsOptions ' . \implode(' ', $options) . ']';
     }
 }

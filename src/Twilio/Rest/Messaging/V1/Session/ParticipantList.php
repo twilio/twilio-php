@@ -33,7 +33,7 @@ class ParticipantList extends ListResource {
         // Path Solution
         $this->solution = array('sessionSid' => $sessionSid, );
 
-        $this->uri = '/Sessions/' . rawurlencode($sessionSid) . '/Participants';
+        $this->uri = '/Sessions/' . \rawurlencode($sessionSid) . '/Participants';
     }
 
     /**
@@ -107,7 +107,7 @@ class ParticipantList extends ListResource {
      * @return ParticipantInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

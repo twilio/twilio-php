@@ -100,6 +100,6 @@ class ConfigurationContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.ConfigurationContext ' . implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.ConfigurationContext ' . \implode(' ', $context) . ']';
     }
 }

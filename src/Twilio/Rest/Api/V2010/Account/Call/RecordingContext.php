@@ -32,7 +32,7 @@ class RecordingContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'callSid' => $callSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls/' . rawurlencode($callSid) . '/Recordings/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Calls/' . \rawurlencode($callSid) . '/Recordings/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -108,6 +108,6 @@ class RecordingContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.RecordingContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.RecordingContext ' . \implode(' ', $context) . ']';
     }
 }

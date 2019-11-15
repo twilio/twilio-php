@@ -32,7 +32,7 @@ class FactorList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'identity' => $identity, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Entities/' . rawurlencode($identity) . '/Factors';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Entities/' . \rawurlencode($identity) . '/Factors';
     }
 
     /**
@@ -108,7 +108,7 @@ class FactorList extends ListResource {
      * @return FactorInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

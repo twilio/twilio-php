@@ -131,7 +131,7 @@ class ModelBuildTest extends HolodeckTestCase {
         $actual = $this->twilio->preview->understand->assistants("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                     ->modelBuilds->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

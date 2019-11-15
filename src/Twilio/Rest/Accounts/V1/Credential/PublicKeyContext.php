@@ -29,7 +29,7 @@ class PublicKeyContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Credentials/PublicKeys/' . rawurlencode($sid) . '';
+        $this->uri = '/Credentials/PublicKeys/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -92,6 +92,6 @@ class PublicKeyContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Accounts.V1.PublicKeyContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Accounts.V1.PublicKeyContext ' . \implode(' ', $context) . ']';
     }
 }

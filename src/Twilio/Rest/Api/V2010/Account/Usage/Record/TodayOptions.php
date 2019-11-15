@@ -107,6 +107,6 @@ class ReadTodayOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadTodayOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadTodayOptions ' . \implode(' ', $options) . ']';
     }
 }

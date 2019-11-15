@@ -30,7 +30,7 @@ class ExecutionList extends ListResource {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Executions';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions';
     }
 
     /**
@@ -77,7 +77,7 @@ class ExecutionList extends ListResource {
      * @return ExecutionInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

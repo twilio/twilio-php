@@ -81,7 +81,7 @@ class ReadExecutionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Studio.V1.ReadExecutionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Studio.V1.ReadExecutionOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -116,6 +116,6 @@ class CreateExecutionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Studio.V1.CreateExecutionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Studio.V1.CreateExecutionOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -121,7 +121,7 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
                                                ->taskQueues
                                                ->statistics->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

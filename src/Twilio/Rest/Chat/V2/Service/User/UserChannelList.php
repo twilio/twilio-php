@@ -29,7 +29,7 @@ class UserChannelList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'userSid' => $userSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users/' . rawurlencode($userSid) . '/Channels';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Users/' . \rawurlencode($userSid) . '/Channels';
     }
 
     /**
@@ -74,7 +74,7 @@ class UserChannelList extends ListResource {
      * @return UserChannelInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

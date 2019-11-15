@@ -158,12 +158,12 @@ class ConfigurationInstance extends InstanceResource {
      * @throws TwilioException For unknown properties
      */
     public function __get($name) {
-        if (array_key_exists($name, $this->properties)) {
+        if (\array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
 
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
 
@@ -180,6 +180,6 @@ class ConfigurationInstance extends InstanceResource {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.ConfigurationInstance ' . implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.ConfigurationInstance ' . \implode(' ', $context) . ']';
     }
 }

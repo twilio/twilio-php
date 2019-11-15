@@ -124,6 +124,6 @@ class CreateCompositionSettingsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.CreateCompositionSettingsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.CreateCompositionSettingsOptions ' . \implode(' ', $options) . ']';
     }
 }

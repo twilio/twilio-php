@@ -162,7 +162,7 @@ class DocumentPermissionTest extends HolodeckTestCase {
                                          ->documents("ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                          ->documentPermissions->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

@@ -124,6 +124,6 @@ class UpdateWebhookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Conversations.V1.UpdateWebhookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Conversations.V1.UpdateWebhookOptions ' . \implode(' ', $options) . ']';
     }
 }

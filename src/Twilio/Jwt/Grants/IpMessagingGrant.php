@@ -11,7 +11,7 @@ class IpMessagingGrant implements Grant {
     private $pushCredentialSid;
 
     public function __construct() {
-        trigger_error("IpMessagingGrant is deprecated, please use ChatGrant", E_USER_NOTICE);
+        \trigger_error("IpMessagingGrant is deprecated, please use ChatGrant", E_USER_NOTICE);
     }
 
     /**

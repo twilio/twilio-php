@@ -295,6 +295,6 @@ class CreateNotificationOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Notify.V1.CreateNotificationOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Notify.V1.CreateNotificationOptions ' . \implode(' ', $options) . ']';
     }
 }

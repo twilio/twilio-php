@@ -71,7 +71,7 @@ class CreateMemberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V1.CreateMemberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V1.CreateMemberOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -106,7 +106,7 @@ class ReadMemberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V1.ReadMemberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V1.ReadMemberOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -156,6 +156,6 @@ class UpdateMemberOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V1.UpdateMemberOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V1.UpdateMemberOptions ' . \implode(' ', $options) . ']';
     }
 }

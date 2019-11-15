@@ -81,7 +81,7 @@ class ReadSampleOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.ReadSampleOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.ReadSampleOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -118,7 +118,7 @@ class CreateSampleOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.CreateSampleOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.CreateSampleOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -185,6 +185,6 @@ class UpdateSampleOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateSampleOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateSampleOptions ' . \implode(' ', $options) . ']';
     }
 }

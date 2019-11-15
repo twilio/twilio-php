@@ -42,7 +42,7 @@ class IncomingPhoneNumberList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/IncomingPhoneNumbers.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/IncomingPhoneNumbers.json';
     }
 
     /**
@@ -90,7 +90,7 @@ class IncomingPhoneNumberList extends ListResource {
      * @return IncomingPhoneNumberInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
@@ -237,8 +237,8 @@ class IncomingPhoneNumberList extends ListResource {
      * @throws TwilioException For unknown subresources
      */
     public function __get($name) {
-        if (property_exists($this, '_' . $name)) {
-            $method = 'get' . ucfirst($name);
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
             return $this->$method();
         }
 
@@ -255,8 +255,8 @@ class IncomingPhoneNumberList extends ListResource {
      */
     public function __call($name, $arguments) {
         $property = $this->$name;
-        if (method_exists($property, 'getContext')) {
-            return call_user_func_array(array($property, 'getContext'), $arguments);
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
         }
 
         throw new TwilioException('Resource does not have a context');

@@ -31,7 +31,7 @@ class ActivityContext extends InstanceContext {
         // Path Solution
         $this->solution = array('workspaceSid' => $workspaceSid, 'sid' => $sid, );
 
-        $this->uri = '/Workspaces/' . rawurlencode($workspaceSid) . '/Activities/' . rawurlencode($sid) . '';
+        $this->uri = '/Workspaces/' . \rawurlencode($workspaceSid) . '/Activities/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -104,6 +104,6 @@ class ActivityContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Taskrouter.V1.ActivityContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Taskrouter.V1.ActivityContext ' . \implode(' ', $context) . ']';
     }
 }

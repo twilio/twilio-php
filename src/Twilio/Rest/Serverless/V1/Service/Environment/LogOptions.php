@@ -59,6 +59,6 @@ class ReadLogOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Serverless.V1.ReadLogOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Serverless.V1.ReadLogOptions ' . \implode(' ', $options) . ']';
     }
 }

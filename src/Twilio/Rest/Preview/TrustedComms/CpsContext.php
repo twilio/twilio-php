@@ -61,6 +61,6 @@ class CpsContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.TrustedComms.CpsContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.TrustedComms.CpsContext ' . \implode(' ', $context) . ']';
     }
 }

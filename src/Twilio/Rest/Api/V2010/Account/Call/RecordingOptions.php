@@ -145,7 +145,7 @@ class CreateRecordingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateRecordingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateRecordingOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -182,7 +182,7 @@ class UpdateRecordingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateRecordingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateRecordingOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -247,6 +247,6 @@ class ReadRecordingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadRecordingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadRecordingOptions ' . \implode(' ', $options) . ']';
     }
 }

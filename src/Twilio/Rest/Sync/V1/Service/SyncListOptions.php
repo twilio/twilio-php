@@ -100,7 +100,7 @@ class CreateSyncListOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.CreateSyncListOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.CreateSyncListOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -150,6 +150,6 @@ class UpdateSyncListOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Sync.V1.UpdateSyncListOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Sync.V1.UpdateSyncListOptions ' . \implode(' ', $options) . ']';
     }
 }

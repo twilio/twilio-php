@@ -327,6 +327,6 @@ class ReadNationalOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadNationalOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadNationalOptions ' . \implode(' ', $options) . ']';
     }
 }

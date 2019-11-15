@@ -33,7 +33,7 @@ class MessageList extends ListResource {
         // Path Solution
         $this->solution = array('sessionSid' => $sessionSid, );
 
-        $this->uri = '/Sessions/' . rawurlencode($sessionSid) . '/Messages';
+        $this->uri = '/Sessions/' . \rawurlencode($sessionSid) . '/Messages';
     }
 
     /**
@@ -106,7 +106,7 @@ class MessageList extends ListResource {
      * @return MessageInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

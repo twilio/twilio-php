@@ -34,7 +34,7 @@ class LogList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'environmentSid' => $environmentSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Environments/' . rawurlencode($environmentSid) . '/Logs';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Environments/' . \rawurlencode($environmentSid) . '/Logs';
     }
 
     /**
@@ -81,7 +81,7 @@ class LogList extends ListResource {
      * @return LogInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

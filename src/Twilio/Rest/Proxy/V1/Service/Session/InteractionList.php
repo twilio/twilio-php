@@ -31,7 +31,7 @@ class InteractionList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Interactions';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Sessions/' . \rawurlencode($sessionSid) . '/Interactions';
     }
 
     /**
@@ -76,7 +76,7 @@ class InteractionList extends ListResource {
      * @return InteractionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

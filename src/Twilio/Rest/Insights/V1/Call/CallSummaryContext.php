@@ -32,7 +32,7 @@ class CallSummaryContext extends InstanceContext {
         // Path Solution
         $this->solution = array('callSid' => $callSid, );
 
-        $this->uri = '/Voice/' . rawurlencode($callSid) . '/Summary';
+        $this->uri = '/Voice/' . \rawurlencode($callSid) . '/Summary';
     }
 
     /**
@@ -66,6 +66,6 @@ class CallSummaryContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Insights.V1.CallSummaryContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Insights.V1.CallSummaryContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -32,7 +32,7 @@ class UsageContext extends InstanceContext {
         // Path Solution
         $this->solution = array('simSid' => $simSid, );
 
-        $this->uri = '/Sims/' . rawurlencode($simSid) . '/Usage';
+        $this->uri = '/Sims/' . \rawurlencode($simSid) . '/Usage';
     }
 
     /**
@@ -66,6 +66,6 @@ class UsageContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Wireless.UsageContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Wireless.UsageContext ' . \implode(' ', $context) . ']';
     }
 }

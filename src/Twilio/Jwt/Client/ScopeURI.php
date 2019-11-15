@@ -28,8 +28,8 @@ class ScopeURI {
 
     public function toString() {
         $uri = "scope:{$this->service}:{$this->privilege}";
-        if (count($this->params)) {
-            $uri .= "?" . http_build_query($this->params, '', '&');
+        if (\count($this->params)) {
+            $uri .= "?" . \http_build_query($this->params, '', '&');
         }
         return $uri;
     }
@@ -42,21 +42,21 @@ class ScopeURI {
      * @throws \UnexpectedValueException
      */
     public static function parse($uri) {
-        if (strpos($uri, 'scope:') !== 0) {
+        if (\strpos($uri, 'scope:') !== 0) {
             throw new \UnexpectedValueException(
                 'Not a scope URI according to scheme');
         }
 
-        $parts = explode('?', $uri, 1);
+        $parts = \explode('?', $uri, 1);
         $params = null;
 
-        if (count($parts) > 1) {
-            parse_str($parts[1], $params);
+        if (\count($parts) > 1) {
+            \parse_str($parts[1], $params);
         }
 
-        $parts = explode(':', $parts[0], 2);
+        $parts = \explode(':', $parts[0], 2);
 
-        if (count($parts) != 3) {
+        if (\count($parts) != 3) {
             throw new \UnexpectedValueException(
                 'Not enough parts for scope URI');
         }

@@ -36,7 +36,7 @@ class PayloadList extends ListResource {
             'addOnResultSid' => $addOnResultSid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Recordings/' . rawurlencode($referenceSid) . '/AddOnResults/' . rawurlencode($addOnResultSid) . '/Payloads.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/Recordings/' . \rawurlencode($referenceSid) . '/AddOnResults/' . \rawurlencode($addOnResultSid) . '/Payloads.json';
     }
 
     /**
@@ -81,7 +81,7 @@ class PayloadList extends ListResource {
      * @return PayloadInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

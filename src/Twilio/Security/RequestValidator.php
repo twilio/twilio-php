@@ -74,7 +74,7 @@ final class RequestValidator {
 
     public function validate($expectedSignature, $url, $data = array()) {
 
-        $parsedUrl = parse_url($url);
+        $parsedUrl = \parse_url($url);
 
         $urlWithPort = RequestValidator::addPort($parsedUrl);
         $urlWithoutPort = RequestValidator::removePort($parsedUrl);

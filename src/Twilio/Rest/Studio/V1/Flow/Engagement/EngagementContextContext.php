@@ -29,7 +29,7 @@ class EngagementContextContext extends InstanceContext {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, 'engagementSid' => $engagementSid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Engagements/' . rawurlencode($engagementSid) . '/Context';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Engagements/' . \rawurlencode($engagementSid) . '/Context';
     }
 
     /**
@@ -65,6 +65,6 @@ class EngagementContextContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.EngagementContextContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.EngagementContextContext ' . \implode(' ', $context) . ']';
     }
 }

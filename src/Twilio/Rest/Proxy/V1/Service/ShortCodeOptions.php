@@ -59,6 +59,6 @@ class UpdateShortCodeOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Proxy.V1.UpdateShortCodeOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Proxy.V1.UpdateShortCodeOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -199,6 +199,6 @@ class ReadEventOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadEventOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadEventOptions ' . \implode(' ', $options) . ']';
     }
 }

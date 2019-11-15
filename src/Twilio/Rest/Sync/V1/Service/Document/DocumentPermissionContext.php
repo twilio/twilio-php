@@ -42,7 +42,7 @@ class DocumentPermissionContext extends InstanceContext {
             'identity' => $identity,
         );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents/' . rawurlencode($documentSid) . '/Permissions/' . rawurlencode($identity) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Documents/' . \rawurlencode($documentSid) . '/Permissions/' . \rawurlencode($identity) . '';
     }
 
     /**
@@ -121,6 +121,6 @@ class DocumentPermissionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Sync.V1.DocumentPermissionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Sync.V1.DocumentPermissionContext ' . \implode(' ', $context) . ']';
     }
 }

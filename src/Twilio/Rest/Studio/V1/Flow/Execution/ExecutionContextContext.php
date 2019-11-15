@@ -29,7 +29,7 @@ class ExecutionContextContext extends InstanceContext {
         // Path Solution
         $this->solution = array('flowSid' => $flowSid, 'executionSid' => $executionSid, );
 
-        $this->uri = '/Flows/' . rawurlencode($flowSid) . '/Executions/' . rawurlencode($executionSid) . '/Context';
+        $this->uri = '/Flows/' . \rawurlencode($flowSid) . '/Executions/' . \rawurlencode($executionSid) . '/Context';
     }
 
     /**
@@ -65,6 +65,6 @@ class ExecutionContextContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Studio.V1.ExecutionContextContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Studio.V1.ExecutionContextContext ' . \implode(' ', $context) . ']';
     }
 }

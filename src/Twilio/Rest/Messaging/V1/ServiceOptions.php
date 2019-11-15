@@ -297,7 +297,7 @@ class CreateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Messaging.V1.CreateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Messaging.V1.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -527,6 +527,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Messaging.V1.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Messaging.V1.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

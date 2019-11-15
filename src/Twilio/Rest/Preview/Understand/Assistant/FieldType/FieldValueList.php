@@ -34,7 +34,7 @@ class FieldValueList extends ListResource {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'fieldTypeSid' => $fieldTypeSid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/FieldTypes/' . rawurlencode($fieldTypeSid) . '/FieldValues';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/FieldTypes/' . \rawurlencode($fieldTypeSid) . '/FieldValues';
     }
 
     /**
@@ -81,7 +81,7 @@ class FieldValueList extends ListResource {
      * @return FieldValueInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

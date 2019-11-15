@@ -30,7 +30,7 @@ class RoomRecordingList extends ListResource {
         // Path Solution
         $this->solution = array('roomSid' => $roomSid, );
 
-        $this->uri = '/Rooms/' . rawurlencode($roomSid) . '/Recordings';
+        $this->uri = '/Rooms/' . \rawurlencode($roomSid) . '/Recordings';
     }
 
     /**
@@ -77,7 +77,7 @@ class RoomRecordingList extends ListResource {
      * @return RoomRecordingInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

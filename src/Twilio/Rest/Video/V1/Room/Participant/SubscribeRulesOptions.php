@@ -56,6 +56,6 @@ class UpdateSubscribeRulesOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.UpdateSubscribeRulesOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.UpdateSubscribeRulesOptions ' . \implode(' ', $options) . ']';
     }
 }

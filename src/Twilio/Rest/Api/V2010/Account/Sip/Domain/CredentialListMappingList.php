@@ -30,7 +30,7 @@ class CredentialListMappingList extends ListResource {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'domainSid' => $domainSid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/Domains/' . rawurlencode($domainSid) . '/CredentialListMappings.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/CredentialListMappings.json';
     }
 
     /**
@@ -103,7 +103,7 @@ class CredentialListMappingList extends ListResource {
      * @return CredentialListMappingInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

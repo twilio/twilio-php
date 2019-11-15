@@ -164,7 +164,7 @@ class ReadCompositionHookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.ReadCompositionHookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.ReadCompositionHookOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -333,7 +333,7 @@ class CreateCompositionHookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.CreateCompositionHookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.CreateCompositionHookOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -502,6 +502,6 @@ class UpdateCompositionHookOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Video.V1.UpdateCompositionHookOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Video.V1.UpdateCompositionHookOptions ' . \implode(' ', $options) . ']';
     }
 }

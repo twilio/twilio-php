@@ -623,6 +623,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Chat.V2.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Chat.V2.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

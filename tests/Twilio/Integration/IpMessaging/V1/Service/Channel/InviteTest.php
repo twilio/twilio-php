@@ -182,7 +182,7 @@ class InviteTest extends HolodeckTestCase {
                                                 ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->invites->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testDeleteRequest() {

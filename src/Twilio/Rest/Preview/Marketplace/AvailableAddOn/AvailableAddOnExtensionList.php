@@ -31,7 +31,7 @@ class AvailableAddOnExtensionList extends ListResource {
         // Path Solution
         $this->solution = array('availableAddOnSid' => $availableAddOnSid, );
 
-        $this->uri = '/AvailableAddOns/' . rawurlencode($availableAddOnSid) . '/Extensions';
+        $this->uri = '/AvailableAddOns/' . \rawurlencode($availableAddOnSid) . '/Extensions';
     }
 
     /**
@@ -77,7 +77,7 @@ class AvailableAddOnExtensionList extends ListResource {
      * @return AvailableAddOnExtensionInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

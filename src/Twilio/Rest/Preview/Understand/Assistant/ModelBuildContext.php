@@ -33,7 +33,7 @@ class ModelBuildContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'sid' => $sid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/ModelBuilds/' . rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/ModelBuilds/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -106,6 +106,6 @@ class ModelBuildContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Understand.ModelBuildContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Understand.ModelBuildContext ' . \implode(' ', $context) . ']';
     }
 }

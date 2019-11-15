@@ -38,7 +38,7 @@ class CredentialContext extends InstanceContext {
             'sid' => $sid,
         );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SIP/CredentialLists/' . rawurlencode($credentialListSid) . '/Credentials/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/CredentialLists/' . \rawurlencode($credentialListSid) . '/Credentials/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -113,6 +113,6 @@ class CredentialContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.CredentialContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.CredentialContext ' . \implode(' ', $context) . ']';
     }
 }

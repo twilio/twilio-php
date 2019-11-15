@@ -35,7 +35,7 @@ class AssetVersionContext extends InstanceContext {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'assetSid' => $assetSid, 'sid' => $sid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Assets/' . rawurlencode($assetSid) . '/Versions/' . rawurlencode($sid) . '';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets/' . \rawurlencode($assetSid) . '/Versions/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -72,6 +72,6 @@ class AssetVersionContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Serverless.V1.AssetVersionContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Serverless.V1.AssetVersionContext ' . \implode(' ', $context) . ']';
     }
 }

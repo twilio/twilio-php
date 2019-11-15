@@ -34,7 +34,7 @@ class NotificationList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Notifications';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Notifications';
     }
 
     /**

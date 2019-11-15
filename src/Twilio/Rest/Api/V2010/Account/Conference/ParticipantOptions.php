@@ -303,7 +303,7 @@ class UpdateParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.UpdateParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.UpdateParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -775,7 +775,7 @@ class CreateParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.CreateParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.CreateParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -838,6 +838,6 @@ class ReadParticipantOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Api.V2010.ReadParticipantOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Api.V2010.ReadParticipantOptions ' . \implode(' ', $options) . ']';
     }
 }

@@ -56,6 +56,6 @@ class ReadUserBindingOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.IpMessaging.V2.ReadUserBindingOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.IpMessaging.V2.ReadUserBindingOptions ' . \implode(' ', $options) . ']';
     }
 }

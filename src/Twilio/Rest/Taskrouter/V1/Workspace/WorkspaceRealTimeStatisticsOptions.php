@@ -56,6 +56,6 @@ class FetchWorkspaceRealTimeStatisticsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.FetchWorkspaceRealTimeStatisticsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.FetchWorkspaceRealTimeStatisticsOptions ' . \implode(' ', $options) . ']';
     }
 }

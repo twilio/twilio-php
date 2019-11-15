@@ -65,7 +65,7 @@ class CreateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.AccSecurity.CreateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.AccSecurity.CreateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -113,6 +113,6 @@ class UpdateServiceOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.AccSecurity.UpdateServiceOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.AccSecurity.UpdateServiceOptions ' . \implode(' ', $options) . ']';
     }
 }

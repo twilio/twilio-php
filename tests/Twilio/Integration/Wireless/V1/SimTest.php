@@ -162,7 +162,7 @@ class SimTest extends HolodeckTestCase {
 
         $actual = $this->twilio->wireless->v1->sims->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testUpdateRequest() {

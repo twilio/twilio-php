@@ -31,7 +31,7 @@ class Twiml {
             case $arg === null:
                 $this->element = new \SimpleXMLElement('<Response/>');
                 break;
-            case is_array($arg):
+            case \is_array($arg):
                 $this->element = new \SimpleXMLElement('<Response/>');
                 foreach ($arg as $name => $value) {
                     $this->element->addAttribute($name, $value);
@@ -80,7 +80,7 @@ class Twiml {
      */
     public function __call($verb, array $args) {
         list($noun, $attrs) = $args + array('', array());
-        if (is_array($noun)) {
+        if (\is_array($noun)) {
             list($attrs, $noun) = array($noun, '');
         }
         /* addChild does not escape XML, while addAttribute does. This means if
@@ -101,14 +101,14 @@ class Twiml {
          *
          * The following lines accomplish the desired behavior.
          */
-        $decoded = html_entity_decode($noun, ENT_COMPAT, 'UTF-8');
-        $normalized = htmlspecialchars($decoded, ENT_COMPAT, 'UTF-8', false);
-        $hasNoun = is_scalar($noun) && strlen($noun);
+        $decoded = \html_entity_decode($noun, ENT_COMPAT, 'UTF-8');
+        $normalized = \htmlspecialchars($decoded, ENT_COMPAT, 'UTF-8', false);
+        $hasNoun = \is_scalar($noun) && \strlen($noun);
         $child = $hasNoun
-               ? $this->element->addChild(ucfirst($verb), $normalized)
-               : $this->element->addChild(ucfirst($verb));
+               ? $this->element->addChild(\ucfirst($verb), $normalized)
+               : $this->element->addChild(\ucfirst($verb));
 
-        if (is_array($attrs)) {
+        if (\is_array($attrs)) {
             foreach ($attrs as $name => $value) {
                 /* Note that addAttribute escapes raw ampersands by default, so we
                  * haven't touched its implementation. So this is the matrix for
@@ -117,7 +117,7 @@ class Twiml {
                  * & turns into &amp;
                  * &amp; turns into &amp;amp;
                  */
-                if (is_bool($value)) {
+                if (\is_bool($value)) {
                     $value = ($value === true) ? 'true' : 'false';
                 }
                 $child->addAttribute($name, $value);
@@ -134,7 +134,7 @@ class Twiml {
      */
     public function __toString() {
         $xml = $this->element->asXML();
-        return (string)str_replace(
+        return (string)\str_replace(
             '<?xml version="1.0"?>',
             '<?xml version="1.0" encoding="UTF-8"?>', $xml);
     }

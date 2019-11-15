@@ -128,7 +128,7 @@ class CommandTest extends HolodeckTestCase {
 
         $actual = $this->twilio->preview->wireless->commands->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

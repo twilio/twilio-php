@@ -33,7 +33,7 @@ class MessageList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, 'channelSid' => $channelSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Channels/' . rawurlencode($channelSid) . '/Messages';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Channels/' . \rawurlencode($channelSid) . '/Messages';
     }
 
     /**
@@ -115,7 +115,7 @@ class MessageList extends ListResource {
      * @return MessageInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

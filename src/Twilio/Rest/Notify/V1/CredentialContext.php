@@ -33,7 +33,7 @@ class CredentialContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/Credentials/' . rawurlencode($sid) . '';
+        $this->uri = '/Credentials/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -103,6 +103,6 @@ class CredentialContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Notify.V1.CredentialContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Notify.V1.CredentialContext ' . \implode(' ', $context) . ']';
     }
 }

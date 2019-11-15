@@ -156,6 +156,6 @@ class ReadCountryOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Voice.V1.ReadCountryOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Voice.V1.ReadCountryOptions ' . \implode(' ', $options) . ']';
     }
 }

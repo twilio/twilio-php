@@ -33,7 +33,7 @@ class DeviceList extends ListResource {
         // Path Solution
         $this->solution = array('fleetSid' => $fleetSid, );
 
-        $this->uri = '/Fleets/' . rawurlencode($fleetSid) . '/Devices';
+        $this->uri = '/Fleets/' . \rawurlencode($fleetSid) . '/Devices';
     }
 
     /**
@@ -108,7 +108,7 @@ class DeviceList extends ListResource {
      * @return DeviceInstance[] Array of results
      */
     public function read($options = array(), $limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**

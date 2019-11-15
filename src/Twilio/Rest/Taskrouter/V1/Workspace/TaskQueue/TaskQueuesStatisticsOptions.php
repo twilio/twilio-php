@@ -141,6 +141,6 @@ class ReadTaskQueuesStatisticsOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Taskrouter.V1.ReadTaskQueuesStatisticsOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Taskrouter.V1.ReadTaskQueuesStatisticsOptions ' . \implode(' ', $options) . ']';
     }
 }

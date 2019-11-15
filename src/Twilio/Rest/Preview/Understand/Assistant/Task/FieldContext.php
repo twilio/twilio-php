@@ -34,7 +34,7 @@ class FieldContext extends InstanceContext {
         // Path Solution
         $this->solution = array('assistantSid' => $assistantSid, 'taskSid' => $taskSid, 'sid' => $sid, );
 
-        $this->uri = '/Assistants/' . rawurlencode($assistantSid) . '/Tasks/' . rawurlencode($taskSid) . '/Fields/' . rawurlencode($sid) . '';
+        $this->uri = '/Assistants/' . \rawurlencode($assistantSid) . '/Tasks/' . \rawurlencode($taskSid) . '/Fields/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -81,6 +81,6 @@ class FieldContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Preview.Understand.FieldContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Preview.Understand.FieldContext ' . \implode(' ', $context) . ']';
     }
 }

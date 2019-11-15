@@ -148,7 +148,7 @@ class AssistantTest extends HolodeckTestCase {
 
         $actual = $this->twilio->preview->understand->assistants->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testCreateRequest() {

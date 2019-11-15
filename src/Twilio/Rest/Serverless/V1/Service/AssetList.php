@@ -32,7 +32,7 @@ class AssetList extends ListResource {
         // Path Solution
         $this->solution = array('serviceSid' => $serviceSid, );
 
-        $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Assets';
+        $this->uri = '/Services/' . \rawurlencode($serviceSid) . '/Assets';
     }
 
     /**
@@ -77,7 +77,7 @@ class AssetList extends ListResource {
      * @return AssetInstance[] Array of results
      */
     public function read($limit = null, $pageSize = null) {
-        return iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**

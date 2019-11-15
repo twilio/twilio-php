@@ -31,7 +31,7 @@ class ShortCodeContext extends InstanceContext {
         // Path Solution
         $this->solution = array('accountSid' => $accountSid, 'sid' => $sid, );
 
-        $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/SMS/ShortCodes/' . rawurlencode($sid) . '.json';
+        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SMS/ShortCodes/' . \rawurlencode($sid) . '.json';
     }
 
     /**
@@ -101,6 +101,6 @@ class ShortCodeContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Api.V2010.ShortCodeContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Api.V2010.ShortCodeContext ' . \implode(' ', $context) . ']';
     }
 }

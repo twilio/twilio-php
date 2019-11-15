@@ -64,7 +64,7 @@ class CredentialListTest extends HolodeckTestCase {
                                            ->sip
                                            ->credentialLists->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

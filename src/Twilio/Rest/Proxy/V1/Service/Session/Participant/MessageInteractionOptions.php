@@ -70,6 +70,6 @@ class CreateMessageInteractionOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Proxy.V1.CreateMessageInteractionOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Proxy.V1.CreateMessageInteractionOptions ' . \implode(' ', $options) . ']';
     }
 }

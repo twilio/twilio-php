@@ -86,7 +86,7 @@ class DailyTest extends HolodeckTestCase {
                                            ->records
                                            ->daily->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

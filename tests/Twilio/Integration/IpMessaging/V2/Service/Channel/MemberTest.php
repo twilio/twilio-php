@@ -162,7 +162,7 @@ class MemberTest extends HolodeckTestCase {
                                                 ->channels("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                                                 ->members->read();
 
-        $this->assertGreaterThan(0, count($actual));
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testReadEmptyResponse() {

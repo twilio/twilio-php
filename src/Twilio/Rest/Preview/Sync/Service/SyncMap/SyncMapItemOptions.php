@@ -84,6 +84,6 @@ class ReadSyncMapItemOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Preview.Sync.ReadSyncMapItemOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Preview.Sync.ReadSyncMapItemOptions ' . \implode(' ', $options) . ']';
     }
 }

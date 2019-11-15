@@ -85,7 +85,7 @@ class CreateModelBuildOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.CreateModelBuildOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.CreateModelBuildOptions ' . \implode(' ', $options) . ']';
     }
 }
 
@@ -122,6 +122,6 @@ class UpdateModelBuildOptions extends Options {
                 $options[] = "$key=$value";
             }
         }
-        return '[Twilio.Autopilot.V1.UpdateModelBuildOptions ' . implode(' ', $options) . ']';
+        return '[Twilio.Autopilot.V1.UpdateModelBuildOptions ' . \implode(' ', $options) . ']';
     }
 }

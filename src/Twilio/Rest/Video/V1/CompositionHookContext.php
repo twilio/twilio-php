@@ -33,7 +33,7 @@ class CompositionHookContext extends InstanceContext {
         // Path Solution
         $this->solution = array('sid' => $sid, );
 
-        $this->uri = '/CompositionHooks/' . rawurlencode($sid) . '';
+        $this->uri = '/CompositionHooks/' . \rawurlencode($sid) . '';
     }
 
     /**
@@ -108,6 +108,6 @@ class CompositionHookContext extends InstanceContext {
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Video.V1.CompositionHookContext ' . implode(' ', $context) . ']';
+        return '[Twilio.Video.V1.CompositionHookContext ' . \implode(' ', $context) . ']';
     }
 }
